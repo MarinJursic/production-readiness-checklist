@@ -663,6 +663,420 @@ _Consolidated from `gap supplement/02-universal-code-quality-design-and-implemen
 - [ ] **USEQ-2B15F92E** — Do not waive failing tests, static findings, warnings, or code-review concerns without a documented technical disposition and owner.
 - [ ] **USEQ-8B433E08** — Do not claim high code quality solely from coverage percentage, linter cleanliness, low complexity, style conformance, or absence of known defects.
 
+## Universal Code Quality, Correctness, and Maintainability
+
+_Consolidated from `final consolidated corpus/03-architecture-code-frontend-backend-apis-integration.md#Universal Code Quality, Correctness, and Maintainability`; 344 non-duplicative controls._
+
+### Quality requirements, ownership, and boundaries
+
+- [ ] **USEQ-DBA869FD** — Define the externally observable behavior, quality attributes, constraints, and failure tolerances before treating implementation as complete.
+- [ ] **USEQ-E3378793** — Trace code to product requirements, architecture decisions, risks, interfaces, data contracts, and tests.
+- [ ] **USEQ-D89D9D0E** — Identify safety-, security-, privacy-, accessibility-, financial-, integrity-, and availability-critical code explicitly.
+- [ ] **USEQ-F2AFF580** — Assign ownership for each maintained component, package, service, shared library, generated artifact, and operational script.
+- [ ] **USEQ-0B7FDB5F** — Document supported runtimes, platforms, protocols, data versions, clients, and compatibility windows.
+- [ ] **USEQ-9EA13006** — Define measurable quality gates for correctness, maintainability, reliability, security, performance, testability, and operability.
+- [ ] **USEQ-6F4186A3** — Use risk-adjusted gates rather than one universal numeric threshold for every component.
+- [ ] **USEQ-62BF7DDD** — Document assumptions about inputs, ordering, timing, consistency, scale, trust, environment, and dependencies.
+- [ ] **USEQ-67D8E81C** — Validate material assumptions with executable tests, monitoring, proofs, or reviewed evidence.
+- [ ] **USEQ-D9F573BA** — Keep production behavior reproducible from reviewed source, dependencies, configuration, and build instructions.
+- [ ] **USEQ-2B266C16** — Ensure temporary code, experiments, bypasses, compatibility shims, and migrations have owners and removal conditions.
+- [ ] **USEQ-7A1B2A2D** — Do not accept “works on my machine” as evidence of correctness or portability.
+- [ ] **USEQ-04A082D7** — Use independent review for changes that can violate critical invariants or trust boundaries.
+- [ ] **USEQ-AEDE7315** — Reassess quality requirements when the component changes role, exposure, data sensitivity, scale, or criticality.
+
+### Specifications, contracts, invariants, and correctness
+
+- [ ] **USEQ-DD170383** — Define preconditions, postconditions, invariants, state transitions, side effects, and error outcomes for important behavior.
+- [ ] **USEQ-90E40C1E** — Make contracts precise enough that two independent implementers or testers can reach the same conclusion.
+- [ ] **USEQ-7263D6F2** — Distinguish required behavior from implementation detail and optimization.
+- [ ] **USEQ-DA2FF151** — Define behavior for empty, missing, malformed, duplicate, stale, conflicting, maximum, minimum, and out-of-order inputs.
+- [ ] **USEQ-C8FE1A2E** — Define behavior for partial completion, interruption, timeout, cancellation, retry, and recovery.
+- [ ] **USEQ-2F31C3BE** — Define consistency, ordering, atomicity, durability, freshness, and idempotency requirements explicitly.
+- [ ] **USEQ-77A2171A** — Keep business rules in one authoritative, testable location or ensure replicated rules are generated and verified from one source.
+- [ ] **USEQ-69F05E34** — Enforce critical invariants at the strongest practical boundary, including storage constraints where appropriate.
+- [ ] **USEQ-1C2B1A8A** — Fail safely when a contract cannot be satisfied; do not silently invent or discard critical state.
+- [ ] **USEQ-F90057EF** — Use assertions for programmer assumptions, not as the sole validation of untrusted production input.
+- [ ] **USEQ-DAE95EAC** — Ensure assertions and diagnostics do not change required production semantics when disabled.
+- [ ] **USEQ-7A14D117** — Treat undefined, implementation-defined, unspecified, and version-dependent behavior as explicit risk.
+- [ ] **USEQ-41287C60** — Do not rely on accidental ordering, timing, memory layout, locale, platform defaults, or undocumented supplier behavior.
+- [ ] **USEQ-69E95A61** — Use reference implementations, independent calculations, reconciliation, or formal models for high-impact algorithms.
+- [ ] **USEQ-41F13300** — Prove or test that optimization preserves externally observable behavior and required invariants.
+- [ ] **USEQ-D6652FBA** — Keep specification and implementation changes synchronized and reviewed together.
+
+### Simplicity, SOLID, DRY, KISS, YAGNI, and proportional design
+
+- [ ] **USEQ-8CB4627D** — Prefer the simplest design that demonstrably satisfies current requirements and foreseeable risk.
+- [ ] **USEQ-C88E2CE9** — Apply KISS to reduce accidental complexity, not to ignore essential security, reliability, accessibility, or domain complexity.
+- [ ] **USEQ-6B7D177D** — Apply YAGNI to speculative features and abstractions, not to mandatory controls or inexpensive risk prevention.
+- [ ] **USEQ-BBBE3359** — Apply DRY to duplicated knowledge and business rules; do not force unrelated code to share an abstraction merely because syntax looks similar.
+- [ ] **USEQ-F9448375** — Tolerate small local duplication when premature sharing would couple unrelated change reasons.
+- [ ] **USEQ-CC802841** — Give each cohesive unit a clear responsibility and a limited set of reasons to change.
+- [ ] **USEQ-762F0998** — Extend behavior through stable boundaries when that is cheaper and safer than repeated modification of fragile core logic.
+- [ ] **USEQ-589556B7** — Ensure substituted implementations preserve the promises, error semantics, timing constraints, and invariants expected by their clients.
+- [ ] **USEQ-65503381** — Keep interfaces focused on actual client needs rather than requiring consumers to depend on irrelevant operations.
+- [ ] **USEQ-D83EB0DC** — Direct dependencies toward stable policies and contracts rather than volatile mechanisms where this improves change safety.
+- [ ] **USEQ-B7E68721** — Do not add indirection, factories, layers, patterns, or configuration without a demonstrated problem they solve.
+- [ ] **USEQ-720017DC** — Prefer explicit code over clever compression when the explicit form improves review and maintenance.
+- [ ] **USEQ-0752BFB6** — Remove obsolete abstractions when their original variation or reuse case no longer exists.
+- [ ] **USEQ-E43DC013** — Document intentional violations of a design principle and the trade-off that makes the violation safer or simpler.
+- [ ] **USEQ-C094CF5D** — Review whether an abstraction reduces total cognitive load across creation, use, debugging, and change—not only line count.
+
+### Modularity, cohesion, coupling, and dependency direction
+
+- [ ] **USEQ-58FC16E8** — Partition code around cohesive domain responsibilities and stable change boundaries.
+- [ ] **USEQ-AFD6FB35** — Keep related data and behavior together unless separation is required for a clear architectural reason.
+- [ ] **USEQ-8F5FC968** — Minimize hidden coupling through global state, shared databases, implicit conventions, environment variables, clocks, files, or side channels.
+- [ ] **USEQ-FFD3A39D** — Make dependencies explicit in interfaces, construction, configuration, or documented runtime contracts.
+- [ ] **USEQ-A3F10A7E** — Prevent cyclic dependencies or justify and test any unavoidable cycle.
+- [ ] **USEQ-3ECB7AC5** — Keep public surfaces smaller than internal implementation surfaces.
+- [ ] **USEQ-02773C41** — Expose the minimum data and operations needed by consumers.
+- [ ] **USEQ-2FFF5F59** — Preserve encapsulation; do not let consumers depend on mutable internal representation.
+- [ ] **USEQ-17CEBD14** — Use stable abstractions at trust, process, ownership, deployment, and compatibility boundaries.
+- [ ] **USEQ-27722554** — Avoid splitting code into modules so small that behavior can no longer be understood locally.
+- [ ] **USEQ-0D3D31EF** — Avoid modules so large that unrelated responsibilities, owners, and change rates become inseparable.
+- [ ] **USEQ-C11942B6** — Keep policy separate from replaceable mechanisms when doing so improves testability, portability, or security.
+- [ ] **USEQ-30615094** — Isolate high-risk parsers, privileged operations, external services, and unsafe components behind narrow boundaries.
+- [ ] **USEQ-47555284** — Design failure containment so one module cannot unnecessarily corrupt or exhaust unrelated modules.
+- [ ] **USEQ-EECAD1C3** — Measure coupling through actual dependency and change data, not only static diagrams.
+- [ ] **USEQ-1E8B7C1F** — Review boundaries whenever teams, data ownership, deployment units, or scaling needs change.
+
+### Readability, naming, comments, and local reasoning
+
+- [ ] **USEQ-D1B3D7E0** — Use names that communicate domain meaning, units, scope, lifetime, and intent.
+- [ ] **USEQ-5BF298DE** — Use consistent terminology from the product glossary and data contracts.
+- [ ] **USEQ-041246F0** — Avoid names that misrepresent security, certainty, units, ownership, mutability, or side effects.
+- [ ] **USEQ-51888F7A** — Use positive, unambiguous boolean names and avoid confusing double negatives.
+- [ ] **USEQ-233613E8** — Keep units, currencies, time bases, coordinate systems, and normalization states visible in names or types.
+- [ ] **USEQ-416EBFC9** — Organize code so the normal path and exceptional paths are easy to identify.
+- [ ] **USEQ-C2E77A64** — Keep control flow shallow and comprehensible; extract or restructure deeply nested logic when it obscures behavior.
+- [ ] **USEQ-A8D58020** — Prefer early validation or guard clauses when they make preconditions and failure clearer.
+- [ ] **USEQ-9A0C71A3** — Keep functions and classes cohesive; size is a signal, not a goal by itself.
+- [ ] **USEQ-FE04149F** — Use formatting and automated style rules consistently so review focuses on behavior.
+- [ ] **USEQ-C70CE853** — Write comments that explain intent, constraints, non-obvious trade-offs, provenance, and why—not a restatement of syntax.
+- [ ] **USEQ-54B9FB4B** — Keep comments, examples, diagrams, and documentation synchronized with code.
+- [ ] **USEQ-F482985B** — Remove commented-out code and obsolete explanations; version control is the history.
+- [ ] **USEQ-51D2BF8A** — Mark generated code, generated sections, and source-of-truth locations clearly.
+- [ ] **USEQ-A8AABA93** — Keep public API documentation accurate about inputs, outputs, side effects, errors, thread safety, compatibility, and security requirements.
+- [ ] **USEQ-5A2A45DA** — Ensure a qualified maintainer can understand a change without reconstructing undocumented context from multiple private channels.
+
+### Types, values, validation, nullability, and data representation
+
+- [ ] **USEQ-D98F8957** — Use the strongest practical representation for domain constraints rather than representing every value as an unconstrained primitive.
+- [ ] **USEQ-1A3B18B4** — Make optionality, absence, unknown, not-applicable, redacted, and zero distinct where the domain distinguishes them.
+- [ ] **USEQ-0A5F8102** — Do not use sentinel values that collide with valid domain values.
+- [ ] **USEQ-8BC70D0E** — Validate untrusted input at the trusted boundary for syntax, type, range, size, structure, encoding, and allowed relationships.
+- [ ] **USEQ-1064D8A5** — Validate again when data crosses a boundary with different trust or invariants.
+- [ ] **USEQ-8AEEBE13** — Canonicalize or normalize before security-sensitive comparison when the domain requires it.
+- [ ] **USEQ-D239B15F** — Avoid lossy conversion unless the loss and rounding behavior are explicit and acceptable.
+- [ ] **USEQ-6A357CE5** — Preserve unknown fields or reject them intentionally according to the compatibility contract.
+- [ ] **USEQ-A660250A** — Prevent unintended mass assignment, implicit field binding, and over-posting.
+- [ ] **USEQ-06BBD221** — Define default values explicitly and distinguish omitted values from supplied defaults when behavior differs.
+- [ ] **USEQ-2149D309** — Ensure serialization and storage preserve required precision, ordering, identity, and null semantics.
+- [ ] **USEQ-40B3A71F** — Use immutable values for identifiers, money, timestamps, configuration, and other concepts where mutation creates risk.
+- [ ] **USEQ-DD9D56FD** — Constrain collections, recursion, nesting, and graphs to safe bounds.
+- [ ] **USEQ-AD83A277** — Check for duplicate keys, ambiguous names, conflicting fields, and parser-specific interpretation.
+- [ ] **USEQ-715C83F0** — Use domain-specific validation for checksums, identifiers, addresses, account numbers, and other structured values without over-restricting legitimate international input.
+- [ ] **USEQ-25BEFB10** — Do not treat client-side validation as the authoritative security or integrity control.
+
+### Errors, exceptions, cancellation, and defensive behavior
+
+- [ ] **USEQ-1FFA1E56** — Define an error taxonomy that distinguishes invalid input, expected business outcomes, transient dependency failure, permanent failure, conflict, authorization denial, and programmer defect.
+- [ ] **USEQ-61DA8691** — Use error types or structures that let callers make safe decisions without parsing human-readable text.
+- [ ] **USEQ-FC3083A0** — Preserve the causal chain and relevant context without leaking secrets or personal data.
+- [ ] **USEQ-A5570D23** — Do not catch an error unless the code can add context, translate it meaningfully, retry safely, compensate, or terminate at the correct boundary.
+- [ ] **USEQ-639681F8** — Do not silently swallow exceptions, rejected promises, failed tasks, background-job failures, or partial writes.
+- [ ] **USEQ-97FD1F80** — Ensure cleanup occurs on success, failure, cancellation, timeout, and abrupt termination as far as the platform permits.
+- [ ] **USEQ-E517601F** — Propagate cancellation and deadlines through dependent operations.
+- [ ] **USEQ-6844C27F** — Distinguish user cancellation from failure in product behavior and telemetry.
+- [ ] **USEQ-9E562DFB** — Use bounded retries only for failures that are plausibly transient and operations that are safe to repeat.
+- [ ] **USEQ-0CE498E4** — Apply backoff and jitter and honor server or dependency retry guidance.
+- [ ] **USEQ-F65C7D19** — Prevent retry amplification, duplicate side effects, and infinite retry loops.
+- [ ] **USEQ-A60CCF18** — Provide compensation or reconciliation when distributed work cannot be made atomic.
+- [ ] **USEQ-D5017311** — Degrade safely when optional functionality fails and preserve critical operations where possible.
+- [ ] **USEQ-5D9BBF61** — Fail closed for security and authorization decisions unless a documented safety analysis requires another behavior.
+- [ ] **USEQ-377BC484** — Fail visibly for data corruption, invariant violation, and unreconciled financial or integrity discrepancies.
+- [ ] **USEQ-1E5C1F68** — Test error paths with the same rigor as successful paths.
+
+### State, side effects, lifecycle, and idempotency
+
+- [ ] **USEQ-37702BA8** — Make state ownership, lifecycle, transitions, persistence, and reset behavior explicit.
+- [ ] **USEQ-3EB68BF3** — Use explicit state machines for workflows with consequential or nontrivial transitions.
+- [ ] **USEQ-F770BA67** — Reject impossible or unauthorized transitions at the authoritative boundary.
+- [ ] **USEQ-1BE42A4F** — Keep pure calculations separate from side effects where this improves reasoning and testing.
+- [ ] **USEQ-953367E0** — Minimize mutable shared state and scope it to the narrowest appropriate lifetime.
+- [ ] **USEQ-9D35A4E8** — Do not store derived state when it can be recomputed reliably and cheaply unless caching has a clear consistency contract.
+- [ ] **USEQ-D9B4B237** — When derived state is stored, define invalidation, reconciliation, and source-of-truth rules.
+- [ ] **USEQ-5F10320A** — Make operations idempotent when clients, queues, networks, or users can repeat them.
+- [ ] **USEQ-EEBC6397** — Use idempotency keys, deduplication, sequence numbers, or uniqueness constraints appropriate to the effect being protected.
+- [ ] **USEQ-57546D0C** — Define behavior for duplicate, late, missing, and out-of-order events.
+- [ ] **USEQ-A614E073** — Ensure refresh, navigation, retry, process restart, and failover cannot repeat irreversible effects unintentionally.
+- [ ] **USEQ-47D45544** — Version persisted state and provide controlled migration paths.
+- [ ] **USEQ-B246588E** — Clear, revoke, or migrate state when users log out, lose access, change tenant, or delete accounts.
+- [ ] **USEQ-DAF65900** — Avoid hidden state in caches, static variables, singletons, environment, and thread-local storage unless explicitly governed.
+- [ ] **USEQ-CDC0657B** — Expose enough state-transition telemetry to diagnose stuck, repeated, and invalid workflows.
+- [ ] **USEQ-1242CF67** — Test recovery from interruption at every durable transition in critical workflows.
+
+### Concurrency, asynchronous work, and distributed correctness
+
+- [ ] **USEQ-62C77BAB** — Identify every shared mutable resource and define its concurrency model.
+- [ ] **USEQ-AF544541** — Document whether APIs and components are thread-safe, reentrant, single-threaded, actor-confined, or externally synchronized.
+- [ ] **USEQ-C2209208** — Avoid data races through ownership, immutability, isolation, or correctly scoped synchronization.
+- [ ] **USEQ-AFA11F1F** — Use synchronization primitives according to their memory-ordering and visibility guarantees.
+- [ ] **USEQ-35E7D6B6** — Prevent deadlock through consistent lock ordering, bounded acquisition, reduced lock scope, or lock-free design with proven safety.
+- [ ] **USEQ-3EF36B7D** — Do not hold locks across unbounded I/O, user callbacks, or remote calls unless explicitly justified.
+- [ ] **USEQ-97608DC7** — Handle task cancellation, orphaned work, and executor shutdown deliberately.
+- [ ] **USEQ-DAEA6A4E** — Bound concurrency, queues, buffers, and fan-out.
+- [ ] **USEQ-0224AD1D** — Apply backpressure rather than accepting unbounded work.
+- [ ] **USEQ-9A5360E0** — Assume network calls can be delayed, duplicated, reordered, partially completed, or fail after the remote effect occurred.
+- [ ] **USEQ-D631AF7E** — Do not infer global order from local clocks or message arrival unless the protocol guarantees it.
+- [ ] **USEQ-4E5F16CC** — Use transactions, compare-and-swap, version checks, leases, fencing tokens, or other concurrency controls according to the invariant.
+- [ ] **USEQ-91D6A6CD** — Test race conditions with stress, randomized scheduling, fault injection, and invariant checks.
+- [ ] **USEQ-6C6FB1A4** — Ensure logging and tracing do not introduce unsafe synchronization or materially alter timing-sensitive behavior.
+- [ ] **USEQ-D4F9E4F1** — Document consistency trade-offs and user-visible consequences.
+
+### Numbers, money, units, limits, and quantitative correctness
+
+- [ ] **USEQ-4FF9BBD0** — Choose numeric representations according to range, precision, rounding, determinism, interoperability, and performance requirements.
+- [ ] **USEQ-4993931E** — Detect or prevent integer overflow, underflow, wraparound, unsafe narrowing, and sign conversion.
+- [ ] **USEQ-99D0CC73** — Handle floating-point non-associativity, exceptional values, comparison tolerance, and platform variance deliberately.
+- [ ] **USEQ-446A1812** — Do not use binary floating point for money when exact decimal behavior is required.
+- [ ] **USEQ-A9E4B0E9** — Represent currency explicitly and do not combine amounts of different currencies without a defined conversion.
+- [ ] **USEQ-25CDB0B9** — Define rounding mode, scale, timing, allocation, tax, fee, and residual handling for financial calculations.
+- [ ] **USEQ-B8FE3E36** — Keep units explicit and prevent mixing incompatible units.
+- [ ] **USEQ-EB371EA3** — Define inclusive and exclusive bounds clearly.
+- [ ] **USEQ-434929F3** — Validate division-by-zero, logarithm, root, overflow, and domain conditions.
+- [ ] **USEQ-ADD15932** — Define behavior for negative, zero, extremely large, and highly precise values.
+- [ ] **USEQ-C1985A8A** — Use stable algorithms for large, small, or ill-conditioned values where numerical error matters.
+- [ ] **USEQ-E51F3165** — Preserve significant figures and uncertainty where the domain requires them.
+- [ ] **USEQ-80B622D5** — Use independent reconciliation for balances, inventory, quotas, counters, and aggregates.
+- [ ] **USEQ-E9022BE0** — Define whether limits are per request, user, tenant, account, time window, region, or global.
+- [ ] **USEQ-A971554D** — Test boundary values and values immediately around every significant threshold.
+- [ ] **USEQ-232C833B** — Document any approximate algorithm and its accepted error bound.
+
+### Time, dates, schedules, and temporal logic
+
+- [ ] **USEQ-8779E97F** — Store instants in an unambiguous time scale and retain the original zone or offset when business meaning requires it.
+- [ ] **USEQ-ACBA370F** — Use named IANA time zones for civil-time rules rather than fixed offsets when local rules matter.
+- [ ] **USEQ-B9A6124F** — Keep time-zone data current and treat political rule changes as production changes.
+- [ ] **USEQ-29E529E7** — Distinguish instants, local date-times, dates, times of day, durations, periods, deadlines, and recurring schedules.
+- [ ] **USEQ-F10AEA71** — Do not assume every day has 24 hours, every minute has 60 seconds in all time scales, or every local time exists exactly once.
+- [ ] **USEQ-D9025CDC** — Define behavior across daylight-saving gaps, overlaps, leap years, month lengths, leap seconds, calendar changes, and end-of-period calculations.
+- [ ] **USEQ-7AFB4A13** — Use monotonic clocks for elapsed-time measurement and deadlines where wall-clock adjustment would be unsafe.
+- [ ] **USEQ-2297697E** — Use synchronized wall clocks for audit and cross-system correlation and monitor drift.
+- [ ] **USEQ-EF634494** — Define clock-skew tolerance for tokens, leases, caches, signatures, and distributed coordination.
+- [ ] **USEQ-3B5E73FE** — Use standards-based timestamp formats such as RFC 3339 where interoperability requires them.
+- [ ] **USEQ-B5224D30** — Include zone identifiers when an offset alone cannot preserve future or recurring civil-time meaning.
+- [ ] **USEQ-17F4977A** — Define inclusive and exclusive deadline semantics and the time zone used for cutoffs.
+- [ ] **USEQ-AB3585AB** — Test scheduling around transitions, month/year boundaries, clock adjustments, and delayed execution.
+- [ ] **USEQ-F016ED9E** — Ensure recurring jobs handle missed, repeated, and overlapping runs.
+- [ ] **USEQ-5EBED0C4** — Do not use user locale to parse machine protocol timestamps.
+- [ ] **USEQ-FF9FB4C0** — Record source, precision, and uncertainty when timestamps are evidence.
+
+### Unicode, localization, identifiers, and text correctness
+
+- [ ] **USEQ-54CB477A** — Use Unicode-capable storage and interfaces end to end for human text.
+- [ ] **USEQ-F29B5184** — Define the normalization form required for identifiers, comparison, search, signatures, and storage; do not normalize blindly when distinctions matter.
+- [ ] **USEQ-743A74EC** — Apply Unicode normalization before security-sensitive comparison when the identifier policy requires it.
+- [ ] **USEQ-EFF318B7** — Address confusable characters, mixed scripts, bidirectional controls, invisible characters, and spoofing in security-sensitive identifiers.
+- [ ] **USEQ-1E6FD2C8** — Distinguish byte length, code-unit length, code-point length, and grapheme-cluster length.
+- [ ] **USEQ-05AB855D** — Do not truncate or split text in the middle of an encoded character or grapheme cluster.
+- [ ] **USEQ-82D12A4A** — Use locale-aware case conversion, collation, segmentation, formatting, and pluralization where human language requires them.
+- [ ] **USEQ-1AF27C78** — Do not use locale-sensitive transformations for protocol tokens, security identifiers, hashes, or machine field names.
+- [ ] **USEQ-649E0701** — Use BCP 47 language tags and Unicode CLDR data for locale behavior where applicable.
+- [ ] **USEQ-8A8A064A** — Support bidirectional text without allowing direction controls to conceal malicious code or identifiers.
+- [ ] **USEQ-89D597B0** — Define canonical comparison rules for usernames, email addresses, domains, filenames, and other identifiers separately.
+- [ ] **USEQ-7B766695** — Preserve user-preferred spelling and display form even when a normalized comparison key is used.
+- [ ] **USEQ-34895ED7** — Handle emoji sequences, combining marks, variation selectors, and evolving character repertoires safely.
+- [ ] **USEQ-5373073B** — Validate text encoding at boundaries and reject or replace malformed sequences according to an explicit policy.
+- [ ] **USEQ-6CA6203E** — Ensure logs, terminals, review tools, and source code cannot hide control characters or bidirectional text attacks.
+- [ ] **USEQ-6975C61E** — Test representative scripts, long translations, right-to-left content, and mixed-language input.
+
+### Parsing, serialization, protocols, and interoperability
+
+- [ ] **USEQ-CE1E87B3** — Use maintained parsers and serializers rather than ad hoc string construction for structured formats.
+- [ ] **USEQ-A4B1C801** — Constrain parser input size, nesting, recursion, entity expansion, references, compression, and processing time.
+- [ ] **USEQ-C82D80FE** — Define duplicate-key, unknown-field, number-range, ordering, whitespace, encoding, and invalid-token behavior.
+- [ ] **USEQ-06C44B02** — Reject ambiguous or nonconforming input at security-sensitive boundaries instead of accepting parser differentials.
+- [ ] **USEQ-7C22624C** — Ensure producer and consumer agree on schema, version, semantics, units, defaults, nullability, and compatibility.
+- [ ] **USEQ-B5F47BE7** — Use deterministic or canonical serialization when signatures, hashes, cache keys, or reproducible comparisons depend on byte identity.
+- [ ] **USEQ-EC2F0E8A** — Do not assume JSON object member order or numeric precision beyond the agreed interoperable profile.
+- [ ] **USEQ-45D4DAB0** — Use HTTP methods, status codes, headers, validators, content negotiation, redirects, and caching according to current semantics.
+- [ ] **USEQ-FA014D20** — Do not return a success status for a failed operation merely to simplify clients.
+- [ ] **USEQ-314A66C9** — Make safe, idempotent, and cacheable operation semantics accurate.
+- [ ] **USEQ-67B4A882** — Handle conditional requests and concurrent updates consistently where supported.
+- [ ] **USEQ-5A9B0093** — Set content types and character encodings explicitly and prevent content sniffing where relevant.
+- [ ] **USEQ-ADF990FF** — Validate media types before selecting a parser.
+- [ ] **USEQ-74E85045** — Keep protocol extension behavior forward-compatible and bounded.
+- [ ] **USEQ-D4B3F5DE** — Use explicit versioning and deprecation policies for externally consumed formats and APIs.
+- [ ] **USEQ-E30C995C** — Test against independent implementations and malformed-message suites for important protocols.
+
+### Resources, memory, files, processes, and cleanup
+
+- [ ] **USEQ-D973FD6B** — Acquire resources as late as practical and release them deterministically or through a reliable lifecycle mechanism.
+- [ ] **USEQ-BE0CD793** — Close files, sockets, streams, cursors, transactions, locks, subscriptions, timers, and handles on every path.
+- [ ] **USEQ-B8095D09** — Bound memory, disk, network, file-descriptor, process, thread, connection, and temporary-storage consumption.
+- [ ] **USEQ-960E9C6B** — Prevent unbounded accumulation in caches, queues, collections, logs, retries, and background tasks.
+- [ ] **USEQ-70FE713D** — Check allocation and I/O failures where the platform exposes them.
+- [ ] **USEQ-82B29943** — Prefer memory-safe implementation technologies for new high-risk code where practical.
+- [ ] **USEQ-897ECAE9** — When memory-unsafe code remains, use a documented migration roadmap plus compiler, runtime, sandbox, fuzzing, and isolation defenses.
+- [ ] **USEQ-E7228FEB** — Prevent use-after-free, out-of-bounds access, uninitialized memory, double release, lifetime confusion, and unsafe aliasing.
+- [ ] **USEQ-3A0A386A** — Zeroize highly sensitive material when the platform and threat model make this effective, while recognizing copies may remain.
+- [ ] **USEQ-98BA29DA** — Use secure temporary-file creation and restrictive permissions.
+- [ ] **USEQ-68117F8C** — Prevent path traversal, symbolic-link races, archive traversal, and unsafe filename handling.
+- [ ] **USEQ-8E4CC777** — Handle partial reads, partial writes, interrupted system calls, disk-full conditions, and remote disconnects.
+- [ ] **USEQ-5D68BE42** — Do not invoke shells or interpreters with concatenated untrusted input.
+- [ ] **USEQ-3C9326DD** — Limit child-process permissions, environment, working directory, inherited handles, runtime, and output size.
+- [ ] **USEQ-18F01CFE** — Make shutdown graceful, bounded, observable, and safe for in-flight work.
+- [ ] **USEQ-B7EDD921** — Test repeated startup, shutdown, reload, failover, and resource exhaustion.
+
+### Security, privacy, and misuse resistance in code
+
+- [ ] **USEQ-1BCE07D5** — Treat every external input, dependency output, stored record, message, file, and model response according to its actual trust level.
+- [ ] **USEQ-493DBF2E** — Enforce authentication and authorization at the authoritative server or service boundary for every protected action and object.
+- [ ] **USEQ-29781772** — Deny access by default and minimize privileges, scopes, data fields, and capabilities.
+- [ ] **USEQ-A6F0EAEF** — Use parameterized or structurally safe APIs for queries, commands, templates, paths, headers, and output contexts.
+- [ ] **USEQ-77921370** — Encode output for the exact destination context and sanitize untrusted rich content with a maintained policy.
+- [ ] **USEQ-576C6557** — Use approved cryptographic libraries and protocols; do not design custom cryptography.
+- [ ] **USEQ-86DDC0AA** — Keep secrets out of source, test fixtures, logs, client bundles, exceptions, analytics, and generated artifacts.
+- [ ] **USEQ-F9A11E4B** — Use constant-time or side-channel-resistant operations where secrets and threat models require them.
+- [ ] **USEQ-12E66D3D** — Prevent resource exhaustion, algorithmic complexity attacks, regex denial of service, and decompression bombs.
+- [ ] **USEQ-7DBD9354** — Minimize collection, retention, copying, logging, and exposure of personal and confidential data.
+- [ ] **USEQ-4D7E05CD** — Use safe defaults and make insecure modes explicit, constrained, and difficult to activate accidentally.
+- [ ] **USEQ-5E34B75C** — Ensure debug, test, and support functionality cannot bypass production controls.
+- [ ] **USEQ-0F2C50CC** — Log security-relevant outcomes without recording reusable credentials or unnecessary personal data.
+- [ ] **USEQ-08007372** — Map code-level weaknesses to applicable CWE classes and threat-model findings.
+- [ ] **USEQ-B52AB6AA** — Review abuse cases and economic incentives, not only syntactic vulnerabilities.
+
+### Performance, complexity, scalability, and efficiency
+
+- [ ] **USEQ-BF70B8CD** — Measure representative workloads, data shapes, cache states, devices, networks, and dependency behavior.
+- [ ] **USEQ-E324A2A1** — Choose algorithms and data structures appropriate to expected and adversarial scale.
+- [ ] **USEQ-8A0C791A** — Analyze time and space complexity for input-controlled or high-volume operations.
+- [ ] **USEQ-E2F87986** — Prevent accidental quadratic, exponential, or unbounded behavior.
+- [ ] **USEQ-1A19A79B** — Use batching, streaming, pagination, indexing, caching, and concurrency only with explicit correctness contracts.
+- [ ] **USEQ-9352A08B** — Do not cache authorization-sensitive or user-specific data without complete cache-key and invalidation dimensions.
+- [ ] **USEQ-70825EBF** — Avoid repeated remote calls, repeated parsing, unnecessary allocation, and excessive serialization in hot paths.
+- [ ] **USEQ-FD32920A** — Optimize after measurement unless a well-known unsafe complexity or capacity problem is evident from design.
+- [ ] **USEQ-3F5D5780** — Preserve readability, correctness, accessibility, and security during optimization.
+- [ ] **USEQ-840336E3** — Document performance-sensitive invariants and benchmark methodology.
+- [ ] **USEQ-3250050E** — Use stable benchmarks with variance, warmup, sample size, and environment recorded.
+- [ ] **USEQ-F00285A1** — Check latency percentiles and tail behavior rather than averages alone.
+- [ ] **USEQ-0434E2D2** — Bound background work and ensure it yields to critical user operations.
+- [ ] **USEQ-AB9DE8ED** — Monitor performance regression and resource growth across releases.
+- [ ] **USEQ-7638CC53** — Remove obsolete optimization code when its complexity no longer provides measured value.
+
+### Testability, observability, and diagnosability
+
+- [ ] **USEQ-4ACE6492** — Design important logic so it can be exercised without uncontrolled network, clock, random, filesystem, process, or global-state dependencies.
+- [ ] **USEQ-8388B6C1** — Inject or abstract nondeterministic dependencies at appropriate boundaries without creating unnecessary indirection.
+- [ ] **USEQ-7208E8C0** — Make randomness seedable in tests and cryptographically secure in production where security requires it.
+- [ ] **USEQ-64212472** — Provide controlled clocks for testing time behavior.
+- [ ] **USEQ-C3D32C77** — Expose observable outcomes for state transitions, retries, reconciliation, queueing, and partial failure.
+- [ ] **USEQ-70F9FF8F** — Use structured logs, metrics, traces, and audit events with stable schemas and correlation identifiers.
+- [ ] **USEQ-587DF350** — Include version, environment, tenant or scope, operation, outcome, and causal context where appropriate.
+- [ ] **USEQ-AEA849FB** — Do not require debug logging that leaks sensitive data to diagnose normal production failures.
+- [ ] **USEQ-3D339246** — Keep telemetry failures from breaking critical business behavior unless audit guarantees require a fail-closed design.
+- [ ] **USEQ-6BE98043** — Ensure sampling does not remove critical security, integrity, or rare failure evidence.
+- [ ] **USEQ-BB92033C** — Create health signals that distinguish process liveness, readiness, dependency health, correctness, and user journey success.
+- [ ] **USEQ-40C08B37** — Make feature flags, configuration versions, migrations, and deployment versions visible in diagnostics.
+- [ ] **USEQ-2C8854E2** — Provide deterministic fixtures and builders for complex domain objects.
+- [ ] **USEQ-99993149** — Keep public interfaces small enough to test exhaustively or systematically at boundaries.
+- [ ] **USEQ-D1828585** — Use fault injection points for critical dependencies and recovery logic.
+- [ ] **USEQ-802A6876** — Validate that diagnostic code and instrumentation do not create unacceptable overhead or behavior changes.
+
+### Dependencies, configuration, feature flags, and generated artifacts
+
+- [ ] **USEQ-00EDEF12** — Add a dependency only when its lifecycle cost and risk are lower than implementing or avoiding the capability.
+- [ ] **USEQ-56DBBE9E** — Assess maintenance activity, ownership, support horizon, security history, license, transitive dependencies, size, portability, and replacement cost.
+- [ ] **USEQ-8FA79EE4** — Pin or constrain versions to balance reproducibility with timely security updates.
+- [ ] **USEQ-728124AE** — Remove unused direct and transitive dependencies and unreachable bundled code.
+- [ ] **USEQ-3A6BB91D** — Use one authoritative configuration schema with types, constraints, defaults, documentation, and secret classification.
+- [ ] **USEQ-4C6B728A** — Validate configuration before serving traffic and fail safely on invalid critical values.
+- [ ] **USEQ-A60E84DD** — Keep production configuration reviewable, auditable, reproducible, and separated from secrets.
+- [ ] **USEQ-3E5F2D86** — Avoid configuration options that create untested combinatorial behavior without clear value.
+- [ ] **USEQ-0E91A950** — Test supported configuration and feature-flag combinations, including failure of the flag service.
+- [ ] **USEQ-DDC54163** — Give every flag an owner, purpose, safe default, rollout plan, observability, and removal date.
+- [ ] **USEQ-CDEE0611** — Do not use long-lived flags as an ungoverned substitute for architecture, permissions, or product plans.
+- [ ] **USEQ-5260DD86** — Make generated code and artifacts reproducible from a reviewed source and trusted generator.
+- [ ] **USEQ-EC8D2059** — Pin and verify generators, schemas, templates, and toolchains.
+- [ ] **USEQ-B433EC66** — Do not manually edit generated output unless the source-of-truth and regeneration rules explicitly permit it.
+- [ ] **USEQ-0147BEB3** — Scan generated and vendored code with the same relevant security and quality controls as handwritten code.
+- [ ] **USEQ-2563896F** — Preserve provenance from input schema or model through generator to output artifact.
+
+### Review, static analysis, metrics, and quality gates
+
+- [ ] **USEQ-4F610242** — Require review by someone other than the author for material production changes.
+- [ ] **USEQ-92000C1E** — Match reviewers to domain, security, data, accessibility, performance, and operational risk.
+- [ ] **USEQ-876EAEF6** — Review behavior, failure modes, contracts, data effects, observability, tests, rollback, and migration—not only style.
+- [ ] **USEQ-2755D60A** — Keep changes small enough to review effectively whenever practical.
+- [ ] **USEQ-12655775** — Use automated formatting, linting, compilation, type checking, static analysis, dependency scanning, and secret scanning appropriate to the code.
+- [ ] **USEQ-43674C7E** — Treat new warnings and high-confidence findings as failures unless a reviewed suppression explains why the finding is not applicable.
+- [ ] **USEQ-FE2D4DFC** — Scope suppressions narrowly, record ownership and expiry, and prevent global disabling for convenience.
+- [ ] **USEQ-5901EFEA** — Use code-quality metrics as investigation signals rather than targets that can be gamed.
+- [ ] **USEQ-CC5B174C** — Track trends in complexity, duplication, dependency cycles, warnings, churn, defect density, flaky tests, coverage gaps, and technical debt.
+- [ ] **USEQ-A1F8C6E6** — Define local limits based on component criticality and change cost rather than enforcing arbitrary organization-wide numbers.
+- [ ] **USEQ-F01FABCC** — Review highly complex, frequently changed, defect-prone, or security-sensitive code for redesign.
+- [ ] **USEQ-A4C2204F** — Use automated source-code quality measures aligned with reliability, security, performance efficiency, and maintainability where useful.
+- [ ] **USEQ-060292B5** — Require evidence that tests fail before the fix and pass after it for material defects.
+- [ ] **USEQ-920D4B56** — Protect review and quality-gate configuration from unauthorized bypass.
+- [ ] **USEQ-FBD94500** — Audit emergency bypasses and complete retrospective review promptly.
+- [ ] **USEQ-40CDE58A** — Ensure the final artifact—not merely source—passes applicable checks.
+
+### Refactoring, technical debt, legacy code, and deletion
+
+- [ ] **USEQ-6DF9FEA2** — Refactor to reduce demonstrated change risk, defects, cognitive load, coupling, or operating cost—not merely to follow fashion.
+- [ ] **USEQ-4DFE7944** — Preserve behavior through characterization tests, contracts, monitoring, or formal equivalence appropriate to risk.
+- [ ] **USEQ-5034A635** — Separate behavior-preserving refactoring from feature change when that improves reviewability.
+- [ ] **USEQ-72261A80** — Use incremental migration and compatibility seams for high-risk legacy replacement.
+- [ ] **USEQ-7D1AAF08** — Document technical debt with principal, ongoing interest, affected outcomes, owner, trigger, and proposed treatment.
+- [ ] **USEQ-D5248200** — Prioritize debt using risk and cost of delay rather than age or developer preference alone.
+- [ ] **USEQ-0730A9EE** — Do not label deliberate, understood trade-offs as debt unless they create a future obligation or cost.
+- [ ] **USEQ-64A92D0D** — Remove dead code, stale flags, unused APIs, obsolete compatibility paths, abandoned migrations, and unsupported versions.
+- [ ] **USEQ-745499A4** — Prove absence of consumers before deleting externally or asynchronously consumed behavior.
+- [ ] **USEQ-2CB162C9** — Use telemetry, repository search, contracts, and consumer confirmation to support deprecation decisions.
+- [ ] **USEQ-C46562AC** — Provide migration guidance and sufficient notice for supported consumers.
+- [ ] **USEQ-68AF1C3C** — Keep rollback or restore paths until deletion risk is acceptably low.
+- [ ] **USEQ-A4F02E4C** — Decommission secrets, jobs, queues, storage, dashboards, alerts, and documentation associated with deleted code.
+- [ ] **USEQ-98563D35** — Ensure replacement code does not reproduce the same hidden assumptions or defects.
+- [ ] **USEQ-9D06A061** — Measure whether refactoring improved the intended quality outcome.
+- [ ] **USEQ-FB8113ED** — Capture recurring causes in standards, tooling, architecture, and training.
+
+### AI-generated, synthesized, copied, and externally sourced code
+
+- [ ] **USEQ-F0F5ACE7** — Treat generated or suggested code as untrusted input requiring the same ownership, review, testing, security, licensing, and provenance as handwritten code.
+- [ ] **USEQ-4DB2AD50** — Never merge code solely because a tool reports confidence or compilation success.
+- [ ] **USEQ-30E40C42** — Verify every referenced API, package, version, algorithm, security control, and configuration against authoritative documentation.
+- [ ] **USEQ-A8DCB48D** — Check for hallucinated, abandoned, malicious, typosquatted, or inappropriate dependencies.
+- [ ] **USEQ-29B0FA93** — Check generated code for copied protected material, incompatible licensing, missing attribution, and confidential-source leakage.
+- [ ] **USEQ-361CFE54** — Do not provide secrets, personal data, proprietary code, customer data, or restricted artifacts to an unapproved model or service.
+- [ ] **USEQ-0174E68B** — Ensure generated tests assert required behavior rather than simply mirroring generated implementation.
+- [ ] **USEQ-A036EF8F** — Use independent reviewers or tools for high-risk generated code rather than relying on the same model to validate itself.
+- [ ] **USEQ-D973EED1** — Check generated code for insecure defaults, missing error paths, unbounded resource use, concurrency defects, and fabricated edge-case handling.
+- [ ] **USEQ-F1392D49** — Retain sufficient provenance to identify tool, model, version, context, author, reviewer, and affected code where policy requires it.
+- [ ] **USEQ-183D2712** — Prevent autonomous agents from merging, deploying, changing permissions, rotating secrets, or modifying production without enforced authorization and gates.
+- [ ] **USEQ-EA441182** — Sandbox code execution and restrict network, filesystem, credentials, and tool permissions.
+- [ ] **USEQ-090DA6D3** — Monitor whether AI assistance increases change size, rework, vulnerabilities, incidents, review burden, or dependency growth.
+- [ ] **USEQ-F3FCECA7** — Do not use productivity metrics to pressure engineers into accepting unreviewed generated code.
+- [ ] **USEQ-FFBABB8B** — Keep human accountability with the person and organization approving the change.
+- [ ] **USEQ-97DE9743** — Reevaluate generated code after model, prompt, plugin, or policy changes that can alter output risk.
+
+### Code-quality release blockers and final evidence
+
+- [ ] **USEQ-B1D30269** — Block release when critical behavior lacks a testable contract or acceptance criterion.
+- [ ] **USEQ-F85696BF** — Block release when a known invariant violation, data corruption path, authorization bypass, unsafe duplicate effect, or unreconciled financial discrepancy remains possible.
+- [ ] **USEQ-59868E58** — Block release when the implementation relies on unsupported runtime behavior or an unreviewed high-risk dependency.
+- [ ] **USEQ-447C9B3C** — Block release when critical warnings, analyzer findings, failed tests, or suppressions lack evidence-based disposition.
+- [ ] **USEQ-27CDEDEA** — Block release when resource bounds, timeout, retry, cancellation, or failure behavior is unknown for a critical path.
+- [ ] **USEQ-243EC747** — Block release when a migration or state transition can leave irreversible ambiguous state without a tested recovery.
+- [ ] **USEQ-8EF0D6E8** — Block release when generated or copied code lacks ownership, license provenance, or sufficient review.
+- [ ] **USEQ-8D4964EC** — Block release when production diagnostics cannot distinguish success, expected failure, dependency failure, and invariant violation.
+- [ ] **USEQ-B642E26A** — Attach source revision, build provenance, dependency lock, configuration schema, analysis reports, review approvals, test results, benchmark results, and known-risk register to the release evidence.
+- [ ] **USEQ-C70D0E0F** — Record which code-quality controls were automated, manually reviewed, formally verified, sampled, or not applicable.
+- [ ] **USEQ-64378ECF** — Record residual limitations and the conditions under which evidence becomes stale.
+- [ ] **USEQ-4C2E2D56** — Confirm that the deployed artifact matches the reviewed and tested artifact.
+- [ ] **USEQ-D84E91AD** — Confirm that rollback or roll-forward preserves data and compatibility assumptions.
+- [ ] **USEQ-A4761631** — Confirm that owners and operational responders understand the critical invariants and diagnostic signals.
+
 ## Standards and source references
 
 - [ISO/IEC 25010:2023 — Product quality model](https://www.iso.org/standard/78176.html)

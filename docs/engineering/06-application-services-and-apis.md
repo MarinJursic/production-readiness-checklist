@@ -278,6 +278,180 @@ _Consolidated from `quality standards/07-backend-services/11-caching-search-and-
 - [ ] **USEQ-17F09290** — Make query and ranking behavior explainable enough to diagnose user-visible errors.
 - [ ] **USEQ-5C56E75A** — Retire obsolete indexes and cached representations with verified cleanup.
 
+## Final Gap Closure — Integration, Transition, Open Standards, and Exitability
+
+_Consolidated from `final consolidated corpus/03-architecture-code-frontend-backend-apis-integration.md#Final Gap Closure — Integration, Transition, Open Standards, and Exitability`; 143 non-duplicative controls._
+
+### Integration governance and strategy
+
+- [ ] **USEQ-660DB940** — Define the integration objective, scope, boundaries, owners, consumers, providers, assumptions, constraints, and acceptance criteria.
+- [ ] **USEQ-8852E1D3** — Maintain an integration architecture showing systems, interfaces, trust boundaries, data flows, protocols, timing, and failure dependencies.
+- [ ] **USEQ-3E2BB651** — Identify every organization, supplier, team, environment, and approval needed for successful integration.
+- [ ] **USEQ-674F61EC** — Assign one accountable integration owner with authority to coordinate cross-component decisions.
+- [ ] **USEQ-C08FFD88** — Define integration stages, sequence, entry criteria, exit criteria, evidence, and rollback points.
+- [ ] **USEQ-37226C02** — Integrate incrementally so defects can be localized and reversed.
+- [ ] **USEQ-394C9A5B** — Prioritize integration of high-risk, poorly understood, externally controlled, and architecturally central interfaces.
+- [ ] **USEQ-EA8E91F0** — Avoid postponing all cross-system validation until final system testing.
+- [ ] **USEQ-2BBED8CB** — Maintain a current dependency and interface inventory.
+- [ ] **USEQ-EFADF35D** — Identify shared failure domains and correlated dependencies hidden behind apparently independent interfaces.
+- [ ] **USEQ-F711E12E** — Record assumptions made about external behavior and verify them through contract, observation, or testing.
+- [ ] **USEQ-E200032F** — Include security, privacy, accessibility, records, licensing, continuity, and support requirements in integration planning.
+- [ ] **USEQ-3978ACE8** — Define responsibility for defects that cross organizational or component boundaries.
+- [ ] **USEQ-69CD0910** — Establish a controlled process for resolving interface disputes and incompatible requirements.
+- [ ] **USEQ-0A3F1C38** — Reassess integration risk after interface, supplier, version, topology, data, or operational changes.
+
+### Interface contracts and compatibility
+
+- [ ] **USEQ-13208C54** — Define every interface using a controlled, testable contract.
+- [ ] **USEQ-BA6C0A5B** — Specify syntax, semantics, units, identifiers, encoding, ordering, timing, errors, limits, security, and lifecycle behavior.
+- [ ] **USEQ-739ACF5A** — Distinguish required, optional, deprecated, experimental, and vendor-specific behavior.
+- [ ] **USEQ-3522D60E** — Define how unknown fields, values, message types, and versions are handled.
+- [ ] **USEQ-9F07F0E0** — Define backward, forward, and mixed-version compatibility expectations.
+- [ ] **USEQ-FD88BE68** — State whether consumers must tolerate additive change and which changes are breaking.
+- [ ] **USEQ-A0DC3EDA** — Version contracts according to externally observable behavior rather than implementation detail.
+- [ ] **USEQ-65E9E99B** — Keep documentation, schemas, examples, tests, and deployed behavior synchronized.
+- [ ] **USEQ-FF1FAB9E** — Assign ownership for each side of every contract.
+- [ ] **USEQ-1EB62A00** — Avoid relying on undocumented quirks, incidental ordering, implicit defaults, or error text.
+- [ ] **USEQ-3DB5F3D9** — Specify timeout, retry, idempotency, deduplication, backpressure, and cancellation behavior.
+- [ ] **USEQ-C4FD51B8** — Specify consistency, freshness, durability, and reconciliation expectations.
+- [ ] **USEQ-2AE36742** — Specify authentication, authorization, identity propagation, tenant context, and audit requirements.
+- [ ] **USEQ-29EADE04** — Specify data classification, minimization, retention, deletion, and residency constraints.
+- [ ] **USEQ-E34272AF** — Define rate, volume, size, concurrency, and resource limits.
+- [ ] **USEQ-B9F6FE85** — Provide machine-verifiable schemas where practical.
+- [ ] **USEQ-D23737D3** — Maintain consumer-driven or equivalent compatibility tests for material interfaces.
+- [ ] **USEQ-633EFCCD** — Test alternate implementations when interoperability is a product requirement.
+- [ ] **USEQ-B5F4AD4D** — Publish deprecation, migration, support, and retirement timelines early enough for consumers to act.
+- [ ] **USEQ-7806A550** — Prevent one consumer’s nonconforming behavior from silently becoming the permanent contract.
+
+### Integration environments and test assets
+
+- [ ] **USEQ-13FDC789** — Provide integration environments representative of production topology, security boundaries, versions, scale, and failure behavior.
+- [ ] **USEQ-07313A1F** — Prevent integration testing from using production credentials or uncontrolled production data.
+- [ ] **USEQ-97974ECD** — Make simulators and stubs explicit about which behavior they do and do not reproduce.
+- [ ] **USEQ-C9EDC889** — Validate critical integrations against the real provider or implementation before production.
+- [ ] **USEQ-F009D6F1** — Version test fixtures, schemas, protocol captures, simulators, and reference data.
+- [ ] **USEQ-6FF4F1EB** — Include malformed, delayed, duplicated, reordered, partial, stale, and adversarial inputs.
+- [ ] **USEQ-BCB7BC2D** — Include dependency throttling, timeout, outage, restart, failover, and recovery.
+- [ ] **USEQ-2C143F2E** — Test clock skew, locale, encoding, unit, identifier, and precision differences.
+- [ ] **USEQ-0291C731** — Test maximum supported message, file, batch, record, and concurrency sizes.
+- [ ] **USEQ-B6D483DD** — Ensure integration tests can distinguish provider failure, consumer failure, network failure, contract mismatch, and test-environment defect.
+- [ ] **USEQ-037484B6** — Preserve traceable evidence linking integration results to exact component versions and configurations.
+- [ ] **USEQ-1C5D3DE4** — Detect drift between integration environments and production.
+- [ ] **USEQ-D4F0C7EF** — Protect shared test environments from one team’s changes invalidating another team’s evidence.
+- [ ] **USEQ-7FE0C223** — Provide deterministic reset or reconstruction of shared integration state.
+- [ ] **USEQ-D1AA1BD0** — Retain representative failing cases as regression tests.
+
+### Data and state transition
+
+- [ ] **USEQ-73D4CAD4** — Inventory all data, state, history, permissions, identities, configuration, keys, and metadata that must transition.
+- [ ] **USEQ-1F9780C3** — Define the authoritative source and target for every data class during each transition phase.
+- [ ] **USEQ-49876297** — Define mapping rules, transformations, defaults, rejected records, and reconciliation criteria.
+- [ ] **USEQ-C6B4C15C** — Preserve identifiers and referential relationships or document intentional replacements.
+- [ ] **USEQ-070B16F1** — Preserve provenance, timestamps, authorship, consent, retention, legal holds, and audit history.
+- [ ] **USEQ-ED85CA12** — Validate units, precision, time zones, calendars, encodings, normalization, and code sets.
+- [ ] **USEQ-AE457351** — Prevent silent truncation, coercion, rounding, or loss of unsupported fields.
+- [ ] **USEQ-35DD45BD** — Define treatment of invalid, duplicate, orphaned, stale, and conflicting records.
+- [ ] **USEQ-F47424F8** — Test transition using representative volume, skew, age, and edge-case distributions.
+- [ ] **USEQ-D2F05431** — Measure duration, resource use, locking, service impact, and recovery time.
+- [ ] **USEQ-4507A42E** — Use checkpoints and resumable processing for long transitions.
+- [ ] **USEQ-2E8EB9F7** — Make repeated execution safe or explicitly prevented.
+- [ ] **USEQ-F4B43A58** — Verify counts, totals, checksums, constraints, samples, and business invariants before and after transition.
+- [ ] **USEQ-DFD47D97** — Reconcile downstream caches, indexes, analytics, replicas, exports, and integrations.
+- [ ] **USEQ-9C8BBE5C** — Maintain a protected recovery point before destructive transformation.
+- [ ] **USEQ-3376BB06** — Document whether rollback is possible after each point of no return.
+- [ ] **USEQ-6E36BDB8** — Provide a tested roll-forward plan when rollback cannot restore a valid state.
+- [ ] **USEQ-8A020852** — Prevent transition from re-enabling revoked identities, deleted data, expired consent, or obsolete credentials.
+- [ ] **USEQ-C03712FC** — Dispose of temporary copies and migration credentials after verified completion.
+
+### Installation, upgrade, coexistence, and replacement
+
+- [ ] **USEQ-8DADCE97** — Define supported installation, upgrade, downgrade, replacement, and removal paths.
+- [ ] **USEQ-0AA61EFD** — Test fresh installation and upgrade from every supported starting state.
+- [ ] **USEQ-F52F674A** — Test interrupted installation and upgrade recovery.
+- [ ] **USEQ-2ADF602E** — Verify prerequisites before making irreversible changes.
+- [ ] **USEQ-43BE7891** — Detect insufficient storage, permission, version, capacity, or connectivity before transition.
+- [ ] **USEQ-981573E3** — Keep old and new versions compatible during rolling or phased change where coexistence occurs.
+- [ ] **USEQ-B9F93CB2** — Prevent incompatible mixed versions from serving traffic together.
+- [ ] **USEQ-9C5C4DDD** — Define ownership and cleanup of old binaries, images, schemas, services, routes, secrets, and scheduled jobs.
+- [ ] **USEQ-32032AB7** — Preserve user configuration and data unless explicit informed replacement is required.
+- [ ] **USEQ-E5A346BD** — Avoid overwriting locally controlled settings without a documented policy.
+- [ ] **USEQ-1408D4CC** — Verify that uninstall or decommission removes access, listeners, scheduled work, credentials, and sensitive data as intended.
+- [ ] **USEQ-3670663F** — Ensure replacement does not leave dangling DNS, routes, queues, webhooks, or trust relationships.
+- [ ] **USEQ-EC5CA0BF** — Validate compatibility with supported clients, agents, extensions, and external systems.
+- [ ] **USEQ-A4050E06** — Provide a clear version-identification and support-status mechanism.
+- [ ] **USEQ-BC2B199B** — Monitor adoption and detect stranded or unsupported versions.
+- [ ] **USEQ-7700A5E8** — Define forced-update conditions only when proportionate to security, safety, or compatibility risk.
+- [ ] **USEQ-58EC2595** — Ensure emergency update mechanisms are authenticated, authorized, resilient, and recoverable.
+
+### Operational transition and handover
+
+- [ ] **USEQ-6024C9B1** — Define operational acceptance criteria before development is complete.
+- [ ] **USEQ-D083AE3C** — Include observability, alerts, runbooks, support, capacity, continuity, security, privacy, access, and cost in acceptance criteria.
+- [ ] **USEQ-E53D5660** — Identify the organization and individuals authorized to accept operational responsibility.
+- [ ] **USEQ-20552B69** — Do not transfer responsibility before operators have access, competence, evidence, and a stable support path.
+- [ ] **USEQ-AEECABED** — Provide architecture, dependency, data, configuration, deployment, recovery, and known-risk documentation.
+- [ ] **USEQ-F845B223** — Transfer outstanding incidents, defects, exceptions, workarounds, debt, and supplier commitments explicitly.
+- [ ] **USEQ-3BF30324** — Validate that monitoring covers the actual production deployment.
+- [ ] **USEQ-23FADC9E** — Validate escalation, paging, status communication, and provider support routes.
+- [ ] **USEQ-D5B7F955** — Exercise common and severe runbooks with the receiving team.
+- [ ] **USEQ-94EBD701** — Verify backup restoration, rollback, failover, and credential-recovery procedures.
+- [ ] **USEQ-DB24571C** — Establish a bounded enhanced-support period for high-risk transitions.
+- [ ] **USEQ-977F0AD1** — Define who owns decisions during the overlap between delivery and operations.
+- [ ] **USEQ-F3B48A5C** — Measure early-life incidents, support demand, performance, data integrity, and user outcomes.
+- [ ] **USEQ-5BAB2070** — Prevent project closure from hiding unresolved operational risk.
+- [ ] **USEQ-62D52CC9** — Obtain explicit acceptance or record a no-go decision with unresolved conditions.
+
+### Open standards and interoperability
+
+- [ ] **USEQ-1308B666** — Prefer stable, publicly documented, broadly implementable standards when they satisfy the requirement.
+- [ ] **USEQ-B6D67C32** — Select standards based on semantic fit, maturity, governance, security, accessibility, adoption, and lifecycle support.
+- [ ] **USEQ-F60A0D39** — Distinguish an open specification from an implementation that still depends on proprietary behavior.
+- [ ] **USEQ-7F700ED0** — Verify interoperability with more than one implementation when avoiding lock-in is material.
+- [ ] **USEQ-B9C1C86F** — Avoid optional profiles so broad that implementations cannot predictably interoperate.
+- [ ] **USEQ-76528E47** — Document the exact profile, extensions, versions, and interpretations used.
+- [ ] **USEQ-7C246FB0** — Contribute discovered ambiguities or defects back to the relevant standards or community process where feasible.
+- [ ] **USEQ-F7E0BF1B** — Do not claim standards conformance without passing the applicable normative requirements and declared profile.
+- [ ] **USEQ-5ABC83D4** — Preserve protocol and data semantics when translating between standards.
+- [ ] **USEQ-6EACA1A3** — Avoid proprietary identifiers, formats, or extensions where durable exchange is required unless an open mapping exists.
+- [ ] **USEQ-86F9640A** — Provide accessible and localized representations where the standard supports human presentation.
+- [ ] **USEQ-BA413359** — Monitor standard deprecation, errata, security guidance, and replacement work.
+- [ ] **USEQ-9FA5189E** — Plan migration before a protocol, format, or algorithm becomes unsupported.
+- [ ] **USEQ-4F165C23** — Ensure conformance tests themselves are versioned, reviewed, and representative.
+
+### Portability, exitability, and reversibility
+
+- [ ] **USEQ-D633A4FE** — Define what must remain portable: data, metadata, identities, permissions, configurations, workflows, policies, logs, models, prompts, keys, and history.
+- [ ] **USEQ-31D5679B** — Provide export in documented, durable, independently parseable formats.
+- [ ] **USEQ-C28B29B6** — Include enough metadata and semantics to interpret exported values correctly.
+- [ ] **USEQ-3A7150A3** — Preserve relationships, ordering, provenance, and integrity across export and import.
+- [ ] **USEQ-EE11B49B** — Avoid exports that are technically complete but operationally unusable without proprietary services.
+- [ ] **USEQ-42F63C13** — Test import into an alternate implementation or a documented reconstruction process.
+- [ ] **USEQ-BA991AC6** — Measure the time, cost, bandwidth, downtime, and expertise required to exit.
+- [ ] **USEQ-E74B188D** — Avoid unbounded data-egress, termination, or support barriers without explicit risk acceptance.
+- [ ] **USEQ-1467A309** — Maintain source, build, configuration, documentation, and operating rights needed for continuity where appropriate.
+- [ ] **USEQ-4F0B7BC5** — Preserve access to historical versions and tools needed to interpret retained records.
+- [ ] **USEQ-67CB5775** — Ensure encryption and signing keys required for export or validation remain available under controlled recovery.
+- [ ] **USEQ-F432B8C9** — Define how external identities, domains, certificates, and trust relationships transfer.
+- [ ] **USEQ-485E486B** — Test provider, region, account, and organization migration before an emergency.
+- [ ] **USEQ-13ADCC69** — Maintain alternate contact, billing, and administrative access routes during transition.
+- [ ] **USEQ-8094CE35** — Remove old-provider access and residual data after verified migration.
+- [ ] **USEQ-BFEAA140** — Verify the old system cannot continue accepting authoritative updates after cutover.
+- [ ] **USEQ-CEEE0784** — Record residual dependencies that remain after declared exit.
+
+### Integration assurance and release gates
+
+- [ ] **USEQ-AA309E1F** — Trace each integration requirement to contract evidence and representative tests.
+- [ ] **USEQ-CDB2259B** — Verify end-to-end critical journeys across actual organizational and technical boundaries.
+- [ ] **USEQ-A877BF6B** — Verify security, privacy, accessibility, records, performance, and recovery behavior across the complete chain.
+- [ ] **USEQ-CB5A99DA** — Test partial completion, ambiguous outcomes, duplicate delivery, and reconciliation.
+- [ ] **USEQ-455260BF** — Test behavior when each critical participant is unavailable or nonconforming.
+- [ ] **USEQ-C0D99348** — Verify that logs and traces permit cross-boundary diagnosis without exposing restricted data.
+- [ ] **USEQ-BF26F79B** — Confirm support teams can identify ownership and escalate across organizations.
+- [ ] **USEQ-0FFCF015** — Treat unresolved contract ambiguity, untested migration, missing rollback, or unknown failure behavior as release blockers when impact is material.
+- [ ] **USEQ-B38FFB2D** — Obtain explicit acceptance from every organization assuming material operational responsibility.
+- [ ] **USEQ-8FFC64D0** — Preserve the integration baseline, evidence, exceptions, and exact component versions with the release.
+- [ ] **USEQ-E63864C3** — Re-run affected assurance after any material interface or transition change.
+
 ## Standards and source references
 
 - [RFC 9110 — HTTP Semantics](https://www.rfc-editor.org/rfc/rfc9110)

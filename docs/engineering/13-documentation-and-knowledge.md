@@ -168,6 +168,167 @@ _Consolidated from `quality standards/14-documentation/06-operations-runbooks-re
 - [ ] **USEQ-BCD83655** — Track corrective actions to verified completion.
 - [ ] **USEQ-02E3B3DC** — Retire obsolete runbooks and redirect users to the effective procedure.
 
+## Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity
+
+_Consolidated from `final consolidated corpus/09-documentation-knowledge-training-support-service-management.md#Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity`; 121 non-duplicative controls._
+
+### Knowledge-management governance
+
+- [ ] **USEQ-37E3F8D7** — Define which knowledge is critical to product value, engineering, operation, security, privacy, compliance, support, and continuity.
+- [ ] **USEQ-70E7772F** — Assign accountable owners for knowledge domains and authoritative sources.
+- [ ] **USEQ-C14D3998** — Establish objectives for knowledge creation, capture, validation, sharing, reuse, protection, retention, and retirement.
+- [ ] **USEQ-41D9395F** — Align knowledge management with organizational strategy, risk, lifecycle, and user needs.
+- [ ] **USEQ-145DDFF2** — Include employees, contractors, suppliers, partners, customers, and communities where they create or rely on critical knowledge.
+- [ ] **USEQ-FC217284** — Distinguish public, internal, confidential, restricted, personal, customer-owned, legally privileged, and export-controlled knowledge.
+- [ ] **USEQ-18C257FA** — Ensure knowledge practices respect intellectual property, privacy, security, competition, and employment obligations.
+- [ ] **USEQ-415D2615** — Provide resources, roles, tools, and incentives for maintaining knowledge, not merely producing new artifacts.
+- [ ] **USEQ-633F8CDB** — Measure whether people can find, understand, trust, and apply needed knowledge.
+- [ ] **USEQ-D40AFC25** — Review the knowledge-management system after incidents, reorganizations, acquisitions, supplier changes, and key-person departures.
+
+### Critical-knowledge inventory and risk
+
+- [ ] **USEQ-8EEF087F** — Identify knowledge whose loss, inaccuracy, or inaccessibility could cause material failure or delay.
+- [ ] **USEQ-2A3A7103** — Include architecture rationale, domain rules, data semantics, security assumptions, operational procedures, supplier knowledge, and historical constraints.
+- [ ] **USEQ-1EDE2DA3** — Identify tacit knowledge held by one person or a small group.
+- [ ] **USEQ-27857C7E** — Identify knowledge dependent on one vendor, proprietary tool, unsupported format, inaccessible repository, or expiring credential.
+- [ ] **USEQ-C13A3455** — Assess knowledge concentration, obsolescence, misinformation, confidentiality, and availability risks.
+- [ ] **USEQ-D2F9BDB2** — Record the owner, audience, source, validation method, location, sensitivity, dependencies, and review cycle.
+- [ ] **USEQ-9EB594E8** — Prioritize continuity actions according to impact and replacement difficulty.
+- [ ] **USEQ-EF4FC8D9** — Track key-person and key-supplier risk explicitly.
+- [ ] **USEQ-126AA834** — Reassess critical knowledge when systems, markets, obligations, or organizational structures change.
+
+### Creation, capture, and validation
+
+- [ ] **USEQ-43FCA7C7** — Capture decisions, rationale, alternatives, assumptions, and consequences at the time they are made.
+- [ ] **USEQ-6D7905EF** — Capture lessons from design, implementation, testing, incidents, support, migrations, audits, and retirement.
+- [ ] **USEQ-43428C3C** — Convert tacit knowledge into usable artifacts, demonstrations, mentoring, automation, or shared practice where appropriate.
+- [ ] **USEQ-237035A5** — Avoid documenting only ideal procedures while omitting real constraints and known workarounds.
+- [ ] **USEQ-21FFD735** — Record the evidence and authority supporting material statements.
+- [ ] **USEQ-2A391824** — Distinguish fact, decision, opinion, hypothesis, draft, obsolete guidance, and unresolved question.
+- [ ] **USEQ-9E8B3204** — Validate critical knowledge through peer review, execution, testing, or independent confirmation.
+- [ ] **USEQ-D49EE764** — Include authorship, ownership, version, date, scope, status, and review date.
+- [ ] **USEQ-916C3F57** — Preserve links to source requirements, systems, incidents, changes, and evidence.
+- [ ] **USEQ-D67C717E** — Avoid creating documentation solely to satisfy a gate when nobody can use or maintain it.
+
+### Findability, access, and usability
+
+- [ ] **USEQ-25471447** — Provide one discoverable entry point or catalog for authoritative engineering and operational knowledge.
+- [ ] **USEQ-5EB04CC7** — Use consistent titles, terminology, taxonomy, tags, identifiers, and ownership metadata.
+- [ ] **USEQ-F92EB50C** — Make search return authoritative and current material before duplicates and obsolete copies.
+- [ ] **USEQ-7786CD26** — Clearly mark superseded, draft, experimental, and archived content.
+- [ ] **USEQ-82735880** — Redirect or link from obsolete locations to current guidance where practical.
+- [ ] **USEQ-1D316628** — Keep access no broader than necessary but no narrower than legitimate work requires.
+- [ ] **USEQ-CEA15543** — Ensure critical procedures remain available during network, identity, collaboration-tool, or provider failure.
+- [ ] **USEQ-2DD8ED47** — Provide offline or alternate access to emergency information where appropriate.
+- [ ] **USEQ-BEE02B64** — Make knowledge accessible to people with disabilities.
+- [ ] **USEQ-2D68989A** — Use language, examples, and structure appropriate to the intended audience’s competence.
+- [ ] **USEQ-0CE9689B** — Provide multilingual material where operational or customer obligations require it.
+- [ ] **USEQ-C362DCCB** — Avoid hidden knowledge in private messages, personal notes, local devices, or inaccessible meeting recordings.
+- [ ] **USEQ-DD8E42D2** — Ensure machine-readable knowledge does not replace necessary human-understandable explanation.
+
+### Maintenance, freshness, and retirement
+
+- [ ] **USEQ-331D2821** — Assign review intervals based on criticality and rate of change.
+- [ ] **USEQ-76C53F97** — Trigger review after material product, architecture, supplier, policy, incident, or regulatory change.
+- [ ] **USEQ-90E787BB** — Detect broken links, missing owners, expired review dates, inaccessible repositories, and conflicting guidance.
+- [ ] **USEQ-2210FD4E** — Make documentation change part of the same workflow as the product or process change.
+- [ ] **USEQ-0FA18749** — Test critical runbooks and instructions rather than relying on editorial review alone.
+- [ ] **USEQ-74890670** — Remove or archive obsolete knowledge promptly enough to prevent unsafe use.
+- [ ] **USEQ-A2D587D9** — Preserve historical versions needed for support, audit, legal, research, and incident reconstruction.
+- [ ] **USEQ-435CCB76** — Record why material guidance was changed or retired.
+- [ ] **USEQ-D0AA1A12** — Ensure redirects, references, training, and automation are updated when authoritative knowledge moves.
+- [ ] **USEQ-2C8DAAB6** — Prevent generated or imported knowledge from bypassing review and ownership.
+
+### Competence models and role readiness
+
+- [ ] **USEQ-7BE1905F** — Define required knowledge, skills, judgment, authorization, and experience for each material role.
+- [ ] **USEQ-BD044858** — Distinguish awareness, working competence, specialist competence, and authority to approve or act.
+- [ ] **USEQ-A1E84D31** — Assess current competence against role requirements.
+- [ ] **USEQ-C5984409** — Create development plans for material gaps.
+- [ ] **USEQ-E80FC077** — Verify competence through demonstrated performance, not attendance or self-report alone.
+- [ ] **USEQ-3097646C** — Use realistic tasks, simulations, reviews, supervised practice, or certification where appropriate.
+- [ ] **USEQ-2E8AFDED** — Reassess competence after long absence, role change, major system change, or serious error.
+- [ ] **USEQ-C0F7014C** — Restrict high-impact actions to people with current competence and authority.
+- [ ] **USEQ-FEA30171** — Avoid creating artificial credential barriers unrelated to actual role capability.
+- [ ] **USEQ-952AFCF1** — Recognize accessibility accommodations and different learning pathways without reducing outcome requirements.
+- [ ] **USEQ-4BC23A67** — Track competence expiry where skills degrade or external credentials lapse.
+- [ ] **USEQ-27B4D8D1** — Include suppliers and contractors in competence requirements.
+
+### Onboarding, role changes, and offboarding
+
+- [ ] **USEQ-8B67E945** — Provide role-specific onboarding that covers purpose, users, architecture, data, security, privacy, quality, operations, and support.
+- [ ] **USEQ-6DD88B91** — Give new personnel a clear map of systems, owners, authoritative knowledge, decision rights, and escalation paths.
+- [ ] **USEQ-FEAB4A25** — Provide a safe environment and bounded tasks before granting high-impact production authority.
+- [ ] **USEQ-C0FE3EC3** — Assess onboarding effectiveness by time to safe independent contribution and error patterns.
+- [ ] **USEQ-C8406B27** — Update access, training, responsibilities, and knowledge when roles change.
+- [ ] **USEQ-DE657E35** — Conduct structured knowledge transfer before planned departures.
+- [ ] **USEQ-7508DA74** — Capture unresolved work, decisions, risks, contacts, credentials custody, and supplier context.
+- [ ] **USEQ-4EDCE1DB** — Recover organizational assets and revoke access during offboarding.
+- [ ] **USEQ-4277B789** — Preserve necessary knowledge without retaining personal data or private material unnecessarily.
+- [ ] **USEQ-8BCF9F5F** — Review whether a departure creates unacceptable single-person dependency or support gap.
+
+### Mentoring, communities, and shared practice
+
+- [ ] **USEQ-4BC7BCDC** — Establish communities of practice for domains where consistency and learning materially improve outcomes.
+- [ ] **USEQ-6077092C** — Give communities clear purpose, sponsorship, decision boundaries, and time to operate.
+- [ ] **USEQ-8C107E0D** — Encourage mentoring, pairing, review, rotation, and shadowing for critical skills.
+- [ ] **USEQ-4D3A335F** — Avoid using informal communities as a substitute for accountable ownership and maintained standards.
+- [ ] **USEQ-07FB1FF5** — Capture reusable outcomes from discussions without recording sensitive conversation unnecessarily.
+- [ ] **USEQ-9328A714** — Share incident and defect learning across teams that face similar risks.
+- [ ] **USEQ-CE78EF77** — Encourage challenge, questions, and dissent without status-based suppression.
+- [ ] **USEQ-47E26039** — Recognize teaching, documentation, review, and community maintenance as valuable work.
+- [ ] **USEQ-F062AD31** — Evaluate whether communities improve consistency, reuse, onboarding, and problem resolution.
+- [ ] **USEQ-B30208C6** — Retire or redesign communities that no longer produce useful outcomes.
+
+### Learning from work, incidents, and evidence
+
+- [ ] **USEQ-25BCCC4A** — Create feedback loops from production, support, testing, audits, user research, and business outcomes into engineering knowledge.
+- [ ] **USEQ-0EAA2DD8** — Analyze near misses, recovered errors, rejected changes, and successful prevention as well as incidents.
+- [ ] **USEQ-2B75385B** — Distinguish local mistake from systemic incentives, tooling, design, workload, or knowledge failure.
+- [ ] **USEQ-9B52148F** — Convert lessons into changed requirements, code, tests, controls, procedures, training, and ownership.
+- [ ] **USEQ-E9DAF617** — Verify that corrective actions changed outcomes rather than merely creating documents.
+- [ ] **USEQ-F86DE0A9** — Share lessons proportionately without exposing personal, customer, privileged, or security-sensitive information.
+- [ ] **USEQ-F50CD9BA** — Track recurring lessons that have not produced effective change.
+- [ ] **USEQ-D4161A24** — Preserve incident chronology, decisions, evidence, and uncertainty for future learning.
+- [ ] **USEQ-0BCCB40A** — Revisit old decisions when new evidence invalidates assumptions.
+- [ ] **USEQ-918085CF** — Measure whether known problems recur after declared remediation.
+
+### Succession, resilience, and bus-factor reduction
+
+- [ ] **USEQ-2C89D675** — Identify roles and knowledge domains with insufficient qualified backup.
+- [ ] **USEQ-0057EA20** — Maintain at least one practical continuity path for every critical capability.
+- [ ] **USEQ-89EC9701** — Cross-train personnel through real supervised work, not documentation alone.
+- [ ] **USEQ-D8FB8E99** — Rotate operational and review responsibility enough to prevent hidden dependence.
+- [ ] **USEQ-A988FCED** — Ensure emergency access and recovery do not depend on one person’s device, memory, or availability.
+- [ ] **USEQ-5BA62E06** — Maintain supplier and external-expert alternatives where internal capability is intentionally limited.
+- [ ] **USEQ-8ED5CE14** — Preserve build, deployment, recovery, and signing knowledge independent of one tool administrator.
+- [ ] **USEQ-623582AC** — Test continuity during leave, simulated unavailability, and organizational change.
+- [ ] **USEQ-4E17EC00** — Avoid concentration of authority that prevents independent review or creates coercion risk.
+- [ ] **USEQ-56D4A68C** — Treat an irreplaceable single knowledge holder for a critical production capability as a material risk.
+
+### Knowledge security and trustworthy use
+
+- [ ] **USEQ-40F8A533** — Apply access control and handling rules according to knowledge sensitivity.
+- [ ] **USEQ-CF05C656** — Prevent confidential or restricted knowledge from entering public tools, prompts, repositories, recordings, or support channels.
+- [ ] **USEQ-26BF83D3** — Protect credentials, secrets, personal data, exploit details, and customer information in documentation.
+- [ ] **USEQ-268DD942** — Provide safe examples and synthetic data rather than real restricted values.
+- [ ] **USEQ-6213693F** — Monitor unauthorized bulk export or unusual access to high-value knowledge repositories.
+- [ ] **USEQ-1C374A1F** — Verify external and AI-generated knowledge before relying on it for material decisions.
+- [ ] **USEQ-4544D84B** — Preserve citations and provenance for imported guidance.
+- [ ] **USEQ-D5DAA624** — Detect stale, fabricated, manipulated, or conflicting content.
+- [ ] **USEQ-C12331DF** — Provide a correction and withdrawal process for dangerous guidance.
+- [ ] **USEQ-A275C64A** — Back up and test recovery of critical knowledge repositories.
+- [ ] **USEQ-1BA3A22D** — Maintain alternate access when the normal knowledge platform is unavailable.
+
+### Knowledge-management assurance
+
+- [ ] **USEQ-0DFA37A5** — Define indicators for findability, freshness, coverage, use, comprehension, competence, concentration risk, and recovery.
+- [ ] **USEQ-B2E6E3E9** — Sample whether intended users can locate and correctly execute critical guidance.
+- [ ] **USEQ-A28F8DFF** — Audit authoritative-source ownership, review status, access, and retirement.
+- [ ] **USEQ-D7B09D2D** — Exercise knowledge continuity during incidents, staff absence, supplier loss, and platform outage.
+- [ ] **USEQ-001E1D5A** — Include knowledge and competence gaps in release, transition, continuity, and risk decisions.
+- [ ] **USEQ-AD8EEB84** — Treat unavailable critical procedures, unknown ownership, untested competence, or single-person recovery dependence as no-go conditions when impact is material.
+
 ## Standards and source references
 
 - [ISO/IEC/IEEE 15289:2019 — Life-cycle information items](https://www.iso.org/standard/74909.html)

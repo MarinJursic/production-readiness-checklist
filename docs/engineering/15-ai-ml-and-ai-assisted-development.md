@@ -416,6 +416,356 @@ _Consolidated from `gap supplement/05-ai-ml-mlops-and-ai-assisted-development.md
 - [ ] **USEQ-5D5D0DDC** — Do not use AI-generated code or infrastructure in production without accountable review and the same evidence required for human-authored work.
 - [ ] **USEQ-5C8EEFD1** — Do not continue operation after a provider or model change invalidates the evidence package until affected controls are reassessed.
 
+## AI-Assisted Engineering, Agentic Development, and Content Provenance
+
+_Consolidated from `final consolidated corpus/10-ai-ml-agents-ai-assisted-engineering-provenance.md#AI-Assisted Engineering, Agentic Development, and Content Provenance`; 289 non-duplicative controls._
+
+### AI-assisted engineering governance and permitted use
+
+- [ ] **USEQ-2F8E6FA3** — Maintain an inventory of AI-assisted development, review, testing, documentation, design, search, operations, support, and content tools used by the organization.
+- [ ] **USEQ-0E231454** — Assign an accountable owner for each approved tool, provider, model family, deployment mode, integration, and use case.
+- [ ] **USEQ-5DA9BD1E** — Define permitted, restricted, and prohibited uses based on data sensitivity, code criticality, intellectual-property risk, safety, security, privacy, regulation, and customer commitments.
+- [ ] **USEQ-9F2C9B84** — Require risk review before AI is used for security controls, authorization rules, cryptography, safety logic, financial calculations, migrations, production changes, legal interpretation, or other high-consequence work.
+- [ ] **USEQ-3FB8AC14** — Distinguish advisory assistance from delegated decision-making and autonomous execution.
+- [ ] **USEQ-7322984E** — Ensure a named human remains accountable for every accepted artifact, decision, change, deployment, and communication produced with AI assistance.
+- [ ] **USEQ-26AC7D70** — Do not treat provider availability, popularity, benchmark scores, or marketing claims as assurance of suitability.
+- [ ] **USEQ-3AC1CD29** — Document model and tool limitations, known failure modes, supported contexts, retention behavior, geographic processing, and provider dependencies.
+- [ ] **USEQ-3B2F2EE8** — Define the minimum review and verification required for each class of AI-generated output.
+- [ ] **USEQ-EE003D19** — Prohibit bypassing review, testing, separation of duties, change control, or release gates because content was generated quickly.
+- [ ] **USEQ-8EF9CA6E** — Prohibit representing AI-generated work as independently authored, reviewed, tested, or certified when it was not.
+- [ ] **USEQ-AB9ADB62** — Train users in hallucination, automation bias, data leakage, prompt injection, insecure code, fabricated citations, licensing uncertainty, and overreliance risks.
+- [ ] **USEQ-12008C5B** — Provide an accessible process for reporting harmful, insecure, inaccurate, biased, infringing, or confidential AI output.
+- [ ] **USEQ-3F338012** — Review governance after model changes, provider terms changes, incidents, new integrations, new agent capabilities, or expansion into higher-risk work.
+- [ ] **USEQ-5E567DE3** — Apply stricter controls to autonomous or background agents than to read-only interactive assistants.
+
+### Tool, model, provider, and integration inventory
+
+- [ ] **USEQ-5F29B160** — Record the provider, model identifier, model version or update channel, hosting location, integration version, enabled features, data flows, tools, plugins, and permissions for each AI capability.
+- [ ] **USEQ-746C8D31** — Record whether prompts, files, code, outputs, telemetry, feedback, embeddings, and metadata are retained or used for provider training.
+- [ ] **USEQ-AC2FD44B** — Record the contractual terms, service levels, security commitments, privacy terms, subprocessors, data locations, deletion behavior, and incident-notification obligations.
+- [ ] **USEQ-29597410** — Identify whether model behavior can change without an explicit customer-controlled version update.
+- [ ] **USEQ-100B3A4A** — Pin or validate model versions for workflows where reproducibility and regression assurance matter.
+- [ ] **USEQ-054DF3AB** — Monitor model deprecation, behavior changes, safety-policy changes, context limits, pricing changes, and regional availability.
+- [ ] **USEQ-1CAE8F75** — Inventory extensions, browser integrations, editor plugins, local agents, command-line tools, code-review bots, and hidden AI features in existing products.
+- [ ] **USEQ-C849B749** — Prevent unapproved tools from accessing source repositories, tickets, production data, customer content, secrets, or internal documentation.
+- [ ] **USEQ-BC94E90D** — Use organization-managed identities and configuration rather than uncontrolled personal accounts for business use.
+- [ ] **USEQ-D4210FCC** — Restrict tool permissions and repository access to the minimum required scope.
+- [ ] **USEQ-8BFAB4A7** — Review integration webhooks, OAuth grants, tokens, local file access, network access, and command execution.
+- [ ] **USEQ-81875F3C** — Ensure provider compromise or outage has an isolation, disablement, replacement, and continuity plan.
+- [ ] **USEQ-58409064** — Verify that disabling the AI feature also removes active credentials, agents, callbacks, scheduled tasks, and data flows.
+- [ ] **USEQ-F936BCAB** — Reconcile the approved inventory with actual network, repository, identity, procurement, and endpoint telemetry.
+- [ ] **USEQ-46F439A2** — Expire temporary pilots automatically unless they receive formal approval.
+
+### Confidentiality, privacy, data minimization, and intellectual property
+
+- [ ] **USEQ-19F84B67** — Classify source code, prompts, tickets, designs, logs, customer data, credentials, vulnerabilities, contracts, and documents before they are supplied to an AI system.
+- [ ] **USEQ-3E8114EE** — Do not submit secrets, private keys, reusable tokens, production credentials, payment data, regulated data, or unredacted sensitive personal data unless explicitly approved and technically protected.
+- [ ] **USEQ-5BC689C8** — Minimize prompt and context data to what is necessary for the task.
+- [ ] **USEQ-C0D20FDF** — Redact or synthesize examples where real identities, customer content, incidents, vulnerabilities, or proprietary algorithms are not necessary.
+- [ ] **USEQ-3227DC4E** — Prevent tools from automatically indexing repositories, drives, conversations, or documents beyond the approved scope.
+- [ ] **USEQ-949B76FD** — Verify retention, deletion, model-training, abuse-monitoring, human-review, and backup terms before supplying confidential material.
+- [ ] **USEQ-393DB5A1** — Ensure data-subject rights, contractual deletion, legal holds, and retention requirements extend to prompts, outputs, embeddings, caches, and provider copies where applicable.
+- [ ] **USEQ-D3455DAB** — Assess cross-border transfer and data-residency implications of provider processing.
+- [ ] **USEQ-BDBA143D** — Do not assume output is free of third-party intellectual property, confidential information, personal data, or license obligations.
+- [ ] **USEQ-C6ED3A2C** — Review generated code, text, media, designs, and tests for substantial similarity, copied notices, trademarks, confidential patterns, and incompatible licenses when risk warrants it.
+- [ ] **USEQ-8FDF8863** — Preserve required attribution, license, and provenance information for incorporated material.
+- [ ] **USEQ-A41AE117** — Prevent prompts from requesting unauthorized access, circumvention, copying, de-anonymization, or reconstruction of restricted information.
+- [ ] **USEQ-A873CC6F** — Ensure provider telemetry and organizational monitoring do not create disproportionate employee surveillance.
+- [ ] **USEQ-9555C8D3** — Document legitimate purpose, access, retention, and review for AI-use telemetry.
+- [ ] **USEQ-69C5D0B6** — Test deletion and account termination across local caches, provider stores, embeddings, logs, and integrations.
+
+### Prompt, context, retrieval, and instruction integrity
+
+- [ ] **USEQ-525FCCE0** — Treat user prompts, retrieved documents, source comments, issue text, web content, dependency metadata, tool output, and model output as untrusted input.
+- [ ] **USEQ-464BA3EB** — Separate system policy, developer instructions, user requests, retrieved content, and tool results so that untrusted text cannot silently become authoritative instructions.
+- [ ] **USEQ-FC5D2312** — Do not rely on prompt wording alone to enforce authorization, confidentiality, financial limits, safety, or change-control policy.
+- [ ] **USEQ-D1A9A000** — Validate identity, authorization, tenant, data classification, and purpose before retrieving or supplying context.
+- [ ] **USEQ-22B94B7A** — Apply access control before retrieval rather than filtering unauthorized results after they have reached the model.
+- [ ] **USEQ-F5A43B34** — Preserve tenant and user boundaries in indexes, embeddings, caches, conversation memory, tool calls, and logs.
+- [ ] **USEQ-DCD08BD7** — Detect and handle direct and indirect prompt injection, malicious repository instructions, poisoned documentation, and adversarial tool output.
+- [ ] **USEQ-5BD7D44C** — Limit the sources, domains, paths, repositories, branches, documents, and record types the system may retrieve.
+- [ ] **USEQ-17A2E4C0** — Record source provenance and freshness for material facts used in generated output.
+- [ ] **USEQ-AD2E1C13** — Require primary or authoritative sources for claims whose accuracy materially affects engineering or compliance decisions.
+- [ ] **USEQ-0E651845** — Reject or clearly mark unsupported citations, fabricated identifiers, nonexistent APIs, invented standards, and unverifiable facts.
+- [ ] **USEQ-D19D4771** — Bound context size and prioritize relevant evidence rather than truncating critical policy or requirements silently.
+- [ ] **USEQ-3C9530AD** — Do not permit hidden conversation state or memory to alter high-impact behavior without visibility and control.
+- [ ] **USEQ-DA4C03E8** — Make context expiration, refresh, and invalidation rules explicit after source changes or permission changes.
+- [ ] **USEQ-3B2A4D90** — Test the system with conflicting instructions, malicious comments, deceptive filenames, encoded payloads, and poisoned retrieval content.
+
+### Human accountability, review, and automation-bias controls
+
+- [ ] **USEQ-45E865D0** — Require the accepting engineer or reviewer to understand the generated artifact well enough to explain its purpose, assumptions, risks, and failure modes.
+- [ ] **USEQ-706392C8** — Reject code or configuration that no accountable maintainer can understand and support.
+- [ ] **USEQ-27ADA51E** — Require independent review for high-impact AI-generated changes even when the generator also performs a review.
+- [ ] **USEQ-3DF6CB04** — Ensure reviewers know which portions were generated, transformed, or suggested by AI when that knowledge affects review strategy.
+- [ ] **USEQ-159E86E9** — Prevent the same AI output from serving as implementation, expected result, reviewer, and approval evidence without independent validation.
+- [ ] **USEQ-1023D68F** — Use checklists and evidence prompts that direct reviewers to correctness, security, privacy, performance, accessibility, maintainability, licensing, and operational impact.
+- [ ] **USEQ-C2BD1A86** — Require reviewers to inspect surrounding code and system behavior rather than only the generated diff.
+- [ ] **USEQ-97B09BF8** — Verify all assumptions, external facts, API behavior, version compatibility, and cited requirements against authoritative sources.
+- [ ] **USEQ-568D42D2** — Challenge plausible-looking complexity, abstractions, dependencies, and comments that lack a demonstrated need.
+- [ ] **USEQ-35A8F0B6** — Require explicit approval for deletions, migrations, permission changes, security-control changes, and production commands.
+- [ ] **USEQ-5B11CA85** — Use dual control for irreversible, financially consequential, safety-related, or organization-wide actions.
+- [ ] **USEQ-7299FE1A** — Measure escaped defects and review failures involving AI-assisted work without using metrics to hide or discourage appropriate use.
+- [ ] **USEQ-A0D8343C** — Design interfaces to show uncertainty, missing evidence, tool actions, changed files, affected systems, and unresolved warnings.
+- [ ] **USEQ-00A677A3** — Prevent speed or productivity targets from encouraging rubber-stamping of generated work.
+- [ ] **USEQ-EC36170F** — Retain accountability records for accepted high-impact outputs and decisions.
+
+### AI-generated source code and implementation quality
+
+- [ ] **USEQ-BB79B60F** — Apply every ordinary code-quality, architecture, security, privacy, performance, accessibility, and maintainability rule to AI-generated code without reduction.
+- [ ] **USEQ-28217B46** — Verify that generated code satisfies the exact requirement rather than a superficially similar generic pattern.
+- [ ] **USEQ-B5C04073** — Confirm names, abstractions, boundaries, data types, error behavior, state transitions, and concurrency semantics match the existing system.
+- [ ] **USEQ-439A8D87** — Remove unnecessary duplication, speculative generality, dead code, excessive comments, unused dependencies, and invented configuration.
+- [ ] **USEQ-0A35B7B4** — Check for fabricated APIs, obsolete methods, invalid options, deprecated protocols, unsupported versions, and nonexistent packages.
+- [ ] **USEQ-80CB3947** — Check for injection, unsafe deserialization, path traversal, authorization bypass, secret exposure, insecure randomness, weak cryptography, and dangerous defaults.
+- [ ] **USEQ-069C7D6E** — Check for integer, numeric, time, locale, Unicode, encoding, null, overflow, and precision errors.
+- [ ] **USEQ-90FD5CD0** — Check for resource leaks, unbounded work, missing timeouts, unsafe retries, race conditions, deadlocks, cancellation defects, and duplicate effects.
+- [ ] **USEQ-FDF5A263** — Check for missing observability, misleading logs, swallowed errors, broad exception handling, and loss of diagnostic context.
+- [ ] **USEQ-E92C614F** — Check for accidental cross-tenant access, global mutable state, cache-key omissions, and authorization context loss.
+- [ ] **USEQ-2BB3F020** — Check whether generated code duplicates an existing internal capability or violates established architecture decisions.
+- [ ] **USEQ-8BBA5659** — Prefer small changes that fit the current design over broad rewrites generated without full system context.
+- [ ] **USEQ-471DDE50** — Require generated public interfaces and persistent schemas to undergo normal compatibility and evolution review.
+- [ ] **USEQ-FF208505** — Run formatting, type checking, static analysis, dependency analysis, tests, and relevant security checks on the exact accepted output.
+- [ ] **USEQ-592A4BA4** — Retain regression tests for defects found in generated code and update organizational guidance to prevent recurrence.
+
+### AI-generated tests, fixtures, and verification artifacts
+
+- [ ] **USEQ-239E5251** — Review whether generated tests assert intended requirements or merely reproduce current implementation behavior.
+- [ ] **USEQ-BF92D3B4** — Prevent the same model context from generating code and expected outputs without independent oracle validation.
+- [ ] **USEQ-7BAE92AE** — Verify that tests fail when the intended behavior is deliberately broken.
+- [ ] **USEQ-36C03659** — Use mutation or controlled fault insertion to evaluate assertion strength for critical generated tests.
+- [ ] **USEQ-524C0709** — Ensure generated tests cover negative, boundary, error, recovery, authorization, concurrency, and data-integrity behavior rather than only happy paths.
+- [ ] **USEQ-12534F05** — Review generated mocks and stubs for incorrect assumptions about real dependencies.
+- [ ] **USEQ-F374893D** — Ensure generated fixtures do not contain real personal data, credentials, proprietary examples, or unsafe production identifiers.
+- [ ] **USEQ-ED97CA2A** — Control randomness and retain seeds for generated property, fuzz, and scenario tests.
+- [ ] **USEQ-44E65FA4** — Remove redundant or brittle tests that create maintenance cost without meaningful assurance.
+- [ ] **USEQ-44661241** — Verify that snapshots and golden files represent approved outcomes and do not normalize accidental output.
+- [ ] **USEQ-BAE2D2AE** — Review test names, diagnostics, setup, cleanup, isolation, and failure messages for maintainability.
+- [ ] **USEQ-9142AF7A** — Ensure generated test data exercises representative Unicode, locale, time, size, tenant, role, and lifecycle cases.
+- [ ] **USEQ-16875252** — Run generated tests against the actual artifact and production-like configuration where relevant.
+- [ ] **USEQ-46A93573** — Track defects escaped despite generated tests and improve prompts, review, or techniques based on root cause.
+- [ ] **USEQ-F7978D60** — Do not count generated test volume as quality evidence without coverage, assertion, and fault-detection analysis.
+
+### AI-generated requirements, designs, architecture, and decisions
+
+- [ ] **USEQ-6DD50F52** — Validate generated requirements through user research, stakeholder agreement, domain evidence, legal review, and operational feasibility.
+- [ ] **USEQ-DD4E49F4** — Reject invented user needs, regulations, standards, constraints, metrics, competitors, incidents, or customer commitments.
+- [ ] **USEQ-B4A6F52A** — Identify assumptions and uncertainty explicitly rather than converting them into authoritative prose.
+- [ ] **USEQ-3E4A6B5A** — Verify that generated acceptance criteria are measurable, complete, noncontradictory, and technology-neutral where intended.
+- [ ] **USEQ-3BCFBFCB** — Review generated architecture against actual scale, data, trust boundaries, failure domains, existing systems, skills, cost, and lifecycle constraints.
+- [ ] **USEQ-1CD27635** — Require alternatives, tradeoffs, consequences, and reversal strategy in material generated design decisions.
+- [ ] **USEQ-B9E44CC3** — Avoid adopting fashionable patterns, services, abstractions, or distributed architectures without demonstrated need.
+- [ ] **USEQ-7BA2175A** — Verify diagrams, flows, schemas, sequence descriptions, and dependency maps against the deployed or intended system.
+- [ ] **USEQ-4344CC44** — Threat-model generated architectures independently and check for hidden trust, control-plane, tenant, and data-flow assumptions.
+- [ ] **USEQ-B77FC1DD** — Review generated data models for integrity, retention, privacy, migration, localization, and reporting requirements.
+- [ ] **USEQ-F3633846** — Review generated performance and capacity estimates against measurements and defensible workload models.
+- [ ] **USEQ-D7408E34** — Ensure generated decisions preserve accessibility, supportability, observability, rollback, recovery, and decommissioning.
+- [ ] **USEQ-5E4618A5** — Record AI assistance and source evidence in material architecture decision records where relevant to future review.
+- [ ] **USEQ-E7FE1B6C** — Do not let generated documentation substitute for accountable stakeholder decisions.
+- [ ] **USEQ-AE086A58** — Revalidate generated designs after requirements, providers, standards, risks, or constraints change.
+
+### AI-generated infrastructure, configuration, queries, and migrations
+
+- [ ] **USEQ-24BBED4A** — Treat generated infrastructure, deployment, policy, database, query, migration, and operational code as high-impact executable artifacts.
+- [ ] **USEQ-802762AD** — Run schema validation, static analysis, policy checks, security analysis, plan or dry-run review, and peer review before execution.
+- [ ] **USEQ-764B2420** — Verify resource names, accounts, regions, networks, identities, permissions, quotas, retention, encryption, and deletion protection.
+- [ ] **USEQ-ECEF8251** — Check that generated permissions are least-privilege and do not use broad wildcards for convenience.
+- [ ] **USEQ-43965569** — Check that generated network rules do not expose administrative, database, storage, metadata, or internal services unnecessarily.
+- [ ] **USEQ-A6D8DA54** — Check that generated configuration does not enable debug mode, insecure defaults, public access, unbounded resources, or disabled verification.
+- [ ] **USEQ-B9138B79** — Evaluate generated database queries for correctness, authorization, injection, locking, resource cost, indexing, consistency, and data minimization.
+- [ ] **USEQ-F11E331B** — Rehearse generated migrations against representative data and validate compatibility, duration, locking, restart, rollback, roll-forward, and integrity checks.
+- [ ] **USEQ-F7C0B574** — Require previews and explicit confirmation before destructive or irreversible actions.
+- [ ] **USEQ-D20D5B1C** — Prevent agents from executing production commands with credentials inherited from a developer session without controlled elevation.
+- [ ] **USEQ-6A91D81E** — Use isolated sandboxes and nonproduction environments for generated command experimentation.
+- [ ] **USEQ-53136269** — Record exact generated commands, plans, affected resources, approvals, execution output, and resulting state.
+- [ ] **USEQ-21445766** — Verify idempotency and safe rerun behavior for automation that may be retried.
+- [ ] **USEQ-386CA87E** — Ensure generated cleanup does not delete shared, retained, legally held, or customer-owned resources.
+- [ ] **USEQ-7D1589E9** — Maintain a tested rollback or recovery path before high-impact generated changes are applied.
+
+### Dependencies, packages, licenses, and generated supply-chain choices
+
+- [ ] **USEQ-A42E53F8** — Verify every suggested package, image, action, plugin, model, data set, API, and service exists and comes from the intended publisher.
+- [ ] **USEQ-ED0BD0F8** — Check spelling, namespace, registry, repository, ownership, signatures, provenance, release history, and known compromise before adoption.
+- [ ] **USEQ-D2946F6A** — Prefer established existing dependencies already approved for the system when they satisfy the requirement.
+- [ ] **USEQ-E4E7B8C5** — Reject unnecessary dependencies introduced to solve trivial problems or because they appear in generic training examples.
+- [ ] **USEQ-EC5B4CD4** — Verify supported versions, maintenance health, security process, license, data use, portability, and replacement feasibility.
+- [ ] **USEQ-69099CAD** — Pin or constrain dependencies according to supply-chain policy and generate updated SBOM and provenance evidence.
+- [ ] **USEQ-8BF5FC3E** — Review copied or generated license headers, attribution, notices, and source obligations for accuracy.
+- [ ] **USEQ-6C4E1F4A** — Do not assume generated code is original or compatible with the project license.
+- [ ] **USEQ-0BE33354** — Search for suspiciously distinctive fragments or notices when generated output resembles known external code.
+- [ ] **USEQ-36A0CE74** — Prevent AI from choosing packages or services solely through popularity or unverifiable recommendation.
+- [ ] **USEQ-0D1E4378** — Require architecture review before generated changes introduce a new database, queue, framework, cloud service, model provider, or operational platform.
+- [ ] **USEQ-6C07A1CF** — Monitor AI-suggested dependencies for advisories, ownership change, deprecation, and malicious releases after adoption.
+- [ ] **USEQ-31D5D8DE** — Record why each new dependency is necessary and who owns its lifecycle.
+- [ ] **USEQ-0A9114C1** — Remove hallucinated, unused, duplicate, obsolete, or insecure dependencies before merge.
+- [ ] **USEQ-4C7730ED** — Include models, prompts, adapters, embeddings, data sets, and agent tools in relevant supply-chain inventories.
+
+### Agentic tools, autonomous execution, and capability containment
+
+- [ ] **USEQ-E1582655** — Define each agent capability explicitly, including files, repositories, commands, network destinations, APIs, credentials, data, and environments it may access.
+- [ ] **USEQ-EE41DE02** — Deny capabilities by default and grant the minimum scope required for the current task.
+- [ ] **USEQ-DBCE39F6** — Use separate identities and sandboxes for agents rather than sharing a user or production administrator session.
+- [ ] **USEQ-C5639E97** — Keep untrusted prompts, issue content, code comments, retrieved documents, and web pages from expanding agent permissions.
+- [ ] **USEQ-A1439915** — Require human confirmation at clearly identified boundaries for destructive, external, privileged, financial, production, publication, and communication actions.
+- [ ] **USEQ-87469F66** — Show the exact proposed action, target, scope, side effects, credentials, and rollback implications before confirmation.
+- [ ] **USEQ-D22830A2** — Prevent an agent from modifying its own policy, approval rules, audit records, safety controls, or credentials.
+- [ ] **USEQ-15C830F0** — Bound runtime, token use, cost, network requests, file changes, command count, concurrency, recursion, retries, and spawned agents.
+- [ ] **USEQ-71EE868E** — Restrict outbound network destinations and validate downloaded content and tools.
+- [ ] **USEQ-A348D57E** — Prevent agents from exfiltrating source, secrets, personal data, or private context through prompts, URLs, logs, errors, or generated artifacts.
+- [ ] **USEQ-E07F70B6** — Use allowlisted commands or isolated execution for high-risk environments.
+- [ ] **USEQ-EA332D5C** — Record tool calls, inputs, outputs, file changes, decisions, approvals, and errors in an auditable form that protects sensitive data.
+- [ ] **USEQ-172D4874** — Provide immediate pause, cancellation, credential revocation, and kill-switch capabilities.
+- [ ] **USEQ-26B3A07B** — Recover safely from partial execution and identify every side effect already performed.
+- [ ] **USEQ-D31234E4** — Test prompt injection, confused-deputy behavior, privilege escalation, hidden instructions, malicious tool output, and infinite-loop scenarios.
+- [ ] **USEQ-B55613A3** — Do not permit unsupervised production changes until the agent has demonstrated reliable behavior under realistic adversarial evaluation and the residual risk is authorized.
+
+### Model, prompt, adapter, and AI-component supply-chain assurance
+
+- [ ] **USEQ-EDAB9D12** — Inventory base models, fine-tunes, adapters, prompts, system instructions, safety policies, retrieval indexes, embeddings, data sets, evaluators, and external tools used in each AI-assisted workflow.
+- [ ] **USEQ-9832AA48** — Record source, provider, version, hash or immutable identifier, license, permitted use, training or fine-tuning data claims, and support status where available.
+- [ ] **USEQ-68821BC1** — Bind deployed AI configuration to a release record so behavior changes can be traced.
+- [ ] **USEQ-21EAD928** — Verify downloaded model and adapter integrity and retrieve them through authenticated trusted channels.
+- [ ] **USEQ-9509D8FC** — Assess model, prompt, adapter, and data poisoning risks before adoption.
+- [ ] **USEQ-C41FAB76** — Review provider and community models for unsafe serialization, executable code, custom loaders, hidden tools, and excessive permissions.
+- [ ] **USEQ-9F95E96A** — Do not execute untrusted model repositories, notebooks, setup scripts, or custom code with production credentials.
+- [ ] **USEQ-90F32C34** — Scan model and data packages for secrets, personal data, malicious files, license obligations, and unexpected components.
+- [ ] **USEQ-23C5B858** — Separate evaluation, development, and production credentials and data.
+- [ ] **USEQ-C9B74797** — Control who may change prompts, retrieval sources, model routing, tool definitions, safety settings, and thresholds.
+- [ ] **USEQ-886D57EB** — Review and test changes even when the provider labels them as minor or safety-related.
+- [ ] **USEQ-6B2D33C4** — Maintain a rollback path to a known evaluated model and configuration.
+- [ ] **USEQ-57129030** — Monitor provider outages, model withdrawals, silent updates, policy changes, and compromised distribution channels.
+- [ ] **USEQ-F05A29D5** — Include AI components in SBOM-like, model-card, system-card, or provenance records appropriate to the system.
+- [ ] **USEQ-B016EE0A** — Define retirement procedures for models, embeddings, prompts, credentials, retained data, and downstream derivatives.
+
+### Evaluation, red teaming, regression, and calibrated trust
+
+- [ ] **USEQ-F1783FEA** — Define evaluations for the actual engineering tasks, repositories, languages, domains, users, tools, and risk conditions rather than relying only on general benchmarks.
+- [ ] **USEQ-EB79B3ED** — Measure functional correctness, security, privacy, licensing, maintainability, performance, accessibility, documentation quality, and operational safety as applicable.
+- [ ] **USEQ-0C102A58** — Include incomplete context, conflicting requirements, obsolete documentation, malicious instructions, unusual code, large changes, and unfamiliar domains.
+- [ ] **USEQ-8235AA68** — Evaluate refusal and escalation behavior when the tool lacks evidence, permission, capability, or confidence.
+- [ ] **USEQ-0F3DD770** — Evaluate whether the tool fabricates APIs, packages, citations, standards, test results, vulnerabilities, or completed actions.
+- [ ] **USEQ-D21E0A71** — Test direct and indirect prompt injection, data exfiltration, tool abuse, confused deputy, secret discovery, sandbox escape, and policy bypass.
+- [ ] **USEQ-9994DB54** — Test output under model updates, prompt changes, retrieval changes, tool changes, provider routing changes, and degraded dependencies.
+- [ ] **USEQ-F4C1D548** — Use independently curated evaluation sets and protect them from contamination where scores are used for decisions.
+- [ ] **USEQ-B854BC2B** — Retain representative historical failures and incidents as regression cases.
+- [ ] **USEQ-7633CD04** — Use human expert review for semantic, architectural, security, legal, and safety qualities that automated scoring cannot establish.
+- [ ] **USEQ-08934850** — Measure uncertainty and confidence calibration where the system exposes confidence or autonomous thresholds.
+- [ ] **USEQ-53A8E42B** — Define acceptable performance by task and harm, not one aggregate score.
+- [ ] **USEQ-48A484CF** — Investigate subgroup, language, accessibility, repository, and domain differences rather than averaging them away.
+- [ ] **USEQ-B0B7E4B2** — Require evaluation before expanding permissions, autonomy, data access, user population, or production scope.
+- [ ] **USEQ-EEB12085** — Publish internal limitations and approved use boundaries alongside evaluation results.
+- [ ] **USEQ-3C2B0FE1** — Reevaluate periodically and after incidents, model changes, new attacks, and meaningful shifts in production tasks.
+
+### AI-generated documentation, citations, and knowledge integrity
+
+- [ ] **USEQ-48B9998C** — Verify technical facts, commands, configuration, API behavior, version requirements, standards status, dates, and external links against authoritative sources.
+- [ ] **USEQ-C1C0BF4C** — Do not include fabricated citations, quotations, people, products, vulnerabilities, decisions, metrics, or incident details.
+- [ ] **USEQ-C5181864** — Distinguish facts, inference, recommendation, example, placeholder, and uncertainty clearly.
+- [ ] **USEQ-A3559530** — Ensure generated documentation matches the exact released artifact and supported configuration.
+- [ ] **USEQ-7B8E61BE** — Review setup, migration, rollback, recovery, security, accessibility, and troubleshooting instructions through actual execution.
+- [ ] **USEQ-2D5D5C89** — Protect internal, personal, confidential, and security-sensitive information during generation and publication.
+- [ ] **USEQ-75862A50** — Ensure generated user content is understandable, accessible, localized appropriately, and free of deceptive claims.
+- [ ] **USEQ-F06F2315** — Review generated release notes so they do not omit breaking changes, security impact, required customer action, or known limitations.
+- [ ] **USEQ-44ADFB43** — Use source attribution and content provenance where readers need to assess authority and freshness.
+- [ ] **USEQ-FAC8F384** — Version generated documentation and invalidate it after material product or provider changes.
+- [ ] **USEQ-327CFE20** — Prevent AI summaries from replacing authoritative records when detail or legal meaning matters.
+- [ ] **USEQ-E547539A** — Ensure search and knowledge systems surface the authoritative current source rather than an unreviewed generated duplicate.
+- [ ] **USEQ-EE1E3012** — Provide a correction route and update propagated copies after material errors are found.
+- [ ] **USEQ-E1EEAF8B** — Label synthetic or AI-generated content when required by law, contract, policy, audience expectation, or risk.
+- [ ] **USEQ-80D53A5E** — Retain the reviewed final artifact rather than depending on transient conversation history.
+
+### Content provenance, authenticity, and C2PA-style credentials
+
+- [ ] **USEQ-798E6E1D** — Determine which images, audio, video, documents, designs, reports, releases, and public communications require provenance or authenticity information.
+- [ ] **USEQ-5D158B5E** — Define what provenance claims mean and avoid presenting them as proof that the content is true, harmless, complete, or unbiased.
+- [ ] **USEQ-EDD07EC1** — Use a recognized provenance standard such as the current C2PA specification when interoperable content credentials are required.
+- [ ] **USEQ-D9985041** — Cryptographically bind provenance manifests to the exact asset or defined derivative relationship.
+- [ ] **USEQ-22BC5813** — Protect signing identities and keys and define who is authorized to make each assertion.
+- [ ] **USEQ-EE822CDB** — Record creation, editing, transformation, generation, source, ingredient, tool, organization, and timestamp information only when accurate and permitted.
+- [ ] **USEQ-E59769F2** — Minimize personal, precise-location, device, and confidential metadata in provenance records.
+- [ ] **USEQ-C4489851** — Provide user interfaces that explain provenance in understandable layers rather than only displaying a trust icon.
+- [ ] **USEQ-841334CB** — Show missing, invalid, broken, revoked, or untrusted provenance without claiming the underlying content is necessarily false.
+- [ ] **USEQ-CF367760** — Preserve provenance through supported transformations, exports, compression, transcoding, publication, and distribution where feasible.
+- [ ] **USEQ-2A380FCA** — Detect and disclose when a workflow strips or cannot preserve provenance.
+- [ ] **USEQ-5A50E71F** — Validate trust chains, certificates, timestamps, revocation, content bindings, and manifest structure.
+- [ ] **USEQ-941EA8C0** — Protect against manifest substitution, replay, downgrade, detached-asset confusion, and misleading partial histories.
+- [ ] **USEQ-0C275FAF** — Define how edited, combined, redacted, and derived content updates provenance.
+- [ ] **USEQ-D078F7CC** — Test provenance handling across supported applications, platforms, media formats, and accessibility technologies.
+- [ ] **USEQ-29786656** — Maintain a recovery and key-rotation process that does not invalidate legitimate historical content without explanation.
+
+### Verifiable claims, credentials, signatures, and evidence integrity
+
+- [ ] **USEQ-2325DA4F** — Use verifiable credentials or signed evidence only when cryptographic verification, issuer accountability, portability, or selective disclosure provides a real requirement.
+- [ ] **USEQ-EE4C0408** — Define issuer, holder, verifier, subject, claims, purpose, audience, validity, revocation, status, and trust policy explicitly.
+- [ ] **USEQ-F7C75D9C** — Use current interoperable standards such as the W3C Verifiable Credentials Data Model 2.0 family when applicable.
+- [ ] **USEQ-5FE49B3A** — Verify issuer identity, key authorization, proof purpose, domain or challenge binding, validity period, status, schema, and audience before accepting a claim.
+- [ ] **USEQ-6BF7123C** — Do not treat a valid signature as proof that the claim is true, current, authorized for the present purpose, or ethically appropriate.
+- [ ] **USEQ-B791AEA6** — Request and disclose only the claims necessary for the transaction.
+- [ ] **USEQ-93F664BC** — Support selective disclosure and unlinkability where the use case and chosen standard permit it.
+- [ ] **USEQ-A80DCC8B** — Prevent identifiers and status checks from enabling unnecessary correlation or tracking.
+- [ ] **USEQ-403D0FC0** — Protect credential issuance, storage, presentation, recovery, revocation, and deletion.
+- [ ] **USEQ-AABF5B36** — Handle lost, compromised, expired, suspended, and superseded credentials.
+- [ ] **USEQ-CBD654F9** — Validate canonicalization, serialization, proof suites, cryptographic parameters, and implementation interoperability.
+- [ ] **USEQ-F2B1299D** — Protect against replay, presentation substitution, confused-deputy, verifier impersonation, and malicious issuer metadata.
+- [ ] **USEQ-AE60A435** — Provide understandable user consent and display the verifier, requested claims, purpose, and consequences before presentation.
+- [ ] **USEQ-BF615392** — Maintain audit evidence without retaining unnecessary credential contents.
+- [ ] **USEQ-00A91D07** — Test offline, degraded, revoked, clock-skewed, and trust-store-update scenarios.
+- [ ] **USEQ-6EBF4486** — Plan crypto-agile and post-quantum migration for long-lived credentials and evidence.
+
+### Synthetic media, generated content, and public trust
+
+- [ ] **USEQ-FB59A946** — Define when generated or materially altered content must be labeled, watermarked, credentialed, disclosed, or restricted.
+- [ ] **USEQ-24A27761** — Make disclosures visible, accessible, durable, and understandable in the context where content is consumed.
+- [ ] **USEQ-6D2ED17A** — Avoid disclosures that disappear when content is downloaded, embedded, cropped, translated, printed, or shared.
+- [ ] **USEQ-87A2D323** — Prevent generated content from impersonating real people, organizations, authorities, or official communications without authorization and appropriate safeguards.
+- [ ] **USEQ-DFB7F6ED** — Obtain necessary consent and rights for likeness, voice, biometric, personal, copyrighted, and confidential material.
+- [ ] **USEQ-9CD66A9B** — Protect children, vulnerable users, and high-risk contexts with stricter generation and distribution controls.
+- [ ] **USEQ-31086253** — Review generated public claims for factual accuracy, defamation, discrimination, safety, financial, medical, legal, and civic risks.
+- [ ] **USEQ-9D635145** — Use human review before publishing high-impact generated content under an organizational identity.
+- [ ] **USEQ-8C754D48** — Do not present detection scores as definitive proof that content is or is not AI-generated.
+- [ ] **USEQ-5710654C** — Combine provenance, source verification, context, policy, and investigation rather than relying on one synthetic-content detector.
+- [ ] **USEQ-C731071C** — Provide correction, takedown, appeal, and incident-reporting routes.
+- [ ] **USEQ-02B7A344** — Record the approved final content, sources, model and tool versions, material transformations, reviewer, and publication channels.
+- [ ] **USEQ-10EDBDFD** — Monitor for misuse of organizational names, marks, credentials, voices, and identities in synthetic media.
+- [ ] **USEQ-D3FD11E3** — Prepare response procedures for forged, misleading, compromised, or incorrectly credentialed content.
+- [ ] **USEQ-97B7BEBB** — Preserve evidence needed to investigate provenance while respecting privacy and legal constraints.
+
+### Monitoring, incident response, rollback, and retirement
+
+- [ ] **USEQ-0CD1F465** — Monitor AI-assisted workflows for unauthorized data access, secret exposure, insecure output, fabricated facts, malicious dependencies, excessive permissions, abnormal tool use, cost spikes, and repeated human overrides.
+- [ ] **USEQ-E44BDA17** — Monitor model, provider, prompt, retrieval, permission, policy, and integration changes that can alter behavior.
+- [ ] **USEQ-91F85F40** — Detect whether agents perform actions outside the approved task, scope, identity, repository, environment, or time window.
+- [ ] **USEQ-D20D2DD1** — Provide rapid disablement for each model, provider, integration, tool, retrieval source, agent, and autonomous capability.
+- [ ] **USEQ-E0D7CFC5** — Revoke associated credentials, webhooks, sessions, scheduled tasks, and network access when disabled.
+- [ ] **USEQ-39F46163** — Maintain fallback workflows that do not depend on the unavailable or compromised AI system for essential operation.
+- [ ] **USEQ-A737503A** — Define incident playbooks for confidential-data leakage, malicious action, unsafe code, poisoned context, provider compromise, model change, provenance-key compromise, and synthetic impersonation.
+- [ ] **USEQ-4EE501B5** — Identify every repository, artifact, deployment, document, decision, and communication affected by a compromised or defective AI workflow.
+- [ ] **USEQ-B7A152C3** — Preserve prompts, context, outputs, tool calls, approvals, model versions, and audit evidence proportionately and lawfully for investigation.
+- [ ] **USEQ-FA7DAC9D** — Notify affected customers, users, employees, providers, and authorities according to impact and obligations.
+- [ ] **USEQ-9CA9E828** — Search for related generated defects and artifacts after an incident rather than fixing only the first instance.
+- [ ] **USEQ-0A7A2F6C** — Revalidate accepted output after a material model or tool defect is discovered.
+- [ ] **USEQ-2C7F55DC** — Perform root-cause analysis covering governance, permissions, interface design, review, evaluation, training, incentives, and technical controls.
+- [ ] **USEQ-3EEAD754** — Retire obsolete models, prompts, embeddings, agents, indexes, credentials, provider data, and generated artifacts according to lifecycle and retention requirements.
+- [ ] **USEQ-86EF8E1F** — Test disablement, rollback, provider replacement, data deletion, and evidence recovery periodically.
+
+### Release blockers and AI-assistance evidence package
+
+- [ ] **USEQ-4858F7E6** — Block release when material AI-generated code, configuration, migration, policy, or architecture has no accountable human reviewer who understands it.
+- [ ] **USEQ-3D7EFEF0** — Block release when generated claims, citations, APIs, packages, standards, or compatibility assumptions have not been verified.
+- [ ] **USEQ-6465C673** — Block release when AI assistance exposed secrets, personal data, customer content, vulnerabilities, or proprietary material and containment is incomplete.
+- [ ] **USEQ-E5E6E4D2** — Block release when an agent executed high-impact actions outside the approved capability, identity, environment, or confirmation boundary.
+- [ ] **USEQ-FD59DB11** — Block release when critical generated tests use the same unverified logic as the implementation or have not demonstrated fault detection.
+- [ ] **USEQ-C2B2D033** — Block release when model, prompt, retrieval, tool, or provider changes invalidate prior assurance evidence.
+- [ ] **USEQ-BA8ED02F** — Block release when generated dependencies, licenses, provenance, or supplier identities remain unresolved.
+- [ ] **USEQ-14FDF5E4** — Block release when disabling or rolling back the AI capability is not possible for a high-risk workflow.
+- [ ] **USEQ-41AEF92F** — Retain the use case, approved tool and model versions, prompts or prompt templates where appropriate, retrieved sources, permissions, tool calls, generated artifacts, human changes, reviews, tests, and approvals.
+- [ ] **USEQ-3CFE6905** — Retain evaluation scope, data, adversarial cases, results, limitations, model changes, incidents, and accepted residual risk.
+- [ ] **USEQ-85D0CB75** — Record data classifications, provider processing terms, retention settings, deletion evidence, and intellectual-property review where material.
+- [ ] **USEQ-A3940500** — Record provenance and authenticity evidence for public content and signed claims where used.
+- [ ] **USEQ-DC177F9F** — Require independent sign-off for autonomous production action, safety-related output, security controls, identity decisions, financial movement, or high-impact public communications.
+- [ ] **USEQ-54B598C4** — Ensure ongoing monitoring detects behavior drift, unauthorized use, provider changes, data leakage, and control degradation after release.
+- [ ] **USEQ-AEE1EB03** — State the exact scope of AI assistance and residual uncertainty rather than claiming the work was fully verified merely because automated checks passed.
+
 ## Standards and source references
 
 - [ISO/IEC 42001:2023 — AI management systems](https://www.iso.org/standard/81230.html)

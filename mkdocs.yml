@@ -1,5 +1,5 @@
 site_name: Production Readiness Checklist
-site_description: 6,338 evidence-driven controls for engineering and shipping software with confidence.
+site_description: 10,042 evidence-driven controls for engineering and shipping software with confidence.
 site_author: Production Readiness Checklist contributors
 site_url: https://marinjursic.github.io/production-readiness-checklist/
 repo_url: https://github.com/MarinJursic/production-readiness-checklist
@@ -48,8 +48,8 @@ theme:
 nav:
   - Home: index.md
   - Get started:
-      - Complete engineering review: engineering/00-overview.md
       - 15-minute quick start: guides/getting-started.md
+      - Complete engineering review: engineering/00-overview.md
       - AI-assisted review: guides/ai-assisted-review.md
   - Engineering lifecycle:
       - Overview: engineering/00-overview.md

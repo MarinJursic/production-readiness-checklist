@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
   <title id="title">Production Readiness Checklist</title>
-  <desc id="desc">Ship with evidence, not optimism. 6,338 controls across the engineering lifecycle and production release.</desc>
+  <desc id="desc">Ship with evidence, not optimism. 10,042 controls across the engineering lifecycle and production release.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#0f172a"/>
@@ -30,7 +30,7 @@
   <text x="425" y="377" fill="#ccfbf1" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="28" font-weight="500">Ship with evidence, not optimism.</text>
   <g transform="translate(425 425)" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="19" font-weight="700">
     <rect width="180" height="48" rx="24" fill="#fff" opacity=".12"/>
-    <text x="25" y="31" fill="#e0e7ff">6,338 controls</text>
+    <text x="25" y="31" fill="#e0e7ff">10,042 controls</text>
     <rect x="196" width="220" height="48" rx="24" fill="#fff" opacity=".12"/>
     <text x="221" y="31" fill="#ccfbf1">16 lifecycle phases</text>
     <rect x="432" width="196" height="48" rx="24" fill="#fff" opacity=".12"/>

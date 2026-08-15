@@ -7,12 +7,12 @@ authors:
     given-names: Marin
 repository-code: https://github.com/MarinJursic/production-readiness-checklist
 url: https://marinjursic.github.io/production-readiness-checklist/
-version: 2.0.0
+version: 2.1.0
 date-released: 2026-08-15
 license: MIT
 abstract: >-
   An evidence-driven, technology-neutral software engineering and
-  production-readiness review system containing 6,338 controls across the
+  production-readiness review system containing 10,042 controls across the
   complete product lifecycle and final release decision, with stable evidence
   identifiers, reusable decision records, and human and AI-assisted guidance.
 keywords:

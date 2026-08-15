@@ -1,12 +1,12 @@
 ---
-description: 6,338 evidence-driven controls for engineering and shipping secure, reliable, and supportable software.
+description: 10,042 evidence-driven controls for engineering and shipping secure, reliable, and supportable software.
 ---
 
 # Production Readiness Checklist
 
-Use this documentation to evaluate a software product from initial governance and requirements through design, implementation, operations, and final production approval. It provides **6,338 technology-neutral controls**, stable evidence IDs, reusable decision records, and guidance for human or AI-assisted reviews.
+Use this documentation to evaluate a software product from initial governance and requirements through design, implementation, operations, and final production approval. It provides **10,042 technology-neutral controls**, stable evidence IDs, reusable decision records, and guidance for human or AI-assisted reviews.
 
-The control set has two connected layers: **4,917 lifecycle and quality controls** across 16 engineering phases, followed by **1,421 production-readiness controls** for the release decision. It does not produce a readiness score. Every applicable requirement needs current evidence, and one material failure can block approval.
+The control set has two connected layers: **8,621 lifecycle and quality controls** across 16 engineering phases, followed by **1,421 production-readiness controls** for the release decision. It does not produce a readiness score. Every applicable requirement needs current evidence, and one material failure can block approval.
 
 ## Start here
 
@@ -52,4 +52,4 @@ The order gives reviewers a dependable path through the material; it does not re
 
 - Record the review with the [release assessment](records/release-assessment.md), [evidence record](records/evidence-record.md), [risk exception](records/risk-exception.md), and [go/no-go decision](records/go-no-go-decision.md) templates.
 - Review the [references, standards snapshot, and limitations](references.md).
-- [Star the repository on GitHub](https://github.com/MarinJursic/production-readiness-checklist) or share the documentation on [LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fmarinjursic.github.io%2Fproduction-readiness-checklist%2F) or [X](https://twitter.com/intent/tweet?text=Production%20Readiness%20Checklist%3A%206%2C338%20evidence-driven%20software%20engineering%20and%20release%20controls.&url=https%3A%2F%2Fmarinjursic.github.io%2Fproduction-readiness-checklist%2F).
+- [Star the repository on GitHub](https://github.com/MarinJursic/production-readiness-checklist) or share the documentation on [LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fmarinjursic.github.io%2Fproduction-readiness-checklist%2F) or [X](https://twitter.com/intent/tweet?text=Production%20Readiness%20Checklist%3A%2010%2C042%20evidence-driven%20software%20engineering%20and%20release%20controls.&url=https%3A%2F%2Fmarinjursic.github.io%2Fproduction-readiness-checklist%2F).

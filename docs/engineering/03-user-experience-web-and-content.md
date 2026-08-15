@@ -719,6 +719,607 @@ _Consolidated from `gap supplement/01-web-quality-seo-accessibility-and-content.
 - [ ] **USEQ-11ED9627** — Do not mark a control Not Applicable merely because it is difficult, expensive, unfamiliar, or owned by another team.
 - [ ] **USEQ-CD505063** — Do not proceed when the organization cannot detect, contain, recover from, and communicate a foreseeable high-impact failure.
 
+## Accessibility, SEO, Content Quality, and Digital Discoverability
+
+_Consolidated from `final consolidated corpus/02-human-experience-accessibility-content-seo-internationalization.md#Accessibility, SEO, Content Quality, and Digital Discoverability`; 321 non-duplicative controls._
+
+### Scope, ownership, and measurable outcomes
+
+- [ ] **USEQ-76DB1417** — Inventory every public page, authenticated page, document, media asset, embedded component, native or hybrid app surface, authoring interface, and search-visible endpoint in scope.
+- [ ] **USEQ-EB22BF99** — Identify which surfaces are intended to be public, indexable, searchable, shareable, archived, private, or removed.
+- [ ] **USEQ-6B251F18** — Assign accountable owners for accessibility, technical discoverability, content quality, metadata, structured data, translations, and search monitoring.
+- [ ] **USEQ-DDC9A009** — Document the supported user groups, disability needs, assistive technologies, browsers, devices, locales, search engines, crawlers, and content channels.
+- [ ] **USEQ-B04D0821** — Define accessibility conformance targets by product surface and jurisdiction rather than relying on a single organization-wide label.
+- [ ] **USEQ-D66C6A9A** — Define discoverability objectives that prioritize user value, accurate representation, and legitimate acquisition rather than ranking manipulation.
+- [ ] **USEQ-0103E2BB** — Define measurable success criteria for task completion, accessibility defects, search coverage, crawl errors, indexing, content freshness, and performance.
+- [ ] **USEQ-6B827DAC** — Distinguish mandatory conformance requirements from aspirational quality improvements.
+- [ ] **USEQ-B9158921** — Identify third-party components and content that can prevent accessibility or discoverability conformance.
+- [ ] **USEQ-62232063** — Ensure procurement and supplier contracts include applicable accessibility, remediation, metadata, rendering, availability, and change-notification obligations.
+- [ ] **USEQ-9AC255A5** — Maintain an inventory of public domains, subdomains, alternate hosts, preview environments, staging environments, microsites, and retired properties.
+- [ ] **USEQ-0BB3E806** — Prevent preview, test, administrative, personalized, confidential, and pre-release content from becoming publicly discoverable.
+- [ ] **USEQ-D5B7E6DD** — Document how accessibility and search behavior are affected by personalization, experiments, geolocation, consent, authentication, and feature flags.
+- [ ] **USEQ-FCC69E21** — Include accessibility and discoverability acceptance criteria in product requirements and Definition of Done.
+- [ ] **USEQ-51165919** — Give users a clear channel to report accessibility, content, metadata, or search-discovery problems.
+- [ ] **USEQ-F6820614** — Review this scope after redesigns, domain changes, platform migrations, acquisitions, localization expansion, and introduction of generated content.
+
+### Accessibility standards and evaluation methodology
+
+- [ ] **USEQ-1F9E3B23** — Use WCAG 2.2 as the general web-content baseline unless a binding requirement specifies another version or stricter target.
+- [ ] **USEQ-698BB07E** — Document the selected conformance level and every additional requirement arising from law, procurement, contract, safety, or user research.
+- [ ] **USEQ-EFFCCD14** — Use a defined evaluation methodology such as WCAG-EM 2.0 to establish scope, representative samples, states, processes, and reporting.
+- [ ] **USEQ-FE8CC474** — Include complete processes and multi-step journeys rather than evaluating isolated pages only.
+- [ ] **USEQ-7758C65E** — Include common pages, templates, components, states, error paths, authenticated areas, documents, media, and dynamically generated variants in the evaluation sample.
+- [ ] **USEQ-3801322B** — Evaluate content at supported zoom, text spacing, viewport, orientation, contrast, color-scheme, forced-color, reduced-motion, and platform settings.
+- [ ] **USEQ-A371549C** — Combine automated testing, expert manual review, keyboard testing, assistive-technology testing, and user testing; do not treat automation as proof of conformance.
+- [ ] **USEQ-6D505348** — Record the exact standards, techniques, test tools, versions, assistive technologies, browsers, operating systems, devices, samples, and limitations used.
+- [ ] **USEQ-A4088B58** — Distinguish normative requirements from informative techniques and tool heuristics.
+- [ ] **USEQ-88E2245C** — Classify defects by user impact, task blockage, frequency, reach, reversibility, and legal or safety significance.
+- [ ] **USEQ-9F7B27E7** — Do not average inaccessible critical journeys against large numbers of passing low-value pages.
+- [ ] **USEQ-38B52E84** — Treat a task-blocking defect in a critical journey as a release blocker unless an equally effective accessible alternative is available and verified.
+- [ ] **USEQ-7BCD3094** — Require independent accessibility review for high-impact, public-sector, education, employment, finance, healthcare, safety, or essential-service products.
+- [ ] **USEQ-1F39E16F** — Include people with relevant disabilities in research and validation when the product impact warrants it.
+- [ ] **USEQ-50EFB4BA** — Compensate participants appropriately and protect their privacy and dignity.
+- [ ] **USEQ-B7ADCF31** — Publish an accessibility statement that accurately describes scope, known limitations, contact routes, and response expectations.
+- [ ] **USEQ-8AC646AD** — Keep conformance reports tied to a specific product version and date; do not reuse them after material change without reassessment.
+- [ ] **USEQ-1F6E49BB** — Reassess accessibility continuously rather than only before launch.
+
+### Semantic structure, content alternatives, and programmatic relationships
+
+- [ ] **USEQ-23049AC4** — Use native semantic elements and platform controls whenever they satisfy the required behavior.
+- [ ] **USEQ-0FD25F2E** — Give every page or view a meaningful, unique title that reflects its purpose or topic.
+- [ ] **USEQ-A11CE7A5** — Use headings in a logical hierarchy that communicates document structure rather than visual styling alone.
+- [ ] **USEQ-F4EE10A3** — Expose landmarks, regions, lists, tables, definitions, quotations, emphasis, and other structural relationships programmatically.
+- [ ] **USEQ-F65C7A78** — Give every interactive element an accurate accessible name, role, value, state, and description where needed.
+- [ ] **USEQ-EB41475C** — Ensure visible labels and accessible names are consistent enough for speech-input users to identify controls.
+- [ ] **USEQ-43615406** — Provide equivalent text alternatives for informative images, icons, charts, diagrams, maps, and controls.
+- [ ] **USEQ-1C090BD9** — Mark decorative content so that it does not create noise for assistive technologies.
+- [ ] **USEQ-44FF600B** — Provide long descriptions, data tables, transcripts, or equivalent alternatives for complex visual information.
+- [ ] **USEQ-CE72BA84** — Ensure images of text are not used when real text can provide the same presentation, except for legitimate exceptions.
+- [ ] **USEQ-B96A7EB0** — Use table headers, captions, scopes, and relationships that make data tables understandable without visual position.
+- [ ] **USEQ-4D11DB36** — Expose status messages, validation results, loading states, progress, notifications, and asynchronous updates without forcing focus changes.
+- [ ] **USEQ-BA50C7B0** — Preserve semantics when content is reordered, virtualized, collapsed, expanded, filtered, or rendered lazily.
+- [ ] **USEQ-438CC44E** — Ensure custom widgets follow established accessibility interaction patterns and do not reproduce native controls poorly.
+- [ ] **USEQ-352ACD0C** — Use ARIA only where needed, apply supported roles and properties correctly, and never use ARIA to conceal broken semantics.
+- [ ] **USEQ-33D779E1** — Ensure generated markup remains valid enough for user agents to derive consistent semantics.
+- [ ] **USEQ-531C7FDB** — Declare the natural language of pages and language changes within content.
+- [ ] **USEQ-ED944B62** — Expose reading order, relationships, and alternative content in exported and downloadable documents.
+
+### Keyboard, focus, pointer, voice, and alternative input
+
+- [ ] **USEQ-1ACA514F** — Make every actionable function operable with a keyboard without requiring pointer input.
+- [ ] **USEQ-8FBB63F5** — Prevent keyboard traps and provide a documented exit from any constrained interaction.
+- [ ] **USEQ-B05009C5** — Maintain a logical focus order that follows meaning and task sequence.
+- [ ] **USEQ-DB2C10EF** — Provide a clearly visible focus indicator with sufficient contrast and area.
+- [ ] **USEQ-018113B7** — Ensure focused elements are not hidden behind sticky headers, banners, dialogs, virtual keyboards, or overlays.
+- [ ] **USEQ-E32BDB30** — Move focus intentionally after route changes, dialog opening, content replacement, deletion, and other context changes.
+- [ ] **USEQ-C434159D** — Restore focus to a sensible location after dialogs, menus, popovers, and temporary surfaces close.
+- [ ] **USEQ-591A7C39** — Provide skip mechanisms or equivalent navigation for repeated blocks.
+- [ ] **USEQ-E3635275** — Avoid single-character shortcuts that conflict with assistive technology, or make them remappable or disableable.
+- [ ] **USEQ-54E8800E** — Provide non-drag alternatives for functionality that depends on dragging.
+- [ ] **USEQ-53DCF354** — Provide alternatives to path-based, multipoint, or complex gestures.
+- [ ] **USEQ-6E86BBDD** — Make pointer targets large enough and sufficiently separated for the target population and context.
+- [ ] **USEQ-639D4B06** — Do not trigger actions solely on pointer-down when cancellation or reversal is needed.
+- [ ] **USEQ-9387A6EF** — Support pointer cancellation and undo for consequential actions.
+- [ ] **USEQ-4054AA2A** — Do not require device motion, shaking, tilting, or biometric gestures when an accessible alternative can be provided.
+- [ ] **USEQ-59674F93** — Ensure visible control text can be used by voice-control users to activate the corresponding control.
+- [ ] **USEQ-A5F42D98** — Test switch-control, voice-control, eye-gaze, or other alternative input when relevant to the supported population.
+- [ ] **USEQ-A66695B5** — Ensure timeout, focus, and interaction behavior remains correct under slower input and assistive-technology use.
+
+### Visual presentation, audio, video, motion, and sensory safety
+
+- [ ] **USEQ-9645FB34** — Meet the required contrast ratios for text, controls, focus indicators, icons, charts, and other meaningful visual information.
+- [ ] **USEQ-047A21BC** — Do not rely on color, position, shape, sound, motion, or another single sensory characteristic to communicate meaning.
+- [ ] **USEQ-83473448** — Allow text to be resized and spaced without loss of content, function, or readability.
+- [ ] **USEQ-24B7B3FD** — Allow content to reflow without two-dimensional scrolling except where the content intrinsically requires it.
+- [ ] **USEQ-E9678D71** — Avoid clipping, overlap, disappearance, and unusable overlays at supported zoom and viewport sizes.
+- [ ] **USEQ-417FF771** — Honor user preferences for reduced motion, contrast, color scheme, text size, captions, and other accessibility settings where available.
+- [ ] **USEQ-16826B5E** — Avoid flashes and visual patterns that can exceed seizure or physical-reaction thresholds.
+- [ ] **USEQ-EB964FEA** — Provide controls to pause, stop, hide, or reduce moving, blinking, auto-updating, or auto-playing content where required.
+- [ ] **USEQ-81BE1D6D** — Do not start audio automatically unless the user can stop or control it immediately.
+- [ ] **USEQ-B06A6E6F** — Provide synchronized captions for prerecorded and live audio where required.
+- [ ] **USEQ-499B8B78** — Provide transcripts for audio-only content and equivalent alternatives for video-only content.
+- [ ] **USEQ-5966A22D** — Provide audio description or an equivalent description of important visual information where required.
+- [ ] **USEQ-0F32C504** — Ensure media controls are keyboard operable, labeled, visible, and usable with assistive technology.
+- [ ] **USEQ-00D74F4E** — Preserve caption timing, speaker identification, sound cues, and readability.
+- [ ] **USEQ-7E071F27** — Do not encode essential information in low-contrast placeholders or transient toast messages.
+- [ ] **USEQ-296488AE** — Ensure charts and visualizations expose labels, units, scales, relationships, uncertainty, and underlying data accessibly.
+- [ ] **USEQ-E9136303** — Ensure maps have non-map alternatives for essential tasks and information.
+- [ ] **USEQ-9013CE98** — Test forced-colors and high-contrast modes so that controls, focus, selection, errors, and state remain perceivable.
+- [ ] **USEQ-33A15DF0** — Keep line length, spacing, typography, hierarchy, and density suitable for reading and cognitive access.
+- [ ] **USEQ-DDF0FE8A** — Provide user control over distracting animations, parallax, carousels, and background media.
+
+### Cognitive accessibility, forms, authentication, and error prevention
+
+- [ ] **USEQ-47E15B30** — Use clear, concrete, consistent language appropriate to the audience.
+- [ ] **USEQ-EA2525B5** — Explain unfamiliar terms, abbreviations, icons, and consequences at the point of need.
+- [ ] **USEQ-BF3E67FB** — Keep navigation, help, labels, and repeated controls consistent across the product.
+- [ ] **USEQ-1DCF1FC6** — Break complex tasks into understandable steps and show progress and remaining work.
+- [ ] **USEQ-3EC1EBBA** — Allow users to review, correct, save, and resume complex or high-stakes tasks.
+- [ ] **USEQ-EAAE1A20** — Minimize memory burden and avoid requiring users to re-enter information already available to the system.
+- [ ] **USEQ-E1902ED3** — Do not use deceptive urgency, confusing defaults, hidden costs, forced continuity, or other dark patterns.
+- [ ] **USEQ-8ABF95B0** — Label every form control programmatically and visibly unless an accessible equivalent is unambiguous.
+- [ ] **USEQ-E35FCCCE** — Identify required fields, formats, constraints, and examples before submission.
+- [ ] **USEQ-EAF2117D** — Use appropriate input purpose and autocomplete semantics where they improve accessibility and privacy.
+- [ ] **USEQ-79FA79CC** — Associate errors with the affected fields and provide an accessible error summary for multi-field failures.
+- [ ] **USEQ-C69C5821** — Explain errors in plain language and provide specific recovery instructions.
+- [ ] **USEQ-FC0BCDA1** — Preserve valid input after recoverable errors and prevent duplicate submission.
+- [ ] **USEQ-38360ECC** — Provide confirmation, review, undo, or reversal for legal, financial, destructive, or high-impact submissions.
+- [ ] **USEQ-47A0D215** — Warn users before session expiry and permit extension or data preservation where required.
+- [ ] **USEQ-BB3E050D** — Do not make authentication depend solely on solving cognitive-function tests, transcribing distorted content, or remembering arbitrary secrets.
+- [ ] **USEQ-375A6696** — Support password managers, paste, accessible multifactor methods, and accessible account recovery.
+- [ ] **USEQ-9DB6D254** — Provide alternatives when biometrics, CAPTCHAs, device possession, or a particular communication channel are inaccessible.
+- [ ] **USEQ-4BC4B0A8** — Ensure help and human-support routes are accessible and do not require the inaccessible step that caused the problem.
+- [ ] **USEQ-EE9AEBED** — Test error recovery under screen-reader, magnification, voice-control, and keyboard-only use.
+
+### Responsive, mobile, assistive-technology, and document interoperability
+
+- [ ] **USEQ-AE14ECFB** — Test representative critical journeys across the supported browser, operating-system, device, and assistive-technology matrix.
+- [ ] **USEQ-7F48A297** — Include multiple major screen readers and browser combinations appropriate to the user population.
+- [ ] **USEQ-B09FCA61** — Include screen magnification, zoom, reflow, voice control, switch control, captions, and platform accessibility settings as applicable.
+- [ ] **USEQ-7D7CBD51** — Ensure orientation is not locked unless a specific orientation is essential.
+- [ ] **USEQ-34A9C539** — Ensure virtual keyboards, safe areas, display cutouts, and magnification do not cover controls or instructions.
+- [ ] **USEQ-86065889** — Ensure touch exploration and mobile screen-reader reading order match the visual and task order.
+- [ ] **USEQ-6E1DB57C** — Apply WCAG 2.2 principles to native and hybrid mobile applications and supplement them with platform accessibility guidance.
+- [ ] **USEQ-E6287819** — Ensure offline, cached, and installed experiences preserve accessibility.
+- [ ] **USEQ-4ABB7338** — Ensure notifications, deep links, share sheets, widgets, and system dialogs remain understandable and operable.
+- [ ] **USEQ-45B46C2B** — Produce accessible PDF, office, email, and other downloadable content, using an applicable document standard such as PDF/UA where required.
+- [ ] **USEQ-CACB9B46** — Preserve document tags, headings, reading order, bookmarks, language, alternate text, tables, links, and form semantics during generation and conversion.
+- [ ] **USEQ-226021B5** — Do not publish scanned-image documents without accurate text recognition and structural remediation when accessible text is required.
+- [ ] **USEQ-FC22FBD4** — Provide an accessible HTML or equivalent alternative when a document format cannot meet user needs.
+- [ ] **USEQ-1C53CC23** — Ensure print and export layouts do not remove essential information or accessibility.
+- [ ] **USEQ-A00433C7** — Verify that assistive-technology behavior remains correct after component-library, browser-engine, platform, or PDF-generation upgrades.
+- [ ] **USEQ-2ED3E53A** — Document unsupported combinations and provide a workable alternative rather than silently failing.
+
+### User agents, embedded viewers, media players, and assistive interoperability
+
+- [ ] **USEQ-7A4E29FA** — Apply UAAG 2.0 as informative guidance when the product retrieves, renders, navigates, transforms, or plays web or digital content as a browser, viewer, reader, extension, media player, embedded web view, document viewer, or similar user agent.
+- [ ] **USEQ-B12A0439** — Make the user agent interface itself perceivable, operable, understandable, and compatible with assistive technologies.
+- [ ] **USEQ-584BDA9F** — Expose rendered content, controls, selection, focus, caret, viewport, playback, status, and document structure through supported accessibility APIs.
+- [ ] **USEQ-43A0D27C** — Preserve content semantics and accessibility information rather than flattening or replacing them during rendering, transformation, reader mode, translation, annotation, or export.
+- [ ] **USEQ-E5B715BD** — Let users control text size, zoom, colors, contrast, fonts, spacing, animation, autoplay, audio, captions, playback rate, and other presentation characteristics where the platform role permits it.
+- [ ] **USEQ-07226877** — Provide keyboard and alternative-input access to browser chrome, media controls, document navigation, extensions, permissions, downloads, history, and settings.
+- [ ] **USEQ-9EC00A36** — Provide navigation by headings, landmarks, links, controls, tables, pages, time, chapters, annotations, search results, and other meaningful structures when present.
+- [ ] **USEQ-30ACE3C6** — Communicate security, permission, download, certificate, mixed-content, popup, and content-blocking messages accessibly.
+- [ ] **USEQ-0527C48F** — Ensure accessibility extensions and assistive technologies do not require excessive privileges or expose browsing and content data without informed control.
+- [ ] **USEQ-C22C2973** — Test embedded viewers and web views with the host application, content, accessibility tree, focus transfer, keyboard handling, zoom, and assistive technologies as one integrated experience.
+- [ ] **USEQ-804BFA3B** — Provide an accessible fallback or alternate application when a required format or embedded user agent cannot meet critical user needs.
+- [ ] **USEQ-8DD986C8** — Treat user-agent and assistive-technology compatibility regressions as product defects even when the underlying content has not changed.
+
+### Authoring tools, design systems, third parties, and procurement
+
+- [ ] **USEQ-56988474** — Apply ATAG 2.0 when the product lets users create or edit web or digital content.
+- [ ] **USEQ-8CD38B0C** — Make the authoring interface itself accessible to authors with disabilities.
+- [ ] **USEQ-E900C7C6** — Generate accessible output by default and preserve accessible information during editing, import, export, copying, and transformation.
+- [ ] **USEQ-3C4F60FD** — Prompt authors for missing alternate text, labels, headings, captions, language, table headers, and other required accessibility information.
+- [ ] **USEQ-547FB7E6** — Do not overwrite correct author-supplied accessibility data with lower-quality generated values.
+- [ ] **USEQ-F96E1B38** — Provide accessible templates, examples, validators, repair suggestions, and previews.
+- [ ] **USEQ-8E6F38D9** — Make accessibility checking discoverable and integrated into normal authoring workflows.
+- [ ] **USEQ-4F0EF52C** — Include accessibility requirements in design-system component contracts and acceptance tests.
+- [ ] **USEQ-4202F7C4** — Provide documented keyboard behavior, semantics, states, content constraints, and known limitations for every shared component.
+- [ ] **USEQ-433B5762** — Prevent design tokens from allowing inaccessible contrast, focus, motion, spacing, or target sizes without an explicit reviewed exception.
+- [ ] **USEQ-9282E33E** — Require accessibility review before introducing or materially changing a shared component.
+- [ ] **USEQ-8C17324F** — Version accessibility behavior and communicate breaking changes to consumers.
+- [ ] **USEQ-E6611C2E** — Evaluate third-party widgets, payment flows, identity screens, chat tools, media players, consent tools, and embeds before adoption.
+- [ ] **USEQ-F28C400D** — Contractually require timely remediation or an accessible alternative for critical third-party barriers.
+- [ ] **USEQ-F8516AC8** — Keep a replacement or isolation plan for inaccessible supplier components.
+- [ ] **USEQ-8DC4E850** — Require vendors to provide current, scoped, evidence-based accessibility conformance information rather than marketing claims.
+- [ ] **USEQ-C6CE00CE** — Test the integrated product; supplier documentation alone is not evidence that the deployed experience is accessible.
+- [ ] **USEQ-2AE7001B** — Ensure procurement scoring considers actual task accessibility, not only presence of a conformance report.
+
+### Accessibility regression, reporting, and operations
+
+- [ ] **USEQ-00EB0815** — Automate checks for repeatable detectable defects in components, templates, rendered pages, documents, and critical flows.
+- [ ] **USEQ-393454F3** — Use automated rules as a floor and track false positives, false negatives, rule coverage, and tool versions.
+- [ ] **USEQ-0532FA61** — Keep manual test scripts for keyboard, focus, zoom, text spacing, screen readers, forms, media, and cognitive access.
+- [ ] **USEQ-BAA82799** — Include accessibility assertions in component, integration, end-to-end, visual-regression, and document-generation tests where reliable.
+- [ ] **USEQ-D3049D6B** — Require accessibility review when content structure, interaction patterns, navigation, design tokens, generated documents, or major dependencies change.
+- [ ] **USEQ-CD0F0EFF** — Monitor production for missing names, invalid structure, contrast regressions, inaccessible dialogs, broken skip links, and document-generation failures where feasible.
+- [ ] **USEQ-53280330** — Collect accessibility feedback without requiring users to disclose a diagnosis.
+- [ ] **USEQ-0AC7F3A1** — Triage reports based on actual task impact and affected users, not only automated severity.
+- [ ] **USEQ-3E16ED92** — Provide temporary accessible alternatives while material defects are being repaired.
+- [ ] **USEQ-A6A392BF** — Retest fixes with the input mode or assistive technology that exposed the defect.
+- [ ] **USEQ-264DBF6E** — Link recurring defects to component, authoring, process, training, or governance fixes rather than patching pages individually.
+- [ ] **USEQ-F6CFFA0D** — Maintain an accessibility defect backlog with owner, impact, affected surfaces, workaround, target date, and evidence of closure.
+- [ ] **USEQ-CF5FB21E** — Include accessibility incidents in operational and post-incident review when users lose access to essential functions.
+- [ ] **USEQ-0C55957B** — Monitor third-party changes for accessibility regression.
+- [ ] **USEQ-4FE30275** — Review accessibility statements and conformance reports whenever scope or known limitations change.
+- [ ] **USEQ-036ED9BF** — Measure critical-task success and barrier frequency, not only raw issue counts.
+- [ ] **USEQ-D5B4830A** — Prevent accessibility metrics from being gamed by excluding hard pages, states, users, or assistive technologies.
+- [ ] **USEQ-6727CBCA** — Retain sufficient evaluation evidence to support internal assurance, procurement, customer, and regulatory review.
+
+### SEO, discoverability, and ethical search governance
+
+- [ ] **USEQ-B7F56A81** — Define SEO as making legitimate public content discoverable, understandable, and useful; do not treat it as manipulation of ranking systems.
+- [ ] **USEQ-A4774D9F** — Follow applicable search-engine technical requirements, spam policies, and webmaster guidance.
+- [ ] **USEQ-2FE2A2D4** — Prioritize people-first content and task value over keyword density, doorway pages, link schemes, scaled low-value pages, or hidden content.
+- [ ] **USEQ-76C0B794** — Do not promise ranking, indexing, rich results, traffic, or generative-search inclusion because these are not fully controlled by the publisher.
+- [ ] **USEQ-D77DC459** — Ensure search optimization does not reduce accessibility, privacy, security, performance, or content accuracy.
+- [ ] **USEQ-E969C3C9** — Assign owners for technical SEO, editorial quality, structured data, international targeting, migrations, and monitoring.
+- [ ] **USEQ-D33DFAE7** — Document which engines, regional services, vertical search products, and AI or content crawlers matter to the product.
+- [ ] **USEQ-8959440E** — Create a policy for crawler access, content licensing, training use, archival access, and high-volume automated retrieval.
+- [ ] **USEQ-625225E7** — Distinguish crawler directives from authentication and authorization; never rely on crawler compliance to protect confidential information.
+- [ ] **USEQ-E906E553** — Ensure search-visible titles, descriptions, snippets, dates, prices, availability, ratings, and identity claims accurately reflect the page.
+- [ ] **USEQ-0A3AA7F8** — Prevent experiments, personalization, consent states, and geolocation from serving materially misleading content to crawlers or users.
+- [ ] **USEQ-9B0A4681** — Do not cloak by serving deceptive content to crawlers that differs materially from what users receive.
+- [ ] **USEQ-73D5B4DD** — Disclose sponsored, affiliate, user-generated, and automated content where required and apply appropriate link attributes and editorial controls.
+- [ ] **USEQ-A0D8CC51** — Maintain evidence for factual, medical, legal, financial, safety, and other high-impact claims.
+- [ ] **USEQ-36B07DA8** — Use third-party SEO tools as diagnostic aids, not as an authoritative substitute for official guidance or product judgment.
+- [ ] **USEQ-0B3A3885** — Review search practices after major search-engine policy changes and document material decisions.
+
+### Crawlability, indexability, crawler controls, and exposure safety
+
+- [ ] **USEQ-B9CD4463** — Ensure every intended public page is reachable through stable crawlable links or an intentional discovery mechanism.
+- [ ] **USEQ-FB71685A** — Ensure intended indexable pages return a successful status and usable indexable content.
+- [ ] **USEQ-838FA31D** — Ensure pages that must remain private require authentication or equivalent access control.
+- [ ] **USEQ-B4F0B76C** — Use robots.txt in accordance with RFC 9309 and understand that it controls compliant crawling, not confidentiality or authorization.
+- [ ] **USEQ-50530FEB** — Keep robots.txt syntactically valid, reachable, monitored, and consistent across relevant hosts and protocols.
+- [ ] **USEQ-15FD8AF5** — Do not block scripts, styles, images, or other resources required for a crawler to understand and render intended public content.
+- [ ] **USEQ-39597E04** — Use `noindex` or equivalent supported indexing controls for public-but-nonindexable content, and ensure crawlers can retrieve the directive when required.
+- [ ] **USEQ-36224CFC** — Use response-header indexing controls for non-HTML resources where appropriate.
+- [ ] **USEQ-4D234580** — Do not use robots.txt as a substitute for `noindex`, deletion, authentication, or canonicalization.
+- [ ] **USEQ-162168BC** — Prevent staging, preview, search-result, filter, cart, account, administrative, debug, and internal pages from accidental indexing.
+- [ ] **USEQ-314CF702** — Prevent personal, confidential, tokenized, one-time, or sensitive query parameters from entering public indexes, analytics, logs, sitemaps, or links.
+- [ ] **USEQ-85574DF8** — Ensure deleted content returns the intended permanent or temporary status and is removed from sitemaps and internal links.
+- [ ] **USEQ-CFC54B83** — Use temporary unavailability statuses during short maintenance rather than returning misleading success pages.
+- [ ] **USEQ-4539572E** — Avoid soft errors in which a missing, blocked, or failed resource returns a successful status with an error message.
+- [ ] **USEQ-6587FF90** — Handle DNS, TLS, redirect, timeout, and server failures so crawlers do not index unintended fallback or error content.
+- [ ] **USEQ-14629F73** — Bound crawler traffic and expensive URL spaces without hiding important content.
+- [ ] **USEQ-01A25EAE** — Control faceted navigation, calendars, internal search, session identifiers, sort orders, and unbounded parameters that create crawl traps.
+- [ ] **USEQ-FB490C89** — Detect scraper or bot abuse separately from legitimate search crawling and verify crawler identity before granting special treatment.
+- [ ] **USEQ-6908CAC0** — Keep private media and documents outside public URL spaces or protect them independently of page-level directives.
+- [ ] **USEQ-B8CC27A7** — Test crawl and indexing controls from the public network against the deployed production configuration.
+
+### URLs, canonicalization, redirects, site architecture, and links
+
+- [ ] **USEQ-166444D1** — Use stable, human-understandable, consistently encoded URLs without unnecessary identifiers or volatile state.
+- [ ] **USEQ-4D56F18B** — Choose one intended canonical URL for substantially duplicate content and keep canonical signals consistent.
+- [ ] **USEQ-2A892965** — Align canonical declarations, redirects, internal links, sitemaps, alternate-language links, and structured data.
+- [ ] **USEQ-FF9B9125** — Do not canonicalize materially different pages merely to suppress duplicate-content warnings.
+- [ ] **USEQ-621650F8** — Use permanent redirects for permanent moves and temporary redirects only for genuinely temporary routing.
+- [ ] **USEQ-4B6B04A6** — Avoid redirect chains, loops, mass redirects to irrelevant destinations, and redirects that discard essential path or query meaning.
+- [ ] **USEQ-7BDA3D27** — Preserve user intent and equivalent content during redirects and site migrations.
+- [ ] **USEQ-235346A8** — Normalize host, scheme, trailing-slash, case, encoding, and default-document variants consistently.
+- [ ] **USEQ-A21A412A** — Prevent open redirects and untrusted redirect targets.
+- [ ] **USEQ-B5FBA63D** — Make links real, crawlable links with meaningful anchor text when navigation or discovery is intended.
+- [ ] **USEQ-1FD6CF1D** — Do not require pointer-only interaction, client-only events, or form submission for discovery of essential public pages.
+- [ ] **USEQ-DA53A718** — Use a logical information architecture with clear category, hierarchy, breadcrumb, and contextual relationships.
+- [ ] **USEQ-65B7D11F** — Keep important content within a reasonable navigation path without relying solely on sitemaps.
+- [ ] **USEQ-21260A94** — Identify orphan pages and either link, merge, archive, redirect, noindex, or remove them intentionally.
+- [ ] **USEQ-3056A833** — Avoid deceptive internal-link patterns, repetitive keyword stuffing, and hidden links.
+- [ ] **USEQ-79E91255** — Use appropriate attributes for sponsored, untrusted user-generated, and intentionally non-endorsed links.
+- [ ] **USEQ-83F4A9B9** — Check outgoing and internal links for breakage, unsafe destinations, obsolete redirects, and changed ownership.
+- [ ] **USEQ-023C3010** — Prevent expired domains, abandoned subdomains, and dangling DNS or hosting references from becoming takeover or reputation risks.
+- [ ] **USEQ-9256F95C** — Preserve meaningful URLs and redirect mappings long enough to satisfy users, external links, contracts, and retention needs.
+- [ ] **USEQ-D5EEA737** — Document URL ownership and change approval for critical public routes.
+
+### Rendering, JavaScript, mobile parity, and search performance
+
+- [ ] **USEQ-292A2F47** — Ensure essential content, links, metadata, canonical signals, and structured data are available to supported crawlers after rendering.
+- [ ] **USEQ-EAA91E46** — Test both initial server responses and rendered output for pages that depend on client-side execution.
+- [ ] **USEQ-4D7D1F86** — Do not require user gestures, login, unsupported storage, denied consent, or fragile client state for crawlers to access intended public content.
+- [ ] **USEQ-ABD33443** — Ensure rendering failures do not expose empty shells, perpetual loading states, generic errors, or unrelated fallback content.
+- [ ] **USEQ-5E42DAC9** — Use progressive enhancement or an equivalent robust rendering strategy for critical public information where practical.
+- [ ] **USEQ-98189E72** — Avoid dynamic rendering or crawler-specific rendering unless a documented temporary need exists and parity is continuously verified.
+- [ ] **USEQ-08D607D9** — Keep crawler-facing and user-facing content materially equivalent.
+- [ ] **USEQ-26628827** — Ensure mobile and desktop versions contain equivalent primary content, metadata, structured data, alternate text, and indexing directives.
+- [ ] **USEQ-097BA4D0** — Use responsive behavior or explicit alternate relationships consistently when separate mobile URLs exist.
+- [ ] **USEQ-AB375D1C** — Do not hide important mobile content behind interactions unavailable during crawl or rendering.
+- [ ] **USEQ-D60F26B0** — Ensure lazy-loaded content and images can be discovered without unsupported scrolling or interaction.
+- [ ] **USEQ-56F842F4** — Keep critical rendered links in the document structure rather than generating them only after opaque events.
+- [ ] **USEQ-6B6351C1** — Meet approved user-performance budgets and monitor Core Web Vitals using field data where applicable.
+- [ ] **USEQ-C2EB8D2B** — Use the 75th percentile segmented by meaningful device classes and user populations for user-facing performance decisions.
+- [ ] **USEQ-D9711648** — Optimize loading, responsiveness, and visual stability without sacrificing accessibility, correctness, or content completeness.
+- [ ] **USEQ-9DAE647D** — Control third-party scripts, tag managers, ads, consent tools, and experimentation code that can delay rendering or change indexable content.
+- [ ] **USEQ-A58CEC40** — Ensure server-side rendering, pre-rendering, hydration, streaming, and caching produce consistent semantics and metadata.
+- [ ] **USEQ-1F4F7014** — Test rendering and indexing after framework, browser, CDN, bot-detection, consent, or edge-compute changes.
+
+### Sitemaps, metadata, structured data, media, and result presentation
+
+- [ ] **USEQ-3C32DD0A** — Publish sitemaps only when they improve discovery or monitoring, and include only canonical, intended, accessible URLs.
+- [ ] **USEQ-CD50C547** — Keep sitemap modification dates truthful and update files when content changes materially.
+- [ ] **USEQ-F8B7471E** — Split and index large sitemaps within protocol limits and monitor retrieval failures.
+- [ ] **USEQ-7ACEC211** — Remove deleted, redirected, duplicate, noindex, private, and erroring URLs from sitemaps.
+- [ ] **USEQ-E3F49EF9** — Provide accurate unique page titles and concise descriptions that match visible content.
+- [ ] **USEQ-BC78A39A** — Use metadata and social-preview data that accurately identifies the page, image, locale, and publisher.
+- [ ] **USEQ-5BF1A157** — Prevent private data, tokens, internal names, unreleased information, or misleading copy from entering metadata and previews.
+- [ ] **USEQ-C6547A77** — Use structured data only when it accurately describes visible content and meets the applicable feature guidelines.
+- [ ] **USEQ-532EA584** — Validate structured data syntax, required properties, types, URLs, dates, prices, availability, identity, and relationships.
+- [ ] **USEQ-D70319B2** — Keep structured data synchronized with visible content and authoritative backend state.
+- [ ] **USEQ-8F3F7D97** — Do not create fake ratings, reviews, authorship, organizations, products, jobs, events, FAQs, or other entities.
+- [ ] **USEQ-A00E833A** — Use stable identifiers and appropriate same-as or identity references without creating false equivalence.
+- [ ] **USEQ-30CC73DE** — Treat rich-result eligibility as conditional and never as a guaranteed outcome.
+- [ ] **USEQ-4A5CB8A6** — Provide image dimensions, descriptive alternatives, suitable quality, licensing and credit metadata, and stable URLs where relevant.
+- [ ] **USEQ-7F57174C** — Provide accurate video titles, descriptions, thumbnails, durations, transcripts, captions, key moments, and availability where applicable.
+- [ ] **USEQ-2CF8CC0E** — Provide publication, modification, author, publisher, and correction information when relevant to trust and freshness.
+- [ ] **USEQ-10ABDDAA** — Ensure search snippets and previews do not expose content that users cannot legitimately access.
+- [ ] **USEQ-B6CAF88F** — Test metadata and structured data after templates, CMS, localization, product feeds, inventory, or pricing logic changes.
+
+### International and multilingual discoverability
+
+- [ ] **USEQ-8244B358** — Use valid BCP 47 language tags and declare page language and regional variation accurately.
+- [ ] **USEQ-F0424A30** — Use locale-aware content, currency, date, address, units, and terminology rather than mechanical word substitution.
+- [ ] **USEQ-3ABDCE0A** — Provide stable distinct URLs for localized content when independent indexing is intended.
+- [ ] **USEQ-3CA1A6EE** — Use reciprocal alternate-language annotations such as `hreflang` consistently when supported and applicable.
+- [ ] **USEQ-70B062EB** — Include a self-reference and an appropriate fallback where alternate-language annotations require them.
+- [ ] **USEQ-80D06A16** — Ensure canonical and alternate-language signals do not contradict each other.
+- [ ] **USEQ-6CEB7564** — Keep localized pages equivalent in essential content, metadata, structured data, navigation, and accessibility.
+- [ ] **USEQ-7B2A7EE1** — Do not automatically redirect users or crawlers solely by inferred language or location without an accessible override and stable URL.
+- [ ] **USEQ-0D4E0314** — Allow users and crawlers to reach every supported locale through crawlable links.
+- [ ] **USEQ-214B3B45** — Do not treat machine-translated, unreviewed, low-value pages as a scale strategy.
+- [ ] **USEQ-6E51BB7D** — Use qualified human review for high-impact, legal, safety, medical, financial, and culturally sensitive content.
+- [ ] **USEQ-748B12CD** — Preserve translated titles, descriptions, alternate text, captions, structured data, and error content.
+- [ ] **USEQ-516A203A** — Monitor each locale separately for indexing, errors, search demand, content staleness, and broken alternate mappings.
+- [ ] **USEQ-69E6DA5E** — Retire or redirect locales deliberately when support ends, and communicate the change to users.
+
+### Content quality, editorial governance, trust, and provenance
+
+- [ ] **USEQ-72E01ED6** — Give every material public content area an accountable owner, intended audience, purpose, review cadence, and retirement rule.
+- [ ] **USEQ-3203A8EA** — Require original value, factual accuracy, clarity, completeness, and alignment with the user’s likely task.
+- [ ] **USEQ-39D8A36D** — Identify authoritative sources and retain citations or evidence for material claims.
+- [ ] **USEQ-4B623335** — Distinguish fact, opinion, estimate, advertisement, user content, generated content, and uncertainty.
+- [ ] **USEQ-4E963679** — Disclose authorship, editorial responsibility, sponsorship, conflicts, and material automation where relevant.
+- [ ] **USEQ-16010080** — Provide publication, review, update, correction, and expiry dates when freshness matters.
+- [ ] **USEQ-9D49F492** — Review rapidly changing, high-impact, legal, medical, financial, safety, and security content on a risk-based schedule.
+- [ ] **USEQ-B3215B14** — Correct material errors promptly and preserve correction history where user reliance or accountability requires it.
+- [ ] **USEQ-35EC77D7** — Do not publish scaled duplicate, paraphrased, scraped, autogenerated, or thin content without meaningful user value and review.
+- [ ] **USEQ-88073B7A** — Ensure generated content is reviewed for factuality, unsafe advice, plagiarism, licensing, bias, privacy, and fabricated sources.
+- [ ] **USEQ-E4D4D700** — Protect editorial workflows from unauthorized publishing, account takeover, malicious embeds, and content supply-chain compromise.
+- [ ] **USEQ-43033DAF** — Use controlled taxonomies, terminology, metadata, and content models so equivalent concepts remain consistent.
+- [ ] **USEQ-13A01ED0** — Apply plain-language and content-design principles without removing necessary precision.
+- [ ] **USEQ-46372623** — Keep navigation labels, page titles, headings, metadata, and visible content semantically aligned.
+- [ ] **USEQ-4A14B2BB** — Manage content duplication intentionally through reuse, canonicalization, consolidation, or audience-specific differentiation.
+- [ ] **USEQ-3B3E0164** — Archive or remove obsolete content rather than leaving it authoritative by accident.
+- [ ] **USEQ-E3D759B4** — Preserve provenance, approvals, source material, licenses, and change history for regulated or high-trust content.
+- [ ] **USEQ-A56DA435** — Use machine-readable provenance or signed content credentials when authenticity and chain of custody materially matter.
+- [ ] **USEQ-461FBD9D** — Do not represent provenance metadata, watermarks, or detector output as infallible proof of truth or human authorship.
+- [ ] **USEQ-D4854974** — Provide accessible contact, complaint, correction, and takedown routes.
+
+### Migrations, monitoring, incident response, and release gates
+
+- [ ] **USEQ-68F88426** — Create a search and accessibility impact plan before domain, URL, CMS, rendering, design-system, navigation, localization, or content migrations.
+- [ ] **USEQ-635F7843** — Inventory and map old URLs, titles, metadata, canonical signals, alternate-language relationships, structured data, content, and accessibility behaviors.
+- [ ] **USEQ-539B3D6F** — Preserve or intentionally redirect valuable URLs and external references.
+- [ ] **USEQ-C3C380C4** — Test redirects, status codes, canonicalization, sitemaps, robots, noindex, rendering, metadata, structured data, accessibility, and performance before cutover.
+- [ ] **USEQ-B2D6EBB1** — Keep rollback or rapid correction paths for broken public access, indexing, navigation, or critical accessibility.
+- [ ] **USEQ-C8B3010A** — Monitor crawl failures, indexing changes, canonical conflicts, structured-data errors, manual actions, security issues, and traffic anomalies after release.
+- [ ] **USEQ-AA34BD2A** — Monitor critical task accessibility, automated defect trends, support reports, and third-party regressions after release.
+- [ ] **USEQ-42E0CA7F** — Annotate monitoring with releases, migrations, experiments, template changes, and crawler-policy changes.
+- [ ] **USEQ-061489A9** — Investigate material loss of discoverability or accessibility as a product incident rather than assuming it is normal volatility.
+- [ ] **USEQ-EF1F5B4F** — Validate whether an observed search change is caused by technical defects, content changes, policy violations, demand shifts, or external ranking systems before acting.
+- [ ] **USEQ-914703A7** — Do not reverse accessibility, security, privacy, or content-quality controls solely to chase rankings.
+- [ ] **USEQ-8E4B503A** — Retain pre-migration and post-migration evidence and compare representative critical pages and journeys.
+- [ ] **USEQ-22D2A29C** — Define stop, rollback, and escalation criteria before launch.
+- [ ] **USEQ-22F07F8C** — Block release when critical content is inaccessible, unintended private content is indexable, intended public content cannot be rendered, or primary routes produce incorrect status or canonical behavior.
+- [ ] **USEQ-1363AEE7** — Block release when generated metadata, structured data, or page content materially misrepresents identity, price, availability, authorship, reviews, safety, or eligibility.
+- [ ] **USEQ-08B33170** — Require sign-off from accessibility, content, product, security/privacy, and discoverability owners for high-impact migrations.
+- [ ] **USEQ-B8E52DF7** — Review monitoring and issue ownership through the full stabilization period.
+- [ ] **USEQ-92E6A944** — Convert incidents and recurring defects into shared-component, authoring, test, monitoring, and governance improvements.
+
+### Completion rule
+
+- [ ] **USEQ-FF92E18E** — Every applicable control in this document passes with current evidence, or an authorized exception meets all exception requirements.
+- [ ] **USEQ-11FE3AD0** — No open issue in this scope exceeds the approved risk tolerance or violates a mandatory legal, contractual, safety, security, privacy, accessibility, or integrity requirement.
+- [ ] **USEQ-A3C013FA** — Owners have defined ongoing monitoring, reassessment triggers, and review dates so that completion does not become a one-time claim.
+
+## Final Gap Closure — Human Factors, Operator Experience, and Usable Security
+
+_Consolidated from `final consolidated corpus/02-human-experience-accessibility-content-seo-internationalization.md#Final Gap Closure — Human Factors, Operator Experience, and Usable Security`; 182 non-duplicative controls._
+
+### Human-factors governance and context of use
+
+- [ ] **USEQ-427EE1A8** — Identify every human role that develops, configures, operates, administers, supports, audits, responds to incidents in, or is materially affected by the system.
+- [ ] **USEQ-2A552C91** — Document each role’s goals, authority, competence, working conditions, information needs, constraints, and foreseeable errors.
+- [ ] **USEQ-F8D1DFE7** — Study real work rather than relying only on written procedures or stakeholder assumptions.
+- [ ] **USEQ-39A892D6** — Include routine work, peak demand, degraded operation, emergencies, maintenance, recovery, and handover conditions in the context-of-use analysis.
+- [ ] **USEQ-8E8F5314** — Include remote, mobile, shared-device, low-bandwidth, noisy, low-light, high-stress, and interrupted working conditions where they can occur.
+- [ ] **USEQ-F44AD905** — Identify mismatches between work as designed, work as documented, and work as actually performed.
+- [ ] **USEQ-E0D7619B** — Treat recurring workarounds as evidence of a design or process problem rather than automatically as individual noncompliance.
+- [ ] **USEQ-9A16A5C6** — Assign accountable ownership for human-factors risks and corrective actions.
+- [ ] **USEQ-8EC94B9A** — Include representative operators, support staff, administrators, and affected users throughout design and evaluation.
+- [ ] **USEQ-3C5F986B** — Use qualified human-factors or usability expertise when error could create material safety, security, privacy, financial, legal, or availability harm.
+- [ ] **USEQ-77332F89** — Define measurable human-performance outcomes such as task success, error rate, completion time, workload, recovery, comprehension, and trust calibration.
+- [ ] **USEQ-AB0DA53A** — Establish release-blocking thresholds for unacceptable operator error, excessive workload, inaccessible controls, or misleading system feedback.
+- [ ] **USEQ-A813B589** — Reassess the context of use when roles, staffing, automation, interfaces, procedures, locations, or risk levels change.
+- [ ] **USEQ-BA3769AE** — Preserve evidence of human-factors research, design rationale, evaluations, limitations, and unresolved risks.
+
+### Mental workload, attention, and cognitive demand
+
+- [ ] **USEQ-A664B79E** — Design task demand so that ordinary operation does not require sustained overload or unsafe underload.
+- [ ] **USEQ-CADBDD14** — Measure cognitive workload for critical and high-frequency tasks using more than subjective opinion alone where practical.
+- [ ] **USEQ-B620FB9B** — Avoid requiring users to remember information that the system can safely display, derive, or retain.
+- [ ] **USEQ-73F4A01B** — Keep essential context visible while a person makes or confirms a consequential decision.
+- [ ] **USEQ-640548BB** — Minimize unnecessary context switching, mode switching, navigation, re-entry, and reconciliation across tools.
+- [ ] **USEQ-E6D98903** — Group information according to the user’s task and decision sequence rather than internal system structure alone.
+- [ ] **USEQ-A420F8C0** — Present the most decision-relevant information first without hiding material uncertainty or exceptions.
+- [ ] **USEQ-1564BAB3** — Avoid dense displays that force operators to scan irrelevant information during time-critical work.
+- [ ] **USEQ-2EB12A3D** — Avoid fragmented workflows that require manual copying between systems when secure integration is feasible.
+- [ ] **USEQ-47FFC033** — Make current mode, scope, tenant, environment, identity, and target object continuously apparent for high-impact operations.
+- [ ] **USEQ-D97FCDB1** — Distinguish production, testing, simulation, and training environments unmistakably.
+- [ ] **USEQ-BE29D663** — Prevent visual similarity between safe and dangerous actions from causing selection errors.
+- [ ] **USEQ-8221FFF7** — Provide progressive disclosure without concealing information needed to recognize risk.
+- [ ] **USEQ-A23A7EBC** — Preserve user orientation when navigating long or complex workflows.
+- [ ] **USEQ-715B7543** — Support interruption and resumption without losing state, intent, provenance, or required checks.
+- [ ] **USEQ-E16E8D1B** — Mark stale information and display its source and age when freshness affects decisions.
+- [ ] **USEQ-C1794E3F** — Make uncertainty, confidence, data quality, and missing information visible where they affect action.
+- [ ] **USEQ-95832A5E** — Avoid presenting estimates, predictions, or inferred states as confirmed facts.
+- [ ] **USEQ-36BD3262** — Test critical workflows under realistic time pressure, interruptions, and competing demands.
+- [ ] **USEQ-D06DE367** — Monitor whether production workload, queue size, or staffing changes invalidate the evaluated workload assumptions.
+
+### Situation awareness and system-state visibility
+
+- [ ] **USEQ-BE3B3181** — Show what the system is doing, what it has completed, what remains pending, and what failed.
+- [ ] **USEQ-ABA0C499** — Distinguish requested, accepted, queued, executing, completed, partially completed, canceled, rolled back, and indeterminate states.
+- [ ] **USEQ-DFD2097E** — Make hidden automation and background activity visible when it can affect user decisions.
+- [ ] **USEQ-16CF89DB** — Show the scope and consequence of an action before commitment.
+- [ ] **USEQ-5160A553** — Provide previews for bulk, destructive, irreversible, cross-tenant, or high-cost changes.
+- [ ] **USEQ-B76A180E** — Show dependencies, blockers, and downstream effects that a reasonable operator needs to understand.
+- [ ] **USEQ-50AC1C1C** — Indicate whether displayed data is live, cached, replicated, estimated, delayed, or reconciled.
+- [ ] **USEQ-86F123A0** — Expose degraded modes and disabled safeguards prominently.
+- [ ] **USEQ-1C852350** — Ensure status indicators reflect authoritative system state rather than optimistic client assumptions.
+- [ ] **USEQ-AB406DFB** — Prevent success messages from appearing before the authoritative operation succeeds.
+- [ ] **USEQ-12D988CB** — Provide a reliable way to inspect the final result of consequential actions.
+- [ ] **USEQ-F416163A** — Preserve an understandable history of material actions and state transitions.
+- [ ] **USEQ-65FBB13B** — Make concurrent edits, conflicts, locks, and pending approvals visible.
+- [ ] **USEQ-2F4D8421** — Communicate failover, fallback, and recovery state without requiring specialist diagnosis.
+- [ ] **USEQ-C7710710** — Verify that operators can correctly identify abnormal and unsafe states in evaluation.
+
+### Alarms, alerts, notifications, and interruption design
+
+- [ ] **USEQ-F38882AC** — Define a purpose, owner, severity, audience, response, and expiry for every operational alarm or notification.
+- [ ] **USEQ-51B2809E** — Alert only when a recipient can take a meaningful action or needs awareness for a defined decision.
+- [ ] **USEQ-93F20D56** — Prioritize alarms by consequence and urgency rather than by the emitting component’s internal severity.
+- [ ] **USEQ-4A12FEFB** — Use distinct, consistent, and perceivable signals for materially different urgency levels.
+- [ ] **USEQ-02CBA158** — Prevent low-value notifications from obscuring urgent conditions.
+- [ ] **USEQ-B62D2C33** — Correlate duplicate symptoms and suppress cascades without hiding independent failures.
+- [ ] **USEQ-02E00509** — State what happened, who or what is affected, when it began, current severity, and the recommended next action.
+- [ ] **USEQ-B20693F4** — Provide direct access to relevant evidence and runbooks where safe.
+- [ ] **USEQ-A762DBD7** — Avoid alarm text that assumes undocumented tribal knowledge.
+- [ ] **USEQ-E6D37933** — Preserve critical notifications across channel or device failure.
+- [ ] **USEQ-AAB9C8C0** — Ensure acknowledgment does not imply resolution.
+- [ ] **USEQ-734401CD** — Escalate unacknowledged or unresolved alarms according to impact and time.
+- [ ] **USEQ-39882218** — Prevent indefinite silencing, muting, snoozing, or suppression of critical alarms.
+- [ ] **USEQ-AF409BCA** — Record who suppressed an alarm, why, for how long, and under what compensating monitoring.
+- [ ] **USEQ-CC514E43** — Test notification delivery, comprehension, and response under realistic conditions.
+- [ ] **USEQ-8F6C0C32** — Measure nuisance rate, missed-event rate, response time, and operator workload.
+- [ ] **USEQ-3FE97034** — Review alarm floods and repeated dismissals as design defects.
+- [ ] **USEQ-16958561** — Provide accessible visual, auditory, and haptic alternatives where appropriate.
+- [ ] **USEQ-5C37698B** — Avoid relying on color, sound, motion, or a single channel alone for critical information.
+- [ ] **USEQ-AB27A3DF** — Design customer notifications so urgency is accurate and not manipulative.
+
+### Usable security and privacy
+
+- [ ] **USEQ-DACA1500** — Make the secure and privacy-preserving path the easiest ordinary path.
+- [ ] **USEQ-C8DCD39E** — Avoid security controls that routinely force unsafe workarounds.
+- [ ] **USEQ-0426D010** — Explain security and privacy consequences at the moment a person can act on them.
+- [ ] **USEQ-0EA95712** — Use language understandable to the intended audience rather than internal security terminology.
+- [ ] **USEQ-0C50C691** — Distinguish recommendations, warnings, hard prohibitions, and legally required choices.
+- [ ] **USEQ-456F31EA** — Explain why a requested permission, data item, or high-risk action is necessary.
+- [ ] **USEQ-6D1E347D** — Request permissions in context and no earlier or broader than required.
+- [ ] **USEQ-7348B9D9** — Show the exact account, organization, tenant, resource, audience, scope, duration, and privilege being granted.
+- [ ] **USEQ-A01FE895** — Make privilege escalation, impersonation, delegation, sharing, export, and public exposure unmistakable.
+- [ ] **USEQ-6E14F14E** — Provide safe defaults and avoid preselecting broad access or unnecessary data use.
+- [ ] **USEQ-93B51E78** — Make revocation, withdrawal, logout, deletion, and recovery easy to find and complete.
+- [ ] **USEQ-105BAE9F** — Prevent consent fatigue by removing unnecessary prompts and combining only genuinely related choices.
+- [ ] **USEQ-3800D247** — Do not train users to approve unexpected authentication or authorization prompts reflexively.
+- [ ] **USEQ-0FD9EE53** — Make authentication prompts resistant to misdirection and phishing where the platform permits.
+- [ ] **USEQ-707AB163** — Show enough transaction context in confirmation steps to detect substitution or tampering.
+- [ ] **USEQ-084225DB** — Avoid requiring secrets to be transcribed, shared, or stored insecurely.
+- [ ] **USEQ-7D94E516** — Support password managers, accessible authenticators, and secure recovery methods.
+- [ ] **USEQ-7BFE9065** — Design account recovery to resist social engineering without excluding legitimate users.
+- [ ] **USEQ-A15BEB43** — Provide clear explanations and safe remediation when access is denied.
+- [ ] **USEQ-4F91139B** — Do not reveal protected existence, membership, identity, or resource details through denial messages.
+- [ ] **USEQ-2D3C741B** — Warn before data leaves an expected boundary or is shared with a new audience or provider.
+- [ ] **USEQ-C567208A** — Make privacy settings reflect actual backend behavior and downstream processing.
+- [ ] **USEQ-DEA38BEB** — Test whether users correctly understand sharing, consent, deletion, retention, and recovery outcomes.
+- [ ] **USEQ-9124EC32** — Monitor security-control abandonment, repeated bypass, support burden, and error as usability indicators.
+
+### Human error prevention, tolerance, and recovery
+
+- [ ] **USEQ-438E928C** — Identify foreseeable slips, mistakes, omissions, mode errors, sequence errors, and misinterpretations for critical tasks.
+- [ ] **USEQ-91B96F84** — Eliminate error opportunities through design before relying on warnings or training.
+- [ ] **USEQ-631BFFE1** — Constrain inputs and actions to valid ranges and states where practical.
+- [ ] **USEQ-E2E7D7E8** — Use independent confirmation for actions whose harm is severe and not readily reversible.
+- [ ] **USEQ-CE0F0834** — Make confirmations specific to the action rather than generic approval prompts.
+- [ ] **USEQ-2356FC80** — Avoid confirmation prompts so frequent that users approve them without reading.
+- [ ] **USEQ-6DC3E16D** — Provide undo, rollback, draft, simulation, staging, or reversible commitment where feasible.
+- [ ] **USEQ-A73F5710** — Preserve work after validation errors, session expiry, network loss, or recoverable failure.
+- [ ] **USEQ-8C2C03F4** — Identify the exact error, its scope, what remains valid, and the safest recovery path.
+- [ ] **USEQ-8FBF78F7** — Do not blame the user for system ambiguity, stale state, or conflicting constraints.
+- [ ] **USEQ-2BD6C29C** — Prevent retry from duplicating charges, messages, records, or destructive effects.
+- [ ] **USEQ-88382116** — Make partial completion and uncertain outcomes explicit.
+- [ ] **USEQ-967EE82E** — Provide reconciliation when the system cannot know whether an external action completed.
+- [ ] **USEQ-A8F84FD1** — Prevent one mistaken bulk selection from affecting an unbounded population.
+- [ ] **USEQ-5B6A2F99** — Use safe limits, staged execution, previews, and sampling for mass operations.
+- [ ] **USEQ-577EA46D** — Distinguish recoverable warnings from conditions that must block action.
+- [ ] **USEQ-CF95BD3A** — Preserve forensic and audit evidence while still enabling safe correction.
+- [ ] **USEQ-A8477083** — Analyze near misses and recovered errors, not only incidents that caused harm.
+- [ ] **USEQ-7E1BE30B** — Convert recurring user errors into design improvements, tests, and controls.
+
+### Human–automation interaction and decision support
+
+- [ ] **USEQ-7434557A** — Define which decisions remain human, which are automated, and which require shared control.
+- [ ] **USEQ-E4F11AA5** — Assign accountability for outcomes even when automation selects or executes the action.
+- [ ] **USEQ-9F72B693** — Make automation boundaries, authority, inputs, limitations, and failure modes understandable to operators.
+- [ ] **USEQ-C8E8E618** — Prevent operators from assuming automation is correct merely because it is authoritative or statistically sophisticated.
+- [ ] **USEQ-3E6BC74A** — Prevent operators from rejecting reliable automation merely because its rationale is unfamiliar.
+- [ ] **USEQ-2CC2C206** — Calibrate trust through accurate performance information, limitations, and feedback.
+- [ ] **USEQ-049ECDC6** — Display the evidence, rules, assumptions, and uncertainty needed to review consequential recommendations.
+- [ ] **USEQ-B9894D69** — Allow a qualified person to challenge, override, defer, or escalate automation where appropriate.
+- [ ] **USEQ-A3AB4FAD** — Record overrides and outcomes without discouraging justified intervention.
+- [ ] **USEQ-9C53B1F0** — Detect automation bias, complacency, skill decay, and out-of-the-loop loss of awareness.
+- [ ] **USEQ-240CA3B2** — Preserve manual competence and fallback procedures where automation failure would be material.
+- [ ] **USEQ-6D6B3F70** — Avoid requiring humans to monitor highly reliable automation continuously for rare events without effective attention support.
+- [ ] **USEQ-65264138** — Design handoff from automation to human control with sufficient time, context, and authority.
+- [ ] **USEQ-40CA4CDB** — Prevent sudden transfer of control when the person cannot reasonably regain situation awareness.
+- [ ] **USEQ-D09F15F2** — Define safe behavior when automation and human instructions conflict.
+- [ ] **USEQ-D77DF566** — Test automation interaction across normal, edge, degraded, and adversarial conditions.
+- [ ] **USEQ-9BF88D5A** — Monitor whether real-world automation performance or operator behavior departs from evaluated assumptions.
+
+### Staffing, fatigue, shifts, and handovers
+
+- [ ] **USEQ-2754CC69** — Staff critical functions at a level that permits safe operation, review, incident response, leave, and training.
+- [ ] **USEQ-D84F078F** — Avoid depending on sustained overtime or chronic interruption to maintain required service levels.
+- [ ] **USEQ-E4E634C5** — Identify tasks whose error likelihood rises materially with fatigue, isolation, monotony, or time pressure.
+- [ ] **USEQ-0FABCB71** — Set workload and shift practices appropriate to the consequences of error.
+- [ ] **USEQ-0DF978DF** — Ensure critical decisions can receive a second qualified review when risk warrants it.
+- [ ] **USEQ-1C4167A5** — Provide overlap and structured handover for ongoing incidents, migrations, releases, and high-risk operations.
+- [ ] **USEQ-76A1AB5D** — Include current state, recent changes, unresolved alarms, risks, decisions, and next actions in handover records.
+- [ ] **USEQ-EE688BD3** — Verify that the receiving person understands and accepts the handover.
+- [ ] **USEQ-68B07B41** — Avoid changing too many critical roles simultaneously without continuity controls.
+- [ ] **USEQ-2F7EFB21** — Provide backup personnel for every critical operational capability.
+- [ ] **USEQ-4D83FB81** — Detect and address unsafe on-call load, alert burden, and repeated sleep disruption.
+- [ ] **USEQ-86BFA927** — Enable responders to declare themselves unfit or unavailable without retaliation.
+- [ ] **USEQ-CDAF1A2F** — Include contractors, suppliers, and outsourced operators in staffing and handover design.
+- [ ] **USEQ-69D2A7A8** — Review human-capacity assumptions before launches, seasonal peaks, migrations, and organizational changes.
+
+### Procedures, training, and competence in use
+
+- [ ] **USEQ-2B3CE832** — Keep procedures aligned with the actual system, interfaces, permissions, and failure modes.
+- [ ] **USEQ-090057F0** — Make the authoritative procedure easy to locate during time-critical work.
+- [ ] **USEQ-B6DF1544** — Distinguish mandatory steps from optional guidance.
+- [ ] **USEQ-10C48526** — Explain the purpose and hazard controlled by critical steps.
+- [ ] **USEQ-3B4727FD** — Validate procedures through realistic walkthroughs and simulations.
+- [ ] **USEQ-5E37EAFF** — Train personnel on abnormal, degraded, emergency, and recovery conditions, not only routine success paths.
+- [ ] **USEQ-A4F91F23** — Assess demonstrated competence rather than attendance alone.
+- [ ] **USEQ-F11266F2** — Refresh training when the system, threat, procedure, or role materially changes.
+- [ ] **USEQ-0AA2E884** — Provide safe practice environments for high-impact operations.
+- [ ] **USEQ-C691A030** — Ensure simulations cannot affect production data or users.
+- [ ] **USEQ-9754BE06** — Include communication, escalation, evidence preservation, and customer impact in exercises.
+- [ ] **USEQ-C5B812F6** — Capture exercise findings and verify corrective-action effectiveness.
+- [ ] **USEQ-56926CF3** — Avoid procedures so complex or lengthy that compliance is unrealistic under actual conditions.
+- [ ] **USEQ-141DC9C4** — Provide concise checklists for infrequent high-risk tasks while preserving detailed supporting guidance.
+- [ ] **USEQ-BD879838** — Test whether new personnel can perform critical tasks without undocumented assistance.
+
+### Inclusive operator and workforce experience
+
+- [ ] **USEQ-0484AE31** — Make internal and administrative tools meet an explicit accessibility target proportionate to their importance.
+- [ ] **USEQ-7E095AAC** — Include workers with disabilities in evaluation of critical tools and procedures.
+- [ ] **USEQ-32C2F9AE** — Provide alternatives to audio, visual, fine-motor, memory, speech, and biometric interaction where appropriate.
+- [ ] **USEQ-0CA3DF0E** — Ensure emergency and security procedures are accessible.
+- [ ] **USEQ-BC3E5A49** — Avoid role requirements that exclude people unnecessarily when the barrier can be removed by design or accommodation.
+- [ ] **USEQ-0AC37768** — Support language, literacy, cultural, and domain-knowledge differences among intended operators.
+- [ ] **USEQ-2370BDFB** — Use terminology consistently across interfaces, documentation, alerts, and training.
+- [ ] **USEQ-58670489** — Avoid humor, idiom, abbreviations, and culturally specific assumptions in safety- or security-critical instructions.
+- [ ] **USEQ-0946EC5B** — Provide accessible accommodations without weakening accountability or security.
+- [ ] **USEQ-E4E1E40D** — Protect health, disability, and accommodation information from unnecessary disclosure.
+- [ ] **USEQ-511286BE** — Evaluate whether productivity metrics penalize accessibility needs, careful review, mentoring, or incident-prevention work.
+- [ ] **USEQ-CF9A3C7A** — Provide accessible reporting, escalation, and support channels.
+
+### Human-factors assurance and release gates
+
+- [ ] **USEQ-BB1DA3B6** — Define representative tasks, roles, environments, data, devices, and stress conditions for evaluation.
+- [ ] **USEQ-FA348CF7** — Combine observation, task-performance measures, interviews, workload assessment, error analysis, and production evidence.
+- [ ] **USEQ-1FA1F50C** — Include novice, experienced, occasional, and substitute users where their behavior differs materially.
+- [ ] **USEQ-8E0AE768** — Evaluate critical tasks using the exact production interface and configuration.
+- [ ] **USEQ-5B8BCABC** — Record deviations between test conditions and real operation.
+- [ ] **USEQ-FE495998** — Do not approve a critical workflow solely because trained designers or developers can complete it.
+- [ ] **USEQ-EE93F582** — Treat repeated confusion, unsafe workaround, alarm dismissal, or recovery failure as a release blocker when impact is material.
+- [ ] **USEQ-CA8D6F84** — Re-evaluate human performance after major interface, staffing, automation, or process changes.
+- [ ] **USEQ-15D04E70** — Monitor task failure, support demand, near misses, overrides, abandonment, and recovery after launch.
+- [ ] **USEQ-1364D5A3** — Preserve a human-factors risk register and link unresolved risks to owners, monitoring, and expiry.
+- [ ] **USEQ-C01D9ECD** — Require independent review when human error could create catastrophic or systemic harm.
+- [ ] **USEQ-33BC0B54** — Include human-factors evidence in production-readiness and assurance cases.
+
 ## Standards and source references
 
 - [W3C Web Content Accessibility Guidelines 2.2](https://www.w3.org/TR/WCAG22/)

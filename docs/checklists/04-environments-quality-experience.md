@@ -160,7 +160,7 @@ OWASP ASVS 5.0.0 is the current stable application-security verification standar
 - [ ] **PRC-13-014** — Browser storage contains no unnecessary sensitive data.
 - [ ] **PRC-13-015** — Logout and account deletion clear appropriate client state.
 - [ ] **PRC-13-016** — Client-side authorization is never treated as the security boundary.
-- [ ] **PRC-13-017** — JavaScript-disabled or failed-script behavior degrades acceptably where required.
+- [ ] **PRC-13-017** — Client-side execution being unavailable or failing degrades acceptably where required.
 - [ ] **PRC-13-018** — Third-party script failure does not break critical operation unnecessarily.
 - [ ] **PRC-13-019** — No unhandled exceptions or material console errors remain.
 - [ ] **PRC-13-020** — Source maps, diagnostic data, and stack traces are appropriately restricted.

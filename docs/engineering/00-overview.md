@@ -2,7 +2,7 @@
 
 This is the start-to-finish path for evaluating a software product across its full lifecycle. Complete phases 1–16 in order, then run the existing production-readiness review before release approval.
 
-The integrated corpus contains **6,338 unique controls**: **4,917 lifecycle and quality controls** with `USEQ-` IDs plus **1,421 production-readiness controls** with `PRC-` IDs. The import reviewed 14,132 checkbox lines from 197 source documents and removed repeated boilerplate, explicit consolidated copies, mirrored production controls, and exact overlaps.
+The integrated corpus contains **10,042 unique controls**: **8,621 lifecycle and quality controls** with `USEQ-` IDs plus **1,421 production-readiness controls** with `PRC-` IDs. The import reviewed 25,359 checkbox lines from 215 source documents and removed repeated boilerplate, explicit consolidated copies, mirrored production controls, and exact overlaps.
 
 ## How to use the sequence
 
@@ -24,22 +24,22 @@ Specialized controls remain in the same journey rather than becoming separate pr
 
 | Phase | Category | Unique controls |
 | ---: | --- | ---: |
-| 1 | [Governance and foundations](01-governance-and-foundations.md) | 423 |
+| 1 | [Governance and foundations](01-governance-and-foundations.md) | 638 |
 | 2 | [Product and requirements](02-product-and-requirements.md) | 105 |
-| 3 | [User experience, web, and content](03-user-experience-web-and-content.md) | 534 |
+| 3 | [User experience, web, and content](03-user-experience-web-and-content.md) | 1,037 |
 | 4 | [Architecture and design](04-architecture-and-design.md) | 241 |
-| 5 | [Code quality and implementation](05-code-quality-and-implementation.md) | 495 |
-| 6 | [Application services and APIs](06-application-services-and-apis.md) | 189 |
-| 7 | [Data and information lifecycle](07-data-and-information-lifecycle.md) | 401 |
-| 8 | [Security and cryptography](08-security-and-cryptography.md) | 503 |
+| 5 | [Code quality and implementation](05-code-quality-and-implementation.md) | 839 |
+| 6 | [Application services and APIs](06-application-services-and-apis.md) | 332 |
+| 7 | [Data and information lifecycle](07-data-and-information-lifecycle.md) | 778 |
+| 8 | [Security and cryptography](08-security-and-cryptography.md) | 916 |
 | 9 | [Privacy and data protection](09-privacy-and-data-protection.md) | 136 |
-| 10 | [Verification and testing](10-verification-and-testing.md) | 213 |
-| 11 | [Developer experience, platform, and delivery](11-developer-experience-platform-and-delivery.md) | 387 |
-| 12 | [Operations, SRE, and support](12-operations-sre-and-support.md) | 226 |
-| 13 | [Documentation and knowledge](13-documentation-and-knowledge.md) | 120 |
+| 10 | [Verification and testing](10-verification-and-testing.md) | 636 |
+| 11 | [Developer experience, platform, and delivery](11-developer-experience-platform-and-delivery.md) | 752 |
+| 12 | [Operations, SRE, and support](12-operations-sre-and-support.md) | 581 |
+| 13 | [Documentation and knowledge](13-documentation-and-knowledge.md) | 241 |
 | 14 | [Trust, safety, and ecosystems](14-trust-safety-and-ecosystems.md) | 235 |
-| 15 | [AI, ML, and AI-assisted development](15-ai-ml-and-ai-assisted-development.md) | 343 |
-| 16 | [Specialized domains and release assurance](16-specialized-domains-and-release-assurance.md) | 366 |
+| 15 | [AI, ML, and AI-assisted development](15-ai-ml-and-ai-assisted-development.md) | 632 |
+| 16 | [Specialized domains and release assurance](16-specialized-domains-and-release-assurance.md) | 522 |
 | Final release review | [Production readiness](../checklists/01-release-foundations.md) | 1,421 |
 
 ## Decision rule
