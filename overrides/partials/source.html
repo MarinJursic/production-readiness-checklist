@@ -1,14 +1,14 @@
 {# Explicit repository-star action in the header source slot. #}
 <a
   href="{{ config.repo_url }}"
-  class="md-source prc-star prc-star--header"
+  class="prc-header-star"
   title="Star this repository on GitHub"
   aria-label="Star this repository on GitHub"
   target="_blank"
   rel="noopener noreferrer"
 >
-  <span class="md-source__icon md-icon" aria-hidden="true">
+  <span class="prc-header-star__icon md-icon" aria-hidden="true">
     {% include ".icons/material/star-outline.svg" %}
   </span>
-  <span class="md-source__repository">Star</span>
+  <span class="prc-header-star__label">Star</span>
 </a>
