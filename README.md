@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/assets/hero.svg" alt="Production Readiness Checklist — Ship with evidence, not optimism" width="100%">
+<img src="docs/assets/social-card.png" alt="Production Readiness Checklist — Ship with evidence, not optimism" width="100%">
 
 # Production Readiness Checklist
 
@@ -9,9 +9,12 @@
 [![Checklist](https://img.shields.io/badge/checks-1%2C421-2563eb)](docs/checklists/01-release-foundations.md)
 [![Validate](https://github.com/MarinJursic/production-readiness-checklist/actions/workflows/validate.yml/badge.svg)](https://github.com/MarinJursic/production-readiness-checklist/actions/workflows/validate.yml)
 [![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-0f766e)](https://marinjursic.github.io/production-readiness-checklist/)
+[![GitHub stars](https://img.shields.io/github/stars/MarinJursic/production-readiness-checklist?logo=github&color=f59e0b)](https://github.com/MarinJursic/production-readiness-checklist)
 [![License: MIT](https://img.shields.io/badge/license-MIT-f59e0b.svg)](LICENSE)
 
 [Start the checklist](docs/checklists/01-release-foundations.md) · [Use with Claude or another AI](docs/guides/ai-assisted-review.md) · [Copy a release template](docs/records/release-assessment.md)
+
+⭐ [Star this project](https://github.com/MarinJursic/production-readiness-checklist) · [Share on LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fmarinjursic.github.io%2Fproduction-readiness-checklist%2F) · [Share on X](https://twitter.com/intent/tweet?text=Production%20Readiness%20Checklist%3A%201%2C421%20evidence-driven%20checks%20for%20shipping%20web%20applications%20with%20confidence.&url=https%3A%2F%2Fmarinjursic.github.io%2Fproduction-readiness-checklist%2F)
 
 </div>
 
@@ -111,5 +114,9 @@ This project is engineering guidance, not legal advice, a certification, or a su
 ## Contributing
 
 Corrections, clearer controls, stronger evidence examples, and additional standards mappings are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request. Please report vulnerabilities privately as described in [SECURITY.md](SECURITY.md).
+
+## Help it reach more teams
+
+If this checklist prevents one avoidable production incident, consider [starring the repository](https://github.com/MarinJursic/production-readiness-checklist), sharing the [documentation site](https://marinjursic.github.io/production-readiness-checklist/), or sending it to a team preparing a launch. GitHub also exposes a **Cite this repository** action using [CITATION.cff](CITATION.cff).
 
 Released under the [MIT License](LICENSE).
