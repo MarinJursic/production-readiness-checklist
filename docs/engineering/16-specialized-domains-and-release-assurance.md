@@ -542,6 +542,205 @@ _Consolidated from `quality standards/16-release-production/06-go-conditional-go
 - [ ] **USEQ-F38CE10F** — Required legal, regulatory, contractual, privacy, accessibility, safety, or security approval is absent.
 - [ ] **USEQ-6E882462** — The team relies on "we will monitor it" without a concrete, tested detection and mitigation path.
 
+## Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services
+
+_Consolidated from `final consolidated corpus/11-conditional-specialized-safety-critical-regulated-domains.md#Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services`; 156 non-duplicative controls._
+
+### Applicability of this specialized module
+
+- [ ] **USEQ-75FBD07C** — Apply the scientific and computational reproducibility controls when software creates, transforms, analyzes, simulates, or publishes evidence used for research, engineering, medicine, policy, finance, safety, or other material conclusions.
+- [ ] **USEQ-E2073ED7** — Apply the digital-credential and trust-service controls when software issues, stores, presents, verifies, signs, seals, timestamps, notarizes, or relies on portable cryptographic claims.
+- [ ] **USEQ-CC2A5D3C** — Document which sections apply, the intended assurance level, legal context, relying parties, and consequences of error.
+- [ ] **USEQ-6FD0AD80** — Obtain qualified domain, statistical, cryptographic, identity, legal, and accessibility review where the stakes warrant it.
+
+### Research and computational governance
+
+- [ ] **USEQ-22EC4A27** — Define the research question, hypothesis, intended use, decision context, stakeholders, and prohibited interpretations before analysis.
+- [ ] **USEQ-03CB3B9C** — Distinguish exploratory, confirmatory, operational, and regulatory analysis.
+- [ ] **USEQ-E60FC501** — Predefine primary outcomes, inclusion criteria, exclusions, transformations, and stopping rules for confirmatory work where appropriate.
+- [ ] **USEQ-3CEE0B8F** — Register or preserve time-stamped analysis plans when undisclosed flexibility could distort conclusions.
+- [ ] **USEQ-B2EFE726** — Disclose conflicts of interest, sponsorship, incentives, and material prior beliefs.
+- [ ] **USEQ-F7A3E9DF** — Obtain required ethics, privacy, safety, legal, data-access, and participant approvals.
+- [ ] **USEQ-B67B4198** — Define authorship, contribution, review, data stewardship, and correction responsibilities.
+- [ ] **USEQ-1E65593D** — Protect the ability to report negative, null, inconvenient, or contradictory results.
+- [ ] **USEQ-6C67A496** — Prohibit fabrication, falsification, selective deletion, deceptive presentation, and undisclosed result manipulation.
+- [ ] **USEQ-E736C3A5** — Preserve decisions and deviations from the original plan with rationale.
+- [ ] **USEQ-859AA9C7** — Define correction, retraction, and downstream-notification procedures.
+
+### Data provenance and research integrity
+
+- [ ] **USEQ-C0B40BD6** — Record the origin, collection method, time, population, sampling, consent, rights, instruments, and custodianship of input data.
+- [ ] **USEQ-799CC460** — Preserve raw or source data where lawful and necessary for verification.
+- [ ] **USEQ-3AFF5D69** — Separate source data from cleaned, transformed, imputed, labeled, and derived data.
+- [ ] **USEQ-1B66E032** — Version data sets and assign immutable identifiers or digests.
+- [ ] **USEQ-58289267** — Record every material transformation, parameter, rule, exclusion, and manual correction.
+- [ ] **USEQ-B1A1ADE9** — Preserve metadata needed to interpret units, codes, missingness, uncertainty, calibration, and measurement conditions.
+- [ ] **USEQ-FD67EB4A** — Identify selection, survivorship, measurement, labeling, and missing-data biases.
+- [ ] **USEQ-8EAB17B5** — Validate data integrity through checksums, constraints, reconciliation, and representative review.
+- [ ] **USEQ-96CE023A** — Protect participant and confidential data while retaining sufficient verification evidence.
+- [ ] **USEQ-0AEEC3E1** — Record access, export, sharing, retention, legal hold, and deletion decisions.
+- [ ] **USEQ-12965298** — Ensure synthetic or simulated data is labeled and not confused with observed data.
+- [ ] **USEQ-ECC129AC** — Maintain provenance when data passes through suppliers, instruments, platforms, or collaborators.
+
+### Code, model, workflow, and environment reproducibility
+
+- [ ] **USEQ-B736D113** — Version all source code, scripts, notebooks, queries, models, prompts, configuration, workflow definitions, and analysis documents.
+- [ ] **USEQ-99DC8215** — Record exact dependencies, operating environment, hardware-relevant behavior, random seeds, locale, time zone, and numerical settings.
+- [ ] **USEQ-D619E4EE** — Use immutable artifacts and environment descriptions sufficient for reconstruction.
+- [ ] **USEQ-89F501C0** — Avoid hidden manual steps and undocumented interactive state.
+- [ ] **USEQ-CD20CF4C** — Convert critical notebook or exploratory steps into reviewable, repeatable workflows.
+- [ ] **USEQ-DF7C3CCE** — Record external services, data versions, model endpoints, and provider behavior relied upon.
+- [ ] **USEQ-EA49C886** — Preserve intermediate outputs needed to diagnose and independently verify results.
+- [ ] **USEQ-A5E603FC** — Make pipelines fail visibly on missing, stale, malformed, or incompatible inputs.
+- [ ] **USEQ-B8C41BE3** — Use deterministic execution where scientifically appropriate and record unavoidable nondeterminism.
+- [ ] **USEQ-A4FE6369** — Quantify sensitivity to seeds, ordering, hardware, precision, and implementation differences where relevant.
+- [ ] **USEQ-8B7B27AC** — Preserve build and execution logs with timestamps and artifact identifiers.
+- [ ] **USEQ-A075D067** — Test reconstruction from a clean environment.
+- [ ] **USEQ-4F2985C0** — Maintain migration plans for obsolete formats, dependencies, hardware, and services.
+
+### Statistical and analytical validity
+
+- [ ] **USEQ-73892384** — Use methods appropriate to the design, data, assumptions, sample, and intended inference.
+- [ ] **USEQ-0288301B** — State assumptions and test or justify them.
+- [ ] **USEQ-937EF1C5** — Distinguish association, prediction, causal effect, and mechanism.
+- [ ] **USEQ-B973FBCE** — Avoid causal language when the design does not support it.
+- [ ] **USEQ-2152BD91** — Define the population to which results may generalize.
+- [ ] **USEQ-2BEA31BC** — Address sampling bias, confounding, dependence, censoring, clustering, and repeated measurement where relevant.
+- [ ] **USEQ-7DF3111E** — Justify sample size and power or precision for confirmatory work.
+- [ ] **USEQ-43A3105F** — Report effect sizes and uncertainty, not significance labels alone.
+- [ ] **USEQ-3D01DFEE** — Control or disclose multiplicity, repeated testing, subgroup search, and adaptive analysis.
+- [ ] **USEQ-A8BAA9E5** — Distinguish prespecified from post hoc analyses.
+- [ ] **USEQ-1C27B4EA** — Validate model assumptions, calibration, discrimination, residuals, and stability.
+- [ ] **USEQ-47485FE7** — Use held-out, external, temporal, or prospective validation appropriate to the claim.
+- [ ] **USEQ-75EECCDF** — Avoid leakage between training, validation, test, and future data.
+- [ ] **USEQ-BCDA51BA** — Assess robustness to reasonable alternative preprocessing, models, exclusions, and parameters.
+- [ ] **USEQ-27E7E9A7** — Report missing data, exclusions, failures, and sensitivity analyses.
+- [ ] **USEQ-C5DE8CA3** — Avoid misleading axes, aggregation, smoothing, scales, truncation, or visual emphasis.
+- [ ] **USEQ-B8334A46** — Make tables and figures accessible and interpretable without color alone.
+- [ ] **USEQ-2A24761B** — Have material calculations independently reviewed or reproduced.
+
+### Replication, artifacts, and publication
+
+- [ ] **USEQ-D22F346B** — Define the materials needed for an independent party to reproduce or replicate the result.
+- [ ] **USEQ-0B22A42C** — Provide data, code, environment, parameters, documentation, and expected outputs unless restricted for a documented reason.
+- [ ] **USEQ-3D4A2C29** — Use durable repositories, persistent identifiers, licenses, and citation information.
+- [ ] **USEQ-2473255B** — State access restrictions and provide a lawful controlled-access process where possible.
+- [ ] **USEQ-FF062A21** — Validate shared artifacts from a clean environment before publication.
+- [ ] **USEQ-A9A1F3FE** — Include machine-readable metadata and provenance.
+- [ ] **USEQ-974F199E** — Preserve original and corrected versions with clear status.
+- [ ] **USEQ-21A6AB1A** — Record known limitations, unsupported uses, uncertainty, and negative findings.
+- [ ] **USEQ-ED92B2E3** — Link publications and decisions to exact artifact and data versions.
+- [ ] **USEQ-D88815E2** — Monitor material downstream use and issue corrections when a defect changes conclusions.
+- [ ] **USEQ-386A9BCD** — Avoid claiming reproducibility merely because files were uploaded.
+- [ ] **USEQ-D66C65D4** — Use independent artifact review or replication for high-impact conclusions where feasible.
+
+### Digital credential ecosystem governance
+
+- [ ] **USEQ-01B4FBC4** — Define issuers, holders, subjects, verifiers, relying parties, registries, wallets, trust frameworks, and governance authorities.
+- [ ] **USEQ-6FF86021** — Define the legal and semantic meaning of each credential type and each claim.
+- [ ] **USEQ-BC76C6E3** — Specify who is authorized to issue, suspend, revoke, renew, update, and verify credentials.
+- [ ] **USEQ-146AF17B** — Define assurance requirements for identity proofing, source evidence, authentication, authorization, and issuance.
+- [ ] **USEQ-F3A59165** — Prevent a technically valid credential from implying a broader claim than the issuer established.
+- [ ] **USEQ-698D6079** — Establish governance for schemas, namespaces, identifiers, trust lists, status methods, and dispute resolution.
+- [ ] **USEQ-61D8F4B6** — Define liability, support, incident, correction, and termination responsibilities among ecosystem participants.
+- [ ] **USEQ-FAC43689** — Avoid one proprietary wallet, ledger, registry, or verifier becoming an unexamined universal trust anchor.
+- [ ] **USEQ-E4E575DA** — Provide interoperability and exit paths proportionate to the credential’s expected lifetime.
+- [ ] **USEQ-FFB35851** — Document jurisdictional, accessibility, privacy, records, and consumer-protection obligations.
+
+### Credential issuance and lifecycle
+
+- [ ] **USEQ-7F2CC1B2** — Verify source evidence and issuer authority before issuance.
+- [ ] **USEQ-0D3FDB91** — Bind the credential to the correct subject or holder using an assurance process appropriate to harm.
+- [ ] **USEQ-D893965C** — Collect and disclose only claims necessary for the credential purpose.
+- [ ] **USEQ-3911661A** — Use stable, governed schemas and unambiguous semantics.
+- [ ] **USEQ-92C1B996** — Include issuer, validity, status, version, and intended-use information.
+- [ ] **USEQ-2DA81E4D** — Protect issuer signing keys using controls proportionate to credential impact and volume.
+- [ ] **USEQ-BB83CC0C** — Separate test and production issuers, keys, identifiers, and trust lists.
+- [ ] **USEQ-C228C307** — Prevent duplicate, conflicting, backdated, or unauthorized issuance.
+- [ ] **USEQ-FA251CC8** — Record issuance evidence and audit events without storing unnecessary subject data.
+- [ ] **USEQ-829899FE** — Provide secure correction, renewal, suspension, and revocation.
+- [ ] **USEQ-0F08A687** — Define behavior after issuer merger, compromise, insolvency, renaming, or retirement.
+- [ ] **USEQ-75AC7967** — Ensure credentials remain verifiable for their required lifetime or clearly state limits.
+- [ ] **USEQ-5FC720EB** — Notify affected parties when a credential type, issuer key, or trust framework is compromised.
+
+### Wallets, holders, and credential storage
+
+- [ ] **USEQ-EDD63A64** — Protect holder keys and credentials against theft, malware, backup leakage, coercion, and unauthorized synchronization.
+- [ ] **USEQ-382CDFE5** — Use strong, accessible holder authentication appropriate to risk.
+- [ ] **USEQ-C381ED25** — Provide secure recovery without enabling account takeover or issuer surveillance.
+- [ ] **USEQ-AD6C7346** — Explain which claims will be presented, to whom, for what purpose, and with what linkability.
+- [ ] **USEQ-9A840858** — Obtain meaningful holder authorization before presentation except where lawfully designed otherwise.
+- [ ] **USEQ-607BBB3A** — Support selective disclosure or data minimization where the ecosystem and threat model permit it.
+- [ ] **USEQ-A61D2298** — Avoid presenting stable identifiers unnecessarily across unrelated verifiers.
+- [ ] **USEQ-27926632** — Prevent one verifier from silently requesting broader claims than the holder expects.
+- [ ] **USEQ-08205AC1** — Make credential status, expiry, issuer, and trust level understandable.
+- [ ] **USEQ-7088AFC1** — Provide accessible rendering, alternative modalities, and support for assistive technology.
+- [ ] **USEQ-2F8BCF2A** — Protect credentials during device migration, backup, restoration, loss, and replacement.
+- [ ] **USEQ-5B79CEF1** — Provide a safe way to remove credentials and revoke wallet access.
+- [ ] **USEQ-83FE6385** — Distinguish locally stored, cloud-synchronized, custodial, and noncustodial key arrangements.
+- [ ] **USEQ-25EBD53E** — Disclose material provider access and retention.
+
+### Presentation, verification, and relying-party decisions
+
+- [ ] **USEQ-A27982C6** — Authenticate the verifier or presentation destination when misdirection would create harm.
+- [ ] **USEQ-AB8D7525** — Bind presentations to the intended verifier, session, challenge, purpose, and time where replay is a risk.
+- [ ] **USEQ-11A087E3** — Validate credential structure, issuer, proof, algorithm, key, status, validity, audience, schema, and required claims.
+- [ ] **USEQ-D9F22BC7** — Reject unsupported algorithms, ambiguous encodings, malformed proofs, and invalid status information.
+- [ ] **USEQ-676F80FE** — Resolve issuer and status data through authenticated, available, privacy-preserving mechanisms.
+- [ ] **USEQ-C2412308** — Prevent presentation replay and cross-context reuse.
+- [ ] **USEQ-BBE4D4DE** — Verify the holder binding when the credential requires proof of possession or subject control.
+- [ ] **USEQ-95D3A5B4** — Distinguish cryptographic validity from truth, current eligibility, legal effect, and business authorization.
+- [ ] **USEQ-EB08BD56** — Apply independent authorization and business rules after credential verification.
+- [ ] **USEQ-F96152CF** — Minimize storage of presented credentials and derived identity data.
+- [ ] **USEQ-4639163D** — Avoid unnecessary verifier–issuer correlation and tracking.
+- [ ] **USEQ-BF72D1D6** — Provide understandable reasons and appeal or correction paths for rejected credentials.
+- [ ] **USEQ-845CAC28** — Log material verification decisions without recording secrets or excessive personal data.
+- [ ] **USEQ-930768B8** — Test expired, revoked, suspended, unknown, conflicting, offline, and compromised-issuer scenarios.
+
+### Electronic signatures, seals, timestamps, and trust services
+
+- [ ] **USEQ-CE0AAADE** — Define the intended legal, evidentiary, and business effect of each signature, seal, or timestamp.
+- [ ] **USEQ-DC979C4C** — Select identity, key, consent, and ceremony controls proportionate to that effect.
+- [ ] **USEQ-F3521B8A** — Present the exact document, transaction, scope, and consequences before signature.
+- [ ] **USEQ-D2D9767A** — Prevent substitution of content between review and signing.
+- [ ] **USEQ-3F86DFBF** — Bind the signature to the complete intended content and relevant context.
+- [ ] **USEQ-B994594D** — Preserve signer intent, authentication evidence, time, certificate status, and validation material.
+- [ ] **USEQ-3EB6D593** — Distinguish human signatures from organizational seals and automated service signatures.
+- [ ] **USEQ-C6BF8280** — Protect signing keys against unauthorized use and provide rapid revocation.
+- [ ] **USEQ-6E1D8851** — Use trusted time sources and preserve timestamp-chain validation where long-term proof matters.
+- [ ] **USEQ-E31E1530** — Support long-term validation through archival evidence, algorithm migration, and preserved status information.
+- [ ] **USEQ-0A67A96B** — Make the signing process accessible and provide equivalent review of all content.
+- [ ] **USEQ-FC05CB3D** — Avoid forcing consent to unrelated terms as part of a required signature ceremony.
+- [ ] **USEQ-4CD7BD25** — Define procedures for disputed signatures, compromised keys, corrected documents, and superseded agreements.
+- [ ] **USEQ-E8034D11** — Verify exported or printed representations do not misstate signature validity.
+
+### Privacy, unlinkability, accessibility, and inclusion
+
+- [ ] **USEQ-E071C3CF** — Perform privacy and human-rights assessment for credential ecosystems that can enable tracking, exclusion, or surveillance.
+- [ ] **USEQ-79ED6733** — Avoid central logs of every credential presentation unless strictly necessary and authorized.
+- [ ] **USEQ-4D4D7C2A** — Limit verifier requests to claims necessary for a declared purpose.
+- [ ] **USEQ-B8DDA406** — Prevent status checks from revealing holder activity unnecessarily.
+- [ ] **USEQ-BCE7A5A9** — Provide alternatives for people without compatible devices, stable connectivity, official documents, biometrics, or particular abilities.
+- [ ] **USEQ-9CEB51E5** — Ensure loss of a device or credential does not permanently exclude a legitimate person.
+- [ ] **USEQ-F3DD21EB** — Provide accessible enrollment, presentation, recovery, support, and dispute processes.
+- [ ] **USEQ-C016832D** — Test names, scripts, addresses, family structures, and identity situations across intended populations.
+- [ ] **USEQ-271DE6C6** — Prevent automated decisions from treating inability to present one credential format as evidence of ineligibility when alternatives are required.
+- [ ] **USEQ-DA631250** — Publish understandable information about data flows, retention, trust, status, and remedies.
+
+### Cryptographic agility, continuity, and assurance
+
+- [ ] **USEQ-A48D2BAD** — Inventory algorithms, keys, certificates, identifiers, proofs, status mechanisms, registries, and trust anchors used by the ecosystem.
+- [ ] **USEQ-FD3F890D** — Define migration before an algorithm, format, provider, registry, or issuer becomes obsolete.
+- [ ] **USEQ-FB095D6A** — Support key rotation without invalidating legitimate credentials unnecessarily.
+- [ ] **USEQ-5E18FC51** — Test compromise, revocation, offline verification, registry outage, wallet loss, and issuer retirement.
+- [ ] **USEQ-BEB1A131** — Preserve evidence needed to validate long-lived credentials and signatures after ordinary services change.
+- [ ] **USEQ-942AB317** — Prevent downgrade to weaker proof or status behavior.
+- [ ] **USEQ-1B9B5CDF** — Verify independent implementations interoperate against the declared profile.
+- [ ] **USEQ-137674FC** — Perform security, privacy, accessibility, usability, conformance, and abuse testing.
+- [ ] **USEQ-48D94432** — Monitor issuance anomalies, verification failures, replay, fraud, mass correlation, and support burden.
+- [ ] **USEQ-07A28D8C** — Maintain incident coordination among issuers, wallets, verifiers, trust services, and governance authorities.
+- [ ] **USEQ-87B20C17** — Treat ambiguous semantics, unverifiable status, inaccessible presentation, compromised issuer keys, or missing recovery as no-go conditions when material.
+
 ## Standards and source references
 
 - [ISO/IEC 27001:2022 — Information security management systems](https://www.iso.org/standard/27001)

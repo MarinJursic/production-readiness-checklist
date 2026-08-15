@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CHECKLIST_DIR = ROOT / "docs" / "checklists"
 ENGINEERING_DIR = ROOT / "docs" / "engineering"
 EXPECTED_CONTROLS = 1421
-EXPECTED_ENGINEERING_CONTROLS = 4917
+EXPECTED_ENGINEERING_CONTROLS = 8621
 EXPECTED_PAGES = {
     "00-readiness-principle.md",
     "01-release-foundations.md",
@@ -59,6 +59,14 @@ ENGINEERING_CONTROL = re.compile(
 )
 ENGINEERING_PLAIN_CHECKBOX = re.compile(r"^- \[ \] (?!\*\*USEQ-)", re.MULTILINE)
 MARKDOWN_LINK = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
+IMPLEMENTATION_SPECIFIC = re.compile(
+    r"\b(?:JavaScript|TypeScript|Node\.js|Vue\.js|Svelte|Next\.js|Nuxt|Django|"
+    r"Flask|FastAPI|NestJS|Python|PHP|C\+\+|C#|Kotlin|Scala|Elixir|Haskell|"
+    r"AWS|Azure|Google Cloud|GCP|GitHub|GitLab|Bitbucket|Docker|Kubernetes|"
+    r"Terraform|Jenkins|CircleCI|Datadog|New Relic|Sentry|Stripe|Cloudflare|"
+    r"Vercel|Netlify|PostgreSQL|MySQL|MongoDB|Redis|Kafka|RabbitMQ|OpenAI|"
+    r"Anthropic|Claude)\b"
+)
 
 
 def markdown_files() -> list[Path]:
@@ -99,6 +107,13 @@ def validate_pages(
             errors.append(f"{path.relative_to(ROOT)}:{line}: checklist item has no PRC ID")
         for match in CONTROL.finditer(content):
             control_id, section, item, text = match.groups()
+            technology = IMPLEMENTATION_SPECIFIC.search(text)
+            if technology:
+                line = content.count("\n", 0, match.start()) + 1
+                errors.append(
+                    f"{path.relative_to(ROOT)}:{line}: {control_id} depends on "
+                    f"a language, framework, or vendor ({technology.group(0)})"
+                )
             ids.append(control_id)
             numbers[int(section)].append(int(item))
             normalized_controls.append(normalize_control(text))
@@ -140,6 +155,13 @@ def validate_engineering_pages(errors: list[str]) -> tuple[list[str], list[str]]
             )
         for match in ENGINEERING_CONTROL.finditer(content):
             control_id, text = match.groups()
+            technology = IMPLEMENTATION_SPECIFIC.search(text)
+            if technology:
+                line = content.count("\n", 0, match.start()) + 1
+                errors.append(
+                    f"{path.relative_to(ROOT)}:{line}: {control_id} depends on "
+                    f"a language, framework, or vendor ({technology.group(0)})"
+                )
             normalized = normalize_control(text)
             expected_id = (
                 "USEQ-"

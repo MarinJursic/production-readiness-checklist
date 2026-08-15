@@ -27,7 +27,7 @@
   <text x="302" y="164" fill="#ccfbf1" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="25" font-weight="500">Ship with evidence, not optimism.</text>
   <g transform="translate(302 194)" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="16" font-weight="600">
     <rect width="150" height="36" rx="18" fill="#fff" opacity=".12"/>
-    <text x="20" y="24" fill="#e0e7ff">6,338 controls</text>
+    <text x="20" y="24" fill="#e0e7ff">10,042 controls</text>
     <rect x="165" width="178" height="36" rx="18" fill="#fff" opacity=".12"/>
     <text x="185" y="24" fill="#ccfbf1">16 lifecycle phases</text>
     <rect x="358" width="154" height="36" rx="18" fill="#fff" opacity=".12"/>

@@ -1,27 +1,34 @@
 # Source consolidation manifest
 
-This manifest records how the two supplied archives were incorporated. Archive content was treated as source material; operational instructions inside it were not executed.
+This manifest records how the three supplied archives were incorporated. Archive content was treated as source material; operational instructions inside it were not executed.
 
 ## Consolidation result
 
-- Source documents reviewed: **197**
-- Source checkbox lines reviewed: **14,132**
-- New non-duplicative lifecycle controls imported: **4,917**
+- Source documents reviewed: **215**
+- Source checkbox lines reviewed: **25,359**
+- Non-duplicative lifecycle controls: **8,621**
+- Additional controls imported from the final corpus: **3,704**
 - Existing production-readiness controls retained: **1,421**
-- Final unique control set: **6,338**
+- Final unique control set: **10,042**
 - Published lifecycle manuals: **16**, followed by the existing production-readiness review
 
 ## Source archives
 
 - `universal-software-engineering-quality-standards.zip` — SHA-256 `cde6ff7a3c89cbd4bd10046a1a4a8232a84dc1e25ced8d73e0a69d4d6d5b9bda`
 - `universal-software-engineering-gap-supplement.zip` — SHA-256 `5c4bd9cae92a54013bfa6f69c3be2656dd74c974ee043ae147c0573db3e4b16d`
+- `universal-software-engineering-final-checklists.zip` — SHA-256 `26005b8e9493932ec18ac96e513c85cdac16a5a112f8fecee9ef485754a03bb2`
 
 ## Consolidation rules
 
 - The quality archive's production master was not copied because this repository already maintains that review with stable `PRC-` identifiers.
 - The gap supplement's `Consolidated controls from the prior corpus` sections were not copied a second time. Only expanded gap-closure controls, category evidence, and category no-go controls were candidates for import.
+- The final corpus was deduplicated globally across all volumes. Its 1,969 repeated cross-volume occurrences were not reissued as separate controls.
+- The final corpus's release volume was not copied because it mirrors the repository's stable `PRC-` production gate.
+- Corpus audits, consolidation maps, maintenance rules, and volume-completion instructions were treated as checklist-authoring material rather than product controls.
 - Repeated applicability boilerplate and normalized exact duplicates were retained once at their earliest lifecycle phase.
 - Exact matches to existing `PRC-` controls were not reissued with new identifiers.
+- Four manually reviewed near-matches were excluded because an existing control expresses the same or a stronger obligation.
+- Programming-language wording was generalized to equivalent client-side execution terminology before import.
 - Imported controls use deterministic `USEQ-` identifiers derived from normalized control text so evidence references remain stable across regeneration.
 - Similar-looking controls were retained when their wording expressed a materially different scope, condition, or evidence obligation.
 
@@ -226,6 +233,246 @@ This manifest records how the two supplied archives were incorporated. Archive c
 | gap supplement | `07-cryptographic-agility-obsolescence-and-long-term-resilience.md` | 338 | 212 | 202 | 136 | Phase 8: Security and cryptography |
 | gap supplement | `MANIFEST.md` | 0 | 0 | 0 | 0 | package documentation, manifest, or adoption audit rather than product controls |
 | gap supplement | `README.md` | 0 | 0 | 0 | 0 | package documentation, manifest, or adoption audit rather than product controls |
+| final consolidated corpus | `01-governance-product-requirements-risk-ethics-lifecycle.md#Purpose and use` | 0 | 0 | 0 | 0 | Phase 1: Governance and foundations |
+| final consolidated corpus | `01-governance-product-requirements-risk-ethics-lifecycle.md#Coverage Audit, Gap Analysis, and Consolidation Map` | 85 | 0 | 0 | 85 | corpus maintenance, audit, or completion instruction rather than a product control section |
+| final consolidated corpus | `01-governance-product-requirements-risk-ethics-lifecycle.md#Applicability, Evidence, Exceptions, and Audit Rules` | 53 | 53 | 0 | 53 | Phase 1: Governance and foundations |
+| final consolidated corpus | `01-governance-product-requirements-risk-ethics-lifecycle.md#Universal Software and Product Quality Attribute Model` | 62 | 62 | 0 | 62 | Phase 1: Governance and foundations |
+| final consolidated corpus | `01-governance-product-requirements-risk-ethics-lifecycle.md#Standards and Frameworks Crosswalk` | 8 | 8 | 0 | 8 | Phase 1: Governance and foundations |
+| final consolidated corpus | `01-governance-product-requirements-risk-ethics-lifecycle.md#Universal Definition of Done` | 35 | 35 | 0 | 35 | Phase 1: Governance and foundations |
+| final consolidated corpus | `01-governance-product-requirements-risk-ethics-lifecycle.md#Master No-Go Gates` | 25 | 25 | 0 | 25 | Phase 1: Governance and foundations |
+| final consolidated corpus | `01-governance-product-requirements-risk-ethics-lifecycle.md#Corpus Maintenance and Versioning` | 20 | 0 | 0 | 20 | corpus maintenance, audit, or completion instruction rather than a product control section |
+| final consolidated corpus | `01-governance-product-requirements-risk-ethics-lifecycle.md#Governance, Ownership, and Risk` | 26 | 26 | 0 | 26 | Phase 1: Governance and foundations |
+| final consolidated corpus | `01-governance-product-requirements-risk-ethics-lifecycle.md#Third-Party and Supplier Readiness` | 23 | 23 | 0 | 23 | Phase 1: Governance and foundations |
+| final consolidated corpus | `01-governance-product-requirements-risk-ethics-lifecycle.md#Legal, Regulatory, and Contractual Applicability` | 34 | 34 | 0 | 34 | Phase 1: Governance and foundations |
+| final consolidated corpus | `01-governance-product-requirements-risk-ethics-lifecycle.md#Quality Management and Continual Improvement` | 18 | 18 | 0 | 18 | Phase 1: Governance and foundations |
+| final consolidated corpus | `01-governance-product-requirements-risk-ethics-lifecycle.md#Engineering Governance and Decision Rights` | 15 | 15 | 0 | 15 | Phase 1: Governance and foundations |
+| final consolidated corpus | `01-governance-product-requirements-risk-ethics-lifecycle.md#Project, Program, and Portfolio Management` | 15 | 15 | 0 | 15 | Phase 1: Governance and foundations |
+| final consolidated corpus | `01-governance-product-requirements-risk-ethics-lifecycle.md#Engineering Measurement and Metrics` | 15 | 15 | 0 | 15 | Phase 1: Governance and foundations |
+| final consolidated corpus | `01-governance-product-requirements-risk-ethics-lifecycle.md#People, Competence, Culture, and Sustainable Work` | 15 | 15 | 0 | 15 | Phase 1: Governance and foundations |
+| final consolidated corpus | `01-governance-product-requirements-risk-ethics-lifecycle.md#Ethics and Responsible Technology` | 15 | 15 | 0 | 15 | Phase 1: Governance and foundations |
+| final consolidated corpus | `01-governance-product-requirements-risk-ethics-lifecycle.md#Product and Business Readiness` | 19 | 19 | 0 | 19 | Phase 2: Product and requirements |
+| final consolidated corpus | `01-governance-product-requirements-risk-ethics-lifecycle.md#Product Strategy, Vision, and Outcomes` | 14 | 14 | 0 | 14 | Phase 2: Product and requirements |
+| final consolidated corpus | `01-governance-product-requirements-risk-ethics-lifecycle.md#Product Discovery and Problem Validation` | 15 | 15 | 0 | 15 | Phase 2: Product and requirements |
+| final consolidated corpus | `01-governance-product-requirements-risk-ethics-lifecycle.md#Requirements Engineering` | 15 | 15 | 0 | 15 | Phase 2: Product and requirements |
+| final consolidated corpus | `01-governance-product-requirements-risk-ethics-lifecycle.md#Prioritization, Roadmaps, and Scope Control` | 15 | 15 | 0 | 15 | Phase 2: Product and requirements |
+| final consolidated corpus | `01-governance-product-requirements-risk-ethics-lifecycle.md#Product Metrics, Experimentation, and Learning` | 15 | 15 | 0 | 15 | Phase 2: Product and requirements |
+| final consolidated corpus | `01-governance-product-requirements-risk-ethics-lifecycle.md#Product Lifecycle, Deprecation, and Retirement` | 15 | 15 | 0 | 15 | Phase 2: Product and requirements |
+| final consolidated corpus | `01-governance-product-requirements-risk-ethics-lifecycle.md#Gap Audit and Consolidation Map` | 10 | 0 | 0 | 10 | corpus maintenance, audit, or completion instruction rather than a product control section |
+| final consolidated corpus | `01-governance-product-requirements-risk-ethics-lifecycle.md#Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights` | 215 | 215 | 215 | 0 | Phase 1: Governance and foundations |
+| final consolidated corpus | `01-governance-product-requirements-risk-ethics-lifecycle.md#Volume completion rule` | 1 | 0 | 0 | 1 | corpus maintenance, audit, or completion instruction rather than a product control section |
+| final consolidated corpus | `02-human-experience-accessibility-content-seo-internationalization.md#Purpose and use` | 0 | 0 | 0 | 0 | Phase 3: User experience, web, and content |
+| final consolidated corpus | `02-human-experience-accessibility-content-seo-internationalization.md#Accessibility, SEO, Content Quality, and Digital Discoverability` | 321 | 321 | 321 | 0 | Phase 3: User experience, web, and content |
+| final consolidated corpus | `02-human-experience-accessibility-content-seo-internationalization.md#Accessibility` | 31 | 31 | 0 | 31 | Phase 3: User experience, web, and content |
+| final consolidated corpus | `02-human-experience-accessibility-content-seo-internationalization.md#Localization and Internationalization` | 15 | 15 | 0 | 15 | Phase 3: User experience, web, and content |
+| final consolidated corpus | `02-human-experience-accessibility-content-seo-internationalization.md#Human-Centred Design and User Research` | 15 | 15 | 0 | 15 | Phase 3: User experience, web, and content |
+| final consolidated corpus | `02-human-experience-accessibility-content-seo-internationalization.md#Information Architecture and Content Design` | 15 | 15 | 0 | 15 | Phase 3: User experience, web, and content |
+| final consolidated corpus | `02-human-experience-accessibility-content-seo-internationalization.md#Interaction and Visual Design` | 15 | 15 | 0 | 15 | Phase 3: User experience, web, and content |
+| final consolidated corpus | `02-human-experience-accessibility-content-seo-internationalization.md#Usability and Task Success` | 15 | 15 | 0 | 15 | Phase 3: User experience, web, and content |
+| final consolidated corpus | `02-human-experience-accessibility-content-seo-internationalization.md#Design Systems and Interface Reuse` | 15 | 15 | 0 | 15 | Phase 3: User experience, web, and content |
+| final consolidated corpus | `02-human-experience-accessibility-content-seo-internationalization.md#Responsive, Cross-Device, and Adaptive Design` | 15 | 15 | 0 | 15 | Phase 3: User experience, web, and content |
+| final consolidated corpus | `02-human-experience-accessibility-content-seo-internationalization.md#Ethical Design and Dark-Pattern Prevention` | 15 | 15 | 0 | 15 | Phase 3: User experience, web, and content |
+| final consolidated corpus | `02-human-experience-accessibility-content-seo-internationalization.md#Public Content, Search Engines, Metadata, and Indexing` | 14 | 14 | 0 | 14 | Phase 3: User experience, web, and content |
+| final consolidated corpus | `02-human-experience-accessibility-content-seo-internationalization.md#Web Quality, SEO, Accessibility, and Content Master Checklist` | 409 | 409 | 0 | 409 | Phase 3: User experience, web, and content |
+| final consolidated corpus | `02-human-experience-accessibility-content-seo-internationalization.md#Final Gap Closure — Human Factors, Operator Experience, and Usable Security` | 182 | 182 | 182 | 0 | Phase 3: User experience, web, and content |
+| final consolidated corpus | `02-human-experience-accessibility-content-seo-internationalization.md#Volume completion rule` | 1 | 0 | 0 | 1 | corpus maintenance, audit, or completion instruction rather than a product control section |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Purpose and use` | 0 | 0 | 0 | 0 | Phase 4: Architecture and design |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Universal Code Quality, Correctness, and Maintainability` | 350 | 350 | 344 | 6 | Phase 5: Code quality and implementation |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#System Understanding and Threat Modeling` | 18 | 18 | 0 | 18 | Phase 4: Architecture and design |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Performance and User-Experience Efficiency` | 23 | 23 | 0 | 23 | Phase 4: Architecture and design |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Capacity, Scalability, and Overload Control` | 25 | 25 | 0 | 25 | Phase 4: Architecture and design |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Reliability, Resilience, and Failure Engineering` | 33 | 33 | 0 | 33 | Phase 4: Architecture and design |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Architecture Governance and Decision Records` | 15 | 15 | 0 | 15 | Phase 4: Architecture and design |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Modularity, Cohesion, Coupling, and Boundaries` | 15 | 15 | 0 | 15 | Phase 4: Architecture and design |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#SOLID Design Principles` | 15 | 15 | 0 | 15 | Phase 4: Architecture and design |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#DRY, KISS, YAGNI, and Simplicity` | 15 | 15 | 0 | 15 | Phase 4: Architecture and design |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Reusability and Software Product Lines` | 15 | 15 | 0 | 15 | Phase 4: Architecture and design |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#State Management` | 15 | 15 | 0 | 15 | Phase 4: Architecture and design |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Concurrency, Consistency, and Transactions` | 15 | 15 | 0 | 15 | Phase 4: Architecture and design |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Distributed and Event-Driven Systems` | 15 | 15 | 0 | 15 | Phase 4: Architecture and design |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#API and Integration Architecture` | 15 | 15 | 0 | 15 | Phase 6: Application services and APIs |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Evolvability, Technical Debt, and Changeability` | 15 | 15 | 0 | 15 | Phase 4: Architecture and design |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Interoperability, Portability, and Compatibility` | 15 | 15 | 0 | 15 | Phase 4: Architecture and design |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Sustainable Software and Resource Efficiency` | 15 | 15 | 0 | 15 | Phase 4: Architecture and design |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Functional Correctness and Business Logic` | 29 | 29 | 0 | 29 | Phase 5: Code quality and implementation |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Input Validation, Output Encoding, and Safe Processing` | 23 | 23 | 0 | 23 | Phase 5: Code quality and implementation |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Maintainability and Long-Term Operability` | 26 | 26 | 0 | 26 | Phase 5: Code quality and implementation |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Universal Code Quality` | 20 | 20 | 0 | 20 | Phase 5: Code quality and implementation |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Readability, Naming, and Style` | 20 | 20 | 0 | 20 | Phase 5: Code quality and implementation |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Abstractions, Interfaces, and Contracts` | 20 | 20 | 0 | 20 | Phase 5: Code quality and implementation |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Error Handling and Defensive Programming` | 20 | 20 | 0 | 20 | Phase 5: Code quality and implementation |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Resource Lifecycle, Memory, and Cleanup` | 20 | 20 | 0 | 20 | Phase 5: Code quality and implementation |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Concurrent, Asynchronous, and Parallel Code` | 20 | 20 | 0 | 20 | Phase 5: Code quality and implementation |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Configuration and Feature-Flag Code Quality` | 20 | 20 | 0 | 20 | Phase 5: Code quality and implementation |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Dependency Selection and Hygiene` | 20 | 20 | 0 | 20 | Phase 5: Code quality and implementation |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Refactoring and Legacy Code` | 20 | 20 | 0 | 20 | Phase 5: Code quality and implementation |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Code Review and Work-Product Review` | 20 | 20 | 0 | 20 | Phase 5: Code quality and implementation |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Testability` | 20 | 20 | 0 | 20 | Phase 5: Code quality and implementation |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Reusability in Code` | 20 | 20 | 0 | 20 | Phase 5: Code quality and implementation |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Browser, Client, and Usability Behavior` | 28 | 28 | 0 | 28 | Phase 3: User experience, web, and content |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Offline and Progressive Web Capabilities` | 14 | 14 | 0 | 14 | Phase 3: User experience, web, and content |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Frontend Architecture, Components, and State` | 20 | 20 | 0 | 20 | Phase 3: User experience, web, and content |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Forms, User Input, and Client Validation` | 20 | 20 | 0 | 20 | Phase 3: User experience, web, and content |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Frontend Performance and Runtime Efficiency` | 20 | 20 | 0 | 20 | Phase 3: User experience, web, and content |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Frontend Testing` | 20 | 20 | 0 | 20 | Phase 3: User experience, web, and content |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Frontend Security and Privacy` | 20 | 20 | 0 | 20 | Phase 3: User experience, web, and content |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#APIs, Web Services, Webhooks, and Integrations` | 39 | 39 | 0 | 39 | Phase 6: Application services and APIs |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Backend Service Design` | 20 | 20 | 0 | 20 | Phase 6: Application services and APIs |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Background Jobs, Scheduling, and Queues` | 20 | 20 | 0 | 20 | Phase 6: Application services and APIs |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Caching, Search, and Derived Data` | 20 | 20 | 0 | 20 | Phase 6: Application services and APIs |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Universal Code Quality, Design, and Implementation Master Checklist` | 285 | 285 | 0 | 285 | Phase 5: Code quality and implementation |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Final Gap Closure — Integration, Transition, Open Standards, and Exitability` | 143 | 143 | 143 | 0 | Phase 6: Application services and APIs |
+| final consolidated corpus | `03-architecture-code-frontend-backend-apis-integration.md#Volume completion rule` | 1 | 0 | 0 | 1 | corpus maintenance, audit, or completion instruction rather than a product control section |
+| final consolidated corpus | `04-data-privacy-information-governance-records-analytics.md#Purpose and use` | 0 | 0 | 0 | 0 | Phase 7: Data and information lifecycle |
+| final consolidated corpus | `04-data-privacy-information-governance-records-analytics.md#Data Contracts, Information Governance, Records, and Digital Preservation` | 258 | 258 | 255 | 3 | Phase 7: Data and information lifecycle |
+| final consolidated corpus | `04-data-privacy-information-governance-records-analytics.md#Data Stores, Queues, Caches, Search, and Integrity` | 43 | 43 | 0 | 43 | Phase 7: Data and information lifecycle |
+| final consolidated corpus | `04-data-privacy-information-governance-records-analytics.md#Imports, Exports, Bulk Operations, and Data Portability` | 14 | 14 | 0 | 14 | Phase 7: Data and information lifecycle |
+| final consolidated corpus | `04-data-privacy-information-governance-records-analytics.md#Data Governance, Ownership, and Accountability` | 20 | 20 | 0 | 20 | Phase 7: Data and information lifecycle |
+| final consolidated corpus | `04-data-privacy-information-governance-records-analytics.md#Data Architecture and Modeling` | 20 | 20 | 0 | 20 | Phase 7: Data and information lifecycle |
+| final consolidated corpus | `04-data-privacy-information-governance-records-analytics.md#Data Quality` | 20 | 20 | 0 | 20 | Phase 7: Data and information lifecycle |
+| final consolidated corpus | `04-data-privacy-information-governance-records-analytics.md#Metadata, Lineage, Provenance, and Catalogs` | 20 | 20 | 0 | 20 | Phase 7: Data and information lifecycle |
+| final consolidated corpus | `04-data-privacy-information-governance-records-analytics.md#Schema Evolution, Migrations, and Data Repair` | 20 | 20 | 0 | 20 | Phase 7: Data and information lifecycle |
+| final consolidated corpus | `04-data-privacy-information-governance-records-analytics.md#Analytics, Business Intelligence, and Decision Data` | 20 | 20 | 0 | 20 | Phase 7: Data and information lifecycle |
+| final consolidated corpus | `04-data-privacy-information-governance-records-analytics.md#Privacy and Data Protection` | 33 | 33 | 0 | 33 | Phase 9: Privacy and data protection |
+| final consolidated corpus | `04-data-privacy-information-governance-records-analytics.md#Privacy Governance and Engineering` | 20 | 20 | 0 | 20 | Phase 9: Privacy and data protection |
+| final consolidated corpus | `04-data-privacy-information-governance-records-analytics.md#Privacy Notices, Consent, and Preferences` | 20 | 20 | 0 | 20 | Phase 9: Privacy and data protection |
+| final consolidated corpus | `04-data-privacy-information-governance-records-analytics.md#Data Rights, Retention, Deletion, and Portability` | 20 | 20 | 0 | 20 | Phase 7: Data and information lifecycle |
+| final consolidated corpus | `04-data-privacy-information-governance-records-analytics.md#De-Identification, Pseudonymization, and Anonymization` | 20 | 20 | 0 | 20 | Phase 7: Data and information lifecycle |
+| final consolidated corpus | `04-data-privacy-information-governance-records-analytics.md#Cross-Border Transfers, Processors, and Data Sharing` | 20 | 20 | 0 | 20 | Phase 9: Privacy and data protection |
+| final consolidated corpus | `04-data-privacy-information-governance-records-analytics.md#Children’s, Sensitive, and High-Risk Data` | 20 | 20 | 0 | 20 | Phase 9: Privacy and data protection |
+| final consolidated corpus | `04-data-privacy-information-governance-records-analytics.md#Data Contracts, Semantics, Records, and Digital Preservation Master Checklist` | 266 | 266 | 0 | 266 | Phase 7: Data and information lifecycle |
+| final consolidated corpus | `04-data-privacy-information-governance-records-analytics.md#Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity` | 122 | 122 | 122 | 0 | Phase 7: Data and information lifecycle |
+| final consolidated corpus | `04-data-privacy-information-governance-records-analytics.md#Volume completion rule` | 1 | 0 | 0 | 1 | corpus maintenance, audit, or completion instruction rather than a product control section |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#Purpose and use` | 0 | 0 | 0 | 0 | Phase 8: Security and cryptography |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness` | 274 | 274 | 271 | 3 | Phase 8: Security and cryptography |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#Authentication, Enrollment, and Account Recovery` | 38 | 38 | 0 | 38 | Phase 8: Security and cryptography |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#Authorization, Privilege Management, and Tenant Isolation` | 23 | 23 | 0 | 23 | Phase 8: Security and cryptography |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#Sessions, Cookies, and Tokens` | 20 | 20 | 0 | 20 | Phase 8: Security and cryptography |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#File and Content Processing` | 23 | 23 | 0 | 23 | Phase 8: Security and cryptography |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#Multi-Tenant Systems and Customer Isolation` | 14 | 14 | 0 | 14 | Phase 8: Security and cryptography |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#High-Risk Administrative and Support Tools` | 16 | 16 | 0 | 16 | Phase 8: Security and cryptography |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#Enterprise Identity, Provisioning, and Organization Lifecycle` | 12 | 12 | 0 | 12 | Phase 8: Security and cryptography |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#Dependencies, SBOM, and Licenses` | 20 | 20 | 0 | 20 | Phase 8: Security and cryptography |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#Transport, Browser, DNS, and Network Security` | 37 | 37 | 0 | 37 | Phase 8: Security and cryptography |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#Cryptography and Key Management` | 23 | 23 | 0 | 23 | Phase 8: Security and cryptography |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#Security Validation and Vulnerability Management` | 27 | 27 | 0 | 27 | Phase 8: Security and cryptography |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#Security Incident Response and Crisis Readiness` | 24 | 24 | 0 | 24 | Phase 8: Security and cryptography |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#Public Forms, Anonymous Access, and Abuse Resistance` | 10 | 10 | 0 | 10 | Phase 14: Trust, safety, and ecosystems |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#Security Governance and Risk Management` | 20 | 20 | 0 | 20 | Phase 8: Security and cryptography |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#Secure Software Development Lifecycle` | 20 | 20 | 0 | 20 | Phase 8: Security and cryptography |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#Threat Modeling and Abuse-Case Analysis` | 20 | 20 | 0 | 20 | Phase 8: Security and cryptography |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#Application Security Engineering` | 20 | 20 | 0 | 20 | Phase 8: Security and cryptography |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#Identity, Access, and Privileged Security` | 20 | 20 | 0 | 20 | Phase 8: Security and cryptography |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#Secrets Management` | 20 | 20 | 0 | 20 | Phase 8: Security and cryptography |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#Software Supply-Chain Security` | 20 | 20 | 0 | 20 | Phase 8: Security and cryptography |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#Security Testing and Assurance` | 20 | 20 | 0 | 20 | Phase 8: Security and cryptography |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#Security Monitoring, Detection, and Response` | 20 | 20 | 0 | 20 | Phase 8: Security and cryptography |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#Zero Trust and Privileged Access` | 20 | 20 | 0 | 20 | Phase 8: Security and cryptography |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#Fraud, Abuse, and Automation Resistance` | 20 | 20 | 0 | 20 | Phase 14: Trust, safety, and ecosystems |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist` | 255 | 255 | 0 | 255 | Phase 14: Trust, safety, and ecosystems |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#Cryptographic Agility, Obsolescence, and Long-Term Resilience Master Checklist` | 257 | 257 | 0 | 257 | Phase 8: Security and cryptography |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#Final Gap Closure — Physical, Environmental, Endpoint, and Media Security` | 142 | 142 | 142 | 0 | Phase 8: Security and cryptography |
+| final consolidated corpus | `05-security-identity-supply-chain-cryptography-trust.md#Volume completion rule` | 1 | 0 | 0 | 1 | corpus maintenance, audit, or completion instruction rather than a product control section |
+| final consolidated corpus | `06-testing-verification-conformance-assurance.md#Purpose and use` | 0 | 0 | 0 | 0 | Phase 10: Verification and testing |
+| final consolidated corpus | `06-testing-verification-conformance-assurance.md#Advanced Testing, Conformance, and Continuous Assurance` | 319 | 319 | 316 | 3 | Phase 10: Verification and testing |
+| final consolidated corpus | `06-testing-verification-conformance-assurance.md#Test Strategy and Evidence` | 27 | 27 | 0 | 27 | Phase 10: Verification and testing |
+| final consolidated corpus | `06-testing-verification-conformance-assurance.md#Unit and Component Testing` | 20 | 20 | 0 | 20 | Phase 10: Verification and testing |
+| final consolidated corpus | `06-testing-verification-conformance-assurance.md#Integration and Contract Testing` | 20 | 20 | 0 | 20 | Phase 10: Verification and testing |
+| final consolidated corpus | `06-testing-verification-conformance-assurance.md#System, End-to-End, and Acceptance Testing` | 20 | 20 | 0 | 20 | Phase 10: Verification and testing |
+| final consolidated corpus | `06-testing-verification-conformance-assurance.md#Regression, Change-Impact, and Compatibility Testing` | 20 | 20 | 0 | 20 | Phase 10: Verification and testing |
+| final consolidated corpus | `06-testing-verification-conformance-assurance.md#Test Automation Quality` | 20 | 20 | 0 | 20 | Phase 10: Verification and testing |
+| final consolidated corpus | `06-testing-verification-conformance-assurance.md#Test Data and Test Environments` | 20 | 20 | 0 | 20 | Phase 10: Verification and testing |
+| final consolidated corpus | `06-testing-verification-conformance-assurance.md#Nonfunctional and Quality-Attribute Testing` | 20 | 20 | 0 | 20 | Phase 10: Verification and testing |
+| final consolidated corpus | `06-testing-verification-conformance-assurance.md#Exploratory, Risk-Based, and Usability Testing` | 20 | 20 | 0 | 20 | Phase 10: Verification and testing |
+| final consolidated corpus | `06-testing-verification-conformance-assurance.md#Static Analysis, Formal Methods, and Verification` | 20 | 20 | 0 | 20 | Phase 10: Verification and testing |
+| final consolidated corpus | `06-testing-verification-conformance-assurance.md#Defect Management and Root-Cause Improvement` | 20 | 20 | 0 | 20 | Phase 10: Verification and testing |
+| final consolidated corpus | `06-testing-verification-conformance-assurance.md#Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims` | 107 | 107 | 107 | 0 | Phase 10: Verification and testing |
+| final consolidated corpus | `06-testing-verification-conformance-assurance.md#Volume completion rule` | 1 | 0 | 0 | 1 | corpus maintenance, audit, or completion instruction rather than a product control section |
+| final consolidated corpus | `07-delivery-configuration-platform-developer-experience-cicd.md#Purpose and use` | 0 | 0 | 0 | 0 | Phase 11: Developer experience, platform, and delivery |
+| final consolidated corpus | `07-delivery-configuration-platform-developer-experience-cicd.md#Platform Engineering, Developer Experience, and Engineering Effectiveness` | 241 | 241 | 238 | 3 | Phase 11: Developer experience, platform, and delivery |
+| final consolidated corpus | `07-delivery-configuration-platform-developer-experience-cicd.md#Source Control and Change Management` | 16 | 16 | 0 | 16 | Phase 11: Developer experience, platform, and delivery |
+| final consolidated corpus | `07-delivery-configuration-platform-developer-experience-cicd.md#Build, CI/CD, and Artifact Integrity` | 20 | 20 | 0 | 20 | Phase 11: Developer experience, platform, and delivery |
+| final consolidated corpus | `07-delivery-configuration-platform-developer-experience-cicd.md#Environments, Configuration, Feature Flags, and Secrets` | 39 | 39 | 0 | 39 | Phase 11: Developer experience, platform, and delivery |
+| final consolidated corpus | `07-delivery-configuration-platform-developer-experience-cicd.md#Continuous Integration` | 20 | 20 | 0 | 20 | Phase 11: Developer experience, platform, and delivery |
+| final consolidated corpus | `07-delivery-configuration-platform-developer-experience-cicd.md#Continuous Delivery and Deployment` | 20 | 20 | 0 | 20 | Phase 11: Developer experience, platform, and delivery |
+| final consolidated corpus | `07-delivery-configuration-platform-developer-experience-cicd.md#Reproducible, Hermetic, and Trusted Builds` | 20 | 20 | 0 | 20 | Phase 11: Developer experience, platform, and delivery |
+| final consolidated corpus | `07-delivery-configuration-platform-developer-experience-cicd.md#Infrastructure as Code and Environment Engineering` | 20 | 20 | 0 | 20 | Phase 11: Developer experience, platform, and delivery |
+| final consolidated corpus | `07-delivery-configuration-platform-developer-experience-cicd.md#Deployment Strategies and Progressive Delivery` | 20 | 20 | 0 | 20 | Phase 11: Developer experience, platform, and delivery |
+| final consolidated corpus | `07-delivery-configuration-platform-developer-experience-cicd.md#Database and Data Release Engineering` | 20 | 20 | 0 | 20 | Phase 11: Developer experience, platform, and delivery |
+| final consolidated corpus | `07-delivery-configuration-platform-developer-experience-cicd.md#Rollback, Roll-Forward, and Kill Switches` | 20 | 20 | 0 | 20 | Phase 11: Developer experience, platform, and delivery |
+| final consolidated corpus | `07-delivery-configuration-platform-developer-experience-cicd.md#Developer Experience, Platform Engineering, and Engineering Economics Master Checklist` | 456 | 456 | 0 | 456 | Phase 11: Developer experience, platform, and delivery |
+| final consolidated corpus | `07-delivery-configuration-platform-developer-experience-cicd.md#Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust` | 127 | 127 | 127 | 0 | Phase 11: Developer experience, platform, and delivery |
+| final consolidated corpus | `07-delivery-configuration-platform-developer-experience-cicd.md#Volume completion rule` | 1 | 0 | 0 | 1 | corpus maintenance, audit, or completion instruction rather than a product control section |
+| final consolidated corpus | `08-operations-sre-observability-continuity-cost-sustainability.md#Purpose and use` | 0 | 0 | 0 | 0 | Phase 12: Operations, SRE, and support |
+| final consolidated corpus | `08-operations-sre-observability-continuity-cost-sustainability.md#Digital Sustainability, Environmental Impact, and Responsible Computing` | 240 | 240 | 237 | 3 | Phase 12: Operations, SRE, and support |
+| final consolidated corpus | `08-operations-sre-observability-continuity-cost-sustainability.md#Infrastructure and Platform Readiness` | 47 | 47 | 0 | 47 | Phase 12: Operations, SRE, and support |
+| final consolidated corpus | `08-operations-sre-observability-continuity-cost-sustainability.md#Observability, Logging, Metrics, Traces, and Audit` | 30 | 30 | 0 | 30 | Phase 12: Operations, SRE, and support |
+| final consolidated corpus | `08-operations-sre-observability-continuity-cost-sustainability.md#Alerting, On-Call, and Runbooks` | 24 | 24 | 0 | 24 | Phase 12: Operations, SRE, and support |
+| final consolidated corpus | `08-operations-sre-observability-continuity-cost-sustainability.md#Backup, Disaster Recovery, and Business Continuity` | 25 | 25 | 0 | 25 | Phase 12: Operations, SRE, and support |
+| final consolidated corpus | `08-operations-sre-observability-continuity-cost-sustainability.md#SLIs, SLOs, Error Budgets, and Reliability Governance` | 20 | 20 | 0 | 20 | Phase 12: Operations, SRE, and support |
+| final consolidated corpus | `08-operations-sre-observability-continuity-cost-sustainability.md#Service Management and Customer Support` | 20 | 20 | 0 | 20 | Phase 12: Operations, SRE, and support |
+| final consolidated corpus | `08-operations-sre-observability-continuity-cost-sustainability.md#Incident, Problem Management, and Postmortems` | 20 | 20 | 0 | 20 | Phase 12: Operations, SRE, and support |
+| final consolidated corpus | `08-operations-sre-observability-continuity-cost-sustainability.md#Operational Capacity, Performance, and Efficiency` | 20 | 20 | 0 | 20 | Phase 12: Operations, SRE, and support |
+| final consolidated corpus | `08-operations-sre-observability-continuity-cost-sustainability.md#Cost Efficiency and FinOps` | 20 | 20 | 0 | 20 | Phase 12: Operations, SRE, and support |
+| final consolidated corpus | `08-operations-sre-observability-continuity-cost-sustainability.md#Asset, Patch, and Technology Lifecycle Management` | 20 | 20 | 0 | 20 | Phase 12: Operations, SRE, and support |
+| final consolidated corpus | `08-operations-sre-observability-continuity-cost-sustainability.md#Decommissioning and Secure Retirement` | 20 | 20 | 0 | 20 | Phase 12: Operations, SRE, and support |
+| final consolidated corpus | `08-operations-sre-observability-continuity-cost-sustainability.md#Operational Access and Production Change` | 20 | 20 | 0 | 20 | Phase 12: Operations, SRE, and support |
+| final consolidated corpus | `08-operations-sre-observability-continuity-cost-sustainability.md#Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption` | 118 | 118 | 118 | 0 | Phase 12: Operations, SRE, and support |
+| final consolidated corpus | `08-operations-sre-observability-continuity-cost-sustainability.md#Volume completion rule` | 1 | 0 | 0 | 1 | corpus maintenance, audit, or completion instruction rather than a product control section |
+| final consolidated corpus | `09-documentation-knowledge-training-support-service-management.md#Purpose and use` | 0 | 0 | 0 | 0 | Phase 13: Documentation and knowledge |
+| final consolidated corpus | `09-documentation-knowledge-training-support-service-management.md#Documentation Governance` | 20 | 20 | 0 | 20 | Phase 13: Documentation and knowledge |
+| final consolidated corpus | `09-documentation-knowledge-training-support-service-management.md#Product, Requirements, and Decision Documentation` | 20 | 20 | 0 | 20 | Phase 13: Documentation and knowledge |
+| final consolidated corpus | `09-documentation-knowledge-training-support-service-management.md#Architecture and ADR Documentation` | 20 | 20 | 0 | 20 | Phase 13: Documentation and knowledge |
+| final consolidated corpus | `09-documentation-knowledge-training-support-service-management.md#Code, API, and Data Documentation` | 20 | 20 | 0 | 20 | Phase 13: Documentation and knowledge |
+| final consolidated corpus | `09-documentation-knowledge-training-support-service-management.md#User Help, Training, and Support Content` | 20 | 20 | 0 | 20 | Phase 13: Documentation and knowledge |
+| final consolidated corpus | `09-documentation-knowledge-training-support-service-management.md#Operations, Runbooks, Release, and Incident Documentation` | 20 | 20 | 0 | 20 | Phase 13: Documentation and knowledge |
+| final consolidated corpus | `09-documentation-knowledge-training-support-service-management.md#Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity` | 122 | 122 | 121 | 1 | Phase 13: Documentation and knowledge |
+| final consolidated corpus | `09-documentation-knowledge-training-support-service-management.md#Volume completion rule` | 1 | 0 | 0 | 1 | corpus maintenance, audit, or completion instruction rather than a product control section |
+| final consolidated corpus | `10-ai-ml-agents-ai-assisted-engineering-provenance.md#Purpose and use` | 0 | 0 | 0 | 0 | Phase 15: AI, ML, and AI-assisted development |
+| final consolidated corpus | `10-ai-ml-agents-ai-assisted-engineering-provenance.md#AI-Assisted Engineering, Agentic Development, and Content Provenance` | 292 | 292 | 289 | 3 | Phase 15: AI, ML, and AI-assisted development |
+| final consolidated corpus | `10-ai-ml-agents-ai-assisted-engineering-provenance.md#AI, Machine Learning, Autonomous, and LLM Systems` | 32 | 32 | 0 | 32 | Phase 15: AI, ML, and AI-assisted development |
+| final consolidated corpus | `10-ai-ml-agents-ai-assisted-engineering-provenance.md#AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist` | 386 | 386 | 0 | 386 | Phase 15: AI, ML, and AI-assisted development |
+| final consolidated corpus | `10-ai-ml-agents-ai-assisted-engineering-provenance.md#Volume completion rule` | 1 | 0 | 0 | 1 | corpus maintenance, audit, or completion instruction rather than a product control section |
+| final consolidated corpus | `11-conditional-specialized-safety-critical-regulated-domains.md#Purpose and use` | 0 | 0 | 0 | 0 | Phase 16: Specialized domains and release assurance |
+| final consolidated corpus | `11-conditional-specialized-safety-critical-regulated-domains.md#Payments, Billing, and Money Movement` | 20 | 20 | 0 | 20 | Phase 16: Specialized domains and release assurance |
+| final consolidated corpus | `11-conditional-specialized-safety-critical-regulated-domains.md#User-Generated Content, Social Features, and Marketplaces` | 18 | 18 | 0 | 18 | Phase 14: Trust, safety, and ecosystems |
+| final consolidated corpus | `11-conditional-specialized-safety-critical-regulated-domains.md#Email, SMS, Push, and Notifications` | 18 | 18 | 0 | 18 | Phase 14: Trust, safety, and ecosystems |
+| final consolidated corpus | `11-conditional-specialized-safety-critical-regulated-domains.md#Real-Time, Streaming, Collaboration, and Event-Driven Features` | 15 | 15 | 0 | 15 | Phase 16: Specialized domains and release assurance |
+| final consolidated corpus | `11-conditional-specialized-safety-critical-regulated-domains.md#Safety-Critical and Physically Consequential Systems` | 15 | 15 | 0 | 15 | Phase 16: Specialized domains and release assurance |
+| final consolidated corpus | `11-conditional-specialized-safety-critical-regulated-domains.md#Media, Voice, Video, and Live Communications` | 13 | 13 | 0 | 13 | Phase 16: Specialized domains and release assurance |
+| final consolidated corpus | `11-conditional-specialized-safety-critical-regulated-domains.md#Geolocation, Sensors, and Device Capabilities` | 12 | 12 | 0 | 12 | Phase 16: Specialized domains and release assurance |
+| final consolidated corpus | `11-conditional-specialized-safety-critical-regulated-domains.md#Search, Ranking, Recommendations, and Personalization` | 13 | 13 | 0 | 13 | Phase 14: Trust, safety, and ecosystems |
+| final consolidated corpus | `11-conditional-specialized-safety-critical-regulated-domains.md#Analytics, Experimentation, Advertising, and Attribution` | 15 | 15 | 0 | 15 | Phase 14: Trust, safety, and ecosystems |
+| final consolidated corpus | `11-conditional-specialized-safety-critical-regulated-domains.md#E-Commerce, Orders, Inventory, Fulfillment, and Returns` | 12 | 12 | 0 | 12 | Phase 16: Specialized domains and release assurance |
+| final consolidated corpus | `11-conditional-specialized-safety-critical-regulated-domains.md#Blockchain, Smart Contracts, Digital Assets, and Irreversible Ledgers` | 12 | 12 | 0 | 12 | Phase 16: Specialized domains and release assurance |
+| final consolidated corpus | `11-conditional-specialized-safety-critical-regulated-domains.md#IoT, Device Control, Industrial, and Cyber-Physical Integrations` | 12 | 12 | 0 | 12 | Phase 16: Specialized domains and release assurance |
+| final consolidated corpus | `11-conditional-specialized-safety-critical-regulated-domains.md#Open-Source Projects and Public Packages` | 20 | 20 | 0 | 20 | Phase 16: Specialized domains and release assurance |
+| final consolidated corpus | `11-conditional-specialized-safety-critical-regulated-domains.md#Mobile, Desktop, and Installed Clients` | 20 | 20 | 0 | 20 | Phase 16: Specialized domains and release assurance |
+| final consolidated corpus | `11-conditional-specialized-safety-critical-regulated-domains.md#Cloud-Native and Managed Platforms` | 20 | 20 | 0 | 20 | Phase 16: Specialized domains and release assurance |
+| final consolidated corpus | `11-conditional-specialized-safety-critical-regulated-domains.md#Containers and Orchestration` | 20 | 20 | 0 | 20 | Phase 16: Specialized domains and release assurance |
+| final consolidated corpus | `11-conditional-specialized-safety-critical-regulated-domains.md#Serverless and Managed Execution` | 20 | 20 | 0 | 20 | Phase 16: Specialized domains and release assurance |
+| final consolidated corpus | `11-conditional-specialized-safety-critical-regulated-domains.md#Healthcare and Regulated Sensitive Systems` | 20 | 20 | 0 | 20 | Phase 16: Specialized domains and release assurance |
+| final consolidated corpus | `11-conditional-specialized-safety-critical-regulated-domains.md#Public-Sector and High-Assurance Systems` | 20 | 20 | 0 | 20 | Phase 16: Specialized domains and release assurance |
+| final consolidated corpus | `11-conditional-specialized-safety-critical-regulated-domains.md#Libraries, SDKs, CLIs, and Developer Tools` | 20 | 20 | 0 | 20 | Phase 16: Specialized domains and release assurance |
+| final consolidated corpus | `11-conditional-specialized-safety-critical-regulated-domains.md#Games, Immersive, and High-Engagement Products` | 20 | 20 | 0 | 20 | Phase 16: Specialized domains and release assurance |
+| final consolidated corpus | `11-conditional-specialized-safety-critical-regulated-domains.md#Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services` | 156 | 156 | 156 | 0 | Phase 16: Specialized domains and release assurance |
+| final consolidated corpus | `11-conditional-specialized-safety-critical-regulated-domains.md#Volume completion rule` | 1 | 0 | 0 | 1 | corpus maintenance, audit, or completion instruction rather than a product control section |
+| final consolidated corpus | `12-release-production-readiness-evidence-approval.md#Purpose and use` | 0 | 0 | 0 | 0 | covered by the repository's stable PRC production-readiness controls |
+| final consolidated corpus | `12-release-production-readiness-evidence-approval.md#Accessibility, SEO, Content Quality, and Digital Discoverability` | 10 | 0 | 0 | 10 | covered by the repository's stable PRC production-readiness controls |
+| final consolidated corpus | `12-release-production-readiness-evidence-approval.md#Applicability, Evidence, Exceptions, and Audit Rules` | 8 | 0 | 0 | 8 | covered by the repository's stable PRC production-readiness controls |
+| final consolidated corpus | `12-release-production-readiness-evidence-approval.md#Final Evidence Package` | 22 | 0 | 0 | 22 | covered by the repository's stable PRC production-readiness controls |
+| final consolidated corpus | `12-release-production-readiness-evidence-approval.md#Quality Management and Continual Improvement` | 37 | 0 | 0 | 37 | covered by the repository's stable PRC production-readiness controls |
+| final consolidated corpus | `12-release-production-readiness-evidence-approval.md#Requirements Engineering` | 2 | 0 | 0 | 2 | covered by the repository's stable PRC production-readiness controls |
+| final consolidated corpus | `12-release-production-readiness-evidence-approval.md#Universal Code Quality` | 2 | 0 | 0 | 2 | covered by the repository's stable PRC production-readiness controls |
+| final consolidated corpus | `12-release-production-readiness-evidence-approval.md#Error Handling and Defensive Programming` | 2 | 0 | 0 | 2 | covered by the repository's stable PRC production-readiness controls |
+| final consolidated corpus | `12-release-production-readiness-evidence-approval.md#Universal Web Application Production-Readiness Master Checklist` | 1,402 | 0 | 0 | 1,402 | covered by the repository's stable PRC production-readiness controls |
+| final consolidated corpus | `12-release-production-readiness-evidence-approval.md#Web Quality, SEO, Accessibility, and Content Master Checklist` | 18 | 0 | 0 | 18 | covered by the repository's stable PRC production-readiness controls |
+| final consolidated corpus | `12-release-production-readiness-evidence-approval.md#Volume completion rule` | 1 | 0 | 0 | 1 | covered by the repository's stable PRC production-readiness controls |
+| final consolidated corpus | `GAP-AUDIT.md` | 0 | 0 | 0 | 0 | package documentation, manifest, or audit report rather than product controls |
+| final consolidated corpus | `INDEX.md` | 0 | 0 | 0 | 0 | package documentation, manifest, or audit report rather than product controls |
+| final consolidated corpus | `MANIFEST.md` | 0 | 0 | 0 | 0 | package documentation, manifest, or audit report rather than product controls |
+| final consolidated corpus | `README.md` | 12 | 0 | 0 | 12 | package documentation, manifest, or audit report rather than product controls |
+| final consolidated corpus | `SOURCE-COVERAGE.md` | 0 | 0 | 0 | 0 | package documentation, manifest, or audit report rather than product controls |
+| final consolidated corpus | `STANDARDS-BASELINE.md` | 0 | 0 | 0 | 0 | package documentation, manifest, or audit report rather than product controls |
 
 ## Interpretation boundary
 

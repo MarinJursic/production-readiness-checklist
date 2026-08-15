@@ -620,6 +620,243 @@ _Consolidated from `quality standards/01-governance/09-ethics-and-responsible-te
 - [ ] **USEQ-A7CFBEC2** — Reassess impact as usage, scale, context, data, models, and downstream integrations change.
 - [ ] **USEQ-46335AA9** — Stop or constrain a capability when harms cannot be reduced below approved tolerance.
 
+## Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights
+
+_Consolidated from `final consolidated corpus/01-governance-product-requirements-risk-ethics-lifecycle.md#Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights`; 215 non-duplicative controls._
+
+### Compliance and obligations management
+
+- [ ] **USEQ-0A917506** — Maintain one authoritative register of applicable laws, regulations, contracts, standards, licenses, policies, certifications, customer commitments, and internal obligations.
+- [ ] **USEQ-FC410330** — Record the jurisdiction, authority, scope, effective date, owner, interpretation, evidence, review date, and change source for every obligation.
+- [ ] **USEQ-228A7EAC** — Translate each applicable obligation into testable product, process, operational, documentation, and evidence requirements.
+- [ ] **USEQ-0A0A5D07** — Distinguish mandatory obligations from voluntary commitments, guidance, aspirations, and marketing claims.
+- [ ] **USEQ-5826CC12** — Resolve conflicts among legal, contractual, ethical, security, privacy, accessibility, safety, and product requirements through documented authorized decisions.
+- [ ] **USEQ-0A75AF7B** — Monitor official sources for amendments, enforcement guidance, court decisions, regulator interpretations, and transition deadlines that can change applicability.
+- [ ] **USEQ-4BD7C569** — Reassess obligations before entering a new market, serving a new user population, processing a new data type, changing a supplier, or materially changing functionality.
+- [ ] **USEQ-899D534D** — Ensure compliance owners have sufficient authority, independence, competence, resources, and access to decision-makers.
+- [ ] **USEQ-E5464005** — Prevent commercial or delivery pressure from suppressing a material compliance concern.
+- [ ] **USEQ-E49A534A** — Require qualified review when an obligation is ambiguous, high impact, or outside the team's competence.
+- [ ] **USEQ-33C53EA1** — Link obligations to requirements, risks, controls, tests, operating procedures, records, owners, and release decisions.
+- [ ] **USEQ-56A86581** — Verify that controls operate in the actual production context rather than only existing in policy documents.
+- [ ] **USEQ-68C68A3D** — Maintain evidence of compliance decisions and the factual basis used at the time.
+- [ ] **USEQ-61C0266E** — Track nonconformities, corrective actions, due dates, owners, effectiveness checks, and recurrence.
+- [ ] **USEQ-61985D0A** — Escalate repeated or systemic nonconformity beyond the team that created it.
+- [ ] **USEQ-4F97A2C6** — Define which nonconformities block release, require customer notification, or trigger incident response.
+- [ ] **USEQ-2E9F63DE** — Review whether accepted exceptions remain legally and contractually permissible.
+- [ ] **USEQ-E34BC22A** — Ensure temporary waivers expire automatically and cannot become permanent through inattention.
+- [ ] **USEQ-A98DF5A6** — Verify that customer-specific commitments are reflected in tenant, region, configuration, support, and reporting behavior.
+- [ ] **USEQ-39F64583** — Prevent unsupported certifications, seals, compliance labels, security claims, privacy claims, accessibility claims, and quality claims.
+- [ ] **USEQ-8BAFBF7E** — State the exact product, service, location, version, period, and control scope covered by every assurance claim.
+- [ ] **USEQ-DE933B4A** — Track certification and audit surveillance dates, evidence windows, exclusions, dependencies, and renewal actions.
+- [ ] **USEQ-D673A4A5** — Ensure changes cannot move the product outside a certified or contracted scope without review.
+- [ ] **USEQ-EDCF9DA1** — Maintain a controlled process for regulator, auditor, customer, and lawful-authority requests.
+- [ ] **USEQ-214C3BC6** — Protect privilege, confidentiality, personal data, trade secrets, and investigation integrity when responding to requests.
+- [ ] **USEQ-1ECFF549** — Record why an obligation was judged Not Applicable and have the judgment reviewed by an authorized person.
+- [ ] **USEQ-EBBC0B9E** — Reopen applicability judgments when facts, interpretations, product scope, or law change.
+- [ ] **USEQ-D2C209FC** — Measure control effectiveness and outcome quality rather than counting policies, training sessions, or completed forms alone.
+- [ ] **USEQ-5AFB222A** — Test compliance processes through sampling, walkthroughs, incident simulations, and independent review.
+- [ ] **USEQ-D4694365** — Provide a confidential path for reporting suspected noncompliance and protect reporters from retaliation.
+- [ ] **USEQ-EB301D83** — Preserve required records for the applicable period and dispose of them defensibly when the obligation ends.
+- [ ] **USEQ-F60CED4C** — Ensure compliance evidence remains understandable and retrievable after personnel, vendor, or technology changes.
+- [ ] **USEQ-EF95F68C** — Include compliance impacts in architecture decisions, backlog prioritization, procurement, release planning, and retirement.
+- [ ] **USEQ-517D13D7** — Treat supplier-operated obligations as shared responsibilities and verify the supplier's evidence rather than assuming transfer of accountability.
+- [ ] **USEQ-648076DD** — Review the compliance management system after material incidents, enforcement actions, audit findings, or recurring customer complaints.
+
+### Acquisition, supply, outsourcing, and exit governance
+
+- [ ] **USEQ-C097977F** — Define the business capability, outcomes, constraints, risks, data, interfaces, service levels, and acceptance criteria before selecting a supplier or product.
+- [ ] **USEQ-E8FAD9D8** — Compare build, buy, reuse, partner, and retire options using lifecycle value, risk, reversibility, opportunity cost, and organizational capability.
+- [ ] **USEQ-AD81EAAC** — Include migration, integration, operation, support, security, privacy, accessibility, continuity, and exit costs in acquisition decisions.
+- [ ] **USEQ-53949496** — Assess whether the supplier's financial, operational, security, quality, legal, and staffing capacity is proportionate to criticality.
+- [ ] **USEQ-37920856** — Identify fourth parties and other subcontractors that can materially affect the service or data.
+- [ ] **USEQ-32E592BA** — Evaluate concentration risk where multiple critical capabilities depend on one provider, region, control plane, identity system, or corporate group.
+- [ ] **USEQ-34730C2F** — Define contractual ownership and permitted use of source code, binaries, configuration, data, metadata, telemetry, models, prompts, documentation, and derived outputs.
+- [ ] **USEQ-76A225D3** — Define which party is responsible for defects, vulnerabilities, incidents, accessibility barriers, data errors, legal requests, and customer support.
+- [ ] **USEQ-15770275** — Include measurable service levels and service-level remedies that reflect real user and business impact.
+- [ ] **USEQ-330DBEE1** — Specify security, privacy, accessibility, quality, continuity, records, audit, and incident-notification obligations in enforceable terms.
+- [ ] **USEQ-9DE72FA9** — Require timely notice of material changes to ownership, subprocessors, locations, technology, security posture, data use, support, or end-of-life plans.
+- [ ] **USEQ-CBCD7DAA** — Preserve rights to obtain sufficient evidence, audit reports, test results, architecture information, and incident details.
+- [ ] **USEQ-49502674** — Ensure confidentiality terms do not prevent necessary security disclosure, regulatory reporting, or customer notification.
+- [ ] **USEQ-7A7A29CE** — Define vulnerability disclosure, remediation targets, emergency coordination, and customer advisory responsibilities.
+- [ ] **USEQ-3C3DC5B8** — Define data return, export format, completeness, integrity, metadata, provenance, and deletion obligations at termination.
+- [ ] **USEQ-033D8FA9** — Require deletion evidence for data, credentials, backups, replicas, caches, support copies, and subprocessors where applicable.
+- [ ] **USEQ-7A559BF6** — Define portability for identities, permissions, configuration, workflows, schemas, integrations, keys, logs, and historical records.
+- [ ] **USEQ-CA6C9422** — Avoid contractual or technical lock-in that makes safe exit economically or operationally infeasible without explicit acceptance.
+- [ ] **USEQ-7BC25239** — Identify proprietary extensions and document the consequence of losing them during migration.
+- [ ] **USEQ-B97EFA06** — Require open, documented, or independently implementable interfaces when interoperability and exitability are material.
+- [ ] **USEQ-123B91B1** — Define source escrow, continuity licensing, documentation access, or equivalent safeguards when supplier failure would be unacceptable.
+- [ ] **USEQ-6C97F8ED** — Verify that escrowed or transferred material is complete, current, buildable, deployable, maintainable, and legally usable.
+- [ ] **USEQ-AEBAE6E8** — Define transition assistance, knowledge transfer, overlap periods, support continuity, and key-person availability.
+- [ ] **USEQ-237A0006** — Test exports, backups, migration tooling, and alternate-provider integration before an emergency forces their use.
+- [ ] **USEQ-83E0FB27** — Maintain an exit plan for each critical supplier from the start of the relationship.
+- [ ] **USEQ-6AB53D5A** — Assign an exit owner and estimate time, cost, dependencies, data movement, customer impact, and residual obligations.
+- [ ] **USEQ-E6A9CCF0** — Identify supplier-provided controls that would disappear during exit and replace them before cutover.
+- [ ] **USEQ-C8B933AD** — Prevent test or evaluation access from becoming unreviewed production dependency.
+- [ ] **USEQ-57E8F571** — Require formal acceptance against agreed criteria before treating acquired software or services as production ready.
+- [ ] **USEQ-C11220A0** — Separate supplier demonstration from independent verification using representative workloads and failure conditions.
+- [ ] **USEQ-B1DA6120** — Verify licensing quantities, use rights, geographic restrictions, support rights, and renewal conditions before deployment.
+- [ ] **USEQ-02A1C0FF** — Track notice periods, price changes, minimum commitments, automatic renewals, and termination windows.
+- [ ] **USEQ-B6B75132** — Prevent procurement incentives from rewarding low initial price while hiding long-term risk or switching cost.
+- [ ] **USEQ-F0EB40C4** — Define governance for supplier-requested emergency changes and exceptions.
+- [ ] **USEQ-265DA109** — Review supplier performance using outcomes, incidents, risk trends, roadmap delivery, support quality, and corrective-action effectiveness.
+- [ ] **USEQ-14A323CB** — Escalate chronic supplier underperformance and maintain objective replacement triggers.
+- [ ] **USEQ-CA5F0120** — Ensure supplier personnel access uses individual identities, least privilege, time limits, logging, and prompt revocation.
+- [ ] **USEQ-C744DA1F** — Remove supplier access, integrations, credentials, certificates, routes, accounts, and data when the relationship ends.
+- [ ] **USEQ-DD784EF2** — Preserve contractual and technical evidence needed for disputes, audits, investigations, and transition.
+- [ ] **USEQ-B4C136B8** — Reassess critical suppliers after acquisition, merger, restructuring, leadership change, breach, sanctions exposure, or material service degradation.
+- [ ] **USEQ-66028C4E** — Document the residual risks accepted when a supplier cannot satisfy a required control.
+- [ ] **USEQ-DD621797** — Ensure the risk owner accepting a supplier exception is independent of the commercial incentive to proceed.
+
+### Organizational change, adoption, and benefits realization
+
+- [ ] **USEQ-7D97FA29** — Identify every group whose work, rights, incentives, responsibilities, workload, or outcomes will change.
+- [ ] **USEQ-F4BFF6A0** — Involve affected users, operators, support teams, administrators, and downstream partners early enough to influence design.
+- [ ] **USEQ-7A6C75E2** — Document the current process, target process, transition states, retained exceptions, and retirement conditions.
+- [ ] **USEQ-BD17C161** — Distinguish technical deployment from successful adoption and verified benefit realization.
+- [ ] **USEQ-F637AD14** — Define adoption outcomes, behavioral indicators, user outcomes, business outcomes, safety indicators, and failure criteria before launch.
+- [ ] **USEQ-B8EE5089** — Establish baseline measurements before changing the system or process.
+- [ ] **USEQ-C4685A7E** — Validate that the change addresses the actual problem rather than merely introducing new technology.
+- [ ] **USEQ-183A85DE** — Identify incentives that can cause gaming, unsafe shortcuts, shadow systems, duplicate work, or data-quality degradation.
+- [ ] **USEQ-9C2558C8** — Assess workload transfer to users, support, operations, security, compliance, and external partners.
+- [ ] **USEQ-4D532A00** — Ensure automation does not silently shift difficult work or risk to less powerful users.
+- [ ] **USEQ-AECB2ABF** — Provide role-specific training, practice, support, and reference material before affected people are expected to perform new tasks.
+- [ ] **USEQ-F60A847F** — Verify competence through observed performance or assessment rather than attendance alone.
+- [ ] **USEQ-7908A553** — Provide accessible training and alternatives for different languages, abilities, schedules, locations, and levels of experience.
+- [ ] **USEQ-871E097A** — Pilot changes with representative users, data, volume, constraints, and exception cases.
+- [ ] **USEQ-6CD7A9F9** — Define safe coexistence between old and new processes during transition.
+- [ ] **USEQ-05F6D1E7** — Prevent duplicate records, conflicting authorities, and inconsistent decisions while both processes operate.
+- [ ] **USEQ-88FC79BA** — Define which system is authoritative at every transition stage.
+- [ ] **USEQ-22C353B1** — Provide a supported path for correcting migration, adoption, and training errors.
+- [ ] **USEQ-7A86F837** — Monitor adoption by user segment to detect exclusion, differential failure, or hidden burden.
+- [ ] **USEQ-7AE11356** — Collect qualitative feedback as well as usage metrics.
+- [ ] **USEQ-4FC73955** — Protect users from retaliation for reporting that a change is unsafe, unusable, inaccessible, or ineffective.
+- [ ] **USEQ-F2A1587B** — Maintain a visible decision path for pausing, modifying, narrowing, or reversing the change.
+- [ ] **USEQ-7B44BE46** — Avoid interpreting forced use as evidence of satisfaction or success.
+- [ ] **USEQ-2184CE2C** — Confirm that users understand changed responsibilities, limits, escalation routes, and consequences.
+- [ ] **USEQ-36B73F2A** — Ensure support capacity matches expected questions, incidents, and transition failures.
+- [ ] **USEQ-DED02C8E** — Update policies, contracts, job aids, controls, dashboards, reports, and audit procedures with the change.
+- [ ] **USEQ-C4FE996D** — Remove obsolete instructions and clearly label temporary transition guidance.
+- [ ] **USEQ-6CD51BC3** — Measure intended benefits after stabilization and compare them with cost, harm, risk, and displaced work.
+- [ ] **USEQ-5ECB509F** — Investigate benefits that appear only through metric definition changes, excluded populations, or unmeasured downstream costs.
+- [ ] **USEQ-0C2A39BB** — Retire old systems and processes only after legal, operational, data, support, and recovery obligations are satisfied.
+- [ ] **USEQ-13D789B8** — Preserve access to historical records needed to understand decisions made under the old process.
+- [ ] **USEQ-5DEBD48E** — Capture lessons and update future change assumptions, estimates, training, and rollout methods.
+- [ ] **USEQ-F54385C8** — Assign an accountable owner for benefits realization beyond the deployment date.
+- [ ] **USEQ-6A646372** — Close the change only after adoption, outcome, support, control, and retirement criteria are met.
+
+### Deterministic automated decisions, rules engines, scoring, and workflow logic
+
+- [ ] **USEQ-2A4D03EE** — Inventory every automated rule, score, eligibility decision, prioritization, routing decision, threshold, and enforcement action that materially affects people or organizations.
+- [ ] **USEQ-DE0C89CA** — Record the decision purpose, owner, legal basis, ethical rationale, affected populations, inputs, outputs, consequences, and appeal path.
+- [ ] **USEQ-B989239A** — Classify decisions by potential harm, reversibility, scale, sensitivity, and degree of human reliance.
+- [ ] **USEQ-BA4A6745** — Require stronger review, evidence, monitoring, and human oversight as decision impact increases.
+- [ ] **USEQ-FA2A720B** — Define the authoritative source and version for every rule and decision table.
+- [ ] **USEQ-0518839E** — Prevent undocumented business rules from existing only in code, spreadsheets, individual memory, or vendor configuration.
+- [ ] **USEQ-A9E124F3** — Translate policy language into unambiguous executable logic with reviewed examples and counterexamples.
+- [ ] **USEQ-7EA42112** — Record ambiguities, discretionary areas, conflicts, exceptions, and precedence among rules.
+- [ ] **USEQ-CC7A27FE** — Make rule effective dates, expiry dates, jurisdiction, product scope, and population scope explicit.
+- [ ] **USEQ-5BF321CF** — Ensure historical decisions can be reconstructed using the rules, data, configuration, and time context in force at the time.
+- [ ] **USEQ-D0AF7A75** — Validate every input for accuracy, completeness, timeliness, provenance, semantic meaning, and permitted use.
+- [ ] **USEQ-CE3B9271** — Define behavior for missing, disputed, stale, inconsistent, or low-confidence input.
+- [ ] **USEQ-7881AC46** — Prevent proxies from defeating legal, ethical, fairness, or purpose limitations.
+- [ ] **USEQ-A1EF5F3D** — Test rules across representative demographic, geographic, linguistic, accessibility, and socioeconomic groups where outcomes can differ.
+- [ ] **USEQ-15661B6F** — Test boundary values and combinations near thresholds for disproportionate or unstable effects.
+- [ ] **USEQ-69F2B791** — Detect feedback loops in which earlier automated outcomes shape future inputs and reinforce error or disadvantage.
+- [ ] **USEQ-05AA60BA** — Evaluate whether a threshold creates cliff effects that should be replaced by review, graduated handling, or uncertainty disclosure.
+- [ ] **USEQ-85E43B93** — Provide understandable reasons for consequential outcomes at a level appropriate to affected users and reviewers.
+- [ ] **USEQ-3D5B49D0** — Distinguish an explanation of the actual decision from generic policy text.
+- [ ] **USEQ-E94AE5FB** — Avoid exposing security-sensitive details while still providing meaningful reason and redress.
+- [ ] **USEQ-ECA2F700** — Provide a timely, accessible, and effective path to challenge, correct, and appeal consequential decisions.
+- [ ] **USEQ-E6116080** — Ensure reviewers can change an outcome and are not evaluated solely on agreement with automation.
+- [ ] **USEQ-AAE859CB** — Prevent automation bias by presenting uncertainty, conflicting evidence, limitations, and alternatives.
+- [ ] **USEQ-EE4F8C75** — Define when human review is mandatory and what competence, authority, time, and information the reviewer needs.
+- [ ] **USEQ-FDC0790E** — Record overrides, reasons, outcomes, and patterns without discouraging justified intervention.
+- [ ] **USEQ-5F638352** — Monitor override rates, appeal success, reversal, complaints, subgroup outcomes, drift, and downstream harm.
+- [ ] **USEQ-6E4D7B2E** — Investigate high disagreement between automated outcomes and expert review.
+- [ ] **USEQ-16C7AB3F** — Separate policy approval from technical implementation approval.
+- [ ] **USEQ-9C43C510** — Require independent review for rules that affect rights, safety, money, access, employment, education, healthcare, housing, identity, or essential services.
+- [ ] **USEQ-A3E0DD69** — Version rules, test cases, explanatory text, data mappings, and monitoring together.
+- [ ] **USEQ-F9A87984** — Use dual control for emergency rule changes with high impact.
+- [ ] **USEQ-507353D7** — Simulate the population and operational effect of material rule changes before activation.
+- [ ] **USEQ-DA024B8E** — Use phased rollout, shadow evaluation, or retrospective analysis where direct rollout creates avoidable risk.
+- [ ] **USEQ-C059B588** — Define rollback and remediation for incorrect decisions already made.
+- [ ] **USEQ-72675725** — Identify every affected record and user when a rule defect is discovered.
+- [ ] **USEQ-BAD34E15** — Correct downstream systems, notifications, balances, permissions, reports, and derived decisions after remediation.
+- [ ] **USEQ-A3D3BEAB** — Notify affected parties when required or when doing so materially enables correction and trust.
+- [ ] **USEQ-EF58B259** — Prevent users from manipulating decision inputs beyond intended discretion while avoiding unfair barriers to legitimate correction.
+- [ ] **USEQ-E0356C82** — Test adversarial gaming, collusion, automation, and economic exploitation of rules.
+- [ ] **USEQ-4F9E9ECD** — Ensure rate limits and fraud controls do not silently create discriminatory or inaccessible outcomes.
+- [ ] **USEQ-1D490309** — Revalidate rules when source policy, law, population, data collection, product behavior, or operational context changes.
+- [ ] **USEQ-4892D554** — Retire rules and related data when their purpose or authority ends.
+- [ ] **USEQ-411D10D5** — Keep a complete audit trail of rule creation, approval, testing, deployment, execution, override, and retirement.
+- [ ] **USEQ-CC58936A** — Publish appropriate transparency about the existence and purpose of material automated decision-making.
+- [ ] **USEQ-2D7EA97F** — Prohibit claims of neutrality or objectivity when the rule embeds policy choices, value judgments, or incomplete data.
+
+### Intellectual property, confidential information, and rights provenance
+
+- [ ] **USEQ-83CB306E** — Identify the owner and permitted uses of every material codebase, library, data set, model, design, document, media asset, brand asset, and generated artifact.
+- [ ] **USEQ-4161FF42** — Obtain written intellectual-property assignments or licenses from employees, contractors, partners, and contributors where required.
+- [ ] **USEQ-89CB5A91** — Verify that contributors have authority to provide the material they contribute.
+- [ ] **USEQ-F8B4E93A** — Maintain provenance records for externally sourced code, data, content, models, fonts, images, audio, video, and documentation.
+- [ ] **USEQ-3F1EA654** — Review license compatibility before combining, distributing, hosting, modifying, or embedding components.
+- [ ] **USEQ-E687E904** — Fulfil attribution, notice, source-offer, reciprocity, patent, trademark, and redistribution obligations.
+- [ ] **USEQ-18BB4ACD** — Prevent confidential, proprietary, customer, employer, or restricted material from entering repositories or products without authorization.
+- [ ] **USEQ-1E23B466** — Define rules for employee side projects, prior inventions, open-source contributions, and use of employer resources.
+- [ ] **USEQ-46E6D74A** — Define contribution terms for public and private repositories.
+- [ ] **USEQ-E4A212F5** — Review contributor license agreements or developer certificates for appropriateness and enforceability.
+- [ ] **USEQ-B34707EE** — Track patents, defensive publications, trademarks, domain names, and other rights material to the product.
+- [ ] **USEQ-50A7E640** — Avoid asserting patent or trademark rights without qualified review.
+- [ ] **USEQ-64E5AE64** — Assess freedom-to-operate or infringement risk where the product, market, or contract warrants it.
+- [ ] **USEQ-53DAE09A** — Use clean-room or other controlled development methods when independently reimplementing restricted interfaces or behavior.
+- [ ] **USEQ-20AD6393** — Preserve evidence that clean-room boundaries and information controls were followed.
+- [ ] **USEQ-42D1678E** — Ensure reverse engineering, interoperability work, scraping, and data acquisition comply with applicable rights and restrictions.
+- [ ] **USEQ-E49C70F6** — Verify rights to use personal data, licensed data, public data, synthetic data, and derived data for the intended purpose.
+- [ ] **USEQ-D70EDF93** — Do not assume public availability means unrestricted reuse.
+- [ ] **USEQ-97C2833E** — Verify that training, evaluation, retrieval, analytics, and generated-output uses are covered by appropriate rights.
+- [ ] **USEQ-29EE3F45** — Define rights and obligations for user-generated content, feedback, support submissions, and uploaded files.
+- [ ] **USEQ-CC00B307** — Avoid terms that claim broader user-content rights than needed for the service.
+- [ ] **USEQ-2482AD39** — Provide processes for copyright, trademark, privacy, and other rights complaints.
+- [ ] **USEQ-FF4BC88F** — Prevent takedown processes from being abused without removing effective remedies for legitimate claimants.
+- [ ] **USEQ-864C229F** — Track geographic, field-of-use, time, user-count, device-count, and environment restrictions in licenses.
+- [ ] **USEQ-D38BB2A8** — Monitor license expiration, renewal, support, and termination dates.
+- [ ] **USEQ-A6A85301** — Ensure backups, disaster recovery, testing, and archive copies remain within license rights.
+- [ ] **USEQ-EA6F3090** — Include intellectual-property and data-rights obligations in supplier and acquisition reviews.
+- [ ] **USEQ-FD996784** — Prevent AI-assisted tools from receiving confidential or restricted material contrary to policy or contract.
+- [ ] **USEQ-38A675BA** — Independently review generated output for unauthorized copying, confidential disclosure, incompatible licensing, and provenance uncertainty.
+- [ ] **USEQ-9A5356E6** — Preserve trade secrets through access control, confidentiality terms, labeling, training, and reasonable handling practices.
+- [ ] **USEQ-ACCAC2B8** — Revoke access and recover confidential material during offboarding and supplier termination.
+- [ ] **USEQ-9A5C1988** — Separate public, internal, confidential, restricted, and customer-owned materials in repositories and documentation systems.
+- [ ] **USEQ-3B7D73D6** — Review product names, domains, icons, and branding for conflicts before public launch.
+- [ ] **USEQ-4414E1D1** — Define rights needed for decommissioning, customer export, long-term support, security patching, and legal retention.
+- [ ] **USEQ-EE05022B** — Maintain a response plan for infringement claims, license violations, ownership disputes, and accidental disclosure.
+- [ ] **USEQ-2967E6ED** — Correct notices, distributions, source offers, and customer communications promptly when a rights defect is found.
+
+### Speak-up culture, independence, conflicts, and decision integrity
+
+- [ ] **USEQ-11CC414E** — Provide confidential and accessible channels for reporting quality, safety, security, privacy, accessibility, ethical, legal, and financial concerns.
+- [ ] **USEQ-FD8476F7** — Prohibit retaliation against people who raise concerns in good faith.
+- [ ] **USEQ-89CCF5C5** — Allow concerns to bypass the normal management chain when that chain has a conflict or is implicated.
+- [ ] **USEQ-7C6CF5BB** — Define independent escalation to legal, compliance, security, safety, audit, risk, or governing bodies as appropriate.
+- [ ] **USEQ-22A55748** — Record conflicts of interest for reviewers, approvers, auditors, procurement participants, and risk acceptors.
+- [ ] **USEQ-7D5BF185** — Recuse or add independent review when a conflict can affect objectivity.
+- [ ] **USEQ-F42C1888** — Prevent a person from accepting material risk solely to meet a target for which that person is rewarded.
+- [ ] **USEQ-0081139A** — Separate implementation, verification, approval, and audit responsibilities in proportion to risk.
+- [ ] **USEQ-5D1E5D62** — Ensure independent reviewers receive complete evidence and are not limited to management-selected summaries.
+- [ ] **USEQ-FB0DCDDA** — Protect dissenting technical opinions and record unresolved disagreements in decision records.
+- [ ] **USEQ-D06298BE** — Require decision-makers to address material contrary evidence explicitly.
+- [ ] **USEQ-866CC7D2** — Do not use consensus pressure to convert unresolved risk into apparent agreement.
+- [ ] **USEQ-C30D4EE0** — Define stop-work and release-blocking authority for credible high-impact concerns.
+- [ ] **USEQ-CEECAF90** — Protect the ability to pause unsafe automation, deployment, data use, or customer communication.
+- [ ] **USEQ-7EE0FA0B** — Investigate reports promptly, fairly, confidentially, and with appropriate evidence preservation.
+- [ ] **USEQ-584CD846** — Communicate outcomes to reporters to the extent legally and operationally possible.
+- [ ] **USEQ-22119AF5** — Track patterns of ignored warnings, repeated exceptions, near misses, and suppressed defects.
+- [ ] **USEQ-F8C584BF** — Evaluate leaders on truthful risk communication and corrective action, not only delivery speed.
+- [ ] **USEQ-7BB8745A** — Reward prevention, simplification, documentation, mentoring, and reliability work that may not create visible features.
+- [ ] **USEQ-FA9114A6** — Prohibit manipulation of metrics, test scope, severity, evidence, or sampling to create a false appearance of readiness.
+- [ ] **USEQ-FE265A51** — Require retrospective review of emergency approvals and break-glass decisions.
+- [ ] **USEQ-6BA781DF** — Preserve auditability of who decided, what evidence was available, what alternatives existed, and why the decision was made.
+- [ ] **USEQ-622B3666** — Review the effectiveness and trustworthiness of speak-up channels at least periodically and after serious incidents.
+
 ## Standards and source references
 
 - [ISO/IEC/IEEE 12207:2026 — Software life cycle processes](https://www.iso.org/standard/90219.html)

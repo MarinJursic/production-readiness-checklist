@@ -6,6 +6,21 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 
 ## [Unreleased]
 
+## [2.1.0] - 2026-08-15
+
+### Added
+
+- 3,704 non-duplicative lifecycle controls from the final consolidated engineering corpus, bringing the project to 10,042 controls.
+- Coverage for acquisition and exit, automated decisions and rights, operator experience, transition and interoperability, eDiscovery, physical security, assurance cases, toolchain trust, service acceptance, knowledge continuity, scientific reproducibility, and digital trust services.
+- Visible GitHub star actions in the documentation header and footer.
+- Validation that rejects programming-language-, framework-, or vendor-dependent control wording.
+
+### Changed
+
+- The Get started tab now opens the 15-minute quick start, while Engineering lifecycle continues to open the full review overview.
+- Reworded client-execution controls to remain technology-neutral.
+- Audited the final corpus globally, removing 1,969 repeated cross-volume occurrences, exact overlaps, four reviewed semantic equivalents, authoring instructions, and the mirrored production-release master.
+
 ## [2.0.0] - 2026-08-15
 
 ### Added

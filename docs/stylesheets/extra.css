@@ -46,11 +46,67 @@
 }
 
 .md-header__source {
-  width: 2.4rem;
+  margin-left: 0.5rem;
+  width: auto;
 }
 
-.md-header__source .md-source__repository {
-  display: none;
+.prc-star {
+  align-items: center;
+  border: 1px solid currentColor;
+  border-radius: 0.25rem;
+  display: inline-flex;
+  font-weight: 650;
+  gap: 0.35rem;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.prc-star--header {
+  color: inherit;
+  opacity: 0.94;
+  padding: 0.35rem 0.55rem;
+}
+
+.prc-star--header:hover,
+.prc-star--header:focus-visible {
+  background: rgb(255 255 255 / 12%);
+  opacity: 1;
+}
+
+.prc-star--header .md-source__icon {
+  flex: 0 0 1rem;
+  height: 1rem;
+  margin: 0;
+  width: 1rem;
+}
+
+.prc-star--header .md-source__icon svg {
+  margin: 0;
+}
+
+.prc-star--header .md-source__repository {
+  font-size: 0.7rem;
+  margin: 0;
+  max-width: none;
+  padding: 0;
+}
+
+.prc-star--footer {
+  color: var(--md-footer-fg-color);
+  margin-left: auto;
+  padding: 0.45rem 0.65rem;
+}
+
+.prc-star--footer:hover,
+.prc-star--footer:focus-visible {
+  background: rgb(255 255 255 / 8%);
+  color: var(--md-footer-fg-color--light);
+}
+
+.prc-star--footer .md-icon {
+  display: inline-flex;
+  height: 0.9rem;
+  width: 0.9rem;
 }
 
 :focus-visible {
@@ -61,5 +117,17 @@
 @media screen and (max-width: 44.984375em) {
   .md-typeset table:not([class]) {
     display: block;
+  }
+
+  .prc-star--header {
+    padding: 0.35rem;
+  }
+
+  .prc-star--header .md-source__repository {
+    display: none;
+  }
+
+  .prc-star--footer {
+    margin-left: 0;
   }
 }

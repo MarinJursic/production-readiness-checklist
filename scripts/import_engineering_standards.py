@@ -17,7 +17,10 @@ DEFAULT_OUTPUT = ROOT / "docs" / "engineering"
 PRC_DIR = ROOT / "docs" / "checklists"
 
 CHECKBOX = re.compile(r"^\s*- \[[ xX]\]\s+(.+)$")
-EXISTING_ID = re.compile(r"^\*\*(?:PRC-\d{2}-\d{3}|USEQ-[A-F0-9]{8})\*\*\s*[—-]\s*")
+EXISTING_ID = re.compile(
+    r"^\*\*(?:PRC-\d{2}-\d{3}|USEQ-[A-F0-9]{8}|[A-Z]{3}-\d{5})\*\*"
+    r"\s*(?:[—-]\s*)?"
+)
 HEADING = re.compile(r"^(#{1,6})\s+(.+?)\s*$")
 LINK = re.compile(r"\[([^]]+)]\((https?://[^)]+)\)")
 
@@ -27,6 +30,22 @@ GAP_INCLUDED_SECTIONS = {
     "category no-go conditions",
 }
 PRC_CONTROL_COUNT = 1421
+
+FINAL_META_SECTIONS = {
+    "coverage audit, gap analysis, and consolidation map",
+    "gap audit and consolidation map",
+    "corpus maintenance and versioning",
+    "volume completion rule",
+}
+
+# These controls are not exact text matches, but a manual review found that they
+# add no obligation beyond an existing, more specific control.
+SEMANTIC_EQUIVALENTS = {
+    "use templates where they improve completeness without forcing irrelevant content",
+    "define performance and resource budgets for critical operations before optimizing",
+    "add regression tests for every material security defect",
+    "prevent livelock, starvation, priority inversion, and unbounded contention",
+}
 
 
 @dataclass(frozen=True)
@@ -104,6 +123,7 @@ class SourceDocument:
     imported_controls: int = 0
     covered_controls: int = 0
     references: list[tuple[str, str]] = field(default_factory=list)
+    selected_controls: list[CandidateControl] = field(default_factory=list)
 
 
 @dataclass(frozen=True)
@@ -148,12 +168,38 @@ def normalize_control(text: str) -> str:
     return value.casefold()
 
 
+def universalize_control(text: str) -> str:
+    """Remove programming-language wording without weakening the obligation."""
+    replacements = {
+        "Test both initial server responses and rendered output for JavaScript-dependent pages.":
+            "Test both initial server responses and rendered output for pages that depend on client-side execution.",
+        "JavaScript-disabled or failed-script behavior degrades acceptably where required.":
+            "Client-side execution being unavailable or failing degrades acceptably where required.",
+    }
+    return replacements.get(text, text)
+
+
 def control_id(key: str) -> str:
     return f"USEQ-{hashlib.sha256(key.encode('utf-8')).hexdigest()[:8].upper()}"
 
 
 def count_checkboxes(text: str) -> int:
     return sum(1 for line in text.splitlines() if CHECKBOX.match(line))
+
+
+def duplicate_occurrences(documents: dict[str, str]) -> int:
+    keys: list[str] = []
+    for path, text in documents.items():
+        if not re.match(r"^\d{2}-", PurePosixPath(path).name):
+            continue
+        for line in text.splitlines():
+            checkbox = CHECKBOX.match(line)
+            if checkbox:
+                control = universalize_control(
+                    EXISTING_ID.sub("", checkbox.group(1).strip())
+                )
+                keys.append(normalize_control(control))
+    return len(keys) - len(set(keys))
 
 
 def sha256_file(path: Path) -> str:
@@ -207,7 +253,7 @@ def candidate_controls(document: SourceDocument) -> list[CandidateControl]:
             continue
         if document.mode == "gap" and current_h2 not in GAP_INCLUDED_SECTIONS:
             continue
-        text = EXISTING_ID.sub("", checkbox.group(1).strip())
+        text = universalize_control(EXISTING_ID.sub("", checkbox.group(1).strip()))
         key = normalize_control(text)
         headings = tuple(heading_stack[level] for level in sorted(heading_stack))
         candidates.append(CandidateControl(text=text, key=key, headings=headings))
@@ -229,8 +275,116 @@ def quality_category(path: str) -> int | None:
     return QUALITY_DIRECTORY_MAP.get(directory)
 
 
+def final_category(volume: int, heading: str) -> int:
+    """Route final-corpus sections into the existing 16-phase lifecycle."""
+    normalized = heading.casefold()
+    if volume == 1:
+        if any(
+            term in normalized
+            for term in (
+                "product and business",
+                "product strategy",
+                "product discovery",
+                "requirements engineering",
+                "prioritization",
+                "product metrics",
+                "product lifecycle",
+            )
+        ):
+            return 2
+        return 1
+    if volume == 2:
+        return 3
+    if volume == 3:
+        if any(term in normalized for term in ("frontend", "browser", "offline", "forms")):
+            return 3
+        if any(
+            term in normalized
+            for term in (
+                "api",
+                "backend",
+                "background jobs",
+                "caching",
+                "integration, transition",
+            )
+        ):
+            return 6
+        if any(
+            term in normalized
+            for term in (
+                "code quality",
+                "functional correctness",
+                "input validation",
+                "maintainability",
+                "readability",
+                "abstractions",
+                "error handling",
+                "resource lifecycle",
+                "concurrent",
+                "configuration",
+                "dependency",
+                "refactoring",
+                "code review",
+                "testability",
+                "reusability in code",
+            )
+        ):
+            return 5
+        return 4
+    if volume == 4:
+        return 9 if "privacy" in normalized or "sensitive" in normalized or "cross-border" in normalized else 7
+    if volume == 5:
+        if any(term in normalized for term in ("fraud", "abuse resistance", "trust, safety")):
+            return 14
+        return 8
+    if volume == 6:
+        return 10
+    if volume == 7:
+        return 11
+    if volume == 8:
+        return 12
+    if volume == 9:
+        return 13
+    if volume == 10:
+        return 15
+    if volume == 11:
+        if any(
+            term in normalized
+            for term in (
+                "user-generated",
+                "notifications",
+                "search, ranking",
+                "advertising",
+                "marketplaces",
+            )
+        ):
+            return 14
+        return 16
+    return 16
+
+
+def split_h2_sections(text: str) -> list[tuple[str, str]]:
+    sections: list[tuple[str, str]] = []
+    heading = ""
+    lines: list[str] = []
+    for line in text.splitlines():
+        match = HEADING.match(line)
+        if match and len(match.group(1)) == 2:
+            if heading:
+                sections.append((heading, "\n".join(lines)))
+            heading = match.group(2).strip()
+            lines = [line]
+        elif heading:
+            lines.append(line)
+    if heading:
+        sections.append((heading, "\n".join(lines)))
+    return sections
+
+
 def source_documents(
-    quality_docs: dict[str, str], gap_docs: dict[str, str]
+    quality_docs: dict[str, str],
+    gap_docs: dict[str, str],
+    final_docs: dict[str, str],
 ) -> list[SourceDocument]:
     documents: list[SourceDocument] = []
     for path, text in sorted(quality_docs.items()):
@@ -269,6 +423,50 @@ def source_documents(
                 references=references_from(text),
             )
         )
+
+    for path, text in sorted(final_docs.items()):
+        match = re.match(r"^(\d{2})-", PurePosixPath(path).name)
+        if not match:
+            documents.append(
+                SourceDocument(
+                    package="final consolidated corpus",
+                    path=path,
+                    title=title_from(text, path),
+                    category=None,
+                    text=text,
+                    mode="final",
+                    skip_reason="package documentation, manifest, or audit report rather than product controls",
+                    total_controls=count_checkboxes(text),
+                    references=references_from(text),
+                )
+            )
+            continue
+
+        volume = int(match.group(1))
+        for heading, section_text in split_h2_sections(text):
+            heading_key = heading.casefold()
+            if volume == 12:
+                skip_reason = "covered by the repository's stable PRC production-readiness controls"
+                category = None
+            elif heading_key in FINAL_META_SECTIONS:
+                skip_reason = "corpus maintenance, audit, or completion instruction rather than a product control section"
+                category = None
+            else:
+                skip_reason = ""
+                category = final_category(volume, heading)
+            documents.append(
+                SourceDocument(
+                    package="final consolidated corpus",
+                    path=f"{path}#{heading}",
+                    title=heading,
+                    category=category,
+                    text=section_text,
+                    mode="final",
+                    skip_reason=skip_reason,
+                    total_controls=count_checkboxes(section_text),
+                    references=references_from(section_text),
+                )
+            )
     return documents
 
 
@@ -282,11 +480,42 @@ def existing_prc_keys() -> set[str]:
     return keys
 
 
+def select_controls(
+    documents: list[SourceDocument], seen: set[str]
+) -> dict[int, int]:
+    """Select controls with earlier source packages taking precedence over addenda."""
+    known_ids: dict[str, str] = {}
+    category_counts = {category.number: 0 for category in CATEGORIES}
+    for modes in ({"quality", "gap"}, {"final"}):
+        for category in CATEGORIES:
+            for document in documents:
+                if (
+                    document.mode not in modes
+                    or document.category != category.number
+                    or document.skip_reason
+                ):
+                    continue
+                candidates = candidate_controls(document)
+                document.candidate_controls = len(candidates)
+                for candidate in candidates:
+                    if candidate.key in seen or candidate.key in SEMANTIC_EQUIVALENTS:
+                        document.covered_controls += 1
+                        continue
+                    identifier = control_id(candidate.key)
+                    prior_key = known_ids.get(identifier)
+                    if prior_key and prior_key != candidate.key:
+                        raise ValueError(f"Control ID collision for {identifier}")
+                    known_ids[identifier] = candidate.key
+                    seen.add(candidate.key)
+                    document.selected_controls.append(candidate)
+                    document.imported_controls += 1
+                    category_counts[category.number] += 1
+    return category_counts
+
+
 def render_category(
     category: Category,
     documents: list[SourceDocument],
-    seen: set[str],
-    known_ids: dict[str, str],
 ) -> tuple[str, int, list[tuple[str, str]]]:
     body: list[str] = [
         f"# {category.title}",
@@ -305,21 +534,7 @@ def render_category(
     for document in documents:
         if document.category != category.number or document.skip_reason:
             continue
-        candidates = candidate_controls(document)
-        document.candidate_controls = len(candidates)
-        included: list[CandidateControl] = []
-        for candidate in candidates:
-            if candidate.key in seen:
-                document.covered_controls += 1
-                continue
-            identifier = control_id(candidate.key)
-            prior_key = known_ids.get(identifier)
-            if prior_key and prior_key != candidate.key:
-                raise ValueError(f"Control ID collision for {identifier}")
-            known_ids[identifier] = candidate.key
-            seen.add(candidate.key)
-            included.append(candidate)
-        document.imported_controls = len(included)
+        included = document.selected_controls
         imported += len(included)
         if not included:
             continue
@@ -334,18 +549,21 @@ def render_category(
         )
         previous_headings: tuple[str, ...] = ()
         for candidate in included:
+            display_headings = candidate.headings
+            if display_headings and display_headings[0] == document.title:
+                display_headings = display_headings[1:]
             common = 0
-            for left, right in zip(previous_headings, candidate.headings):
+            for left, right in zip(previous_headings, display_headings):
                 if left != right:
                     break
                 common += 1
-            for index, heading in enumerate(candidate.headings[common:], start=common):
+            for index, heading in enumerate(display_headings[common:], start=common):
                 if body[-1] != "":
                     body.append("")
                 level = min(3 + index, 6)
                 body.extend([f"{'#' * level} {heading}", ""])
             body.append(f"- [ ] **{control_id(candidate.key)}** — {candidate.text}")
-            previous_headings = candidate.headings
+            previous_headings = display_headings
         body.append("")
 
         for label, url in document.references:
@@ -439,20 +657,24 @@ def escape_cell(value: str) -> str:
 
 def render_manifest(
     documents: list[SourceDocument],
+    source_documents_count: int,
     source_total: int,
     imported: int,
+    final_imported: int,
     archive_digests: list[tuple[str, str]],
+    final_duplicate_occurrences: int,
 ) -> str:
     lines = [
         "# Source consolidation manifest",
         "",
-        "This manifest records how the two supplied archives were incorporated. Archive content was treated as source material; operational instructions inside it were not executed.",
+        "This manifest records how the three supplied archives were incorporated. Archive content was treated as source material; operational instructions inside it were not executed.",
         "",
         "## Consolidation result",
         "",
-        f"- Source documents reviewed: **{len(documents):,}**",
+        f"- Source documents reviewed: **{source_documents_count:,}**",
         f"- Source checkbox lines reviewed: **{source_total:,}**",
-        f"- New non-duplicative lifecycle controls imported: **{imported:,}**",
+        f"- Non-duplicative lifecycle controls: **{imported:,}**",
+        f"- Additional controls imported from the final corpus: **{final_imported:,}**",
         f"- Existing production-readiness controls retained: **{PRC_CONTROL_COUNT:,}**",
         f"- Final unique control set: **{imported + PRC_CONTROL_COUNT:,}**",
         "- Published lifecycle manuals: **16**, followed by the existing production-readiness review",
@@ -469,8 +691,13 @@ def render_manifest(
             "",
             "- The quality archive's production master was not copied because this repository already maintains that review with stable `PRC-` identifiers.",
             "- The gap supplement's `Consolidated controls from the prior corpus` sections were not copied a second time. Only expanded gap-closure controls, category evidence, and category no-go controls were candidates for import.",
+            f"- The final corpus was deduplicated globally across all volumes. Its {final_duplicate_occurrences:,} repeated cross-volume occurrences were not reissued as separate controls.",
+            "- The final corpus's release volume was not copied because it mirrors the repository's stable `PRC-` production gate.",
+            "- Corpus audits, consolidation maps, maintenance rules, and volume-completion instructions were treated as checklist-authoring material rather than product controls.",
             "- Repeated applicability boilerplate and normalized exact duplicates were retained once at their earliest lifecycle phase.",
             "- Exact matches to existing `PRC-` controls were not reissued with new identifiers.",
+            "- Four manually reviewed near-matches were excluded because an existing control expresses the same or a stronger obligation.",
+            "- Programming-language wording was generalized to equivalent client-side execution terminology before import.",
             "- Imported controls use deterministic `USEQ-` identifiers derived from normalized control text so evidence references remain stable across regeneration.",
             "- Similar-looking controls were retained when their wording expressed a materially different scope, condition, or evidence obligation.",
             "",
@@ -518,6 +745,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--quality-archive", type=Path, required=True)
     parser.add_argument("--gap-archive", type=Path, required=True)
+    parser.add_argument("--final-archive", type=Path, required=True)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     return parser.parse_args()
 
@@ -526,37 +754,48 @@ def main() -> int:
     args = parse_args()
     quality_package = "universal-software-engineering-quality-standards"
     gap_package = "universal-software-engineering-gap-supplement"
+    final_package = "universal-software-engineering-final-checklists"
     quality_docs = archive_markdown(args.quality_archive, quality_package)
     gap_docs = archive_markdown(args.gap_archive, gap_package)
-    documents = source_documents(quality_docs, gap_docs)
+    final_docs = archive_markdown(args.final_archive, final_package)
+    documents = source_documents(quality_docs, gap_docs, final_docs)
     source_total = sum(document.total_controls for document in documents)
+    source_documents_count = len(quality_docs) + len(gap_docs) + len(final_docs)
 
     args.output.mkdir(parents=True, exist_ok=True)
     seen = existing_prc_keys()
-    known_ids: dict[str, str] = {}
-    category_counts: dict[int, int] = {}
-    total_imported = 0
+    category_counts = select_controls(documents, seen)
+    total_imported = sum(category_counts.values())
+    final_imported = sum(
+        document.imported_controls
+        for document in documents
+        if document.mode == "final"
+    )
     for category in CATEGORIES:
-        rendered, imported, _ = render_category(category, documents, seen, known_ids)
+        rendered, imported, _ = render_category(category, documents)
         (args.output / category.filename).write_text(rendered, encoding="utf-8")
-        category_counts[category.number] = imported
-        total_imported += imported
+        if imported != category_counts[category.number]:
+            raise ValueError(f"Rendered count mismatch for phase {category.number}")
 
     (args.output / "00-overview.md").write_text(
         render_overview(
-            category_counts, len(documents), source_total, total_imported
+            category_counts, source_documents_count, source_total, total_imported
         ),
         encoding="utf-8",
     )
     (args.output / "source-manifest.md").write_text(
         render_manifest(
             documents,
+            source_documents_count,
             source_total,
             total_imported,
+            final_imported,
             [
                 (args.quality_archive.name, sha256_file(args.quality_archive)),
                 (args.gap_archive.name, sha256_file(args.gap_archive)),
+                (args.final_archive.name, sha256_file(args.final_archive)),
             ],
+            duplicate_occurrences(final_docs),
         ),
         encoding="utf-8",
     )
