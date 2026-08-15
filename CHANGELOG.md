@@ -6,6 +6,11 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 
 ## [Unreleased]
 
+### Added
+
+- A public invitation to propose missing controls, corrections, documentation improvements, and tooling contributions.
+- A documented long-term vision for a technology-neutral AI readiness scanner that evaluates available evidence against every applicable control and produces a complete gap report.
+
 ## [2.1.0] - 2026-08-15
 
 ### Added

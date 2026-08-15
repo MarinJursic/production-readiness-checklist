@@ -9,9 +9,16 @@ Thanks for helping make production-readiness reviews clearer and more useful.
 - add an evidence example or reviewer prompt;
 - improve accessibility, navigation, or adoption guidance;
 - add a missing conditional module or standards mapping;
-- fix broken links, automation, or documentation rendering.
+- fix broken links, automation, or documentation rendering;
+- help design or implement the future technology-neutral AI readiness scanner.
 
 Open an issue before a large structural change so contributors can agree on scope.
+
+## Future scanner contributions
+
+The long-term project direction includes an AI-assisted scanner that evaluates repositories and available evidence against the control set. Useful contributions include evidence schemas, control-to-check mappings, repository and CI integrations, safe analysis workflows, evaluation datasets, explainable reports, and safeguards against unsupported Pass results.
+
+Scanner work must preserve the project’s core principles: technology neutrality, exact evidence citations, explicit unknowns, stable control IDs, no invented production state, and human ownership of risk acceptance and release decisions. Open an issue before implementation so the architecture and scope can be discussed.
 
 ## Control-writing guidelines
 

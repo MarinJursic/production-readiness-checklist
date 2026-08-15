@@ -12,9 +12,9 @@
 [![GitHub stars](https://img.shields.io/github/stars/MarinJursic/production-readiness-checklist?logo=github&color=f59e0b)](https://github.com/MarinJursic/production-readiness-checklist)
 [![License: MIT](https://img.shields.io/badge/license-MIT-f59e0b.svg)](LICENSE)
 
-[Begin the complete review](docs/engineering/00-overview.md) · [Check a release quickly](docs/guides/getting-started.md) · [Use with an AI agent](docs/guides/ai-assisted-review.md)
+[Begin the complete review](docs/engineering/00-overview.md) · [Check a release quickly](docs/guides/getting-started.md) · [Use with an AI agent](docs/guides/ai-assisted-review.md) · [Contribute](CONTRIBUTING.md)
 
-⭐ [Star this project](https://github.com/MarinJursic/production-readiness-checklist) · [Share on LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fmarinjursic.github.io%2Fproduction-readiness-checklist%2F) · [Share on X](https://twitter.com/intent/tweet?text=Production%20Readiness%20Checklist%3A%2010%2C042%20evidence-driven%20software%20engineering%20and%20release%20controls.&url=https%3A%2F%2Fmarinjursic.github.io%2Fproduction-readiness-checklist%2F)
+⭐ [Star this project](https://github.com/MarinJursic/production-readiness-checklist) · 🤝 [Help improve it](CONTRIBUTING.md) · [Share on LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fmarinjursic.github.io%2Fproduction-readiness-checklist%2F) · [Share on X](https://twitter.com/intent/tweet?text=Production%20Readiness%20Checklist%3A%2010%2C042%20evidence-driven%20software%20engineering%20and%20release%20controls.&url=https%3A%2F%2Fmarinjursic.github.io%2Fproduction-readiness-checklist%2F)
 
 </div>
 
@@ -77,6 +77,21 @@ Do not modify code and do not make the final release decision.
 - [Evidence challenge prompt](docs/prompts/evidence-challenge.md)
 - [AI-assisted review guide](docs/guides/ai-assisted-review.md)
 
+## Long-term vision: an AI readiness scanner
+
+The longer-term goal is to turn this open control set into an open-source AI-assisted scanner. The scanner should be able to inspect a repository and its available engineering evidence, evaluate every relevant control, and produce a complete review showing what passed, failed, remains blocked, or is not applicable.
+
+The intended scanner should:
+
+- map findings to stable `USEQ-*` and `PRC-*` control IDs;
+- cite the exact code, configuration, documentation, test, or operational evidence behind every result;
+- distinguish verified facts from assumptions and unavailable production or organizational evidence;
+- generate a full, prioritized list of gaps, required manual checks, and recommended next actions;
+- support different languages, frameworks, platforms, and deployment models without locking the project to one technology vendor; and
+- keep risk acceptance and the final release decision with accountable humans.
+
+This scanner is a project direction, not a capability the repository claims to provide today. Contributors are welcome to help shape its architecture, evidence model, integrations, evaluation approach, reporting format, and safeguards.
+
 ## Evidence, not checkbox theater
 
 | Field | Example |
@@ -114,7 +129,13 @@ This project is engineering guidance, not legal advice, a certification, or a su
 
 ## Contributing
 
-Corrections, clearer controls, stronger evidence examples, and standards mappings are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request. Please report vulnerabilities privately as described in [SECURITY.md](SECURITY.md).
+This project should improve through real-world experience. If a control is missing, duplicated, unclear, outdated, incorrectly categorized, or difficult to verify, please help fix it. Contributions can expand the checklist, improve existing wording and evidence guidance, strengthen the documentation and tooling, or advance the future AI scanner.
+
+- [Propose a missing or improved control](https://github.com/MarinJursic/production-readiness-checklist/issues/new?template=control-proposal.yml)
+- [Report a documentation or navigation problem](https://github.com/MarinJursic/production-readiness-checklist/issues/new?template=documentation.yml)
+- Read the [contribution guide](CONTRIBUTING.md) and open a focused pull request
+
+First-time contributors are welcome. Please report vulnerabilities privately as described in [SECURITY.md](SECURITY.md).
 
 If this project helps your team, [star the repository](https://github.com/MarinJursic/production-readiness-checklist), share the [documentation site](https://marinjursic.github.io/production-readiness-checklist/), or use GitHub’s **Cite this repository** action via [CITATION.cff](CITATION.cff).
 
