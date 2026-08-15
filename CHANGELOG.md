@@ -6,6 +6,22 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-08-15
+
+### Added
+
+- Responsive landing-page hero, review-path cards, release flow, and track explorer.
+- Accessible star and share actions on the homepage and every checklist page.
+- Native Web Share support with a clipboard fallback and live status messaging.
+- Open Graph, X card, and `WebSite` structured metadata with a 1280×640 social image.
+- GitHub citation metadata through `CITATION.cff`.
+
+### Changed
+
+- Theme icons now show a sun in light mode and a moon in dark mode.
+- Typography, surfaces, tables, cards, focus states, and mobile spacing received a full visual refresh.
+- Page-level edit/view actions and previous/next navigation make contributing and browsing easier.
+
 ## [1.0.0] - 2026-08-15
 
 ### Added

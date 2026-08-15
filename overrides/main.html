@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block htmltitle %}
+  {% if page and page.is_homepage %}
+    <title>{{ config.site_name }}</title>
+  {% else %}
+    {{ super() }}
+  {% endif %}
+{% endblock %}
+
+{% block extrahead %}
+  {{ super() }}
+  {% set share_title = page.meta.title if page and page.meta and page.meta.title else (page.title if page and page.title else config.site_name) %}
+  {% set share_description = page.meta.description if page and page.meta and page.meta.description else config.site_description %}
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ config.site_name }}">
+  <meta property="og:title" content="{{ share_title }}">
+  <meta property="og:description" content="{{ share_description }}">
+  <meta property="og:url" content="{{ page.canonical_url }}">
+  <meta property="og:image" content="{{ config.site_url }}assets/social-card.png">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="640">
+  <meta property="og:image:alt" content="Production Readiness Checklist — ship with evidence, not optimism">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ share_title }}">
+  <meta name="twitter:description" content="{{ share_description }}">
+  <meta name="twitter:image" content="{{ config.site_url }}assets/social-card.png">
+  {% if page and page.is_homepage %}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Production Readiness Checklist",
+        "alternateName": "PRC",
+        "url": "https://marinjursic.github.io/production-readiness-checklist/",
+        "description": "1,421 evidence-driven checks for shipping web applications with confidence.",
+        "sameAs": "https://github.com/MarinJursic/production-readiness-checklist"
+      }
+    </script>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {{ super() }}
+  {% if page and not page.is_homepage %}
+    <aside class="prc-page-actions" aria-label="Support and share this project">
+      <div>
+        <strong>Useful checklist?</strong>
+        <span>Help another team find it.</span>
+      </div>
+      <div class="prc-page-actions__buttons">
+        <a class="md-button prc-star-button" href="https://github.com/MarinJursic/production-readiness-checklist" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">★</span> Star on GitHub</a>
+        <span class="prc-share-group">
+          <button class="md-button prc-share-button" type="button" data-prc-share hidden>Share this page</button>
+          <span class="prc-share-status" role="status" aria-live="polite"></span>
+        </span>
+      </div>
+    </aside>
+  {% endif %}
+{% endblock %}

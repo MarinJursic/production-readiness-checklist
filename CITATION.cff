@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: If this checklist supports your release process, please cite it using the metadata below.
+title: Production Readiness Checklist
+type: software
+authors:
+  - family-names: Jursic
+    given-names: Marin
+repository-code: https://github.com/MarinJursic/production-readiness-checklist
+url: https://marinjursic.github.io/production-readiness-checklist/
+version: 1.1.0
+date-released: 2026-08-15
+license: MIT
+abstract: >-
+  An evidence-driven, technology-neutral production-readiness review system
+  containing 1,421 controls, stable evidence identifiers, reusable decision
+  records, and guidance for human and AI-assisted audits.
+keywords:
+  - production-readiness
+  - release-engineering
+  - site-reliability-engineering
+  - application-security
+  - web-development
+  - checklist
