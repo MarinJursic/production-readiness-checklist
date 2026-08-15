@@ -1,0 +1,76 @@
+site_name: Production Readiness Checklist
+site_description: 1,421 evidence-driven checks for shipping web applications with confidence.
+site_author: Production Readiness Checklist contributors
+site_url: https://marinjursic.github.io/production-readiness-checklist/
+repo_url: https://github.com/MarinJursic/production-readiness-checklist
+repo_name: production-readiness-checklist
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  logo: assets/logo.svg
+  favicon: assets/logo.svg
+  features:
+    - navigation.instant
+    - navigation.sections
+    - navigation.tabs
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.code.copy
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+nav:
+  - Home: index.md
+  - Get started:
+      - 15-minute quick start: guides/getting-started.md
+      - AI-assisted review: guides/ai-assisted-review.md
+      - References and scope: references.md
+  - Resources:
+      - Full AI review: prompts/full-readiness-review.md
+      - Release-diff review: prompts/release-diff-review.md
+      - Evidence challenge: prompts/evidence-challenge.md
+      - Release assessment: records/release-assessment.md
+      - Evidence record: records/evidence-record.md
+      - Risk exception: records/risk-exception.md
+      - Go/no-go decision: records/go-no-go-decision.md
+  - Checklist:
+      - Readiness principle: checklists/00-readiness-principle.md
+      - Release foundations: checklists/01-release-foundations.md
+      - Product, risk, and architecture: checklists/02-product-risk-architecture.md
+      - Source, build, and supply chain: checklists/03-source-build-supply-chain.md
+      - Environments, quality, and experience: checklists/04-environments-quality-experience.md
+      - Application security: checklists/05-application-security.md
+      - Data, privacy, and performance: checklists/06-data-privacy-performance.md
+      - Reliability and operations: checklists/07-reliability-operations.md
+      - Maintenance, vendors, and compliance: checklists/08-maintenance-vendors-compliance.md
+      - Conditional feature modules: checklists/09-conditional-modules.md
+      - Evidence, sign-off, and decision: checklists/10-evidence-and-decision.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - toc:
+      permalink: true
+
+extra_css:
+  - stylesheets/extra.css

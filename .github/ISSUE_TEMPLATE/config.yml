@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Private security report
+    url: https://github.com/MarinJursic/production-readiness-checklist/security/advisories/new
+    about: Report unsafe guidance or workflow vulnerabilities privately.

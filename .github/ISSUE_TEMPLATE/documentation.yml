@@ -1,0 +1,31 @@
+name: Documentation issue
+description: Report unclear guidance, a broken link, or a rendering problem.
+title: "[Docs]: "
+labels: [documentation]
+body:
+  - type: input
+    id: location
+    attributes:
+      label: Location
+      description: Provide the file, heading, URL, or control ID.
+      placeholder: docs/guides/getting-started.md or PRC-02-001
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: What is unclear or broken?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Suggested improvement
+      description: Tell us what would make the material easier to use.
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: I checked that this is not an application-specific support request.
+          required: true

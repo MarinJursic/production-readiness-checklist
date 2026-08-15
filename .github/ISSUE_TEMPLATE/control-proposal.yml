@@ -1,0 +1,51 @@
+name: Control proposal
+description: Propose a new control or a substantive change to an existing control.
+title: "[Control]: "
+labels: [control]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for helping make the checklist more accurate and testable.
+  - type: input
+    id: controls
+    attributes:
+      label: Affected control IDs
+      description: List existing PRC IDs, or name the numbered section for a new control.
+      placeholder: PRC-15-012, PRC-15-013
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What is missing, inaccurate, ambiguous, or hard to verify?
+    validations:
+      required: true
+  - type: textarea
+    id: wording
+    attributes:
+      label: Proposed wording
+      description: Write one technology-neutral, verifiable outcome per control.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Verification and evidence
+      description: How should a reviewer establish that the control passes?
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: Primary references
+      description: Link standards, regulations, or authoritative guidance where applicable.
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmation
+      options:
+        - label: I searched for an existing control and related issue.
+          required: true
+        - label: This proposal does not claim to guarantee security, reliability, or compliance.
+          required: true
