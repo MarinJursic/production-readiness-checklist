@@ -36,22 +36,24 @@
     {% endif %}
   {% endif %}
   <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
+    <div class="md-footer-meta__inner md-grid prc-footer-meta">
       {% include "partials/copyright.html" %}
-      <a
-        href="{{ config.repo_url }}"
-        class="prc-star prc-star--footer"
-        title="Star this repository on GitHub"
-        aria-label="Star this repository on GitHub"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <span class="md-icon" aria-hidden="true">{% include ".icons/material/star-outline.svg" %}</span>
-        <span>Star repository</span>
-      </a>
-      {% if config.extra.social %}
-        {% include "partials/social.html" %}
-      {% endif %}
+      <div class="prc-footer-actions">
+        <a
+          href="{{ config.repo_url }}"
+          class="prc-footer-star"
+          title="Star this repository on GitHub"
+          aria-label="Star this repository on GitHub"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="prc-footer-star__icon md-icon" aria-hidden="true">{% include ".icons/material/star-outline.svg" %}</span>
+          <span>Star on GitHub</span>
+        </a>
+        {% if config.extra.social %}
+          {% include "partials/social.html" %}
+        {% endif %}
+      </div>
     </div>
   </div>
 </footer>
