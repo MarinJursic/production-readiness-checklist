@@ -6,6 +6,21 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 
 ## [Unreleased]
 
+## [1.1.1] - 2026-08-15
+
+### Changed
+
+- Replaced the promotional homepage with a conventional documentation overview.
+- Added a scannable start table, review process, track reference, and evidence-state reference.
+- Added navigation tracking, breadcrumbs, and search suggestions.
+- Reduced the custom stylesheet to restrained typography, table, focus, and color refinements.
+- Simplified the repository header action to a compact GitHub icon.
+
+### Removed
+
+- Marketing hero, showcase cards, statistics, animated panels, and promotional page footers.
+- Custom sharing JavaScript; sharing remains available through unobtrusive project links.
+
 ## [1.1.0] - 2026-08-15
 
 ### Added

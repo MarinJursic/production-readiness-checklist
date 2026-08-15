@@ -1,142 +1,62 @@
 ---
-title: Production Readiness Checklist
-description: 1,421 evidence-driven checks for shipping secure, reliable, and supportable web applications with confidence.
-hide:
-  - toc
+description: 1,421 evidence-driven checks for shipping secure, reliable, and supportable web applications.
 ---
 
-<!-- markdownlint-disable MD025 -->
+# Production Readiness Checklist
 
-<div class="prc-hero" markdown>
+Use this documentation to decide whether a web application is ready for production. It provides **1,421 technology-neutral controls**, stable evidence IDs, reusable decision records, and guidance for human or AI-assisted reviews.
 
-<div class="prc-hero__copy" markdown>
+The checklist does not produce a readiness score. A release is ready only when every applicable requirement has current evidence and no unresolved risk exceeds the organization's tolerance.
 
-<span class="prc-eyebrow">OPEN-SOURCE RELEASE READINESS SYSTEM</span>
+## Start here
 
-# Ship with evidence, not optimism
+| Your goal | Start with | What you will produce |
+| --- | --- | --- |
+| Review an upcoming release | [15-minute quick start](guides/getting-started.md) | A scoped assessment and an initial no-go decision |
+| Ask Claude or another agent to review a repository | [AI-assisted review](guides/ai-assisted-review.md) | Evidence-backed findings with explicit unknowns |
+| Introduce the process to a team | [Readiness principle](checklists/00-readiness-principle.md) | Agreed owners, evidence rules, and decision criteria |
+| Inspect the complete control set | [Release foundations](checklists/01-release-foundations.md) | A track-by-track production-readiness review |
 
-Turn production readiness into a reviewable decision with **1,421 technology-neutral controls**, stable evidence IDs, release templates, and honest AI-assisted audits.
+## Review process
 
-<div class="prc-hero__actions">
-  <a class="md-button md-button--primary" href="checklists/01-release-foundations/">Start the checklist <span aria-hidden="true">→</span></a>
-  <a class="md-button prc-star-button" href="https://github.com/MarinJursic/production-readiness-checklist" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">★</span> Star on GitHub</a>
-  <span class="prc-share-group">
-    <button class="md-button prc-share-button" type="button" data-prc-share hidden>Share this project</button>
-    <span class="prc-share-status" role="status" aria-live="polite"></span>
-  </span>
-</div>
+1. Identify the exact artifact, configuration, migrations, flags, environment, and release scope.
+2. Check the [immediate no-go conditions](checklists/01-release-foundations.md#2-immediate-no-go-conditions).
+3. Select the applicable core and conditional tracks.
+4. Collect current evidence for every applicable control.
+5. Record failed, blocked, and not-applicable controls without converting them into a score.
+6. Obtain the required independent reviews and accountable sign-offs.
+7. Record the go/no-go decision, deploy progressively, and verify production.
 
-</div>
+## Checklist tracks
 
-<div class="prc-hero__visual" aria-label="Example production-readiness evidence cards">
-  <div class="prc-signal-card prc-signal-card--primary">
-    <span class="prc-signal-card__id">PRC-34-017</span>
-    <strong>Rollback rehearsed</strong>
-    <span class="prc-signal-card__status"><span aria-hidden="true">●</span> Evidence ready</span>
-  </div>
-  <div class="prc-signal-card">
-    <span class="prc-signal-card__id">PRC-02-006</span>
-    <strong>Restore demonstrated</strong>
-    <span class="prc-signal-card__status"><span aria-hidden="true">●</span> Independently reviewed</span>
-  </div>
-  <div class="prc-signal-card">
-    <span class="prc-signal-card__id">PRC-31-001</span>
-    <strong>Security validated</strong>
-    <span class="prc-signal-card__status"><span aria-hidden="true">●</span> Current release</span>
-  </div>
-</div>
+| Track | Covers |
+| --- | --- |
+| [Release foundations](checklists/01-release-foundations.md) | Release identity, scope, ownership, and immediate no-go conditions |
+| [Product, risk, and architecture](checklists/02-product-risk-architecture.md) | Product intent, risk ownership, architecture, and threat modeling |
+| [Source, build, and supply chain](checklists/03-source-build-supply-chain.md) | Source control, CI/CD, provenance, dependencies, SBOMs, and licenses |
+| [Environments, quality, and experience](checklists/04-environments-quality-experience.md) | Configuration, testing, frontend behavior, compatibility, and accessibility |
+| [Application security](checklists/05-application-security.md) | Identity, authorization, input handling, transport, secrets, and cryptography |
+| [Data, privacy, and performance](checklists/06-data-privacy-performance.md) | Data integrity, migrations, privacy, capacity, caching, and overload behavior |
+| [Reliability and operations](checklists/07-reliability-operations.md) | Resilience, observability, recovery, deployment, rollback, and incident response |
+| [Maintenance, vendors, and compliance](checklists/08-maintenance-vendors-compliance.md) | Operability, third parties, legal obligations, and regulatory modules |
+| [Conditional feature modules](checklists/09-conditional-modules.md) | Payments, SaaS, AI, real-time systems, user-generated content, and other optional capabilities |
+| [Evidence, sign-off, and decision](checklists/10-evidence-and-decision.md) | Evidence packages, exceptions, sign-offs, deployment verification, and go/no-go records |
 
-</div>
+## Evidence states
 
-<!-- markdownlint-enable MD025 -->
+Use one of four states for each applicable control:
 
-<div class="prc-stats" aria-label="Checklist overview">
-  <div><strong>1,421</strong><span>evidence-driven controls</span></div>
-  <div><strong>43</strong><span>numbered sections</span></div>
-  <div><strong>10</strong><span>focused review tracks</span></div>
-  <div><strong>4</strong><span>honest evidence states</span></div>
-</div>
+| State | Meaning |
+| --- | --- |
+| **Pass** | Current evidence demonstrates that the control is satisfied. |
+| **Fail** | Evidence demonstrates that the control is not satisfied. |
+| **Blocked** | The control cannot yet be evaluated because required access, evidence, or work is missing. |
+| **Not applicable** | The control does not apply, and the reason is recorded. |
 
-## Choose your review path
+> Every applicable requirement has current evidence; no known risk exceeds the organization's tolerance; critical user journeys meet defined reliability and security objectives; and the organization can detect, contain, roll back, restore, support, and communicate failures.
 
-<!-- markdownlint-disable MD030 -->
+## Templates and project links
 
-<div class="grid cards prc-paths" markdown>
-
--   <span class="prc-card-number">01</span> **I am preparing a release**
-
-    ---
-
-    Run the no-go screen, select applicable tracks, collect evidence, and record the accountable decision.
-
-    [Open the 15-minute quick start →](guides/getting-started.md)
-
--   <span class="prc-card-number">02</span> **I want an AI review**
-
-    ---
-
-    Give Claude or another coding agent strict evidence rules so it reports unknowns instead of inventing passes.
-
-    [Use the AI-assisted workflow →](guides/ai-assisted-review.md)
-
--   <span class="prc-card-number">03</span> **I am adopting this for a team**
-
-    ---
-
-    Assign track owners, define evidence freshness, tailor applicability, and keep risk acceptance visible.
-
-    [Copy the release assessment →](records/release-assessment.md)
-
-</div>
-
-<!-- markdownlint-enable MD030 -->
-
-## From release candidate to accountable decision
-
-<div class="prc-steps">
-  <div><span>1</span><strong>Identify</strong><p>Pin the exact artifact, configuration, migrations, flags, environment, and scope.</p></div>
-  <div><span>2</span><strong>Stop early</strong><p>Screen all immediate no-go conditions before investing in the full assessment.</p></div>
-  <div><span>3</span><strong>Prove</strong><p>Attach current evidence and an accountable owner to every applicable control.</p></div>
-  <div><span>4</span><strong>Decide</strong><p>Sign off, deploy progressively, verify production, and retain the decision record.</p></div>
-</div>
-
-## Explore the checklist
-
-<div class="prc-track-grid">
-  <a href="checklists/01-release-foundations/"><span>01</span><strong>Release foundations</strong><small>No-go gates, identity, and scope</small></a>
-  <a href="checklists/02-product-risk-architecture/"><span>02</span><strong>Product, risk, and architecture</strong><small>Intent, ownership, and threat modeling</small></a>
-  <a href="checklists/03-source-build-supply-chain/"><span>03</span><strong>Source, build, and supply chain</strong><small>CI/CD, provenance, SBOMs, and licenses</small></a>
-  <a href="checklists/04-environments-quality-experience/"><span>04</span><strong>Quality and experience</strong><small>Configuration, testing, frontend, and accessibility</small></a>
-  <a href="checklists/05-application-security/"><span>05</span><strong>Application security</strong><small>Identity, authorization, input, transport, and crypto</small></a>
-  <a href="checklists/06-data-privacy-performance/"><span>06</span><strong>Data, privacy, and performance</strong><small>Integrity, migrations, privacy, capacity, and overload</small></a>
-  <a href="checklists/07-reliability-operations/"><span>07</span><strong>Reliability and operations</strong><small>Resilience, observability, recovery, and deployment</small></a>
-  <a href="checklists/08-maintenance-vendors-compliance/"><span>08</span><strong>Vendors and compliance</strong><small>Operability, third parties, legal, and regulatory modules</small></a>
-  <a href="checklists/09-conditional-modules/"><span>09</span><strong>Conditional modules</strong><small>Payments, SaaS, AI, real-time, UGC, and more</small></a>
-  <a href="checklists/10-evidence-and-decision/"><span>10</span><strong>Evidence and decision</strong><small>Evidence package, sign-offs, and go/no-go rules</small></a>
-</div>
-
-## Evidence, not checkbox theater
-
-<div class="prc-principle" markdown>
-
-> Every applicable requirement has current evidence; no known risk exceeds the organization’s tolerance; critical user journeys meet defined objectives; and the organization can detect, contain, roll back, restore, support, and communicate failures.
-
-A checked box without evidence is only a claim. Use **Pass**, **Fail**, **Blocked**, or **Not Applicable**—and never hide a release blocker inside an average score.
-
-[Read the readiness principle](checklists/00-readiness-principle.md) · [Review references and limitations](references.md)
-
-</div>
-
-<div class="prc-community-panel" markdown>
-
-### Help more teams ship responsibly
-
-If this checklist saves your team from one avoidable incident, help another team find it.
-
-<a class="md-button md-button--primary" href="https://github.com/MarinJursic/production-readiness-checklist" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">★</span> Star the repository</a>
-<span class="prc-share-group">
-  <button class="md-button prc-share-button" type="button" data-prc-share hidden>Share this project</button>
-  <span class="prc-share-status" role="status" aria-live="polite"></span>
-</span>
-
-</div>
+- Record the review with the [release assessment](records/release-assessment.md), [evidence record](records/evidence-record.md), [risk exception](records/risk-exception.md), and [go/no-go decision](records/go-no-go-decision.md) templates.
+- Review the [references, standards snapshot, and limitations](references.md).
+- [Star the repository on GitHub](https://github.com/MarinJursic/production-readiness-checklist) or share the documentation on [LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fmarinjursic.github.io%2Fproduction-readiness-checklist%2F) or [X](https://twitter.com/intent/tweet?text=Production%20Readiness%20Checklist%3A%201%2C421%20evidence-driven%20checks%20for%20shipping%20web%20applications%20with%20confidence.&url=https%3A%2F%2Fmarinjursic.github.io%2Fproduction-readiness-checklist%2F).
