@@ -39,22 +39,3 @@
     </script>
   {% endif %}
 {% endblock %}
-
-{% block content %}
-  {{ super() }}
-  {% if page and not page.is_homepage %}
-    <aside class="prc-page-actions" aria-label="Support and share this project">
-      <div>
-        <strong>Useful checklist?</strong>
-        <span>Help another team find it.</span>
-      </div>
-      <div class="prc-page-actions__buttons">
-        <a class="md-button prc-star-button" href="https://github.com/MarinJursic/production-readiness-checklist" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">★</span> Star on GitHub</a>
-        <span class="prc-share-group">
-          <button class="md-button prc-share-button" type="button" data-prc-share hidden>Share this page</button>
-          <span class="prc-share-status" role="status" aria-live="polite"></span>
-        </span>
-      </div>
-    </aside>
-  {% endif %}
-{% endblock %}

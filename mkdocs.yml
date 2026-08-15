@@ -3,7 +3,7 @@ site_description: 1,421 evidence-driven checks for shipping web applications wit
 site_author: Production Readiness Checklist contributors
 site_url: https://marinjursic.github.io/production-readiness-checklist/
 repo_url: https://github.com/MarinJursic/production-readiness-checklist
-repo_name: production-readiness-checklist
+repo_name: GitHub
 edit_uri: edit/main/docs/
 
 theme:
@@ -16,12 +16,15 @@ theme:
     repo: fontawesome/brands/github
   features:
     - navigation.instant
+    - navigation.tracking
     - navigation.sections
     - navigation.tabs
+    - navigation.path
     - navigation.top
     - navigation.footer
     - toc.follow
     - search.highlight
+    - search.suggest
     - search.share
     - content.code.copy
     - content.action.edit
@@ -82,9 +85,6 @@ markdown_extensions:
 
 extra_css:
   - stylesheets/extra.css
-
-extra_javascript:
-  - javascripts/site.js
 
 extra:
   social:
