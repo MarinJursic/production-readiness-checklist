@@ -1,5 +1,4 @@
 ---
-title: Production Readiness Checklist
 description: 1,421 evidence-driven checks for shipping secure, reliable, and supportable web applications.
 ---
 
