@@ -1,6 +1,11 @@
 # Getting started
 
-You can get useful signal from this repository in 15 minutes, then deepen the review in proportion to the release risk.
+You can get useful release signal from this repository in 15 minutes, then deepen the review in proportion to the product and release risk.
+
+Choose the path before you begin:
+
+- For a new product, major redesign, baseline assessment, or organization-wide quality review, start with the [complete engineering review](../engineering/00-overview.md), complete phases 1–16, and then perform the production review.
+- For an imminent release with a trusted lifecycle baseline, use this quick start and revisit every lifecycle control affected by the change.
 
 ## 1. Name the thing being approved
 
@@ -16,7 +21,7 @@ Do this before the full assessment. It prevents a long checklist from obscuring 
 
 ## 3. Decide what applies
 
-The ten core tracks cover most web applications. The conditional modules become mandatory whenever their trigger exists:
+The 16 engineering phases cover the product lifecycle, and the ten production tracks test the exact release. Specialized and conditional modules become mandatory whenever their trigger exists:
 
 - payments, billing, subscriptions, or money movement;
 - multi-tenant SaaS;
@@ -66,7 +71,8 @@ Assemble the final evidence package, collect the required sign-offs, and use the
 | Release profile | Suggested approach |
 | --- | --- |
 | Low-risk internal change | No-go screen, changed tracks, smoke tests, rollback evidence, named approver |
-| Normal customer-facing release | All applicable core tracks, conditional modules, independent review, complete evidence package |
-| High-impact or regulated launch | Full assessment, specialist review, rehearsals, external testing where warranted, formal sign-off |
+| Normal customer-facing release | Affected lifecycle phases, all applicable production tracks, conditional modules, independent review, complete evidence package |
+| New product, major redesign, or new baseline | All 16 lifecycle phases followed by all applicable production tracks |
+| High-impact or regulated launch | Full lifecycle and production assessment, specialist review, rehearsals, external testing where warranted, formal sign-off |
 
 Depth can vary; honesty about missing evidence cannot.

@@ -1,5 +1,5 @@
 site_name: Production Readiness Checklist
-site_description: 1,421 evidence-driven checks for shipping web applications with confidence.
+site_description: 6,338 evidence-driven controls for engineering and shipping software with confidence.
 site_author: Production Readiness Checklist contributors
 site_url: https://marinjursic.github.io/production-readiness-checklist/
 repo_url: https://github.com/MarinJursic/production-readiness-checklist
@@ -48,18 +48,28 @@ theme:
 nav:
   - Home: index.md
   - Get started:
+      - Complete engineering review: engineering/00-overview.md
       - 15-minute quick start: guides/getting-started.md
       - AI-assisted review: guides/ai-assisted-review.md
-      - References and scope: references.md
-  - Resources:
-      - Full AI review: prompts/full-readiness-review.md
-      - Release-diff review: prompts/release-diff-review.md
-      - Evidence challenge: prompts/evidence-challenge.md
-      - Release assessment: records/release-assessment.md
-      - Evidence record: records/evidence-record.md
-      - Risk exception: records/risk-exception.md
-      - Go/no-go decision: records/go-no-go-decision.md
-  - Checklist:
+  - Engineering lifecycle:
+      - Overview: engineering/00-overview.md
+      - 1. Governance and foundations: engineering/01-governance-and-foundations.md
+      - 2. Product and requirements: engineering/02-product-and-requirements.md
+      - 3. User experience, web, and content: engineering/03-user-experience-web-and-content.md
+      - 4. Architecture and design: engineering/04-architecture-and-design.md
+      - 5. Code quality and implementation: engineering/05-code-quality-and-implementation.md
+      - 6. Application services and APIs: engineering/06-application-services-and-apis.md
+      - 7. Data and information lifecycle: engineering/07-data-and-information-lifecycle.md
+      - 8. Security and cryptography: engineering/08-security-and-cryptography.md
+      - 9. Privacy and data protection: engineering/09-privacy-and-data-protection.md
+      - 10. Verification and testing: engineering/10-verification-and-testing.md
+      - 11. Developer experience, platform, and delivery: engineering/11-developer-experience-platform-and-delivery.md
+      - 12. Operations, SRE, and support: engineering/12-operations-sre-and-support.md
+      - 13. Documentation and knowledge: engineering/13-documentation-and-knowledge.md
+      - 14. Trust, safety, and ecosystems: engineering/14-trust-safety-and-ecosystems.md
+      - 15. AI, ML, and AI-assisted development: engineering/15-ai-ml-and-ai-assisted-development.md
+      - 16. Specialized domains and release assurance: engineering/16-specialized-domains-and-release-assurance.md
+  - Production release:
       - Readiness principle: checklists/00-readiness-principle.md
       - Release foundations: checklists/01-release-foundations.md
       - Product, risk, and architecture: checklists/02-product-risk-architecture.md
@@ -71,6 +81,16 @@ nav:
       - Maintenance, vendors, and compliance: checklists/08-maintenance-vendors-compliance.md
       - Conditional feature modules: checklists/09-conditional-modules.md
       - Evidence, sign-off, and decision: checklists/10-evidence-and-decision.md
+  - Resources:
+      - Full AI review: prompts/full-readiness-review.md
+      - Release-diff review: prompts/release-diff-review.md
+      - Evidence challenge: prompts/evidence-challenge.md
+      - Release assessment: records/release-assessment.md
+      - Evidence record: records/evidence-record.md
+      - Risk exception: records/risk-exception.md
+      - Go/no-go decision: records/go-no-go-decision.md
+      - Source consolidation manifest: engineering/source-manifest.md
+      - References and scope: references.md
 
 markdown_extensions:
   - admonition

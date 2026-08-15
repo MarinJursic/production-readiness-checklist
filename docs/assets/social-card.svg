@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
   <title id="title">Production Readiness Checklist</title>
-  <desc id="desc">Ship with evidence, not optimism. 1,421 checks, ten review tracks, and AI-compatible audit guidance.</desc>
+  <desc id="desc">Ship with evidence, not optimism. 6,338 controls across the engineering lifecycle and production release.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#0f172a"/>
@@ -24,17 +24,17 @@
     <path d="M142 0 268 45v90c0 78-47 131-126 159C63 266 16 213 16 135V45L142 0Z" fill="url(#mark)"/>
     <path d="m78 144 42 42 88-98" fill="none" stroke="#fff" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <text x="425" y="171" fill="#99f6e4" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="22" font-weight="750" letter-spacing="4">OPEN-SOURCE RELEASE READINESS SYSTEM</text>
+  <text x="425" y="171" fill="#99f6e4" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="20" font-weight="750" letter-spacing="3.4">OPEN-SOURCE ENGINEERING &amp; RELEASE SYSTEM</text>
   <text x="421" y="249" fill="#fff" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="57" font-weight="800" letter-spacing="-1.8">Production Readiness</text>
   <text x="421" y="318" fill="#fff" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="57" font-weight="800" letter-spacing="-1.8">Checklist</text>
   <text x="425" y="377" fill="#ccfbf1" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="28" font-weight="500">Ship with evidence, not optimism.</text>
   <g transform="translate(425 425)" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="19" font-weight="700">
-    <rect width="164" height="48" rx="24" fill="#fff" opacity=".12"/>
-    <text x="25" y="31" fill="#e0e7ff">1,421 checks</text>
-    <rect x="180" width="194" height="48" rx="24" fill="#fff" opacity=".12"/>
-    <text x="205" y="31" fill="#ccfbf1">10 review tracks</text>
-    <rect x="390" width="196" height="48" rx="24" fill="#fff" opacity=".12"/>
-    <text x="415" y="31" fill="#e0e7ff">AI-compatible</text>
+    <rect width="180" height="48" rx="24" fill="#fff" opacity=".12"/>
+    <text x="25" y="31" fill="#e0e7ff">6,338 controls</text>
+    <rect x="196" width="220" height="48" rx="24" fill="#fff" opacity=".12"/>
+    <text x="221" y="31" fill="#ccfbf1">16 lifecycle phases</text>
+    <rect x="432" width="196" height="48" rx="24" fill="#fff" opacity=".12"/>
+    <text x="457" y="31" fill="#e0e7ff">AI-compatible</text>
   </g>
   <text x="425" y="545" fill="#a5b4fc" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="19">github.com/MarinJursic/production-readiness-checklist</text>
 </svg>

@@ -4,119 +4,118 @@
 
 # Production Readiness Checklist
 
-**1,421 evidence-driven checks for shipping web applications with confidence.**
+**6,338 evidence-driven controls for engineering and shipping software with confidence.**
 
-[![Checklist](https://img.shields.io/badge/checks-1%2C421-2563eb)](docs/checklists/01-release-foundations.md)
+[![Controls](https://img.shields.io/badge/controls-6%2C338-2563eb)](docs/engineering/00-overview.md)
 [![Validate](https://github.com/MarinJursic/production-readiness-checklist/actions/workflows/validate.yml/badge.svg)](https://github.com/MarinJursic/production-readiness-checklist/actions/workflows/validate.yml)
 [![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-0f766e)](https://marinjursic.github.io/production-readiness-checklist/)
 [![GitHub stars](https://img.shields.io/github/stars/MarinJursic/production-readiness-checklist?logo=github&color=f59e0b)](https://github.com/MarinJursic/production-readiness-checklist)
 [![License: MIT](https://img.shields.io/badge/license-MIT-f59e0b.svg)](LICENSE)
 
-[Start the checklist](docs/checklists/01-release-foundations.md) · [Use with Claude or another AI](docs/guides/ai-assisted-review.md) · [Copy a release template](docs/records/release-assessment.md)
+[Begin the complete review](docs/engineering/00-overview.md) · [Check a release quickly](docs/guides/getting-started.md) · [Use with an AI agent](docs/guides/ai-assisted-review.md)
 
-⭐ [Star this project](https://github.com/MarinJursic/production-readiness-checklist) · [Share on LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fmarinjursic.github.io%2Fproduction-readiness-checklist%2F) · [Share on X](https://twitter.com/intent/tweet?text=Production%20Readiness%20Checklist%3A%201%2C421%20evidence-driven%20checks%20for%20shipping%20web%20applications%20with%20confidence.&url=https%3A%2F%2Fmarinjursic.github.io%2Fproduction-readiness-checklist%2F)
+⭐ [Star this project](https://github.com/MarinJursic/production-readiness-checklist) · [Share on LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fmarinjursic.github.io%2Fproduction-readiness-checklist%2F) · [Share on X](https://twitter.com/intent/tweet?text=Production%20Readiness%20Checklist%3A%206%2C338%20evidence-driven%20software%20engineering%20and%20release%20controls.&url=https%3A%2F%2Fmarinjursic.github.io%2Fproduction-readiness-checklist%2F)
 
 </div>
 
 ---
 
-Production readiness is not “all tests are green.” It is a documented decision that the exact artifact you intend to ship is reliable, secure, supportable, recoverable, and within your organization’s risk tolerance.
+Production readiness is not “all tests are green.” It is an evidence-backed decision about the exact product and artifact you intend to operate.
 
-This repository turns a comprehensive master checklist into a practical review system. The controls are split into focused tracks, each control has a stable ID, and ready-to-copy templates help teams attach owners, evidence, exceptions, and sign-offs.
+This repository provides one start-to-finish review path:
+
+1. **Engineering lifecycle:** 4,917 unique `USEQ-*` controls across 16 phases, from governance and requirements through implementation, delivery, operations, AI, and specialized domains.
+2. **Production decision:** 1,421 `PRC-*` controls across ten release tracks, ending with evidence, sign-off, deployment, and verification.
+
+The source material contained 14,132 checkbox lines across 197 documents. It was consolidated into 16 navigable lifecycle manuals, with exact duplicates, repeated boilerplate, and mirrored production controls removed. The [source consolidation manifest](docs/engineering/source-manifest.md) records the treatment of every source document.
 
 > [!IMPORTANT]
-> No checklist or AI review can prove that a nontrivial application has zero defects. A credible readiness claim requires current evidence, explicit risk ownership, and tested recovery paths.
+> No checklist or AI review can prove that a nontrivial application has zero defects. A credible decision requires current evidence, explicit risk ownership, and tested recovery paths. One material failure can block approval regardless of how many unrelated controls pass.
 
 ## Start here
 
-1. Copy [the release assessment template](docs/records/release-assessment.md) into your project or release workspace.
-2. Review the [immediate no-go conditions](docs/checklists/01-release-foundations.md#2-immediate-no-go-conditions) before spending time on the full assessment.
-3. Mark each track as required, not applicable, or deferred. A “not applicable” decision needs a written reason.
-4. Evaluate every applicable control as **Pass**, **Fail**, **Blocked**, or **Not Applicable**, with an owner and current evidence.
-5. Complete the [evidence and decision track](docs/checklists/10-evidence-and-decision.md) and record the final decision.
+For a product-wide assessment, begin with the [complete engineering review](docs/engineering/00-overview.md) and follow phases 1–16 in order. Then complete the production-release tracks.
 
-New to the process? Read the [15-minute quick start](docs/guides/getting-started.md).
+For an imminent release with an established engineering baseline:
 
-## Checklist tracks
+1. Copy the [release assessment template](docs/records/release-assessment.md).
+2. Run the [immediate no-go screen](docs/checklists/01-release-foundations.md#2-immediate-no-go-conditions).
+3. Review affected lifecycle controls and every applicable production track.
+4. Record Pass, Fail, Blocked, or Not Applicable against each stable control ID.
+5. Complete the [evidence and decision track](docs/checklists/10-evidence-and-decision.md).
 
-| Track | What it covers |
+## Complete engineering review
+
+| Phases | Coverage |
 | --- | --- |
-| [Readiness principle](docs/checklists/00-readiness-principle.md) | What a defensible “production-ready” claim means |
-| [1. Release foundations](docs/checklists/01-release-foundations.md) | Operating rules, no-go conditions, release identity, and scope |
-| [2. Product, risk, and architecture](docs/checklists/02-product-risk-architecture.md) | Product intent, ownership, risk assessment, architecture, and threat modeling |
-| [3. Source, build, and supply chain](docs/checklists/03-source-build-supply-chain.md) | Source control, CI/CD, provenance, dependencies, SBOMs, and licenses |
-| [4. Environments, quality, and experience](docs/checklists/04-environments-quality-experience.md) | Configuration, secrets, correctness, testing, frontend behavior, and accessibility |
-| [5. Application security](docs/checklists/05-application-security.md) | APIs, identity, authorization, sessions, input, files, transport, and cryptography |
-| [6. Data, privacy, and performance](docs/checklists/06-data-privacy-performance.md) | Data integrity, migrations, privacy, performance, capacity, and overload |
-| [7. Reliability and operations](docs/checklists/07-reliability-operations.md) | Resilience, infrastructure, observability, incidents, recovery, and deployment |
-| [8. Maintenance, vendors, and compliance](docs/checklists/08-maintenance-vendors-compliance.md) | Long-term operation, third parties, legal applicability, and regulatory modules |
-| [9. Conditional feature modules](docs/checklists/09-conditional-modules.md) | Payments, SaaS, UGC, notifications, i18n, PWA, real-time, admin, AI, and safety-critical systems |
-| [10. Evidence, sign-off, and decision](docs/checklists/10-evidence-and-decision.md) | Evidence package, required sign-offs, go/no-go rules, and declaration |
+| [1. Governance](docs/engineering/01-governance-and-foundations.md) · [2. Product](docs/engineering/02-product-and-requirements.md) · [3. UX](docs/engineering/03-user-experience-web-and-content.md) · [4. Architecture](docs/engineering/04-architecture-and-design.md) | Scope, ownership, risk, requirements, user experience, and system design |
+| [5. Code](docs/engineering/05-code-quality-and-implementation.md) · [6. Services and APIs](docs/engineering/06-application-services-and-apis.md) · [7. Data](docs/engineering/07-data-and-information-lifecycle.md) · [8. Security](docs/engineering/08-security-and-cryptography.md) · [9. Privacy](docs/engineering/09-privacy-and-data-protection.md) · [10. Testing](docs/engineering/10-verification-and-testing.md) | Product construction and verification |
+| [11. Platform and delivery](docs/engineering/11-developer-experience-platform-and-delivery.md) · [12. Operations and SRE](docs/engineering/12-operations-sre-and-support.md) · [13. Documentation](docs/engineering/13-documentation-and-knowledge.md) | Build, deploy, observe, recover, support, and maintain |
+| [14. Trust and safety](docs/engineering/14-trust-safety-and-ecosystems.md) · [15. AI and ML](docs/engineering/15-ai-ml-and-ai-assisted-development.md) · [16. Specialized domains](docs/engineering/16-specialized-domains-and-release-assurance.md) | Triggered and emerging product risks, connected to final release assurance |
+
+The order is for dependable navigation, not a waterfall mandate. Iterative teams can revisit phases continuously, but every applicable control still needs a disposition before final approval.
+
+## Final production review
+
+The ten production tracks cover release identity and no-go conditions; product risk and architecture; source, build, and supply chain; environments, quality, and experience; application security; data, privacy, and performance; reliability and operations; maintenance, vendors, and compliance; conditional features; and the final evidence-backed decision.
+
+[Start the production review](docs/checklists/01-release-foundations.md) or read the [readiness principle](docs/checklists/00-readiness-principle.md).
 
 ## Use it with Claude or another coding agent
 
-The repository includes a root [`CLAUDE.md`](CLAUDE.md) and purpose-built prompts. They teach an agent to distinguish verified evidence from assumptions, cite repository evidence, and return gaps instead of silently marking controls as passed.
-
-Example request:
+The root [`CLAUDE.md`](CLAUDE.md) and copy-ready prompts teach an agent to distinguish verified evidence from assumptions, cite repository evidence, and leave production-only or organizational questions Blocked.
 
 ```text
-Review this repository for production readiness using the instructions in CLAUDE.md.
-Start with the no-go controls and the tracks relevant to this application.
-Do not modify code. Return an evidence-linked report and list every unknown separately.
+Perform a read-only, full-lifecycle review using CLAUDE.md.
+Review docs/engineering phases 1–16, then docs/checklists for the final release gate.
+Cite evidence for every Pass and list every unknown separately.
+Do not modify code and do not make the final release decision.
 ```
 
-Choose a workflow:
-
-- [Full repository readiness review](docs/prompts/full-readiness-review.md)
-- [Release-diff review](docs/prompts/release-diff-review.md)
-- [Evidence challenge](docs/prompts/evidence-challenge.md)
+- [Full repository review prompt](docs/prompts/full-readiness-review.md)
+- [Release-diff review prompt](docs/prompts/release-diff-review.md)
+- [Evidence challenge prompt](docs/prompts/evidence-challenge.md)
 - [AI-assisted review guide](docs/guides/ai-assisted-review.md)
-
-AI can inspect code, tests, infrastructure definitions, and documentation. It usually cannot prove production configuration, organizational readiness, legal applicability, restore success, or real-world operational behavior without external evidence. Those controls must remain **Blocked** or **Unknown** until a person supplies evidence.
 
 ## Evidence, not checkbox theater
 
-A checked box without evidence is only a claim. For each control, record:
-
 | Field | Example |
 | --- | --- |
-| Control | `PRC-34-017` |
+| Control | `USEQ-1A2B3C4D` or `PRC-34-017` |
 | Status | Pass / Fail / Blocked / Not Applicable |
 | Owner | One accountable person |
 | Evidence | Test run, configuration export, dashboard, decision record, or drill report |
-| Release | Commit, artifact digest, migrations, configuration, and flag state |
-| Environment | The exact environment tested |
-| Reviewed | Reviewer, date, and evidence expiry |
+| Scope | Product, commit, artifact, configuration, data, and environment |
+| Reviewed | Reviewer, date, freshness, and limitations |
 | Exception | Risk owner, compensating control, remediation date, and expiry |
 
 Use the [evidence record](docs/records/evidence-record.md) and [risk exception](docs/records/risk-exception.md) templates to keep reviews auditable.
 
-## What is included
+## Repository structure
 
 ```text
 .
-├── CLAUDE.md                  # Guardrails for AI-assisted audits
+├── CLAUDE.md                  # Guardrails for AI-assisted reviews
 ├── docs/
-│   ├── checklists/            # 10 focused tracks + readiness principle
+│   ├── engineering/           # 16-phase lifecycle review + source manifest
+│   ├── checklists/            # 10 final production tracks
 │   ├── guides/                # Adoption and AI-review guidance
-│   ├── prompts/               # Copy-ready agent review prompts
-│   └── records/               # Release, evidence, risk, and decision templates
-├── scripts/                   # Repository integrity validation
+│   ├── prompts/               # Copy-ready agent prompts
+│   └── records/               # Evidence, risk, release, and decision templates
+├── scripts/                   # Source consolidation and integrity validation
 └── .github/                   # Issue forms, PR template, and CI workflows
 ```
 
-## Standards snapshot
+## Standards and scope
 
-The original checklist was compiled against a standards snapshot dated **August 14, 2026**, including NIST SSDF 1.1, OWASP ASVS 5.0.0, WCAG 2.2, SLSA 1.2, NIST SP 800-63 Revision 4, and NIST SP 800-61 Revision 3. Standards and laws evolve; verify current applicability before using the checklist as a release gate. See [references and scope](docs/references.md).
+The structure was researched against whole-lifecycle and engineering-quality sources including ISO/IEC/IEEE 12207:2026, SWEBOK Guide V4.0, ISO/IEC 25010:2023, NIST SSDF 1.1, OWASP ASVS, WCAG 2.2, NIST AI RMF, and DORA guidance. See [references and scope](docs/references.md) for primary links and limitations.
 
 This project is engineering guidance, not legal advice, a certification, or a substitute for qualified security, privacy, accessibility, safety, or compliance review.
 
 ## Contributing
 
-Corrections, clearer controls, stronger evidence examples, and additional standards mappings are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request. Please report vulnerabilities privately as described in [SECURITY.md](SECURITY.md).
+Corrections, clearer controls, stronger evidence examples, and standards mappings are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request. Please report vulnerabilities privately as described in [SECURITY.md](SECURITY.md).
 
-## Help it reach more teams
-
-If this checklist prevents one avoidable production incident, consider [starring the repository](https://github.com/MarinJursic/production-readiness-checklist), sharing the [documentation site](https://marinjursic.github.io/production-readiness-checklist/), or sending it to a team preparing a launch. GitHub also exposes a **Cite this repository** action using [CITATION.cff](CITATION.cff).
+If this project helps your team, [star the repository](https://github.com/MarinJursic/production-readiness-checklist), share the [documentation site](https://marinjursic.github.io/production-readiness-checklist/), or use GitHub’s **Cite this repository** action via [CITATION.cff](CITATION.cff).
 
 Released under the [MIT License](LICENSE).

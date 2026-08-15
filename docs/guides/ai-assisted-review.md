@@ -28,7 +28,7 @@ An agent must label these controls **Blocked** or **Unknown**, not infer a pass 
 ## Recommended workflow
 
 1. Put `CLAUDE.md` at the root of the application repository, or copy its instructions into the agent context.
-2. Choose [a full review](../prompts/full-readiness-review.md), [a release-diff review](../prompts/release-diff-review.md), or [an evidence challenge](../prompts/evidence-challenge.md).
+2. Choose [a full lifecycle review](../prompts/full-readiness-review.md), [a release-diff review](../prompts/release-diff-review.md), or [an evidence challenge](../prompts/evidence-challenge.md).
 3. Give the agent the release identifier, intended environment, architecture overview, critical journeys, and applicable conditional modules.
 4. Allow read-only inspection and relevant test commands. Require permission before code or configuration changes.
 5. Require a citation for each Pass: file and line, test output, command result, artifact, or external evidence reference.
@@ -40,7 +40,7 @@ Ask the agent to return:
 
 1. release and scope understood;
 2. immediate no-go findings;
-3. a control table with ID, status, evidence, confidence, owner, and next action;
+3. a control table with `USEQ-*` or `PRC-*` ID, status, evidence, confidence, owner, and next action;
 4. unknowns that require human or external evidence;
 5. changed controls invalidated by the release diff;
 6. prioritized blockers and recommended verification commands;
@@ -49,6 +49,7 @@ Ask the agent to return:
 ## Anti-patterns
 
 - Asking “is this production ready?” without release scope or evidence criteria.
+- Treating a repository-only release review as a complete lifecycle assessment when governance, product, operational, or external evidence was never supplied.
 - Treating the absence of a visible vulnerability as proof of security.
 - Allowing the agent to mark organizational or production-only controls as passed from source code.
 - Counting passed boxes or reporting a readiness percentage without blocker analysis.
