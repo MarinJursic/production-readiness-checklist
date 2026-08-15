@@ -6,6 +6,21 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-08-15
+
+### Added
+
+- 4,917 non-duplicative `USEQ-*` controls organized into 16 ordered engineering-lifecycle manuals.
+- Complete start-to-finish review map that connects lifecycle assurance to the existing 1,421-control production gate.
+- Source consolidation manifest with archive hashes and document-level import accounting for 14,132 source checkbox lines across 197 documents.
+- Reproducible archive consolidation script and validation for deterministic lifecycle control IDs, counts, duplicates, pages, and links.
+- Primary-source rationale based on ISO/IEC/IEEE 12207, SWEBOK Guide V4.0, ISO/IEC 25010, NIST SSDF, WCAG, OWASP ASVS, NIST AI RMF, and DORA guidance.
+
+### Changed
+
+- Expanded the project from a release-only checklist to a 6,338-control engineering and production-readiness review system.
+- Reorganized documentation navigation, onboarding, AI prompts, citation metadata, and contributor guidance around the complete review sequence.
+
 ## [1.1.1] - 2026-08-15
 
 ### Changed

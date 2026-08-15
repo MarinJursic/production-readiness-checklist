@@ -3,9 +3,9 @@
 Copy the prompt below into Claude, Codex, or another coding agent with access to the application repository and this checklist.
 
 ```text
-Perform a read-only production-readiness review of this repository.
+Perform a read-only, full-lifecycle engineering and production-readiness review of this repository.
 
-Follow CLAUDE.md and use the controls under docs/checklists/. Start with the immediate no-go conditions, then review every applicable track and conditional module.
+Follow CLAUDE.md. Use docs/engineering/00-overview.md as the master sequence: review engineering phases 1–16 in order, then use docs/checklists/ for the final production gate. Also run the immediate no-go screen early so a decisive release blocker is not hidden by the larger review.
 
 Release context:
 - Release identifier: [fill in]
@@ -16,9 +16,11 @@ Release context:
 - Critical user journeys: [fill in]
 - Expected traffic and risk profile: [fill in]
 - Conditional modules that apply: [fill in or ask the agent to assess]
+- Lifecycle phases already covered by accepted evidence: [fill in or none]
 
 Requirements:
 - Inspect source, tests, dependency files, CI/CD, infrastructure definitions, migrations, runbooks, and documentation.
+- Use both USEQ and PRC control IDs, and do not duplicate a finding when the same evidence satisfies related controls.
 - Run only safe, read-only or local verification commands.
 - Do not modify code or configuration.
 - Use Pass, Fail, Blocked, or Not Applicable exactly as defined in CLAUDE.md.

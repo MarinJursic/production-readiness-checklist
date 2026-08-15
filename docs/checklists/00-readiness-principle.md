@@ -12,6 +12,6 @@ A defensible production-readiness claim is:
 
 That interpretation matches modern secure-development and reliability practice: NIST’s SSDF aims to reduce vulnerabilities and mitigate the impact of vulnerabilities that remain undetected, while SRE practice uses measurable service-level objectives and error budgets rather than an unsupported promise of perfect uptime. ([csrc.nist.gov](https://csrc.nist.gov/pubs/sp/800/218/final))
 
-This checklist is technology-neutral. It synthesizes product-quality, secure-development, accessibility, supply-chain, identity, incident-response, and reliability standards. The standards snapshot used here is **August 14, 2026** and includes ISO/IEC 25010:2023, final NIST SSDF 1.1, OWASP ASVS 5.0.0, WCAG 2.2, SLSA 1.2, NIST SP 800-63 Revision 4, and NIST SP 800-61 Revision 3. ([iso.org](https://www.iso.org/standard/78176.html))
+This checklist is technology-neutral. The complete review begins with the [16-phase engineering lifecycle](../engineering/00-overview.md) and ends with this production gate. The standards snapshot was reviewed on **August 15, 2026** and includes ISO/IEC/IEEE 12207:2026, SWEBOK Guide V4.0, ISO/IEC 25010:2023, NIST SSDF 1.1, OWASP ASVS, WCAG 2.2, SLSA 1.2, NIST SP 800-63 Revision 4, and NIST SP 800-61 Revision 3. See [references and scope](../references.md).
 
 ---
