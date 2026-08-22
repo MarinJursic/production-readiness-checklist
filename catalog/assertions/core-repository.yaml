@@ -184,7 +184,7 @@ assertions:
     control_ids: [USEQ-F0F5ACE7]
     title: Generated code follows normal review controls
     statement: Generated or suggested code is subject to the project's normal ownership, review, testing, security, licensing, and provenance controls.
-    applicability: inventory.generated_code.present == true
+    applicability: "true"
     evidence_required:
       - kind: reviewer-attestation
         minimum_authority: human

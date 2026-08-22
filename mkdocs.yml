@@ -52,6 +52,7 @@ nav:
       - Complete engineering review: engineering/00-overview.md
       - AI-assisted review: guides/ai-assisted-review.md
   - Scanner architecture:
+      - Scanner quick start: scanner/getting-started.md
       - Product contract: architecture/product-contract.md
       - Trust and threat model: architecture/trust-model.md
       - Evidence and results: architecture/evidence-and-results.md

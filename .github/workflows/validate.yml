@@ -37,6 +37,50 @@ jobs:
         with:
           globs: "**/*.md"
 
+  scanner:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Set up Go
+        uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6
+        with:
+          go-version-file: go.mod
+          cache: true
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: "3.12"
+
+      - name: Install schema validation dependencies
+        run: pip install -r requirements-dev.lock.txt
+
+      - name: Verify Go modules
+        run: go mod verify
+
+      - name: Run scanner tests with the race detector
+        run: go test -race ./...
+
+      - name: Vet scanner
+        run: go vet ./...
+
+      - name: Build scanner
+        run: go build -trimpath -o "$RUNNER_TEMP/prc" ./cmd/prc
+
+      - name: Generate scanner outputs
+        run: |
+          "$RUNNER_TEMP/prc" inventory --target . --format json > "$RUNNER_TEMP/inventory.json"
+          "$RUNNER_TEMP/prc" plan --target . --catalog-root . --format json > "$RUNNER_TEMP/plan.json"
+          "$RUNNER_TEMP/prc" scan --target . --catalog-root . --state-dir "$RUNNER_TEMP/state" --format json --exit-policy never > "$RUNNER_TEMP/run.json"
+
+      - name: Validate scanner output schemas
+        run: |
+          python scripts/validate_instance.py inventory.schema.json "$RUNNER_TEMP/inventory.json"
+          python scripts/validate_instance.py plan.schema.json "$RUNNER_TEMP/plan.json"
+          python scripts/validate_instance.py run-result.schema.json "$RUNNER_TEMP/run.json"
+
   documentation:
     runs-on: ubuntu-latest
     steps:

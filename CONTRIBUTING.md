@@ -54,7 +54,16 @@ Existing lifecycle and production control IDs are permanent and recorded in `cat
    python3 -m unittest discover -s tests -p "test_*.py"
    ```
 
-5. Build the documentation site when navigation or rendering changes:
+5. Verify the scanner when Go code, catalog data, or output schemas change:
+
+   ```bash
+   go mod verify
+   go test -race ./...
+   go vet ./...
+   go build -trimpath ./cmd/prc
+   ```
+
+6. Build the documentation site when navigation or rendering changes:
 
    ```bash
    python3 -m venv .venv
@@ -63,7 +72,7 @@ Existing lifecycle and production control IDs are permanent and recorded in `cat
    mkdocs build --strict
    ```
 
-6. Open a pull request using the repository template.
+7. Open a pull request using the repository template.
 
 The `scripts/import_source.py` script records the one-time transformation from the original production-readiness master document. The generated production checklist pages are maintained directly.
 

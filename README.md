@@ -77,11 +77,11 @@ Do not modify code and do not make the final release decision.
 - [Evidence challenge prompt](docs/prompts/evidence-challenge.md)
 - [AI-assisted review guide](docs/guides/ai-assisted-review.md)
 
-## Scanner direction: evidence-driven and bounded
+## Experimental scanner: evidence-driven and bounded
 
-The project is evolving toward an open-source scanner that evaluates a declared target against a selected readiness profile. The engine will plan explicit proof obligations, collect versioned evidence, preserve unknown and manual results, and independently verify any proposed remediation.
+The repository now includes an experimental deterministic scanner vertical slice. It inventories a declared repository without executing target code, creates a versioned assessment plan, evaluates the `prc/core-repository@0.1` profile, stores content-addressed evidence, and preserves unknown and manual results. External analysis adapters and automated remediation are not implemented yet.
 
-The intended scanner should:
+The scanner is designed to:
 
 - map findings to stable `USEQ-*` and `PRC-*` control IDs;
 - cite the exact code, configuration, documentation, test, or operational evidence behind every result;
@@ -92,9 +92,7 @@ The intended scanner should:
 
 The scanner will not claim that a project has zero defects or make an unqualified production-readiness decision. It may report that a versioned profile is satisfied for a specific target and evidence set. Coding agents will be replaceable, constrained patch generators; deterministic checks and policy will own truth and patch acceptance.
 
-Read the [scanner product contract](docs/architecture/product-contract.md), [trust model](docs/architecture/trust-model.md), [evidence model](docs/architecture/evidence-and-results.md), and [bounded remediation contract](docs/architecture/remediation-contract.md).
-
-This scanner is a project direction, not a capability the repository claims to provide today. Contributors are welcome to help shape and implement it.
+Start with the [scanner quick start](docs/scanner/getting-started.md), then read the [product contract](docs/architecture/product-contract.md), [trust model](docs/architecture/trust-model.md), [evidence model](docs/architecture/evidence-and-results.md), and [bounded remediation contract](docs/architecture/remediation-contract.md). The CLI remains experimental and intentionally reports unsupported analysis as blocked rather than treating it as a pass.
 
 ## Evidence, not checkbox theater
 
@@ -115,13 +113,18 @@ Use the [evidence record](docs/records/evidence-record.md) and [risk exception](
 ```text
 .
 ├── CLAUDE.md                  # Guardrails for AI-assisted reviews
+├── catalog/                   # Versioned objectives, assertions, and profiles
+├── cmd/prc/                   # Experimental scanner CLI
 ├── docs/
 │   ├── engineering/           # 16-phase lifecycle review + source manifest
 │   ├── checklists/            # 10 final production tracks
 │   ├── guides/                # Adoption and AI-review guidance
 │   ├── prompts/               # Copy-ready agent prompts
-│   └── records/               # Evidence, risk, release, and decision templates
-├── scripts/                   # Source consolidation and integrity validation
+│   ├── records/               # Evidence, risk, release, and decision templates
+│   └── scanner/               # Scanner usage and generated profile documentation
+├── scanner/                   # Inventory, planning, evidence, and evaluation engine
+├── schemas/                   # Versioned catalog and scanner JSON schemas
+├── scripts/                   # Generation, validation, and integrity tooling
 └── .github/                   # Issue forms, PR template, and CI workflows
 ```
 

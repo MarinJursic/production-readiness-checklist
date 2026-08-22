@@ -60,6 +60,15 @@ def validate_schema(instance: dict[str, Any], schema_name: str, source: Path) ->
     raise CatalogError("\n".join(details))
 
 
+def validate_schema_documents() -> None:
+    for path in sorted(SCHEMAS.glob("*.schema.json")):
+        schema = load_json(path)
+        try:
+            Draft202012Validator.check_schema(schema)
+        except Exception as error:
+            raise CatalogError(f"{path.relative_to(ROOT)}: invalid JSON Schema: {error}") from error
+
+
 def semantic_digest(statement: str) -> str:
     value = unicodedata.normalize("NFKC", statement)
     value = re.sub(r"[*_`]", "", value)
@@ -154,6 +163,7 @@ def index_unique(records: list[dict[str, Any]], kind: str) -> dict[str, dict[str
 
 
 def validate_catalog() -> tuple[dict[str, dict[str, Any]], dict[str, dict[str, Any]], list[dict[str, Any]]]:
+    validate_schema_documents()
     objective_records: list[dict[str, Any]] = []
     assertion_records: list[dict[str, Any]] = []
     profiles: list[dict[str, Any]] = []

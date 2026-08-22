@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/inventory.schema.json",
+  "title": "Production Readiness Inventory",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "target_name", "digest", "file_count", "source_files", "package_ecosystems", "manifests", "lock_files", "ci", "files"],
+  "properties": {
+    "schema_version": {"const": "prc.inventory/v0.1"},
+    "target_name": {"type": "string", "minLength": 1},
+    "git_commit": {"type": "string", "pattern": "^[0-9a-f]{40,64}$"},
+    "digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "file_count": {"type": "integer", "minimum": 0},
+    "source_files": {"type": "integer", "minimum": 0},
+    "package_ecosystems": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "manifests": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "lock_files": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "ci": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["github_actions"],
+      "properties": {"github_actions": {"type": "boolean"}}
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "size", "sha256"],
+        "properties": {
+          "path": {"type": "string"},
+          "size": {"type": "integer", "minimum": 0},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    }
+  }
+}
