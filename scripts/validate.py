@@ -7,7 +7,7 @@ import hashlib
 import re
 import sys
 import unicodedata
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 from urllib.parse import unquote
 
@@ -59,22 +59,29 @@ ENGINEERING_CONTROL = re.compile(
 )
 ENGINEERING_PLAIN_CHECKBOX = re.compile(r"^- \[ \] (?!\*\*USEQ-)", re.MULTILINE)
 MARKDOWN_LINK = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
+MARKDOWN_HEADING = re.compile(r"^#{1,6}[ \t]+(.+?)[ \t]*#*[ \t]*$", re.MULTILINE)
 IMPLEMENTATION_SPECIFIC = re.compile(
     r"\b(?:JavaScript|TypeScript|Node\.js|Vue\.js|Svelte|Next\.js|Nuxt|Django|"
     r"Flask|FastAPI|NestJS|Python|PHP|C\+\+|C#|Kotlin|Scala|Elixir|Haskell|"
     r"AWS|Azure|Google Cloud|GCP|GitHub|GitLab|Bitbucket|Docker|Kubernetes|"
     r"Terraform|Jenkins|CircleCI|Datadog|New Relic|Sentry|Stripe|Cloudflare|"
     r"Vercel|Netlify|PostgreSQL|MySQL|MongoDB|Redis|Kafka|RabbitMQ|OpenAI|"
-    r"Anthropic|Claude)\b"
+    r"Anthropic|Claude)\b",
+    re.IGNORECASE,
 )
 
 
 def markdown_files() -> list[Path]:
-    return sorted(
-        path
-        for path in ROOT.rglob("*.md")
-        if ".git" not in path.parts and "site" not in path.parts
-    )
+    files = list(ROOT.glob("*.md"))
+    files.extend((ROOT / "docs").rglob("*.md"))
+    files.extend((ROOT / ".github").rglob("*.md"))
+    return sorted(set(files))
+
+
+def duplicate_values(values: list[str]) -> list[str]:
+    """Return repeated values once, in deterministic order."""
+
+    return sorted(value for value, count in Counter(values).items() if count > 1)
 
 
 def normalize_control(text: str) -> str:
@@ -84,6 +91,29 @@ def normalize_control(text: str) -> str:
     value = re.sub(r"[*_`]", "", value)
     value = re.sub(r"\s+", " ", value).strip().rstrip(".")
     return value.casefold()
+
+
+def markdown_anchor(heading: str) -> str:
+    """Approximate Python-Markdown's default heading anchor generation."""
+
+    value = re.sub(r"<[^>]+>", "", heading)
+    value = re.sub(r"[*_`~]", "", value)
+    value = unicodedata.normalize("NFKD", value).casefold()
+    value = re.sub(r"[^\w\- ]", "", value)
+    return re.sub(r"[-\s]+", "-", value).strip("-")
+
+
+def markdown_anchors(content: str) -> set[str]:
+    anchors: set[str] = set()
+    counts: Counter[str] = Counter()
+    for match in MARKDOWN_HEADING.finditer(content):
+        base = markdown_anchor(match.group(1))
+        if not base:
+            continue
+        index = counts[base]
+        anchors.add(base if index == 0 else f"{base}_{index}")
+        counts[base] += 1
+    return anchors
 
 
 def validate_pages(
@@ -121,7 +151,7 @@ def validate_pages(
     if len(ids) != EXPECTED_CONTROLS:
         errors.append(f"Expected {EXPECTED_CONTROLS} controls, found {len(ids)}")
     if len(set(ids)) != len(ids):
-        duplicates = sorted({control_id for control_id in ids if ids.count(control_id) > 1})
+        duplicates = duplicate_values(ids)
         errors.append(f"Duplicate control IDs: {duplicates}")
     if len(set(normalized_controls)) != len(normalized_controls):
         errors.append("Duplicate normalized PRC control text found")
@@ -189,22 +219,38 @@ def validate_engineering_pages(errors: list[str]) -> tuple[list[str], list[str]]
 
 def validate_links(errors: list[str]) -> int:
     checked = 0
+    repository_root = ROOT.resolve()
     for path in markdown_files():
         content = path.read_text(encoding="utf-8")
         for match in MARKDOWN_LINK.finditer(content):
             target = match.group(1).strip()
-            if target.startswith(("http://", "https://", "mailto:", "#")):
+            if target.startswith(("http://", "https://", "mailto:")):
                 continue
-            target_path = unquote(target.split("#", 1)[0].split("?", 1)[0])
-            if not target_path:
-                continue
+            path_part, _, fragment = target.partition("#")
+            target_path = unquote(path_part.split("?", 1)[0])
             checked += 1
-            resolved = (path.parent / target_path).resolve()
+            resolved = path.resolve() if not target_path else (path.parent / target_path).resolve()
+            if not resolved.is_relative_to(repository_root):
+                line = content.count("\n", 0, match.start()) + 1
+                errors.append(
+                    f"{path.relative_to(ROOT)}:{line}: local link escapes repository {target!r}"
+                )
+                continue
             if not resolved.exists():
                 line = content.count("\n", 0, match.start()) + 1
                 errors.append(
                     f"{path.relative_to(ROOT)}:{line}: broken local link {target!r}"
                 )
+                continue
+            if fragment and resolved.suffix.lower() == ".md":
+                anchors = markdown_anchors(resolved.read_text(encoding="utf-8"))
+                decoded_fragment = unquote(fragment).casefold()
+                if decoded_fragment not in anchors:
+                    line = content.count("\n", 0, match.start()) + 1
+                    errors.append(
+                        f"{path.relative_to(ROOT)}:{line}: missing Markdown anchor "
+                        f"{fragment!r} in {resolved.relative_to(repository_root)}"
+                    )
     return checked
 
 
