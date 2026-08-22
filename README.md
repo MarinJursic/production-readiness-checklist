@@ -77,9 +77,9 @@ Do not modify code and do not make the final release decision.
 - [Evidence challenge prompt](docs/prompts/evidence-challenge.md)
 - [AI-assisted review guide](docs/guides/ai-assisted-review.md)
 
-## Long-term vision: an AI readiness scanner
+## Scanner direction: evidence-driven and bounded
 
-The longer-term goal is to turn this open control set into an open-source AI-assisted scanner. The scanner should be able to inspect a repository and its available engineering evidence, evaluate every relevant control, and produce a complete review showing what passed, failed, remains blocked, or is not applicable.
+The project is evolving toward an open-source scanner that evaluates a declared target against a selected readiness profile. The engine will plan explicit proof obligations, collect versioned evidence, preserve unknown and manual results, and independently verify any proposed remediation.
 
 The intended scanner should:
 
@@ -90,7 +90,11 @@ The intended scanner should:
 - support different languages, frameworks, platforms, and deployment models without locking the project to one technology vendor; and
 - keep risk acceptance and the final release decision with accountable humans.
 
-This scanner is a project direction, not a capability the repository claims to provide today. Contributors are welcome to help shape its architecture, evidence model, integrations, evaluation approach, reporting format, and safeguards.
+The scanner will not claim that a project has zero defects or make an unqualified production-readiness decision. It may report that a versioned profile is satisfied for a specific target and evidence set. Coding agents will be replaceable, constrained patch generators; deterministic checks and policy will own truth and patch acceptance.
+
+Read the [scanner product contract](docs/architecture/product-contract.md), [trust model](docs/architecture/trust-model.md), [evidence model](docs/architecture/evidence-and-results.md), and [bounded remediation contract](docs/architecture/remediation-contract.md).
+
+This scanner is a project direction, not a capability the repository claims to provide today. Contributors are welcome to help shape and implement it.
 
 ## Evidence, not checkbox theater
 

@@ -51,6 +51,11 @@ nav:
       - 15-minute quick start: guides/getting-started.md
       - Complete engineering review: engineering/00-overview.md
       - AI-assisted review: guides/ai-assisted-review.md
+  - Scanner architecture:
+      - Product contract: architecture/product-contract.md
+      - Trust and threat model: architecture/trust-model.md
+      - Evidence and results: architecture/evidence-and-results.md
+      - Bounded remediation: architecture/remediation-contract.md
   - Engineering lifecycle:
       - Overview: engineering/00-overview.md
       - 1. Governance and foundations: engineering/01-governance-and-foundations.md

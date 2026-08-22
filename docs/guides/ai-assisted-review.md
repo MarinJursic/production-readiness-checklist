@@ -40,7 +40,7 @@ Ask the agent to return:
 
 1. release and scope understood;
 2. immediate no-go findings;
-3. a control table with `USEQ-*` or `PRC-*` ID, status, evidence, confidence, owner, and next action;
+3. a control table with `USEQ-*` or `PRC-*` ID, status, evidence authority, limitations, owner, and next action;
 4. unknowns that require human or external evidence;
 5. changed controls invalidated by the release diff;
 6. prioritized blockers and recommended verification commands;
