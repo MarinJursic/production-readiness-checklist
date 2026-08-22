@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/profile.schema.json",
+  "title": "Production Readiness Profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "version",
+    "title",
+    "description",
+    "assertion_ids",
+    "terminal_policy"
+  ],
+  "properties": {
+    "schema_version": {"const": "prc.profile/v0.1"},
+    "id": {"type": "string", "pattern": "^prc/[a-z0-9-]+$"},
+    "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+$"},
+    "title": {"type": "string", "minLength": 1},
+    "description": {"type": "string", "minLength": 1},
+    "assertion_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^PRC-A-[A-Z0-9]+-[0-9]{3}$"}
+    },
+    "terminal_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["block_on", "allow_manual_remaining"],
+      "properties": {
+        "block_on": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"enum": ["critical", "high", "medium", "low", "info"]}
+        },
+        "allow_manual_remaining": {"type": "boolean"}
+      }
+    }
+  }
+}

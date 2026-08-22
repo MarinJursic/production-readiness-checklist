@@ -3,7 +3,6 @@
 
 from __future__ import annotations
 
-import hashlib
 import re
 import sys
 import unicodedata
@@ -193,16 +192,6 @@ def validate_engineering_pages(errors: list[str]) -> tuple[list[str], list[str]]
                     f"a language, framework, or vendor ({technology.group(0)})"
                 )
             normalized = normalize_control(text)
-            expected_id = (
-                "USEQ-"
-                + hashlib.sha256(normalized.encode("utf-8")).hexdigest()[:8].upper()
-            )
-            if control_id != expected_id:
-                line = content.count("\n", 0, match.start()) + 1
-                errors.append(
-                    f"{path.relative_to(ROOT)}:{line}: {control_id} does not match "
-                    f"deterministic ID {expected_id}"
-                )
             ids.append(control_id)
             normalized_controls.append(normalized)
 

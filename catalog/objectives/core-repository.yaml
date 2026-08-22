@@ -1,0 +1,123 @@
+schema_version: prc.objectives/v0.1
+catalog_version: 0.1.0
+objectives:
+  - id: USEQ-FDCA6C71
+    revision: 1
+    title: Operating entry point
+    statement: A current operating entry point or README exists.
+    source:
+      path: docs/engineering/05-code-quality-and-implementation.md
+      line: 61
+    domains: [documentation, repository]
+    automation_class: partial
+    assertion_ids: [PRC-A-CORE-001]
+  - id: USEQ-6497B434
+    revision: 1
+    title: Published license
+    statement: Publish a clear license and ensure all included code and assets are legally compatible.
+    source:
+      path: docs/engineering/16-specialized-domains-and-release-assurance.md
+      line: 189
+    domains: [governance, repository, supply-chain]
+    automation_class: partial
+    assertion_ids: [PRC-A-CORE-002]
+  - id: USEQ-89F5E97A
+    revision: 1
+    title: Contribution and release guidance
+    statement: Provide contribution, development, testing, review, security, and release guidance.
+    source:
+      path: docs/engineering/16-specialized-domains-and-release-assurance.md
+      line: 191
+    domains: [documentation, governance, repository]
+    automation_class: partial
+    assertion_ids: [PRC-A-CORE-003]
+  - id: USEQ-AC6AC548
+    revision: 1
+    title: Security reporting information
+    statement: Provide security reporting and supported-version information.
+    source:
+      path: docs/engineering/16-specialized-domains-and-release-assurance.md
+      line: 396
+    domains: [documentation, security]
+    automation_class: partial
+    assertion_ids: [PRC-A-CORE-004]
+  - id: USEQ-D73106BF
+    revision: 1
+    title: Open-source governance
+    statement: Define governance, maintainer roles, decision process, code of conduct, and conflict resolution.
+    source:
+      path: docs/engineering/16-specialized-domains-and-release-assurance.md
+      line: 190
+    domains: [governance, repository]
+    automation_class: partial
+    assertion_ids: [PRC-A-CORE-005]
+  - id: USEQ-CA602113
+    revision: 1
+    title: Durable ownership
+    statement: Ensure code ownership and documentation survive staff changes and do not depend on one person.
+    source:
+      path: docs/engineering/05-code-quality-and-implementation.md
+      line: 651
+    domains: [governance, repository]
+    automation_class: partial
+    assertion_ids: [PRC-A-CORE-006]
+  - id: USEQ-D1076D92
+    revision: 1
+    title: Pinned dependency inputs
+    statement: Dependency versions and build inputs are pinned sufficiently to prevent unexpected substitution.
+    source:
+      path: docs/engineering/11-developer-experience-platform-and-delivery.md
+      line: 32
+    domains: [delivery, repository, supply-chain]
+    automation_class: partial
+    assertion_ids: [PRC-A-CORE-007]
+  - id: USEQ-F4D6E3B3
+    revision: 1
+    title: Pinned workflow tooling
+    statement: Pin toolchain, action, plugin, and dependency versions sufficiently for trustworthy results.
+    source:
+      path: docs/engineering/11-developer-experience-platform-and-delivery.md
+      line: 102
+    domains: [delivery, repository, supply-chain]
+    automation_class: partial
+    assertion_ids: [PRC-A-CORE-008]
+  - id: USEQ-12655775
+    revision: 1
+    title: Automated engineering checks
+    statement: Use automated formatting, linting, compilation, type checking, static analysis, dependency scanning, and secret scanning appropriate to the code.
+    source:
+      path: docs/engineering/05-code-quality-and-implementation.md
+      line: 1012
+    domains: [code-quality, repository, testing]
+    automation_class: partial
+    assertion_ids: [PRC-A-CORE-009, PRC-A-CORE-010]
+  - id: USEQ-73488048
+    revision: 1
+    title: Untrusted workflow isolation
+    statement: Untrusted contribution workflows cannot access production secrets or overwrite trusted artifacts.
+    source:
+      path: docs/engineering/11-developer-experience-platform-and-delivery.md
+      line: 37
+    domains: [delivery, security, supply-chain]
+    automation_class: partial
+    assertion_ids: [PRC-A-CORE-011]
+  - id: USEQ-F0F5ACE7
+    revision: 1
+    title: Generated code review
+    statement: Treat generated or suggested code as untrusted input requiring the same ownership, review, testing, security, licensing, and provenance as handwritten code.
+    source:
+      path: docs/engineering/05-code-quality-and-implementation.md
+      line: 1046
+    domains: [ai, code-quality, governance]
+    automation_class: manual
+    assertion_ids: [PRC-A-CORE-012]
+  - id: USEQ-70E9D5AA
+    revision: 1
+    title: Applicable static analyses
+    statement: Run type, data-flow, control-flow, taint, dependency, configuration, infrastructure, secret, license, and policy analysis as applicable.
+    source:
+      path: docs/engineering/10-verification-and-testing.md
+      line: 559
+    domains: [code-quality, security, testing]
+    automation_class: contextual
+    assertion_ids: [PRC-A-CORE-013]

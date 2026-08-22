@@ -1,0 +1,8 @@
+# Fully resolved catalog tooling environment for Python 3.12.
+PyYAML==6.0.3
+attrs==26.1.0
+jsonschema-specifications==2025.9.1
+jsonschema==4.26.0
+referencing==0.37.0
+rpds-py==2026.6.3
+typing_extensions==4.16.0

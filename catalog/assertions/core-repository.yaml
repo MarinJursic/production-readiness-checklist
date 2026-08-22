@@ -1,0 +1,211 @@
+schema_version: prc.assertions/v0.1
+catalog_version: 0.1.0
+assertions:
+  - id: PRC-A-CORE-001
+    revision: 1
+    control_ids: [USEQ-FDCA6C71]
+    title: README is present
+    statement: A nonempty README file exists at the repository root.
+    applicability: "true"
+    evidence_required:
+      - kind: repository-file
+        minimum_authority: repository
+        description: A nonempty root README file from the scanned commit.
+    implementation_id: prc.native.file-present@0.1
+    parameters:
+      paths: [README.md, README.rst, README.txt]
+      minimum_bytes: 1
+    severity: medium
+    gate: required
+    remediation_class: R1
+  - id: PRC-A-CORE-002
+    revision: 1
+    control_ids: [USEQ-6497B434]
+    title: License is present
+    statement: A nonempty license file exists at the repository root.
+    applicability: "true"
+    evidence_required:
+      - kind: repository-file
+        minimum_authority: repository
+        description: A nonempty root license file from the scanned commit.
+    implementation_id: prc.native.file-present@0.1
+    parameters:
+      paths: [LICENSE, LICENSE.md, LICENSE.txt, COPYING]
+      minimum_bytes: 1
+    severity: medium
+    gate: required
+    remediation_class: R0
+  - id: PRC-A-CORE-003
+    revision: 1
+    control_ids: [USEQ-89F5E97A]
+    title: Contribution guidance is present
+    statement: A nonempty contribution guide exists at the repository root.
+    applicability: "true"
+    evidence_required:
+      - kind: repository-file
+        minimum_authority: repository
+        description: A nonempty root contribution guide from the scanned commit.
+    implementation_id: prc.native.file-present@0.1
+    parameters:
+      paths: [CONTRIBUTING.md, CONTRIBUTING.rst]
+      minimum_bytes: 1
+    severity: low
+    gate: advisory
+    remediation_class: R0
+  - id: PRC-A-CORE-004
+    revision: 1
+    control_ids: [USEQ-AC6AC548]
+    title: Security policy is present
+    statement: A nonempty security policy exists at the repository root.
+    applicability: "true"
+    evidence_required:
+      - kind: repository-file
+        minimum_authority: repository
+        description: A nonempty root security policy from the scanned commit.
+    implementation_id: prc.native.file-present@0.1
+    parameters:
+      paths: [SECURITY.md, docs/SECURITY.md]
+      minimum_bytes: 1
+    severity: medium
+    gate: required
+    remediation_class: R0
+  - id: PRC-A-CORE-005
+    revision: 1
+    control_ids: [USEQ-D73106BF]
+    title: Code of conduct is present
+    statement: A nonempty code-of-conduct document exists at the repository root.
+    applicability: "true"
+    evidence_required:
+      - kind: repository-file
+        minimum_authority: repository
+        description: A nonempty root code-of-conduct document from the scanned commit.
+    implementation_id: prc.native.file-present@0.1
+    parameters:
+      paths: [CODE_OF_CONDUCT.md, CODE_OF_CONDUCT.rst]
+      minimum_bytes: 1
+    severity: low
+    gate: advisory
+    remediation_class: R0
+  - id: PRC-A-CORE-006
+    revision: 1
+    control_ids: [USEQ-CA602113]
+    title: Code ownership is declared
+    statement: A nonempty CODEOWNERS file exists in a supported repository location.
+    applicability: "true"
+    evidence_required:
+      - kind: repository-file
+        minimum_authority: repository
+        description: A nonempty CODEOWNERS file from the scanned commit.
+    implementation_id: prc.native.file-present@0.1
+    parameters:
+      paths: [.github/CODEOWNERS, CODEOWNERS, docs/CODEOWNERS]
+      minimum_bytes: 1
+    severity: medium
+    gate: required
+    remediation_class: R0
+  - id: PRC-A-CORE-007
+    revision: 1
+    control_ids: [USEQ-D1076D92]
+    title: Dependency resolution is reproducible
+    statement: Each detected package ecosystem has a supported lock or checksum file.
+    applicability: inventory.package_ecosystems.size() > 0
+    evidence_required:
+      - kind: repository-file
+        minimum_authority: repository
+        description: Lock or checksum files corresponding to detected dependency manifests.
+    implementation_id: prc.native.dependency-lock@0.1
+    parameters: {}
+    severity: high
+    gate: required
+    remediation_class: R2
+  - id: PRC-A-CORE-008
+    revision: 1
+    control_ids: [USEQ-F4D6E3B3]
+    title: GitHub Actions use immutable references
+    statement: Every external GitHub Action is pinned to a full commit SHA.
+    applicability: inventory.ci.github_actions == true
+    evidence_required:
+      - kind: workflow-parse
+        minimum_authority: repository
+        description: Parsed workflow action references from the scanned commit.
+    implementation_id: prc.native.github-action-pin@0.1
+    parameters:
+      allow_local_actions: true
+    severity: high
+    gate: required
+    remediation_class: R2
+  - id: PRC-A-CORE-009
+    revision: 1
+    control_ids: [USEQ-12655775]
+    title: Continuous integration is configured
+    statement: The repository contains a supported continuous-integration configuration.
+    applicability: "true"
+    evidence_required:
+      - kind: repository-file
+        minimum_authority: repository
+        description: A supported CI configuration from the scanned commit.
+    implementation_id: prc.native.ci-present@0.1
+    parameters: {}
+    severity: medium
+    gate: required
+    remediation_class: R2
+  - id: PRC-A-CORE-010
+    revision: 1
+    control_ids: [USEQ-12655775]
+    title: Automated tests are discoverable
+    statement: The repository contains a recognized test location or test command declaration.
+    applicability: inventory.source_files > 0
+    evidence_required:
+      - kind: repository-structure
+        minimum_authority: repository
+        description: Recognized test paths or manifest test commands from the scanned commit.
+    implementation_id: prc.native.test-suite@0.1
+    parameters: {}
+    severity: high
+    gate: required
+    remediation_class: R2
+  - id: PRC-A-CORE-011
+    revision: 1
+    control_ids: [USEQ-73488048]
+    title: Workflow permissions are explicit
+    statement: GitHub Actions workflows declare explicit least-privilege permissions.
+    applicability: inventory.ci.github_actions == true
+    evidence_required:
+      - kind: workflow-parse
+        minimum_authority: repository
+        description: Parsed top-level and job-level permissions from the scanned commit.
+    implementation_id: prc.native.github-workflow-permissions@0.1
+    parameters: {}
+    severity: high
+    gate: required
+    remediation_class: R2
+  - id: PRC-A-CORE-012
+    revision: 1
+    control_ids: [USEQ-F0F5ACE7]
+    title: Generated code follows normal review controls
+    statement: Generated or suggested code is subject to the project's normal ownership, review, testing, security, licensing, and provenance controls.
+    applicability: inventory.generated_code.present == true
+    evidence_required:
+      - kind: reviewer-attestation
+        minimum_authority: human
+        description: Current scoped review evidence for generated or suggested code.
+    implementation_id: prc.native.manual-evidence@0.1
+    parameters: {}
+    severity: high
+    gate: required
+    remediation_class: R0
+  - id: PRC-A-CORE-013
+    revision: 1
+    control_ids: [USEQ-70E9D5AA]
+    title: Applicable analyses have executed
+    statement: Required analysis classes for the detected project have current executed results.
+    applicability: inventory.source_files > 0
+    evidence_required:
+      - kind: analysis-result
+        minimum_authority: executed
+        description: Current tool results for each analysis class selected by policy.
+    implementation_id: prc.native.analysis-evidence@0.1
+    parameters: {}
+    severity: high
+    gate: required
+    remediation_class: R2

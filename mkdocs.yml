@@ -56,6 +56,7 @@ nav:
       - Trust and threat model: architecture/trust-model.md
       - Evidence and results: architecture/evidence-and-results.md
       - Bounded remediation: architecture/remediation-contract.md
+      - Core repository profile: scanner/core-repository.md
   - Engineering lifecycle:
       - Overview: engineering/00-overview.md
       - 1. Governance and foundations: engineering/01-governance-and-foundations.md

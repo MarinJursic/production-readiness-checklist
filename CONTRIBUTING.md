@@ -34,7 +34,7 @@ A control should:
 
 Do not renumber existing `PRC-*` IDs. New production controls receive the next unused number in their numbered section. If a control is retired, preserve its ID in the changelog rather than assigning it to a different requirement.
 
-Lifecycle controls use deterministic `USEQ-*` IDs derived from normalized control text. Changing the normative text intentionally changes the ID, so explain that identity change and its effect on existing evidence in the pull request.
+Existing lifecycle and production control IDs are permanent and recorded in `catalog/control-id-registry.json`. Do not derive a replacement ID when wording changes. Regenerate the registry so the same ID receives a new revision and explain the semantic change and its effect on existing evidence in the pull request. Retired IDs are preserved and must never be reassigned.
 
 ## Development workflow
 
@@ -46,16 +46,24 @@ Lifecycle controls use deterministic `USEQ-*` IDs derived from normalized contro
    python3 scripts/validate.py
    ```
 
-4. Build the documentation site when navigation or rendering changes:
+4. Install the catalog tooling and verify structured sources and generated files:
+
+   ```bash
+   python3 -m pip install -r requirements-dev.lock.txt
+   python3 scripts/catalog.py check
+   python3 -m unittest discover -s tests -p "test_*.py"
+   ```
+
+5. Build the documentation site when navigation or rendering changes:
 
    ```bash
    python3 -m venv .venv
    . .venv/bin/activate
-   pip install -r requirements-docs.txt
+   pip install -r requirements-docs.lock.txt
    mkdocs build --strict
    ```
 
-5. Open a pull request using the repository template.
+6. Open a pull request using the repository template.
 
 The `scripts/import_source.py` script records the one-time transformation from the original production-readiness master document. The generated production checklist pages are maintained directly.
 

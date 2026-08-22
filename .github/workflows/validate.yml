@@ -20,11 +20,17 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install catalog dependencies
+        run: pip install -r requirements-dev.lock.txt
+
       - name: Validate control IDs and links
         run: python scripts/validate.py
 
       - name: Run validator tests
         run: python -m unittest discover -s tests -p "test_*.py" -v
+
+      - name: Check catalog schemas and generated files
+        run: python scripts/catalog.py check
 
       - name: Lint Markdown
         uses: DavidAnson/markdownlint-cli2-action@21c1be1b93ad9ed58fa840aacc3f279cde2a72ff # v24
