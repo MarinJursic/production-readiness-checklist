@@ -29,6 +29,9 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 - A bounded deterministic R1 remediation loop with isolated sequential
   candidates, cumulative budgets, fresh rescans, fail-closed acceptance, and a
   versioned machine-work-complete report that classifies every remaining result.
+- A non-executing `prc doctor` command and versioned diagnostics report for
+  target/catalog validity, private evidence storage, candidate filesystem
+  isolation, OCI runtime identity, and optional agent-provider identity.
 
 ### Fixed
 

@@ -322,6 +322,47 @@ func TestFixCommandRunsBoundedDeterministicLoop(t *testing.T) {
 	}
 }
 
+func TestDoctorCommandReportsVerifiedEnvironment(t *testing.T) {
+	target := t.TempDir()
+	state := t.TempDir()
+	if err := os.Chmod(state, 0o700); err != nil {
+		t.Fatal(err)
+	}
+	var stdout, stderr bytes.Buffer
+	code := run([]string{
+		"doctor", "--target", target, "--catalog-root", filepath.Join("..", ".."),
+		"--state-dir", state, "--candidate-parent", t.TempDir(), "--format", "json",
+	}, &stdout, &stderr)
+	if code != 0 {
+		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
+	}
+	var report struct {
+		SchemaVersion string `json:"schema_version"`
+		Ready         bool   `json:"ready"`
+		Summary       struct {
+			Failed int `json:"failed"`
+		} `json:"summary"`
+	}
+	if err := json.Unmarshal(stdout.Bytes(), &report); err != nil {
+		t.Fatal(err)
+	}
+	if report.SchemaVersion != "prc.doctor/v0.1" || !report.Ready || report.Summary.Failed != 0 {
+		t.Fatalf("unexpected doctor report: %+v", report)
+	}
+}
+
+func TestDoctorCommandFailsForUnsafeCandidateParent(t *testing.T) {
+	target := t.TempDir()
+	var stdout, stderr bytes.Buffer
+	code := run([]string{
+		"doctor", "--target", target, "--catalog-root", filepath.Join("..", ".."),
+		"--candidate-parent", target, "--format", "json",
+	}, &stdout, &stderr)
+	if code != 1 || !strings.Contains(stdout.String(), `"ready": false`) {
+		t.Fatalf("exit=%d stdout=%s stderr=%s", code, stdout.String(), stderr.String())
+	}
+}
+
 func TestRemediateCommandConsumesConfiguredPolicy(t *testing.T) {
 	target := t.TempDir()
 	if err := os.WriteFile(filepath.Join(target, "app.py"), []byte("print('ready')"), 0o644); err != nil {

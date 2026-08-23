@@ -17,6 +17,7 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/adapter"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/catalog"
 	projectconfig "github.com/MarinJursic/production-readiness-checklist/scanner/config"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/doctor"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/engine"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/evidence"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
@@ -56,6 +57,9 @@ func run(args []string, stdout, stderr io.Writer) int {
 	case "fix":
 		resultExit = true
 		successful, err = runFix(args[1:], stdout, stderr)
+	case "doctor":
+		resultExit = true
+		successful, err = runDoctor(args[1:], stdout, stderr)
 	case "remediate":
 		resultExit = true
 		successful, err = runRemediate(args[1:], stdout, stderr)
@@ -88,7 +92,7 @@ func run(args []string, stdout, stderr io.Writer) int {
 
 func usage(output io.Writer) {
 	fmt.Fprintln(output, "Production Readiness Scanner")
-	fmt.Fprintln(output, "usage: prc <config|inventory|plan|scan|fix|remediate|remediate-proposal|explain|adapter|provider|version> [options]")
+	fmt.Fprintln(output, "usage: prc <config|inventory|plan|scan|fix|remediate|remediate-proposal|doctor|explain|adapter|provider|version> [options]")
 }
 
 func runConfig(args []string, stdout, stderr io.Writer) error {
@@ -350,6 +354,64 @@ func printRemediationRun(output io.Writer, result remediation.RemediationRun) {
 	}
 	for _, reason := range result.StopReasons {
 		fmt.Fprintf(output, "- stop: %s\n", reason)
+	}
+}
+
+type repeatedStringFlag []string
+
+func (values *repeatedStringFlag) String() string { return strings.Join(*values, ",") }
+
+func (values *repeatedStringFlag) Set(value string) error {
+	*values = append(*values, value)
+	return nil
+}
+
+func runDoctor(args []string, stdout, stderr io.Writer) (bool, error) {
+	set := flag.NewFlagSet("doctor", flag.ContinueOnError)
+	set.SetOutput(stderr)
+	target := set.String("target", ".", "repository to inspect")
+	catalogRoot := set.String("catalog-root", ".", "repository containing the PRC catalog")
+	stateDirectory := set.String("state-dir", "", "existing private state directory to probe")
+	candidateParent := set.String("candidate-parent", "", "existing external directory to probe for isolated candidates")
+	ociRuntime := set.String("oci-runtime", "", "docker or podman executable to inspect without running")
+	format := set.String("format", "human", "human or json")
+	providers := repeatedStringFlag{}
+	set.Var(&providers, "provider", "codex or claude executable to inspect without running; repeatable")
+	if err := set.Parse(args); err != nil {
+		return false, err
+	}
+	if *format != "human" && *format != "json" {
+		return false, fmt.Errorf("unsupported format %q", *format)
+	}
+	report := doctor.Run(doctor.Options{
+		Target: *target, CatalogRoot: *catalogRoot, StateDirectory: *stateDirectory,
+		CandidateParent: *candidateParent, OCIRuntime: *ociRuntime, Providers: providers,
+	})
+	if *format == "json" {
+		if err := encodeJSON(stdout, report); err != nil {
+			return false, err
+		}
+	} else {
+		printDoctor(stdout, report)
+	}
+	return report.Ready, nil
+}
+
+func printDoctor(output io.Writer, report doctor.Report) {
+	fmt.Fprintf(output, "Scanner environment ready: %t\n", report.Ready)
+	fmt.Fprintf(output, "Platform: %s/%s\n", report.Platform, report.Architecture)
+	fmt.Fprintf(output, "Target: %s\n", report.Target)
+	fmt.Fprintf(output, "Catalog: %s\n", report.CatalogRoot)
+	fmt.Fprintf(output, "Checks: %d passed, %d warnings, %d failed\n", report.Summary.Passed, report.Summary.Warnings, report.Summary.Failed)
+	for _, check := range report.Checks {
+		requirement := "optional"
+		if check.Required {
+			requirement = "required"
+		}
+		fmt.Fprintf(output, "[%s] %s (%s): %s\n", strings.ToUpper(check.Status), check.ID, requirement, check.Summary)
+		for _, detail := range check.Details {
+			fmt.Fprintf(output, "  - %s\n", detail)
+		}
 	}
 }
 

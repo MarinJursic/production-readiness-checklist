@@ -39,6 +39,11 @@ When a validated project configuration is supplied, its digest, declared scope,
 and explicitly limited facts are bound into the inventory identity. Frozen v0.1
 and v0.2 schemas remain available for consumers migrating pinned output contracts.
 
+Before enabling persistent evidence, OCI adapters, or isolated remediation, run
+[`prc doctor`](doctor.md) with the corresponding paths and executables. It probes
+only explicitly requested host capabilities and never launches target code,
+containers, or agent providers.
+
 ## Create a deterministic plan
 
 Run this command from the Production Readiness Checklist repository, or pass its

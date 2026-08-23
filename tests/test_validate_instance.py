@@ -365,6 +365,56 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             [],
         )
 
+    def test_doctor_report_conforms_and_warning_cannot_be_required(self) -> None:
+        report = {
+            "schema_version": "prc.doctor/v0.1",
+            "generated_at": "2026-08-23T12:00:00Z",
+            "platform": "linux",
+            "architecture": "amd64",
+            "target": "/tmp/project",
+            "catalog_root": "/tmp/catalog",
+            "ready": True,
+            "summary": {"passed": 2, "warnings": 3, "failed": 0},
+            "checks": [
+                {
+                    "id": "target.inventory",
+                    "status": "pass",
+                    "required": True,
+                    "summary": "Target is valid.",
+                    "details": [],
+                },
+                {
+                    "id": "catalog.load",
+                    "status": "pass",
+                    "required": True,
+                    "summary": "Catalog is valid.",
+                    "details": [],
+                },
+                *[
+                    {
+                        "id": identifier,
+                        "status": "warn",
+                        "required": False,
+                        "summary": "Capability was not requested.",
+                        "details": [],
+                    }
+                    for identifier in (
+                        "state-store",
+                        "candidate-workspace",
+                        "oci-runtime",
+                    )
+                ],
+            ],
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(report, "doctor.schema.json"),
+            [],
+        )
+        report["checks"][2]["required"] = True
+        self.assertTrue(
+            validate_instance.validation_errors(report, "doctor.schema.json")
+        )
+
     def test_checked_in_adapter_manifest_conforms(self) -> None:
         path = ROOT / "fixtures" / "adapters" / "fixture-adapter.yaml"
         instance = yaml.safe_load(path.read_text(encoding="utf-8"))

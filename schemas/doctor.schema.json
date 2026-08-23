@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/doctor.schema.json",
+  "title": "Production Readiness Scanner Doctor Report v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "generated_at", "platform", "architecture", "target", "catalog_root", "ready", "summary", "checks"],
+  "properties": {
+    "schema_version": {"const": "prc.doctor/v0.1"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "platform": {"type": "string", "minLength": 1},
+    "architecture": {"type": "string", "minLength": 1},
+    "target": {"type": "string", "minLength": 1},
+    "catalog_root": {"type": "string", "minLength": 1},
+    "ready": {"type": "boolean"},
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["passed", "warnings", "failed"],
+      "properties": {
+        "passed": {"type": "integer", "minimum": 0},
+        "warnings": {"type": "integer", "minimum": 0},
+        "failed": {"type": "integer", "minimum": 0}
+      }
+    },
+    "checks": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "status", "required", "summary", "details"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z][a-z0-9.-]+$"},
+          "status": {"enum": ["pass", "warn", "fail"]},
+          "required": {"type": "boolean"},
+          "summary": {"type": "string", "minLength": 1},
+          "details": {"type": "array", "items": {"type": "string", "minLength": 1}}
+        },
+        "allOf": [
+          {
+            "if": {"properties": {"status": {"const": "warn"}}, "required": ["status"]},
+            "then": {"properties": {"required": {"const": false}}}
+          },
+          {
+            "if": {"properties": {"status": {"const": "fail"}}, "required": ["status"]},
+            "then": {"properties": {"required": {"const": true}}}
+          }
+        ]
+      }
+    }
+  }
+}
