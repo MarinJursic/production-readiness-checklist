@@ -60,7 +60,8 @@ The current experimental runner deliberately supports only a narrow subset:
 
 - OCI execution through Docker or Podman;
 - an image reference pinned by a `sha256` digest and explicit registry host;
-- a read-only target workspace;
+- a private, read-only snapshot containing exactly the regular files in the
+  sealed inventory;
 - no image pull during a scan;
 - no network;
 - no secret handles;
@@ -69,12 +70,22 @@ The current experimental runner deliberately supports only a narrow subset:
 - explicit wall-time, memory, CPU, process, line, message, stdin, stdout, and
   stderr limits.
 
+Before execution, the scanner reopens and hashes every inventoried regular file
+while copying it to a private temporary snapshot. Scanner-excluded paths and
+symlinks are not copied. A changed type, size, or digest stops execution. The
+snapshot has a 4 GiB safety ceiling, is mounted read-only, and is removed after
+the run. Its own deterministic digest is sealed into the OCI plan and checked
+again immediately before and after the container runs, so observations cannot
+silently refer to different bytes than the inventory.
+
 The generated OCI command also drops all Linux capabilities, enables
-`no-new-privileges`, runs as UID/GID 65532, makes the image root filesystem
-read-only, and removes the named container. Timeout cleanup targets only the
-scanner-generated container name. The plan records the OCI client binary digest
-and execution stops if either the plan, manifest, or runtime binary changes
-after capability evaluation.
+`no-new-privileges`, uses the invoking non-root UID/GID so private snapshot
+permissions need not be broadened, disables swap beyond the memory ceiling,
+caps open files, makes the image root filesystem read-only, and removes the
+named container. The runner refuses root and Windows hosts. Timeout cleanup
+targets only the scanner-generated container name. The plan records the OCI
+client binary digest and execution stops if the plan, manifest, runtime binary,
+or bound snapshot changes after capability evaluation.
 
 An OCI runtime is a security control, not proof of perfect isolation. Operators
 must keep the runtime and host patched, review adapter images, and treat runtime

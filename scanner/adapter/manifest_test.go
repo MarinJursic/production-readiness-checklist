@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 	"slices"
+	"strconv"
 	"strings"
 	"testing"
 
@@ -115,8 +116,10 @@ func TestOCIPlanContainsRequiredIsolationFlags(t *testing.T) {
 	}
 	required := []string{
 		"--pull=never", "--network=none", "--read-only", "--cap-drop=ALL",
-		"--security-opt=no-new-privileges", "--pids-limit=1", "--memory=512m",
-		"--cpus=1", "--user=65532:65532", "--tmpfs=/tmp:rw,noexec,nosuid,size=64m",
+		"--security-opt=no-new-privileges=true", "--pids-limit=1", "--memory=512m",
+		"--memory-swap=512m", "--cpus=1",
+		"--user=" + strconv.Itoa(os.Getuid()) + ":" + strconv.Itoa(os.Getgid()),
+		"--ulimit=nofile=1024:1024", "--tmpfs=/tmp:rw,noexec,nosuid,nodev,mode=1777,size=64m",
 	}
 	for _, argument := range required {
 		if !slices.Contains(plan.Arguments, argument) {

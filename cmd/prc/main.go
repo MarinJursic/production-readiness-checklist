@@ -1409,12 +1409,21 @@ func runOCIAdapter(commandName string, args []string, stdout, stderr io.Writer) 
 			return err
 		}
 	}
-	ociPlan, err := adapter.BuildOCIPlan(*runtime, item.Root, runID, manifest)
+	if commandName == "plan-oci" {
+		ociPlan, err := adapter.BuildOCIPlan(*runtime, item.Root, runID, manifest)
+		if err != nil {
+			return err
+		}
+		return encodeJSON(stdout, ociPlan)
+	}
+	snapshot, err := adapter.PrepareSnapshot(item)
 	if err != nil {
 		return err
 	}
-	if commandName == "plan-oci" {
-		return encodeJSON(stdout, ociPlan)
+	defer snapshot.Close()
+	ociPlan, err := adapter.BuildSnapshotOCIPlan(*runtime, snapshot, runID, manifest)
+	if err != nil {
+		return err
 	}
 	input, err := adapter.InputJSONL(runID, adapter.Subject{
 		TargetName: item.TargetName, TargetCommit: item.GitCommit, InventoryDigest: item.Digest,
@@ -1661,7 +1670,12 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		if err != nil {
 			return exitInternal, exitError(exitExecution, err)
 		}
-		ociPlan, err := adapter.BuildOCIPlan(*adapterRuntime, item.Root, adapterRunID, manifest)
+		snapshot, err := adapter.PrepareSnapshot(item)
+		if err != nil {
+			return exitInternal, exitError(exitExecution, err)
+		}
+		defer snapshot.Close()
+		ociPlan, err := adapter.BuildSnapshotOCIPlan(*adapterRuntime, snapshot, adapterRunID, manifest)
 		if err != nil {
 			return exitInternal, exitError(exitExecution, err)
 		}

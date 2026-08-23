@@ -1,0 +1,129 @@
+package adapter
+
+import (
+	"context"
+	"os"
+	"path/filepath"
+	"strings"
+	"testing"
+
+	"github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
+)
+
+func TestPrepareSnapshotMaterializesOnlySealedRegularFiles(t *testing.T) {
+	root := t.TempDir()
+	writeSnapshotFixture(t, root, "src/main.go", "package main\n")
+	writeSnapshotFixture(t, root, ".git/private", "excluded\n")
+	writeSnapshotFixture(t, root, "site/generated.html", "excluded\n")
+	if err := os.Symlink("src/main.go", filepath.Join(root, "source-link")); err != nil {
+		t.Fatal(err)
+	}
+	item, err := inventory.Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	snapshot, err := PrepareSnapshot(item)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer snapshot.Close()
+	if snapshot.Files != 1 || snapshot.Bytes != int64(len("package main\n")) ||
+		!hexDigestPattern.MatchString(snapshot.Digest) {
+		t.Fatalf("snapshot identity = %+v", snapshot)
+	}
+	data, err := os.ReadFile(filepath.Join(snapshot.Path, "src", "main.go"))
+	if err != nil || string(data) != "package main\n" {
+		t.Fatalf("snapshot content = %q, %v", data, err)
+	}
+	for _, excluded := range []string{".git/private", "site/generated.html", "source-link"} {
+		if _, err := os.Lstat(filepath.Join(snapshot.Path, filepath.FromSlash(excluded))); !os.IsNotExist(err) {
+			t.Fatalf("excluded path %s was materialized: %v", excluded, err)
+		}
+	}
+	info, err := os.Stat(filepath.Join(snapshot.Path, "src", "main.go"))
+	if err != nil || info.Mode().Perm() != 0o400 {
+		t.Fatalf("snapshot file mode = %v, %v", info.Mode().Perm(), err)
+	}
+}
+
+func TestPrepareSnapshotRejectsWorkspaceDrift(t *testing.T) {
+	root := t.TempDir()
+	writeSnapshotFixture(t, root, "README.md", "before\n")
+	item, err := inventory.Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(root, "README.md"), []byte("after\n"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := PrepareSnapshot(item); err == nil || !strings.Contains(err.Error(), "changed after inventory") {
+		t.Fatalf("workspace drift error = %v", err)
+	}
+}
+
+func TestRunOCIRejectsSnapshotDriftBeforeRuntime(t *testing.T) {
+	root := t.TempDir()
+	writeSnapshotFixture(t, root, "README.md", "sealed\n")
+	item, err := inventory.Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	snapshot, err := PrepareSnapshot(item)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer snapshot.Close()
+	runtimePath := filepath.Join(t.TempDir(), "docker")
+	if err := os.WriteFile(runtimePath, []byte("#!/bin/sh\nexit 99\n"), 0o700); err != nil {
+		t.Fatal(err)
+	}
+	plan, err := BuildSnapshotOCIPlan(runtimePath, snapshot, strings.Repeat("a", 64), validManifest())
+	if err != nil {
+		t.Fatal(err)
+	}
+	file := filepath.Join(snapshot.Path, "README.md")
+	if err := os.Chmod(file, 0o600); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(file, []byte("tampered\n"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := RunOCI(context.Background(), plan, validManifest(), nil); err == nil ||
+		!strings.Contains(err.Error(), "snapshot changed") {
+		t.Fatalf("snapshot drift execution error = %v", err)
+	}
+}
+
+func TestSnapshotCloseIsScopedAndIdempotent(t *testing.T) {
+	root := t.TempDir()
+	writeSnapshotFixture(t, root, "README.md", "sealed\n")
+	item, err := inventory.Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	snapshot, err := PrepareSnapshot(item)
+	if err != nil {
+		t.Fatal(err)
+	}
+	path := snapshot.Path
+	if err := snapshot.Close(); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := os.Stat(path); !os.IsNotExist(err) {
+		t.Fatalf("snapshot path remains after close: %v", err)
+	}
+	if err := snapshot.Close(); err != nil {
+		t.Fatal(err)
+	}
+}
+
+func writeSnapshotFixture(t *testing.T, root, relative, content string) {
+	t.Helper()
+	path := filepath.Join(root, filepath.FromSlash(relative))
+	if err := os.MkdirAll(filepath.Dir(path), 0o700); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(path, []byte(content), 0o600); err != nil {
+		t.Fatal(err)
+	}
+}

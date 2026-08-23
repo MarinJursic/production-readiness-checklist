@@ -11,34 +11,43 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"runtime"
 	"strconv"
 	"strings"
 	"time"
 )
 
 type OCIPlan struct {
-	RuntimePath   string   `json:"runtime_path"`
-	RuntimeSHA256 string   `json:"runtime_sha256"`
-	Arguments     []string `json:"arguments"`
-	Cleanup       []string `json:"cleanup_arguments"`
-	Name          string   `json:"container_name"`
-	seal          [32]byte
+	RuntimePath     string   `json:"runtime_path"`
+	RuntimeSHA256   string   `json:"runtime_sha256"`
+	Arguments       []string `json:"arguments"`
+	Cleanup         []string `json:"cleanup_arguments"`
+	Name            string   `json:"container_name"`
+	Workspace       string   `json:"workspace"`
+	WorkspaceSHA256 string   `json:"workspace_sha256,omitempty"`
+	seal            [32]byte
 }
 
-func BuildOCIPlan(runtime, workspace, runID string, manifest Manifest) (OCIPlan, error) {
+func BuildOCIPlan(runtimeName, workspace, runID string, manifest Manifest) (OCIPlan, error) {
 	if err := manifest.ValidateForCurrentEngine(); err != nil {
 		return OCIPlan{}, err
 	}
-	runtimePath, err := exec.LookPath(runtime)
+	if runtime.GOOS == "windows" {
+		return OCIPlan{}, fmt.Errorf("the current OCI adapter runner does not support Windows hosts")
+	}
+	if os.Geteuid() == 0 {
+		return OCIPlan{}, fmt.Errorf("OCI adapter runner refuses to launch containers as host root")
+	}
+	runtimePath, err := exec.LookPath(runtimeName)
 	if err != nil {
-		return OCIPlan{}, fmt.Errorf("find OCI runtime %q: %w", runtime, err)
+		return OCIPlan{}, fmt.Errorf("find OCI runtime %q: %w", runtimeName, err)
 	}
 	runtimePath, err = filepath.Abs(runtimePath)
 	if err != nil {
 		return OCIPlan{}, fmt.Errorf("resolve OCI runtime: %w", err)
 	}
-	runtimeName := strings.TrimSuffix(strings.ToLower(filepath.Base(runtimePath)), ".exe")
-	if runtimeName != "docker" && runtimeName != "podman" {
+	detectedRuntime := strings.TrimSuffix(strings.ToLower(filepath.Base(runtimePath)), ".exe")
+	if detectedRuntime != "docker" && detectedRuntime != "podman" {
 		return OCIPlan{}, fmt.Errorf("unsupported OCI runtime %q", runtimePath)
 	}
 	if resolved, resolveErr := filepath.EvalSymlinks(runtimePath); resolveErr == nil {
@@ -74,23 +83,53 @@ func BuildOCIPlan(runtime, workspace, runID string, manifest Manifest) (OCIPlan,
 	if !manifest.Capabilities.ChildProcesses {
 		pidsLimit = 1
 	}
+	userID := strconv.Itoa(os.Getuid())
+	groupID := strconv.Itoa(os.Getgid())
 	arguments := []string{
 		"run", "--rm", "--interactive", "--name", name, "--pull=never",
 		"--network=none", "--read-only", "--cap-drop=ALL",
-		"--security-opt=no-new-privileges", "--pids-limit=" + strconv.Itoa(pidsLimit),
+		"--security-opt=no-new-privileges=true", "--pids-limit=" + strconv.Itoa(pidsLimit),
 		"--memory=" + strconv.Itoa(manifest.Resources.MemoryMB) + "m",
+		"--memory-swap=" + strconv.Itoa(manifest.Resources.MemoryMB) + "m",
 		"--cpus=" + strconv.FormatFloat(manifest.Resources.CPUs, 'f', -1, 64),
-		"--user=65532:65532",
+		"--user=" + userID + ":" + groupID, "--ulimit=nofile=1024:1024",
 	}
 	if manifest.Capabilities.WriteScratch {
-		arguments = append(arguments, "--tmpfs=/tmp:rw,noexec,nosuid,size="+strconv.Itoa(manifest.Resources.TmpfsMB)+"m")
+		arguments = append(arguments, "--tmpfs=/tmp:rw,noexec,nosuid,nodev,mode=1777,size="+strconv.Itoa(manifest.Resources.TmpfsMB)+"m")
 	}
 	arguments = append(arguments, "--mount="+mount, "--workdir=/workspace", manifest.Image)
 	arguments = append(arguments, manifest.Command...)
 	plan := OCIPlan{
 		RuntimePath: runtimePath, RuntimeSHA256: runtimeDigest, Arguments: arguments,
-		Cleanup: []string{"rm", "--force", name}, Name: name,
+		Cleanup: []string{"rm", "--force", name}, Name: name, Workspace: workspace,
 	}
+	plan.seal, err = sealOCIPlan(plan, manifest)
+	if err != nil {
+		return OCIPlan{}, err
+	}
+	return plan, nil
+}
+
+// BuildSnapshotOCIPlan binds a previously verified snapshot digest into the
+// sealed plan. RunOCI rechecks the digest immediately before and after the
+// container so target drift cannot be mistaken for evidence about the sealed
+// inventory.
+func BuildSnapshotOCIPlan(runtime string, snapshot *Snapshot, runID string, manifest Manifest) (OCIPlan, error) {
+	if snapshot == nil || snapshot.Path == "" || !hexDigestPattern.MatchString(snapshot.Digest) {
+		return OCIPlan{}, fmt.Errorf("OCI adapter execution requires a valid prepared snapshot")
+	}
+	actual, err := snapshotDigest(snapshot.Path)
+	if err != nil {
+		return OCIPlan{}, err
+	}
+	if actual != snapshot.Digest {
+		return OCIPlan{}, fmt.Errorf("adapter snapshot changed before execution planning")
+	}
+	plan, err := BuildOCIPlan(runtime, snapshot.Path, runID, manifest)
+	if err != nil {
+		return OCIPlan{}, err
+	}
+	plan.WorkspaceSHA256 = snapshot.Digest
 	plan.seal, err = sealOCIPlan(plan, manifest)
 	if err != nil {
 		return OCIPlan{}, err
@@ -127,6 +166,12 @@ func RunOCI(
 	if runtimeDigest != plan.RuntimeSHA256 {
 		return RunOutput{}, fmt.Errorf("OCI runtime changed after execution planning")
 	}
+	if plan.WorkspaceSHA256 != "" {
+		workspaceDigest, digestErr := snapshotDigest(plan.Workspace)
+		if digestErr != nil || workspaceDigest != plan.WorkspaceSHA256 {
+			return RunOutput{}, fmt.Errorf("adapter snapshot changed after execution planning")
+		}
+	}
 	if len(input) > manifest.Resources.MaxStdin {
 		return RunOutput{}, fmt.Errorf("adapter input exceeds %d bytes", manifest.Resources.MaxStdin)
 	}
@@ -142,6 +187,13 @@ func RunOCI(
 	started := time.Now().UTC()
 	err = command.Run()
 	completed := time.Now().UTC()
+	if plan.WorkspaceSHA256 != "" {
+		workspaceDigest, digestErr := snapshotDigest(plan.Workspace)
+		if digestErr != nil || workspaceDigest != plan.WorkspaceSHA256 {
+			cleanupOCI(plan)
+			return outputMetadata(stderr.String(), started, completed), fmt.Errorf("adapter snapshot changed during execution")
+		}
+	}
 	if ctx.Err() != nil {
 		cleanupOCI(plan)
 		return outputMetadata(stderr.String(), started, completed), fmt.Errorf("adapter timed out after %s: %w", manifest.Timeout(), ctx.Err())
@@ -167,16 +219,19 @@ func RunOCI(
 
 func sealOCIPlan(plan OCIPlan, manifest Manifest) ([32]byte, error) {
 	payload, err := json.Marshal(struct {
-		RuntimePath   string   `json:"runtime_path"`
-		RuntimeSHA256 string   `json:"runtime_sha256"`
-		Arguments     []string `json:"arguments"`
-		Cleanup       []string `json:"cleanup_arguments"`
-		Name          string   `json:"container_name"`
-		Manifest      Manifest `json:"manifest"`
+		RuntimePath     string   `json:"runtime_path"`
+		RuntimeSHA256   string   `json:"runtime_sha256"`
+		Arguments       []string `json:"arguments"`
+		Cleanup         []string `json:"cleanup_arguments"`
+		Name            string   `json:"container_name"`
+		Workspace       string   `json:"workspace"`
+		WorkspaceSHA256 string   `json:"workspace_sha256,omitempty"`
+		Manifest        Manifest `json:"manifest"`
 	}{
 		RuntimePath: plan.RuntimePath, RuntimeSHA256: plan.RuntimeSHA256,
 		Arguments: plan.Arguments, Cleanup: plan.Cleanup,
-		Name: plan.Name, Manifest: manifest,
+		Name: plan.Name, Workspace: plan.Workspace, WorkspaceSHA256: plan.WorkspaceSHA256,
+		Manifest: manifest,
 	})
 	if err != nil {
 		return [32]byte{}, fmt.Errorf("seal validated OCI plan: %w", err)
