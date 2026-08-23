@@ -63,7 +63,8 @@ func agentLoopOptions(t *testing.T, target, status string) LoopOptions {
 			OutputSchemaPath:            filepath.Join(root, "schemas", "agent-output.schema.json"),
 			AllowRemoteSourceProcessing: true, TimeoutSeconds: 30, MaxOutputBytes: 64 * 1024,
 		},
-		Now: loopClock(),
+		Verifier: passingVerifier(t),
+		Now:      loopClock(),
 	}
 }
 
@@ -118,8 +119,16 @@ func TestRunLoopExecutesReadOnlyProviderAndAcceptsBoundedR2Candidate(t *testing.
 	execution := result.ProviderExecutions[0]
 	if result.Attempts[0].Mode != "agent" || result.Attempts[0].Outcome != "accepted" ||
 		result.Attempts[0].ProviderExecutionID != execution.ExecutionID ||
-		result.Attempts[0].CandidateID != result.Candidates[0].CandidateID {
+		result.Attempts[0].CandidateID != result.Candidates[0].CandidateID ||
+		result.Candidates[0].Verification == nil ||
+		result.Attempts[0].VerificationExecutionID != result.Candidates[0].Verification.ExecutionID {
 		t.Fatalf("agent attempt audit linkage is incomplete: %+v", result.Attempts[0])
+	}
+	tampered := result
+	tampered.Attempts = append([]AttemptRecord(nil), result.Attempts...)
+	tampered.Attempts[0].VerificationExecutionID = strings.Repeat("f", 64)
+	if validateAttemptAudit(tampered) == nil {
+		t.Fatal("attempt audit accepted a forged verification linkage")
 	}
 	if execution.TaskID != result.Candidates[0].Contract.ProposalTaskID || execution.Output.Status != "candidate" {
 		t.Fatalf("provider execution is not bound to candidate: %+v", execution)
@@ -263,6 +272,35 @@ func TestRunLoopRequiresRemoteSourceAcknowledgementBeforeCreatingRoot(t *testing
 	}
 	if _, statErr := os.Stat(root); !os.IsNotExist(statErr) {
 		t.Fatal("policy denial created a candidate root")
+	}
+}
+
+func TestRunLoopRequiresVerifierBeforeCreatingRootOrCallingProvider(t *testing.T) {
+	target := agentLoopTarget(t)
+	options := agentLoopOptions(t, target, "candidate")
+	options.Verifier = nil
+	root := options.CandidateRoot
+	_, err := RunLoop(options)
+	if err == nil || !IsPolicyDenied(err) || !strings.Contains(err.Error(), "sandbox verifier") {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if _, statErr := os.Stat(root); !os.IsNotExist(statErr) {
+		t.Fatal("missing verifier created a candidate root")
+	}
+}
+
+func TestRunLoopPreflightsVerifierBeforeCreatingRootOrCallingProvider(t *testing.T) {
+	target := agentLoopTarget(t)
+	options := agentLoopOptions(t, target, "candidate")
+	options.Verifier = unavailableVerifier(t)
+	options.Agent.Executable = filepath.Join(t.TempDir(), "provider-must-not-run")
+	root := options.CandidateRoot
+	_, err := RunLoop(options)
+	if err == nil || !IsPolicyDenied(err) || !strings.Contains(err.Error(), "image is unavailable") {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if _, statErr := os.Stat(root); !os.IsNotExist(statErr) {
+		t.Fatal("failed verifier preflight created a candidate root")
 	}
 }
 

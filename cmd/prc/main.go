@@ -35,6 +35,7 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/report"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/state"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/trust"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/verifier"
 )
 
 var (
@@ -712,6 +713,14 @@ func runFix(args []string, stdout, stderr io.Writer) (int, error) {
 	agentTimeout := set.Int("agent-timeout-seconds", 300, "provider timeout per attempt")
 	agentMaxOutput := set.Int("agent-max-output-bytes", 256*1024, "provider output byte limit per attempt")
 	agentMaxCost := set.Float64("agent-max-cost-usd", 0, "provider-enforced cost limit per attempt; unsupported by Codex")
+	verifierRuntime := set.String("verifier-runtime", "docker", "docker or podman executable for independent candidate tests")
+	verifierImage := set.String("verifier-image", "", "immutable digest-pinned verifier image (required with --provider)")
+	verifierTimeout := set.Int("verifier-timeout-seconds", 300, "independent test timeout per candidate")
+	verifierMemory := set.Int("verifier-memory-mb", 1024, "independent test memory limit in MiB")
+	verifierCPUs := set.Float64("verifier-cpus", 1, "independent test CPU limit")
+	verifierPIDs := set.Int("verifier-pids", 128, "independent test process limit")
+	verifierTmpfs := set.Int("verifier-tmpfs-mb", 512, "independent test scratch limit in MiB")
+	verifierMaxOutput := set.Int("verifier-max-output-bytes", 1024*1024, "independent test stdout and stderr limit")
 	format := set.String("format", "human", "human or json")
 	if err := set.Parse(args); err != nil {
 		return exitInternal, exitError(exitConfiguration, err)
@@ -720,7 +729,7 @@ func runFix(args []string, stdout, stderr io.Writer) (int, error) {
 		return exitInternal, exitError(exitConfiguration, fmt.Errorf("unsupported format %q", *format))
 	}
 	if *providerName == "" {
-		for _, name := range []string{"provider-executable", "agent-output-schema", "allow-remote-source-processing", "agent-timeout-seconds", "agent-max-output-bytes", "agent-max-cost-usd"} {
+		for _, name := range []string{"provider-executable", "agent-output-schema", "allow-remote-source-processing", "agent-timeout-seconds", "agent-max-output-bytes", "agent-max-cost-usd", "verifier-runtime", "verifier-image", "verifier-timeout-seconds", "verifier-memory-mb", "verifier-cpus", "verifier-pids", "verifier-tmpfs-mb", "verifier-max-output-bytes"} {
 			if flagWasSet(set, name) {
 				return exitInternal, exitError(exitConfiguration, fmt.Errorf("--%s requires --provider", name))
 			}
@@ -746,7 +755,11 @@ func runFix(args []string, stdout, stderr io.Writer) (int, error) {
 		}
 	}
 	var agent *remediation.AgentOptions
+	var verification *verifier.Options
 	if *providerName != "" {
+		if strings.TrimSpace(*verifierImage) == "" {
+			return exitInternal, exitError(exitConfiguration, errors.New("--verifier-image is required with --provider"))
+		}
 		if *providerExecutable == "" {
 			*providerExecutable = *providerName
 		}
@@ -758,11 +771,24 @@ func runFix(args []string, stdout, stderr io.Writer) (int, error) {
 			AllowRemoteSourceProcessing: *allowRemoteSource, TimeoutSeconds: *agentTimeout,
 			MaxOutputBytes: *agentMaxOutput, MaxCostUSD: *agentMaxCost,
 		}
+		configured := verifier.Defaults(*verifierRuntime, *verifierImage, "go")
+		configured.TimeoutSeconds = *verifierTimeout
+		configured.MemoryMB = *verifierMemory
+		configured.CPUs = *verifierCPUs
+		configured.PIDs = *verifierPIDs
+		configured.TmpfsMB = *verifierTmpfs
+		configured.MaxStdoutBytes = *verifierMaxOutput
+		configured.MaxStderrBytes = *verifierMaxOutput
+		if err := verifier.ValidateOptions(configured); err != nil {
+			return exitInternal, exitError(exitConfiguration, err)
+		}
+		configured.Kind = ""
+		verification = &configured
 	}
 	result, err := remediation.RunLoop(remediation.LoopOptions{
 		CatalogRoot: *catalogRoot, Target: *target, CandidateRoot: *candidateRoot,
 		ProfileID: *profile, MaxAttempts: *maxAttempts, MaxFiles: *maxFiles,
-		MaxChangedLines: *maxChangedLines, Configuration: configuration, Agent: agent,
+		MaxChangedLines: *maxChangedLines, Configuration: configuration, Agent: agent, Verifier: verification,
 	})
 	if err != nil {
 		return exitInternal, remediationCommandError(err)
@@ -1067,12 +1093,16 @@ func runRemediateProposal(args []string, stdout, stderr io.Writer) (int, error) 
 	candidateDirectory := set.String("candidate-dir", "", "new isolated candidate directory (required)")
 	maxFiles := set.Int("max-files", 20, "maximum files the proposal may change")
 	maxChangedLines := set.Int("max-changed-lines", 200, "maximum changed lines")
+	verifierRuntime := set.String("verifier-runtime", "docker", "docker or podman executable for independent candidate tests")
+	verifierImage := set.String("verifier-image", "", "immutable digest-pinned verifier image (required)")
+	verifierTimeout := set.Int("verifier-timeout-seconds", 300, "independent test timeout")
+	verifierMemory := set.Int("verifier-memory-mb", 1024, "independent test memory limit in MiB")
 	format := set.String("format", "human", "human or json")
 	if err := set.Parse(args); err != nil {
 		return exitInternal, exitError(exitConfiguration, err)
 	}
-	if *providerName == "" || *taskPath == "" || *outputPath == "" || *candidateDirectory == "" {
-		return exitInternal, exitError(exitConfiguration, errors.New("--provider, --task, --output, and --candidate-dir are required"))
+	if *providerName == "" || *taskPath == "" || *outputPath == "" || *candidateDirectory == "" || *verifierImage == "" {
+		return exitInternal, exitError(exitConfiguration, errors.New("--provider, --task, --output, --candidate-dir, and --verifier-image are required"))
 	}
 	if *format != "human" && *format != "json" {
 		return exitInternal, exitError(exitConfiguration, fmt.Errorf("unsupported format %q", *format))
@@ -1107,11 +1137,18 @@ func runRemediateProposal(args []string, stdout, stderr io.Writer) (int, error) 
 	if err != nil {
 		return exitInternal, exitError(exitExecution, err)
 	}
+	verification := verifier.Defaults(*verifierRuntime, *verifierImage, "go")
+	verification.TimeoutSeconds = *verifierTimeout
+	verification.MemoryMB = *verifierMemory
+	if err := verifier.ValidateOptions(verification); err != nil {
+		return exitInternal, exitError(exitConfiguration, err)
+	}
+	verification.Kind = ""
 	candidate, err := remediation.RunProposal(remediation.ProposalOptions{
 		CatalogRoot: *catalogRoot, Target: *target, CandidateDir: *candidateDirectory,
 		ProfileID: *profile, Provider: *providerName, Task: task, Output: proposal,
 		MaxFiles: *maxFiles, MaxChangedLines: *maxChangedLines,
-		Attempt: 1, MaxAttempts: maxAttempts, Configuration: configuration,
+		Attempt: 1, MaxAttempts: maxAttempts, Configuration: configuration, Verifier: &verification,
 	})
 	if err != nil {
 		return exitInternal, remediationCommandError(err)
@@ -1168,6 +1205,10 @@ func printCandidate(output io.Writer, candidate remediation.Candidate) {
 	fmt.Fprintf(output, "Accepted: %t\n", candidate.Accepted)
 	for _, change := range candidate.Changes {
 		fmt.Fprintf(output, "- %s: %s (+%d/-%d lines)\n", change.Path, change.Kind, change.AddedLines, change.RemovedLines)
+	}
+	if candidate.Verification != nil {
+		fmt.Fprintf(output, "- verification %s: %s (%s)\n", candidate.Verification.ExecutionID,
+			candidate.Verification.Outcome, strings.Join(candidate.Verification.Command, " "))
 	}
 	for _, reason := range candidate.Reasons {
 		fmt.Fprintf(output, "- rejection: %s\n", reason)

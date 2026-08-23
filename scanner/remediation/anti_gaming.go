@@ -29,7 +29,8 @@ func filepathToSlash(path string) string {
 
 // auditProposalAntiGaming rejects proposal shapes that can manufacture a pass
 // by weakening existing verification or hiding findings. It is intentionally
-// conservative because the current R2 path does not run project-specific tests.
+// conservative because passing one sandboxed suite does not prove behavioral
+// coverage or protect against deliberate test weakening.
 func auditProposalAntiGaming(baseline model.Inventory, output provider.Output) []string {
 	existing := make(map[string]bool, len(baseline.Files))
 	for _, record := range baseline.Files {

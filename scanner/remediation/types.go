@@ -8,6 +8,7 @@ import (
 	projectconfig "github.com/MarinJursic/production-readiness-checklist/scanner/config"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/provider"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/verifier"
 )
 
 // PolicyDeniedError marks a requested remediation that is syntactically valid
@@ -42,8 +43,8 @@ func IsProviderExecution(err error) bool {
 
 const (
 	FixContractSchema = "prc.fix-contract/v0.3"
-	CandidateSchema   = "prc.remediation-candidate/v0.3"
-	RunSchema         = "prc.remediation-run/v0.6"
+	CandidateSchema   = "prc.remediation-candidate/v0.4"
+	RunSchema         = "prc.remediation-run/v0.7"
 )
 
 type FixContract struct {
@@ -93,17 +94,18 @@ type Change struct {
 }
 
 type Candidate struct {
-	SchemaVersion            string      `json:"schema_version"`
-	CandidateID              string      `json:"candidate_id"`
-	CandidatePath            string      `json:"candidate_path"`
-	Contract                 FixContract `json:"contract"`
-	CandidateInventoryDigest string      `json:"candidate_inventory_digest"`
-	CandidateRunID           string      `json:"candidate_run_id"`
-	Changes                  []Change    `json:"changes"`
-	BeforeAssessment         string      `json:"before_assessment"`
-	AfterAssessment          string      `json:"after_assessment"`
-	Accepted                 bool        `json:"accepted"`
-	Reasons                  []string    `json:"reasons"`
+	SchemaVersion            string              `json:"schema_version"`
+	CandidateID              string              `json:"candidate_id"`
+	CandidatePath            string              `json:"candidate_path"`
+	Contract                 FixContract         `json:"contract"`
+	CandidateInventoryDigest string              `json:"candidate_inventory_digest"`
+	CandidateRunID           string              `json:"candidate_run_id"`
+	Changes                  []Change            `json:"changes"`
+	BeforeAssessment         string              `json:"before_assessment"`
+	AfterAssessment          string              `json:"after_assessment"`
+	Accepted                 bool                `json:"accepted"`
+	Reasons                  []string            `json:"reasons"`
+	Verification             *verifier.Execution `json:"verification,omitempty"`
 }
 
 type Options struct {
@@ -134,6 +136,8 @@ type ProposalOptions struct {
 	Attempt         int
 	MaxAttempts     int
 	Configuration   *ProjectConfiguration
+	Verifier        *verifier.Options
+	Context         context.Context
 }
 
 type LoopOptions struct {
@@ -146,6 +150,7 @@ type LoopOptions struct {
 	MaxAttempts     int
 	Configuration   *ProjectConfiguration
 	Agent           *AgentOptions
+	Verifier        *verifier.Options
 	Context         context.Context
 	Now             func() time.Time
 }
@@ -188,22 +193,23 @@ type RemainingWork struct {
 // work. It records rejected pre-candidate proposals as well as materialized
 // candidates, so an agent attempt cannot disappear from the run history.
 type AttemptRecord struct {
-	Attempt               int       `json:"attempt"`
-	Mode                  string    `json:"mode"`
-	AssertionID           string    `json:"assertion_id"`
-	FindingID             string    `json:"finding_id"`
-	FindingFingerprint    string    `json:"finding_fingerprint"`
-	TaskID                string    `json:"task_id"`
-	StartedAt             time.Time `json:"started_at"`
-	CompletedAt           time.Time `json:"completed_at"`
-	BeforeInventoryDigest string    `json:"before_inventory_digest"`
-	AfterInventoryDigest  string    `json:"after_inventory_digest,omitempty"`
-	ProviderExecutionID   string    `json:"provider_execution_id,omitempty"`
-	ProviderFailureID     string    `json:"provider_failure_id,omitempty"`
-	CandidateID           string    `json:"candidate_id,omitempty"`
-	Outcome               string    `json:"outcome"`
-	ReasonCode            string    `json:"reason_code"`
-	Reason                string    `json:"reason"`
+	Attempt                 int       `json:"attempt"`
+	Mode                    string    `json:"mode"`
+	AssertionID             string    `json:"assertion_id"`
+	FindingID               string    `json:"finding_id"`
+	FindingFingerprint      string    `json:"finding_fingerprint"`
+	TaskID                  string    `json:"task_id"`
+	StartedAt               time.Time `json:"started_at"`
+	CompletedAt             time.Time `json:"completed_at"`
+	BeforeInventoryDigest   string    `json:"before_inventory_digest"`
+	AfterInventoryDigest    string    `json:"after_inventory_digest,omitempty"`
+	ProviderExecutionID     string    `json:"provider_execution_id,omitempty"`
+	ProviderFailureID       string    `json:"provider_failure_id,omitempty"`
+	VerificationExecutionID string    `json:"verification_execution_id,omitempty"`
+	CandidateID             string    `json:"candidate_id,omitempty"`
+	Outcome                 string    `json:"outcome"`
+	ReasonCode              string    `json:"reason_code"`
+	Reason                  string    `json:"reason"`
 }
 
 type RemediationRun struct {

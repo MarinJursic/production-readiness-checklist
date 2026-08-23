@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/remediation-candidate.schema.json",
-  "title": "Production Readiness Remediation Candidate v0.3",
+  "title": "Production Readiness Remediation Candidate v0.4",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_version", "candidate_id", "candidate_path", "contract", "candidate_inventory_digest", "candidate_run_id", "changes", "before_assessment", "after_assessment", "accepted", "reasons"],
   "properties": {
-    "schema_version": {"const": "prc.remediation-candidate/v0.3"},
+    "schema_version": {"const": "prc.remediation-candidate/v0.4"},
     "candidate_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "candidate_path": {"type": "string", "minLength": 1},
     "contract": {"$ref": "fix-contract.schema.json"},
@@ -34,7 +34,8 @@
     "before_assessment": {"const": "fail"},
     "after_assessment": {"enum": ["pass", "fail", "unknown", "manual_review", "not_applicable", "stale", "conflicting"]},
     "accepted": {"type": "boolean"},
-    "reasons": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+    "reasons": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "verification": {"$ref": "verification-execution.schema.json"}
   },
   "allOf": [
     {
@@ -46,6 +47,23 @@
         }
       },
       "else": {"properties": {"reasons": {"minItems": 1}}}
+    },
+    {
+      "if": {
+        "properties": {
+          "accepted": {"const": true},
+          "contract": {"properties": {"remediation_class": {"const": "R2"}}, "required": ["remediation_class"]}
+        },
+        "required": ["accepted", "contract"]
+      },
+      "then": {
+        "required": ["verification"],
+        "properties": {"verification": {"properties": {"outcome": {"const": "pass"}}, "required": ["outcome"]}}
+      }
+    },
+    {
+      "if": {"required": ["verification"]},
+      "then": {"properties": {"contract": {"properties": {"remediation_class": {"const": "R2"}}, "required": ["remediation_class"]}}}
     }
   ]
 }

@@ -18,6 +18,19 @@ func validateAttemptAudit(run RemediationRun) error {
 			return fmt.Errorf("remediation candidate audit identity is invalid or duplicated")
 		}
 		candidates[candidate.CandidateID] = candidate
+		if candidate.Contract.RemediationClass == "R2" {
+			if candidate.Verification != nil {
+				if candidate.Verification.Validate() != nil ||
+					candidate.Verification.CandidateInventoryDigest != candidate.CandidateInventoryDigest {
+					return fmt.Errorf("remediation candidate verification identity is invalid")
+				}
+			}
+			if candidate.Accepted && (candidate.Verification == nil || candidate.Verification.Outcome != "pass") {
+				return fmt.Errorf("accepted R2 candidate lacks passing independent verification")
+			}
+		} else if candidate.Verification != nil {
+			return fmt.Errorf("non-R2 candidate contains an unexpected verification execution")
+		}
 		for _, change := range candidate.Changes {
 			changedFiles++
 			changedLines += change.AddedLines + change.RemovedLines
@@ -57,7 +70,7 @@ func validateAttemptAudit(run RemediationRun) error {
 		}
 		switch record.Mode {
 		case "deterministic":
-			if record.ProviderExecutionID != "" || record.ProviderFailureID != "" {
+			if record.ProviderExecutionID != "" || record.ProviderFailureID != "" || record.VerificationExecutionID != "" {
 				return fmt.Errorf("deterministic remediation attempt %d links a provider invocation", record.Attempt)
 			}
 		case "agent":
@@ -87,7 +100,8 @@ func validateAttemptAudit(run RemediationRun) error {
 				return fmt.Errorf("accepted remediation attempt %d has an invalid reason code", record.Attempt)
 			}
 			candidate, err := linkedAttemptCandidate(record, candidates, seenCandidates)
-			if err != nil || !candidate.Accepted || candidateAttemptTaskID(record, candidate) != record.TaskID {
+			if err != nil || !candidate.Accepted || candidateAttemptTaskID(record, candidate) != record.TaskID ||
+				!validVerificationLink(record, candidate) {
 				return fmt.Errorf("accepted remediation attempt %d has invalid candidate linkage: %v", record.Attempt, err)
 			}
 			expectedBefore = record.AfterInventoryDigest
@@ -96,12 +110,13 @@ func validateAttemptAudit(run RemediationRun) error {
 				return fmt.Errorf("rejected remediation attempt %d has invalid provider linkage", record.Attempt)
 			}
 			if record.CandidateID == "" {
-				if record.AfterInventoryDigest != "" || !proposalRejectionCode(record.ReasonCode) {
+				if record.AfterInventoryDigest != "" || record.VerificationExecutionID != "" || !proposalRejectionCode(record.ReasonCode) {
 					return fmt.Errorf("pre-candidate rejection %d has invalid audit fields", record.Attempt)
 				}
 			} else {
 				candidate, err := linkedAttemptCandidate(record, candidates, seenCandidates)
 				if err != nil || candidate.Accepted || candidateAttemptTaskID(record, candidate) != record.TaskID ||
+					!validVerificationLink(record, candidate) ||
 					record.ReasonCode != "verification_rejected" {
 					return fmt.Errorf("rejected remediation attempt %d has invalid candidate linkage: %v", record.Attempt, err)
 				}
@@ -111,7 +126,7 @@ func validateAttemptAudit(run RemediationRun) error {
 			}
 		case "provider_stopped":
 			if record.Mode != "agent" || record.ProviderExecutionID == "" || record.ProviderFailureID != "" ||
-				record.CandidateID != "" || record.AfterInventoryDigest != "" ||
+				record.CandidateID != "" || record.AfterInventoryDigest != "" || record.VerificationExecutionID != "" ||
 				(record.ReasonCode != "provider_unable" && record.ReasonCode != "provider_needs_escalation") ||
 				index != len(run.Attempts)-1 {
 				return fmt.Errorf("stopped provider attempt %d has invalid audit fields", record.Attempt)
@@ -119,7 +134,7 @@ func validateAttemptAudit(run RemediationRun) error {
 		case "provider_failed":
 			failure := failures[record.ProviderFailureID]
 			if record.Mode != "agent" || record.ProviderExecutionID != "" || record.ProviderFailureID == "" ||
-				record.CandidateID != "" || record.AfterInventoryDigest != "" ||
+				record.CandidateID != "" || record.AfterInventoryDigest != "" || record.VerificationExecutionID != "" ||
 				!providerFailureReasonCode(record.ReasonCode) || record.ReasonCode != "provider_"+failure.reasonCode ||
 				record.Reason != failure.reason || index != len(run.Attempts)-1 {
 				return fmt.Errorf("failed provider attempt %d has invalid audit fields", record.Attempt)
@@ -133,6 +148,16 @@ func validateAttemptAudit(run RemediationRun) error {
 		return fmt.Errorf("remediation attempt audit does not cover the final inventory, candidates, and provider invocations")
 	}
 	return nil
+}
+
+func validVerificationLink(record AttemptRecord, candidate Candidate) bool {
+	if candidate.Contract.RemediationClass != "R2" {
+		return record.VerificationExecutionID == "" && candidate.Verification == nil
+	}
+	if candidate.Verification == nil {
+		return record.VerificationExecutionID == ""
+	}
+	return record.VerificationExecutionID == candidate.Verification.ExecutionID
 }
 
 func providerFailureReasonCode(code string) bool {

@@ -33,7 +33,7 @@ and the destination itself must not exist.
 The command exits `0` only when the candidate passes every acceptance check. A
 validated but rejected candidate is still printed and exits `8`. Invalid input
 exits `3`; a policy-denied remediation exits `5`. Use
-`--format json` for the versioned `prc.remediation-candidate/v0.3` record.
+`--format json` for the versioned `prc.remediation-candidate/v0.4` record.
 
 With `--config`, the exact canonical configuration digest and project identity
 are recorded in the fix contract. The configured profile is mandatory,
@@ -94,7 +94,7 @@ cannot return a candidate, or an independently checked candidate is rejected.
 File and changed-line usage accumulates across accepted candidates;
 command-line values cannot raise limits declared in project configuration.
 
-The `prc.remediation-run/v0.6` report records every actual attempt, including
+The `prc.remediation-run/v0.7` report records every actual attempt, including
 proposals rejected before candidate creation. Each attempt binds its sequence,
 mode, exact finding and fingerprint, scanner-owned task, before and after
 inventory digests, provider execution or failure and candidate when present, timestamps,
@@ -103,7 +103,7 @@ scanner verifies this linkage before computing the run content ID. The report
 also preserves every candidate, provider transcript digest, cumulative budget
 usage, final fresh assessment, final isolated workspace, and a reason code for
 every unresolved result. Its embedded v0.9 scan result preserves adapter
-resolution provenance; frozen v0.3, v0.4, and v0.5 remediation schemas retain their
+resolution provenance; frozen v0.3 through v0.6 remediation schemas retain their
 version-pinned dependency graphs. Every unresolved failure includes its
 canonical finding ID and stable fingerprint. Its terminal states are:
 
@@ -146,6 +146,8 @@ verification.
   --candidate-root /safe/path/prc-remediation-run \
   --provider codex \
   --allow-remote-source-processing \
+  --verifier-runtime docker \
+  --verifier-image registry.example/prc/python-verifier@sha256:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef \
   --max-attempts 3 \
   --format json > remediation-run.json
 ```
@@ -163,6 +165,31 @@ applied by the scanner exactly once in a fresh candidate, then passes the same
 structural, anti-gaming, target-assertion, regression, and source-integrity
 checks as `remediate-proposal`.
 
+`--verifier-image` is mandatory with `--provider`. The reference must include an
+explicit registry and immutable SHA-256 digest, and the image must already be
+present because the runner passes `--pull=never`. The provider and repository
+cannot choose or alter the image, command, or limits. The scanner infers one
+supported command solely from the sealed source path: `go test ./...` for Go,
+`python -m pytest -q` for Python, or `node --test` for plain JavaScript. The
+scanner never invokes package scripts. TypeScript proposal planning remains
+fail-closed because no scanner-owned verifier is registered for that ecosystem.
+Because verification is network-denied and starts with empty scratch caches, the
+selected image must already contain the required toolchain and test runner, and
+the candidate must vendor or otherwise carry every dependency it needs. The
+project does not yet publish a canonical verifier image; operators are
+responsible for reviewing and pinning one for each supported ecosystem.
+
+The candidate is mounted read-only into a read-only container with no network,
+all Linux capabilities dropped, `no-new-privileges`, the caller's non-root
+numeric user, bounded CPU, memory and swap, processes, file descriptors,
+scratch space, time, stdout, and stderr. These flags implement documented
+[Docker runtime isolation and resource controls](https://docs.docker.com/engine/containers/run/).
+The output record contains hashes and byte counts rather than raw test output,
+binds the configured candidate identity separately from its raw workspace-byte
+inventory, and verifies that the candidate bytes did not change during the
+run. A test failure, timeout, output limit, unavailable runtime or image, or
+integrity change rejects the candidate; none is converted to a pass.
+
 If invocation fails before a valid provider output exists, the scanner writes a
 content-addressed `prc.agent-failure/v0.1` record. It uses a scanner-authored
 safe reason, links the sealed task and provider identities, distinguishes the
@@ -173,11 +200,14 @@ and is never retried automatically.
 Current acceptance reconstructs the proposed test before candidate creation,
 requires a conventionally collectable declaration and a recognized behavioral
 failure check, and establishes that the test was added without weakening
-existing tests or regressing prior scanner passes. The task planner is limited
-to Go, Python, JavaScript, and TypeScript sources. It does not execute project
-tests or prove behavioral coverage. Broader
-R2 autonomy stays disabled until sandboxed, scanner-owned verification commands
-and assertion-specific behavioral contracts are implemented.
+existing tests or regressing prior scanner passes. It then runs the supported
+scanner-owned test command in the isolated verifier and requires exit status
+zero. Go documents `go test ./...` as package-list mode over packages below the
+current directory, and a failing Go test returns a nonzero status
+([Go command reference](https://go.dev/cmd/go/)). Passing the suite proves only
+that the configured command passed in that image; it does not prove complete
+behavioral coverage. Broader R2 autonomy stays disabled until each task has an
+assertion-specific behavioral contract and verifier.
 
 ## Apply one validated R2 proposal
 
@@ -200,6 +230,8 @@ auditable end to end.
   --task /safe/path/task.json \
   --output /safe/path/validated-provider-output.json \
   --candidate-dir /safe/path/prc-r2-candidate \
+  --verifier-runtime docker \
+  --verifier-image registry.example/prc/python-verifier@sha256:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef \
   --max-files 20 \
   --max-changed-lines 200
 ```
@@ -216,9 +248,10 @@ check before creating a candidate. New focused tests remain permitted. The
 raw-tree, byte, mode, target assertion, baseline
 regression, and source-integrity audits then run from fresh inventories.
 
-Current R2 acceptance proves only the declared deterministic scanner
-postcondition, structural anti-gaming checks, and non-regression envelope. The
-anti-gaming checks catch known unsafe patch shapes; they do not prove that a new
-test is behaviorally sufficient. Broader code-changing autonomy must add
-sandboxed project-specific verification commands and stronger behavioral
+Current R2 acceptance proves the declared deterministic scanner postcondition,
+structural anti-gaming checks, scanner non-regression envelope, and successful
+execution of the registered sandbox command. The anti-gaming checks catch known
+unsafe patch shapes, and the test execution proves the suite passed; neither
+alone proves that a new test is behaviorally sufficient. Broader code-changing
+autonomy still requires task-specific verification and stronger behavioral
 assertions before it can be enabled by policy.

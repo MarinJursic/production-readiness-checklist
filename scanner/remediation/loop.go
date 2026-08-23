@@ -14,6 +14,7 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/provider"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/verifier"
 )
 
 // RunLoop closes registered deterministic R1 findings and, when explicitly
@@ -87,6 +88,23 @@ func RunLoop(options LoopOptions) (RemediationRun, error) {
 		}
 		if assertionID == "" {
 			break
+		}
+		if mode == "agent" {
+			if options.Verifier == nil {
+				return RemediationRun{}, policyDenied(fmt.Errorf("agent remediation requires an independent sandbox verifier"))
+			}
+			kind, kindErr := verifier.InferKind(agentTask.RelevantPaths[0])
+			if kindErr != nil {
+				return RemediationRun{}, policyDenied(kindErr)
+			}
+			verificationOptions := *options.Verifier
+			verificationOptions.Kind = kind
+			if err := verifier.ValidateOptions(verificationOptions); err != nil {
+				return RemediationRun{}, policyDenied(err)
+			}
+			if err := verifier.Preflight(options.Context, verificationOptions); err != nil {
+				return RemediationRun{}, policyDenied(err)
+			}
 		}
 		if usage.Attempts >= policy.maxAttempts {
 			stoppedAssertion, stoppedCode = assertionID, "budget_exhausted"
@@ -199,6 +217,7 @@ func RunLoop(options LoopOptions) (RemediationRun, error) {
 				Provider: options.Agent.Provider, Task: agentTask, Output: execution.Output,
 				MaxFiles: remainingFiles, MaxChangedLines: lineAllowance,
 				Attempt: attempt, MaxAttempts: policy.maxAttempts, Configuration: activeConfiguration,
+				Verifier: options.Verifier, Context: options.Context,
 			})
 			if err != nil {
 				if IsPolicyDenied(err) {
@@ -218,6 +237,9 @@ func RunLoop(options LoopOptions) (RemediationRun, error) {
 		attemptRecord.CompletedAt = options.Now().UTC()
 		attemptRecord.CandidateID = candidate.CandidateID
 		attemptRecord.AfterInventoryDigest = candidate.CandidateInventoryDigest
+		if candidate.Verification != nil {
+			attemptRecord.VerificationExecutionID = candidate.Verification.ExecutionID
+		}
 		if mode == "deterministic" {
 			usage.Attempts++
 		}

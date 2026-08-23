@@ -46,7 +46,8 @@ evidence, credentials, and previous agent memory are excluded.
 9. Accept only when the original finding closes and no protected result regresses.
 10. Preserve the candidate, transcript, evidence, and rejection or acceptance reason.
 
-The current v0.6 remediation-run record adds a scanner-validated attempt chain.
+The current v0.7 remediation-run record adds a scanner-validated attempt chain
+and binds any launched R2 test verification to its exact candidate inventory.
 An accepted attempt must link to exactly one content-addressed candidate; an
 agent attempt must link to exactly one successful provider execution or failed
 provider invocation; a pre-candidate
@@ -99,6 +100,10 @@ explicitly enabled,
 paths only for a missing-test assertion with one bounded source input and new
 test-file allowlist. The R2 contract also preserves the exact triggering
 finding ID from the sealed provider task and requires both its content ID and
-stable fingerprint to match a freshly reproduced failure. General R2 repair
-planning, sandboxed project command execution, merges, deployments, and releases
-remain unimplemented.
+stable fingerprint to match a freshly reproduced failure. An R2 candidate cannot
+be accepted without a separate digest-pinned OCI verifier. The scanner, not the
+provider or repository, selects the Go, Python, or plain-JavaScript test argv;
+the read-only
+candidate runs without network, privileges, secrets, or host-write access and
+with bounded resources and output. General R2 repair planning, TypeScript
+verification, merges, deployments, and releases remain unimplemented.

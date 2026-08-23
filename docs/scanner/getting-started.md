@@ -189,7 +189,7 @@ configuration policy, terminal states, and the machine-work-complete report.
 - Terraform provider locks; and
 - Kubernetes non-root and container resource policies.
 
-The profile has 34 atomic assertions. Go, container, Terraform, Kubernetes, and
+The profile has 40 atomic assertions. Go, container, Terraform, Kubernetes, and
 OpenAPI assertions are planned as not applicable when their corresponding
 sourced inventory facts are absent.
 

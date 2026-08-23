@@ -1,6 +1,7 @@
 package remediation
 
 import (
+	"context"
 	"fmt"
 	"sort"
 	"strings"
@@ -9,6 +10,7 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/engine"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/provider"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/verifier"
 )
 
 const proposalFixer = "prc.provider-proposal@0.1"
@@ -22,6 +24,9 @@ func RunProposal(options ProposalOptions) (Candidate, error) {
 	}
 	if options.CandidateDir == "" {
 		return Candidate{}, fmt.Errorf("candidate directory is required")
+	}
+	if options.Context == nil {
+		options.Context = context.Background()
 	}
 	policy, err := resolvePolicy(options.Target, options.ProfileID, options.MaxFiles, options.MaxChangedLines,
 		options.Attempt, options.MaxAttempts, options.Configuration)
@@ -82,6 +87,21 @@ func RunProposal(options ProposalOptions) (Candidate, error) {
 	}
 	if reasons := auditProposalAntiGaming(baseline, options.Output); len(reasons) > 0 {
 		return Candidate{}, policyDenied(fmt.Errorf("provider proposal failed anti-gaming audit: %s", strings.Join(reasons, " ")))
+	}
+	if options.Verifier == nil {
+		return Candidate{}, policyDenied(fmt.Errorf("R2 remediation requires an independent sandbox verifier"))
+	}
+	verificationKind, err := verifier.InferKind(options.Task.RelevantPaths[0])
+	if err != nil {
+		return Candidate{}, policyDenied(err)
+	}
+	verificationOptions := *options.Verifier
+	verificationOptions.Kind = verificationKind
+	if err := verifier.ValidateOptions(verificationOptions); err != nil {
+		return Candidate{}, policyDenied(err)
+	}
+	if err := verifier.Preflight(options.Context, verificationOptions); err != nil {
+		return Candidate{}, policyDenied(err)
 	}
 
 	proposalID, err := provider.OutputID(options.Output)
@@ -157,6 +177,26 @@ func RunProposal(options ProposalOptions) (Candidate, error) {
 			reasons = append(reasons, "Baseline passing assertion regressed: "+result.AssertionID+".")
 		}
 	}
+	var verification *verifier.Execution
+	if len(reasons) == 0 {
+		plan, planErr := verifier.BuildPlan(candidateRoot, candidateInventory.Digest, verificationOptions)
+		if planErr != nil {
+			reasons = append(reasons, "Independent sandbox verification preflight failed closed: "+planErr.Error()+".")
+		} else {
+			execution, executionErr := verifier.Run(options.Context, plan)
+			if executionErr != nil {
+				reasons = append(reasons, "Independent sandbox verification failed closed: "+executionErr.Error()+".")
+			} else {
+				verification = &execution
+				if execution.Outcome == "workspace_changed" {
+					return Candidate{}, fmt.Errorf("verification containment failed: candidate workspace changed")
+				}
+				if execution.Outcome != "pass" {
+					reasons = append(reasons, verificationRejectionReason(execution))
+				}
+			}
+		}
+	}
 	currentBaseline, err := inventory.Build(options.Target)
 	if err == nil && options.TargetName != "" {
 		currentBaseline.TargetName = options.TargetName
@@ -172,13 +212,30 @@ func RunProposal(options ProposalOptions) (Candidate, error) {
 		SchemaVersion: CandidateSchema, CandidatePath: candidateRoot, Contract: contract,
 		CandidateInventoryDigest: candidateInventory.Digest, CandidateRunID: afterRun.RunID,
 		Changes: changes, BeforeAssessment: before.Assessment, AfterAssessment: after.Assessment,
-		Accepted: len(reasons) == 0, Reasons: reasons,
+		Accepted: len(reasons) == 0, Reasons: reasons, Verification: verification,
 	}
 	candidate.CandidateID, err = candidateContentID(candidate)
 	if err != nil {
 		return Candidate{}, err
 	}
 	return candidate, nil
+}
+
+func verificationRejectionReason(execution verifier.Execution) string {
+	switch execution.ReasonCode {
+	case "tests_failed":
+		return "Independent scanner-owned tests failed in the sandbox."
+	case "timeout":
+		return "Independent sandbox verification exceeded its scanner-owned timeout."
+	case "cancelled":
+		return "Independent sandbox verification was cancelled."
+	case "output_limit":
+		return "Independent sandbox verification exceeded its scanner-owned output limit."
+	case "runtime_failed":
+		return "Independent sandbox verification infrastructure failed closed."
+	default:
+		return "Independent sandbox verification did not pass."
+	}
 }
 
 func sameStrings(left, right []string) bool {

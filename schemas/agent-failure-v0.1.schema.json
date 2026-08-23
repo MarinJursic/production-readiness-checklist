@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/agent-failure-v0.1.schema.json",
+  "title": "Production Readiness Agent Failure v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "failure_id", "provider", "task_id", "executable_sha256", "output_schema_sha256", "started_at", "completed_at", "duration_ms", "stage", "reason_code", "reason", "transcripts_complete", "stdout_bytes", "stderr_bytes"],
+  "properties": {
+    "schema_version": {"const": "prc.agent-failure/v0.1"},
+    "failure_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "provider": {"enum": ["codex", "claude"]},
+    "task_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "executable_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "output_schema_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "started_at": {"type": "string", "format": "date-time"},
+    "completed_at": {"type": "string", "format": "date-time"},
+    "duration_ms": {"type": "integer", "minimum": 0},
+    "stage": {"enum": ["preflight", "transcript", "execution", "postflight", "protocol"]},
+    "reason_code": {"enum": ["preflight_failed", "transcript_failed", "cancelled", "timeout", "output_limit", "process_failed", "workspace_changed", "result_missing", "protocol_rejected"]},
+    "reason": {"type": "string", "minLength": 1, "maxLength": 4096},
+    "transcripts_complete": {"type": "boolean"},
+    "stdout_path": {"type": "string", "minLength": 1},
+    "stdout_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "stdout_bytes": {"type": "integer", "minimum": 0},
+    "stderr_path": {"type": "string", "minLength": 1},
+    "stderr_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "stderr_bytes": {"type": "integer", "minimum": 0}
+  },
+  "allOf": [
+    {
+      "if": {"required": ["stdout_path"]},
+      "then": {"required": ["stdout_sha256"]},
+      "else": {"not": {"required": ["stdout_sha256"]}}
+    },
+    {
+      "if": {"required": ["stderr_path"]},
+      "then": {"required": ["stderr_sha256"]},
+      "else": {"not": {"required": ["stderr_sha256"]}}
+    },
+    {
+      "if": {"properties": {"transcripts_complete": {"const": true}}, "required": ["transcripts_complete"]},
+      "then": {"required": ["stdout_path", "stdout_sha256", "stderr_path", "stderr_sha256"]},
+      "else": {"not": {"required": ["stdout_path", "stderr_path"]}}
+    },
+    {
+      "if": {"properties": {"stage": {"const": "preflight"}}, "required": ["stage"]},
+      "then": {"properties": {"reason_code": {"const": "preflight_failed"}}}
+    },
+    {
+      "if": {"properties": {"stage": {"const": "transcript"}}, "required": ["stage"]},
+      "then": {"properties": {"reason_code": {"const": "transcript_failed"}}}
+    },
+    {
+      "if": {"properties": {"stage": {"const": "execution"}}, "required": ["stage"]},
+      "then": {"properties": {"reason_code": {"enum": ["cancelled", "timeout", "output_limit", "process_failed"]}}}
+    },
+    {
+      "if": {"properties": {"stage": {"const": "postflight"}}, "required": ["stage"]},
+      "then": {"properties": {"reason_code": {"enum": ["workspace_changed", "result_missing"]}}}
+    },
+    {
+      "if": {"properties": {"stage": {"const": "protocol"}}, "required": ["stage"]},
+      "then": {"properties": {"reason_code": {"const": "protocol_rejected"}}}
+    },
+    {
+      "if": {"properties": {"reason_code": {"const": "preflight_failed"}}, "required": ["reason_code"]},
+      "then": {"properties": {"reason": {"const": "Provider invocation failed scanner preflight before launch."}}}
+    },
+    {
+      "if": {"properties": {"reason_code": {"const": "transcript_failed"}}, "required": ["reason_code"]},
+      "then": {"properties": {"reason": {"const": "Provider transcript persistence failed; no candidate was accepted."}}}
+    },
+    {
+      "if": {"properties": {"reason_code": {"const": "cancelled"}}, "required": ["reason_code"]},
+      "then": {"properties": {"reason": {"const": "Provider invocation was cancelled; no candidate was accepted."}}}
+    },
+    {
+      "if": {"properties": {"reason_code": {"const": "timeout"}}, "required": ["reason_code"]},
+      "then": {"properties": {"reason": {"const": "Provider invocation exceeded its scanner-owned timeout; no candidate was accepted."}}}
+    },
+    {
+      "if": {"properties": {"reason_code": {"const": "output_limit"}}, "required": ["reason_code"]},
+      "then": {"properties": {"reason": {"const": "Provider output exceeded its scanner-owned byte limit; no candidate was accepted."}}}
+    },
+    {
+      "if": {"properties": {"reason_code": {"const": "process_failed"}}, "required": ["reason_code"]},
+      "then": {"properties": {"reason": {"const": "Provider process exited unsuccessfully; no candidate was accepted."}}}
+    },
+    {
+      "if": {"properties": {"reason_code": {"const": "workspace_changed"}}, "required": ["reason_code"]},
+      "then": {"properties": {"reason": {"const": "Source workspace integrity changed during provider invocation; no candidate was accepted."}}}
+    },
+    {
+      "if": {"properties": {"reason_code": {"const": "result_missing"}}, "required": ["reason_code"]},
+      "then": {"properties": {"reason": {"const": "Provider result was unavailable within its scanner-owned bound; no candidate was accepted."}}}
+    },
+    {
+      "if": {"properties": {"reason_code": {"const": "protocol_rejected"}}, "required": ["reason_code"]},
+      "then": {"properties": {"reason": {"const": "Provider result failed the sealed output protocol; no candidate was accepted."}}}
+    }
+  ]
+}

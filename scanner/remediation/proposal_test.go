@@ -12,7 +12,42 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/provider"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/verifier"
 )
+
+func passingVerifier(t *testing.T) *verifier.Options {
+	t.Helper()
+	runtimePath := filepath.Join(t.TempDir(), "docker")
+	if err := os.WriteFile(runtimePath, []byte("#!/bin/sh\nexit 0\n"), 0o700); err != nil {
+		t.Fatal(err)
+	}
+	options := verifier.Defaults(runtimePath,
+		"registry.example/prc/test-verifier@sha256:"+strings.Repeat("a", 64), "")
+	return &options
+}
+
+func failingVerifier(t *testing.T) *verifier.Options {
+	t.Helper()
+	runtimePath := filepath.Join(t.TempDir(), "docker")
+	script := "#!/bin/sh\nif [ \"$1\" = image ]; then exit 0; fi\nprintf test-failed\nexit 1\n"
+	if err := os.WriteFile(runtimePath, []byte(script), 0o700); err != nil {
+		t.Fatal(err)
+	}
+	options := verifier.Defaults(runtimePath,
+		"registry.example/prc/test-verifier@sha256:"+strings.Repeat("a", 64), "")
+	return &options
+}
+
+func unavailableVerifier(t *testing.T) *verifier.Options {
+	t.Helper()
+	runtimePath := filepath.Join(t.TempDir(), "docker")
+	if err := os.WriteFile(runtimePath, []byte("#!/bin/sh\nexit 125\n"), 0o700); err != nil {
+		t.Fatal(err)
+	}
+	options := verifier.Defaults(runtimePath,
+		"registry.example/prc/test-verifier@sha256:"+strings.Repeat("a", 64), "")
+	return &options
+}
 
 func proposalFinding(t *testing.T, item model.Inventory) model.Finding {
 	t.Helper()
@@ -95,7 +130,7 @@ func TestRunProposalAppliesAndAcceptsIsolatedR2Candidate(t *testing.T) {
 	candidate, err := RunProposal(ProposalOptions{
 		CatalogRoot: testCatalogRoot(t), Target: target, CandidateDir: filepath.Join(t.TempDir(), "candidate"),
 		ProfileID: "prc/core-repository", Provider: "codex", Task: task, Output: output,
-		MaxFiles: 2, MaxChangedLines: 10,
+		MaxFiles: 2, MaxChangedLines: 10, Verifier: passingVerifier(t),
 	})
 	if err != nil {
 		t.Fatal(err)
@@ -113,6 +148,102 @@ func TestRunProposalAppliesAndAcceptsIsolatedR2Candidate(t *testing.T) {
 	}
 	if len(candidate.Changes) != 1 || candidate.Changes[0].Kind != "added" || candidate.Changes[0].AddedLines != 4 {
 		t.Fatalf("unexpected changes: %+v", candidate.Changes)
+	}
+	if candidate.Verification == nil || candidate.Verification.Outcome != "pass" ||
+		candidate.Verification.CandidateInventoryDigest != candidate.CandidateInventoryDigest {
+		t.Fatalf("candidate lacks bound independent verification: %+v", candidate.Verification)
+	}
+}
+
+func TestRunProposalRequiresAndEnforcesIndependentVerification(t *testing.T) {
+	target := proposalTarget(t)
+	task := sealedProposalTask(t, target, []string{"app_test.py"}, defaultProposalProtectedPaths())
+	patch := "diff --git a/app_test.py b/app_test.py\n" +
+		"new file mode 100644\n--- /dev/null\n+++ b/app_test.py\n" +
+		"@@ -0,0 +1,4 @@\n+from app import ready\n+\n+def test_ready():\n+    assert ready() is True\n"
+	missingPath := filepath.Join(t.TempDir(), "missing-verifier")
+	_, err := RunProposal(ProposalOptions{
+		CatalogRoot: testCatalogRoot(t), Target: target, CandidateDir: missingPath,
+		ProfileID: "prc/core-repository", Provider: "codex", Task: task,
+		Output: proposalOutput(task, "app_test.py", patch), MaxFiles: 2, MaxChangedLines: 10,
+	})
+	if err == nil || !IsPolicyDenied(err) || !strings.Contains(err.Error(), "sandbox verifier") {
+		t.Fatalf("missing verifier error = %v", err)
+	}
+	if _, statErr := os.Stat(missingPath); !os.IsNotExist(statErr) {
+		t.Fatal("missing verifier created a candidate")
+	}
+
+	candidate, err := RunProposal(ProposalOptions{
+		CatalogRoot: testCatalogRoot(t), Target: target, CandidateDir: filepath.Join(t.TempDir(), "failed-tests"),
+		ProfileID: "prc/core-repository", Provider: "codex", Task: task,
+		Output: proposalOutput(task, "app_test.py", patch), MaxFiles: 2, MaxChangedLines: 10,
+		Verifier: failingVerifier(t),
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if candidate.Accepted || candidate.Verification == nil || candidate.Verification.Outcome != "fail" ||
+		!strings.Contains(strings.Join(candidate.Reasons, " "), "tests failed") {
+		t.Fatalf("failing tests were not preserved as a rejected candidate: %+v", candidate)
+	}
+}
+
+func TestRunProposalOCIIntegrationAcceptsPassingJavaScriptCandidate(t *testing.T) {
+	image := os.Getenv("PRC_TEST_VERIFIER_IMAGE")
+	if image == "" {
+		t.Skip("set PRC_TEST_VERIFIER_IMAGE to an already-present digest-pinned Node image")
+	}
+	target := remediationTarget(t)
+	if err := os.Remove(filepath.Join(target, "tests", "test_app.py")); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.Remove(filepath.Join(target, "app.py")); err != nil {
+		t.Fatal(err)
+	}
+	writeTestFile(t, target, "ready.js", "exports.ready = () => true;\n")
+	item, err := inventory.Build(target)
+	if err != nil {
+		t.Fatal(err)
+	}
+	c, err := catalog.Load(testCatalogRoot(t))
+	if err != nil {
+		t.Fatal(err)
+	}
+	run, err := engine.New(c).Scan("prc/core-repository", item)
+	if err != nil {
+		t.Fatal(err)
+	}
+	finding, ok := findingFor(run, agentTestSuiteAssertion)
+	if !ok {
+		t.Fatal("missing test-suite finding")
+	}
+	protectedPaths, err := RequiredProtectedPaths(target, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	task, supported, err := planAgentTask(item, c.Assertions[agentTestSuiteAssertion], finding, protectedPaths,
+		AgentOptions{Provider: "codex", AllowRemoteSourceProcessing: true})
+	if err != nil || !supported || task.RelevantPaths[0] != "ready.js" || len(task.AllowedPaths) != 1 {
+		t.Fatalf("task=%+v supported=%t err=%v", task, supported, err)
+	}
+	testPath := task.AllowedPaths[0]
+	patch := "diff --git a/" + testPath + " b/" + testPath + "\n" +
+		"new file mode 100644\n--- /dev/null\n+++ b/" + testPath + "\n" +
+		"@@ -0,0 +1,4 @@\n+const test = require('node:test');\n+const assert = require('node:assert/strict');\n+const { ready } = require('../ready');\n+test('ready', () => assert.equal(ready(), true));\n"
+	verification := verifier.Defaults("docker", image, "")
+	candidate, err := RunProposal(ProposalOptions{
+		CatalogRoot: testCatalogRoot(t), Target: target, CandidateDir: filepath.Join(t.TempDir(), "candidate"),
+		ProfileID: "prc/core-repository", Provider: "codex", Task: task,
+		Output: proposalOutput(task, testPath, patch), MaxFiles: 2, MaxChangedLines: 10,
+		Verifier: &verification,
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !candidate.Accepted || candidate.Verification == nil || candidate.Verification.Kind != "javascript" ||
+		candidate.Verification.Outcome != "pass" {
+		t.Fatalf("candidate = %+v", candidate)
 	}
 }
 
@@ -160,7 +291,7 @@ func TestRunProposalBindsConfiguredPolicyAndInventory(t *testing.T) {
 		CatalogRoot: testCatalogRoot(t), Target: target, CandidateDir: filepath.Join(t.TempDir(), "candidate"),
 		ProfileID: "prc/core-repository", Provider: "codex", Task: task,
 		Output: proposalOutput(task, "app_test.py", patch), MaxFiles: 2, MaxChangedLines: 10,
-		Attempt: 1, MaxAttempts: 3, Configuration: configuration,
+		Attempt: 1, MaxAttempts: 3, Configuration: configuration, Verifier: passingVerifier(t),
 	})
 	if err != nil {
 		t.Fatal(err)
@@ -180,7 +311,7 @@ func TestRunProposalRejectsMalformedHunkBeforeWriting(t *testing.T) {
 	_, err := RunProposal(ProposalOptions{
 		CatalogRoot: testCatalogRoot(t), Target: target, CandidateDir: candidatePath,
 		Provider: "codex", Task: task, Output: proposalOutput(task, "app_test.py", patch),
-		MaxFiles: 2, MaxChangedLines: 10,
+		MaxFiles: 2, MaxChangedLines: 10, Verifier: passingVerifier(t),
 	})
 	if err == nil || !strings.Contains(err.Error(), "hunk counts") {
 		t.Fatalf("unexpected error: %v", err)
@@ -205,7 +336,7 @@ func TestRunProposalRejectsTaskForDifferentFindingFingerprint(t *testing.T) {
 	output := proposalOutput(task, "app_test.py", patch)
 	_, err = RunProposal(ProposalOptions{
 		CatalogRoot: testCatalogRoot(t), Target: target, CandidateDir: filepath.Join(t.TempDir(), "candidate"),
-		Provider: "codex", Task: task, Output: output, MaxFiles: 2, MaxChangedLines: 10,
+		Provider: "codex", Task: task, Output: output, MaxFiles: 2, MaxChangedLines: 10, Verifier: passingVerifier(t),
 	})
 	if err == nil || !strings.Contains(err.Error(), "exact current finding") || !IsPolicyDenied(err) {
 		t.Fatalf("unexpected error: %v", err)
@@ -220,7 +351,7 @@ func TestRunProposalAddsDefaultProtectedPathsToWeakTask(t *testing.T) {
 	_, err := RunProposal(ProposalOptions{
 		CatalogRoot: testCatalogRoot(t), Target: target, CandidateDir: filepath.Join(t.TempDir(), "candidate"),
 		Provider: "codex", Task: task, Output: proposalOutput(task, "catalog/attack.md", patch),
-		MaxFiles: 2, MaxChangedLines: 10,
+		MaxFiles: 2, MaxChangedLines: 10, Verifier: passingVerifier(t),
 	})
 	if err == nil || !strings.Contains(err.Error(), "outside the R2 fix contract") || !IsPolicyDenied(err) {
 		t.Fatalf("unexpected error: %v", err)
@@ -236,7 +367,7 @@ func TestRunProposalRejectsVacuousTestBeforeCreatingCandidate(t *testing.T) {
 	_, err := RunProposal(ProposalOptions{
 		CatalogRoot: testCatalogRoot(t), Target: target, CandidateDir: candidatePath,
 		Provider: "codex", Task: task, Output: proposalOutput(task, "app_test.py", patch),
-		MaxFiles: 2, MaxChangedLines: 10,
+		MaxFiles: 2, MaxChangedLines: 10, Verifier: passingVerifier(t),
 	})
 	if err == nil || !strings.Contains(err.Error(), "constant assertion") || !IsPolicyDenied(err) {
 		t.Fatalf("unexpected error: %v", err)
@@ -271,7 +402,7 @@ func TestRunProposalRejectsTestWithoutCollectableDeclarationOrBehaviorCheck(t *t
 			_, err := RunProposal(ProposalOptions{
 				CatalogRoot: testCatalogRoot(t), Target: target, CandidateDir: candidatePath,
 				Provider: "codex", Task: task, Output: proposalOutput(task, "app_test.py", test.patch),
-				MaxFiles: 2, MaxChangedLines: 10,
+				MaxFiles: 2, MaxChangedLines: 10, Verifier: passingVerifier(t),
 			})
 			if err == nil || !strings.Contains(err.Error(), test.reason) || !IsPolicyDenied(err) {
 				t.Fatalf("unexpected error: %v", err)

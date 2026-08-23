@@ -185,7 +185,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
     def test_versioned_run_contracts_pin_their_dependency_graph(self) -> None:
         roots = [
             *(f"run-result-v0.{version}.schema.json" for version in range(1, 10)),
-            *(f"remediation-run-v0.{version}.schema.json" for version in range(1, 6)),
+            *(f"remediation-run-v0.{version}.schema.json" for version in range(1, 7)),
         ]
         pending = list(roots)
         visited: set[str] = set()
@@ -520,7 +520,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "acceptance": ["The target assertion passes."],
         }
         candidate = {
-            "schema_version": "prc.remediation-candidate/v0.3",
+            "schema_version": "prc.remediation-candidate/v0.4",
             "candidate_id": digest,
             "candidate_path": "/tmp/candidate",
             "contract": contract,
@@ -559,6 +559,66 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             ),
             [],
         )
+        verification = {
+            "schema_version": "prc.verification-execution/v0.1",
+            "execution_id": digest,
+            "plan_id": "b" * 64,
+            "runtime_sha256": "f" * 64,
+            "kind": "python",
+            "image": "registry.example/prc/python-verifier@sha256:" + "c" * 64,
+            "command": ["python", "-m", "pytest", "-q"],
+            "policy": {
+                "network": "deny",
+                "workspace": "read_only",
+                "root_filesystem": "read_only",
+                "pull": "never",
+                "capabilities": "none",
+                "privilege_escalation": False,
+                "user": "non_root",
+                "timeout_seconds": 300,
+                "memory_mb": 1024,
+                "cpus": 1,
+                "pids": 128,
+                "tmpfs_mb": 512,
+                "max_stdout_bytes": 1048576,
+                "max_stderr_bytes": 1048576,
+            },
+            "candidate_inventory_digest": digest,
+            "started_at": "2026-08-23T12:00:00Z",
+            "completed_at": "2026-08-23T12:00:01Z",
+            "duration_ms": 1000,
+            "outcome": "pass",
+            "reason_code": "tests_passed",
+            "exit_code": 0,
+            "stdout": {"sha256": "d" * 64, "bytes": 2},
+            "stderr": {"sha256": "e" * 64, "bytes": 0},
+            "workspace_unchanged": True,
+        }
+        r2_candidate = {
+            **candidate,
+            "contract": r2_contract,
+            "verification": verification,
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(
+                r2_candidate, "remediation-candidate.schema.json"
+            ),
+            [],
+        )
+        self.assertTrue(
+            validate_instance.validation_errors(
+                {
+                    **r2_candidate,
+                    "verification": {
+                        **verification,
+                        "outcome": "fail",
+                        "reason_code": "tests_failed",
+                        "exit_code": 1,
+                    },
+                },
+                "remediation-candidate.schema.json",
+            )
+        )
         del r2_contract["proposal_sha256"]
         self.assertTrue(
             validate_instance.validation_errors(
@@ -568,6 +628,17 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         self.assertEqual(
             validate_instance.validation_errors(
                 candidate, "remediation-candidate.schema.json"
+            ),
+            [],
+        )
+
+        v03_candidate = {
+            **candidate,
+            "schema_version": "prc.remediation-candidate/v0.3",
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(
+                v03_candidate, "remediation-candidate-v0.3.schema.json"
             ),
             [],
         )
@@ -719,7 +790,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             [],
         )
         remediation_run = {
-            "schema_version": "prc.remediation-run/v0.6",
+            "schema_version": "prc.remediation-run/v0.7",
             "run_id": digest,
             "started_at": "2026-08-23T12:00:00Z",
             "completed_at": "2026-08-23T12:00:01Z",
@@ -784,6 +855,17 @@ class ScannerOutputSchemaTests(unittest.TestCase):
                 "remediation-run.schema.json",
             )
         )
+        self.assertTrue(
+            validate_instance.validation_errors(
+                {
+                    **audited_remediation_run,
+                    "attempts": [
+                        {**attempt, "verification_execution_id": digest}
+                    ],
+                },
+                "remediation-run.schema.json",
+            )
+        )
 
         provider_failure = {
             "schema_version": "prc.agent-failure/v0.1",
@@ -840,8 +922,19 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             )
         )
 
-        v05_remediation_run = {
+        v06_remediation_run = {
             **remediation_run,
+            "schema_version": "prc.remediation-run/v0.6",
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(
+                v06_remediation_run, "remediation-run-v0.6.schema.json"
+            ),
+            [],
+        )
+
+        v05_remediation_run = {
+            **v06_remediation_run,
             "schema_version": "prc.remediation-run/v0.5",
         }
         del v05_remediation_run["provider_failures"]
@@ -1727,6 +1820,55 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         self.assertTrue(
             validate_instance.validation_errors(
                 execution, "adapter-execution.schema.json"
+            )
+        )
+
+    def test_verification_execution_conforms(self) -> None:
+        execution = {
+            "schema_version": "prc.verification-execution/v0.1",
+            "execution_id": "a" * 64,
+            "plan_id": "b" * 64,
+            "runtime_sha256": "9" * 64,
+            "kind": "go",
+            "image": "registry.example/prc/go-verifier@sha256:" + "c" * 64,
+            "command": ["go", "test", "./..."],
+            "policy": {
+                "network": "deny",
+                "workspace": "read_only",
+                "root_filesystem": "read_only",
+                "pull": "never",
+                "capabilities": "none",
+                "privilege_escalation": False,
+                "user": "non_root",
+                "timeout_seconds": 300,
+                "memory_mb": 1024,
+                "cpus": 1,
+                "pids": 128,
+                "tmpfs_mb": 512,
+                "max_stdout_bytes": 1048576,
+                "max_stderr_bytes": 1048576,
+            },
+            "candidate_inventory_digest": "d" * 64,
+            "started_at": "2026-08-23T12:00:00Z",
+            "completed_at": "2026-08-23T12:00:01Z",
+            "duration_ms": 1000,
+            "outcome": "pass",
+            "reason_code": "tests_passed",
+            "exit_code": 0,
+            "stdout": {"sha256": "e" * 64, "bytes": 2},
+            "stderr": {"sha256": "f" * 64, "bytes": 0},
+            "workspace_unchanged": True,
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(
+                execution, "verification-execution.schema.json"
+            ),
+            [],
+        )
+        execution["command"] = ["sh", "-c", "go test ./..."]
+        self.assertTrue(
+            validate_instance.validation_errors(
+                execution, "verification-execution.schema.json"
             )
         )
 

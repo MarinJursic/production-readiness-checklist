@@ -48,9 +48,12 @@ without regressing a baseline pass.
 Static discovery does not establish that the test compiles, executes, is
 deterministic, covers important behavior, or would fail for the defect it is
 intended to catch. The current R2 path therefore remains experimental and does
-not edit production code. Scanner-owned sandboxed project commands,
-test-first mutation evidence, and independent behavioral verification are
-required before broader autonomous remediation can rely on this assertion.
+not edit production code. It independently runs scanner-owned Go, Python, or
+plain-JavaScript test commands in a digest-pinned, network-denied OCI sandbox
+before acceptance.
+Test-first mutation evidence, stronger coverage oracles, and ecosystem-specific
+verifiers are still required before broader autonomous remediation can rely on
+this assertion.
 
 The comprehensive core benchmark includes positive and negative cases for a
 real declaration, a test-looking file without a declaration, a meaningful

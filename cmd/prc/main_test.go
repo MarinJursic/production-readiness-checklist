@@ -959,7 +959,7 @@ func TestFixCommandRunsBoundedDeterministicLoop(t *testing.T) {
 	if err := json.Unmarshal(stdout.Bytes(), &result); err != nil {
 		t.Fatal(err)
 	}
-	if result.SchemaVersion != "prc.remediation-run/v0.6" || len(result.Candidates) != 2 || len(result.Attempts) != 2 ||
+	if result.SchemaVersion != "prc.remediation-run/v0.7" || len(result.Candidates) != 2 || len(result.Attempts) != 2 ||
 		result.ProviderExecutions == nil || len(result.ProviderExecutions) != 0 ||
 		result.TerminalState != "machine_work_complete" || !result.OriginalUnchanged {
 		t.Fatalf("unexpected remediation run: %+v", result)
@@ -989,6 +989,7 @@ func TestFixCommandRunsBoundedSuggestOnlyProvider(t *testing.T) {
 		"fix", "--target", target, "--catalog-root", filepath.Join("..", ".."),
 		"--candidate-root", candidateRoot, "--max-attempts", "1", "--format", "json",
 		"--provider", "codex", "--provider-executable", providerPath,
+		"--verifier-runtime", fakeVerifierRuntime(t), "--verifier-image", testVerifierImage,
 		"--allow-remote-source-processing",
 	}, &stdout, &stderr)
 	if code != exitIncomplete {
@@ -1021,6 +1022,7 @@ func TestFixCommandRequiresRemoteSourceAcknowledgement(t *testing.T) {
 		"fix", "--target", target, "--catalog-root", filepath.Join("..", ".."),
 		"--candidate-root", candidateRoot, "--provider", "codex",
 		"--provider-executable", fakeFixCodex(t),
+		"--verifier-runtime", fakeVerifierRuntime(t), "--verifier-image", testVerifierImage,
 	}, &stdout, &stderr)
 	if code != exitPolicyDenied || !strings.Contains(stderr.String(), "PRC-EXIT-5") {
 		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
@@ -1040,6 +1042,7 @@ func TestFixProviderLaunchFailureUsesExecutionExitCode(t *testing.T) {
 		"fix", "--target", target, "--catalog-root", filepath.Join("..", ".."),
 		"--candidate-root", filepath.Join(t.TempDir(), "candidates"),
 		"--provider", "codex", "--provider-executable", filepath.Join(t.TempDir(), "codex"),
+		"--verifier-runtime", fakeVerifierRuntime(t), "--verifier-image", testVerifierImage,
 		"--allow-remote-source-processing",
 	}, &stdout, &stderr)
 	if code != exitExecution || !strings.Contains(stderr.String(), "PRC-EXIT-4") {
@@ -1064,6 +1067,17 @@ printf '%s\n' '{"type":"turn.completed"}'
 `
 	path := filepath.Join(t.TempDir(), "codex")
 	if err := os.WriteFile(path, []byte("#!/bin/sh\nset -eu\n"+body), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	return path
+}
+
+const testVerifierImage = "registry.example/prc/test-verifier@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+
+func fakeVerifierRuntime(t *testing.T) string {
+	t.Helper()
+	path := filepath.Join(t.TempDir(), "docker")
+	if err := os.WriteFile(path, []byte("#!/bin/sh\nexit 0\n"), 0o755); err != nil {
 		t.Fatal(err)
 	}
 	return path
@@ -1309,7 +1323,7 @@ func TestRemediateCommandConsumesConfiguredPolicy(t *testing.T) {
 	if err := json.Unmarshal(stdout.Bytes(), &candidate); err != nil {
 		t.Fatal(err)
 	}
-	if candidate.SchemaVersion != "prc.remediation-candidate/v0.3" ||
+	if candidate.SchemaVersion != "prc.remediation-candidate/v0.4" ||
 		len(candidate.Contract.ConfigurationDigest) != 64 || candidate.Contract.ProjectID != "example-product" ||
 		candidate.Contract.MaxAttempts != 3 {
 		t.Fatalf("configured candidate = %+v", candidate)
@@ -1393,6 +1407,7 @@ func TestRemediateProposalCommandCreatesAcceptedIsolatedCandidate(t *testing.T) 
 	code := run([]string{
 		"remediate-proposal", "--target", target, "--catalog-root", filepath.Join("..", ".."),
 		"--provider", "codex", "--task", taskPath, "--output", proposalPath,
+		"--verifier-runtime", fakeVerifierRuntime(t), "--verifier-image", testVerifierImage,
 		"--candidate-dir", candidatePath, "--format", "json",
 	}, &stdout, &stderr)
 	if code != 0 || !strings.Contains(stdout.String(), `"accepted": true`) {
