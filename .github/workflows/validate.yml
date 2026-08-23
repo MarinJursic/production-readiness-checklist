@@ -303,7 +303,7 @@ jobs:
             --format json > "$RUNNER_TEMP/provider-remediation.json"
           test ! -e fixtures/providers/workspace/app_test.go
           test -f "$RUNNER_TEMP/provider-candidate/app_test.go"
-          (cd "$RUNNER_TEMP/provider-candidate" && GO111MODULE=off go test ./...)
+          (cd "$RUNNER_TEMP/provider-candidate" && go test ./...)
 
       - name: Validate scanner output schemas
         run: |

@@ -1,9 +1,9 @@
 {
   "schema_version": "prc.agent-task/v0.2",
-  "task_id": "32ba99edc36712a6202f63830dfd540162145c9becd28fa42cfcadc050f11008",
+  "task_id": "8301ceb81b814f3f3bba9495e722a82f1d0f74f08ee66cfbba5e5289868fa264",
   "mode": "suggest",
-  "workspace_inventory_digest": "d6baeb071e5eedfa9095ca7741d335e8cb32e355ff2863ada5d1e9ae253a4d0c",
-  "finding_id": "f742afa01f979cc0b3e5b3adbfc9ddc98d8e086e58ce208624ca01c8738e4ffd",
+  "workspace_inventory_digest": "be73e6aef0f25f373695730cdbc0b00d75466e3590739e1d8b202f16c082f40c",
+  "finding_id": "8e870876cd17799f37eaa7334f9bd916a1ac1971c80d976753d08a2dac972fcc",
   "finding_fingerprint": "915973a253d150f2410843080fb5c576d507b02a72df8ceadcef0fbf375011f1",
   "assertion_id": "PRC-A-CORE-010",
   "control_ids": ["USEQ-12655775"],
