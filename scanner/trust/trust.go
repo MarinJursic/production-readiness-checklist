@@ -223,11 +223,8 @@ func SigningPayload(signature Signature) ([]byte, error) {
 }
 
 func (signature Signature) ValidateWithoutValue() error {
-	value := signature.Value
 	signature.Value = base64.StdEncoding.EncodeToString(make([]byte, ed25519.SignatureSize))
-	err := signature.Validate()
-	signature.Value = value
-	return err
+	return signature.Validate()
 }
 
 func normalizeStore(store *Store) error {

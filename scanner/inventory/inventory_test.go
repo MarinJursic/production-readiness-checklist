@@ -148,6 +148,106 @@ func TestBuildGraphAndFactsAreDeterministic(t *testing.T) {
 	}
 }
 
+func TestGitCommitReadsOnlyBoundedRepositoryMetadata(t *testing.T) {
+	commit := strings.Repeat("a", 40)
+	packedCommit := strings.Repeat("b", 64)
+	tests := map[string]struct {
+		prepare func(*testing.T, string)
+		want    string
+	}{
+		"detached head": {
+			prepare: func(t *testing.T, root string) {
+				writeFile(t, root, ".git/HEAD", commit+"\n")
+			},
+			want: commit,
+		},
+		"loose branch": {
+			prepare: func(t *testing.T, root string) {
+				writeFile(t, root, ".git/HEAD", "ref: refs/heads/main\n")
+				writeFile(t, root, ".git/refs/heads/main", commit+"\n")
+			},
+			want: commit,
+		},
+		"packed branch": {
+			prepare: func(t *testing.T, root string) {
+				writeFile(t, root, ".git/HEAD", "ref: refs/heads/main\n")
+				writeFile(t, root, ".git/packed-refs", "# pack-refs with: peeled\n"+packedCommit+" refs/heads/main\n")
+			},
+			want: packedCommit,
+		},
+		"invalid detached value": {
+			prepare: func(t *testing.T, root string) {
+				writeFile(t, root, ".git/HEAD", "not-a-commit\n")
+			},
+		},
+	}
+	for name, test := range tests {
+		t.Run(name, func(t *testing.T) {
+			root := t.TempDir()
+			test.prepare(t, root)
+			if got := gitCommit(root); got != test.want {
+				t.Fatalf("gitCommit() = %q, want %q", got, test.want)
+			}
+		})
+	}
+}
+
+func TestGitCommitRejectsMetadataEscapes(t *testing.T) {
+	commit := strings.Repeat("c", 40)
+	t.Run("head ref traversal", func(t *testing.T) {
+		parent := t.TempDir()
+		root := filepath.Join(parent, "target")
+		if err := os.Mkdir(root, 0o755); err != nil {
+			t.Fatal(err)
+		}
+		writeFile(t, root, ".git/HEAD", "ref: ../../secret-ref\n")
+		writeFile(t, parent, "secret-ref", commit+"\n")
+		if got := gitCommit(root); got != "" {
+			t.Fatalf("escaped ref disclosed %q", got)
+		}
+	})
+	t.Run("external gitdir", func(t *testing.T) {
+		parent := t.TempDir()
+		root := filepath.Join(parent, "target")
+		if err := os.Mkdir(root, 0o755); err != nil {
+			t.Fatal(err)
+		}
+		writeFile(t, root, ".git", "gitdir: ../external-git\n")
+		writeFile(t, parent, "external-git/HEAD", commit+"\n")
+		if got := gitCommit(root); got != "" {
+			t.Fatalf("external gitdir disclosed %q", got)
+		}
+	})
+	t.Run("gitdir symlink", func(t *testing.T) {
+		root := t.TempDir()
+		external := t.TempDir()
+		writeFile(t, external, "HEAD", commit+"\n")
+		if err := os.Symlink(external, filepath.Join(root, ".git")); err != nil {
+			t.Fatal(err)
+		}
+		if got := gitCommit(root); got != "" {
+			t.Fatalf("symlinked gitdir disclosed %q", got)
+		}
+	})
+}
+
+func TestInspectFileBoundsStructuredCapture(t *testing.T) {
+	root := t.TempDir()
+	writeFile(t, root, "document.yaml", "openapi: 3.2.0\n")
+	path := filepath.Join(root, "document.yaml")
+	record, data, err := inspectFile(path, "document.yaml", true, 4)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if record.Size == 0 || data != nil {
+		t.Fatalf("record=%+v captured=%q", record, data)
+	}
+	record, data, err = inspectFile(path, "document.yaml", true, maxStructuredFileBytes)
+	if err != nil || string(data) != "openapi: 3.2.0\n" {
+		t.Fatalf("record=%+v captured=%q err=%v", record, data, err)
+	}
+}
+
 func TestBuildIncludesPermissionModeInIdentity(t *testing.T) {
 	root := t.TempDir()
 	writeFile(t, root, "script.sh", "#!/bin/sh\n")

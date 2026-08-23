@@ -125,11 +125,11 @@ func Run(ctx context.Context, plan Plan, task Task) (Execution, error) {
 	if plan.Provider == "codex" {
 		info, err := os.Stat(plan.ResultPath)
 		if err != nil || !info.Mode().IsRegular() || info.Size() > int64(task.MaxOutputBytes) {
-			return Execution{}, fmt.Errorf("Codex result is missing or exceeds the output limit")
+			return Execution{}, fmt.Errorf("codex result is missing or exceeds the output limit")
 		}
 		outputData, err = os.ReadFile(plan.ResultPath)
 		if err != nil {
-			return Execution{}, fmt.Errorf("read Codex result: %w", err)
+			return Execution{}, fmt.Errorf("read codex result: %w", err)
 		}
 	} else {
 		outputData = stdout.data

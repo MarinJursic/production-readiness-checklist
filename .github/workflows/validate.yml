@@ -77,6 +77,12 @@ jobs:
       - name: Vet scanner
         run: go vet ./...
 
+      - name: Run static analysis
+        run: go run honnef.co/go/tools/cmd/staticcheck@v0.8.1 ./...
+
+      - name: Reject path traversal and filesystem walk races
+        run: go run github.com/securego/gosec/v2/cmd/gosec@v2.28.0 -include=G703,G122 ./...
+
       - name: Build scanner
         run: go build -trimpath -o "$RUNNER_TEMP/prc" ./cmd/prc
 

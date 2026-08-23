@@ -60,6 +60,10 @@ they do not erase discovered components or facts.
 `source_ref` must be empty or a lowercase 40–64 character hexadecimal revision.
 When supplied, it must equal the Git revision inventoried from the target; an
 unresolved variable, branch name, missing Git identity, or mismatch fails closed.
+Git metadata is read only when its directory and references remain inside the
+target root. A symlinked `.git` entry or a linked-worktree `gitdir` outside the
+target is not followed, so that target has no inferred Git identity and cannot
+satisfy a nonempty `source_ref`.
 
 ## Capability boundary
 

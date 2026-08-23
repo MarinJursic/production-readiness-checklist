@@ -67,6 +67,9 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 
 ### Fixed
 
+- Prevented hostile Git metadata and filesystem races from escaping scanner
+  roots during inventory and benchmark materialization, with adversarial tests
+  and pinned static-analysis gates for traversal and walk-race regressions.
 - Upgraded the pinned documentation renderer to `pymdown-extensions` 11.0.1,
   closing its path-traversal file disclosure and exponential-backtracking
   denial-of-service advisories.

@@ -59,29 +59,29 @@ func OutputID(output Output) (string, error) {
 
 func unwrapClaude(data []byte) ([]byte, error) {
 	if err := rejectDuplicateKeys(data); err != nil {
-		return nil, fmt.Errorf("decode Claude envelope: %w", err)
+		return nil, fmt.Errorf("decode claude envelope: %w", err)
 	}
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	var envelope map[string]json.RawMessage
 	if err := decoder.Decode(&envelope); err != nil {
-		return nil, fmt.Errorf("decode Claude envelope: %w", err)
+		return nil, fmt.Errorf("decode claude envelope: %w", err)
 	}
 	var trailing any
 	if err := decoder.Decode(&trailing); !errors.Is(err, io.EOF) {
-		return nil, fmt.Errorf("Claude envelope contains trailing JSON")
+		return nil, fmt.Errorf("claude envelope contains trailing JSON")
 	}
 	if raw, ok := envelope["is_error"]; ok {
 		var isError bool
 		if err := json.Unmarshal(raw, &isError); err != nil {
-			return nil, fmt.Errorf("Claude envelope has invalid is_error")
+			return nil, fmt.Errorf("claude envelope has invalid is_error")
 		}
 		if isError {
-			return nil, fmt.Errorf("Claude reported an execution error")
+			return nil, fmt.Errorf("claude reported an execution error")
 		}
 	}
 	structured, ok := envelope["structured_output"]
 	if !ok || bytes.Equal(bytes.TrimSpace(structured), []byte("null")) {
-		return nil, fmt.Errorf("Claude envelope has no structured_output")
+		return nil, fmt.Errorf("claude envelope has no structured_output")
 	}
 	return structured, nil
 }

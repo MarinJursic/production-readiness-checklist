@@ -230,3 +230,17 @@ func TestFixtureSetupIsBoundedAndDoesNotMutateSource(t *testing.T) {
 		t.Fatalf("missing replacement token error = %v", err)
 	}
 }
+
+func TestMaterializedFixtureRejectsSymlinkedSourceEntries(t *testing.T) {
+	source := t.TempDir()
+	external := filepath.Join(t.TempDir(), "outside.txt")
+	if err := os.WriteFile(external, []byte("outside\n"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.Symlink(external, filepath.Join(source, "linked.txt")); err != nil {
+		t.Fatal(err)
+	}
+	if _, _, err := materializeTarget(source, nil); err == nil || !strings.Contains(err.Error(), "symlinks") {
+		t.Fatalf("symlinked fixture error = %v", err)
+	}
+}

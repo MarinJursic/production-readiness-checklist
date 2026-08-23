@@ -2,6 +2,7 @@ package inventory
 
 import (
 	"bufio"
+	"bytes"
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
@@ -18,7 +19,12 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 )
 
-const maxEntries = 200_000
+const (
+	maxEntries             = 200_000
+	maxStructuredFileBytes = 2 * 1024 * 1024
+	maxGitReferenceBytes   = 4 * 1024
+	maxPackedRefsBytes     = 8 * 1024 * 1024
+)
 
 const detectorVersion = "0.4"
 
@@ -26,6 +32,7 @@ var (
 	kubernetesAPIVersion = regexp.MustCompile(`(?m)^apiVersion:[[:space:]]*[^[:space:]#]+`)
 	kubernetesKind       = regexp.MustCompile(`(?m)^kind:[[:space:]]*[^[:space:]#]+`)
 	openAPIYAMLMarker    = regexp.MustCompile(`(?m)^openapi[ \t]*:[ \t]*["']?3\.`)
+	gitCommitPattern     = regexp.MustCompile(`^[0-9a-f]{40}(?:[0-9a-f]{24})?$`)
 )
 
 var excludedDirectories = map[string]bool{
@@ -182,12 +189,15 @@ func Build(target string) (model.Inventory, error) {
 			return err
 		}
 		relative = filepath.ToSlash(relative)
-		fileRecord, err := hashFile(path, relative)
+		name := entry.Name()
+		structuredCandidate := isYAML(name) || isOpenAPIFileName(name)
+		fileRecord, structuredData, err := inspectFile(
+			path, relative, structuredCandidate, maxStructuredFileBytes,
+		)
 		if err != nil {
 			return err
 		}
 		result.Files = append(result.Files, fileRecord)
-		name := entry.Name()
 		ecosystem, manifest := manifests[name]
 		if strings.HasPrefix(name, "requirements") && strings.HasSuffix(name, ".txt") &&
 			!strings.HasSuffix(name, ".lock.txt") {
@@ -225,15 +235,6 @@ func Build(target string) (model.Inventory, error) {
 			addComponent("infrastructure", relative, "terraform")
 			addFact("infrastructure.terraform", "true", relative, "prc.inventory.terraform-file", 0.98,
 				"A Terraform file may be a module or example that is not applied.")
-		}
-		var structuredData []byte
-		structuredCandidate := isYAML(name) || isOpenAPIFileName(name)
-		if structuredCandidate && entryInfo.Size() <= 2*1024*1024 {
-			data, readErr := os.ReadFile(path)
-			if readErr != nil {
-				return fmt.Errorf("read inventory candidate %s: %w", relative, readErr)
-			}
-			structuredData = data
 		}
 		if isYAML(name) && kubernetesAPIVersion.Match(structuredData) && kubernetesKind.Match(structuredData) {
 			result.Infrastructure.KubernetesFiles = append(result.Infrastructure.KubernetesFiles, relative)
@@ -484,79 +485,166 @@ func isYAML(name string) bool {
 	return strings.HasSuffix(lower, ".yaml") || strings.HasSuffix(lower, ".yml")
 }
 
-func hashFile(path, relative string) (model.FileRecord, error) {
+func inspectFile(path, relative string, capture bool, captureLimit int64) (model.FileRecord, []byte, error) {
 	pathInfo, err := os.Lstat(path)
 	if err != nil {
-		return model.FileRecord{}, fmt.Errorf("inspect %s: %w", relative, err)
+		return model.FileRecord{}, nil, fmt.Errorf("inspect %s: %w", relative, err)
 	}
 	if !pathInfo.Mode().IsRegular() {
-		return model.FileRecord{}, fmt.Errorf("file changed to a non-regular entry: %s", relative)
+		return model.FileRecord{}, nil, fmt.Errorf("file changed to a non-regular entry: %s", relative)
 	}
 	file, err := os.Open(path)
 	if err != nil {
-		return model.FileRecord{}, fmt.Errorf("open %s: %w", relative, err)
+		return model.FileRecord{}, nil, fmt.Errorf("open %s: %w", relative, err)
 	}
 	defer file.Close()
 	openedInfo, err := file.Stat()
 	if err != nil {
-		return model.FileRecord{}, fmt.Errorf("inspect open file %s: %w", relative, err)
+		return model.FileRecord{}, nil, fmt.Errorf("inspect open file %s: %w", relative, err)
 	}
 	if !openedInfo.Mode().IsRegular() || !os.SameFile(pathInfo, openedInfo) {
-		return model.FileRecord{}, fmt.Errorf("file changed while opening: %s", relative)
+		return model.FileRecord{}, nil, fmt.Errorf("file changed while opening: %s", relative)
 	}
 	hasher := sha256.New()
-	size, err := io.Copy(hasher, file)
-	if err != nil {
-		return model.FileRecord{}, fmt.Errorf("hash %s: %w", relative, err)
+	var captured bytes.Buffer
+	capturing := capture
+	buffer := make([]byte, 32*1024)
+	var size int64
+	for {
+		count, readErr := file.Read(buffer)
+		if count > 0 {
+			chunk := buffer[:count]
+			_, _ = hasher.Write(chunk)
+			size += int64(count)
+			if capturing {
+				if size <= captureLimit {
+					_, _ = captured.Write(chunk)
+				} else {
+					capturing = false
+					captured.Reset()
+				}
+			}
+		}
+		if readErr != nil {
+			if readErr == io.EOF {
+				break
+			}
+			return model.FileRecord{}, nil, fmt.Errorf("hash %s: %w", relative, readErr)
+		}
 	}
-	return model.FileRecord{
+	record := model.FileRecord{
 		Path: relative, Size: size, SHA256: hex.EncodeToString(hasher.Sum(nil)), Mode: uint32(openedInfo.Mode().Perm()),
-	}, nil
+	}
+	if !capturing {
+		return record, nil, nil
+	}
+	return record, append([]byte(nil), captured.Bytes()...), nil
 }
 
 func gitCommit(root string) string {
-	gitDirectory := filepath.Join(root, ".git")
-	info, err := os.Stat(gitDirectory)
+	targetRoot, err := os.OpenRoot(root)
 	if err != nil {
 		return ""
 	}
-	if !info.IsDir() {
-		data, err := os.ReadFile(gitDirectory)
-		if err != nil {
+	defer targetRoot.Close()
+	info, err := targetRoot.Lstat(".git")
+	if err != nil {
+		return ""
+	}
+	var gitRoot *os.Root
+	if info.IsDir() {
+		gitRoot, err = targetRoot.OpenRoot(".git")
+	} else if info.Mode().IsRegular() {
+		data, readErr := readRootRegularFile(targetRoot, ".git", maxGitReferenceBytes)
+		if readErr != nil {
 			return ""
 		}
 		line := strings.TrimSpace(string(data))
 		if !strings.HasPrefix(line, "gitdir: ") {
 			return ""
 		}
-		gitDirectory = strings.TrimPrefix(line, "gitdir: ")
-		if !filepath.IsAbs(gitDirectory) {
-			gitDirectory = filepath.Join(root, gitDirectory)
+		gitDirectory := strings.TrimSpace(strings.TrimPrefix(line, "gitdir: "))
+		if gitDirectory == "" || filepath.IsAbs(gitDirectory) || strings.Contains(gitDirectory, `\`) {
+			return ""
 		}
+		gitRoot, err = targetRoot.OpenRoot(filepath.FromSlash(gitDirectory))
+	} else {
+		return ""
 	}
-	head, err := os.ReadFile(filepath.Join(gitDirectory, "HEAD"))
+	if err != nil {
+		return ""
+	}
+	defer gitRoot.Close()
+	head, err := readRootRegularFile(gitRoot, "HEAD", maxGitReferenceBytes)
 	if err != nil {
 		return ""
 	}
 	value := strings.TrimSpace(string(head))
 	if !strings.HasPrefix(value, "ref: ") {
-		return value
+		if gitCommitPattern.MatchString(value) {
+			return value
+		}
+		return ""
 	}
-	ref := strings.TrimPrefix(value, "ref: ")
-	if data, err := os.ReadFile(filepath.Join(gitDirectory, filepath.FromSlash(ref))); err == nil {
-		return strings.TrimSpace(string(data))
+	ref := strings.TrimSpace(strings.TrimPrefix(value, "ref: "))
+	if !validGitRef(ref) {
+		return ""
 	}
-	file, err := os.Open(filepath.Join(gitDirectory, "packed-refs"))
+	if data, readErr := readRootRegularFile(gitRoot, filepath.FromSlash(ref), maxGitReferenceBytes); readErr == nil {
+		commit := strings.TrimSpace(string(data))
+		if gitCommitPattern.MatchString(commit) {
+			return commit
+		}
+	}
+	packed, err := readRootRegularFile(gitRoot, "packed-refs", maxPackedRefsBytes)
 	if err != nil {
 		return ""
 	}
-	defer file.Close()
-	scanner := bufio.NewScanner(file)
+	scanner := bufio.NewScanner(bytes.NewReader(packed))
 	for scanner.Scan() {
 		fields := strings.Fields(scanner.Text())
-		if len(fields) == 2 && fields[1] == ref {
+		if len(fields) == 2 && fields[1] == ref && gitCommitPattern.MatchString(fields[0]) {
 			return fields[0]
 		}
 	}
 	return ""
+}
+
+func validGitRef(ref string) bool {
+	if len(ref) < len("refs/x") || len(ref) > 1024 || !strings.HasPrefix(ref, "refs/") ||
+		strings.ContainsAny(ref, " ~^:?*[\\") || strings.Contains(ref, "..") ||
+		strings.Contains(ref, "//") || strings.Contains(ref, "@{") ||
+		strings.HasSuffix(ref, "/") || strings.HasSuffix(ref, ".") || strings.HasSuffix(ref, ".lock") {
+		return false
+	}
+	for _, component := range strings.Split(ref, "/") {
+		if component == "" || strings.HasPrefix(component, ".") || strings.HasSuffix(component, ".") {
+			return false
+		}
+	}
+	return true
+}
+
+func readRootRegularFile(root *os.Root, name string, limit int64) ([]byte, error) {
+	info, err := root.Lstat(name)
+	if err != nil || !info.Mode().IsRegular() || info.Size() > limit {
+		return nil, fmt.Errorf("root-scoped file is missing, unsafe, or exceeds %d bytes", limit)
+	}
+	file, err := root.Open(name)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+	openedInfo, err := file.Stat()
+	if err != nil || !openedInfo.Mode().IsRegular() || !os.SameFile(info, openedInfo) || openedInfo.Size() > limit {
+		return nil, fmt.Errorf("root-scoped file changed while opening")
+	}
+	data, err := io.ReadAll(io.LimitReader(file, limit+1))
+	if err != nil {
+		return nil, fmt.Errorf("read bounded root-scoped file: %w", err)
+	}
+	if int64(len(data)) > limit {
+		return nil, fmt.Errorf("root-scoped file exceeded %d bytes while reading", limit)
+	}
+	return data, nil
 }

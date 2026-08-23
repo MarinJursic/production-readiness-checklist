@@ -663,28 +663,40 @@ func materializeTarget(source string, operations []SetupOperation) (string, func
 }
 
 func copyFixtureTree(source, target string) error {
+	if err := os.Mkdir(target, 0o700); err != nil {
+		return err
+	}
+	sourceRoot, err := os.OpenRoot(source)
+	if err != nil {
+		return err
+	}
+	defer sourceRoot.Close()
+	targetRoot, err := os.OpenRoot(target)
+	if err != nil {
+		return err
+	}
+	defer targetRoot.Close()
 	entries := 0
 	var totalBytes int64
-	return filepath.WalkDir(source, func(path string, entry fs.DirEntry, walkErr error) error {
+	return fs.WalkDir(sourceRoot.FS(), ".", func(relative string, entry fs.DirEntry, walkErr error) error {
 		if walkErr != nil {
 			return walkErr
+		}
+		if relative == "." {
+			return nil
 		}
 		entries++
 		if entries > 10000 {
 			return fmt.Errorf("materialized fixture exceeds 10000 entries")
 		}
-		relative, err := filepath.Rel(source, path)
-		if err != nil {
-			return err
-		}
-		destination := filepath.Join(target, relative)
+		rootName := filepath.FromSlash(relative)
 		if entry.Type()&os.ModeSymlink != 0 {
 			return fmt.Errorf("materialized fixture cannot contain symlinks")
 		}
 		if entry.IsDir() {
-			return os.Mkdir(destination, 0o700)
+			return targetRoot.Mkdir(rootName, 0o700)
 		}
-		info, err := entry.Info()
+		info, err := sourceRoot.Lstat(rootName)
 		if err != nil {
 			return err
 		}
@@ -695,11 +707,16 @@ func copyFixtureTree(source, target string) error {
 		if totalBytes > maximumMaterializedBytes {
 			return fmt.Errorf("materialized fixture exceeds 256 MiB")
 		}
-		input, err := os.Open(path)
+		input, err := sourceRoot.Open(rootName)
 		if err != nil {
 			return err
 		}
-		output, err := os.OpenFile(destination, os.O_CREATE|os.O_EXCL|os.O_WRONLY, 0o600)
+		openedInfo, err := input.Stat()
+		if err != nil || !openedInfo.Mode().IsRegular() || !os.SameFile(info, openedInfo) {
+			_ = input.Close()
+			return fmt.Errorf("materialized fixture changed while opening: %s", relative)
+		}
+		output, err := targetRoot.OpenFile(rootName, os.O_CREATE|os.O_EXCL|os.O_WRONLY, 0o600)
 		if err != nil {
 			_ = input.Close()
 			return err
@@ -716,7 +733,7 @@ func copyFixtureTree(source, target string) error {
 		if closeInputErr != nil {
 			return closeInputErr
 		}
-		return os.Chmod(destination, info.Mode().Perm())
+		return targetRoot.Chmod(rootName, info.Mode().Perm())
 	})
 }
 

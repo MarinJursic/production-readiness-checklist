@@ -15,6 +15,10 @@ hostile. Safe operation therefore starts from a default-deny capability model.
 
 The execution and target planes must not be able to mutate the control plane.
 The verifier must consume immutable inputs captured before candidate remediation.
+Inventory-file and benchmark-fixture reads bind an opened file back to the
+root-scoped entry that was inspected. Git identity is read only through an
+`os.Root` rooted at the target: metadata paths and symlinks cannot escape it,
+and external `gitdir` indirection is rejected rather than followed.
 
 ## Threats in scope
 

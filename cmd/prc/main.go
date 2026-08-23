@@ -1085,10 +1085,14 @@ func loadRemediationConfiguration(path string) (*remediation.ProjectConfiguratio
 }
 
 func readBoundedRegularFile(path string, limit int64) ([]byte, error) {
+	// The path is an explicit operator-selected CLI input, not a target-derived
+	// relative path. Its type and size are validated before it is read.
+	// #nosec G703 -- arbitrary explicit input paths are the command contract.
 	info, err := os.Stat(path)
 	if err != nil || !info.Mode().IsRegular() || info.Size() > limit {
 		return nil, fmt.Errorf("input must be a regular file no larger than %d bytes", limit)
 	}
+	// #nosec G304 G703 -- see the explicit-input boundary above.
 	data, err := os.ReadFile(path)
 	if err != nil {
 		return nil, err
