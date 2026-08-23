@@ -43,7 +43,7 @@ func IsProviderExecution(err error) bool {
 const (
 	FixContractSchema = "prc.fix-contract/v0.3"
 	CandidateSchema   = "prc.remediation-candidate/v0.3"
-	RunSchema         = "prc.remediation-run/v0.4"
+	RunSchema         = "prc.remediation-run/v0.5"
 )
 
 type FixContract struct {
@@ -184,6 +184,27 @@ type RemainingWork struct {
 	Reason             string   `json:"reason"`
 }
 
+// AttemptRecord is the scanner-owned audit linkage for one unit of remediation
+// work. It records rejected pre-candidate proposals as well as materialized
+// candidates, so an agent attempt cannot disappear from the run history.
+type AttemptRecord struct {
+	Attempt               int       `json:"attempt"`
+	Mode                  string    `json:"mode"`
+	AssertionID           string    `json:"assertion_id"`
+	FindingID             string    `json:"finding_id"`
+	FindingFingerprint    string    `json:"finding_fingerprint"`
+	TaskID                string    `json:"task_id"`
+	StartedAt             time.Time `json:"started_at"`
+	CompletedAt           time.Time `json:"completed_at"`
+	BeforeInventoryDigest string    `json:"before_inventory_digest"`
+	AfterInventoryDigest  string    `json:"after_inventory_digest,omitempty"`
+	ProviderExecutionID   string    `json:"provider_execution_id,omitempty"`
+	CandidateID           string    `json:"candidate_id,omitempty"`
+	Outcome               string    `json:"outcome"`
+	ReasonCode            string    `json:"reason_code"`
+	Reason                string    `json:"reason"`
+}
+
 type RemediationRun struct {
 	SchemaVersion         string               `json:"schema_version"`
 	RunID                 string               `json:"run_id"`
@@ -201,6 +222,7 @@ type RemediationRun struct {
 	MaxFiles              int                  `json:"max_files"`
 	MaxChangedLines       int                  `json:"max_changed_lines"`
 	Usage                 BudgetUsage          `json:"usage"`
+	Attempts              []AttemptRecord      `json:"attempts"`
 	Candidates            []Candidate          `json:"candidates"`
 	ProviderExecutions    []provider.Execution `json:"provider_executions"`
 	FinalRun              model.RunResult      `json:"final_run"`

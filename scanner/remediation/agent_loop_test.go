@@ -110,12 +110,17 @@ func TestRunLoopExecutesReadOnlyProviderAndAcceptsBoundedR2Candidate(t *testing.
 		t.Fatal(err)
 	}
 	if result.SchemaVersion != RunSchema || len(result.ProviderExecutions) != 1 || len(result.Candidates) != 1 ||
-		result.Usage.Attempts != 1 || !result.Candidates[0].Accepted ||
+		result.Usage.Attempts != 1 || len(result.Attempts) != 1 || !result.Candidates[0].Accepted ||
 		result.Candidates[0].Contract.AssertionID != agentTestSuiteAssertion ||
 		result.Candidates[0].Contract.Provider != "codex" {
 		t.Fatalf("unexpected agent loop result: %+v", result)
 	}
 	execution := result.ProviderExecutions[0]
+	if result.Attempts[0].Mode != "agent" || result.Attempts[0].Outcome != "accepted" ||
+		result.Attempts[0].ProviderExecutionID != execution.ExecutionID ||
+		result.Attempts[0].CandidateID != result.Candidates[0].CandidateID {
+		t.Fatalf("agent attempt audit linkage is incomplete: %+v", result.Attempts[0])
+	}
 	if execution.TaskID != result.Candidates[0].Contract.ProposalTaskID || execution.Output.Status != "candidate" {
 		t.Fatalf("provider execution is not bound to candidate: %+v", execution)
 	}
@@ -160,8 +165,13 @@ func TestRunLoopStopsWithoutPatchWhenProviderIsUnable(t *testing.T) {
 		t.Fatal(err)
 	}
 	if result.TerminalState != "provider_stopped" || len(result.ProviderExecutions) != 1 ||
-		len(result.Candidates) != 0 || result.Usage.Attempts != 1 || len(result.StopReasons) != 1 {
+		len(result.Candidates) != 0 || result.Usage.Attempts != 1 || len(result.Attempts) != 1 ||
+		len(result.StopReasons) != 1 {
 		t.Fatalf("unexpected provider stop: %+v", result)
+	}
+	if result.Attempts[0].Outcome != "provider_stopped" || result.Attempts[0].ReasonCode != "provider_unable" ||
+		result.Attempts[0].CandidateID != "" {
+		t.Fatalf("provider stop attempt was not audited: %+v", result.Attempts[0])
 	}
 	found := false
 	for _, remaining := range result.Remaining {
@@ -184,8 +194,14 @@ func TestRunLoopRecordsAntiGamingProposalAsRejected(t *testing.T) {
 		t.Fatal(err)
 	}
 	if result.TerminalState != "candidate_rejected" || len(result.ProviderExecutions) != 1 ||
-		len(result.Candidates) != 0 || result.Usage.Attempts != 1 || len(result.StopReasons) != 1 {
+		len(result.Candidates) != 0 || result.Usage.Attempts != 1 || len(result.Attempts) != 1 ||
+		len(result.StopReasons) != 1 {
 		t.Fatalf("unexpected anti-gaming stop: %+v", result)
+	}
+	if result.Attempts[0].Outcome != "rejected" || result.Attempts[0].ReasonCode != "anti_gaming_rejected" ||
+		!strings.Contains(result.Attempts[0].Reason, "constant assertion") ||
+		!strings.Contains(result.StopReasons[0], "constant assertion") {
+		t.Fatalf("anti-gaming rejection lacks exact audit evidence: %+v", result)
 	}
 	if _, err := os.Stat(filepath.Join(result.CandidateRoot, "attempt-001")); !os.IsNotExist(err) {
 		t.Fatal("anti-gaming rejection created a candidate workspace")

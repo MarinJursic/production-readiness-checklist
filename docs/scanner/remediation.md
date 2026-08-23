@@ -92,14 +92,18 @@ cannot return a candidate, or an independently checked candidate is rejected.
 File and changed-line usage accumulates across accepted candidates;
 command-line values cannot raise limits declared in project configuration.
 
-The `prc.remediation-run/v0.4` report records every candidate, provider
-execution and transcript digest, cumulative budget usage, the final fresh
-assessment, the final isolated workspace, and a reason code for every
-unresolved result. Its embedded v0.9 scan result preserves adapter resolution
-provenance; the frozen v0.3 remediation schema continues to reference the
-frozen v0.7 scan contract and version-pinned candidate, agent-execution, and
-transitive dependencies. Every unresolved failure includes its canonical
-finding ID and stable fingerprint. Its terminal states are:
+The `prc.remediation-run/v0.5` report records every actual attempt, including
+proposals rejected before candidate creation. Each attempt binds its sequence,
+mode, exact finding and fingerprint, scanner-owned task, before and after
+inventory digests, provider execution and candidate when present, timestamps,
+outcome, machine-readable reason code, and exact scanner rejection reason. The
+scanner verifies this linkage before computing the run content ID. The report
+also preserves every candidate, provider transcript digest, cumulative budget
+usage, final fresh assessment, final isolated workspace, and a reason code for
+every unresolved result. Its embedded v0.9 scan result preserves adapter
+resolution provenance; frozen v0.3 and v0.4 remediation schemas retain their
+version-pinned dependency graphs. Every unresolved failure includes its
+canonical finding ID and stable fingerprint. Its terminal states are:
 
 - `profile_satisfied`: every required result in the selected profile passed;
 - `machine_work_complete`: no registered deterministic R1 failure remains, but

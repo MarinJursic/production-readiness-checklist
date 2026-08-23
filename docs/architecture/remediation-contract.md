@@ -46,6 +46,14 @@ evidence, credentials, and previous agent memory are excluded.
 9. Accept only when the original finding closes and no protected result regresses.
 10. Preserve the candidate, transcript, evidence, and rejection or acceptance reason.
 
+The current v0.5 remediation-run record adds a scanner-validated attempt chain.
+An accepted attempt must link to exactly one content-addressed candidate; an
+agent attempt must link to exactly one provider execution; a pre-candidate
+policy rejection records its exact safe scanner reason without inventing a
+candidate; and the accepted digest chain must end at the reported final
+inventory. Missing, duplicate, reordered, or cross-linked records invalidate
+the run before its content ID is computed.
+
 An agent does not validate its own patch. A second model can challenge a candidate,
 but only the independent deterministic acceptance sequence can approve it.
 

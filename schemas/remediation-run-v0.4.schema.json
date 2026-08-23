@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/remediation-run.schema.json",
-  "title": "Production Readiness Remediation Run v0.5",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/remediation-run-v0.4.schema.json",
+  "title": "Production Readiness Remediation Run v0.4 (legacy)",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "run_id", "started_at", "completed_at", "profile_id", "source_inventory_digest", "candidate_root", "result_workspace", "final_inventory_digest", "original_unchanged", "max_attempts", "max_files", "max_changed_lines", "usage", "attempts", "candidates", "provider_executions", "final_run", "gate_state", "terminal_state", "remaining", "stop_reasons"],
+  "required": ["schema_version", "run_id", "started_at", "completed_at", "profile_id", "source_inventory_digest", "candidate_root", "result_workspace", "final_inventory_digest", "original_unchanged", "max_attempts", "max_files", "max_changed_lines", "usage", "candidates", "provider_executions", "final_run", "gate_state", "terminal_state", "remaining", "stop_reasons"],
   "properties": {
-    "schema_version": {"const": "prc.remediation-run/v0.5"},
+    "schema_version": {"const": "prc.remediation-run/v0.4"},
     "run_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "started_at": {"type": "string", "format": "date-time"},
     "completed_at": {"type": "string", "format": "date-time"},
@@ -22,10 +22,9 @@
     "max_files": {"type": "integer", "minimum": 1, "maximum": 1000},
     "max_changed_lines": {"type": "integer", "minimum": 1, "maximum": 1000},
     "usage": {"$ref": "#/$defs/usage"},
-    "attempts": {"type": "array", "maxItems": 10, "uniqueItems": true, "items": {"$ref": "#/$defs/attempt"}},
-    "candidates": {"type": "array", "maxItems": 10, "items": {"$ref": "remediation-candidate.schema.json"}},
-    "provider_executions": {"type": "array", "maxItems": 10, "items": {"$ref": "agent-execution.schema.json"}},
-    "final_run": {"$ref": "run-result.schema.json"},
+    "candidates": {"type": "array", "maxItems": 10, "items": {"$ref": "remediation-candidate-v0.3.schema.json"}},
+    "provider_executions": {"type": "array", "maxItems": 10, "items": {"$ref": "agent-execution-v0.1.schema.json"}},
+    "final_run": {"$ref": "run-result-v0.9.schema.json"},
     "gate_state": {"enum": ["profile_satisfied", "machine_work_complete_manual_evidence_remaining", "assessment_incomplete", "environment_blocked", "no_go"]},
     "terminal_state": {"enum": ["profile_satisfied", "machine_work_complete", "stopped_by_policy_or_budget", "candidate_rejected", "provider_stopped"]},
     "remaining": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/remaining_work"}},
@@ -47,50 +46,6 @@
     }
   ],
   "$defs": {
-    "attempt": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["attempt", "mode", "assertion_id", "finding_id", "finding_fingerprint", "task_id", "started_at", "completed_at", "before_inventory_digest", "outcome", "reason_code", "reason"],
-      "properties": {
-        "attempt": {"type": "integer", "minimum": 1, "maximum": 10},
-        "mode": {"enum": ["deterministic", "agent"]},
-        "assertion_id": {"type": "string", "pattern": "^PRC-A-[A-Z0-9]+-[0-9]{3}$"},
-        "finding_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-        "finding_fingerprint": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-        "task_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-        "started_at": {"type": "string", "format": "date-time"},
-        "completed_at": {"type": "string", "format": "date-time"},
-        "before_inventory_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-        "after_inventory_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-        "provider_execution_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-        "candidate_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-        "outcome": {"enum": ["accepted", "rejected", "provider_stopped"]},
-        "reason_code": {"enum": ["accepted", "verification_rejected", "anti_gaming_rejected", "scope_rejected", "budget_rejected", "policy_rejected", "provider_unable", "provider_needs_escalation"]},
-        "reason": {"type": "string", "minLength": 1}
-      },
-      "allOf": [
-        {
-          "if": {"properties": {"mode": {"const": "agent"}}, "required": ["mode"]},
-          "then": {"required": ["provider_execution_id"]}
-        },
-        {
-          "if": {"properties": {"reason_code": {"enum": ["accepted", "verification_rejected"]}}, "required": ["reason_code"]},
-          "then": {"required": ["candidate_id", "after_inventory_digest"]}
-        },
-        {
-          "if": {"properties": {"outcome": {"const": "accepted"}}, "required": ["outcome"]},
-          "then": {"properties": {"reason_code": {"const": "accepted"}}, "required": ["candidate_id", "after_inventory_digest"]}
-        },
-        {
-          "if": {"properties": {"outcome": {"const": "provider_stopped"}}, "required": ["outcome"]},
-          "then": {"properties": {"mode": {"const": "agent"}, "reason_code": {"enum": ["provider_unable", "provider_needs_escalation"]}}}
-        },
-        {
-          "if": {"properties": {"outcome": {"const": "rejected"}}, "required": ["outcome"]},
-          "then": {"properties": {"reason_code": {"enum": ["verification_rejected", "anti_gaming_rejected", "scope_rejected", "budget_rejected", "policy_rejected"]}}}
-        }
-      ]
-    },
     "usage": {
       "type": "object",
       "additionalProperties": false,

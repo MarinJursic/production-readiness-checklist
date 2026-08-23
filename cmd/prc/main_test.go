@@ -906,7 +906,7 @@ func TestFixCommandRunsBoundedDeterministicLoop(t *testing.T) {
 	if err := json.Unmarshal(stdout.Bytes(), &result); err != nil {
 		t.Fatal(err)
 	}
-	if result.SchemaVersion != "prc.remediation-run/v0.4" || len(result.Candidates) != 2 ||
+	if result.SchemaVersion != "prc.remediation-run/v0.5" || len(result.Candidates) != 2 || len(result.Attempts) != 2 ||
 		result.ProviderExecutions == nil || len(result.ProviderExecutions) != 0 ||
 		result.TerminalState != "machine_work_complete" || !result.OriginalUnchanged {
 		t.Fatalf("unexpected remediation run: %+v", result)

@@ -184,8 +184,8 @@ class ScannerOutputSchemaTests(unittest.TestCase):
 
     def test_versioned_run_contracts_pin_their_dependency_graph(self) -> None:
         roots = [
-            *(f"run-result-v0.{version}.schema.json" for version in range(1, 9)),
-            *(f"remediation-run-v0.{version}.schema.json" for version in range(1, 4)),
+            *(f"run-result-v0.{version}.schema.json" for version in range(1, 10)),
+            *(f"remediation-run-v0.{version}.schema.json" for version in range(1, 5)),
         ]
         pending = list(roots)
         visited: set[str] = set()
@@ -719,7 +719,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             [],
         )
         remediation_run = {
-            "schema_version": "prc.remediation-run/v0.4",
+            "schema_version": "prc.remediation-run/v0.5",
             "run_id": digest,
             "started_at": "2026-08-23T12:00:00Z",
             "completed_at": "2026-08-23T12:00:01Z",
@@ -733,6 +733,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "max_files": 20,
             "max_changed_lines": 200,
             "usage": {"attempts": 0, "changed_files": 0, "changed_lines": 0},
+            "attempts": [],
             "candidates": [],
             "provider_executions": [],
             "final_run": final_run,
@@ -744,6 +745,60 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         self.assertEqual(
             validate_instance.validation_errors(
                 remediation_run, "remediation-run.schema.json"
+            ),
+            [],
+        )
+
+        attempt = {
+            "attempt": 1,
+            "mode": "deterministic",
+            "assertion_id": "PRC-A-CORE-014",
+            "finding_id": digest,
+            "finding_fingerprint": digest,
+            "task_id": digest,
+            "started_at": "2026-08-23T12:00:00Z",
+            "completed_at": "2026-08-23T12:00:01Z",
+            "before_inventory_digest": digest,
+            "after_inventory_digest": digest,
+            "candidate_id": digest,
+            "outcome": "accepted",
+            "reason_code": "accepted",
+            "reason": "Candidate passed independent scanner verification.",
+        }
+        audited_remediation_run = {
+            **remediation_run,
+            "usage": {"attempts": 1, "changed_files": 1, "changed_lines": 1},
+            "attempts": [attempt],
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(
+                audited_remediation_run, "remediation-run.schema.json"
+            ),
+            [],
+        )
+        invalid_attempt = {**attempt, "outcome": "rejected"}
+        self.assertTrue(
+            validate_instance.validation_errors(
+                {**audited_remediation_run, "attempts": [invalid_attempt]},
+                "remediation-run.schema.json",
+            )
+        )
+
+        v04_remediation_run = {
+            **remediation_run,
+            "schema_version": "prc.remediation-run/v0.4",
+        }
+        del v04_remediation_run["attempts"]
+        self.assertEqual(
+            validate_instance.validation_errors(
+                v04_remediation_run, "remediation-run-v0.4.schema.json"
+            ),
+            [],
+        )
+
+        self.assertEqual(
+            validate_instance.validation_errors(
+                final_run, "run-result-v0.9.schema.json"
             ),
             [],
         )
@@ -774,6 +829,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "schema_version": "prc.remediation-run/v0.3",
             "final_run": v07_run,
         }
+        del v03_remediation_run["attempts"]
         self.assertEqual(
             validate_instance.validation_errors(
                 v03_remediation_run, "remediation-run-v0.3.schema.json"
@@ -900,6 +956,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "final_run": legacy_final_run,
         }
         del legacy_remediation_run["provider_executions"]
+        del legacy_remediation_run["attempts"]
         self.assertEqual(
             validate_instance.validation_errors(
                 legacy_remediation_run, "remediation-run-v0.1.schema.json"
@@ -919,6 +976,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "schema_version": "prc.remediation-run/v0.2",
             "final_run": v05_run,
         }
+        del v02_remediation_run["attempts"]
         self.assertEqual(
             validate_instance.validation_errors(
                 v02_remediation_run, "remediation-run-v0.2.schema.json"

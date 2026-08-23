@@ -66,6 +66,7 @@ func RunLoop(options LoopOptions) (RemediationRun, error) {
 		return RemediationRun{}, err
 	}
 	candidates := []Candidate{}
+	attemptRecords := []AttemptRecord{}
 	providerExecutions := []provider.Execution{}
 	usage := BudgetUsage{}
 	stopReasons := []string{}
@@ -107,6 +108,15 @@ func RunLoop(options LoopOptions) (RemediationRun, error) {
 			break
 		}
 		attempt := usage.Attempts + 1
+		finding, ok := findingFor(activeRun, assertionID)
+		if !ok {
+			return RemediationRun{}, fmt.Errorf("failed assertion %s has no canonical finding", assertionID)
+		}
+		attemptRecord := AttemptRecord{
+			Attempt: attempt, Mode: mode, AssertionID: assertionID,
+			FindingID: finding.ID, FindingFingerprint: finding.Fingerprint,
+			StartedAt: options.Now().UTC(), BeforeInventoryDigest: activeInventory.Digest,
+		}
 		destination := filepath.Join(candidateRoot, fmt.Sprintf("attempt-%03d", attempt))
 		lineAllowance := remainingLines
 		if lineAllowance < 1 {
@@ -123,7 +133,11 @@ func RunLoop(options LoopOptions) (RemediationRun, error) {
 			if err != nil {
 				return RemediationRun{}, err
 			}
+			attemptRecord.TaskID = candidate.Contract.TaskID
+			attemptRecord.FindingID = candidate.Contract.FindingID
+			attemptRecord.FindingFingerprint = candidate.Contract.FindingFingerprint
 		} else {
+			attemptRecord.TaskID = agentTask.TaskID
 			outputDirectory := filepath.Join(candidateRoot, fmt.Sprintf("attempt-%03d-provider", attempt))
 			if err := os.Mkdir(outputDirectory, 0o700); err != nil {
 				return RemediationRun{}, fmt.Errorf("create provider output directory: %w", err)
@@ -144,8 +158,14 @@ func RunLoop(options LoopOptions) (RemediationRun, error) {
 				return RemediationRun{}, providerExecution(err)
 			}
 			providerExecutions = append(providerExecutions, execution)
+			attemptRecord.ProviderExecutionID = execution.ExecutionID
 			usage.Attempts++
 			if execution.Output.Status != "candidate" {
+				attemptRecord.CompletedAt = options.Now().UTC()
+				attemptRecord.Outcome = "provider_stopped"
+				attemptRecord.ReasonCode = "provider_" + execution.Output.Status
+				attemptRecord.Reason = "Provider returned " + execution.Output.Status + " without a candidate patch."
+				attemptRecords = append(attemptRecords, attemptRecord)
 				stoppedAssertion, stoppedCode = assertionID, "provider_stopped"
 				stopReasons = append(stopReasons, "The provider returned "+execution.Output.Status+"; the loop stopped without applying a patch.")
 				break
@@ -159,14 +179,22 @@ func RunLoop(options LoopOptions) (RemediationRun, error) {
 			})
 			if err != nil {
 				if IsPolicyDenied(err) {
+					attemptRecord.CompletedAt = options.Now().UTC()
+					attemptRecord.Outcome = "rejected"
+					attemptRecord.ReasonCode = proposalPolicyReasonCode(err)
+					attemptRecord.Reason = err.Error()
+					attemptRecords = append(attemptRecords, attemptRecord)
 					stoppedAssertion, stoppedCode = assertionID, "candidate_rejected"
-					stopReasons = append(stopReasons, "The provider proposal was rejected by scanner policy; the loop did not retry or create a candidate.")
+					stopReasons = append(stopReasons, "Provider proposal rejected by scanner policy: "+err.Error())
 					break
 				}
 				return RemediationRun{}, err
 			}
 		}
 		candidates = append(candidates, candidate)
+		attemptRecord.CompletedAt = options.Now().UTC()
+		attemptRecord.CandidateID = candidate.CandidateID
+		attemptRecord.AfterInventoryDigest = candidate.CandidateInventoryDigest
 		if mode == "deterministic" {
 			usage.Attempts++
 		}
@@ -175,10 +203,18 @@ func RunLoop(options LoopOptions) (RemediationRun, error) {
 			usage.ChangedLines += change.AddedLines + change.RemovedLines
 		}
 		if !candidate.Accepted {
+			attemptRecord.Outcome = "rejected"
+			attemptRecord.ReasonCode = "verification_rejected"
+			attemptRecord.Reason = candidateRejectionReason(candidate)
+			attemptRecords = append(attemptRecords, attemptRecord)
 			stoppedAssertion, stoppedCode = assertionID, "candidate_rejected"
 			stopReasons = append(stopReasons, "The independently verified candidate was rejected; the loop did not retry or advance its source workspace.")
 			break
 		}
+		attemptRecord.Outcome = "accepted"
+		attemptRecord.ReasonCode = "accepted"
+		attemptRecord.Reason = "Candidate passed independent scanner verification."
+		attemptRecords = append(attemptRecords, attemptRecord)
 		activeTarget = candidate.CandidatePath
 		activeConfiguration = rebasedConfiguration(options.Configuration, policy.configRelative, activeTarget)
 		activeInventory, err = inventory.Build(activeTarget)
@@ -222,15 +258,39 @@ func RunLoop(options LoopOptions) (RemediationRun, error) {
 		SourceInventoryDigest: original.Digest, CandidateRoot: candidateRoot, ResultWorkspace: activeTarget,
 		FinalInventoryDigest: activeInventory.Digest, OriginalUnchanged: true,
 		MaxAttempts: policy.maxAttempts, MaxFiles: policy.maxFiles, MaxChangedLines: policy.maxChangedLines,
-		Usage: usage, Candidates: candidates, ProviderExecutions: providerExecutions,
+		Usage: usage, Attempts: attemptRecords, Candidates: candidates, ProviderExecutions: providerExecutions,
 		FinalRun: activeRun, GateState: activeRun.TerminalState,
 		TerminalState: terminalState, Remaining: remaining, StopReasons: uniqueSorted(stopReasons),
+	}
+	if err := validateAttemptAudit(result); err != nil {
+		return RemediationRun{}, err
 	}
 	result.RunID, err = remediationRunID(result)
 	if err != nil {
 		return RemediationRun{}, err
 	}
 	return result, nil
+}
+
+func proposalPolicyReasonCode(err error) string {
+	message := strings.ToLower(err.Error())
+	switch {
+	case strings.Contains(message, "anti-gaming audit"):
+		return "anti_gaming_rejected"
+	case strings.Contains(message, "outside the r2 fix contract") || strings.Contains(message, "protected path"):
+		return "scope_rejected"
+	case strings.Contains(message, "budget") || strings.Contains(message, "line contract") || strings.Contains(message, "file contract"):
+		return "budget_rejected"
+	default:
+		return "policy_rejected"
+	}
+}
+
+func candidateRejectionReason(candidate Candidate) string {
+	if len(candidate.Reasons) == 0 {
+		return "Candidate failed independent scanner verification."
+	}
+	return strings.Join(candidate.Reasons, " ")
 }
 
 func prepareCandidateContainer(targetRoot, destination string) (string, error) {

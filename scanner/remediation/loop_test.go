@@ -31,8 +31,15 @@ func TestRunLoopClosesAllRegisteredR1FindingsInIsolatedCandidates(t *testing.T) 
 		t.Fatal(err)
 	}
 	if len(result.Candidates) != 2 || result.Usage.Attempts != 2 || result.Usage.ChangedFiles != 2 ||
-		result.Usage.ChangedLines != 1 || !result.OriginalUnchanged || result.TerminalState != "machine_work_complete" {
+		result.Usage.ChangedLines != 1 || len(result.Attempts) != 2 || !result.OriginalUnchanged ||
+		result.TerminalState != "machine_work_complete" {
 		t.Fatalf("unexpected loop result: %+v", result)
+	}
+	if result.Attempts[0].Mode != "deterministic" || result.Attempts[0].Outcome != "accepted" ||
+		result.Attempts[0].CandidateID != result.Candidates[0].CandidateID ||
+		result.Attempts[1].BeforeInventoryDigest != result.Candidates[0].CandidateInventoryDigest ||
+		result.Attempts[1].CandidateID != result.Candidates[1].CandidateID {
+		t.Fatalf("attempt audit linkage is incomplete: %+v", result.Attempts)
 	}
 	if result.FinalRun.Inventory.TargetName != filepath.Base(target) {
 		t.Fatalf("candidate changed logical target name to %q", result.FinalRun.Inventory.TargetName)
@@ -72,6 +79,12 @@ func TestRunLoopClosesAllRegisteredR1FindingsInIsolatedCandidates(t *testing.T) 
 	wantID, err := remediationRunID(result)
 	if err != nil || wantID != result.RunID {
 		t.Fatalf("run identity mismatch: %v %s", err, wantID)
+	}
+	tampered := result
+	tampered.Attempts = append([]AttemptRecord(nil), result.Attempts...)
+	tampered.Attempts[1].BeforeInventoryDigest = result.SourceInventoryDigest
+	if err := validateAttemptAudit(tampered); err == nil || !strings.Contains(err.Error(), "identity, ordering") {
+		t.Fatalf("attempt-chain tampering was accepted: %v", err)
 	}
 }
 
@@ -151,7 +164,8 @@ func TestRunLoopReportsMachineWorkCompleteWithoutCandidates(t *testing.T) {
 		t.Fatal(err)
 	}
 	if result.TerminalState != "machine_work_complete" || len(result.Candidates) != 0 ||
-		result.Candidates == nil || result.Remaining == nil || result.StopReasons == nil || result.ResultWorkspace != resolvedTarget {
+		result.Attempts == nil || len(result.Attempts) != 0 || result.Candidates == nil || result.Remaining == nil ||
+		result.StopReasons == nil || result.ResultWorkspace != resolvedTarget {
 		t.Fatalf("unexpected no-op loop state: terminal=%s candidates=%d workspace=%s",
 			result.TerminalState, len(result.Candidates), result.ResultWorkspace)
 	}
