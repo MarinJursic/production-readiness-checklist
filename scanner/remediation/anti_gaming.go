@@ -66,6 +66,7 @@ func auditProposalAntiGaming(baseline model.Inventory, output provider.Output) [
 		if !testdiscovery.HasBehaviorCheck(file.path, content) {
 			reasons = append(reasons, "Proposal adds test file "+file.path+" without a recognized behavioral assertion or failure check.")
 		}
+		reasons = append(reasons, auditTestPayload(file.path, content)...)
 	}
 	for _, line := range added {
 		if suppressionDirective.MatchString(line) {

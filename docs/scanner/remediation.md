@@ -254,8 +254,13 @@ acceptance. A conservative anti-gaming pass also rejects changes to existing tes
 or specification files, newly introduced suppression or skip directives,
 constant assertions, empty Go tests, test-shaped files without a collectable
 declaration, and invocation-only tests without a recognized behavioral failure
-check before creating a candidate. New focused tests remain permitted. The
-raw-tree, byte, mode, target assertion, baseline
+check. Language-aware payload rules also reject generated tests that request
+process or shell execution, network clients, environment or secret access,
+filesystem mutation or absolute-path reads, dynamic evaluation, deserialization
+execution, or long encoded payloads before creating a candidate. New focused
+local assertions remain permitted. The payload audit is deliberately
+conservative and syntactic; the independent sandbox remains the containment
+boundary for obfuscation or parser gaps. The raw-tree, byte, mode, target assertion, baseline
 regression, and source-integrity audits then run from fresh inventories.
 
 Current R2 acceptance proves the declared deterministic scanner postcondition,

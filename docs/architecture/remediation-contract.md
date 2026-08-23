@@ -106,5 +106,8 @@ be accepted without a separate digest-pinned OCI verifier. The scanner, not the
 provider or repository, selects the Go, Python, or plain-JavaScript test argv;
 the read-only
 candidate runs without network, privileges, secrets, or host-write access and
-with bounded resources and output. General R2 repair planning, TypeScript
+with bounded resources and output. Before the candidate exists, a separate
+language-aware payload audit rejects new tests that request process, network,
+environment, filesystem-mutation, absolute-path, dynamic-evaluation, or encoded
+payload capabilities that the focused task does not need. General R2 repair planning, TypeScript
 verification, merges, deployments, and releases remain unimplemented.

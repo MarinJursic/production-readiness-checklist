@@ -448,6 +448,60 @@ func TestProposalAntiGamingAllowsFocusedBehavioralTest(t *testing.T) {
 	}
 }
 
+func TestTestPayloadAuditRejectsExecutableCapabilities(t *testing.T) {
+	tests := []struct {
+		path     string
+		content  string
+		category string
+	}{
+		{"test_app.py", "import subprocess\n\ndef test_ready():\n    assert subprocess.run(['true']).returncode == 0\n", "process execution"},
+		{"test_app.py", "import requests\n\ndef test_ready():\n    assert requests.get('https://example.test').ok\n", "network access"},
+		{"app.test.js", "const test = require('node:test');\nconst fs = require('node:fs');\ntest('ready', () => fs.writeFileSync('/tmp/x', 'x'));\n", "filesystem access"},
+		{"app_test.go", "package app\nimport (\"os\"; \"testing\")\nfunc TestReady(t *testing.T) { if os.Getenv(\"TOKEN\") == \"\" { t.Fail() } }\n", "environment access"},
+		{"app_test.py", "def test_ready():\n    assert eval('1 + 1') == 2\n", "dynamic or encoded"},
+	}
+	for _, test := range tests {
+		t.Run(test.path+"-"+test.category, func(t *testing.T) {
+			reasons := strings.Join(auditTestPayload(test.path, []byte(test.content)), " ")
+			if !strings.Contains(reasons, test.category) {
+				t.Fatalf("payload category %q was missed: %s", test.category, reasons)
+			}
+		})
+	}
+}
+
+func TestTestPayloadAuditAllowsFocusedLocalAssertions(t *testing.T) {
+	for path, content := range map[string]string{
+		"app_test.py": "from app import ready\n\ndef test_ready():\n    assert ready() is True\n",
+		"app.test.js": "const test = require('node:test');\nconst assert = require('node:assert/strict');\ntest('ready', () => assert.equal(2 + 2, 4));\n",
+		"app_test.go": "package app\nimport \"testing\"\nfunc TestReady(t *testing.T) { if !ready() { t.Fail() } }\n",
+	} {
+		if reasons := auditTestPayload(path, []byte(content)); len(reasons) != 0 {
+			t.Fatalf("focused %s test was rejected: %v", path, reasons)
+		}
+	}
+}
+
+func TestRunProposalRejectsExecutableTestPayloadBeforeCandidateOrVerifier(t *testing.T) {
+	target := proposalTarget(t)
+	task := sealedProposalTask(t, target, []string{"app_test.py"}, defaultProposalProtectedPaths())
+	patch := "diff --git a/app_test.py b/app_test.py\n" +
+		"new file mode 100644\n--- /dev/null\n+++ b/app_test.py\n" +
+		"@@ -0,0 +1,5 @@\n+import subprocess\n+from app import ready\n+\n+def test_ready():\n+    assert subprocess.run(['true']).returncode == 0 and ready() is True\n"
+	candidatePath := filepath.Join(t.TempDir(), "candidate")
+	_, err := RunProposal(ProposalOptions{
+		CatalogRoot: testCatalogRoot(t), Target: target, CandidateDir: candidatePath,
+		Provider: "codex", Task: task, Output: proposalOutput(task, "app_test.py", patch),
+		MaxFiles: 2, MaxChangedLines: 10,
+	})
+	if err == nil || !IsPolicyDenied(err) || !strings.Contains(err.Error(), "prohibited process execution") {
+		t.Fatalf("unexpected executable-payload result: %v", err)
+	}
+	if _, statErr := os.Stat(candidatePath); !os.IsNotExist(statErr) {
+		t.Fatal("executable payload created a candidate workspace")
+	}
+}
+
 func TestApplyProviderPatchModifiesOnlyMatchingText(t *testing.T) {
 	target := t.TempDir()
 	writeTestFile(t, target, "app.py", "def ready():\n    return False\n")
