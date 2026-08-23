@@ -1,5 +1,5 @@
 schema_version: prc.assertions/v0.1
-catalog_version: 0.8.0
+catalog_version: 0.9.0
 assertions:
   - id: PRC-A-CORE-001
     revision: 2
@@ -450,7 +450,7 @@ assertions:
       - kind: kubernetes-parse
         minimum_authority: repository
         description: Parsed pod and container security contexts from detected workload resources.
-    implementation_id: prc.native.kubernetes-nonroot@0.1
+    implementation_id: prc.native.kubernetes-nonroot@0.2
     parameters: {}
     severity: high
     gate: required
@@ -465,9 +465,69 @@ assertions:
       - kind: kubernetes-parse
         minimum_authority: repository
         description: Parsed resource requests and limits from detected workload containers.
-    implementation_id: prc.native.kubernetes-resources@0.1
+    implementation_id: prc.native.kubernetes-resources@0.2
     parameters: {}
     severity: high
+    gate: required
+    remediation_class: R2
+  - id: PRC-A-K8S-001
+    revision: 1
+    control_ids: [USEQ-A3559C64]
+    title: Kubernetes workloads avoid privileged host access
+    statement: Detected Kubernetes workloads leave host namespace and HostProcess sharing disabled, declare no hostPath volumes, and do not run privileged containers.
+    applicability: inventory.infrastructure.kubernetes_files.size() > 0
+    evidence_required:
+      - kind: kubernetes-parse
+        minimum_authority: repository
+        description: Bounded parsing of pod, volume, and container host-access fields in detected workload resources.
+    implementation_id: prc.native.kubernetes-host-access@0.1
+    parameters: {}
+    severity: high
+    gate: required
+    remediation_class: R2
+  - id: PRC-A-K8S-002
+    revision: 1
+    control_ids: [USEQ-A3559C64]
+    title: Kubernetes Linux containers disable privilege escalation
+    statement: Every ordinary, init, and ephemeral container in a detected Linux Kubernetes workload explicitly sets allowPrivilegeEscalation to false.
+    applicability: inventory.infrastructure.kubernetes_files.size() > 0
+    evidence_required:
+      - kind: kubernetes-parse
+        minimum_authority: repository
+        description: Bounded parsing of container privilege-escalation fields in detected Linux workload resources.
+    implementation_id: prc.native.kubernetes-privilege-escalation@0.1
+    parameters: {}
+    severity: high
+    gate: required
+    remediation_class: R2
+  - id: PRC-A-K8S-003
+    revision: 1
+    control_ids: [USEQ-A3559C64]
+    title: Kubernetes Linux containers restrict capabilities
+    statement: Every ordinary, init, and ephemeral container in a detected Linux Kubernetes workload drops ALL capabilities and adds back at most NET_BIND_SERVICE.
+    applicability: inventory.infrastructure.kubernetes_files.size() > 0
+    evidence_required:
+      - kind: kubernetes-parse
+        minimum_authority: repository
+        description: Bounded parsing of container capability add and drop lists in detected Linux workload resources.
+    implementation_id: prc.native.kubernetes-capabilities@0.1
+    parameters: {}
+    severity: high
+    gate: required
+    remediation_class: R2
+  - id: PRC-A-K8S-004
+    revision: 1
+    control_ids: [USEQ-A3559C64]
+    title: Kubernetes Linux containers use bounded seccomp profiles
+    statement: Every ordinary, init, and ephemeral container in a detected Linux Kubernetes workload inherits or selects a RuntimeDefault or Localhost seccomp profile.
+    applicability: inventory.infrastructure.kubernetes_files.size() > 0
+    evidence_required:
+      - kind: kubernetes-parse
+        minimum_authority: repository
+        description: Bounded parsing of pod and container seccomp profile types in detected Linux workload resources.
+    implementation_id: prc.native.kubernetes-seccomp@0.1
+    parameters: {}
+    severity: medium
     gate: required
     remediation_class: R2
   - id: PRC-A-CORE-031

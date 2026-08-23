@@ -73,7 +73,7 @@ func TestComprehensiveCoreBenchmarkCoversEveryCatalogAssertion(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if !report.Passed || report.Summary.Cases != 31 || report.Summary.Expectations != 127 ||
+	if !report.Passed || report.Summary.Cases != 31 || report.Summary.Expectations != 139 ||
 		report.Summary.Mismatched != 0 || report.Summary.DeterministicCases != report.Summary.Cases ||
 		report.Metrics.Precision != 1 || report.Metrics.Recall != 1 || report.Metrics.FalsePositiveRate != 0 {
 		t.Fatalf("comprehensive benchmark report = %+v", report)
@@ -102,7 +102,7 @@ func TestCheckedInBenchmarkSourcesAreNonViolating(t *testing.T) {
 	for _, assertionID := range []string{
 		"PRC-A-CORE-026", "PRC-A-CORE-027", "PRC-A-CORE-028",
 		"PRC-A-CORE-029", "PRC-A-CORE-030", "PRC-A-CORE-031", "PRC-A-GO-001",
-		"PRC-A-GO-002",
+		"PRC-A-GO-002", "PRC-A-K8S-001", "PRC-A-K8S-002", "PRC-A-K8S-003", "PRC-A-K8S-004",
 		"PRC-A-API-001", "PRC-A-API-002", "PRC-A-API-003",
 	} {
 		if results[assertionID] != "pass" {

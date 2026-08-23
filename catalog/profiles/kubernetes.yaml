@@ -1,0 +1,15 @@
+schema_version: prc.profile/v0.1
+id: prc/kubernetes
+version: "0.1"
+title: Kubernetes workload readiness
+description: Bounded repository analysis of workload security contexts and resource declarations against selected Kubernetes Pod Security Standards.
+assertion_ids:
+  - PRC-A-CORE-029
+  - PRC-A-CORE-030
+  - PRC-A-K8S-001
+  - PRC-A-K8S-002
+  - PRC-A-K8S-003
+  - PRC-A-K8S-004
+terminal_policy:
+  block_on: [critical, high]
+  allow_manual_remaining: true

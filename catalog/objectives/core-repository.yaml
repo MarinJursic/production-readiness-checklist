@@ -1,5 +1,5 @@
 schema_version: prc.objectives/v0.1
-catalog_version: 0.8.0
+catalog_version: 0.9.0
 objectives:
   - id: USEQ-FDCA6C71
     revision: 1
@@ -200,7 +200,7 @@ objectives:
       line: 273
     domains: [containers, kubernetes, security]
     automation_class: partial
-    assertion_ids: [PRC-A-CORE-027, PRC-A-CORE-029]
+    assertion_ids: [PRC-A-CORE-027, PRC-A-CORE-029, PRC-A-K8S-001, PRC-A-K8S-002, PRC-A-K8S-003, PRC-A-K8S-004]
   - id: USEQ-13CBD6C6
     revision: 1
     title: Workload resource policy

@@ -28,6 +28,7 @@ const (
 	maximumSensitiveMaterialBytes     = 256 * 1024 * 1024
 	maximumSensitiveMaterialFileBytes = 8 * 1024 * 1024
 	maximumSensitiveLocations         = 100
+	maximumKubernetesProblems         = 100
 )
 
 var (
@@ -749,12 +750,77 @@ func kubernetesDocuments(data []byte) ([]*yaml.Node, error) {
 		if len(document.Content) == 0 {
 			continue
 		}
+		if err := validateKubernetesYAMLShape(&document); err != nil {
+			return nil, err
+		}
 		documents = append(documents, &document)
 	}
 }
 
+func validateKubernetesYAMLShape(root *yaml.Node) error {
+	type pendingNode struct {
+		node  *yaml.Node
+		depth int
+	}
+	stack := []pendingNode{{node: root}}
+	visited := 0
+	for len(stack) > 0 {
+		current := stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
+		visited++
+		if visited > 100_000 || current.depth > 128 {
+			return fmt.Errorf("YAML structure exceeds the bounded node or nesting limit")
+		}
+		if current.node.Kind == yaml.AliasNode {
+			return fmt.Errorf("YAML aliases are outside the bounded Kubernetes manifest parser")
+		}
+		if current.node.Kind == yaml.MappingNode {
+			seen := map[string]bool{}
+			for index := 0; index+1 < len(current.node.Content); index += 2 {
+				key, value := current.node.Content[index], current.node.Content[index+1]
+				if key.Kind != yaml.ScalarNode || key.Tag != "!!str" {
+					return fmt.Errorf("mapping key at %d:%d must be a scalar string", key.Line, key.Column)
+				}
+				if seen[key.Value] {
+					return fmt.Errorf("duplicate mapping key %s at %d:%d", key.Value, key.Line, key.Column)
+				}
+				seen[key.Value] = true
+				stack = append(stack, pendingNode{node: value, depth: current.depth + 1})
+			}
+			continue
+		}
+		for _, child := range current.node.Content {
+			stack = append(stack, pendingNode{node: child, depth: current.depth + 1})
+		}
+	}
+	return nil
+}
+
 func boolTrue(node *yaml.Node) bool {
-	return node != nil && node.Kind == yaml.ScalarNode && strings.EqualFold(node.Value, "true")
+	value, valid := yamlBoolean(node)
+	return valid && value
+}
+
+func yamlBoolean(node *yaml.Node) (bool, bool) {
+	if node == nil || node.Kind != yaml.ScalarNode || node.Tag != "!!bool" {
+		return false, false
+	}
+	switch node.Value {
+	case "true":
+		return true, true
+	case "false":
+		return false, true
+	default:
+		return false, false
+	}
+}
+
+func absentOrFalse(node *yaml.Node) bool {
+	if node == nil || (node.Kind == yaml.ScalarNode && node.Tag == "!!null") {
+		return true
+	}
+	value, valid := yamlBoolean(node)
+	return valid && !value
 }
 
 func userZero(node *yaml.Node) bool {
@@ -767,6 +833,14 @@ func containerSequences(podSpec *yaml.Node) []*yaml.Node {
 		if sequence := mappingValue(podSpec, key); sequence != nil && sequence.Kind == yaml.SequenceNode {
 			sequences = append(sequences, sequence)
 		}
+	}
+	return sequences
+}
+
+func securityContainerSequences(podSpec *yaml.Node) []*yaml.Node {
+	sequences := containerSequences(podSpec)
+	if sequence := mappingValue(podSpec, "ephemeralContainers"); sequence != nil && sequence.Kind == yaml.SequenceNode {
+		sequences = append(sequences, sequence)
 	}
 	return sequences
 }
@@ -794,7 +868,7 @@ func evaluateKubernetesNonRoot(assertion model.Assertion, inventory model.Invent
 			podSecurity := mappingValue(podSpec, "securityContext")
 			podNonRoot := boolTrue(mappingValue(podSecurity, "runAsNonRoot"))
 			podUserZero := userZero(mappingValue(podSecurity, "runAsUser"))
-			sequences := containerSequences(podSpec)
+			sequences := securityContainerSequences(podSpec)
 			containerCount := 0
 			valid := !podUserZero
 			for _, sequence := range sequences {
@@ -819,6 +893,309 @@ func evaluateKubernetesNonRoot(assertion model.Assertion, inventory model.Invent
 	result.Assessment = "pass"
 	result.Summary = fmt.Sprintf("All %d detected Kubernetes workloads affirmatively require non-root containers.", workloads)
 	return result
+}
+
+type kubernetesProblem struct {
+	Path    string
+	Line    int
+	Column  int
+	Message string
+}
+
+func appendKubernetesProblem(problems *[]kubernetesProblem, path string, node *yaml.Node, message string) {
+	line, column := 1, 1
+	if node != nil {
+		if node.Line > 0 {
+			line = node.Line
+		}
+		if node.Column > 0 {
+			column = node.Column
+		}
+	}
+	*problems = append(*problems, kubernetesProblem{Path: path, Line: line, Column: column, Message: message})
+}
+
+func applyKubernetesProblems(result model.AssertionResult, problems []kubernetesProblem, success, kind string) model.AssertionResult {
+	if len(problems) == 0 {
+		result.Assessment = "pass"
+		result.Summary = success
+		return result
+	}
+	reported := problems
+	if len(reported) > maximumKubernetesProblems {
+		reported = reported[:maximumKubernetesProblems]
+	}
+	messages := make([]string, 0, len(reported))
+	locations := map[string]bool{}
+	for _, problem := range reported {
+		messages = append(messages, fmt.Sprintf("%s:%d:%d (%s)", problem.Path, problem.Line, problem.Column, problem.Message))
+		key := fmt.Sprintf("%s:%d:%d", problem.Path, problem.Line, problem.Column)
+		if !locations[key] {
+			locations[key] = true
+			result.Locations = append(result.Locations, model.FindingLocation{
+				Path: problem.Path, Line: problem.Line, Column: problem.Column,
+			})
+		}
+	}
+	result.Assessment = "fail"
+	result.Summary = fmt.Sprintf("Detected %d Kubernetes %s problem(s); reporting up to %d: %s.",
+		len(problems), kind, maximumKubernetesProblems, strings.Join(messages, ", "))
+	return result
+}
+
+func kubernetesWorkloadLabel(path string, documentIndex int, kind string) string {
+	return fmt.Sprintf("%s#document-%d(%s)", path, documentIndex+1, kind)
+}
+
+func nodeOr(node, fallback *yaml.Node) *yaml.Node {
+	if node != nil {
+		return node
+	}
+	return fallback
+}
+
+func allSecurityContainers(podSpec *yaml.Node) []*yaml.Node {
+	containers := make([]*yaml.Node, 0)
+	for _, sequence := range securityContainerSequences(podSpec) {
+		containers = append(containers, sequence.Content...)
+	}
+	return containers
+}
+
+func windowsWorkload(podSpec *yaml.Node) bool {
+	return nodeScalar(mappingPath(podSpec, "os", "name")) == "windows"
+}
+
+func evaluateKubernetesHostAccess(assertion model.Assertion, inventory model.Inventory, result model.AssertionResult, observedAt time.Time) model.AssertionResult {
+	problems := make([]kubernetesProblem, 0)
+	workloads := 0
+	for _, relative := range inventory.Infrastructure.KubernetesFiles {
+		data, evidence, err := readVerifiedEvidence(inventory, relative, "kubernetes-parse", assertion.ImplementationID,
+			"Parsed Kubernetes workload host namespace, volume, and privileged-container fields.", observedAt)
+		if err != nil {
+			return nativeReadFailure(result, err)
+		}
+		documents, err := kubernetesDocuments(data)
+		if err != nil {
+			return nativeReadFailure(result, fmt.Errorf("cannot parse %s: %w", relative, err))
+		}
+		result.EvidenceObserved = append(result.EvidenceObserved, evidence)
+		for documentIndex, document := range documents {
+			podSpec, kind := kubernetesPodSpec(document)
+			if podSpec == nil {
+				continue
+			}
+			workloads++
+			label := kubernetesWorkloadLabel(relative, documentIndex, kind)
+			for _, field := range []string{"hostNetwork", "hostPID", "hostIPC"} {
+				node := mappingValue(podSpec, field)
+				if !absentOrFalse(node) {
+					appendKubernetesProblem(&problems, relative, node, label+" must leave "+field+" unset or false")
+				}
+			}
+			podHostProcess := mappingPath(podSpec, "securityContext", "windowsOptions", "hostProcess")
+			if !absentOrFalse(podHostProcess) {
+				appendKubernetesProblem(&problems, relative, podHostProcess, label+" must leave pod hostProcess unset or false")
+			}
+			volumes := mappingValue(podSpec, "volumes")
+			if volumes != nil && volumes.Kind == yaml.ScalarNode && volumes.Tag == "!!null" {
+				volumes = nil
+			}
+			if volumes != nil && volumes.Kind != yaml.SequenceNode {
+				appendKubernetesProblem(&problems, relative, volumes, label+" volumes must be a list")
+			} else if volumes != nil {
+				for _, volume := range volumes.Content {
+					if hostPath := mappingValue(volume, "hostPath"); hostPath != nil {
+						appendKubernetesProblem(&problems, relative, hostPath, label+" must not declare a hostPath volume")
+					}
+				}
+			}
+			containers := allSecurityContainers(podSpec)
+			if len(containers) == 0 {
+				appendKubernetesProblem(&problems, relative, podSpec, label+" has no recognized containers")
+			}
+			for _, container := range containers {
+				name := nodeScalar(mappingValue(container, "name"))
+				security := mappingValue(container, "securityContext")
+				privileged := mappingValue(security, "privileged")
+				if !absentOrFalse(privileged) {
+					appendKubernetesProblem(&problems, relative, privileged, label+" container "+name+" must leave privileged unset or false")
+				}
+				hostProcess := mappingPath(security, "windowsOptions", "hostProcess")
+				if !absentOrFalse(hostProcess) {
+					appendKubernetesProblem(&problems, relative, hostProcess, label+" container "+name+" must leave hostProcess unset or false")
+				}
+			}
+		}
+	}
+	return applyKubernetesProblems(result, problems,
+		fmt.Sprintf("All %d detected Kubernetes workloads avoid host namespaces, hostPath volumes, HostProcess, and privileged containers.", workloads),
+		"privileged-host-access")
+}
+
+func evaluateKubernetesPrivilegeEscalation(assertion model.Assertion, inventory model.Inventory, result model.AssertionResult, observedAt time.Time) model.AssertionResult {
+	problems := make([]kubernetesProblem, 0)
+	workloads, containers := 0, 0
+	for _, relative := range inventory.Infrastructure.KubernetesFiles {
+		data, evidence, err := readVerifiedEvidence(inventory, relative, "kubernetes-parse", assertion.ImplementationID,
+			"Parsed Kubernetes Linux container privilege-escalation policy.", observedAt)
+		if err != nil {
+			return nativeReadFailure(result, err)
+		}
+		documents, err := kubernetesDocuments(data)
+		if err != nil {
+			return nativeReadFailure(result, fmt.Errorf("cannot parse %s: %w", relative, err))
+		}
+		result.EvidenceObserved = append(result.EvidenceObserved, evidence)
+		for documentIndex, document := range documents {
+			podSpec, kind := kubernetesPodSpec(document)
+			if podSpec == nil || windowsWorkload(podSpec) {
+				continue
+			}
+			workloads++
+			label := kubernetesWorkloadLabel(relative, documentIndex, kind)
+			workloadContainers := allSecurityContainers(podSpec)
+			if len(workloadContainers) == 0 {
+				appendKubernetesProblem(&problems, relative, podSpec, label+" has no recognized containers")
+			}
+			for _, container := range workloadContainers {
+				containers++
+				name := nodeScalar(mappingValue(container, "name"))
+				node := mappingPath(container, "securityContext", "allowPrivilegeEscalation")
+				value, valid := yamlBoolean(node)
+				if !valid || value {
+					appendKubernetesProblem(&problems, relative, nodeOr(node, container), label+" container "+name+" must set allowPrivilegeEscalation to false")
+				}
+			}
+		}
+	}
+	return applyKubernetesProblems(result, problems,
+		fmt.Sprintf("All %d containers in %d detected Linux Kubernetes workloads disable privilege escalation.", containers, workloads),
+		"privilege-escalation")
+}
+
+func stringSequence(node *yaml.Node) ([]string, bool) {
+	if node == nil || node.Kind != yaml.SequenceNode {
+		return nil, false
+	}
+	values := make([]string, 0, len(node.Content))
+	for _, item := range node.Content {
+		if item.Kind != yaml.ScalarNode || item.Tag != "!!str" {
+			return nil, false
+		}
+		values = append(values, item.Value)
+	}
+	return values, true
+}
+
+func evaluateKubernetesCapabilities(assertion model.Assertion, inventory model.Inventory, result model.AssertionResult, observedAt time.Time) model.AssertionResult {
+	problems := make([]kubernetesProblem, 0)
+	workloads, containers := 0, 0
+	for _, relative := range inventory.Infrastructure.KubernetesFiles {
+		data, evidence, err := readVerifiedEvidence(inventory, relative, "kubernetes-parse", assertion.ImplementationID,
+			"Parsed Kubernetes Linux container capability policy.", observedAt)
+		if err != nil {
+			return nativeReadFailure(result, err)
+		}
+		documents, err := kubernetesDocuments(data)
+		if err != nil {
+			return nativeReadFailure(result, fmt.Errorf("cannot parse %s: %w", relative, err))
+		}
+		result.EvidenceObserved = append(result.EvidenceObserved, evidence)
+		for documentIndex, document := range documents {
+			podSpec, kind := kubernetesPodSpec(document)
+			if podSpec == nil || windowsWorkload(podSpec) {
+				continue
+			}
+			workloads++
+			label := kubernetesWorkloadLabel(relative, documentIndex, kind)
+			workloadContainers := allSecurityContainers(podSpec)
+			if len(workloadContainers) == 0 {
+				appendKubernetesProblem(&problems, relative, podSpec, label+" has no recognized containers")
+			}
+			for _, container := range workloadContainers {
+				containers++
+				name := nodeScalar(mappingValue(container, "name"))
+				capabilities := mappingPath(container, "securityContext", "capabilities")
+				dropNode := mappingValue(capabilities, "drop")
+				dropped, valid := stringSequence(dropNode)
+				dropsAll := false
+				for _, capability := range dropped {
+					if capability == "ALL" {
+						dropsAll = true
+					}
+				}
+				if !valid || !dropsAll {
+					appendKubernetesProblem(&problems, relative, nodeOr(dropNode, container), label+" container "+name+" must drop the ALL capability")
+				}
+				addNode := mappingValue(capabilities, "add")
+				if addNode != nil && !(addNode.Kind == yaml.ScalarNode && addNode.Tag == "!!null") {
+					added, addValid := stringSequence(addNode)
+					if !addValid {
+						appendKubernetesProblem(&problems, relative, addNode, label+" container "+name+" capabilities.add must be a string list")
+					} else {
+						for _, capability := range added {
+							if capability != "NET_BIND_SERVICE" {
+								appendKubernetesProblem(&problems, relative, addNode, label+" container "+name+" adds disallowed capability "+capability)
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	return applyKubernetesProblems(result, problems,
+		fmt.Sprintf("All %d containers in %d detected Linux Kubernetes workloads drop ALL capabilities and add back at most NET_BIND_SERVICE.", containers, workloads),
+		"capability-policy")
+}
+
+func allowedSeccompType(node *yaml.Node) bool {
+	return node != nil && node.Kind == yaml.ScalarNode && node.Tag == "!!str" &&
+		(node.Value == "RuntimeDefault" || node.Value == "Localhost")
+}
+
+func evaluateKubernetesSeccomp(assertion model.Assertion, inventory model.Inventory, result model.AssertionResult, observedAt time.Time) model.AssertionResult {
+	problems := make([]kubernetesProblem, 0)
+	workloads, containers := 0, 0
+	for _, relative := range inventory.Infrastructure.KubernetesFiles {
+		data, evidence, err := readVerifiedEvidence(inventory, relative, "kubernetes-parse", assertion.ImplementationID,
+			"Parsed Kubernetes Linux pod and container seccomp profiles.", observedAt)
+		if err != nil {
+			return nativeReadFailure(result, err)
+		}
+		documents, err := kubernetesDocuments(data)
+		if err != nil {
+			return nativeReadFailure(result, fmt.Errorf("cannot parse %s: %w", relative, err))
+		}
+		result.EvidenceObserved = append(result.EvidenceObserved, evidence)
+		for documentIndex, document := range documents {
+			podSpec, kind := kubernetesPodSpec(document)
+			if podSpec == nil || windowsWorkload(podSpec) {
+				continue
+			}
+			workloads++
+			label := kubernetesWorkloadLabel(relative, documentIndex, kind)
+			podType := mappingPath(podSpec, "securityContext", "seccompProfile", "type")
+			podAllowed := allowedSeccompType(podType)
+			workloadContainers := allSecurityContainers(podSpec)
+			if len(workloadContainers) == 0 {
+				appendKubernetesProblem(&problems, relative, podSpec, label+" has no recognized containers")
+			}
+			for _, container := range workloadContainers {
+				containers++
+				name := nodeScalar(mappingValue(container, "name"))
+				containerType := mappingPath(container, "securityContext", "seccompProfile", "type")
+				if containerType != nil && !allowedSeccompType(containerType) {
+					appendKubernetesProblem(&problems, relative, containerType, label+" container "+name+" selects a disallowed seccomp profile")
+				} else if containerType == nil && !podAllowed {
+					appendKubernetesProblem(&problems, relative, nodeOr(podType, container), label+" container "+name+" has no RuntimeDefault or Localhost seccomp profile")
+				}
+			}
+		}
+	}
+	return applyKubernetesProblems(result, problems,
+		fmt.Sprintf("All %d containers in %d detected Linux Kubernetes workloads inherit or select RuntimeDefault or Localhost seccomp.", containers, workloads),
+		"seccomp-policy")
 }
 
 func nonemptyMapping(node *yaml.Node) bool {

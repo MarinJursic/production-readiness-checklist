@@ -3,7 +3,7 @@
 `PRC-A-API-001` through `PRC-A-API-003` are language-neutral, no-execution
 checks for the bounded root and directly declared operation structure of
 detected OpenAPI YAML and JSON documents. They are available as the focused
-`prc/api@0.1` profile and as part of `prc/core-repository@0.8`. Inventory recognizes the
+`prc/api@0.1` profile and as part of `prc/core-repository@0.9`. Inventory recognizes the
 conventional `openapi.yaml`, `openapi.yml`, and `openapi.json` names, plus
 bounded YAML files with a top-level OpenAPI 3.x marker. Each detection is
 recorded as an `api-description` component and a sourced fact with an explicit

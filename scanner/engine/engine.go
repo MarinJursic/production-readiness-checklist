@@ -371,10 +371,18 @@ func (e *Engine) evaluate(
 		return evaluateContainerNonRoot(assertion, inventory, result, observedAt)
 	case "prc.native.terraform-lock@0.1":
 		return evaluateTerraformLocks(assertion, inventory, result, observedAt)
-	case "prc.native.kubernetes-nonroot@0.1":
+	case "prc.native.kubernetes-nonroot@0.2":
 		return evaluateKubernetesNonRoot(assertion, inventory, result, observedAt)
-	case "prc.native.kubernetes-resources@0.1":
+	case "prc.native.kubernetes-resources@0.2":
 		return evaluateKubernetesResources(assertion, inventory, result, observedAt)
+	case "prc.native.kubernetes-host-access@0.1":
+		return evaluateKubernetesHostAccess(assertion, inventory, result, observedAt)
+	case "prc.native.kubernetes-privilege-escalation@0.1":
+		return evaluateKubernetesPrivilegeEscalation(assertion, inventory, result, observedAt)
+	case "prc.native.kubernetes-capabilities@0.1":
+		return evaluateKubernetesCapabilities(assertion, inventory, result, observedAt)
+	case "prc.native.kubernetes-seccomp@0.1":
+		return evaluateKubernetesSeccomp(assertion, inventory, result, observedAt)
 	case "prc.native.private-key-armor@0.1":
 		return evaluatePrivateKeyArmor(assertion, inventory, result, observedAt)
 	case "prc.native.go-http-timeout@0.1":

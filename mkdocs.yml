@@ -61,6 +61,7 @@ nav:
       - Private-key armor inspection: scanner/private-key-armor.md
       - Go HTTP timeout analysis: scanner/go-http-timeouts.md
       - OpenAPI contract analysis: scanner/openapi-contracts.md
+      - Kubernetes workload analysis: scanner/kubernetes-workloads.md
       - Project configuration: scanner/configuration.md
       - Durable state and history: scanner/state-and-history.md
       - Signed risk exceptions: scanner/risk-exceptions.md

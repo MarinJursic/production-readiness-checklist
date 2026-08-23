@@ -481,9 +481,17 @@ spec:
     spec:
       securityContext:
         runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: app
           image: example@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          securityContext:
+            privileged: false
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: [ALL]
+              add: [NET_BIND_SERVICE]
           resources:
             requests:
               cpu: 100m
@@ -491,8 +499,13 @@ spec:
               cpu: 500m
 `)
 	results := scanFixture(t, root)
-	if results["PRC-A-CORE-029"] != "pass" || results["PRC-A-CORE-030"] != "pass" {
-		t.Fatalf("kubernetes pass assertions = %v/%v", results["PRC-A-CORE-029"], results["PRC-A-CORE-030"])
+	for _, assertionID := range []string{
+		"PRC-A-CORE-029", "PRC-A-CORE-030", "PRC-A-K8S-001",
+		"PRC-A-K8S-002", "PRC-A-K8S-003", "PRC-A-K8S-004",
+	} {
+		if results[assertionID] != "pass" {
+			t.Fatalf("kubernetes safe %s = %s", assertionID, results[assertionID])
+		}
 	}
 
 	writeFixture(t, root, "deploy/app.yaml", `apiVersion: apps/v1
@@ -500,15 +513,179 @@ kind: Deployment
 spec:
   template:
     spec:
+      hostPID: true
+      securityContext:
+        seccompProfile:
+          type: Unconfined
+      volumes:
+        - name: host
+          hostPath:
+            path: /var/run
       containers:
         - name: app
           image: example:latest
           securityContext:
             runAsUser: 0
+            privileged: true
+            allowPrivilegeEscalation: true
+            capabilities:
+              drop: [CHOWN]
+              add: [SYS_ADMIN]
 `)
 	results = scanFixture(t, root)
-	if results["PRC-A-CORE-029"] != "fail" || results["PRC-A-CORE-030"] != "fail" {
-		t.Fatalf("kubernetes fail assertions = %v/%v", results["PRC-A-CORE-029"], results["PRC-A-CORE-030"])
+	for _, assertionID := range []string{
+		"PRC-A-CORE-029", "PRC-A-CORE-030", "PRC-A-K8S-001",
+		"PRC-A-K8S-002", "PRC-A-K8S-003", "PRC-A-K8S-004",
+	} {
+		if results[assertionID] != "fail" {
+			t.Fatalf("kubernetes risky %s = %s", assertionID, results[assertionID])
+		}
+	}
+}
+
+func TestKubernetesSecurityChecksHandleEphemeralAndWindowsContainers(t *testing.T) {
+	t.Run("ephemeral containers are security scoped", func(t *testing.T) {
+		root := healthyRepository(t)
+		writeFixture(t, root, "pod.yaml", `apiVersion: v1
+kind: Pod
+spec:
+  securityContext:
+    runAsNonRoot: true
+    seccompProfile: {type: RuntimeDefault}
+  containers:
+    - name: app
+      image: example.invalid/app:1
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities: {drop: [ALL]}
+      resources:
+        requests: {cpu: 100m}
+        limits: {cpu: 500m}
+  ephemeralContainers:
+    - name: debug
+      image: example.invalid/debug:1
+      securityContext:
+        runAsUser: 0
+        privileged: true
+        allowPrivilegeEscalation: true
+        capabilities: {drop: [CHOWN], add: [SYS_ADMIN]}
+        seccompProfile: {type: Unconfined}
+`)
+		results := scanFixture(t, root)
+		for _, assertionID := range []string{
+			"PRC-A-CORE-029", "PRC-A-K8S-001", "PRC-A-K8S-002", "PRC-A-K8S-003", "PRC-A-K8S-004",
+		} {
+			if results[assertionID] != "fail" {
+				t.Fatalf("ephemeral-container %s = %s", assertionID, results[assertionID])
+			}
+		}
+		if results["PRC-A-CORE-030"] != "pass" {
+			t.Fatalf("ephemeral containers must not require unsupported resources fields: %s", results["PRC-A-CORE-030"])
+		}
+	})
+
+	t.Run("Windows workloads skip Linux-only restricted fields", func(t *testing.T) {
+		root := healthyRepository(t)
+		writeFixture(t, root, "windows-pod.yaml", `apiVersion: v1
+kind: Pod
+spec:
+  os: {name: windows}
+  securityContext:
+    runAsNonRoot: true
+    windowsOptions: {hostProcess: false}
+  containers:
+    - name: app
+      image: example.invalid/windows:1
+      securityContext:
+        privileged: false
+        windowsOptions: {hostProcess: false}
+      resources:
+        requests: {cpu: 100m}
+        limits: {cpu: 500m}
+`)
+		results := scanFixture(t, root)
+		for _, assertionID := range []string{
+			"PRC-A-CORE-029", "PRC-A-CORE-030", "PRC-A-K8S-001",
+			"PRC-A-K8S-002", "PRC-A-K8S-003", "PRC-A-K8S-004",
+		} {
+			if results[assertionID] != "pass" {
+				t.Fatalf("Windows workload %s = %s", assertionID, results[assertionID])
+			}
+		}
+	})
+}
+
+func TestKubernetesSecurityChecksFailClosedOnAmbiguousYAML(t *testing.T) {
+	root := healthyRepository(t)
+	writeFixture(t, root, "pod.yaml", `apiVersion: v1
+kind: Pod
+spec:
+  hostPID: false
+  hostPID: true
+  containers: []
+`)
+	item, err := inventory.Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	run, err := scanner(t).Scan("prc/kubernetes", item)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, result := range run.Results {
+		if result.Execution != "error" || result.Assessment != "unknown" || !strings.Contains(result.Summary, "duplicate mapping key hostPID") {
+			t.Fatalf("ambiguous Kubernetes YAML %s = %+v", result.AssertionID, result)
+		}
+	}
+}
+
+func TestKubernetesSecurityFindingsIncludeSafeSourceLocations(t *testing.T) {
+	root := healthyRepository(t)
+	writeFixture(t, root, "deploy/pod.yaml", `apiVersion: v1
+kind: Pod
+spec:
+  hostNetwork: true
+  securityContext:
+    runAsNonRoot: true
+    seccompProfile: {type: Unconfined}
+  containers:
+    - name: app
+      image: example.invalid/app:1
+      securityContext:
+        privileged: true
+        allowPrivilegeEscalation: true
+        capabilities: {drop: [CHOWN], add: [SYS_ADMIN]}
+      resources:
+        requests: {cpu: 100m}
+        limits: {cpu: 500m}
+`)
+	item, err := inventory.Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	run, err := scanner(t).Scan("prc/kubernetes", item)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, assertionID := range []string{"PRC-A-K8S-001", "PRC-A-K8S-002", "PRC-A-K8S-003", "PRC-A-K8S-004"} {
+		result := findResult(t, run, assertionID)
+		if result.Execution != "completed" || result.Assessment != "fail" || len(result.Locations) == 0 {
+			t.Fatalf("Kubernetes finding source %s = %+v", assertionID, result)
+		}
+		for _, location := range result.Locations {
+			if location.Path != "deploy/pod.yaml" || location.Line < 1 || location.Column < 1 {
+				t.Fatalf("Kubernetes finding location %s = %+v", assertionID, location)
+			}
+		}
+		found := false
+		for _, finding := range run.Findings {
+			if finding.AssertionID == assertionID && len(finding.Locations) == len(result.Locations) {
+				found = true
+			}
+		}
+		if !found {
+			t.Fatalf("Kubernetes canonical finding %s has no matching locations: %+v", assertionID, run.Findings)
+		}
 	}
 }
 

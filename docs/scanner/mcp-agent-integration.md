@@ -118,7 +118,7 @@ An agent using this server should follow one narrow loop:
    scanner reports independently verifiable findings. Stop on unknown, manual,
    policy, production-only, or organizational evidence that code cannot prove.
 
-The current `prc/core-repository@0.8` profile contains 36 repository assertions.
+The current `prc/core-repository@0.9` profile contains 40 repository assertions.
 A satisfied profile means only that this versioned profile passed for that exact
 inventory and evidence set. It does not mean that all 10,042 checklist controls,
 runtime behavior, production infrastructure, organizational processes, or
