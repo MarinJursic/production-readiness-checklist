@@ -1,6 +1,9 @@
 package main
 
 import (
+	"context"
+	"crypto/rand"
+	"encoding/hex"
 	"encoding/json"
 	"errors"
 	"flag"
@@ -10,6 +13,7 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/MarinJursic/production-readiness-checklist/scanner/adapter"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/catalog"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/engine"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/evidence"
@@ -42,6 +46,8 @@ func run(args []string, stdout, stderr io.Writer) int {
 		completed, err = runScan(args[1:], stdout, stderr)
 	case "explain":
 		err = runExplain(args[1:], stdout, stderr)
+	case "adapter":
+		err = runAdapter(args[1:], stdout, stderr)
 	case "help", "-h", "--help":
 		usage(stdout)
 		return 0
@@ -62,7 +68,109 @@ func run(args []string, stdout, stderr io.Writer) int {
 
 func usage(output io.Writer) {
 	fmt.Fprintln(output, "Production Readiness Scanner")
-	fmt.Fprintln(output, "usage: prc <inventory|plan|scan|explain|version> [options]")
+	fmt.Fprintln(output, "usage: prc <inventory|plan|scan|explain|adapter|version> [options]")
+}
+
+func runAdapter(args []string, stdout, stderr io.Writer) error {
+	if len(args) == 0 {
+		return errors.New("adapter requires validate-output, plan-oci, or run-oci")
+	}
+	switch args[0] {
+	case "validate-output":
+		set := flag.NewFlagSet("adapter validate-output", flag.ContinueOnError)
+		set.SetOutput(stderr)
+		path := set.String("file", "-", "adapter JSONL output file, or - for stdin")
+		manifestPath := set.String("manifest", "", "optional adapter manifest supplying limits")
+		if err := set.Parse(args[1:]); err != nil {
+			return err
+		}
+		limits := adapter.DefaultLimits()
+		if *manifestPath != "" {
+			manifest, err := adapter.LoadManifest(*manifestPath)
+			if err != nil {
+				return err
+			}
+			limits = manifest.Resources.Limits
+		}
+		input := io.Reader(os.Stdin)
+		if *path != "-" {
+			file, err := os.Open(*path)
+			if err != nil {
+				return err
+			}
+			defer file.Close()
+			input = file
+		}
+		transcript, err := adapter.ParseOutput(input, limits)
+		if err != nil {
+			return err
+		}
+		return encodeJSON(stdout, transcript)
+	case "plan-oci", "run-oci":
+		return runOCIAdapter(args[0], args[1:], stdout, stderr)
+	default:
+		return fmt.Errorf("unknown adapter command %q", args[0])
+	}
+}
+
+func runOCIAdapter(commandName string, args []string, stdout, stderr io.Writer) error {
+	set := flag.NewFlagSet("adapter "+commandName, flag.ContinueOnError)
+	set.SetOutput(stderr)
+	manifestPath := set.String("manifest", "", "adapter manifest path")
+	target := set.String("target", ".", "read-only target workspace")
+	runtime := set.String("runtime", "docker", "docker or podman executable")
+	if err := set.Parse(args); err != nil {
+		return err
+	}
+	if *manifestPath == "" {
+		return errors.New("--manifest is required")
+	}
+	manifest, err := adapter.LoadManifest(*manifestPath)
+	if err != nil {
+		return err
+	}
+	item, err := inventory.Build(*target)
+	if err != nil {
+		return err
+	}
+	runID := item.Digest
+	if commandName == "run-oci" {
+		runID, err = randomRunID()
+		if err != nil {
+			return err
+		}
+	}
+	ociPlan, err := adapter.BuildOCIPlan(*runtime, item.Root, runID, manifest)
+	if err != nil {
+		return err
+	}
+	if commandName == "plan-oci" {
+		return encodeJSON(stdout, ociPlan)
+	}
+	facts := map[string]any{
+		"source_files": item.SourceFiles, "package_ecosystems": item.PackageEcosystems,
+		"manifests": item.Manifests, "lock_files": item.LockFiles,
+		"ci": item.CI,
+	}
+	input, err := adapter.InputJSONL(runID, adapter.Subject{
+		TargetName: item.TargetName, TargetCommit: item.GitCommit, InventoryDigest: item.Digest,
+	}, facts, map[string]any{})
+	if err != nil {
+		return err
+	}
+	result, err := adapter.RunOCI(context.Background(), ociPlan, manifest, input)
+	if err != nil {
+		return err
+	}
+	return encodeJSON(stdout, result)
+}
+
+func randomRunID() (string, error) {
+	value := make([]byte, 32)
+	if _, err := rand.Read(value); err != nil {
+		return "", fmt.Errorf("create adapter run ID: %w", err)
+	}
+	return hex.EncodeToString(value), nil
 }
 
 func parseCommon(name string, args []string, stderr io.Writer) (*flag.FlagSet, *string, *string, *string) {

@@ -4,9 +4,11 @@ The scanner CLI is an experimental deterministic vertical slice. It inventories 
 repository, creates an immutable plan for `prc/core-repository@0.1`, evaluates
 native assertions, records evidence, and reports explicit unresolved states.
 
-It does not yet run external analysis adapters or remediate findings. The
-generated-code review remains manual, and the analysis-evidence assertion remains
-blocked until an adapter supplies current executed evidence.
+The profile evaluator does not yet consume external adapter observations or
+remediate findings. The generated-code review remains manual, and the
+analysis-evidence assertion remains blocked until an adapter supplies current
+executed evidence that the engine can evaluate. A separate experimental OCI
+adapter protocol and runner are available for protocol and sandbox development.
 
 ## Build
 
@@ -84,3 +86,7 @@ The engine rejects repository path and symlink escapes and detects a target file
 that changes between inventory and evidence collection. Missing evidence,
 unsupported applicability expressions, unavailable adapters, and manual review
 are never converted into Pass.
+
+Read the [sandboxed adapter protocol](../architecture/adapters.md) to validate an
+adapter transcript, inspect an OCI execution plan, or run an already-present
+digest-pinned adapter image outside profile evaluation.

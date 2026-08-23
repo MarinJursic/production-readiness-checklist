@@ -69,6 +69,18 @@ jobs:
       - name: Build scanner
         run: go build -trimpath -o "$RUNNER_TEMP/prc" ./cmd/prc
 
+      - name: Exercise adapter protocol fixtures
+        run: |
+          "$RUNNER_TEMP/prc" adapter validate-output \
+            --manifest fixtures/adapters/fixture-adapter.yaml \
+            --file fixtures/adapters/valid-output.jsonl
+          if "$RUNNER_TEMP/prc" adapter validate-output \
+            --manifest fixtures/adapters/fixture-adapter.yaml \
+            --file fixtures/adapters/malicious-authority-output.jsonl; then
+            echo "malicious adapter fixture was accepted" >&2
+            exit 1
+          fi
+
       - name: Generate scanner outputs
         run: |
           "$RUNNER_TEMP/prc" inventory --target . --format json > "$RUNNER_TEMP/inventory.json"

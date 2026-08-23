@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/adapter-message.schema.json",
+  "title": "Production Readiness Adapter JSONL Message",
+  "oneOf": [
+    {"$ref": "#/$defs/hello"},
+    {"$ref": "#/$defs/input"},
+    {"$ref": "#/$defs/execute"},
+    {"$ref": "#/$defs/log"},
+    {"$ref": "#/$defs/observation_message"},
+    {"$ref": "#/$defs/artifact_message"},
+    {"$ref": "#/$defs/summary"}
+  ],
+  "$defs": {
+    "hello": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "protocol", "run_id"],
+      "properties": {
+        "type": {"const": "hello"},
+        "protocol": {"const": "prc-adapter-jsonl-v1"},
+        "run_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target_name", "inventory_digest"],
+      "properties": {
+        "target_name": {"type": "string", "minLength": 1},
+        "target_commit": {"type": "string", "pattern": "^[0-9a-f]{40,64}$"},
+        "inventory_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "subject", "facts", "config"],
+      "properties": {
+        "type": {"const": "input"},
+        "subject": {"$ref": "#/$defs/subject"},
+        "facts": {"type": "object"},
+        "config": {"type": "object"}
+      }
+    },
+    "execute": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {"type": {"const": "execute"}}
+    },
+    "log": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "level", "message"],
+      "properties": {
+        "type": {"const": "log"},
+        "level": {"enum": ["debug", "info", "warning", "error"]},
+        "message": {"type": "string", "minLength": 1}
+      }
+    },
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "line": {"type": "integer", "minimum": 0},
+        "column": {"type": "integer", "minimum": 0}
+      }
+    },
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "outcome", "summary", "locations"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "kind": {"type": "string", "minLength": 1},
+        "outcome": {"enum": ["found", "not_found", "value", "unsupported"]},
+        "summary": {"type": "string", "minLength": 1},
+        "locations": {"type": "array", "items": {"$ref": "#/$defs/location"}},
+        "data": {"type": "object"}
+      }
+    },
+    "observation_message": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "observation"],
+      "properties": {
+        "type": {"const": "observation"},
+        "observation": {"$ref": "#/$defs/observation"}
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "media_type", "digest", "size"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "media_type": {"type": "string", "minLength": 1},
+        "digest": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "size": {"type": "integer", "minimum": 0},
+        "path": {"type": "string", "minLength": 1}
+      }
+    },
+    "artifact_message": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "artifact"],
+      "properties": {
+        "type": {"const": "artifact"},
+        "artifact": {"$ref": "#/$defs/artifact"}
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "status", "counts"],
+      "properties": {
+        "type": {"const": "summary"},
+        "status": {"enum": ["completed", "partial", "unsupported", "configuration_error", "execution_error", "timeout", "parse_error"]},
+        "counts": {
+          "type": "object",
+          "additionalProperties": {"type": "integer", "minimum": 0}
+        },
+        "reason": {"type": "string", "minLength": 1}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"status": {"not": {"const": "completed"}}}},
+          "then": {"required": ["reason"]}
+        }
+      ]
+    }
+  }
+}

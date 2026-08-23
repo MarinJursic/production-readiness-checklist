@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/adapter-manifest.schema.json",
+  "title": "Production Readiness Adapter Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "title", "trust", "runner", "image", "command", "capabilities", "resources"],
+  "properties": {
+    "schema_version": {"const": "prc.adapter-manifest/v0.1"},
+    "id": {"type": "string", "pattern": "^prc\\.adapter\\.[a-z0-9.-]+@[0-9]+\\.[0-9]+$"},
+    "title": {"type": "string", "minLength": 1},
+    "trust": {"enum": ["first-party-sandboxed", "verified-community", "unverified-community", "local"]},
+    "runner": {"const": "oci"},
+    "image": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*@sha256:[0-9a-f]{64}$"
+    },
+    "command": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 128,
+      "items": {"type": "string"}
+    },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["read_workspace", "write_scratch", "network", "network_hosts", "secret_handles", "child_processes"],
+      "properties": {
+        "read_workspace": {"const": true},
+        "write_scratch": {"type": "boolean"},
+        "network": {"const": "deny"},
+        "network_hosts": {"type": "array", "maxItems": 0},
+        "secret_handles": {"type": "array", "maxItems": 0},
+        "child_processes": {"const": false}
+      }
+    },
+    "resources": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["timeout_seconds", "memory_mb", "cpus", "pids", "tmpfs_mb", "max_line_bytes", "max_messages", "max_stdin_bytes", "max_stdout_bytes", "max_stderr_bytes"],
+      "properties": {
+        "timeout_seconds": {"type": "integer", "minimum": 1, "maximum": 3600},
+        "memory_mb": {"type": "integer", "minimum": 32, "maximum": 32768},
+        "cpus": {"type": "number", "exclusiveMinimum": 0, "maximum": 32},
+        "pids": {"type": "integer", "minimum": 1, "maximum": 4096},
+        "tmpfs_mb": {"type": "integer", "minimum": 1, "maximum": 4096},
+        "max_line_bytes": {"type": "integer", "minimum": 1, "maximum": 4194304},
+        "max_messages": {"type": "integer", "minimum": 1, "maximum": 1000000},
+        "max_stdin_bytes": {"type": "integer", "minimum": 1, "maximum": 16777216},
+        "max_stdout_bytes": {"type": "integer", "minimum": 1, "maximum": 268435456},
+        "max_stderr_bytes": {"type": "integer", "minimum": 1, "maximum": 16777216}
+      }
+    }
+  }
+}

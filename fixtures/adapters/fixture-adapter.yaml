@@ -1,0 +1,25 @@
+schema_version: prc.adapter-manifest/v0.1
+id: prc.adapter.fixture@0.1
+title: Protocol fixture adapter
+trust: first-party-sandboxed
+runner: oci
+image: registry.example/prc/fixture@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+command: [/adapter, scan]
+capabilities:
+  read_workspace: true
+  write_scratch: true
+  network: deny
+  network_hosts: []
+  secret_handles: []
+  child_processes: false
+resources:
+  timeout_seconds: 60
+  memory_mb: 512
+  cpus: 1
+  pids: 64
+  tmpfs_mb: 64
+  max_line_bytes: 262144
+  max_messages: 10000
+  max_stdin_bytes: 1048576
+  max_stdout_bytes: 4194304
+  max_stderr_bytes: 65536

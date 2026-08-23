@@ -1,0 +1,3 @@
+{"type":"log","level":"info","message":"fixture started"}
+{"type":"observation","observation":{"id":"OBS-FIXTURE-001","kind":"fixture-result","outcome":"not_found","summary":"The negative fixture pattern was not observed.","locations":[]}}
+{"type":"summary","status":"completed","counts":{"observations":1}}

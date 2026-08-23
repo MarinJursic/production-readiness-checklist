@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"path/filepath"
 	"strings"
 	"testing"
 )
@@ -13,6 +14,25 @@ func TestVersionCommand(t *testing.T) {
 	}
 	if !strings.Contains(stdout.String(), "prc 0.1.0-dev") {
 		t.Fatalf("unexpected output %q", stdout.String())
+	}
+}
+
+func TestAdapterValidateOutputCommand(t *testing.T) {
+	var stdout, stderr bytes.Buffer
+	path := filepath.Join("..", "..", "fixtures", "adapters", "valid-output.jsonl")
+	if code := run([]string{"adapter", "validate-output", "--file", path}, &stdout, &stderr); code != 0 {
+		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
+	}
+	if !strings.Contains(stdout.String(), `"status": "completed"`) {
+		t.Fatalf("unexpected output %q", stdout.String())
+	}
+}
+
+func TestAdapterValidateOutputRejectsAuthorityAttack(t *testing.T) {
+	var stdout, stderr bytes.Buffer
+	path := filepath.Join("..", "..", "fixtures", "adapters", "malicious-authority-output.jsonl")
+	if code := run([]string{"adapter", "validate-output", "--file", path}, &stdout, &stderr); code != 2 {
+		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
 	}
 }
 

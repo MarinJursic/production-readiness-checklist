@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 import unittest
 from pathlib import Path
+
+import yaml
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -35,6 +38,28 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         errors = validate_instance.validation_errors(instance, "inventory.schema.json")
         self.assertTrue(errors)
         self.assertTrue(any("prc.inventory/v0.1" in error for error in errors))
+
+    def test_checked_in_adapter_manifest_conforms(self) -> None:
+        path = ROOT / "fixtures" / "adapters" / "fixture-adapter.yaml"
+        instance = yaml.safe_load(path.read_text(encoding="utf-8"))
+        self.assertEqual(
+            validate_instance.validation_errors(instance, "adapter-manifest.schema.json"), []
+        )
+
+    def test_adapter_jsonl_messages_conform_and_authority_attack_fails(self) -> None:
+        valid_path = ROOT / "fixtures" / "adapters" / "valid-output.jsonl"
+        for line in valid_path.read_text(encoding="utf-8").splitlines():
+            instance = json.loads(line)
+            self.assertEqual(
+                validate_instance.validation_errors(instance, "adapter-message.schema.json"), []
+            )
+        malicious_path = ROOT / "fixtures" / "adapters" / "malicious-authority-output.jsonl"
+        first_line = malicious_path.read_text(encoding="utf-8").splitlines()[0]
+        self.assertTrue(
+            validate_instance.validation_errors(
+                json.loads(first_line), "adapter-message.schema.json"
+            )
+        )
 
 
 if __name__ == "__main__":
