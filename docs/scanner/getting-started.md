@@ -24,6 +24,12 @@ go mod verify
 go build -trimpath -o prc ./cmd/prc
 ```
 
+`prc version --format json` reports the scanner version, exact source revision,
+reproducible source timestamp, and Go toolchain embedded in a release build.
+Downloadable scanner releases use a separate `scanner-vX.Y.Z` tag namespace and
+bundle the compatible catalog, packs, and schemas with every binary. See
+[releases and verification](releases.md) before trusting a downloaded artifact.
+
 ## Inventory without executing target code
 
 ```bash
@@ -183,9 +189,9 @@ configuration policy, terminal states, and the machine-work-complete report.
 - Terraform provider locks; and
 - Kubernetes non-root and container resource policies.
 
-The profile has 32 atomic assertions. Go, container, Terraform, and Kubernetes
-assertions are planned as not applicable when their corresponding sourced
-inventory facts are absent.
+The profile has 34 atomic assertions. Go, container, Terraform, Kubernetes, and
+OpenAPI assertions are planned as not applicable when their corresponding
+sourced inventory facts are absent.
 
 The engine rejects repository path and symlink escapes and detects a target file
 that changes between inventory and evidence collection. Missing evidence,

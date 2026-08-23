@@ -1,0 +1,125 @@
+from __future__ import annotations
+
+import datetime as dt
+import gzip
+import json
+import pathlib
+import tarfile
+import tempfile
+import unittest
+import zipfile
+
+from scripts import build_release
+
+
+class ReleaseBuilderTests(unittest.TestCase):
+    def test_release_version_uses_strict_semver_without_build_metadata(self) -> None:
+        for value in ("0.1.0", "1.2.3-rc.1", "10.0.0-alpha-beta"):
+            self.assertIsNotNone(build_release.SEMVER.fullmatch(value), value)
+        for value in ("v1.2.3", "01.2.3", "1.02.3", "1.2.3-01", "1.2.3-alpha.", "1.2.3+build"):
+            self.assertIsNone(build_release.SEMVER.fullmatch(value), value)
+
+    def test_timestamp_is_timezone_required_and_normalized(self) -> None:
+        normalized, epoch = build_release.parse_timestamp("2026-08-23T12:34:56+02:00")
+        self.assertEqual(normalized, "2026-08-23T10:34:56Z")
+        self.assertEqual(epoch, int(dt.datetime(2026, 8, 23, 10, 34, 56, tzinfo=dt.timezone.utc).timestamp()))
+        with self.assertRaisesRegex(ValueError, "timezone"):
+            build_release.parse_timestamp("2026-08-23T10:34:56")
+
+    def test_sbom_normalization_binds_release_identity_deterministically(self) -> None:
+        old_reference = f"pkg:golang/{build_release.MODULE}@v0.0.0?type=module"
+        source_document = {
+            "bomFormat": "CycloneDX",
+            "specVersion": "1.6",
+            "version": 1,
+            "metadata": {
+                "tools": [{"name": "cyclonedx-gomod"}],
+                "component": {
+                    "bom-ref": old_reference,
+                    "type": "application",
+                    "name": build_release.MODULE,
+                    "version": "v0.0.0",
+                    "purl": old_reference,
+                },
+            },
+            "dependencies": [{"ref": old_reference, "dependsOn": []}],
+        }
+        with tempfile.TemporaryDirectory() as temporary:
+            source = pathlib.Path(temporary) / "bom.json"
+            source.write_text(json.dumps(source_document), encoding="utf-8")
+            first = build_release.normalized_sbom(source, "0.1.0", "a" * 40)
+            second = build_release.normalized_sbom(source, "0.1.0", "a" * 40)
+        self.assertEqual(first, second)
+        normalized = json.loads(first)
+        reference = f"pkg:golang/{build_release.MODULE}@0.1.0?type=module"
+        self.assertEqual(normalized["metadata"]["component"]["bom-ref"], reference)
+        self.assertEqual(normalized["dependencies"][0]["ref"], reference)
+        self.assertEqual(
+            normalized["metadata"]["properties"],
+            [
+                {"name": "prc:build:version", "value": "0.1.0"},
+                {"name": "prc:source:commit", "value": "a" * 40},
+            ],
+        )
+
+    def test_sbom_rejects_nondeterministic_metadata(self) -> None:
+        document = {
+            "bomFormat": "CycloneDX",
+            "specVersion": "1.6",
+            "serialNumber": "urn:uuid:unsafe",
+            "metadata": {"component": {"name": build_release.MODULE}},
+        }
+        with tempfile.TemporaryDirectory() as temporary:
+            source = pathlib.Path(temporary) / "bom.json"
+            source.write_text(json.dumps(document), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "serial number"):
+                build_release.normalized_sbom(source, "0.1.0", "b" * 40)
+
+    def test_sbom_rejects_predeclared_scanner_identity(self) -> None:
+        document = {
+            "bomFormat": "CycloneDX",
+            "specVersion": "1.6",
+            "metadata": {
+                "component": {"name": build_release.MODULE},
+                "properties": [{"name": "prc:source:commit", "value": "spoofed"}],
+            },
+        }
+        with tempfile.TemporaryDirectory() as temporary:
+            source = pathlib.Path(temporary) / "bom.json"
+            source.write_text(json.dumps(document), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "scanner-owned"):
+                build_release.normalized_sbom(source, "0.1.0", "b" * 40)
+
+    def test_archives_are_reproducible_and_rooted(self) -> None:
+        entries = [("prc", b"binary", 0o755), ("LICENSE", b"license\n", 0o644)]
+        timestamp = dt.datetime(2026, 8, 23, 10, 0, tzinfo=dt.timezone.utc)
+        epoch = int(timestamp.timestamp())
+        with tempfile.TemporaryDirectory() as temporary:
+            root = pathlib.Path(temporary)
+            first_tar = root / "first.tar.gz"
+            second_tar = root / "second.tar.gz"
+            build_release.create_tar_gz(first_tar, "prc_0.1.0_linux_amd64", entries, epoch)
+            build_release.create_tar_gz(second_tar, "prc_0.1.0_linux_amd64", entries, epoch)
+            self.assertEqual(first_tar.read_bytes(), second_tar.read_bytes())
+            with gzip.open(first_tar, "rb") as compressed:
+                with tarfile.open(fileobj=compressed, mode="r:") as archive:
+                    self.assertEqual(
+                        archive.getnames(),
+                        ["prc_0.1.0_linux_amd64/LICENSE", "prc_0.1.0_linux_amd64/prc"],
+                    )
+                    self.assertEqual(archive.getmember("prc_0.1.0_linux_amd64/prc").mode, 0o755)
+
+            first_zip = root / "first.zip"
+            second_zip = root / "second.zip"
+            build_release.create_zip(first_zip, "prc_0.1.0_windows_amd64", entries, timestamp)
+            build_release.create_zip(second_zip, "prc_0.1.0_windows_amd64", entries, timestamp)
+            self.assertEqual(first_zip.read_bytes(), second_zip.read_bytes())
+            with zipfile.ZipFile(first_zip) as archive:
+                self.assertEqual(
+                    archive.namelist(),
+                    ["prc_0.1.0_windows_amd64/LICENSE", "prc_0.1.0_windows_amd64/prc"],
+                )
+
+
+if __name__ == "__main__":
+    unittest.main()

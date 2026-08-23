@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/release-manifest-v0.1.schema.json",
+  "title": "Production Readiness Scanner release manifest v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "product", "version", "source_commit", "built_at",
+    "go_version", "catalog", "packs", "artifacts", "sbom"
+  ],
+  "properties": {
+    "schema_version": {"const": "prc.release-manifest/v0.1"},
+    "product": {"const": "prc-scanner"},
+    "version": {"$ref": "#/$defs/version"},
+    "source_commit": {"type": "string", "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$"},
+    "built_at": {"type": "string", "format": "date-time"},
+    "go_version": {"type": "string", "pattern": "^go1\\.[0-9]+(?:\\.[0-9]+)?"},
+    "catalog": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "catalog_version", "catalog_digest", "objective_count", "assertion_count", "profile_count"],
+      "properties": {
+        "schema_version": {"const": "prc.catalog-manifest/v0.1"},
+        "catalog_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+        "catalog_digest": {"$ref": "#/$defs/digest"},
+        "objective_count": {"type": "integer", "minimum": 1},
+        "assertion_count": {"type": "integer", "minimum": 1},
+        "profile_count": {"type": "integer", "minimum": 1}
+      }
+    },
+    "packs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "path", "digest", "suite_digest", "benchmark_corpus_digest", "catalog_digest"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "path": {"type": "string", "pattern": "^packs/[A-Za-z0-9._-]+\\.ya?ml$"},
+          "digest": {"$ref": "#/$defs/digest"},
+          "suite_digest": {"$ref": "#/$defs/digest"},
+          "benchmark_corpus_digest": {"$ref": "#/$defs/digest"},
+          "catalog_digest": {"$ref": "#/$defs/digest"}
+        }
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "goos", "goarch", "archive_format", "sha256", "size"],
+        "properties": {
+          "name": {"type": "string", "pattern": "^prc_[0-9A-Za-z.-]+_(?:linux|darwin|windows)_(?:amd64|arm64)\\.(?:tar\\.gz|zip)$"},
+          "goos": {"enum": ["linux", "darwin", "windows"]},
+          "goarch": {"enum": ["amd64", "arm64"]},
+          "archive_format": {"enum": ["tar.gz", "zip"]},
+          "sha256": {"$ref": "#/$defs/digest"},
+          "size": {"type": "integer", "minimum": 1}
+        }
+      }
+    },
+    "sbom": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "format", "spec_version", "sha256", "size"],
+      "properties": {
+        "name": {"type": "string", "pattern": "^prc_[0-9A-Za-z.-]+\\.cdx\\.json$"},
+        "format": {"const": "CycloneDX"},
+        "spec_version": {"const": "1.6"},
+        "sha256": {"$ref": "#/$defs/digest"},
+        "size": {"type": "integer", "minimum": 1}
+      }
+    }
+  },
+  "$defs": {
+    "digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "version": {
+      "type": "string",
+      "maxLength": 128,
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-(?:(?:0|[1-9][0-9]*)|(?:[0-9A-Za-z-]*[A-Za-z-][0-9A-Za-z-]*))(?:\\.(?:(?:0|[1-9][0-9]*)|(?:[0-9A-Za-z-]*[A-Za-z-][0-9A-Za-z-]*)))*)?$"
+    }
+  }
+}

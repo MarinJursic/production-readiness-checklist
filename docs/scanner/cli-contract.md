@@ -33,6 +33,12 @@ error [PRC-EXIT-5]: adapter ... is not authorized by an applicable assertion
 Machine-readable reports remain on stdout. A completed assessment that does not
 pass is still a valid report and normally has no stderr error.
 
+`prc version` emits a human-readable build identity. `prc version --format json`
+emits `prc.version/v0.1`, including the semantic scanner version, exact source
+revision, reproducible source timestamp, and Go toolchain. Development builds
+report `unknown` for identity fields that were not injected by the release
+builder; consumers must not treat that as release provenance.
+
 `adapter fixture-validate` also uses `1` when its versioned fixture report is
 valid but one or more recorded expectations or determinism checks fail. Invalid
 suite structure, unsafe paths, manifest digest drift, or an attempted limit

@@ -8,6 +8,13 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 
 ### Added
 
+- A deterministic cross-platform scanner release builder and tag-only workflow
+  with embedded build identity, bundled catalog/packs/schemas, byte-for-byte
+  rebuild comparison, checksums, CycloneDX 1.6 SBOM, release compatibility
+  manifest, and signed SLSA and SBOM attestations.
+- A scanner release verification, supported-version, failure, compromise, and
+  revocation contract that never equates a valid signature with a secure or
+  production-ready artifact.
 - A public invitation to propose missing controls, corrections, documentation improvements, and tooling contributions.
 - A documented long-term vision for a technology-neutral AI readiness scanner that evaluates available evidence against every applicable control and produces a complete gap report.
 - A deterministic inventory v0.2 graph with sourced, confidence-bearing package, CI, container, Terraform, Kubernetes, and symlink facts.

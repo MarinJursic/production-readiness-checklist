@@ -304,3 +304,63 @@ jobs:
 
       - name: Build documentation
         run: mkdocs build --strict
+
+  release-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Go
+        uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6
+        with:
+          go-version-file: go.mod
+          cache: true
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: "3.12"
+
+      - name: Install schema validation dependencies
+        run: pip install -r requirements-dev.lock.txt
+
+      - name: Generate deterministic CycloneDX SBOM input
+        run: |
+          go run github.com/CycloneDX/cyclonedx-gomod/cmd/cyclonedx-gomod@v1.10.0 \
+            mod -json -noserial -notimestamp -short-purls \
+            -output "$RUNNER_TEMP/prc.cdx.json" .
+
+      - name: Rebuild all release targets reproducibly
+        shell: bash
+        run: |
+          set -euo pipefail
+          source_epoch=$(git show -s --format=%ct "$GITHUB_SHA")
+          built_at=$(date -u -d "@$source_epoch" +%Y-%m-%dT%H:%M:%SZ)
+          for output in release-first release-second; do
+            python scripts/build_release.py \
+              --version 0.0.0-ci \
+              --commit "$GITHUB_SHA" \
+              --built-at "$built_at" \
+              --sbom "$RUNNER_TEMP/prc.cdx.json" \
+              --output "$RUNNER_TEMP/$output"
+          done
+          diff --recursive --no-dereference \
+            "$RUNNER_TEMP/release-first" "$RUNNER_TEMP/release-second"
+
+      - name: Verify release contracts and identity
+        run: |
+          python scripts/validate_instance.py \
+            release-manifest.schema.json \
+            "$RUNNER_TEMP/release-first/prc_0.0.0-ci_release-manifest.json"
+          (cd "$RUNNER_TEMP/release-first" && sha256sum --check SHA256SUMS)
+          mkdir "$RUNNER_TEMP/release-smoke"
+          tar -xzf "$RUNNER_TEMP/release-first/prc_0.0.0-ci_linux_amd64.tar.gz" \
+            -C "$RUNNER_TEMP/release-smoke"
+          "$RUNNER_TEMP/release-smoke/prc_0.0.0-ci_linux_amd64/prc" \
+            version --format json > "$RUNNER_TEMP/release-version.json"
+          python scripts/validate_instance.py \
+            version.schema.json "$RUNNER_TEMP/release-version.json"

@@ -58,8 +58,24 @@ func TestVersionCommand(t *testing.T) {
 	if code := run([]string{"version"}, &stdout, &stderr); code != 0 {
 		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
 	}
-	if !strings.Contains(stdout.String(), "prc 0.1.0-dev") {
+	if !strings.Contains(stdout.String(), "prc 0.1.0-dev (revision unknown, built unknown, go1.") {
 		t.Fatalf("unexpected output %q", stdout.String())
+	}
+	stdout.Reset()
+	if code := run([]string{"version", "--format", "json"}, &stdout, &stderr); code != 0 {
+		t.Fatalf("json exit=%d stderr=%s", code, stderr.String())
+	}
+	var information versionInformation
+	if err := json.Unmarshal(stdout.Bytes(), &information); err != nil {
+		t.Fatal(err)
+	}
+	if information.SchemaVersion != "prc.version/v0.1" || information.Version != "0.1.0-dev" ||
+		information.Revision != "unknown" || information.BuiltAt != "unknown" ||
+		!strings.HasPrefix(information.GoVersion, "go1.") {
+		t.Fatalf("version information = %+v", information)
+	}
+	if code := run([]string{"version", "unexpected"}, &stdout, &stderr); code != exitConfiguration {
+		t.Fatalf("unexpected argument exit=%d", code)
 	}
 }
 

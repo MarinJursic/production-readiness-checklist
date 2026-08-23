@@ -53,6 +53,7 @@ nav:
       - AI-assisted review: guides/ai-assisted-review.md
   - Scanner architecture:
       - Scanner quick start: scanner/getting-started.md
+      - Releases and verification: scanner/releases.md
       - CLI and exit codes: scanner/cli-contract.md
       - Scanner diagnostics: scanner/doctor.md
       - Read-only MCP agent integration: scanner/mcp-agent-integration.md

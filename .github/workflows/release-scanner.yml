@@ -1,0 +1,154 @@
+name: Release scanner
+
+on:
+  push:
+    tags:
+      - "scanner-v*"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: scanner-release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+    steps:
+      - name: Check out the exact tagged revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Go
+        uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6
+        with:
+          go-version-file: go.mod
+          cache: true
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: "3.12"
+
+      - name: Validate release identity
+        id: metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          tag=${GITHUB_REF_NAME}
+          if [[ "$tag" != scanner-v* ]]; then
+            echo "invalid scanner release tag: $tag" >&2
+            exit 1
+          fi
+          version=${tag#scanner-v}
+          if [[ ${#version} -gt 128 ]] || ! python -c \
+            'import sys; from scripts.build_release import SEMVER; raise SystemExit(0 if SEMVER.fullmatch(sys.argv[1]) else 1)' \
+            "$version"; then
+            echo "invalid scanner semantic version: $version" >&2
+            exit 1
+          fi
+          tagged_commit=$(git rev-list -n 1 "$tag")
+          if [[ "$tagged_commit" != "$GITHUB_SHA" ]]; then
+            echo "tag does not resolve to the checked-out commit" >&2
+            exit 1
+          fi
+          source_epoch=$(git show -s --format=%ct "$GITHUB_SHA")
+          built_at=$(date -u -d "@$source_epoch" +%Y-%m-%dT%H:%M:%SZ)
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "built_at=$built_at" >> "$GITHUB_OUTPUT"
+          if [[ "$version" == *-* ]]; then
+            echo "prerelease=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "prerelease=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Verify release source
+        run: |
+          go mod verify
+          go test -race ./...
+          go vet ./...
+          go run honnef.co/go/tools/cmd/staticcheck@v0.8.1 ./...
+          go run github.com/securego/gosec/v2/cmd/gosec@v2.28.0 -include=G703,G122 ./...
+          go run golang.org/x/vuln/cmd/govulncheck@v1.7.0 ./...
+
+      - name: Install schema validation dependencies
+        run: pip install -r requirements-dev.lock.txt
+
+      - name: Validate catalog and release tooling
+        run: |
+          python scripts/validate.py
+          python -m unittest discover -s tests -p "test_*.py" -v
+          python scripts/catalog.py check
+
+      - name: Generate deterministic CycloneDX SBOM input
+        run: |
+          go run github.com/CycloneDX/cyclonedx-gomod/cmd/cyclonedx-gomod@v1.10.0 \
+            mod -json -noserial -notimestamp -short-purls \
+            -output "$RUNNER_TEMP/prc.cdx.json" .
+
+      - name: Build release twice and compare
+        env:
+          PRC_VERSION: ${{ steps.metadata.outputs.version }}
+          PRC_BUILT_AT: ${{ steps.metadata.outputs.built_at }}
+        run: |
+          python scripts/build_release.py \
+            --version "$PRC_VERSION" \
+            --commit "$GITHUB_SHA" \
+            --built-at "$PRC_BUILT_AT" \
+            --sbom "$RUNNER_TEMP/prc.cdx.json" \
+            --output "$RUNNER_TEMP/release-first"
+          python scripts/build_release.py \
+            --version "$PRC_VERSION" \
+            --commit "$GITHUB_SHA" \
+            --built-at "$PRC_BUILT_AT" \
+            --sbom "$RUNNER_TEMP/prc.cdx.json" \
+            --output "$RUNNER_TEMP/release-second"
+          diff --recursive --no-dereference "$RUNNER_TEMP/release-first" "$RUNNER_TEMP/release-second"
+          mv "$RUNNER_TEMP/release-first" release
+
+      - name: Verify release contracts and checksums
+        env:
+          PRC_VERSION: ${{ steps.metadata.outputs.version }}
+        run: |
+          python scripts/validate_instance.py \
+            release-manifest.schema.json \
+            "release/prc_${PRC_VERSION}_release-manifest.json"
+          python -c 'import json,sys; d=json.load(open(sys.argv[1], encoding="utf-8")); assert d["bomFormat"]=="CycloneDX" and d["specVersion"]=="1.6" and "serialNumber" not in d and "timestamp" not in d["metadata"]' \
+            "release/prc_${PRC_VERSION}.cdx.json"
+          (cd release && sha256sum --check SHA256SUMS)
+          awk '$2 ~ /\.(tar\.gz|zip)$/ {print}' release/SHA256SUMS \
+            > "$RUNNER_TEMP/release-archive-checksums"
+          test -s "$RUNNER_TEMP/release-archive-checksums"
+          mkdir "$RUNNER_TEMP/smoke"
+          tar -xzf "release/prc_${PRC_VERSION}_linux_amd64.tar.gz" -C "$RUNNER_TEMP/smoke"
+          "$RUNNER_TEMP/smoke/prc_${PRC_VERSION}_linux_amd64/prc" version --format json \
+            > "$RUNNER_TEMP/version.json"
+          python scripts/validate_instance.py version.schema.json "$RUNNER_TEMP/version.json"
+          python -c 'import json,os,sys; d=json.load(open(sys.argv[1], encoding="utf-8")); assert d["version"]==os.environ["PRC_VERSION"] and d["revision"]==os.environ["GITHUB_SHA"]' "$RUNNER_TEMP/version.json"
+
+      - name: Attest SLSA build provenance
+        uses: actions/attest@508db95dd578ae2727ebd6217d5ba78e4fbda05d # v4.2.1
+        with:
+          subject-checksums: release/SHA256SUMS
+
+      - name: Attest CycloneDX SBOM
+        uses: actions/attest@508db95dd578ae2727ebd6217d5ba78e4fbda05d # v4.2.1
+        with:
+          subject-checksums: ${{ runner.temp }}/release-archive-checksums
+          sbom-path: release/prc_${{ steps.metadata.outputs.version }}.cdx.json
+
+      - name: Publish scanner release assets
+        uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228 # v3.0.2
+        with:
+          name: Production Readiness Scanner ${{ steps.metadata.outputs.version }}
+          files: release/*
+          fail_on_unmatched_files: true
+          generate_release_notes: true
+          prerelease: ${{ steps.metadata.outputs.prerelease }}

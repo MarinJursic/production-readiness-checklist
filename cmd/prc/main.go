@@ -11,6 +11,7 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"runtime"
 	"sort"
 	"strings"
 	"time"
@@ -36,7 +37,19 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/trust"
 )
 
-const version = "0.1.0-dev"
+var (
+	version  = "0.1.0-dev"
+	revision = "unknown"
+	builtAt  = "unknown"
+)
+
+type versionInformation struct {
+	SchemaVersion string `json:"schema_version"`
+	Version       string `json:"version"`
+	Revision      string `json:"revision"`
+	BuiltAt       string `json:"built_at"`
+	GoVersion     string `json:"go_version"`
+}
 
 const (
 	exitSuccess           = 0
@@ -108,8 +121,8 @@ func runWithInput(args []string, stdin io.Reader, stdout, stderr io.Writer) int 
 	errorFallback := exitInternal
 	switch args[0] {
 	case "version":
-		fmt.Fprintf(stdout, "prc %s\n", version)
-		return 0
+		errorFallback = exitConfiguration
+		err = runVersion(args[1:], stdout, stderr)
 	case "inventory":
 		errorFallback = exitConfiguration
 		err = runInventory(args[1:], stdout, stderr)
@@ -172,6 +185,36 @@ func runWithInput(args []string, stdin io.Reader, stdout, stderr io.Writer) int 
 		return code
 	}
 	return outcome
+}
+
+func runVersion(args []string, stdout, stderr io.Writer) error {
+	set := flag.NewFlagSet("version", flag.ContinueOnError)
+	set.SetOutput(stderr)
+	format := set.String("format", "text", "output format: text or json")
+	if err := set.Parse(args); err != nil {
+		return exitError(exitConfiguration, err)
+	}
+	if set.NArg() != 0 {
+		return exitError(exitConfiguration, fmt.Errorf("unexpected version arguments: %s", strings.Join(set.Args(), " ")))
+	}
+	information := versionInformation{
+		SchemaVersion: "prc.version/v0.1", Version: version, Revision: revision,
+		BuiltAt: builtAt, GoVersion: runtime.Version(),
+	}
+	switch *format {
+	case "text":
+		fmt.Fprintf(stdout, "prc %s (revision %s, built %s, %s)\n",
+			information.Version, information.Revision, information.BuiltAt, information.GoVersion)
+	case "json":
+		encoder := json.NewEncoder(stdout)
+		encoder.SetIndent("", "  ")
+		if err := encoder.Encode(information); err != nil {
+			return exitError(exitInternal, fmt.Errorf("encode version information: %w", err))
+		}
+	default:
+		return exitError(exitConfiguration, fmt.Errorf("unsupported version format %q", *format))
+	}
+	return nil
 }
 
 func usage(output io.Writer) {
