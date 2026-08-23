@@ -1400,6 +1400,8 @@ func runOCIAdapter(commandName string, args []string, stdout, stderr io.Writer) 
 	manifestPath := set.String("manifest", "", "adapter manifest path")
 	target := set.String("target", ".", "read-only target workspace")
 	runtime := set.String("runtime", "docker", "docker or podman executable")
+	dataFlags := repeatedStringFlag{}
+	set.Var(&dataFlags, "data", "manifest data mount as NAME=PATH; repeatable")
 	if err := set.Parse(args); err != nil {
 		return err
 	}
@@ -1415,6 +1417,10 @@ func runOCIAdapter(commandName string, args []string, stdout, stderr io.Writer) 
 		return err
 	}
 	runID := item.Digest
+	dataSources, err := parseNamedPaths(dataFlags, "--data")
+	if err != nil {
+		return err
+	}
 	if commandName == "run-oci" {
 		runID, err = randomRunID()
 		if err != nil {
@@ -1422,7 +1428,7 @@ func runOCIAdapter(commandName string, args []string, stdout, stderr io.Writer) 
 		}
 	}
 	if commandName == "plan-oci" {
-		ociPlan, err := adapter.BuildOCIPlan(*runtime, item.Root, runID, manifest)
+		ociPlan, err := adapter.BuildOCIPlanWithData(*runtime, item.Root, runID, manifest, dataSources)
 		if err != nil {
 			return err
 		}
@@ -1433,7 +1439,7 @@ func runOCIAdapter(commandName string, args []string, stdout, stderr io.Writer) 
 		return err
 	}
 	defer snapshot.Close()
-	ociPlan, err := adapter.BuildSnapshotOCIPlan(*runtime, snapshot, runID, manifest)
+	ociPlan, err := adapter.BuildSnapshotOCIPlanWithData(*runtime, snapshot, runID, manifest, dataSources)
 	if err != nil {
 		return err
 	}
@@ -1612,6 +1618,44 @@ func validateUniqueFlagValues(values repeatedStringFlag, label string) error {
 	return nil
 }
 
+func parseNamedPaths(values repeatedStringFlag, label string) (map[string]string, error) {
+	result := map[string]string{}
+	for _, value := range values {
+		parts := strings.SplitN(value, "=", 2)
+		if len(parts) != 2 || strings.TrimSpace(parts[0]) == "" || strings.TrimSpace(parts[1]) == "" {
+			return nil, fmt.Errorf("%s requires NAME=PATH, got %q", label, value)
+		}
+		if _, exists := result[parts[0]]; exists {
+			return nil, fmt.Errorf("%s repeats name %q", label, parts[0])
+		}
+		result[parts[0]] = parts[1]
+	}
+	return result, nil
+}
+
+func parseScanAdapterData(values repeatedStringFlag) (map[string]map[string]string, error) {
+	result := map[string]map[string]string{}
+	for _, value := range values {
+		parts := strings.SplitN(value, "=", 2)
+		if len(parts) != 2 || strings.TrimSpace(parts[1]) == "" {
+			return nil, fmt.Errorf("--adapter-data requires ADAPTER_ID/NAME=PATH, got %q", value)
+		}
+		separator := strings.LastIndex(parts[0], "/")
+		if separator < 1 || separator == len(parts[0])-1 {
+			return nil, fmt.Errorf("--adapter-data requires ADAPTER_ID/NAME=PATH, got %q", value)
+		}
+		adapterID, name := parts[0][:separator], parts[0][separator+1:]
+		if result[adapterID] == nil {
+			result[adapterID] = map[string]string{}
+		}
+		if _, exists := result[adapterID][name]; exists {
+			return nil, fmt.Errorf("--adapter-data repeats %s/%s", adapterID, name)
+		}
+		result[adapterID][name] = parts[1]
+	}
+	return result, nil
+}
+
 func resolveScanAdapters(
 	scanner *engine.Engine,
 	profile string,
@@ -1689,6 +1733,7 @@ func executeScanAdapter(
 	item model.Inventory,
 	resolved resolvedScanAdapter,
 	runtime string,
+	dataSources map[string]string,
 ) (model.AdapterExecution, map[string][]byte, error) {
 	if err := ctx.Err(); err != nil {
 		return model.AdapterExecution{}, nil, fmt.Errorf("adapter execution budget is exhausted: %w", err)
@@ -1711,7 +1756,7 @@ func executeScanAdapter(
 		return model.AdapterExecution{}, nil, err
 	}
 	defer snapshot.Close()
-	plan, err := adapter.BuildSnapshotOCIPlan(runtime, snapshot, runID, resolved.Manifest)
+	plan, err := adapter.BuildSnapshotOCIPlanWithData(runtime, snapshot, runID, resolved.Manifest, dataSources)
 	if err != nil {
 		return model.AdapterExecution{}, nil, err
 	}
@@ -1746,6 +1791,8 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	adapterIDs := repeatedStringFlag{}
 	set.Var(&adapterIDs, "adapter-id", "adapter ID to resolve from --adapter-registry; repeatable")
 	adapterRuntime := set.String("adapter-runtime", "docker", "docker or podman executable for the authorized adapter")
+	adapterData := repeatedStringFlag{}
+	set.Var(&adapterData, "adapter-data", "read-only adapter data as ADAPTER_ID/NAME=PATH; repeatable")
 	if err := set.Parse(args); err != nil {
 		return exitInternal, exitError(exitConfiguration, err)
 	}
@@ -1772,10 +1819,17 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	if requestedAdapters > maxScanAdapters {
 		return exitInternal, exitError(exitConfiguration, fmt.Errorf("scan accepts at most %d adapters", maxScanAdapters))
 	}
+	if requestedAdapters == 0 && len(adapterData) > 0 {
+		return exitInternal, exitError(exitConfiguration, fmt.Errorf("--adapter-data requires a requested adapter"))
+	}
 	if err := validateUniqueFlagValues(adapterManifests, "--adapter-manifest"); err != nil {
 		return exitInternal, exitError(exitConfiguration, err)
 	}
 	if err := validateUniqueFlagValues(adapterIDs, "--adapter-id"); err != nil {
+		return exitInternal, exitError(exitConfiguration, err)
+	}
+	dataByAdapter, err := parseScanAdapterData(adapterData)
+	if err != nil {
 		return exitInternal, exitError(exitConfiguration, err)
 	}
 	item, validation, err := configuredInventory(*target, *configPath)
@@ -1801,6 +1855,15 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		if resolveErr != nil {
 			return exitInternal, resolveErr
 		}
+		resolvedIDs := map[string]bool{}
+		for _, resolved := range resolvedAdapters {
+			resolvedIDs[resolved.Manifest.ID] = true
+		}
+		for adapterID := range dataByAdapter {
+			if !resolvedIDs[adapterID] {
+				return exitInternal, exitError(exitConfiguration, fmt.Errorf("--adapter-data references unrequested adapter %s", adapterID))
+			}
+		}
 		adapterContext := context.Background()
 		cancelAdapters := func() {}
 		if validation != nil {
@@ -1811,7 +1874,9 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		}
 		defer cancelAdapters()
 		for _, resolved := range resolvedAdapters {
-			execution, payloads, executeErr := executeScanAdapter(adapterContext, item, resolved, *adapterRuntime)
+			execution, payloads, executeErr := executeScanAdapter(
+				adapterContext, item, resolved, *adapterRuntime, dataByAdapter[resolved.Manifest.ID],
+			)
 			if executeErr != nil {
 				return exitInternal, exitError(exitExecution, executeErr)
 			}

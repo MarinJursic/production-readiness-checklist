@@ -9,10 +9,10 @@ const (
 	EngineVersion          = "prc.engine/v0.1"
 	InventorySchema        = "prc.inventory/v0.3"
 	PlanSchema             = "prc.plan/v0.6"
-	RunSchema              = "prc.run/v0.9"
+	RunSchema              = "prc.run/v0.10"
 	EvidenceSchema         = "prc.evidence/v0.1"
 	FindingSchema          = "prc.finding/v0.1"
-	AdapterExecutionSchema = "prc.adapter-execution/v0.2"
+	AdapterExecutionSchema = "prc.adapter-execution/v0.3"
 )
 
 type Source struct {
@@ -344,7 +344,7 @@ type RunResult struct {
 // later runs encode the required findings array; v0.5 through v0.3 do not.
 func (run RunResult) MarshalJSON() ([]byte, error) {
 	type current RunResult
-	if run.SchemaVersion == RunSchema || run.SchemaVersion == "prc.run/v0.8" || run.SchemaVersion == "prc.run/v0.7" || run.SchemaVersion == "prc.run/v0.6" {
+	if run.SchemaVersion == RunSchema || run.SchemaVersion == "prc.run/v0.9" || run.SchemaVersion == "prc.run/v0.8" || run.SchemaVersion == "prc.run/v0.7" || run.SchemaVersion == "prc.run/v0.6" {
 		return json.Marshal(current(run))
 	}
 	type legacy struct {
@@ -425,31 +425,69 @@ type AdapterResolution struct {
 	RegistryDigest   string `json:"registry_digest,omitempty"`
 }
 
-type AdapterExecution struct {
-	SchemaVersion     string            `json:"schema_version"`
-	ExecutionID       string            `json:"execution_id"`
-	AdapterRunID      string            `json:"adapter_run_id"`
-	AdapterID         string            `json:"adapter_id"`
-	ManifestSHA256    string            `json:"manifest_sha256"`
-	Image             string            `json:"image"`
-	Resolution        AdapterResolution `json:"resolution"`
-	Subject           AdapterSubject    `json:"subject"`
-	StartedAt         time.Time         `json:"started_at"`
-	CompletedAt       time.Time         `json:"completed_at"`
-	DurationMS        int64             `json:"duration_ms"`
-	DiagnosticsSHA256 string            `json:"diagnostics_sha256"`
-	DiagnosticsBytes  int               `json:"diagnostics_bytes"`
-	Transcript        AdapterTranscript `json:"transcript"`
+// AdapterDataInput records the content identity of an external read-only data
+// dependency without persisting its host filesystem path.
+type AdapterDataInput struct {
+	Name        string `json:"name"`
+	Destination string `json:"destination"`
+	SHA256      string `json:"sha256"`
+	Files       int    `json:"files"`
+	Bytes       int64  `json:"bytes"`
 }
 
-// MarshalJSON omits resolution from immutable v0.1 records so their execution
-// and enclosing run identities remain byte-for-byte reproducible.
+type AdapterExecution struct {
+	SchemaVersion     string             `json:"schema_version"`
+	ExecutionID       string             `json:"execution_id"`
+	AdapterRunID      string             `json:"adapter_run_id"`
+	AdapterID         string             `json:"adapter_id"`
+	ManifestSHA256    string             `json:"manifest_sha256"`
+	Image             string             `json:"image"`
+	Resolution        AdapterResolution  `json:"resolution"`
+	DataInputs        []AdapterDataInput `json:"data_inputs"`
+	Subject           AdapterSubject     `json:"subject"`
+	StartedAt         time.Time          `json:"started_at"`
+	CompletedAt       time.Time          `json:"completed_at"`
+	DurationMS        int64              `json:"duration_ms"`
+	DiagnosticsSHA256 string             `json:"diagnostics_sha256"`
+	DiagnosticsBytes  int                `json:"diagnostics_bytes"`
+	Transcript        AdapterTranscript  `json:"transcript"`
+}
+
+// MarshalJSON preserves archived v0.1 and v0.2 byte contracts so their
+// execution and enclosing run identities remain reproducible.
 func (execution AdapterExecution) MarshalJSON() ([]byte, error) {
 	type current AdapterExecution
-	if execution.SchemaVersion != "prc.adapter-execution/v0.1" {
+	if execution.SchemaVersion == AdapterExecutionSchema {
 		return json.Marshal(current(execution))
 	}
-	type legacy struct {
+	type v02 struct {
+		SchemaVersion     string            `json:"schema_version"`
+		ExecutionID       string            `json:"execution_id"`
+		AdapterRunID      string            `json:"adapter_run_id"`
+		AdapterID         string            `json:"adapter_id"`
+		ManifestSHA256    string            `json:"manifest_sha256"`
+		Image             string            `json:"image"`
+		Resolution        AdapterResolution `json:"resolution"`
+		Subject           AdapterSubject    `json:"subject"`
+		StartedAt         time.Time         `json:"started_at"`
+		CompletedAt       time.Time         `json:"completed_at"`
+		DurationMS        int64             `json:"duration_ms"`
+		DiagnosticsSHA256 string            `json:"diagnostics_sha256"`
+		DiagnosticsBytes  int               `json:"diagnostics_bytes"`
+		Transcript        AdapterTranscript `json:"transcript"`
+	}
+	if execution.SchemaVersion == "prc.adapter-execution/v0.2" {
+		return json.Marshal(v02{
+			SchemaVersion: execution.SchemaVersion, ExecutionID: execution.ExecutionID,
+			AdapterRunID: execution.AdapterRunID, AdapterID: execution.AdapterID,
+			ManifestSHA256: execution.ManifestSHA256, Image: execution.Image,
+			Resolution: execution.Resolution, Subject: execution.Subject,
+			StartedAt: execution.StartedAt, CompletedAt: execution.CompletedAt, DurationMS: execution.DurationMS,
+			DiagnosticsSHA256: execution.DiagnosticsSHA256, DiagnosticsBytes: execution.DiagnosticsBytes,
+			Transcript: execution.Transcript,
+		})
+	}
+	type v01 struct {
 		SchemaVersion     string            `json:"schema_version"`
 		ExecutionID       string            `json:"execution_id"`
 		AdapterRunID      string            `json:"adapter_run_id"`
@@ -464,7 +502,7 @@ func (execution AdapterExecution) MarshalJSON() ([]byte, error) {
 		DiagnosticsBytes  int               `json:"diagnostics_bytes"`
 		Transcript        AdapterTranscript `json:"transcript"`
 	}
-	return json.Marshal(legacy{
+	return json.Marshal(v01{
 		SchemaVersion: execution.SchemaVersion, ExecutionID: execution.ExecutionID,
 		AdapterRunID: execution.AdapterRunID, AdapterID: execution.AdapterID,
 		ManifestSHA256: execution.ManifestSHA256, Image: execution.Image, Subject: execution.Subject,

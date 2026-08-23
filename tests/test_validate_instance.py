@@ -754,7 +754,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "assertions": [],
         }
         final_run = {
-            "schema_version": "prc.run/v0.9",
+            "schema_version": "prc.run/v0.10",
             "run_id": digest,
             "started_at": "2026-08-23T12:00:00Z",
             "completed_at": "2026-08-23T12:00:01Z",
@@ -790,7 +790,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             [],
         )
         remediation_run = {
-            "schema_version": "prc.remediation-run/v0.8",
+            "schema_version": "prc.remediation-run/v0.9",
             "run_id": digest,
             "started_at": "2026-08-23T12:00:00Z",
             "completed_at": "2026-08-23T12:00:01Z",
@@ -818,6 +818,17 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         self.assertEqual(
             validate_instance.validation_errors(
                 remediation_run, "remediation-run.schema.json"
+            ),
+            [],
+        )
+        v08_remediation_run = {
+            **remediation_run,
+            "schema_version": "prc.remediation-run/v0.8",
+            "final_run": {**final_run, "schema_version": "prc.run/v0.9"},
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(
+                v08_remediation_run, "remediation-run-v0.8.schema.json"
             ),
             [],
         )
@@ -930,7 +941,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         )
 
         v07_remediation_run = {
-            **remediation_run,
+            **v08_remediation_run,
             "schema_version": "prc.remediation-run/v0.7",
         }
         del v07_remediation_run["max_duration_seconds"]
@@ -978,7 +989,15 @@ class ScannerOutputSchemaTests(unittest.TestCase):
 
         self.assertEqual(
             validate_instance.validation_errors(
-                final_run, "run-result-v0.9.schema.json"
+                final_run, "run-result.schema.json"
+            ),
+            [],
+        )
+
+        v09_run = {**final_run, "schema_version": "prc.run/v0.9"}
+        self.assertEqual(
+            validate_instance.validation_errors(
+                v09_run, "run-result-v0.9.schema.json"
             ),
             [],
         )
@@ -1814,7 +1833,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
     def test_bound_adapter_execution_conforms(self) -> None:
         digest = "a" * 64
         execution = {
-            "schema_version": "prc.adapter-execution/v0.2",
+            "schema_version": "prc.adapter-execution/v0.3",
             "execution_id": digest,
             "adapter_run_id": "b" * 64,
             "adapter_id": "prc.adapter.fixture@0.1",
@@ -1828,6 +1847,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
                 "registry_revision": 1,
                 "registry_digest": "9" * 64,
             },
+            "data_inputs": [],
             "subject": {
                 "target_name": "example",
                 "inventory_digest": "e" * 64,
@@ -1859,9 +1879,19 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             ),
             [],
         )
+        archived_execution = json.loads(json.dumps(execution))
+        archived_execution["schema_version"] = "prc.adapter-execution/v0.2"
+        del archived_execution["data_inputs"]
+        self.assertEqual(
+            validate_instance.validation_errors(
+                archived_execution, "adapter-execution-v0.2.schema.json"
+            ),
+            [],
+        )
         legacy_execution = json.loads(json.dumps(execution))
         legacy_execution["schema_version"] = "prc.adapter-execution/v0.1"
         del legacy_execution["resolution"]
+        del legacy_execution["data_inputs"]
         self.assertEqual(
             validate_instance.validation_errors(
                 legacy_execution, "adapter-execution-v0.1.schema.json"

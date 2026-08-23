@@ -110,6 +110,9 @@ The current experimental runner deliberately supports only a narrow subset:
 - an image reference pinned by a `sha256` digest and explicit registry host;
 - a private, read-only snapshot containing the regular files in the sealed
   inventory plus any exact protocol-owned policy input described below;
+- explicitly declared, content-hashed, read-only external data directories for
+  reviewed native adapters whose immutable datasets are too large to copy into
+  each project snapshot;
 - no image pull during a scan;
 - no network;
 - no secret handles;
@@ -132,6 +135,17 @@ read-only, and is removed after the run. Its own deterministic digest is sealed
 into the OCI plan and checked again immediately before and after the container
 runs, so observations cannot silently refer to different bytes than the
 inventory.
+
+External data is a separate trust boundary. A manifest can declare only a
+bounded named directory mounted at its reserved `/prc-inputs/NAME` path. The
+operator supplies the host directory explicitly. The scanner rejects empty,
+oversized, over-populated, symlink-containing, non-regular, missing, extra, or
+duplicate mounts; hashes every file before planning; seals the digest, file
+count, byte count, and destination into the OCI plan; and rehashes the directory
+immediately before and after execution. The durable execution records this
+content identity but never the host path. A data directory changing during a
+run is an execution error, not evidence. This mechanism does not download or
+refresh data and does not let an adapter expand its declared mounts.
 
 The generated OCI command also drops all Linux capabilities, enables
 `no-new-privileges`, uses the invoking non-root UID/GID so private snapshot
@@ -229,7 +243,9 @@ prc adapter run-oci \
 ```
 
 `--pull=never` means the command fails if the exact image is not already
-available. Current v0.2 execution records include a required `resolution`
+available. For a manifest that declares external data, repeat
+`--data NAME=/path/to/directory` for both `plan-oci` and `run-oci`. Current v0.3
+execution records include required `resolution` and `data_inputs` identities.
 identity. An explicit manifest records the publisher and `local-explicit`
 operator grant; a registry resolution additionally binds the registry ID,
 revision, content digest, and registry-assigned trust. Changing any provenance
@@ -248,6 +264,19 @@ prc scan \
   --adapter-manifest /path/to/first-pinned-adapter.yaml \
   --adapter-manifest /path/to/second-pinned-adapter.yaml \
   --adapter-runtime docker
+```
+
+Scan-level data bindings use an adapter-qualified name so multi-adapter runs
+cannot consume one another's inputs:
+
+```bash
+prc scan \
+  --target /path/to/project \
+  --catalog-root /path/to/trusted/catalog \
+  --profile prc/supply-chain \
+  --mode verify-local \
+  --adapter-manifest /path/to/pinned-adapter.yaml \
+  --adapter-data 'prc.adapter.example@1.0/example-db=/path/to/database-cache'
 ```
 
 For registry-assigned trust and revocation, resolve the same catalog-pinned

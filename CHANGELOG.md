@@ -71,6 +71,11 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 - Bounded multi-adapter scans with repeatable explicit manifests or registry
   IDs, duplicate rejection, full-set authorization before execution,
   deterministic ordering, and one configured wall-time budget for the set.
+- Hash-sealed external adapter data mounts with reserved container paths,
+  read-only OCI bindings, file and byte ceilings, symlink rejection, before and
+  after drift checks, path-free durable identities, adapter-qualified CLI
+  grants, adapter execution v0.3, run result v0.10, and remediation run v0.9
+  contracts with frozen v0.2, v0.9, and v0.8 archives respectively.
 - Deterministic compressed storage for the embedded Gitleaks rules, with
   compressed and decompressed digest checks plus a single exact historical
   false-positive fingerprint instead of a current-path or rule suppression.

@@ -73,7 +73,7 @@ gh attestation verify prc_0.1.0_linux_amd64.tar.gz \
 Finally, inspect `prc_X.Y.Z_release-manifest.json` and compare its
 `source_commit`, catalog digest, pack digests, and artifact digest with the
 assessment scope you intend to use. Inspect `prc_X.Y.Z_self-scan.json` as a
-normal `prc.run/v0.9` report: a valid signed self-assessment may still be
+normal `prc.run/v0.10` report: a valid signed self-assessment may still be
 `environment_blocked` because organizational, production, or adapter evidence
 is deliberately unavailable in the release job. After extraction:
 

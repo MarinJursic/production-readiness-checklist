@@ -103,7 +103,7 @@ started with `CommandContext` are interrupted when that context completes
 ([context package](https://pkg.go.dev/context),
 [os/exec package](https://pkg.go.dev/os/exec)).
 
-The `prc.remediation-run/v0.8` report records every actual attempt, including
+The `prc.remediation-run/v0.9` report records every actual attempt, including
 proposals rejected before candidate creation. Each attempt binds its sequence,
 mode, exact finding and fingerprint, scanner-owned task, before and after
 inventory digests, provider execution or failure and candidate when present, timestamps,

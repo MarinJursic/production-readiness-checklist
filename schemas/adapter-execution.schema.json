@@ -1,18 +1,23 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/adapter-execution.schema.json",
-  "title": "Bound Production Readiness Adapter Execution v0.2",
+  "title": "Bound Production Readiness Adapter Execution v0.3",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "execution_id", "adapter_run_id", "adapter_id", "manifest_sha256", "image", "resolution", "subject", "started_at", "completed_at", "duration_ms", "diagnostics_sha256", "diagnostics_bytes", "transcript"],
+  "required": ["schema_version", "execution_id", "adapter_run_id", "adapter_id", "manifest_sha256", "image", "resolution", "data_inputs", "subject", "started_at", "completed_at", "duration_ms", "diagnostics_sha256", "diagnostics_bytes", "transcript"],
   "properties": {
-    "schema_version": {"const": "prc.adapter-execution/v0.2"},
+    "schema_version": {"const": "prc.adapter-execution/v0.3"},
     "execution_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "adapter_run_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "adapter_id": {"type": "string", "pattern": "^prc\\.adapter\\.[a-z0-9.-]+@[0-9]+\\.[0-9]+$"},
     "manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "image": {"type": "string", "pattern": "^.+@sha256:[0-9a-f]{64}$"},
     "resolution": {"$ref": "#/$defs/resolution"},
+    "data_inputs": {
+      "type": "array",
+      "maxItems": 16,
+      "items": {"$ref": "#/$defs/data_input"}
+    },
     "subject": {"$ref": "#/$defs/subject"},
     "started_at": {"type": "string", "format": "date-time"},
     "completed_at": {"type": "string", "format": "date-time"},
@@ -22,6 +27,18 @@
     "transcript": {"$ref": "#/$defs/transcript"}
   },
   "$defs": {
+    "data_input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "destination", "sha256", "files", "bytes"],
+      "properties": {
+        "name": {"type": "string", "pattern": "^[a-z0-9][a-z0-9.-]{0,127}$"},
+        "destination": {"type": "string", "pattern": "^/prc-inputs/[a-z0-9][a-z0-9.-]{0,127}$"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "files": {"type": "integer", "minimum": 1},
+        "bytes": {"type": "integer", "minimum": 1}
+      }
+    },
     "resolution": {
       "type": "object",
       "additionalProperties": false,

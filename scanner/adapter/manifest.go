@@ -69,6 +69,16 @@ type Resources struct {
 	Limits         `json:",inline" yaml:",inline"`
 }
 
+// DataMount declares a large, scanner-supplied, read-only data dependency.
+// The host path is deliberately not part of the manifest; each execution
+// binds the actual directory contents by digest.
+type DataMount struct {
+	Name        string `json:"name" yaml:"name"`
+	Destination string `json:"destination" yaml:"destination"`
+	MaxFiles    int    `json:"max_files" yaml:"max_files"`
+	MaxBytes    int64  `json:"max_bytes" yaml:"max_bytes"`
+}
+
 type Manifest struct {
 	SchemaVersion    string        `json:"schema_version" yaml:"schema_version"`
 	ID               string        `json:"id" yaml:"id"`
@@ -88,6 +98,7 @@ type Manifest struct {
 	Command          []string      `json:"command" yaml:"command"`
 	Capabilities     Capabilities  `json:"capabilities" yaml:"capabilities"`
 	Resources        Resources     `json:"resources" yaml:"resources"`
+	DataMounts       []DataMount   `json:"data_mounts,omitempty" yaml:"data_mounts,omitempty"`
 }
 
 func LoadManifest(path string) (Manifest, error) {
@@ -210,6 +221,9 @@ func (manifest Manifest) Validate() error {
 	if err := validateResources(manifest.Resources); err != nil {
 		return err
 	}
+	if err := validateDataMounts(manifest.DataMounts); err != nil {
+		return err
+	}
 	if manifest.Protocol == GitleaksProtocolVersion {
 		if err := validateGitleaksManifest(manifest); err != nil {
 			return err
@@ -217,6 +231,23 @@ func (manifest Manifest) Validate() error {
 	} else if manifest.Protocol == SyftProtocolVersion {
 		if err := validateSyftManifest(manifest); err != nil {
 			return err
+		}
+	}
+	return nil
+}
+
+func validateDataMounts(mounts []DataMount) error {
+	seen := map[string]bool{}
+	for _, mount := range mounts {
+		if !observationKindPattern.MatchString(mount.Name) || seen[mount.Name] {
+			return fmt.Errorf("adapter data mounts require unique token names")
+		}
+		seen[mount.Name] = true
+		if mount.Destination != "/prc-inputs/"+mount.Name {
+			return fmt.Errorf("adapter data mount %q must use its reserved /prc-inputs destination", mount.Name)
+		}
+		if mount.MaxFiles < 1 || mount.MaxFiles > 100000 || mount.MaxBytes < 1 || mount.MaxBytes > maxSnapshotBytes {
+			return fmt.Errorf("adapter data mount %q has unsafe file or byte limits", mount.Name)
 		}
 	}
 	return nil

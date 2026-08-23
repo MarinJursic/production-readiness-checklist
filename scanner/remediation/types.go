@@ -44,7 +44,7 @@ func IsProviderExecution(err error) bool {
 const (
 	FixContractSchema = "prc.fix-contract/v0.3"
 	CandidateSchema   = "prc.remediation-candidate/v0.4"
-	RunSchema         = "prc.remediation-run/v0.8"
+	RunSchema         = "prc.remediation-run/v0.9"
 )
 
 type FixContract struct {

@@ -957,6 +957,24 @@ func TestScanExecutesEveryAuthorizedRepeatedManifest(t *testing.T) {
 	}
 }
 
+func TestAdapterDataFlagParsingIsQualifiedAndDuplicateSafe(t *testing.T) {
+	parsed, err := parseScanAdapterData(repeatedStringFlag{
+		"prc.adapter.grype@0.116/grype-db=/tmp/db=cache",
+	})
+	if err != nil || parsed["prc.adapter.grype@0.116"]["grype-db"] != "/tmp/db=cache" {
+		t.Fatalf("parsed=%+v err=%v", parsed, err)
+	}
+	for _, values := range []repeatedStringFlag{
+		{"missing-assignment"},
+		{"name=/tmp/db"},
+		{"prc.adapter.grype@0.116/grype-db=/a", "prc.adapter.grype@0.116/grype-db=/b"},
+	} {
+		if _, err := parseScanAdapterData(values); err == nil {
+			t.Fatalf("invalid adapter data flags accepted: %v", values)
+		}
+	}
+}
+
 func TestScanRejectsDuplicateAdapterRequests(t *testing.T) {
 	manifestPath := filepath.Join("..", "..", "fixtures", "adapters", "fixture-adapter.yaml")
 	var stdout, stderr bytes.Buffer
@@ -1101,7 +1119,7 @@ func TestFixCommandRunsBoundedDeterministicLoop(t *testing.T) {
 	if err := json.Unmarshal(stdout.Bytes(), &result); err != nil {
 		t.Fatal(err)
 	}
-	if result.SchemaVersion != "prc.remediation-run/v0.8" || result.MaxDurationSeconds != 1800 ||
+	if result.SchemaVersion != "prc.remediation-run/v0.9" || result.MaxDurationSeconds != 1800 ||
 		len(result.Candidates) != 2 || len(result.Attempts) != 2 ||
 		result.ProviderExecutions == nil || len(result.ProviderExecutions) != 0 ||
 		result.TerminalState != "machine_work_complete" || !result.OriginalUnchanged {

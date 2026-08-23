@@ -33,7 +33,7 @@ func TestBindExecutionProducesContentAddressedValidatedRecord(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if execution.SchemaVersion != "prc.adapter-execution/v0.2" || len(execution.ExecutionID) != 64 ||
+	if execution.SchemaVersion != "prc.adapter-execution/v0.3" || len(execution.ExecutionID) != 64 ||
 		execution.Resolution.Source != ResolutionSourceExplicitLocal ||
 		execution.Resolution.PublisherID != manifest.Publisher.ID {
 		t.Fatalf("unexpected execution identity: %+v", execution)
@@ -73,6 +73,7 @@ func TestExecutionIdentityBindsRegistryResolutionAndPreservesLegacyV01(t *testin
 	}
 	legacy.SchemaVersion = "prc.adapter-execution/v0.1"
 	legacy.Resolution = model.AdapterResolution{}
+	legacy.DataInputs = nil
 	legacy.ExecutionID, err = executionID(legacy)
 	if err != nil {
 		t.Fatal(err)

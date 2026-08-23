@@ -15,21 +15,34 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 )
 
 type OCIPlan struct {
-	RuntimePath     string   `json:"runtime_path"`
-	RuntimeSHA256   string   `json:"runtime_sha256"`
-	Arguments       []string `json:"arguments"`
-	Cleanup         []string `json:"cleanup_arguments"`
-	Name            string   `json:"container_name"`
-	Workspace       string   `json:"workspace"`
-	WorkspaceSHA256 string   `json:"workspace_sha256,omitempty"`
+	RuntimePath     string           `json:"runtime_path"`
+	RuntimeSHA256   string           `json:"runtime_sha256"`
+	Arguments       []string         `json:"arguments"`
+	Cleanup         []string         `json:"cleanup_arguments"`
+	Name            string           `json:"container_name"`
+	Workspace       string           `json:"workspace"`
+	WorkspaceSHA256 string           `json:"workspace_sha256,omitempty"`
+	DataMounts      []BoundDataMount `json:"data_mounts"`
 	seal            [32]byte
 }
 
 func BuildOCIPlan(runtimeName, workspace, runID string, manifest Manifest) (OCIPlan, error) {
+	return BuildOCIPlanWithData(runtimeName, workspace, runID, manifest, nil)
+}
+
+// BuildOCIPlanWithData binds every manifest-declared external data directory
+// by content before adding its read-only OCI mount.
+func BuildOCIPlanWithData(runtimeName, workspace, runID string, manifest Manifest, dataSources map[string]string) (OCIPlan, error) {
 	if err := manifest.ValidateForCurrentEngine(); err != nil {
+		return OCIPlan{}, err
+	}
+	dataMounts, err := bindDataMounts(manifest, dataSources)
+	if err != nil {
 		return OCIPlan{}, err
 	}
 	if runtime.GOOS == "windows" {
@@ -97,11 +110,16 @@ func BuildOCIPlan(runtimeName, workspace, runID string, manifest Manifest) (OCIP
 	if manifest.Capabilities.WriteScratch {
 		arguments = append(arguments, "--tmpfs=/tmp:rw,noexec,nosuid,nodev,mode=1777,size="+strconv.Itoa(manifest.Resources.TmpfsMB)+"m")
 	}
-	arguments = append(arguments, "--mount="+mount, "--workdir=/workspace", manifest.Image)
+	arguments = append(arguments, "--mount="+mount)
+	for _, dataMount := range dataMounts {
+		arguments = append(arguments, "--mount=type=bind,src="+dataMount.Source+",dst="+dataMount.Destination+",readonly")
+	}
+	arguments = append(arguments, "--workdir=/workspace", manifest.Image)
 	arguments = append(arguments, manifest.Command...)
 	plan := OCIPlan{
 		RuntimePath: runtimePath, RuntimeSHA256: runtimeDigest, Arguments: arguments,
 		Cleanup: []string{"rm", "--force", name}, Name: name, Workspace: workspace,
+		DataMounts: dataMounts,
 	}
 	plan.seal, err = sealOCIPlan(plan, manifest)
 	if err != nil {
@@ -115,6 +133,12 @@ func BuildOCIPlan(runtimeName, workspace, runID string, manifest Manifest) (OCIP
 // container so target drift cannot be mistaken for evidence about the sealed
 // inventory.
 func BuildSnapshotOCIPlan(runtime string, snapshot *Snapshot, runID string, manifest Manifest) (OCIPlan, error) {
+	return BuildSnapshotOCIPlanWithData(runtime, snapshot, runID, manifest, nil)
+}
+
+// BuildSnapshotOCIPlanWithData binds both the sealed project snapshot and all
+// declared read-only data dependencies into one tamper-evident plan.
+func BuildSnapshotOCIPlanWithData(runtime string, snapshot *Snapshot, runID string, manifest Manifest, dataSources map[string]string) (OCIPlan, error) {
 	if snapshot == nil || snapshot.Path == "" || !hexDigestPattern.MatchString(snapshot.Digest) {
 		return OCIPlan{}, fmt.Errorf("OCI adapter execution requires a valid prepared snapshot")
 	}
@@ -125,7 +149,7 @@ func BuildSnapshotOCIPlan(runtime string, snapshot *Snapshot, runID string, mani
 	if actual != snapshot.Digest {
 		return OCIPlan{}, fmt.Errorf("adapter snapshot changed before execution planning")
 	}
-	plan, err := BuildOCIPlan(runtime, snapshot.Path, runID, manifest)
+	plan, err := BuildOCIPlanWithData(runtime, snapshot.Path, runID, manifest, dataSources)
 	if err != nil {
 		return OCIPlan{}, err
 	}
@@ -147,7 +171,8 @@ type RunOutput struct {
 	// ArtifactPayloads carries scanner-owned artifact bytes out of the native
 	// normalizer. Payloads are keyed by their sha256: descriptor and are never
 	// serialized into an execution or run record.
-	ArtifactPayloads map[string][]byte `json:"-"`
+	ArtifactPayloads map[string][]byte        `json:"-"`
+	DataInputs       []model.AdapterDataInput `json:"data_inputs"`
 }
 
 func RunOCI(
@@ -176,6 +201,9 @@ func RunOCI(
 			return RunOutput{}, fmt.Errorf("adapter snapshot changed after execution planning")
 		}
 	}
+	if err := verifyBoundDataMounts(plan.DataMounts); err != nil {
+		return RunOutput{}, err
+	}
 	if len(input) > manifest.Resources.MaxStdin {
 		return RunOutput{}, fmt.Errorf("adapter input exceeds %d bytes", manifest.Resources.MaxStdin)
 	}
@@ -198,6 +226,10 @@ func RunOCI(
 			return outputMetadata(stderr.String(), started, completed), fmt.Errorf("adapter snapshot changed during execution")
 		}
 	}
+	if dataErr := verifyBoundDataMounts(plan.DataMounts); dataErr != nil {
+		cleanupOCI(plan)
+		return outputMetadata(stderr.String(), started, completed), dataErr
+	}
 	if ctx.Err() != nil {
 		cleanupOCI(plan)
 		return outputMetadata(stderr.String(), started, completed), fmt.Errorf("adapter execution deadline reached: %w", ctx.Err())
@@ -219,24 +251,33 @@ func RunOCI(
 	output := outputMetadata(stderr.String(), started, completed)
 	output.Transcript = transcript
 	output.ArtifactPayloads = artifactPayloads
+	output.DataInputs = make([]model.AdapterDataInput, 0, len(plan.DataMounts))
+	for _, mount := range plan.DataMounts {
+		output.DataInputs = append(output.DataInputs, model.AdapterDataInput{
+			Name: mount.Name, Destination: mount.Destination, SHA256: mount.SHA256,
+			Files: mount.Files, Bytes: mount.Bytes,
+		})
+	}
 	return output, nil
 }
 
 func sealOCIPlan(plan OCIPlan, manifest Manifest) ([32]byte, error) {
 	payload, err := json.Marshal(struct {
-		RuntimePath     string   `json:"runtime_path"`
-		RuntimeSHA256   string   `json:"runtime_sha256"`
-		Arguments       []string `json:"arguments"`
-		Cleanup         []string `json:"cleanup_arguments"`
-		Name            string   `json:"container_name"`
-		Workspace       string   `json:"workspace"`
-		WorkspaceSHA256 string   `json:"workspace_sha256,omitempty"`
-		Manifest        Manifest `json:"manifest"`
+		RuntimePath     string           `json:"runtime_path"`
+		RuntimeSHA256   string           `json:"runtime_sha256"`
+		Arguments       []string         `json:"arguments"`
+		Cleanup         []string         `json:"cleanup_arguments"`
+		Name            string           `json:"container_name"`
+		Workspace       string           `json:"workspace"`
+		WorkspaceSHA256 string           `json:"workspace_sha256,omitempty"`
+		DataMounts      []BoundDataMount `json:"data_mounts"`
+		Manifest        Manifest         `json:"manifest"`
 	}{
 		RuntimePath: plan.RuntimePath, RuntimeSHA256: plan.RuntimeSHA256,
 		Arguments: plan.Arguments, Cleanup: plan.Cleanup,
 		Name: plan.Name, Workspace: plan.Workspace, WorkspaceSHA256: plan.WorkspaceSHA256,
-		Manifest: manifest,
+		DataMounts: plan.DataMounts,
+		Manifest:   manifest,
 	})
 	if err != nil {
 		return [32]byte{}, fmt.Errorf("seal validated OCI plan: %w", err)

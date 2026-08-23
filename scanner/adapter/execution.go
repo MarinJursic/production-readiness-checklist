@@ -76,10 +76,12 @@ func BindExecutionWithResolution(
 	if err := validateResolutionForPublisher(resolution, manifest.Publisher.ID); err != nil {
 		return model.AdapterExecution{}, err
 	}
+	dataInputs := make([]model.AdapterDataInput, len(output.DataInputs))
+	copy(dataInputs, output.DataInputs)
 	execution := model.AdapterExecution{
 		SchemaVersion: model.AdapterExecutionSchema,
 		AdapterRunID:  runID, AdapterID: manifest.ID, ManifestSHA256: manifestDigest, Image: manifest.Image,
-		Resolution: resolution,
+		Resolution: resolution, DataInputs: dataInputs,
 		Subject: model.AdapterSubject{
 			TargetName: subject.TargetName, TargetCommit: subject.TargetCommit, InventoryDigest: subject.InventoryDigest,
 		},
@@ -120,7 +122,8 @@ func ValidateTranscriptContract(manifest Manifest, transcript Transcript) error 
 }
 
 func ValidateExecution(execution model.AdapterExecution) error {
-	if execution.SchemaVersion != model.AdapterExecutionSchema && execution.SchemaVersion != "prc.adapter-execution/v0.1" {
+	if execution.SchemaVersion != model.AdapterExecutionSchema && execution.SchemaVersion != "prc.adapter-execution/v0.2" &&
+		execution.SchemaVersion != "prc.adapter-execution/v0.1" {
 		return fmt.Errorf("unsupported adapter execution schema %q", execution.SchemaVersion)
 	}
 	if !hexDigestPattern.MatchString(execution.ExecutionID) || !hexDigestPattern.MatchString(execution.AdapterRunID) ||
@@ -130,12 +133,19 @@ func ValidateExecution(execution model.AdapterExecution) error {
 	if !adapterIDPattern.MatchString(execution.AdapterID) || !imagePattern.MatchString(execution.Image) {
 		return fmt.Errorf("adapter execution identity is invalid")
 	}
-	if execution.SchemaVersion == model.AdapterExecutionSchema {
+	if execution.SchemaVersion == model.AdapterExecutionSchema || execution.SchemaVersion == "prc.adapter-execution/v0.2" {
 		if err := validateResolution(execution.Resolution); err != nil {
 			return fmt.Errorf("adapter execution resolution: %w", err)
 		}
 	} else if execution.Resolution != (model.AdapterResolution{}) {
 		return fmt.Errorf("legacy adapter execution cannot contain resolution provenance")
+	}
+	if execution.SchemaVersion == model.AdapterExecutionSchema {
+		if err := validateExecutionDataInputs(execution.DataInputs); err != nil {
+			return err
+		}
+	} else if execution.DataInputs != nil {
+		return fmt.Errorf("legacy adapter execution cannot contain data inputs")
 	}
 	if strings.TrimSpace(execution.Subject.TargetName) == "" || !hexDigestPattern.MatchString(execution.Subject.InventoryDigest) {
 		return fmt.Errorf("adapter execution subject is invalid")
@@ -159,6 +169,22 @@ func ValidateExecution(execution model.AdapterExecution) error {
 	}
 	if expected != execution.ExecutionID {
 		return fmt.Errorf("adapter execution ID does not match its content")
+	}
+	return nil
+}
+
+func validateExecutionDataInputs(inputs []model.AdapterDataInput) error {
+	if inputs == nil {
+		return fmt.Errorf("adapter execution data inputs cannot be null")
+	}
+	seen := map[string]bool{}
+	for _, input := range inputs {
+		if !observationKindPattern.MatchString(input.Name) || seen[input.Name] ||
+			input.Destination != "/prc-inputs/"+input.Name || !hexDigestPattern.MatchString(input.SHA256) ||
+			input.Files < 1 || input.Bytes < 1 {
+			return fmt.Errorf("adapter execution contains an invalid or duplicate data input")
+		}
+		seen[input.Name] = true
 	}
 	return nil
 }
