@@ -62,7 +62,7 @@ func TestBuildPlanOwnsCommandAndIsolation(t *testing.T) {
 		"--tmpfs=/tmp:rw,noexec,nosuid,nodev,mode=1777,size=256m",
 		"--tmpfs=/prc-exec:rw,exec,nosuid,nodev,uid=" + strconv.Itoa(os.Getuid()) +
 			",gid=" + strconv.Itoa(os.Getgid()) + ",mode=0700,size=256m",
-		"--env=TMPDIR=/tmp", "--env=GOTMPDIR=/prc-exec/go-tmp",
+		"--env=TMPDIR=/tmp", "--env=GOTMPDIR=/prc-exec",
 		"--env=GOCACHE=/prc-exec/go-build", "--env=GOMODCACHE=/prc-exec/go-mod",
 	}
 	for _, value := range required {

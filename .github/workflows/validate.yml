@@ -315,7 +315,7 @@ jobs:
               --user="$verifier_uid:$verifier_gid" --ulimit=nofile=1024:1024 \
               --tmpfs=/tmp:rw,noexec,nosuid,nodev,mode=1777,size=256m \
               --tmpfs=/prc-exec:rw,exec,nosuid,nodev,uid="$verifier_uid",gid="$verifier_gid",mode=0700,size=256m \
-              --env=HOME=/tmp/home --env=TMPDIR=/tmp --env=GOTMPDIR=/prc-exec/go-tmp \
+              --env=HOME=/tmp/home --env=TMPDIR=/tmp --env=GOTMPDIR=/prc-exec \
               --env=GOCACHE=/prc-exec/go-build --env=GOMODCACHE=/prc-exec/go-mod \
               --env=GOPROXY=off --env=GOSUMDB=off \
               --mount="type=bind,src=$RUNNER_TEMP/provider-candidate,dst=/workspace,readonly" \
