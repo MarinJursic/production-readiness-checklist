@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/catalog-manifest.schema.json",
+  "title": "Production Readiness Catalog Manifest v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "catalog_version",
+    "catalog_digest",
+    "objective_count",
+    "assertion_count",
+    "profile_count"
+  ],
+  "properties": {
+    "schema_version": {"const": "prc.catalog-manifest/v0.1"},
+    "catalog_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "catalog_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "objective_count": {"type": "integer", "minimum": 1},
+    "assertion_count": {"type": "integer", "minimum": 1},
+    "profile_count": {"type": "integer", "minimum": 1}
+  }
+}

@@ -106,6 +106,9 @@ func run(args []string, stdout, stderr io.Writer) int {
 	case "config":
 		errorFallback = exitConfiguration
 		err = runConfig(args[1:], stdout, stderr)
+	case "catalog":
+		errorFallback = exitConfiguration
+		err = runCatalog(args[1:], stdout, stderr)
 	case "plan":
 		errorFallback = exitConfiguration
 		err = runPlan(args[1:], stdout, stderr)
@@ -152,7 +155,53 @@ func run(args []string, stdout, stderr io.Writer) int {
 
 func usage(output io.Writer) {
 	fmt.Fprintln(output, "Production Readiness Scanner")
-	fmt.Fprintln(output, "usage: prc <config|inventory|plan|scan|diff|fix|remediate|remediate-proposal|doctor|history|explain|adapter|provider|version> [options]")
+	fmt.Fprintln(output, "usage: prc <catalog|config|inventory|plan|scan|diff|fix|remediate|remediate-proposal|doctor|history|explain|adapter|provider|version> [options]")
+}
+
+func runCatalog(args []string, stdout, stderr io.Writer) error {
+	if len(args) == 0 || (args[0] != "validate" && args[0] != "bundle") {
+		return errors.New("catalog requires validate or bundle")
+	}
+	command := args[0]
+	set := flag.NewFlagSet("catalog "+command, flag.ContinueOnError)
+	set.SetOutput(stderr)
+	root := set.String("catalog-root", ".", "repository containing the PRC catalog")
+	format := "human"
+	if command == "validate" {
+		set.StringVar(&format, "format", "human", "human or json")
+	}
+	if err := set.Parse(args[1:]); err != nil {
+		return err
+	}
+	if set.NArg() != 0 {
+		return fmt.Errorf("unexpected catalog arguments: %s", strings.Join(set.Args(), " "))
+	}
+	if command == "validate" && format != "human" && format != "json" {
+		return fmt.Errorf("unsupported format %q", format)
+	}
+	loaded, err := catalog.Load(*root)
+	if err != nil {
+		return err
+	}
+	if command == "bundle" {
+		bundle, err := loaded.Bundle()
+		if err != nil {
+			return err
+		}
+		return encodeJSON(stdout, bundle)
+	}
+	manifest, err := loaded.Manifest()
+	if err != nil {
+		return err
+	}
+	if format == "json" {
+		return encodeJSON(stdout, manifest)
+	}
+	fmt.Fprintf(stdout, "Catalog: %s\n", manifest.CatalogDigest)
+	fmt.Fprintf(stdout, "Version: %s\n", manifest.CatalogVersion)
+	fmt.Fprintf(stdout, "Definitions: %d objectives, %d assertions, %d profiles\n",
+		manifest.ObjectiveCount, manifest.AssertionCount, manifest.ProfileCount)
+	return nil
 }
 
 func runConfig(args []string, stdout, stderr io.Writer) error {

@@ -46,6 +46,16 @@ containers, or agent providers.
 
 ## Create a deterministic plan
 
+Optionally validate or export the exact catalog first:
+
+```bash
+./prc catalog validate --catalog-root /path/to/production-readiness-checklist
+./prc catalog bundle --catalog-root /path/to/production-readiness-checklist > catalog-bundle.json
+```
+
+The manifest and bundle are deterministic and contain no local path or timestamp.
+They identify validated definitions; release signing is a separate trust step.
+
 Run this command from the Production Readiness Checklist repository, or pass its
 location through `--catalog-root`:
 

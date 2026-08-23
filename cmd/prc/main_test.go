@@ -40,6 +40,51 @@ func TestConfigValidateCommand(t *testing.T) {
 	}
 }
 
+func TestCatalogValidateAndBundleCommands(t *testing.T) {
+	root := filepath.Join("..", "..")
+	var manifestOutput, stderr bytes.Buffer
+	if code := run([]string{"catalog", "validate", "--catalog-root", root, "--format", "json"}, &manifestOutput, &stderr); code != 0 {
+		t.Fatalf("validate exit=%d stderr=%s", code, stderr.String())
+	}
+	var manifest struct {
+		SchemaVersion  string `json:"schema_version"`
+		CatalogDigest  string `json:"catalog_digest"`
+		ObjectiveCount int    `json:"objective_count"`
+		AssertionCount int    `json:"assertion_count"`
+		ProfileCount   int    `json:"profile_count"`
+	}
+	if err := json.Unmarshal(manifestOutput.Bytes(), &manifest); err != nil {
+		t.Fatal(err)
+	}
+	if manifest.SchemaVersion != "prc.catalog-manifest/v0.1" || len(manifest.CatalogDigest) != 64 ||
+		manifest.ObjectiveCount == 0 || manifest.AssertionCount == 0 || manifest.ProfileCount == 0 {
+		t.Fatalf("invalid catalog manifest: %+v", manifest)
+	}
+	var bundleOutput bytes.Buffer
+	stderr.Reset()
+	if code := run([]string{"catalog", "bundle", "--catalog-root", root}, &bundleOutput, &stderr); code != 0 {
+		t.Fatalf("bundle exit=%d stderr=%s", code, stderr.String())
+	}
+	var bundle struct {
+		SchemaVersion string `json:"schema_version"`
+		Manifest      struct {
+			CatalogDigest string `json:"catalog_digest"`
+		} `json:"manifest"`
+		Objectives []json.RawMessage `json:"objectives"`
+		Assertions []json.RawMessage `json:"assertions"`
+		Profiles   []json.RawMessage `json:"profiles"`
+	}
+	if err := json.Unmarshal(bundleOutput.Bytes(), &bundle); err != nil {
+		t.Fatal(err)
+	}
+	if bundle.SchemaVersion != "prc.catalog-bundle/v0.1" ||
+		bundle.Manifest.CatalogDigest != manifest.CatalogDigest ||
+		len(bundle.Objectives) != manifest.ObjectiveCount ||
+		len(bundle.Assertions) != manifest.AssertionCount || len(bundle.Profiles) != manifest.ProfileCount {
+		t.Fatalf("bundle does not match manifest: %+v", bundle)
+	}
+}
+
 func TestConfigValidateRejectsCapabilityExpansion(t *testing.T) {
 	path := filepath.Join(t.TempDir(), "production-readiness.yaml")
 	data, err := os.ReadFile(filepath.Join("..", "..", "fixtures", "config", "production-readiness.yaml"))

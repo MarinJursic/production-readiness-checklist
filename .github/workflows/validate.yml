@@ -121,6 +121,8 @@ jobs:
           "$RUNNER_TEMP/prc" config validate \
             --file fixtures/config/production-readiness.yaml \
             --format json > "$RUNNER_TEMP/config-validation.json"
+          "$RUNNER_TEMP/prc" catalog validate --catalog-root . --format json > "$RUNNER_TEMP/catalog-manifest.json"
+          "$RUNNER_TEMP/prc" catalog bundle --catalog-root . > "$RUNNER_TEMP/catalog-bundle.json"
           "$RUNNER_TEMP/prc" inventory --target . --format json > "$RUNNER_TEMP/inventory.json"
           "$RUNNER_TEMP/prc" plan --target . --catalog-root . --format json > "$RUNNER_TEMP/plan.json"
           "$RUNNER_TEMP/prc" scan --target . --catalog-root . --state-dir "$RUNNER_TEMP/state" --format json --exit-policy never > "$RUNNER_TEMP/run.json"
@@ -211,6 +213,8 @@ jobs:
           python -c 'import json,sys,yaml; json.dump(yaml.safe_load(open(sys.argv[1], encoding="utf-8")), sys.stdout)' fixtures/config/production-readiness.yaml > "$RUNNER_TEMP/config.json"
           python scripts/validate_instance.py doctor.schema.json "$RUNNER_TEMP/doctor.json"
           python scripts/validate_instance.py project-config.schema.json "$RUNNER_TEMP/config.json"
+          python scripts/validate_instance.py catalog-manifest.schema.json "$RUNNER_TEMP/catalog-manifest.json"
+          python scripts/validate_instance.py catalog-bundle.schema.json "$RUNNER_TEMP/catalog-bundle.json"
           python scripts/validate_instance.py inventory.schema.json "$RUNNER_TEMP/inventory.json"
           python scripts/validate_instance.py plan.schema.json "$RUNNER_TEMP/plan.json"
           python scripts/validate_instance.py run-result.schema.json "$RUNNER_TEMP/run.json"

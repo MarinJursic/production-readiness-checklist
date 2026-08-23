@@ -18,6 +18,72 @@ SPEC.loader.exec_module(validate_instance)
 
 
 class ScannerOutputSchemaTests(unittest.TestCase):
+    def test_catalog_manifest_and_bundle_conform(self) -> None:
+        digest = "a" * 64
+        manifest = {
+            "schema_version": "prc.catalog-manifest/v0.1",
+            "catalog_version": "0.1.0",
+            "catalog_digest": digest,
+            "objective_count": 1,
+            "assertion_count": 1,
+            "profile_count": 1,
+        }
+        bundle = {
+            "schema_version": "prc.catalog-bundle/v0.1",
+            "manifest": manifest,
+            "objectives": [{
+                "id": "USEQ-AAAAAAAA",
+                "revision": 1,
+                "title": "Test objective",
+                "statement": "Test objective.",
+                "source": {"path": "docs/source.md", "line": 1},
+                "domains": ["repository"],
+                "automation_class": "automated",
+                "assertion_ids": ["PRC-A-TEST-001"],
+            }],
+            "assertions": [{
+                "id": "PRC-A-TEST-001",
+                "revision": 1,
+                "control_ids": ["USEQ-AAAAAAAA"],
+                "title": "Test assertion",
+                "statement": "Test assertion.",
+                "applicability": "true",
+                "evidence_required": [{
+                    "kind": "repository-file",
+                    "minimum_authority": "repository",
+                    "description": "Test evidence.",
+                }],
+                "implementation_id": "prc.native.test@0.1",
+                "severity": "high",
+                "gate": "required",
+                "remediation_class": "R0",
+            }],
+            "profiles": [{
+                "schema_version": "prc.profile/v0.1",
+                "id": "prc/test",
+                "version": "1.0",
+                "title": "Test profile",
+                "description": "Test profile.",
+                "assertion_ids": ["PRC-A-TEST-001"],
+                "terminal_policy": {
+                    "block_on": ["high"],
+                    "allow_manual_remaining": True,
+                },
+            }],
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(
+                manifest, "catalog-manifest.schema.json"
+            ),
+            [],
+        )
+        self.assertEqual(
+            validate_instance.validation_errors(
+                bundle, "catalog-bundle.schema.json"
+            ),
+            [],
+        )
+
     def test_checked_in_project_configuration_conforms(self) -> None:
         path = ROOT / "fixtures" / "config" / "production-readiness.yaml"
         instance = yaml.safe_load(path.read_text(encoding="utf-8"))

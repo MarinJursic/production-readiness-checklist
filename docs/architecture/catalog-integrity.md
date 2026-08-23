@@ -48,6 +48,31 @@ an unsafe catalog even when repository CI was skipped, while repository CI must
 detect drift across source controls and generated artifacts that a small runtime
 profile does not load.
 
+## Reproducible inspection and distribution
+
+Validate a catalog and print its path-independent identity before planning a
+scan:
+
+```bash
+prc catalog validate --catalog-root /path/to/catalog
+prc catalog validate --catalog-root /path/to/catalog --format json
+```
+
+`prc catalog bundle` emits `prc.catalog-bundle/v0.1` JSON containing the same
+manifest plus every validated objective, assertion, and profile in stable ID
+order:
+
+```bash
+prc catalog bundle --catalog-root /path/to/catalog > catalog-bundle.json
+```
+
+The bundle contains no build timestamp or absolute path, so two copies of the
+same definitions produce identical bytes. Its manifest records the semantic
+catalog version, exact catalog digest, and definition counts. The checked-in
+JSON Schemas validate both the manifest and bundle. Signing and publisher trust
+remain release-pipeline responsibilities; an unsigned bundle is not evidence of
+who published it.
+
 ## Identity binding
 
 A successful load produces a deterministic digest over every parsed objective,

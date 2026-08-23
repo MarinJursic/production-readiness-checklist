@@ -1,6 +1,7 @@
 package catalog
 
 import (
+	"encoding/json"
 	"os"
 	"path/filepath"
 	"strings"
@@ -38,6 +39,51 @@ func TestDigestBindsGoverningDefinitions(t *testing.T) {
 	}
 	if changed == first {
 		t.Fatal("objective change did not change catalog identity")
+	}
+}
+
+func TestBundleIsDeterministicCompleteAndPathIndependent(t *testing.T) {
+	root, err := filepath.Abs(filepath.Join("..", ".."))
+	if err != nil {
+		t.Fatal(err)
+	}
+	loaded, err := Load(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	first, err := loaded.Bundle()
+	if err != nil {
+		t.Fatal(err)
+	}
+	second, err := loaded.Bundle()
+	if err != nil {
+		t.Fatal(err)
+	}
+	firstJSON, err := json.Marshal(first)
+	if err != nil {
+		t.Fatal(err)
+	}
+	secondJSON, err := json.Marshal(second)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if string(firstJSON) != string(secondJSON) {
+		t.Fatal("catalog bundle output is not deterministic")
+	}
+	if first.SchemaVersion != BundleSchema || first.Manifest.SchemaVersion != ManifestSchema ||
+		first.Manifest.CatalogVersion != loaded.Version || len(first.Manifest.CatalogDigest) != 64 ||
+		first.Manifest.ObjectiveCount != len(first.Objectives) ||
+		first.Manifest.AssertionCount != len(first.Assertions) ||
+		first.Manifest.ProfileCount != len(first.Profiles) {
+		t.Fatalf("incomplete catalog bundle: %+v", first.Manifest)
+	}
+	for index := 1; index < len(first.Objectives); index++ {
+		if first.Objectives[index-1].ID >= first.Objectives[index].ID {
+			t.Fatal("bundle objectives are not ordered by ID")
+		}
+	}
+	if strings.Contains(string(firstJSON), root) {
+		t.Fatal("catalog bundle leaked its filesystem root")
 	}
 }
 

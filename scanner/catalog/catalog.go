@@ -22,6 +22,11 @@ import (
 
 const maximumCatalogFileBytes = 4 * 1024 * 1024
 
+const (
+	ManifestSchema = "prc.catalog-manifest/v0.1"
+	BundleSchema   = "prc.catalog-bundle/v0.1"
+)
+
 var (
 	catalogVersionPattern = regexp.MustCompile(`^[0-9]+\.[0-9]+\.[0-9]+$`)
 	objectiveIDPattern    = regexp.MustCompile(`^(?:PRC-[0-9]{2}-[0-9]{3}|USEQ-[A-F0-9]{8})$`)
@@ -38,6 +43,27 @@ type Catalog struct {
 	Objectives map[string]model.Objective
 	Assertions map[string]model.Assertion
 	Profiles   map[string]model.Profile
+}
+
+// Manifest is the small, reproducible identity record for a validated catalog.
+// It intentionally contains no timestamp or absolute filesystem path.
+type Manifest struct {
+	SchemaVersion  string `json:"schema_version"`
+	CatalogVersion string `json:"catalog_version"`
+	CatalogDigest  string `json:"catalog_digest"`
+	ObjectiveCount int    `json:"objective_count"`
+	AssertionCount int    `json:"assertion_count"`
+	ProfileCount   int    `json:"profile_count"`
+}
+
+// Bundle is the canonical JSON distribution form of a validated catalog.
+// Definitions are ordered by stable ID so byte output is reproducible.
+type Bundle struct {
+	SchemaVersion string            `json:"schema_version"`
+	Manifest      Manifest          `json:"manifest"`
+	Objectives    []model.Objective `json:"objectives"`
+	Assertions    []model.Assertion `json:"assertions"`
+	Profiles      []model.Profile   `json:"profiles"`
 }
 
 type objectiveDocument struct {
@@ -492,6 +518,43 @@ func (c *Catalog) Digest() (string, error) {
 	}
 	digest := sha256.Sum256(payload)
 	return hex.EncodeToString(digest[:]), nil
+}
+
+// Manifest returns a path- and time-independent summary of the exact loaded
+// definitions. The catalog has already passed syntactic and semantic loading.
+func (c *Catalog) Manifest() (Manifest, error) {
+	digest, err := c.Digest()
+	if err != nil {
+		return Manifest{}, err
+	}
+	return Manifest{
+		SchemaVersion: ManifestSchema, CatalogVersion: c.Version, CatalogDigest: digest,
+		ObjectiveCount: len(c.Objectives), AssertionCount: len(c.Assertions), ProfileCount: len(c.Profiles),
+	}, nil
+}
+
+// Bundle returns the deterministic distribution form of the loaded catalog.
+func (c *Catalog) Bundle() (Bundle, error) {
+	manifest, err := c.Manifest()
+	if err != nil {
+		return Bundle{}, err
+	}
+	bundle := Bundle{
+		SchemaVersion: BundleSchema, Manifest: manifest,
+		Objectives: make([]model.Objective, 0, len(c.Objectives)),
+		Assertions: make([]model.Assertion, 0, len(c.Assertions)),
+		Profiles:   make([]model.Profile, 0, len(c.Profiles)),
+	}
+	for _, id := range sortedKeys(c.Objectives) {
+		bundle.Objectives = append(bundle.Objectives, c.Objectives[id])
+	}
+	for _, id := range sortedKeys(c.Assertions) {
+		bundle.Assertions = append(bundle.Assertions, c.Assertions[id])
+	}
+	for _, id := range sortedKeys(c.Profiles) {
+		bundle.Profiles = append(bundle.Profiles, c.Profiles[id])
+	}
+	return bundle, nil
 }
 
 func (c *Catalog) Profile(id string) (model.Profile, error) {

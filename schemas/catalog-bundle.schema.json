@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/catalog-bundle.schema.json",
+  "title": "Production Readiness Canonical Catalog Bundle v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "manifest", "objectives", "assertions", "profiles"],
+  "properties": {
+    "schema_version": {"const": "prc.catalog-bundle/v0.1"},
+    "manifest": {"$ref": "catalog-manifest.schema.json"},
+    "objectives": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "objective-catalog.schema.json#/$defs/objective"}
+    },
+    "assertions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "assertion-catalog.schema.json#/$defs/assertion"}
+    },
+    "profiles": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "profile.schema.json"}
+    }
+  }
+}
