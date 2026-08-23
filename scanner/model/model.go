@@ -9,7 +9,7 @@ const (
 	EngineVersion          = "prc.engine/v0.1"
 	InventorySchema        = "prc.inventory/v0.3"
 	PlanSchema             = "prc.plan/v0.6"
-	RunSchema              = "prc.run/v0.8"
+	RunSchema              = "prc.run/v0.9"
 	EvidenceSchema         = "prc.evidence/v0.1"
 	FindingSchema          = "prc.finding/v0.1"
 	AdapterExecutionSchema = "prc.adapter-execution/v0.2"
@@ -290,6 +290,7 @@ type AssertionResult struct {
 	Severity         string                `json:"severity"`
 	Gate             string                `json:"gate"`
 	Summary          string                `json:"summary"`
+	Locations        []FindingLocation     `json:"locations,omitempty"`
 	EvidenceRequired []EvidenceRequirement `json:"evidence_required"`
 	EvidenceObserved []Evidence            `json:"evidence_observed"`
 	RemediationClass string                `json:"remediation_class"`
@@ -343,7 +344,7 @@ type RunResult struct {
 // later runs encode the required findings array; v0.5 through v0.3 do not.
 func (run RunResult) MarshalJSON() ([]byte, error) {
 	type current RunResult
-	if run.SchemaVersion == RunSchema || run.SchemaVersion == "prc.run/v0.7" || run.SchemaVersion == "prc.run/v0.6" {
+	if run.SchemaVersion == RunSchema || run.SchemaVersion == "prc.run/v0.8" || run.SchemaVersion == "prc.run/v0.7" || run.SchemaVersion == "prc.run/v0.6" {
 		return json.Marshal(current(run))
 	}
 	type legacy struct {

@@ -637,7 +637,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "assertions": [],
         }
         final_run = {
-            "schema_version": "prc.run/v0.8",
+            "schema_version": "prc.run/v0.9",
             "run_id": digest,
             "started_at": "2026-08-23T12:00:00Z",
             "completed_at": "2026-08-23T12:00:01Z",
@@ -648,6 +648,30 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "findings": [],
             "terminal_state": "profile_satisfied",
         }
+        located_run = {
+            **final_run,
+            "results": [{
+                "assertion_id": "PRC-A-GO-001",
+                "control_ids": ["USEQ-F6ACEF15"],
+                "applicability": "applicable",
+                "execution": "completed",
+                "assessment": "fail",
+                "severity": "high",
+                "gate": "required",
+                "summary": "Direct package helper call.",
+                "locations": [{"path": "client.go", "line": 6, "column": 9}],
+                "evidence_required": [],
+                "evidence_observed": [],
+                "remediation_class": "R2",
+            }],
+            "terminal_state": "no_go",
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(
+                located_run, "run-result.schema.json"
+            ),
+            [],
+        )
         remediation_run = {
             "schema_version": "prc.remediation-run/v0.4",
             "run_id": digest,
@@ -676,6 +700,20 @@ class ScannerOutputSchemaTests(unittest.TestCase):
                 remediation_run, "remediation-run.schema.json"
             ),
             [],
+        )
+
+        v08_run = {**final_run, "schema_version": "prc.run/v0.8"}
+        self.assertEqual(
+            validate_instance.validation_errors(
+                v08_run, "run-result-v0.8.schema.json"
+            ),
+            [],
+        )
+        self.assertTrue(
+            validate_instance.validation_errors(
+                {**located_run, "schema_version": "prc.run/v0.8"},
+                "run-result-v0.8.schema.json",
+            )
         )
 
         v07_run = {**final_run, "schema_version": "prc.run/v0.7"}

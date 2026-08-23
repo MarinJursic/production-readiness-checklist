@@ -507,6 +507,7 @@ func validateRun(run model.RunResult) error {
 		return fmt.Errorf("run ID does not match record content")
 	}
 	if !((run.SchemaVersion == model.RunSchema && run.Plan.SchemaVersion == model.PlanSchema) ||
+		(run.SchemaVersion == "prc.run/v0.8" && run.Plan.SchemaVersion == model.PlanSchema) ||
 		(run.SchemaVersion == "prc.run/v0.7" && run.Plan.SchemaVersion == model.PlanSchema) ||
 		(run.SchemaVersion == "prc.run/v0.6" && run.Plan.SchemaVersion == "prc.plan/v0.5") ||
 		(run.SchemaVersion == "prc.run/v0.5" && run.Plan.SchemaVersion == "prc.plan/v0.5") ||
@@ -549,7 +550,7 @@ func validateRun(run model.RunResult) error {
 		}
 	}
 	expectedExecutionSchema := "prc.adapter-execution/v0.1"
-	if run.SchemaVersion == model.RunSchema {
+	if run.SchemaVersion == model.RunSchema || run.SchemaVersion == "prc.run/v0.8" {
 		expectedExecutionSchema = model.AdapterExecutionSchema
 	}
 	seenExecutions := map[string]bool{}
@@ -580,6 +581,20 @@ func validateRun(run model.RunResult) error {
 			return fmt.Errorf("run contains an unplanned or duplicate result for %s", result.AssertionID)
 		}
 		results[result.AssertionID] = true
+		if run.SchemaVersion == model.RunSchema {
+			if result.Assessment != "fail" && len(result.Locations) != 0 {
+				return fmt.Errorf("non-failing result %s cannot carry finding locations", result.AssertionID)
+			}
+			seenLocations := map[model.FindingLocation]bool{}
+			for _, location := range result.Locations {
+				clean := filepath.ToSlash(filepath.Clean(filepath.FromSlash(location.Path)))
+				if clean != location.Path || !inventoryFilePath(run.Inventory, location.Path) ||
+					location.Line < 0 || location.Column < 0 || (location.Column > 0 && location.Line == 0) || seenLocations[location] {
+					return fmt.Errorf("result %s contains an invalid or duplicate location", result.AssertionID)
+				}
+				seenLocations[location] = true
+			}
+		}
 		for _, evidence := range result.EvidenceObserved {
 			if !digest(evidence.ID) || evidenceIdentity(evidence) != evidence.ID {
 				return fmt.Errorf("evidence ID does not match record content")
@@ -592,7 +607,7 @@ func validateRun(run model.RunResult) error {
 	if len(results) != len(planned) {
 		return fmt.Errorf("run does not contain exactly one result for every planned assertion")
 	}
-	if run.SchemaVersion == model.RunSchema || run.SchemaVersion == "prc.run/v0.7" || run.SchemaVersion == "prc.run/v0.6" {
+	if run.SchemaVersion == model.RunSchema || run.SchemaVersion == "prc.run/v0.8" || run.SchemaVersion == "prc.run/v0.7" || run.SchemaVersion == "prc.run/v0.6" {
 		if run.Findings == nil {
 			return fmt.Errorf("current run findings must encode as an array")
 		}
@@ -624,6 +639,17 @@ func validateRun(run model.RunResult) error {
 			}
 			if !sameStringSet(item.EvidenceIDs, evidenceIDs) {
 				return fmt.Errorf("finding %s evidence does not match its failed result", item.ID)
+			}
+			if run.SchemaVersion == model.RunSchema {
+				findingLocations := map[model.FindingLocation]bool{}
+				for _, location := range item.Locations {
+					findingLocations[location] = true
+				}
+				for _, location := range result.Locations {
+					if !findingLocations[location] {
+						return fmt.Errorf("finding %s omits a result location", item.ID)
+					}
+				}
 			}
 		}
 		if len(seenAssertions) != len(failureResults) {
@@ -683,6 +709,15 @@ func sameStringSet(left, right []string) bool {
 		}
 	}
 	return true
+}
+
+func inventoryFilePath(inventory model.Inventory, path string) bool {
+	for _, file := range inventory.Files {
+		if file.Path == path {
+			return true
+		}
+	}
+	return false
 }
 
 func timestamp(value time.Time) string { return value.UTC().Format(time.RFC3339Nano) }

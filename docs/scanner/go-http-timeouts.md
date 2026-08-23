@@ -30,7 +30,7 @@ locally shadowed identifiers. It never type-checks, builds, tests, imports, or
 executes the target. Scope evidence binds the content-addressed inventory; a
 failure also records hashes for affected files, never source text. The result
 summary reports a bounded file, line, column, and helper name; the structured
-finding location identifies the affected file.
+assertion result and canonical finding identify the exact affected callsite.
 
 The check returns Blocked/Unknown when more than 4,096 Go files or 256 MiB of Go
 source would need inspection, or when one file exceeds the native 4 MiB parser

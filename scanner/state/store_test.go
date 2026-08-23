@@ -117,6 +117,34 @@ func TestStoreIndexesQueriesAndReloadsCanonicalRun(t *testing.T) {
 	}
 }
 
+func TestCurrentRunRejectsUnsafeResultLocations(t *testing.T) {
+	run := testRun(t)
+	for index := range run.Results {
+		if run.Results[index].Assessment == "fail" {
+			run.Results[index].Locations = []model.FindingLocation{{Path: "../escape.go", Line: 1, Column: 1}}
+			break
+		}
+	}
+	run.RunID = runIdentity(run)
+	if err := validateRun(run); err == nil || !strings.Contains(err.Error(), "invalid or duplicate location") {
+		t.Fatalf("unsafe result location error = %v", err)
+	}
+}
+
+func TestStoreReadsLegacyV08RunAfterSourceLocationUpgrade(t *testing.T) {
+	run := testRun(t)
+	run.SchemaVersion = "prc.run/v0.8"
+	run.RunID = runIdentity(run)
+	store, _ := writeAndOpen(t, run)
+	if err := store.IndexRun(context.Background(), run); err != nil {
+		t.Fatal(err)
+	}
+	loaded, err := store.LoadRun(context.Background(), run.RunID)
+	if err != nil || loaded.SchemaVersion != "prc.run/v0.8" || loaded.RunID != run.RunID {
+		t.Fatalf("legacy v0.8 run = %+v err=%v", loaded, err)
+	}
+}
+
 func TestStoreReadsLegacyV03RunAfterRuleBindingUpgrade(t *testing.T) {
 	run := testRun(t)
 	run.SchemaVersion = "prc.run/v0.3"

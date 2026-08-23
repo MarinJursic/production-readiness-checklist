@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/run-result.schema.json",
-  "title": "Production Readiness Run Result v0.8",
+  "title": "Production Readiness Run Result v0.9",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_version", "run_id", "started_at", "completed_at", "plan", "inventory", "adapter_executions", "results", "findings", "terminal_state"],
   "properties": {
-    "schema_version": {"const": "prc.run/v0.8"},
+    "schema_version": {"const": "prc.run/v0.9"},
     "run_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "started_at": {"type": "string", "format": "date-time"},
     "completed_at": {"type": "string", "format": "date-time"},
@@ -34,6 +34,12 @@
           "severity": {"enum": ["info", "low", "medium", "high", "critical"]},
           "gate": {"enum": ["advisory", "required", "no-go"]},
           "summary": {"type": "string"},
+          "locations": {
+            "type": "array",
+            "maxItems": 4096,
+            "uniqueItems": true,
+            "items": {"$ref": "#/$defs/location"}
+          },
           "evidence_required": {
             "type": "array",
             "items": {"$ref": "#/$defs/evidence_requirement"}
@@ -44,6 +50,16 @@
     },
     "terminal_state": {
       "enum": ["profile_satisfied", "machine_work_complete_manual_evidence_remaining", "assessment_incomplete", "no_go", "policy_stopped", "budget_exhausted", "environment_blocked"]
+    },
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "line": {"type": "integer", "minimum": 0},
+        "column": {"type": "integer", "minimum": 0}
+      }
     },
     "evidence_requirement": {
       "type": "object",

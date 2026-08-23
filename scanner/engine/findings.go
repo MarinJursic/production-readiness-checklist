@@ -66,8 +66,18 @@ func findingLocations(
 		inventoryPaths[file.Path] = true
 	}
 	locations := make([]model.FindingLocation, 0)
+	detailedPaths := map[string]bool{}
+	for _, location := range result.Locations {
+		path := filepath.ToSlash(filepath.Clean(filepath.FromSlash(location.Path)))
+		if path != location.Path || !inventoryPaths[path] || location.Line < 0 || location.Column < 0 ||
+			(location.Column > 0 && location.Line == 0) {
+			continue
+		}
+		locations = append(locations, location)
+		detailedPaths[path] = true
+	}
 	for _, evidence := range result.EvidenceObserved {
-		if inventoryPaths[evidence.Source] {
+		if inventoryPaths[evidence.Source] && !detailedPaths[evidence.Source] {
 			locations = append(locations, model.FindingLocation{Path: evidence.Source})
 		}
 	}

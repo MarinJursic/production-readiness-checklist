@@ -18,6 +18,9 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
   whose request bound depends on mutable global `http.DefaultClient` state,
   including aliased and dot imports, fail-closed parser limits, and measured
   Pass, Fail, and execution-error fixtures.
+- Run result v0.9 source locations, allowing native analyses to bind validated
+  file, line, and column coordinates directly into canonical findings and SARIF
+  while retaining the frozen v0.8 schema for archived consumers.
 - Profile-authorized live OCI adapter evidence, content-addressed execution records, exact inventory binding, and deterministic observation-to-assessment evaluation.
 - Bounded CEL applicability evaluation over a deterministic inventory projection,
   with fail-closed resource limits and reason-bearing plan v0.2 records.

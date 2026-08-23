@@ -249,7 +249,8 @@ func fetch() { _, _ = http.PostForm("https://example.invalid", nil) }
 			}
 			foundLocation := false
 			for _, finding := range run.Findings {
-				if finding.AssertionID == "PRC-A-GO-001" && len(finding.Locations) == 1 && finding.Locations[0].Path == "client.go" {
+				if finding.AssertionID == "PRC-A-GO-001" && len(finding.Locations) == 1 &&
+					finding.Locations[0].Path == "client.go" && finding.Locations[0].Line > 0 && finding.Locations[0].Column > 0 {
 					foundLocation = true
 				}
 			}

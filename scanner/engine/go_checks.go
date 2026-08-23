@@ -156,6 +156,9 @@ func evaluateGoHTTPTimeouts(
 	locations := make([]string, 0, len(reported))
 	for _, callsite := range reported {
 		locations = append(locations, fmt.Sprintf("%s:%d:%d (%s)", callsite.Path, callsite.Line, callsite.Column, callsite.Helper))
+		result.Locations = append(result.Locations, model.FindingLocation{
+			Path: callsite.Path, Line: callsite.Line, Column: callsite.Column,
+		})
 	}
 	result.Assessment = "fail"
 	result.Summary = fmt.Sprintf(
