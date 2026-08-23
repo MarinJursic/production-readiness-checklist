@@ -16,6 +16,7 @@ import (
 	"time"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/adapter"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/adapterfixture"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/benchmark"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/catalog"
 	projectconfig "github.com/MarinJursic/production-readiness-checklist/scanner/config"
@@ -1075,9 +1076,52 @@ func printCandidate(output io.Writer, candidate remediation.Candidate) {
 
 func runAdapter(args []string, stdout, stderr io.Writer) error {
 	if len(args) == 0 {
-		return errors.New("adapter requires validate-output, registry-validate, registry-verify, plan-oci, or run-oci")
+		return errors.New("adapter requires validate-output, fixture-validate, registry-validate, registry-verify, plan-oci, or run-oci")
 	}
 	switch args[0] {
+	case "fixture-validate":
+		set := flag.NewFlagSet("adapter fixture-validate", flag.ContinueOnError)
+		set.SetOutput(stderr)
+		suitePath := set.String("suite", "", "adapter fixture suite YAML file")
+		format := set.String("format", "human", "human or json")
+		if err := set.Parse(args[1:]); err != nil {
+			return exitError(exitConfiguration, err)
+		}
+		if set.NArg() != 0 || *suitePath == "" {
+			return exitError(exitConfiguration, errors.New("adapter fixture-validate requires --suite"))
+		}
+		if *format != "human" && *format != "json" {
+			return exitError(exitConfiguration, fmt.Errorf("unsupported format %q", *format))
+		}
+		reportValue, err := adapterfixture.Evaluate(*suitePath)
+		if err != nil {
+			return exitError(exitConfiguration, err)
+		}
+		if *format == "json" {
+			if err := encodeJSON(stdout, reportValue); err != nil {
+				return err
+			}
+		} else {
+			fmt.Fprintf(stdout, "Adapter fixture suite: %s\n", reportValue.SuiteID)
+			fmt.Fprintf(stdout, "Suite digest: %s\n", reportValue.SuiteDigest)
+			fmt.Fprintf(stdout, "Corpus digest: %s\n", reportValue.CorpusDigest)
+			fmt.Fprintf(stdout, "Adapter: %s (%s)\n", reportValue.AdapterID, reportValue.ManifestSHA256)
+			fmt.Fprintf(stdout, "Cases: %d matched, %d mismatched, %d/%d deterministic\n",
+				reportValue.Summary.Matched, reportValue.Summary.Mismatched,
+				reportValue.Summary.DeterministicCases, reportValue.Summary.Cases)
+			if reportValue.Passed {
+				fmt.Fprintln(stdout, "Fixture quality gate: passed")
+			} else {
+				fmt.Fprintln(stdout, "Fixture quality gate: failed")
+				for _, failure := range reportValue.QualityFailures {
+					fmt.Fprintln(stdout, "- "+failure)
+				}
+			}
+		}
+		if !reportValue.Passed {
+			return exitError(exitGateFailed, errors.New("adapter fixture quality gate failed"))
+		}
+		return nil
 	case "validate-output":
 		set := flag.NewFlagSet("adapter validate-output", flag.ContinueOnError)
 		set.SetOutput(stderr)

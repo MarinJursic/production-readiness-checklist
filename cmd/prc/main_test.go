@@ -16,6 +16,7 @@ import (
 	"time"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/adapter"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/adapterfixture"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/benchmark"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/catalog"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/engine"
@@ -506,6 +507,21 @@ func TestAdapterValidateOutputRejectsUndeclaredObservationKind(t *testing.T) {
 		"--file", path,
 	}, &stdout, &stderr); code != exitExecution || !strings.Contains(stderr.String(), "undeclared observation kind") {
 		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
+	}
+}
+
+func TestAdapterFixtureValidateCommand(t *testing.T) {
+	var stdout, stderr bytes.Buffer
+	path := filepath.Join("..", "..", "fixtures", "adapters", "fixture-suite.yaml")
+	if code := run([]string{"adapter", "fixture-validate", "--suite", path, "--format", "json"}, &stdout, &stderr); code != 0 {
+		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
+	}
+	var report adapterfixture.Report
+	if err := json.Unmarshal(stdout.Bytes(), &report); err != nil {
+		t.Fatal(err)
+	}
+	if !report.Passed || report.Summary.Cases != 7 || report.Summary.Mismatched != 0 {
+		t.Fatalf("unexpected fixture report: %+v", report)
 	}
 }
 

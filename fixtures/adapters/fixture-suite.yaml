@@ -1,0 +1,52 @@
+schema_version: prc.adapter-fixture-suite/v0.1
+id: prc.adapter-fixture.protocol@0.1
+title: Adapter protocol and contract release fixtures
+manifest:
+  path: fixture-adapter.yaml
+  sha256: 4e63176c5a0a32c36d47ef705b076d1d90c7d75905bbb5fd85b21c175ed3b7b2
+cases:
+  - id: accepted-completed
+    output: valid-output.jsonl
+    expected:
+      disposition: accepted
+      summary_status: completed
+      observations:
+        - id: OBS-FIXTURE-001
+          kind: fixture-result
+          outcome: not_found
+  - id: accepted-timeout
+    output: timeout-output.jsonl
+    expected:
+      disposition: accepted
+      summary_status: timeout
+  - id: accepted-unsupported
+    output: unsupported-output.jsonl
+    expected:
+      disposition: accepted
+      summary_status: unsupported
+  - id: reject-authority
+    output: malicious-authority-output.jsonl
+    expected:
+      disposition: protocol_rejected
+      error_code: schema_violation
+  - id: reject-malformed
+    output: malformed-output.jsonl
+    expected:
+      disposition: protocol_rejected
+      error_code: malformed_output
+  - id: reject-resource-limit
+    output: valid-output.jsonl
+    limits:
+      max_messages: 2
+    expected:
+      disposition: protocol_rejected
+      error_code: resource_limit
+  - id: reject-undeclared-kind
+    output: undeclared-kind-output.jsonl
+    expected:
+      disposition: contract_rejected
+      error_code: undeclared_observation_kind
+      observations:
+        - id: OBS-UNDECLARED-001
+          kind: undeclared-result
+          outcome: found

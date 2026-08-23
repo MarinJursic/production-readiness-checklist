@@ -33,6 +33,11 @@ error [PRC-EXIT-5]: adapter ... is not authorized by an applicable assertion
 Machine-readable reports remain on stdout. A completed assessment that does not
 pass is still a valid report and normally has no stderr error.
 
+`adapter fixture-validate` also uses `1` when its versioned fixture report is
+valid but one or more recorded expectations or determinism checks fail. Invalid
+suite structure, unsafe paths, manifest digest drift, or an attempted limit
+increase use `3`; the command never executes the adapter.
+
 ## Scan policy
 
 The default `--exit-policy profile` maps `profile_satisfied` to `0`, `no_go` to

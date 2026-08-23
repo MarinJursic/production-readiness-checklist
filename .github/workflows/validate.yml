@@ -73,6 +73,9 @@ jobs:
 
       - name: Exercise adapter protocol fixtures
         run: |
+          "$RUNNER_TEMP/prc" adapter fixture-validate \
+            --suite fixtures/adapters/fixture-suite.yaml \
+            --format json > "$RUNNER_TEMP/adapter-fixture-report.json"
           "$RUNNER_TEMP/prc" adapter validate-output \
             --manifest fixtures/adapters/fixture-adapter.yaml \
             --file fixtures/adapters/valid-output.jsonl
@@ -217,6 +220,7 @@ jobs:
           python -c 'import json,sys,yaml; json.dump(yaml.safe_load(open(sys.argv[1], encoding="utf-8")), sys.stdout)' fixtures/config/production-readiness.yaml > "$RUNNER_TEMP/config.json"
           python -c 'import json,sys,yaml; json.dump(yaml.safe_load(open(sys.argv[1], encoding="utf-8")), sys.stdout)' fixtures/benchmarks/core-native/suite.yaml > "$RUNNER_TEMP/benchmark-suite.json"
           python -c 'import json,sys,yaml; json.dump(yaml.safe_load(open(sys.argv[1], encoding="utf-8")), sys.stdout)' fixtures/benchmarks/core-native/suite-comprehensive.yaml > "$RUNNER_TEMP/comprehensive-benchmark-suite.json"
+          python -c 'import json,sys,yaml; json.dump(yaml.safe_load(open(sys.argv[1], encoding="utf-8")), sys.stdout)' fixtures/adapters/fixture-suite.yaml > "$RUNNER_TEMP/adapter-fixture-suite.json"
           python -c 'import json,sys,yaml; json.dump(yaml.safe_load(open(sys.argv[1], encoding="utf-8")), sys.stdout)' packs/core-foundation.yaml > "$RUNNER_TEMP/pack.json"
           python -c 'import json,sys,yaml; json.dump(yaml.safe_load(open(sys.argv[1], encoding="utf-8")), sys.stdout)' packs/core-native.yaml > "$RUNNER_TEMP/core-native-pack.json"
           python scripts/validate_instance.py doctor.schema.json "$RUNNER_TEMP/doctor.json"
@@ -227,6 +231,8 @@ jobs:
           python scripts/validate_instance.py benchmark-report.schema.json "$RUNNER_TEMP/benchmark-report.json"
           python scripts/validate_instance.py benchmark-suite.schema.json "$RUNNER_TEMP/comprehensive-benchmark-suite.json"
           python scripts/validate_instance.py benchmark-report.schema.json "$RUNNER_TEMP/comprehensive-benchmark-report.json"
+          python scripts/validate_instance.py adapter-fixture-suite.schema.json "$RUNNER_TEMP/adapter-fixture-suite.json"
+          python scripts/validate_instance.py adapter-fixture-report.schema.json "$RUNNER_TEMP/adapter-fixture-report.json"
           python scripts/validate_instance.py pack.schema.json "$RUNNER_TEMP/pack.json"
           python scripts/validate_instance.py pack-report.schema.json "$RUNNER_TEMP/pack-report.json"
           python scripts/validate_instance.py pack.schema.json "$RUNNER_TEMP/core-native-pack.json"

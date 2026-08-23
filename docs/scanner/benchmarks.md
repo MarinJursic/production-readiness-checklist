@@ -103,3 +103,14 @@ explicit [publisher trust store](../architecture/publisher-trust.md). The
 repository does not yet publish an official release trust store or signed pack,
 so checked-in packs remain local integrity contracts rather than a remote trust
 channel.
+
+## Adapter release fixtures
+
+Repository benchmarks measure assertion decisions over project inventories.
+Recorded adapter fixtures instead measure the untrusted-tool boundary: parser
+limits, protocol rejection, manifest-declared output kinds, incomplete statuses,
+and determinism. Run the separate gate with `prc adapter fixture-validate`.
+Passing it is necessary for an adapter release but never substitutes for a
+tool-specific detection benchmark. See the
+[sandboxed adapter protocol](../architecture/adapters.md#inspect-and-validate)
+for the exact contract and limitations.

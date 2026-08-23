@@ -1011,6 +1011,55 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             [],
         )
 
+    def test_checked_in_adapter_fixture_suite_and_report_conform(self) -> None:
+        path = ROOT / "fixtures" / "adapters" / "fixture-suite.yaml"
+        suite = yaml.safe_load(path.read_text(encoding="utf-8"))
+        self.assertEqual(
+            validate_instance.validation_errors(
+                suite, "adapter-fixture-suite.schema.json"
+            ),
+            [],
+        )
+        report = {
+            "schema_version": "prc.adapter-fixture-report/v0.1",
+            "suite_id": suite["id"],
+            "suite_digest": "a" * 64,
+            "corpus_digest": "b" * 64,
+            "adapter_id": "prc.adapter.fixture@0.1",
+            "manifest_sha256": suite["manifest"]["sha256"],
+            "summary": {
+                "cases": 1,
+                "matched": 1,
+                "mismatched": 0,
+                "deterministic_cases": 1,
+            },
+            "cases": [{
+                "id": "accepted",
+                "output": "valid-output.jsonl",
+                "output_sha256": "c" * 64,
+                "expected": {
+                    "disposition": "accepted",
+                    "summary_status": "completed",
+                    "observations": [],
+                },
+                "actual": {
+                    "disposition": "accepted",
+                    "summary_status": "completed",
+                    "observations": [],
+                },
+                "deterministic": True,
+                "passed": True,
+            }],
+            "quality_failures": [],
+            "passed": True,
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(
+                report, "adapter-fixture-report.schema.json"
+            ),
+            [],
+        )
+
     def test_checked_in_benchmark_suite_and_report_conform(self) -> None:
         path = ROOT / "fixtures" / "benchmarks" / "core-native" / "suite.yaml"
         suite = yaml.safe_load(path.read_text(encoding="utf-8"))

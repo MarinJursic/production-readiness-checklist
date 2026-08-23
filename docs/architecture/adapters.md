@@ -38,8 +38,9 @@ The decoder rejects:
 
 The machine contract is
 [`adapter-message.schema.json`](https://github.com/MarinJursic/production-readiness-checklist/blob/main/schemas/adapter-message.schema.json). The
-checked-in fixtures include an accepted transcript and an explicit attempt to
-inject a passing assessment.
+checked-in release suite includes completed, unsupported, timeout, malformed,
+resource-limit, undeclared-output, and explicit evaluator-authority attack
+transcripts.
 
 ## Capability manifest
 
@@ -107,6 +108,32 @@ prc adapter registry-validate \
 ```
 
 ## Inspect and validate
+
+Validate the full release fixture suite without executing an adapter:
+
+```bash
+prc adapter fixture-validate \
+  --suite fixtures/adapters/fixture-suite.yaml \
+  --format json
+```
+
+The strict
+[`adapter-fixture-suite.schema.json`](https://github.com/MarinJursic/production-readiness-checklist/blob/main/schemas/adapter-fixture-suite.schema.json)
+binds every transcript to the canonical digest of one exact manifest. A case
+may reduce the manifest's line, message, or stdout ceiling to exercise a
+resource failure, but it cannot increase adapter authority or resource limits.
+The runner rejects symlinks and paths outside the suite, hashes the suite and
+transcript corpus, and evaluates every case twice. It compares exact
+disposition, summary status, error class, and observation ID, kind, and
+outcome. CI fails when any expectation drifts or either evaluation differs.
+
+The resulting
+[`adapter-fixture-report.schema.json`](https://github.com/MarinJursic/production-readiness-checklist/blob/main/schemas/adapter-fixture-report.schema.json)
+is release evidence for protocol compatibility only. It does not prove the
+upstream analyzer's detection accuracy, image provenance, runtime isolation,
+or suitability for the production profile. A real adapter still needs its own
+tool-specific corpus, reviewed pinned image, registry entry, publisher trust,
+and exact catalog binding.
 
 Validate a transcript without executing an adapter:
 

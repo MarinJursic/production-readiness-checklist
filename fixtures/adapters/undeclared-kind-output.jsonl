@@ -1,0 +1,2 @@
+{"type":"observation","observation":{"id":"OBS-UNDECLARED-001","kind":"undeclared-result","outcome":"found","summary":"An undeclared fixture condition was observed.","locations":[]}}
+{"type":"summary","status":"completed","counts":{"observations":1}}
