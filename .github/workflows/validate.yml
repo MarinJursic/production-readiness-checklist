@@ -87,11 +87,23 @@ jobs:
           "$RUNNER_TEMP/prc" plan --target . --catalog-root . --format json > "$RUNNER_TEMP/plan.json"
           "$RUNNER_TEMP/prc" scan --target . --catalog-root . --state-dir "$RUNNER_TEMP/state" --format json --exit-policy never > "$RUNNER_TEMP/run.json"
 
+      - name: Exercise isolated deterministic remediation
+        run: |
+          mkdir "$RUNNER_TEMP/remediation-target"
+          printf "print('ready')" > "$RUNNER_TEMP/remediation-target/app.py"
+          "$RUNNER_TEMP/prc" remediate \
+            --target "$RUNNER_TEMP/remediation-target" \
+            --catalog-root . \
+            --candidate-dir "$RUNNER_TEMP/remediation-candidate" \
+            --format json > "$RUNNER_TEMP/remediation.json"
+          test "$(tail -c 1 "$RUNNER_TEMP/remediation-target/app.py")" = ")"
+
       - name: Validate scanner output schemas
         run: |
           python scripts/validate_instance.py inventory.schema.json "$RUNNER_TEMP/inventory.json"
           python scripts/validate_instance.py plan.schema.json "$RUNNER_TEMP/plan.json"
           python scripts/validate_instance.py run-result.schema.json "$RUNNER_TEMP/run.json"
+          python scripts/validate_instance.py remediation-candidate.schema.json "$RUNNER_TEMP/remediation.json"
 
   documentation:
     runs-on: ubuntu-latest

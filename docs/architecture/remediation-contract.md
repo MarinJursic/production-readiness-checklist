@@ -35,7 +35,7 @@ evidence, credentials, and previous agent memory are excluded.
 ## Candidate lifecycle
 
 1. Capture an immutable baseline and reproduce the finding.
-2. Create a fresh isolated worktree.
+2. Create a fresh isolated workspace or worktree.
 3. Apply one deterministic fix or run one provider task.
 4. Parse the result as untrusted structured output.
 5. Reject path, capability, policy, threshold, baseline, or suppression violations.
@@ -61,3 +61,13 @@ The loop stops when:
 - the environment cannot execute the verifier safely.
 
 The general loop never deploys and never accepts residual risk.
+
+## Implemented R1 pilot
+
+The current CLI implements this lifecycle only for `PRC-A-CORE-014`. Its trusted
+fixer appends one final line-feed byte to exact allowlisted source paths in a new
+external workspace. The acceptance audit verifies the raw tree, content hashes,
+permission modes, protected paths, budgets, target result, and baseline passing
+results. See the [R1 remediation guide](../scanner/remediation.md) for the exact
+command and limitations. Agent-authored R2 changes and broader autonomous loops
+remain unimplemented.

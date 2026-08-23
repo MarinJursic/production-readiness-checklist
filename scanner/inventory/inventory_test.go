@@ -69,3 +69,25 @@ func TestBuildSkipsCachesAndSymlinks(t *testing.T) {
 		t.Fatalf("unexpected inventory files: %+v", item.Files)
 	}
 }
+
+func TestBuildIncludesPermissionModeInIdentity(t *testing.T) {
+	root := t.TempDir()
+	writeFile(t, root, "script.sh", "#!/bin/sh\n")
+	before, err := Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if before.Files[0].Mode != 0o644 {
+		t.Fatalf("mode = %#o", before.Files[0].Mode)
+	}
+	if err := os.Chmod(filepath.Join(root, "script.sh"), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	after, err := Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if after.Files[0].Mode != 0o755 || before.Digest == after.Digest {
+		t.Fatalf("mode=%#o digest changed=%t", after.Files[0].Mode, before.Digest != after.Digest)
+	}
+}

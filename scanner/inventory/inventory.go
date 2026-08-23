@@ -31,6 +31,10 @@ var sourceExtensions = map[string]bool{
 	".swift": true, ".ts": true, ".tsx": true,
 }
 
+func IsSourcePath(path string) bool {
+	return sourceExtensions[strings.ToLower(filepath.Ext(path))]
+}
+
 var manifests = map[string]string{
 	"package.json":     "node",
 	"pyproject.toml":   "python",
@@ -124,7 +128,7 @@ func Build(target string) (model.Inventory, error) {
 		if lockFiles[name] || strings.HasSuffix(name, ".lock.txt") {
 			result.LockFiles = append(result.LockFiles, relative)
 		}
-		if sourceExtensions[strings.ToLower(filepath.Ext(name))] {
+		if IsSourcePath(name) {
 			result.SourceFiles++
 		}
 		if strings.HasPrefix(relative, ".github/workflows/") &&
@@ -184,7 +188,7 @@ func hashFile(path, relative string) (model.FileRecord, error) {
 		return model.FileRecord{}, fmt.Errorf("hash %s: %w", relative, err)
 	}
 	return model.FileRecord{
-		Path: relative, Size: size, SHA256: hex.EncodeToString(hasher.Sum(nil)),
+		Path: relative, Size: size, SHA256: hex.EncodeToString(hasher.Sum(nil)), Mode: uint32(openedInfo.Mode().Perm()),
 	}, nil
 }
 

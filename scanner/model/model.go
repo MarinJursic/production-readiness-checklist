@@ -69,6 +69,7 @@ type FileRecord struct {
 	Path   string `json:"path"`
 	Size   int64  `json:"size"`
 	SHA256 string `json:"sha256"`
+	Mode   uint32 `json:"mode"`
 }
 
 type Inventory struct {

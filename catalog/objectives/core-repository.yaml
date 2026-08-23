@@ -1,5 +1,5 @@
 schema_version: prc.objectives/v0.1
-catalog_version: 0.1.0
+catalog_version: 0.2.0
 objectives:
   - id: USEQ-FDCA6C71
     revision: 1
@@ -121,3 +121,13 @@ objectives:
     domains: [code-quality, security, testing]
     automation_class: contextual
     assertion_ids: [PRC-A-CORE-013]
+  - id: USEQ-DAF77C8F
+    revision: 1
+    title: Machine-enforced source style
+    statement: Use a consistent machine-enforced style so review focuses on behavior and design.
+    source:
+      path: docs/engineering/05-code-quality-and-implementation.md
+      line: 114
+    domains: [code-quality, repository]
+    automation_class: partial
+    assertion_ids: [PRC-A-CORE-014]

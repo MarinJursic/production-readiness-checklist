@@ -2,7 +2,7 @@
 
 # Core repository readiness
 
-Profile: `prc/core-repository@0.1`
+Profile: `prc/core-repository@0.2`
 
 Deterministic repository governance, documentation, workflow, dependency, and test foundations.
 
@@ -14,7 +14,7 @@ implementation is present and verified by the scanner test suite.
 
 | Assertion | Objective | Severity | Gate | Evidence | Remediation |
 | --- | --- | --- | --- | --- | --- |
-| `PRC-A-CORE-001` — README is present | [USEQ-FDCA6C71](../engineering/05-code-quality-and-implementation.md) | medium | required | repository-file | R1 |
+| `PRC-A-CORE-001` — README is present | [USEQ-FDCA6C71](../engineering/05-code-quality-and-implementation.md) | medium | required | repository-file | R2 |
 | `PRC-A-CORE-002` — License is present | [USEQ-6497B434](../engineering/16-specialized-domains-and-release-assurance.md) | medium | required | repository-file | R0 |
 | `PRC-A-CORE-003` — Contribution guidance is present | [USEQ-89F5E97A](../engineering/16-specialized-domains-and-release-assurance.md) | low | advisory | repository-file | R0 |
 | `PRC-A-CORE-004` — Security policy is present | [USEQ-AC6AC548](../engineering/16-specialized-domains-and-release-assurance.md) | medium | required | repository-file | R0 |
@@ -27,6 +27,7 @@ implementation is present and verified by the scanner test suite.
 | `PRC-A-CORE-011` — Workflow permissions are explicit | [USEQ-73488048](../engineering/11-developer-experience-platform-and-delivery.md) | high | required | workflow-parse | R2 |
 | `PRC-A-CORE-012` — Generated code follows normal review controls | [USEQ-F0F5ACE7](../engineering/05-code-quality-and-implementation.md) | high | required | reviewer-attestation | R0 |
 | `PRC-A-CORE-013` — Applicable analyses have executed | [USEQ-70E9D5AA](../engineering/10-verification-and-testing.md) | high | required | analysis-result | R2 |
+| `PRC-A-CORE-014` — Source files end with a newline | [USEQ-DAF77C8F](../engineering/05-code-quality-and-implementation.md) | low | advisory | source-format | R1 |
 
 ## Result interpretation
 

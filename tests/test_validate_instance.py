@@ -39,6 +39,58 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         self.assertTrue(errors)
         self.assertTrue(any("prc.inventory/v0.1" in error for error in errors))
 
+    def test_minimal_remediation_candidate_conforms(self) -> None:
+        digest = "a" * 64
+        contract = {
+            "schema_version": "prc.fix-contract/v0.1",
+            "task_id": digest,
+            "baseline_run_id": digest,
+            "baseline_inventory_digest": digest,
+            "assertion_id": "PRC-A-CORE-014",
+            "control_ids": ["USEQ-DAF77C8F"],
+            "goal": "Append one final line-feed byte.",
+            "fixer_id": "prc.fixer.final-newline@0.1",
+            "remediation_class": "R1",
+            "allowed_paths": ["app.py"],
+            "protected_paths": [".git/"],
+            "network": "deny",
+            "max_changed_lines": 20,
+            "max_files": 20,
+            "max_attempts": 1,
+            "acceptance": ["The target assertion passes."],
+        }
+        candidate = {
+            "schema_version": "prc.remediation-candidate/v0.1",
+            "candidate_id": digest,
+            "candidate_path": "/tmp/candidate",
+            "contract": contract,
+            "candidate_inventory_digest": digest,
+            "candidate_run_id": digest,
+            "changes": [{
+                "path": "app.py",
+                "kind": "modified",
+                "before_sha256": digest,
+                "after_sha256": "b" * 64,
+                "before_mode": 420,
+                "after_mode": 420,
+                "added_lines": 1,
+                "removed_lines": 0,
+            }],
+            "before_assessment": "fail",
+            "after_assessment": "pass",
+            "accepted": True,
+            "reasons": [],
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(contract, "fix-contract.schema.json"), []
+        )
+        self.assertEqual(
+            validate_instance.validation_errors(
+                candidate, "remediation-candidate.schema.json"
+            ),
+            [],
+        )
+
     def test_checked_in_adapter_manifest_conforms(self) -> None:
         path = ROOT / "fixtures" / "adapters" / "fixture-adapter.yaml"
         instance = yaml.safe_load(path.read_text(encoding="utf-8"))

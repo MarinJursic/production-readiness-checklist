@@ -107,6 +107,9 @@ func TestHealthyRepositoryProducesVerifiedAndExplicitUnresolvedResults(t *testin
 			t.Errorf("%s = %s: %s", assertionID, result.Assessment, result.Summary)
 		}
 	}
+	if got := findResult(t, run, "PRC-A-CORE-014").Assessment; got != "pass" {
+		t.Fatalf("final-newline assertion = %s", got)
+	}
 	if got := findResult(t, run, "PRC-A-CORE-012").Assessment; got != "manual_review" {
 		t.Fatalf("manual assertion = %s", got)
 	}
@@ -163,6 +166,23 @@ func TestMutableActionReferenceTriggersNoGo(t *testing.T) {
 	result := findResult(t, run, "PRC-A-CORE-008")
 	if result.Assessment != "fail" || run.TerminalState != "no_go" {
 		t.Fatalf("action result=%s terminal=%s summary=%s", result.Assessment, run.TerminalState, result.Summary)
+	}
+}
+
+func TestMissingFinalNewlineProducesR1Finding(t *testing.T) {
+	root := healthyRepository(t)
+	writeFixture(t, root, "app.py", "def ready(): return True")
+	item, err := inventory.Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	run, err := scanner(t).Scan("prc/core-repository", item)
+	if err != nil {
+		t.Fatal(err)
+	}
+	result := findResult(t, run, "PRC-A-CORE-014")
+	if result.Assessment != "fail" || result.RemediationClass != "R1" || !strings.Contains(result.Summary, "app.py") {
+		t.Fatalf("final-newline result=%+v", result)
 	}
 }
 

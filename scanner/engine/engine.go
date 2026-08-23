@@ -14,6 +14,7 @@ import (
 	"time"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/catalog"
+	workspaceinventory "github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 	"gopkg.in/yaml.v3"
 )
@@ -153,6 +154,8 @@ func (e *Engine) evaluate(
 		return evaluateTestSuite(assertion, inventory, result, observedAt)
 	case "prc.native.github-workflow-permissions@0.1":
 		return evaluateWorkflowPermissions(assertion, inventory, result, observedAt)
+	case "prc.native.final-newline@0.1":
+		return evaluateFinalNewline(assertion, inventory, result, observedAt)
 	case "prc.native.manual-evidence@0.1":
 		result.Assessment = "manual_review"
 		result.Summary = "This assertion requires scoped evidence from an accountable reviewer."
@@ -218,19 +221,45 @@ func fileEvidence(
 	relative, kind, producer, summary string,
 	observedAt time.Time,
 ) (model.Evidence, error) {
+	evidence, _, _, err := fileEvidenceAndLastByte(inventory, relative, kind, producer, summary, observedAt)
+	return evidence, err
+}
+
+func fileEvidenceAndLastByte(
+	inventory model.Inventory,
+	relative, kind, producer, summary string,
+	observedAt time.Time,
+) (model.Evidence, byte, bool, error) {
 	path, err := safePath(inventory.Root, relative)
 	if err != nil {
-		return model.Evidence{}, err
+		return model.Evidence{}, 0, false, err
 	}
 	file, err := os.Open(path)
 	if err != nil {
-		return model.Evidence{}, err
+		return model.Evidence{}, 0, false, err
 	}
 	defer file.Close()
 	hasher := sha256.New()
-	size, err := io.Copy(hasher, file)
-	if err != nil {
-		return model.Evidence{}, fmt.Errorf("hash %s: %w", relative, err)
+	buffer := make([]byte, 32*1024)
+	var size int64
+	var lastByte byte
+	hasContent := false
+	for {
+		count, readErr := file.Read(buffer)
+		if count > 0 {
+			hasContent = true
+			lastByte = buffer[count-1]
+			size += int64(count)
+			if _, err := hasher.Write(buffer[:count]); err != nil {
+				return model.Evidence{}, 0, false, fmt.Errorf("hash %s: %w", relative, err)
+			}
+		}
+		if readErr != nil {
+			if readErr == io.EOF {
+				break
+			}
+			return model.Evidence{}, 0, false, fmt.Errorf("read %s: %w", relative, readErr)
+		}
 	}
 	contentDigest := hex.EncodeToString(hasher.Sum(nil))
 	expectedDigest := ""
@@ -241,7 +270,7 @@ func fileEvidence(
 		}
 	}
 	if expectedDigest == "" || expectedDigest != contentDigest {
-		return model.Evidence{}, fmt.Errorf("target changed after inventory: %s", relative)
+		return model.Evidence{}, 0, false, fmt.Errorf("target changed after inventory: %s", relative)
 	}
 	evidence := model.Evidence{
 		SchemaVersion: model.EvidenceSchema, Kind: kind, Authority: "repository",
@@ -250,11 +279,11 @@ func fileEvidence(
 	}
 	identity, err := json.Marshal(evidence)
 	if err != nil {
-		return model.Evidence{}, err
+		return model.Evidence{}, 0, false, err
 	}
 	digest := sha256.Sum256(identity)
 	evidence.ID = hex.EncodeToString(digest[:])
-	return evidence, nil
+	return evidence, lastByte, hasContent, nil
 }
 
 func evaluateFilePresent(
@@ -443,7 +472,7 @@ func evaluateTestSuite(
 		relative := file.Path
 		parts := strings.Split(relative, "/")
 		name := filepath.Base(relative)
-		isSource := sourceTestExtension(strings.ToLower(filepath.Ext(name)))
+		isSource := workspaceinventory.IsSourcePath(name)
 		if isSource && ((len(parts) > 1 && (parts[0] == "tests" || parts[0] == "test" || parts[0] == "__tests__")) ||
 			strings.HasSuffix(name, "_test.go") || strings.HasPrefix(name, "test_") || strings.HasSuffix(name, "_test.py")) {
 			candidates = append(candidates, relative)
@@ -467,13 +496,56 @@ func evaluateTestSuite(
 	return result
 }
 
-func sourceTestExtension(extension string) bool {
-	switch extension {
-	case ".c", ".cc", ".cpp", ".cs", ".go", ".java", ".js", ".jsx", ".kt", ".php", ".py", ".rb", ".rs", ".scala", ".swift", ".ts", ".tsx":
-		return true
-	default:
-		return false
+func evaluateFinalNewline(
+	assertion model.Assertion,
+	inventory model.Inventory,
+	result model.AssertionResult,
+	observedAt time.Time,
+) model.AssertionResult {
+	const maximumEvidenceFiles = 2048
+	paths := make([]string, 0)
+	for _, file := range inventory.Files {
+		if workspaceinventory.IsSourcePath(file.Path) {
+			paths = append(paths, file.Path)
+		}
 	}
+	if len(paths) > maximumEvidenceFiles {
+		result.Execution = "blocked"
+		result.Assessment = "unknown"
+		result.Summary = fmt.Sprintf("Source-format evidence requires %d files, above the %d-file limit.", len(paths), maximumEvidenceFiles)
+		return result
+	}
+	violations := make([]string, 0)
+	for _, relative := range paths {
+		evidence, lastByte, hasContent, err := fileEvidenceAndLastByte(
+			inventory, relative, "source-format", assertion.ImplementationID,
+			"Verified the final byte of a recognized source file.", observedAt,
+		)
+		if err != nil {
+			result.Execution, result.Assessment, result.Summary = "error", "unknown", err.Error()
+			return result
+		}
+		result.EvidenceObserved = append(result.EvidenceObserved, evidence)
+		if !hasContent || lastByte != '\n' {
+			violations = append(violations, relative)
+		}
+	}
+	if len(violations) == 0 {
+		result.Assessment = "pass"
+		result.Summary = fmt.Sprintf("All %d recognized source files end with a line-feed byte.", len(paths))
+		return result
+	}
+	result.Assessment = "fail"
+	visible := violations
+	if len(visible) > 10 {
+		visible = visible[:10]
+	}
+	result.Summary = "Source files without a final line-feed byte: " + strings.Join(visible, ", ")
+	if len(violations) > len(visible) {
+		result.Summary += fmt.Sprintf(" (and %d more)", len(violations)-len(visible))
+	}
+	result.Summary += "."
+	return result
 }
 
 func mappingValue(node *yaml.Node, key string) *yaml.Node {

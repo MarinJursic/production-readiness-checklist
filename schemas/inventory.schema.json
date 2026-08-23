@@ -26,11 +26,12 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["path", "size", "sha256"],
+        "required": ["path", "size", "sha256", "mode"],
         "properties": {
           "path": {"type": "string"},
           "size": {"type": "integer", "minimum": 0},
-          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "mode": {"type": "integer", "minimum": 0, "maximum": 511}
         }
       }
     }

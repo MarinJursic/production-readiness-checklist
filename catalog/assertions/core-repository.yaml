@@ -1,8 +1,8 @@
 schema_version: prc.assertions/v0.1
-catalog_version: 0.1.0
+catalog_version: 0.2.0
 assertions:
   - id: PRC-A-CORE-001
-    revision: 1
+    revision: 2
     control_ids: [USEQ-FDCA6C71]
     title: README is present
     statement: A nonempty README file exists at the repository root.
@@ -17,7 +17,7 @@ assertions:
       minimum_bytes: 1
     severity: medium
     gate: required
-    remediation_class: R1
+    remediation_class: R2
   - id: PRC-A-CORE-002
     revision: 1
     control_ids: [USEQ-6497B434]
@@ -209,3 +209,18 @@ assertions:
     severity: high
     gate: required
     remediation_class: R2
+  - id: PRC-A-CORE-014
+    revision: 1
+    control_ids: [USEQ-DAF77C8F]
+    title: Source files end with a newline
+    statement: Every recognized source file ends with a line-feed byte.
+    applicability: inventory.source_files > 0
+    evidence_required:
+      - kind: source-format
+        minimum_authority: repository
+        description: Current content evidence for every recognized source file in the scanned commit.
+    implementation_id: prc.native.final-newline@0.1
+    parameters: {}
+    severity: low
+    gate: advisory
+    remediation_class: R1

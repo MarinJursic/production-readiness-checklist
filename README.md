@@ -79,7 +79,7 @@ Do not modify code and do not make the final release decision.
 
 ## Experimental scanner: evidence-driven and bounded
 
-The repository now includes an experimental deterministic scanner vertical slice. It inventories a declared repository without executing target code, creates a versioned assessment plan, evaluates the `prc/core-repository@0.1` profile, stores content-addressed evidence, and preserves unknown and manual results. A strict OCI adapter protocol is available for sandbox development, but profile evaluation does not yet consume adapter observations and automated remediation is not implemented yet.
+The repository now includes an experimental deterministic scanner vertical slice. It inventories a declared repository without executing target code, creates a versioned assessment plan, evaluates the `prc/core-repository@0.2` profile, stores content-addressed evidence, and preserves unknown and manual results. A strict OCI adapter protocol is available for sandbox development, but profile evaluation does not yet consume adapter observations. The first bounded R1 fixer creates and independently verifies an isolated candidate for source files missing a final newline; it never changes the original workspace or merges, deploys, or releases the candidate.
 
 The scanner is designed to:
 
@@ -92,7 +92,7 @@ The scanner is designed to:
 
 The scanner will not claim that a project has zero defects or make an unqualified production-readiness decision. It may report that a versioned profile is satisfied for a specific target and evidence set. Coding agents will be replaceable, constrained patch generators; deterministic checks and policy will own truth and patch acceptance.
 
-Start with the [scanner quick start](docs/scanner/getting-started.md), then read the [product contract](docs/architecture/product-contract.md), [trust model](docs/architecture/trust-model.md), [adapter protocol](docs/architecture/adapters.md), [evidence model](docs/architecture/evidence-and-results.md), and [bounded remediation contract](docs/architecture/remediation-contract.md). The CLI remains experimental and intentionally reports unsupported analysis as blocked rather than treating it as a pass.
+Start with the [scanner quick start](docs/scanner/getting-started.md) and [R1 remediation guide](docs/scanner/remediation.md), then read the [product contract](docs/architecture/product-contract.md), [trust model](docs/architecture/trust-model.md), [adapter protocol](docs/architecture/adapters.md), [evidence model](docs/architecture/evidence-and-results.md), and [bounded remediation contract](docs/architecture/remediation-contract.md). The CLI remains experimental and intentionally reports unsupported analysis as blocked rather than treating it as a pass.
 
 ## Evidence, not checkbox theater
 
@@ -123,7 +123,7 @@ Use the [evidence record](docs/records/evidence-record.md) and [risk exception](
 │   ├── records/               # Evidence, risk, release, and decision templates
 │   └── scanner/               # Scanner usage and generated profile documentation
 ├── fixtures/                  # Positive, negative, and adversarial scanner cases
-├── scanner/                   # Inventory, planning, evidence, and evaluation engine
+├── scanner/                   # Inventory, evaluation, adapters, and bounded remediation
 ├── schemas/                   # Versioned catalog and scanner JSON schemas
 ├── scripts/                   # Generation, validation, and integrity tooling
 └── .github/                   # Issue forms, PR template, and CI workflows

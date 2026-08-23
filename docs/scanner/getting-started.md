@@ -1,14 +1,17 @@
 # Scanner quick start
 
 The scanner CLI is an experimental deterministic vertical slice. It inventories a
-repository, creates an immutable plan for `prc/core-repository@0.1`, evaluates
+repository, creates an immutable plan for `prc/core-repository@0.2`, evaluates
 native assertions, records evidence, and reports explicit unresolved states.
 
-The profile evaluator does not yet consume external adapter observations or
-remediate findings. The generated-code review remains manual, and the
+The profile evaluator does not yet consume external adapter observations. The
+generated-code review remains manual, and the
 analysis-evidence assertion remains blocked until an adapter supplies current
 executed evidence that the engine can evaluate. A separate experimental OCI
 adapter protocol and runner are available for protocol and sandbox development.
+One deterministic R1 remediation is available for recognized source files that
+lack a final line-feed byte; it produces an isolated candidate instead of editing
+the target.
 
 ## Build
 
@@ -80,7 +83,8 @@ the report.
 - detected dependency ecosystems and corresponding lock or checksum files;
 - GitHub Actions presence and full-commit action pins;
 - explicit GitHub Actions permissions; and
-- discoverable source-level tests.
+- discoverable source-level tests; and
+- final line-feed bytes on recognized source files.
 
 The engine rejects repository path and symlink escapes and detects a target file
 that changes between inventory and evidence collection. Missing evidence,
@@ -90,3 +94,6 @@ are never converted into Pass.
 Read the [sandboxed adapter protocol](../architecture/adapters.md) to validate an
 adapter transcript, inspect an OCI execution plan, or run an already-present
 digest-pinned adapter image outside profile evaluation.
+
+Read [bounded R1 remediation](remediation.md) to create and verify an isolated
+candidate for the supported deterministic finding.

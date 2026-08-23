@@ -19,6 +19,7 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/evidence"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/remediation"
 )
 
 const version = "0.1.0-dev"
@@ -33,7 +34,8 @@ func run(args []string, stdout, stderr io.Writer) int {
 		return 2
 	}
 	var err error
-	var completed bool
+	var successful = true
+	var resultExit bool
 	switch args[0] {
 	case "version":
 		fmt.Fprintf(stdout, "prc %s\n", version)
@@ -43,7 +45,11 @@ func run(args []string, stdout, stderr io.Writer) int {
 	case "plan":
 		err = runPlan(args[1:], stdout, stderr)
 	case "scan":
-		completed, err = runScan(args[1:], stdout, stderr)
+		resultExit = true
+		successful, err = runScan(args[1:], stdout, stderr)
+	case "remediate":
+		resultExit = true
+		successful, err = runRemediate(args[1:], stdout, stderr)
 	case "explain":
 		err = runExplain(args[1:], stdout, stderr)
 	case "adapter":
@@ -60,7 +66,7 @@ func run(args []string, stdout, stderr io.Writer) int {
 		fmt.Fprintln(stderr, "error:", err)
 		return 2
 	}
-	if args[0] == "scan" && !completed {
+	if resultExit && !successful {
 		return 1
 	}
 	return 0
@@ -68,7 +74,53 @@ func run(args []string, stdout, stderr io.Writer) int {
 
 func usage(output io.Writer) {
 	fmt.Fprintln(output, "Production Readiness Scanner")
-	fmt.Fprintln(output, "usage: prc <inventory|plan|scan|explain|adapter|version> [options]")
+	fmt.Fprintln(output, "usage: prc <inventory|plan|scan|remediate|explain|adapter|version> [options]")
+}
+
+func runRemediate(args []string, stdout, stderr io.Writer) (bool, error) {
+	set, target, catalogRoot, profile := parseCommon("remediate", args, stderr)
+	assertionID := set.String("assertion", "PRC-A-CORE-014", "R1 assertion ID to remediate")
+	candidateDirectory := set.String("candidate-dir", "", "new isolated candidate directory (required)")
+	maxFiles := set.Int("max-files", 20, "maximum files the fix may change")
+	maxChangedLines := set.Int("max-changed-lines", 20, "maximum changed lines")
+	format := set.String("format", "human", "human or json")
+	if err := set.Parse(args); err != nil {
+		return false, err
+	}
+	if *format != "human" && *format != "json" {
+		return false, fmt.Errorf("unsupported format %q", *format)
+	}
+	candidate, err := remediation.Run(remediation.Options{
+		CatalogRoot: *catalogRoot, Target: *target, CandidateDir: *candidateDirectory,
+		ProfileID: *profile, AssertionID: *assertionID,
+		MaxFiles: *maxFiles, MaxChangedLines: *maxChangedLines,
+	})
+	if err != nil {
+		return false, err
+	}
+	if *format == "json" {
+		if err := encodeJSON(stdout, candidate); err != nil {
+			return false, err
+		}
+	} else {
+		printCandidate(stdout, candidate)
+	}
+	return candidate.Accepted, nil
+}
+
+func printCandidate(output io.Writer, candidate remediation.Candidate) {
+	fmt.Fprintf(output, "Candidate: %s\n", candidate.CandidateID)
+	fmt.Fprintf(output, "Task: %s\n", candidate.Contract.TaskID)
+	fmt.Fprintf(output, "Workspace: %s\n", candidate.CandidatePath)
+	fmt.Fprintf(output, "Assertion: %s (%s -> %s)\n", candidate.Contract.AssertionID,
+		candidate.BeforeAssessment, candidate.AfterAssessment)
+	fmt.Fprintf(output, "Accepted: %t\n", candidate.Accepted)
+	for _, change := range candidate.Changes {
+		fmt.Fprintf(output, "- %s: %s (+%d/-%d lines)\n", change.Path, change.Kind, change.AddedLines, change.RemovedLines)
+	}
+	for _, reason := range candidate.Reasons {
+		fmt.Fprintf(output, "- rejection: %s\n", reason)
+	}
 }
 
 func runAdapter(args []string, stdout, stderr io.Writer) error {
