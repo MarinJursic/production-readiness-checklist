@@ -30,6 +30,7 @@ func TestBuildHashesContentAndDetectsEcosystems(t *testing.T) {
 	writeFile(t, root, "Dockerfile", "FROM example@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n")
 	writeFile(t, root, "infra/main.tf", "terraform {}\n")
 	writeFile(t, root, "deploy/app.yaml", "apiVersion: apps/v1\nkind: Deployment\n")
+	writeFile(t, root, "api/openapi.yaml", "openapi: 3.2.0\ninfo: {title: Example, version: 1.0.0}\npaths: {}\n")
 
 	first, err := Build(root)
 	if err != nil {
@@ -44,7 +45,7 @@ func TestBuildHashesContentAndDetectsEcosystems(t *testing.T) {
 	if first.SourceFiles != 1 {
 		t.Fatalf("expected one source file, got %d", first.SourceFiles)
 	}
-	if first.SchemaVersion != "prc.inventory/v0.3" || len(first.Components) != 6 || len(first.Relations) != 5 {
+	if first.SchemaVersion != "prc.inventory/v0.3" || len(first.Components) != 7 || len(first.Relations) != 6 {
 		t.Fatalf("unexpected graph: schema=%s components=%+v relations=%+v", first.SchemaVersion, first.Components, first.Relations)
 	}
 	if !slices.Contains(first.ContainerFiles, "Dockerfile") ||
@@ -52,8 +53,17 @@ func TestBuildHashesContentAndDetectsEcosystems(t *testing.T) {
 		!slices.Contains(first.Infrastructure.KubernetesFiles, "deploy/app.yaml") {
 		t.Fatalf("missing deployment inventory: containers=%v infrastructure=%+v", first.ContainerFiles, first.Infrastructure)
 	}
-	if len(first.Facts) != 6 {
-		t.Fatalf("expected six provenance facts, got %+v", first.Facts)
+	if len(first.Facts) != 7 {
+		t.Fatalf("expected seven provenance facts, got %+v", first.Facts)
+	}
+	openAPIDetected := false
+	for _, component := range first.Components {
+		if component.Kind == "api-description" && component.Ecosystem == "openapi" && component.Path == "api/openapi.yaml" {
+			openAPIDetected = true
+		}
+	}
+	if !openAPIDetected {
+		t.Fatalf("missing OpenAPI inventory component: %+v", first.Components)
 	}
 
 	writeFile(t, root, "app.py", "print('two')\n")
@@ -63,6 +73,34 @@ func TestBuildHashesContentAndDetectsEcosystems(t *testing.T) {
 	}
 	if first.Digest == second.Digest {
 		t.Fatal("inventory digest did not change with file content")
+	}
+}
+
+func TestBuildDiscoversOpenAPIByRootMarkerAndKnownName(t *testing.T) {
+	root := t.TempDir()
+	writeFile(t, root, "contracts/service.yml", "openapi: 3.1.2\ninfo: {title: Service, version: 1}\npaths: {}\n")
+	writeFile(t, root, "docs/openapi.json", "{not-json\n")
+	item, err := Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	paths := []string{}
+	for _, component := range item.Components {
+		if component.Kind == "api-description" && component.Ecosystem == "openapi" {
+			paths = append(paths, component.Path)
+		}
+	}
+	if !slices.Equal(paths, []string{"contracts/service.yml", "docs/openapi.json"}) {
+		t.Fatalf("OpenAPI components = %v", paths)
+	}
+	facts := 0
+	for _, fact := range item.Facts {
+		if fact.Key == "api.openapi" && fact.Detector == "prc.inventory.openapi-document" && len(fact.Limitations) == 1 {
+			facts++
+		}
+	}
+	if facts != 2 {
+		t.Fatalf("OpenAPI provenance facts = %+v", item.Facts)
 	}
 }
 

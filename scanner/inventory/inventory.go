@@ -20,11 +20,12 @@ import (
 
 const maxEntries = 200_000
 
-const detectorVersion = "0.3"
+const detectorVersion = "0.4"
 
 var (
 	kubernetesAPIVersion = regexp.MustCompile(`(?m)^apiVersion:[[:space:]]*[^[:space:]#]+`)
 	kubernetesKind       = regexp.MustCompile(`(?m)^kind:[[:space:]]*[^[:space:]#]+`)
+	openAPIYAMLMarker    = regexp.MustCompile(`(?m)^openapi[ \t]*:[ \t]*["']?3\.`)
 )
 
 var excludedDirectories = map[string]bool{
@@ -42,6 +43,19 @@ var sourceExtensions = map[string]bool{
 
 func IsSourcePath(path string) bool {
 	return sourceExtensions[strings.ToLower(filepath.Ext(path))]
+}
+
+func isOpenAPIFileName(name string) bool {
+	switch strings.ToLower(name) {
+	case "openapi.json", "openapi.yaml", "openapi.yml":
+		return true
+	default:
+		return false
+	}
+}
+
+func hasTopLevelOpenAPIMarker(data []byte) bool {
+	return openAPIYAMLMarker.Match(data)
 }
 
 var manifests = map[string]string{
@@ -212,17 +226,25 @@ func Build(target string) (model.Inventory, error) {
 			addFact("infrastructure.terraform", "true", relative, "prc.inventory.terraform-file", 0.98,
 				"A Terraform file may be a module or example that is not applied.")
 		}
-		if isYAML(name) && entryInfo.Size() <= 2*1024*1024 {
+		var structuredData []byte
+		structuredCandidate := isYAML(name) || isOpenAPIFileName(name)
+		if structuredCandidate && entryInfo.Size() <= 2*1024*1024 {
 			data, readErr := os.ReadFile(path)
 			if readErr != nil {
 				return fmt.Errorf("read inventory candidate %s: %w", relative, readErr)
 			}
-			if kubernetesAPIVersion.Match(data) && kubernetesKind.Match(data) {
-				result.Infrastructure.KubernetesFiles = append(result.Infrastructure.KubernetesFiles, relative)
-				addComponent("infrastructure", relative, "kubernetes")
-				addFact("infrastructure.kubernetes", "true", relative, "prc.inventory.kubernetes-yaml", 0.9,
-					"Top-level Kubernetes fields do not prove that the resource is valid or deployed.")
-			}
+			structuredData = data
+		}
+		if isYAML(name) && kubernetesAPIVersion.Match(structuredData) && kubernetesKind.Match(structuredData) {
+			result.Infrastructure.KubernetesFiles = append(result.Infrastructure.KubernetesFiles, relative)
+			addComponent("infrastructure", relative, "kubernetes")
+			addFact("infrastructure.kubernetes", "true", relative, "prc.inventory.kubernetes-yaml", 0.9,
+				"Top-level Kubernetes fields do not prove that the resource is valid or deployed.")
+		}
+		if isOpenAPIFileName(name) || hasTopLevelOpenAPIMarker(structuredData) {
+			addComponent("api-description", relative, "openapi")
+			addFact("api.openapi", "true", relative, "prc.inventory.openapi-document", 0.95,
+				"An OpenAPI document does not prove that the described API is implemented, reachable, or deployed.")
 		}
 		return nil
 	})

@@ -133,6 +133,21 @@ func TestGoHTTPDependenciesTrackOnlyNonTestGoSource(t *testing.T) {
 	}
 }
 
+func TestOpenAPIDependenciesTrackDetectedDescriptions(t *testing.T) {
+	files := []model.FileRecord{{Path: "api/openapi.yaml", Size: 1}, {Path: "README.md", Size: 1}}
+	before := testInventory("a", files)
+	after := testInventory("b", files)
+	component := model.InventoryComponent{
+		ID: "api-description:api/openapi.yaml", Kind: "api-description", Path: "api/openapi.yaml", Ecosystem: "openapi",
+	}
+	before.Components = []model.InventoryComponent{component}
+	after.Components = []model.InventoryComponent{component}
+	dependency := dependencies(model.Assertion{ImplementationID: "prc.native.openapi-root@0.1"}, before, after)
+	if !dependency.paths["api/openapi.yaml"] || dependency.paths["README.md"] || dependency.allFiles {
+		t.Fatalf("OpenAPI dependencies = %+v", dependency)
+	}
+}
+
 func TestAnalyzeRejectsConfiguredToUnconfiguredComparison(t *testing.T) {
 	inventory := testInventory("a", nil)
 	assertion := testAssertion("README", []string{"README.md"})

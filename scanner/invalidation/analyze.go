@@ -421,6 +421,14 @@ func dependencies(assertion model.Assertion, before, after model.Inventory) depe
 		add(before.Infrastructure.KubernetesFiles, after.Infrastructure.KubernetesFiles)
 	case "prc.native.go-http-timeout@0.1", "prc.native.go-http-server-timeout@0.1":
 		add(goSource(before), goSource(after))
+	case "prc.native.openapi-root@0.1":
+		for _, inventory := range []model.Inventory{before, after} {
+			for _, component := range inventory.Components {
+				if component.Kind == "api-description" && component.Ecosystem == "openapi" {
+					dep.paths[component.Path] = true
+				}
+			}
+		}
 	case "prc.native.manual-evidence@0.1":
 		dep.content, dep.presence, dep.alwaysFresh = false, false, true
 	case "prc.native.analysis-evidence@0.1":

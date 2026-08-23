@@ -49,6 +49,7 @@ Examples:
 inventory.package_ecosystems.size() > 0
 inventory.ci.github_actions == true
 inventory.components.exists(c, c.kind == "container-build")
+inventory.components.exists(c, c.kind == "api-description" && c.ecosystem == "openapi")
 ```
 
 Inventory detection remains evidence with stated limitations. An expression can

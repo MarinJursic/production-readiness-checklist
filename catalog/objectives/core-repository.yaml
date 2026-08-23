@@ -1,5 +1,5 @@
 schema_version: prc.objectives/v0.1
-catalog_version: 0.6.0
+catalog_version: 0.7.0
 objectives:
   - id: USEQ-FDCA6C71
     revision: 1
@@ -231,3 +231,13 @@ objectives:
     domains: [code-quality, reliability, services]
     automation_class: partial
     assertion_ids: [PRC-A-GO-001]
+  - id: USEQ-13208C54
+    revision: 1
+    title: Controlled interface contracts
+    statement: Define every interface using a controlled, testable contract.
+    source:
+      path: docs/engineering/06-application-services-and-apis.md
+      line: 305
+    domains: [apis, architecture, testing]
+    automation_class: partial
+    assertion_ids: [PRC-A-API-001]

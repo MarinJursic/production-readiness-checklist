@@ -1,0 +1,10 @@
+openapi: 3.2.0
+info:
+  title: Example API
+  version: 1.0.0
+paths:
+  /health:
+    get:
+      responses:
+        "200":
+          description: Healthy

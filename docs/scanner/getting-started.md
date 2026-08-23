@@ -1,7 +1,7 @@
 # Scanner quick start
 
 The scanner CLI is an experimental deterministic vertical slice. It inventories a
-repository, creates an immutable plan for `prc/core-repository@0.6`, evaluates
+repository, creates an immutable plan for `prc/core-repository@0.7`, evaluates
 native assertions, records evidence, and reports explicit unresolved states.
 
 The profile evaluator can consume a live, sandboxed adapter execution only when
@@ -33,7 +33,8 @@ go build -trimpath -o prc ./cmd/prc
 The inventory walks regular files without following symlinks or executing project
 commands. Inventory v0.3 records content digests plus a deterministic component
 graph and sourced, confidence-bearing facts for package manifests, CI workflows,
-container build definitions, Terraform, Kubernetes, and symlinks. Detection is
+container build definitions, Terraform, Kubernetes, OpenAPI descriptions, and
+symlinks. Detection is
 not proof that a component is built or deployed; each fact states that limitation.
 When a validated project configuration is supplied, its digest, declared scope,
 and explicitly limited facts are bound into the inventory identity. Frozen v0.1

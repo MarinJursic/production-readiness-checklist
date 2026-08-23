@@ -1,5 +1,5 @@
 schema_version: prc.assertions/v0.1
-catalog_version: 0.6.0
+catalog_version: 0.7.0
 assertions:
   - id: PRC-A-CORE-001
     revision: 2
@@ -513,5 +513,20 @@ assertions:
     implementation_id: prc.native.go-http-server-timeout@0.1
     parameters: {}
     severity: high
+    gate: required
+    remediation_class: R2
+  - id: PRC-A-API-001
+    revision: 1
+    control_ids: [USEQ-13208C54]
+    title: OpenAPI documents expose required root metadata
+    statement: Every detected OpenAPI 3.0, 3.1, or 3.2 document has one bounded YAML or JSON document, required root and info metadata, and the version-specific required structural fields.
+    applicability: 'inventory.components.exists(c, c.kind == "api-description" && c.ecosystem == "openapi")'
+    evidence_required:
+      - kind: openapi-parse
+        minimum_authority: repository
+        description: Content-addressed bounded parsing of detected OpenAPI YAML or JSON documents for required 3.0, 3.1, or 3.2 root structure and metadata.
+    implementation_id: prc.native.openapi-root@0.1
+    parameters: {}
+    severity: medium
     gate: required
     remediation_class: R2

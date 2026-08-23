@@ -2,9 +2,9 @@
 
 # Core repository readiness
 
-Profile: `prc/core-repository@0.6`
+Profile: `prc/core-repository@0.7`
 
-Deterministic repository governance, documentation, workflow, dependency, security, and test foundations.
+Deterministic repository governance, documentation, workflow, dependency, security, API-contract, and test foundations.
 
 This pilot demonstrates the structured control-to-assertion model. A listed
 assertion is not a claim that the scanner implementation exists unless its
@@ -47,6 +47,7 @@ implementation is present and verified by the scanner test suite.
 | `PRC-A-CORE-031` — Private-key armor is absent from repository files | [USEQ-E85957E3](../engineering/08-security-and-cryptography.md) | critical | no-go | sensitive-material-scan | R2 |
 | `PRC-A-GO-001` — Go net/http package helpers do not use the default client | [USEQ-F6ACEF15](../engineering/06-application-services-and-apis.md) | high | required | go-ast-analysis | R2 |
 | `PRC-A-GO-002` — Go HTTP servers use configurable Server instances | [USEQ-B66A3064](../engineering/11-developer-experience-platform-and-delivery.md) | high | required | go-ast-analysis | R2 |
+| `PRC-A-API-001` — OpenAPI documents expose required root metadata | [USEQ-13208C54](../engineering/06-application-services-and-apis.md) | medium | required | openapi-parse | R2 |
 
 ## Result interpretation
 
