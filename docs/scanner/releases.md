@@ -13,11 +13,14 @@ Each scanner release contains:
 - a binary with the scanner version, source revision, source timestamp, and Go
   toolchain embedded in `prc version --format json`;
 - the exact compatible `catalog/`, `packs/`, and `schemas/` trees in every
-  archive;
+  archive, together with the catalog's human-readable objective sources and the
+  packs' benchmark fixtures;
 - a versioned release manifest binding artifact digests to the catalog and pack
   validation digests;
 - a timestamp-free [CycloneDX 1.6](https://cyclonedx.org/specification/overview/)
   module SBOM;
+- a canonical self-scan of the exact tagged source, executed by the packaged
+  binary against its bundled catalog without hiding blocked or manual results;
 - `SHA256SUMS`; and
 - GitHub-hosted Sigstore attestations for SLSA build provenance and the
   CycloneDX SBOM predicate.
@@ -69,7 +72,10 @@ gh attestation verify prc_0.1.0_linux_amd64.tar.gz \
 
 Finally, inspect `prc_X.Y.Z_release-manifest.json` and compare its
 `source_commit`, catalog digest, pack digests, and artifact digest with the
-assessment scope you intend to use. After extraction:
+assessment scope you intend to use. Inspect `prc_X.Y.Z_self-scan.json` as a
+normal `prc.run/v0.9` report: a valid signed self-assessment may still be
+`environment_blocked` because organizational, production, or adapter evidence
+is deliberately unavailable in the release job. After extraction:
 
 ```bash
 ./prc_X.Y.Z_linux_amd64/prc version --format json

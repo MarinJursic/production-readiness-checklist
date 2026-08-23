@@ -96,8 +96,9 @@ The scanner will not claim that a project has zero defects or make an unqualifie
 Start with the [scanner quick start](docs/scanner/getting-started.md), [stable CLI contract](docs/scanner/cli-contract.md), [scanner diagnostics](docs/scanner/doctor.md), [read-only MCP agent integration](docs/scanner/mcp-agent-integration.md), [declared project configuration](docs/scanner/configuration.md), [durable state and history](docs/scanner/state-and-history.md), [diff-aware evidence invalidation](docs/scanner/diff-and-invalidation.md), [isolated remediation guide](docs/scanner/remediation.md), and [read-only agent provider guide](docs/architecture/agent-providers.md), then read the [product contract](docs/architecture/product-contract.md), [trust model](docs/architecture/trust-model.md), [catalog integrity contract](docs/architecture/catalog-integrity.md), [adapter protocol](docs/architecture/adapters.md), [bounded applicability model](docs/architecture/applicability.md), [evidence model](docs/architecture/evidence-and-results.md), and [bounded remediation contract](docs/architecture/remediation-contract.md). The CLI remains experimental and intentionally reports unsupported analysis as blocked rather than treating it as a pass.
 
 Scanner binary releases use separate `scanner-vX.Y.Z` tags and include the
-compatible catalog, packs, schemas, checksums, CycloneDX SBOM, release manifest,
-and signed GitHub artifact attestations. Follow the
+compatible catalog, objective sources, packs, benchmark corpus, schemas,
+checksums, CycloneDX SBOM, release manifest, and signed GitHub artifact
+attestations. Follow the
 [release verification guide](docs/scanner/releases.md) before running a
 downloaded binary.
 

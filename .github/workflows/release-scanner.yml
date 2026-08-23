@@ -111,6 +111,22 @@ jobs:
             --sbom "$RUNNER_TEMP/prc.cdx.json" \
             --output "$RUNNER_TEMP/release-second"
           diff --recursive --no-dereference "$RUNNER_TEMP/release-first" "$RUNNER_TEMP/release-second"
+          mkdir "$RUNNER_TEMP/self-scan"
+          tar -xzf "$RUNNER_TEMP/release-first/prc_${PRC_VERSION}_linux_amd64.tar.gz" \
+            -C "$RUNNER_TEMP/self-scan"
+          release_root="$RUNNER_TEMP/self-scan/prc_${PRC_VERSION}_linux_amd64"
+          "$release_root/prc" scan \
+            --target . \
+            --catalog-root "$release_root" \
+            --format json \
+            --exit-policy never \
+            > "$RUNNER_TEMP/release-first/prc_${PRC_VERSION}_self-scan.json"
+          python scripts/validate_instance.py run-result.schema.json \
+            "$RUNNER_TEMP/release-first/prc_${PRC_VERSION}_self-scan.json"
+          python -c 'import json,os,sys; d=json.load(open(sys.argv[1], encoding="utf-8")); assert d["inventory"]["git_commit"]==os.environ["GITHUB_SHA"] and d["plan"]["target_commit"]==os.environ["GITHUB_SHA"] and len(d["results"])>0' \
+            "$RUNNER_TEMP/release-first/prc_${PRC_VERSION}_self-scan.json"
+          python -c 'import pathlib,sys; from scripts.build_release import write_checksums; write_checksums(pathlib.Path(sys.argv[1]))' \
+            "$RUNNER_TEMP/release-first"
           mv "$RUNNER_TEMP/release-first" release
 
       - name: Verify release contracts and checksums
@@ -122,6 +138,8 @@ jobs:
             "release/prc_${PRC_VERSION}_release-manifest.json"
           python -c 'import json,sys; d=json.load(open(sys.argv[1], encoding="utf-8")); assert d["bomFormat"]=="CycloneDX" and d["specVersion"]=="1.6" and "serialNumber" not in d and "timestamp" not in d["metadata"]' \
             "release/prc_${PRC_VERSION}.cdx.json"
+          python scripts/validate_instance.py run-result.schema.json \
+            "release/prc_${PRC_VERSION}_self-scan.json"
           (cd release && sha256sum --check SHA256SUMS)
           awk '$2 ~ /\.(tar\.gz|zip)$/ {print}' release/SHA256SUMS \
             > "$RUNNER_TEMP/release-archive-checksums"

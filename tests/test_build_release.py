@@ -120,6 +120,18 @@ class ReleaseBuilderTests(unittest.TestCase):
                     ["prc_0.1.0_windows_amd64/LICENSE", "prc_0.1.0_windows_amd64/prc"],
                 )
 
+    def test_checksums_are_sorted_and_reject_nonfiles(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = pathlib.Path(temporary)
+            (root / "z.txt").write_bytes(b"z")
+            (root / "a.txt").write_bytes(b"a")
+            build_release.write_checksums(root)
+            names = [line.split("  ", 1)[1] for line in (root / "SHA256SUMS").read_text().splitlines()]
+            self.assertEqual(names, ["a.txt", "z.txt"])
+            (root / "directory").mkdir()
+            with self.assertRaisesRegex(ValueError, "not a regular file"):
+                build_release.write_checksums(root)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -65,6 +65,17 @@ def file_identity(path: pathlib.Path) -> dict[str, Any]:
     return {"sha256": sha256(data), "size": len(data)}
 
 
+def write_checksums(root: pathlib.Path) -> None:
+    paths = sorted(path for path in root.iterdir() if path.name != "SHA256SUMS")
+    if not paths:
+        raise ValueError("release directory contains no checksum subjects")
+    for path in paths:
+        if path.is_symlink() or not path.is_file():
+            raise ValueError(f"release checksum subject is not a regular file: {path.name}")
+    text = "".join(f"{file_identity(path)['sha256']}  {path.name}\n" for path in paths)
+    (root / "SHA256SUMS").write_text(text, encoding="ascii", newline="\n")
+
+
 def run_json(command: list[str], *, environment: dict[str, str] | None = None) -> dict[str, Any]:
     completed = subprocess.run(
         command,
@@ -147,7 +158,14 @@ def normalized_sbom(source: pathlib.Path, version: str, commit: str) -> bytes:
 
 def release_support_files() -> list[tuple[str, bytes, int]]:
     files: list[pathlib.Path] = [ROOT / "LICENSE", ROOT / "README.md"]
-    for directory in ("catalog", "packs", "schemas"):
+    for directory in (
+        "catalog",
+        "docs/checklists",
+        "docs/engineering",
+        "fixtures/benchmarks",
+        "packs",
+        "schemas",
+    ):
         files.extend(sorted((ROOT / directory).rglob("*")))
     result: list[tuple[str, bytes, int]] = []
     total_bytes = 0
@@ -357,9 +375,7 @@ def build_release(args: argparse.Namespace) -> None:
         manifest_path = distribution / f"prc_{args.version}_release-manifest.json"
         manifest_path.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
-        checksum_paths = sorted(path for path in distribution.iterdir() if path.is_file())
-        checksum_text = "".join(f"{file_identity(path)['sha256']}  {path.name}\n" for path in checksum_paths)
-        (distribution / "SHA256SUMS").write_text(checksum_text, encoding="ascii", newline="\n")
+        write_checksums(distribution)
         os.replace(distribution, output)
     except BaseException:
         shutil.rmtree(staging, ignore_errors=True)

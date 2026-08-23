@@ -356,11 +356,24 @@ jobs:
           python scripts/validate_instance.py \
             release-manifest.schema.json \
             "$RUNNER_TEMP/release-first/prc_0.0.0-ci_release-manifest.json"
-          (cd "$RUNNER_TEMP/release-first" && sha256sum --check SHA256SUMS)
           mkdir "$RUNNER_TEMP/release-smoke"
           tar -xzf "$RUNNER_TEMP/release-first/prc_0.0.0-ci_linux_amd64.tar.gz" \
             -C "$RUNNER_TEMP/release-smoke"
-          "$RUNNER_TEMP/release-smoke/prc_0.0.0-ci_linux_amd64/prc" \
+          release_root="$RUNNER_TEMP/release-smoke/prc_0.0.0-ci_linux_amd64"
+          "$release_root/prc" \
             version --format json > "$RUNNER_TEMP/release-version.json"
           python scripts/validate_instance.py \
             version.schema.json "$RUNNER_TEMP/release-version.json"
+          "$release_root/prc" scan \
+            --target . \
+            --catalog-root "$release_root" \
+            --format json \
+            --exit-policy never \
+            > "$RUNNER_TEMP/release-first/prc_0.0.0-ci_self-scan.json"
+          python scripts/validate_instance.py run-result.schema.json \
+            "$RUNNER_TEMP/release-first/prc_0.0.0-ci_self-scan.json"
+          python -c 'import json,os,sys; d=json.load(open(sys.argv[1], encoding="utf-8")); assert d["inventory"]["git_commit"]==os.environ["GITHUB_SHA"] and d["plan"]["target_commit"]==os.environ["GITHUB_SHA"] and len(d["results"])>0' \
+            "$RUNNER_TEMP/release-first/prc_0.0.0-ci_self-scan.json"
+          python -c 'import pathlib,sys; from scripts.build_release import write_checksums; write_checksums(pathlib.Path(sys.argv[1]))' \
+            "$RUNNER_TEMP/release-first"
+          (cd "$RUNNER_TEMP/release-first" && sha256sum --check SHA256SUMS)
