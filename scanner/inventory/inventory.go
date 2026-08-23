@@ -10,6 +10,7 @@ import (
 	"io/fs"
 	"os"
 	"path/filepath"
+	"regexp"
 	"sort"
 	"strings"
 
@@ -17,6 +18,13 @@ import (
 )
 
 const maxEntries = 200_000
+
+const detectorVersion = "0.2"
+
+var (
+	kubernetesAPIVersion = regexp.MustCompile(`(?m)^apiVersion:[[:space:]]*[^[:space:]#]+`)
+	kubernetesKind       = regexp.MustCompile(`(?m)^kind:[[:space:]]*[^[:space:]#]+`)
+)
 
 var excludedDirectories = map[string]bool{
 	".git": true, ".mypy_cache": true, ".prc": true, ".pytest_cache": true,
@@ -54,11 +62,18 @@ var lockFiles = map[string]bool{
 }
 
 type digestInput struct {
-	GitCommit         string             `json:"git_commit,omitempty"`
-	Files             []model.FileRecord `json:"files"`
-	PackageEcosystems []string           `json:"package_ecosystems"`
-	Manifests         []string           `json:"manifests"`
-	LockFiles         []string           `json:"lock_files"`
+	GitCommit         string                        `json:"git_commit,omitempty"`
+	Files             []model.FileRecord            `json:"files"`
+	PackageEcosystems []string                      `json:"package_ecosystems"`
+	Manifests         []string                      `json:"manifests"`
+	LockFiles         []string                      `json:"lock_files"`
+	ContainerFiles    []string                      `json:"container_files"`
+	Symlinks          []string                      `json:"symlinks"`
+	CI                model.CIInventory             `json:"ci"`
+	Infrastructure    model.InfrastructureInventory `json:"infrastructure"`
+	Components        []model.InventoryComponent    `json:"components"`
+	Relations         []model.InventoryRelation     `json:"relations"`
+	Facts             []model.InventoryFact         `json:"facts"`
 }
 
 func Build(target string) (model.Inventory, error) {
@@ -77,8 +92,41 @@ func Build(target string) (model.Inventory, error) {
 		root = resolved
 	}
 
-	result := model.Inventory{SchemaVersion: model.InventorySchema, Root: root, TargetName: filepath.Base(root)}
+	result := model.Inventory{
+		SchemaVersion: model.InventorySchema, Root: root, TargetName: filepath.Base(root),
+		Files: []model.FileRecord{}, PackageEcosystems: []string{}, Manifests: []string{}, LockFiles: []string{},
+		ContainerFiles: []string{}, Symlinks: []string{},
+		CI:             model.CIInventory{WorkflowFiles: []string{}},
+		Infrastructure: model.InfrastructureInventory{TerraformFiles: []string{}, KubernetesFiles: []string{}},
+		Components:     []model.InventoryComponent{{ID: "repository:.", Kind: "repository", Path: "."}},
+		Relations:      []model.InventoryRelation{},
+		Facts: []model.InventoryFact{{
+			Key: "repository.detected", Value: "true", Source: ".", Detector: "prc.inventory.repository",
+			DetectorVersion: detectorVersion, Confidence: 1, ScopePath: ".", Limitations: []string{},
+		}},
+	}
 	ecosystems := map[string]bool{}
+	componentIDs := map[string]bool{"repository:.": true}
+	addComponent := func(kind, relative, ecosystem string) {
+		id := kind + ":" + relative
+		if componentIDs[id] {
+			return
+		}
+		componentIDs[id] = true
+		result.Components = append(result.Components, model.InventoryComponent{
+			ID: id, Kind: kind, Path: relative, Ecosystem: ecosystem,
+		})
+		result.Relations = append(result.Relations, model.InventoryRelation{
+			From: "repository:.", To: id, Kind: "contains",
+		})
+	}
+	addFact := func(key, value, source, detector string, confidence float64, limitations ...string) {
+		result.Facts = append(result.Facts, model.InventoryFact{
+			Key: key, Value: value, Source: source, Detector: detector,
+			DetectorVersion: detectorVersion, Confidence: confidence, ScopePath: filepath.ToSlash(filepath.Dir(source)),
+			Limitations: append([]string{}, limitations...),
+		})
+	}
 	err = filepath.WalkDir(root, func(path string, entry fs.DirEntry, walkErr error) error {
 		if walkErr != nil {
 			return fmt.Errorf("walk %s: %w", path, walkErr)
@@ -93,6 +141,14 @@ func Build(target string) (model.Inventory, error) {
 			return nil
 		}
 		if entry.Type()&os.ModeSymlink != 0 {
+			relative, err := filepath.Rel(root, path)
+			if err != nil {
+				return err
+			}
+			relative = filepath.ToSlash(relative)
+			result.Symlinks = append(result.Symlinks, relative)
+			addFact("repository.symlink", "true", relative, "prc.inventory.symlink", 1,
+				"The link target is deliberately not followed or inventoried.")
 			return nil
 		}
 		entryInfo, err := entry.Info()
@@ -124,6 +180,9 @@ func Build(target string) (model.Inventory, error) {
 		if manifest {
 			result.Manifests = append(result.Manifests, relative)
 			ecosystems[ecosystem] = true
+			addComponent("package-manifest", relative, ecosystem)
+			addFact("package.ecosystem", ecosystem, relative, "prc.inventory.package-manifest", 1,
+				"Manifest presence does not prove that the component is built or deployed.")
 		}
 		if lockFiles[name] || strings.HasSuffix(name, ".lock.txt") {
 			result.LockFiles = append(result.LockFiles, relative)
@@ -134,6 +193,34 @@ func Build(target string) (model.Inventory, error) {
 		if strings.HasPrefix(relative, ".github/workflows/") &&
 			(strings.HasSuffix(name, ".yml") || strings.HasSuffix(name, ".yaml")) {
 			result.CI.GitHubActions = true
+			result.CI.WorkflowFiles = append(result.CI.WorkflowFiles, relative)
+			addComponent("ci-workflow", relative, "github-actions")
+			addFact("ci.github_actions", "true", relative, "prc.inventory.github-actions", 1,
+				"Workflow presence does not prove that a run completed for the assessed commit.")
+		}
+		if isContainerFile(name) {
+			result.ContainerFiles = append(result.ContainerFiles, relative)
+			addComponent("container-build", relative, "dockerfile")
+			addFact("container.build_definition", "true", relative, "prc.inventory.container-file", 1,
+				"A build definition does not prove that an image is built or deployed.")
+		}
+		if strings.HasSuffix(strings.ToLower(name), ".tf") {
+			result.Infrastructure.TerraformFiles = append(result.Infrastructure.TerraformFiles, relative)
+			addComponent("infrastructure", relative, "terraform")
+			addFact("infrastructure.terraform", "true", relative, "prc.inventory.terraform-file", 0.98,
+				"A Terraform file may be a module or example that is not applied.")
+		}
+		if isYAML(name) && entryInfo.Size() <= 2*1024*1024 {
+			data, readErr := os.ReadFile(path)
+			if readErr != nil {
+				return fmt.Errorf("read inventory candidate %s: %w", relative, readErr)
+			}
+			if kubernetesAPIVersion.Match(data) && kubernetesKind.Match(data) {
+				result.Infrastructure.KubernetesFiles = append(result.Infrastructure.KubernetesFiles, relative)
+				addComponent("infrastructure", relative, "kubernetes")
+				addFact("infrastructure.kubernetes", "true", relative, "prc.inventory.kubernetes-yaml", 0.9,
+					"Top-level Kubernetes fields do not prove that the resource is valid or deployed.")
+			}
 		}
 		return nil
 	})
@@ -143,6 +230,30 @@ func Build(target string) (model.Inventory, error) {
 	sort.Slice(result.Files, func(i, j int) bool { return result.Files[i].Path < result.Files[j].Path })
 	sort.Strings(result.Manifests)
 	sort.Strings(result.LockFiles)
+	sort.Strings(result.ContainerFiles)
+	sort.Strings(result.Symlinks)
+	sort.Strings(result.CI.WorkflowFiles)
+	sort.Strings(result.Infrastructure.TerraformFiles)
+	sort.Strings(result.Infrastructure.KubernetesFiles)
+	sort.Slice(result.Components, func(i, j int) bool { return result.Components[i].ID < result.Components[j].ID })
+	sort.Slice(result.Relations, func(i, j int) bool {
+		if result.Relations[i].From != result.Relations[j].From {
+			return result.Relations[i].From < result.Relations[j].From
+		}
+		if result.Relations[i].To != result.Relations[j].To {
+			return result.Relations[i].To < result.Relations[j].To
+		}
+		return result.Relations[i].Kind < result.Relations[j].Kind
+	})
+	sort.Slice(result.Facts, func(i, j int) bool {
+		if result.Facts[i].Key != result.Facts[j].Key {
+			return result.Facts[i].Key < result.Facts[j].Key
+		}
+		if result.Facts[i].Source != result.Facts[j].Source {
+			return result.Facts[i].Source < result.Facts[j].Source
+		}
+		return result.Facts[i].Value < result.Facts[j].Value
+	})
 	for ecosystem := range ecosystems {
 		result.PackageEcosystems = append(result.PackageEcosystems, ecosystem)
 	}
@@ -152,7 +263,9 @@ func Build(target string) (model.Inventory, error) {
 
 	payload, err := json.Marshal(digestInput{
 		GitCommit: result.GitCommit, Files: result.Files, PackageEcosystems: result.PackageEcosystems,
-		Manifests: result.Manifests, LockFiles: result.LockFiles,
+		Manifests: result.Manifests, LockFiles: result.LockFiles, ContainerFiles: result.ContainerFiles,
+		Symlinks: result.Symlinks, CI: result.CI, Infrastructure: result.Infrastructure,
+		Components: result.Components, Relations: result.Relations, Facts: result.Facts,
 	})
 	if err != nil {
 		return model.Inventory{}, fmt.Errorf("encode inventory digest: %w", err)
@@ -160,6 +273,16 @@ func Build(target string) (model.Inventory, error) {
 	digest := sha256.Sum256(payload)
 	result.Digest = hex.EncodeToString(digest[:])
 	return result, nil
+}
+
+func isContainerFile(name string) bool {
+	lower := strings.ToLower(name)
+	return lower == "dockerfile" || strings.HasPrefix(lower, "dockerfile.") || strings.HasSuffix(lower, ".dockerfile")
+}
+
+func isYAML(name string) bool {
+	lower := strings.ToLower(name)
+	return strings.HasSuffix(lower, ".yaml") || strings.HasSuffix(lower, ".yml")
 }
 
 func hashFile(path, relative string) (model.FileRecord, error) {

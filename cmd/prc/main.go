@@ -360,8 +360,9 @@ func runOCIAdapter(commandName string, args []string, stdout, stderr io.Writer) 
 	}
 	facts := map[string]any{
 		"source_files": item.SourceFiles, "package_ecosystems": item.PackageEcosystems,
-		"manifests": item.Manifests, "lock_files": item.LockFiles,
-		"ci": item.CI,
+		"manifests": item.Manifests, "lock_files": item.LockFiles, "container_files": item.ContainerFiles,
+		"symlinks": item.Symlinks, "ci": item.CI, "infrastructure": item.Infrastructure,
+		"components": item.Components, "relations": item.Relations, "facts": item.Facts,
 	}
 	input, err := adapter.InputJSONL(runID, adapter.Subject{
 		TargetName: item.TargetName, TargetCommit: item.GitCommit, InventoryDigest: item.Digest,
@@ -424,7 +425,12 @@ func runInventory(args []string, stdout, stderr io.Writer) error {
 	fmt.Fprintf(stdout, "Package ecosystems: %s\n", displayList(item.PackageEcosystems))
 	fmt.Fprintf(stdout, "Manifests: %s\n", displayList(item.Manifests))
 	fmt.Fprintf(stdout, "Lock files: %s\n", displayList(item.LockFiles))
+	fmt.Fprintf(stdout, "Container files: %s\n", displayList(item.ContainerFiles))
+	fmt.Fprintf(stdout, "Terraform files: %s\n", displayList(item.Infrastructure.TerraformFiles))
+	fmt.Fprintf(stdout, "Kubernetes files: %s\n", displayList(item.Infrastructure.KubernetesFiles))
+	fmt.Fprintf(stdout, "Symlinks: %s\n", displayList(item.Symlinks))
 	fmt.Fprintf(stdout, "GitHub Actions: %t\n", item.CI.GitHubActions)
+	fmt.Fprintf(stdout, "Inventory graph: %d components, %d relations, %d sourced facts\n", len(item.Components), len(item.Relations), len(item.Facts))
 	return nil
 }
 

@@ -29,8 +29,12 @@ go build -trimpath -o prc ./cmd/prc
 ```
 
 The inventory walks regular files without following symlinks or executing project
-commands. File content digests, detected manifests, package ecosystems, lock
-files, source files, and CI providers contribute to the inventory.
+commands. Inventory v0.2 records content digests plus a deterministic component
+graph and sourced, confidence-bearing facts for package manifests, CI workflows,
+container build definitions, Terraform, Kubernetes, and symlinks. Detection is
+not proof that a component is built or deployed; each fact states that limitation.
+The legacy v0.1 schema remains available as `inventory-v0.1.schema.json` for
+consumers migrating pinned output contracts.
 
 ## Create a deterministic plan
 

@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/inventory.schema.json",
-  "title": "Production Readiness Inventory",
+  "title": "Production Readiness Inventory v0.2",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "target_name", "digest", "file_count", "source_files", "package_ecosystems", "manifests", "lock_files", "ci", "files"],
+  "required": ["schema_version", "target_name", "digest", "file_count", "source_files", "package_ecosystems", "manifests", "lock_files", "container_files", "symlinks", "ci", "infrastructure", "components", "relations", "facts", "files"],
   "properties": {
-    "schema_version": {"const": "prc.inventory/v0.1"},
+    "schema_version": {"const": "prc.inventory/v0.2"},
     "target_name": {"type": "string", "minLength": 1},
     "git_commit": {"type": "string", "pattern": "^[0-9a-f]{40,64}$"},
     "digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
@@ -15,15 +15,36 @@
     "package_ecosystems": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
     "manifests": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
     "lock_files": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "container_files": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "symlinks": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
     "ci": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["github_actions"],
-      "properties": {"github_actions": {"type": "boolean"}}
+      "required": ["github_actions", "workflow_files"],
+      "properties": {
+        "github_actions": {"type": "boolean"},
+        "workflow_files": {"type": "array", "uniqueItems": true, "items": {"type": "string"}}
+      }
     },
+    "infrastructure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["terraform_files", "kubernetes_files"],
+      "properties": {
+        "terraform_files": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "kubernetes_files": {"type": "array", "uniqueItems": true, "items": {"type": "string"}}
+      }
+    },
+    "components": {"type": "array", "items": {"$ref": "#/$defs/component"}},
+    "relations": {"type": "array", "items": {"$ref": "#/$defs/relation"}},
+    "facts": {"type": "array", "items": {"$ref": "#/$defs/fact"}},
     "files": {
       "type": "array",
-      "items": {
+      "items": {"$ref": "#/$defs/file"}
+    }
+  },
+  "$defs": {
+    "file": {
         "type": "object",
         "additionalProperties": false,
         "required": ["path", "size", "sha256", "mode"],
@@ -33,6 +54,41 @@
           "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
           "mode": {"type": "integer", "minimum": 0, "maximum": 511}
         }
+    },
+    "component": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "path"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "kind": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+        "path": {"type": "string", "minLength": 1},
+        "ecosystem": {"type": "string", "minLength": 1}
+      }
+    },
+    "relation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from", "to", "kind"],
+      "properties": {
+        "from": {"type": "string", "minLength": 1},
+        "to": {"type": "string", "minLength": 1},
+        "kind": {"type": "string", "pattern": "^[a-z0-9-]+$"}
+      }
+    },
+    "fact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "value", "source", "detector", "detector_version", "confidence", "scope_path", "limitations"],
+      "properties": {
+        "key": {"type": "string", "pattern": "^[a-z0-9._-]+$"},
+        "value": {"type": "string"},
+        "source": {"type": "string", "minLength": 1},
+        "detector": {"type": "string", "pattern": "^[a-z0-9._-]+$"},
+        "detector_version": {"type": "string", "minLength": 1},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "scope_path": {"type": "string", "minLength": 1},
+        "limitations": {"type": "array", "items": {"type": "string"}}
       }
     }
   }

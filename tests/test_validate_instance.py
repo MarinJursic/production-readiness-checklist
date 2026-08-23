@@ -20,6 +20,35 @@ SPEC.loader.exec_module(validate_instance)
 class ScannerOutputSchemaTests(unittest.TestCase):
     def test_minimal_inventory_conforms(self) -> None:
         instance = {
+            "schema_version": "prc.inventory/v0.2",
+            "target_name": "example",
+            "digest": "a" * 64,
+            "file_count": 0,
+            "source_files": 0,
+            "package_ecosystems": [],
+            "manifests": [],
+            "lock_files": [],
+            "container_files": [],
+            "symlinks": [],
+            "ci": {"github_actions": False, "workflow_files": []},
+            "infrastructure": {"terraform_files": [], "kubernetes_files": []},
+            "components": [{"id": "repository:.", "kind": "repository", "path": "."}],
+            "relations": [],
+            "facts": [{
+                "key": "repository.detected",
+                "value": "true",
+                "source": ".",
+                "detector": "prc.inventory.repository",
+                "detector_version": "0.2",
+                "confidence": 1,
+                "scope_path": ".",
+                "limitations": [],
+            }],
+            "files": [],
+        }
+        self.assertEqual(validate_instance.validation_errors(instance, "inventory.schema.json"), [])
+
+        legacy = {
             "schema_version": "prc.inventory/v0.1",
             "target_name": "example",
             "digest": "a" * 64,
@@ -31,13 +60,13 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "ci": {"github_actions": False},
             "files": [],
         }
-        self.assertEqual(validate_instance.validation_errors(instance, "inventory.schema.json"), [])
+        self.assertEqual(validate_instance.validation_errors(legacy, "inventory-v0.1.schema.json"), [])
 
     def test_invalid_inventory_is_rejected(self) -> None:
         instance = {"schema_version": "wrong"}
         errors = validate_instance.validation_errors(instance, "inventory.schema.json")
         self.assertTrue(errors)
-        self.assertTrue(any("prc.inventory/v0.1" in error for error in errors))
+        self.assertTrue(any("prc.inventory/v0.2" in error for error in errors))
 
     def test_minimal_remediation_candidate_conforms(self) -> None:
         digest = "a" * 64

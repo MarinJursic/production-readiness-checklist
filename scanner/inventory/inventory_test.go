@@ -24,6 +24,9 @@ func TestBuildHashesContentAndDetectsEcosystems(t *testing.T) {
 	writeFile(t, root, "requirements.txt", "example==1.0\n")
 	writeFile(t, root, "requirements.lock.txt", "example==1.0\n")
 	writeFile(t, root, ".github/workflows/ci.yml", "name: CI\n")
+	writeFile(t, root, "Dockerfile", "FROM example@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n")
+	writeFile(t, root, "infra/main.tf", "terraform {}\n")
+	writeFile(t, root, "deploy/app.yaml", "apiVersion: apps/v1\nkind: Deployment\n")
 
 	first, err := Build(root)
 	if err != nil {
@@ -37,6 +40,17 @@ func TestBuildHashesContentAndDetectsEcosystems(t *testing.T) {
 	}
 	if first.SourceFiles != 1 {
 		t.Fatalf("expected one source file, got %d", first.SourceFiles)
+	}
+	if first.SchemaVersion != "prc.inventory/v0.2" || len(first.Components) != 6 || len(first.Relations) != 5 {
+		t.Fatalf("unexpected graph: schema=%s components=%+v relations=%+v", first.SchemaVersion, first.Components, first.Relations)
+	}
+	if !slices.Contains(first.ContainerFiles, "Dockerfile") ||
+		!slices.Contains(first.Infrastructure.TerraformFiles, "infra/main.tf") ||
+		!slices.Contains(first.Infrastructure.KubernetesFiles, "deploy/app.yaml") {
+		t.Fatalf("missing deployment inventory: containers=%v infrastructure=%+v", first.ContainerFiles, first.Infrastructure)
+	}
+	if len(first.Facts) != 6 {
+		t.Fatalf("expected six provenance facts, got %+v", first.Facts)
 	}
 
 	writeFile(t, root, "app.py", "print('two')\n")
@@ -67,6 +81,29 @@ func TestBuildSkipsCachesAndSymlinks(t *testing.T) {
 	}
 	if item.FileCount != 1 || item.Files[0].Path != "main.go" {
 		t.Fatalf("unexpected inventory files: %+v", item.Files)
+	}
+	if !slices.Equal(item.Symlinks, []string{"linked.py"}) {
+		t.Fatalf("symlinks = %v", item.Symlinks)
+	}
+}
+
+func TestBuildGraphAndFactsAreDeterministic(t *testing.T) {
+	root := t.TempDir()
+	writeFile(t, root, "package.json", "{}\n")
+	writeFile(t, root, "Dockerfile.worker", "FROM example:1\n")
+	first, err := Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	second, err := Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if first.Digest != second.Digest {
+		t.Fatalf("deterministic inventory digests differ: %s != %s", first.Digest, second.Digest)
+	}
+	if len(first.Facts) == 0 || first.Facts[0].DetectorVersion == "" || first.Facts[0].Confidence <= 0 {
+		t.Fatalf("facts lack provenance: %+v", first.Facts)
 	}
 }
 

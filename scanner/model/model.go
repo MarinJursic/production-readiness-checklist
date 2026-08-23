@@ -3,7 +3,7 @@ package model
 import "time"
 
 const (
-	InventorySchema = "prc.inventory/v0.1"
+	InventorySchema = "prc.inventory/v0.2"
 	PlanSchema      = "prc.plan/v0.1"
 	RunSchema       = "prc.run/v0.1"
 	EvidenceSchema  = "prc.evidence/v0.1"
@@ -62,7 +62,37 @@ type Profile struct {
 }
 
 type CIInventory struct {
-	GitHubActions bool `json:"github_actions"`
+	GitHubActions bool     `json:"github_actions"`
+	WorkflowFiles []string `json:"workflow_files"`
+}
+
+type InfrastructureInventory struct {
+	TerraformFiles  []string `json:"terraform_files"`
+	KubernetesFiles []string `json:"kubernetes_files"`
+}
+
+type InventoryComponent struct {
+	ID        string `json:"id"`
+	Kind      string `json:"kind"`
+	Path      string `json:"path"`
+	Ecosystem string `json:"ecosystem,omitempty"`
+}
+
+type InventoryRelation struct {
+	From string `json:"from"`
+	To   string `json:"to"`
+	Kind string `json:"kind"`
+}
+
+type InventoryFact struct {
+	Key             string   `json:"key"`
+	Value           string   `json:"value"`
+	Source          string   `json:"source"`
+	Detector        string   `json:"detector"`
+	DetectorVersion string   `json:"detector_version"`
+	Confidence      float64  `json:"confidence"`
+	ScopePath       string   `json:"scope_path"`
+	Limitations     []string `json:"limitations"`
 }
 
 type FileRecord struct {
@@ -73,18 +103,24 @@ type FileRecord struct {
 }
 
 type Inventory struct {
-	SchemaVersion     string       `json:"schema_version"`
-	TargetName        string       `json:"target_name"`
-	GitCommit         string       `json:"git_commit,omitempty"`
-	Digest            string       `json:"digest"`
-	FileCount         int          `json:"file_count"`
-	SourceFiles       int          `json:"source_files"`
-	PackageEcosystems []string     `json:"package_ecosystems"`
-	Manifests         []string     `json:"manifests"`
-	LockFiles         []string     `json:"lock_files"`
-	CI                CIInventory  `json:"ci"`
-	Files             []FileRecord `json:"files"`
-	Root              string       `json:"-"`
+	SchemaVersion     string                  `json:"schema_version"`
+	TargetName        string                  `json:"target_name"`
+	GitCommit         string                  `json:"git_commit,omitempty"`
+	Digest            string                  `json:"digest"`
+	FileCount         int                     `json:"file_count"`
+	SourceFiles       int                     `json:"source_files"`
+	PackageEcosystems []string                `json:"package_ecosystems"`
+	Manifests         []string                `json:"manifests"`
+	LockFiles         []string                `json:"lock_files"`
+	ContainerFiles    []string                `json:"container_files"`
+	Symlinks          []string                `json:"symlinks"`
+	CI                CIInventory             `json:"ci"`
+	Infrastructure    InfrastructureInventory `json:"infrastructure"`
+	Components        []InventoryComponent    `json:"components"`
+	Relations         []InventoryRelation     `json:"relations"`
+	Facts             []InventoryFact         `json:"facts"`
+	Files             []FileRecord            `json:"files"`
+	Root              string                  `json:"-"`
 }
 
 type PlannedAssertion struct {
