@@ -88,6 +88,15 @@ jobs:
             -run '^TestLiveGitleaksOCIUsesPinnedRulesAndIgnoresTargetSuppressions$' \
             -count=1
 
+      - name: Exercise pinned production Syft adapter
+        env:
+          PRC_TEST_SYFT_IMAGE: ghcr.io/anchore/syft@sha256:d2dc3ec86cb2b4e7ddb226ba0305c4523b7c0694c45d9f576b42b4c2f5ce7aa8
+        run: |
+          docker pull "$PRC_TEST_SYFT_IMAGE"
+          go test -race ./scanner/adapter \
+            -run '^TestLiveSyftOCIProducesDeterministicCycloneDXDespiteTargetConfig$' \
+            -count=1
+
       - name: Install schema validation dependencies
         run: |
           pip install -r requirements-dev.lock.txt

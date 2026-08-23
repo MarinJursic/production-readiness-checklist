@@ -83,6 +83,15 @@ jobs:
             -run '^TestLiveGitleaksOCIUsesPinnedRulesAndIgnoresTargetSuppressions$' \
             -count=1
 
+      - name: Exercise pinned production Syft adapter
+        env:
+          PRC_TEST_SYFT_IMAGE: ghcr.io/anchore/syft@sha256:d2dc3ec86cb2b4e7ddb226ba0305c4523b7c0694c45d9f576b42b4c2f5ce7aa8
+        run: |
+          docker pull "$PRC_TEST_SYFT_IMAGE"
+          go test -race ./scanner/adapter \
+            -run '^TestLiveSyftOCIProducesDeterministicCycloneDXDespiteTargetConfig$' \
+            -count=1
+
       - name: Vet scanner
         run: go vet ./...
 
@@ -177,6 +186,17 @@ jobs:
           "$RUNNER_TEMP/prc" scan --target . --catalog-root . --profile prc/api --format json --exit-policy never > "$RUNNER_TEMP/api-run.json"
           "$RUNNER_TEMP/prc" plan --target . --catalog-root . --profile prc/kubernetes --format json > "$RUNNER_TEMP/kubernetes-plan.json"
           "$RUNNER_TEMP/prc" scan --target . --catalog-root . --profile prc/kubernetes --format json --exit-policy never > "$RUNNER_TEMP/kubernetes-run.json"
+          "$RUNNER_TEMP/prc" scan \
+            --target . \
+            --catalog-root . \
+            --profile prc/supply-chain \
+            --mode verify-local \
+            --adapter-manifest adapters/syft-v1.51.0.yaml \
+            --state-dir "$RUNNER_TEMP/supply-state" \
+            --format json \
+            --exit-policy never \
+            > "$RUNNER_TEMP/supply-run.json"
+          python -c 'import hashlib,json,pathlib,sys; run=json.load(open(sys.argv[1], encoding="utf-8")); result=next(x for x in run["results"] if x["assertion_id"]=="PRC-A-SUPPLY-001"); assert result["assessment"]=="pass"; execution=next(x for x in run["adapter_executions"] if x["adapter_id"]=="prc.adapter.syft@1.51"); artifact=execution["transcript"]["artifacts"][0]; digest=artifact["digest"].removeprefix("sha256:"); path=pathlib.Path(sys.argv[2])/"artifacts"/"sha256"/digest[:2]/digest; payload=path.read_bytes(); assert len(payload)==artifact["size"] and hashlib.sha256(payload).hexdigest()==digest; bom=json.loads(payload); assert bom["bomFormat"]=="CycloneDX" and bom["specVersion"]=="1.7" and "serialNumber" not in bom' "$RUNNER_TEMP/supply-run.json" "$RUNNER_TEMP/supply-state"
           "$RUNNER_TEMP/prc" inventory --target . --config fixtures/config/production-readiness.yaml --format json > "$RUNNER_TEMP/configured-inventory.json"
           "$RUNNER_TEMP/prc" plan --target . --catalog-root . --config fixtures/config/production-readiness.yaml --format json > "$RUNNER_TEMP/configured-plan.json"
           "$RUNNER_TEMP/prc" scan --target . --catalog-root . --config fixtures/config/production-readiness.yaml --state-dir "$RUNNER_TEMP/configured-state" --format json --exit-policy never > "$RUNNER_TEMP/configured-run.json"
