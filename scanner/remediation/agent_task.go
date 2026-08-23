@@ -3,6 +3,7 @@ package remediation
 import (
 	"bytes"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -87,6 +88,9 @@ func planAgentTask(
 		}
 		task, err := provider.SealTaskValueWithInventory(draft, item.Root, item, protectedPaths)
 		if err != nil {
+			if errors.Is(err, provider.ErrSensitiveInput) {
+				return provider.Task{}, false, policyDenied(err)
+			}
 			return provider.Task{}, false, err
 		}
 		return task, true, nil

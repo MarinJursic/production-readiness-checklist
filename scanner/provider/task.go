@@ -256,6 +256,9 @@ func (task Task) Validate() error {
 	if totalInputBytes > 768*1024 {
 		return fmt.Errorf("agent inputs exceed 768 KiB")
 	}
+	if err := validateRemoteInputs(task.Inputs); err != nil {
+		return err
+	}
 	encodedTask, err := json.Marshal(task)
 	if err != nil {
 		return fmt.Errorf("encode agent task: %w", err)

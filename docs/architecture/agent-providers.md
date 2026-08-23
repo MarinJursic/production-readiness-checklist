@@ -24,6 +24,9 @@ Both launch plans require:
 - explicit acknowledgement that relevant source may be processed by a remote
   provider;
 - an exact workspace inventory plus bounded, content-addressed task inputs;
+- a fail-closed preflight that prevents obvious private keys, distinctive
+  provider-token shapes, and credential-bearing URLs from entering a remote
+  task without logging the matched value;
 - a private execution/output directory disjoint from the source workspace;
 - denied agent-tool network access and no task secrets;
 - schema-constrained, non-interactive output;
@@ -44,6 +47,17 @@ servers, project setting sources, and session persistence are disabled. The
 source text needed for either provider is inside the sealed task prompt. Claude's
 optional provider-side cost limit is passed through; the current Codex CLI
 adapter rejects a nonzero cost limit because it cannot enforce one.
+
+Repository text is always untrusted data, including comments that resemble
+instructions or the scanner's task delimiter. The scanner JSON-encodes the
+entire content-addressed task, so delimiter characters inside a source file are
+escaped and cannot terminate the authoritative envelope. Checked-in adversarial
+tests reconstruct that envelope and require the hostile fixture to round-trip
+only as an input value. This is defense in depth: output schema validation,
+capability denial, patch-path validation, and independent candidate checks remain
+mandatory even when the prompt boundary is intact. These controls implement the
+OWASP guidance to [identify external content, constrain privileges, validate
+outputs, and test adversarially](https://genai.owasp.org/llmrisk/llm01-prompt-injection/).
 
 These controls are not an R2 write sandbox. Neither provider may mutate a
 candidate workspace. An agent proposal remains untrusted data. The
@@ -72,8 +86,14 @@ modifying the draft:
 
 Sealing reads only the sorted `relevant_paths`, rejects non-regular, binary, or
 larger-than-256-KiB inputs, and embeds their text and SHA-256 digests. Total input
-text is limited to 768 KiB. It also binds the current workspace inventory digest
-into the task. The task's `finding_id` names the exact scan finding that caused
+text is limited to 768 KiB. Before remote processing, sealing also rejects
+high-confidence secret-like input without including the matched material in the
+error. This conservative guard is not a comprehensive repository secret scan;
+it covers selected high-precision generic and provider credential families
+recognized by [GitHub's supported secret-scanning pattern
+catalog](https://docs.github.com/en/code-security/reference/secret-security/supported-secret-scanning-patterns),
+and projects should still run a dedicated secret scanner. Sealing also binds the
+current workspace inventory digest into the task. The task's `finding_id` names the exact scan finding that caused
 the task to be created; both it and `finding_fingerprint` are revalidated
 against a fresh baseline before a proposal can be applied. For a manual draft,
 copy both values from the same canonical finding in a current JSON scan; the

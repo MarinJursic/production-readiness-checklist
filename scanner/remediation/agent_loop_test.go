@@ -222,6 +222,24 @@ func TestRunLoopRequiresRemoteSourceAcknowledgementBeforeCreatingRoot(t *testing
 	}
 }
 
+func TestRunLoopRejectsSecretLikeSourceBeforeProviderExecution(t *testing.T) {
+	target := agentLoopTarget(t)
+	content := "def ready():\n    token = \"" + "ghp_" + strings.Repeat("a", 36) + "\"\n    return True\n"
+	if err := os.WriteFile(filepath.Join(target, "app.py"), []byte(content), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	options := agentLoopOptions(t, target, "candidate")
+	root := options.CandidateRoot
+	_, err := RunLoop(options)
+	if err == nil || !IsPolicyDenied(err) || !strings.Contains(err.Error(), "app.py (github-token)") ||
+		strings.Contains(err.Error(), content) {
+		t.Fatalf("unexpected remote-input denial: %v", err)
+	}
+	if _, statErr := os.Stat(root); !os.IsNotExist(statErr) {
+		t.Fatal("remote-input denial created a candidate root")
+	}
+}
+
 func TestRunLoopDetectsProviderTamperingWithSealedTaskRecord(t *testing.T) {
 	target := agentLoopTarget(t)
 	options := agentLoopOptions(t, target, "candidate")

@@ -54,10 +54,11 @@ func RunLoop(options LoopOptions) (RemediationRun, error) {
 	if err != nil {
 		return RemediationRun{}, err
 	}
-	candidateRoot, err := prepareCandidateContainer(original.Root, options.CandidateRoot)
+	candidateRoot, err := resolveCandidateContainer(original.Root, options.CandidateRoot)
 	if err != nil {
 		return RemediationRun{}, err
 	}
+	candidateContainerPrepared := false
 	activeTarget := original.Root
 	activeConfiguration := rebasedConfiguration(options.Configuration, policy.configRelative, activeTarget)
 	activeInventory := original
@@ -106,6 +107,13 @@ func RunLoop(options LoopOptions) (RemediationRun, error) {
 				fmt.Sprintf("Assertion %s requires %d files and %d changed lines, exceeding the remaining budget of %d files and %d lines.",
 					assertionID, requiredFiles, requiredLines, remainingFiles, remainingLines))
 			break
+		}
+		if !candidateContainerPrepared {
+			candidateRoot, err = prepareCandidateContainer(original.Root, candidateRoot)
+			if err != nil {
+				return RemediationRun{}, err
+			}
+			candidateContainerPrepared = true
 		}
 		attempt := usage.Attempts + 1
 		finding, ok := findingFor(activeRun, assertionID)
@@ -294,6 +302,17 @@ func candidateRejectionReason(candidate Candidate) string {
 }
 
 func prepareCandidateContainer(targetRoot, destination string) (string, error) {
+	destination, err := resolveCandidateContainer(targetRoot, destination)
+	if err != nil {
+		return "", err
+	}
+	if err := os.Mkdir(destination, 0o700); err != nil {
+		return "", fmt.Errorf("create candidate root: %w", err)
+	}
+	return destination, nil
+}
+
+func resolveCandidateContainer(targetRoot, destination string) (string, error) {
 	if strings.TrimSpace(destination) == "" {
 		return "", fmt.Errorf("candidate root is required")
 	}
@@ -314,9 +333,6 @@ func prepareCandidateContainer(targetRoot, destination string) (string, error) {
 	}
 	if _, err := os.Lstat(destination); !os.IsNotExist(err) {
 		return "", fmt.Errorf("candidate root already exists")
-	}
-	if err := os.Mkdir(destination, 0o700); err != nil {
-		return "", fmt.Errorf("create candidate root: %w", err)
 	}
 	return destination, nil
 }

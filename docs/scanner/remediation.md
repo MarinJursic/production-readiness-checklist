@@ -72,7 +72,9 @@ merge, deploy, release, accept risk, or claim that the full profile is satisfied
 Without a provider, `prc fix` repeatedly applies only the registered R1 fixers.
 Each accepted candidate becomes the source of a new sibling candidate, so fixes
 compose without changing the original project. The candidate root must be a new
-path outside the target tree.
+path outside the target tree. The scanner validates that destination first but
+does not create it until an eligible attempt has passed task, source, policy,
+and budget preflight.
 
 ```bash
 ./prc fix \
@@ -144,7 +146,9 @@ verification.
 ```
 
 The remote-processing flag is mandatory because the sealed prompt contains the
-selected source file. The provider receives no source-workspace access, shell,
+selected source file. High-confidence secret-like material in that input causes
+a policy stop before the candidate root or provider output directory is created;
+the error identifies only the source path and detector family. The provider receives no source-workspace access, shell,
 network tool, MCP server, secret, edit tool, or candidate workspace. Its output
 directory is private and separate from both source and candidate. Each provider
 attempt preserves `agent-task.json`, bounded stdout/stderr transcripts, their
