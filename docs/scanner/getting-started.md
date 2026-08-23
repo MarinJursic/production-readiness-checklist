@@ -1,7 +1,7 @@
 # Scanner quick start
 
 The scanner CLI is an experimental deterministic vertical slice. It inventories a
-repository, creates an immutable plan for `prc/core-repository@0.4`, evaluates
+repository, creates an immutable plan for `prc/core-repository@0.5`, evaluates
 native assertions, records evidence, and reports explicit unresolved states.
 
 The profile evaluator can consume a live, sandboxed adapter execution only when
@@ -170,11 +170,13 @@ configuration policy, terminal states, and the machine-work-complete report.
   references, and unsafe untrusted triggers;
 - discoverable tests, final line-feed bytes, merge-conflict markers, broad
   file-write permissions, and committed private-key armor;
+- direct Go `net/http` package helpers backed by mutable global
+  `http.DefaultClient` state;
 - immutable container base identities and final-stage non-root users;
 - Terraform provider locks; and
 - Kubernetes non-root and container resource policies.
 
-The profile has 31 atomic assertions. Container, Terraform, and Kubernetes
+The profile has 32 atomic assertions. Go, container, Terraform, and Kubernetes
 assertions are planned as not applicable when their corresponding sourced
 inventory facts are absent.
 

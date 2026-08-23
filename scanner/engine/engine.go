@@ -377,6 +377,8 @@ func (e *Engine) evaluate(
 		return evaluateKubernetesResources(assertion, inventory, result, observedAt)
 	case "prc.native.private-key-armor@0.1":
 		return evaluatePrivateKeyArmor(assertion, inventory, result, observedAt)
+	case "prc.native.go-http-timeout@0.1":
+		return evaluateGoHTTPTimeouts(assertion, inventory, result, observedAt)
 	case "prc.native.manual-evidence@0.1":
 		result.Assessment = "manual_review"
 		result.Summary = "This assertion requires scoped evidence from an accountable reviewer."

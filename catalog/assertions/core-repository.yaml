@@ -1,5 +1,5 @@
 schema_version: prc.assertions/v0.1
-catalog_version: 0.4.0
+catalog_version: 0.5.0
 assertions:
   - id: PRC-A-CORE-001
     revision: 2
@@ -484,4 +484,19 @@ assertions:
     parameters: {}
     severity: critical
     gate: no-go
+    remediation_class: R2
+  - id: PRC-A-GO-001
+    revision: 1
+    control_ids: [USEQ-F6ACEF15]
+    title: Go net/http package helpers do not use the default client
+    statement: Go source does not call net/http Get, Head, Post, or PostForm package helpers whose end-to-end timeout depends on mutable global DefaultClient state.
+    applicability: '"go" in inventory.package_ecosystems'
+    evidence_required:
+      - kind: go-ast-analysis
+        minimum_authority: repository
+        description: Bounded syntax-aware inspection of inventoried Go source for direct calls to net/http package convenience helpers backed by mutable global DefaultClient state.
+    implementation_id: prc.native.go-http-timeout@0.1
+    parameters: {}
+    severity: high
+    gate: required
     remediation_class: R2

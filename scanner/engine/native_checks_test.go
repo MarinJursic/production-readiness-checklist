@@ -2,12 +2,14 @@ package engine
 
 import (
 	"encoding/json"
+	"errors"
 	"os"
 	"path/filepath"
 	"strings"
 	"testing"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 )
 
 func scanFixture(t *testing.T, root string) map[string]string {
@@ -199,6 +201,121 @@ func TestPrivateKeyArmorCheckIsBoundedAndRedacted(t *testing.T) {
 			t.Fatalf("oversized private-key scan result = %+v", result)
 		}
 	})
+}
+
+func TestGoHTTPTimeoutCheckUsesSyntaxAwarePackageResolution(t *testing.T) {
+	for name, source := range map[string]string{
+		"default import": `package service
+
+import "net/http"
+
+func fetch() { _, _ = http.Get("https://example.invalid") }
+`,
+		"aliased import": `package service
+
+import web "net/http"
+
+func fetch() { _, _ = web.Post("https://example.invalid", "text/plain", nil) }
+`,
+		"dot import": `package service
+
+import . "net/http"
+
+func fetch() { _, _ = Head("https://example.invalid") }
+`,
+		"post form": `package service
+
+import "net/http"
+
+func fetch() { _, _ = http.PostForm("https://example.invalid", nil) }
+`,
+	} {
+		t.Run(name, func(t *testing.T) {
+			root := healthyRepository(t)
+			writeFixture(t, root, "go.mod", "module example.invalid/service\n\ngo 1.27\n")
+			writeFixture(t, root, "client.go", source)
+			item, err := inventory.Build(root)
+			if err != nil {
+				t.Fatal(err)
+			}
+			run, err := scanner(t).Scan("prc/core-repository", item)
+			if err != nil {
+				t.Fatal(err)
+			}
+			result := findResult(t, run, "PRC-A-GO-001")
+			if result.Execution != "completed" || result.Assessment != "fail" ||
+				!strings.Contains(result.Summary, "client.go:") || len(result.EvidenceObserved) != 2 {
+				t.Fatalf("Go HTTP timeout result = %+v", result)
+			}
+			foundLocation := false
+			for _, finding := range run.Findings {
+				if finding.AssertionID == "PRC-A-GO-001" && len(finding.Locations) == 1 && finding.Locations[0].Path == "client.go" {
+					foundLocation = true
+				}
+			}
+			if !foundLocation {
+				t.Fatalf("Go HTTP timeout finding has no source path: %+v", run.Findings)
+			}
+		})
+	}
+
+	t.Run("explicit client and shadowed names", func(t *testing.T) {
+		root := healthyRepository(t)
+		writeFixture(t, root, "go.mod", "module example.invalid/service\n\ngo 1.27\n")
+		writeFixture(t, root, "client.go", `package service
+
+import (
+	"net/http"
+	"time"
+)
+
+func fetch() {
+	client := http.Client{Timeout: 10 * time.Second}
+	_, _ = client.Get("https://example.invalid")
+	http := struct { Get func(string) (*http.Response, error) }{}
+	_, _ = http.Get("https://example.invalid")
+}
+`)
+		result := scanFixture(t, root)["PRC-A-GO-001"]
+		if result != "pass" {
+			t.Fatalf("Go HTTP timeout assertion = %s", result)
+		}
+	})
+
+	t.Run("unparseable source fails closed", func(t *testing.T) {
+		root := healthyRepository(t)
+		writeFixture(t, root, "go.mod", "module example.invalid/service\n\ngo 1.27\n")
+		writeFixture(t, root, "client.go", "package service\nfunc broken( {\n")
+		item, err := inventory.Build(root)
+		if err != nil {
+			t.Fatal(err)
+		}
+		run, err := scanner(t).Scan("prc/core-repository", item)
+		if err != nil {
+			t.Fatal(err)
+		}
+		result := findResult(t, run, "PRC-A-GO-001")
+		if result.Execution != "error" || result.Assessment != "unknown" || !strings.Contains(result.Summary, "cannot parse client.go") {
+			t.Fatalf("unparseable Go result = %+v", result)
+		}
+	})
+}
+
+func TestGoHTTPTimeoutCheckRejectsUnprovableInputBounds(t *testing.T) {
+	files := make([]model.FileRecord, maximumGoAnalysisFiles+1)
+	for index := range files {
+		files[index] = model.FileRecord{Path: filepath.ToSlash(filepath.Join("src", "file"+strings.Repeat("x", index%2)+".go")), Size: 1}
+	}
+	if _, err := goSourceFiles(model.Inventory{Files: files}); !errors.Is(err, errNativeInputLimit) {
+		t.Fatalf("file-count limit error = %v", err)
+	}
+	files = []model.FileRecord{
+		{Path: "first.go", Size: maximumGoAnalysisBytes},
+		{Path: "second.go", Size: 1},
+	}
+	if _, err := goSourceFiles(model.Inventory{Files: files}); !errors.Is(err, errNativeInputLimit) {
+		t.Fatalf("total-byte limit error = %v", err)
+	}
 }
 
 func TestContainerChecksHavePassAndFailFixtures(t *testing.T) {

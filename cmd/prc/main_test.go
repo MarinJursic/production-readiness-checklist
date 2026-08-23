@@ -677,6 +677,7 @@ func TestScanConsumesOnlyProfileAuthorizedLiveAdapterEvidence(t *testing.T) {
 		"docs/checklists/08-maintenance-vendors-compliance.md",
 		"docs/engineering/01-governance-and-foundations.md",
 		"docs/engineering/05-code-quality-and-implementation.md",
+		"docs/engineering/06-application-services-and-apis.md",
 		"docs/engineering/08-security-and-cryptography.md",
 		"docs/engineering/10-verification-and-testing.md",
 		"docs/engineering/11-developer-experience-platform-and-delivery.md",

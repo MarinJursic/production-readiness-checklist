@@ -58,6 +58,7 @@ nav:
       - Read-only MCP agent integration: scanner/mcp-agent-integration.md
       - Benchmarks and quality budgets: scanner/benchmarks.md
       - Private-key armor inspection: scanner/private-key-armor.md
+      - Go HTTP timeout analysis: scanner/go-http-timeouts.md
       - Project configuration: scanner/configuration.md
       - Durable state and history: scanner/state-and-history.md
       - Signed risk exceptions: scanner/risk-exceptions.md

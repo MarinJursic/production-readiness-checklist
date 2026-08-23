@@ -1,5 +1,5 @@
 schema_version: prc.objectives/v0.1
-catalog_version: 0.4.0
+catalog_version: 0.5.0
 objectives:
   - id: USEQ-FDCA6C71
     revision: 1
@@ -221,3 +221,13 @@ objectives:
     domains: [repository, security]
     automation_class: partial
     assertion_ids: [PRC-A-CORE-031]
+  - id: USEQ-F6ACEF15
+    revision: 1
+    title: Bounded outbound calls
+    statement: Every outbound call has an appropriate timeout.
+    source:
+      path: docs/engineering/06-application-services-and-apis.md
+      line: 22
+    domains: [code-quality, reliability, services]
+    automation_class: partial
+    assertion_ids: [PRC-A-GO-001]

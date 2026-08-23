@@ -11,9 +11,13 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 - A public invitation to propose missing controls, corrections, documentation improvements, and tooling contributions.
 - A documented long-term vision for a technology-neutral AI readiness scanner that evaluates available evidence against every applicable control and produces a complete gap report.
 - A deterministic inventory v0.2 graph with sourced, confidence-bearing package, CI, container, Terraform, Kubernetes, and symlink facts.
-- A 31-assertion core repository profile with additional source-integrity,
+- A 32-assertion core repository profile with additional source-integrity,
   workflow-safety, dependency, runtime, private-key armor, container, Terraform,
   and Kubernetes checks.
+- A syntax-aware, no-execution Go check for direct `net/http` package helpers
+  whose request bound depends on mutable global `http.DefaultClient` state,
+  including aliased and dot imports, fail-closed parser limits, and measured
+  Pass, Fail, and execution-error fixtures.
 - Profile-authorized live OCI adapter evidence, content-addressed execution records, exact inventory binding, and deterministic observation-to-assessment evaluation.
 - Bounded CEL applicability evaluation over a deterministic inventory projection,
   with fail-closed resource limits and reason-bearing plan v0.2 records.
