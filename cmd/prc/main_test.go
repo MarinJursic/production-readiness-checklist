@@ -357,6 +357,10 @@ func TestScanConsumesOnlyProfileAuthorizedLiveAdapterEvidence(t *testing.T) {
 	if len(result.AdapterExecutions) != 1 || result.AdapterExecutions[0].AdapterID != manifest.ID {
 		t.Fatalf("bound executions = %+v", result.AdapterExecutions)
 	}
+	if result.AdapterExecutions[0].Resolution.Source != adapter.ResolutionSourceExplicitLocal ||
+		result.AdapterExecutions[0].Resolution.PublisherID != manifest.Publisher.ID {
+		t.Fatalf("local resolution = %+v", result.AdapterExecutions[0].Resolution)
+	}
 	found := false
 	for _, assertion := range result.Results {
 		if assertion.AssertionID == "PRC-A-CORE-013" {
@@ -385,7 +389,10 @@ func TestScanConsumesOnlyProfileAuthorizedLiveAdapterEvidence(t *testing.T) {
 	if err := json.Unmarshal(stdout.Bytes(), &result); err != nil {
 		t.Fatal(err)
 	}
-	if len(result.AdapterExecutions) != 1 || result.AdapterExecutions[0].ManifestSHA256 != manifestDigest {
+	if len(result.AdapterExecutions) != 1 || result.AdapterExecutions[0].ManifestSHA256 != manifestDigest ||
+		result.AdapterExecutions[0].Resolution.Source != adapter.ResolutionSourceRegistry ||
+		result.AdapterExecutions[0].Resolution.RegistryID != "prc.adapter-registry.test@0.1" ||
+		len(result.AdapterExecutions[0].Resolution.RegistryDigest) != 64 {
 		t.Fatalf("registry-resolved executions = %+v", result.AdapterExecutions)
 	}
 }
@@ -521,7 +528,7 @@ func TestFixCommandRunsBoundedDeterministicLoop(t *testing.T) {
 	if err := json.Unmarshal(stdout.Bytes(), &result); err != nil {
 		t.Fatal(err)
 	}
-	if result.SchemaVersion != "prc.remediation-run/v0.3" || len(result.Candidates) != 2 ||
+	if result.SchemaVersion != "prc.remediation-run/v0.4" || len(result.Candidates) != 2 ||
 		result.ProviderExecutions == nil || len(result.ProviderExecutions) != 0 ||
 		result.TerminalState != "machine_work_complete" || !result.OriginalUnchanged {
 		t.Fatalf("unexpected remediation run: %+v", result)

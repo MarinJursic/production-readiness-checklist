@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/run-result.schema.json",
-  "title": "Production Readiness Run Result v0.7",
+  "title": "Production Readiness Run Result v0.8",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_version", "run_id", "started_at", "completed_at", "plan", "inventory", "adapter_executions", "results", "findings", "terminal_state"],
   "properties": {
-    "schema_version": {"const": "prc.run/v0.7"},
+    "schema_version": {"const": "prc.run/v0.8"},
     "run_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "started_at": {"type": "string", "format": "date-time"},
     "completed_at": {"type": "string", "format": "date-time"},

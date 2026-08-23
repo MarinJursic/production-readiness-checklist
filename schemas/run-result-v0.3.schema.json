@@ -12,7 +12,7 @@
     "completed_at": {"type": "string", "format": "date-time"},
     "plan": {"$ref": "plan-v0.3.schema.json"},
     "inventory": {"$ref": "inventory.schema.json"},
-    "adapter_executions": {"type": "array", "items": {"$ref": "adapter-execution.schema.json"}},
+    "adapter_executions": {"type": "array", "items": {"$ref": "adapter-execution-v0.1.schema.json"}},
     "results": {"type": "array", "items": {"$ref": "#/$defs/assertion_result"}},
     "terminal_state": {"$ref": "#/$defs/terminal_state"}
   },

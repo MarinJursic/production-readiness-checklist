@@ -1175,6 +1175,7 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 			return exitInternal, exitError(exitPolicyDenied, fmt.Errorf("adapter execution requires an explicit --mode verify-local capability grant"))
 		}
 		var manifest adapter.Manifest
+		var registryResolution *model.AdapterResolution
 		if *adapterManifest != "" {
 			manifest, err = adapter.LoadManifest(*adapterManifest)
 			if err != nil {
@@ -1190,6 +1191,7 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 				return exitInternal, exitError(exitPolicyDenied, resolveErr)
 			}
 			manifest = resolved.Manifest
+			registryResolution = &resolved.Resolution
 		}
 		manifestDigest, err := adapter.ManifestDigest(manifest)
 		if err != nil {
@@ -1230,7 +1232,14 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		if err != nil {
 			return exitInternal, exitError(exitExecution, err)
 		}
-		execution, err := adapter.BindExecution(adapterRunID, subject, manifest, output)
+		var execution model.AdapterExecution
+		if registryResolution == nil {
+			execution, err = adapter.BindExecution(adapterRunID, subject, manifest, output)
+		} else {
+			execution, err = adapter.BindExecutionWithResolution(
+				adapterRunID, subject, manifest, *registryResolution, output,
+			)
+		}
 		if err != nil {
 			return exitInternal, exitError(exitExecution, err)
 		}

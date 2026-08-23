@@ -17,6 +17,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/MarinJursic/production-readiness-checklist/scanner/adapter"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/engine"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/finding"
 	workspaceinventory "github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
@@ -506,6 +507,7 @@ func validateRun(run model.RunResult) error {
 		return fmt.Errorf("run ID does not match record content")
 	}
 	if !((run.SchemaVersion == model.RunSchema && run.Plan.SchemaVersion == model.PlanSchema) ||
+		(run.SchemaVersion == "prc.run/v0.7" && run.Plan.SchemaVersion == model.PlanSchema) ||
 		(run.SchemaVersion == "prc.run/v0.6" && run.Plan.SchemaVersion == "prc.plan/v0.5") ||
 		(run.SchemaVersion == "prc.run/v0.5" && run.Plan.SchemaVersion == "prc.plan/v0.5") ||
 		(run.SchemaVersion == "prc.run/v0.4" && run.Plan.SchemaVersion == "prc.plan/v0.4") ||
@@ -546,6 +548,25 @@ func validateRun(run model.RunResult) error {
 			return fmt.Errorf("current plan execution contract is invalid: %w", err)
 		}
 	}
+	expectedExecutionSchema := "prc.adapter-execution/v0.1"
+	if run.SchemaVersion == model.RunSchema {
+		expectedExecutionSchema = model.AdapterExecutionSchema
+	}
+	seenExecutions := map[string]bool{}
+	for _, execution := range run.AdapterExecutions {
+		if execution.SchemaVersion != expectedExecutionSchema {
+			return fmt.Errorf("run %s requires adapter execution schema %s", run.SchemaVersion, expectedExecutionSchema)
+		}
+		if err := adapter.ValidateExecution(execution); err != nil {
+			return fmt.Errorf("invalid adapter execution %s: %w", execution.ExecutionID, err)
+		}
+		if seenExecutions[execution.ExecutionID] || execution.Subject.TargetName != run.Inventory.TargetName ||
+			execution.Subject.TargetCommit != run.Inventory.GitCommit ||
+			execution.Subject.InventoryDigest != run.Inventory.Digest {
+			return fmt.Errorf("adapter execution %s is duplicate or bound to a different inventory", execution.ExecutionID)
+		}
+		seenExecutions[execution.ExecutionID] = true
+	}
 	planned := map[string]bool{}
 	for _, item := range run.Plan.Assertions {
 		if item.AssertionID == "" || planned[item.AssertionID] {
@@ -571,7 +592,7 @@ func validateRun(run model.RunResult) error {
 	if len(results) != len(planned) {
 		return fmt.Errorf("run does not contain exactly one result for every planned assertion")
 	}
-	if run.SchemaVersion == model.RunSchema || run.SchemaVersion == "prc.run/v0.6" {
+	if run.SchemaVersion == model.RunSchema || run.SchemaVersion == "prc.run/v0.7" || run.SchemaVersion == "prc.run/v0.6" {
 		if run.Findings == nil {
 			return fmt.Errorf("current run findings must encode as an array")
 		}

@@ -77,6 +77,10 @@ func TestCheckedInRegistryPinsAndResolvesFixture(t *testing.T) {
 	if resolved.Manifest.Publisher.ID != "prc-project" || resolved.Entry.Trust != "first-party-sandboxed" {
 		t.Fatalf("resolved adapter = %+v", resolved)
 	}
+	if resolved.Resolution.Source != ResolutionSourceRegistry || resolved.Resolution.RegistryID != registry.ID ||
+		resolved.Resolution.RegistryRevision != registry.Revision || resolved.Resolution.RegistryDigest != registry.Digest {
+		t.Fatalf("registry resolution provenance = %+v", resolved.Resolution)
+	}
 }
 
 func TestRegistryResolutionEnforcesTrustLifecycleDigestAndKinds(t *testing.T) {

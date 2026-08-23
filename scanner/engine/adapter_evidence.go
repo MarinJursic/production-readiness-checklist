@@ -94,6 +94,9 @@ func validateAdapterExecutions(inventory model.Inventory, executions []model.Ada
 	sort.Slice(validated, func(i, j int) bool { return validated[i].ExecutionID < validated[j].ExecutionID })
 	seen := map[string]bool{}
 	for _, execution := range validated {
+		if execution.SchemaVersion != model.AdapterExecutionSchema {
+			return nil, fmt.Errorf("adapter execution %s does not use current schema %s", execution.ExecutionID, model.AdapterExecutionSchema)
+		}
 		if err := adapter.ValidateExecution(execution); err != nil {
 			return nil, fmt.Errorf("validate adapter execution: %w", err)
 		}

@@ -289,6 +289,9 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         self.assertEqual(
             validate_instance.validation_errors(plan, "plan.schema.json"), []
         )
+        self.assertEqual(
+            validate_instance.validation_errors(plan, "plan-v0.6.schema.json"), []
+        )
         del plan["assertions"][0]["applicability_reason"]
         self.assertTrue(
             validate_instance.validation_errors(plan, "plan.schema.json")
@@ -634,7 +637,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "assertions": [],
         }
         final_run = {
-            "schema_version": "prc.run/v0.7",
+            "schema_version": "prc.run/v0.8",
             "run_id": digest,
             "started_at": "2026-08-23T12:00:00Z",
             "completed_at": "2026-08-23T12:00:01Z",
@@ -646,7 +649,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "terminal_state": "profile_satisfied",
         }
         remediation_run = {
-            "schema_version": "prc.remediation-run/v0.3",
+            "schema_version": "prc.remediation-run/v0.4",
             "run_id": digest,
             "started_at": "2026-08-23T12:00:00Z",
             "completed_at": "2026-08-23T12:00:01Z",
@@ -671,6 +674,25 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         self.assertEqual(
             validate_instance.validation_errors(
                 remediation_run, "remediation-run.schema.json"
+            ),
+            [],
+        )
+
+        v07_run = {**final_run, "schema_version": "prc.run/v0.7"}
+        self.assertEqual(
+            validate_instance.validation_errors(
+                v07_run, "run-result-v0.7.schema.json"
+            ),
+            [],
+        )
+        v03_remediation_run = {
+            **remediation_run,
+            "schema_version": "prc.remediation-run/v0.3",
+            "final_run": v07_run,
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(
+                v03_remediation_run, "remediation-run-v0.3.schema.json"
             ),
             [],
         )
@@ -1076,12 +1098,20 @@ class ScannerOutputSchemaTests(unittest.TestCase):
     def test_bound_adapter_execution_conforms(self) -> None:
         digest = "a" * 64
         execution = {
-            "schema_version": "prc.adapter-execution/v0.1",
+            "schema_version": "prc.adapter-execution/v0.2",
             "execution_id": digest,
             "adapter_run_id": "b" * 64,
             "adapter_id": "prc.adapter.fixture@0.1",
             "manifest_sha256": "c" * 64,
             "image": "registry.example/prc/fixture@sha256:" + "d" * 64,
+            "resolution": {
+                "source": "registry",
+                "publisher_id": "prc-project",
+                "trust": "first-party-sandboxed",
+                "registry_id": "prc.adapter-registry.fixtures@0.1",
+                "registry_revision": 1,
+                "registry_digest": "9" * 64,
+            },
             "subject": {
                 "target_name": "example",
                 "inventory_digest": "e" * 64,
@@ -1110,6 +1140,15 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         self.assertEqual(
             validate_instance.validation_errors(
                 execution, "adapter-execution.schema.json"
+            ),
+            [],
+        )
+        legacy_execution = json.loads(json.dumps(execution))
+        legacy_execution["schema_version"] = "prc.adapter-execution/v0.1"
+        del legacy_execution["resolution"]
+        self.assertEqual(
+            validate_instance.validation_errors(
+                legacy_execution, "adapter-execution-v0.1.schema.json"
             ),
             [],
         )

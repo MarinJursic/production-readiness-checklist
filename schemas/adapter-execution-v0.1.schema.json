@@ -1,18 +1,17 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/adapter-execution.schema.json",
-  "title": "Bound Production Readiness Adapter Execution v0.2",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/adapter-execution-v0.1.schema.json",
+  "title": "Bound Production Readiness Adapter Execution v0.1 (legacy)",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "execution_id", "adapter_run_id", "adapter_id", "manifest_sha256", "image", "resolution", "subject", "started_at", "completed_at", "duration_ms", "diagnostics_sha256", "diagnostics_bytes", "transcript"],
+  "required": ["schema_version", "execution_id", "adapter_run_id", "adapter_id", "manifest_sha256", "image", "subject", "started_at", "completed_at", "duration_ms", "diagnostics_sha256", "diagnostics_bytes", "transcript"],
   "properties": {
-    "schema_version": {"const": "prc.adapter-execution/v0.2"},
+    "schema_version": {"const": "prc.adapter-execution/v0.1"},
     "execution_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "adapter_run_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "adapter_id": {"type": "string", "pattern": "^prc\\.adapter\\.[a-z0-9.-]+@[0-9]+\\.[0-9]+$"},
     "manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "image": {"type": "string", "pattern": "^.+@sha256:[0-9a-f]{64}$"},
-    "resolution": {"$ref": "#/$defs/resolution"},
     "subject": {"$ref": "#/$defs/subject"},
     "started_at": {"type": "string", "format": "date-time"},
     "completed_at": {"type": "string", "format": "date-time"},
@@ -22,32 +21,6 @@
     "transcript": {"$ref": "#/$defs/transcript"}
   },
   "$defs": {
-    "resolution": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["source", "publisher_id", "trust"],
-      "properties": {
-        "source": {"enum": ["explicit-local", "registry"]},
-        "publisher_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9.-]{0,127}$"},
-        "trust": {"enum": ["local-explicit", "first-party-sandboxed", "verified-community", "unverified-community", "local"]},
-        "registry_id": {"type": "string", "pattern": "^prc\\.adapter-registry\\.[a-z0-9.-]+@[0-9]+\\.[0-9]+$"},
-        "registry_revision": {"type": "integer", "minimum": 1},
-        "registry_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
-      },
-      "allOf": [
-        {
-          "if": {"properties": {"source": {"const": "registry"}}},
-          "then": {
-            "required": ["registry_id", "registry_revision", "registry_digest"],
-            "properties": {"trust": {"enum": ["first-party-sandboxed", "verified-community", "unverified-community", "local"]}}
-          },
-          "else": {
-            "properties": {"trust": {"const": "local-explicit"}},
-            "not": {"anyOf": [{"required": ["registry_id"]}, {"required": ["registry_revision"]}, {"required": ["registry_digest"]}]}
-          }
-        }
-      ]
-    },
     "subject": {
       "type": "object",
       "additionalProperties": false,

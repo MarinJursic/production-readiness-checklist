@@ -9,10 +9,10 @@ const (
 	EngineVersion          = "prc.engine/v0.1"
 	InventorySchema        = "prc.inventory/v0.3"
 	PlanSchema             = "prc.plan/v0.6"
-	RunSchema              = "prc.run/v0.7"
+	RunSchema              = "prc.run/v0.8"
 	EvidenceSchema         = "prc.evidence/v0.1"
 	FindingSchema          = "prc.finding/v0.1"
-	AdapterExecutionSchema = "prc.adapter-execution/v0.1"
+	AdapterExecutionSchema = "prc.adapter-execution/v0.2"
 )
 
 type Source struct {
@@ -340,10 +340,10 @@ type RunResult struct {
 }
 
 // MarshalJSON preserves the byte contract of archived run records. v0.6 and
-// current runs encode the required findings array; v0.5 through v0.3 do not.
+// later runs encode the required findings array; v0.5 through v0.3 do not.
 func (run RunResult) MarshalJSON() ([]byte, error) {
 	type current RunResult
-	if run.SchemaVersion == RunSchema || run.SchemaVersion == "prc.run/v0.6" {
+	if run.SchemaVersion == RunSchema || run.SchemaVersion == "prc.run/v0.7" || run.SchemaVersion == "prc.run/v0.6" {
 		return json.Marshal(current(run))
 	}
 	type legacy struct {
@@ -411,6 +411,19 @@ type AdapterTranscript struct {
 	Summary      AdapterSummary       `json:"summary"`
 }
 
+// AdapterResolution records who authorized the exact manifest. Registry
+// fields are present only when the manifest was resolved from a registry trust
+// root; explicit local execution records the manifest publisher and the local
+// operator grant without implying registry verification.
+type AdapterResolution struct {
+	Source           string `json:"source"`
+	PublisherID      string `json:"publisher_id"`
+	Trust            string `json:"trust"`
+	RegistryID       string `json:"registry_id,omitempty"`
+	RegistryRevision int    `json:"registry_revision,omitempty"`
+	RegistryDigest   string `json:"registry_digest,omitempty"`
+}
+
 type AdapterExecution struct {
 	SchemaVersion     string            `json:"schema_version"`
 	ExecutionID       string            `json:"execution_id"`
@@ -418,6 +431,7 @@ type AdapterExecution struct {
 	AdapterID         string            `json:"adapter_id"`
 	ManifestSHA256    string            `json:"manifest_sha256"`
 	Image             string            `json:"image"`
+	Resolution        AdapterResolution `json:"resolution"`
 	Subject           AdapterSubject    `json:"subject"`
 	StartedAt         time.Time         `json:"started_at"`
 	CompletedAt       time.Time         `json:"completed_at"`
@@ -425,4 +439,36 @@ type AdapterExecution struct {
 	DiagnosticsSHA256 string            `json:"diagnostics_sha256"`
 	DiagnosticsBytes  int               `json:"diagnostics_bytes"`
 	Transcript        AdapterTranscript `json:"transcript"`
+}
+
+// MarshalJSON omits resolution from immutable v0.1 records so their execution
+// and enclosing run identities remain byte-for-byte reproducible.
+func (execution AdapterExecution) MarshalJSON() ([]byte, error) {
+	type current AdapterExecution
+	if execution.SchemaVersion != "prc.adapter-execution/v0.1" {
+		return json.Marshal(current(execution))
+	}
+	type legacy struct {
+		SchemaVersion     string            `json:"schema_version"`
+		ExecutionID       string            `json:"execution_id"`
+		AdapterRunID      string            `json:"adapter_run_id"`
+		AdapterID         string            `json:"adapter_id"`
+		ManifestSHA256    string            `json:"manifest_sha256"`
+		Image             string            `json:"image"`
+		Subject           AdapterSubject    `json:"subject"`
+		StartedAt         time.Time         `json:"started_at"`
+		CompletedAt       time.Time         `json:"completed_at"`
+		DurationMS        int64             `json:"duration_ms"`
+		DiagnosticsSHA256 string            `json:"diagnostics_sha256"`
+		DiagnosticsBytes  int               `json:"diagnostics_bytes"`
+		Transcript        AdapterTranscript `json:"transcript"`
+	}
+	return json.Marshal(legacy{
+		SchemaVersion: execution.SchemaVersion, ExecutionID: execution.ExecutionID,
+		AdapterRunID: execution.AdapterRunID, AdapterID: execution.AdapterID,
+		ManifestSHA256: execution.ManifestSHA256, Image: execution.Image, Subject: execution.Subject,
+		StartedAt: execution.StartedAt, CompletedAt: execution.CompletedAt, DurationMS: execution.DurationMS,
+		DiagnosticsSHA256: execution.DiagnosticsSHA256, DiagnosticsBytes: execution.DiagnosticsBytes,
+		Transcript: execution.Transcript,
+	})
 }

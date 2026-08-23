@@ -24,6 +24,7 @@ func reportRun() model.RunResult {
 		Inventory: model.Inventory{TargetName: "<unsafe & target>", Digest: digest}, TerminalState: "no_go",
 		AdapterExecutions: []model.AdapterExecution{{
 			AdapterID: "<unsafe-adapter>", ManifestSHA256: digest, ExecutionID: digest,
+			Resolution: model.AdapterResolution{Source: "explicit-local", PublisherID: "test", Trust: "local-explicit"},
 			Transcript: model.AdapterTranscript{Summary: model.AdapterSummary{Status: "completed"}},
 		}},
 		Findings: []model.Finding{{
@@ -47,7 +48,7 @@ func TestMarkdownReportIsScopedAndEscapesTableCells(t *testing.T) {
 		t.Fatal(err)
 	}
 	text := output.String()
-	for _, expected := range []string{"# Production readiness assessment", "Missing README \\| required.", "## Adapter executions", "## Findings", "example-product", "staging", "not an unqualified production-readiness"} {
+	for _, expected := range []string{"# Production readiness assessment", "Missing README \\| required.", "## Adapter executions", "local-explicit", "## Findings", "example-product", "staging", "not an unqualified production-readiness"} {
 		if !strings.Contains(text, expected) {
 			t.Errorf("missing %q in report", expected)
 		}

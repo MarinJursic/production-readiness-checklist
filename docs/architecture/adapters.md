@@ -135,7 +135,13 @@ prc adapter run-oci \
 ```
 
 `--pull=never` means the command fails if the exact image is not already
-available. Current run results embed these records. A scan may execute one
+available. Current v0.2 execution records include a required `resolution`
+identity. An explicit manifest records the publisher and `local-explicit`
+operator grant; a registry resolution additionally binds the registry ID,
+revision, content digest, and registry-assigned trust. Changing any provenance
+field changes the execution ID. Frozen v0.1 records remain valid for archived
+runs but cannot be supplied as evidence to a new scan. Current run results
+embed these records. A scan may execute one
 adapter only when an applicable assertion binds the exact adapter ID, manifest
 SHA-256 digest, and observation kind:
 

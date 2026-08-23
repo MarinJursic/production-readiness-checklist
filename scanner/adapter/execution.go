@@ -10,6 +10,12 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 )
 
+const (
+	ResolutionSourceExplicitLocal = "explicit-local"
+	ResolutionSourceRegistry      = "registry"
+	ResolutionTrustLocalExplicit  = "local-explicit"
+)
+
 func ManifestDigest(manifest Manifest) (string, error) {
 	if err := manifest.Validate(); err != nil {
 		return "", err
@@ -33,6 +39,21 @@ func executionID(execution model.AdapterExecution) (string, error) {
 }
 
 func BindExecution(runID string, subject Subject, manifest Manifest, output RunOutput) (model.AdapterExecution, error) {
+	return BindExecutionWithResolution(runID, subject, manifest, model.AdapterResolution{
+		Source: ResolutionSourceExplicitLocal, PublisherID: manifest.Publisher.ID, Trust: ResolutionTrustLocalExplicit,
+	}, output)
+}
+
+// BindExecutionWithResolution makes the authorization provenance part of the
+// content-addressed execution. Callers resolving an adapter from a Registry
+// must use the resolution returned by Registry.Resolve.
+func BindExecutionWithResolution(
+	runID string,
+	subject Subject,
+	manifest Manifest,
+	resolution model.AdapterResolution,
+	output RunOutput,
+) (model.AdapterExecution, error) {
 	if !hexDigestPattern.MatchString(runID) {
 		return model.AdapterExecution{}, fmt.Errorf("adapter run ID must be a lowercase SHA-256 digest")
 	}
@@ -52,9 +73,13 @@ func BindExecution(runID string, subject Subject, manifest Manifest, output RunO
 	if err := ValidateTranscriptContract(manifest, output.Transcript); err != nil {
 		return model.AdapterExecution{}, err
 	}
+	if err := validateResolutionForPublisher(resolution, manifest.Publisher.ID); err != nil {
+		return model.AdapterExecution{}, err
+	}
 	execution := model.AdapterExecution{
 		SchemaVersion: model.AdapterExecutionSchema,
 		AdapterRunID:  runID, AdapterID: manifest.ID, ManifestSHA256: manifestDigest, Image: manifest.Image,
+		Resolution: resolution,
 		Subject: model.AdapterSubject{
 			TargetName: subject.TargetName, TargetCommit: subject.TargetCommit, InventoryDigest: subject.InventoryDigest,
 		},
@@ -95,7 +120,7 @@ func ValidateTranscriptContract(manifest Manifest, transcript Transcript) error 
 }
 
 func ValidateExecution(execution model.AdapterExecution) error {
-	if execution.SchemaVersion != model.AdapterExecutionSchema {
+	if execution.SchemaVersion != model.AdapterExecutionSchema && execution.SchemaVersion != "prc.adapter-execution/v0.1" {
 		return fmt.Errorf("unsupported adapter execution schema %q", execution.SchemaVersion)
 	}
 	if !hexDigestPattern.MatchString(execution.ExecutionID) || !hexDigestPattern.MatchString(execution.AdapterRunID) ||
@@ -104,6 +129,13 @@ func ValidateExecution(execution model.AdapterExecution) error {
 	}
 	if !adapterIDPattern.MatchString(execution.AdapterID) || !imagePattern.MatchString(execution.Image) {
 		return fmt.Errorf("adapter execution identity is invalid")
+	}
+	if execution.SchemaVersion == model.AdapterExecutionSchema {
+		if err := validateResolution(execution.Resolution); err != nil {
+			return fmt.Errorf("adapter execution resolution: %w", err)
+		}
+	} else if execution.Resolution != (model.AdapterResolution{}) {
+		return fmt.Errorf("legacy adapter execution cannot contain resolution provenance")
 	}
 	if strings.TrimSpace(execution.Subject.TargetName) == "" || !hexDigestPattern.MatchString(execution.Subject.InventoryDigest) {
 		return fmt.Errorf("adapter execution subject is invalid")
@@ -127,6 +159,39 @@ func ValidateExecution(execution model.AdapterExecution) error {
 	}
 	if expected != execution.ExecutionID {
 		return fmt.Errorf("adapter execution ID does not match its content")
+	}
+	return nil
+}
+
+func validateResolutionForPublisher(resolution model.AdapterResolution, manifestPublisherID string) error {
+	if err := validateResolution(resolution); err != nil {
+		return err
+	}
+	if resolution.PublisherID != manifestPublisherID {
+		return fmt.Errorf("resolution publisher does not match the manifest publisher")
+	}
+	return nil
+}
+
+func validateResolution(resolution model.AdapterResolution) error {
+	if !publisherIDPattern.MatchString(resolution.PublisherID) {
+		return fmt.Errorf("resolution publisher is invalid")
+	}
+	switch resolution.Source {
+	case ResolutionSourceExplicitLocal:
+		if resolution.Trust != ResolutionTrustLocalExplicit || resolution.RegistryID != "" ||
+			resolution.RegistryRevision != 0 || resolution.RegistryDigest != "" {
+			return fmt.Errorf("explicit-local resolution has inconsistent trust or registry fields")
+		}
+	case ResolutionSourceRegistry:
+		if !registryIDPattern.MatchString(resolution.RegistryID) || resolution.RegistryRevision < 1 ||
+			!hexDigestPattern.MatchString(resolution.RegistryDigest) ||
+			(resolution.Trust != "first-party-sandboxed" && resolution.Trust != "verified-community" &&
+				resolution.Trust != "unverified-community" && resolution.Trust != "local") {
+			return fmt.Errorf("registry resolution has invalid registry identity or trust")
+		}
+	default:
+		return fmt.Errorf("unsupported resolution source %q", resolution.Source)
 	}
 	return nil
 }

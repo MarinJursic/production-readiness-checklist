@@ -76,12 +76,17 @@ func writeMarkdown(output io.Writer, run model.RunResult) error {
 		}
 	}
 	if len(run.AdapterExecutions) > 0 {
-		if _, err := fmt.Fprintln(output, "\n## Adapter executions\n\n| Adapter | Manifest | Status | Execution |\n| --- | --- | --- | --- |"); err != nil {
+		if _, err := fmt.Fprintln(output, "\n## Adapter executions\n\n| Adapter | Manifest | Authorization | Trust | Registry | Status | Execution |\n| --- | --- | --- | --- | --- | --- | --- |"); err != nil {
 			return err
 		}
 		for _, execution := range run.AdapterExecutions {
-			if _, err := fmt.Fprintf(output, "| `%s` | `%s` | %s | `%s` |\n",
-				execution.AdapterID, execution.ManifestSHA256, execution.Transcript.Summary.Status, execution.ExecutionID); err != nil {
+			registry := execution.Resolution.RegistryID
+			if registry == "" {
+				registry = "—"
+			}
+			if _, err := fmt.Fprintf(output, "| `%s` | `%s` | %s | %s | %s | %s | `%s` |\n",
+				execution.AdapterID, execution.ManifestSHA256, execution.Resolution.Source,
+				execution.Resolution.Trust, registry, execution.Transcript.Summary.Status, execution.ExecutionID); err != nil {
 				return err
 			}
 		}
@@ -342,8 +347,8 @@ const htmlReport = `<!doctype html>
     </dl>
     {{if .Run.AdapterExecutions}}<table>
       <caption>Adapter executions</caption>
-      <thead><tr><th scope="col">Adapter</th><th scope="col">Manifest</th><th scope="col">Status</th><th scope="col">Execution</th></tr></thead>
-      <tbody>{{range .Run.AdapterExecutions}}<tr><td><code>{{.AdapterID}}</code></td><td><code>{{.ManifestSHA256}}</code></td><td>{{.Transcript.Summary.Status}}</td><td><code>{{.ExecutionID}}</code></td></tr>{{end}}</tbody>
+      <thead><tr><th scope="col">Adapter</th><th scope="col">Manifest</th><th scope="col">Authorization</th><th scope="col">Trust</th><th scope="col">Registry</th><th scope="col">Status</th><th scope="col">Execution</th></tr></thead>
+      <tbody>{{range .Run.AdapterExecutions}}<tr><td><code>{{.AdapterID}}</code></td><td><code>{{.ManifestSHA256}}</code></td><td>{{.Resolution.Source}}</td><td>{{.Resolution.Trust}}</td><td><code>{{.Resolution.RegistryID}}</code></td><td>{{.Transcript.Summary.Status}}</td><td><code>{{.ExecutionID}}</code></td></tr>{{end}}</tbody>
     </table>{{end}}
     {{if .Run.Findings}}<table>
       <caption>Findings</caption>

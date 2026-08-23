@@ -63,8 +63,9 @@ type RegistryPolicy struct {
 }
 
 type ResolvedAdapter struct {
-	Entry    RegistryEntry `json:"entry"`
-	Manifest Manifest      `json:"manifest"`
+	Entry      RegistryEntry           `json:"entry"`
+	Manifest   Manifest                `json:"manifest"`
+	Resolution model.AdapterResolution `json:"resolution"`
 }
 
 func DefaultRegistryPolicy() RegistryPolicy {
@@ -192,7 +193,13 @@ func (registry Registry) Resolve(
 			return ResolvedAdapter{}, fmt.Errorf("adapter %s does not declare required observation kind %s", adapterID, kind)
 		}
 	}
-	return ResolvedAdapter{Entry: *entry, Manifest: manifest}, nil
+	return ResolvedAdapter{
+		Entry: *entry, Manifest: manifest,
+		Resolution: model.AdapterResolution{
+			Source: ResolutionSourceRegistry, PublisherID: entry.PublisherID, Trust: entry.Trust,
+			RegistryID: registry.ID, RegistryRevision: registry.Revision, RegistryDigest: registry.Digest,
+		},
+	}, nil
 }
 
 func readRegistryFile(path string) ([]byte, string, error) {

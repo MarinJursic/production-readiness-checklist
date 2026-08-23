@@ -122,10 +122,11 @@ manual/not-applicable skips kept distinct:
 SARIF intentionally contains only failed assertions that can be represented as
 canonical, fingerprinted findings. Unknown, blocked, manual, and not-applicable
 results remain in the canonical JSON, Markdown, HTML, and JUnit reports instead
-of being mislabeled as source findings. Run v0.7 keeps a stable finding
+of being mislabeled as source findings. Run v0.8 keeps a stable finding
 fingerprint separate from the content-addressed finding ID and embeds the
-reviewable v0.6 execution plan. Frozen plan v0.5 and run v0.6 schemas remain
-available for archived consumers.
+reviewable v0.6 execution plan. Adapter executions now bind their local or
+registry authorization provenance. Frozen run v0.7, plan v0.6, adapter
+execution v0.1, and earlier schemas remain available for archived consumers.
 
 `--exit-policy profile` is the default and uses the [stable CLI exit-code
 contract](cli-contract.md): a failed active gate is `1`, while incomplete,
