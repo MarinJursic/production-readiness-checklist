@@ -10,4 +10,4 @@ objectives:
       line: 80
     domains: [security, supply-chain]
     automation_class: partial
-    assertion_ids: [PRC-A-SUPPLY-001]
+    assertion_ids: [PRC-A-SUPPLY-001, PRC-A-SUPPLY-002]

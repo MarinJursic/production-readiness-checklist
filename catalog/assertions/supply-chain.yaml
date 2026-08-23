@@ -22,3 +22,24 @@ assertions:
     severity: high
     gate: required
     remediation_class: R2
+  - id: PRC-A-SUPPLY-002
+    revision: 1
+    control_ids: [USEQ-A9032C59]
+    title: Known repository dependency vulnerabilities are absent
+    statement: No known dependency vulnerability is reported for packages discoverable in the sealed current repository inventory by the authorized offline analysis and its fresh, identity-bound vulnerability database.
+    applicability: inventory.source_files > 0
+    evidence_required:
+      - kind: analysis-result
+        minimum_authority: executed
+        description: A completed digest-bound Grype analysis generated from the sealed inventory and a separately acquired database no more than 120 hours old.
+    implementation_id: prc.native.analysis-evidence@0.1
+    parameters:
+      adapter_bindings:
+        - adapter_id: prc.adapter.grype@0.116
+          manifest_sha256: b5d83d172c115d2b0b3d855287582a46d2d4c40555100d196ba39631b4a72599
+          observation_kind: dependency-vulnerability
+          pass_outcomes: [not_found]
+          fail_outcomes: [found]
+    severity: critical
+    gate: required
+    remediation_class: R2

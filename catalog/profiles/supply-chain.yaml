@@ -1,8 +1,8 @@
 schema_version: prc.profile/v0.1
 id: prc/supply-chain
-version: "0.1"
+version: "0.2"
 title: Software supply-chain readiness
-description: Repository dependency, build-input, license, and generated SBOM evidence without claiming built-artifact or runtime completeness.
+description: Repository dependency, build-input, license, generated SBOM, and fresh offline known-vulnerability evidence without claiming built-artifact or runtime completeness.
 assertion_ids:
   - PRC-A-CORE-002
   - PRC-A-CORE-007
@@ -14,6 +14,7 @@ assertion_ids:
   - PRC-A-CORE-026
   - PRC-A-CORE-028
   - PRC-A-SUPPLY-001
+  - PRC-A-SUPPLY-002
 terminal_policy:
   block_on: [critical, high]
   allow_manual_remaining: true

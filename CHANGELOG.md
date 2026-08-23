@@ -65,7 +65,13 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
   validates and deterministically normalizes CycloneDX 1.7 output, preserves
   generated SBOM bytes in the immutable state store, and distinguishes SBOM
   generation from later vulnerability and license assessments.
-- A focused `prc/supply-chain@0.1` profile and generated-SBOM assertion, with
+- A digest-pinned Grype 0.116.1 native adapter with a separately acquired,
+  hash-bound, read-only schema-v6 database; scanner-owned offline policy;
+  suppression resistance; strict enriched JSON normalization; CVSS, EPSS, KEV,
+  fix, risk, and database provenance; and deterministic live vulnerable-fixture
+  coverage.
+- A focused `prc/supply-chain@0.2` profile with generated-SBOM and fresh known-
+  vulnerability assertions, with
   catalog-owned passing and failing outcome sets so evidence-producing adapters
   can report truthful values without inheriting absence-of-finding semantics.
 - Bounded multi-adapter scans with repeatable explicit manifests or registry

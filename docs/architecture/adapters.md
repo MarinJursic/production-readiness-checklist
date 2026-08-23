@@ -80,6 +80,25 @@ that this repository-inventory SBOM was generated; it does not claim that a
 built artifact is complete, vulnerability-free, acceptably licensed, or
 production ready.
 
+The third closed protocol, `prc-adapter-grype-json-v1`, accepts only Grype
+0.116.1's reviewed image digest, exact scanner-owned command, and enriched JSON
+report. It injects scanner-owned configuration that disables application and
+database updates, external sources, target ignores, and VEX policy. The
+container runs without network access against one explicitly supplied,
+read-only `grype-db` directory. The runner hashes and seals that directory while
+the normalizer independently requires a valid schema-v6 database, an official
+archive URL with a SHA-256 checksum, a build age no greater than 120 hours, and
+valid EPSS, KEV, and NVD provider provenance.
+
+Grype output is decoded with duplicate and unknown-field rejection and bounded
+nested records. Ignored matches, package alerts, escaping paths, unsupported
+tool or database identities, incomplete matching evidence, or unsafe numeric
+values fail the execution. The deterministic normalized artifact retains only
+the findings and provenance needed for assessment; report timestamps and bulk
+raw metadata do not affect its digest. A `not_found` observation is time-bound
+evidence for the catalog gate, while any `found` observation remains a factual
+tool result for the engine to assess.
+
 An assertion binding owns the meaning of an observation outcome. Bindings that
 omit an outcome policy retain the conservative analysis default:
 `not_found` passes and `found` fails. A binding may instead declare a nonempty
@@ -117,7 +136,8 @@ The current experimental runner deliberately supports only a narrow subset:
 - no network;
 - no secret handles;
 - no child processes for generic JSONL adapters, with narrowly reviewed,
-  PID-bounded OS-task allowances for the pinned Gitleaks and Syft binaries;
+  PID-bounded OS-task allowances for the pinned Gitleaks, Syft, and Grype
+  binaries;
 - an optional bounded scratch `tmpfs`; and
 - explicit wall-time, memory, CPU, process, line, message, stdin, stdout, and
   stderr limits.
@@ -127,9 +147,9 @@ while copying it to a private temporary snapshot. Scanner-excluded paths and
 symlinks are not copied. Protocol-owned path remapping may prevent a target file
 from changing analyzer policy without dropping its content: the Gitleaks
 protocol relocates the root `.gitleaksignore`, scans its original bytes, and
-maps any resulting location back to `.gitleaksignore`. The Syft protocol adds
-only its digest-bound scanner configuration under the inventory-excluded
-`.prc` namespace. A changed type, size, or
+maps any resulting location back to `.gitleaksignore`. The Syft and Grype
+protocols add only their digest-bound scanner configurations under the
+inventory-excluded `.prc` namespace. A changed type, size, or
 digest stops execution. The snapshot has a 4 GiB safety ceiling, is mounted
 read-only, and is removed after the run. Its own deterministic digest is sealed
 into the OCI plan and checked again immediately before and after the container
@@ -246,7 +266,7 @@ prc adapter run-oci \
 available. For a manifest that declares external data, repeat
 `--data NAME=/path/to/directory` for both `plan-oci` and `run-oci`. Current v0.3
 execution records include required `resolution` and `data_inputs` identities.
-identity. An explicit manifest records the publisher and `local-explicit`
+An explicit manifest records the publisher and `local-explicit`
 operator grant; a registry resolution additionally binds the registry ID,
 revision, content digest, and registry-assigned trust. Changing any provenance
 field changes the execution ID. Version-specific v0.1 and v0.2 records remain
