@@ -10,7 +10,7 @@
     "run_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "started_at": {"type": "string", "format": "date-time"},
     "completed_at": {"type": "string", "format": "date-time"},
-    "plan": {"$ref": "plan.schema.json"},
+    "plan": {"$ref": "plan-v0.1.schema.json"},
     "inventory": {"$ref": "inventory-v0.1.schema.json"},
     "results": {"type": "array", "items": {"$ref": "#/$defs/assertion_result"}},
     "terminal_state": {"$ref": "#/$defs/terminal_state"}

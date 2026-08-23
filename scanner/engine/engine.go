@@ -11,15 +11,20 @@ import (
 	"regexp"
 	"sort"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/catalog"
 	workspaceinventory "github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
+	"github.com/google/cel-go/cel"
 	"gopkg.in/yaml.v3"
 )
 
-const applicabilityEvaluator = "prc-expr/v0.1"
+const (
+	applicabilityEvaluator = "cel-go/v0.30.0+prc-inventory/v0.2"
+	applicabilityCostLimit = 10_000
+)
 
 var (
 	actionUsePattern = regexp.MustCompile(`(?m)^\s*(?:-\s*)?uses:\s*["']?([^"'\s#]+)`)
@@ -27,12 +32,28 @@ var (
 )
 
 type Engine struct {
-	Catalog *catalog.Catalog
-	Now     func() time.Time
+	Catalog                  *catalog.Catalog
+	Now                      func() time.Time
+	applicabilityEnvironment *cel.Env
+	applicabilityEnvError    error
+	applicabilityPrograms    sync.Map
 }
 
 func New(c *catalog.Catalog) *Engine {
-	return &Engine{Catalog: c, Now: func() time.Time { return time.Now().UTC() }}
+	environment, err := cel.NewEnv(
+		cel.Variable("inventory", cel.DynType),
+		cel.ParserExpressionSizeLimit(4096),
+		cel.ParserRecursionLimit(64),
+	)
+	return &Engine{
+		Catalog: c, Now: func() time.Time { return time.Now().UTC() },
+		applicabilityEnvironment: environment, applicabilityEnvError: err,
+	}
+}
+
+type compiledApplicability struct {
+	program cel.Program
+	err     error
 }
 
 func (e *Engine) Plan(profileID string, inventory model.Inventory) (model.Plan, error) {
@@ -47,10 +68,11 @@ func (e *Engine) Plan(profileID string, inventory model.Inventory) (model.Plan, 
 	}
 	for _, assertionID := range profile.AssertionIDs {
 		assertion := e.Catalog.Assertions[assertionID]
-		applicability, _ := evaluateApplicability(assertion.Applicability, inventory)
+		applicability, reason := e.evaluateApplicability(assertion.Applicability, inventory)
 		plan.Assertions = append(plan.Assertions, model.PlannedAssertion{
 			AssertionID: assertion.ID, Implementation: assertion.ImplementationID,
 			Applicability: applicability, ApplicabilityBy: applicabilityEvaluator,
+			ApplicabilityReason: reason,
 		})
 	}
 	payload, err := json.Marshal(plan)
@@ -113,7 +135,7 @@ func (e *Engine) ScanWithAdapterEvidence(
 		} else if planned.Applicability == "undetermined" {
 			result.Execution = "not_run"
 			result.Assessment = "unknown"
-			result.Summary = "Applicability could not be determined by the supported expression evaluator."
+			result.Summary = "Applicability could not be determined: " + planned.ApplicabilityReason
 		} else if assertion.ImplementationID == "prc.native.analysis-evidence@0.1" {
 			result = evaluateAnalysisEvidence(assertion, inventory, validatedExecutions, result)
 		} else {
@@ -132,45 +154,77 @@ func (e *Engine) ScanWithAdapterEvidence(
 	return run, nil
 }
 
-func evaluateApplicability(expression string, inventory model.Inventory) (string, string) {
-	switch strings.TrimSpace(expression) {
-	case "true":
-		return "applicable", ""
-	case "false":
-		return "not_applicable", ""
-	case "inventory.package_ecosystems.size() > 0":
-		if len(inventory.PackageEcosystems) > 0 {
-			return "applicable", ""
-		}
-		return "not_applicable", ""
-	case "inventory.ci.github_actions == true":
-		if inventory.CI.GitHubActions {
-			return "applicable", ""
-		}
-		return "not_applicable", ""
-	case "inventory.source_files > 0":
-		if inventory.SourceFiles > 0 {
-			return "applicable", ""
-		}
-		return "not_applicable", ""
-	case "inventory.container_files.size() > 0":
-		if len(inventory.ContainerFiles) > 0 {
-			return "applicable", ""
-		}
-		return "not_applicable", ""
-	case "inventory.infrastructure.terraform_files.size() > 0":
-		if len(inventory.Infrastructure.TerraformFiles) > 0 {
-			return "applicable", ""
-		}
-		return "not_applicable", ""
-	case "inventory.infrastructure.kubernetes_files.size() > 0":
-		if len(inventory.Infrastructure.KubernetesFiles) > 0 {
-			return "applicable", ""
-		}
-		return "not_applicable", ""
-	default:
-		return "undetermined", fmt.Sprintf("unsupported applicability expression %q", expression)
+func applicabilityActivation(inventory model.Inventory) map[string]any {
+	factValues := map[string][]string{}
+	for _, fact := range inventory.Facts {
+		factValues[fact.Key] = append(factValues[fact.Key], fact.Value)
 	}
+	components := make([]map[string]any, 0, len(inventory.Components))
+	for _, component := range inventory.Components {
+		components = append(components, map[string]any{
+			"id": component.ID, "kind": component.Kind, "path": component.Path, "ecosystem": component.Ecosystem,
+		})
+	}
+	return map[string]any{"inventory": map[string]any{
+		"file_count": int64(inventory.FileCount), "source_files": int64(inventory.SourceFiles),
+		"package_ecosystems": inventory.PackageEcosystems, "manifests": inventory.Manifests,
+		"lock_files": inventory.LockFiles, "container_files": inventory.ContainerFiles, "symlinks": inventory.Symlinks,
+		"ci": map[string]any{
+			"github_actions": inventory.CI.GitHubActions, "workflow_files": inventory.CI.WorkflowFiles,
+		},
+		"infrastructure": map[string]any{
+			"terraform_files":  inventory.Infrastructure.TerraformFiles,
+			"kubernetes_files": inventory.Infrastructure.KubernetesFiles,
+		},
+		"components": components, "fact_values": factValues,
+	}}
+}
+
+func (e *Engine) compileApplicability(expression string) compiledApplicability {
+	if cached, ok := e.applicabilityPrograms.Load(expression); ok {
+		return cached.(compiledApplicability)
+	}
+	compiled := compiledApplicability{}
+	if e.applicabilityEnvError != nil {
+		compiled.err = fmt.Errorf("initialize CEL environment: %w", e.applicabilityEnvError)
+	} else if strings.TrimSpace(expression) == "" {
+		compiled.err = fmt.Errorf("applicability expression is empty")
+	} else {
+		ast, issues := e.applicabilityEnvironment.Compile(expression)
+		if issues != nil && issues.Err() != nil {
+			compiled.err = fmt.Errorf("compile CEL applicability: %w", issues.Err())
+		} else if ast.OutputType().TypeName() != cel.BoolType.TypeName() {
+			compiled.err = fmt.Errorf("CEL applicability expression returns %s instead of bool", ast.OutputType())
+		} else {
+			compiled.program, compiled.err = e.applicabilityEnvironment.Program(
+				ast, cel.CostLimit(applicabilityCostLimit), cel.InterruptCheckFrequency(100),
+			)
+			if compiled.err != nil {
+				compiled.err = fmt.Errorf("create CEL applicability program: %w", compiled.err)
+			}
+		}
+	}
+	actual, _ := e.applicabilityPrograms.LoadOrStore(expression, compiled)
+	return actual.(compiledApplicability)
+}
+
+func (e *Engine) evaluateApplicability(expression string, inventory model.Inventory) (string, string) {
+	compiled := e.compileApplicability(expression)
+	if compiled.err != nil {
+		return "undetermined", compiled.err.Error()
+	}
+	value, _, err := compiled.program.Eval(applicabilityActivation(inventory))
+	if err != nil {
+		return "undetermined", "evaluate CEL applicability: " + err.Error()
+	}
+	boolean, ok := value.Value().(bool)
+	if !ok {
+		return "undetermined", fmt.Sprintf("CEL applicability returned %T instead of bool", value.Value())
+	}
+	if boolean {
+		return "applicable", "CEL expression evaluated to true."
+	}
+	return "not_applicable", "CEL expression evaluated to false."
 }
 
 func (e *Engine) evaluate(

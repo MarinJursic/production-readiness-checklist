@@ -8,6 +8,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"sync"
 	"testing"
 	"time"
 
@@ -240,6 +241,125 @@ func TestPlanDigestIsDeterministic(t *testing.T) {
 	if first.Digest != second.Digest {
 		t.Fatalf("plan digests differ: %s != %s", first.Digest, second.Digest)
 	}
+	for _, planned := range first.Assertions {
+		if planned.ApplicabilityReason == "" {
+			t.Fatalf("%s has no applicability reason", planned.AssertionID)
+		}
+		if planned.Applicability == "undetermined" {
+			t.Fatalf("checked-in applicability for %s is undetermined: %s", planned.AssertionID, planned.ApplicabilityReason)
+		}
+	}
+}
+
+func TestCELApplicabilityUsesBoundedInventoryProjection(t *testing.T) {
+	item, err := inventory.Build(healthyRepository(t))
+	if err != nil {
+		t.Fatal(err)
+	}
+	engine := scanner(t)
+	tests := []struct {
+		name       string
+		expression string
+		want       string
+	}{
+		{
+			name:       "composes source and ecosystem facts",
+			expression: `inventory.source_files > 0 && "python" in inventory.package_ecosystems`,
+			want:       "applicable",
+		},
+		{
+			name:       "component macros are supported",
+			expression: `inventory.components.exists(c, c.kind == "package-manifest")`,
+			want:       "applicable",
+		},
+		{
+			name:       "negative expressions are explicit",
+			expression: `inventory.infrastructure.kubernetes_files.size() > 0`,
+			want:       "not_applicable",
+		},
+	}
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			got, reason := engine.evaluateApplicability(test.expression, item)
+			if got != test.want {
+				t.Fatalf("applicability = %s, want %s: %s", got, test.want, reason)
+			}
+			if reason == "" {
+				t.Fatal("applicability result has no reason")
+			}
+		})
+	}
+}
+
+func TestCELApplicabilityFailsClosed(t *testing.T) {
+	item := model.Inventory{
+		SourceFiles: 1,
+		Components:  []model.InventoryComponent{{ID: "repository:.", Kind: "repository", Path: "."}},
+	}
+	engine := scanner(t)
+	tests := []struct {
+		name       string
+		expression string
+	}{
+		{name: "missing field", expression: `inventory.not_a_real_field == true`},
+		{name: "non boolean result", expression: `inventory.source_files`},
+		{name: "empty", expression: "   "},
+		{name: "syntax error", expression: `inventory.source_files >`},
+		{name: "expression size limit", expression: strings.Repeat("true || ", 600) + "false"},
+	}
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			got, reason := engine.evaluateApplicability(test.expression, item)
+			if got != "undetermined" {
+				t.Fatalf("applicability = %s, want undetermined", got)
+			}
+			if reason == "" {
+				t.Fatal("fail-closed result has no reason")
+			}
+		})
+	}
+}
+
+func TestCELApplicabilityEnforcesRuntimeCostLimit(t *testing.T) {
+	components := make([]model.InventoryComponent, 20_000)
+	for index := range components {
+		components[index] = model.InventoryComponent{
+			ID: fmt.Sprintf("component:%05d", index), Kind: "source", Path: fmt.Sprintf("src/%05d", index),
+		}
+	}
+	item := model.Inventory{Components: components}
+	got, reason := scanner(t).evaluateApplicability(
+		`inventory.components.all(c, c.kind == "source")`, item,
+	)
+	if got != "undetermined" {
+		t.Fatalf("cost-exhausting applicability = %s, want undetermined", got)
+	}
+	if !strings.Contains(strings.ToLower(reason), "cost") {
+		t.Fatalf("cost-exhaustion reason = %q", reason)
+	}
+}
+
+func TestCELApplicabilityProgramCacheIsConcurrent(t *testing.T) {
+	engine := scanner(t)
+	item := model.Inventory{SourceFiles: 1}
+	const workers = 32
+	var wait sync.WaitGroup
+	errors := make(chan string, workers)
+	for range workers {
+		wait.Add(1)
+		go func() {
+			defer wait.Done()
+			got, reason := engine.evaluateApplicability(`inventory.source_files > 0`, item)
+			if got != "applicable" {
+				errors <- fmt.Sprintf("result=%s reason=%s", got, reason)
+			}
+		}()
+	}
+	wait.Wait()
+	close(errors)
+	for failure := range errors {
+		t.Error(failure)
+	}
 }
 
 func TestSymlinkEscapeCannotSatisfyFileAssertion(t *testing.T) {
@@ -312,6 +432,13 @@ func TestTerminalStateHonorsGateSemantics(t *testing.T) {
 				{Applicability: "applicable", Execution: "error", Assessment: "unknown", Severity: "medium", Gate: "required"},
 			},
 			want: "environment_blocked",
+		},
+		{
+			name: "undetermined required applicability is incomplete",
+			results: []model.AssertionResult{
+				{Applicability: "undetermined", Execution: "not_run", Assessment: "unknown", Severity: "medium", Gate: "required"},
+			},
+			want: "assessment_incomplete",
 		},
 		{
 			name: "allowed required manual evidence has an explicit state",

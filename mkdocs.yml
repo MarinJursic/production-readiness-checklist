@@ -58,6 +58,7 @@ nav:
       - Trust and threat model: architecture/trust-model.md
       - Sandboxed adapters: architecture/adapters.md
       - Read-only agent providers: architecture/agent-providers.md
+      - Bounded applicability: architecture/applicability.md
       - Evidence and results: architecture/evidence-and-results.md
       - Bounded remediation: architecture/remediation-contract.md
       - Core repository profile: scanner/core-repository.md

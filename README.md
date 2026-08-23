@@ -93,7 +93,7 @@ The scanner is designed to:
 
 The scanner will not claim that a project has zero defects or make an unqualified production-readiness decision. It may report that a versioned profile is satisfied for a specific target and evidence set. Coding agents will be replaceable, constrained patch generators; deterministic checks and policy will own truth and patch acceptance.
 
-Start with the [scanner quick start](docs/scanner/getting-started.md), [isolated remediation guide](docs/scanner/remediation.md), and [read-only agent provider guide](docs/architecture/agent-providers.md), then read the [product contract](docs/architecture/product-contract.md), [trust model](docs/architecture/trust-model.md), [adapter protocol](docs/architecture/adapters.md), [evidence model](docs/architecture/evidence-and-results.md), and [bounded remediation contract](docs/architecture/remediation-contract.md). The CLI remains experimental and intentionally reports unsupported analysis as blocked rather than treating it as a pass.
+Start with the [scanner quick start](docs/scanner/getting-started.md), [isolated remediation guide](docs/scanner/remediation.md), and [read-only agent provider guide](docs/architecture/agent-providers.md), then read the [product contract](docs/architecture/product-contract.md), [trust model](docs/architecture/trust-model.md), [adapter protocol](docs/architecture/adapters.md), [bounded applicability model](docs/architecture/applicability.md), [evidence model](docs/architecture/evidence-and-results.md), and [bounded remediation contract](docs/architecture/remediation-contract.md). The CLI remains experimental and intentionally reports unsupported analysis as blocked rather than treating it as a pass.
 
 ## Evidence, not checkbox theater
 

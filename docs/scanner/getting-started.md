@@ -50,6 +50,11 @@ location through `--catalog-root`:
 ```
 
 The same target inventory, profile, and catalog produce the same plan digest.
+Plan v0.2 records the exact bounded CEL evaluator and an applicability reason for
+every assertion. Invalid, unavailable, non-Boolean, or resource-exhausting
+expressions become `undetermined`; they never silently become Not Applicable.
+See [bounded applicability evaluation](../architecture/applicability.md) for the
+available inventory fields and limits.
 
 ## Scan and preserve evidence
 
@@ -117,8 +122,8 @@ inventory facts are absent.
 
 The engine rejects repository path and symlink escapes and detects a target file
 that changes between inventory and evidence collection. Missing evidence,
-unsupported applicability expressions, unavailable adapters, and manual review
-are never converted into Pass.
+invalid or unevaluable applicability expressions, unavailable adapters, and
+manual review are never converted into Pass.
 
 Read the [sandboxed adapter protocol](../architecture/adapters.md) to validate an
 adapter transcript, inspect an OCI execution plan, run an already-present

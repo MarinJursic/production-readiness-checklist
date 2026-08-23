@@ -13,6 +13,8 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 - A deterministic inventory v0.2 graph with sourced, confidence-bearing package, CI, container, Terraform, Kubernetes, and symlink facts.
 - A 30-assertion core repository profile with additional source-integrity, workflow-safety, dependency, runtime, container, Terraform, and Kubernetes checks.
 - Profile-authorized live OCI adapter evidence, content-addressed execution records, exact inventory binding, and deterministic observation-to-assessment evaluation.
+- Bounded CEL applicability evaluation over a deterministic inventory projection,
+  with fail-closed resource limits and reason-bearing plan v0.2 records.
 
 ### Fixed
 

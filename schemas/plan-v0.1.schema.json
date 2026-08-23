@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/plan.schema.json",
-  "title": "Production Readiness Scan Plan v0.2",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/plan-v0.1.schema.json",
+  "title": "Production Readiness Scan Plan v0.1 (legacy)",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_version", "digest", "target_name", "inventory_digest", "profile_id", "profile_version", "assertions"],
   "properties": {
-    "schema_version": {"const": "prc.plan/v0.2"},
+    "schema_version": {"const": "prc.plan/v0.1"},
     "digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "target_name": {"type": "string", "minLength": 1},
     "target_commit": {"type": "string", "pattern": "^[0-9a-f]{40,64}$"},
@@ -18,13 +18,12 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["assertion_id", "implementation_id", "applicability", "applicability_evaluator", "applicability_reason"],
+        "required": ["assertion_id", "implementation_id", "applicability", "applicability_evaluator"],
         "properties": {
           "assertion_id": {"type": "string"},
           "implementation_id": {"type": "string"},
           "applicability": {"enum": ["applicable", "not_applicable", "undetermined"]},
-          "applicability_evaluator": {"const": "cel-go/v0.30.0+prc-inventory/v0.2"},
-          "applicability_reason": {"type": "string", "minLength": 1}
+          "applicability_evaluator": {"type": "string"}
         }
       }
     }

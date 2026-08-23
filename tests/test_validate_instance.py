@@ -106,6 +106,31 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             [],
         )
 
+    def test_current_plan_records_applicability_reason(self) -> None:
+        digest = "a" * 64
+        plan = {
+            "schema_version": "prc.plan/v0.2",
+            "digest": digest,
+            "target_name": "example",
+            "inventory_digest": digest,
+            "profile_id": "prc/core-repository",
+            "profile_version": "0.3",
+            "assertions": [{
+                "assertion_id": "PRC-A-CORE-001",
+                "implementation_id": "prc.native.file-present@0.1",
+                "applicability": "applicable",
+                "applicability_evaluator": "cel-go/v0.30.0+prc-inventory/v0.2",
+                "applicability_reason": "CEL expression evaluated to true.",
+            }],
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(plan, "plan.schema.json"), []
+        )
+        del plan["assertions"][0]["applicability_reason"]
+        self.assertTrue(
+            validate_instance.validation_errors(plan, "plan.schema.json")
+        )
+
     def test_minimal_remediation_candidate_conforms(self) -> None:
         digest = "a" * 64
         contract = {

@@ -4,7 +4,7 @@ import "time"
 
 const (
 	InventorySchema        = "prc.inventory/v0.2"
-	PlanSchema             = "prc.plan/v0.1"
+	PlanSchema             = "prc.plan/v0.2"
 	RunSchema              = "prc.run/v0.2"
 	EvidenceSchema         = "prc.evidence/v0.1"
 	AdapterExecutionSchema = "prc.adapter-execution/v0.1"
@@ -125,10 +125,11 @@ type Inventory struct {
 }
 
 type PlannedAssertion struct {
-	AssertionID     string `json:"assertion_id"`
-	Implementation  string `json:"implementation_id"`
-	Applicability   string `json:"applicability"`
-	ApplicabilityBy string `json:"applicability_evaluator"`
+	AssertionID         string `json:"assertion_id"`
+	Implementation      string `json:"implementation_id"`
+	Applicability       string `json:"applicability"`
+	ApplicabilityBy     string `json:"applicability_evaluator"`
+	ApplicabilityReason string `json:"applicability_reason"`
 }
 
 type Plan struct {
