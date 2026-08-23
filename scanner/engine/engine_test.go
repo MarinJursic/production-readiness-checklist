@@ -247,3 +247,74 @@ func TestSymlinkEscapeCannotSatisfyFileAssertion(t *testing.T) {
 		t.Fatalf("symlink escape produced pass: %+v", result)
 	}
 }
+
+func TestTerminalStateHonorsGateSemantics(t *testing.T) {
+	profile := model.Profile{TerminalPolicy: model.TerminalPolicy{
+		BlockOn: []string{"critical", "high"}, AllowManualRemaining: true,
+	}}
+	tests := []struct {
+		name    string
+		results []model.AssertionResult
+		want    string
+	}{
+		{
+			name: "advisory failures and unavailable evidence remain visible without blocking",
+			results: []model.AssertionResult{
+				{Applicability: "applicable", Execution: "completed", Assessment: "fail", Severity: "high", Gate: "advisory"},
+				{Applicability: "applicable", Execution: "blocked", Assessment: "unknown", Severity: "high", Gate: "advisory"},
+			},
+			want: "profile_satisfied",
+		},
+		{
+			name: "required blocking severity fails closed",
+			results: []model.AssertionResult{
+				{Applicability: "applicable", Execution: "completed", Assessment: "fail", Severity: "high", Gate: "required"},
+			},
+			want: "no_go",
+		},
+		{
+			name: "no-go gate blocks at any severity",
+			results: []model.AssertionResult{
+				{Applicability: "applicable", Execution: "completed", Assessment: "fail", Severity: "low", Gate: "no-go"},
+			},
+			want: "no_go",
+		},
+		{
+			name: "required nonblocking failure is incomplete",
+			results: []model.AssertionResult{
+				{Applicability: "applicable", Execution: "completed", Assessment: "fail", Severity: "medium", Gate: "required"},
+			},
+			want: "assessment_incomplete",
+		},
+		{
+			name: "required execution failure is environment blocked",
+			results: []model.AssertionResult{
+				{Applicability: "applicable", Execution: "error", Assessment: "unknown", Severity: "medium", Gate: "required"},
+			},
+			want: "environment_blocked",
+		},
+		{
+			name: "allowed required manual evidence has an explicit state",
+			results: []model.AssertionResult{
+				{Applicability: "applicable", Execution: "completed", Assessment: "manual_review", Severity: "medium", Gate: "required"},
+			},
+			want: "machine_work_complete_manual_evidence_remaining",
+		},
+	}
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			if got := terminalState(profile, test.results); got != test.want {
+				t.Fatalf("terminal state = %s, want %s", got, test.want)
+			}
+		})
+	}
+
+	profile.TerminalPolicy.AllowManualRemaining = false
+	manual := []model.AssertionResult{{
+		Applicability: "applicable", Execution: "completed", Assessment: "manual_review",
+		Severity: "medium", Gate: "required",
+	}}
+	if got := terminalState(profile, manual); got != "assessment_incomplete" {
+		t.Fatalf("disallowed manual evidence terminal state = %s", got)
+	}
+}

@@ -28,7 +28,7 @@ A scan or remediation run ends in exactly one of these states:
 
 | State | Meaning |
 | --- | --- |
-| `profile_satisfied` | Every applicable assertion in the selected profile has current passing evidence and no gate blocks the result. |
+| `profile_satisfied` | Every applicable required assertion in the selected profile has current passing evidence and no gate blocks the result. Advisory findings remain visible without changing this state. |
 | `machine_work_complete_manual_evidence_remaining` | Every policy-eligible automated fix is exhausted, but human or external evidence remains. |
 | `assessment_incomplete` | Required evidence or applicability context is unavailable. |
 | `no_go` | One or more configured blocking gates failed. |

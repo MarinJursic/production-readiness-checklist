@@ -635,9 +635,12 @@ func terminalState(profile model.Profile, results []model.AssertionResult) strin
 	}
 	hasFailure, hasManual, hasIncomplete, environmentBlocked := false, false, false, false
 	for _, result := range results {
+		if result.Applicability == "not_applicable" || result.Gate == "advisory" {
+			continue
+		}
 		if result.Assessment == "fail" {
 			hasFailure = true
-			if blockingSeverity[result.Severity] {
+			if result.Gate == "no-go" || blockingSeverity[result.Severity] {
 				return "no_go"
 			}
 		}
@@ -658,6 +661,9 @@ func terminalState(profile model.Profile, results []model.AssertionResult) strin
 		return "assessment_incomplete"
 	}
 	if hasManual {
+		if !profile.TerminalPolicy.AllowManualRemaining {
+			return "assessment_incomplete"
+		}
 		return "machine_work_complete_manual_evidence_remaining"
 	}
 	return "profile_satisfied"
