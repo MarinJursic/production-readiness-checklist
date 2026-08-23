@@ -1289,6 +1289,14 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             ),
             [],
         )
+        syft_path = ROOT / "adapters" / "syft-v1.51.0.yaml"
+        syft = yaml.safe_load(syft_path.read_text(encoding="utf-8"))
+        self.assertEqual(
+            validate_instance.validation_errors(
+                syft, "adapter-manifest.schema.json"
+            ),
+            [],
+        )
 
         legacy = {
             "schema_version": "prc.adapter-manifest/v0.1",
@@ -1330,6 +1338,13 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         self.assertEqual(
             validate_instance.validation_errors(
                 legacy_v2, "adapter-manifest-v0.2.schema.json"
+            ),
+            [],
+        )
+        legacy_v3 = {**instance, "schema_version": "prc.adapter-manifest/v0.3"}
+        self.assertEqual(
+            validate_instance.validation_errors(
+                legacy_v3, "adapter-manifest-v0.3.schema.json"
             ),
             [],
         )

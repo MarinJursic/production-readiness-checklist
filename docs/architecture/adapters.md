@@ -42,8 +42,8 @@ checked-in release suite includes completed, unsupported, timeout, malformed,
 resource-limit, undeclared-output, and explicit evaluator-authority attack
 transcripts.
 
-Manifest v0.3 also defines one closed native-output protocol,
-`prc-adapter-gitleaks-json-v1`. It accepts only Gitleaks 8.30.0's reviewed
+Manifest v0.4 also defines two closed native-output protocols. The first,
+`prc-adapter-gitleaks-json-v1`, accepts only Gitleaks 8.30.0's reviewed
 official image digest, exact scanner-owned current-tree command, and JSON
 report contract. The scanner supplies the SHA-256-pinned upstream default
 ruleset on standard input, forces full redaction, ignores target-owned Gitleaks
@@ -60,15 +60,35 @@ persisting matched source context. An empty report becomes an explicit
 `not_found` observation. One or more findings become `found` observations, but
 neither the tool nor normalizer can declare an assertion pass or failure.
 
+The second closed protocol, `prc-adapter-syft-cyclonedx-json-v1`, accepts only
+Syft 1.51.0's reviewed non-root image digest and the scanner-owned directory
+command. The scanner injects an empty configuration at a reserved `.prc` path,
+so target `.syft.yaml` or environment defaults cannot disable catalogers or
+redirect output. The normalizer requires Syft's exact tool identity and
+CycloneDX 1.7 document envelope, rejects duplicate keys, malformed component,
+package-URL, dependency, or metadata structures, and caps the component and
+output counts.
+
+Syft generates a fresh timestamp and serial number for identical input. The
+normalizer removes those optional values and the source component's
+non-semantic `bom-ref`, then canonically orders components, properties, and
+dependencies. The resulting `application/vnd.cyclonedx+json;version=1.7`
+artifact is content-addressed and byte-for-byte deterministic for the same
+sealed inventory. When `--state-dir` is supplied, the bytes are written before
+the run that references them. A successful `value` observation proves only
+that this repository-inventory SBOM was generated; it does not claim that a
+built artifact is complete, vulnerability-free, acceptably licensed, or
+production ready.
+
 ## Capability manifest
 
 Every external adapter has a strict
 [`adapter-manifest.schema.json`](https://github.com/MarinJursic/production-readiness-checklist/blob/main/schemas/adapter-manifest.schema.json).
-Manifest v0.3 binds the exact protocol and output schema, compatible
+Manifest v0.4 binds the exact protocol and output schema, compatible
 engine APIs, publisher and owner identities, immutable tool version and
 supported format versions, declared observation kinds, maintenance state, and
 known limitations. Output validation rejects an observation kind that is not
-declared by that exact manifest. The archived v0.1 and v0.2 schemas remain
+declared by that exact manifest. The archived v0.1 through v0.3 schemas remain
 available for record interpretation but are not accepted for new execution.
 
 Trust is deliberately not self-declared by the adapter. A registry or explicit
@@ -78,13 +98,13 @@ The current experimental runner deliberately supports only a narrow subset:
 
 - OCI execution through Docker or Podman;
 - an image reference pinned by a `sha256` digest and explicit registry host;
-- a private, read-only snapshot containing exactly the regular files in the
-  sealed inventory;
+- a private, read-only snapshot containing the regular files in the sealed
+  inventory plus any exact protocol-owned policy input described below;
 - no image pull during a scan;
 - no network;
 - no secret handles;
-- no child processes for generic JSONL adapters, with a narrowly reviewed,
-  PID-bounded OS-task allowance for the pinned Gitleaks binary;
+- no child processes for generic JSONL adapters, with narrowly reviewed,
+  PID-bounded OS-task allowances for the pinned Gitleaks and Syft binaries;
 - an optional bounded scratch `tmpfs`; and
 - explicit wall-time, memory, CPU, process, line, message, stdin, stdout, and
   stderr limits.
@@ -94,7 +114,9 @@ while copying it to a private temporary snapshot. Scanner-excluded paths and
 symlinks are not copied. Protocol-owned path remapping may prevent a target file
 from changing analyzer policy without dropping its content: the Gitleaks
 protocol relocates the root `.gitleaksignore`, scans its original bytes, and
-maps any resulting location back to `.gitleaksignore`. A changed type, size, or
+maps any resulting location back to `.gitleaksignore`. The Syft protocol adds
+only its digest-bound scanner configuration under the inventory-excluded
+`.prc` namespace. A changed type, size, or
 digest stops execution. The snapshot has a 4 GiB safety ceiling, is mounted
 read-only, and is removed after the run. Its own deterministic digest is sealed
 into the OCI plan and checked again immediately before and after the container

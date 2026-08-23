@@ -61,6 +61,10 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
   embedded digest-checked upstream rules, target-suppression resistance,
   redacted native-report normalization, and clean/finding live OCI tests in
   validation and release workflows.
+- A digest-pinned Syft 1.51.0 native adapter that overrides target policy,
+  validates and deterministically normalizes CycloneDX 1.7 output, preserves
+  generated SBOM bytes in the immutable state store, and distinguishes SBOM
+  generation from later vulnerability and license assessments.
 - Bounded multi-adapter scans with repeatable explicit manifests or registry
   IDs, duplicate rejection, full-set authorization before execution,
   deterministic ordering, and one configured wall-time budget for the set.

@@ -56,7 +56,7 @@ func TestAdapterFixtureRejectsUntrustedInputs(t *testing.T) {
 	}{
 		"manifest drift": {
 			mutate: func(value string) string {
-				return strings.Replace(value, "5be6d2da5d406dfe24ca8ffae42c3e45587459821827b548b701019add8e55c3", strings.Repeat("a", 64), 1)
+				return strings.Replace(value, "fa0bb309274a13ec8f68020df0c1d470fc07945a29466d547934edfd2d8dc794", strings.Repeat("a", 64), 1)
 			},
 			want: "manifest digest mismatch",
 		},

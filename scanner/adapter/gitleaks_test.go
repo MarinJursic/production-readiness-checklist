@@ -82,7 +82,7 @@ func TestCheckedInGitleaksManifestHasCatalogPinnedDigest(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if digest != "6968caa57085774d3b01a34e8bbcbe9859b26aec3df1551cea907a5abc1389da" {
+	if digest != "ee223fd11f9d32b1799bf2b25c50cea294fd1f7b59686f9d438b351b5c4faac8" {
 		t.Fatalf("Gitleaks manifest digest = %s", digest)
 	}
 }

@@ -6,11 +6,19 @@ and transactionally indexes their metadata in `state.sqlite`:
 ```text
 prc-state/
 ├── state.sqlite
+├── artifacts/
+│   └── sha256/ab/<artifact-sha256>
 ├── evidence/
 │   └── ab/<evidence-id>.json
 └── runs/
     └── <run-id>.json
 ```
+
+Native artifacts are immutable raw bytes addressed by their declared SHA-256.
+Before writing a payload, the store verifies that the run declares the same
+digest and byte count, recomputes the digest, and refuses a different payload
+at an existing path. Generic adapter artifact descriptors and deliberately
+ephemeral sensitive reports do not authorize payload persistence.
 
 The JSON records are authoritative. SQLite is a query index that can be rebuilt
 from those content-addressed records; it never replaces evidence or changes an

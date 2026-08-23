@@ -39,7 +39,7 @@ type snapshotRecord struct {
 // PrepareSnapshot verifies every inventoried file while copying it into a
 // scanner-owned temporary directory. Callers must defer Close after success.
 func PrepareSnapshot(item model.Inventory) (*Snapshot, error) {
-	return prepareSnapshot(item, nil)
+	return prepareSnapshot(item, nil, nil)
 }
 
 // PrepareSnapshotForManifest applies only protocol-owned input remappings that
@@ -50,13 +50,16 @@ func PrepareSnapshotForManifest(item model.Inventory, manifest Manifest) (*Snaps
 		return nil, err
 	}
 	remapped := map[string]string(nil)
+	injected := map[string][]byte(nil)
 	if manifest.Protocol == GitleaksProtocolVersion {
 		remapped = map[string]string{gitleaksIgnoreSourcePath: gitleaksIgnoreSnapshotPath}
+	} else if manifest.Protocol == SyftProtocolVersion {
+		injected = map[string][]byte{SyftConfigSnapshotPath: syftConfig}
 	}
-	return prepareSnapshot(item, remapped)
+	return prepareSnapshot(item, remapped, injected)
 }
 
-func prepareSnapshot(item model.Inventory, remapped map[string]string) (*Snapshot, error) {
+func prepareSnapshot(item model.Inventory, remapped map[string]string, injected map[string][]byte) (*Snapshot, error) {
 	if item.Root == "" || item.FileCount != len(item.Files) {
 		return nil, fmt.Errorf("adapter snapshot requires a rooted inventory with a consistent file count")
 	}
@@ -103,6 +106,15 @@ func prepareSnapshot(item model.Inventory, remapped map[string]string) (*Snapsho
 		}
 		snapshot.Bytes += record.Size
 	}
+	for destination, content := range injected {
+		if err := validateRelativePath(destination); err != nil || destinations[destination] || len(content) == 0 {
+			return nil, fmt.Errorf("adapter snapshot has an invalid or duplicate protocol-owned path")
+		}
+		destinations[destination] = true
+		if err := writeSnapshotOwnedFile(path, destination, content); err != nil {
+			return nil, err
+		}
+	}
 	digest, err := snapshotDigest(path)
 	if err != nil {
 		return nil, err
@@ -113,6 +125,29 @@ func prepareSnapshot(item model.Inventory, remapped map[string]string) (*Snapsho
 	}
 	removeOnError = false
 	return snapshot, nil
+}
+
+func writeSnapshotOwnedFile(destinationRoot, destinationPath string, content []byte) error {
+	destination := filepath.Join(destinationRoot, filepath.FromSlash(destinationPath))
+	if err := os.MkdirAll(filepath.Dir(destination), 0o700); err != nil {
+		return fmt.Errorf("create adapter protocol directory: %w", err)
+	}
+	output, err := os.OpenFile(destination, os.O_WRONLY|os.O_CREATE|os.O_EXCL, 0o400)
+	if err != nil {
+		return fmt.Errorf("create adapter protocol file: %w", err)
+	}
+	written, writeErr := output.Write(content)
+	closeErr := output.Close()
+	if writeErr != nil {
+		return fmt.Errorf("write adapter protocol file: %w", writeErr)
+	}
+	if written != len(content) {
+		return fmt.Errorf("write adapter protocol file: wrote %d of %d bytes", written, len(content))
+	}
+	if closeErr != nil {
+		return fmt.Errorf("close adapter protocol file: %w", closeErr)
+	}
+	return nil
 }
 
 func validateSnapshotRecords(records []model.FileRecord) error {

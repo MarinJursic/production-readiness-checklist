@@ -118,6 +118,11 @@ func ExecutionInput(
 			return nil, err
 		}
 		return gitleaksRuleset()
+	case SyftProtocolVersion:
+		if err := validateInputIdentity(runID, subject); err != nil {
+			return nil, err
+		}
+		return []byte{}, nil
 	default:
 		return nil, fmt.Errorf("unsupported adapter input protocol %q", manifest.Protocol)
 	}
@@ -153,6 +158,15 @@ func ParseManifestOutputWithArtifacts(manifest Manifest, input io.Reader) (Trans
 		}
 		transcript, err := parseGitleaksOutput(data, manifest.Resources.MaxMessages)
 		return transcript, nil, err
+	case SyftProtocolVersion:
+		data, err := io.ReadAll(io.LimitReader(input, int64(manifest.Resources.MaxStdout)+1))
+		if err != nil {
+			return Transcript{}, nil, fmt.Errorf("read syft output: %w", err)
+		}
+		if len(data) > manifest.Resources.MaxStdout {
+			return Transcript{}, nil, fmt.Errorf("syft output exceeds %d bytes", manifest.Resources.MaxStdout)
+		}
+		return parseSyftOutput(data, manifest.Resources.MaxMessages)
 	default:
 		return Transcript{}, nil, fmt.Errorf("unsupported adapter output protocol %q", manifest.Protocol)
 	}

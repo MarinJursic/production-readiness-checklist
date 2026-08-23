@@ -83,6 +83,32 @@ func TestGitleaksSnapshotRelocatesButPreservesIgnoreFileBytes(t *testing.T) {
 	}
 }
 
+func TestSyftSnapshotInjectsScannerOwnedConfiguration(t *testing.T) {
+	root := t.TempDir()
+	writeSnapshotFixture(t, root, ".syft.yaml", "output: table\n")
+	writeSnapshotFixture(t, root, ".prc/syft-config.yaml", "target-owned: true\n")
+	writeSnapshotFixture(t, root, "go.mod", "module example.com/fixture\n\ngo 1.27\n")
+	item, err := inventory.Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	snapshot, err := PrepareSnapshotForManifest(item, validSyftManifest())
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer snapshot.Close()
+	data, err := os.ReadFile(filepath.Join(snapshot.Path, filepath.FromSlash(SyftConfigSnapshotPath)))
+	if err != nil || string(data) != string(syftConfig) {
+		t.Fatalf("scanner-owned Syft configuration = %q, %v", data, err)
+	}
+	if snapshot.Files != 2 || snapshot.Bytes <= 0 {
+		t.Fatalf("snapshot inventory accounting included protocol input: %+v", snapshot)
+	}
+	if untrusted, err := os.ReadFile(filepath.Join(snapshot.Path, ".syft.yaml")); err != nil || string(untrusted) != "output: table\n" {
+		t.Fatalf("target file was not preserved as scan input: %q, %v", untrusted, err)
+	}
+}
+
 func TestRunOCIRejectsSnapshotDriftBeforeRuntime(t *testing.T) {
 	root := t.TempDir()
 	writeSnapshotFixture(t, root, "README.md", "sealed\n")

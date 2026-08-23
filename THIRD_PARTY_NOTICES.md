@@ -1,5 +1,13 @@
 # Third-party notices
 
+## Syft executable image
+
+`adapters/syft-v1.51.0.yaml` references the official immutable non-root
+[Syft v1.51.0](https://github.com/anchore/syft/releases/tag/v1.51.0) OCI image
+for offline software bill-of-materials generation. The image is not vendored in
+this repository. Syft is copyright Anchore, Inc. and contributors and is
+licensed under the [Apache License 2.0](https://github.com/anchore/syft/blob/v1.51.0/LICENSE).
+
 ## Gitleaks default configuration
 
 `scanner/adapter/gitleaks-v8.30.0.toml.gz` is a deterministic gzip container for

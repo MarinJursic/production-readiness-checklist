@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/adapter-manifest.schema.json",
-  "title": "Production Readiness Adapter Manifest v0.4",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/adapter-manifest-v0.3.schema.json",
+  "title": "Production Readiness Adapter Manifest v0.3",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_version", "id", "title", "description", "publisher", "owner", "maintenance", "protocol", "output_schema", "observation_kinds", "compatibility", "tool", "limitations", "runner", "image", "command", "capabilities", "resources"],
   "properties": {
-    "schema_version": {"const": "prc.adapter-manifest/v0.4"},
+    "schema_version": {"const": "prc.adapter-manifest/v0.3"},
     "id": {"type": "string", "pattern": "^prc\\.adapter\\.[a-z0-9.-]+@[0-9]+\\.[0-9]+$"},
     "title": {"type": "string", "minLength": 1},
     "description": {"type": "string", "minLength": 1},
@@ -21,8 +21,8 @@
     },
     "owner": {"type": "string", "minLength": 1},
     "maintenance": {"enum": ["active", "deprecated"]},
-    "protocol": {"enum": ["prc-adapter-jsonl-v1", "prc-adapter-gitleaks-json-v1", "prc-adapter-syft-cyclonedx-json-v1"]},
-    "output_schema": {"enum": ["prc.adapter-message/v0.1", "gitleaks.report/v8.30.0", "cyclonedx.bom/v1.7+syft-1.51.0"]},
+    "protocol": {"enum": ["prc-adapter-jsonl-v1", "prc-adapter-gitleaks-json-v1"]},
+    "output_schema": {"enum": ["prc.adapter-message/v0.1", "gitleaks.report/v8.30.0"]},
     "observation_kinds": {
       "type": "array",
       "minItems": 1,
@@ -163,41 +163,6 @@
             "properties": {
               "timeout_seconds": {"minimum": 111},
               "pids": {"minimum": 16, "maximum": 256}
-            }
-          }
-        }
-      }
-    },
-    {
-      "if": {
-        "properties": {"protocol": {"const": "prc-adapter-syft-cyclonedx-json-v1"}},
-        "required": ["protocol"]
-      },
-      "then": {
-        "properties": {
-          "output_schema": {"const": "cyclonedx.bom/v1.7+syft-1.51.0"},
-          "observation_kinds": {"const": ["sbom-generation"]},
-          "image": {"const": "ghcr.io/anchore/syft@sha256:d2dc3ec86cb2b4e7ddb226ba0305c4523b7c0694c45d9f576b42b4c2f5ce7aa8"},
-          "command": {"const": ["scan", "--quiet", "--config=/workspace/.prc/syft-config.yaml", "--parallelism=1", "--output=cyclonedx-json", "dir:/workspace"]},
-          "tool": {
-            "properties": {
-              "name": {"const": "syft"},
-              "version": {"const": "1.51.0"},
-              "upstream": {"const": "https://github.com/anchore/syft"},
-              "formats": {"const": [{"name": "cyclonedx-json", "versions": ["1.7"]}]}
-            }
-          },
-          "capabilities": {
-            "properties": {
-              "write_scratch": {"const": false},
-              "child_processes": {"const": true}
-            }
-          },
-          "resources": {
-            "properties": {
-              "timeout_seconds": {"minimum": 30},
-              "pids": {"minimum": 16, "maximum": 256},
-              "max_stdout_bytes": {"minimum": 1048576}
             }
           }
         }

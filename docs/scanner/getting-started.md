@@ -144,10 +144,10 @@ from the content-addressed finding ID and embeds the reviewable v0.6 execution
 plan. Adapter executions bind their local or registry authorization provenance.
 Versioned run v0.1 through v0.8, plan v0.1 through v0.6, inventory v0.1
 through v0.3, adapter-execution v0.1 through v0.2, evidence v0.1, and finding
-v0.1 schemas remain available for archived consumers. Adapter-manifest v0.1 and
-v0.2 are likewise frozen while v0.3 is the current executable contract. Their
-local dependency graphs use versioned filenames, so later unversioned aliases
-cannot change an archived contract.
+v0.1 schemas remain available for archived consumers. Adapter-manifest v0.1
+through v0.3 are likewise frozen while v0.4 is the current executable contract.
+Their local dependency graphs use versioned filenames, so later unversioned
+aliases cannot change an archived contract.
 
 `--exit-policy profile` is the default and uses the [stable CLI exit-code
 contract](cli-contract.md): a failed active gate is `1`, while incomplete,

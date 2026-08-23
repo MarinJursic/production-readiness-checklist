@@ -1,0 +1,54 @@
+schema_version: prc.adapter-manifest/v0.4
+id: prc.adapter.syft@1.51
+title: Syft repository CycloneDX SBOM
+description: Runs the reviewed Syft 1.51.0 image against the exact sealed inventory snapshot and preserves a deterministic normalized CycloneDX 1.7 SBOM.
+publisher:
+  id: prc-project
+  name: Production Readiness Checklist
+owner: scanner-maintainers
+maintenance: active
+protocol: prc-adapter-syft-cyclonedx-json-v1
+output_schema: cyclonedx.bom/v1.7+syft-1.51.0
+observation_kinds: [sbom-generation]
+compatibility:
+  engine_apis: [prc.engine/v0.1]
+tool:
+  name: syft
+  version: 1.51.0
+  upstream: https://github.com/anchore/syft
+  formats:
+    - name: cyclonedx-json
+      versions: ["1.7"]
+limitations:
+  - Catalogs only regular files in the current sealed repository inventory; it does not describe a built release artifact or container image.
+  - Package and file discovery depends on Syft cataloger support and can contain false positives, false negatives, or incomplete metadata.
+  - Uses a scanner-owned empty Syft configuration so target configuration cannot disable or redirect cataloging.
+  - The normalized artifact removes Syft's nondeterministic generation timestamp, document serial number, and source bom-ref while retaining package, file, and dependency content.
+  - SBOM generation does not determine whether components are vulnerable, acceptably licensed, supported, or actually reachable at runtime.
+runner: oci
+image: ghcr.io/anchore/syft@sha256:d2dc3ec86cb2b4e7ddb226ba0305c4523b7c0694c45d9f576b42b4c2f5ce7aa8
+command:
+  - scan
+  - --quiet
+  - --config=/workspace/.prc/syft-config.yaml
+  - --parallelism=1
+  - --output=cyclonedx-json
+  - dir:/workspace
+capabilities:
+  read_workspace: true
+  write_scratch: false
+  network: deny
+  network_hosts: []
+  secret_handles: []
+  child_processes: true
+resources:
+  timeout_seconds: 180
+  memory_mb: 512
+  cpus: 1
+  pids: 64
+  tmpfs_mb: 1
+  max_line_bytes: 262144
+  max_messages: 10000
+  max_stdin_bytes: 1024
+  max_stdout_bytes: 67108864
+  max_stderr_bytes: 65536

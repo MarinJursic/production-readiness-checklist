@@ -17,7 +17,7 @@ import (
 )
 
 const (
-	ManifestSchema      = "prc.adapter-manifest/v0.3"
+	ManifestSchema      = "prc.adapter-manifest/v0.4"
 	OutputSchemaVersion = "prc.adapter-message/v0.1"
 )
 
@@ -149,6 +149,10 @@ func (manifest Manifest) Validate() error {
 		if manifest.OutputSchema != GitleaksOutputSchemaVersion {
 			return fmt.Errorf("unsupported Gitleaks adapter output schema %q", manifest.OutputSchema)
 		}
+	case SyftProtocolVersion:
+		if manifest.OutputSchema != SyftOutputSchemaVersion {
+			return fmt.Errorf("unsupported Syft adapter output schema %q", manifest.OutputSchema)
+		}
 	default:
 		return fmt.Errorf("unsupported adapter protocol %q", manifest.Protocol)
 	}
@@ -208,6 +212,10 @@ func (manifest Manifest) Validate() error {
 	}
 	if manifest.Protocol == GitleaksProtocolVersion {
 		if err := validateGitleaksManifest(manifest); err != nil {
+			return err
+		}
+	} else if manifest.Protocol == SyftProtocolVersion {
+		if err := validateSyftManifest(manifest); err != nil {
 			return err
 		}
 	}

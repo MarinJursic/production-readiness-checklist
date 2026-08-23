@@ -4,7 +4,7 @@ revision: 1
 entries:
   - adapter_id: prc.adapter.fixture@0.1
     manifest_path: fixture-adapter.yaml
-    manifest_sha256: 5be6d2da5d406dfe24ca8ffae42c3e45587459821827b548b701019add8e55c3
+    manifest_sha256: fa0bb309274a13ec8f68020df0c1d470fc07945a29466d547934edfd2d8dc794
     publisher_id: prc-project
     trust: first-party-sandboxed
     status: active

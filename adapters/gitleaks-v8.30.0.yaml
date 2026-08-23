@@ -1,4 +1,4 @@
-schema_version: prc.adapter-manifest/v0.3
+schema_version: prc.adapter-manifest/v0.4
 id: prc.adapter.gitleaks@8.30
 title: Gitleaks current-tree secret detection
 description: Runs the reviewed Gitleaks 8.30.0 image against the exact sealed inventory snapshot and normalizes a fully redacted JSON report.
