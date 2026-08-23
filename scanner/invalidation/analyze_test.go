@@ -63,7 +63,7 @@ func TestAnalyzeInvalidatesLegacyUnboundPlanAndFreshEvidence(t *testing.T) {
 	manual := model.Assertion{ID: "PRC-A-MANUAL", Revision: 1, ImplementationID: "prc.native.manual-evidence@0.1", Parameters: map[string]any{}}
 	currentPlan := testPlan(inventory.Digest, "current", manual)
 	legacyPlan := currentPlan
-	legacyPlan.EngineVersion, legacyPlan.ProfileDigest = "", ""
+	legacyPlan.EngineVersion, legacyPlan.ProfileDigest, legacyPlan.CatalogDigest = "", "", ""
 	legacyPlan.Assertions[0].AssertionRevision, legacyPlan.Assertions[0].DefinitionDigest = 0, ""
 	base := model.RunResult{RunID: strings.Repeat("f", 64), Inventory: inventory, Plan: legacyPlan,
 		Results: []model.AssertionResult{{AssertionID: manual.ID, Assessment: "manual_review"}}}
@@ -96,6 +96,23 @@ func TestAnalyzeInvalidatesGitRevisionWithoutFileChanges(t *testing.T) {
 	}
 }
 
+func TestAnalyzeInvalidatesCatalogIdentityChange(t *testing.T) {
+	inventory := testInventory("same", nil)
+	assertion := testAssertion("README", []string{"README.md"})
+	basePlan := testPlan(inventory.Digest, "base", assertion)
+	currentPlan := testPlan(inventory.Digest, "current", assertion)
+	currentPlan.CatalogDigest = strings.Repeat("e", 64)
+	base := model.RunResult{RunID: strings.Repeat("f", 64), Inventory: inventory, Plan: basePlan,
+		Results: []model.AssertionResult{{AssertionID: assertion.ID, Assessment: "pass"}}}
+	report, err := Analyze(base, inventory, currentPlan, map[string]model.Assertion{assertion.ID: assertion}, time.Unix(1, 0))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if impact := impactByID(t, report, assertion.ID); !hasReason(impact, "catalog_definition_changed") || impact.ReuseAllowed {
+		t.Fatalf("impact = %+v", impact)
+	}
+}
+
 func TestAnalyzeRejectsConfiguredToUnconfiguredComparison(t *testing.T) {
 	inventory := testInventory("a", nil)
 	assertion := testAssertion("README", []string{"README.md"})
@@ -124,6 +141,7 @@ func testAssertion(name string, paths []string) model.Assertion {
 func testPlan(inventoryDigest, digest string, assertions ...model.Assertion) model.Plan {
 	plan := model.Plan{SchemaVersion: model.PlanSchema, Digest: strings.Repeat(digest[:1], 64), EngineVersion: "prc.engine/v0.1",
 		TargetName: "repository", InventoryDigest: inventoryDigest, ProfileID: "prc/test", ProfileVersion: "1", ProfileDigest: strings.Repeat("d", 64),
+		CatalogDigest:   strings.Repeat("c", 64),
 		ArtifactDigests: []string{}, TargetEnvironments: []string{}, Assertions: []model.PlannedAssertion{}}
 	for _, assertion := range assertions {
 		plan.Assertions = append(plan.Assertions, model.PlannedAssertion{AssertionID: assertion.ID, AssertionRevision: assertion.Revision,

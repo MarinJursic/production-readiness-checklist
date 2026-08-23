@@ -251,8 +251,8 @@ func TestPlanDigestIsDeterministic(t *testing.T) {
 			t.Fatalf("checked-in applicability for %s is undetermined: %s", planned.AssertionID, planned.ApplicabilityReason)
 		}
 	}
-	if first.EngineVersion != "prc.engine/v0.1" || len(first.ProfileDigest) != 64 {
-		t.Fatalf("plan has incomplete engine/profile binding: %+v", first)
+	if first.EngineVersion != "prc.engine/v0.1" || len(first.ProfileDigest) != 64 || len(first.CatalogDigest) != 64 {
+		t.Fatalf("plan has incomplete engine/catalog/profile binding: %+v", first)
 	}
 }
 
@@ -285,6 +285,16 @@ func TestPlanDigestBindsCompleteRuleAndProfileDefinitions(t *testing.T) {
 	}
 	if changedProfile.Digest == changedRule.Digest || changedProfile.ProfileDigest == changedRule.ProfileDigest {
 		t.Fatal("profile definition change did not change the bound plan identity")
+	}
+	objective := engine.Catalog.Objectives[assertion.ControlIDs[0]]
+	objective.Statement += " Changed."
+	engine.Catalog.Objectives[objective.ID] = objective
+	changedCatalog, err := engine.Plan("prc/core-repository", item)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if changedCatalog.Digest == changedProfile.Digest || changedCatalog.CatalogDigest == changedProfile.CatalogDigest {
+		t.Fatal("objective change did not change the bound catalog and plan identities")
 	}
 }
 

@@ -39,9 +39,10 @@ separate validity-window policy.
 
 ## Bound rule identity
 
-Plans produced as `prc.plan/v0.4` bind:
+Plans produced as `prc.plan/v0.5` bind:
 
 - the scanner engine contract;
+- the exact governing catalog, including every parsed objective, assertion, and profile;
 - the exact profile definition;
 - every assertion revision and complete definition, including parameters;
 - the implementation identifier and applicability evaluator;
@@ -49,8 +50,8 @@ Plans produced as `prc.plan/v0.4` bind:
 - the complete inventory identity.
 
 Each definition is represented by a SHA-256 digest over its canonical JSON
-representation. A changed assertion parameter therefore invalidates the old
-conclusion even if its implementation name is unchanged.
+representation. A changed objective statement or assertion parameter therefore
+invalidates the old conclusion even if its implementation name is unchanged.
 
 Runs recorded with an older plan schema remain readable, but they lack one or
 more rule bindings. Their assertions receive

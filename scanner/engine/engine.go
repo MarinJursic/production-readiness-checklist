@@ -78,6 +78,10 @@ func (e *Engine) Plan(profileID string, inventory model.Inventory) (model.Plan, 
 	if err != nil {
 		return model.Plan{}, fmt.Errorf("bind profile definition: %w", err)
 	}
+	plan.CatalogDigest, err = e.Catalog.Digest()
+	if err != nil {
+		return model.Plan{}, fmt.Errorf("bind catalog definition: %w", err)
+	}
 	if inventory.DeclaredScope != nil {
 		if inventory.DeclaredScope.ProfileID != profile.ID {
 			return model.Plan{}, fmt.Errorf("declared profile %s does not match selected profile %s", inventory.DeclaredScope.ProfileID, profile.ID)

@@ -1,6 +1,9 @@
 package catalog
 
 import (
+	"crypto/sha256"
+	"encoding/hex"
+	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -12,6 +15,7 @@ import (
 
 type Catalog struct {
 	Root       string
+	Version    string
 	Objectives map[string]model.Objective
 	Assertions map[string]model.Assertion
 	Profiles   map[string]model.Profile
@@ -91,6 +95,9 @@ func loadObjectives(c *Catalog) error {
 		if document.SchemaVersion != "prc.objectives/v0.1" {
 			return fmt.Errorf("unsupported objective schema %q in %s", document.SchemaVersion, path)
 		}
+		if err := bindCatalogVersion(c, document.CatalogVersion, path); err != nil {
+			return err
+		}
 		for _, objective := range document.Objectives {
 			if objective.ID == "" || objective.Statement == "" || objective.Revision < 1 {
 				return fmt.Errorf("invalid objective in %s", path)
@@ -116,6 +123,9 @@ func loadAssertions(c *Catalog) error {
 		}
 		if document.SchemaVersion != "prc.assertions/v0.1" {
 			return fmt.Errorf("unsupported assertion schema %q in %s", document.SchemaVersion, path)
+		}
+		if err := bindCatalogVersion(c, document.CatalogVersion, path); err != nil {
+			return err
 		}
 		for _, assertion := range document.Assertions {
 			if assertion.ID == "" || assertion.ImplementationID == "" || assertion.Revision < 1 {
@@ -153,6 +163,9 @@ func loadProfiles(c *Catalog) error {
 
 func (c *Catalog) validateReferences() error {
 	for _, objective := range c.Objectives {
+		if err := uniqueReferences(objective.AssertionIDs, "objective "+objective.ID+" assertion"); err != nil {
+			return err
+		}
 		for _, assertionID := range objective.AssertionIDs {
 			if _, ok := c.Assertions[assertionID]; !ok {
 				return fmt.Errorf("objective %s references missing assertion %s", objective.ID, assertionID)
@@ -160,6 +173,9 @@ func (c *Catalog) validateReferences() error {
 		}
 	}
 	for _, assertion := range c.Assertions {
+		if err := uniqueReferences(assertion.ControlIDs, "assertion "+assertion.ID+" control"); err != nil {
+			return err
+		}
 		for _, controlID := range assertion.ControlIDs {
 			if _, ok := c.Objectives[controlID]; !ok {
 				return fmt.Errorf("assertion %s references unavailable objective %s", assertion.ID, controlID)
@@ -167,6 +183,20 @@ func (c *Catalog) validateReferences() error {
 		}
 	}
 	for _, profile := range c.Profiles {
+		if len(profile.AssertionIDs) == 0 {
+			return fmt.Errorf("profile %s contains no assertions", profile.ID)
+		}
+		if err := uniqueReferences(profile.AssertionIDs, "profile "+profile.ID+" assertion"); err != nil {
+			return err
+		}
+		if err := uniqueReferences(profile.TerminalPolicy.BlockOn, "profile "+profile.ID+" terminal severity"); err != nil {
+			return err
+		}
+		for _, severity := range profile.TerminalPolicy.BlockOn {
+			if severity != "critical" && severity != "high" && severity != "medium" && severity != "low" && severity != "info" {
+				return fmt.Errorf("profile %s has invalid terminal severity %q", profile.ID, severity)
+			}
+		}
 		for _, assertionID := range profile.AssertionIDs {
 			if _, ok := c.Assertions[assertionID]; !ok {
 				return fmt.Errorf("profile %s references missing assertion %s", profile.ID, assertionID)
@@ -174,6 +204,52 @@ func (c *Catalog) validateReferences() error {
 		}
 	}
 	return nil
+}
+
+func bindCatalogVersion(c *Catalog, version, path string) error {
+	if version == "" {
+		return fmt.Errorf("catalog version is missing in %s", path)
+	}
+	if c.Version != "" && c.Version != version {
+		return fmt.Errorf("catalog version %q in %s does not match %q", version, path, c.Version)
+	}
+	c.Version = version
+	return nil
+}
+
+func uniqueReferences(values []string, label string) error {
+	seen := map[string]bool{}
+	for _, value := range values {
+		if value == "" {
+			return fmt.Errorf("%s reference is empty", label)
+		}
+		if seen[value] {
+			return fmt.Errorf("duplicate %s reference %s", label, value)
+		}
+		seen[value] = true
+	}
+	return nil
+}
+
+// Digest returns a deterministic identity for every parsed governing catalog
+// definition. The filesystem root is intentionally excluded so identical
+// catalogs have the same identity in different workspaces.
+func (c *Catalog) Digest() (string, error) {
+	payload, err := json.Marshal(struct {
+		SchemaVersion string                     `json:"schema_version"`
+		Version       string                     `json:"catalog_version"`
+		Objectives    map[string]model.Objective `json:"objectives"`
+		Assertions    map[string]model.Assertion `json:"assertions"`
+		Profiles      map[string]model.Profile   `json:"profiles"`
+	}{
+		SchemaVersion: "prc.catalog-identity/v0.1", Version: c.Version,
+		Objectives: c.Objectives, Assertions: c.Assertions, Profiles: c.Profiles,
+	})
+	if err != nil {
+		return "", fmt.Errorf("encode catalog identity: %w", err)
+	}
+	digest := sha256.Sum256(payload)
+	return hex.EncodeToString(digest[:]), nil
 }
 
 func (c *Catalog) Profile(id string) (model.Profile, error) {

@@ -148,10 +148,10 @@ func Analyze(
 		} else {
 			impact.Reasons = append(impact.Reasons, reason("prior_result_missing", "The base run has no result for this planned assertion."))
 		}
-		if base.Plan.EngineVersion == "" || base.Plan.ProfileDigest == "" || previous.DefinitionDigest == "" || previous.AssertionRevision == 0 {
+		if base.Plan.EngineVersion == "" || base.Plan.ProfileDigest == "" || base.Plan.CatalogDigest == "" || previous.DefinitionDigest == "" || previous.AssertionRevision == 0 {
 			impact.Reasons = append(impact.Reasons, reason(
 				"base_plan_lacks_rule_binding",
-				"The base plan predates cryptographic engine, profile, or assertion-definition binding.",
+				"The base plan predates cryptographic engine, catalog, profile, or assertion-definition binding.",
 			))
 		}
 		if base.Plan.EngineVersion != currentPlan.EngineVersion {
@@ -167,6 +167,9 @@ func Analyze(
 		}
 		if base.Plan.ProfileID != currentPlan.ProfileID || base.Plan.ProfileVersion != currentPlan.ProfileVersion || base.Plan.ProfileDigest != currentPlan.ProfileDigest {
 			impact.Reasons = append(impact.Reasons, reason("profile_definition_changed", "The selected profile identity or definition changed."))
+		}
+		if base.Plan.CatalogDigest != currentPlan.CatalogDigest {
+			impact.Reasons = append(impact.Reasons, reason("catalog_definition_changed", "The governing objective, assertion, or profile catalog changed."))
 		}
 		if previous.Implementation != current.Implementation || previous.AssertionRevision != current.AssertionRevision || previous.DefinitionDigest != current.DefinitionDigest {
 			impact.Reasons = append(impact.Reasons, reason("assertion_definition_changed", "The assertion revision, parameters, or implementation binding changed."))
@@ -309,6 +312,7 @@ func changedDimensions(before, after model.Inventory, basePlan, currentPlan mode
 		{"facts", !reflect.DeepEqual(before.Facts, after.Facts)},
 		{"declared_scope", !reflect.DeepEqual(before.DeclaredScope, after.DeclaredScope)},
 		{"engine", basePlan.EngineVersion != currentPlan.EngineVersion},
+		{"catalog", basePlan.CatalogDigest != currentPlan.CatalogDigest},
 		{"profile", basePlan.ProfileID != currentPlan.ProfileID || basePlan.ProfileVersion != currentPlan.ProfileVersion || basePlan.ProfileDigest != currentPlan.ProfileDigest},
 	}
 	result := []string{}

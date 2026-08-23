@@ -74,8 +74,8 @@ func TestPlanConsumesValidatedConfiguration(t *testing.T) {
 	if err := json.Unmarshal(stdout.Bytes(), &plan); err != nil {
 		t.Fatal(err)
 	}
-	if plan.SchemaVersion != "prc.plan/v0.4" || plan.EngineVersion != "prc.engine/v0.1" ||
-		len(plan.ProfileDigest) != 64 || len(plan.ConfigurationDigest) != 64 ||
+	if plan.SchemaVersion != "prc.plan/v0.5" || plan.EngineVersion != "prc.engine/v0.1" ||
+		len(plan.ProfileDigest) != 64 || len(plan.CatalogDigest) != 64 || len(plan.ConfigurationDigest) != 64 ||
 		plan.ProjectID != "example-product" || !slices.Equal(plan.TargetEnvironments, []string{"staging"}) {
 		t.Fatalf("configured plan = %+v", plan)
 	}

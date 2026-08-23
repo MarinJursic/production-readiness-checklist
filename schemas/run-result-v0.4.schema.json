@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/run-result-v0.4.schema.json",
+  "title": "Production Readiness Run Result v0.4",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "run_id", "started_at", "completed_at", "plan", "inventory", "adapter_executions", "results", "terminal_state"],
+  "properties": {
+    "schema_version": {"const": "prc.run/v0.4"},
+    "run_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "started_at": {"type": "string", "format": "date-time"},
+    "completed_at": {"type": "string", "format": "date-time"},
+    "plan": {"$ref": "plan-v0.4.schema.json"},
+    "inventory": {"$ref": "inventory.schema.json"},
+    "adapter_executions": {"type": "array", "items": {"$ref": "adapter-execution.schema.json"}},
+    "results": {"type": "array", "items": {"$ref": "#/$defs/assertion_result"}},
+    "terminal_state": {"$ref": "#/$defs/terminal_state"}
+  },
+  "$defs": {
+    "assertion_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assertion_id", "control_ids", "applicability", "execution", "assessment", "severity", "gate", "summary", "evidence_required", "evidence_observed", "remediation_class"],
+      "properties": {
+        "assertion_id": {"type": "string"},
+        "control_ids": {"type": "array", "items": {"type": "string"}},
+        "applicability": {"enum": ["applicable", "not_applicable", "undetermined"]},
+        "execution": {"enum": ["not_run", "completed", "blocked", "error"]},
+        "assessment": {"enum": ["pass", "fail", "unknown", "manual_review", "not_applicable", "stale", "conflicting"]},
+        "severity": {"enum": ["info", "low", "medium", "high", "critical"]},
+        "gate": {"enum": ["advisory", "required", "no-go"]},
+        "summary": {"type": "string"},
+        "evidence_required": {"type": "array", "items": {"$ref": "#/$defs/evidence_requirement"}},
+        "evidence_observed": {"type": "array", "items": {"$ref": "evidence.schema.json"}},
+        "remediation_class": {"enum": ["R0", "R1", "R2", "R3", "R4", "R5", "R6"]}
+      }
+    },
+    "terminal_state": {
+      "enum": ["profile_satisfied", "machine_work_complete_manual_evidence_remaining", "assessment_incomplete", "no_go", "policy_stopped", "budget_exhausted", "environment_blocked"]
+    },
+    "evidence_requirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "minimum_authority", "description"],
+      "properties": {
+        "kind": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+        "minimum_authority": {"enum": ["declared", "repository", "executed", "artifact", "environment", "human"]},
+        "description": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

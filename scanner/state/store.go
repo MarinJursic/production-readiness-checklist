@@ -456,6 +456,7 @@ func validateRun(run model.RunResult) error {
 		return fmt.Errorf("run ID does not match record content")
 	}
 	if !((run.SchemaVersion == model.RunSchema && run.Plan.SchemaVersion == model.PlanSchema) ||
+		(run.SchemaVersion == "prc.run/v0.4" && run.Plan.SchemaVersion == "prc.plan/v0.4") ||
 		(run.SchemaVersion == "prc.run/v0.3" && run.Plan.SchemaVersion == "prc.plan/v0.3")) {
 		return fmt.Errorf("unsupported or mismatched run and plan schemas %q and %q", run.SchemaVersion, run.Plan.SchemaVersion)
 	}
@@ -472,15 +473,18 @@ func validateRun(run model.RunResult) error {
 	if !digest(run.Plan.Digest) || planIdentity(run.Plan) != run.Plan.Digest {
 		return fmt.Errorf("plan digest does not match record content")
 	}
-	if run.Plan.SchemaVersion == model.PlanSchema {
+	if run.Plan.SchemaVersion == model.PlanSchema || run.Plan.SchemaVersion == "prc.plan/v0.4" {
 		if run.Plan.EngineVersion == "" || !digest(run.Plan.ProfileDigest) {
-			return fmt.Errorf("current plan lacks engine or profile binding")
+			return fmt.Errorf("bound plan lacks engine or profile binding")
 		}
 		for _, planned := range run.Plan.Assertions {
 			if planned.AssertionRevision < 1 || !digest(planned.DefinitionDigest) {
 				return fmt.Errorf("current plan assertion %s lacks a definition binding", planned.AssertionID)
 			}
 		}
+	}
+	if run.Plan.SchemaVersion == model.PlanSchema && !digest(run.Plan.CatalogDigest) {
+		return fmt.Errorf("current plan lacks catalog binding")
 	}
 	planned := map[string]bool{}
 	for _, item := range run.Plan.Assertions {

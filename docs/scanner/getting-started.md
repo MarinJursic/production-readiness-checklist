@@ -58,11 +58,11 @@ location through `--catalog-root`:
 ```
 
 The same target inventory, profile, and catalog produce the same plan digest.
-Plan v0.3 records the exact bounded CEL evaluator, an applicability reason for
-every assertion, the configuration digest, declared project ID, artifact
-digests, and target environments. Invalid, unavailable, non-Boolean, or
-resource-exhausting expressions become `undetermined`; they never silently
-become Not Applicable. See
+Plan v0.5 binds the full governing catalog, exact profile and assertion
+definitions, bounded CEL evaluator, an applicability reason for every
+assertion, configuration digest, declared project ID, artifact digests, and
+target environments. Invalid, unavailable, non-Boolean, or resource-exhausting
+expressions become `undetermined`; they never silently become Not Applicable. See
 [bounded applicability evaluation](../architecture/applicability.md) for the
 available inventory fields and limits.
 

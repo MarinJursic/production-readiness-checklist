@@ -4,8 +4,8 @@ import "time"
 
 const (
 	InventorySchema        = "prc.inventory/v0.3"
-	PlanSchema             = "prc.plan/v0.4"
-	RunSchema              = "prc.run/v0.4"
+	PlanSchema             = "prc.plan/v0.5"
+	RunSchema              = "prc.run/v0.5"
 	EvidenceSchema         = "prc.evidence/v0.1"
 	AdapterExecutionSchema = "prc.adapter-execution/v0.1"
 )
@@ -172,6 +172,7 @@ type Plan struct {
 	ProfileID           string             `json:"profile_id"`
 	ProfileVersion      string             `json:"profile_version"`
 	ProfileDigest       string             `json:"profile_digest,omitempty"`
+	CatalogDigest       string             `json:"catalog_digest,omitempty"`
 	ConfigurationDigest string             `json:"configuration_digest,omitempty"`
 	ProjectID           string             `json:"project_id,omitempty"`
 	ArtifactDigests     []string           `json:"artifact_digests"`

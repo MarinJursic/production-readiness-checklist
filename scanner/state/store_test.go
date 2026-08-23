@@ -115,6 +115,7 @@ func TestStoreReadsLegacyV03RunAfterRuleBindingUpgrade(t *testing.T) {
 	run.Plan.SchemaVersion = "prc.plan/v0.3"
 	run.Plan.EngineVersion = ""
 	run.Plan.ProfileDigest = ""
+	run.Plan.CatalogDigest = ""
 	for index := range run.Plan.Assertions {
 		run.Plan.Assertions[index].AssertionRevision = 0
 		run.Plan.Assertions[index].DefinitionDigest = ""
@@ -136,6 +137,32 @@ func TestStoreReadsLegacyV03RunAfterRuleBindingUpgrade(t *testing.T) {
 		t.Fatal(err)
 	}
 	if loaded.SchemaVersion != "prc.run/v0.3" || loaded.Plan.SchemaVersion != "prc.plan/v0.3" || loaded.Plan.EngineVersion != "" {
+		t.Fatalf("legacy run was not preserved: %+v", loaded.Plan)
+	}
+}
+
+func TestStoreReadsLegacyV04RunAfterCatalogBindingUpgrade(t *testing.T) {
+	run := testRun(t)
+	run.SchemaVersion = "prc.run/v0.4"
+	run.Plan.SchemaVersion = "prc.plan/v0.4"
+	run.Plan.CatalogDigest = ""
+	run.Plan.Digest = ""
+	payload, err := json.Marshal(run.Plan)
+	if err != nil {
+		t.Fatal(err)
+	}
+	digest := sha256.Sum256(payload)
+	run.Plan.Digest = hex.EncodeToString(digest[:])
+	run.RunID = runIdentity(run)
+	store, _ := writeAndOpen(t, run)
+	if err := store.IndexRun(context.Background(), run); err != nil {
+		t.Fatal(err)
+	}
+	loaded, err := store.LoadRun(context.Background(), run.RunID)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if loaded.SchemaVersion != "prc.run/v0.4" || loaded.Plan.SchemaVersion != "prc.plan/v0.4" || loaded.Plan.CatalogDigest != "" {
 		t.Fatalf("legacy run was not preserved: %+v", loaded.Plan)
 	}
 }
