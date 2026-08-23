@@ -4,7 +4,7 @@ The focused `prc/kubernetes@0.1` profile performs bounded, no-execution
 repository analysis of detected Kubernetes workload manifests. Its six
 assertions cover non-root execution, resource requests and limits, privileged
 host access, privilege escalation, Linux capabilities, and seccomp profiles.
-The same assertions are included in `prc/core-repository@0.9`.
+The same assertions are included in `prc/core-repository@1.0`.
 
 Run only the Kubernetes assertions with:
 

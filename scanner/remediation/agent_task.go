@@ -13,6 +13,7 @@ import (
 	workspaceinventory "github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/provider"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/testdiscovery"
 )
 
 const agentTestSuiteAssertion = "PRC-A-CORE-010"
@@ -24,7 +25,7 @@ func planAgentTask(
 	protectedPaths []string,
 	options AgentOptions,
 ) (provider.Task, bool, error) {
-	if assertion.ID != agentTestSuiteAssertion || assertion.ImplementationID != "prc.native.test-suite@0.1" ||
+	if assertion.ID != agentTestSuiteAssertion || assertion.ImplementationID != "prc.native.test-suite@0.2" ||
 		assertion.RemediationClass != "R2" {
 		return provider.Task{}, false, nil
 	}
@@ -58,7 +59,7 @@ func planAgentTask(
 		allowed := testCandidates(record.Path)
 		filtered := allowed[:0]
 		for _, path := range allowed {
-			if !existing[path] && !protected(path, protectedPaths) {
+			if !existing[path] && !protected(path, protectedPaths) && testdiscovery.CandidatePath(path) {
 				filtered = append(filtered, path)
 			}
 		}
@@ -109,12 +110,6 @@ func testCandidates(source string) []string {
 		return []string{join(directory, stem+"_test.py"), join(directory, "test_"+stem+".py"), join("tests", "test_"+stem+".py")}
 	case ".js", ".jsx", ".ts", ".tsx":
 		return []string{join("tests", stem+".test"+extension), join("tests", stem+".spec"+extension)}
-	case ".rs":
-		return []string{join("tests", stem+".rs")}
-	case ".rb":
-		return []string{join("test", stem+"_test.rb")}
-	case ".java", ".kt", ".kts", ".c", ".cc", ".cpp", ".cs", ".php", ".swift":
-		return []string{join("tests", "test_"+stem+extension)}
 	default:
 		return nil
 	}

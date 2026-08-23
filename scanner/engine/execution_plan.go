@@ -27,7 +27,7 @@ var implementationRegistry = func() map[string]implementationSpec {
 		"prc.native.dependency-lock@0.1",
 		"prc.native.github-action-pin@0.1",
 		"prc.native.ci-present@0.1",
-		"prc.native.test-suite@0.1",
+		"prc.native.test-suite@0.2",
 		"prc.native.github-workflow-permissions@0.1",
 		"prc.native.final-newline@0.1",
 		"prc.native.git-revision@0.1",

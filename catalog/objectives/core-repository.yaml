@@ -1,5 +1,5 @@
 schema_version: prc.objectives/v0.1
-catalog_version: 0.9.0
+catalog_version: 1.0.0
 objectives:
   - id: USEQ-FDCA6C71
     revision: 1

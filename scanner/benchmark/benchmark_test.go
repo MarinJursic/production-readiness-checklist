@@ -73,7 +73,7 @@ func TestComprehensiveCoreBenchmarkCoversEveryCatalogAssertion(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if !report.Passed || report.Summary.Cases != 31 || report.Summary.Expectations != 139 ||
+	if !report.Passed || report.Summary.Cases != 35 || report.Summary.Expectations != 143 ||
 		report.Summary.Mismatched != 0 || report.Summary.DeterministicCases != report.Summary.Cases ||
 		report.Metrics.Precision != 1 || report.Metrics.Recall != 1 || report.Metrics.FalsePositiveRate != 0 {
 		t.Fatalf("comprehensive benchmark report = %+v", report)

@@ -1,5 +1,5 @@
 schema_version: prc.assertions/v0.1
-catalog_version: 0.9.0
+catalog_version: 1.0.0
 assertions:
   - id: PRC-A-CORE-001
     revision: 2
@@ -150,7 +150,7 @@ assertions:
     gate: required
     remediation_class: R2
   - id: PRC-A-CORE-010
-    revision: 1
+    revision: 2
     control_ids: [USEQ-12655775]
     title: Automated tests are discoverable
     statement: The repository contains a recognized test location or test command declaration.
@@ -159,7 +159,7 @@ assertions:
       - kind: repository-structure
         minimum_authority: repository
         description: Recognized test paths or manifest test commands from the scanned commit.
-    implementation_id: prc.native.test-suite@0.1
+    implementation_id: prc.native.test-suite@0.2
     parameters: {}
     severity: high
     gate: required

@@ -2,7 +2,7 @@
 
 # Core repository readiness
 
-Profile: `prc/core-repository@0.9`
+Profile: `prc/core-repository@1.0`
 
 Deterministic repository governance, documentation, workflow, dependency, security, API-contract, and test foundations.
 

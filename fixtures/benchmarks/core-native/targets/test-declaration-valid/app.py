@@ -1,0 +1,2 @@
+def ready():
+    return True

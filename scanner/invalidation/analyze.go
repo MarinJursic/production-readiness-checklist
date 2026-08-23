@@ -372,7 +372,7 @@ func dependencies(assertion model.Assertion, before, after model.Inventory) depe
 	case "prc.native.ci-present@0.1":
 		add(workflows)
 		dep.content = false
-	case "prc.native.test-suite@0.1":
+	case "prc.native.test-suite@0.2":
 		for _, inventory := range []model.Inventory{before, after} {
 			for _, file := range inventory.Files {
 				if isTestPath(file.Path) {

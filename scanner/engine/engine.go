@@ -17,6 +17,7 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/catalog"
 	workspaceinventory "github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/testdiscovery"
 	"github.com/google/cel-go/cel"
 	"gopkg.in/yaml.v3"
 )
@@ -341,7 +342,7 @@ func (e *Engine) evaluate(
 		return evaluateActionPins(assertion, inventory, result, observedAt)
 	case "prc.native.ci-present@0.1":
 		return evaluateCIPresent(assertion, inventory, result, observedAt)
-	case "prc.native.test-suite@0.1":
+	case "prc.native.test-suite@0.2":
 		return evaluateTestSuite(assertion, inventory, result, observedAt)
 	case "prc.native.github-workflow-permissions@0.1":
 		return evaluateWorkflowPermissions(assertion, inventory, result, observedAt)
@@ -706,32 +707,48 @@ func evaluateTestSuite(
 	result model.AssertionResult,
 	observedAt time.Time,
 ) model.AssertionResult {
-	candidates := []string{}
+	candidates := make([]string, 0)
 	for _, file := range inventory.Files {
-		relative := file.Path
-		parts := strings.Split(relative, "/")
-		name := filepath.Base(relative)
-		isSource := workspaceinventory.IsSourcePath(name)
-		if isSource && ((len(parts) > 1 && (parts[0] == "tests" || parts[0] == "test" || parts[0] == "__tests__")) ||
-			strings.HasSuffix(name, "_test.go") || strings.HasPrefix(name, "test_") || strings.HasSuffix(name, "_test.py")) {
-			candidates = append(candidates, relative)
+		if workspaceinventory.IsSourcePath(file.Path) && testdiscovery.CandidatePath(file.Path) {
+			candidates = append(candidates, file.Path)
 		}
 	}
-	if len(candidates) == 0 {
-		result.Assessment = "fail"
-		result.Summary = "No recognized test path or test file was found."
-		return result
-	}
 	sort.Strings(candidates)
-	evidence, err := fileEvidence(inventory, candidates[0], "repository-structure", assertion.ImplementationID,
-		"Recognized test file is present.", observedAt)
-	if err != nil {
-		result.Execution, result.Assessment, result.Summary = "error", "unknown", err.Error()
-		return result
+	for _, relative := range candidates {
+		data, evidence, err := readVerifiedEvidence(inventory, relative, "repository-structure", assertion.ImplementationID,
+			"Test file contains a conventionally discoverable test declaration.", observedAt)
+		if err != nil {
+			result.Execution, result.Assessment, result.Summary = "error", "unknown", err.Error()
+			return result
+		}
+		if testdiscovery.RecognizedTest(relative, data) {
+			result.EvidenceObserved = []model.Evidence{evidence}
+			result.Assessment = "pass"
+			result.Summary = fmt.Sprintf("Observed a structurally discoverable test in %s.", relative)
+			return result
+		}
 	}
-	result.EvidenceObserved = []model.Evidence{evidence}
-	result.Assessment = "pass"
-	result.Summary = fmt.Sprintf("Observed recognized tests; first deterministic evidence path is %s.", candidates[0])
+	manifests := append([]string(nil), inventory.Manifests...)
+	sort.Strings(manifests)
+	for _, relative := range manifests {
+		if strings.ToLower(filepath.Base(relative)) != "package.json" {
+			continue
+		}
+		data, evidence, err := readVerifiedEvidence(inventory, relative, "repository-structure", assertion.ImplementationID,
+			"Package manifest declares a non-placeholder test command.", observedAt)
+		if err != nil {
+			result.Execution, result.Assessment, result.Summary = "error", "unknown", err.Error()
+			return result
+		}
+		if testdiscovery.ManifestDeclaresTest(relative, data) {
+			result.EvidenceObserved = []model.Evidence{evidence}
+			result.Assessment = "pass"
+			result.Summary = fmt.Sprintf("Observed an explicit test command in %s.", relative)
+			return result
+		}
+	}
+	result.Assessment = "fail"
+	result.Summary = "No structurally discoverable test declaration or non-placeholder package test command was found."
 	return result
 }
 

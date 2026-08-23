@@ -1,13 +1,13 @@
 package remediation
 
 import (
-	"bufio"
 	"regexp"
 	"sort"
 	"strings"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/provider"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/testdiscovery"
 )
 
 var (
@@ -18,36 +18,13 @@ var (
 
 func testPath(path string) bool {
 	lower := strings.ToLower(filepathToSlash(path))
-	base := lower
-	if index := strings.LastIndex(lower, "/"); index >= 0 {
-		base = lower[index+1:]
-	}
-	return strings.Contains("/"+lower+"/", "/tests/") ||
-		strings.Contains("/"+lower+"/", "/test/") ||
-		strings.HasSuffix(base, "_test.go") || strings.HasPrefix(base, "test_") ||
-		strings.Contains(base, ".test.") || strings.Contains(base, ".spec.")
+	return testdiscovery.CandidatePath(lower) ||
+		strings.Contains("/"+lower+"/", "/tests/") ||
+		strings.Contains("/"+lower+"/", "/test/")
 }
 
 func filepathToSlash(path string) string {
 	return strings.ReplaceAll(path, "\\", "/")
-}
-
-func addedPatchContent(patch string) []string {
-	added := make([]string, 0)
-	inHunk := false
-	scanner := bufio.NewScanner(strings.NewReader(patch))
-	for scanner.Scan() {
-		line := scanner.Text()
-		switch {
-		case strings.HasPrefix(line, "diff --git "):
-			inHunk = false
-		case strings.HasPrefix(line, "@@ "):
-			inHunk = true
-		case inHunk && strings.HasPrefix(line, "+") && !strings.HasPrefix(line, "+++"):
-			added = append(added, strings.TrimPrefix(line, "+"))
-		}
-	}
-	return added
 }
 
 // auditProposalAntiGaming rejects proposal shapes that can manufacture a pass
@@ -64,7 +41,31 @@ func auditProposalAntiGaming(baseline model.Inventory, output provider.Output) [
 			reasons = append(reasons, "Proposal modifies existing test or specification file "+path+".")
 		}
 	}
-	added := addedPatchContent(output.Patch)
+	files, parseErr := parseProviderPatch(output.Patch)
+	added := make([]string, 0)
+	for _, file := range files {
+		for _, hunk := range file.hunks {
+			for _, line := range hunk.lines {
+				if line.kind == '+' {
+					added = append(added, line.text)
+				}
+			}
+		}
+		if parseErr != nil || !file.newFile || !testPath(file.path) {
+			continue
+		}
+		content, _, _, err := applyFileHunks(nil, file)
+		if err != nil {
+			continue
+		}
+		if !testdiscovery.RecognizedTest(file.path, content) {
+			reasons = append(reasons, "Proposal adds test-shaped file "+file.path+" without a recognized test declaration.")
+			continue
+		}
+		if !testdiscovery.HasBehaviorCheck(file.path, content) {
+			reasons = append(reasons, "Proposal adds test file "+file.path+" without a recognized behavioral assertion or failure check.")
+		}
+	}
 	for _, line := range added {
 		if suppressionDirective.MatchString(line) {
 			reasons = append(reasons, "Proposal introduces a suppression or skip directive.")

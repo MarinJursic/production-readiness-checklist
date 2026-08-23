@@ -246,6 +246,43 @@ func TestRunProposalRejectsVacuousTestBeforeCreatingCandidate(t *testing.T) {
 	}
 }
 
+func TestRunProposalRejectsTestWithoutCollectableDeclarationOrBehaviorCheck(t *testing.T) {
+	tests := []struct {
+		name, patch, reason string
+	}{
+		{
+			name: "comment only",
+			patch: "diff --git a/app_test.py b/app_test.py\n--- /dev/null\n+++ b/app_test.py\n" +
+				"@@ -0,0 +1 @@\n+# A test will be added later.\n",
+			reason: "without a recognized test declaration",
+		},
+		{
+			name: "invocation only",
+			patch: "diff --git a/app_test.py b/app_test.py\n--- /dev/null\n+++ b/app_test.py\n" +
+				"@@ -0,0 +1,4 @@\n+from app import ready\n+\n+def test_ready():\n+    ready()\n",
+			reason: "without a recognized behavioral assertion",
+		},
+	}
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			target := proposalTarget(t)
+			task := sealedProposalTask(t, target, []string{"app_test.py"}, defaultProposalProtectedPaths())
+			candidatePath := filepath.Join(t.TempDir(), "candidate")
+			_, err := RunProposal(ProposalOptions{
+				CatalogRoot: testCatalogRoot(t), Target: target, CandidateDir: candidatePath,
+				Provider: "codex", Task: task, Output: proposalOutput(task, "app_test.py", test.patch),
+				MaxFiles: 2, MaxChangedLines: 10,
+			})
+			if err == nil || !strings.Contains(err.Error(), test.reason) || !IsPolicyDenied(err) {
+				t.Fatalf("unexpected error: %v", err)
+			}
+			if _, statErr := os.Stat(candidatePath); !os.IsNotExist(statErr) {
+				t.Fatal("anti-gaming rejection created a candidate directory")
+			}
+		})
+	}
+}
+
 func TestProposalAntiGamingRejectsExistingTestChangesAndSuppressions(t *testing.T) {
 	target := remediationTarget(t)
 	baseline, err := inventory.Build(target)

@@ -149,9 +149,12 @@ applied by the scanner exactly once in a fresh candidate, then passes the same
 structural, anti-gaming, target-assertion, regression, and source-integrity
 checks as `remediate-proposal`.
 
-Current acceptance establishes that a discoverable, structurally non-vacuous
-test was added without weakening existing tests or regressing prior scanner
-passes. It does not execute project tests or prove behavioral coverage. Broader
+Current acceptance reconstructs the proposed test before candidate creation,
+requires a conventionally collectable declaration and a recognized behavioral
+failure check, and establishes that the test was added without weakening
+existing tests or regressing prior scanner passes. The task planner is limited
+to Go, Python, JavaScript, and TypeScript sources. It does not execute project
+tests or prove behavioral coverage. Broader
 R2 autonomy stays disabled until sandboxed, scanner-owned verification commands
 and assertion-specific behavioral contracts are implemented.
 
@@ -186,8 +189,10 @@ mode changes, CRLF patch encoding, non-newline markers, malformed coordinates,
 context mismatches, unlisted or protected paths, and budget overruns before
 acceptance. A conservative anti-gaming pass also rejects changes to existing test
 or specification files, newly introduced suppression or skip directives,
-constant assertions, and empty Go tests before creating a candidate. New focused
-tests remain permitted. The raw-tree, byte, mode, target assertion, baseline
+constant assertions, empty Go tests, test-shaped files without a collectable
+declaration, and invocation-only tests without a recognized behavioral failure
+check before creating a candidate. New focused tests remain permitted. The
+raw-tree, byte, mode, target assertion, baseline
 regression, and source-integrity audits then run from fresh inventories.
 
 Current R2 acceptance proves only the declared deterministic scanner
