@@ -71,3 +71,13 @@ production-readiness claim.
 
 `doctor` returns `2` when a requested required capability is unavailable. Its
 JSON report still distinguishes each passing, warning, and failing probe.
+
+## MCP stdio process
+
+`mcp serve` returns `0` after a clean stdin close. Invalid locked paths,
+configuration, catalog, or profile fail startup with `3`; an unreadable or
+oversized stdio transport message terminates with `4`. Individual valid
+JSON-RPC protocol and tool errors are returned on stdout using MCP error
+objects, so the process can continue serving later messages without converting
+an error into a readiness result. See the
+[read-only MCP agent integration](mcp-agent-integration.md).

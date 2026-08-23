@@ -1,7 +1,7 @@
 # Scanner quick start
 
 The scanner CLI is an experimental deterministic vertical slice. It inventories a
-repository, creates an immutable plan for `prc/core-repository@0.3`, evaluates
+repository, creates an immutable plan for `prc/core-repository@0.4`, evaluates
 native assertions, records evidence, and reports explicit unresolved states.
 
 The profile evaluator can consume a live, sandboxed adapter execution only when
@@ -108,6 +108,11 @@ JSON is available for automation:
 ./prc scan --target . --catalog-root . --format json --exit-policy never
 ```
 
+To let Codex, Claude Code, or another local agent request the same read-only
+plans, scans, and assertion explanations, use the
+[path-locked MCP server](mcp-agent-integration.md). It deliberately exposes no
+write, remediation, provider, adapter, process, network, or state tool.
+
 The same scan can emit a scoped Markdown report, self-contained accessible HTML,
 SARIF 2.1.0 failed findings, or JUnit XML with failures, execution errors, and
 manual/not-applicable skips kept distinct:
@@ -163,13 +168,13 @@ configuration policy, terminal states, and the machine-work-complete report.
   and runtime-version declarations;
 - GitHub Actions syntax, jobs, bounded runtimes, permissions, immutable action
   references, and unsafe untrusted triggers;
-- discoverable tests, final line-feed bytes, merge-conflict markers, and broad
-  file-write permissions;
+- discoverable tests, final line-feed bytes, merge-conflict markers, broad
+  file-write permissions, and committed private-key armor;
 - immutable container base identities and final-stage non-root users;
 - Terraform provider locks; and
 - Kubernetes non-root and container resource policies.
 
-The profile has 30 atomic assertions. Container, Terraform, and Kubernetes
+The profile has 31 atomic assertions. Container, Terraform, and Kubernetes
 assertions are planned as not applicable when their corresponding sourced
 inventory facts are absent.
 

@@ -55,6 +55,7 @@ nav:
       - Scanner quick start: scanner/getting-started.md
       - CLI and exit codes: scanner/cli-contract.md
       - Scanner diagnostics: scanner/doctor.md
+      - Read-only MCP agent integration: scanner/mcp-agent-integration.md
       - Benchmarks and quality budgets: scanner/benchmarks.md
       - Private-key armor inspection: scanner/private-key-armor.md
       - Project configuration: scanner/configuration.md
