@@ -729,6 +729,24 @@ func fixtureRegistry(t *testing.T, manifestPath, manifestDigest, trust, status, 
 	return path
 }
 
+func replaceCatalogAdapterBindingBlock(t *testing.T, assertions []byte, binding string) []byte {
+	t.Helper()
+	bindingStart := bytes.Index(assertions, []byte("      adapter_bindings:\n"))
+	if bindingStart < 0 {
+		t.Fatal("test catalog has no adapter binding block")
+	}
+	bindingEndOffset := bytes.Index(assertions[bindingStart:], []byte("    severity:"))
+	if bindingEndOffset < 0 {
+		t.Fatal("test catalog adapter binding block has no severity boundary")
+	}
+	bindingEnd := bindingStart + bindingEndOffset
+	updated := make([]byte, 0, len(assertions)-bindingEndOffset+len(binding))
+	updated = append(updated, assertions[:bindingStart]...)
+	updated = append(updated, binding...)
+	updated = append(updated, assertions[bindingEnd:]...)
+	return updated
+}
+
 func TestScanConsumesOnlyProfileAuthorizedLiveAdapterEvidence(t *testing.T) {
 	repository := filepath.Join("..", "..")
 	manifestPath := filepath.Join(repository, "fixtures", "adapters", "fixture-adapter.yaml")
@@ -760,20 +778,7 @@ func TestScanConsumesOnlyProfileAuthorizedLiveAdapterEvidence(t *testing.T) {
 		"        - adapter_id: " + manifest.ID + "\n" +
 		"          manifest_sha256: " + manifestDigest + "\n" +
 		"          observation_kind: fixture-result\n"
-	bindingStart := bytes.Index(assertions, []byte("      adapter_bindings:\n"))
-	if bindingStart < 0 {
-		t.Fatal("test catalog has no adapter binding block")
-	}
-	bindingEndOffset := bytes.Index(assertions[bindingStart:], []byte("    severity:"))
-	if bindingEndOffset < 0 {
-		t.Fatal("test catalog adapter binding block has no severity boundary")
-	}
-	bindingEnd := bindingStart + bindingEndOffset
-	updatedAssertions := make([]byte, 0, len(assertions)-bindingEndOffset+len(binding))
-	updatedAssertions = append(updatedAssertions, assertions[:bindingStart]...)
-	updatedAssertions = append(updatedAssertions, binding...)
-	updatedAssertions = append(updatedAssertions, assertions[bindingEnd:]...)
-	assertions = updatedAssertions
+	assertions = replaceCatalogAdapterBindingBlock(t, assertions, binding)
 	if !bytes.Contains(assertions, []byte(manifestDigest)) {
 		t.Fatal("test catalog binding replacement failed")
 	}
@@ -838,6 +843,130 @@ func TestScanConsumesOnlyProfileAuthorizedLiveAdapterEvidence(t *testing.T) {
 		result.AdapterExecutions[0].Resolution.RegistryID != "prc.adapter-registry.test@0.1" ||
 		len(result.AdapterExecutions[0].Resolution.RegistryDigest) != 64 {
 		t.Fatalf("registry-resolved executions = %+v", result.AdapterExecutions)
+	}
+}
+
+func TestScanExecutesEveryAuthorizedRepeatedManifest(t *testing.T) {
+	repository := filepath.Join("..", "..")
+	firstPath := filepath.Join(repository, "fixtures", "adapters", "fixture-adapter.yaml")
+	first, err := adapter.LoadManifest(firstPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	firstDigest, err := adapter.ManifestDigest(first)
+	if err != nil {
+		t.Fatal(err)
+	}
+	secondData, err := os.ReadFile(firstPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	secondData = bytes.Replace(
+		secondData,
+		[]byte("id: prc.adapter.fixture@0.1"),
+		[]byte("id: prc.adapter.fixture-two@0.1"),
+		1,
+	)
+	secondPath := filepath.Join(t.TempDir(), "second-adapter.yaml")
+	if err := os.WriteFile(secondPath, secondData, 0o600); err != nil {
+		t.Fatal(err)
+	}
+	second, err := adapter.LoadManifest(secondPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	secondDigest, err := adapter.ManifestDigest(second)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	catalogRoot := t.TempDir()
+	copyCatalogFile(t, repository, catalogRoot, "catalog/objectives/core-repository.yaml")
+	for _, source := range []string{
+		"docs/checklists/08-maintenance-vendors-compliance.md",
+		"docs/engineering/01-governance-and-foundations.md",
+		"docs/engineering/05-code-quality-and-implementation.md",
+		"docs/engineering/06-application-services-and-apis.md",
+		"docs/engineering/08-security-and-cryptography.md",
+		"docs/engineering/10-verification-and-testing.md",
+		"docs/engineering/11-developer-experience-platform-and-delivery.md",
+		"docs/engineering/16-specialized-domains-and-release-assurance.md",
+	} {
+		copyCatalogFile(t, repository, catalogRoot, source)
+	}
+	assertions := copyCatalogFile(t, repository, catalogRoot, "catalog/assertions/core-repository.yaml")
+	copyCatalogFile(t, repository, catalogRoot, "catalog/profiles/core-repository.yaml")
+	binding := "      adapter_bindings:\n" +
+		"        - adapter_id: " + first.ID + "\n" +
+		"          manifest_sha256: " + firstDigest + "\n" +
+		"          observation_kind: fixture-result\n" +
+		"        - adapter_id: " + second.ID + "\n" +
+		"          manifest_sha256: " + secondDigest + "\n" +
+		"          observation_kind: fixture-result\n"
+	assertions = replaceCatalogAdapterBindingBlock(t, assertions, binding)
+	if err := os.WriteFile(
+		filepath.Join(catalogRoot, "catalog", "assertions", "core-repository.yaml"),
+		assertions,
+		0o644,
+	); err != nil {
+		t.Fatal(err)
+	}
+
+	target := t.TempDir()
+	if err := os.WriteFile(filepath.Join(target, "app.py"), []byte("print('ready')\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	var stdout, stderr bytes.Buffer
+	code := run([]string{
+		"scan", "--target", target, "--catalog-root", catalogRoot,
+		"--mode", "verify-local", "--adapter-manifest", secondPath,
+		"--adapter-manifest", firstPath, "--adapter-runtime", fakeDockerRuntime(t),
+		"--format", "json", "--exit-policy", "never",
+	}, &stdout, &stderr)
+	if code != 0 {
+		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
+	}
+	var result model.RunResult
+	if err := json.Unmarshal(stdout.Bytes(), &result); err != nil {
+		t.Fatal(err)
+	}
+	if len(result.AdapterExecutions) != 2 {
+		t.Fatalf("adapter executions = %+v", result.AdapterExecutions)
+	}
+	executedIDs := map[string]bool{}
+	for _, execution := range result.AdapterExecutions {
+		executedIDs[execution.AdapterID] = true
+		if execution.Resolution.Source != adapter.ResolutionSourceExplicitLocal {
+			t.Fatalf("unexpected adapter resolution = %+v", execution.Resolution)
+		}
+	}
+	if !executedIDs[first.ID] || !executedIDs[second.ID] {
+		t.Fatalf("executed adapter IDs = %+v", executedIDs)
+	}
+	foundAssertion := false
+	for _, assertion := range result.Results {
+		if assertion.AssertionID == "PRC-A-CORE-013" {
+			foundAssertion = true
+			if assertion.Assessment != "pass" || len(assertion.EvidenceObserved) != 2 {
+				t.Fatalf("multi-adapter assertion = %+v", assertion)
+			}
+		}
+	}
+	if !foundAssertion {
+		t.Fatal("missing multi-adapter assertion result")
+	}
+}
+
+func TestScanRejectsDuplicateAdapterRequests(t *testing.T) {
+	manifestPath := filepath.Join("..", "..", "fixtures", "adapters", "fixture-adapter.yaml")
+	var stdout, stderr bytes.Buffer
+	code := run([]string{
+		"scan", "--target", t.TempDir(), "--catalog-root", filepath.Join("..", ".."),
+		"--mode", "verify-local", "--adapter-manifest", manifestPath,
+		"--adapter-manifest", manifestPath, "--exit-policy", "never",
+	}, &stdout, &stderr)
+	if code != exitConfiguration || !strings.Contains(stderr.String(), "cannot repeat") {
+		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
 	}
 }
 

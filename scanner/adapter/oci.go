@@ -196,7 +196,7 @@ func RunOCI(
 	}
 	if ctx.Err() != nil {
 		cleanupOCI(plan)
-		return outputMetadata(stderr.String(), started, completed), fmt.Errorf("adapter timed out after %s: %w", manifest.Timeout(), ctx.Err())
+		return outputMetadata(stderr.String(), started, completed), fmt.Errorf("adapter execution deadline reached: %w", ctx.Err())
 	}
 	if errors.Is(stdout.Err(), errOutputLimit) || errors.Is(stderr.Err(), errOutputLimit) {
 		cleanupOCI(plan)

@@ -62,6 +62,7 @@ const (
 	exitInternal          = 6
 	exitCancelled         = 7
 	exitCandidateRejected = 8
+	maxScanAdapters       = 16
 )
 
 type classifiedError struct {
@@ -864,6 +865,10 @@ type repeatedStringFlag []string
 func (values *repeatedStringFlag) String() string { return strings.Join(*values, ",") }
 
 func (values *repeatedStringFlag) Set(value string) error {
+	value = strings.TrimSpace(value)
+	if value == "" {
+		return fmt.Errorf("repeated flag value cannot be empty")
+	}
 	*values = append(*values, value)
 	return nil
 }
@@ -1589,6 +1594,138 @@ func runPlan(args []string, stdout, stderr io.Writer) error {
 	return nil
 }
 
+type resolvedScanAdapter struct {
+	Manifest       adapter.Manifest
+	ManifestDigest string
+	Resolution     *model.AdapterResolution
+}
+
+func validateUniqueFlagValues(values repeatedStringFlag, label string) error {
+	seen := map[string]bool{}
+	for _, value := range values {
+		if seen[value] {
+			return fmt.Errorf("%s cannot repeat %q", label, value)
+		}
+		seen[value] = true
+	}
+	return nil
+}
+
+func resolveScanAdapters(
+	scanner *engine.Engine,
+	profile string,
+	item model.Inventory,
+	mode string,
+	manifestPaths repeatedStringFlag,
+	registryPath string,
+	adapterIDs repeatedStringFlag,
+) ([]resolvedScanAdapter, error) {
+	resolved := make([]resolvedScanAdapter, 0, max(len(manifestPaths), len(adapterIDs)))
+	if registryPath == "" {
+		for _, manifestPath := range manifestPaths {
+			manifest, err := adapter.LoadManifest(manifestPath)
+			if err != nil {
+				return nil, exitError(exitConfiguration, err)
+			}
+			resolved = append(resolved, resolvedScanAdapter{Manifest: manifest})
+		}
+	} else {
+		registry, err := adapter.LoadRegistry(registryPath)
+		if err != nil {
+			return nil, exitError(exitConfiguration, err)
+		}
+		for _, adapterID := range adapterIDs {
+			entry, err := registry.Resolve(adapterID, "", nil, adapter.DefaultRegistryPolicy())
+			if err != nil {
+				return nil, exitError(exitPolicyDenied, err)
+			}
+			resolution := entry.Resolution
+			resolved = append(resolved, resolvedScanAdapter{
+				Manifest: entry.Manifest, Resolution: &resolution,
+			})
+		}
+	}
+
+	seen := map[string]bool{}
+	for index := range resolved {
+		digest, err := adapter.ManifestDigest(resolved[index].Manifest)
+		if err != nil {
+			return nil, exitError(exitConfiguration, err)
+		}
+		resolved[index].ManifestDigest = digest
+		key := resolved[index].Manifest.ID + "\x00" + digest
+		if seen[key] {
+			return nil, exitError(exitConfiguration, fmt.Errorf(
+				"adapter %s with manifest digest %s was requested more than once",
+				resolved[index].Manifest.ID, digest,
+			))
+		}
+		seen[key] = true
+		authorized, err := scanner.AuthorizesAdapterMode(
+			profile, item, mode, resolved[index].Manifest.ID, digest,
+		)
+		if err != nil {
+			return nil, exitError(exitConfiguration, err)
+		}
+		if !authorized {
+			return nil, exitError(exitPolicyDenied, fmt.Errorf(
+				"adapter %s with manifest digest %s is not authorized by an applicable assertion in %s",
+				resolved[index].Manifest.ID, digest, profile,
+			))
+		}
+	}
+	sort.Slice(resolved, func(left, right int) bool {
+		if resolved[left].Manifest.ID != resolved[right].Manifest.ID {
+			return resolved[left].Manifest.ID < resolved[right].Manifest.ID
+		}
+		return resolved[left].ManifestDigest < resolved[right].ManifestDigest
+	})
+	return resolved, nil
+}
+
+func executeScanAdapter(
+	ctx context.Context,
+	item model.Inventory,
+	resolved resolvedScanAdapter,
+	runtime string,
+) (model.AdapterExecution, error) {
+	if err := ctx.Err(); err != nil {
+		return model.AdapterExecution{}, fmt.Errorf("adapter execution budget is exhausted: %w", err)
+	}
+	runID, err := randomRunID()
+	if err != nil {
+		return model.AdapterExecution{}, err
+	}
+	subject := adapter.Subject{
+		TargetName: item.TargetName, TargetCommit: item.GitCommit, InventoryDigest: item.Digest,
+	}
+	input, err := adapter.ExecutionInput(
+		resolved.Manifest, runID, subject, inventoryFacts(item), map[string]any{},
+	)
+	if err != nil {
+		return model.AdapterExecution{}, err
+	}
+	snapshot, err := adapter.PrepareSnapshotForManifest(item, resolved.Manifest)
+	if err != nil {
+		return model.AdapterExecution{}, err
+	}
+	defer snapshot.Close()
+	plan, err := adapter.BuildSnapshotOCIPlan(runtime, snapshot, runID, resolved.Manifest)
+	if err != nil {
+		return model.AdapterExecution{}, err
+	}
+	output, err := adapter.RunOCI(ctx, plan, resolved.Manifest, input)
+	if err != nil {
+		return model.AdapterExecution{}, err
+	}
+	if resolved.Resolution == nil {
+		return adapter.BindExecution(runID, subject, resolved.Manifest, output)
+	}
+	return adapter.BindExecutionWithResolution(
+		runID, subject, resolved.Manifest, *resolved.Resolution, output,
+	)
+}
+
 func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	set, target, catalogRoot, profile := parseCommon("scan", args, stderr)
 	configPath := set.String("config", "", "optional validated project configuration")
@@ -1596,9 +1733,11 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	format := set.String("format", "human", "human, json, markdown, html, sarif, or junit")
 	stateDirectory := set.String("state-dir", "", "optional directory for content-addressed evidence and run records")
 	exitPolicy := set.String("exit-policy", "profile", "profile, no-go, or never")
-	adapterManifest := set.String("adapter-manifest", "", "optional immutable OCI adapter manifest authorized by the selected profile")
+	adapterManifests := repeatedStringFlag{}
+	set.Var(&adapterManifests, "adapter-manifest", "immutable OCI adapter manifest authorized by the selected profile; repeatable")
 	adapterRegistry := set.String("adapter-registry", "", "optional adapter registry lockfile")
-	adapterID := set.String("adapter-id", "", "adapter ID to resolve from --adapter-registry")
+	adapterIDs := repeatedStringFlag{}
+	set.Var(&adapterIDs, "adapter-id", "adapter ID to resolve from --adapter-registry; repeatable")
 	adapterRuntime := set.String("adapter-runtime", "docker", "docker or podman executable for the authorized adapter")
 	if err := set.Parse(args); err != nil {
 		return exitInternal, exitError(exitConfiguration, err)
@@ -1613,11 +1752,24 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	if *mode != engine.ExecutionModeInspect && *mode != engine.ExecutionModeVerifyLocal {
 		return exitInternal, exitError(exitConfiguration, fmt.Errorf("unsupported execution mode %q", *mode))
 	}
-	if *adapterManifest != "" && *adapterRegistry != "" {
+	if len(adapterManifests) > 0 && *adapterRegistry != "" {
 		return exitInternal, exitError(exitConfiguration, fmt.Errorf("--adapter-manifest and --adapter-registry are mutually exclusive"))
 	}
-	if (*adapterRegistry == "") != (*adapterID == "") {
-		return exitInternal, exitError(exitConfiguration, fmt.Errorf("--adapter-registry and --adapter-id must be supplied together"))
+	if (*adapterRegistry == "") != (len(adapterIDs) == 0) {
+		return exitInternal, exitError(exitConfiguration, fmt.Errorf("--adapter-registry and at least one --adapter-id must be supplied together"))
+	}
+	requestedAdapters := len(adapterManifests)
+	if *adapterRegistry != "" {
+		requestedAdapters = len(adapterIDs)
+	}
+	if requestedAdapters > maxScanAdapters {
+		return exitInternal, exitError(exitConfiguration, fmt.Errorf("scan accepts at most %d adapters", maxScanAdapters))
+	}
+	if err := validateUniqueFlagValues(adapterManifests, "--adapter-manifest"); err != nil {
+		return exitInternal, exitError(exitConfiguration, err)
+	}
+	if err := validateUniqueFlagValues(adapterIDs, "--adapter-id"); err != nil {
+		return exitInternal, exitError(exitConfiguration, err)
 	}
 	item, validation, err := configuredInventory(*target, *configPath)
 	if err != nil {
@@ -1631,85 +1783,32 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		return exitInternal, exitError(exitConfiguration, err)
 	}
 	executions := []model.AdapterExecution{}
-	if *adapterManifest != "" || *adapterRegistry != "" {
+	if requestedAdapters > 0 {
 		if !flagWasSet(set, "mode") || *mode != engine.ExecutionModeVerifyLocal {
 			return exitInternal, exitError(exitPolicyDenied, fmt.Errorf("adapter execution requires an explicit --mode verify-local capability grant"))
 		}
-		var manifest adapter.Manifest
-		var registryResolution *model.AdapterResolution
-		if *adapterManifest != "" {
-			manifest, err = adapter.LoadManifest(*adapterManifest)
-			if err != nil {
-				return exitInternal, exitError(exitConfiguration, err)
-			}
-		} else {
-			registry, registryErr := adapter.LoadRegistry(*adapterRegistry)
-			if registryErr != nil {
-				return exitInternal, exitError(exitConfiguration, registryErr)
-			}
-			resolved, resolveErr := registry.Resolve(*adapterID, "", nil, adapter.DefaultRegistryPolicy())
-			if resolveErr != nil {
-				return exitInternal, exitError(exitPolicyDenied, resolveErr)
-			}
-			manifest = resolved.Manifest
-			registryResolution = &resolved.Resolution
-		}
-		manifestDigest, err := adapter.ManifestDigest(manifest)
-		if err != nil {
-			return exitInternal, exitError(exitConfiguration, err)
-		}
-		authorized, err := scanner.AuthorizesAdapterMode(*profile, item, *mode, manifest.ID, manifestDigest)
-		if err != nil {
-			return exitInternal, exitError(exitConfiguration, err)
-		}
-		if !authorized {
-			return exitInternal, exitError(exitPolicyDenied, fmt.Errorf("adapter %s with manifest digest %s is not authorized by an applicable assertion in %s", manifest.ID, manifestDigest, *profile))
-		}
-		adapterRunID, err := randomRunID()
-		if err != nil {
-			return exitInternal, exitError(exitInternal, err)
-		}
-		subject := adapter.Subject{
-			TargetName: item.TargetName, TargetCommit: item.GitCommit, InventoryDigest: item.Digest,
-		}
-		input, err := adapter.ExecutionInput(manifest, adapterRunID, subject, inventoryFacts(item), map[string]any{})
-		if err != nil {
-			return exitInternal, exitError(exitExecution, err)
-		}
-		snapshot, err := adapter.PrepareSnapshotForManifest(item, manifest)
-		if err != nil {
-			return exitInternal, exitError(exitExecution, err)
-		}
-		defer snapshot.Close()
-		ociPlan, err := adapter.BuildSnapshotOCIPlan(*adapterRuntime, snapshot, adapterRunID, manifest)
-		if err != nil {
-			return exitInternal, exitError(exitExecution, err)
+		resolvedAdapters, resolveErr := resolveScanAdapters(
+			scanner, *profile, item, *mode, adapterManifests, *adapterRegistry, adapterIDs,
+		)
+		if resolveErr != nil {
+			return exitInternal, resolveErr
 		}
 		adapterContext := context.Background()
-		cancel := func() {}
+		cancelAdapters := func() {}
 		if validation != nil {
-			adapterContext, cancel = context.WithTimeout(
+			adapterContext, cancelAdapters = context.WithTimeout(
 				adapterContext,
 				time.Duration(validation.Configuration.Execution.MaxDurationSeconds)*time.Second,
 			)
 		}
-		output, err := adapter.RunOCI(adapterContext, ociPlan, manifest, input)
-		cancel()
-		if err != nil {
-			return exitInternal, exitError(exitExecution, err)
+		defer cancelAdapters()
+		for _, resolved := range resolvedAdapters {
+			execution, executeErr := executeScanAdapter(adapterContext, item, resolved, *adapterRuntime)
+			if executeErr != nil {
+				return exitInternal, exitError(exitExecution, executeErr)
+			}
+			executions = append(executions, execution)
 		}
-		var execution model.AdapterExecution
-		if registryResolution == nil {
-			execution, err = adapter.BindExecution(adapterRunID, subject, manifest, output)
-		} else {
-			execution, err = adapter.BindExecutionWithResolution(
-				adapterRunID, subject, manifest, *registryResolution, output,
-			)
-		}
-		if err != nil {
-			return exitInternal, exitError(exitExecution, err)
-		}
-		executions = append(executions, execution)
 	}
 	run, err := scanner.ScanMode(*profile, item, executions, *mode)
 	if err != nil {
