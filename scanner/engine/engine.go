@@ -129,6 +129,21 @@ func evaluateApplicability(expression string, inventory model.Inventory) (string
 			return "applicable", ""
 		}
 		return "not_applicable", ""
+	case "inventory.container_files.size() > 0":
+		if len(inventory.ContainerFiles) > 0 {
+			return "applicable", ""
+		}
+		return "not_applicable", ""
+	case "inventory.infrastructure.terraform_files.size() > 0":
+		if len(inventory.Infrastructure.TerraformFiles) > 0 {
+			return "applicable", ""
+		}
+		return "not_applicable", ""
+	case "inventory.infrastructure.kubernetes_files.size() > 0":
+		if len(inventory.Infrastructure.KubernetesFiles) > 0 {
+			return "applicable", ""
+		}
+		return "not_applicable", ""
 	default:
 		return "undetermined", fmt.Sprintf("unsupported applicability expression %q", expression)
 	}
@@ -156,6 +171,34 @@ func (e *Engine) evaluate(
 		return evaluateWorkflowPermissions(assertion, inventory, result, observedAt)
 	case "prc.native.final-newline@0.1":
 		return evaluateFinalNewline(assertion, inventory, result, observedAt)
+	case "prc.native.git-revision@0.1":
+		return evaluateGitRevision(assertion, inventory, result, observedAt)
+	case "prc.native.github-workflow-valid@0.1":
+		return evaluateWorkflowValidity(assertion, inventory, result, observedAt)
+	case "prc.native.github-workflow-jobs@0.1":
+		return evaluateWorkflowJobs(assertion, inventory, result, observedAt)
+	case "prc.native.github-workflow-timeouts@0.1":
+		return evaluateWorkflowTimeouts(assertion, inventory, result, observedAt)
+	case "prc.native.github-no-pull-request-target@0.1":
+		return evaluateNoPullRequestTarget(assertion, inventory, result, observedAt)
+	case "prc.native.merge-conflict-markers@0.1":
+		return evaluateMergeConflictMarkers(assertion, inventory, result, observedAt)
+	case "prc.native.restrictive-file-modes@0.1":
+		return evaluateRestrictiveFileModes(assertion, inventory, result, observedAt)
+	case "prc.native.inventory-files-nonempty@0.1":
+		return evaluateInventoryFilesNonempty(assertion, inventory, result, observedAt)
+	case "prc.native.runtime-version@0.1":
+		return evaluateRuntimeVersions(assertion, inventory, result, observedAt)
+	case "prc.native.container-base-pin@0.1":
+		return evaluateContainerBasePins(assertion, inventory, result, observedAt)
+	case "prc.native.container-nonroot@0.1":
+		return evaluateContainerNonRoot(assertion, inventory, result, observedAt)
+	case "prc.native.terraform-lock@0.1":
+		return evaluateTerraformLocks(assertion, inventory, result, observedAt)
+	case "prc.native.kubernetes-nonroot@0.1":
+		return evaluateKubernetesNonRoot(assertion, inventory, result, observedAt)
+	case "prc.native.kubernetes-resources@0.1":
+		return evaluateKubernetesResources(assertion, inventory, result, observedAt)
 	case "prc.native.manual-evidence@0.1":
 		result.Assessment = "manual_review"
 		result.Summary = "This assertion requires scoped evidence from an accountable reviewer."

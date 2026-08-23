@@ -2,7 +2,7 @@
 
 # Core repository readiness
 
-Profile: `prc/core-repository@0.2`
+Profile: `prc/core-repository@0.3`
 
 Deterministic repository governance, documentation, workflow, dependency, and test foundations.
 
@@ -28,6 +28,22 @@ implementation is present and verified by the scanner test suite.
 | `PRC-A-CORE-012` — Generated code follows normal review controls | [USEQ-F0F5ACE7](../engineering/05-code-quality-and-implementation.md) | high | required | reviewer-attestation | R0 |
 | `PRC-A-CORE-013` — Applicable analyses have executed | [USEQ-70E9D5AA](../engineering/10-verification-and-testing.md) | high | required | analysis-result | R2 |
 | `PRC-A-CORE-014` — Source files end with a newline | [USEQ-DAF77C8F](../engineering/05-code-quality-and-implementation.md) | low | advisory | source-format | R1 |
+| `PRC-A-CORE-015` — Source revision is identifiable | [USEQ-72088469](../engineering/01-governance-and-foundations.md) | medium | required | repository-identity | R0 |
+| `PRC-A-CORE-016` — Dependency updates are configured | [PRC-36-011](../checklists/08-maintenance-vendors-compliance.md) | medium | advisory | repository-file | R2 |
+| `PRC-A-CORE-017` — Workflow definitions parse | [USEQ-F4D6E3B3](../engineering/11-developer-experience-platform-and-delivery.md) | high | required | workflow-parse | R2 |
+| `PRC-A-CORE-018` — Workflows define executable jobs | [USEQ-12655775](../engineering/05-code-quality-and-implementation.md) | high | required | workflow-parse | R2 |
+| `PRC-A-CORE-019` — Workflow jobs have bounded runtimes | [USEQ-B66A3064](../engineering/11-developer-experience-platform-and-delivery.md) | medium | required | workflow-parse | R2 |
+| `PRC-A-CORE-020` — Privileged untrusted workflow trigger is absent | [USEQ-73488048](../engineering/11-developer-experience-platform-and-delivery.md) | critical | no-go | workflow-parse | R2 |
+| `PRC-A-CORE-021` — Unresolved merge conflicts are absent | [USEQ-12655775](../engineering/05-code-quality-and-implementation.md) | high | no-go | source-integrity | R2 |
+| `PRC-A-CORE-022` — Repository files are not broadly writable | [USEQ-D60E6950](../engineering/11-developer-experience-platform-and-delivery.md) | medium | advisory | repository-metadata | R1 |
+| `PRC-A-CORE-023` — Dependency manifests are nonempty | [USEQ-D1076D92](../engineering/11-developer-experience-platform-and-delivery.md) | high | required | repository-file | R2 |
+| `PRC-A-CORE-024` — Dependency locks are nonempty | [USEQ-D1076D92](../engineering/11-developer-experience-platform-and-delivery.md) | high | required | repository-file | R2 |
+| `PRC-A-CORE-025` — Runtime versions are declared | [USEQ-0B7FDB5F](../engineering/05-code-quality-and-implementation.md) | medium | required | runtime-declaration | R2 |
+| `PRC-A-CORE-026` — Container base images are immutable | [USEQ-7D4DA192](../engineering/16-specialized-domains-and-release-assurance.md) | high | required | containerfile-parse | R2 |
+| `PRC-A-CORE-027` — Final container stages declare a non-root user | [USEQ-A3559C64](../engineering/16-specialized-domains-and-release-assurance.md) | high | required | containerfile-parse | R2 |
+| `PRC-A-CORE-028` — Terraform provider selections are locked | [USEQ-D1076D92](../engineering/11-developer-experience-platform-and-delivery.md) | medium | advisory | repository-file | R2 |
+| `PRC-A-CORE-029` — Kubernetes workloads require non-root containers | [USEQ-A3559C64](../engineering/16-specialized-domains-and-release-assurance.md) | high | required | kubernetes-parse | R2 |
+| `PRC-A-CORE-030` — Kubernetes containers declare resource policy | [USEQ-13CBD6C6](../engineering/16-specialized-domains-and-release-assurance.md) | high | required | kubernetes-parse | R2 |
 
 ## Result interpretation
 

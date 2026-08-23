@@ -42,17 +42,21 @@ func healthyRepository(t *testing.T) string {
 	t.Helper()
 	root := t.TempDir()
 	files := map[string]string{
+		".git/HEAD":                "ref: refs/heads/main\n",
+		".git/refs/heads/main":     strings.Repeat("a", 40) + "\n",
 		"README.md":                "# Example\n",
 		"LICENSE":                  "MIT\n",
 		"CONTRIBUTING.md":          "# Contributing\n",
 		"SECURITY.md":              "# Security\n",
 		"CODE_OF_CONDUCT.md":       "# Conduct\n",
 		".github/CODEOWNERS":       "* @owner\n",
+		".github/dependabot.yml":   "version: 2\nupdates: []\n",
+		".python-version":          "3.12\n",
 		"requirements.txt":         "example==1.0\n",
 		"requirements.lock.txt":    "example==1.0\n",
 		"app.py":                   "def ready(): return True\n",
 		"tests/test_app.py":        "def test_ready(): assert True\n",
-		".github/workflows/ci.yml": "name: CI\non: [push]\npermissions:\n  contents: read\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: " + pinnedCheckout + "\n",
+		".github/workflows/ci.yml": "name: CI\non: [push]\npermissions:\n  contents: read\njobs:\n  test:\n    runs-on: ubuntu-latest\n    timeout-minutes: 15\n    steps:\n      - uses: " + pinnedCheckout + "\n",
 	}
 	for relative, content := range files {
 		writeFixture(t, root, relative, content)
@@ -109,6 +113,22 @@ func TestHealthyRepositoryProducesVerifiedAndExplicitUnresolvedResults(t *testin
 	}
 	if got := findResult(t, run, "PRC-A-CORE-014").Assessment; got != "pass" {
 		t.Fatalf("final-newline assertion = %s", got)
+	}
+	for index := 15; index <= 25; index++ {
+		assertionID := fmt.Sprintf("PRC-A-CORE-%03d", index)
+		result := findResult(t, run, assertionID)
+		if result.Assessment != "pass" {
+			t.Errorf("%s = %s: %s", assertionID, result.Assessment, result.Summary)
+		}
+		if len(result.EvidenceObserved) == 0 {
+			t.Errorf("%s passed without observed evidence", assertionID)
+		}
+	}
+	for index := 26; index <= 30; index++ {
+		assertionID := fmt.Sprintf("PRC-A-CORE-%03d", index)
+		if result := findResult(t, run, assertionID); result.Assessment != "not_applicable" {
+			t.Errorf("%s = %s: %s", assertionID, result.Assessment, result.Summary)
+		}
 	}
 	if got := findResult(t, run, "PRC-A-CORE-012").Assessment; got != "manual_review" {
 		t.Fatalf("manual assertion = %s", got)

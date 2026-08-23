@@ -1,7 +1,7 @@
 # Scanner quick start
 
 The scanner CLI is an experimental deterministic vertical slice. It inventories a
-repository, creates an immutable plan for `prc/core-repository@0.2`, evaluates
+repository, creates an immutable plan for `prc/core-repository@0.3`, evaluates
 native assertions, records evidence, and reports explicit unresolved states.
 
 The profile evaluator does not yet consume external adapter observations. The
@@ -99,12 +99,20 @@ the report.
 
 ## Current native checks
 
-- required repository governance and documentation files;
-- detected dependency ecosystems and corresponding lock or checksum files;
-- GitHub Actions presence and full-commit action pins;
-- explicit GitHub Actions permissions; and
-- discoverable source-level tests;
-- final line-feed bytes on recognized source files.
+- repository governance files and an immutable Git source identity;
+- detected dependency manifests, nonempty lock inputs, update configuration,
+  and runtime-version declarations;
+- GitHub Actions syntax, jobs, bounded runtimes, permissions, immutable action
+  references, and unsafe untrusted triggers;
+- discoverable tests, final line-feed bytes, merge-conflict markers, and broad
+  file-write permissions;
+- immutable container base identities and final-stage non-root users;
+- Terraform provider locks; and
+- Kubernetes non-root and container resource policies.
+
+The profile has 30 atomic assertions. Container, Terraform, and Kubernetes
+assertions are planned as not applicable when their corresponding sourced
+inventory facts are absent.
 
 The engine rejects repository path and symlink escapes and detects a target file
 that changes between inventory and evidence collection. Missing evidence,

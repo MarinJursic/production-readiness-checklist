@@ -1,5 +1,5 @@
 schema_version: prc.assertions/v0.1
-catalog_version: 0.2.0
+catalog_version: 0.3.0
 assertions:
   - id: PRC-A-CORE-001
     revision: 2
@@ -224,3 +224,248 @@ assertions:
     severity: low
     gate: advisory
     remediation_class: R1
+  - id: PRC-A-CORE-015
+    revision: 1
+    control_ids: [USEQ-72088469]
+    title: Source revision is identifiable
+    statement: The scanned repository resolves to an immutable Git commit identity.
+    applicability: "true"
+    evidence_required:
+      - kind: repository-identity
+        minimum_authority: repository
+        description: The immutable source revision captured by the deterministic inventory.
+    implementation_id: prc.native.git-revision@0.1
+    parameters: {}
+    severity: medium
+    gate: required
+    remediation_class: R0
+  - id: PRC-A-CORE-016
+    revision: 1
+    control_ids: [PRC-36-011]
+    title: Dependency updates are configured
+    statement: A supported dependency-update automation configuration is present.
+    applicability: inventory.package_ecosystems.size() > 0
+    evidence_required:
+      - kind: repository-file
+        minimum_authority: repository
+        description: A nonempty supported dependency-update configuration.
+    implementation_id: prc.native.file-present@0.1
+    parameters:
+      paths: [.github/dependabot.yml, .github/dependabot.yaml, renovate.json, renovate.json5, .renovaterc, .renovaterc.json]
+      minimum_bytes: 1
+    severity: medium
+    gate: advisory
+    remediation_class: R2
+  - id: PRC-A-CORE-017
+    revision: 1
+    control_ids: [USEQ-F4D6E3B3]
+    title: Workflow definitions parse
+    statement: Every detected GitHub Actions workflow is valid YAML with a mapping document root.
+    applicability: inventory.ci.github_actions == true
+    evidence_required:
+      - kind: workflow-parse
+        minimum_authority: repository
+        description: A successful strict parse of every detected workflow file.
+    implementation_id: prc.native.github-workflow-valid@0.1
+    parameters: {}
+    severity: high
+    gate: required
+    remediation_class: R2
+  - id: PRC-A-CORE-018
+    revision: 1
+    control_ids: [USEQ-12655775]
+    title: Workflows define executable jobs
+    statement: Every detected GitHub Actions workflow defines at least one job.
+    applicability: inventory.ci.github_actions == true
+    evidence_required:
+      - kind: workflow-parse
+        minimum_authority: repository
+        description: Parsed nonempty job mappings from every detected workflow.
+    implementation_id: prc.native.github-workflow-jobs@0.1
+    parameters: {}
+    severity: high
+    gate: required
+    remediation_class: R2
+  - id: PRC-A-CORE-019
+    revision: 1
+    control_ids: [USEQ-B66A3064]
+    title: Workflow jobs have bounded runtimes
+    statement: Every directly executed GitHub Actions job declares a positive static timeout no greater than six hours.
+    applicability: inventory.ci.github_actions == true
+    evidence_required:
+      - kind: workflow-parse
+        minimum_authority: repository
+        description: Parsed timeout-minutes values for every job that declares runs-on.
+    implementation_id: prc.native.github-workflow-timeouts@0.1
+    parameters:
+      maximum_minutes: 360
+    severity: medium
+    gate: required
+    remediation_class: R2
+  - id: PRC-A-CORE-020
+    revision: 1
+    control_ids: [USEQ-73488048]
+    title: Privileged untrusted workflow trigger is absent
+    statement: No GitHub Actions workflow uses the pull_request_target trigger.
+    applicability: inventory.ci.github_actions == true
+    evidence_required:
+      - kind: workflow-parse
+        minimum_authority: repository
+        description: Parsed trigger declarations from every detected workflow.
+    implementation_id: prc.native.github-no-pull-request-target@0.1
+    parameters: {}
+    severity: critical
+    gate: no-go
+    remediation_class: R2
+  - id: PRC-A-CORE-021
+    revision: 1
+    control_ids: [USEQ-12655775]
+    title: Unresolved merge conflicts are absent
+    statement: Recognized source, build, workflow, container, and infrastructure files contain no complete merge-conflict marker set.
+    applicability: "true"
+    evidence_required:
+      - kind: source-integrity
+        minimum_authority: repository
+        description: Deterministic content inspection of scoped repository files.
+    implementation_id: prc.native.merge-conflict-markers@0.1
+    parameters: {}
+    severity: high
+    gate: no-go
+    remediation_class: R2
+  - id: PRC-A-CORE-022
+    revision: 1
+    control_ids: [USEQ-D60E6950]
+    title: Repository files are not broadly writable
+    statement: Inventoried regular files are not writable by group or other users.
+    applicability: "true"
+    evidence_required:
+      - kind: repository-metadata
+        minimum_authority: repository
+        description: Permission modes captured for every inventoried regular file.
+    implementation_id: prc.native.restrictive-file-modes@0.1
+    parameters: {}
+    severity: medium
+    gate: advisory
+    remediation_class: R1
+  - id: PRC-A-CORE-023
+    revision: 1
+    control_ids: [USEQ-D1076D92]
+    title: Dependency manifests are nonempty
+    statement: Every detected dependency manifest contains data.
+    applicability: inventory.package_ecosystems.size() > 0
+    evidence_required:
+      - kind: repository-file
+        minimum_authority: repository
+        description: Current content evidence for every detected dependency manifest.
+    implementation_id: prc.native.inventory-files-nonempty@0.1
+    parameters:
+      inventory_field: manifests
+    severity: high
+    gate: required
+    remediation_class: R2
+  - id: PRC-A-CORE-024
+    revision: 1
+    control_ids: [USEQ-D1076D92]
+    title: Dependency locks are nonempty
+    statement: Every detected dependency lock or checksum file contains data.
+    applicability: inventory.package_ecosystems.size() > 0
+    evidence_required:
+      - kind: repository-file
+        minimum_authority: repository
+        description: Current content evidence for every detected dependency lock or checksum file.
+    implementation_id: prc.native.inventory-files-nonempty@0.1
+    parameters:
+      inventory_field: lock_files
+    severity: high
+    gate: required
+    remediation_class: R2
+  - id: PRC-A-CORE-025
+    revision: 1
+    control_ids: [USEQ-0B7FDB5F]
+    title: Runtime versions are declared
+    statement: Every detected package ecosystem has a supported runtime or toolchain version declaration.
+    applicability: inventory.package_ecosystems.size() > 0
+    evidence_required:
+      - kind: runtime-declaration
+        minimum_authority: repository
+        description: A supported version declaration for each detected package ecosystem.
+    implementation_id: prc.native.runtime-version@0.1
+    parameters: {}
+    severity: medium
+    gate: required
+    remediation_class: R2
+  - id: PRC-A-CORE-026
+    revision: 1
+    control_ids: [USEQ-7D4DA192]
+    title: Container base images are immutable
+    statement: Every Dockerfile build stage uses scratch or a base image pinned by a sha256 digest.
+    applicability: inventory.container_files.size() > 0
+    evidence_required:
+      - kind: containerfile-parse
+        minimum_authority: repository
+        description: Parsed FROM instructions from every detected container build file.
+    implementation_id: prc.native.container-base-pin@0.1
+    parameters: {}
+    severity: high
+    gate: required
+    remediation_class: R2
+  - id: PRC-A-CORE-027
+    revision: 1
+    control_ids: [USEQ-A3559C64]
+    title: Final container stages declare a non-root user
+    statement: Every Dockerfile final stage declares a static USER other than root or zero.
+    applicability: inventory.container_files.size() > 0
+    evidence_required:
+      - kind: containerfile-parse
+        minimum_authority: repository
+        description: Parsed USER instruction in the final stage of every detected container build file.
+    implementation_id: prc.native.container-nonroot@0.1
+    parameters: {}
+    severity: high
+    gate: required
+    remediation_class: R2
+  - id: PRC-A-CORE-028
+    revision: 1
+    control_ids: [USEQ-D1076D92]
+    title: Terraform provider selections are locked
+    statement: Each directory containing Terraform configuration also contains a nonempty provider dependency lock file.
+    applicability: inventory.infrastructure.terraform_files.size() > 0
+    evidence_required:
+      - kind: repository-file
+        minimum_authority: repository
+        description: A nonempty .terraform.lock.hcl next to each detected Terraform configuration root.
+    implementation_id: prc.native.terraform-lock@0.1
+    parameters: {}
+    severity: medium
+    gate: advisory
+    remediation_class: R2
+  - id: PRC-A-CORE-029
+    revision: 1
+    control_ids: [USEQ-A3559C64]
+    title: Kubernetes workloads require non-root containers
+    statement: Every detected Kubernetes workload declares runAsNonRoot for its pod or every container and does not declare user zero.
+    applicability: inventory.infrastructure.kubernetes_files.size() > 0
+    evidence_required:
+      - kind: kubernetes-parse
+        minimum_authority: repository
+        description: Parsed pod and container security contexts from detected workload resources.
+    implementation_id: prc.native.kubernetes-nonroot@0.1
+    parameters: {}
+    severity: high
+    gate: required
+    remediation_class: R2
+  - id: PRC-A-CORE-030
+    revision: 1
+    control_ids: [USEQ-13CBD6C6]
+    title: Kubernetes containers declare resource policy
+    statement: Every container in a detected Kubernetes workload declares nonempty resource requests and limits.
+    applicability: inventory.infrastructure.kubernetes_files.size() > 0
+    evidence_required:
+      - kind: kubernetes-parse
+        minimum_authority: repository
+        description: Parsed resource requests and limits from detected workload containers.
+    implementation_id: prc.native.kubernetes-resources@0.1
+    parameters: {}
+    severity: high
+    gate: required
+    remediation_class: R2

@@ -1,5 +1,5 @@
 schema_version: prc.objectives/v0.1
-catalog_version: 0.2.0
+catalog_version: 0.3.0
 objectives:
   - id: USEQ-FDCA6C71
     revision: 1
@@ -70,7 +70,7 @@ objectives:
       line: 32
     domains: [delivery, repository, supply-chain]
     automation_class: partial
-    assertion_ids: [PRC-A-CORE-007]
+    assertion_ids: [PRC-A-CORE-007, PRC-A-CORE-023, PRC-A-CORE-024, PRC-A-CORE-028]
   - id: USEQ-F4D6E3B3
     revision: 1
     title: Pinned workflow tooling
@@ -80,7 +80,7 @@ objectives:
       line: 102
     domains: [delivery, repository, supply-chain]
     automation_class: partial
-    assertion_ids: [PRC-A-CORE-008]
+    assertion_ids: [PRC-A-CORE-008, PRC-A-CORE-017]
   - id: USEQ-12655775
     revision: 1
     title: Automated engineering checks
@@ -90,7 +90,7 @@ objectives:
       line: 1012
     domains: [code-quality, repository, testing]
     automation_class: partial
-    assertion_ids: [PRC-A-CORE-009, PRC-A-CORE-010]
+    assertion_ids: [PRC-A-CORE-009, PRC-A-CORE-010, PRC-A-CORE-018, PRC-A-CORE-021]
   - id: USEQ-73488048
     revision: 1
     title: Untrusted workflow isolation
@@ -100,7 +100,7 @@ objectives:
       line: 37
     domains: [delivery, security, supply-chain]
     automation_class: partial
-    assertion_ids: [PRC-A-CORE-011]
+    assertion_ids: [PRC-A-CORE-011, PRC-A-CORE-020]
   - id: USEQ-F0F5ACE7
     revision: 1
     title: Generated code review
@@ -131,3 +131,83 @@ objectives:
     domains: [code-quality, repository]
     automation_class: partial
     assertion_ids: [PRC-A-CORE-014]
+  - id: USEQ-72088469
+    revision: 1
+    title: Exact assessed identity
+    statement: Evidence identifies the exact product, source revision, artifact, configuration, environment, data state, and date assessed.
+    source:
+      path: docs/engineering/01-governance-and-foundations.md
+      line: 18
+    domains: [evidence, governance, repository]
+    automation_class: partial
+    assertion_ids: [PRC-A-CORE-015]
+  - id: PRC-36-011
+    revision: 1
+    title: Dependency update ownership
+    statement: Dependency-update ownership and cadence exist.
+    source:
+      path: docs/checklists/08-maintenance-vendors-compliance.md
+      line: 19
+    domains: [maintenance, repository, supply-chain]
+    automation_class: partial
+    assertion_ids: [PRC-A-CORE-016]
+  - id: USEQ-B66A3064
+    revision: 1
+    title: Explicit execution bounds
+    statement: Time zones, locales, encodings, units, time synchronization, resource limits, and timeouts are explicit.
+    source:
+      path: docs/engineering/11-developer-experience-platform-and-delivery.md
+      line: 60
+    domains: [delivery, reliability]
+    automation_class: partial
+    assertion_ids: [PRC-A-CORE-019]
+  - id: USEQ-D60E6950
+    revision: 1
+    title: Intended package metadata
+    statement: Verify final packages contain only intended files, permissions, metadata, and dependencies.
+    source:
+      path: docs/engineering/11-developer-experience-platform-and-delivery.md
+      line: 154
+    domains: [delivery, repository, supply-chain]
+    automation_class: partial
+    assertion_ids: [PRC-A-CORE-022]
+  - id: USEQ-0B7FDB5F
+    revision: 1
+    title: Supported runtime declarations
+    statement: Document supported runtimes, platforms, protocols, data versions, clients, and compatibility windows.
+    source:
+      path: docs/engineering/05-code-quality-and-implementation.md
+      line: 676
+    domains: [documentation, maintenance, repository]
+    automation_class: partial
+    assertion_ids: [PRC-A-CORE-025]
+  - id: USEQ-7D4DA192
+    revision: 1
+    title: Immutable container bases
+    statement: Use minimal trusted base images pinned by immutable identity.
+    source:
+      path: docs/engineering/16-specialized-domains-and-release-assurance.md
+      line: 270
+    domains: [containers, security, supply-chain]
+    automation_class: partial
+    assertion_ids: [PRC-A-CORE-026]
+  - id: USEQ-A3559C64
+    revision: 1
+    title: Non-root workloads
+    statement: Run workloads as non-root and without unnecessary privilege, capabilities, host access, or writable filesystem.
+    source:
+      path: docs/engineering/16-specialized-domains-and-release-assurance.md
+      line: 273
+    domains: [containers, kubernetes, security]
+    automation_class: partial
+    assertion_ids: [PRC-A-CORE-027, PRC-A-CORE-029]
+  - id: USEQ-13CBD6C6
+    revision: 1
+    title: Workload resource policy
+    statement: Define resource requests, limits, priorities, disruption, and eviction behavior.
+    source:
+      path: docs/engineering/16-specialized-domains-and-release-assurance.md
+      line: 274
+    domains: [containers, kubernetes, reliability]
+    automation_class: partial
+    assertion_ids: [PRC-A-CORE-030]
