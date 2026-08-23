@@ -1281,6 +1281,14 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         self.assertEqual(
             validate_instance.validation_errors(instance, "adapter-manifest.schema.json"), []
         )
+        gitleaks_path = ROOT / "adapters" / "gitleaks-v8.30.0.yaml"
+        gitleaks = yaml.safe_load(gitleaks_path.read_text(encoding="utf-8"))
+        self.assertEqual(
+            validate_instance.validation_errors(
+                gitleaks, "adapter-manifest.schema.json"
+            ),
+            [],
+        )
 
         legacy = {
             "schema_version": "prc.adapter-manifest/v0.1",
@@ -1314,6 +1322,14 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         self.assertEqual(
             validate_instance.validation_errors(
                 legacy, "adapter-manifest-v0.1.schema.json"
+            ),
+            [],
+        )
+
+        legacy_v2 = {**instance, "schema_version": "prc.adapter-manifest/v0.2"}
+        self.assertEqual(
+            validate_instance.validation_errors(
+                legacy_v2, "adapter-manifest-v0.2.schema.json"
             ),
             [],
         )

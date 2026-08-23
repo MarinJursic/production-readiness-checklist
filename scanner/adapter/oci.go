@@ -205,7 +205,7 @@ func RunOCI(
 	if err != nil {
 		return outputMetadata(stderr.String(), started, completed), fmt.Errorf("OCI adapter process failed: %w", err)
 	}
-	transcript, err := ParseOutput(strings.NewReader(stdout.String()), manifest.Resources.Limits)
+	transcript, err := ParseManifestOutput(manifest, strings.NewReader(stdout.String()))
 	if err != nil {
 		return outputMetadata(stderr.String(), started, completed), err
 	}

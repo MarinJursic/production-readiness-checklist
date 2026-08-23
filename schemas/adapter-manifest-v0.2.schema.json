@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/adapter-manifest.schema.json",
-  "title": "Production Readiness Adapter Manifest v0.3",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/adapter-manifest-v0.2.schema.json",
+  "title": "Production Readiness Adapter Manifest v0.2",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_version", "id", "title", "description", "publisher", "owner", "maintenance", "protocol", "output_schema", "observation_kinds", "compatibility", "tool", "limitations", "runner", "image", "command", "capabilities", "resources"],
   "properties": {
-    "schema_version": {"const": "prc.adapter-manifest/v0.3"},
+    "schema_version": {"const": "prc.adapter-manifest/v0.2"},
     "id": {"type": "string", "pattern": "^prc\\.adapter\\.[a-z0-9.-]+@[0-9]+\\.[0-9]+$"},
     "title": {"type": "string", "minLength": 1},
     "description": {"type": "string", "minLength": 1},
@@ -21,8 +21,8 @@
     },
     "owner": {"type": "string", "minLength": 1},
     "maintenance": {"enum": ["active", "deprecated"]},
-    "protocol": {"enum": ["prc-adapter-jsonl-v1", "prc-adapter-gitleaks-json-v1"]},
-    "output_schema": {"enum": ["prc.adapter-message/v0.1", "gitleaks.report/v8.30.0"]},
+    "protocol": {"const": "prc-adapter-jsonl-v1"},
+    "output_schema": {"const": "prc.adapter-message/v0.1"},
     "observation_kinds": {
       "type": "array",
       "minItems": 1,
@@ -98,7 +98,7 @@
         "network": {"const": "deny"},
         "network_hosts": {"type": "array", "maxItems": 0},
         "secret_handles": {"type": "array", "maxItems": 0},
-        "child_processes": {"type": "boolean"}
+        "child_processes": {"const": false}
       }
     },
     "resources": {
@@ -118,55 +118,5 @@
         "max_stderr_bytes": {"type": "integer", "minimum": 1, "maximum": 16777216}
       }
     }
-  },
-  "allOf": [
-    {
-      "if": {
-        "properties": {"protocol": {"const": "prc-adapter-jsonl-v1"}},
-        "required": ["protocol"]
-      },
-      "then": {
-        "properties": {
-          "output_schema": {"const": "prc.adapter-message/v0.1"},
-          "capabilities": {
-            "properties": {"child_processes": {"const": false}}
-          }
-        }
-      }
-    },
-    {
-      "if": {
-        "properties": {"protocol": {"const": "prc-adapter-gitleaks-json-v1"}},
-        "required": ["protocol"]
-      },
-      "then": {
-        "properties": {
-          "output_schema": {"const": "gitleaks.report/v8.30.0"},
-          "observation_kinds": {"const": ["secret-detection"]},
-          "image": {"const": "ghcr.io/gitleaks/gitleaks@sha256:691af3c7c5a48b16f187ce3446d5f194838f91238f27270ed36eef6359a574d9"},
-          "command": {"const": ["dir", "--no-banner", "--no-color", "--log-level=fatal", "--config=/dev/stdin", "--gitleaks-ignore-path=/dev/null", "--ignore-gitleaks-allow", "--max-archive-depth=0", "--max-decode-depth=0", "--max-target-megabytes=10", "--timeout=110", "--redact=100", "--report-format=json", "--report-path=-", "--exit-code=0", "/workspace"]},
-          "tool": {
-            "properties": {
-              "name": {"const": "gitleaks"},
-              "version": {"const": "8.30.0"},
-              "upstream": {"const": "https://github.com/gitleaks/gitleaks"},
-              "formats": {"const": [{"name": "gitleaks-json", "versions": ["8.30.0"]}]}
-            }
-          },
-          "capabilities": {
-            "properties": {
-              "write_scratch": {"const": false},
-              "child_processes": {"const": true}
-            }
-          },
-          "resources": {
-            "properties": {
-              "timeout_seconds": {"minimum": 111},
-              "pids": {"minimum": 16, "maximum": 256}
-            }
-          }
-        }
-      }
-    }
-  ]
+  }
 }

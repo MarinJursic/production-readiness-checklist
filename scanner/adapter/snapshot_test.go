@@ -61,6 +61,28 @@ func TestPrepareSnapshotRejectsWorkspaceDrift(t *testing.T) {
 	}
 }
 
+func TestGitleaksSnapshotRelocatesButPreservesIgnoreFileBytes(t *testing.T) {
+	root := t.TempDir()
+	writeSnapshotFixture(t, root, gitleaksIgnoreSourcePath, "untrusted-fingerprint\n")
+	writeSnapshotFixture(t, root, "README.md", "sealed\n")
+	item, err := inventory.Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	snapshot, err := PrepareSnapshotForManifest(item, validGitleaksManifest())
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer snapshot.Close()
+	if _, err := os.Stat(filepath.Join(snapshot.Path, gitleaksIgnoreSourcePath)); !os.IsNotExist(err) {
+		t.Fatalf("target-controlled ignore file remains active: %v", err)
+	}
+	data, err := os.ReadFile(filepath.Join(snapshot.Path, filepath.FromSlash(gitleaksIgnoreSnapshotPath)))
+	if err != nil || string(data) != "untrusted-fingerprint\n" {
+		t.Fatalf("relocated ignore content = %q, %v", data, err)
+	}
+}
+
 func TestRunOCIRejectsSnapshotDriftBeforeRuntime(t *testing.T) {
 	root := t.TempDir()
 	writeSnapshotFixture(t, root, "README.md", "sealed\n")

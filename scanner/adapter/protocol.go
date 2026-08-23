@@ -112,14 +112,8 @@ type Transcript struct {
 }
 
 func InputJSONL(runID string, subject Subject, facts, config map[string]any) ([]byte, error) {
-	if !hexDigestPattern.MatchString(runID) {
-		return nil, fmt.Errorf("adapter run ID must be a lowercase SHA-256 digest")
-	}
-	if strings.TrimSpace(subject.TargetName) == "" || !hexDigestPattern.MatchString(subject.InventoryDigest) {
-		return nil, fmt.Errorf("adapter subject requires a target name and lowercase SHA-256 inventory digest")
-	}
-	if subject.TargetCommit != "" && !commitPattern.MatchString(subject.TargetCommit) {
-		return nil, fmt.Errorf("adapter target commit must be 40 to 64 lowercase hexadecimal characters")
+	if err := validateInputIdentity(runID, subject); err != nil {
+		return nil, err
 	}
 	if facts == nil {
 		facts = map[string]any{}
@@ -141,6 +135,19 @@ func InputJSONL(runID string, subject Subject, facts, config map[string]any) ([]
 		}
 	}
 	return output.Bytes(), nil
+}
+
+func validateInputIdentity(runID string, subject Subject) error {
+	if !hexDigestPattern.MatchString(runID) {
+		return fmt.Errorf("adapter run ID must be a lowercase SHA-256 digest")
+	}
+	if strings.TrimSpace(subject.TargetName) == "" || !hexDigestPattern.MatchString(subject.InventoryDigest) {
+		return fmt.Errorf("adapter subject requires a target name and lowercase SHA-256 inventory digest")
+	}
+	if subject.TargetCommit != "" && !commitPattern.MatchString(subject.TargetCommit) {
+		return fmt.Errorf("adapter target commit must be 40 to 64 lowercase hexadecimal characters")
+	}
+	return nil
 }
 
 func ParseOutput(input io.Reader, limits Limits) (Transcript, error) {

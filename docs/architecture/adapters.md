@@ -42,16 +42,34 @@ checked-in release suite includes completed, unsupported, timeout, malformed,
 resource-limit, undeclared-output, and explicit evaluator-authority attack
 transcripts.
 
+Manifest v0.3 also defines one closed native-output protocol,
+`prc-adapter-gitleaks-json-v1`. It accepts only Gitleaks 8.30.0's reviewed
+official image digest, exact scanner-owned current-tree command, and JSON
+report contract. The scanner supplies the SHA-256-pinned upstream default
+ruleset on standard input, forces full redaction, ignores target-owned Gitleaks
+configuration, ignore files, and `gitleaks:allow` comments, and disables archive
+and recursive-decoding expansion. The normalizer rejects unknown or duplicate
+fields, unredacted findings, history or symlink metadata, paths outside the
+snapshot, inconsistent fingerprints, invalid coordinates, and excessive
+findings. It retains only rule identity and normalized location metadata.
+
+The exact redacted native report is represented by a media type, byte count,
+and SHA-256 artifact descriptor in the transcript; raw report content is not
+copied into the durable run record. This preserves content provenance without
+persisting matched source context. An empty report becomes an explicit
+`not_found` observation. One or more findings become `found` observations, but
+neither the tool nor normalizer can declare an assertion pass or failure.
+
 ## Capability manifest
 
 Every external adapter has a strict
 [`adapter-manifest.schema.json`](https://github.com/MarinJursic/production-readiness-checklist/blob/main/schemas/adapter-manifest.schema.json).
-Manifest v0.2 binds the exact JSONL protocol and output schema, compatible
+Manifest v0.3 binds the exact protocol and output schema, compatible
 engine APIs, publisher and owner identities, immutable tool version and
 supported format versions, declared observation kinds, maintenance state, and
 known limitations. Output validation rejects an observation kind that is not
-declared by that exact manifest. The archived v0.1 schema remains available for
-record interpretation but is not accepted for new execution.
+declared by that exact manifest. The archived v0.1 and v0.2 schemas remain
+available for record interpretation but are not accepted for new execution.
 
 Trust is deliberately not self-declared by the adapter. A registry or explicit
 local operator grant must bind trust to the exact manifest digest and publisher;
@@ -65,18 +83,23 @@ The current experimental runner deliberately supports only a narrow subset:
 - no image pull during a scan;
 - no network;
 - no secret handles;
-- no declared child processes;
+- no child processes for generic JSONL adapters, with a narrowly reviewed,
+  PID-bounded OS-task allowance for the pinned Gitleaks binary;
 - an optional bounded scratch `tmpfs`; and
 - explicit wall-time, memory, CPU, process, line, message, stdin, stdout, and
   stderr limits.
 
 Before execution, the scanner reopens and hashes every inventoried regular file
 while copying it to a private temporary snapshot. Scanner-excluded paths and
-symlinks are not copied. A changed type, size, or digest stops execution. The
-snapshot has a 4 GiB safety ceiling, is mounted read-only, and is removed after
-the run. Its own deterministic digest is sealed into the OCI plan and checked
-again immediately before and after the container runs, so observations cannot
-silently refer to different bytes than the inventory.
+symlinks are not copied. Protocol-owned path remapping may prevent a target file
+from changing analyzer policy without dropping its content: the Gitleaks
+protocol relocates the root `.gitleaksignore`, scans its original bytes, and
+maps any resulting location back to `.gitleaksignore`. A changed type, size, or
+digest stops execution. The snapshot has a 4 GiB safety ceiling, is mounted
+read-only, and is removed after the run. Its own deterministic digest is sealed
+into the OCI plan and checked again immediately before and after the container
+runs, so observations cannot silently refer to different bytes than the
+inventory.
 
 The generated OCI command also drops all Linux capabilities, enables
 `no-new-privileges`, uses the invoking non-root UID/GID so private snapshot
@@ -220,10 +243,31 @@ immutable binding. The execution and each resulting evidence envelope are bound
 to the exact inventory digest. Offline execution-record import is deliberately
 unsupported because a content digest alone does not prove that a tool ran.
 
-The default `PRC-A-CORE-013` binding list remains empty until a production
-analysis adapter image is published, reviewed, and digest-pinned. It therefore
-remains Blocked in an ordinary core scan. The checked-in fixture exercises the
-plumbing in tests but is not authorized by the production profile.
+The default `PRC-A-CORE-013` binding pins
+`prc.adapter.gitleaks@8.30` and the canonical manifest digest for
+`adapters/gitleaks-v8.30.0.yaml`. It remains Blocked in an ordinary inspect-mode
+core scan because inspect mode never launches containers. To produce executed
+evidence, an operator must first pull the exact image digest and then explicitly
+select `--mode verify-local` with the checked-in manifest. The checked-in
+protocol fixture still exercises generic JSONL plumbing in tests but is not
+authorized by the production profile.
+
+```bash
+docker pull \
+  ghcr.io/gitleaks/gitleaks@sha256:691af3c7c5a48b16f187ce3446d5f194838f91238f27270ed36eef6359a574d9
+
+prc scan \
+  --target /path/to/project \
+  --catalog-root /path/to/production-readiness-checklist \
+  --mode verify-local \
+  --adapter-manifest /path/to/production-readiness-checklist/adapters/gitleaks-v8.30.0.yaml
+```
+
+The command scans only the sealed current-tree snapshot. It does not scan Git
+history, files above 10 MiB, symlink targets, archives, or recursively decoded
+content. Gitleaks rules are heuristic; both false positives and false negatives
+remain possible, so this binding is one selected analysis class rather than a
+claim of complete secret or static-analysis coverage.
 
 ## Design references
 
@@ -235,3 +279,9 @@ plumbing in tests but is not authorized by the production profile.
   `no-new-privileges`.
 - [Podman run](https://docs.podman.io/en/stable/markdown/podman-run.1.html)
   documents the corresponding rootless container and resource controls.
+- [Gitleaks v8.30.0](https://github.com/gitleaks/gitleaks/releases/tag/v8.30.0)
+  is the pinned upstream release; its official CLI documents directory scans,
+  JSON reports, full redaction, timeouts, and bounded target-file size.
+- [Gitleaks default configuration](https://github.com/gitleaks/gitleaks/blob/v8.30.0/config/gitleaks.toml)
+  is vendored without modification, attributed in `THIRD_PARTY_NOTICES.md`,
+  and verified against its recorded SHA-256 digest before every execution.

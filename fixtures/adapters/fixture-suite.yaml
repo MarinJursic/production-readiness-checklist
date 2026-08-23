@@ -3,7 +3,7 @@ id: prc.adapter-fixture.protocol@0.1
 title: Adapter protocol and contract release fixtures
 manifest:
   path: fixture-adapter.yaml
-  sha256: 4e63176c5a0a32c36d47ef705b076d1d90c7d75905bbb5fd85b21c175ed3b7b2
+  sha256: 5be6d2da5d406dfe24ca8ffae42c3e45587459821827b548b701019add8e55c3
 cases:
   - id: accepted-completed
     output: valid-output.jsonl

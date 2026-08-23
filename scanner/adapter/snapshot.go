@@ -39,6 +39,24 @@ type snapshotRecord struct {
 // PrepareSnapshot verifies every inventoried file while copying it into a
 // scanner-owned temporary directory. Callers must defer Close after success.
 func PrepareSnapshot(item model.Inventory) (*Snapshot, error) {
+	return prepareSnapshot(item, nil)
+}
+
+// PrepareSnapshotForManifest applies only protocol-owned input remappings that
+// are required to keep target files from changing analyzer policy. The original
+// bytes remain in the snapshot and are still scanned.
+func PrepareSnapshotForManifest(item model.Inventory, manifest Manifest) (*Snapshot, error) {
+	if err := manifest.ValidateForCurrentEngine(); err != nil {
+		return nil, err
+	}
+	remapped := map[string]string(nil)
+	if manifest.Protocol == GitleaksProtocolVersion {
+		remapped = map[string]string{gitleaksIgnoreSourcePath: gitleaksIgnoreSnapshotPath}
+	}
+	return prepareSnapshot(item, remapped)
+}
+
+func prepareSnapshot(item model.Inventory, remapped map[string]string) (*Snapshot, error) {
 	if item.Root == "" || item.FileCount != len(item.Files) {
 		return nil, fmt.Errorf("adapter snapshot requires a rooted inventory with a consistent file count")
 	}
@@ -67,11 +85,20 @@ func PrepareSnapshot(item model.Inventory) (*Snapshot, error) {
 		}
 	}()
 
+	destinations := map[string]bool{}
 	for _, record := range item.Files {
 		if snapshot.Bytes > maxSnapshotBytes-record.Size {
 			return nil, fmt.Errorf("adapter snapshot exceeds %d bytes", maxSnapshotBytes)
 		}
-		if err := copySnapshotFile(root, path, record); err != nil {
+		destination := record.Path
+		if mapped, ok := remapped[record.Path]; ok {
+			destination = mapped
+		}
+		if err := validateRelativePath(destination); err != nil || destinations[destination] {
+			return nil, fmt.Errorf("adapter snapshot has an invalid or duplicate materialized path")
+		}
+		destinations[destination] = true
+		if err := copySnapshotFile(root, path, record, destination); err != nil {
 			return nil, err
 		}
 		snapshot.Bytes += record.Size
@@ -102,7 +129,7 @@ func validateSnapshotRecords(records []model.FileRecord) error {
 	return nil
 }
 
-func copySnapshotFile(root *os.Root, destinationRoot string, record model.FileRecord) error {
+func copySnapshotFile(root *os.Root, destinationRoot string, record model.FileRecord, destinationPath string) error {
 	relative := filepath.FromSlash(record.Path)
 	before, err := root.Lstat(relative)
 	if err != nil || !before.Mode().IsRegular() {
@@ -118,7 +145,7 @@ func copySnapshotFile(root *os.Root, destinationRoot string, record model.FileRe
 		return fmt.Errorf("adapter source file changed while opening: %s", record.Path)
 	}
 
-	destination := filepath.Join(destinationRoot, relative)
+	destination := filepath.Join(destinationRoot, filepath.FromSlash(destinationPath))
 	if err := os.MkdirAll(filepath.Dir(destination), 0o700); err != nil {
 		return fmt.Errorf("create adapter snapshot directory: %w", err)
 	}

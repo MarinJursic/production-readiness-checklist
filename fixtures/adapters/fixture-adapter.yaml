@@ -1,4 +1,4 @@
-schema_version: prc.adapter-manifest/v0.2
+schema_version: prc.adapter-manifest/v0.3
 id: prc.adapter.fixture@0.1
 title: Protocol fixture adapter
 description: Produces bounded fixture observations for protocol and runner tests.

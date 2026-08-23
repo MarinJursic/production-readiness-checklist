@@ -509,7 +509,7 @@ func TestPlanConsumesValidatedConfiguration(t *testing.T) {
 	if plan.SchemaVersion != "prc.plan/v0.6" || plan.EngineVersion != "prc.engine/v0.1" ||
 		len(plan.ProfileDigest) != 64 || len(plan.CatalogDigest) != 64 || len(plan.ConfigurationDigest) != 64 ||
 		plan.ProjectID != "example-product" || !slices.Equal(plan.TargetEnvironments, []string{"staging"}) ||
-		plan.ExecutionMode != "inspect" || len(plan.Nodes) != len(plan.Assertions)+2 {
+		plan.ExecutionMode != "inspect" || len(plan.Nodes) != len(plan.Assertions)+len(plan.Adapters)+2 {
 		t.Fatalf("configured plan = %+v", plan)
 	}
 }
@@ -756,11 +756,24 @@ func TestScanConsumesOnlyProfileAuthorizedLiveAdapterEvidence(t *testing.T) {
 	}
 	assertions := copyCatalogFile(t, repository, catalogRoot, "catalog/assertions/core-repository.yaml")
 	copyCatalogFile(t, repository, catalogRoot, "catalog/profiles/core-repository.yaml")
-	binding := "adapter_bindings:\n" +
+	binding := "      adapter_bindings:\n" +
 		"        - adapter_id: " + manifest.ID + "\n" +
 		"          manifest_sha256: " + manifestDigest + "\n" +
-		"          observation_kind: fixture-result"
-	assertions = bytes.Replace(assertions, []byte("adapter_bindings: []"), []byte(binding), 1)
+		"          observation_kind: fixture-result\n"
+	bindingStart := bytes.Index(assertions, []byte("      adapter_bindings:\n"))
+	if bindingStart < 0 {
+		t.Fatal("test catalog has no adapter binding block")
+	}
+	bindingEndOffset := bytes.Index(assertions[bindingStart:], []byte("    severity:"))
+	if bindingEndOffset < 0 {
+		t.Fatal("test catalog adapter binding block has no severity boundary")
+	}
+	bindingEnd := bindingStart + bindingEndOffset
+	updatedAssertions := make([]byte, 0, len(assertions)-bindingEndOffset+len(binding))
+	updatedAssertions = append(updatedAssertions, assertions[:bindingStart]...)
+	updatedAssertions = append(updatedAssertions, binding...)
+	updatedAssertions = append(updatedAssertions, assertions[bindingEnd:]...)
+	assertions = updatedAssertions
 	if !bytes.Contains(assertions, []byte(manifestDigest)) {
 		t.Fatal("test catalog binding replacement failed")
 	}

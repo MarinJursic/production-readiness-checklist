@@ -6,10 +6,12 @@ native assertions, records evidence, and reports explicit unresolved states.
 
 The profile evaluator can consume a live, sandboxed adapter execution only when
 the selected profile binds its exact ID, manifest digest, and observation kind.
-The generated-code review remains manual, and the default analysis-evidence
-assertion remains blocked because no production adapter is authorized yet. A
-separate experimental OCI adapter protocol and runner are available for protocol
-and sandbox development.
+The generated-code review remains manual. The default analysis-evidence
+assertion pins the reviewed Gitleaks 8.30.0 current-tree adapter, but remains
+blocked in ordinary inspect mode; an operator must explicitly select
+`--mode verify-local`, supply the checked-in manifest, and pre-pull its immutable
+image. The [adapter contract](../architecture/adapters.md) documents the exact
+command and important coverage limitations.
 One deterministic R1 remediation is available for recognized source files that
 lack a final line-feed byte, and another restricts broadly writable file modes.
 The bounded `fix` loop can compose those repairs in isolated sibling candidates
@@ -142,9 +144,10 @@ from the content-addressed finding ID and embeds the reviewable v0.6 execution
 plan. Adapter executions bind their local or registry authorization provenance.
 Versioned run v0.1 through v0.8, plan v0.1 through v0.6, inventory v0.1
 through v0.3, adapter-execution v0.1 through v0.2, evidence v0.1, and finding
-v0.1 schemas remain available for archived consumers. Their local dependency
-graphs use versioned filenames, so later unversioned aliases cannot change an
-archived contract.
+v0.1 schemas remain available for archived consumers. Adapter-manifest v0.1 and
+v0.2 are likewise frozen while v0.3 is the current executable contract. Their
+local dependency graphs use versioned filenames, so later unversioned aliases
+cannot change an archived contract.
 
 `--exit-policy profile` is the default and uses the [stable CLI exit-code
 contract](cli-contract.md): a failed active gate is `1`, while incomplete,

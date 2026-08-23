@@ -1,0 +1,63 @@
+schema_version: prc.adapter-manifest/v0.3
+id: prc.adapter.gitleaks@8.30
+title: Gitleaks current-tree secret detection
+description: Runs the reviewed Gitleaks 8.30.0 image against the exact sealed inventory snapshot and normalizes a fully redacted JSON report.
+publisher:
+  id: prc-project
+  name: Production Readiness Checklist
+owner: scanner-maintainers
+maintenance: active
+protocol: prc-adapter-gitleaks-json-v1
+output_schema: gitleaks.report/v8.30.0
+observation_kinds: [secret-detection]
+compatibility:
+  engine_apis: [prc.engine/v0.1]
+tool:
+  name: gitleaks
+  version: 8.30.0
+  upstream: https://github.com/gitleaks/gitleaks
+  formats:
+    - name: gitleaks-json
+      versions: [8.30.0]
+limitations:
+  - Scans only regular files in the current sealed inventory; Git history and symlinks are not scanned.
+  - Files larger than 10 MiB, archives, and recursively decoded content are not scanned.
+  - Uses the pinned upstream default rules and ignores target-owned Gitleaks configuration, ignore files, and allow comments.
+  - Secret detection can produce false positives and false negatives; a clean result is not proof that no secret exists.
+runner: oci
+image: ghcr.io/gitleaks/gitleaks@sha256:691af3c7c5a48b16f187ce3446d5f194838f91238f27270ed36eef6359a574d9
+command:
+  - dir
+  - --no-banner
+  - --no-color
+  - --log-level=fatal
+  - --config=/dev/stdin
+  - --gitleaks-ignore-path=/dev/null
+  - --ignore-gitleaks-allow
+  - --max-archive-depth=0
+  - --max-decode-depth=0
+  - --max-target-megabytes=10
+  - --timeout=110
+  - --redact=100
+  - --report-format=json
+  - --report-path=-
+  - --exit-code=0
+  - /workspace
+capabilities:
+  read_workspace: true
+  write_scratch: false
+  network: deny
+  network_hosts: []
+  secret_handles: []
+  child_processes: true
+resources:
+  timeout_seconds: 120
+  memory_mb: 512
+  cpus: 1
+  pids: 64
+  tmpfs_mb: 1
+  max_line_bytes: 262144
+  max_messages: 10000
+  max_stdin_bytes: 1048576
+  max_stdout_bytes: 16777216
+  max_stderr_bytes: 65536

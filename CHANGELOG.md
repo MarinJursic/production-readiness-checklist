@@ -54,6 +54,12 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
   file, line, and column coordinates directly into canonical findings and SARIF
   while retaining the frozen v0.8 schema for archived consumers.
 - Profile-authorized live OCI adapter evidence, content-addressed execution records, exact inventory binding, and deterministic observation-to-assessment evaluation.
+- Private content-verified adapter snapshots that materialize only sealed
+  inventory bytes, bind their own digest into the OCI plan, reject drift before
+  and after execution, and run under the invoking non-root identity.
+- A production-profile Gitleaks 8.30.0 binding with an immutable official image,
+  embedded digest-checked upstream rules, target-suppression resistance,
+  redacted native-report normalization, and clean/finding live OCI tests.
 - Bounded CEL applicability evaluation over a deterministic inventory projection,
   with fail-closed resource limits and reason-bearing plan v0.2 records.
 - A byte-preserving R1 remediation for broadly writable repository files, with

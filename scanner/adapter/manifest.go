@@ -17,7 +17,7 @@ import (
 )
 
 const (
-	ManifestSchema      = "prc.adapter-manifest/v0.2"
+	ManifestSchema      = "prc.adapter-manifest/v0.3"
 	OutputSchemaVersion = "prc.adapter-message/v0.1"
 )
 
@@ -140,11 +140,17 @@ func (manifest Manifest) Validate() error {
 	if manifest.Maintenance != "active" && manifest.Maintenance != "deprecated" {
 		return fmt.Errorf("unsupported adapter maintenance state %q", manifest.Maintenance)
 	}
-	if manifest.Protocol != ProtocolVersion {
+	switch manifest.Protocol {
+	case ProtocolVersion:
+		if manifest.OutputSchema != OutputSchemaVersion {
+			return fmt.Errorf("unsupported JSONL adapter output schema %q", manifest.OutputSchema)
+		}
+	case GitleaksProtocolVersion:
+		if manifest.OutputSchema != GitleaksOutputSchemaVersion {
+			return fmt.Errorf("unsupported Gitleaks adapter output schema %q", manifest.OutputSchema)
+		}
+	default:
 		return fmt.Errorf("unsupported adapter protocol %q", manifest.Protocol)
-	}
-	if manifest.OutputSchema != OutputSchemaVersion {
-		return fmt.Errorf("unsupported adapter output schema %q", manifest.OutputSchema)
 	}
 	if !uniqueTokens(manifest.ObservationKinds, observationKindPattern) {
 		return fmt.Errorf("adapter observation kinds must be a nonempty unique token array")
@@ -194,11 +200,16 @@ func (manifest Manifest) Validate() error {
 	if len(manifest.Capabilities.SecretHandles) != 0 {
 		return fmt.Errorf("secret handles are not supported by the current runner")
 	}
-	if manifest.Capabilities.ChildProcesses {
+	if manifest.Protocol == ProtocolVersion && manifest.Capabilities.ChildProcesses {
 		return fmt.Errorf("child-process capability is not supported by the current runner")
 	}
 	if err := validateResources(manifest.Resources); err != nil {
 		return err
+	}
+	if manifest.Protocol == GitleaksProtocolVersion {
+		if err := validateGitleaksManifest(manifest); err != nil {
+			return err
+		}
 	}
 	return nil
 }

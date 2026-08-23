@@ -1296,7 +1296,13 @@ func runAdapter(args []string, stdout, stderr io.Writer) error {
 			defer file.Close()
 			input = file
 		}
-		transcript, err := adapter.ParseOutput(input, limits)
+		var transcript adapter.Transcript
+		var err error
+		if manifest == nil {
+			transcript, err = adapter.ParseOutput(input, limits)
+		} else {
+			transcript, err = adapter.ParseManifestOutput(*manifest, input)
+		}
 		if err != nil {
 			return err
 		}
@@ -1416,7 +1422,7 @@ func runOCIAdapter(commandName string, args []string, stdout, stderr io.Writer) 
 		}
 		return encodeJSON(stdout, ociPlan)
 	}
-	snapshot, err := adapter.PrepareSnapshot(item)
+	snapshot, err := adapter.PrepareSnapshotForManifest(item, manifest)
 	if err != nil {
 		return err
 	}
@@ -1425,7 +1431,7 @@ func runOCIAdapter(commandName string, args []string, stdout, stderr io.Writer) 
 	if err != nil {
 		return err
 	}
-	input, err := adapter.InputJSONL(runID, adapter.Subject{
+	input, err := adapter.ExecutionInput(manifest, runID, adapter.Subject{
 		TargetName: item.TargetName, TargetCommit: item.GitCommit, InventoryDigest: item.Digest,
 	}, inventoryFacts(item), map[string]any{})
 	if err != nil {
@@ -1666,11 +1672,11 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		subject := adapter.Subject{
 			TargetName: item.TargetName, TargetCommit: item.GitCommit, InventoryDigest: item.Digest,
 		}
-		input, err := adapter.InputJSONL(adapterRunID, subject, inventoryFacts(item), map[string]any{})
+		input, err := adapter.ExecutionInput(manifest, adapterRunID, subject, inventoryFacts(item), map[string]any{})
 		if err != nil {
 			return exitInternal, exitError(exitExecution, err)
 		}
-		snapshot, err := adapter.PrepareSnapshot(item)
+		snapshot, err := adapter.PrepareSnapshotForManifest(item, manifest)
 		if err != nil {
 			return exitInternal, exitError(exitExecution, err)
 		}

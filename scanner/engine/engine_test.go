@@ -300,7 +300,7 @@ func TestPlanDigestIsDeterministic(t *testing.T) {
 		t.Fatalf("plan has incomplete engine/catalog/profile binding: %+v", first)
 	}
 	if first.ExecutionMode != ExecutionModeInspect || first.CapabilityPolicy.Process != "deny" ||
-		first.CapabilityPolicy.WriteScratch || len(first.Nodes) != len(first.Assertions)+2 {
+		first.CapabilityPolicy.WriteScratch || len(first.Nodes) != len(first.Assertions)+len(first.Adapters)+2 {
 		t.Fatalf("plan has an invalid inspect-mode DAG: %+v", first)
 	}
 	if first.Nodes[0].Kind != "inventory" || first.Nodes[len(first.Nodes)-1].Kind != "gate" {

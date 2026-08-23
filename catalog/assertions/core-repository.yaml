@@ -206,7 +206,10 @@ assertions:
         description: Current tool results for each analysis class selected by policy.
     implementation_id: prc.native.analysis-evidence@0.1
     parameters:
-      adapter_bindings: []
+      adapter_bindings:
+        - adapter_id: prc.adapter.gitleaks@8.30
+          manifest_sha256: 6968caa57085774d3b01a34e8bbcbe9859b26aec3df1551cea907a5abc1389da
+          observation_kind: secret-detection
     severity: high
     gate: required
     remediation_class: R2

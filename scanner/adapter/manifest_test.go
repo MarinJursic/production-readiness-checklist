@@ -64,7 +64,7 @@ func TestManifestFailsClosedOnMutableOrPrivilegedConfiguration(t *testing.T) {
 
 func TestLoadManifestRejectsUnknownFields(t *testing.T) {
 	path := filepath.Join(t.TempDir(), "adapter.yaml")
-	data := []byte("schema_version: prc.adapter-manifest/v0.2\nid: prc.adapter.fixture@0.1\nunexpected: true\n")
+	data := []byte("schema_version: prc.adapter-manifest/v0.3\nid: prc.adapter.fixture@0.1\nunexpected: true\n")
 	if err := os.WriteFile(path, data, 0o600); err != nil {
 		t.Fatal(err)
 	}
