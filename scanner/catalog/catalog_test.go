@@ -43,16 +43,17 @@ func TestDigestBindsGoverningDefinitions(t *testing.T) {
 
 func TestLoadRejectsDuplicateProfileAssertion(t *testing.T) {
 	root := t.TempDir()
+	writeSourceFixture(t, root, "- [ ] **USEQ-AAAAAAAA** — Test objective.\n")
 	writeCatalogFixture(t, root, "objectives/core.yaml", `schema_version: prc.objectives/v0.1
 catalog_version: 1.0.0
 objectives:
-  - id: TEST-AAAAAAAA
+  - id: USEQ-AAAAAAAA
     revision: 1
     title: Test
     statement: Test objective.
-    source: {path: README.md, line: 1}
+    source: {path: docs/source.md, line: 1}
     domains: [repository]
-    automation_class: full
+    automation_class: automated
     assertion_ids: [PRC-A-TEST-001]
 `)
 	writeCatalogFixture(t, root, "assertions/core.yaml", `schema_version: prc.assertions/v0.1
@@ -60,11 +61,14 @@ catalog_version: 1.0.0
 assertions:
   - id: PRC-A-TEST-001
     revision: 1
-    control_ids: [TEST-AAAAAAAA]
+    control_ids: [USEQ-AAAAAAAA]
     title: Test
     statement: Test assertion.
     applicability: "true"
-    evidence_required: []
+    evidence_required:
+      - kind: repository-file
+        minimum_authority: repository
+        description: Test evidence.
     implementation_id: prc.native.test@0.1
     severity: high
     gate: required
@@ -72,7 +76,7 @@ assertions:
 `)
 	writeCatalogFixture(t, root, "profiles/test.yaml", `schema_version: prc.profile/v0.1
 id: prc/test
-version: "1"
+version: "1.0"
 title: Test
 description: Test profile.
 assertion_ids: [PRC-A-TEST-001, PRC-A-TEST-001]
@@ -81,19 +85,155 @@ terminal_policy:
   allow_manual_remaining: true
 `)
 	_, err := Load(root)
-	if err == nil || !strings.Contains(err.Error(), "duplicate profile prc/test assertion reference") {
+	if err == nil || !strings.Contains(err.Error(), "duplicate profile assertion ID") {
 		t.Fatalf("unexpected error: %v", err)
 	}
 }
 
 func TestLoadRejectsMixedCatalogVersions(t *testing.T) {
 	root := t.TempDir()
-	writeCatalogFixture(t, root, "objectives/core.yaml", "schema_version: prc.objectives/v0.1\ncatalog_version: 1.0.0\nobjectives: []\n")
-	writeCatalogFixture(t, root, "assertions/core.yaml", "schema_version: prc.assertions/v0.1\ncatalog_version: 2.0.0\nassertions: []\n")
-	writeCatalogFixture(t, root, "profiles/test.yaml", "schema_version: prc.profile/v0.1\nid: prc/test\nversion: \"1\"\ntitle: Test\ndescription: Test.\nassertion_ids: [PRC-A-TEST-001]\nterminal_policy: {block_on: [high], allow_manual_remaining: true}\n")
+	writeSourceFixture(t, root, "- [ ] **USEQ-AAAAAAAA** — Test objective.\n")
+	writeCatalogFixture(t, root, "objectives/core.yaml", validObjectives("1.0.0", ""))
+	writeCatalogFixture(t, root, "assertions/core.yaml", validAssertions("2.0.0", "high", ""))
+	writeCatalogFixture(t, root, "profiles/test.yaml", validProfile("PRC-A-TEST-001"))
 	_, err := Load(root)
 	if err == nil || !strings.Contains(err.Error(), "does not match") {
 		t.Fatalf("unexpected error: %v", err)
+	}
+}
+
+func TestLoadRejectsUnknownYAMLFields(t *testing.T) {
+	root := t.TempDir()
+	writeSourceFixture(t, root, "- [ ] **USEQ-AAAAAAAA** — Test objective.\n")
+	writeCatalogFixture(t, root, "objectives/core.yaml", validObjectives("1.0.0", "    unexpected: true\n"))
+	writeCatalogFixture(t, root, "assertions/core.yaml", validAssertions("1.0.0", "high", ""))
+	writeCatalogFixture(t, root, "profiles/test.yaml", validProfile("PRC-A-TEST-001"))
+	_, err := Load(root)
+	if err == nil || !strings.Contains(err.Error(), "field unexpected not found") {
+		t.Fatalf("unexpected error: %v", err)
+	}
+}
+
+func TestLoadRejectsInvalidAssertionSemantics(t *testing.T) {
+	root := t.TempDir()
+	writeSourceFixture(t, root, "- [ ] **USEQ-AAAAAAAA** — Test objective.\n")
+	writeCatalogFixture(t, root, "objectives/core.yaml", validObjectives("1.0.0", ""))
+	writeCatalogFixture(t, root, "assertions/core.yaml", validAssertions("1.0.0", "urgent", ""))
+	writeCatalogFixture(t, root, "profiles/test.yaml", validProfile("PRC-A-TEST-001"))
+	_, err := Load(root)
+	if err == nil || !strings.Contains(err.Error(), "severity") {
+		t.Fatalf("unexpected error: %v", err)
+	}
+}
+
+func TestLoadRejectsStaleObjectiveSource(t *testing.T) {
+	root := t.TempDir()
+	writeSourceFixture(t, root, "- [ ] **USEQ-AAAAAAAA** — Different objective.\n")
+	writeCatalogFixture(t, root, "objectives/core.yaml", validObjectives("1.0.0", ""))
+	writeCatalogFixture(t, root, "assertions/core.yaml", validAssertions("1.0.0", "high", ""))
+	writeCatalogFixture(t, root, "profiles/test.yaml", validProfile("PRC-A-TEST-001"))
+	_, err := Load(root)
+	if err == nil || !strings.Contains(err.Error(), "does not exactly match") {
+		t.Fatalf("unexpected error: %v", err)
+	}
+}
+
+func TestLoadRejectsBrokenReverseMapping(t *testing.T) {
+	root := t.TempDir()
+	writeSourceFixture(t, root, "- [ ] **USEQ-AAAAAAAA** — Test objective.\n")
+	writeCatalogFixture(t, root, "objectives/core.yaml", validObjectives("1.0.0", ""))
+	writeCatalogFixture(t, root, "assertions/core.yaml", strings.Replace(
+		validAssertions("1.0.0", "high", ""),
+		"control_ids: [USEQ-AAAAAAAA]",
+		"control_ids: [USEQ-BBBBBBBB]",
+		1,
+	))
+	writeCatalogFixture(t, root, "profiles/test.yaml", validProfile("PRC-A-TEST-001"))
+	_, err := Load(root)
+	if err == nil || !strings.Contains(err.Error(), "does not map back") {
+		t.Fatalf("unexpected error: %v", err)
+	}
+}
+
+func TestLoadRejectsSymlinkCatalogFile(t *testing.T) {
+	root := t.TempDir()
+	writeSourceFixture(t, root, "- [ ] **USEQ-AAAAAAAA** — Test objective.\n")
+	outside := filepath.Join(t.TempDir(), "objectives.yaml")
+	if err := os.WriteFile(outside, []byte(validObjectives("1.0.0", "")), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	path := filepath.Join(root, "catalog", "objectives", "core.yaml")
+	if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.Symlink(outside, path); err != nil {
+		t.Skipf("symlinks unavailable: %v", err)
+	}
+	writeCatalogFixture(t, root, "assertions/core.yaml", validAssertions("1.0.0", "high", ""))
+	writeCatalogFixture(t, root, "profiles/test.yaml", validProfile("PRC-A-TEST-001"))
+	_, err := Load(root)
+	if err == nil || !strings.Contains(err.Error(), "must be a regular file") {
+		t.Fatalf("unexpected error: %v", err)
+	}
+}
+
+func validObjectives(version, extra string) string {
+	return `schema_version: prc.objectives/v0.1
+catalog_version: ` + version + `
+objectives:
+  - id: USEQ-AAAAAAAA
+    revision: 1
+    title: Test
+    statement: Test objective.
+    source: {path: docs/source.md, line: 1}
+    domains: [repository]
+    automation_class: automated
+    assertion_ids: [PRC-A-TEST-001]
+` + extra
+}
+
+func validAssertions(version, severity, extra string) string {
+	return `schema_version: prc.assertions/v0.1
+catalog_version: ` + version + `
+assertions:
+  - id: PRC-A-TEST-001
+    revision: 1
+    control_ids: [USEQ-AAAAAAAA]
+    title: Test
+    statement: Test assertion.
+    applicability: "true"
+    evidence_required:
+      - kind: repository-file
+        minimum_authority: repository
+        description: Test evidence.
+    implementation_id: prc.native.test@0.1
+    severity: ` + severity + `
+    gate: required
+    remediation_class: R0
+` + extra
+}
+
+func validProfile(assertionID string) string {
+	return `schema_version: prc.profile/v0.1
+id: prc/test
+version: "1.0"
+title: Test
+description: Test profile.
+assertion_ids: [` + assertionID + `]
+terminal_policy:
+  block_on: [high]
+  allow_manual_remaining: true
+`
+}
+
+func writeSourceFixture(t *testing.T, root, content string) {
+	t.Helper()
+	path := filepath.Join(root, "docs", "source.md")
+	if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(path, []byte(content), 0o600); err != nil {
+		t.Fatal(err)
 	}
 }
 

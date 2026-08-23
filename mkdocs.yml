@@ -61,6 +61,7 @@ nav:
       - Bounded R1 remediation: scanner/remediation.md
       - Product contract: architecture/product-contract.md
       - Trust and threat model: architecture/trust-model.md
+      - Catalog integrity: architecture/catalog-integrity.md
       - Sandboxed adapters: architecture/adapters.md
       - Read-only agent providers: architecture/agent-providers.md
       - Bounded applicability: architecture/applicability.md

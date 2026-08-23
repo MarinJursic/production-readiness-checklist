@@ -182,6 +182,16 @@ func TestScanConsumesOnlyProfileAuthorizedLiveAdapterEvidence(t *testing.T) {
 	}
 	catalogRoot := t.TempDir()
 	copyCatalogFile(t, repository, catalogRoot, "catalog/objectives/core-repository.yaml")
+	for _, source := range []string{
+		"docs/checklists/08-maintenance-vendors-compliance.md",
+		"docs/engineering/01-governance-and-foundations.md",
+		"docs/engineering/05-code-quality-and-implementation.md",
+		"docs/engineering/10-verification-and-testing.md",
+		"docs/engineering/11-developer-experience-platform-and-delivery.md",
+		"docs/engineering/16-specialized-domains-and-release-assurance.md",
+	} {
+		copyCatalogFile(t, repository, catalogRoot, source)
+	}
 	assertions := copyCatalogFile(t, repository, catalogRoot, "catalog/assertions/core-repository.yaml")
 	copyCatalogFile(t, repository, catalogRoot, "catalog/profiles/core-repository.yaml")
 	binding := "adapter_bindings:\n" +
