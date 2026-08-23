@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"os"
 	"path/filepath"
+	"slices"
 	"strings"
 	"testing"
 
@@ -48,6 +49,30 @@ func TestConfigValidateRejectsCapabilityExpansion(t *testing.T) {
 	var stdout, stderr bytes.Buffer
 	if code := run([]string{"config", "validate", "--file", path}, &stdout, &stderr); code != 2 {
 		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
+	}
+}
+
+func TestPlanConsumesValidatedConfiguration(t *testing.T) {
+	target := t.TempDir()
+	if err := os.WriteFile(filepath.Join(target, "app.py"), []byte("print('ready')\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	configPath := filepath.Join("..", "..", "fixtures", "config", "production-readiness.yaml")
+	var stdout, stderr bytes.Buffer
+	code := run([]string{
+		"plan", "--target", target, "--catalog-root", filepath.Join("..", ".."),
+		"--config", configPath, "--format", "json",
+	}, &stdout, &stderr)
+	if code != 0 {
+		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
+	}
+	var plan model.Plan
+	if err := json.Unmarshal(stdout.Bytes(), &plan); err != nil {
+		t.Fatal(err)
+	}
+	if plan.SchemaVersion != "prc.plan/v0.3" || len(plan.ConfigurationDigest) != 64 ||
+		plan.ProjectID != "example-product" || !slices.Equal(plan.TargetEnvironments, []string{"staging"}) {
+		t.Fatalf("configured plan = %+v", plan)
 	}
 }
 

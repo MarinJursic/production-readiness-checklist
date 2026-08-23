@@ -21,6 +21,8 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
   suppression and skip directives, constant assertions, and empty Go tests.
 - A strict, content-addressed `prc.config/v0.1` project configuration contract
   with default-deny capability semantics and adversarial parser validation.
+- Configuration-bound inventory v0.3, plan v0.3, and run v0.3 identities with
+  sourced declared facts, scoped CEL fields, and frozen v0.2 schemas.
 
 ### Fixed
 

@@ -1,17 +1,17 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/run-result.schema.json",
-  "title": "Production Readiness Run Result v0.3",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/run-result-v0.2.schema.json",
+  "title": "Production Readiness Run Result v0.2 (legacy)",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_version", "run_id", "started_at", "completed_at", "plan", "inventory", "adapter_executions", "results", "terminal_state"],
   "properties": {
-    "schema_version": {"const": "prc.run/v0.3"},
+    "schema_version": {"const": "prc.run/v0.2"},
     "run_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "started_at": {"type": "string", "format": "date-time"},
     "completed_at": {"type": "string", "format": "date-time"},
-    "plan": {"$ref": "plan.schema.json"},
-    "inventory": {"$ref": "inventory.schema.json"},
+    "plan": {"$ref": "plan-v0.2.schema.json"},
+    "inventory": {"$ref": "inventory-v0.2.schema.json"},
     "adapter_executions": {"type": "array", "items": {"$ref": "adapter-execution.schema.json"}},
     "results": {
       "type": "array",

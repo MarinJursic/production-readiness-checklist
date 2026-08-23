@@ -20,9 +20,9 @@ and return a Boolean. The result mapping is deliberately small:
 `undetermined` never becomes Not Applicable or Pass. A required assertion with
 undetermined applicability keeps the assessment incomplete.
 
-Plan v0.2 adds `applicability_reason` to every planned assertion and identifies
-the evaluator as `cel-go/v0.30.0+prc-inventory/v0.2`. The frozen
-`plan-v0.1.schema.json` remains available for validating archived v0.1 plans.
+Plan v0.3 records `applicability_reason` for every planned assertion and
+identifies the evaluator as `cel-go/v0.30.0+prc-inventory/v0.3`. Frozen v0.1 and
+v0.2 plan schemas remain available for validating archived plans.
 
 ## Available inventory view
 
@@ -39,7 +39,9 @@ The projection contains:
 - `infrastructure.terraform_files` and
   `infrastructure.kubernetes_files`;
 - `components`, limited to component ID, kind, path, and ecosystem; and
-- `fact_values`, mapping sourced inventory fact keys to their string values.
+- `fact_values`, mapping sourced inventory fact keys to their string values; and
+- `declared`, containing the bound project ID, risk profile, profile, release
+  scope, features, and data-context tags, or `configured: false` when absent.
 
 Examples:
 

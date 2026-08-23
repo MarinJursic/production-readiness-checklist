@@ -30,7 +30,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
 
     def test_minimal_inventory_conforms(self) -> None:
         instance = {
-            "schema_version": "prc.inventory/v0.2",
+            "schema_version": "prc.inventory/v0.3",
             "target_name": "example",
             "digest": "a" * 64,
             "file_count": 0,
@@ -49,7 +49,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
                 "value": "true",
                 "source": ".",
                 "detector": "prc.inventory.repository",
-                "detector_version": "0.2",
+                "detector_version": "0.3",
                 "confidence": 1,
                 "scope_path": ".",
                 "limitations": [],
@@ -72,11 +72,19 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         }
         self.assertEqual(validate_instance.validation_errors(legacy, "inventory-v0.1.schema.json"), [])
 
+        legacy_v2 = {**instance, "schema_version": "prc.inventory/v0.2"}
+        self.assertEqual(
+            validate_instance.validation_errors(
+                legacy_v2, "inventory-v0.2.schema.json"
+            ),
+            [],
+        )
+
     def test_invalid_inventory_is_rejected(self) -> None:
         instance = {"schema_version": "wrong"}
         errors = validate_instance.validation_errors(instance, "inventory.schema.json")
         self.assertTrue(errors)
-        self.assertTrue(any("prc.inventory/v0.2" in error for error in errors))
+        self.assertTrue(any("prc.inventory/v0.3" in error for error in errors))
 
     def test_legacy_run_contract_remains_validatable(self) -> None:
         digest = "a" * 64
@@ -119,6 +127,51 @@ class ScannerOutputSchemaTests(unittest.TestCase):
     def test_current_plan_records_applicability_reason(self) -> None:
         digest = "a" * 64
         plan = {
+            "schema_version": "prc.plan/v0.3",
+            "digest": digest,
+            "target_name": "example",
+            "inventory_digest": digest,
+            "profile_id": "prc/core-repository",
+            "profile_version": "0.3",
+            "artifact_digests": [],
+            "target_environments": [],
+            "assertions": [{
+                "assertion_id": "PRC-A-CORE-001",
+                "implementation_id": "prc.native.file-present@0.1",
+                "applicability": "applicable",
+                "applicability_evaluator": "cel-go/v0.30.0+prc-inventory/v0.3",
+                "applicability_reason": "CEL expression evaluated to true.",
+            }],
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(plan, "plan.schema.json"), []
+        )
+        del plan["assertions"][0]["applicability_reason"]
+        self.assertTrue(
+            validate_instance.validation_errors(plan, "plan.schema.json")
+        )
+
+    def test_v02_run_contract_remains_validatable(self) -> None:
+        digest = "a" * 64
+        inventory = {
+            "schema_version": "prc.inventory/v0.2",
+            "target_name": "example",
+            "digest": digest,
+            "file_count": 0,
+            "source_files": 0,
+            "package_ecosystems": [],
+            "manifests": [],
+            "lock_files": [],
+            "container_files": [],
+            "symlinks": [],
+            "ci": {"github_actions": False, "workflow_files": []},
+            "infrastructure": {"terraform_files": [], "kubernetes_files": []},
+            "components": [{"id": "repository:.", "kind": "repository", "path": "."}],
+            "relations": [],
+            "facts": [],
+            "files": [],
+        }
+        plan = {
             "schema_version": "prc.plan/v0.2",
             "digest": digest,
             "target_name": "example",
@@ -133,12 +186,22 @@ class ScannerOutputSchemaTests(unittest.TestCase):
                 "applicability_reason": "CEL expression evaluated to true.",
             }],
         }
+        run = {
+            "schema_version": "prc.run/v0.2",
+            "run_id": digest,
+            "started_at": "2026-08-23T12:00:00Z",
+            "completed_at": "2026-08-23T12:00:01Z",
+            "plan": plan,
+            "inventory": inventory,
+            "adapter_executions": [],
+            "results": [],
+            "terminal_state": "profile_satisfied",
+        }
         self.assertEqual(
-            validate_instance.validation_errors(plan, "plan.schema.json"), []
-        )
-        del plan["assertions"][0]["applicability_reason"]
-        self.assertTrue(
-            validate_instance.validation_errors(plan, "plan.schema.json")
+            validate_instance.validation_errors(
+                run, "run-result-v0.2.schema.json"
+            ),
+            [],
         )
 
     def test_minimal_remediation_candidate_conforms(self) -> None:

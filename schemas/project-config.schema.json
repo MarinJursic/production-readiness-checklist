@@ -23,7 +23,7 @@
       "required": ["profile", "source_ref", "artifact_digests", "target_environments"],
       "properties": {
         "profile": {"type": "string", "pattern": "^prc/[a-z0-9-]+$"},
-        "source_ref": {"type": "string", "maxLength": 256},
+        "source_ref": {"type": "string", "pattern": "^(?:[0-9a-f]{40,64})?$"},
         "artifact_digests": {
           "type": "array",
           "maxItems": 10000,

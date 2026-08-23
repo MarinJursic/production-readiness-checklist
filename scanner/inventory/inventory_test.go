@@ -4,7 +4,10 @@ import (
 	"os"
 	"path/filepath"
 	"slices"
+	"strings"
 	"testing"
+
+	projectconfig "github.com/MarinJursic/production-readiness-checklist/scanner/config"
 )
 
 func writeFile(t *testing.T, root, relative, content string) {
@@ -41,7 +44,7 @@ func TestBuildHashesContentAndDetectsEcosystems(t *testing.T) {
 	if first.SourceFiles != 1 {
 		t.Fatalf("expected one source file, got %d", first.SourceFiles)
 	}
-	if first.SchemaVersion != "prc.inventory/v0.2" || len(first.Components) != 6 || len(first.Relations) != 5 {
+	if first.SchemaVersion != "prc.inventory/v0.3" || len(first.Components) != 6 || len(first.Relations) != 5 {
 		t.Fatalf("unexpected graph: schema=%s components=%+v relations=%+v", first.SchemaVersion, first.Components, first.Relations)
 	}
 	if !slices.Contains(first.ContainerFiles, "Dockerfile") ||
@@ -126,5 +129,95 @@ func TestBuildIncludesPermissionModeInIdentity(t *testing.T) {
 	}
 	if after.Files[0].Mode != 0o755 || before.Digest == after.Digest {
 		t.Fatalf("mode=%#o digest changed=%t", after.Files[0].Mode, before.Digest != after.Digest)
+	}
+}
+
+func TestBindConfigurationAddsSourcedDeclaredScope(t *testing.T) {
+	root := t.TempDir()
+	writeFile(t, root, "src/app.py", "print('ready')\n")
+	baseline, err := Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	configPath, err := filepath.Abs(filepath.Join("..", "..", "fixtures", "config", "production-readiness.yaml"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	validation, err := projectconfig.Load(configPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	bound, err := BindConfiguration(baseline, validation, configPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if bound.Digest == baseline.Digest || bound.DeclaredScope == nil ||
+		bound.DeclaredScope.ConfigurationDigest != validation.Digest ||
+		bound.DeclaredScope.ProjectID != "example-product" || !bound.DeclaredScope.Features["authentication"] ||
+		bound.DeclaredScope.ArtifactDigests == nil {
+		t.Fatalf("unexpected declared scope: %+v", bound.DeclaredScope)
+	}
+	foundFeature, foundComponent := false, false
+	for _, fact := range bound.Facts {
+		if fact.Key == "feature.authentication" && fact.Value == "true" &&
+			fact.Detector == "prc.config.declaration" && len(fact.Limitations) > 0 {
+			foundFeature = true
+		}
+	}
+	for _, component := range bound.Components {
+		if component.ID == "declared-service:src" {
+			foundComponent = true
+		}
+	}
+	if !foundFeature || !foundComponent {
+		t.Fatalf("missing declaration provenance: facts=%+v components=%+v", bound.Facts, bound.Components)
+	}
+	second, err := BindConfiguration(baseline, validation, configPath)
+	if err != nil || second.Digest != bound.Digest {
+		t.Fatalf("configuration binding is not deterministic: %v %s != %s", err, second.Digest, bound.Digest)
+	}
+}
+
+func TestBindConfigurationRejectsChangedInTargetSource(t *testing.T) {
+	root := t.TempDir()
+	source, err := os.ReadFile(filepath.Join("..", "..", "fixtures", "config", "production-readiness.yaml"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	configPath := filepath.Join(root, "production-readiness.yaml")
+	writeFile(t, root, "production-readiness.yaml", string(source))
+	validation, err := projectconfig.Load(configPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	writeFile(t, root, "production-readiness.yaml", strings.Replace(string(source), "Example Product", "Changed Product", 1))
+	item, err := Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := BindConfiguration(item, validation, configPath); err == nil || !strings.Contains(err.Error(), "changed") {
+		t.Fatalf("unexpected error: %v", err)
+	}
+}
+
+func TestBindConfigurationRejectsUnverifiableDeclaredSourceRef(t *testing.T) {
+	root := t.TempDir()
+	source, err := os.ReadFile(filepath.Join("..", "..", "fixtures", "config", "production-readiness.yaml"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	configured := strings.Replace(string(source), `  source_ref: ""`, `  source_ref: "`+strings.Repeat("a", 40)+`"`, 1)
+	configPath := filepath.Join(root, "production-readiness.yaml")
+	writeFile(t, root, "production-readiness.yaml", configured)
+	validation, err := projectconfig.Load(configPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	item, err := Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := BindConfiguration(item, validation, configPath); err == nil || !strings.Contains(err.Error(), "no Git revision") {
+		t.Fatalf("unexpected error: %v", err)
 	}
 }

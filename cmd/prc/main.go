@@ -12,6 +12,7 @@ import (
 	"os"
 	"sort"
 	"strings"
+	"time"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/adapter"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/catalog"
@@ -441,11 +442,12 @@ func runInventory(args []string, stdout, stderr io.Writer) error {
 	set := flag.NewFlagSet("inventory", flag.ContinueOnError)
 	set.SetOutput(stderr)
 	target := set.String("target", ".", "repository to inspect")
+	configPath := set.String("config", "", "optional validated project configuration")
 	format := set.String("format", "human", "human or json")
 	if err := set.Parse(args); err != nil {
 		return err
 	}
-	item, err := inventory.Build(*target)
+	item, _, err := configuredInventory(*target, *configPath)
 	if err != nil {
 		return err
 	}
@@ -467,7 +469,33 @@ func runInventory(args []string, stdout, stderr io.Writer) error {
 	fmt.Fprintf(stdout, "Symlinks: %s\n", displayList(item.Symlinks))
 	fmt.Fprintf(stdout, "GitHub Actions: %t\n", item.CI.GitHubActions)
 	fmt.Fprintf(stdout, "Inventory graph: %d components, %d relations, %d sourced facts\n", len(item.Components), len(item.Relations), len(item.Facts))
+	if item.DeclaredScope != nil {
+		fmt.Fprintf(stdout, "Declared scope: %s (%s) via %s\n", item.DeclaredScope.ProjectID,
+			item.DeclaredScope.RiskProfile, item.DeclaredScope.ConfigurationDigest)
+	}
 	return nil
+}
+
+func configuredInventory(target, configPath string) (model.Inventory, *projectconfig.Validation, error) {
+	var validation *projectconfig.Validation
+	if configPath != "" {
+		loaded, err := projectconfig.Load(configPath)
+		if err != nil {
+			return model.Inventory{}, nil, err
+		}
+		validation = &loaded
+	}
+	item, err := inventory.Build(target)
+	if err != nil {
+		return model.Inventory{}, nil, err
+	}
+	if validation != nil {
+		item, err = inventory.BindConfiguration(item, *validation, configPath)
+		if err != nil {
+			return model.Inventory{}, nil, err
+		}
+	}
+	return item, validation, nil
 }
 
 func loadEngine(catalogRoot string) (*engine.Engine, error) {
@@ -480,13 +508,17 @@ func loadEngine(catalogRoot string) (*engine.Engine, error) {
 
 func runPlan(args []string, stdout, stderr io.Writer) error {
 	set, target, catalogRoot, profile := parseCommon("plan", args, stderr)
+	configPath := set.String("config", "", "optional validated project configuration")
 	format := set.String("format", "human", "human or json")
 	if err := set.Parse(args); err != nil {
 		return err
 	}
-	item, err := inventory.Build(*target)
+	item, validation, err := configuredInventory(*target, *configPath)
 	if err != nil {
 		return err
+	}
+	if validation != nil && !flagWasSet(set, "profile") {
+		*profile = validation.Configuration.Assessment.Profile
 	}
 	scanner, err := loadEngine(*catalogRoot)
 	if err != nil {
@@ -505,6 +537,11 @@ func runPlan(args []string, stdout, stderr io.Writer) error {
 	fmt.Fprintf(stdout, "Plan: %s@%s\n", plan.ProfileID, plan.ProfileVersion)
 	fmt.Fprintf(stdout, "Target: %s (%s)\n", plan.TargetName, plan.InventoryDigest)
 	fmt.Fprintf(stdout, "Plan digest: %s\n", plan.Digest)
+	if plan.ConfigurationDigest != "" {
+		fmt.Fprintf(stdout, "Configuration: %s (%s)\n", plan.ConfigurationDigest, plan.ProjectID)
+		fmt.Fprintf(stdout, "Environments: %s\n", displayList(plan.TargetEnvironments))
+		fmt.Fprintf(stdout, "Artifacts: %s\n", displayList(plan.ArtifactDigests))
+	}
 	for _, assertion := range plan.Assertions {
 		fmt.Fprintf(stdout, "- %s: %s via %s\n", assertion.AssertionID, assertion.Applicability, assertion.Implementation)
 	}
@@ -513,6 +550,7 @@ func runPlan(args []string, stdout, stderr io.Writer) error {
 
 func runScan(args []string, stdout, stderr io.Writer) (bool, error) {
 	set, target, catalogRoot, profile := parseCommon("scan", args, stderr)
+	configPath := set.String("config", "", "optional validated project configuration")
 	format := set.String("format", "human", "human, json, markdown, html, sarif, or junit")
 	stateDirectory := set.String("state-dir", "", "optional directory for content-addressed evidence and run records")
 	exitPolicy := set.String("exit-policy", "profile", "profile, no-go, or never")
@@ -528,9 +566,12 @@ func runScan(args []string, stdout, stderr io.Writer) (bool, error) {
 	if *exitPolicy != "profile" && *exitPolicy != "no-go" && *exitPolicy != "never" {
 		return false, fmt.Errorf("unsupported exit policy %q", *exitPolicy)
 	}
-	item, err := inventory.Build(*target)
+	item, validation, err := configuredInventory(*target, *configPath)
 	if err != nil {
 		return false, err
+	}
+	if validation != nil && !flagWasSet(set, "profile") {
+		*profile = validation.Configuration.Assessment.Profile
 	}
 	scanner, err := loadEngine(*catalogRoot)
 	if err != nil {
@@ -568,7 +609,16 @@ func runScan(args []string, stdout, stderr io.Writer) (bool, error) {
 		if err != nil {
 			return false, err
 		}
-		output, err := adapter.RunOCI(context.Background(), ociPlan, manifest, input)
+		adapterContext := context.Background()
+		cancel := func() {}
+		if validation != nil {
+			adapterContext, cancel = context.WithTimeout(
+				adapterContext,
+				time.Duration(validation.Configuration.Execution.MaxDurationSeconds)*time.Second,
+			)
+		}
+		output, err := adapter.RunOCI(adapterContext, ociPlan, manifest, input)
+		cancel()
 		if err != nil {
 			return false, err
 		}
@@ -611,13 +661,29 @@ func inventoryFacts(item model.Inventory) map[string]any {
 		"manifests": item.Manifests, "lock_files": item.LockFiles, "container_files": item.ContainerFiles,
 		"symlinks": item.Symlinks, "ci": item.CI, "infrastructure": item.Infrastructure,
 		"components": item.Components, "relations": item.Relations, "facts": item.Facts,
+		"declared_scope": item.DeclaredScope,
 	}
+}
+
+func flagWasSet(set *flag.FlagSet, name string) bool {
+	found := false
+	set.Visit(func(item *flag.Flag) {
+		if item.Name == name {
+			found = true
+		}
+	})
+	return found
 }
 
 func printRun(output io.Writer, run model.RunResult) {
 	fmt.Fprintf(output, "Run: %s\n", run.RunID)
 	fmt.Fprintf(output, "Profile: %s@%s\n", run.Plan.ProfileID, run.Plan.ProfileVersion)
 	fmt.Fprintf(output, "Target: %s (%s)\n", run.Inventory.TargetName, run.Inventory.Digest)
+	if run.Plan.ConfigurationDigest != "" {
+		fmt.Fprintf(output, "Configuration: %s (%s)\n", run.Plan.ConfigurationDigest, run.Plan.ProjectID)
+		fmt.Fprintf(output, "Environments: %s\n", displayList(run.Plan.TargetEnvironments))
+		fmt.Fprintf(output, "Artifacts: %s\n", displayList(run.Plan.ArtifactDigests))
+	}
 	fmt.Fprintf(output, "Adapter executions: %d\n", len(run.AdapterExecutions))
 	fmt.Fprintf(output, "Terminal state: %s\n\n", run.TerminalState)
 	for _, result := range run.Results {

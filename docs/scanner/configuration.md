@@ -5,10 +5,11 @@ data classes, or execution authority. `production-readiness.yaml` is the
 versioned declaration for those facts and for the scanner's local capability
 budget.
 
-The current `prc.config/v0.1` contract is deliberately restrictive. It supports
-configuration validation and content identity; scan-plan consumption is not yet
-enabled. Declaring a feature or environment is context for future applicability,
-not proof that the feature is deployed or behaves correctly.
+The current `prc.config/v0.1` contract is deliberately restrictive. Inventory,
+plan, and scan commands accept it through `--config`. The scanner binds its
+canonical digest and declarations into the inventory and plan identity.
+Declaring a feature or environment is applicability context, not proof that the
+feature is deployed or behaves correctly.
 
 ## Validate a configuration
 
@@ -30,7 +31,7 @@ sorted and duplicate-free so equivalent inputs have one representation.
 The document records:
 
 - stable project identity and risk profile;
-- selected scanner profile, source reference, artifact digests, and target
+- selected scanner profile, exact source revision, artifact digests, and target
   environments;
 - included component roots and reviewed exclusions with rationales;
 - feature flags that discovery cannot establish safely;
@@ -41,16 +42,32 @@ The document records:
 Paths are repository-relative, normalized slash paths. Absolute paths,
 backslashes, traversal, duplicate paths, and unsorted declarations are rejected.
 Excluding a component does not delete it or cause the inventory walker to ignore
-it in v0.1.
+it in v0.1. A configuration inside the target must match the exact regular file
+captured by inventory; a change between validation and inventory fails the run.
+
+```bash
+prc inventory --target . --config production-readiness.yaml --format json
+prc plan --target . --catalog-root . --config production-readiness.yaml
+prc scan --target . --catalog-root . --config production-readiness.yaml
+```
+
+When `--profile` is omitted, plan and scan use the configured profile. An
+explicitly selected profile must match it. Declared components are additive;
+they do not erase discovered components or facts.
+
+`source_ref` must be empty or a lowercase 40–64 character hexadecimal revision.
+When supplied, it must equal the Git revision inventoried from the target; an
+unresolved variable, branch name, missing Git identity, or mismatch fails closed.
 
 ## Capability boundary
 
-Configuration v0.1 accepts only the capabilities the current engine can enforce:
+Configuration v0.1 accepts only deny-by-default capabilities and bounded resource
+declarations:
 
 - `network: deny`;
 - an empty `allow_commands` list;
 - `production_connected: false`;
-- bounded parallelism and duration;
+- bounded parallelism and duration declarations;
 - bounded remediation attempts, files, and changed lines; and
 - a nonempty protected-path list.
 
@@ -58,6 +75,14 @@ A request for network access, target commands, or production connectivity fails
 validation instead of being accepted and ignored. Future configuration versions
 may add capabilities only together with an enforceable runner and threat-model
 update.
+
+The native scanner currently evaluates serially, so it remains below
+`max_parallel`. `max_duration_seconds` is enforced for configured live adapter
+execution; native file discovery uses fixed internal size and traversal limits
+but is not yet interrupted by this setting. Remediation policy is validated and
+bound into configuration identity, but the current `remediate` and
+`remediate-proposal` commands still require explicit command-line budgets. They
+do not silently claim to have enforced the configuration's remediation limits.
 
 ## Parser and file safety
 

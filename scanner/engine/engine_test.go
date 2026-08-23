@@ -7,12 +7,14 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"slices"
 	"strings"
 	"sync"
 	"testing"
 	"time"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/catalog"
+	projectconfig "github.com/MarinJursic/production-readiness-checklist/scanner/config"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 )
@@ -359,6 +361,39 @@ func TestCELApplicabilityProgramCacheIsConcurrent(t *testing.T) {
 	close(errors)
 	for failure := range errors {
 		t.Error(failure)
+	}
+}
+
+func TestConfiguredPlanBindsScopeAndExposesDeclarationsToCEL(t *testing.T) {
+	item, err := inventory.Build(healthyRepository(t))
+	if err != nil {
+		t.Fatal(err)
+	}
+	configPath := filepath.Join(repositoryRoot(t), "fixtures", "config", "production-readiness.yaml")
+	validation, err := projectconfig.Load(configPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	item, err = inventory.BindConfiguration(item, validation, configPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	engine := scanner(t)
+	plan, err := engine.Plan("prc/core-repository", item)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if plan.ConfigurationDigest != validation.Digest || plan.ProjectID != "example-product" ||
+		!slices.Equal(plan.TargetEnvironments, []string{"staging"}) || plan.ArtifactDigests == nil {
+		t.Fatalf("configured plan lost declared identity: %+v", plan)
+	}
+	got, reason := engine.evaluateApplicability(`inventory.declared.features.authentication == true`, item)
+	if got != "applicable" {
+		t.Fatalf("declared feature applicability = %s: %s", got, reason)
+	}
+	item.DeclaredScope.ProfileID = "prc/other-profile"
+	if _, err := engine.Plan("prc/core-repository", item); err == nil || !strings.Contains(err.Error(), "does not match") {
+		t.Fatalf("unexpected profile mismatch error: %v", err)
 	}
 }
 

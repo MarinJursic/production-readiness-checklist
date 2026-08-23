@@ -22,7 +22,7 @@ import (
 )
 
 const (
-	applicabilityEvaluator = "cel-go/v0.30.0+prc-inventory/v0.2"
+	applicabilityEvaluator = "cel-go/v0.30.0+prc-inventory/v0.3"
 	applicabilityCostLimit = 10_000
 )
 
@@ -65,6 +65,16 @@ func (e *Engine) Plan(profileID string, inventory model.Inventory) (model.Plan, 
 		SchemaVersion: model.PlanSchema, TargetName: inventory.TargetName,
 		TargetCommit: inventory.GitCommit, InventoryDigest: inventory.Digest,
 		ProfileID: profile.ID, ProfileVersion: profile.Version,
+		ArtifactDigests: []string{}, TargetEnvironments: []string{},
+	}
+	if inventory.DeclaredScope != nil {
+		if inventory.DeclaredScope.ProfileID != profile.ID {
+			return model.Plan{}, fmt.Errorf("declared profile %s does not match selected profile %s", inventory.DeclaredScope.ProfileID, profile.ID)
+		}
+		plan.ConfigurationDigest = inventory.DeclaredScope.ConfigurationDigest
+		plan.ProjectID = inventory.DeclaredScope.ProjectID
+		plan.ArtifactDigests = append([]string{}, inventory.DeclaredScope.ArtifactDigests...)
+		plan.TargetEnvironments = append([]string{}, inventory.DeclaredScope.TargetEnvironments...)
 	}
 	for _, assertionID := range profile.AssertionIDs {
 		assertion := e.Catalog.Assertions[assertionID]
@@ -177,7 +187,29 @@ func applicabilityActivation(inventory model.Inventory) map[string]any {
 			"kubernetes_files": inventory.Infrastructure.KubernetesFiles,
 		},
 		"components": components, "fact_values": factValues,
+		"declared": declaredActivation(inventory.DeclaredScope),
 	}}
+}
+
+func declaredActivation(scope *model.DeclaredScope) map[string]any {
+	if scope == nil {
+		return map[string]any{
+			"configured": false, "project_id": "", "risk_profile": "", "profile_id": "",
+			"source_ref": "", "artifact_digests": []string{}, "target_environments": []string{},
+			"features": map[string]bool{}, "data_classifications": []string{}, "regulated_data": []string{},
+		}
+	}
+	features := map[string]bool{}
+	for key, value := range scope.Features {
+		features[key] = value
+	}
+	return map[string]any{
+		"configured": true, "project_id": scope.ProjectID, "risk_profile": scope.RiskProfile,
+		"profile_id": scope.ProfileID, "source_ref": scope.SourceRef,
+		"artifact_digests": scope.ArtifactDigests, "target_environments": scope.TargetEnvironments,
+		"features": features, "data_classifications": scope.DataClassifications,
+		"regulated_data": scope.RegulatedData,
+	}
 }
 
 func (e *Engine) compileApplicability(expression string) compiledApplicability {

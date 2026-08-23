@@ -58,6 +58,15 @@ func writeMarkdown(output io.Writer, run model.RunResult) error {
 		run.Inventory.Digest, run.TerminalState); err != nil {
 		return err
 	}
+	if run.Plan.ConfigurationDigest != "" {
+		if _, err := fmt.Fprintf(output,
+			"- Configuration: `%s`\n- Project: `%s`\n- Environments: %s\n- Artifacts: %s\n\n",
+			run.Plan.ConfigurationDigest, run.Plan.ProjectID,
+			markdownCell(strings.Join(run.Plan.TargetEnvironments, ", ")),
+			markdownCell(strings.Join(run.Plan.ArtifactDigests, ", "))); err != nil {
+			return err
+		}
+	}
 	if _, err := fmt.Fprintln(output, "## Result counts\n\n| Assessment | Count |\n| --- | ---: |"); err != nil {
 		return err
 	}
@@ -194,6 +203,12 @@ func writeSARIF(output io.Writer, run model.RunResult) error {
 			},
 		}},
 	}
+	if run.Plan.ConfigurationDigest != "" {
+		log.Runs[0].Properties["configuration_digest"] = run.Plan.ConfigurationDigest
+		log.Runs[0].Properties["project_id"] = run.Plan.ProjectID
+		log.Runs[0].Properties["target_environments"] = strings.Join(run.Plan.TargetEnvironments, ",")
+		log.Runs[0].Properties["artifact_digests"] = strings.Join(run.Plan.ArtifactDigests, ",")
+	}
 	encoder := json.NewEncoder(output)
 	encoder.SetEscapeHTML(false)
 	encoder.SetIndent("", "  ")
@@ -240,6 +255,14 @@ func writeJUnit(output io.Writer, run model.RunResult) error {
 			{Name: "terminal_state", Value: run.TerminalState},
 			{Name: "adapter_execution_count", Value: strconv.Itoa(len(run.AdapterExecutions))},
 		},
+	}
+	if run.Plan.ConfigurationDigest != "" {
+		suite.Properties = append(suite.Properties,
+			junitProperty{Name: "configuration_digest", Value: run.Plan.ConfigurationDigest},
+			junitProperty{Name: "project_id", Value: run.Plan.ProjectID},
+			junitProperty{Name: "target_environments", Value: strings.Join(run.Plan.TargetEnvironments, ",")},
+			junitProperty{Name: "artifact_digests", Value: strings.Join(run.Plan.ArtifactDigests, ",")},
+		)
 	}
 	for _, result := range run.Results {
 		item := junitCase{Name: result.AssertionID, Classname: run.Plan.ProfileID}
@@ -291,6 +314,10 @@ const htmlReport = `<!doctype html>
       <dt>Profile</dt><dd><code>{{.Run.Plan.ProfileID}}@{{.Run.Plan.ProfileVersion}}</code></dd>
       <dt>Target</dt><dd>{{.Run.Inventory.TargetName}}</dd>
       <dt>Inventory</dt><dd><code>{{.Run.Inventory.Digest}}</code></dd>
+      {{if .Run.Plan.ConfigurationDigest}}<dt>Configuration</dt><dd><code>{{.Run.Plan.ConfigurationDigest}}</code></dd>
+      <dt>Project</dt><dd><code>{{.Run.Plan.ProjectID}}</code></dd>
+      <dt>Target environments</dt><dd>{{join .Run.Plan.TargetEnvironments}}</dd>
+      <dt>Artifact digests</dt><dd>{{join .Run.Plan.ArtifactDigests}}</dd>{{end}}
       <dt>Terminal state</dt><dd class="status">{{.Run.TerminalState}}</dd>
     </dl>
     {{if .Run.AdapterExecutions}}<table>
@@ -311,5 +338,7 @@ const htmlReport = `<!doctype html>
 
 func writeHTML(output io.Writer, run model.RunResult) error {
 	view := struct{ Run model.RunResult }{Run: run}
-	return template.Must(template.New("report").Parse(htmlReport)).Execute(output, view)
+	return template.Must(template.New("report").Funcs(template.FuncMap{
+		"join": func(values []string) string { return strings.Join(values, ", ") },
+	}).Parse(htmlReport)).Execute(output, view)
 }

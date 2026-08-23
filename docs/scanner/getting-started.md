@@ -30,12 +30,13 @@ go build -trimpath -o prc ./cmd/prc
 ```
 
 The inventory walks regular files without following symlinks or executing project
-commands. Inventory v0.2 records content digests plus a deterministic component
+commands. Inventory v0.3 records content digests plus a deterministic component
 graph and sourced, confidence-bearing facts for package manifests, CI workflows,
 container build definitions, Terraform, Kubernetes, and symlinks. Detection is
 not proof that a component is built or deployed; each fact states that limitation.
-The legacy v0.1 schema remains available as `inventory-v0.1.schema.json` for
-consumers migrating pinned output contracts.
+When a validated project configuration is supplied, its digest, declared scope,
+and explicitly limited facts are bound into the inventory identity. Frozen v0.1
+and v0.2 schemas remain available for consumers migrating pinned output contracts.
 
 ## Create a deterministic plan
 
@@ -46,14 +47,17 @@ location through `--catalog-root`:
 ./prc plan \
   --catalog-root /path/to/production-readiness-checklist \
   --target /path/to/project \
+  --config /path/to/project/production-readiness.yaml \
   --profile prc/core-repository
 ```
 
 The same target inventory, profile, and catalog produce the same plan digest.
-Plan v0.2 records the exact bounded CEL evaluator and an applicability reason for
-every assertion. Invalid, unavailable, non-Boolean, or resource-exhausting
-expressions become `undetermined`; they never silently become Not Applicable.
-See [bounded applicability evaluation](../architecture/applicability.md) for the
+Plan v0.3 records the exact bounded CEL evaluator, an applicability reason for
+every assertion, the configuration digest, declared project ID, artifact
+digests, and target environments. Invalid, unavailable, non-Boolean, or
+resource-exhausting expressions become `undetermined`; they never silently
+become Not Applicable. See
+[bounded applicability evaluation](../architecture/applicability.md) for the
 available inventory fields and limits.
 
 ## Scan and preserve evidence

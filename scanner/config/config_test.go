@@ -81,6 +81,7 @@ func TestLoadRejectsCapabilityExpansionAndUnsafePaths(t *testing.T) {
 		strings.Replace(validContent(t), "  production_connected: false", "  production_connected: true", 1),
 		strings.Replace(validContent(t), "  allow_commands: []", "  allow_commands: [[sh]]", 1),
 		strings.Replace(validContent(t), "  protected_paths: [.git/", "  protected_paths: [../escape, .git/", 1),
+		strings.Replace(validContent(t), `  source_ref: ""`, `  source_ref: "${GIT_SHA}"`, 1),
 	}
 	for index, content := range tests {
 		t.Run(string(rune('a'+index)), func(t *testing.T) {

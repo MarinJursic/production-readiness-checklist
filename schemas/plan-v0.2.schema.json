@@ -1,30 +1,18 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/plan.schema.json",
-  "title": "Production Readiness Scan Plan v0.3",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/plan-v0.2.schema.json",
+  "title": "Production Readiness Scan Plan v0.2 (legacy)",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "digest", "target_name", "inventory_digest", "profile_id", "profile_version", "artifact_digests", "target_environments", "assertions"],
+  "required": ["schema_version", "digest", "target_name", "inventory_digest", "profile_id", "profile_version", "assertions"],
   "properties": {
-    "schema_version": {"const": "prc.plan/v0.3"},
+    "schema_version": {"const": "prc.plan/v0.2"},
     "digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "target_name": {"type": "string", "minLength": 1},
     "target_commit": {"type": "string", "pattern": "^[0-9a-f]{40,64}$"},
     "inventory_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "profile_id": {"type": "string", "pattern": "^prc/[a-z0-9-]+$"},
     "profile_version": {"type": "string"},
-    "configuration_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-    "project_id": {"type": "string", "pattern": "^[a-z0-9](?:[a-z0-9-]{0,62})$"},
-    "artifact_digests": {
-      "type": "array",
-      "uniqueItems": true,
-      "items": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
-    },
-    "target_environments": {
-      "type": "array",
-      "uniqueItems": true,
-      "items": {"type": "string", "pattern": "^[a-z][a-z0-9-]{0,62}$"}
-    },
     "assertions": {
       "type": "array",
       "items": {
@@ -35,7 +23,7 @@
           "assertion_id": {"type": "string"},
           "implementation_id": {"type": "string"},
           "applicability": {"enum": ["applicable", "not_applicable", "undetermined"]},
-          "applicability_evaluator": {"const": "cel-go/v0.30.0+prc-inventory/v0.3"},
+          "applicability_evaluator": {"const": "cel-go/v0.30.0+prc-inventory/v0.2"},
           "applicability_reason": {"type": "string", "minLength": 1}
         }
       }

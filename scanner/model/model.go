@@ -3,9 +3,9 @@ package model
 import "time"
 
 const (
-	InventorySchema        = "prc.inventory/v0.2"
-	PlanSchema             = "prc.plan/v0.2"
-	RunSchema              = "prc.run/v0.2"
+	InventorySchema        = "prc.inventory/v0.3"
+	PlanSchema             = "prc.plan/v0.3"
+	RunSchema              = "prc.run/v0.3"
 	EvidenceSchema         = "prc.evidence/v0.1"
 	AdapterExecutionSchema = "prc.adapter-execution/v0.1"
 )
@@ -103,6 +103,33 @@ type FileRecord struct {
 	Mode   uint32 `json:"mode"`
 }
 
+type DeclaredComponent struct {
+	Path string `json:"path"`
+	Type string `json:"type"`
+}
+
+type DeclaredExclusion struct {
+	Path      string `json:"path"`
+	Rationale string `json:"rationale"`
+}
+
+type DeclaredScope struct {
+	ConfigurationDigest string              `json:"configuration_digest"`
+	ProjectID           string              `json:"project_id"`
+	ProjectName         string              `json:"project_name"`
+	RiskProfile         string              `json:"risk_profile"`
+	ProfileID           string              `json:"profile_id"`
+	SourceRef           string              `json:"source_ref"`
+	ArtifactDigests     []string            `json:"artifact_digests"`
+	TargetEnvironments  []string            `json:"target_environments"`
+	Components          []DeclaredComponent `json:"components"`
+	Exclusions          []DeclaredExclusion `json:"exclusions"`
+	Features            map[string]bool     `json:"features"`
+	DataClassifications []string            `json:"data_classifications"`
+	RegulatedData       []string            `json:"regulated_data"`
+	ProhibitedEvidence  []string            `json:"prohibited_evidence"`
+}
+
 type Inventory struct {
 	SchemaVersion     string                  `json:"schema_version"`
 	TargetName        string                  `json:"target_name"`
@@ -121,6 +148,7 @@ type Inventory struct {
 	Relations         []InventoryRelation     `json:"relations"`
 	Facts             []InventoryFact         `json:"facts"`
 	Files             []FileRecord            `json:"files"`
+	DeclaredScope     *DeclaredScope          `json:"declared_scope,omitempty"`
 	Root              string                  `json:"-"`
 }
 
@@ -133,14 +161,18 @@ type PlannedAssertion struct {
 }
 
 type Plan struct {
-	SchemaVersion   string             `json:"schema_version"`
-	Digest          string             `json:"digest"`
-	TargetName      string             `json:"target_name"`
-	TargetCommit    string             `json:"target_commit,omitempty"`
-	InventoryDigest string             `json:"inventory_digest"`
-	ProfileID       string             `json:"profile_id"`
-	ProfileVersion  string             `json:"profile_version"`
-	Assertions      []PlannedAssertion `json:"assertions"`
+	SchemaVersion       string             `json:"schema_version"`
+	Digest              string             `json:"digest"`
+	TargetName          string             `json:"target_name"`
+	TargetCommit        string             `json:"target_commit,omitempty"`
+	InventoryDigest     string             `json:"inventory_digest"`
+	ProfileID           string             `json:"profile_id"`
+	ProfileVersion      string             `json:"profile_version"`
+	ConfigurationDigest string             `json:"configuration_digest,omitempty"`
+	ProjectID           string             `json:"project_id,omitempty"`
+	ArtifactDigests     []string           `json:"artifact_digests"`
+	TargetEnvironments  []string           `json:"target_environments"`
+	Assertions          []PlannedAssertion `json:"assertions"`
 }
 
 type Evidence struct {

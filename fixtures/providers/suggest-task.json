@@ -1,8 +1,8 @@
 {
   "schema_version": "prc.agent-task/v0.1",
-  "task_id": "b5227988f8df8a85ea61fdf12825ed0b3026f0e06d19e249c1f7152ed2d1d0c9",
+  "task_id": "698caa63e2eef5b343831db1bf6583f4ec6ee3406036999d45b1ba76b251eac7",
   "mode": "suggest",
-  "workspace_inventory_digest": "efbd85c671e39997eebea33b8706fc366b6d6aebc29375be3c11bfc0de047862",
+  "workspace_inventory_digest": "0fbc7f18487fab78a3b1246cb73e7f1e7568bd786fd807485ed508d80ecfd215",
   "assertion_id": "PRC-A-CORE-010",
   "control_ids": ["USEQ-12655775"],
   "goal": "Propose a focused regression test for the missing behavior.",

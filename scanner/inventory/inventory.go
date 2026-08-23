@@ -14,12 +14,13 @@ import (
 	"sort"
 	"strings"
 
+	projectconfig "github.com/MarinJursic/production-readiness-checklist/scanner/config"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 )
 
 const maxEntries = 200_000
 
-const detectorVersion = "0.2"
+const detectorVersion = "0.3"
 
 var (
 	kubernetesAPIVersion = regexp.MustCompile(`(?m)^apiVersion:[[:space:]]*[^[:space:]#]+`)
@@ -74,6 +75,7 @@ type digestInput struct {
 	Components        []model.InventoryComponent    `json:"components"`
 	Relations         []model.InventoryRelation     `json:"relations"`
 	Facts             []model.InventoryFact         `json:"facts"`
+	DeclaredScope     *model.DeclaredScope          `json:"declared_scope,omitempty"`
 }
 
 func Build(target string) (model.Inventory, error) {
@@ -261,18 +263,166 @@ func Build(target string) (model.Inventory, error) {
 	result.FileCount = len(result.Files)
 	result.GitCommit = gitCommit(root)
 
+	if err := seal(&result); err != nil {
+		return model.Inventory{}, err
+	}
+	return result, nil
+}
+
+func seal(result *model.Inventory) error {
 	payload, err := json.Marshal(digestInput{
 		GitCommit: result.GitCommit, Files: result.Files, PackageEcosystems: result.PackageEcosystems,
 		Manifests: result.Manifests, LockFiles: result.LockFiles, ContainerFiles: result.ContainerFiles,
 		Symlinks: result.Symlinks, CI: result.CI, Infrastructure: result.Infrastructure,
 		Components: result.Components, Relations: result.Relations, Facts: result.Facts,
+		DeclaredScope: result.DeclaredScope,
 	})
 	if err != nil {
-		return model.Inventory{}, fmt.Errorf("encode inventory digest: %w", err)
+		return fmt.Errorf("encode inventory digest: %w", err)
 	}
 	digest := sha256.Sum256(payload)
 	result.Digest = hex.EncodeToString(digest[:])
-	return result, nil
+	return nil
+}
+
+// BindConfiguration adds reviewed declarations as explicitly sourced facts and
+// reseals the inventory. Declarations influence applicability but do not prove
+// deployed behavior, and exclusions do not remove files from inventory.
+func BindConfiguration(item model.Inventory, validation projectconfig.Validation, sourcePath string) (model.Inventory, error) {
+	if item.SchemaVersion != model.InventorySchema || item.Root == "" {
+		return model.Inventory{}, fmt.Errorf("configuration requires a current rooted inventory")
+	}
+	if item.DeclaredScope != nil {
+		return model.Inventory{}, fmt.Errorf("inventory already has a bound configuration")
+	}
+	source := "configuration:external"
+	absoluteSource, err := filepath.Abs(sourcePath)
+	if err != nil {
+		return model.Inventory{}, fmt.Errorf("resolve configuration source: %w", err)
+	}
+	if resolvedSource, resolveErr := filepath.EvalSymlinks(absoluteSource); resolveErr == nil {
+		absoluteSource = resolvedSource
+	}
+	if relative, relativeErr := filepath.Rel(item.Root, absoluteSource); relativeErr == nil {
+		relative = filepath.ToSlash(relative)
+		if relative != ".." && !strings.HasPrefix(relative, "../") {
+			matched := false
+			for _, record := range item.Files {
+				if record.Path == relative {
+					if record.SHA256 != validation.SourceSHA256 {
+						return model.Inventory{}, fmt.Errorf("configuration changed between validation and inventory")
+					}
+					matched = true
+					break
+				}
+			}
+			if !matched {
+				return model.Inventory{}, fmt.Errorf("configuration inside target is not an inventoried regular file")
+			}
+			source = relative
+		}
+	}
+	document := validation.Configuration
+	if document.Assessment.SourceRef != "" {
+		if item.GitCommit == "" {
+			return model.Inventory{}, fmt.Errorf("declared source_ref cannot be verified because the target has no Git revision")
+		}
+		if document.Assessment.SourceRef != item.GitCommit {
+			return model.Inventory{}, fmt.Errorf("declared source_ref does not match the inventoried Git revision")
+		}
+	}
+	scope := &model.DeclaredScope{
+		ConfigurationDigest: validation.Digest,
+		ProjectID:           document.Project.ID, ProjectName: document.Project.Name,
+		RiskProfile: document.Project.RiskProfile, ProfileID: document.Assessment.Profile,
+		SourceRef:           document.Assessment.SourceRef,
+		ArtifactDigests:     append([]string{}, document.Assessment.ArtifactDigests...),
+		TargetEnvironments:  append([]string{}, document.Assessment.TargetEnvironments...),
+		Features:            map[string]bool{},
+		DataClassifications: append([]string{}, document.Data.Classifications...),
+		RegulatedData:       append([]string{}, document.Data.Regulated...),
+		ProhibitedEvidence:  append([]string{}, document.Data.ProhibitedInEvidence...),
+		Components:          []model.DeclaredComponent{}, Exclusions: []model.DeclaredExclusion{},
+	}
+	for key, value := range document.Features {
+		scope.Features[key] = value
+	}
+	for _, component := range document.Components.Include {
+		scope.Components = append(scope.Components, model.DeclaredComponent{Path: component.Path, Type: component.Type})
+		id := "declared-" + component.Type + ":" + component.Path
+		item.Components = append(item.Components, model.InventoryComponent{ID: id, Kind: "declared-" + component.Type, Path: component.Path})
+		item.Relations = append(item.Relations, model.InventoryRelation{From: "repository:.", To: id, Kind: "declares"})
+	}
+	for _, exclusion := range document.Components.Exclude {
+		scope.Exclusions = append(scope.Exclusions, model.DeclaredExclusion{Path: exclusion.Path, Rationale: exclusion.Rationale})
+	}
+	item.DeclaredScope = scope
+	limitations := []string{"A project declaration is reviewed context, not proof of deployed state or behavior."}
+	addDeclaredFact := func(key, value, scopePath string) {
+		item.Facts = append(item.Facts, model.InventoryFact{
+			Key: key, Value: value, Source: source, Detector: "prc.config.declaration",
+			DetectorVersion: "0.1", Confidence: 1, ScopePath: scopePath,
+			Limitations: append([]string(nil), limitations...),
+		})
+	}
+	addDeclaredFact("project.id", document.Project.ID, ".")
+	addDeclaredFact("project.risk_profile", document.Project.RiskProfile, ".")
+	addDeclaredFact("assessment.profile", document.Assessment.Profile, ".")
+	if document.Assessment.SourceRef != "" {
+		addDeclaredFact("assessment.source_ref", document.Assessment.SourceRef, ".")
+	}
+	for _, value := range document.Assessment.ArtifactDigests {
+		addDeclaredFact("assessment.artifact_digest", value, ".")
+	}
+	for _, value := range document.Assessment.TargetEnvironments {
+		addDeclaredFact("assessment.target_environment", value, ".")
+	}
+	featureKeys := make([]string, 0, len(document.Features))
+	for key := range document.Features {
+		featureKeys = append(featureKeys, key)
+	}
+	sort.Strings(featureKeys)
+	for _, key := range featureKeys {
+		addDeclaredFact("feature."+key, fmt.Sprintf("%t", document.Features[key]), ".")
+	}
+	for _, component := range document.Components.Include {
+		addDeclaredFact("component.include", component.Type, component.Path)
+	}
+	for _, exclusion := range document.Components.Exclude {
+		addDeclaredFact("component.exclude", exclusion.Rationale, exclusion.Path)
+	}
+	for _, value := range document.Data.Classifications {
+		addDeclaredFact("data.classification", value, ".")
+	}
+	for _, value := range document.Data.Regulated {
+		addDeclaredFact("data.regulated", value, ".")
+	}
+	for _, value := range document.Data.ProhibitedInEvidence {
+		addDeclaredFact("evidence.prohibited_class", value, ".")
+	}
+	sort.Slice(item.Components, func(i, j int) bool { return item.Components[i].ID < item.Components[j].ID })
+	sort.Slice(item.Relations, func(i, j int) bool {
+		if item.Relations[i].From != item.Relations[j].From {
+			return item.Relations[i].From < item.Relations[j].From
+		}
+		if item.Relations[i].To != item.Relations[j].To {
+			return item.Relations[i].To < item.Relations[j].To
+		}
+		return item.Relations[i].Kind < item.Relations[j].Kind
+	})
+	sort.Slice(item.Facts, func(i, j int) bool {
+		if item.Facts[i].Key != item.Facts[j].Key {
+			return item.Facts[i].Key < item.Facts[j].Key
+		}
+		if item.Facts[i].Source != item.Facts[j].Source {
+			return item.Facts[i].Source < item.Facts[j].Source
+		}
+		return item.Facts[i].Value < item.Facts[j].Value
+	})
+	if err := seal(&item); err != nil {
+		return model.Inventory{}, err
+	}
+	return item, nil
 }
 
 func isContainerFile(name string) bool {

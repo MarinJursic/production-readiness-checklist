@@ -28,6 +28,7 @@ var (
 	profilePattern    = regexp.MustCompile(`^prc/[a-z0-9-]+$`)
 	factKeyPattern    = regexp.MustCompile(`^[a-z][a-z0-9-]{0,62}$`)
 	digestPattern     = regexp.MustCompile(`^sha256:[0-9a-f]{64}$`)
+	sourceRefPattern  = regexp.MustCompile(`^[0-9a-f]{40,64}$`)
 )
 
 type Document struct {
@@ -94,6 +95,7 @@ type Remediation struct {
 type Validation struct {
 	SchemaVersion string   `json:"schema_version"`
 	Digest        string   `json:"digest"`
+	SourceSHA256  string   `json:"source_sha256"`
 	Configuration Document `json:"configuration"`
 }
 
@@ -137,9 +139,11 @@ func Load(path string) (Validation, error) {
 		return Validation{}, fmt.Errorf("encode canonical project configuration: %w", err)
 	}
 	digest := sha256.Sum256(payload)
+	sourceDigest := sha256.Sum256(data)
 	return Validation{
 		SchemaVersion: ValidationSchema,
 		Digest:        hex.EncodeToString(digest[:]),
+		SourceSHA256:  hex.EncodeToString(sourceDigest[:]),
 		Configuration: document,
 	}, nil
 }
@@ -190,8 +194,8 @@ func (document Document) Validate() error {
 	if !profilePattern.MatchString(document.Assessment.Profile) {
 		return fmt.Errorf("assessment requires a valid profile ID")
 	}
-	if len(document.Assessment.SourceRef) > 256 || strings.ContainsAny(document.Assessment.SourceRef, "\r\n\x00") {
-		return fmt.Errorf("assessment source_ref is invalid")
+	if document.Assessment.SourceRef != "" && !sourceRefPattern.MatchString(document.Assessment.SourceRef) {
+		return fmt.Errorf("assessment source_ref must be empty or an exact 40-64 character lowercase hexadecimal revision")
 	}
 	if err := validateSortedUnique(document.Assessment.ArtifactDigests, "artifact digests", func(value string) bool {
 		return digestPattern.MatchString(value)

@@ -100,7 +100,7 @@ prc adapter run-oci \
 ```
 
 `--pull=never` means the command fails if the exact image is not already
-available. Run result v0.2 can embed these records. A scan may execute one
+available. Run result v0.3 can embed these records. A scan may execute one
 adapter only when an applicable assertion binds the exact adapter ID, manifest
 SHA-256 digest, and observation kind:
 
