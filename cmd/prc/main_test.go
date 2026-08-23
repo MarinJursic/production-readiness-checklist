@@ -737,6 +737,103 @@ func TestSimpleScanDiscoversCatalogCreatesPrivateReportAndNeverFixesTarget(t *te
 	}
 }
 
+func TestScanCanAddOneResumableAdvisoryCodexReviewWithoutFixingTarget(t *testing.T) {
+	repository, err := filepath.Abs(filepath.Join("..", ".."))
+	if err != nil {
+		t.Fatal(err)
+	}
+	target := t.TempDir()
+	sourcePath := filepath.Join(target, "README.md")
+	before := []byte("# Example\n\nThe critical user journey is tested end to end.\n")
+	if err := os.WriteFile(sourcePath, before, 0o600); err != nil {
+		t.Fatal(err)
+	}
+	executableDirectory := t.TempDir()
+	executable := filepath.Join(executableDirectory, "codex")
+	script := `#!/usr/bin/env python3
+import json
+import sys
+
+result = sys.argv[sys.argv.index("--output-last-message") + 1]
+prompt = sys.stdin.read()
+start = prompt.index("<scanner-control-review-task>\n") + len("<scanner-control-review-task>\n")
+end = prompt.rindex("\n</scanner-control-review-task>")
+task = json.loads(prompt[start:end])
+output = {
+    "schema_version": "prc.control-review-output/v0.1",
+    "task_id": task["task_id"],
+    "reviews": [{
+        "control_id": task["controls"][0]["control_id"],
+        "assessment_candidate": "needs_evidence",
+        "applicability_candidate": "undetermined",
+        "confidence": "low",
+        "reason": "Repository text alone cannot prove the production result.",
+        "advice": "Verify this in the real target environment.",
+        "evidence": [],
+        "limitations": ["Only scanner-provided repository excerpts were available."]
+    }]
+}
+with open(result, "w", encoding="utf-8") as destination:
+    json.dump(output, destination, separators=(",", ":"))
+print('{"type":"turn.completed"}')
+`
+	if err := os.WriteFile(executable, []byte(script), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	stateDirectory := t.TempDir()
+	arguments := []string{
+		"scan", target, "--catalog-root", repository, "--format", "json", "--no-report", "--exit-policy", "never",
+		"--review-provider", "codex", "--review-executable", executable,
+		"--review-state-dir", stateDirectory, "--review-control", "PRC-02-001",
+		"--allow-remote-source-processing",
+	}
+	var stdout, stderr bytes.Buffer
+	if code := run(arguments, &stdout, &stderr); code != 0 {
+		t.Fatalf("exit=%d stderr=%s stdout=%s", code, stderr.String(), stdout.String())
+	}
+	var scanned model.RunResult
+	if err := json.Unmarshal(stdout.Bytes(), &scanned); err != nil {
+		t.Fatal(err)
+	}
+	if scanned.ControlCatalog == nil || scanned.ControlCatalog.ControlCount != 10_042 ||
+		scanned.ControlCatalog.AIReviewProvider != "codex" || scanned.ControlCatalog.AIReviewState != "focused" ||
+		scanned.ControlCatalog.AIReviewedCount != 1 || len(scanned.ControlResults) != 10_042 {
+		t.Fatalf("AI-reviewed complete scan summary=%+v results=%d", scanned.ControlCatalog, len(scanned.ControlResults))
+	}
+	found := false
+	for _, control := range scanned.ControlResults {
+		if control.ControlID == "PRC-02-001" {
+			found = control.AIReview != nil && control.AIReview.AssessmentCandidate == "needs_evidence"
+		}
+	}
+	if !found {
+		t.Fatal("focused AI review was not attached to PRC-02-001")
+	}
+	after, err := os.ReadFile(sourcePath)
+	if err != nil || !bytes.Equal(after, before) {
+		t.Fatalf("AI scan changed the target: %q (%v)", after, err)
+	}
+}
+
+func TestScanRequiresExplicitRemoteSourceAcknowledgement(t *testing.T) {
+	var stdout, stderr bytes.Buffer
+	code := run([]string{
+		"scan", t.TempDir(), "--catalog-root", filepath.Join("..", ".."), "--no-report",
+		"--review-provider", "codex", "--review-control", "PRC-02-001",
+	}, &stdout, &stderr)
+	if code != exitExecution || !strings.Contains(stderr.String(), "explicit --allow-remote-source-processing") {
+		t.Fatalf("exit=%d stdout=%s stderr=%s", code, stdout.String(), stderr.String())
+	}
+}
+
+func TestScanRejectsReviewFlagsWhenAIReviewIsDisabled(t *testing.T) {
+	var stdout, stderr bytes.Buffer
+	code := run([]string{"scan", t.TempDir(), "--no-report", "--review-workers", "2"}, &stdout, &stderr)
+	if code != exitConfiguration || !strings.Contains(stderr.String(), "requires --review-provider") {
+		t.Fatalf("exit=%d stdout=%s stderr=%s", code, stdout.String(), stderr.String())
+	}
+}
+
 func TestScanCustomReportNeverOverwrites(t *testing.T) {
 	target := t.TempDir()
 	reportPath := filepath.Join(t.TempDir(), "readiness.html")

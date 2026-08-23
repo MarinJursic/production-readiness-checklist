@@ -11,6 +11,14 @@ import (
 // preflight stop without inspecting an error string.
 var ErrSensitiveInput = errors.New("agent input contains secret-like material")
 
+// ScreenRemoteContent applies the same conservative high-confidence preflight
+// used by sealed provider tasks before repository text can be sent to a remote
+// reviewer. The returned error names only the path and detector, never the
+// matched secret-like value.
+func ScreenRemoteContent(path string, content []byte) error {
+	return validateRemoteInputs([]InputFile{{Path: path, Content: string(content)}})
+}
+
 // remoteInputPatterns intentionally contains only credential shapes with
 // distinctive issuer prefixes or credential-bearing URL syntax. This is a
 // preflight guard for remote model processing, not a replacement for a full

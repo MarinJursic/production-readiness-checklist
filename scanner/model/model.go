@@ -41,6 +41,11 @@ type ControlCatalogSummary struct {
 	ControlCount         int    `json:"control_count"`
 	ActiveControlCount   int    `json:"active_control_count"`
 	ProfileTerminalState string `json:"profile_terminal_state"`
+	AIReviewProvider     string `json:"ai_review_provider,omitempty"`
+	AIReviewModel        string `json:"ai_review_model,omitempty"`
+	AIReviewState        string `json:"ai_review_state,omitempty"`
+	AIReviewedCount      int    `json:"ai_reviewed_count,omitempty"`
+	AIAdvisoryFailCount  int    `json:"ai_advisory_fail_count,omitempty"`
 }
 
 // AIControlReview is advisory evidence produced by an explicitly selected AI

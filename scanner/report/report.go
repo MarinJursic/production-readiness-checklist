@@ -68,6 +68,18 @@ func markdownCell(value string) string {
 	return strings.Join(strings.Fields(value), " ")
 }
 
+func advisoryLocationText(locations []model.FindingLocation) string {
+	values := make([]string, 0, len(locations))
+	for _, location := range locations {
+		value := fmt.Sprintf("%s:%d", location.Path, location.Line)
+		if location.Column > 0 {
+			value += fmt.Sprintf(":%d", location.Column)
+		}
+		values = append(values, value)
+	}
+	return strings.Join(values, ", ")
+}
+
 func writeMarkdown(output io.Writer, run model.RunResult) error {
 	if _, err := fmt.Fprintf(output, "# Production readiness assessment\n\n"+
 		"- Run: `%s`\n- Profile: `%s@%s`\n- Target: `%s`\n- Inventory: `%s`\n- Terminal state: **%s**\n\n",
@@ -100,6 +112,15 @@ func writeMarkdown(output io.Writer, run model.RunResult) error {
 			run.ControlCatalog.ActiveControlCount, run.ControlCatalog.ProfileTerminalState); err != nil {
 			return err
 		}
+		if run.ControlCatalog.AIReviewProvider != "" {
+			if _, err := fmt.Fprintf(output,
+				"- Advisory AI review: **%s** (model `%s`)\n- AI review state: **%s**\n- AI-reviewed controls: **%d**\n- Advisory failure candidates: **%d**\n- AI advice cannot create a verified Pass or final Not Applicable result.\n\n",
+				run.ControlCatalog.AIReviewProvider, run.ControlCatalog.AIReviewModel,
+				run.ControlCatalog.AIReviewState, run.ControlCatalog.AIReviewedCount,
+				run.ControlCatalog.AIAdvisoryFailCount); err != nil {
+				return err
+			}
+		}
 		if _, err := fmt.Fprintln(output, "| Disposition | Count |\n| --- | ---: |"); err != nil {
 			return err
 		}
@@ -108,14 +129,22 @@ func writeMarkdown(output io.Writer, run model.RunResult) error {
 				return err
 			}
 		}
-		if _, err := fmt.Fprintln(output, "\n### Every registered control\n\n| Disposition | Control | Coverage | Authority | Statement | Source | Assertions |\n| --- | --- | --- | --- | --- | --- | --- |"); err != nil {
+		if _, err := fmt.Fprintln(output, "\n### Every registered control\n\n| Disposition | Control | Coverage | Authority | Statement | Source | Assertions | AI candidate | AI reason and advice | AI evidence | AI limitations |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |"); err != nil {
 			return err
 		}
 		for _, result := range run.ControlResults {
-			if _, err := fmt.Fprintf(output, "| %s | `%s` | %s | %s | %s | `%s:%d` | %s |\n",
+			aiCandidate, aiReason, aiEvidence, aiLimitations := "—", "—", "—", "—"
+			if result.AIReview != nil {
+				aiCandidate = result.AIReview.AssessmentCandidate + " / " + result.AIReview.ApplicabilityCandidate + " / " + result.AIReview.Confidence
+				aiReason = result.AIReview.Reason + " " + result.AIReview.Advice
+				aiEvidence = advisoryLocationText(result.AIReview.Evidence)
+				aiLimitations = strings.Join(result.AIReview.Limitations, "; ")
+			}
+			if _, err := fmt.Fprintf(output, "| %s | `%s` | %s | %s | %s | `%s:%d` | %s | %s | %s | %s | %s |\n",
 				result.Disposition, result.ControlID, result.Coverage, result.Authority,
 				markdownCell(result.Statement), result.Source.Path, result.Source.Line,
-				markdownCell(strings.Join(result.ExecutedAssertionIDs, ", "))); err != nil {
+				markdownCell(strings.Join(result.ExecutedAssertionIDs, ", ")), markdownCell(aiCandidate),
+				markdownCell(aiReason), markdownCell(aiEvidence), markdownCell(aiLimitations)); err != nil {
 				return err
 			}
 		}
@@ -408,6 +437,7 @@ const htmlReport = `<!doctype html>
 	  <dt>Source digest</dt><dd><code>{{.Run.ControlCatalog.SourceSHA256}}</code></dd>
 	  <dt>Controls</dt><dd>{{.Run.ControlCatalog.ControlCount}} registered / {{.Run.ControlCatalog.ActiveControlCount}} active</dd>
 	  <dt>Narrow profile state before expansion</dt><dd>{{.Run.ControlCatalog.ProfileTerminalState}}</dd>
+	  {{if .Run.ControlCatalog.AIReviewProvider}}<dt>Advisory AI review</dt><dd>{{.Run.ControlCatalog.AIReviewProvider}}{{if .Run.ControlCatalog.AIReviewModel}} / {{.Run.ControlCatalog.AIReviewModel}}{{end}} — {{.Run.ControlCatalog.AIReviewState}}, {{.Run.ControlCatalog.AIReviewedCount}} controls reviewed, {{.Run.ControlCatalog.AIAdvisoryFailCount}} advisory failure candidates. AI advice cannot create a verified Pass or final Not Applicable result.</dd>{{end}}
 	</dl>
 	<ul class="counts">{{range .ControlCounts}}<li><strong>{{index . 0}}</strong>: {{index . 1}}</li>{{end}}</ul>
 	<p>Use browser search to find a control ID or phrase. Open a control to see its source, coverage, linked assertions, and any advisory AI review.</p>
@@ -419,7 +449,9 @@ const htmlReport = `<!doctype html>
 	    <dt>Result explanation</dt><dd>{{.Summary}}</dd>
 	    <dt>All known assertions</dt><dd>{{if .AssertionIDs}}<code>{{join .AssertionIDs}}</code>{{else}}None yet.{{end}}</dd>
 	    <dt>Assertions executed in this profile</dt><dd>{{if .ExecutedAssertionIDs}}<code>{{join .ExecutedAssertionIDs}}</code>{{else}}None.{{end}}</dd>
-	    {{if .AIReview}}<dt>Advisory AI review</dt><dd><strong>{{.AIReview.Provider}}</strong>: {{.AIReview.AssessmentCandidate}} / {{.AIReview.ApplicabilityCandidate}} / confidence {{.AIReview.Confidence}}. {{.AIReview.Reason}} {{.AIReview.Advice}} This cannot create a verified Pass.</dd>{{end}}
+	    {{if .AIReview}}<dt>Advisory AI review</dt><dd><strong>{{.AIReview.Provider}}{{if .AIReview.Model}} / {{.AIReview.Model}}{{end}}</strong>: {{.AIReview.AssessmentCandidate}} / {{.AIReview.ApplicabilityCandidate}} / confidence {{.AIReview.Confidence}}. {{.AIReview.Reason}} {{.AIReview.Advice}} This cannot create a verified Pass.</dd>
+	    <dt>AI-cited evidence</dt><dd>{{if .AIReview.Evidence}}<ul>{{range .AIReview.Evidence}}<li><code>{{location .}}</code></li>{{end}}</ul>{{else}}No repository line was cited.{{end}}</dd>
+	    <dt>AI review limits</dt><dd><ul>{{range .AIReview.Limitations}}<li>{{.}}</li>{{end}}</ul></dd>{{end}}
 	  </dl>
 	</details>{{end}}{{end}}
     {{if .Run.AdapterExecutions}}<table>

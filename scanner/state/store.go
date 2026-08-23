@@ -687,6 +687,8 @@ func validateControlResults(run model.RunResult, assertionResults map[string]boo
 		"unmapped": true, "not_in_selected_profile": true, "partial_assertions": true, "retired": true,
 	}
 	active := 0
+	aiReviews := 0
+	aiAdvisoryFailures := 0
 	seen := map[string]bool{}
 	for index, control := range run.ControlResults {
 		if control.ControlID == "" || seen[control.ControlID] || control.Revision < 1 ||
@@ -721,10 +723,36 @@ func validateControlResults(run model.RunResult, assertionResults map[string]boo
 		}
 		if review := control.AIReview; review != nil {
 			if (review.Provider != "codex" && review.Provider != "claude") || !digest(review.TaskID) ||
-				strings.TrimSpace(review.Reason) == "" ||
+				control.Disposition == "retired" || strings.TrimSpace(review.Reason) == "" || len(review.Reason) > 16*1024 || len(review.Advice) > 16*1024 ||
+				(review.AssessmentCandidate != "advisory_pass_candidate" && review.AssessmentCandidate != "advisory_fail_candidate" && review.AssessmentCandidate != "needs_evidence" && review.AssessmentCandidate != "not_applicable_candidate") ||
 				(review.Confidence != "low" && review.Confidence != "medium" && review.Confidence != "high") ||
-				(review.ApplicabilityCandidate != "applicable" && review.ApplicabilityCandidate != "not_applicable" && review.ApplicabilityCandidate != "undetermined") {
+				(review.ApplicabilityCandidate != "applicable" && review.ApplicabilityCandidate != "not_applicable" && review.ApplicabilityCandidate != "undetermined") ||
+				len(review.Evidence) > 256 || len(review.Limitations) < 1 || len(review.Limitations) > 256 ||
+				review.Confidence == "high" && len(review.Evidence) == 0 {
 				return fmt.Errorf("control %s contains an invalid advisory AI review", control.ControlID)
+			}
+			seenEvidence := map[model.FindingLocation]bool{}
+			for _, location := range review.Evidence {
+				if location.Path == "" || filepath.IsAbs(location.Path) ||
+					filepath.ToSlash(filepath.Clean(filepath.FromSlash(location.Path))) != location.Path ||
+					location.Line < 1 || location.Column < 0 || !inventoryFilePath(run.Inventory, location.Path) || seenEvidence[location] {
+					return fmt.Errorf("control %s contains invalid advisory evidence", control.ControlID)
+				}
+				seenEvidence[location] = true
+			}
+			seenLimitations := map[string]bool{}
+			for _, limitation := range review.Limitations {
+				if strings.TrimSpace(limitation) == "" || len(limitation) > 16*1024 || seenLimitations[limitation] {
+					return fmt.Errorf("control %s contains invalid advisory limitations", control.ControlID)
+				}
+				seenLimitations[limitation] = true
+			}
+			aiReviews++
+			if review.AssessmentCandidate == "advisory_fail_candidate" {
+				aiAdvisoryFailures++
+			}
+			if summary.AIReviewProvider != review.Provider || summary.AIReviewModel != review.Model {
+				return fmt.Errorf("control %s advisory review does not match the catalog summary", control.ControlID)
 			}
 		}
 	}
@@ -733,6 +761,18 @@ func validateControlResults(run model.RunResult, assertionResults map[string]boo
 	}
 	if summary.ProfileTerminalState == "profile_satisfied" && run.TerminalState == "profile_satisfied" {
 		return fmt.Errorf("complete-control run cannot hide remaining review behind a satisfied narrow profile")
+	}
+	if summary.AIReviewProvider == "" {
+		if summary.AIReviewModel != "" || summary.AIReviewState != "" || summary.AIReviewedCount != 0 ||
+			summary.AIAdvisoryFailCount != 0 || aiReviews != 0 {
+			return fmt.Errorf("complete-control run has advisory review data without a provider binding")
+		}
+	} else if (summary.AIReviewProvider != "codex" && summary.AIReviewProvider != "claude") ||
+		(summary.AIReviewState != "complete" && summary.AIReviewState != "focused") ||
+		summary.AIReviewedCount != aiReviews || summary.AIAdvisoryFailCount != aiAdvisoryFailures ||
+		(summary.AIReviewState == "complete" && aiReviews != summary.ActiveControlCount) ||
+		(summary.AIReviewState == "focused" && (aiReviews < 1 || aiReviews >= summary.ActiveControlCount)) {
+		return fmt.Errorf("complete-control run has an invalid advisory AI review summary")
 	}
 	return nil
 }

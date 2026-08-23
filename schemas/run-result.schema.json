@@ -38,7 +38,12 @@
         "source_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
         "control_count": {"type": "integer", "minimum": 1, "maximum": 100000},
         "active_control_count": {"type": "integer", "minimum": 0, "maximum": 100000},
-        "profile_terminal_state": {"$ref": "#/$defs/terminal_state"}
+        "profile_terminal_state": {"$ref": "#/$defs/terminal_state"},
+        "ai_review_provider": {"enum": ["codex", "claude"]},
+        "ai_review_model": {"type": "string"},
+        "ai_review_state": {"enum": ["complete", "focused"]},
+        "ai_reviewed_count": {"type": "integer", "minimum": 0, "maximum": 100000},
+        "ai_advisory_fail_count": {"type": "integer", "minimum": 0, "maximum": 100000}
       }
     },
     "control_result": {
@@ -78,10 +83,10 @@
         "assessment_candidate": {"enum": ["advisory_pass_candidate", "advisory_fail_candidate", "needs_evidence", "not_applicable_candidate"]},
         "applicability_candidate": {"enum": ["applicable", "not_applicable", "undetermined"]},
         "confidence": {"enum": ["low", "medium", "high"]},
-        "reason": {"type": "string", "minLength": 1},
-        "advice": {"type": "string"},
+        "reason": {"type": "string", "minLength": 1, "maxLength": 16384},
+        "advice": {"type": "string", "maxLength": 16384},
         "evidence": {"type": "array", "maxItems": 256, "items": {"$ref": "#/$defs/location"}},
-        "limitations": {"type": "array", "maxItems": 256, "items": {"type": "string"}},
+        "limitations": {"type": "array", "minItems": 1, "maxItems": 256, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 16384}},
         "task_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
       }
     },

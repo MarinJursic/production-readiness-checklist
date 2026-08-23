@@ -366,6 +366,12 @@ func strictJSON(data []byte, target any) error {
 	return nil
 }
 
+// DecodeStrictJSON rejects duplicate keys, unknown fields, and trailing JSON.
+// Scanner-owned provider protocols use it to treat model output as untrusted.
+func DecodeStrictJSON(data []byte, target any) error {
+	return strictJSON(data, target)
+}
+
 func rejectDuplicateKeys(data []byte) error {
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	var walk func() error

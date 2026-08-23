@@ -22,6 +22,7 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/benchmark"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/catalog"
 	projectconfig "github.com/MarinJursic/production-readiness-checklist/scanner/config"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/controlreview"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/doctor"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/engine"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/evidence"
@@ -1817,6 +1818,18 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	noReport := set.Bool("no-report", false, "do not create the default HTML report")
 	stateDirectory := set.String("state-dir", "", "optional directory for content-addressed evidence and run records")
 	exitPolicy := set.String("exit-policy", "profile", "profile, no-go, or never")
+	reviewProvider := set.String("review-provider", "none", "advisory review: none, codex, or claude")
+	reviewExecutable := set.String("review-executable", "", "optional exact Codex or Claude executable")
+	reviewModel := set.String("review-model", "", "optional model override for advisory review")
+	reviewEffort := set.String("review-effort", "high", "advisory reasoning effort: high, or xhigh for Codex")
+	reviewStateDirectory := set.String("review-state-dir", "", "private resumable AI review state outside the target")
+	allowRemoteReview := set.Bool("allow-remote-source-processing", false, "allow screened source excerpts to be sent to the selected remote AI provider")
+	reviewBatchSize := set.Int("review-batch-size", 8, "controls per provider call, from 1 to 8; each still gets one subagent")
+	reviewWorkers := set.Int("review-workers", 1, "parallel provider calls, from 1 to 4")
+	reviewTimeout := set.Duration("review-timeout", 30*time.Minute, "timeout for each resumable provider batch")
+	reviewMaxCost := set.Float64("review-max-cost-usd", 0, "optional Claude cost limit in USD for each batch")
+	reviewControls := repeatedStringFlag{}
+	set.Var(&reviewControls, "review-control", "review only this control ID for debugging; repeatable")
 	adapterManifests := repeatedStringFlag{}
 	set.Var(&adapterManifests, "adapter-manifest", "immutable OCI adapter manifest authorized by the selected profile; repeatable")
 	adapterRegistry := set.String("adapter-registry", "", "optional adapter registry lockfile")
@@ -1849,6 +1862,20 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	}
 	if *mode != engine.ExecutionModeInspect && *mode != engine.ExecutionModeVerifyLocal {
 		return exitInternal, exitError(exitConfiguration, fmt.Errorf("unsupported execution mode %q", *mode))
+	}
+	if *reviewProvider != "none" && *reviewProvider != "codex" && *reviewProvider != "claude" {
+		return exitInternal, exitError(exitConfiguration, fmt.Errorf("unsupported review provider %q", *reviewProvider))
+	}
+	reviewFlags := []string{"review-executable", "review-model", "review-effort", "review-state-dir", "allow-remote-source-processing", "review-batch-size", "review-workers", "review-timeout", "review-max-cost-usd", "review-control"}
+	if *reviewProvider == "none" {
+		for _, name := range reviewFlags {
+			if flagWasSet(set, name) {
+				return exitInternal, exitError(exitConfiguration, fmt.Errorf("--%s requires --review-provider codex or claude", name))
+			}
+		}
+	}
+	if err := validateUniqueFlagValues(reviewControls, "--review-control"); err != nil {
+		return exitInternal, exitError(exitConfiguration, err)
 	}
 	if len(adapterManifests) > 0 && *adapterRegistry != "" {
 		return exitInternal, exitError(exitConfiguration, fmt.Errorf("--adapter-manifest and --adapter-registry are mutually exclusive"))
@@ -1943,6 +1970,21 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	} else if !errors.Is(attachErr, fullscan.ErrRegistryUnavailable) {
 		return exitInternal, exitError(exitConfiguration, attachErr)
 	}
+	var reviewSummary controlreview.Summary
+	if *reviewProvider != "none" {
+		reviewed, summary, reviewErr := controlreview.Apply(context.Background(), run, controlreview.Options{
+			Provider: *reviewProvider, Executable: *reviewExecutable, Model: *reviewModel,
+			ReasoningEffort: *reviewEffort, StateDirectory: *reviewStateDirectory,
+			SchemaPath:                  filepath.Join(*catalogRoot, "schemas", "control-review-output.schema.json"),
+			AllowRemoteSourceProcessing: *allowRemoteReview, BatchSize: *reviewBatchSize,
+			Workers: *reviewWorkers, Timeout: *reviewTimeout, MaxCostUSD: *reviewMaxCost,
+			ControlIDs: append([]string{}, reviewControls...),
+		})
+		if reviewErr != nil {
+			return exitInternal, exitError(exitExecution, reviewErr)
+		}
+		run, reviewSummary = reviewed, summary
+	}
 	var stateStore *state.Store
 	if *stateDirectory != "" {
 		stateStore, err = state.Open(context.Background(), *stateDirectory)
@@ -1972,6 +2014,10 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		}
 	} else if *format == "human" {
 		printScanSummary(stdout, run)
+		if *reviewProvider != "none" {
+			fmt.Fprintf(stdout, "AI review: %d controls reviewed by %s; %d advisory failure candidates\n", reviewSummary.ReviewedControls, reviewSummary.Provider, reviewSummary.AdvisoryFailures)
+			fmt.Fprintf(stdout, "AI review resume data: %s\n\n", reviewSummary.StateDirectory)
+		}
 		fmt.Fprintln(stdout, "Scan mode: report only; no fixes were applied.")
 		if writtenReport == "" {
 			fmt.Fprintln(stdout, "Detailed report: disabled")
