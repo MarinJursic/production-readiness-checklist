@@ -16,6 +16,7 @@ import (
 	"time"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/adapter"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/benchmark"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/catalog"
 	projectconfig "github.com/MarinJursic/production-readiness-checklist/scanner/config"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/doctor"
@@ -109,6 +110,8 @@ func run(args []string, stdout, stderr io.Writer) int {
 	case "catalog":
 		errorFallback = exitConfiguration
 		err = runCatalog(args[1:], stdout, stderr)
+	case "benchmark":
+		outcome, err = runBenchmark(args[1:], stdout, stderr)
 	case "plan":
 		errorFallback = exitConfiguration
 		err = runPlan(args[1:], stdout, stderr)
@@ -155,7 +158,72 @@ func run(args []string, stdout, stderr io.Writer) int {
 
 func usage(output io.Writer) {
 	fmt.Fprintln(output, "Production Readiness Scanner")
-	fmt.Fprintln(output, "usage: prc <catalog|config|inventory|plan|scan|diff|fix|remediate|remediate-proposal|doctor|history|explain|adapter|provider|version> [options]")
+	fmt.Fprintln(output, "usage: prc <catalog|benchmark|config|inventory|plan|scan|diff|fix|remediate|remediate-proposal|doctor|history|explain|adapter|provider|version> [options]")
+}
+
+func runBenchmark(args []string, stdout, stderr io.Writer) (int, error) {
+	if len(args) == 0 || args[0] != "run" {
+		return exitInternal, exitError(exitConfiguration, errors.New("benchmark requires run"))
+	}
+	set := flag.NewFlagSet("benchmark run", flag.ContinueOnError)
+	set.SetOutput(stderr)
+	suitePath := set.String("suite", "", "benchmark suite YAML file")
+	catalogRoot := set.String("catalog-root", ".", "repository containing the PRC catalog")
+	format := set.String("format", "human", "human or json")
+	evaluatedAtText := set.String("evaluated-at", "", "optional RFC3339 evaluation time for reproducible output")
+	if err := set.Parse(args[1:]); err != nil {
+		return exitInternal, exitError(exitConfiguration, err)
+	}
+	if set.NArg() != 0 {
+		return exitInternal, exitError(exitConfiguration, fmt.Errorf("unexpected benchmark arguments: %s", strings.Join(set.Args(), " ")))
+	}
+	if *suitePath == "" {
+		return exitInternal, exitError(exitConfiguration, errors.New("--suite is required"))
+	}
+	if *format != "human" && *format != "json" {
+		return exitInternal, exitError(exitConfiguration, fmt.Errorf("unsupported format %q", *format))
+	}
+	evaluatedAt := time.Now().UTC()
+	if *evaluatedAtText != "" {
+		parsed, err := time.Parse(time.RFC3339Nano, *evaluatedAtText)
+		if err != nil {
+			return exitInternal, exitError(exitConfiguration, fmt.Errorf("parse --evaluated-at: %w", err))
+		}
+		evaluatedAt = parsed.UTC()
+	}
+	catalogValue, err := catalog.Load(*catalogRoot)
+	if err != nil {
+		return exitInternal, exitError(exitConfiguration, err)
+	}
+	reportValue, err := benchmark.Evaluate(catalogValue, *suitePath, evaluatedAt)
+	if err != nil {
+		return exitInternal, exitError(exitConfiguration, err)
+	}
+	if *format == "json" {
+		if err := encodeJSON(stdout, reportValue); err != nil {
+			return exitInternal, err
+		}
+	} else {
+		fmt.Fprintf(stdout, "Benchmark: %s\n", reportValue.SuiteID)
+		fmt.Fprintf(stdout, "Suite digest: %s\n", reportValue.SuiteDigest)
+		fmt.Fprintf(stdout, "Corpus digest: %s\n", reportValue.CorpusDigest)
+		fmt.Fprintf(stdout, "Cases: %d/%d deterministic\n", reportValue.Summary.DeterministicCases, reportValue.Summary.Cases)
+		fmt.Fprintf(stdout, "Expectations: %d matched, %d mismatched\n", reportValue.Summary.Matched, reportValue.Summary.Mismatched)
+		fmt.Fprintf(stdout, "Precision: %.4f  Recall: %.4f  False-positive rate: %.4f\n",
+			reportValue.Metrics.Precision, reportValue.Metrics.Recall, reportValue.Metrics.FalsePositiveRate)
+		if reportValue.Passed {
+			fmt.Fprintln(stdout, "Quality budget: passed")
+		} else {
+			fmt.Fprintln(stdout, "Quality budget: failed")
+			for _, failure := range reportValue.QualityFailures {
+				fmt.Fprintln(stdout, "- "+failure)
+			}
+		}
+	}
+	if !reportValue.Passed {
+		return exitGateFailed, nil
+	}
+	return exitSuccess, nil
 }
 
 func runCatalog(args []string, stdout, stderr io.Writer) error {

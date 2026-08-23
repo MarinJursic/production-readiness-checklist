@@ -1,0 +1,5 @@
+{
+  "name": "benchmark-lock-missing",
+  "version": "1.0.0",
+  "engines": {"node": ">=22"}
+}

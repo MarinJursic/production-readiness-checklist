@@ -1011,6 +1011,73 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             [],
         )
 
+    def test_checked_in_benchmark_suite_and_report_conform(self) -> None:
+        path = ROOT / "fixtures" / "benchmarks" / "core-native" / "suite.yaml"
+        suite = yaml.safe_load(path.read_text(encoding="utf-8"))
+        self.assertEqual(
+            validate_instance.validation_errors(suite, "benchmark-suite.schema.json"),
+            [],
+        )
+        digest = "a" * 64
+        report = {
+            "schema_version": "prc.benchmark-report/v0.1",
+            "suite_id": suite["id"],
+            "suite_digest": digest,
+            "corpus_digest": "b" * 64,
+            "catalog_digest": "c" * 64,
+            "profile_id": suite["profile_id"],
+            "evaluated_at": "2026-08-23T12:00:00Z",
+            "quality_budget": suite["quality_budget"],
+            "summary": {
+                "cases": 1,
+                "expectations": 1,
+                "matched": 1,
+                "mismatched": 0,
+                "deterministic_cases": 1,
+                "expected_outcomes": {
+                    "pass": 1,
+                    "fail": 0,
+                    "not_applicable": 0,
+                    "unknown": 0,
+                    "manual_review": 0,
+                    "stale": 0,
+                    "conflicting": 0,
+                },
+            },
+            "metrics": {
+                "true_positive": 0,
+                "false_positive": 0,
+                "false_negative": 0,
+                "true_negative": 1,
+                "precision": 1,
+                "recall": 1,
+                "false_positive_rate": 0,
+            },
+            "cases": [{
+                "id": "example",
+                "target": "targets/example",
+                "inventory_digest": "d" * 64,
+                "run_id": "e" * 64,
+                "deterministic": True,
+                "passed": True,
+                "expectations": [{
+                    "assertion_id": "PRC-A-CORE-001",
+                    "expected_assessment": "pass",
+                    "expected_execution": "completed",
+                    "actual_assessment": "pass",
+                    "actual_execution": "completed",
+                    "summary": "Observed README.md.",
+                    "matched": True,
+                }],
+            }],
+            "quality_failures": [],
+            "passed": True,
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(report, "benchmark-report.schema.json"),
+            [],
+        )
+
     def test_checked_in_agent_task_and_output_conform(self) -> None:
         task = json.loads(
             (ROOT / "fixtures" / "providers" / "suggest-task.json").read_text(

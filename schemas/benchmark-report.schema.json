@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/benchmark-report.schema.json",
+  "title": "Production Readiness Benchmark Report v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "suite_id", "suite_digest", "corpus_digest", "catalog_digest", "profile_id", "evaluated_at", "quality_budget", "summary", "metrics", "cases", "quality_failures", "passed"],
+  "properties": {
+    "schema_version": {"const": "prc.benchmark-report/v0.1"},
+    "suite_id": {"type": "string", "pattern": "^prc\\.benchmark\\.[a-z0-9.-]+@[0-9]+\\.[0-9]+$"},
+    "suite_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "corpus_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "catalog_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "profile_id": {"type": "string", "pattern": "^prc/[a-z0-9-]+$"},
+    "evaluated_at": {"type": "string", "format": "date-time"},
+    "quality_budget": {"$ref": "benchmark-suite.schema.json#/$defs/quality_budget"},
+    "summary": {"$ref": "#/$defs/summary"},
+    "metrics": {"$ref": "#/$defs/metrics"},
+    "cases": {"type": "array", "minItems": 1, "maxItems": 100, "items": {"$ref": "#/$defs/case_result"}},
+    "quality_failures": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "passed": {"type": "boolean"}
+  },
+  "$defs": {
+    "outcome_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pass", "fail", "not_applicable", "unknown", "manual_review", "stale", "conflicting"],
+      "properties": {
+        "pass": {"type": "integer", "minimum": 0},
+        "fail": {"type": "integer", "minimum": 0},
+        "not_applicable": {"type": "integer", "minimum": 0},
+        "unknown": {"type": "integer", "minimum": 0},
+        "manual_review": {"type": "integer", "minimum": 0},
+        "stale": {"type": "integer", "minimum": 0},
+        "conflicting": {"type": "integer", "minimum": 0}
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cases", "expectations", "matched", "mismatched", "deterministic_cases", "expected_outcomes"],
+      "properties": {
+        "cases": {"type": "integer", "minimum": 1},
+        "expectations": {"type": "integer", "minimum": 1},
+        "matched": {"type": "integer", "minimum": 0},
+        "mismatched": {"type": "integer", "minimum": 0},
+        "deterministic_cases": {"type": "integer", "minimum": 0},
+        "expected_outcomes": {"$ref": "#/$defs/outcome_counts"}
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["true_positive", "false_positive", "false_negative", "true_negative", "precision", "recall", "false_positive_rate"],
+      "properties": {
+        "true_positive": {"type": "integer", "minimum": 0},
+        "false_positive": {"type": "integer", "minimum": 0},
+        "false_negative": {"type": "integer", "minimum": 0},
+        "true_negative": {"type": "integer", "minimum": 0},
+        "precision": {"type": "number", "minimum": 0, "maximum": 1},
+        "recall": {"type": "number", "minimum": 0, "maximum": 1},
+        "false_positive_rate": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    },
+    "expectation_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assertion_id", "expected_assessment", "expected_execution", "actual_assessment", "actual_execution", "summary", "matched"],
+      "properties": {
+        "assertion_id": {"type": "string", "pattern": "^PRC-A-[A-Z0-9]+-[0-9]{3}$"},
+        "expected_assessment": {"enum": ["pass", "fail", "unknown", "manual_review", "not_applicable", "stale", "conflicting"]},
+        "expected_execution": {"enum": ["not_run", "completed", "blocked", "error"]},
+        "actual_assessment": {"enum": ["pass", "fail", "unknown", "manual_review", "not_applicable", "stale", "conflicting"]},
+        "actual_execution": {"enum": ["not_run", "completed", "blocked", "error"]},
+        "summary": {"type": "string", "minLength": 1},
+        "matched": {"type": "boolean"}
+      }
+    },
+    "case_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "target", "inventory_digest", "run_id", "deterministic", "passed", "expectations"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9.-]{0,127}$"},
+        "target": {"type": "string", "minLength": 1},
+        "inventory_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "run_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "deterministic": {"type": "boolean"},
+        "passed": {"type": "boolean"},
+        "expectations": {"type": "array", "minItems": 1, "maxItems": 1000, "items": {"$ref": "#/$defs/expectation_result"}}
+      }
+    }
+  }
+}

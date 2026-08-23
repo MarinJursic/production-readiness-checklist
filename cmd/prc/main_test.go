@@ -12,6 +12,7 @@ import (
 	"testing"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/adapter"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/benchmark"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/catalog"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/engine"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/invalidation"
@@ -108,6 +109,69 @@ func TestCatalogValidateAndBundleCommands(t *testing.T) {
 		len(bundle.Objectives) != manifest.ObjectiveCount ||
 		len(bundle.Assertions) != manifest.AssertionCount || len(bundle.Profiles) != manifest.ProfileCount {
 		t.Fatalf("bundle does not match manifest: %+v", bundle)
+	}
+}
+
+func TestBenchmarkRunCommand(t *testing.T) {
+	repository := filepath.Join("..", "..")
+	var stdout, stderr bytes.Buffer
+	code := run([]string{
+		"benchmark", "run", "--catalog-root", repository,
+		"--suite", filepath.Join(repository, "fixtures", "benchmarks", "core-native", "suite.yaml"),
+		"--evaluated-at", "2026-08-23T12:00:00Z", "--format", "json",
+	}, &stdout, &stderr)
+	if code != 0 {
+		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
+	}
+	var report benchmark.Report
+	if err := json.Unmarshal(stdout.Bytes(), &report); err != nil {
+		t.Fatal(err)
+	}
+	if report.SchemaVersion != benchmark.ReportSchema || !report.Passed || report.Summary.Expectations != 10 {
+		t.Fatalf("benchmark report = %+v", report)
+	}
+
+	directory := t.TempDir()
+	target := filepath.Join(directory, "target")
+	if err := os.Mkdir(target, 0o700); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(target, "README.md"), []byte("present\n"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	suite := `schema_version: prc.benchmark-suite/v0.1
+id: prc.benchmark.cli-mismatch@0.1
+title: CLI mismatch
+profile_id: prc/core-repository
+cases:
+  - id: mismatch
+    target: target
+    expectations:
+      - assertion_id: PRC-A-CORE-001
+        assessment: fail
+        execution: completed
+quality_budget:
+  minimum_precision: 1
+  minimum_recall: 1
+  maximum_false_positive_rate: 0
+  maximum_mismatches: 0
+  require_determinism: true
+`
+	suitePath := filepath.Join(directory, "suite.yaml")
+	if err := os.WriteFile(suitePath, []byte(suite), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	stdout.Reset()
+	stderr.Reset()
+	code = run([]string{
+		"benchmark", "run", "--catalog-root", repository, "--suite", suitePath,
+		"--evaluated-at", "2026-08-23T12:00:00Z", "--format", "json",
+	}, &stdout, &stderr)
+	if code != exitGateFailed {
+		t.Fatalf("mismatch exit=%d stderr=%s", code, stderr.String())
+	}
+	if err := json.Unmarshal(stdout.Bytes(), &report); err != nil || report.Passed {
+		t.Fatalf("mismatch report=%+v err=%v", report, err)
 	}
 }
 

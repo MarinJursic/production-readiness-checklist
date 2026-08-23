@@ -1,0 +1,60 @@
+# Scanner benchmarks and quality budgets
+
+The benchmark runner measures scanner behavior on small, labeled fixture
+repositories. It is a release-regression tool, not a readiness score and not a
+claim that an assertion is accurate outside the represented fixture classes.
+
+The checked-in `core-native` suite currently covers deterministic examples of:
+
+- Pass and Fail results;
+- Not Applicable planning;
+- Blocked adapter evidence;
+- Manual Review evidence requirements; and
+- malformed-input execution errors.
+
+Each case binds its target inventory digest and is scanned twice at one fixed
+evaluation time. The report fails its quality gate if expected assessment or
+execution states drift, repeated runs differ, precision or recall falls below
+the suite budget, or the false-positive rate exceeds it. The content-addressed
+corpus digest combines the normalized suite definition with every fixture
+inventory digest.
+
+Run the suite locally:
+
+```bash
+prc benchmark run \
+  --catalog-root . \
+  --suite fixtures/benchmarks/core-native/suite.yaml \
+  --format human
+```
+
+Emit the versioned report used by CI:
+
+```bash
+prc benchmark run \
+  --catalog-root . \
+  --suite fixtures/benchmarks/core-native/suite.yaml \
+  --evaluated-at 2026-08-23T12:00:00Z \
+  --format json > benchmark-report.json
+```
+
+`--evaluated-at` makes the evidence timestamps and run identities reproducible
+for a controlled comparison. It does not override target content, catalog, or
+fixture identity.
+
+## Interpreting the metrics
+
+For benchmark metrics, an expected `fail` is the positive class. Precision is
+the fraction of reported failures that were labeled failures; recall is the
+fraction of labeled failures detected; the false-positive rate is measured
+against all labeled non-failure outcomes. Exact-state matching remains stricter
+than the binary metrics: confusing Blocked, Error, Manual Review, Not
+Applicable, or Pass still fails the suite even when it does not change the
+failure-class confusion matrix.
+
+The initial suite is deliberately small. Its perfect budget protects known
+behavior but does not establish broad real-world accuracy. New assertions need
+representative Pass, Fail, unsupported or Not Applicable, and execution-error
+fixtures before they can support a default release gate. Cross-platform,
+adversarial, performance, and tool-update differential suites remain required
+as coverage grows.
