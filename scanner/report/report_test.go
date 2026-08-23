@@ -26,6 +26,13 @@ func reportRun() model.RunResult {
 			AdapterID: "<unsafe-adapter>", ManifestSHA256: digest, ExecutionID: digest,
 			Transcript: model.AdapterTranscript{Summary: model.AdapterSummary{Status: "completed"}},
 		}},
+		Findings: []model.Finding{{
+			SchemaVersion: model.FindingSchema, ID: digest, Fingerprint: strings.Repeat("f", 64),
+			AssertionID: "PRC-A-CORE-001", ControlIDs: []string{"USEQ-FDCA6C71"},
+			Title: "README present", Summary: "Missing README | required.", Severity: "high", Gate: "required",
+			RemediationClass: "R2", Subject: model.FindingSubject{Kind: "project", ID: "example-product", InventoryDigest: digest},
+			Locations: []model.FindingLocation{{Path: "README.md", Line: 1}}, EvidenceIDs: []string{},
+		}},
 		Results: []model.AssertionResult{
 			{AssertionID: "PRC-A-CORE-001", Assessment: "fail", Execution: "completed", Severity: "high", Gate: "required", Summary: "Missing README | required.", RemediationClass: "R2", ControlIDs: []string{"USEQ-FDCA6C71"}, EvidenceObserved: []model.Evidence{}},
 			{AssertionID: "PRC-A-CORE-012", Assessment: "manual_review", Execution: "completed", Severity: "high", Gate: "required", Summary: "Reviewer required.", RemediationClass: "R0", EvidenceObserved: []model.Evidence{}},
@@ -40,7 +47,7 @@ func TestMarkdownReportIsScopedAndEscapesTableCells(t *testing.T) {
 		t.Fatal(err)
 	}
 	text := output.String()
-	for _, expected := range []string{"# Production readiness assessment", "Missing README \\| required.", "## Adapter executions", "example-product", "staging", "not an unqualified production-readiness"} {
+	for _, expected := range []string{"# Production readiness assessment", "Missing README \\| required.", "## Adapter executions", "## Findings", "example-product", "staging", "not an unqualified production-readiness"} {
 		if !strings.Contains(text, expected) {
 			t.Errorf("missing %q in report", expected)
 		}
@@ -64,6 +71,10 @@ func TestSARIFContainsOnlyFailedFindings(t *testing.T) {
 	results := runs[0].(map[string]any)["results"].([]any)
 	if len(results) != 1 || results[0].(map[string]any)["ruleId"] != "PRC-A-CORE-001" {
 		t.Fatalf("unexpected SARIF results: %+v", results)
+	}
+	findingProperties := results[0].(map[string]any)["properties"].(map[string]any)
+	if findingProperties["finding_id"] != strings.Repeat("a", 64) || findingProperties["fingerprint"] != strings.Repeat("f", 64) {
+		t.Fatalf("canonical finding identity missing from SARIF: %+v", findingProperties)
 	}
 }
 

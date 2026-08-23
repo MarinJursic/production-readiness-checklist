@@ -1,23 +1,22 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/state-check.schema.json",
-  "title": "Production Readiness Scanner State Check v0.2",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/state-check-v0.1.schema.json",
+  "title": "Production Readiness Scanner State Check v0.1",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_version", "checked_at", "state_path", "integrity", "counts"],
   "properties": {
-    "schema_version": {"const": "prc.state-check/v0.2"},
+    "schema_version": {"const": "prc.state-check/v0.1"},
     "checked_at": {"type": "string", "format": "date-time"},
     "state_path": {"type": "string", "minLength": 1},
     "integrity": {"const": "ok"},
     "counts": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["runs", "results", "findings", "evidence", "inventory_files", "inventory_facts", "audit_events"],
+      "required": ["runs", "results", "evidence", "inventory_files", "inventory_facts", "audit_events"],
       "properties": {
         "runs": {"type": "integer", "minimum": 0},
         "results": {"type": "integer", "minimum": 0},
-        "findings": {"type": "integer", "minimum": 0},
         "evidence": {"type": "integer", "minimum": 0},
         "inventory_files": {"type": "integer", "minimum": 0},
         "inventory_facts": {"type": "integer", "minimum": 0},

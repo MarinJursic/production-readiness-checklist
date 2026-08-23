@@ -17,15 +17,16 @@ import (
 	"strings"
 	"time"
 
+	"github.com/MarinJursic/production-readiness-checklist/scanner/finding"
 	workspaceinventory "github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 	_ "modernc.org/sqlite"
 )
 
 const (
-	SchemaVersion           = 1
+	SchemaVersion           = 2
 	HistorySchema           = "prc.history/v0.1"
-	CheckSchema             = "prc.state-check/v0.1"
+	CheckSchema             = "prc.state-check/v0.2"
 	maxCanonicalRecordBytes = 256 * 1024 * 1024
 )
 
@@ -76,6 +77,7 @@ type CheckReport struct {
 type Counts struct {
 	Runs           int `json:"runs"`
 	Results        int `json:"results"`
+	Findings       int `json:"findings"`
 	Evidence       int `json:"evidence"`
 	InventoryFiles int `json:"inventory_files"`
 	InventoryFacts int `json:"inventory_facts"`
@@ -145,7 +147,15 @@ func (store *Store) migrate(ctx context.Context) error {
 				return fmt.Errorf("apply state schema v1: %w", err)
 			}
 		}
-		if _, err := tx.ExecContext(ctx, "PRAGMA user_version = 1"); err != nil {
+		version = 1
+	}
+	if version == 1 {
+		for _, statement := range schemaV2 {
+			if _, err := tx.ExecContext(ctx, statement); err != nil {
+				return fmt.Errorf("apply state schema v2: %w", err)
+			}
+		}
+		if _, err := tx.ExecContext(ctx, "PRAGMA user_version = 2"); err != nil {
 			return fmt.Errorf("record state schema version: %w", err)
 		}
 	}
@@ -264,6 +274,44 @@ func (store *Store) IndexRun(ctx context.Context, run model.RunResult) error {
 			}
 		}
 	}
+	for _, item := range run.Findings {
+		locations, marshalErr := json.Marshal(item.Locations)
+		if marshalErr != nil {
+			return fmt.Errorf("encode finding locations: %w", marshalErr)
+		}
+		evidenceIDs, marshalErr := json.Marshal(item.EvidenceIDs)
+		if marshalErr != nil {
+			return fmt.Errorf("encode finding evidence IDs: %w", marshalErr)
+		}
+		_, err = tx.ExecContext(ctx, `
+			INSERT INTO findings
+			(run_id, finding_id, fingerprint, assertion_id, subject_kind, subject_id,
+			 inventory_digest, severity, gate_state, remediation_class, title, summary,
+			 locations_json, evidence_ids_json)
+			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+			run.RunID, item.ID, item.Fingerprint, item.AssertionID, item.Subject.Kind,
+			item.Subject.ID, item.Subject.InventoryDigest, item.Severity, item.Gate,
+			item.RemediationClass, item.Title, item.Summary, string(locations), string(evidenceIDs))
+		if err != nil {
+			return fmt.Errorf("index finding %s: %w", item.ID, err)
+		}
+		for _, location := range item.Locations {
+			_, err = tx.ExecContext(ctx, `
+				INSERT INTO finding_locations (run_id, finding_id, path, line, column)
+				VALUES (?, ?, ?, ?, ?)`, run.RunID, item.ID, location.Path, location.Line, location.Column)
+			if err != nil {
+				return fmt.Errorf("index finding location %s: %w", location.Path, err)
+			}
+		}
+		for _, evidenceID := range item.EvidenceIDs {
+			_, err = tx.ExecContext(ctx, `
+				INSERT INTO finding_evidence (run_id, finding_id, evidence_id)
+				VALUES (?, ?, ?)`, run.RunID, item.ID, evidenceID)
+			if err != nil {
+				return fmt.Errorf("link finding evidence %s: %w", evidenceID, err)
+			}
+		}
+	}
 	details, err := json.Marshal(map[string]string{"record_path": runPath})
 	if err != nil {
 		return err
@@ -370,7 +418,8 @@ func (store *Store) Counts(ctx context.Context) (Counts, error) {
 		name  string
 		value *int
 	}{
-		{"runs", &result.Runs}, {"results", &result.Results}, {"evidence", &result.Evidence},
+		{"runs", &result.Runs}, {"results", &result.Results}, {"findings", &result.Findings},
+		{"evidence", &result.Evidence},
 		{"inventory_files", &result.InventoryFiles}, {"inventory_facts", &result.InventoryFacts},
 		{"audit_events", &result.AuditEvents},
 	}
@@ -456,6 +505,7 @@ func validateRun(run model.RunResult) error {
 		return fmt.Errorf("run ID does not match record content")
 	}
 	if !((run.SchemaVersion == model.RunSchema && run.Plan.SchemaVersion == model.PlanSchema) ||
+		(run.SchemaVersion == "prc.run/v0.5" && run.Plan.SchemaVersion == model.PlanSchema) ||
 		(run.SchemaVersion == "prc.run/v0.4" && run.Plan.SchemaVersion == "prc.plan/v0.4") ||
 		(run.SchemaVersion == "prc.run/v0.3" && run.Plan.SchemaVersion == "prc.plan/v0.3")) {
 		return fmt.Errorf("unsupported or mismatched run and plan schemas %q and %q", run.SchemaVersion, run.Plan.SchemaVersion)
@@ -511,6 +561,44 @@ func validateRun(run model.RunResult) error {
 	if len(results) != len(planned) {
 		return fmt.Errorf("run does not contain exactly one result for every planned assertion")
 	}
+	if run.SchemaVersion == model.RunSchema {
+		if run.Findings == nil {
+			return fmt.Errorf("current run findings must encode as an array")
+		}
+		failureResults := map[string]model.AssertionResult{}
+		for _, result := range run.Results {
+			if result.Assessment == "fail" {
+				failureResults[result.AssertionID] = result
+			}
+		}
+		seenFindings := map[string]bool{}
+		seenAssertions := map[string]bool{}
+		for _, item := range run.Findings {
+			if err := finding.Validate(item); err != nil {
+				return fmt.Errorf("invalid finding %s: %w", item.ID, err)
+			}
+			result, ok := failureResults[item.AssertionID]
+			if !ok || seenFindings[item.ID] || seenAssertions[item.AssertionID] {
+				return fmt.Errorf("finding %s is duplicate or does not map one-to-one to a failed result", item.ID)
+			}
+			seenFindings[item.ID], seenAssertions[item.AssertionID] = true, true
+			if item.Subject.InventoryDigest != run.Inventory.Digest || item.Summary != result.Summary ||
+				item.Severity != result.Severity || item.Gate != result.Gate ||
+				item.RemediationClass != result.RemediationClass || !sameStringSet(item.ControlIDs, result.ControlIDs) {
+				return fmt.Errorf("finding %s does not match its failed result", item.ID)
+			}
+			evidenceIDs := make([]string, 0, len(result.EvidenceObserved))
+			for _, evidence := range result.EvidenceObserved {
+				evidenceIDs = append(evidenceIDs, evidence.ID)
+			}
+			if !sameStringSet(item.EvidenceIDs, evidenceIDs) {
+				return fmt.Errorf("finding %s evidence does not match its failed result", item.ID)
+			}
+		}
+		if len(seenAssertions) != len(failureResults) {
+			return fmt.Errorf("run does not contain exactly one finding for every failed assertion")
+		}
+	}
 	return nil
 }
 
@@ -541,6 +629,25 @@ func digest(value string) bool {
 	}
 	for _, character := range value {
 		if (character < '0' || character > '9') && (character < 'a' || character > 'f') {
+			return false
+		}
+	}
+	return true
+}
+
+func sameStringSet(left, right []string) bool {
+	if len(left) != len(right) {
+		return false
+	}
+	values := map[string]int{}
+	for _, value := range left {
+		values[value]++
+	}
+	for _, value := range right {
+		values[value]--
+	}
+	for _, count := range values {
+		if count != 0 {
 			return false
 		}
 	}
@@ -684,4 +791,44 @@ var schemaV1 = []string{
 	`CREATE INDEX runs_target_idx ON runs(target_name, completed_at DESC)`,
 	`CREATE INDEX results_assessment_idx ON results(assessment, assertion_id)`,
 	`CREATE INDEX evidence_target_idx ON evidence(target_digest, kind)`,
+}
+
+var schemaV2 = []string{
+	`CREATE TABLE findings (
+		run_id TEXT NOT NULL,
+		finding_id TEXT NOT NULL CHECK(length(finding_id) = 64),
+		fingerprint TEXT NOT NULL CHECK(length(fingerprint) = 64),
+		assertion_id TEXT NOT NULL,
+		subject_kind TEXT NOT NULL,
+		subject_id TEXT NOT NULL,
+		inventory_digest TEXT NOT NULL CHECK(length(inventory_digest) = 64),
+		severity TEXT NOT NULL,
+		gate_state TEXT NOT NULL,
+		remediation_class TEXT NOT NULL,
+		title TEXT NOT NULL,
+		summary TEXT NOT NULL,
+		locations_json TEXT NOT NULL CHECK(json_valid(locations_json)),
+		evidence_ids_json TEXT NOT NULL CHECK(json_valid(evidence_ids_json)),
+		PRIMARY KEY (run_id, finding_id),
+		UNIQUE (run_id, assertion_id),
+		FOREIGN KEY (run_id, assertion_id) REFERENCES results(run_id, assertion_id) ON DELETE CASCADE
+	) STRICT, WITHOUT ROWID`,
+	`CREATE TABLE finding_locations (
+		run_id TEXT NOT NULL,
+		finding_id TEXT NOT NULL,
+		path TEXT NOT NULL,
+		line INTEGER NOT NULL CHECK(line >= 0),
+		column INTEGER NOT NULL CHECK(column >= 0),
+		PRIMARY KEY (run_id, finding_id, path, line, column),
+		FOREIGN KEY (run_id, finding_id) REFERENCES findings(run_id, finding_id) ON DELETE CASCADE
+	) STRICT, WITHOUT ROWID`,
+	`CREATE TABLE finding_evidence (
+		run_id TEXT NOT NULL,
+		finding_id TEXT NOT NULL,
+		evidence_id TEXT NOT NULL REFERENCES evidence(evidence_id),
+		PRIMARY KEY (run_id, finding_id, evidence_id),
+		FOREIGN KEY (run_id, finding_id) REFERENCES findings(run_id, finding_id) ON DELETE CASCADE
+	) STRICT, WITHOUT ROWID`,
+	`CREATE INDEX findings_fingerprint_idx ON findings(fingerprint, run_id)`,
+	`CREATE INDEX findings_severity_idx ON findings(severity, gate_state, assertion_id)`,
 }

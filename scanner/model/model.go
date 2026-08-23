@@ -1,12 +1,16 @@
 package model
 
-import "time"
+import (
+	"encoding/json"
+	"time"
+)
 
 const (
 	InventorySchema        = "prc.inventory/v0.3"
 	PlanSchema             = "prc.plan/v0.5"
-	RunSchema              = "prc.run/v0.5"
+	RunSchema              = "prc.run/v0.6"
 	EvidenceSchema         = "prc.evidence/v0.1"
+	FindingSchema          = "prc.finding/v0.1"
 	AdapterExecutionSchema = "prc.adapter-execution/v0.1"
 )
 
@@ -208,6 +212,37 @@ type AssertionResult struct {
 	RemediationClass string                `json:"remediation_class"`
 }
 
+type FindingSubject struct {
+	Kind            string `json:"kind"`
+	ID              string `json:"id"`
+	InventoryDigest string `json:"inventory_digest"`
+}
+
+type FindingLocation struct {
+	Path   string `json:"path"`
+	Line   int    `json:"line,omitempty"`
+	Column int    `json:"column,omitempty"`
+}
+
+// Finding is an actionable, evidence-linked violation. Blocked, manual,
+// unknown, and execution-error results remain assertion results and are not
+// mislabeled as observed findings.
+type Finding struct {
+	SchemaVersion    string            `json:"schema_version"`
+	ID               string            `json:"id"`
+	Fingerprint      string            `json:"fingerprint"`
+	AssertionID      string            `json:"assertion_id"`
+	ControlIDs       []string          `json:"control_ids"`
+	Title            string            `json:"title"`
+	Summary          string            `json:"summary"`
+	Severity         string            `json:"severity"`
+	Gate             string            `json:"gate"`
+	RemediationClass string            `json:"remediation_class"`
+	Subject          FindingSubject    `json:"subject"`
+	Locations        []FindingLocation `json:"locations"`
+	EvidenceIDs      []string          `json:"evidence_ids"`
+}
+
 type RunResult struct {
 	SchemaVersion     string             `json:"schema_version"`
 	RunID             string             `json:"run_id"`
@@ -217,7 +252,34 @@ type RunResult struct {
 	Inventory         Inventory          `json:"inventory"`
 	AdapterExecutions []AdapterExecution `json:"adapter_executions"`
 	Results           []AssertionResult  `json:"results"`
+	Findings          []Finding          `json:"findings"`
 	TerminalState     string             `json:"terminal_state"`
+}
+
+// MarshalJSON preserves the byte contract of archived v0.5 through v0.3 state
+// records after Findings was added in v0.6. Current runs always encode the
+// required findings array, including an empty array.
+func (run RunResult) MarshalJSON() ([]byte, error) {
+	type current RunResult
+	if run.SchemaVersion == RunSchema {
+		return json.Marshal(current(run))
+	}
+	type legacy struct {
+		SchemaVersion     string             `json:"schema_version"`
+		RunID             string             `json:"run_id"`
+		StartedAt         time.Time          `json:"started_at"`
+		CompletedAt       time.Time          `json:"completed_at"`
+		Plan              Plan               `json:"plan"`
+		Inventory         Inventory          `json:"inventory"`
+		AdapterExecutions []AdapterExecution `json:"adapter_executions"`
+		Results           []AssertionResult  `json:"results"`
+		TerminalState     string             `json:"terminal_state"`
+	}
+	return json.Marshal(legacy{
+		SchemaVersion: run.SchemaVersion, RunID: run.RunID, StartedAt: run.StartedAt,
+		CompletedAt: run.CompletedAt, Plan: run.Plan, Inventory: run.Inventory,
+		AdapterExecutions: run.AdapterExecutions, Results: run.Results, TerminalState: run.TerminalState,
+	})
 }
 
 type AdapterSubject struct {

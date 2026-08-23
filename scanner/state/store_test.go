@@ -83,11 +83,19 @@ func TestStoreIndexesQueriesAndReloadsCanonicalRun(t *testing.T) {
 		t.Fatal(err)
 	}
 	wantCounts := Counts{
-		Runs: 1, Results: len(run.Results), Evidence: expectedEvidenceCount(run),
+		Runs: 1, Results: len(run.Results), Findings: len(run.Findings), Evidence: expectedEvidenceCount(run),
 		InventoryFiles: len(run.Inventory.Files), InventoryFacts: len(run.Inventory.Facts), AuditEvents: 1,
 	}
 	if !reflect.DeepEqual(counts, wantCounts) {
 		t.Fatalf("counts = %+v, want %+v", counts, wantCounts)
+	}
+	if len(run.Findings) > 0 {
+		var fingerprint string
+		if err := store.db.QueryRowContext(ctx,
+			"SELECT fingerprint FROM findings WHERE run_id = ? AND finding_id = ?",
+			run.RunID, run.Findings[0].ID).Scan(&fingerprint); err != nil || fingerprint != run.Findings[0].Fingerprint {
+			t.Fatalf("indexed finding fingerprint=%q err=%v", fingerprint, err)
+		}
 	}
 	history, err := store.ListRuns(ctx, Query{Limit: 10, TargetName: run.Inventory.TargetName, ProfileID: run.Plan.ProfileID})
 	if err != nil {
@@ -167,6 +175,23 @@ func TestStoreReadsLegacyV04RunAfterCatalogBindingUpgrade(t *testing.T) {
 	}
 }
 
+func TestStoreReadsLegacyV05RunAfterFindingUpgrade(t *testing.T) {
+	run := testRun(t)
+	run.SchemaVersion = "prc.run/v0.5"
+	run.RunID = runIdentity(run)
+	store, _ := writeAndOpen(t, run)
+	if err := store.IndexRun(context.Background(), run); err != nil {
+		t.Fatal(err)
+	}
+	loaded, err := store.LoadRun(context.Background(), run.RunID)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if loaded.SchemaVersion != "prc.run/v0.5" || loaded.Findings != nil {
+		t.Fatalf("legacy run was not preserved: %+v", loaded)
+	}
+}
+
 func TestValidateRunRejectsTamperedNestedIdentities(t *testing.T) {
 	t.Run("plan", func(t *testing.T) {
 		run := testRun(t)
@@ -181,6 +206,28 @@ func TestValidateRunRejectsTamperedNestedIdentities(t *testing.T) {
 		run.Inventory.Files[0].SHA256 = strings.Repeat("0", 64)
 		run.RunID = runIdentity(run)
 		if err := validateRun(run); err == nil || !strings.Contains(err.Error(), "inventory digest") {
+			t.Fatalf("unexpected error: %v", err)
+		}
+	})
+	t.Run("finding-content", func(t *testing.T) {
+		run := testRun(t)
+		if len(run.Findings) == 0 {
+			t.Fatal("fixture produced no findings")
+		}
+		run.Findings[0].Summary = "tampered"
+		run.RunID = runIdentity(run)
+		if err := validateRun(run); err == nil || !strings.Contains(err.Error(), "finding") {
+			t.Fatalf("unexpected error: %v", err)
+		}
+	})
+	t.Run("missing-finding", func(t *testing.T) {
+		run := testRun(t)
+		if len(run.Findings) == 0 {
+			t.Fatal("fixture produced no findings")
+		}
+		run.Findings = run.Findings[1:]
+		run.RunID = runIdentity(run)
+		if err := validateRun(run); err == nil || !strings.Contains(err.Error(), "exactly one finding") {
 			t.Fatalf("unexpected error: %v", err)
 		}
 	})
@@ -210,6 +257,41 @@ func TestStoreReindexIsIdempotentAndRepairsDerivedRows(t *testing.T) {
 	}
 	if summary != run.Results[0].Summary {
 		t.Fatalf("derived row was not repaired: %q", summary)
+	}
+}
+
+func TestStoreMigratesV1ToFindingIndex(t *testing.T) {
+	ctx := context.Background()
+	root := t.TempDir()
+	if err := os.Chmod(root, 0o700); err != nil {
+		t.Fatal(err)
+	}
+	store, err := Open(ctx, root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, table := range []string{"finding_evidence", "finding_locations", "findings"} {
+		if _, err := store.db.ExecContext(ctx, "DROP TABLE "+table); err != nil {
+			t.Fatal(err)
+		}
+	}
+	if _, err := store.db.ExecContext(ctx, "PRAGMA user_version = 1"); err != nil {
+		t.Fatal(err)
+	}
+	if err := store.Close(); err != nil {
+		t.Fatal(err)
+	}
+	store, err = Open(ctx, root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer store.Close()
+	var version int
+	if err := store.db.QueryRowContext(ctx, "PRAGMA user_version").Scan(&version); err != nil || version != SchemaVersion {
+		t.Fatalf("state schema version=%d err=%v", version, err)
+	}
+	if err := store.db.QueryRowContext(ctx, "SELECT COUNT(*) FROM findings").Scan(new(int)); err != nil {
+		t.Fatalf("finding table unavailable after migration: %v", err)
 	}
 }
 

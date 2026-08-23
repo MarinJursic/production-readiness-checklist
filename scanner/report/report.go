@@ -86,6 +86,18 @@ func writeMarkdown(output io.Writer, run model.RunResult) error {
 			}
 		}
 	}
+	if len(run.Findings) > 0 {
+		if _, err := fmt.Fprintln(output, "\n## Findings\n\n| Severity | Finding | Assertion | Gate | Summary | Locations | Evidence |\n| --- | --- | --- | --- | --- | ---: | ---: |"); err != nil {
+			return err
+		}
+		for _, finding := range run.Findings {
+			if _, err := fmt.Fprintf(output, "| %s | `%s` | `%s` | %s | %s | %d | %d |\n",
+				finding.Severity, finding.ID, finding.AssertionID, finding.Gate,
+				markdownCell(finding.Summary), len(finding.Locations), len(finding.EvidenceIDs)); err != nil {
+				return err
+			}
+		}
+	}
 	if _, err := fmt.Fprintln(output, "\n## Assertions\n\n| Assessment | Assertion | Severity | Gate | Summary | Evidence |\n| --- | --- | --- | --- | --- | ---: |"); err != nil {
 		return err
 	}
@@ -146,10 +158,16 @@ type sarifLocation struct {
 
 type sarifPhysicalLocation struct {
 	ArtifactLocation sarifArtifactLocation `json:"artifactLocation"`
+	Region           *sarifRegion          `json:"region,omitempty"`
 }
 
 type sarifArtifactLocation struct {
 	URI string `json:"uri"`
+}
+
+type sarifRegion struct {
+	StartLine   int `json:"startLine,omitempty"`
+	StartColumn int `json:"startColumn,omitempty"`
 }
 
 func sarifLevel(severity string) string {
@@ -166,29 +184,31 @@ func sarifLevel(severity string) string {
 func writeSARIF(output io.Writer, run model.RunResult) error {
 	rules := make([]sarifRule, 0)
 	results := make([]sarifResult, 0)
-	for _, result := range run.Results {
-		if result.Assessment != "fail" {
-			continue
+	seenRules := map[string]bool{}
+	for _, finding := range run.Findings {
+		if !seenRules[finding.AssertionID] {
+			seenRules[finding.AssertionID] = true
+			rules = append(rules, sarifRule{
+				ID: finding.AssertionID, ShortDescription: sarifMessage{Text: finding.Title},
+				Properties: map[string]any{"severity": finding.Severity, "gate": finding.Gate, "control_ids": finding.ControlIDs},
+			})
 		}
-		rules = append(rules, sarifRule{
-			ID: result.AssertionID, ShortDescription: sarifMessage{Text: result.AssertionID},
-			Properties: map[string]any{"severity": result.Severity, "gate": result.Gate, "control_ids": result.ControlIDs},
-		})
-		locations := make([]sarifLocation, 0, len(result.EvidenceObserved))
-		seen := map[string]bool{}
-		for _, evidence := range result.EvidenceObserved {
-			if evidence.Source == "" || seen[evidence.Source] {
-				continue
+		locations := make([]sarifLocation, 0, len(finding.Locations))
+		for _, location := range finding.Locations {
+			physical := sarifPhysicalLocation{ArtifactLocation: sarifArtifactLocation{URI: location.Path}}
+			if location.Line > 0 {
+				physical.Region = &sarifRegion{StartLine: location.Line, StartColumn: location.Column}
 			}
-			seen[evidence.Source] = true
-			locations = append(locations, sarifLocation{PhysicalLocation: sarifPhysicalLocation{
-				ArtifactLocation: sarifArtifactLocation{URI: evidence.Source},
-			}})
+			locations = append(locations, sarifLocation{PhysicalLocation: physical})
 		}
 		results = append(results, sarifResult{
-			RuleID: result.AssertionID, Level: sarifLevel(result.Severity),
-			Message: sarifMessage{Text: result.Summary}, Locations: locations,
-			Properties: map[string]any{"assessment": result.Assessment, "severity": result.Severity, "gate": result.Gate, "remediation_class": result.RemediationClass},
+			RuleID: finding.AssertionID, Level: sarifLevel(finding.Severity),
+			Message: sarifMessage{Text: finding.Summary}, Locations: locations,
+			Properties: map[string]any{
+				"finding_id": finding.ID, "fingerprint": finding.Fingerprint,
+				"severity": finding.Severity, "gate": finding.Gate,
+				"remediation_class": finding.RemediationClass, "evidence_ids": finding.EvidenceIDs,
+			},
 		})
 	}
 	log := sarifLog{
@@ -324,6 +344,11 @@ const htmlReport = `<!doctype html>
       <caption>Adapter executions</caption>
       <thead><tr><th scope="col">Adapter</th><th scope="col">Manifest</th><th scope="col">Status</th><th scope="col">Execution</th></tr></thead>
       <tbody>{{range .Run.AdapterExecutions}}<tr><td><code>{{.AdapterID}}</code></td><td><code>{{.ManifestSHA256}}</code></td><td>{{.Transcript.Summary.Status}}</td><td><code>{{.ExecutionID}}</code></td></tr>{{end}}</tbody>
+    </table>{{end}}
+    {{if .Run.Findings}}<table>
+      <caption>Findings</caption>
+      <thead><tr><th scope="col">Severity</th><th scope="col">Finding</th><th scope="col">Assertion</th><th scope="col">Gate</th><th scope="col">Summary</th><th scope="col">Locations</th><th scope="col">Evidence</th></tr></thead>
+      <tbody>{{range .Run.Findings}}<tr><td class="status">{{.Severity}}</td><td><code>{{.ID}}</code></td><td><code>{{.AssertionID}}</code></td><td>{{.Gate}}</td><td>{{.Summary}}</td><td>{{len .Locations}}</td><td>{{len .EvidenceIDs}}</td></tr>{{end}}</tbody>
     </table>{{end}}
     <table>
       <caption>Assertion results</caption>

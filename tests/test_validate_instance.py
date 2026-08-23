@@ -84,6 +84,32 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             [],
         )
 
+    def test_canonical_finding_conforms(self) -> None:
+        digest = "a" * 64
+        finding = {
+            "schema_version": "prc.finding/v0.1",
+            "id": digest,
+            "fingerprint": "b" * 64,
+            "assertion_id": "PRC-A-CORE-008",
+            "control_ids": ["USEQ-AAAAAAAA"],
+            "title": "Action references are immutable",
+            "summary": "One workflow action uses a mutable reference.",
+            "severity": "critical",
+            "gate": "no-go",
+            "remediation_class": "R2",
+            "subject": {
+                "kind": "project",
+                "id": "example",
+                "inventory_digest": digest,
+            },
+            "locations": [{"path": ".github/workflows/ci.yml", "line": 8}],
+            "evidence_ids": ["c" * 64],
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(finding, "finding.schema.json"),
+            [],
+        )
+
     def test_checked_in_project_configuration_conforms(self) -> None:
         path = ROOT / "fixtures" / "config" / "production-readiness.yaml"
         instance = yaml.safe_load(path.read_text(encoding="utf-8"))
@@ -500,7 +526,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "assertions": [],
         }
         final_run = {
-            "schema_version": "prc.run/v0.5",
+            "schema_version": "prc.run/v0.6",
             "run_id": digest,
             "started_at": "2026-08-23T12:00:00Z",
             "completed_at": "2026-08-23T12:00:01Z",
@@ -508,6 +534,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "inventory": inventory,
             "adapter_executions": [],
             "results": [],
+            "findings": [],
             "terminal_state": "profile_satisfied",
         }
         remediation_run = {
@@ -547,6 +574,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "schema_version": "prc.run/v0.4",
             "plan": legacy_plan,
         }
+        del legacy_final_run["findings"]
         legacy_remediation_run = {
             **remediation_run,
             "schema_version": "prc.remediation-run/v0.1",
@@ -556,6 +584,15 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         self.assertEqual(
             validate_instance.validation_errors(
                 legacy_remediation_run, "remediation-run-v0.1.schema.json"
+            ),
+            [],
+        )
+
+        v05_run = {**final_run, "schema_version": "prc.run/v0.5"}
+        del v05_run["findings"]
+        self.assertEqual(
+            validate_instance.validation_errors(
+                v05_run, "run-result-v0.5.schema.json"
             ),
             [],
         )
@@ -639,13 +676,14 @@ class ScannerOutputSchemaTests(unittest.TestCase):
 
     def test_state_check_report_conforms(self) -> None:
         report = {
-            "schema_version": "prc.state-check/v0.1",
+            "schema_version": "prc.state-check/v0.2",
             "checked_at": "2026-08-23T12:00:00Z",
             "state_path": "/tmp/prc-state/state.sqlite",
             "integrity": "ok",
             "counts": {
                 "runs": 1,
                 "results": 30,
+                "findings": 2,
                 "evidence": 20,
                 "inventory_files": 100,
                 "inventory_facts": 10,

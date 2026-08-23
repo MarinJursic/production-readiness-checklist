@@ -9,6 +9,7 @@ import (
 	"path/filepath"
 	"regexp"
 
+	"github.com/MarinJursic/production-readiness-checklist/scanner/finding"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 )
 
@@ -47,6 +48,16 @@ func WriteRun(root string, run model.RunResult) error {
 	}
 	if run.RunID != expectedRunID {
 		return fmt.Errorf("run ID does not match record content")
+	}
+	if run.SchemaVersion == model.RunSchema {
+		if run.Findings == nil {
+			return fmt.Errorf("current run findings must encode as an array")
+		}
+		for _, item := range run.Findings {
+			if err := finding.Validate(item); err != nil {
+				return fmt.Errorf("invalid finding %s: %w", item.ID, err)
+			}
+		}
 	}
 	for _, result := range run.Results {
 		for _, item := range result.EvidenceObserved {

@@ -15,8 +15,9 @@ prc-state/
 The JSON records are authoritative. SQLite is a query index that can be rebuilt
 from those content-addressed records; it never replaces evidence or changes an
 assessment. Indexing verifies every run and evidence identity against its
-canonical record before one transaction updates runs, results, evidence
-metadata, inventory files, inventory facts, relationships, and the audit event.
+canonical record before one transaction updates runs, results, fingerprinted
+findings, finding locations and evidence links, evidence metadata, inventory
+files, inventory facts, relationships, and the audit event.
 
 ## Create private state
 
@@ -94,7 +95,9 @@ Run both checks and obtain indexed record counts with:
   --format json
 ```
 
-A successful JSON response conforms to `prc.state-check/v0.1`. Corruption or a
+A successful JSON response conforms to `prc.state-check/v0.2`. It includes a
+separate finding count; the frozen v0.1 schema remains available for archived
+outputs. Corruption or a
 foreign-key violation is an error and never produces an `integrity: ok` report.
 
 Use [diff-aware evidence invalidation](diff-and-invalidation.md) to compare one

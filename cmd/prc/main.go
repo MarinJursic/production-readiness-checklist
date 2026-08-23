@@ -621,8 +621,9 @@ func runHistory(args []string, stdout, stderr io.Writer) error {
 		}
 		fmt.Fprintf(stdout, "State: %s\n", report.StatePath)
 		fmt.Fprintln(stdout, "Integrity: ok")
-		fmt.Fprintf(stdout, "Records: %d runs, %d results, %d evidence, %d files, %d facts, %d audit events\n",
-			counts.Runs, counts.Results, counts.Evidence, counts.InventoryFiles, counts.InventoryFacts, counts.AuditEvents)
+		fmt.Fprintf(stdout, "Records: %d runs, %d results, %d findings, %d evidence, %d files, %d facts, %d audit events\n",
+			counts.Runs, counts.Results, counts.Findings, counts.Evidence,
+			counts.InventoryFiles, counts.InventoryFacts, counts.AuditEvents)
 		return nil
 	}
 	if args[0] == "show" {

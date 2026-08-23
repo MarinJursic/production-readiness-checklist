@@ -68,6 +68,38 @@ Assessment:
 This prevents an adapter error, missing evidence, manual decision, and verified
 failure from collapsing into the same label.
 
+## Canonical findings and correlation
+
+Run result v0.6 emits a `prc.finding/v0.1` record for every failed assertion.
+It does not create findings for missing access, execution errors, manual review,
+unknown applicability, or Not Applicable results; those remain visible on their
+independent assertion-result axes.
+
+Each finding records:
+
+- a content-addressed ID for the exact inventory, summary, evidence, and policy
+  classification;
+- a stable fingerprint over the assertion, logical subject, and normalized
+  source locations;
+- the mapped assertion and control IDs;
+- the exact repository or declared-project subject and inventory digest;
+- severity, gate, and remediation class;
+- only validated repository-relative locations; and
+- the complete set of evidence IDs from its failed assertion result.
+
+The fingerprint survives new evidence and explanatory wording changes so a
+failure can be correlated across scans. The content ID changes when the exact
+finding envelope changes. A declared project ID supplies stable cross-checkout
+subject identity; without project configuration, correlation is scoped to the
+scanner's repository target name.
+
+The state database indexes both identities, normalized locations, and evidence
+links while immutable run JSON remains authoritative. SARIF is derived from
+these canonical findings. It no longer guesses findings or file locations from
+arbitrary evidence source strings.
+
+Frozen `prc.run/v0.5` and older schemas remain available for archived results.
+
 ## Evidence envelope
 
 Every evidence item records:

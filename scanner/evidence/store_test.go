@@ -31,7 +31,7 @@ func signRun(t *testing.T, run model.RunResult) model.RunResult {
 func TestWriteRunStoresEvidenceAndRunAtomically(t *testing.T) {
 	root := t.TempDir()
 	run := signRun(t, model.RunResult{
-		SchemaVersion: model.RunSchema,
+		SchemaVersion: model.RunSchema, Findings: []model.Finding{},
 		Results: []model.AssertionResult{{
 			AssertionID:      "PRC-A-CORE-001",
 			EvidenceObserved: []model.Evidence{{SchemaVersion: model.EvidenceSchema}},

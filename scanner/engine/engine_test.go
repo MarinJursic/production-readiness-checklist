@@ -15,6 +15,7 @@ import (
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/catalog"
 	projectconfig "github.com/MarinJursic/production-readiness-checklist/scanner/config"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/finding"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 )
@@ -189,6 +190,50 @@ func TestMutableActionReferenceTriggersNoGo(t *testing.T) {
 	result := findResult(t, run, "PRC-A-CORE-008")
 	if result.Assessment != "fail" || run.TerminalState != "no_go" {
 		t.Fatalf("action result=%s terminal=%s summary=%s", result.Assessment, run.TerminalState, result.Summary)
+	}
+	if len(run.Findings) != 1 {
+		t.Fatalf("findings = %+v", run.Findings)
+	}
+	findingItem := run.Findings[0]
+	if findingItem.AssertionID != result.AssertionID || findingItem.Subject.InventoryDigest != run.Inventory.Digest ||
+		len(findingItem.ID) != 64 || len(findingItem.Fingerprint) != 64 ||
+		!slices.Contains(findingItem.Locations, model.FindingLocation{Path: ".github/workflows/ci.yml"}) {
+		t.Fatalf("canonical finding = %+v", findingItem)
+	}
+	if err := finding.Validate(findingItem); err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestFindingFingerprintIsStableAcrossUnrelatedInventoryChanges(t *testing.T) {
+	root := healthyRepository(t)
+	workflow := filepath.Join(root, ".github", "workflows", "ci.yml")
+	data, err := os.ReadFile(workflow)
+	if err != nil {
+		t.Fatal(err)
+	}
+	writeFixture(t, root, ".github/workflows/ci.yml", strings.ReplaceAll(string(data), pinnedCheckout, "actions/checkout@v7"))
+	firstInventory, err := inventory.Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	first, err := scanner(t).Scan("prc/core-repository", firstInventory)
+	if err != nil {
+		t.Fatal(err)
+	}
+	writeFixture(t, root, "unrelated.txt", "unrelated\n")
+	secondInventory, err := inventory.Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	second, err := scanner(t).Scan("prc/core-repository", secondInventory)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(first.Findings) != 1 || len(second.Findings) != 1 ||
+		first.Findings[0].Fingerprint != second.Findings[0].Fingerprint ||
+		first.Findings[0].ID == second.Findings[0].ID {
+		t.Fatalf("finding correlation changed incorrectly: %+v %+v", first.Findings, second.Findings)
 	}
 }
 

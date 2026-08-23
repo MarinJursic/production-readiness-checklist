@@ -116,9 +116,11 @@ manual/not-applicable skips kept distinct:
 ```
 
 SARIF intentionally contains only failed assertions that can be represented as
-findings. Unknown, blocked, manual, and not-applicable results remain in the
-canonical JSON, Markdown, HTML, and JUnit reports instead of being mislabeled as
-source findings.
+canonical, fingerprinted findings. Unknown, blocked, manual, and not-applicable
+results remain in the canonical JSON, Markdown, HTML, and JUnit reports instead
+of being mislabeled as source findings. Run v0.6 keeps a stable finding
+fingerprint separate from the content-addressed finding ID and preserves the
+frozen v0.5 schema for archived consumers.
 
 `--exit-policy profile` is the default and uses the [stable CLI exit-code
 contract](cli-contract.md): a failed active gate is `1`, while incomplete,

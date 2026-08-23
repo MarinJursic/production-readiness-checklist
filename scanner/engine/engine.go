@@ -156,7 +156,7 @@ func (e *Engine) ScanWithAdapterEvidence(
 	}
 	run := model.RunResult{
 		SchemaVersion: model.RunSchema, StartedAt: started, Plan: plan, Inventory: inventory,
-		AdapterExecutions: validatedExecutions,
+		AdapterExecutions: validatedExecutions, Findings: make([]model.Finding, 0),
 	}
 	for _, planned := range plan.Assertions {
 		assertion := e.Catalog.Assertions[planned.AssertionID]
@@ -181,6 +181,10 @@ func (e *Engine) ScanWithAdapterEvidence(
 			result = e.evaluate(assertion, inventory, result, started)
 		}
 		run.Results = append(run.Results, result)
+	}
+	run.Findings, err = buildFindings(e.Catalog, run)
+	if err != nil {
+		return model.RunResult{}, err
 	}
 	run.CompletedAt = e.Now()
 	run.TerminalState = terminalState(profile, run.Results)
