@@ -9,7 +9,7 @@ const (
 	EngineVersion          = "prc.engine/v0.1"
 	InventorySchema        = "prc.inventory/v0.3"
 	PlanSchema             = "prc.plan/v0.6"
-	RunSchema              = "prc.run/v0.10"
+	RunSchema              = "prc.run/v0.11"
 	EvidenceSchema         = "prc.evidence/v0.1"
 	FindingSchema          = "prc.finding/v0.1"
 	AdapterExecutionSchema = "prc.adapter-execution/v0.3"
@@ -18,6 +18,62 @@ const (
 type Source struct {
 	Path string `yaml:"path" json:"path"`
 	Line int    `yaml:"line" json:"line"`
+}
+
+// Control is one stable source control from the complete checklist registry.
+// Controls are intentionally broader than executable assertions: a control can
+// need several independent repository, environment, and human checks before it
+// can be called satisfied.
+type Control struct {
+	ID             string `json:"id"`
+	Status         string `json:"status"`
+	Revision       int    `json:"revision"`
+	Statement      string `json:"statement"`
+	SemanticSHA256 string `json:"semantic_sha256"`
+	Source         Source `json:"source"`
+}
+
+type ControlCatalogSummary struct {
+	SchemaVersion        string `json:"schema_version"`
+	RegistryVersion      string `json:"registry_version"`
+	RegistrySHA256       string `json:"registry_sha256"`
+	SourceSHA256         string `json:"source_sha256"`
+	ControlCount         int    `json:"control_count"`
+	ActiveControlCount   int    `json:"active_control_count"`
+	ProfileTerminalState string `json:"profile_terminal_state"`
+}
+
+// AIControlReview is advisory evidence produced by an explicitly selected AI
+// reviewer. It never has the authority to create a verified pass or a final
+// Not Applicable decision.
+type AIControlReview struct {
+	Provider               string            `json:"provider"`
+	Model                  string            `json:"model,omitempty"`
+	AssessmentCandidate    string            `json:"assessment_candidate"`
+	ApplicabilityCandidate string            `json:"applicability_candidate"`
+	Confidence             string            `json:"confidence"`
+	Reason                 string            `json:"reason"`
+	Advice                 string            `json:"advice"`
+	Evidence               []FindingLocation `json:"evidence"`
+	Limitations            []string          `json:"limitations"`
+	TaskID                 string            `json:"task_id"`
+}
+
+// ControlResult makes complete-corpus coverage visible without overstating the
+// narrower deterministic assertions. "partially_verified" means every linked
+// assertion in this run passed, not that the complete broad control passed.
+type ControlResult struct {
+	ControlID            string           `json:"control_id"`
+	Revision             int              `json:"revision"`
+	Statement            string           `json:"statement"`
+	Source               Source           `json:"source"`
+	Disposition          string           `json:"disposition"`
+	Coverage             string           `json:"coverage"`
+	Authority            string           `json:"authority"`
+	AssertionIDs         []string         `json:"assertion_ids"`
+	ExecutedAssertionIDs []string         `json:"executed_assertion_ids"`
+	Summary              string           `json:"summary"`
+	AIReview             *AIControlReview `json:"ai_review,omitempty"`
 }
 
 type Objective struct {
@@ -328,24 +384,46 @@ type Finding struct {
 }
 
 type RunResult struct {
-	SchemaVersion     string             `json:"schema_version"`
-	RunID             string             `json:"run_id"`
-	StartedAt         time.Time          `json:"started_at"`
-	CompletedAt       time.Time          `json:"completed_at"`
-	Plan              Plan               `json:"plan"`
-	Inventory         Inventory          `json:"inventory"`
-	AdapterExecutions []AdapterExecution `json:"adapter_executions"`
-	Results           []AssertionResult  `json:"results"`
-	Findings          []Finding          `json:"findings"`
-	TerminalState     string             `json:"terminal_state"`
+	SchemaVersion     string                 `json:"schema_version"`
+	RunID             string                 `json:"run_id"`
+	StartedAt         time.Time              `json:"started_at"`
+	CompletedAt       time.Time              `json:"completed_at"`
+	Plan              Plan                   `json:"plan"`
+	Inventory         Inventory              `json:"inventory"`
+	AdapterExecutions []AdapterExecution     `json:"adapter_executions"`
+	Results           []AssertionResult      `json:"results"`
+	Findings          []Finding              `json:"findings"`
+	ControlCatalog    *ControlCatalogSummary `json:"control_catalog,omitempty"`
+	ControlResults    []ControlResult        `json:"control_results,omitempty"`
+	TerminalState     string                 `json:"terminal_state"`
 }
 
 // MarshalJSON preserves the byte contract of archived run records. v0.6 and
 // later runs encode the required findings array; v0.5 through v0.3 do not.
 func (run RunResult) MarshalJSON() ([]byte, error) {
 	type current RunResult
-	if run.SchemaVersion == RunSchema || run.SchemaVersion == "prc.run/v0.9" || run.SchemaVersion == "prc.run/v0.8" || run.SchemaVersion == "prc.run/v0.7" || run.SchemaVersion == "prc.run/v0.6" {
+	if run.SchemaVersion == RunSchema {
 		return json.Marshal(current(run))
+	}
+	if run.SchemaVersion == "prc.run/v0.10" || run.SchemaVersion == "prc.run/v0.9" || run.SchemaVersion == "prc.run/v0.8" || run.SchemaVersion == "prc.run/v0.7" || run.SchemaVersion == "prc.run/v0.6" {
+		type withFindings struct {
+			SchemaVersion     string             `json:"schema_version"`
+			RunID             string             `json:"run_id"`
+			StartedAt         time.Time          `json:"started_at"`
+			CompletedAt       time.Time          `json:"completed_at"`
+			Plan              Plan               `json:"plan"`
+			Inventory         Inventory          `json:"inventory"`
+			AdapterExecutions []AdapterExecution `json:"adapter_executions"`
+			Results           []AssertionResult  `json:"results"`
+			Findings          []Finding          `json:"findings"`
+			TerminalState     string             `json:"terminal_state"`
+		}
+		return json.Marshal(withFindings{
+			SchemaVersion: run.SchemaVersion, RunID: run.RunID, StartedAt: run.StartedAt,
+			CompletedAt: run.CompletedAt, Plan: run.Plan, Inventory: run.Inventory,
+			AdapterExecutions: run.AdapterExecutions, Results: run.Results,
+			Findings: run.Findings, TerminalState: run.TerminalState,
+		})
 	}
 	type legacy struct {
 		SchemaVersion     string             `json:"schema_version"`

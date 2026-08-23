@@ -507,6 +507,8 @@ func validateRun(run model.RunResult) error {
 		return fmt.Errorf("run ID does not match record content")
 	}
 	if !((run.SchemaVersion == model.RunSchema && run.Plan.SchemaVersion == model.PlanSchema) ||
+		(run.SchemaVersion == "prc.run/v0.10" && run.Plan.SchemaVersion == model.PlanSchema) ||
+		(run.SchemaVersion == "prc.run/v0.9" && run.Plan.SchemaVersion == model.PlanSchema) ||
 		(run.SchemaVersion == "prc.run/v0.8" && run.Plan.SchemaVersion == model.PlanSchema) ||
 		(run.SchemaVersion == "prc.run/v0.7" && run.Plan.SchemaVersion == model.PlanSchema) ||
 		(run.SchemaVersion == "prc.run/v0.6" && run.Plan.SchemaVersion == "prc.plan/v0.5") ||
@@ -550,7 +552,7 @@ func validateRun(run model.RunResult) error {
 		}
 	}
 	expectedExecutionSchema := "prc.adapter-execution/v0.1"
-	if run.SchemaVersion == model.RunSchema || run.SchemaVersion == "prc.run/v0.8" {
+	if run.SchemaVersion == model.RunSchema || run.SchemaVersion == "prc.run/v0.10" || run.SchemaVersion == "prc.run/v0.9" || run.SchemaVersion == "prc.run/v0.8" {
 		expectedExecutionSchema = model.AdapterExecutionSchema
 	}
 	seenExecutions := map[string]bool{}
@@ -607,7 +609,7 @@ func validateRun(run model.RunResult) error {
 	if len(results) != len(planned) {
 		return fmt.Errorf("run does not contain exactly one result for every planned assertion")
 	}
-	if run.SchemaVersion == model.RunSchema || run.SchemaVersion == "prc.run/v0.8" || run.SchemaVersion == "prc.run/v0.7" || run.SchemaVersion == "prc.run/v0.6" {
+	if run.SchemaVersion == model.RunSchema || run.SchemaVersion == "prc.run/v0.10" || run.SchemaVersion == "prc.run/v0.9" || run.SchemaVersion == "prc.run/v0.8" || run.SchemaVersion == "prc.run/v0.7" || run.SchemaVersion == "prc.run/v0.6" {
 		if run.Findings == nil {
 			return fmt.Errorf("current run findings must encode as an array")
 		}
@@ -655,6 +657,82 @@ func validateRun(run model.RunResult) error {
 		if len(seenAssertions) != len(failureResults) {
 			return fmt.Errorf("run does not contain exactly one finding for every failed assertion")
 		}
+	}
+	if run.SchemaVersion == model.RunSchema {
+		if err := validateControlResults(run, results); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func validateControlResults(run model.RunResult, assertionResults map[string]bool) error {
+	if run.ControlCatalog == nil {
+		if len(run.ControlResults) != 0 {
+			return fmt.Errorf("run has complete-control results without a control catalog binding")
+		}
+		return nil
+	}
+	summary := run.ControlCatalog
+	if summary.SchemaVersion != "prc.control-catalog-summary/v0.1" || !digest(summary.RegistrySHA256) ||
+		!digest(summary.SourceSHA256) || summary.ControlCount < 1 || summary.ControlCount != len(run.ControlResults) ||
+		summary.ActiveControlCount < 0 || summary.ActiveControlCount > summary.ControlCount {
+		return fmt.Errorf("run has an invalid complete control catalog binding")
+	}
+	validDisposition := map[string]bool{
+		"confirmed_failure": true, "blocked": true, "partially_verified": true,
+		"needs_review": true, "retired": true,
+	}
+	validCoverage := map[string]bool{
+		"unmapped": true, "not_in_selected_profile": true, "partial_assertions": true, "retired": true,
+	}
+	active := 0
+	seen := map[string]bool{}
+	for index, control := range run.ControlResults {
+		if control.ControlID == "" || seen[control.ControlID] || control.Revision < 1 ||
+			strings.TrimSpace(control.Statement) == "" || control.Source.Line < 1 ||
+			!strings.HasPrefix(control.Source.Path, "docs/") || filepath.IsAbs(control.Source.Path) ||
+			filepath.ToSlash(filepath.Clean(filepath.FromSlash(control.Source.Path))) != control.Source.Path ||
+			!validDisposition[control.Disposition] || !validCoverage[control.Coverage] ||
+			(control.Authority != "none" && control.Authority != "deterministic_partial") ||
+			strings.TrimSpace(control.Summary) == "" {
+			return fmt.Errorf("run contains invalid complete-control result %s", control.ControlID)
+		}
+		seen[control.ControlID] = true
+		if index > 0 && run.ControlResults[index-1].ControlID >= control.ControlID {
+			return fmt.Errorf("complete-control results are not strictly ordered")
+		}
+		if control.Disposition != "retired" {
+			active++
+		}
+		known := map[string]bool{}
+		for _, assertionID := range control.AssertionIDs {
+			if assertionID == "" || known[assertionID] {
+				return fmt.Errorf("control %s contains an invalid or duplicate assertion", control.ControlID)
+			}
+			known[assertionID] = true
+		}
+		executed := map[string]bool{}
+		for _, assertionID := range control.ExecutedAssertionIDs {
+			if !known[assertionID] || !assertionResults[assertionID] || executed[assertionID] {
+				return fmt.Errorf("control %s contains an invalid executed assertion", control.ControlID)
+			}
+			executed[assertionID] = true
+		}
+		if review := control.AIReview; review != nil {
+			if (review.Provider != "codex" && review.Provider != "claude") || !digest(review.TaskID) ||
+				strings.TrimSpace(review.Reason) == "" ||
+				(review.Confidence != "low" && review.Confidence != "medium" && review.Confidence != "high") ||
+				(review.ApplicabilityCandidate != "applicable" && review.ApplicabilityCandidate != "not_applicable" && review.ApplicabilityCandidate != "undetermined") {
+				return fmt.Errorf("control %s contains an invalid advisory AI review", control.ControlID)
+			}
+		}
+	}
+	if active != summary.ActiveControlCount {
+		return fmt.Errorf("complete-control active count does not match its results")
+	}
+	if summary.ProfileTerminalState == "profile_satisfied" && run.TerminalState == "profile_satisfied" {
+		return fmt.Errorf("complete-control run cannot hide remaining review behind a satisfied narrow profile")
 	}
 	return nil
 }

@@ -26,6 +26,7 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/engine"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/evidence"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/exception"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/fullscan"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/invalidation"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/mcpserver"
@@ -1936,6 +1937,12 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	if err != nil {
 		return exitInternal, exitError(exitExecution, err)
 	}
+	completeRun, attachErr := fullscan.Attach(*catalogRoot, scanner.Catalog, run)
+	if attachErr == nil {
+		run = completeRun
+	} else if !errors.Is(attachErr, fullscan.ErrRegistryUnavailable) {
+		return exitInternal, exitError(exitConfiguration, attachErr)
+	}
 	var stateStore *state.Store
 	if *stateDirectory != "" {
 		stateStore, err = state.Open(context.Background(), *stateDirectory)
@@ -2038,6 +2045,22 @@ func printScanSummary(output io.Writer, run model.RunResult) {
 	}
 	fmt.Fprintf(output, "Assessment counts: %s\n", strings.Join(parts, ", "))
 	fmt.Fprintf(output, "Verified findings: %d\n\n", len(run.Findings))
+	if run.ControlCatalog != nil {
+		controlCounts := map[string]int{}
+		for _, result := range run.ControlResults {
+			controlCounts[result.Disposition]++
+		}
+		controlParts := make([]string, 0, len(controlCounts))
+		for _, disposition := range []string{"confirmed_failure", "blocked", "needs_review", "partially_verified", "retired"} {
+			if count := controlCounts[disposition]; count > 0 {
+				controlParts = append(controlParts, disposition+"="+fmt.Sprint(count))
+			}
+		}
+		fmt.Fprintf(output, "Complete control catalog: %d/%d controls included\n", len(run.ControlResults), run.ControlCatalog.ControlCount)
+		fmt.Fprintf(output, "Control dispositions: %s\n", strings.Join(controlParts, ", "))
+		fmt.Fprintln(output, "A partially_verified control is not a complete pass.")
+		fmt.Fprintln(output)
+	}
 	const displayedFindings = 8
 	for index, finding := range run.Findings {
 		if index == displayedFindings {

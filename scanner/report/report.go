@@ -45,6 +45,23 @@ func assessmentCounts(results []model.AssertionResult) [][2]string {
 	return values
 }
 
+func controlDispositionCounts(results []model.ControlResult) [][2]string {
+	counts := map[string]int{}
+	for _, result := range results {
+		counts[result.Disposition]++
+	}
+	keys := make([]string, 0, len(counts))
+	for key := range counts {
+		keys = append(keys, key)
+	}
+	sort.Strings(keys)
+	values := make([][2]string, 0, len(keys))
+	for _, key := range keys {
+		values = append(values, [2]string{key, strconv.Itoa(counts[key])})
+	}
+	return values
+}
+
 func markdownCell(value string) string {
 	value = strings.ReplaceAll(value, "\\", "\\\\")
 	value = strings.ReplaceAll(value, "|", "\\|")
@@ -73,6 +90,34 @@ func writeMarkdown(output io.Writer, run model.RunResult) error {
 	for _, item := range assessmentCounts(run.Results) {
 		if _, err := fmt.Fprintf(output, "| %s | %s |\n", item[0], item[1]); err != nil {
 			return err
+		}
+	}
+	if run.ControlCatalog != nil {
+		if _, err := fmt.Fprintf(output,
+			"\n## Complete control catalog\n\n- Registry: `%s`\n- Registry digest: `%s`\n- Source digest: `%s`\n- Registered controls: **%d** (%d active)\n- Narrow profile terminal state before complete-catalog expansion: **%s**\n\n",
+			run.ControlCatalog.RegistryVersion, run.ControlCatalog.RegistrySHA256,
+			run.ControlCatalog.SourceSHA256, run.ControlCatalog.ControlCount,
+			run.ControlCatalog.ActiveControlCount, run.ControlCatalog.ProfileTerminalState); err != nil {
+			return err
+		}
+		if _, err := fmt.Fprintln(output, "| Disposition | Count |\n| --- | ---: |"); err != nil {
+			return err
+		}
+		for _, item := range controlDispositionCounts(run.ControlResults) {
+			if _, err := fmt.Fprintf(output, "| %s | %s |\n", item[0], item[1]); err != nil {
+				return err
+			}
+		}
+		if _, err := fmt.Fprintln(output, "\n### Every registered control\n\n| Disposition | Control | Coverage | Authority | Statement | Source | Assertions |\n| --- | --- | --- | --- | --- | --- | --- |"); err != nil {
+			return err
+		}
+		for _, result := range run.ControlResults {
+			if _, err := fmt.Fprintf(output, "| %s | `%s` | %s | %s | %s | `%s:%d` | %s |\n",
+				result.Disposition, result.ControlID, result.Coverage, result.Authority,
+				markdownCell(result.Statement), result.Source.Path, result.Source.Line,
+				markdownCell(strings.Join(result.ExecutedAssertionIDs, ", "))); err != nil {
+				return err
+			}
 		}
 	}
 	if len(run.AdapterExecutions) > 0 {
@@ -356,6 +401,27 @@ const htmlReport = `<!doctype html>
     <p class="notice"><strong>Report-only scan:</strong> this command assessed the project and did not apply fixes. Results are scoped to the profile, target inventory, and evidence named above.</p>
     <h2>Assessment summary</h2>
     <ul class="counts">{{range .Counts}}<li><strong>{{index . 0}}</strong>: {{index . 1}}</li>{{end}}<li><strong>findings</strong>: {{len .Run.Findings}}</li></ul>
+	{{if .Run.ControlCatalog}}<h2>Complete control catalog</h2>
+	<p class="notice"><strong>All {{.Run.ControlCatalog.ControlCount}} registered controls are included.</strong> Deterministic assertions prove only their exact, narrow statements. A <code>partially_verified</code> result is not a complete Pass, and an AI review is advisory only.</p>
+	<dl>
+	  <dt>Registry version / digest</dt><dd><code>{{.Run.ControlCatalog.RegistryVersion}}</code> / <code>{{.Run.ControlCatalog.RegistrySHA256}}</code></dd>
+	  <dt>Source digest</dt><dd><code>{{.Run.ControlCatalog.SourceSHA256}}</code></dd>
+	  <dt>Controls</dt><dd>{{.Run.ControlCatalog.ControlCount}} registered / {{.Run.ControlCatalog.ActiveControlCount}} active</dd>
+	  <dt>Narrow profile state before expansion</dt><dd>{{.Run.ControlCatalog.ProfileTerminalState}}</dd>
+	</dl>
+	<ul class="counts">{{range .ControlCounts}}<li><strong>{{index . 0}}</strong>: {{index . 1}}</li>{{end}}</ul>
+	<p>Use browser search to find a control ID or phrase. Open a control to see its source, coverage, linked assertions, and any advisory AI review.</p>
+	{{range .Run.ControlResults}}<details {{if eq .Disposition "confirmed_failure"}}open{{end}}>
+	  <summary>[{{.Disposition}}] <code>{{.ControlID}}</code> — {{.Statement}}</summary>
+	  <dl>
+	    <dt>Coverage / authority</dt><dd>{{.Coverage}} / {{.Authority}}</dd>
+	    <dt>Source</dt><dd><code>{{.Source.Path}}:{{.Source.Line}}</code></dd>
+	    <dt>Result explanation</dt><dd>{{.Summary}}</dd>
+	    <dt>All known assertions</dt><dd>{{if .AssertionIDs}}<code>{{join .AssertionIDs}}</code>{{else}}None yet.{{end}}</dd>
+	    <dt>Assertions executed in this profile</dt><dd>{{if .ExecutedAssertionIDs}}<code>{{join .ExecutedAssertionIDs}}</code>{{else}}None.{{end}}</dd>
+	    {{if .AIReview}}<dt>Advisory AI review</dt><dd><strong>{{.AIReview.Provider}}</strong>: {{.AIReview.AssessmentCandidate}} / {{.AIReview.ApplicabilityCandidate}} / confidence {{.AIReview.Confidence}}. {{.AIReview.Reason}} {{.AIReview.Advice}} This cannot create a verified Pass.</dd>{{end}}
+	  </dl>
+	</details>{{end}}{{end}}
     {{if .Run.AdapterExecutions}}<table>
       <caption>Adapter executions</caption>
       <thead><tr><th scope="col">Adapter</th><th scope="col">Manifest</th><th scope="col">Authorization</th><th scope="col">Trust</th><th scope="col">Registry</th><th scope="col">Status</th><th scope="col">Execution</th></tr></thead>
@@ -398,9 +464,10 @@ const htmlReport = `<!doctype html>
 
 func writeHTML(output io.Writer, run model.RunResult) error {
 	view := struct {
-		Run    model.RunResult
-		Counts [][2]string
-	}{Run: run, Counts: assessmentCounts(run.Results)}
+		Run           model.RunResult
+		Counts        [][2]string
+		ControlCounts [][2]string
+	}{Run: run, Counts: assessmentCounts(run.Results), ControlCounts: controlDispositionCounts(run.ControlResults)}
 	return template.Must(template.New("report").Funcs(template.FuncMap{
 		"join": func(values []string) string { return strings.Join(values, ", ") },
 		"location": func(value model.FindingLocation) string {
