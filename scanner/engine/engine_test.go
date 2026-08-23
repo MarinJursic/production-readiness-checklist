@@ -299,6 +299,102 @@ func TestPlanDigestIsDeterministic(t *testing.T) {
 	if first.EngineVersion != "prc.engine/v0.1" || len(first.ProfileDigest) != 64 || len(first.CatalogDigest) != 64 {
 		t.Fatalf("plan has incomplete engine/catalog/profile binding: %+v", first)
 	}
+	if first.ExecutionMode != ExecutionModeInspect || first.CapabilityPolicy.Process != "deny" ||
+		first.CapabilityPolicy.WriteScratch || len(first.Nodes) != len(first.Assertions)+2 {
+		t.Fatalf("plan has an invalid inspect-mode DAG: %+v", first)
+	}
+	if first.Nodes[0].Kind != "inventory" || first.Nodes[len(first.Nodes)-1].Kind != "gate" {
+		t.Fatalf("plan DAG boundaries are invalid: %+v", first.Nodes)
+	}
+	for _, assertion := range first.Assertions {
+		if _, registered := implementationRegistry[assertion.Implementation]; !registered {
+			t.Errorf("catalog implementation is not registered: %s", assertion.Implementation)
+		}
+	}
+	filePresentUses := 0
+	for _, implementation := range first.Implementations {
+		if implementation.ID == "prc.native.file-present@0.1" {
+			filePresentUses = len(implementation.AssertionIDs)
+		}
+	}
+	if filePresentUses != 7 {
+		t.Fatalf("shared implementation registry entry was not deduplicated: %d", filePresentUses)
+	}
+}
+
+func TestPlanRejectsUnsupportedExecutionMode(t *testing.T) {
+	item, err := inventory.Build(healthyRepository(t))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := scanner(t).PlanMode("prc/core-repository", item, "production-write"); err == nil ||
+		!strings.Contains(err.Error(), "unsupported execution mode") {
+		t.Fatalf("unexpected error: %v", err)
+	}
+}
+
+func TestExecutionGraphRejectsForwardDependencies(t *testing.T) {
+	item, err := inventory.Build(healthyRepository(t))
+	if err != nil {
+		t.Fatal(err)
+	}
+	plan, err := scanner(t).Plan("prc/core-repository", item)
+	if err != nil {
+		t.Fatal(err)
+	}
+	plan.Nodes[1].DependsOn = []string{plan.Nodes[len(plan.Nodes)-1].ID}
+	if err := ValidateExecutionPlan(plan); err == nil || !strings.Contains(err.Error(), "later node") {
+		t.Fatalf("unexpected graph validation error: %v", err)
+	}
+}
+
+func TestExecutionGraphRejectsIncompleteTopologyAndPolicyDrift(t *testing.T) {
+	item, err := inventory.Build(healthyRepository(t))
+	if err != nil {
+		t.Fatal(err)
+	}
+	plan, err := scanner(t).Plan("prc/core-repository", item)
+	if err != nil {
+		t.Fatal(err)
+	}
+	withoutGate := plan
+	withoutGate.Nodes = append([]model.PlanNode(nil), plan.Nodes[:len(plan.Nodes)-1]...)
+	if err := ValidateExecutionPlan(withoutGate); err == nil || !strings.Contains(err.Error(), "one gate node") {
+		t.Fatalf("unexpected incomplete topology error: %v", err)
+	}
+	driftedPolicy := plan
+	driftedPolicy.CapabilityPolicy.Network = "allow"
+	if err := ValidateExecutionPlan(driftedPolicy); err == nil || !strings.Contains(err.Error(), "does not match mode") {
+		t.Fatalf("unexpected policy drift error: %v", err)
+	}
+	duplicateImplementation := plan
+	duplicateImplementation.Implementations = append(
+		append([]model.PlannedImplementation(nil), plan.Implementations...),
+		plan.Implementations[0],
+	)
+	if err := ValidateExecutionPlan(duplicateImplementation); err == nil || !strings.Contains(err.Error(), "duplicate implementation") {
+		t.Fatalf("unexpected registry duplication error: %v", err)
+	}
+}
+
+func TestUnregisteredImplementationIsBlockedWithoutDispatch(t *testing.T) {
+	item, err := inventory.Build(healthyRepository(t))
+	if err != nil {
+		t.Fatal(err)
+	}
+	engine := scanner(t)
+	assertion := engine.Catalog.Assertions["PRC-A-CORE-001"]
+	assertion.ImplementationID = "prc.native.unregistered@0.1"
+	engine.Catalog.Assertions[assertion.ID] = assertion
+	run, err := engine.Scan("prc/core-repository", item)
+	if err != nil {
+		t.Fatal(err)
+	}
+	result := findResult(t, run, assertion.ID)
+	if result.Execution != "blocked" || result.Assessment != "unknown" ||
+		!strings.Contains(result.Summary, "No scanner implementation is registered") {
+		t.Fatalf("unregistered implementation result = %+v", result)
+	}
 }
 
 func TestPlanDigestBindsCompleteRuleAndProfileDefinitions(t *testing.T) {

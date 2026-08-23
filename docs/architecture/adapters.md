@@ -100,7 +100,7 @@ prc adapter run-oci \
 ```
 
 `--pull=never` means the command fails if the exact image is not already
-available. Run result v0.3 can embed these records. A scan may execute one
+available. Current run results embed these records. A scan may execute one
 adapter only when an applicable assertion binds the exact adapter ID, manifest
 SHA-256 digest, and observation kind:
 
@@ -108,11 +108,13 @@ SHA-256 digest, and observation kind:
 prc scan \
   --target /path/to/project \
   --catalog-root /path/to/trusted/catalog \
+  --mode verify-local \
   --adapter-manifest /path/to/pinned-adapter.yaml \
   --adapter-runtime docker
 ```
 
-Authorization is checked before the OCI runtime is invoked. The adapter cannot
+The explicit mode grants only the reviewed no-network OCI capability envelope;
+authorization is checked before the OCI runtime is invoked. The adapter cannot
 declare an assertion assessment: the engine maps `found`, `not_found`,
 `unsupported`, incomplete, and conflicting observations through the catalog's
 immutable binding. The execution and each resulting evidence envelope are bound

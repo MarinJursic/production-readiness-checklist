@@ -39,14 +39,16 @@ separate validity-window policy.
 
 ## Bound rule identity
 
-Plans produced as `prc.plan/v0.5` bind:
+Plans produced as `prc.plan/v0.6` bind:
 
 - the scanner engine contract;
 - the exact governing catalog, including every parsed objective, assertion, and profile;
 - the exact profile definition;
 - every assertion revision and complete definition, including parameters;
 - the implementation identifier and applicability evaluator;
-- project configuration, artifacts, and target environments; and
+- project configuration, artifacts, and target environments;
+- the selected execution mode, capability policy, implementation registry, and
+  dependency DAG; and
 - the complete inventory identity.
 
 Each definition is represented by a SHA-256 digest over its canonical JSON

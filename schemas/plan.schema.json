@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/plan.schema.json",
-  "title": "Production Readiness Scan Plan v0.5",
+  "title": "Production Readiness Scan Plan v0.6",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "digest", "engine_version", "target_name", "inventory_digest", "profile_id", "profile_version", "profile_digest", "catalog_digest", "artifact_digests", "target_environments", "assertions"],
+  "required": ["schema_version", "digest", "engine_version", "target_name", "inventory_digest", "profile_id", "profile_version", "profile_digest", "catalog_digest", "artifact_digests", "target_environments", "execution_mode", "capability_policy", "implementations", "adapters", "nodes", "assertions"],
   "properties": {
-    "schema_version": {"const": "prc.plan/v0.5"},
+    "schema_version": {"const": "prc.plan/v0.6"},
     "digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "engine_version": {"const": "prc.engine/v0.1"},
     "target_name": {"type": "string", "minLength": 1},
@@ -28,8 +28,27 @@
       "uniqueItems": true,
       "items": {"type": "string", "pattern": "^[a-z][a-z0-9-]{0,62}$"}
     },
+    "execution_mode": {"enum": ["inspect", "verify-local"]},
+    "capability_policy": {"$ref": "#/$defs/capabilities"},
+    "implementations": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/implementation"}
+    },
+    "adapters": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/adapter"}
+    },
+    "nodes": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/node"}
+    },
     "assertions": {
       "type": "array",
+      "uniqueItems": true,
       "items": {
         "type": "object",
         "additionalProperties": false,
@@ -44,6 +63,75 @@
           "applicability_reason": {"type": "string", "minLength": 1}
         }
       }
+    }
+  },
+  "$defs": {
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["read_workspace", "write_scratch", "process", "network", "network_hosts", "secret_handles"],
+      "properties": {
+        "read_workspace": {"type": "boolean"},
+        "write_scratch": {"type": "boolean"},
+        "process": {"enum": ["deny", "oci"]},
+        "network": {"const": "deny"},
+        "network_hosts": {"type": "array", "maxItems": 0},
+        "secret_handles": {"type": "array", "maxItems": 0}
+      }
+    },
+    "implementation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "assertion_ids", "capabilities", "status"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^prc\\.[a-z0-9.-]+@[0-9]+\\.[0-9]+$"},
+        "kind": {"enum": ["built-in", "manual", "adapter-evidence", "unavailable"]},
+        "assertion_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^PRC-A-[A-Z0-9]+-[0-9]{3}$"}},
+        "capabilities": {"$ref": "#/$defs/capabilities"},
+        "status": {"enum": ["available", "blocked"]},
+        "reason": {"type": "string", "minLength": 1}
+      },
+      "allOf": [
+        {"if": {"properties": {"status": {"const": "blocked"}}, "required": ["status"]}, "then": {"required": ["reason"]}}
+      ]
+    },
+    "adapter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["adapter_id", "manifest_sha256", "observation_kinds", "capabilities", "status"],
+      "properties": {
+        "adapter_id": {"type": "string", "pattern": "^prc\\.adapter\\.[a-z0-9.-]+@[0-9]+\\.[0-9]+$"},
+        "manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "observation_kinds": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z0-9][a-z0-9.-]*$"}},
+        "capabilities": {"$ref": "#/$defs/capabilities"},
+        "status": {"enum": ["authorized", "blocked"]},
+        "reason": {"type": "string", "minLength": 1}
+      },
+      "allOf": [
+        {"if": {"properties": {"status": {"const": "blocked"}}, "required": ["status"]}, "then": {"required": ["reason"]}}
+      ]
+    },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "depends_on", "capabilities", "status"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "kind": {"enum": ["inventory", "adapter", "assertion", "gate"]},
+        "depends_on": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "assertion_id": {"type": "string", "pattern": "^PRC-A-[A-Z0-9]+-[0-9]{3}$"},
+        "implementation_id": {"type": "string", "pattern": "^prc\\.[a-z0-9.-]+@[0-9]+\\.[0-9]+$"},
+        "adapter_id": {"type": "string", "pattern": "^prc\\.adapter\\.[a-z0-9.-]+@[0-9]+\\.[0-9]+$"},
+        "manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "capabilities": {"$ref": "#/$defs/capabilities"},
+        "status": {"enum": ["ready", "skipped", "blocked"]},
+        "reason": {"type": "string", "minLength": 1}
+      },
+      "allOf": [
+        {"if": {"properties": {"kind": {"const": "assertion"}}, "required": ["kind"]}, "then": {"required": ["assertion_id", "implementation_id"]}},
+        {"if": {"properties": {"kind": {"const": "adapter"}}, "required": ["kind"]}, "then": {"required": ["adapter_id", "manifest_sha256"]}},
+        {"if": {"properties": {"status": {"enum": ["skipped", "blocked"]}}, "required": ["status"]}, "then": {"required": ["reason"]}}
+      ]
     }
   }
 }

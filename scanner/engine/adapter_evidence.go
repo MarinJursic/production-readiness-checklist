@@ -63,7 +63,17 @@ func assertionAdapterBindings(assertion model.Assertion) ([]adapterBinding, erro
 }
 
 func (e *Engine) AuthorizesAdapter(profileID string, inventory model.Inventory, adapterID, manifestSHA256 string) (bool, error) {
-	plan, err := e.Plan(profileID, inventory)
+	return e.AuthorizesAdapterMode(profileID, inventory, ExecutionModeVerifyLocal, adapterID, manifestSHA256)
+}
+
+func (e *Engine) AuthorizesAdapterMode(
+	profileID string,
+	inventory model.Inventory,
+	mode string,
+	adapterID string,
+	manifestSHA256 string,
+) (bool, error) {
+	plan, err := e.PlanMode(profileID, inventory, mode)
 	if err != nil {
 		return false, err
 	}
@@ -71,19 +81,9 @@ func (e *Engine) AuthorizesAdapter(profileID string, inventory model.Inventory, 
 }
 
 func (e *Engine) authorizesAdapterInPlan(plan model.Plan, adapterID, manifestSHA256 string) (bool, error) {
-	for _, planned := range plan.Assertions {
-		if planned.Applicability != "applicable" {
-			continue
-		}
-		assertion := e.Catalog.Assertions[planned.AssertionID]
-		bindings, err := assertionAdapterBindings(assertion)
-		if err != nil {
-			return false, err
-		}
-		for _, binding := range bindings {
-			if binding.AdapterID == adapterID && binding.ManifestSHA256 == manifestSHA256 {
-				return true, nil
-			}
+	for _, planned := range plan.Adapters {
+		if planned.AdapterID == adapterID && planned.ManifestSHA256 == manifestSHA256 {
+			return planned.Status == "authorized", nil
 		}
 	}
 	return false, nil

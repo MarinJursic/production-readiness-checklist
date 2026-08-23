@@ -218,8 +218,16 @@ class ScannerOutputSchemaTests(unittest.TestCase):
 
     def test_current_plan_records_applicability_reason(self) -> None:
         digest = "a" * 64
+        capabilities = {
+            "read_workspace": True,
+            "write_scratch": False,
+            "process": "deny",
+            "network": "deny",
+            "network_hosts": [],
+            "secret_handles": [],
+        }
         plan = {
-            "schema_version": "prc.plan/v0.5",
+            "schema_version": "prc.plan/v0.6",
             "digest": digest,
             "engine_version": "prc.engine/v0.1",
             "target_name": "example",
@@ -230,6 +238,44 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "catalog_digest": digest,
             "artifact_digests": [],
             "target_environments": [],
+            "execution_mode": "inspect",
+            "capability_policy": capabilities,
+            "implementations": [{
+                "id": "prc.native.file-present@0.1",
+                "kind": "built-in",
+                "assertion_ids": ["PRC-A-CORE-001"],
+                "capabilities": capabilities,
+                "status": "available",
+            }],
+            "adapters": [],
+            "nodes": [
+                {
+                    "id": "inventory:" + digest,
+                    "kind": "inventory",
+                    "depends_on": [],
+                    "capabilities": capabilities,
+                    "status": "ready",
+                },
+                {
+                    "id": "assertion:PRC-A-CORE-001",
+                    "kind": "assertion",
+                    "depends_on": ["inventory:" + digest],
+                    "assertion_id": "PRC-A-CORE-001",
+                    "implementation_id": "prc.native.file-present@0.1",
+                    "capabilities": capabilities,
+                    "status": "ready",
+                },
+                {
+                    "id": "gate:core-repository",
+                    "kind": "gate",
+                    "depends_on": ["assertion:PRC-A-CORE-001"],
+                    "capabilities": {
+                        **capabilities,
+                        "read_workspace": False,
+                    },
+                    "status": "ready",
+                },
+            ],
             "assertions": [{
                 "assertion_id": "PRC-A-CORE-001",
                 "assertion_revision": 2,
@@ -533,7 +579,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "files": [],
         }
         plan = {
-            "schema_version": "prc.plan/v0.5",
+            "schema_version": "prc.plan/v0.6",
             "digest": digest,
             "engine_version": "prc.engine/v0.1",
             "target_name": "example",
@@ -544,10 +590,51 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "catalog_digest": digest,
             "artifact_digests": [],
             "target_environments": [],
+            "execution_mode": "inspect",
+            "capability_policy": {
+                "read_workspace": True,
+                "write_scratch": False,
+                "process": "deny",
+                "network": "deny",
+                "network_hosts": [],
+                "secret_handles": [],
+            },
+            "implementations": [],
+            "adapters": [],
+            "nodes": [
+                {
+                    "id": "inventory:" + digest,
+                    "kind": "inventory",
+                    "depends_on": [],
+                    "capabilities": {
+                        "read_workspace": True,
+                        "write_scratch": False,
+                        "process": "deny",
+                        "network": "deny",
+                        "network_hosts": [],
+                        "secret_handles": [],
+                    },
+                    "status": "ready",
+                },
+                {
+                    "id": "gate:core-repository",
+                    "kind": "gate",
+                    "depends_on": [],
+                    "capabilities": {
+                        "read_workspace": False,
+                        "write_scratch": False,
+                        "process": "deny",
+                        "network": "deny",
+                        "network_hosts": [],
+                        "secret_handles": [],
+                    },
+                    "status": "ready",
+                },
+            ],
             "assertions": [],
         }
         final_run = {
-            "schema_version": "prc.run/v0.6",
+            "schema_version": "prc.run/v0.7",
             "run_id": digest,
             "started_at": "2026-08-23T12:00:00Z",
             "completed_at": "2026-08-23T12:00:01Z",
@@ -588,7 +675,112 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             [],
         )
 
-        legacy_plan = {**plan, "schema_version": "prc.plan/v0.4"}
+        # Exercise the non-empty adapter branch of the current plan schema. The
+        # adapter registry uses "authorized", while its executable DAG node uses
+        # the distinct topological state "ready".
+        verify_plan = json.loads(json.dumps(plan))
+        verify_plan["execution_mode"] = "verify-local"
+        verify_plan["capability_policy"]["write_scratch"] = True
+        verify_plan["capability_policy"]["process"] = "oci"
+        assertion_id = "PRC-A-CORE-013"
+        implementation_id = "prc.native.analysis-evidence@0.1"
+        adapter_id = "prc.adapter.static-analysis@0.1"
+        adapter_capabilities = {
+            "read_workspace": True,
+            "write_scratch": True,
+            "process": "oci",
+            "network": "deny",
+            "network_hosts": [],
+            "secret_handles": [],
+        }
+        verify_plan["implementations"] = [{
+            "id": implementation_id,
+            "kind": "adapter-evidence",
+            "assertion_ids": [assertion_id],
+            "capabilities": {
+                "read_workspace": False,
+                "write_scratch": False,
+                "process": "deny",
+                "network": "deny",
+                "network_hosts": [],
+                "secret_handles": [],
+            },
+            "status": "available",
+        }]
+        verify_plan["adapters"] = [{
+            "adapter_id": adapter_id,
+            "manifest_sha256": digest,
+            "observation_kinds": ["static-analysis"],
+            "capabilities": adapter_capabilities,
+            "status": "authorized",
+        }]
+        inventory_node = verify_plan["nodes"][0]
+        adapter_node_id = "adapter:" + digest
+        assertion_node_id = "assertion:" + assertion_id
+        verify_plan["nodes"] = [
+            inventory_node,
+            {
+                "id": adapter_node_id,
+                "kind": "adapter",
+                "depends_on": [inventory_node["id"]],
+                "adapter_id": adapter_id,
+                "manifest_sha256": digest,
+                "capabilities": adapter_capabilities,
+                "status": "ready",
+            },
+            {
+                "id": assertion_node_id,
+                "kind": "assertion",
+                "depends_on": [inventory_node["id"], adapter_node_id],
+                "assertion_id": assertion_id,
+                "implementation_id": implementation_id,
+                "capabilities": verify_plan["implementations"][0]["capabilities"],
+                "status": "ready",
+            },
+            {
+                "id": "gate:core-repository",
+                "kind": "gate",
+                "depends_on": [assertion_node_id],
+                "capabilities": verify_plan["implementations"][0]["capabilities"],
+                "status": "ready",
+            },
+        ]
+        verify_plan["assertions"] = [{
+            "assertion_id": assertion_id,
+            "assertion_revision": 1,
+            "definition_digest": digest,
+            "implementation_id": implementation_id,
+            "applicability": "applicable",
+            "applicability_evaluator": "cel-go/v0.30.0+prc-inventory/v0.3",
+            "applicability_reason": "CEL expression evaluated to true.",
+        }]
+        self.assertEqual(
+            validate_instance.validation_errors(verify_plan, "plan.schema.json"),
+            [],
+        )
+
+        v05_plan = {**plan, "schema_version": "prc.plan/v0.5"}
+        for field in (
+            "execution_mode",
+            "capability_policy",
+            "implementations",
+            "adapters",
+            "nodes",
+        ):
+            del v05_plan[field]
+        v06_run = {
+            **final_run,
+            "schema_version": "prc.run/v0.6",
+            "plan": v05_plan,
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(
+                v06_run, "run-result-v0.6.schema.json"
+            ),
+            [],
+        )
+
+        legacy_plan = {**v05_plan, "schema_version": "prc.plan/v0.4"}
         del legacy_plan["catalog_digest"]
         legacy_final_run = {
             **final_run,
@@ -609,7 +801,11 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             [],
         )
 
-        v05_run = {**final_run, "schema_version": "prc.run/v0.5"}
+        v05_run = {
+            **final_run,
+            "schema_version": "prc.run/v0.5",
+            "plan": v05_plan,
+        }
         del v05_run["findings"]
 
         v02_remediation_run = {

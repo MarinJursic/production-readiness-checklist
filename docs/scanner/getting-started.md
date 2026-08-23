@@ -67,12 +67,16 @@ location through `--catalog-root`:
   --profile prc/core-repository
 ```
 
-The same target inventory, profile, and catalog produce the same plan digest.
-Plan v0.5 binds the full governing catalog, exact profile and assertion
-definitions, bounded CEL evaluator, an applicability reason for every
-assertion, configuration digest, declared project ID, artifact digests, and
-target environments. Invalid, unavailable, non-Boolean, or resource-exhausting
-expressions become `undetermined`; they never silently become Not Applicable. See
+The same target inventory, profile, catalog, and execution mode produce the same
+plan digest. Plan v0.6 binds the full governing catalog, exact profile and
+assertion definitions, bounded CEL evaluator, an applicability reason for every
+assertion, configuration digest, declared project ID, artifact digests, target
+environments, implementation registry, capability envelope, and dependency
+DAG. `inspect` is the default and denies external processes, writable scratch,
+network, and secrets. Use `--mode verify-local` only when reviewing a plan that
+contains an authorized no-network OCI adapter. Invalid, unavailable,
+non-Boolean, or resource-exhausting expressions become `undetermined`; they
+never silently become Not Applicable. See
 [bounded applicability evaluation](../architecture/applicability.md) for the
 available inventory fields and limits.
 
@@ -118,9 +122,10 @@ manual/not-applicable skips kept distinct:
 SARIF intentionally contains only failed assertions that can be represented as
 canonical, fingerprinted findings. Unknown, blocked, manual, and not-applicable
 results remain in the canonical JSON, Markdown, HTML, and JUnit reports instead
-of being mislabeled as source findings. Run v0.6 keeps a stable finding
-fingerprint separate from the content-addressed finding ID and preserves the
-frozen v0.5 schema for archived consumers.
+of being mislabeled as source findings. Run v0.7 keeps a stable finding
+fingerprint separate from the content-addressed finding ID and embeds the
+reviewable v0.6 execution plan. Frozen plan v0.5 and run v0.6 schemas remain
+available for archived consumers.
 
 `--exit-policy profile` is the default and uses the [stable CLI exit-code
 contract](cli-contract.md): a failed active gate is `1`, while incomplete,

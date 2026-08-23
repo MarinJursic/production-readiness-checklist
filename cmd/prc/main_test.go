@@ -145,9 +145,10 @@ func TestPlanConsumesValidatedConfiguration(t *testing.T) {
 	if err := json.Unmarshal(stdout.Bytes(), &plan); err != nil {
 		t.Fatal(err)
 	}
-	if plan.SchemaVersion != "prc.plan/v0.5" || plan.EngineVersion != "prc.engine/v0.1" ||
+	if plan.SchemaVersion != "prc.plan/v0.6" || plan.EngineVersion != "prc.engine/v0.1" ||
 		len(plan.ProfileDigest) != 64 || len(plan.CatalogDigest) != 64 || len(plan.ConfigurationDigest) != 64 ||
-		plan.ProjectID != "example-product" || !slices.Equal(plan.TargetEnvironments, []string{"staging"}) {
+		plan.ProjectID != "example-product" || !slices.Equal(plan.TargetEnvironments, []string{"staging"}) ||
+		plan.ExecutionMode != "inspect" || len(plan.Nodes) != len(plan.Assertions)+2 {
 		t.Fatalf("configured plan = %+v", plan)
 	}
 }
@@ -283,6 +284,7 @@ func TestScanConsumesOnlyProfileAuthorizedLiveAdapterEvidence(t *testing.T) {
 	var stdout, stderr bytes.Buffer
 	code := run([]string{
 		"scan", "--target", target, "--catalog-root", catalogRoot,
+		"--mode", "verify-local",
 		"--adapter-manifest", manifestPath, "--adapter-runtime", fakeDockerRuntime(t),
 		"--format", "json", "--exit-policy", "never",
 	}, &stdout, &stderr)
@@ -325,6 +327,7 @@ func TestScanRejectsUnauthorizedAdapterBeforeRuntimeExecution(t *testing.T) {
 	var stdout, stderr bytes.Buffer
 	code := run([]string{
 		"scan", "--target", target, "--catalog-root", repository,
+		"--mode", "verify-local",
 		"--adapter-manifest", filepath.Join(repository, "fixtures", "adapters", "fixture-adapter.yaml"),
 		"--adapter-runtime", runtime, "--format", "json", "--exit-policy", "never",
 	}, &stdout, &stderr)
@@ -333,6 +336,56 @@ func TestScanRejectsUnauthorizedAdapterBeforeRuntimeExecution(t *testing.T) {
 	}
 	if _, err := os.Stat(marker); !os.IsNotExist(err) {
 		t.Fatal("unauthorized adapter runtime was executed")
+	}
+}
+
+func TestScanRequiresExplicitCapabilityModeBeforeAdapterExecution(t *testing.T) {
+	repository := filepath.Join("..", "..")
+	target := t.TempDir()
+	if err := os.WriteFile(filepath.Join(target, "app.py"), []byte("print('ready')\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	marker := filepath.Join(t.TempDir(), "executed")
+	runtime := filepath.Join(t.TempDir(), "docker")
+	if err := os.WriteFile(runtime, []byte("#!/bin/sh\ntouch \""+marker+"\"\n"), 0o700); err != nil {
+		t.Fatal(err)
+	}
+	var stdout, stderr bytes.Buffer
+	code := run([]string{
+		"scan", "--target", target, "--catalog-root", repository,
+		"--adapter-manifest", filepath.Join(repository, "fixtures", "adapters", "fixture-adapter.yaml"),
+		"--adapter-runtime", runtime, "--exit-policy", "never",
+	}, &stdout, &stderr)
+	if code != exitPolicyDenied || !strings.Contains(stderr.String(), "explicit --mode verify-local") {
+		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
+	}
+	if _, err := os.Stat(marker); !os.IsNotExist(err) {
+		t.Fatal("adapter runtime executed without an explicit capability mode")
+	}
+	stdout.Reset()
+	stderr.Reset()
+	code = run([]string{
+		"scan", "--target", target, "--catalog-root", repository,
+		"--mode", "inspect",
+		"--adapter-manifest", filepath.Join(repository, "fixtures", "adapters", "fixture-adapter.yaml"),
+		"--adapter-runtime", runtime, "--exit-policy", "never",
+	}, &stdout, &stderr)
+	if code != exitPolicyDenied || !strings.Contains(stderr.String(), "explicit --mode verify-local") {
+		t.Fatalf("inspect exit=%d stderr=%s", code, stderr.String())
+	}
+	if _, err := os.Stat(marker); !os.IsNotExist(err) {
+		t.Fatal("adapter runtime executed in inspect mode")
+	}
+}
+
+func TestScanRejectsUnsupportedExecutionModeAsConfiguration(t *testing.T) {
+	var stdout, stderr bytes.Buffer
+	code := run([]string{
+		"scan", "--target", t.TempDir(), "--catalog-root", filepath.Join("..", ".."),
+		"--mode", "production-write", "--exit-policy", "never",
+	}, &stdout, &stderr)
+	if code != exitConfiguration || !strings.Contains(stderr.String(), "unsupported execution mode") {
+		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
 	}
 }
 

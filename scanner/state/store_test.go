@@ -178,6 +178,14 @@ func TestStoreReadsLegacyV04RunAfterCatalogBindingUpgrade(t *testing.T) {
 func TestStoreReadsLegacyV05RunAfterFindingUpgrade(t *testing.T) {
 	run := testRun(t)
 	run.SchemaVersion = "prc.run/v0.5"
+	run.Plan.SchemaVersion = "prc.plan/v0.5"
+	run.Plan.Digest = ""
+	payload, err := json.Marshal(run.Plan)
+	if err != nil {
+		t.Fatal(err)
+	}
+	planDigest := sha256.Sum256(payload)
+	run.Plan.Digest = hex.EncodeToString(planDigest[:])
 	run.RunID = runIdentity(run)
 	store, _ := writeAndOpen(t, run)
 	if err := store.IndexRun(context.Background(), run); err != nil {
@@ -192,12 +200,52 @@ func TestStoreReadsLegacyV05RunAfterFindingUpgrade(t *testing.T) {
 	}
 }
 
+func TestStoreReadsLegacyV06FindingRunAfterExecutionPlanUpgrade(t *testing.T) {
+	run := testRun(t)
+	run.SchemaVersion = "prc.run/v0.6"
+	run.Plan.SchemaVersion = "prc.plan/v0.5"
+	run.Plan.Digest = ""
+	payload, err := json.Marshal(run.Plan)
+	if err != nil {
+		t.Fatal(err)
+	}
+	planDigest := sha256.Sum256(payload)
+	run.Plan.Digest = hex.EncodeToString(planDigest[:])
+	run.RunID = runIdentity(run)
+	store, _ := writeAndOpen(t, run)
+	if err := store.IndexRun(context.Background(), run); err != nil {
+		t.Fatal(err)
+	}
+	loaded, err := store.LoadRun(context.Background(), run.RunID)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if loaded.SchemaVersion != "prc.run/v0.6" || len(loaded.Findings) != len(run.Findings) {
+		t.Fatalf("legacy finding run was not preserved: %+v", loaded)
+	}
+}
+
 func TestValidateRunRejectsTamperedNestedIdentities(t *testing.T) {
 	t.Run("plan", func(t *testing.T) {
 		run := testRun(t)
 		run.Plan.ProfileVersion = "tampered"
 		run.RunID = runIdentity(run)
 		if err := validateRun(run); err == nil || !strings.Contains(err.Error(), "plan digest") {
+			t.Fatalf("unexpected error: %v", err)
+		}
+	})
+	t.Run("rehashed-execution-policy", func(t *testing.T) {
+		run := testRun(t)
+		run.Plan.CapabilityPolicy.Process = "oci"
+		run.Plan.Digest = ""
+		payload, err := json.Marshal(run.Plan)
+		if err != nil {
+			t.Fatal(err)
+		}
+		planDigest := sha256.Sum256(payload)
+		run.Plan.Digest = hex.EncodeToString(planDigest[:])
+		run.RunID = runIdentity(run)
+		if err := validateRun(run); err == nil || !strings.Contains(err.Error(), "execution contract") {
 			t.Fatalf("unexpected error: %v", err)
 		}
 	})

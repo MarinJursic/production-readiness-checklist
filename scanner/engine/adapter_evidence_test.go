@@ -108,6 +108,38 @@ func TestBoundAdapterEvidenceCanPassOrFailButAdapterCannotDeclareAssessment(t *t
 	}
 }
 
+func TestAdapterDAGIsBlockedInInspectModeAndReadyInVerifyLocal(t *testing.T) {
+	item, err := inventory.Build(healthyRepository(t))
+	if err != nil {
+		t.Fatal(err)
+	}
+	engine := scannerWithAnalysisBinding(t, item)
+	inspect, err := engine.PlanMode("prc/core-repository", item, ExecutionModeInspect)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(inspect.Adapters) != 1 || inspect.Adapters[0].Status != "blocked" {
+		t.Fatalf("inspect plan adapter = %+v", inspect.Adapters)
+	}
+	verify, err := engine.PlanMode("prc/core-repository", item, ExecutionModeVerifyLocal)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(verify.Adapters) != 1 || verify.Adapters[0].Status != "authorized" ||
+		verify.CapabilityPolicy.Process != "oci" || !verify.CapabilityPolicy.WriteScratch {
+		t.Fatalf("verify-local plan adapter = %+v policy=%+v", verify.Adapters, verify.CapabilityPolicy)
+	}
+	adapterSeen := false
+	for _, node := range verify.Nodes {
+		if node.Kind == "adapter" {
+			adapterSeen = true
+		}
+		if node.AssertionID == "PRC-A-CORE-013" && (!adapterSeen || node.Status != "ready" || len(node.DependsOn) != 2) {
+			t.Fatalf("analysis assertion was not dependency-ordered after its adapter: %+v", node)
+		}
+	}
+}
+
 func TestIncompleteOrConflictingAdapterEvidenceNeverPasses(t *testing.T) {
 	item, err := inventory.Build(healthyRepository(t))
 	if err != nil {

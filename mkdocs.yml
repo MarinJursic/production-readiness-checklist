@@ -62,6 +62,7 @@ nav:
       - Product contract: architecture/product-contract.md
       - Trust and threat model: architecture/trust-model.md
       - Catalog integrity: architecture/catalog-integrity.md
+      - Execution plans and capability policy: architecture/execution-plans.md
       - Sandboxed adapters: architecture/adapters.md
       - Read-only agent providers: architecture/agent-providers.md
       - Bounded applicability: architecture/applicability.md

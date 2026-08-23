@@ -17,6 +17,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/MarinJursic/production-readiness-checklist/scanner/engine"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/finding"
 	workspaceinventory "github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
@@ -505,7 +506,8 @@ func validateRun(run model.RunResult) error {
 		return fmt.Errorf("run ID does not match record content")
 	}
 	if !((run.SchemaVersion == model.RunSchema && run.Plan.SchemaVersion == model.PlanSchema) ||
-		(run.SchemaVersion == "prc.run/v0.5" && run.Plan.SchemaVersion == model.PlanSchema) ||
+		(run.SchemaVersion == "prc.run/v0.6" && run.Plan.SchemaVersion == "prc.plan/v0.5") ||
+		(run.SchemaVersion == "prc.run/v0.5" && run.Plan.SchemaVersion == "prc.plan/v0.5") ||
 		(run.SchemaVersion == "prc.run/v0.4" && run.Plan.SchemaVersion == "prc.plan/v0.4") ||
 		(run.SchemaVersion == "prc.run/v0.3" && run.Plan.SchemaVersion == "prc.plan/v0.3")) {
 		return fmt.Errorf("unsupported or mismatched run and plan schemas %q and %q", run.SchemaVersion, run.Plan.SchemaVersion)
@@ -523,7 +525,7 @@ func validateRun(run model.RunResult) error {
 	if !digest(run.Plan.Digest) || planIdentity(run.Plan) != run.Plan.Digest {
 		return fmt.Errorf("plan digest does not match record content")
 	}
-	if run.Plan.SchemaVersion == model.PlanSchema || run.Plan.SchemaVersion == "prc.plan/v0.4" {
+	if run.Plan.SchemaVersion == model.PlanSchema || run.Plan.SchemaVersion == "prc.plan/v0.5" || run.Plan.SchemaVersion == "prc.plan/v0.4" {
 		if run.Plan.EngineVersion == "" || !digest(run.Plan.ProfileDigest) {
 			return fmt.Errorf("bound plan lacks engine or profile binding")
 		}
@@ -535,6 +537,14 @@ func validateRun(run model.RunResult) error {
 	}
 	if run.Plan.SchemaVersion == model.PlanSchema && !digest(run.Plan.CatalogDigest) {
 		return fmt.Errorf("current plan lacks catalog binding")
+	}
+	if run.Plan.SchemaVersion == model.PlanSchema {
+		if run.Plan.ExecutionMode == "" || run.Plan.Implementations == nil || run.Plan.Adapters == nil || run.Plan.Nodes == nil {
+			return fmt.Errorf("current plan lacks an execution mode, implementation registry, adapters, or DAG nodes")
+		}
+		if err := engine.ValidateExecutionPlan(run.Plan); err != nil {
+			return fmt.Errorf("current plan execution contract is invalid: %w", err)
+		}
 	}
 	planned := map[string]bool{}
 	for _, item := range run.Plan.Assertions {
@@ -561,7 +571,7 @@ func validateRun(run model.RunResult) error {
 	if len(results) != len(planned) {
 		return fmt.Errorf("run does not contain exactly one result for every planned assertion")
 	}
-	if run.SchemaVersion == model.RunSchema {
+	if run.SchemaVersion == model.RunSchema || run.SchemaVersion == "prc.run/v0.6" {
 		if run.Findings == nil {
 			return fmt.Errorf("current run findings must encode as an array")
 		}

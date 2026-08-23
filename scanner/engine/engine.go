@@ -58,6 +58,12 @@ type compiledApplicability struct {
 }
 
 func (e *Engine) Plan(profileID string, inventory model.Inventory) (model.Plan, error) {
+	return e.PlanMode(profileID, inventory, ExecutionModeInspect)
+}
+
+// PlanMode creates a reviewable execution DAG under one explicit capability
+// envelope. Planning never executes a target tool or adapter.
+func (e *Engine) PlanMode(profileID string, inventory model.Inventory, mode string) (model.Plan, error) {
 	if inventory.SchemaVersion != model.InventorySchema {
 		return model.Plan{}, fmt.Errorf("unsupported inventory schema %q", inventory.SchemaVersion)
 	}
@@ -72,7 +78,7 @@ func (e *Engine) Plan(profileID string, inventory model.Inventory) (model.Plan, 
 		SchemaVersion: model.PlanSchema, EngineVersion: engineVersion, TargetName: inventory.TargetName,
 		TargetCommit: inventory.GitCommit, InventoryDigest: inventory.Digest,
 		ProfileID: profile.ID, ProfileVersion: profile.Version,
-		ArtifactDigests: []string{}, TargetEnvironments: []string{},
+		ArtifactDigests: []string{}, TargetEnvironments: []string{}, ExecutionMode: mode,
 	}
 	plan.ProfileDigest, err = canonicalDigest(profile)
 	if err != nil {
@@ -105,6 +111,9 @@ func (e *Engine) Plan(profileID string, inventory model.Inventory) (model.Plan, 
 			ApplicabilityReason: reason,
 		})
 	}
+	if err := buildExecutionGraph(&plan, e.Catalog.Assertions); err != nil {
+		return model.Plan{}, err
+	}
 	payload, err := json.Marshal(plan)
 	if err != nil {
 		return model.Plan{}, fmt.Errorf("encode plan: %w", err)
@@ -124,7 +133,7 @@ func canonicalDigest(value any) (string, error) {
 }
 
 func (e *Engine) Scan(profileID string, inventory model.Inventory) (model.RunResult, error) {
-	return e.ScanWithAdapterEvidence(profileID, inventory, nil)
+	return e.ScanMode(profileID, inventory, nil, ExecutionModeInspect)
 }
 
 func (e *Engine) ScanWithAdapterEvidence(
@@ -132,11 +141,23 @@ func (e *Engine) ScanWithAdapterEvidence(
 	inventory model.Inventory,
 	executions []model.AdapterExecution,
 ) (model.RunResult, error) {
+	return e.ScanMode(profileID, inventory, executions, ExecutionModeVerifyLocal)
+}
+
+// ScanMode executes only assertion nodes authorized by the precomputed mode
+// policy. Adapter executions are immutable evidence inputs; their exact
+// manifest bindings must be available in the same plan.
+func (e *Engine) ScanMode(
+	profileID string,
+	inventory model.Inventory,
+	executions []model.AdapterExecution,
+	mode string,
+) (model.RunResult, error) {
 	profile, err := e.Catalog.Profile(profileID)
 	if err != nil {
 		return model.RunResult{}, err
 	}
-	plan, err := e.Plan(profileID, inventory)
+	plan, err := e.PlanMode(profileID, inventory, mode)
 	if err != nil {
 		return model.RunResult{}, err
 	}
@@ -158,7 +179,15 @@ func (e *Engine) ScanWithAdapterEvidence(
 		SchemaVersion: model.RunSchema, StartedAt: started, Plan: plan, Inventory: inventory,
 		AdapterExecutions: validatedExecutions, Findings: make([]model.Finding, 0),
 	}
+	plannedByID := make(map[string]model.PlannedAssertion, len(plan.Assertions))
 	for _, planned := range plan.Assertions {
+		plannedByID[planned.AssertionID] = planned
+	}
+	for _, node := range plan.Nodes {
+		if node.Kind != "assertion" {
+			continue
+		}
+		planned := plannedByID[node.AssertionID]
 		assertion := e.Catalog.Assertions[planned.AssertionID]
 		result := model.AssertionResult{
 			AssertionID: assertion.ID, ControlIDs: assertion.ControlIDs,
@@ -175,6 +204,10 @@ func (e *Engine) ScanWithAdapterEvidence(
 			result.Execution = "not_run"
 			result.Assessment = "unknown"
 			result.Summary = "Applicability could not be determined: " + planned.ApplicabilityReason
+		} else if node.Status == "blocked" {
+			result.Execution = "blocked"
+			result.Assessment = "unknown"
+			result.Summary = "Execution plan blocked this assertion: " + node.Reason
 		} else if assertion.ImplementationID == "prc.native.analysis-evidence@0.1" {
 			result = evaluateAnalysisEvidence(assertion, inventory, validatedExecutions, result)
 		} else {

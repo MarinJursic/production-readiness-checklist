@@ -19,6 +19,8 @@ must inspect both the exit code and the versioned report; it must never interpre
 Codes are never borrowed directly from a child tool. An adapter maps its own
 process behavior into the scanner protocol; the scanner then decides whether
 the tool completed, found something, was partial, was unsupported, or failed.
+Requesting a live adapter without the explicit `--mode verify-local` capability
+grant returns `5` before the adapter runtime is resolved or invoked.
 
 Errors are written to stderr with their stable class, for example:
 

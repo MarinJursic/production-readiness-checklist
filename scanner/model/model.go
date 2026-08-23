@@ -7,8 +7,8 @@ import (
 
 const (
 	InventorySchema        = "prc.inventory/v0.3"
-	PlanSchema             = "prc.plan/v0.5"
-	RunSchema              = "prc.run/v0.6"
+	PlanSchema             = "prc.plan/v0.6"
+	RunSchema              = "prc.run/v0.7"
 	EvidenceSchema         = "prc.evidence/v0.1"
 	FindingSchema          = "prc.finding/v0.1"
 	AdapterExecutionSchema = "prc.adapter-execution/v0.1"
@@ -166,22 +166,104 @@ type PlannedAssertion struct {
 	ApplicabilityReason string `json:"applicability_reason"`
 }
 
+// CapabilitySet is the closed execution envelope used by a plan policy or
+// required by one DAG node. Empty host and secret arrays are significant:
+// undeclared external access is denied rather than inherited.
+type CapabilitySet struct {
+	ReadWorkspace bool     `json:"read_workspace"`
+	WriteScratch  bool     `json:"write_scratch"`
+	Process       string   `json:"process"`
+	Network       string   `json:"network"`
+	NetworkHosts  []string `json:"network_hosts"`
+	SecretHandles []string `json:"secret_handles"`
+}
+
+type PlannedImplementation struct {
+	ID           string        `json:"id"`
+	Kind         string        `json:"kind"`
+	AssertionIDs []string      `json:"assertion_ids"`
+	Capabilities CapabilitySet `json:"capabilities"`
+	Status       string        `json:"status"`
+	Reason       string        `json:"reason,omitempty"`
+}
+
+type PlannedAdapter struct {
+	AdapterID        string        `json:"adapter_id"`
+	ManifestSHA256   string        `json:"manifest_sha256"`
+	ObservationKinds []string      `json:"observation_kinds"`
+	Capabilities     CapabilitySet `json:"capabilities"`
+	Status           string        `json:"status"`
+	Reason           string        `json:"reason,omitempty"`
+}
+
+type PlanNode struct {
+	ID               string        `json:"id"`
+	Kind             string        `json:"kind"`
+	DependsOn        []string      `json:"depends_on"`
+	AssertionID      string        `json:"assertion_id,omitempty"`
+	ImplementationID string        `json:"implementation_id,omitempty"`
+	AdapterID        string        `json:"adapter_id,omitempty"`
+	ManifestSHA256   string        `json:"manifest_sha256,omitempty"`
+	Capabilities     CapabilitySet `json:"capabilities"`
+	Status           string        `json:"status"`
+	Reason           string        `json:"reason,omitempty"`
+}
+
 type Plan struct {
-	SchemaVersion       string             `json:"schema_version"`
-	Digest              string             `json:"digest"`
-	EngineVersion       string             `json:"engine_version,omitempty"`
-	TargetName          string             `json:"target_name"`
-	TargetCommit        string             `json:"target_commit,omitempty"`
-	InventoryDigest     string             `json:"inventory_digest"`
-	ProfileID           string             `json:"profile_id"`
-	ProfileVersion      string             `json:"profile_version"`
-	ProfileDigest       string             `json:"profile_digest,omitempty"`
-	CatalogDigest       string             `json:"catalog_digest,omitempty"`
-	ConfigurationDigest string             `json:"configuration_digest,omitempty"`
-	ProjectID           string             `json:"project_id,omitempty"`
-	ArtifactDigests     []string           `json:"artifact_digests"`
-	TargetEnvironments  []string           `json:"target_environments"`
-	Assertions          []PlannedAssertion `json:"assertions"`
+	SchemaVersion       string                  `json:"schema_version"`
+	Digest              string                  `json:"digest"`
+	EngineVersion       string                  `json:"engine_version,omitempty"`
+	TargetName          string                  `json:"target_name"`
+	TargetCommit        string                  `json:"target_commit,omitempty"`
+	InventoryDigest     string                  `json:"inventory_digest"`
+	ProfileID           string                  `json:"profile_id"`
+	ProfileVersion      string                  `json:"profile_version"`
+	ProfileDigest       string                  `json:"profile_digest,omitempty"`
+	CatalogDigest       string                  `json:"catalog_digest,omitempty"`
+	ConfigurationDigest string                  `json:"configuration_digest,omitempty"`
+	ProjectID           string                  `json:"project_id,omitempty"`
+	ArtifactDigests     []string                `json:"artifact_digests"`
+	TargetEnvironments  []string                `json:"target_environments"`
+	ExecutionMode       string                  `json:"execution_mode"`
+	CapabilityPolicy    CapabilitySet           `json:"capability_policy"`
+	Implementations     []PlannedImplementation `json:"implementations"`
+	Adapters            []PlannedAdapter        `json:"adapters"`
+	Nodes               []PlanNode              `json:"nodes"`
+	Assertions          []PlannedAssertion      `json:"assertions"`
+}
+
+// MarshalJSON preserves the byte contract of archived v0.5 through v0.1 plan
+// records after the execution DAG was added in v0.6.
+func (plan Plan) MarshalJSON() ([]byte, error) {
+	type current Plan
+	if plan.SchemaVersion == PlanSchema {
+		return json.Marshal(current(plan))
+	}
+	type legacy struct {
+		SchemaVersion       string             `json:"schema_version"`
+		Digest              string             `json:"digest"`
+		EngineVersion       string             `json:"engine_version,omitempty"`
+		TargetName          string             `json:"target_name"`
+		TargetCommit        string             `json:"target_commit,omitempty"`
+		InventoryDigest     string             `json:"inventory_digest"`
+		ProfileID           string             `json:"profile_id"`
+		ProfileVersion      string             `json:"profile_version"`
+		ProfileDigest       string             `json:"profile_digest,omitempty"`
+		CatalogDigest       string             `json:"catalog_digest,omitempty"`
+		ConfigurationDigest string             `json:"configuration_digest,omitempty"`
+		ProjectID           string             `json:"project_id,omitempty"`
+		ArtifactDigests     []string           `json:"artifact_digests"`
+		TargetEnvironments  []string           `json:"target_environments"`
+		Assertions          []PlannedAssertion `json:"assertions"`
+	}
+	return json.Marshal(legacy{
+		SchemaVersion: plan.SchemaVersion, Digest: plan.Digest, EngineVersion: plan.EngineVersion,
+		TargetName: plan.TargetName, TargetCommit: plan.TargetCommit, InventoryDigest: plan.InventoryDigest,
+		ProfileID: plan.ProfileID, ProfileVersion: plan.ProfileVersion, ProfileDigest: plan.ProfileDigest,
+		CatalogDigest: plan.CatalogDigest, ConfigurationDigest: plan.ConfigurationDigest,
+		ProjectID: plan.ProjectID, ArtifactDigests: plan.ArtifactDigests,
+		TargetEnvironments: plan.TargetEnvironments, Assertions: plan.Assertions,
+	})
 }
 
 type Evidence struct {
@@ -256,12 +338,11 @@ type RunResult struct {
 	TerminalState     string             `json:"terminal_state"`
 }
 
-// MarshalJSON preserves the byte contract of archived v0.5 through v0.3 state
-// records after Findings was added in v0.6. Current runs always encode the
-// required findings array, including an empty array.
+// MarshalJSON preserves the byte contract of archived run records. v0.6 and
+// current runs encode the required findings array; v0.5 through v0.3 do not.
 func (run RunResult) MarshalJSON() ([]byte, error) {
 	type current RunResult
-	if run.SchemaVersion == RunSchema {
+	if run.SchemaVersion == RunSchema || run.SchemaVersion == "prc.run/v0.6" {
 		return json.Marshal(current(run))
 	}
 	type legacy struct {

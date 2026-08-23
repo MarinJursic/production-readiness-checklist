@@ -1050,6 +1050,7 @@ func loadEngine(catalogRoot string) (*engine.Engine, error) {
 func runPlan(args []string, stdout, stderr io.Writer) error {
 	set, target, catalogRoot, profile := parseCommon("plan", args, stderr)
 	configPath := set.String("config", "", "optional validated project configuration")
+	mode := set.String("mode", engine.ExecutionModeInspect, "execution mode: inspect or verify-local")
 	format := set.String("format", "human", "human or json")
 	if err := set.Parse(args); err != nil {
 		return err
@@ -1065,7 +1066,7 @@ func runPlan(args []string, stdout, stderr io.Writer) error {
 	if err != nil {
 		return err
 	}
-	plan, err := scanner.Plan(*profile, item)
+	plan, err := scanner.PlanMode(*profile, item, *mode)
 	if err != nil {
 		return err
 	}
@@ -1076,6 +1077,7 @@ func runPlan(args []string, stdout, stderr io.Writer) error {
 		return fmt.Errorf("unsupported format %q", *format)
 	}
 	fmt.Fprintf(stdout, "Plan: %s@%s\n", plan.ProfileID, plan.ProfileVersion)
+	fmt.Fprintf(stdout, "Execution mode: %s\n", plan.ExecutionMode)
 	fmt.Fprintf(stdout, "Target: %s (%s)\n", plan.TargetName, plan.InventoryDigest)
 	fmt.Fprintf(stdout, "Plan digest: %s\n", plan.Digest)
 	if plan.ConfigurationDigest != "" {
@@ -1092,6 +1094,7 @@ func runPlan(args []string, stdout, stderr io.Writer) error {
 func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	set, target, catalogRoot, profile := parseCommon("scan", args, stderr)
 	configPath := set.String("config", "", "optional validated project configuration")
+	mode := set.String("mode", engine.ExecutionModeInspect, "execution mode: inspect or verify-local")
 	format := set.String("format", "human", "human, json, markdown, html, sarif, or junit")
 	stateDirectory := set.String("state-dir", "", "optional directory for content-addressed evidence and run records")
 	exitPolicy := set.String("exit-policy", "profile", "profile, no-go, or never")
@@ -1107,6 +1110,9 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	if *exitPolicy != "profile" && *exitPolicy != "no-go" && *exitPolicy != "never" {
 		return exitInternal, exitError(exitConfiguration, fmt.Errorf("unsupported exit policy %q", *exitPolicy))
 	}
+	if *mode != engine.ExecutionModeInspect && *mode != engine.ExecutionModeVerifyLocal {
+		return exitInternal, exitError(exitConfiguration, fmt.Errorf("unsupported execution mode %q", *mode))
+	}
 	item, validation, err := configuredInventory(*target, *configPath)
 	if err != nil {
 		return exitInternal, exitError(exitConfiguration, err)
@@ -1120,6 +1126,9 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	}
 	executions := []model.AdapterExecution{}
 	if *adapterManifest != "" {
+		if !flagWasSet(set, "mode") || *mode != engine.ExecutionModeVerifyLocal {
+			return exitInternal, exitError(exitPolicyDenied, fmt.Errorf("--adapter-manifest requires an explicit --mode verify-local capability grant"))
+		}
 		manifest, err := adapter.LoadManifest(*adapterManifest)
 		if err != nil {
 			return exitInternal, exitError(exitConfiguration, err)
@@ -1128,7 +1137,7 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		if err != nil {
 			return exitInternal, exitError(exitConfiguration, err)
 		}
-		authorized, err := scanner.AuthorizesAdapter(*profile, item, manifest.ID, manifestDigest)
+		authorized, err := scanner.AuthorizesAdapterMode(*profile, item, *mode, manifest.ID, manifestDigest)
 		if err != nil {
 			return exitInternal, exitError(exitConfiguration, err)
 		}
@@ -1169,7 +1178,7 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		}
 		executions = append(executions, execution)
 	}
-	run, err := scanner.ScanWithAdapterEvidence(*profile, item, executions)
+	run, err := scanner.ScanMode(*profile, item, executions, *mode)
 	if err != nil {
 		return exitInternal, exitError(exitExecution, err)
 	}
