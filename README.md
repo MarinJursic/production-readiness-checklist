@@ -79,7 +79,32 @@ Do not modify code and do not make the final release decision.
 
 ## Scanner: quickest path
 
-The experimental scanner turns the checklist into a repeatable repository assessment. A normal scan is deliberately read-only: it inventories files, evaluates the 40-assertion `prc/core-repository@1.0` profile, prints a summary, and creates a private standalone HTML report. It does **not** fix files, run project code, install project dependencies, or turn unknown evidence into a pass.
+The experimental scanner turns the checklist into a repeatable repository assessment. Every scan puts all **10,042 controls** in the detailed report. It also runs the 40 narrow, deterministic checks in `prc/core-repository@1.0`. A narrow check can prove one exact fact, but it cannot silently mark a broader control as fully passed. Everything that still needs proof stays visible.
+
+A normal scan is read-only. It does **not** fix files, run project code, install project dependencies, or turn missing evidence into a pass.
+
+### Easiest setup with npm
+
+The npm package source, launcher, six native platform packages, and release builder are implemented. The public package names were still unpublished when this README was updated, so use this command only after the linked release notes confirm that the exact version is on npm:
+
+```bash
+npm install --save-dev --save-exact --ignore-scripts @marinjursic/prc@X.Y.Z
+npx prc scan .
+```
+
+The package has no install scripts and no third-party JavaScript dependencies. It does not download a binary after installation. npm selects one exact platform package; the launcher checks its release manifest and native binary hash, then starts it without a shell.
+
+For a short command that the whole project can reuse, add this to `package.json`:
+
+```json
+{
+  "scripts": {
+    "scan": "prc scan ."
+  }
+}
+```
+
+Run it with `npm run scan`. npm does not support arbitrary shortcuts such as `npm scan`.
 
 ### One-time setup from source
 
@@ -110,23 +135,33 @@ To scan the current directory, use:
 ./prc scan
 ```
 
-The command accepts options before or after the project path. Its terminal output is intentionally short:
+The command accepts options before or after the project path. The terminal shows every deterministic result with a word and symbol. On a real terminal, Pass is green and Fail is red; redirected and machine output has no color:
 
 ```text
+Production Readiness Scanner 0.2.0
+
 Run: 91c2…
 Profile: prc/core-repository@1.0
 Target: example-api (4c0e…)
-Terminal state: no_go
-Assessment counts: fail=12, unknown=2, manual_review=1, pass=15, not_applicable=10
-Verified findings: 12
+Mode: scan only — no fixes and no project scripts
 
-[FAIL] PRC-A-CORE-001 (high/required): Required repository documentation is missing.
-… 4 more findings are in the detailed report.
+Checking 40 deterministic assertions...
+
+  ✓ PASS     PRC-A-CORE-001  Observed README.md.
+  ✗ FAIL     PRC-A-CORE-007  No supported lock file was found for node.
+  ! BLOCKED  PRC-A-CORE-013  The optional analysis was not authorized.
+  ? MANUAL   PRC-A-CORE-012  An accountable reviewer must supply evidence.
+
+Result
+Terminal state: no_go
+Assessment counts: fail=1, unknown=1, manual_review=1, pass=37
+Complete control catalog: 10042/10042 controls included
+
 Scan mode: report only; no fixes were applied.
 Detailed report: /Users/you/Library/Caches/prc/reports/example-api-91c2….html
 ```
 
-Open the reported HTML file in a browser. It contains every verified finding with severity, gate, control IDs, exact file locations, evidence IDs, remediation class, and stable fingerprint. It also contains every assertion—including pass, blocked, unknown, manual-review, and not-applicable results—with required evidence and observed evidence shown separately. Reports are created with private file permissions and are stored outside the scanned project by default, so generating a report cannot change the inventory being assessed.
+Open the reported HTML file in a browser. It contains all 10,042 controls, every verified finding, every narrow assertion result, exact evidence, and any advisory AI review. `needs_review` means the scanner has not proved the broad rule. `partially_verified` means linked narrow checks passed; it is still not a complete Pass. Reports are private and stored outside the scanned project by default, so creating one does not change the project being scanned.
 
 A result-bearing exit code is not a crash: `0` means the selected profile passed, `1` means an active gate failed, and `2` means evidence remains incomplete or blocked. Use `--exit-policy never` only when a script should always receive `0` after a completed report; the report still preserves the real terminal state.
 
@@ -143,23 +178,39 @@ Useful report options:
 ./prc scan /path/to/project --no-report
 ```
 
-For a Node project, npm's standard custom-script syntax is `npm run scan`, not `npm scan`. After placing `prc` on `PATH`, this optional `package.json` entry provides that shortcut without making the scanner Node-specific:
+The native `prc scan` command remains available for Go, Python, Java, Rust, infrastructure, air-gapped, and mixed repositories that do not use npm.
 
-```json
-{
-  "scripts": {
-    "scan": "prc scan ."
-  }
-}
+### Optional deep review with Codex or Claude Code
+
+The ordinary scan is local and deterministic. AI review is a separate, explicit option for broad or subjective rules such as project-appropriate folder structure. It sends only bounded, secret-screened text excerpts to the chosen provider. The provider receives no target workspace path and gets no shell, file-reading, write, web, MCP, or install tools.
+
+Test one control first:
+
+```bash
+prc scan . \
+  --review-provider codex \
+  --review-control PRC-02-001 \
+  --allow-remote-source-processing
 ```
 
-Then run `npm run scan`. The native `prc scan` command remains the simplest choice for Go, Python, Java, Rust, infrastructure, and mixed repositories.
+Remove `--review-control` to review every active control:
+
+```bash
+prc scan . \
+  --review-provider codex \
+  --review-effort xhigh \
+  --allow-remote-source-processing
+```
+
+Use `--review-provider claude` for Claude Code. The full run is intentionally large: controls are sent in sealed batches of at most eight, and the coordinator must create one separate subagent for every control. Completed batches are saved outside the target and reused when the same scan resumes. This can take a long time and use many tokens. AI results are always labeled advisory; they cannot create a verified Pass, a final Not Applicable decision, or modify the project.
+
+See [safe AI control review](docs/scanner/ai-control-review.md) before running the full corpus.
 
 ### What it checks today
 
 The default profile checks repository governance, immutable source identity, dependency and runtime declarations, discoverable tests, GitHub Actions safety, private-key armor, OpenAPI contracts, Go HTTP timeout hazards, container definitions, Terraform locks, and Kubernetes workload policy. Focused API, Kubernetes, supply-chain, and infrastructure-as-code profiles are also available. Reviewed offline OCI adapters exist for Gitleaks, Syft, Grype, and Checkov, but external analyzers are never launched by the simple command; they require an explicit `verify-local` capability grant, an exact profile binding, and pinned local inputs. The [infrastructure policy guide](docs/scanner/infrastructure-policy.md) includes the exact Checkov command and its limits.
 
-The scanner does not yet inspect every production concern automatically. Unsupported runtime, organizational, environment, and human evidence stays visibly blocked or manual. That is intentional: the report describes what was actually proven for one target and evidence set, not an unqualified claim that software has no defects.
+The scanner includes every production concern in its report, but it does not pretend every concern can be proved from source code. Unsupported runtime, organizational, environment, legal, and human evidence stays visibly blocked or in review. That is intentional: the report describes what was actually proven for one target and evidence set, not an unqualified claim that software has no defects.
 
 Fixing is a separate workflow. `prc scan` never calls it. The bounded `prc fix` command works only in isolated candidate directories and supports a deliberately small set of independently verifiable changes; it never merges, deploys, or releases anything automatically.
 

@@ -57,7 +57,24 @@ existing file is never overwritten. `--report PATH` chooses a new file;
 `--no-report` disables the automatic report. JSON, Markdown, HTML, SARIF, and
 JUnit stdout formats do not create an extra report unless `--report` is also
 given. Report creation is output generation, not remediation: `scan` never
-invokes `fix`, `remediate`, a provider, or a write-capable target process.
+invokes `fix`, `remediate`, or a write-capable target process.
+
+Human output uses `--color auto` by default. `--color always` and
+`--color never` are explicit alternatives. A nonempty `NO_COLOR` environment
+variable and `TERM=dumb` disable color. Color is never the only meaning: every
+line keeps a symbol and a Pass, Fail, Blocked, Manual, N/A, or Error word.
+Machine formats reject the human-only `--color` option and never contain ANSI
+bytes. Untrusted paths and messages are escaped to one printable line before
+terminal rendering.
+
+Every complete scan includes all 10,042 registered controls. Broad controls
+without complete proof remain `needs_review`; narrow passing assertions produce
+only `partially_verified`. Optional Codex or Claude review must be selected with
+`--review-provider` and separately acknowledged with
+`--allow-remote-source-processing`. Those providers add strict-schema advisory
+candidates and cannot change the authoritative disposition. Provider launch,
+timeout, secret-screening, or protocol failures return `4`. See
+[safe AI control review](ai-control-review.md).
 
 The default `--exit-policy profile` maps `profile_satisfied` to `0`, `no_go` to
 `1`, and incomplete, blocked, or manual-evidence states to `2`. A policy or

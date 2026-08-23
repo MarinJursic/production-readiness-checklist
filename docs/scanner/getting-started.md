@@ -1,8 +1,10 @@
 # Scanner quick start
 
-The scanner CLI is an experimental deterministic vertical slice. It inventories a
-repository, creates an immutable plan for `prc/core-repository@1.0`, evaluates
-native assertions, records evidence, and reports explicit unresolved states.
+The scanner CLI inventories a repository, creates an immutable plan for
+`prc/core-repository@1.0`, evaluates native assertions, records evidence, and
+reports explicit unresolved states. It also binds all 10,042 registered
+controls into every complete scan report. The narrow assertions do not
+overclaim that they proved a whole broad control.
 The ordinary scan path is one command:
 
 ```bash
@@ -28,6 +30,27 @@ The bounded `fix` loop can compose those repairs in isolated sibling candidates
 without editing the target.
 
 ## One-time setup
+
+### npm release package
+
+After a scanner release is published to npm, install one exact version as a
+development tool:
+
+```bash
+npm install --save-dev --save-exact --ignore-scripts @marinjursic/prc@X.Y.Z
+npx prc scan .
+```
+
+The npm launcher has no install hooks or third-party JavaScript dependencies.
+It uses one exact native platform package and never downloads a fallback. The
+public package names were not yet published when this guide was updated, so
+check the scanner release notes before using the registry command.
+
+To give a Node project one short repeatable command, add
+`"scan": "prc scan ."` to `package.json`, then run `npm run scan`. `npm scan`
+is not npm's syntax for a custom script.
+
+### Build from source
 
 Go 1.27 or a compatible later supported toolchain is required.
 
@@ -58,10 +81,7 @@ bundle the compatible catalog, adapter manifests, packs, schemas, and scanner
 guides with every binary. See
 [releases and verification](releases.md) before trusting a downloaded artifact.
 
-The native CLI stays language-neutral. Node projects may optionally add
-`"scan": "prc scan ."` under `package.json` scripts and run `npm run scan`.
-The standard npm syntax for an arbitrary project script is `npm run scan`; npm
-does not turn it into a generic `npm scan` command.
+The native CLI stays language-neutral and remains available without Node.
 
 ## Inventory without executing target code
 
@@ -132,6 +152,7 @@ created with mode `0600` under the operating system's user cache directory and
 is never written inside the target. Its name includes the target and run ID.
 It contains:
 
+- all 10,042 registered controls and an honest disposition for each one;
 - a terminal-state and assessment-count summary;
 - every verified finding with severity, gate, controls, locations, evidence,
   remediation class, finding ID, and stable fingerprint; and
@@ -145,6 +166,27 @@ or `--no-report` to explicitly suppress the default HTML report.
 `prc scan` has no code path to the remediation commands. A missing final newline
 or broad file mode may appear as a finding, but the target bytes and modes remain
 unchanged. `prc fix` is a separate, explicitly invoked candidate workflow.
+
+## Optional Codex or Claude review
+
+A normal scan does not contact an AI provider. Add an explicitly authorized,
+advisory review for one control while testing the setup:
+
+```bash
+./prc scan . \
+  --review-provider codex \
+  --review-control PRC-02-001 \
+  --allow-remote-source-processing
+```
+
+Remove `--review-control` to review every active control. Each control gets a
+separate subagent inside a sealed batch. Completed batches resume from private
+state outside the target. This full run can take a long time and use many
+tokens. The provider receives bounded, secret-screened excerpts but no target
+workspace path or source-reading, shell, write, install, web, browser, or MCP
+tools. Its result stays advisory and never turns a control into a verified
+Pass. Read [safe AI control review](ai-control-review.md) for the full command,
+cost warning, result meanings, and stop conditions.
 
 ## Preserve evidence and history
 

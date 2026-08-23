@@ -333,13 +333,16 @@ def review_notes(flags: dict[str, Any]) -> list[str]:
 def current_scanner_text(assertions: list[dict[str, Any]]) -> list[str]:
     if not assertions:
         return [
-            "Not checked today. A normal `prc scan` does not evaluate this control, and the rule will "
-            "not appear in the scan result unless a future objective, assertion, implementation, and "
-            "profile include it. Today it remains human guidance."
+            "Included in every complete `prc scan` report as `needs_review`, but not deterministically "
+            "checked today. No missing implementation is turned into a Pass.",
+            "With an explicitly enabled Codex or Claude review, one separate subagent receives this rule "
+            "plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and "
+            "limitations are advisory only; they cannot create a verified Pass or final Not Applicable result."
         ]
     lines = [
-        f"Partly represented today by {len(assertions)} catalog assertion(s). This does not mean the "
-        "whole broad control is proven; only the exact assertion statements below are checked:"
+        f"Included in the complete report and partly represented by {len(assertions)} catalog assertion(s). "
+        "A passing narrow assertion produces `partially_verified`, not a complete Pass for this broad "
+        "control. A failing narrow assertion can produce `confirmed_failure`:"
     ]
     for assertion in assertions:
         evidence = "; ".join(
@@ -391,8 +394,10 @@ def generated_text() -> str:
         "## Read this first: the important problems found",
         "",
         "This file reviews every control, but it does not claim that every control is already machine-checkable. "
-        "The current scanner has a small executable profile. Most of the 10,042 controls are broad human "
-        "objectives. Turning them directly into code would create false passes and one-size-fits-all rules.",
+        "Every `prc scan` report now contains all 10,042 controls. The deterministic profile proves only its "
+        "narrow assertions; the remaining controls stay visibly `needs_review`. An optional AI review can add "
+        "one-subagent-per-control advice, but it cannot turn subjective judgment into a verified Pass. Turning "
+        "broad objectives directly into hard-coded rules would create false passes and one-size-fits-all designs.",
         "",
         "### The rule design that should be used everywhere",
         "",
@@ -429,7 +434,7 @@ def generated_text() -> str:
         "",
         "### Main problems in the current executable layer",
         "",
-        "The current 43 assertions are much safer than trying to automate all 10,042 rules, but several still "
+        "The current 43 catalog assertions are much safer than pretending all 10,042 rules are deterministic, but several still "
         "need refinement before a broad release:",
         "",
         "- Presence-only checks for README, license, contribution, security, conduct, ownership, manifests, and "

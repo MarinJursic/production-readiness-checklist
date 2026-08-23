@@ -1,7 +1,9 @@
 # npm distribution, terminal output, and safe-scan plan
 
-**Status:** proposed add-on to the scanner roadmap  
-**Reviewed repository revision:** `c95b152ac2f9dcc2558960ed92d7f64b6494da76`  
+**Status:** implemented and tested; public npm publication still requires maintainer registry setup
+
+**Original reviewed repository revision:** `c95b152ac2f9dcc2558960ed92d7f64b6494da76`
+
 **Research date:** 2026-08-23  
 **Scope:** installation, launch, read-only scanning, terminal output, report creation, and the path from 10,042 written controls to honest machine checks
 
@@ -16,7 +18,9 @@ npm install --save-dev --save-exact --ignore-scripts @marinjursic/prc@0.2.0
 npx prc scan .
 ```
 
-The package name above is provisional. It must be checked and owned before it is placed in public instructions. A maintained npm scope is safer than an unscoped name because npm scopes group official packages and show who controls the name.
+The package name was checked against the public npm registry on 2026-08-23. The launcher and six platform names returned `E404`, meaning no public package was visible. That does not prove the maintainer owns the `@marinjursic` npm scope. Public instructions therefore continue to say “after publication” until the maintainer configures the scope and trusted publisher.
+
+The repository now builds the exact package design below as seven deterministic release tarballs. Local offline installation with `--ignore-scripts` was tested end to end against the packaged native scanner. No package was published as part of this implementation.
 
 For a project that wants a short repeatable command:
 
@@ -69,7 +73,9 @@ Use one small launcher package and one package for each supported platform:
 @marinjursic/prc-windows-x64
 ```
 
-The final names need a separate name and ownership check. Do not publish placeholder packages merely to hold names.
+The public registry lookup found no visible package under these names. Scope
+ownership and trusted-publisher access still need to be confirmed by the
+maintainer. Do not publish placeholder packages merely to hold names.
 
 The launcher package should contain only:
 
@@ -117,7 +123,11 @@ The release tests must reject a package when any of these is true:
 
 ### Node support
 
-As of this review, Node 24 is Active LTS and Node 22 is Maintenance LTS. Start the launcher with `engines.node` set to `>=22` and test both supported LTS lines. Recheck the official Node release table at each scanner release; do not keep an end-of-life Node version merely because the wrapper still happens to run.
+As of this review, Node 24 is Active LTS and Node 22 is Maintenance LTS. The
+launcher uses `engines.node` set to `>=22.14.0`, which includes npm trusted
+publishing's current Node floor. Test both supported LTS lines. Recheck the
+official Node release table at each scanner release; do not keep an end-of-life
+Node version merely because the wrapper still happens to run.
 
 The native binary does the scan. Node is only the launcher, so the JavaScript should use a very small set of stable built-in APIs and no third-party packages.
 
@@ -175,11 +185,14 @@ npx prc scan .
 
 `npm audit signatures` checks registry signatures and available provenance attestations. Provenance says where and how a package was built; it does not prove that the code is harmless. The README must say this plainly.
 
-## Proposed terminal experience
+## Implemented terminal experience
 
 ### Main design
 
-The terminal should show every selected assertion in a short line for the current 40-check core profile. When future profiles become large, `--summary` can show only totals and items that need attention, while `--all-results` shows every result.
+The terminal shows every selected assertion in a short line for the current
+40-check core profile. When future profiles become large, `--summary` can show
+only totals and items that need attention, while `--all-results` shows every
+result.
 
 Color is useful, but color must never be the only meaning:
 
@@ -308,16 +321,13 @@ The current code already has useful protections:
 - default reports are outside the project, created privately, and never overwrite an existing file;
 - missing or unsafe evidence remains blocked or unknown.
 
-Important gaps to close before public npm beta:
+Remaining gaps before public npm beta:
 
-1. **Terminal injection:** human output currently prints finding summaries and target-derived text without a dedicated terminal sanitizer.
-2. **Total inventory bytes:** the inventory limits file count but hashes every regular-file byte. Add per-file, total-byte, elapsed-time, and open-file budgets to stop huge-file denial of service.
-3. **Whole-walk path races:** some inventory reads still use path-based `WalkDir` plus later opens. Move all target reads to root-scoped handles or record a blocked result when identity changes.
-4. **Report parent path:** the final report directory is checked, but every existing parent should be opened without following unsafe links before file creation.
-5. **Human result detail:** current terminal output shows only failing findings; passes, blocked, manual, and Not Applicable results are totals. Add safe one-line result rendering.
-6. **Color policy:** add TTY detection, `NO_COLOR`, explicit color options, and tests.
-7. **Package bootstrap:** no npm package exists yet. The package build and release identity must be added without weakening the direct archive path.
-8. **Rule coverage language:** 10,042 controls exist, but only 26 controls map to 43 current assertions. UI and marketing must always show the selected profile and assertion count.
+1. **Total inventory bytes:** the inventory limits file count but hashes every regular-file byte. Add per-file, total-byte, elapsed-time, and open-file budgets to stop huge-file denial of service.
+2. **Whole-walk path races:** some inventory reads still use path-based `WalkDir` plus later opens. Move all target reads to root-scoped handles or record a blocked result when identity changes.
+3. **Report parent path:** the final report directory is checked, but every existing parent should be opened without following unsafe links before file creation.
+4. **Registry publication:** configure ownership and npm trusted publishing, then publish all platform packages before the launcher. Never use a long-lived token when OIDC is available.
+5. **Cross-platform install matrix:** the release contract builds and binds all six packages and runs the launcher tests on Linux. Add live clean-install jobs on macOS ARM64/x64 and Windows ARM64/x64 as runner availability permits.
 
 ## Review of every current assertion
 
@@ -525,27 +535,27 @@ Each commit should be independently tested. Publishing must remain a separate, d
 ## Final acceptance checklist
 
 - [ ] The official package name and scope are owned and linked to the exact repository.
-- [ ] Every npm package uses the same scanner version and exact optional dependency versions.
-- [ ] No package has install scripts or unexpected executable JavaScript.
-- [ ] The launcher has zero third-party runtime dependencies.
-- [ ] Installation works with `--ignore-scripts`.
-- [ ] The launcher never downloads a binary and never searches `PATH` for one.
-- [ ] All native binary and catalog hashes match the signed release manifest.
+- [x] Every npm package uses the same scanner version and exact optional dependency versions.
+- [x] No package has install scripts or unexpected executable JavaScript.
+- [x] The launcher has zero third-party runtime dependencies.
+- [x] Installation works with `--ignore-scripts`.
+- [x] The launcher never downloads a binary and never searches `PATH` for one.
+- [x] Native binary, platform manifest, package, and release hashes are bound together.
 - [ ] npm provenance and registry signature checks pass.
 - [ ] Package tarballs and release archives contain no secret or unexpected file.
-- [ ] A basic scan never runs project scripts, package managers, hooks, plugins, agents, or network tools.
-- [ ] Terminal text is safe against control-character injection.
-- [ ] Every state has a word/symbol; color is optional and accessible.
-- [ ] `NO_COLOR`, redirected output, and all machine formats contain no ANSI bytes.
-- [ ] The final absolute report path is always clear when a report was written.
-- [ ] The report remains private, standalone, escaped, and outside the scanned project by default.
-- [ ] Result exit codes pass unchanged through the npm launcher.
+- [x] A basic scan never runs project scripts, package managers, hooks, plugins, agents, or network tools.
+- [x] Terminal text is safe against control-character injection.
+- [x] Every state has a word/symbol; color is optional and accessible.
+- [x] `NO_COLOR`, redirected output, and all machine formats contain no ANSI bytes.
+- [x] The final absolute report path is always clear when a report was written.
+- [x] The report remains private, standalone, escaped, and outside the scanned project by default.
+- [x] Result exit codes pass unchanged through the npm launcher.
 - [ ] Huge or changing repositories stop safely under documented budgets.
-- [ ] The README states that current scans run 40 core assertions, not 10,042 automated checks.
-- [ ] Every one of the 10,042 controls appears once in the generated acceptance review.
-- [ ] Every mapped control lists its exact current assertions; every unmapped control says it is not checked today.
-- [ ] Layout conventions are discovery hints, not universal acceptance rules.
-- [ ] A normal scan still only reports; fixes remain a separate explicit workflow.
+- [x] The README distinguishes 40 deterministic checks from 10,042 included controls.
+- [x] Every one of the 10,042 controls appears once in the generated acceptance review.
+- [x] Every mapped control lists its exact current assertions; every unmapped control says it is not deterministically checked today.
+- [x] Layout conventions are discovery hints, not universal acceptance rules.
+- [x] A normal scan still only reports; fixes remain a separate explicit workflow.
 
 ## Primary research sources
 

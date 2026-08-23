@@ -10,6 +10,8 @@ security, benchmark, and pack gates before publishing anything.
 Each scanner release contains:
 
 - Linux, macOS, and Windows archives for AMD64 and ARM64;
+- one dependency-free `@marinjursic/prc` npm launcher tarball and six exact
+  native npm platform tarballs for the same systems;
 - a binary with the scanner version, source revision, source timestamp, and Go
   toolchain embedded in `prc version --format json`;
 - the exact compatible `catalog/`, `packs/`, and `schemas/` trees in every
@@ -73,13 +75,33 @@ gh attestation verify prc_0.1.0_linux_amd64.tar.gz \
 Finally, inspect `prc_X.Y.Z_release-manifest.json` and compare its
 `source_commit`, catalog digest, pack digests, and artifact digest with the
 assessment scope you intend to use. Inspect `prc_X.Y.Z_self-scan.json` as a
-normal `prc.run/v0.10` report: a valid signed self-assessment may still be
+normal `prc.run/v0.11` report: a valid signed self-assessment may still be
 `environment_blocked` because organizational, production, or adapter evidence
 is deliberately unavailable in the release job. After extraction:
 
 ```bash
 ./prc_X.Y.Z_linux_amd64/prc version --format json
 ```
+
+The release manifest also binds every npm tarball. Before the packages are
+published to npm, they can be tested directly from one release directory. On
+Linux x64, for example:
+
+```bash
+mkdir npm-smoke && cd npm-smoke
+npm install --ignore-scripts --offline --no-audit --no-fund --package-lock=false \
+  ../marinjursic-prc-linux-x64-X.Y.Z.tgz \
+  ../marinjursic-prc-X.Y.Z.tgz
+./node_modules/.bin/prc version --format json
+./node_modules/.bin/prc scan /path/to/project
+```
+
+The platform package contains the native binary and its exact catalog. The
+launcher checks the platform manifest and binary SHA-256 and never downloads a
+fallback or starts a binary found on `PATH`. Public npm publishing should use
+npm trusted publishing from the pinned release workflow so no long-lived npm
+token is stored. npm provenance links a package to its build source; it does
+not prove the package has no unsafe code.
 
 Do not substitute a successful signature check for vulnerability review or a
 production-readiness decision. An attestation proves the signed claim's origin

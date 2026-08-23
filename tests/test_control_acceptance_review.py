@@ -32,7 +32,7 @@ class ControlAcceptanceReviewTests(unittest.TestCase):
         text = GENERATOR.generated_text()
         self.assertIn("Controls connected to current scanner assertions: **26**", text)
         self.assertIn("Current assertions connected to those controls: **43**", text)
-        self.assertIn("Not checked today.", text)
+        self.assertIn("not deterministically checked today", text)
 
 
 if __name__ == "__main__":
