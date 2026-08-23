@@ -11,13 +11,13 @@
     "started_at": {"type": "string", "format": "date-time"},
     "completed_at": {"type": "string", "format": "date-time"},
     "plan": {"$ref": "plan-v0.6.schema.json"},
-    "inventory": {"$ref": "inventory.schema.json"},
-    "adapter_executions": {"type": "array", "items": {"$ref": "adapter-execution.schema.json"}},
+    "inventory": {"$ref": "inventory-v0.3.schema.json"},
+    "adapter_executions": {"type": "array", "items": {"$ref": "adapter-execution-v0.2.schema.json"}},
     "results": {
       "type": "array",
       "items": {"$ref": "#/$defs/assertion_result"}
     },
-    "findings": {"type": "array", "items": {"$ref": "finding.schema.json"}},
+    "findings": {"type": "array", "items": {"$ref": "finding-v0.1.schema.json"}},
     "terminal_state": {"$ref": "#/$defs/terminal_state"}
   },
   "$defs": {
@@ -38,7 +38,7 @@
           "type": "array",
           "items": {"$ref": "#/$defs/evidence_requirement"}
         },
-        "evidence_observed": {"type": "array", "items": {"$ref": "evidence.schema.json"}},
+        "evidence_observed": {"type": "array", "items": {"$ref": "evidence-v0.1.schema.json"}},
         "remediation_class": {"enum": ["R0", "R1", "R2", "R3", "R4", "R5", "R6"]}
       }
     },

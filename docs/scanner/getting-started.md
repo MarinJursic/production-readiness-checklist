@@ -37,8 +37,9 @@ container build definitions, Terraform, Kubernetes, OpenAPI descriptions, and
 symlinks. Detection is
 not proof that a component is built or deployed; each fact states that limitation.
 When a validated project configuration is supplied, its digest, declared scope,
-and explicitly limited facts are bound into the inventory identity. Frozen v0.1
-and v0.2 schemas remain available for consumers migrating pinned output contracts.
+and explicitly limited facts are bound into the inventory identity. Versioned
+v0.1, v0.2, and v0.3 schema files remain available for consumers of pinned
+output contracts; only the unversioned alias advances with a later contract.
 
 Before enabling persistent evidence, OCI adapters, or isolated remediation, run
 [`prc doctor`](doctor.md) with the corresponding paths and executables. It probes
@@ -133,8 +134,11 @@ to assertion results so native analyses can feed exact file, line, and column
 data into canonical findings. It keeps a stable finding fingerprint separate
 from the content-addressed finding ID and embeds the reviewable v0.6 execution
 plan. Adapter executions bind their local or registry authorization provenance.
-Frozen run v0.8, plan v0.6, adapter
-execution v0.1, and earlier schemas remain available for archived consumers.
+Versioned run v0.1 through v0.8, plan v0.1 through v0.6, inventory v0.1
+through v0.3, adapter-execution v0.1 through v0.2, evidence v0.1, and finding
+v0.1 schemas remain available for archived consumers. Their local dependency
+graphs use versioned filenames, so later unversioned aliases cannot change an
+archived contract.
 
 `--exit-policy profile` is the default and uses the [stable CLI exit-code
 contract](cli-contract.md): a failed active gate is `1`, while incomplete,

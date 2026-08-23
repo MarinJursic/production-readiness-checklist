@@ -67,6 +67,9 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 
 ### Fixed
 
+- Pinned every transitive local dependency of archived scan and remediation
+  schemas to a version-specific contract, preventing future mutable schema
+  aliases from changing validation of historical records.
 - Aligned the header star icon and replaced the oversized footer star button with a compact project-action group.
 - Materialized intentionally unsafe container, Terraform, and Kubernetes
   benchmark states only in temporary copies, preventing test data from creating

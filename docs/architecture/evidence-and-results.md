@@ -98,7 +98,9 @@ links while immutable run JSON remains authoritative. SARIF is derived from
 these canonical findings. It no longer guesses findings or file locations from
 arbitrary evidence source strings.
 
-Frozen `prc.run/v0.5` and older schemas remain available for archived results.
+Version-specific `prc.run/v0.1` through `prc.run/v0.8` schemas remain
+available for archived results. Each pins its complete local schema dependency
+graph instead of following mutable aliases.
 
 ## Evidence envelope
 

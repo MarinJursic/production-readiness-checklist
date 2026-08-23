@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/agent-execution-v0.1.schema.json",
+  "title": "Production Readiness Agent Execution",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "execution_id", "provider", "task_id", "executable_sha256", "output_schema_sha256", "started_at", "completed_at", "duration_ms", "stdout_path", "stdout_sha256", "stdout_bytes", "stderr_path", "stderr_sha256", "stderr_bytes", "output"],
+  "properties": {
+    "schema_version": {"const": "prc.agent-execution/v0.1"},
+    "execution_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "provider": {"enum": ["codex", "claude"]},
+    "task_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "executable_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "output_schema_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "started_at": {"type": "string", "format": "date-time"},
+    "completed_at": {"type": "string", "format": "date-time"},
+    "duration_ms": {"type": "integer", "minimum": 0},
+    "stdout_path": {"type": "string", "minLength": 1},
+    "stdout_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "stdout_bytes": {"type": "integer", "minimum": 0},
+    "stderr_path": {"type": "string", "minLength": 1},
+    "stderr_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "stderr_bytes": {"type": "integer", "minimum": 0},
+    "output": {"$ref": "agent-output-v0.1.schema.json"}
+  }
+}

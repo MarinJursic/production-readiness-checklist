@@ -55,6 +55,7 @@ immutable adapter binding, or an adapter that requires a higher mode. The gate
 node is then marked blocked, and a scan records an explicit unknown/blocked
 assertion result. Missing execution never becomes Pass or Not Applicable.
 
-Plan v0.5 and run v0.6 schemas remain frozen for archived consumers. They do not
-contain the execution DAG or capability policy and therefore require
-conservative re-evaluation when compared with current plans.
+Version-specific plan v0.1 through v0.6 and run v0.1 through v0.8 schemas
+remain frozen for archived consumers. Plans before v0.6 do not contain the
+execution DAG or capability policy and therefore require conservative
+re-evaluation when compared with current plans.

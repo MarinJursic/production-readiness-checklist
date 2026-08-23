@@ -23,7 +23,7 @@
     "max_changed_lines": {"type": "integer", "minimum": 1, "maximum": 1000},
     "usage": {"$ref": "#/$defs/usage"},
     "candidates": {"type": "array", "maxItems": 10, "items": {"$ref": "remediation-candidate-v0.2.schema.json"}},
-    "provider_executions": {"type": "array", "maxItems": 10, "items": {"$ref": "agent-execution.schema.json"}},
+    "provider_executions": {"type": "array", "maxItems": 10, "items": {"$ref": "agent-execution-v0.1.schema.json"}},
     "final_run": {"$ref": "run-result-v0.5.schema.json"},
     "gate_state": {"enum": ["profile_satisfied", "machine_work_complete_manual_evidence_remaining", "assessment_incomplete", "environment_blocked", "no_go"]},
     "terminal_state": {"enum": ["profile_satisfied", "machine_work_complete", "stopped_by_policy_or_budget", "candidate_rejected", "provider_stopped"]},

@@ -148,7 +148,11 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             }],
             "files": [],
         }
-        self.assertEqual(validate_instance.validation_errors(instance, "inventory.schema.json"), [])
+        for schema_name in ["inventory.schema.json", "inventory-v0.3.schema.json"]:
+            with self.subTest(schema=schema_name):
+                self.assertEqual(
+                    validate_instance.validation_errors(instance, schema_name), []
+                )
 
         legacy = {
             "schema_version": "prc.inventory/v0.1",
@@ -177,6 +181,48 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         errors = validate_instance.validation_errors(instance, "inventory.schema.json")
         self.assertTrue(errors)
         self.assertTrue(any("prc.inventory/v0.3" in error for error in errors))
+
+    def test_versioned_run_contracts_pin_their_dependency_graph(self) -> None:
+        roots = [
+            *(f"run-result-v0.{version}.schema.json" for version in range(1, 9)),
+            *(f"remediation-run-v0.{version}.schema.json" for version in range(1, 4)),
+        ]
+        pending = list(roots)
+        visited: set[str] = set()
+
+        def references(value: object) -> list[str]:
+            if isinstance(value, dict):
+                result = [value["$ref"]] if isinstance(value.get("$ref"), str) else []
+                for child in value.values():
+                    result.extend(references(child))
+                return result
+            if isinstance(value, list):
+                result: list[str] = []
+                for child in value:
+                    result.extend(references(child))
+                return result
+            return []
+
+        while pending:
+            schema_name = pending.pop()
+            if schema_name in visited:
+                continue
+            visited.add(schema_name)
+            schema_path = ROOT / "schemas" / schema_name
+            self.assertTrue(schema_path.is_file(), schema_name)
+            document = json.loads(schema_path.read_text(encoding="utf-8"))
+            for reference in references(document):
+                target = reference.split("#", 1)[0]
+                if not target or "://" in target:
+                    continue
+                with self.subTest(schema=schema_name, reference=reference):
+                    self.assertRegex(
+                        target,
+                        r"-v[0-9]+\.[0-9]+\.schema\.json$",
+                        "versioned contracts must not reference mutable aliases",
+                    )
+                    self.assertTrue((ROOT / "schemas" / target).is_file())
+                pending.append(target)
 
     def test_legacy_run_contract_remains_validatable(self) -> None:
         digest = "a" * 64

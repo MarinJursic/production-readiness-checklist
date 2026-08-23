@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/evidence-v0.1.schema.json",
+  "title": "Production Readiness Evidence Envelope v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "kind", "authority", "producer", "target_digest", "source", "observed_at", "summary"],
+  "properties": {
+    "schema_version": {"const": "prc.evidence/v0.1"},
+    "id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "kind": {"type": "string"},
+    "authority": {"enum": ["declared", "repository", "executed", "artifact", "environment", "human"]},
+    "producer": {"type": "string"},
+    "target_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "source": {"type": "string"},
+    "content_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "size": {"type": "integer", "minimum": 0},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "summary": {"type": "string", "minLength": 1}
+  }
+}

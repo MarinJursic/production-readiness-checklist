@@ -21,8 +21,8 @@ and return a Boolean. The result mapping is deliberately small:
 undetermined applicability keeps the assessment incomplete.
 
 Plan v0.3 records `applicability_reason` for every planned assertion and
-identifies the evaluator as `cel-go/v0.30.0+prc-inventory/v0.3`. Frozen v0.1 and
-v0.2 plan schemas remain available for validating archived plans.
+identifies the evaluator as `cel-go/v0.30.0+prc-inventory/v0.3`. Version-specific
+v0.1 through v0.6 plan schemas remain available for validating archived plans.
 
 ## Available inventory view
 
