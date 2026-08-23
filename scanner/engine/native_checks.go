@@ -23,6 +23,13 @@ import (
 
 const maximumNativeParseBytes = 4 * 1024 * 1024
 
+const (
+	maximumSensitiveMaterialFiles     = 10_000
+	maximumSensitiveMaterialBytes     = 256 * 1024 * 1024
+	maximumSensitiveMaterialFileBytes = 8 * 1024 * 1024
+	maximumSensitiveLocations         = 100
+)
+
 var (
 	errNativeInputLimit = errors.New("native parser input limit exceeded")
 	gitRevisionPattern  = regexp.MustCompile(`^[0-9a-f]{40,64}$`)
@@ -31,6 +38,22 @@ var (
 	conflictMiddle      = regexp.MustCompile(`(?m)^=======[[:space:]]*$`)
 	conflictEnd         = regexp.MustCompile(`(?m)^>>>>>>>(?: |\r?$)`)
 )
+
+var sensitiveMaterialExtensions = map[string]bool{
+	".asc": true, ".bak": true, ".cfg": true, ".conf": true, ".config": true,
+	".css": true, ".env": true, ".gql": true, ".graphql": true, ".gradle": true,
+	".hcl": true, ".html": true, ".ini": true, ".json": true, ".jsonl": true,
+	".key": true, ".kts": true, ".md": true, ".mk": true, ".pem": true,
+	".properties": true, ".proto": true, ".rst": true, ".scss": true, ".sql": true,
+	".svelte": true, ".tf": true, ".tfvars": true, ".toml": true, ".txt": true,
+	".vue": true, ".xml": true, ".yaml": true, ".yml": true,
+}
+
+var sensitiveMaterialNames = map[string]bool{
+	"dockerfile": true, "gemfile": true, "jenkinsfile": true, "makefile": true,
+	"procfile": true, "rakefile": true, "vagrantfile": true,
+	"id_dsa": true, "id_ecdsa": true, "id_ed25519": true, "id_mldsa": true, "id_rsa": true,
+}
 
 func inventoryEvidence(
 	inventory model.Inventory,
@@ -62,11 +85,23 @@ func readVerifiedEvidence(
 	relative, kind, producer, summary string,
 	observedAt time.Time,
 ) ([]byte, model.Evidence, error) {
+	return readVerifiedEvidenceWithLimit(inventory, relative, kind, producer, summary, observedAt, maximumNativeParseBytes)
+}
+
+func readVerifiedEvidenceWithLimit(
+	inventory model.Inventory,
+	relative, kind, producer, summary string,
+	observedAt time.Time,
+	maximumBytes int64,
+) ([]byte, model.Evidence, error) {
+	if maximumBytes < 1 || maximumBytes > maximumSensitiveMaterialFileBytes {
+		return nil, model.Evidence{}, fmt.Errorf("native evidence read limit is invalid")
+	}
 	record, ok := expectedFile(inventory, relative)
 	if !ok {
 		return nil, model.Evidence{}, fmt.Errorf("file is absent from inventory: %s", relative)
 	}
-	if record.Size > maximumNativeParseBytes {
+	if record.Size > maximumBytes {
 		return nil, model.Evidence{}, fmt.Errorf("%w: %s has %d bytes", errNativeInputLimit, relative, record.Size)
 	}
 	path, err := safePath(inventory.Root, relative)
@@ -92,11 +127,11 @@ func readVerifiedEvidence(
 	if !openedInfo.Mode().IsRegular() || !os.SameFile(pathInfo, openedInfo) {
 		return nil, model.Evidence{}, fmt.Errorf("file changed while opening: %s", relative)
 	}
-	data, err := io.ReadAll(io.LimitReader(file, maximumNativeParseBytes+1))
+	data, err := io.ReadAll(io.LimitReader(file, maximumBytes+1))
 	if err != nil {
 		return nil, model.Evidence{}, fmt.Errorf("read %s: %w", relative, err)
 	}
-	if len(data) > maximumNativeParseBytes {
+	if int64(len(data)) > maximumBytes {
 		return nil, model.Evidence{}, fmt.Errorf("%w: %s", errNativeInputLimit, relative)
 	}
 	digest := sha256.Sum256(data)
@@ -832,5 +867,153 @@ func evaluateKubernetesResources(assertion model.Assertion, inventory model.Inve
 	}
 	result.Assessment = "pass"
 	result.Summary = fmt.Sprintf("All containers in %d detected Kubernetes workloads declare resource requests and limits.", workloads)
+	return result
+}
+
+func privateKeyArmorLabels() []string {
+	return []string{
+		"PRIVATE KEY", "ENCRYPTED PRIVATE KEY", "RSA PRIVATE KEY", "EC PRIVATE KEY",
+		"DSA PRIVATE KEY", "OPENSSH PRIVATE KEY", "PGP PRIVATE KEY BLOCK",
+	}
+}
+
+func isSensitiveMaterialPath(path string) bool {
+	base := strings.ToLower(filepath.Base(path))
+	if workspaceinventory.IsSourcePath(path) || sensitiveMaterialExtensions[strings.ToLower(filepath.Ext(base))] ||
+		sensitiveMaterialNames[base] || strings.HasPrefix(base, ".env") ||
+		(strings.HasPrefix(base, "ssh_host_") && strings.HasSuffix(base, "_key")) {
+		return true
+	}
+	// Repository dotfiles are commonly text configuration files. Inventory
+	// already excludes Git metadata and dependency/cache directories.
+	return strings.HasPrefix(base, ".") && base != ".ds_store"
+}
+
+func armorPayloadLine(line []byte) (int, bool) {
+	line = bytes.TrimSpace(line)
+	if len(line) == 0 || bytes.Contains(line, []byte(":")) || line[0] == '=' {
+		return 0, true
+	}
+	for _, character := range line {
+		if !(character >= 'A' && character <= 'Z') && !(character >= 'a' && character <= 'z') &&
+			!(character >= '0' && character <= '9') && character != '+' && character != '/' && character != '=' {
+			return 0, false
+		}
+	}
+	return len(line), true
+}
+
+func containsPrivateKeyArmor(data []byte, labels []string) bool {
+	lines := bytes.Split(data, []byte("\n"))
+	for _, label := range labels {
+		begin := []byte("-----BEGIN " + label + "-----")
+		end := []byte("-----END " + label + "-----")
+		for index, line := range lines {
+			if !bytes.Equal(bytes.TrimSpace(line), begin) {
+				continue
+			}
+			payloadBytes := 0
+			valid := true
+			for cursor := index + 1; cursor < len(lines); cursor++ {
+				if bytes.Equal(bytes.TrimSpace(lines[cursor]), end) {
+					if valid && payloadBytes >= 32 {
+						return true
+					}
+					break
+				}
+				count, lineValid := armorPayloadLine(lines[cursor])
+				if !lineValid {
+					valid = false
+				}
+				payloadBytes += count
+			}
+		}
+	}
+	return false
+}
+
+func evaluatePrivateKeyArmor(
+	assertion model.Assertion,
+	inventory model.Inventory,
+	result model.AssertionResult,
+	observedAt time.Time,
+) model.AssertionResult {
+	files := make([]model.FileRecord, 0)
+	var totalBytes int64
+	for _, file := range inventory.Files {
+		if !isSensitiveMaterialPath(file.Path) {
+			continue
+		}
+		files = append(files, file)
+		if file.Size < 0 || totalBytes > maximumSensitiveMaterialBytes-file.Size {
+			result.Execution, result.Assessment = "blocked", "unknown"
+			result.Summary = "Private-key armor inspection could not establish a bounded candidate-file size."
+			return result
+		}
+		totalBytes += file.Size
+	}
+	if len(files) > maximumSensitiveMaterialFiles {
+		result.Execution, result.Assessment = "blocked", "unknown"
+		result.Summary = fmt.Sprintf(
+			"Private-key armor inspection requires %d candidate files, above the %d-file limit.",
+			len(files), maximumSensitiveMaterialFiles,
+		)
+		return result
+	}
+	if totalBytes > maximumSensitiveMaterialBytes {
+		result.Execution, result.Assessment = "blocked", "unknown"
+		result.Summary = fmt.Sprintf(
+			"Private-key armor inspection requires %d bytes, above the %d-byte limit.",
+			totalBytes, maximumSensitiveMaterialBytes,
+		)
+		return result
+	}
+	for _, file := range files {
+		if file.Size > maximumSensitiveMaterialFileBytes {
+			result.Execution, result.Assessment = "blocked", "unknown"
+			result.Summary = fmt.Sprintf(
+				"Private-key armor inspection cannot completely inspect %s because its %d bytes exceed the %d-byte per-file limit.",
+				file.Path, file.Size, maximumSensitiveMaterialFileBytes,
+			)
+			return result
+		}
+	}
+
+	labels := privateKeyArmorLabels()
+	violations := make([]string, 0)
+	violationEvidence := make([]model.Evidence, 0)
+	totalViolations := 0
+	for _, file := range files {
+		data, evidence, err := readVerifiedEvidenceWithLimit(
+			inventory, file.Path, "sensitive-material-scan", assertion.ImplementationID,
+			"Inspected content for recognized private-key armor blocks without retaining matched material.", observedAt,
+			maximumSensitiveMaterialFileBytes,
+		)
+		if err != nil {
+			return nativeReadFailure(result, err)
+		}
+		if !containsPrivateKeyArmor(data, labels) {
+			continue
+		}
+		totalViolations++
+		if len(violations) < maximumSensitiveLocations {
+			violations = append(violations, file.Path)
+			violationEvidence = append(violationEvidence, evidence)
+		}
+	}
+
+	scopeEvidence := inventoryEvidence(
+		inventory, "sensitive-material-scan", assertion.ImplementationID, "inventory:sensitive-material-scope",
+		fmt.Sprintf("Inspected %d content-addressed candidate files totaling %d bytes; binary and unrecognized file types and Git history are outside this native check.", len(files), totalBytes),
+		observedAt,
+	)
+	result.EvidenceObserved = append([]model.Evidence{scopeEvidence}, violationEvidence...)
+	if totalViolations > 0 {
+		result.Assessment = "fail"
+		result.Summary = fmt.Sprintf("Detected recognized private-key armor in %d inventoried file(s); reporting up to %d paths: %s.", totalViolations, maximumSensitiveLocations, strings.Join(violations, ", "))
+		return result
+	}
+	result.Assessment = "pass"
+	result.Summary = fmt.Sprintf("No recognized private-key armor was found in %d bounded candidate files.", len(files))
 	return result
 }

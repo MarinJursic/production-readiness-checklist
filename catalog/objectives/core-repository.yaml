@@ -1,5 +1,5 @@
 schema_version: prc.objectives/v0.1
-catalog_version: 0.3.0
+catalog_version: 0.4.0
 objectives:
   - id: USEQ-FDCA6C71
     revision: 1
@@ -211,3 +211,13 @@ objectives:
     domains: [containers, kubernetes, reliability]
     automation_class: partial
     assertion_ids: [PRC-A-CORE-030]
+  - id: USEQ-E85957E3
+    revision: 1
+    title: Secrets remain outside repository content
+    statement: Keep secrets out of source, history, artifacts, images, frontend bundles, tickets, chat, documentation, tests, analytics, and logs.
+    source:
+      path: docs/engineering/08-security-and-cryptography.md
+      line: 277
+    domains: [repository, security]
+    automation_class: partial
+    assertion_ids: [PRC-A-CORE-031]

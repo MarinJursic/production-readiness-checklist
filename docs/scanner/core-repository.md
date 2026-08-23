@@ -2,9 +2,9 @@
 
 # Core repository readiness
 
-Profile: `prc/core-repository@0.3`
+Profile: `prc/core-repository@0.4`
 
-Deterministic repository governance, documentation, workflow, dependency, and test foundations.
+Deterministic repository governance, documentation, workflow, dependency, security, and test foundations.
 
 This pilot demonstrates the structured control-to-assertion model. A listed
 assertion is not a claim that the scanner implementation exists unless its
@@ -44,6 +44,7 @@ implementation is present and verified by the scanner test suite.
 | `PRC-A-CORE-028` — Terraform provider selections are locked | [USEQ-D1076D92](../engineering/11-developer-experience-platform-and-delivery.md) | medium | advisory | repository-file | R2 |
 | `PRC-A-CORE-029` — Kubernetes workloads require non-root containers | [USEQ-A3559C64](../engineering/16-specialized-domains-and-release-assurance.md) | high | required | kubernetes-parse | R2 |
 | `PRC-A-CORE-030` — Kubernetes containers declare resource policy | [USEQ-13CBD6C6](../engineering/16-specialized-domains-and-release-assurance.md) | high | required | kubernetes-parse | R2 |
+| `PRC-A-CORE-031` — Private-key armor is absent from repository files | [USEQ-E85957E3](../engineering/08-security-and-cryptography.md) | critical | no-go | sensitive-material-scan | R2 |
 
 ## Result interpretation
 

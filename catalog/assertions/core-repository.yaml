@@ -1,5 +1,5 @@
 schema_version: prc.assertions/v0.1
-catalog_version: 0.3.0
+catalog_version: 0.4.0
 assertions:
   - id: PRC-A-CORE-001
     revision: 2
@@ -469,4 +469,19 @@ assertions:
     parameters: {}
     severity: high
     gate: required
+    remediation_class: R2
+  - id: PRC-A-CORE-031
+    revision: 1
+    control_ids: [USEQ-E85957E3]
+    title: Private-key armor is absent from repository files
+    statement: Recognized armored private-key blocks are absent from bounded source, configuration, documentation, infrastructure, and key-file content in the inventoried repository.
+    applicability: inventory.file_count > 0
+    evidence_required:
+      - kind: sensitive-material-scan
+        minimum_authority: repository
+        description: Content-addressed bounded inspection for standards-defined private-key armor blocks without retaining key material.
+    implementation_id: prc.native.private-key-armor@0.1
+    parameters: {}
+    severity: critical
+    gate: no-go
     remediation_class: R2

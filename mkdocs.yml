@@ -56,6 +56,7 @@ nav:
       - CLI and exit codes: scanner/cli-contract.md
       - Scanner diagnostics: scanner/doctor.md
       - Benchmarks and quality budgets: scanner/benchmarks.md
+      - Private-key armor inspection: scanner/private-key-armor.md
       - Project configuration: scanner/configuration.md
       - Durable state and history: scanner/state-and-history.md
       - Signed risk exceptions: scanner/risk-exceptions.md

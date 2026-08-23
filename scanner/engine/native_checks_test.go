@@ -1,6 +1,7 @@
 package engine
 
 import (
+	"encoding/json"
 	"os"
 	"path/filepath"
 	"strings"
@@ -115,6 +116,87 @@ func TestRepositoryIntegrityChecksFindConcreteFailures(t *testing.T) {
 		}
 		if got := scanFixture(t, root)["PRC-A-CORE-025"]; got != "fail" {
 			t.Fatalf("runtime-version assertion = %s", got)
+		}
+	})
+}
+
+func TestPrivateKeyArmorCheckIsBoundedAndRedacted(t *testing.T) {
+	t.Run("recognized blocks require matching armor and payload", func(t *testing.T) {
+		payload := strings.Repeat("Q", 64)
+		for _, label := range privateKeyArmorLabels() {
+			block := []byte("-----BEGIN " + label + "-----\r\n" + payload + "\r\n-----END " + label + "-----\r\n")
+			if !containsPrivateKeyArmor(block, privateKeyArmorLabels()) {
+				t.Errorf("recognized armor label was not detected: %s", label)
+			}
+		}
+		for name, content := range map[string]string{
+			"header only":       "-----BEGIN " + "PRIVATE KEY-----\n",
+			"invalid payload":   "-----BEGIN " + "PRIVATE KEY-----\nnot-a-base64-payload\n-----END PRIVATE KEY-----\n",
+			"mismatched footer": "-----BEGIN " + "PRIVATE KEY-----\n" + payload + "\n-----END PUBLIC KEY-----\n",
+		} {
+			if containsPrivateKeyArmor([]byte(content), privateKeyArmorLabels()) {
+				t.Errorf("%s was treated as a private-key block", name)
+			}
+		}
+	})
+
+	t.Run("clean and public material pass", func(t *testing.T) {
+		root := healthyRepository(t)
+		writeFixture(t, root, "public.pem", "-----BEGIN "+"PUBLIC KEY-----\nfixture-public-material\n-----END PUBLIC KEY-----\n")
+		if got := scanFixture(t, root)["PRC-A-CORE-031"]; got != "pass" {
+			t.Fatalf("private-key armor assertion = %s", got)
+		}
+	})
+
+	t.Run("private material fails without disclosure", func(t *testing.T) {
+		root := healthyRepository(t)
+		secret := strings.Repeat("U", 64)
+		writeFixture(t, root, "keys/deploy.pem", "-----BEGIN "+"PRIVATE KEY-----\n"+secret+"\n-----END PRIVATE KEY-----\n")
+		item, err := inventory.Build(root)
+		if err != nil {
+			t.Fatal(err)
+		}
+		run, err := scanner(t).Scan("prc/core-repository", item)
+		if err != nil {
+			t.Fatal(err)
+		}
+		result := findResult(t, run, "PRC-A-CORE-031")
+		if result.Execution != "completed" || result.Assessment != "fail" ||
+			!strings.Contains(result.Summary, "keys/deploy.pem") || len(result.EvidenceObserved) != 2 {
+			t.Fatalf("private-key armor result = %+v", result)
+		}
+		encoded, err := json.Marshal(run)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if strings.Contains(string(encoded), secret) {
+			t.Fatal("scanner output retained private-key material")
+		}
+		foundLocation := false
+		for _, finding := range run.Findings {
+			if finding.AssertionID == "PRC-A-CORE-031" && len(finding.Locations) == 1 && finding.Locations[0].Path == "keys/deploy.pem" {
+				foundLocation = true
+			}
+		}
+		if !foundLocation {
+			t.Fatalf("private-key finding has no safe source location: %+v", run.Findings)
+		}
+	})
+
+	t.Run("oversized candidate blocks", func(t *testing.T) {
+		root := healthyRepository(t)
+		writeFixture(t, root, "large.pem", strings.Repeat("x", maximumSensitiveMaterialFileBytes+1))
+		item, err := inventory.Build(root)
+		if err != nil {
+			t.Fatal(err)
+		}
+		run, err := scanner(t).Scan("prc/core-repository", item)
+		if err != nil {
+			t.Fatal(err)
+		}
+		result := findResult(t, run, "PRC-A-CORE-031")
+		if result.Execution != "blocked" || result.Assessment != "unknown" || !strings.Contains(result.Summary, "per-file limit") {
+			t.Fatalf("oversized private-key scan result = %+v", result)
 		}
 	})
 }

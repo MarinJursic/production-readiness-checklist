@@ -1,5 +1,5 @@
 schema_version: prc.benchmark-suite/v0.2
-id: prc.benchmark.core-native@0.3
+id: prc.benchmark.core-native@0.4
 title: Comprehensive core native assertion benchmark
 profile_id: prc/core-repository
 cases:
@@ -36,6 +36,7 @@ cases:
       - {assertion_id: PRC-A-CORE-028, assessment: not_applicable, execution: not_run}
       - {assertion_id: PRC-A-CORE-029, assessment: not_applicable, execution: not_run}
       - {assertion_id: PRC-A-CORE-030, assessment: not_applicable, execution: not_run}
+      - {assertion_id: PRC-A-CORE-031, assessment: pass, execution: completed}
   - id: foundation-present
     target: targets/foundation-present
     expectations:
@@ -149,6 +150,13 @@ cases:
     expectations:
       - {assertion_id: PRC-A-CORE-029, assessment: fail, execution: completed}
       - {assertion_id: PRC-A-CORE-030, assessment: fail, execution: completed}
+  - id: private-key-materialized
+    target: targets/private-key-template
+    setup:
+      - {operation: replace_text, path: deploy.pem, find: BEGIN FIXTURE, replace: BEGIN PRIVATE}
+      - {operation: replace_text, path: deploy.pem, find: END FIXTURE, replace: END PRIVATE}
+    expectations:
+      - {assertion_id: PRC-A-CORE-031, assessment: fail, execution: completed}
   - id: conflict-markers-materialized
     target: targets/conflict-template
     setup:
