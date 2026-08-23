@@ -21,8 +21,8 @@
     },
     "owner": {"type": "string", "minLength": 1},
     "maintenance": {"enum": ["active", "deprecated"]},
-    "protocol": {"enum": ["prc-adapter-jsonl-v1", "prc-adapter-gitleaks-json-v1", "prc-adapter-syft-cyclonedx-json-v1", "prc-adapter-grype-json-v1"]},
-    "output_schema": {"enum": ["prc.adapter-message/v0.1", "gitleaks.report/v8.30.0", "cyclonedx.bom/v1.7+syft-1.51.0", "grype.report/v0.116.1+prc-v1"]},
+    "protocol": {"enum": ["prc-adapter-jsonl-v1", "prc-adapter-gitleaks-json-v1", "prc-adapter-syft-cyclonedx-json-v1", "prc-adapter-grype-json-v1", "prc-adapter-checkov-json-v1"]},
+    "output_schema": {"enum": ["prc.adapter-message/v0.1", "gitleaks.report/v8.30.0", "cyclonedx.bom/v1.7+syft-1.51.0", "grype.report/v0.116.1+prc-v1", "checkov.report/v3.3.8+prc-v1"]},
     "observation_kinds": {
       "type": "array",
       "minItems": 1,
@@ -254,6 +254,44 @@
             }
           },
           "data_mounts": {"const": [{"name": "grype-db", "destination": "/prc-inputs/grype-db", "max_files": 16, "max_bytes": 3221225472}]}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"protocol": {"const": "prc-adapter-checkov-json-v1"}},
+        "required": ["protocol"]
+      },
+      "then": {
+        "properties": {
+          "output_schema": {"const": "checkov.report/v3.3.8+prc-v1"},
+          "observation_kinds": {"const": ["iac-policy"]},
+          "image": {"const": "docker.io/bridgecrew/checkov@sha256:c64ffb6d6fc8087c896341a2c697770a04a1cf558db04fa7b8129d8ca6bce336"},
+          "command": {"const": ["--config-file", "/workspace/.prc/checkov-config.json"]},
+          "tool": {
+            "properties": {
+              "name": {"const": "checkov"},
+              "version": {"const": "3.3.8"},
+              "upstream": {"const": "https://github.com/bridgecrewio/checkov"},
+              "formats": {"const": [{"name": "checkov-json", "versions": ["3.3.8"]}]}
+            }
+          },
+          "capabilities": {
+            "properties": {
+              "write_scratch": {"const": true},
+              "child_processes": {"const": true}
+            }
+          },
+          "resources": {
+            "properties": {
+              "timeout_seconds": {"minimum": 60},
+              "memory_mb": {"minimum": 1024},
+              "pids": {"minimum": 32, "maximum": 256},
+              "tmpfs_mb": {"minimum": 128},
+              "max_stdout_bytes": {"minimum": 16777216}
+            }
+          },
+          "data_mounts": {"maxItems": 0}
         }
       }
     }

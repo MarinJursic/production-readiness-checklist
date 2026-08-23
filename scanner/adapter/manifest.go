@@ -168,6 +168,10 @@ func (manifest Manifest) Validate() error {
 		if manifest.OutputSchema != GrypeOutputSchemaVersion {
 			return fmt.Errorf("unsupported Grype adapter output schema %q", manifest.OutputSchema)
 		}
+	case CheckovProtocolVersion:
+		if manifest.OutputSchema != CheckovOutputSchemaVersion {
+			return fmt.Errorf("unsupported Checkov adapter output schema %q", manifest.OutputSchema)
+		}
 	default:
 		return fmt.Errorf("unsupported adapter protocol %q", manifest.Protocol)
 	}
@@ -241,6 +245,10 @@ func (manifest Manifest) Validate() error {
 		}
 	} else if manifest.Protocol == GrypeProtocolVersion {
 		if err := validateGrypeManifest(manifest); err != nil {
+			return err
+		}
+	} else if manifest.Protocol == CheckovProtocolVersion {
+		if err := validateCheckovManifest(manifest); err != nil {
 			return err
 		}
 	}

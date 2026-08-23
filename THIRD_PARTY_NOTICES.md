@@ -1,5 +1,19 @@
 # Third-party notices
 
+## Checkov executable image and embedded policies
+
+`adapters/checkov-v3.3.8.yaml` references the official immutable
+[Checkov v3.3.8](https://github.com/bridgecrewio/checkov/releases/tag/3.3.8)
+OCI image for offline Terraform, Kubernetes, and Dockerfile policy analysis.
+The image and its embedded policies are not vendored in this repository.
+Checkov is copyright Bridgecrew and contributors and is licensed under the
+[Apache License 2.0](https://github.com/bridgecrewio/checkov/blob/3.3.8/LICENSE).
+
+The adapter disables network access, policy downloads, result uploads,
+external module downloads, and variable evaluation. Policy results remain
+subject to the licenses and notices of the checks and dependencies included in
+the upstream image.
+
 ## Grype executable image and vulnerability database
 
 `adapters/grype-v0.116.1.yaml` references the official immutable

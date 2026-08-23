@@ -1324,6 +1324,14 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             ),
             [],
         )
+        checkov_path = ROOT / "adapters" / "checkov-v3.3.8.yaml"
+        checkov = yaml.safe_load(checkov_path.read_text(encoding="utf-8"))
+        self.assertEqual(
+            validate_instance.validation_errors(
+                checkov, "adapter-manifest.schema.json"
+            ),
+            [],
+        )
 
         legacy = {
             "schema_version": "prc.adapter-manifest/v0.1",
@@ -1434,6 +1442,45 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         self.assertEqual(
             validate_instance.validation_errors(
                 report, "grype-vulnerability-report.schema.json"
+            ),
+            [],
+        )
+
+    def test_normalized_checkov_report_conforms(self) -> None:
+        report = {
+            "schema": "prc.checkov-iac-policy-report/v1",
+            "tool": {"name": "checkov", "version": "3.3.8"},
+            "summary": {
+                "passed": 4,
+                "failed": 1,
+                "resources": 2,
+                "frameworks": [
+                    {
+                        "name": "terraform",
+                        "passed": 4,
+                        "failed": 1,
+                        "resources": 2,
+                    }
+                ],
+            },
+            "expected_paths": ["infra/main.tf"],
+            "analyzed_paths": ["infra/main.tf"],
+            "unsupported_paths": [],
+            "findings": [
+                {
+                    "check_id": "CKV_AWS_54",
+                    "check_name": "Ensure S3 bucket has block public policy enabled",
+                    "framework": "terraform",
+                    "path": "infra/main.tf",
+                    "line_start": 10,
+                    "line_end": 20,
+                    "resource": "aws_s3_bucket_public_access_block.public",
+                }
+            ],
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(
+                report, "checkov-iac-policy-report.schema.json"
             ),
             [],
         )

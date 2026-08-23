@@ -129,6 +129,11 @@ func ExecutionInput(
 			return nil, err
 		}
 		return []byte{}, nil
+	case CheckovProtocolVersion:
+		if err := validateInputIdentity(runID, subject); err != nil {
+			return nil, err
+		}
+		return []byte{}, nil
 	default:
 		return nil, fmt.Errorf("unsupported adapter input protocol %q", manifest.Protocol)
 	}
@@ -182,6 +187,8 @@ func ParseManifestOutputWithArtifacts(manifest Manifest, input io.Reader) (Trans
 			return Transcript{}, nil, fmt.Errorf("grype output exceeds %d bytes", manifest.Resources.MaxStdout)
 		}
 		return parseGrypeOutput(data, manifest.Resources.MaxMessages, time.Now().UTC())
+	case CheckovProtocolVersion:
+		return Transcript{}, nil, fmt.Errorf("Checkov output requires the expected file set from a sealed execution snapshot")
 	default:
 		return Transcript{}, nil, fmt.Errorf("unsupported adapter output protocol %q", manifest.Protocol)
 	}

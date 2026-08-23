@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/checkov-iac-policy-report.schema.json",
+  "title": "PRC normalized Checkov IaC policy report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "tool", "summary", "expected_paths", "analyzed_paths", "unsupported_paths", "findings"],
+  "properties": {
+    "schema": {"const": "prc.checkov-iac-policy-report/v1"},
+    "tool": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version"],
+      "properties": {
+        "name": {"const": "checkov"},
+        "version": {"const": "3.3.8"}
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["passed", "failed", "resources", "frameworks"],
+      "properties": {
+        "passed": {"type": "integer", "minimum": 0},
+        "failed": {"type": "integer", "minimum": 0},
+        "resources": {"type": "integer", "minimum": 0},
+        "frameworks": {
+          "type": "array",
+          "maxItems": 4,
+          "items": {"$ref": "#/$defs/framework"}
+        }
+      }
+    },
+    "expected_paths": {"$ref": "#/$defs/paths"},
+    "analyzed_paths": {"$ref": "#/$defs/paths"},
+    "unsupported_paths": {"$ref": "#/$defs/paths"},
+    "findings": {
+      "type": "array",
+      "maxItems": 100000,
+      "items": {"$ref": "#/$defs/finding"}
+    }
+  },
+  "$defs": {
+    "path": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 16384,
+      "pattern": "^[^/]"
+    },
+    "paths": {
+      "type": "array",
+      "maxItems": 10000,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/path"}
+    },
+    "framework": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "passed", "failed", "resources"],
+      "properties": {
+        "name": {"enum": ["terraform", "terraform_json", "kubernetes", "dockerfile"]},
+        "passed": {"type": "integer", "minimum": 0},
+        "failed": {"type": "integer", "minimum": 0},
+        "resources": {"type": "integer", "minimum": 0}
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["check_id", "check_name", "framework", "path", "line_start", "line_end", "resource"],
+      "properties": {
+        "check_id": {"type": "string", "pattern": "^(CKV2?|BC)_[A-Z0-9][A-Z0-9_]{0,31}_[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"},
+        "check_name": {"type": "string", "minLength": 1, "maxLength": 16384},
+        "framework": {"enum": ["terraform", "terraform_json", "kubernetes", "dockerfile"]},
+        "path": {"$ref": "#/$defs/path"},
+        "line_start": {"type": "integer", "minimum": 1},
+        "line_end": {"type": "integer", "minimum": 1},
+        "resource": {"type": "string", "minLength": 1, "maxLength": 16384}
+      }
+    }
+  }
+}

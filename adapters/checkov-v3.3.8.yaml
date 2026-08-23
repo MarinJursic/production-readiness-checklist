@@ -1,0 +1,50 @@
+schema_version: prc.adapter-manifest/v0.4
+id: prc.adapter.checkov@3.3
+title: Checkov offline infrastructure policy analysis
+description: Runs the reviewed Checkov 3.3.8 image against exactly the inventoried Terraform, Kubernetes, and container definition files with scanner-owned offline policy.
+publisher:
+  id: prc-project
+  name: Production Readiness Checklist
+owner: scanner-maintainers
+maintenance: active
+protocol: prc-adapter-checkov-json-v1
+output_schema: checkov.report/v3.3.8+prc-v1
+observation_kinds: [iac-policy]
+compatibility:
+  engine_apis: [prc.engine/v0.1]
+tool:
+  name: checkov
+  version: 3.3.8
+  upstream: https://github.com/bridgecrewio/checkov
+  formats:
+    - name: checkov-json
+      versions: [3.3.8]
+limitations:
+  - Evaluates only statically inventoried Terraform, Terraform JSON, Kubernetes, and Dockerfile inputs with the checks embedded in the pinned Checkov image.
+  - Does not run Helm, Kustomize, CDK, Serverless, external modules, external checks, variable evaluation, Prisma Cloud enrichment, result upload, or network-backed policy downloads.
+  - Target Checkov configuration cannot change the scanner-owned framework, input, output, suppression, download, or failure policy; inline suppressions and parsing errors fail the adapter closed.
+  - A file for which Checkov produces no passed or failed policy record is reported as unsupported rather than clean.
+  - Static policy analysis can contain false positives and false negatives and does not prove the security or behavior of deployed infrastructure.
+runner: oci
+image: docker.io/bridgecrew/checkov@sha256:c64ffb6d6fc8087c896341a2c697770a04a1cf558db04fa7b8129d8ca6bce336
+command:
+  - --config-file
+  - /workspace/.prc/checkov-config.json
+capabilities:
+  read_workspace: true
+  write_scratch: true
+  network: deny
+  network_hosts: []
+  secret_handles: []
+  child_processes: true
+resources:
+  timeout_seconds: 300
+  memory_mb: 2048
+  cpus: 1
+  pids: 128
+  tmpfs_mb: 256
+  max_line_bytes: 262144
+  max_messages: 100000
+  max_stdin_bytes: 1024
+  max_stdout_bytes: 134217728
+  max_stderr_bytes: 65536

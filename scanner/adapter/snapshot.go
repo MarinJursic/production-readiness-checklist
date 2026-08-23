@@ -57,6 +57,12 @@ func PrepareSnapshotForManifest(item model.Inventory, manifest Manifest) (*Snaps
 		injected = map[string][]byte{SyftConfigSnapshotPath: syftConfig}
 	} else if manifest.Protocol == GrypeProtocolVersion {
 		injected = map[string][]byte{GrypeConfigSnapshotPath: grypeConfig}
+	} else if manifest.Protocol == CheckovProtocolVersion {
+		config, _, err := checkovConfig(item)
+		if err != nil {
+			return nil, err
+		}
+		injected = map[string][]byte{CheckovConfigSnapshotPath: config}
 	}
 	return prepareSnapshot(item, remapped, injected)
 }

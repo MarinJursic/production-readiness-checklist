@@ -114,7 +114,14 @@ func BuildOCIPlanWithData(runtimeName, workspace, runID string, manifest Manifes
 	for _, dataMount := range dataMounts {
 		arguments = append(arguments, "--mount=type=bind,src="+dataMount.Source+",dst="+dataMount.Destination+",readonly")
 	}
-	arguments = append(arguments, "--workdir=/workspace", manifest.Image)
+	workdir := "/workspace"
+	if manifest.Protocol == CheckovProtocolVersion {
+		// Checkov discovers .checkov.yml from its process working directory even
+		// when a separate --config-file is provided. Run it from scanner-owned
+		// scratch so target configuration cannot suppress or hide results.
+		workdir = "/tmp"
+	}
+	arguments = append(arguments, "--workdir="+workdir, manifest.Image)
 	arguments = append(arguments, manifest.Command...)
 	plan := OCIPlan{
 		RuntimePath: runtimePath, RuntimeSHA256: runtimeDigest, Arguments: arguments,
@@ -241,7 +248,17 @@ func RunOCI(
 	if err != nil {
 		return outputMetadata(stderr.String(), started, completed), fmt.Errorf("OCI adapter process failed: %w", err)
 	}
-	transcript, artifactPayloads, err := ParseManifestOutputWithArtifacts(manifest, bytes.NewReader(stdout.Bytes()))
+	var transcript Transcript
+	var artifactPayloads map[string][]byte
+	if manifest.Protocol == CheckovProtocolVersion {
+		expectedPaths, pathErr := readCheckovExpectedPaths(plan.Workspace)
+		if pathErr != nil {
+			return outputMetadata(stderr.String(), started, completed), pathErr
+		}
+		transcript, artifactPayloads, err = parseCheckovOutput(stdout.Bytes(), manifest.Resources.MaxMessages, expectedPaths)
+	} else {
+		transcript, artifactPayloads, err = ParseManifestOutputWithArtifacts(manifest, bytes.NewReader(stdout.Bytes()))
+	}
 	if err != nil {
 		return outputMetadata(stderr.String(), started, completed), err
 	}

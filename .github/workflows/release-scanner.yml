@@ -97,6 +97,15 @@ jobs:
             -run '^TestLiveSyftOCIProducesDeterministicCycloneDXDespiteTargetConfig$' \
             -count=1
 
+      - name: Exercise pinned production Checkov adapter
+        env:
+          PRC_TEST_CHECKOV_IMAGE: docker.io/bridgecrew/checkov@sha256:c64ffb6d6fc8087c896341a2c697770a04a1cf558db04fa7b8129d8ca6bce336
+        run: |
+          docker pull "$PRC_TEST_CHECKOV_IMAGE"
+          go test -race ./scanner/adapter \
+            -run '^TestLiveCheckovOCIUsesPinnedOfflinePolicyAndRejectsSuppressions$' \
+            -count=1
+
       - name: Install schema validation dependencies
         run: |
           pip install -r requirements-dev.lock.txt
