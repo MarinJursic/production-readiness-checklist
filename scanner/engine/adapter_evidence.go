@@ -16,6 +16,12 @@ type adapterBinding struct {
 	AdapterID       string
 	ManifestSHA256  string
 	ObservationKind string
+	PassOutcomes    []string
+	FailOutcomes    []string
+}
+
+var adapterEvidenceOutcomes = map[string]bool{
+	"found": true, "not_found": true, "value": true, "unsupported": true,
 }
 
 func assertionAdapterBindings(assertion model.Assertion) ([]adapterBinding, error) {
@@ -38,9 +44,32 @@ func assertionAdapterBindings(assertion model.Assertion) ([]adapterBinding, erro
 		binding.AdapterID, _ = mapping["adapter_id"].(string)
 		binding.ManifestSHA256, _ = mapping["manifest_sha256"].(string)
 		binding.ObservationKind, _ = mapping["observation_kind"].(string)
+		for name := range mapping {
+			if name != "adapter_id" && name != "manifest_sha256" && name != "observation_kind" &&
+				name != "pass_outcomes" && name != "fail_outcomes" {
+				return nil, fmt.Errorf("assertion %s adapter binding contains unknown field %q", assertion.ID, name)
+			}
+		}
+		_, passDeclared := mapping["pass_outcomes"]
+		_, failDeclared := mapping["fail_outcomes"]
+		if !passDeclared && !failDeclared {
+			binding.PassOutcomes = []string{"not_found"}
+			binding.FailOutcomes = []string{"found"}
+		} else {
+			var outcomeErr error
+			binding.PassOutcomes, outcomeErr = bindingOutcomeList(mapping["pass_outcomes"], false)
+			if outcomeErr != nil {
+				return nil, fmt.Errorf("assertion %s pass_outcomes: %w", assertion.ID, outcomeErr)
+			}
+			binding.FailOutcomes, outcomeErr = bindingOutcomeList(mapping["fail_outcomes"], true)
+			if outcomeErr != nil {
+				return nil, fmt.Errorf("assertion %s fail_outcomes: %w", assertion.ID, outcomeErr)
+			}
+		}
 		decodedDigest, digestErr := hex.DecodeString(binding.ManifestSHA256)
 		if strings.TrimSpace(binding.AdapterID) == "" || digestErr != nil || len(decodedDigest) != sha256.Size ||
-			binding.ManifestSHA256 != strings.ToLower(binding.ManifestSHA256) || strings.TrimSpace(binding.ObservationKind) == "" {
+			binding.ManifestSHA256 != strings.ToLower(binding.ManifestSHA256) || strings.TrimSpace(binding.ObservationKind) == "" ||
+			len(binding.PassOutcomes) == 0 || outcomeListsOverlap(binding.PassOutcomes, binding.FailOutcomes) {
 			return nil, fmt.Errorf("assertion %s has an incomplete adapter binding", assertion.ID)
 		}
 		key := binding.AdapterID + "\x00" + binding.ManifestSHA256 + "\x00" + binding.ObservationKind
@@ -60,6 +89,44 @@ func assertionAdapterBindings(assertion model.Assertion) ([]adapterBinding, erro
 		return bindings[i].ObservationKind < bindings[j].ObservationKind
 	})
 	return bindings, nil
+}
+
+func bindingOutcomeList(raw any, emptyAllowed bool) ([]string, error) {
+	if raw == nil && emptyAllowed {
+		return []string{}, nil
+	}
+	items, ok := raw.([]any)
+	if !ok {
+		return nil, fmt.Errorf("must be a list")
+	}
+	if !emptyAllowed && len(items) == 0 {
+		return nil, fmt.Errorf("must be a nonempty list")
+	}
+	result := make([]string, 0, len(items))
+	seen := map[string]bool{}
+	for _, item := range items {
+		outcome, ok := item.(string)
+		if !ok || !adapterEvidenceOutcomes[outcome] || seen[outcome] {
+			return nil, fmt.Errorf("must contain only unique supported outcomes")
+		}
+		seen[outcome] = true
+		result = append(result, outcome)
+	}
+	sort.Strings(result)
+	return result, nil
+}
+
+func outcomeListsOverlap(left, right []string) bool {
+	seen := map[string]bool{}
+	for _, outcome := range left {
+		seen[outcome] = true
+	}
+	for _, outcome := range right {
+		if seen[outcome] {
+			return true
+		}
+	}
+	return false
 }
 
 func (e *Engine) AuthorizesAdapter(profileID string, inventory model.Inventory, adapterID, manifestSHA256 string) (bool, error) {
@@ -180,14 +247,15 @@ func evaluateAnalysisEvidence(
 			unresolved = append(unresolved, name+":missing")
 			continue
 		}
-		if outcomes["found"] {
+		if hasConfiguredOutcome(outcomes, binding.FailOutcomes) {
 			failures = append(failures, name)
 			continue
 		}
-		if outcomes["not_found"] && len(outcomes) == 1 {
+		passCount := configuredOutcomeCount(outcomes, binding.PassOutcomes)
+		if passCount == len(outcomes) {
 			continue
 		}
-		if outcomes["not_found"] {
+		if passCount > 0 {
 			conflicts = append(conflicts, name)
 			continue
 		}
@@ -212,6 +280,20 @@ func evaluateAnalysisEvidence(
 		return result
 	}
 	result.Assessment = "pass"
-	result.Summary = "Every immutable adapter binding produced completed not-found observations for the scanned inventory."
+	result.Summary = "Every immutable adapter binding produced only its configured passing outcomes for the scanned inventory."
 	return result
+}
+
+func hasConfiguredOutcome(observed map[string]bool, configured []string) bool {
+	return configuredOutcomeCount(observed, configured) > 0
+}
+
+func configuredOutcomeCount(observed map[string]bool, configured []string) int {
+	count := 0
+	for _, outcome := range configured {
+		if observed[outcome] {
+			count++
+		}
+	}
+	return count
 }

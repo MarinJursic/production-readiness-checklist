@@ -1,0 +1,13 @@
+schema_version: prc.objectives/v0.1
+catalog_version: 1.0.0
+objectives:
+  - id: USEQ-A9032C59
+    revision: 1
+    title: Dependency, SBOM, and license analysis
+    statement: Dependency, SBOM, and license analysis has run.
+    source:
+      path: docs/engineering/08-security-and-cryptography.md
+      line: 80
+    domains: [security, supply-chain]
+    automation_class: partial
+    assertion_ids: [PRC-A-SUPPLY-001]

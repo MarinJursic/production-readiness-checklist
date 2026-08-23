@@ -3,6 +3,7 @@ package engine
 import (
 	"fmt"
 	"path/filepath"
+	"slices"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/catalog"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/finding"
@@ -91,7 +92,7 @@ func findingLocations(
 				continue
 			}
 			for _, observation := range execution.Transcript.Observations {
-				if observation.Kind != binding.ObservationKind || observation.Outcome != "found" {
+				if observation.Kind != binding.ObservationKind || !slices.Contains(binding.FailOutcomes, observation.Outcome) {
 					continue
 				}
 				for _, location := range observation.Locations {

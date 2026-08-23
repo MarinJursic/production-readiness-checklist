@@ -80,6 +80,16 @@ that this repository-inventory SBOM was generated; it does not claim that a
 built artifact is complete, vulnerability-free, acceptably licensed, or
 production ready.
 
+An assertion binding owns the meaning of an observation outcome. Bindings that
+omit an outcome policy retain the conservative analysis default:
+`not_found` passes and `found` fails. A binding may instead declare a nonempty
+`pass_outcomes` list and a disjoint, possibly empty `fail_outcomes` list from
+the closed `found`, `not_found`, `value`, and `unsupported` vocabulary. Any
+unconfigured outcome remains Unknown; a configured pass mixed with another
+unconfigured outcome is Conflicting. The SBOM assertion therefore treats only
+`value` as passing and has no failing tool outcome: malformed, missing,
+unsupported, partial, or contradictory output never becomes Pass.
+
 ## Capability manifest
 
 Every external adapter has a strict
