@@ -2,6 +2,7 @@ package adapter
 
 import (
 	"bytes"
+	"compress/gzip"
 	"crypto/sha256"
 	_ "embed"
 	"encoding/hex"
@@ -24,15 +25,17 @@ const (
 	GitleaksObservationKind     = "secret-detection"
 	GitleaksImage               = "ghcr.io/gitleaks/gitleaks@sha256:691af3c7c5a48b16f187ce3446d5f194838f91238f27270ed36eef6359a574d9"
 	GitleaksConfigSHA256        = "e163e53b9e7e8a8511e77271e2b323ed057759542a6d988258afe3a1fa329caf"
+	GitleaksConfigArchiveSHA256 = "da1838bd7cedb1bbd297163435c1675e777babb98ddf641a653f309733bd1fd1"
 	gitleaksReportMediaType     = "application/vnd.gitleaks.report+json;version=8.30.0;redacted=100"
 	gitleaksIgnoreSourcePath    = ".gitleaksignore"
 	gitleaksIgnoreSnapshotPath  = ".prc/gitleaksignore-source"
+	maxGitleaksConfigBytes      = 1024 * 1024
 )
 
 var gitleaksRuleIDPattern = regexp.MustCompile(`^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$`)
 
-//go:embed gitleaks-v8.30.0.toml
-var gitleaksConfig []byte
+//go:embed gitleaks-v8.30.0.toml.gz
+var gitleaksConfigArchive []byte
 
 func gitleaksCommand() []string {
 	return []string{
@@ -42,6 +45,30 @@ func gitleaksCommand() []string {
 		"--timeout=110", "--redact=100", "--report-format=json", "--report-path=-",
 		"--exit-code=0", "/workspace",
 	}
+}
+
+func gitleaksRuleset() ([]byte, error) {
+	archiveDigest := sha256.Sum256(gitleaksConfigArchive)
+	if hex.EncodeToString(archiveDigest[:]) != GitleaksConfigArchiveSHA256 {
+		return nil, fmt.Errorf("embedded gitleaks configuration archive digest is invalid")
+	}
+	reader, err := gzip.NewReader(bytes.NewReader(gitleaksConfigArchive))
+	if err != nil {
+		return nil, fmt.Errorf("open embedded gitleaks configuration archive: %w", err)
+	}
+	defer reader.Close()
+	config, err := io.ReadAll(io.LimitReader(reader, maxGitleaksConfigBytes+1))
+	if err != nil {
+		return nil, fmt.Errorf("decompress embedded gitleaks configuration: %w", err)
+	}
+	if len(config) > maxGitleaksConfigBytes {
+		return nil, fmt.Errorf("embedded gitleaks configuration exceeds %d bytes", maxGitleaksConfigBytes)
+	}
+	digest := sha256.Sum256(config)
+	if hex.EncodeToString(digest[:]) != GitleaksConfigSHA256 {
+		return nil, fmt.Errorf("embedded gitleaks configuration digest is invalid")
+	}
+	return config, nil
 }
 
 func validateGitleaksManifest(manifest Manifest) error {
@@ -90,11 +117,7 @@ func ExecutionInput(
 		if err := validateInputIdentity(runID, subject); err != nil {
 			return nil, err
 		}
-		digest := sha256.Sum256(gitleaksConfig)
-		if hex.EncodeToString(digest[:]) != GitleaksConfigSHA256 {
-			return nil, fmt.Errorf("embedded gitleaks configuration digest is invalid")
-		}
-		return append([]byte(nil), gitleaksConfig...), nil
+		return gitleaksRuleset()
 	default:
 		return nil, fmt.Errorf("unsupported adapter input protocol %q", manifest.Protocol)
 	}

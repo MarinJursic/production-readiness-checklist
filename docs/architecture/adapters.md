@@ -203,17 +203,18 @@ operator grant; a registry resolution additionally binds the registry ID,
 revision, content digest, and registry-assigned trust. Changing any provenance
 field changes the execution ID. Version-specific v0.1 and v0.2 records remain
 valid for archived runs, but v0.1 records cannot be supplied as evidence to a
-new scan. Current run results
-embed these records. A scan may execute one
-adapter only when an applicable assertion binds the exact adapter ID, manifest
-SHA-256 digest, and observation kind:
+new scan. Current run results embed these records. A scan may execute up to 16
+adapters when applicable assertions bind every exact adapter ID, manifest
+SHA-256 digest, and observation kind. Repeat `--adapter-manifest` for an
+explicit local set:
 
 ```bash
 prc scan \
   --target /path/to/project \
   --catalog-root /path/to/trusted/catalog \
   --mode verify-local \
-  --adapter-manifest /path/to/pinned-adapter.yaml \
+  --adapter-manifest /path/to/first-pinned-adapter.yaml \
+  --adapter-manifest /path/to/second-pinned-adapter.yaml \
   --adapter-runtime docker
 ```
 
@@ -226,14 +227,19 @@ prc scan \
   --catalog-root /path/to/trusted/catalog \
   --mode verify-local \
   --adapter-registry /path/to/adapter-registry.yaml \
-  --adapter-id prc.adapter.example@1.0 \
+  --adapter-id prc.adapter.first@1.0 \
+  --adapter-id prc.adapter.second@1.0 \
   --adapter-runtime docker
 ```
 
 `--adapter-manifest` is the explicit local-operator path and is mutually
-exclusive with `--adapter-registry`. Both paths still require an exact manifest
-digest binding in an applicable catalog assertion; registry approval cannot
-authorize a catalog-unbound adapter.
+exclusive with `--adapter-registry`. Adapter paths and IDs cannot repeat. Both
+paths still require an exact manifest digest binding in an applicable catalog
+assertion; registry approval cannot authorize a catalog-unbound adapter. The
+scanner resolves, validates, and authorizes the complete set before invoking the
+runtime, then executes the set in deterministic adapter-ID and manifest-digest
+order. When project configuration supplies a maximum duration, one shared
+deadline bounds the complete set rather than restarting the budget per adapter.
 
 The explicit mode grants only the reviewed no-network OCI capability envelope;
 authorization is checked before the OCI runtime is invoked. The adapter cannot
@@ -288,5 +294,6 @@ an error, not a skipped test.
   is the pinned upstream release; its official CLI documents directory scans,
   JSON reports, full redaction, timeouts, and bounded target-file size.
 - [Gitleaks default configuration](https://github.com/gitleaks/gitleaks/blob/v8.30.0/config/gitleaks.toml)
-  is vendored without modification, attributed in `THIRD_PARTY_NOTICES.md`,
-  and verified against its recorded SHA-256 digest before every execution.
+  is vendored as a deterministic gzip archive, attributed in
+  `THIRD_PARTY_NOTICES.md`, and verified in both compressed and exact
+  decompressed forms before every execution.

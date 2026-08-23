@@ -2,10 +2,17 @@
 
 ## Gitleaks default configuration
 
-`scanner/adapter/gitleaks-v8.30.0.toml` is the unmodified default configuration
-from [Gitleaks v8.30.0](https://github.com/gitleaks/gitleaks/tree/v8.30.0),
-embedded for deterministic offline secret scanning. Its SHA-256 digest is
+`scanner/adapter/gitleaks-v8.30.0.toml.gz` is a deterministic gzip container for
+the unmodified default configuration from
+[Gitleaks v8.30.0](https://github.com/gitleaks/gitleaks/tree/v8.30.0), embedded
+for deterministic offline secret scanning. The archive SHA-256 is
+`da1838bd7cedb1bbd297163435c1675e777babb98ddf641a653f309733bd1fd1`;
+the exact decompressed configuration SHA-256 is
 `e163e53b9e7e8a8511e77271e2b323ed057759542a6d988258afe3a1fa329caf`.
+
+The repository's `.gitleaksignore` contains one full fingerprint for the
+historical uncompressed vendored configuration, whose own detector patterns
+triggered one of its rules. It does not suppress a rule or current path.
 
 MIT License
 

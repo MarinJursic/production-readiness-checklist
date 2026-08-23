@@ -61,6 +61,12 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
   embedded digest-checked upstream rules, target-suppression resistance,
   redacted native-report normalization, and clean/finding live OCI tests in
   validation and release workflows.
+- Bounded multi-adapter scans with repeatable explicit manifests or registry
+  IDs, duplicate rejection, full-set authorization before execution,
+  deterministic ordering, and one configured wall-time budget for the set.
+- Deterministic compressed storage for the embedded Gitleaks rules, with
+  compressed and decompressed digest checks plus a single exact historical
+  false-positive fingerprint instead of a current-path or rule suppression.
 - Bounded CEL applicability evaluation over a deterministic inventory projection,
   with fail-closed resource limits and reason-bearing plan v0.2 records.
 - A byte-preserving R1 remediation for broadly writable repository files, with

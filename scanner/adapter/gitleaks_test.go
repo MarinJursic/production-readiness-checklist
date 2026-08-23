@@ -94,12 +94,16 @@ func TestGitleaksExecutionInputIsPinnedRuleset(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+	expected, err := gitleaksRuleset()
+	if err != nil {
+		t.Fatal(err)
+	}
 	digest := sha256.Sum256(input)
-	if hex.EncodeToString(digest[:]) != GitleaksConfigSHA256 || !bytes.Equal(input, gitleaksConfig) {
+	if hex.EncodeToString(digest[:]) != GitleaksConfigSHA256 || !bytes.Equal(input, expected) {
 		t.Fatal("Gitleaks execution input is not the pinned embedded ruleset")
 	}
 	input[0] ^= 0xff
-	if bytes.Equal(input, gitleaksConfig) {
+	if bytes.Equal(input, expected) {
 		t.Fatal("caller can mutate embedded Gitleaks configuration")
 	}
 }
