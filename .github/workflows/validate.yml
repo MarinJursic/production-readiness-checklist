@@ -306,6 +306,20 @@ jobs:
           set -e
           if [ "$status" -ne 0 ]; then
             cat "$RUNNER_TEMP/provider-remediation.json"
+            verifier_uid=$(id -u)
+            verifier_gid=$(id -g)
+            set +e
+            docker run --rm --network=none --read-only --cap-drop=ALL \
+              --security-opt=no-new-privileges=true --pids-limit=128 \
+              --memory=1024m --memory-swap=1024m --cpus=1 \
+              --user="$verifier_uid:$verifier_gid" --ulimit=nofile=1024:1024 \
+              --tmpfs=/tmp:rw,noexec,nosuid,nodev,mode=1777,size=256m \
+              --tmpfs=/prc-exec:rw,exec,nosuid,nodev,uid="$verifier_uid",gid="$verifier_gid",mode=0700,size=256m \
+              --env=HOME=/tmp/home --env=TMPDIR=/tmp \
+              --env=GOCACHE=/prc-exec/go-build --env=GOMODCACHE=/prc-exec/go-mod \
+              --env=GOPROXY=off --env=GOSUMDB=off \
+              --mount="type=bind,src=$RUNNER_TEMP/provider-candidate,dst=/workspace,readonly" \
+              --workdir=/workspace "$PRC_TEST_GO_VERIFIER_IMAGE" go test ./...
             exit "$status"
           fi
           test ! -e fixtures/providers/workspace/app_test.go
