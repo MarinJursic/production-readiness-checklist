@@ -58,3 +58,24 @@ representative Pass, Fail, unsupported or Not Applicable, and execution-error
 fixtures before they can support a default release gate. Cross-platform,
 adversarial, performance, and tool-update differential suites remain required
 as coverage grows.
+
+## Validated packs
+
+A pack is a versioned distribution claim over a measured subset of the
+catalog. The `core-foundation` pack binds each included assertion to its exact
+catalog implementation and declares only the outcomes present in the pinned
+benchmark suite. Validation fails on catalog drift, suite digest drift,
+undeclared profile membership, or overstated outcome coverage:
+
+```bash
+prc pack validate \
+  --catalog-root . \
+  --file packs/core-foundation.yaml \
+  --format human
+```
+
+The first pack contains three assertions, not the entire core profile. Pack
+membership does not authorize adapter execution and does not change gate
+semantics. The current manifest and benchmark pins are local integrity
+contracts; signed pack releases and publisher-key verification remain future
+work before packs can be treated as a remote trust channel.

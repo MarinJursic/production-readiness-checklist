@@ -18,6 +18,7 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/invalidation"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/pack"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/provider"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/remediation"
 )
@@ -172,6 +173,25 @@ quality_budget:
 	}
 	if err := json.Unmarshal(stdout.Bytes(), &report); err != nil || report.Passed {
 		t.Fatalf("mismatch report=%+v err=%v", report, err)
+	}
+}
+
+func TestPackValidateCommand(t *testing.T) {
+	repository := filepath.Join("..", "..")
+	var stdout, stderr bytes.Buffer
+	code := run([]string{
+		"pack", "validate", "--catalog-root", repository,
+		"--file", filepath.Join(repository, "packs", "core-foundation.yaml"), "--format", "json",
+	}, &stdout, &stderr)
+	if code != 0 {
+		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
+	}
+	var report pack.Report
+	if err := json.Unmarshal(stdout.Bytes(), &report); err != nil {
+		t.Fatal(err)
+	}
+	if report.SchemaVersion != pack.ReportSchema || len(report.Digest) != 64 || len(report.Manifest.Assertions) != 3 {
+		t.Fatalf("pack report = %+v", report)
 	}
 }
 

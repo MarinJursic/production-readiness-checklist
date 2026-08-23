@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/pack-report.schema.json",
+  "title": "Production Readiness Pack Validation Report v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "manifest", "digest", "suite_digest", "benchmark_corpus_digest", "catalog_digest"],
+  "properties": {
+    "schema_version": {"const": "prc.pack-report/v0.1"},
+    "manifest": {"$ref": "pack.schema.json"},
+    "digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "suite_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "benchmark_corpus_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "catalog_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

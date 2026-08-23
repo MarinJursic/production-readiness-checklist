@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/pack.schema.json",
+  "title": "Production Readiness Pack v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "title", "description", "publisher_id", "maintenance", "engine_apis", "profile_ids", "assertions", "benchmark", "limitations"],
+  "properties": {
+    "schema_version": {"const": "prc.pack/v0.1"},
+    "id": {"type": "string", "pattern": "^prc\\.pack\\.[a-z0-9.-]+@[0-9]+\\.[0-9]+$"},
+    "title": {"type": "string", "minLength": 1},
+    "description": {"type": "string", "minLength": 1},
+    "publisher_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9.-]{0,127}$"},
+    "maintenance": {"enum": ["active", "deprecated"]},
+    "engine_apis": {"type": "array", "minItems": 1, "maxItems": 16, "uniqueItems": true, "items": {"type": "string", "pattern": "^prc\\.engine/v[0-9]+\\.[0-9]+$"}},
+    "profile_ids": {"type": "array", "minItems": 1, "maxItems": 64, "uniqueItems": true, "items": {"type": "string", "pattern": "^prc/[a-z0-9-]+$"}},
+    "assertions": {"type": "array", "minItems": 1, "maxItems": 4096, "uniqueItems": true, "items": {"$ref": "#/$defs/assertion"}},
+    "benchmark": {"$ref": "#/$defs/benchmark"},
+    "limitations": {"type": "array", "minItems": 1, "maxItems": 128, "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+  },
+  "$defs": {
+    "assertion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assertion_id", "implementation_id", "validated_outcomes"],
+      "properties": {
+        "assertion_id": {"type": "string", "pattern": "^PRC-A-[A-Z0-9]+-[0-9]{3}$"},
+        "implementation_id": {"type": "string", "pattern": "^prc\\.[a-z0-9.-]+@[0-9]+\\.[0-9]+$"},
+        "validated_outcomes": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": {"enum": ["pass", "fail", "not_applicable", "manual_review", "blocked", "error", "unknown", "stale", "conflicting"]}
+        }
+      }
+    },
+    "benchmark": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["suite_id", "suite_path", "suite_sha256"],
+      "properties": {
+        "suite_id": {"type": "string", "pattern": "^prc\\.benchmark\\.[a-z0-9.-]+@[0-9]+\\.[0-9]+$"},
+        "suite_path": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*\\.ya?ml$",
+          "not": {"pattern": "(^|/)\\.\\.?(/|$)"}
+        },
+        "suite_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    }
+  }
+}

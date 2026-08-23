@@ -25,6 +25,7 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/invalidation"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/pack"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/provider"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/remediation"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/report"
@@ -112,6 +113,9 @@ func run(args []string, stdout, stderr io.Writer) int {
 		err = runCatalog(args[1:], stdout, stderr)
 	case "benchmark":
 		outcome, err = runBenchmark(args[1:], stdout, stderr)
+	case "pack":
+		errorFallback = exitConfiguration
+		err = runPack(args[1:], stdout, stderr)
 	case "plan":
 		errorFallback = exitConfiguration
 		err = runPlan(args[1:], stdout, stderr)
@@ -158,7 +162,48 @@ func run(args []string, stdout, stderr io.Writer) int {
 
 func usage(output io.Writer) {
 	fmt.Fprintln(output, "Production Readiness Scanner")
-	fmt.Fprintln(output, "usage: prc <catalog|benchmark|config|inventory|plan|scan|diff|fix|remediate|remediate-proposal|doctor|history|explain|adapter|provider|version> [options]")
+	fmt.Fprintln(output, "usage: prc <catalog|pack|benchmark|config|inventory|plan|scan|diff|fix|remediate|remediate-proposal|doctor|history|explain|adapter|provider|version> [options]")
+}
+
+func runPack(args []string, stdout, stderr io.Writer) error {
+	if len(args) == 0 || args[0] != "validate" {
+		return exitError(exitConfiguration, errors.New("pack requires validate"))
+	}
+	set := flag.NewFlagSet("pack validate", flag.ContinueOnError)
+	set.SetOutput(stderr)
+	path := set.String("file", "", "pack manifest YAML file")
+	root := set.String("catalog-root", ".", "repository containing the catalog, packs, and fixtures")
+	format := set.String("format", "human", "human or json")
+	if err := set.Parse(args[1:]); err != nil {
+		return exitError(exitConfiguration, err)
+	}
+	if *path == "" {
+		return exitError(exitConfiguration, errors.New("--file is required"))
+	}
+	if set.NArg() != 0 {
+		return exitError(exitConfiguration, fmt.Errorf("unexpected pack arguments: %s", strings.Join(set.Args(), " ")))
+	}
+	if *format != "human" && *format != "json" {
+		return exitError(exitConfiguration, fmt.Errorf("unsupported format %q", *format))
+	}
+	catalogValue, err := catalog.Load(*root)
+	if err != nil {
+		return exitError(exitConfiguration, err)
+	}
+	loaded, err := pack.Load(*root, *path, catalogValue)
+	if err != nil {
+		return exitError(exitConfiguration, err)
+	}
+	if *format == "json" {
+		return encodeJSON(stdout, loaded.Report())
+	}
+	fmt.Fprintf(stdout, "Pack: %s\n", loaded.Manifest.ID)
+	fmt.Fprintf(stdout, "Digest: %s\n", loaded.Digest)
+	fmt.Fprintf(stdout, "Catalog: %s\n", loaded.CatalogDigest)
+	fmt.Fprintf(stdout, "Benchmark: %s (%s)\n", loaded.Manifest.Benchmark.SuiteID, loaded.SuiteDigest)
+	fmt.Fprintf(stdout, "Benchmark corpus: %s\n", loaded.BenchmarkCorpusDigest)
+	fmt.Fprintf(stdout, "Validated assertions: %d\n", len(loaded.Manifest.Assertions))
+	return nil
 }
 
 func runBenchmark(args []string, stdout, stderr io.Writer) (int, error) {

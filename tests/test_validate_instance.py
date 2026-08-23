@@ -1078,6 +1078,27 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             [],
         )
 
+    def test_checked_in_pack_and_report_conform(self) -> None:
+        manifest = yaml.safe_load(
+            (ROOT / "packs" / "core-foundation.yaml").read_text(encoding="utf-8")
+        )
+        self.assertEqual(
+            validate_instance.validation_errors(manifest, "pack.schema.json"),
+            [],
+        )
+        report = {
+            "schema_version": "prc.pack-report/v0.1",
+            "manifest": manifest,
+            "digest": "a" * 64,
+            "suite_digest": manifest["benchmark"]["suite_sha256"],
+            "benchmark_corpus_digest": "c" * 64,
+            "catalog_digest": "b" * 64,
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(report, "pack-report.schema.json"),
+            [],
+        )
+
     def test_checked_in_agent_task_and_output_conform(self) -> None:
         task = json.loads(
             (ROOT / "fixtures" / "providers" / "suggest-task.json").read_text(
