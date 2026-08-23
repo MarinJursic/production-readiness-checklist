@@ -108,6 +108,100 @@ func TestRunCreatesAcceptedIsolatedFinalNewlineCandidate(t *testing.T) {
 	}
 }
 
+func TestRunCreatesBytePreservingRestrictiveModeCandidate(t *testing.T) {
+	target := remediationTarget(t)
+	originalPath := filepath.Join(target, "app.py")
+	if err := os.Chmod(originalPath, 0o666); err != nil {
+		t.Fatal(err)
+	}
+	original, err := os.ReadFile(originalPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	candidate, err := Run(Options{
+		CatalogRoot: testCatalogRoot(t), Target: target,
+		CandidateDir: filepath.Join(t.TempDir(), "candidate"), ProfileID: "prc/core-repository",
+		AssertionID: restrictiveModesAssertion, MaxFiles: 20, MaxChangedLines: 1,
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !candidate.Accepted || candidate.Contract.FixerID != restrictiveModesFixer {
+		t.Fatalf("candidate rejected: %+v", candidate)
+	}
+	originalInfo, err := os.Stat(originalPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	candidatePath := filepath.Join(candidate.CandidatePath, "app.py")
+	candidateInfo, err := os.Stat(candidatePath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	fixed, err := os.ReadFile(candidatePath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if originalInfo.Mode().Perm() != 0o666 {
+		t.Fatalf("original mode changed to %#o", originalInfo.Mode().Perm())
+	}
+	if candidateInfo.Mode().Perm() != 0o644 {
+		t.Fatalf("candidate mode = %#o, want 0644", candidateInfo.Mode().Perm())
+	}
+	if string(fixed) != string(original) {
+		t.Fatal("mode fixer changed file bytes")
+	}
+	if len(candidate.Changes) != 1 || candidate.Changes[0].Path != "app.py" ||
+		candidate.Changes[0].BeforeMode != 0o666 || candidate.Changes[0].AfterMode != 0o644 ||
+		candidate.Changes[0].AddedLines != 0 || candidate.Changes[0].RemovedLines != 0 {
+		t.Fatalf("unexpected mode changes: %+v", candidate.Changes)
+	}
+}
+
+func TestRestrictiveModeFixRejectsProtectedPath(t *testing.T) {
+	target := remediationTarget(t)
+	workflow := filepath.Join(target, ".github", "workflows", "ci.yml")
+	if err := os.Chmod(workflow, 0o666); err != nil {
+		t.Fatal(err)
+	}
+	_, err := Run(Options{
+		CatalogRoot: testCatalogRoot(t), Target: target,
+		CandidateDir: filepath.Join(t.TempDir(), "candidate"), ProfileID: "prc/core-repository",
+		AssertionID: restrictiveModesAssertion, MaxFiles: 20, MaxChangedLines: 1,
+	})
+	if err == nil || !strings.Contains(err.Error(), "protected path .github/workflows/ci.yml") {
+		t.Fatalf("unexpected error: %v", err)
+	}
+}
+
+func TestRestrictiveModeAuditRejectsContentChange(t *testing.T) {
+	target := remediationTarget(t)
+	if err := os.Chmod(filepath.Join(target, "app.py"), 0o666); err != nil {
+		t.Fatal(err)
+	}
+	candidate, err := Run(Options{
+		CatalogRoot: testCatalogRoot(t), Target: target,
+		CandidateDir: filepath.Join(t.TempDir(), "candidate"), ProfileID: "prc/core-repository",
+		AssertionID: restrictiveModesAssertion, MaxFiles: 20, MaxChangedLines: 1,
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	writeTestFile(t, candidate.CandidatePath, "app.py", "tampered\n")
+	baseline, err := inventory.Build(target)
+	if err != nil {
+		t.Fatal(err)
+	}
+	after, err := inventory.Build(candidate.CandidatePath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, reasons := auditCandidate(baseline, after, candidate.Contract)
+	if joined := strings.Join(reasons, " "); !strings.Contains(joined, "changed file content while restricting mode") {
+		t.Fatalf("audit did not catch content change: %v", reasons)
+	}
+}
+
 func TestAuditRejectsProtectedAndExcludedPathChanges(t *testing.T) {
 	target, candidate := runAcceptedCandidate(t)
 	writeTestFile(t, candidate.CandidatePath, ".github/workflows/ci.yml", "tampered\n")

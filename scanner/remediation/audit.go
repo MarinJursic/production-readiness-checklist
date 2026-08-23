@@ -41,6 +41,17 @@ func finalNewlineViolations(item model.Inventory) ([]string, error) {
 	return violations, nil
 }
 
+func restrictiveModeViolations(item model.Inventory) []string {
+	violations := make([]string, 0)
+	for _, record := range item.Files {
+		if record.Mode&0o022 != 0 {
+			violations = append(violations, record.Path)
+		}
+	}
+	sort.Strings(violations)
+	return violations
+}
+
 func verifiedLastByte(root string, record model.FileRecord) (byte, bool, error) {
 	path, err := safeJoin(root, record.Path)
 	if err != nil {
@@ -114,6 +125,49 @@ func applyFinalNewline(candidateRoot string, paths []string) error {
 	return nil
 }
 
+func applyRestrictiveModes(candidateRoot string, baseline model.Inventory, paths []string) error {
+	records := make(map[string]model.FileRecord, len(baseline.Files))
+	for _, record := range baseline.Files {
+		records[record.Path] = record
+	}
+	for _, relative := range paths {
+		record, ok := records[relative]
+		if !ok || record.Mode&0o022 == 0 {
+			return fmt.Errorf("candidate mode path is not a verified violation: %s", relative)
+		}
+		path, err := safeJoin(candidateRoot, relative)
+		if err != nil {
+			return err
+		}
+		pathInfo, err := os.Lstat(path)
+		if err != nil || !pathInfo.Mode().IsRegular() || uint32(pathInfo.Mode().Perm()) != record.Mode {
+			return fmt.Errorf("candidate path changed before mode fix: %s", relative)
+		}
+		file, err := os.Open(path)
+		if err != nil {
+			return fmt.Errorf("open candidate file %s: %w", relative, err)
+		}
+		openedInfo, statErr := file.Stat()
+		if statErr != nil || !os.SameFile(pathInfo, openedInfo) || uint32(openedInfo.Mode().Perm()) != record.Mode {
+			file.Close()
+			return fmt.Errorf("candidate file changed while opening: %s", relative)
+		}
+		hasher := sha256.New()
+		size, hashErr := io.Copy(hasher, file)
+		if hashErr != nil || size != record.Size || hex.EncodeToString(hasher.Sum(nil)) != record.SHA256 {
+			file.Close()
+			return fmt.Errorf("candidate content changed before mode fix: %s", relative)
+		}
+		chmodErr := file.Chmod(os.FileMode(record.Mode &^ 0o022))
+		syncErr := file.Sync()
+		closeErr := file.Close()
+		if chmodErr != nil || syncErr != nil || closeErr != nil {
+			return fmt.Errorf("restrict candidate file mode for %s", relative)
+		}
+	}
+	return nil
+}
+
 func auditCandidate(
 	baseline, candidate model.Inventory,
 	contract FixContract,
@@ -158,16 +212,29 @@ func auditCandidate(
 		if protected(path, contract.ProtectedPaths) {
 			reasons = append(reasons, "Candidate changed protected path "+path+".")
 		}
-		if beforeRecord.Mode != afterRecord.Mode {
-			reasons = append(reasons, "Candidate changed file mode for "+path+".")
-		}
-		expectedDigest, err := digestWithAppendedNewline(baseline.Root, beforeRecord)
-		if err != nil {
-			reasons = append(reasons, err.Error()+".")
-		} else if afterRecord.Size != beforeRecord.Size+1 || afterRecord.SHA256 != expectedDigest {
-			reasons = append(reasons, "Candidate made a non-deterministic change to "+path+".")
-		} else {
-			change.AddedLines = 1
+		switch contract.FixerID {
+		case finalNewlineFixer:
+			if beforeRecord.Mode != afterRecord.Mode {
+				reasons = append(reasons, "Candidate changed file mode for "+path+".")
+			}
+			expectedDigest, err := digestWithAppendedNewline(baseline.Root, beforeRecord)
+			if err != nil {
+				reasons = append(reasons, err.Error()+".")
+			} else if afterRecord.Size != beforeRecord.Size+1 || afterRecord.SHA256 != expectedDigest {
+				reasons = append(reasons, "Candidate made a non-deterministic change to "+path+".")
+			} else {
+				change.AddedLines = 1
+			}
+		case restrictiveModesFixer:
+			expectedMode := beforeRecord.Mode &^ 0o022
+			if beforeRecord.SHA256 != afterRecord.SHA256 || beforeRecord.Size != afterRecord.Size {
+				reasons = append(reasons, "Candidate changed file content while restricting mode for "+path+".")
+			}
+			if afterRecord.Mode != expectedMode {
+				reasons = append(reasons, fmt.Sprintf("Candidate mode for %s is %#o, expected %#o.", path, afterRecord.Mode, expectedMode))
+			}
+		default:
+			reasons = append(reasons, "Candidate used an unsupported deterministic fixer "+contract.FixerID+".")
 		}
 		changes = append(changes, change)
 	}

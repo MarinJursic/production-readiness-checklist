@@ -14,10 +14,12 @@ import (
 )
 
 const (
-	finalNewlineAssertion = "PRC-A-CORE-014"
-	finalNewlineFixer     = "prc.fixer.final-newline@0.1"
-	maximumFixFiles       = 1000
-	maximumFixLines       = 1000
+	finalNewlineAssertion     = "PRC-A-CORE-014"
+	finalNewlineFixer         = "prc.fixer.final-newline@0.1"
+	restrictiveModesAssertion = "PRC-A-CORE-022"
+	restrictiveModesFixer     = "prc.fixer.restrictive-file-modes@0.1"
+	maximumFixFiles           = 1000
+	maximumFixLines           = 1000
 )
 
 // Run creates and validates one isolated deterministic remediation candidate.
@@ -38,10 +40,6 @@ func Run(options Options) (Candidate, error) {
 	if options.MaxChangedLines < 1 || options.MaxChangedLines > maximumFixLines {
 		return Candidate{}, fmt.Errorf("max changed lines must be between 1 and %d", maximumFixLines)
 	}
-	if options.AssertionID != finalNewlineAssertion {
-		return Candidate{}, fmt.Errorf("no deterministic fixer is registered for %s", options.AssertionID)
-	}
-
 	c, err := catalog.Load(options.CatalogRoot)
 	if err != nil {
 		return Candidate{}, err
@@ -50,7 +48,7 @@ func Run(options Options) (Candidate, error) {
 	if !exists {
 		return Candidate{}, fmt.Errorf("unknown assertion %q", options.AssertionID)
 	}
-	if assertion.RemediationClass != "R1" || assertion.ImplementationID != "prc.native.final-newline@0.1" {
+	if assertion.RemediationClass != "R1" {
 		return Candidate{}, fmt.Errorf("assertion %s is not eligible for the registered R1 fixer", assertion.ID)
 	}
 
@@ -67,15 +65,45 @@ func Run(options Options) (Candidate, error) {
 	if !ok || before.Assessment != "fail" {
 		return Candidate{}, fmt.Errorf("assertion %s is not a failing finding in the baseline", assertion.ID)
 	}
-	paths, err := finalNewlineViolations(baseline)
+	var paths []string
+	var fixerID, goal string
+	var acceptance []string
+	switch {
+	case assertion.ID == finalNewlineAssertion && assertion.ImplementationID == "prc.native.final-newline@0.1":
+		paths, err = finalNewlineViolations(baseline)
+		fixerID = finalNewlineFixer
+		goal = "Append one line-feed byte to each recognized source file whose final byte is not a line-feed; an empty file has no final byte."
+		acceptance = []string{
+			"Every allowed path differs only by one appended line-feed byte.",
+			"No path outside the allowlist changes and no protected path changes.",
+			"The target assertion passes and every baseline passing assertion remains passing.",
+			"The original workspace remains byte-for-byte and mode-for-mode unchanged.",
+		}
+	case assertion.ID == restrictiveModesAssertion && assertion.ImplementationID == "prc.native.restrictive-file-modes@0.1":
+		paths = restrictiveModeViolations(baseline)
+		fixerID = restrictiveModesFixer
+		goal = "Clear group-write and other-write permission bits on each inventoried regular file that has them, preserving file bytes and all other permission bits."
+		acceptance = []string{
+			"Every allowed path has only its group-write and other-write permission bits cleared.",
+			"Every allowed path remains byte-for-byte identical to its baseline content.",
+			"No path outside the allowlist changes and no protected path changes.",
+			"The target assertion passes and every baseline passing assertion remains passing.",
+			"The original workspace remains byte-for-byte and mode-for-mode unchanged.",
+		}
+	default:
+		return Candidate{}, fmt.Errorf("no deterministic fixer is registered for %s", options.AssertionID)
+	}
 	if err != nil {
 		return Candidate{}, err
 	}
 	if len(paths) == 0 {
 		return Candidate{}, fmt.Errorf("assertion %s reported no deterministic violations", assertion.ID)
 	}
-	if len(paths) > options.MaxFiles || len(paths) > options.MaxChangedLines {
-		return Candidate{}, fmt.Errorf("fix requires %d files and lines, above the configured budget", len(paths))
+	if len(paths) > options.MaxFiles {
+		return Candidate{}, fmt.Errorf("fix requires %d files, above the configured budget", len(paths))
+	}
+	if fixerID == finalNewlineFixer && len(paths) > options.MaxChangedLines {
+		return Candidate{}, fmt.Errorf("fix requires %d changed lines, above the configured budget", len(paths))
 	}
 	for _, path := range paths {
 		if protected(path, defaultProtectedPaths) {
@@ -87,17 +115,13 @@ func Run(options Options) (Candidate, error) {
 		SchemaVersion: FixContractSchema, BaselineRunID: beforeRun.RunID,
 		BaselineInventoryDigest: baseline.Digest, AssertionID: assertion.ID,
 		ControlIDs: append([]string(nil), assertion.ControlIDs...),
-		Goal:       "Append one line-feed byte to each recognized source file whose final byte is not a line-feed; an empty file has no final byte.",
-		FixerID:    finalNewlineFixer, RemediationClass: "R1",
+		Goal:       goal,
+		FixerID:    fixerID, RemediationClass: "R1",
 		AllowedPaths:   append([]string(nil), paths...),
 		ProtectedPaths: append([]string(nil), defaultProtectedPaths...),
 		Network:        "deny", MaxChangedLines: options.MaxChangedLines, MaxFiles: options.MaxFiles,
 		MaxAttempts: 1,
-		Acceptance: []string{
-			"Every allowed path differs only by one appended line-feed byte.",
-			"No path outside the allowlist changes and no protected path changes.",
-			"The target assertion passes and every baseline passing assertion remains passing.",
-		},
+		Acceptance:  acceptance,
 	}
 	sort.Strings(contract.ControlIDs)
 	contract.TaskID, err = contentID(contract)
@@ -109,7 +133,13 @@ func Run(options Options) (Candidate, error) {
 	if err != nil {
 		return Candidate{}, err
 	}
-	if err := applyFinalNewline(candidateRoot, paths); err != nil {
+	switch fixerID {
+	case finalNewlineFixer:
+		err = applyFinalNewline(candidateRoot, paths)
+	case restrictiveModesFixer:
+		err = applyRestrictiveModes(candidateRoot, baseline, paths)
+	}
+	if err != nil {
 		return Candidate{}, err
 	}
 	candidateInventory, err := inventory.Build(candidateRoot)
@@ -133,6 +163,10 @@ func Run(options Options) (Candidate, error) {
 		if !found || candidateResult.Assessment != "pass" {
 			reasons = append(reasons, "Baseline passing assertion regressed: "+result.AssertionID+".")
 		}
+	}
+	currentBaseline, err := inventory.Build(options.Target)
+	if err != nil || currentBaseline.Digest != baseline.Digest {
+		return Candidate{}, fmt.Errorf("source workspace changed during deterministic remediation")
 	}
 	reasons = uniqueSorted(reasons)
 	candidate := Candidate{

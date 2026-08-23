@@ -175,7 +175,7 @@ func runProvider(args []string, stdout, stderr io.Writer) error {
 
 func runRemediate(args []string, stdout, stderr io.Writer) (bool, error) {
 	set, target, catalogRoot, profile := parseCommon("remediate", args, stderr)
-	assertionID := set.String("assertion", "PRC-A-CORE-014", "R1 assertion ID to remediate")
+	assertionID := set.String("assertion", "PRC-A-CORE-014", "registered R1 assertion ID to remediate")
 	candidateDirectory := set.String("candidate-dir", "", "new isolated candidate directory (required)")
 	maxFiles := set.Int("max-files", 20, "maximum files the fix may change")
 	maxChangedLines := set.Int("max-changed-lines", 20, "maximum changed lines")

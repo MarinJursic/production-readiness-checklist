@@ -1,9 +1,14 @@
 # Bounded isolated remediation
 
-The experimental `remediate` command supports one deterministic fixer:
-`PRC-A-CORE-014`, which appends one line-feed byte to each recognized source file
-that lacks one. It does not execute target code, call a model, use the network,
-edit the original workspace, or perform version-control operations.
+The experimental `remediate` command supports two deterministic fixers:
+
+- `PRC-A-CORE-014` appends one line-feed byte to each recognized source file
+  that lacks one; and
+- `PRC-A-CORE-022` clears group-write and other-write permission bits while
+  preserving every file byte and all other permission bits.
+
+Neither fixer executes target code, calls a model, uses the network, edits the
+original workspace, or performs version-control operations.
 
 The README-presence assertion is deliberately R2. Writing useful project
 documentation requires project-specific judgment, so the scanner does not create
@@ -37,12 +42,15 @@ limit, and file and line budgets. After applying the fix in the copy, it:
 
 1. inventories the candidate from fresh bytes;
 2. walks the raw candidate tree so excluded directories cannot hide additions;
-3. rejects additions, deletions, symlinks, non-regular entries, mode changes,
+3. rejects additions, deletions, symlinks, non-regular entries,
    protected-path changes, and any change outside the allowlist;
-4. verifies that each allowed file differs by exactly one appended line-feed
-   byte;
+4. verifies the fixer's exact byte-and-mode postcondition: one appended
+   line-feed with the mode unchanged, or bytes unchanged with only group-write
+   and other-write bits cleared;
 5. rescans the candidate and requires the target assertion to pass; and
-6. requires every assertion that passed in the baseline to remain passing.
+6. requires every assertion that passed in the baseline to remain passing; and
+7. re-inventories the original target and requires it to remain byte-for-byte
+   and mode-for-mode identical to the baseline.
 
 The candidate directory is preserved for review. Acceptance is permission to
 inspect or continue testing that isolated candidate; it is not authorization to

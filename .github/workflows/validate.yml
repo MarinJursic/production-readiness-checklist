@@ -127,6 +127,18 @@ jobs:
             --format json > "$RUNNER_TEMP/remediation.json"
           test "$(tail -c 1 "$RUNNER_TEMP/remediation-target/app.py")" = ")"
 
+          mkdir "$RUNNER_TEMP/mode-target"
+          printf "print('ready')\n" > "$RUNNER_TEMP/mode-target/app.py"
+          chmod 0666 "$RUNNER_TEMP/mode-target/app.py"
+          "$RUNNER_TEMP/prc" remediate \
+            --target "$RUNNER_TEMP/mode-target" \
+            --catalog-root . \
+            --assertion PRC-A-CORE-022 \
+            --candidate-dir "$RUNNER_TEMP/mode-candidate" \
+            --format json > "$RUNNER_TEMP/mode-remediation.json"
+          test "$(stat -c '%a' "$RUNNER_TEMP/mode-target/app.py")" = "666"
+          test "$(stat -c '%a' "$RUNNER_TEMP/mode-candidate/app.py")" = "644"
+
       - name: Exercise isolated provider-proposal remediation
         run: |
           "$RUNNER_TEMP/prc" remediate-proposal \
@@ -147,6 +159,7 @@ jobs:
           python scripts/validate_instance.py plan.schema.json "$RUNNER_TEMP/plan.json"
           python scripts/validate_instance.py run-result.schema.json "$RUNNER_TEMP/run.json"
           python scripts/validate_instance.py remediation-candidate.schema.json "$RUNNER_TEMP/remediation.json"
+          python scripts/validate_instance.py remediation-candidate.schema.json "$RUNNER_TEMP/mode-remediation.json"
           python scripts/validate_instance.py remediation-candidate.schema.json "$RUNNER_TEMP/provider-remediation.json"
 
   documentation:

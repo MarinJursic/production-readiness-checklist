@@ -230,6 +230,37 @@ func TestRemediateCommandCreatesAcceptedCandidate(t *testing.T) {
 	}
 }
 
+func TestRemediateCommandRestrictsCandidateModeOnly(t *testing.T) {
+	target := t.TempDir()
+	targetPath := filepath.Join(target, "app.py")
+	if err := os.WriteFile(targetPath, []byte("print('ready')\n"), 0o666); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.Chmod(targetPath, 0o666); err != nil {
+		t.Fatal(err)
+	}
+	candidate := filepath.Join(t.TempDir(), "candidate")
+	var stdout, stderr bytes.Buffer
+	code := run([]string{
+		"remediate", "--target", target, "--catalog-root", filepath.Join("..", ".."),
+		"--assertion", "PRC-A-CORE-022", "--candidate-dir", candidate, "--format", "json",
+	}, &stdout, &stderr)
+	if code != 0 {
+		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
+	}
+	originalInfo, err := os.Stat(targetPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	candidateInfo, err := os.Stat(filepath.Join(candidate, "app.py"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if originalInfo.Mode().Perm() != 0o666 || candidateInfo.Mode().Perm() != 0o644 {
+		t.Fatalf("original=%#o candidate=%#o", originalInfo.Mode().Perm(), candidateInfo.Mode().Perm())
+	}
+}
+
 func TestRemediateProposalCommandCreatesAcceptedIsolatedCandidate(t *testing.T) {
 	target := t.TempDir()
 	if err := os.WriteFile(filepath.Join(target, "app.py"), []byte("def ready(): return True\n"), 0o644); err != nil {
