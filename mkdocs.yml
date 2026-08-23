@@ -53,6 +53,7 @@ nav:
       - AI-assisted review: guides/ai-assisted-review.md
   - Scanner architecture:
       - Scanner quick start: scanner/getting-started.md
+      - Project configuration: scanner/configuration.md
       - Bounded R1 remediation: scanner/remediation.md
       - Product contract: architecture/product-contract.md
       - Trust and threat model: architecture/trust-model.md

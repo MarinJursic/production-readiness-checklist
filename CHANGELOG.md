@@ -19,6 +19,8 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
   exact mode postconditions and original-workspace integrity verification.
 - A conservative R2 anti-gaming audit that blocks existing-test rewrites,
   suppression and skip directives, constant assertions, and empty Go tests.
+- A strict, content-addressed `prc.config/v0.1` project configuration contract
+  with default-deny capability semantics and adversarial parser validation.
 
 ### Fixed
 

@@ -1,0 +1,36 @@
+schema_version: prc.config/v0.1
+project:
+  id: example-product
+  name: Example Product
+  risk_profile: high
+assessment:
+  profile: prc/core-repository
+  source_ref: ""
+  artifact_digests: []
+  target_environments: [staging]
+components:
+  include:
+    - path: src
+      type: service
+  exclude:
+    - path: experiments/archived
+      rationale: Not built or deployed by the assessed release.
+features:
+  authentication: true
+  payments: false
+data:
+  classifications: [personal, public]
+  regulated: [gdpr]
+  prohibited_in_evidence: [production-personal-data, secrets]
+execution:
+  network: deny
+  allow_commands: []
+  production_connected: false
+  max_parallel: 4
+  max_duration_seconds: 1800
+remediation:
+  enabled: true
+  max_attempts: 3
+  max_files: 20
+  max_changed_lines: 200
+  protected_paths: [.git/, .github/workflows/, .prc/, catalog/, production-readiness.yaml, schemas/]

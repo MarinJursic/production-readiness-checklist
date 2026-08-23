@@ -18,6 +18,16 @@ SPEC.loader.exec_module(validate_instance)
 
 
 class ScannerOutputSchemaTests(unittest.TestCase):
+    def test_checked_in_project_configuration_conforms(self) -> None:
+        path = ROOT / "fixtures" / "config" / "production-readiness.yaml"
+        instance = yaml.safe_load(path.read_text(encoding="utf-8"))
+        self.assertEqual(
+            validate_instance.validation_errors(
+                instance, "project-config.schema.json"
+            ),
+            [],
+        )
+
     def test_minimal_inventory_conforms(self) -> None:
         instance = {
             "schema_version": "prc.inventory/v0.2",

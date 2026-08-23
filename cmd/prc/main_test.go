@@ -23,6 +23,34 @@ func TestVersionCommand(t *testing.T) {
 	}
 }
 
+func TestConfigValidateCommand(t *testing.T) {
+	path := filepath.Join("..", "..", "fixtures", "config", "production-readiness.yaml")
+	var stdout, stderr bytes.Buffer
+	if code := run([]string{"config", "validate", "--file", path, "--format", "json"}, &stdout, &stderr); code != 0 {
+		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
+	}
+	if !strings.Contains(stdout.String(), `"schema_version": "prc.config-validation/v0.1"`) ||
+		!strings.Contains(stdout.String(), `"network": "deny"`) {
+		t.Fatalf("unexpected output %s", stdout.String())
+	}
+}
+
+func TestConfigValidateRejectsCapabilityExpansion(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "production-readiness.yaml")
+	data, err := os.ReadFile(filepath.Join("..", "..", "fixtures", "config", "production-readiness.yaml"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	data = bytes.Replace(data, []byte("network: deny"), []byte("network: allow"), 1)
+	if err := os.WriteFile(path, data, 0o600); err != nil {
+		t.Fatal(err)
+	}
+	var stdout, stderr bytes.Buffer
+	if code := run([]string{"config", "validate", "--file", path}, &stdout, &stderr); code != 2 {
+		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
+	}
+}
+
 func TestAdapterValidateOutputCommand(t *testing.T) {
 	var stdout, stderr bytes.Buffer
 	path := filepath.Join("..", "..", "fixtures", "adapters", "valid-output.jsonl")

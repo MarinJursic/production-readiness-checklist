@@ -15,6 +15,7 @@ import (
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/adapter"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/catalog"
+	projectconfig "github.com/MarinJursic/production-readiness-checklist/scanner/config"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/engine"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/evidence"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
@@ -44,6 +45,8 @@ func run(args []string, stdout, stderr io.Writer) int {
 		return 0
 	case "inventory":
 		err = runInventory(args[1:], stdout, stderr)
+	case "config":
+		err = runConfig(args[1:], stdout, stderr)
 	case "plan":
 		err = runPlan(args[1:], stdout, stderr)
 	case "scan":
@@ -81,7 +84,40 @@ func run(args []string, stdout, stderr io.Writer) int {
 
 func usage(output io.Writer) {
 	fmt.Fprintln(output, "Production Readiness Scanner")
-	fmt.Fprintln(output, "usage: prc <inventory|plan|scan|remediate|remediate-proposal|explain|adapter|provider|version> [options]")
+	fmt.Fprintln(output, "usage: prc <config|inventory|plan|scan|remediate|remediate-proposal|explain|adapter|provider|version> [options]")
+}
+
+func runConfig(args []string, stdout, stderr io.Writer) error {
+	if len(args) == 0 || args[0] != "validate" {
+		return errors.New("config requires validate")
+	}
+	set := flag.NewFlagSet("config validate", flag.ContinueOnError)
+	set.SetOutput(stderr)
+	path := set.String("file", "production-readiness.yaml", "project configuration YAML file")
+	format := set.String("format", "human", "human or json")
+	if err := set.Parse(args[1:]); err != nil {
+		return err
+	}
+	if *format != "human" && *format != "json" {
+		return fmt.Errorf("unsupported format %q", *format)
+	}
+	validation, err := projectconfig.Load(*path)
+	if err != nil {
+		return err
+	}
+	if *format == "json" {
+		return encodeJSON(stdout, validation)
+	}
+	document := validation.Configuration
+	fmt.Fprintf(stdout, "Configuration: %s\n", validation.Digest)
+	fmt.Fprintf(stdout, "Project: %s (%s, %s risk)\n", document.Project.Name, document.Project.ID, document.Project.RiskProfile)
+	fmt.Fprintf(stdout, "Profile: %s\n", document.Assessment.Profile)
+	fmt.Fprintf(stdout, "Execution: network=%s commands=%d production-connected=%t\n",
+		document.Execution.Network, len(document.Execution.AllowCommands), document.Execution.ProductionConnected)
+	fmt.Fprintf(stdout, "Remediation: enabled=%t attempts=%d files=%d lines=%d\n",
+		document.Remediation.Enabled, document.Remediation.MaxAttempts,
+		document.Remediation.MaxFiles, document.Remediation.MaxChangedLines)
+	return nil
 }
 
 func runProvider(args []string, stdout, stderr io.Writer) error {
