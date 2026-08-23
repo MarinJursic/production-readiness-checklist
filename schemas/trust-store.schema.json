@@ -17,7 +17,7 @@
     }
   },
   "$defs": {
-    "scope": {"enum": ["pack", "adapter-registry", "catalog-bundle"]},
+    "scope": {"enum": ["pack", "adapter-registry", "catalog-bundle", "risk-exception"]},
     "key": {
       "type": "object",
       "additionalProperties": false,

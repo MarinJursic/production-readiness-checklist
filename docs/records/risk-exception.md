@@ -2,6 +2,11 @@
 
 > An exception records accepted residual risk. It does not convert a failed control into a pass.
 
+For scanner-bound decisions, use the signed
+[`prc.risk-exception/v0.1`](../scanner/risk-exceptions.md) contract so the
+decision is tied to one immutable run and finding, independently reviewed,
+automatically expiring, and cryptographically attributable.
+
 | Field | Value |
 | --- | --- |
 | Exception ID | |

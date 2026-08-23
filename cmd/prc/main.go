@@ -22,6 +22,7 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/doctor"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/engine"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/evidence"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/exception"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/invalidation"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
@@ -142,6 +143,9 @@ func run(args []string, stdout, stderr io.Writer) int {
 	case "adapter":
 		errorFallback = exitExecution
 		err = runAdapter(args[1:], stdout, stderr)
+	case "exception":
+		errorFallback = exitConfiguration
+		err = runException(args[1:], stdout, stderr)
 	case "provider":
 		errorFallback = exitExecution
 		err = runProvider(args[1:], stdout, stderr)
@@ -163,7 +167,69 @@ func run(args []string, stdout, stderr io.Writer) int {
 
 func usage(output io.Writer) {
 	fmt.Fprintln(output, "Production Readiness Scanner")
-	fmt.Fprintln(output, "usage: prc <catalog|pack|benchmark|config|inventory|plan|scan|diff|fix|remediate|remediate-proposal|doctor|history|explain|adapter|provider|version> [options]")
+	fmt.Fprintln(output, "usage: prc <catalog|pack|benchmark|config|inventory|plan|scan|diff|fix|remediate|remediate-proposal|doctor|history|explain|adapter|exception|provider|version> [options]")
+}
+
+func runException(args []string, stdout, stderr io.Writer) error {
+	if len(args) == 0 || args[0] != "verify" {
+		return exitError(exitConfiguration, errors.New("exception requires verify"))
+	}
+	set := flag.NewFlagSet("exception verify", flag.ContinueOnError)
+	set.SetOutput(stderr)
+	path := set.String("file", "", "risk exception YAML file")
+	stateDirectory := set.String("state-dir", "", "private scanner state containing the bound run")
+	trustStorePath := set.String("trust-store", "", "risk-owner trust store")
+	signaturePath := set.String("signature", "", "detached risk exception signature")
+	verifiedAtText := set.String("verified-at", "", "required UTC RFC3339 verification time")
+	format := set.String("format", "human", "human or json")
+	if err := set.Parse(args[1:]); err != nil {
+		return exitError(exitConfiguration, err)
+	}
+	if set.NArg() != 0 || *path == "" || *stateDirectory == "" || *trustStorePath == "" ||
+		*signaturePath == "" || *verifiedAtText == "" {
+		return exitError(exitConfiguration, errors.New("exception verify requires --file, --state-dir, --trust-store, --signature, and --verified-at"))
+	}
+	if *format != "human" && *format != "json" {
+		return exitError(exitConfiguration, fmt.Errorf("unsupported format %q", *format))
+	}
+	loaded, err := exception.Load(*path)
+	if err != nil {
+		return exitError(exitConfiguration, err)
+	}
+	store, err := state.Open(context.Background(), *stateDirectory)
+	if err != nil {
+		return exitError(exitConfiguration, err)
+	}
+	defer store.Close()
+	run, err := store.LoadRun(context.Background(), loaded.Record.Run.RunID)
+	if err != nil {
+		return exitError(exitConfiguration, err)
+	}
+	trustStore, err := trust.LoadStore(*trustStorePath)
+	if err != nil {
+		return exitError(exitConfiguration, err)
+	}
+	signature, err := trust.LoadSignature(*signaturePath)
+	if err != nil {
+		return exitError(exitConfiguration, err)
+	}
+	verifiedAt, err := time.Parse(time.RFC3339Nano, *verifiedAtText)
+	if err != nil {
+		return exitError(exitConfiguration, fmt.Errorf("parse --verified-at: %w", err))
+	}
+	verification, err := exception.Verify(loaded, run, trustStore, signature, verifiedAt)
+	if err != nil {
+		return exitError(exitPolicyDenied, err)
+	}
+	if *format == "json" {
+		return encodeJSON(stdout, verification)
+	}
+	fmt.Fprintf(stdout, "Verified risk exception: %s (%s)\n", verification.Exception.ID, verification.ExceptionDigest)
+	fmt.Fprintf(stdout, "Finding: %s (%s)\n", verification.Exception.Finding.FindingID, verification.Exception.Finding.AssertionID)
+	fmt.Fprintf(stdout, "Risk owner: %s (%s)\n", verification.Exception.RiskOwner.Name, verification.Exception.RiskOwner.ID)
+	fmt.Fprintf(stdout, "Expires at: %s\n", verification.Exception.ExpiresAt.Format(time.RFC3339))
+	fmt.Fprintf(stdout, "Gate effect: %s\n", verification.GateEffect)
+	return nil
 }
 
 func runPack(args []string, stdout, stderr io.Writer) error {

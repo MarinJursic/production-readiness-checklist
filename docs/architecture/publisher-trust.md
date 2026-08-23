@@ -1,15 +1,15 @@
 # Offline publisher trust
 
 Content digests prove identity, not authorship. The scanner therefore supports
-detached Ed25519 verification for pack and adapter-registry artifacts through
-an operator-selected trust store. It never discovers keys, downloads trust
-metadata, or handles publisher private keys.
+detached Ed25519 verification for pack, adapter-registry, and signed
+risk-exception artifacts through an operator-selected trust store. It never
+discovers keys, downloads trust metadata, or handles publisher private keys.
 
 The trust store is an explicit local root of trust. Each key has an ID, exact
 public key, artifact-kind scopes, validity interval, and active or revoked
 status. Revocation is fail-closed and applies even to a signature created
 before the key was revoked. A key authorized for a pack cannot sign an adapter
-registry unless that second scope is also present.
+registry or risk exception unless that additional scope is also present.
 
 The detached signature covers a domain-separated canonical payload containing:
 
@@ -60,3 +60,9 @@ an official release trust store or signatures yet. Verification support is not
 itself a key ceremony, secure private-key service, transparency log,
 reproducible release, or revocation-distribution channel; those remain release
 engineering requirements.
+
+Risk-owner keys may also have the `risk-exception` scope. Those signatures are
+verified only through the stricter
+[risk-exception workflow](../scanner/risk-exceptions.md), which binds an
+immutable failed finding, accountable people, evidence, monitoring,
+remediation, and expiry without changing the scanner gate.

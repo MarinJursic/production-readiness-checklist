@@ -292,7 +292,7 @@ func normalizeAndVerifyLoadedStore(store LoadedStore) error {
 }
 
 func artifactKind(value string) bool {
-	return value == "pack" || value == "adapter-registry" || value == "catalog-bundle"
+	return value == "pack" || value == "adapter-registry" || value == "catalog-bundle" || value == "risk-exception"
 }
 
 func utcTime(value time.Time) bool {

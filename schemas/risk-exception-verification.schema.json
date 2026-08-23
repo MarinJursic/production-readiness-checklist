@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/risk-exception-verification.schema.json",
+  "title": "Production Readiness Risk Exception Verification v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "exception", "exception_digest", "verified_at", "signature", "disposition", "gate_effect"],
+  "properties": {
+    "schema_version": {"const": "prc.risk-exception-verification/v0.1"},
+    "exception": {"$ref": "risk-exception.schema.json"},
+    "exception_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "verified_at": {"type": "string", "format": "date-time"},
+    "signature": {"$ref": "signature-verification.schema.json"},
+    "disposition": {"const": "accepted_risk_exception"},
+    "gate_effect": {"const": "finding remains failed and the scanner terminal state is unchanged"}
+  }
+}

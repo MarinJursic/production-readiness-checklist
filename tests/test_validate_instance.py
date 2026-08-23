@@ -1192,6 +1192,104 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             )
         )
 
+    def test_signed_risk_exception_contracts_conform(self) -> None:
+        digest = "a" * 64
+        record = {
+            "schema_version": "prc.risk-exception/v0.1",
+            "id": "PRC-EXC-FIXTURE-001",
+            "status": "approved",
+            "run": {
+                "run_id": digest,
+                "inventory_digest": "b" * 64,
+                "profile_id": "prc/core-repository",
+                "profile_version": "0.3",
+                "target_name": "example",
+                "target_commit": "",
+                "project_id": "example-product",
+                "artifact_digests": [],
+                "target_environments": ["staging"],
+            },
+            "finding": {
+                "finding_id": "c" * 64,
+                "finding_fingerprint": "d" * 64,
+                "assertion_id": "PRC-A-CORE-001",
+                "control_ids": ["USEQ-FDCA6C71"],
+            },
+            "requested_by": {
+                "id": "requester",
+                "name": "Requesting engineer",
+                "authority": "engineering",
+            },
+            "risk_owner": {
+                "id": "risk-owner",
+                "name": "Accountable owner",
+                "authority": "executive",
+            },
+            "reviewers": [{
+                "id": "security-reviewer",
+                "name": "Security reviewer",
+                "authority": "security",
+            }],
+            "risk": {
+                "title": "Fixture exception",
+                "rationale": "A bounded fixture rationale.",
+                "likelihood": "unlikely",
+                "impact": "high",
+                "worst_credible_outcome": "A release defect remains.",
+            },
+            "compensating_controls": [{
+                "description": "A verified temporary control.",
+                "evidence_references": ["e" * 64],
+            }],
+            "monitoring": {
+                "owner": "operations",
+                "signal": "Alert on affected behavior.",
+                "response": "Disable the affected feature.",
+            },
+            "remediation": {
+                "owner": "engineering",
+                "plan": "Implement and independently verify the control.",
+                "due_at": "2026-08-25T12:00:00Z",
+            },
+            "approved_at": "2026-08-23T12:00:00Z",
+            "expires_at": "2026-08-30T12:00:00Z",
+        }
+        signature = {
+            "schema_version": "prc.signature-verification/v0.1",
+            "artifact_kind": "risk-exception",
+            "artifact_id": record["id"],
+            "sha256": digest,
+            "key_id": "risk-owners",
+            "algorithm": "ed25519",
+            "issued_at": record["approved_at"],
+            "verified_at": "2026-08-23T13:00:00Z",
+            "trust_store_id": "exception-keys",
+            "trust_store_digest": "f" * 64,
+            "signature_digest": "1" * 64,
+            "verified": True,
+        }
+        verification = {
+            "schema_version": "prc.risk-exception-verification/v0.1",
+            "exception": record,
+            "exception_digest": digest,
+            "verified_at": signature["verified_at"],
+            "signature": signature,
+            "disposition": "accepted_risk_exception",
+            "gate_effect": (
+                "finding remains failed and the scanner terminal state is unchanged"
+            ),
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(record, "risk-exception.schema.json"),
+            [],
+        )
+        self.assertEqual(
+            validate_instance.validation_errors(
+                verification, "risk-exception-verification.schema.json"
+            ),
+            [],
+        )
+
     def test_checked_in_agent_task_and_output_conform(self) -> None:
         task = json.loads(
             (ROOT / "fixtures" / "providers" / "suggest-task.json").read_text(

@@ -19,6 +19,7 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/benchmark"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/catalog"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/engine"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/exception"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/invalidation"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
@@ -274,6 +275,92 @@ func TestPackAndRegistryPublisherVerificationCommands(t *testing.T) {
 	}
 }
 
+func TestSignedRiskExceptionVerificationCommand(t *testing.T) {
+	repository := filepath.Join("..", "..")
+	target, stateDirectory := t.TempDir(), t.TempDir()
+	if err := os.Chmod(stateDirectory, 0o700); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(target, "fixture.txt"), []byte("fixture\n"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	var stdout, stderr bytes.Buffer
+	code := run([]string{
+		"scan", "--target", target, "--catalog-root", repository,
+		"--state-dir", stateDirectory, "--exit-policy", "never", "--format", "json",
+	}, &stdout, &stderr)
+	if code != 0 {
+		t.Fatalf("scan exit=%d stderr=%s", code, stderr.String())
+	}
+	var scanned model.RunResult
+	if err := json.Unmarshal(stdout.Bytes(), &scanned); err != nil {
+		t.Fatal(err)
+	}
+	if len(scanned.Findings) == 0 {
+		t.Fatal("fixture scan has no finding")
+	}
+	finding := scanned.Findings[0]
+	approvedAt := scanned.CompletedAt.Add(time.Hour)
+	record := exception.Record{
+		SchemaVersion: exception.Schema, ID: "PRC-EXC-CLI-001", Status: "approved",
+		Run: exception.RunBinding{
+			RunID: scanned.RunID, InventoryDigest: scanned.Inventory.Digest,
+			ProfileID: scanned.Plan.ProfileID, ProfileVersion: scanned.Plan.ProfileVersion,
+			TargetName: scanned.Inventory.TargetName, TargetCommit: scanned.Inventory.GitCommit,
+			ProjectID: scanned.Plan.ProjectID, ArtifactDigests: scanned.Plan.ArtifactDigests,
+			TargetEnvironments: scanned.Plan.TargetEnvironments,
+		},
+		Finding: exception.FindingBinding{
+			FindingID: finding.ID, FindingFingerprint: finding.Fingerprint,
+			AssertionID: finding.AssertionID, ControlIDs: finding.ControlIDs,
+		},
+		RequestedBy: exception.Actor{ID: "requester", Name: "Requesting engineer", Authority: "engineering"},
+		RiskOwner:   exception.Actor{ID: "risk-owner", Name: "Risk owner", Authority: "executive"},
+		Reviewers:   []exception.Actor{{ID: "security-reviewer", Name: "Security reviewer", Authority: "security"}},
+		Risk: exception.RiskAnalysis{
+			Title: "CLI fixture exception", Rationale: "Exercise the signed exception command.",
+			Likelihood: "unlikely", Impact: "high", WorstCredibleOutcome: "A release defect remains until remediation.",
+		},
+		CompensatingControls: []exception.CompensatingControl{{
+			Description:        "A temporary reviewed control limits exposure.",
+			EvidenceReferences: []string{strings.Repeat("b", 64)},
+		}},
+		Monitoring: exception.Monitoring{Owner: "operations", Signal: "Alert on the affected behavior.", Response: "Disable the affected feature."},
+		Remediation: exception.Remediation{
+			Owner: "engineering", Plan: "Implement and verify the missing control.", DueAt: approvedAt.Add(24 * time.Hour),
+		},
+		ApprovedAt: approvedAt, ExpiresAt: approvedAt.Add(7 * 24 * time.Hour),
+	}
+	directory := t.TempDir()
+	recordPath := filepath.Join(directory, "exception.json")
+	writeJSONFixture(t, recordPath, record)
+	loaded, err := exception.Load(recordPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	storePath, signaturePath := writePublisherFixture(
+		t, "risk-exception", loaded.Record.ID, loaded.Digest, approvedAt,
+	)
+	stdout.Reset()
+	stderr.Reset()
+	code = run([]string{
+		"exception", "verify", "--file", recordPath, "--state-dir", stateDirectory,
+		"--trust-store", storePath, "--signature", signaturePath,
+		"--verified-at", approvedAt.Add(time.Hour).Format(time.RFC3339Nano), "--format", "json",
+	}, &stdout, &stderr)
+	if code != 0 {
+		t.Fatalf("exception verify exit=%d stderr=%s", code, stderr.String())
+	}
+	var verification exception.Verification
+	if err := json.Unmarshal(stdout.Bytes(), &verification); err != nil {
+		t.Fatal(err)
+	}
+	if verification.Disposition != "accepted_risk_exception" || !verification.Signature.Verified ||
+		!strings.Contains(verification.GateEffect, "unchanged") {
+		t.Fatalf("exception verification = %+v", verification)
+	}
+}
+
 func writePublisherFixture(t *testing.T, kind, artifactID, digest string, issuedAt time.Time) (string, string) {
 	t.Helper()
 	publicKey, privateKey, err := ed25519.GenerateKey(rand.Reader)
@@ -286,7 +373,7 @@ func writePublisherFixture(t *testing.T, kind, artifactID, digest string, issued
 		SchemaVersion: trust.StoreSchema, ID: "test-release-keys", Revision: 1,
 		Keys: []trust.Key{{
 			ID: "test-release", Algorithm: trust.AlgorithmEd25519,
-			PublicKey: base64.StdEncoding.EncodeToString(publicKey), Scopes: []string{"adapter-registry", "pack"},
+			PublicKey: base64.StdEncoding.EncodeToString(publicKey), Scopes: []string{"adapter-registry", "pack", "risk-exception"},
 			Status: "active", NotBefore: issuedAt.Add(-time.Hour), NotAfter: issuedAt.Add(24 * time.Hour),
 		}},
 	}

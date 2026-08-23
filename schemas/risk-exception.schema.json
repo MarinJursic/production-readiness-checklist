@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/risk-exception.schema.json",
+  "title": "Production Readiness Risk Exception v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "status", "run", "finding", "requested_by", "risk_owner", "reviewers", "risk", "compensating_controls", "monitoring", "remediation", "approved_at", "expires_at"],
+  "properties": {
+    "schema_version": {"const": "prc.risk-exception/v0.1"},
+    "id": {"type": "string", "pattern": "^PRC-EXC-[A-Z0-9][A-Z0-9-]{2,63}$"},
+    "status": {"const": "approved"},
+    "run": {"$ref": "#/$defs/run"},
+    "finding": {"$ref": "#/$defs/finding"},
+    "requested_by": {"$ref": "#/$defs/actor"},
+    "risk_owner": {"$ref": "#/$defs/actor"},
+    "reviewers": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 32,
+      "items": {"$ref": "#/$defs/actor"}
+    },
+    "risk": {"$ref": "#/$defs/risk"},
+    "compensating_controls": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 32,
+      "items": {"$ref": "#/$defs/compensating_control"}
+    },
+    "monitoring": {"$ref": "#/$defs/monitoring"},
+    "remediation": {"$ref": "#/$defs/remediation"},
+    "approved_at": {"type": "string", "format": "date-time"},
+    "expires_at": {"type": "string", "format": "date-time"}
+  },
+  "$defs": {
+    "digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "authority"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{0,127}$"},
+        "name": {"type": "string", "minLength": 1, "maxLength": 200},
+        "authority": {"enum": ["engineering", "security", "privacy", "legal", "operations", "product", "executive"]}
+      }
+    },
+    "run": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["run_id", "inventory_digest", "profile_id", "profile_version", "target_name", "target_commit", "project_id", "artifact_digests", "target_environments"],
+      "properties": {
+        "run_id": {"$ref": "#/$defs/digest"},
+        "inventory_digest": {"$ref": "#/$defs/digest"},
+        "profile_id": {"type": "string", "pattern": "^prc/[a-z0-9-]+$"},
+        "profile_version": {"type": "string", "minLength": 1, "maxLength": 64},
+        "target_name": {"type": "string", "minLength": 1, "maxLength": 255},
+        "target_commit": {"type": "string", "pattern": "^(?:[0-9a-f]{40,64})?$"},
+        "project_id": {"type": "string", "pattern": "^(?:[a-z0-9][a-z0-9._-]{0,127})?$"},
+        "artifact_digests": {
+          "type": "array",
+          "maxItems": 256,
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+        },
+        "target_environments": {
+          "type": "array",
+          "maxItems": 256,
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{0,127}$"}
+        }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["finding_id", "finding_fingerprint", "assertion_id", "control_ids"],
+      "properties": {
+        "finding_id": {"$ref": "#/$defs/digest"},
+        "finding_fingerprint": {"$ref": "#/$defs/digest"},
+        "assertion_id": {"type": "string", "pattern": "^PRC-A-[A-Z0-9]+-[0-9]{3}$"},
+        "control_ids": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 256,
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^(?:USEQ-[A-F0-9]{8}|PRC-[0-9]{2}-[0-9]{3})$"}
+        }
+      }
+    },
+    "risk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "rationale", "likelihood", "impact", "worst_credible_outcome"],
+      "properties": {
+        "title": {"type": "string", "minLength": 1, "maxLength": 200},
+        "rationale": {"type": "string", "minLength": 1, "maxLength": 4000},
+        "likelihood": {"enum": ["rare", "unlikely", "possible", "likely", "almost-certain"]},
+        "impact": {"enum": ["low", "medium", "high", "critical"]},
+        "worst_credible_outcome": {"type": "string", "minLength": 1, "maxLength": 4000}
+      }
+    },
+    "compensating_control": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "evidence_references"],
+      "properties": {
+        "description": {"type": "string", "minLength": 1, "maxLength": 2000},
+        "evidence_references": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 64,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/digest"}
+        }
+      }
+    },
+    "monitoring": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["owner", "signal", "response"],
+      "properties": {
+        "owner": {"type": "string", "minLength": 1, "maxLength": 200},
+        "signal": {"type": "string", "minLength": 1, "maxLength": 2000},
+        "response": {"type": "string", "minLength": 1, "maxLength": 2000}
+      }
+    },
+    "remediation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["owner", "plan", "due_at"],
+      "properties": {
+        "owner": {"type": "string", "minLength": 1, "maxLength": 200},
+        "plan": {"type": "string", "minLength": 1, "maxLength": 4000},
+        "due_at": {"type": "string", "format": "date-time"}
+      }
+    }
+  }
+}
