@@ -75,6 +75,37 @@ func proposalTarget(t *testing.T) string {
 	return target
 }
 
+func TestCheckedInProviderProposalFixtureMatchesCurrentWorkspaceAndFinding(t *testing.T) {
+	root := testCatalogRoot(t)
+	target := filepath.Join(root, "fixtures", "providers", "workspace")
+	task, err := provider.LoadTask(filepath.Join(root, "fixtures", "providers", "suggest-task.json"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	data, err := os.ReadFile(filepath.Join(root, "fixtures", "providers", "valid-output.json"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	output, err := provider.ParseOutput("codex", data, task)
+	if err != nil {
+		t.Fatal(err)
+	}
+	candidate, err := RunProposal(ProposalOptions{
+		CatalogRoot: root, Target: target, CandidateDir: filepath.Join(t.TempDir(), "candidate"),
+		ProfileID: "prc/core-repository", Provider: "codex", Task: task, Output: output,
+		MaxFiles: 20, MaxChangedLines: 200, Verifier: passingVerifier(t),
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !candidate.Accepted || candidate.Verification == nil || candidate.Verification.Outcome != "pass" {
+		t.Fatalf("checked-in proposal fixture was not independently accepted: %+v", candidate)
+	}
+	if _, err := os.Stat(filepath.Join(target, "app_test.go")); !os.IsNotExist(err) {
+		t.Fatal("checked-in provider workspace was modified")
+	}
+}
+
 func sealedProposalTask(t *testing.T, target string, allowed, protectedPaths []string) provider.Task {
 	t.Helper()
 	item, err := inventory.Build(target)

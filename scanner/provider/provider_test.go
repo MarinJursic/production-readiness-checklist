@@ -225,9 +225,18 @@ func TestBuildPlanRejectsInputThatDoesNotMatchWorkspace(t *testing.T) {
 
 func TestCheckedInTaskAndProviderFixtures(t *testing.T) {
 	root := repositoryRoot(t)
-	task, err := LoadTask(filepath.Join(root, "fixtures", "providers", "suggest-task.json"))
+	taskPath := filepath.Join(root, "fixtures", "providers", "suggest-task.json")
+	workspace := filepath.Join(root, "fixtures", "providers", "workspace")
+	task, err := LoadTask(taskPath)
 	if err != nil {
 		t.Fatal(err)
+	}
+	resealed, err := SealTask(taskPath, workspace)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if resealed.TaskID != task.TaskID || resealed.WorkspaceInventoryDigest != task.WorkspaceInventoryDigest {
+		t.Fatalf("checked-in task is stale for its workspace: task=%s resealed=%s", task.TaskID, resealed.TaskID)
 	}
 	valid, err := os.ReadFile(filepath.Join(root, "fixtures", "providers", "valid-output.json"))
 	if err != nil {
