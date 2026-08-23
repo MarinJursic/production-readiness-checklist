@@ -1,0 +1,32 @@
+{
+  "schema_version": "prc.agent-task/v0.1",
+  "task_id": "a66940bceec2544cb99db7af3227cdcaa12be6a06793ab8ac16319fe542bab41",
+  "mode": "suggest",
+  "workspace_inventory_digest": "f4ea432d1248a322561258945562e569bc8f240e25a9c6454cfcb77e34b4e73b",
+  "assertion_id": "PRC-A-CORE-010",
+  "control_ids": ["USEQ-12655775"],
+  "goal": "Propose a focused regression test for the missing behavior.",
+  "read_scope": "task-inputs",
+  "relevant_paths": ["app.go", "app_test.go"],
+  "inputs": [
+    {
+      "path": "app.go",
+      "sha256": "75d99e22087438b67ab1768073505b6ad05fa235b57f02efe129400534b6053c",
+      "content": "package app\n"
+    },
+    {
+      "path": "app_test.go",
+      "sha256": "75d99e22087438b67ab1768073505b6ad05fa235b57f02efe129400534b6053c",
+      "content": "package app\n"
+    }
+  ],
+  "allowed_paths": ["app.go", "app_test.go"],
+  "protected_paths": [".git/", ".github/workflows/", "catalog/", "schemas/"],
+  "allowed_commands": [],
+  "network": "deny",
+  "secrets": "none",
+  "allow_remote_source_processing": true,
+  "timeout_seconds": 300,
+  "max_output_bytes": 262144,
+  "max_cost_usd": 0
+}

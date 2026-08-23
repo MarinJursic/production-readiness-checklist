@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/agent-output.schema.json",
+  "title": "Production Readiness Agent Output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "task_id", "status", "root_cause", "changed_files", "patch", "commands_requested_or_run", "limitations", "requested_capability_changes"],
+  "properties": {
+    "schema_version": {"const": "prc.agent-output/v0.1"},
+    "task_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "status": {"enum": ["candidate", "unable", "needs_escalation"]},
+    "root_cause": {"type": "string", "minLength": 1, "maxLength": 16384},
+    "changed_files": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "patch": {"type": "string", "maxLength": 4194304},
+    "commands_requested_or_run": {"type": "array", "maxItems": 0},
+    "limitations": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 16384}},
+    "requested_capability_changes": {"type": "array", "maxItems": 0}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "candidate"}}, "required": ["status"]},
+      "then": {
+        "properties": {
+          "changed_files": {"minItems": 1},
+          "patch": {"minLength": 1}
+        }
+      },
+      "else": {
+        "properties": {
+          "changed_files": {"maxItems": 0},
+          "patch": {"maxLength": 0}
+        }
+      }
+    }
+  ]
+}

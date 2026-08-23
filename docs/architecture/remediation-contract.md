@@ -70,4 +70,6 @@ external workspace. The acceptance audit verifies the raw tree, content hashes,
 permission modes, protected paths, budgets, target result, and baseline passing
 results. See the [R1 remediation guide](../scanner/remediation.md) for the exact
 command and limitations. Agent-authored R2 changes and broader autonomous loops
-remain unimplemented.
+remain unimplemented. The [read-only provider layer](agent-providers.md) can
+produce bounded Codex or Claude Code patch proposals, but it cannot apply or
+accept them.

@@ -98,6 +98,63 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             validate_instance.validation_errors(instance, "adapter-manifest.schema.json"), []
         )
 
+    def test_checked_in_agent_task_and_output_conform(self) -> None:
+        task = json.loads(
+            (ROOT / "fixtures" / "providers" / "suggest-task.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        output = json.loads(
+            (ROOT / "fixtures" / "providers" / "valid-output.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        malicious = json.loads(
+            (
+                ROOT
+                / "fixtures"
+                / "providers"
+                / "malicious-capability-output.json"
+            ).read_text(encoding="utf-8")
+        )
+        self.assertEqual(
+            validate_instance.validation_errors(task, "agent-task.schema.json"), []
+        )
+        self.assertEqual(
+            validate_instance.validation_errors(output, "agent-output.schema.json"), []
+        )
+        self.assertTrue(
+            validate_instance.validation_errors(
+                malicious, "agent-output.schema.json"
+            )
+        )
+
+        digest = "a" * 64
+        execution = {
+            "schema_version": "prc.agent-execution/v0.1",
+            "execution_id": digest,
+            "provider": "codex",
+            "task_id": task["task_id"],
+            "executable_sha256": digest,
+            "output_schema_sha256": digest,
+            "started_at": "2026-08-23T10:00:00Z",
+            "completed_at": "2026-08-23T10:00:01Z",
+            "duration_ms": 1000,
+            "stdout_path": "/tmp/stdout.log",
+            "stdout_sha256": digest,
+            "stdout_bytes": 1,
+            "stderr_path": "/tmp/stderr.log",
+            "stderr_sha256": digest,
+            "stderr_bytes": 0,
+            "output": output,
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(
+                execution, "agent-execution.schema.json"
+            ),
+            [],
+        )
+
     def test_adapter_jsonl_messages_conform_and_authority_attack_fails(self) -> None:
         valid_path = ROOT / "fixtures" / "adapters" / "valid-output.jsonl"
         for line in valid_path.read_text(encoding="utf-8").splitlines():

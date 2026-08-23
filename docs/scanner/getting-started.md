@@ -97,3 +97,7 @@ digest-pinned adapter image outside profile evaluation.
 
 Read [bounded R1 remediation](remediation.md) to create and verify an isolated
 candidate for the supported deterministic finding.
+
+Read [read-only agent providers](../architecture/agent-providers.md) to inspect
+or explicitly run the experimental Codex and Claude Code `suggest` adapters.
+Provider proposals are never applied or treated as evidence of a passing check.

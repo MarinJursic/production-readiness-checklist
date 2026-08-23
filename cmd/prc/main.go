@@ -19,6 +19,7 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/evidence"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/provider"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/remediation"
 )
 
@@ -54,6 +55,8 @@ func run(args []string, stdout, stderr io.Writer) int {
 		err = runExplain(args[1:], stdout, stderr)
 	case "adapter":
 		err = runAdapter(args[1:], stdout, stderr)
+	case "provider":
+		err = runProvider(args[1:], stdout, stderr)
 	case "help", "-h", "--help":
 		usage(stdout)
 		return 0
@@ -74,7 +77,96 @@ func run(args []string, stdout, stderr io.Writer) int {
 
 func usage(output io.Writer) {
 	fmt.Fprintln(output, "Production Readiness Scanner")
-	fmt.Fprintln(output, "usage: prc <inventory|plan|scan|remediate|explain|adapter|version> [options]")
+	fmt.Fprintln(output, "usage: prc <inventory|plan|scan|remediate|explain|adapter|provider|version> [options]")
+}
+
+func runProvider(args []string, stdout, stderr io.Writer) error {
+	if len(args) == 0 {
+		return errors.New("provider requires capabilities, seal-task, plan, validate-output, or run")
+	}
+	set := flag.NewFlagSet("provider "+args[0], flag.ContinueOnError)
+	set.SetOutput(stderr)
+	providerName := set.String("provider", "", "codex or claude")
+	if args[0] == "seal-task" {
+		path := set.String("file", "", "draft agent task JSON file")
+		workspace := set.String("workspace", ".", "workspace to bind into the task")
+		if err := set.Parse(args[1:]); err != nil {
+			return err
+		}
+		if *path == "" {
+			return errors.New("--file is required")
+		}
+		task, err := provider.SealTask(*path, *workspace)
+		if err != nil {
+			return err
+		}
+		return encodeJSON(stdout, task)
+	}
+	if args[0] == "capabilities" {
+		if err := set.Parse(args[1:]); err != nil {
+			return err
+		}
+		capabilities, err := provider.ProviderCapabilities(*providerName)
+		if err != nil {
+			return err
+		}
+		return encodeJSON(stdout, capabilities)
+	}
+	taskPath := set.String("task", "", "agent task JSON file")
+	if args[0] == "validate-output" {
+		path := set.String("file", "", "provider output file")
+		if err := set.Parse(args[1:]); err != nil {
+			return err
+		}
+		if *taskPath == "" || *path == "" {
+			return errors.New("--task and --file are required")
+		}
+		task, err := provider.LoadTask(*taskPath)
+		if err != nil {
+			return err
+		}
+		data, err := os.ReadFile(*path)
+		if err != nil {
+			return err
+		}
+		output, err := provider.ParseOutput(*providerName, data, task)
+		if err != nil {
+			return err
+		}
+		return encodeJSON(stdout, output)
+	}
+	if args[0] != "plan" && args[0] != "run" {
+		return fmt.Errorf("unknown provider command %q", args[0])
+	}
+	workspace := set.String("workspace", ".", "read-only target workspace")
+	outputDirectory := set.String("output-dir", "", "existing disjoint output directory")
+	schemaPath := set.String("output-schema", "schemas/agent-output.schema.json", "agent output JSON Schema")
+	executable := set.String("executable", "", "provider CLI executable")
+	if err := set.Parse(args[1:]); err != nil {
+		return err
+	}
+	if *providerName == "" || *taskPath == "" || *outputDirectory == "" {
+		return errors.New("--provider, --task, and --output-dir are required")
+	}
+	if *executable == "" {
+		*executable = *providerName
+	}
+	task, err := provider.LoadTask(*taskPath)
+	if err != nil {
+		return err
+	}
+	launchPlan, err := provider.BuildPlan(*providerName, *executable, *workspace, *outputDirectory, *schemaPath, task)
+	if err != nil {
+		return err
+	}
+	if args[0] == "plan" {
+		return encodeJSON(stdout, launchPlan)
+	}
+	execution, err := provider.Run(context.Background(), launchPlan, task)
+	if err != nil {
+		return err
+	}
+	return encodeJSON(stdout, execution)
 }
 
 func runRemediate(args []string, stdout, stderr io.Writer) (bool, error) {

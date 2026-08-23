@@ -37,6 +37,22 @@ func TestAdapterValidateOutputRejectsAuthorityAttack(t *testing.T) {
 	}
 }
 
+func TestProviderCapabilitiesAreReadOnly(t *testing.T) {
+	for _, name := range []string{"codex", "claude"} {
+		t.Run(name, func(t *testing.T) {
+			var stdout, stderr bytes.Buffer
+			if code := run([]string{"provider", "capabilities", "--provider", name}, &stdout, &stderr); code != 0 {
+				t.Fatalf("exit=%d stderr=%s", code, stderr.String())
+			}
+			for _, forbidden := range []string{`"workspace_mutation": true`, `"network_tools": true`, `"shell": true`} {
+				if strings.Contains(stdout.String(), forbidden) {
+					t.Fatalf("unsafe capability in %s", stdout.String())
+				}
+			}
+		})
+	}
+}
+
 func TestUnknownCommandIsUsageError(t *testing.T) {
 	var stdout, stderr bytes.Buffer
 	if code := run([]string{"unknown"}, &stdout, &stderr); code != 2 {

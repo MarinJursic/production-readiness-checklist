@@ -81,6 +81,26 @@ jobs:
             exit 1
           fi
 
+      - name: Exercise provider protocol fixtures
+        run: |
+          "$RUNNER_TEMP/prc" provider capabilities --provider codex
+          "$RUNNER_TEMP/prc" provider capabilities --provider claude
+          "$RUNNER_TEMP/prc" provider validate-output \
+            --provider codex \
+            --task fixtures/providers/suggest-task.json \
+            --file fixtures/providers/valid-output.json
+          "$RUNNER_TEMP/prc" provider validate-output \
+            --provider claude \
+            --task fixtures/providers/suggest-task.json \
+            --file fixtures/providers/valid-claude-envelope.json
+          if "$RUNNER_TEMP/prc" provider validate-output \
+            --provider codex \
+            --task fixtures/providers/suggest-task.json \
+            --file fixtures/providers/malicious-capability-output.json; then
+            echo "malicious provider fixture was accepted" >&2
+            exit 1
+          fi
+
       - name: Generate scanner outputs
         run: |
           "$RUNNER_TEMP/prc" inventory --target . --format json > "$RUNNER_TEMP/inventory.json"
