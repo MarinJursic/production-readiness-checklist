@@ -1814,6 +1814,7 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	configPath := set.String("config", "", "optional validated project configuration")
 	mode := set.String("mode", engine.ExecutionModeInspect, "execution mode: inspect or verify-local")
 	format := set.String("format", "human", "human, json, markdown, html, sarif, or junit")
+	colorMode := set.String("color", "auto", "human output color: auto, always, or never")
 	reportPath := set.String("report", "", "write a detailed HTML report to this new file")
 	noReport := set.Bool("no-report", false, "do not create the default HTML report")
 	stateDirectory := set.String("state-dir", "", "optional directory for content-addressed evidence and run records")
@@ -1856,6 +1857,12 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	if *format != "human" && *format != "json" && *format != "markdown" &&
 		*format != "html" && *format != "sarif" && *format != "junit" {
 		return exitInternal, exitError(exitConfiguration, fmt.Errorf("unsupported format %q", *format))
+	}
+	if *colorMode != "auto" && *colorMode != "always" && *colorMode != "never" {
+		return exitInternal, exitError(exitConfiguration, fmt.Errorf("unsupported color mode %q", *colorMode))
+	}
+	if *format != "human" && flagWasSet(set, "color") {
+		return exitInternal, exitError(exitConfiguration, fmt.Errorf("--color applies only to human output"))
 	}
 	if *exitPolicy != "profile" && *exitPolicy != "no-go" && *exitPolicy != "never" {
 		return exitInternal, exitError(exitConfiguration, fmt.Errorf("unsupported exit policy %q", *exitPolicy))
@@ -2013,16 +2020,17 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 			return exitInternal, exitError(exitInternal, err)
 		}
 	} else if *format == "human" {
-		printScanSummary(stdout, run)
+		style := newTerminalStyle(*colorMode, stdout)
+		printScanSummary(stdout, run, style)
 		if *reviewProvider != "none" {
-			fmt.Fprintf(stdout, "AI review: %d controls reviewed by %s; %d advisory failure candidates\n", reviewSummary.ReviewedControls, reviewSummary.Provider, reviewSummary.AdvisoryFailures)
-			fmt.Fprintf(stdout, "AI review resume data: %s\n\n", reviewSummary.StateDirectory)
+			fmt.Fprintf(stdout, "AI review: %d controls reviewed by %s; %d advisory failure candidates\n", reviewSummary.ReviewedControls, terminalText(reviewSummary.Provider), reviewSummary.AdvisoryFailures)
+			fmt.Fprintf(stdout, "AI review resume data: %s\n\n", terminalText(reviewSummary.StateDirectory))
 		}
 		fmt.Fprintln(stdout, "Scan mode: report only; no fixes were applied.")
 		if writtenReport == "" {
 			fmt.Fprintln(stdout, "Detailed report: disabled")
 		} else {
-			fmt.Fprintf(stdout, "Detailed report: %s\n", writtenReport)
+			fmt.Fprintf(stdout, "Detailed report: %s\n", terminalText(writtenReport))
 		}
 	} else if err := report.Write(*format, stdout, run); err != nil {
 		return exitInternal, exitError(exitInternal, err)
@@ -2074,11 +2082,19 @@ func reorderInterspersedFlags(set *flag.FlagSet, args []string) []string {
 	return append(flags, positionals...)
 }
 
-func printScanSummary(output io.Writer, run model.RunResult) {
-	fmt.Fprintf(output, "Run: %s\n", run.RunID)
-	fmt.Fprintf(output, "Profile: %s@%s\n", run.Plan.ProfileID, run.Plan.ProfileVersion)
-	fmt.Fprintf(output, "Target: %s (%s)\n", run.Inventory.TargetName, run.Inventory.Digest)
-	fmt.Fprintf(output, "Terminal state: %s\n", run.TerminalState)
+func printScanSummary(output io.Writer, run model.RunResult, style terminalStyle) {
+	fmt.Fprintf(output, "Production Readiness Scanner %s\n\n", terminalText(version))
+	fmt.Fprintf(output, "Run: %s\n", terminalText(run.RunID))
+	fmt.Fprintf(output, "Profile: %s@%s\n", terminalText(run.Plan.ProfileID), terminalText(run.Plan.ProfileVersion))
+	fmt.Fprintf(output, "Target: %s (%s)\n", terminalText(run.Inventory.TargetName), terminalText(run.Inventory.Digest))
+	fmt.Fprintln(output, "Mode: scan only — no fixes and no project scripts")
+	fmt.Fprintf(output, "\nChecking %d deterministic assertions...\n\n", len(run.Results))
+	for _, result := range run.Results {
+		fmt.Fprintf(output, "  %s  %s  %s\n", assessmentLabel(result.Assessment, result.Execution, style),
+			terminalText(result.AssertionID), terminalText(result.Summary))
+	}
+	fmt.Fprintln(output, "\nResult")
+	fmt.Fprintf(output, "Terminal state: %s\n", terminalText(run.TerminalState))
 	counts := map[string]int{}
 	for _, result := range run.Results {
 		counts[result.Assessment]++
@@ -2090,7 +2106,7 @@ func printScanSummary(output io.Writer, run model.RunResult) {
 		}
 	}
 	fmt.Fprintf(output, "Assessment counts: %s\n", strings.Join(parts, ", "))
-	fmt.Fprintf(output, "Verified findings: %d\n\n", len(run.Findings))
+	fmt.Fprintf(output, "Verified findings: %d\n", len(run.Findings))
 	if run.ControlCatalog != nil {
 		controlCounts := map[string]int{}
 		for _, result := range run.ControlResults {
@@ -2105,16 +2121,9 @@ func printScanSummary(output io.Writer, run model.RunResult) {
 		fmt.Fprintf(output, "Complete control catalog: %d/%d controls included\n", len(run.ControlResults), run.ControlCatalog.ControlCount)
 		fmt.Fprintf(output, "Control dispositions: %s\n", strings.Join(controlParts, ", "))
 		fmt.Fprintln(output, "A partially_verified control is not a complete pass.")
-		fmt.Fprintln(output)
+		fmt.Fprintln(output, "Every registered control is in the detailed report; AI advice is marked advisory.")
 	}
-	const displayedFindings = 8
-	for index, finding := range run.Findings {
-		if index == displayedFindings {
-			fmt.Fprintf(output, "… %d more findings are in the detailed report.\n", len(run.Findings)-displayedFindings)
-			break
-		}
-		fmt.Fprintf(output, "[FAIL] %s (%s/%s): %s\n", finding.AssertionID, finding.Severity, finding.Gate, finding.Summary)
-	}
+	fmt.Fprintln(output)
 }
 
 func writeScanReport(run model.RunResult, requestedPath string) (string, error) {
