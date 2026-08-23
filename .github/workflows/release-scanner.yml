@@ -72,6 +72,7 @@ jobs:
       - name: Verify release source
         run: |
           go mod verify
+          go run github.com/zricethezav/gitleaks/v8@v8.30.1 git --no-banner --redact .
           go test -race ./...
           go vet ./...
           go run honnef.co/go/tools/cmd/staticcheck@v0.8.1 ./...
@@ -79,7 +80,11 @@ jobs:
           go run golang.org/x/vuln/cmd/govulncheck@v1.7.0 ./...
 
       - name: Install schema validation dependencies
-        run: pip install -r requirements-dev.lock.txt
+        run: |
+          pip install -r requirements-dev.lock.txt
+          pip install pip-audit==2.10.1
+          python -m pip_audit -r requirements-dev.lock.txt
+          python -m pip_audit -r requirements-docs.lock.txt
 
       - name: Validate catalog and release tooling
         run: |

@@ -15,6 +15,33 @@ Include:
 
 Avoid including real credentials, personal data, exploit payloads against systems you do not own, or other sensitive material.
 
+## Repository security gates
+
+Repository-owned workflows enforce complementary checks rather than treating any
+single tool as proof of safety:
+
+- CodeQL analyzes Go, Python, and GitHub Actions on pull requests, pushes to the
+  default branch, and a weekly schedule with the `security-extended` query suite;
+- Gitleaks scans the complete committed Git history on pull requests and default-
+  branch pushes, with redaction enabled so a finding is not copied into logs;
+- dependency review rejects pull requests that introduce a moderate-or-higher
+  vulnerability in runtime, development, or unknown scope dependencies and also
+  evaluates dependency license metadata; and
+- validation and release workflows independently audit pinned Python packages,
+  reachable Go vulnerabilities, static analysis findings, and the scanner's
+  targeted filesystem-safety rules. Release tags repeat the dependency and
+  complete-history secret gates before publishing.
+
+Actions are pinned to immutable commit SHAs and tool invocations use exact module
+versions. Dependabot proposes monthly updates so a pin does not silently become a
+permanent version. A protected default branch should require the Validate,
+CodeQL, Dependency review, and Secret scan checks and should enable GitHub secret
+push protection. Those hosted repository settings are not encoded by workflow
+files and must be verified in repository administration after the workflows land.
+
+These checks reduce specific risks; they do not replace review, private
+vulnerability reporting, incident response, or consumer verification.
+
 ## Scope and response
 
 Maintainers will assess reports affecting the repository’s content or automation. Application-specific findings discovered while using the checklist belong to the affected application’s security process, not this public repository.

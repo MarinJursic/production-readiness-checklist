@@ -64,6 +64,7 @@ Existing lifecycle and production control IDs are permanent and recorded in `cat
    go run github.com/securego/gosec/v2/cmd/gosec@v2.28.0 -include=G703,G122 ./...
    go build -trimpath ./cmd/prc
    go run golang.org/x/vuln/cmd/govulncheck@v1.7.0 ./...
+   go run github.com/zricethezav/gitleaks/v8@v8.30.1 git --no-banner --redact .
    ```
 
 6. Build the documentation site when navigation or rendering changes:

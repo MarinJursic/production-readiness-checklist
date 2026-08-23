@@ -8,6 +8,10 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 
 ### Added
 
+- Immutable CodeQL gates for Go, Python, and GitHub Actions, pull-request
+  dependency review across all dependency scopes, and complete-history Gitleaks
+  scanning with redacted output. Scanner releases repeat secret and pinned
+  dependency audits before publication.
 - A deterministic cross-platform scanner release builder and tag-only workflow
   with embedded build identity, bundled catalog/packs/schemas, byte-for-byte
   rebuild comparison, catalog objective sources, pack benchmark corpus,
