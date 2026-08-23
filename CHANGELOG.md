@@ -56,6 +56,9 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 ### Fixed
 
 - Aligned the header star icon and replaced the oversized footer star button with a compact project-action group.
+- Materialized intentionally unsafe container, Terraform, and Kubernetes
+  benchmark states only in temporary copies, preventing test data from creating
+  false production findings when the scanner evaluates its own repository.
 
 ## [2.1.0] - 2026-08-15
 

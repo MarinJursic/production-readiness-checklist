@@ -42,7 +42,7 @@ assertions:
 benchmark:
   suite_id: prc.benchmark.core-native@0.5
   suite_path: fixtures/benchmarks/core-native/suite-comprehensive.yaml
-  suite_sha256: bb84b06f88ddc6807f10cf18d1be79387f7d4bc39868786d224c10f59efde5b6
+  suite_sha256: bd4308277661d83ed92f599a48cbaf437c92141f7cde2cab2162e66d85ccf69d
 limitations:
   - Manual-review and adapter-backed assertions are validated only in their fail-closed manual or blocked states.
   - The fixture corpus does not yet establish cross-platform, large-repository, or adversarial parser performance.

@@ -8,6 +8,8 @@ import (
 	"time"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/catalog"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/engine"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
 )
 
 func repositoryRoot(t *testing.T) string {
@@ -75,6 +77,35 @@ func TestComprehensiveCoreBenchmarkCoversEveryCatalogAssertion(t *testing.T) {
 		report.Summary.Mismatched != 0 || report.Summary.DeterministicCases != report.Summary.Cases ||
 		report.Metrics.Precision != 1 || report.Metrics.Recall != 1 || report.Metrics.FalsePositiveRate != 0 {
 		t.Fatalf("comprehensive benchmark report = %+v", report)
+	}
+}
+
+func TestCheckedInBenchmarkSourcesAreNonViolating(t *testing.T) {
+	root := repositoryRoot(t)
+	catalogValue, err := catalog.Load(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	fixtureRoot := filepath.Join(root, "fixtures", "benchmarks", "core-native", "targets")
+	item, err := inventory.Build(fixtureRoot)
+	if err != nil {
+		t.Fatal(err)
+	}
+	run, err := engine.New(catalogValue).Scan("prc/core-repository", item)
+	if err != nil {
+		t.Fatal(err)
+	}
+	results := map[string]string{}
+	for _, result := range run.Results {
+		results[result.AssertionID] = result.Assessment
+	}
+	for _, assertionID := range []string{
+		"PRC-A-CORE-026", "PRC-A-CORE-027", "PRC-A-CORE-028",
+		"PRC-A-CORE-029", "PRC-A-CORE-030", "PRC-A-CORE-031", "PRC-A-GO-001",
+	} {
+		if results[assertionID] != "pass" {
+			t.Errorf("checked-in fixture corpus %s = %s; negative state must be materialized", assertionID, results[assertionID])
+		}
 	}
 }
 

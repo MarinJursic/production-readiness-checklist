@@ -1,0 +1,2 @@
+FROM scratch
+USER 65532

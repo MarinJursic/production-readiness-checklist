@@ -129,7 +129,10 @@ cases:
       - {assertion_id: PRC-A-CORE-026, assessment: pass, execution: completed}
       - {assertion_id: PRC-A-CORE-027, assessment: pass, execution: completed}
   - id: container-risky
-    target: targets/container-risky
+    target: targets/container-risky-template
+    setup:
+      - {operation: replace_text, path: Dockerfile, find: scratch, replace: "alpine:latest"}
+      - {operation: replace_text, path: Dockerfile, find: "65532", replace: root}
     expectations:
       - {assertion_id: PRC-A-CORE-026, assessment: fail, execution: completed}
       - {assertion_id: PRC-A-CORE-027, assessment: fail, execution: completed}
@@ -138,7 +141,9 @@ cases:
     expectations:
       - {assertion_id: PRC-A-CORE-028, assessment: pass, execution: completed}
   - id: terraform-unlocked
-    target: targets/terraform-unlocked
+    target: targets/terraform-unlocked-template
+    setup:
+      - {operation: truncate, path: .terraform.lock.hcl}
     expectations:
       - {assertion_id: PRC-A-CORE-028, assessment: fail, execution: completed}
   - id: kubernetes-valid
@@ -147,7 +152,11 @@ cases:
       - {assertion_id: PRC-A-CORE-029, assessment: pass, execution: completed}
       - {assertion_id: PRC-A-CORE-030, assessment: pass, execution: completed}
   - id: kubernetes-risky
-    target: targets/kubernetes-risky
+    target: targets/kubernetes-risky-template
+    setup:
+      - {operation: replace_text, path: deployment.yaml, find: "runAsNonRoot: true", replace: "runAsUser: 0"}
+      - {operation: replace_text, path: deployment.yaml, find: "requests:", replace: "fixtureRequests:"}
+      - {operation: replace_text, path: deployment.yaml, find: "limits:", replace: "fixtureLimits:"}
     expectations:
       - {assertion_id: PRC-A-CORE-029, assessment: fail, execution: completed}
       - {assertion_id: PRC-A-CORE-030, assessment: fail, execution: completed}

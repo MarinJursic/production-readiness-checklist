@@ -97,6 +97,12 @@ positive and negative outcome; manual and adapter-backed assertions remain
 measured only in their fail-closed states. All limitations are part of the pack
 manifest and therefore its digest.
 
+Intentionally unsafe container, Terraform, Kubernetes, Go, private-key, merge
+conflict, file-mode, and malformed-source states exist only in materialized
+temporary copies. Their checked-in templates are valid and non-violating. A
+regression test scans the complete source fixture tree and rejects a negative
+fixture that would pollute a real scan of this repository.
+
 Pack membership does not authorize adapter execution and does not change gate
 semantics. Detached, scoped Ed25519 verification is supported through an
 explicit [publisher trust store](../architecture/publisher-trust.md). The
