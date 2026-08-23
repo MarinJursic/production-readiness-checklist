@@ -69,6 +69,8 @@ available inventory fields and limits.
 ## Scan and preserve evidence
 
 ```bash
+mkdir -m 0700 /safe/path/prc-state
+
 ./prc scan \
   --catalog-root /path/to/production-readiness-checklist \
   --target /path/to/project \
@@ -76,9 +78,12 @@ available inventory fields and limits.
   --state-dir /safe/path/prc-state
 ```
 
-`--state-dir` is optional. When supplied, evidence envelopes are stored by digest
-and the complete run is written atomically. Do not put the state directory inside
-the target unless target-local scanner state is intentional.
+`--state-dir` is optional. When supplied, evidence envelopes and complete runs
+are stored by digest, then indexed transactionally in an embedded SQLite
+database. The state root must be private and local; do not put it inside the
+target unless target-local scanner state is intentional. See
+[durable state and history](state-and-history.md) for the storage contract and
+`history` commands.
 
 JSON is available for automation:
 

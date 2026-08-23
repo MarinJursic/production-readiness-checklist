@@ -415,6 +415,55 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             validate_instance.validation_errors(report, "doctor.schema.json")
         )
 
+    def test_history_report_conforms(self) -> None:
+        digest = "a" * 64
+        report = {
+            "schema_version": "prc.history/v0.1",
+            "generated_at": "2026-08-23T12:00:00Z",
+            "state_path": "/tmp/prc-state/state.sqlite",
+            "runs": [
+                {
+                    "run_id": digest,
+                    "started_at": "2026-08-23T11:59:59Z",
+                    "completed_at": "2026-08-23T12:00:00Z",
+                    "target_name": "example",
+                    "profile_id": "prc/core-repository",
+                    "profile_version": "0.3",
+                    "inventory_digest": digest,
+                    "terminal_state": "no_go",
+                    "pass_count": 10,
+                    "fail_count": 2,
+                    "blocked_count": 18,
+                }
+            ],
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(report, "history.schema.json"),
+            [],
+        )
+
+    def test_state_check_report_conforms(self) -> None:
+        report = {
+            "schema_version": "prc.state-check/v0.1",
+            "checked_at": "2026-08-23T12:00:00Z",
+            "state_path": "/tmp/prc-state/state.sqlite",
+            "integrity": "ok",
+            "counts": {
+                "runs": 1,
+                "results": 30,
+                "evidence": 20,
+                "inventory_files": 100,
+                "inventory_facts": 10,
+                "audit_events": 1,
+            },
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(
+                report, "state-check.schema.json"
+            ),
+            [],
+        )
+
     def test_checked_in_adapter_manifest_conforms(self) -> None:
         path = ROOT / "fixtures" / "adapters" / "fixture-adapter.yaml"
         instance = yaml.safe_load(path.read_text(encoding="utf-8"))

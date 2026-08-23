@@ -25,6 +25,7 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/provider"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/remediation"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/report"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/state"
 )
 
 const version = "0.1.0-dev"
@@ -60,6 +61,8 @@ func run(args []string, stdout, stderr io.Writer) int {
 	case "doctor":
 		resultExit = true
 		successful, err = runDoctor(args[1:], stdout, stderr)
+	case "history":
+		err = runHistory(args[1:], stdout, stderr)
 	case "remediate":
 		resultExit = true
 		successful, err = runRemediate(args[1:], stdout, stderr)
@@ -92,7 +95,7 @@ func run(args []string, stdout, stderr io.Writer) int {
 
 func usage(output io.Writer) {
 	fmt.Fprintln(output, "Production Readiness Scanner")
-	fmt.Fprintln(output, "usage: prc <config|inventory|plan|scan|fix|remediate|remediate-proposal|doctor|explain|adapter|provider|version> [options]")
+	fmt.Fprintln(output, "usage: prc <config|inventory|plan|scan|fix|remediate|remediate-proposal|doctor|history|explain|adapter|provider|version> [options]")
 }
 
 func runConfig(args []string, stdout, stderr io.Writer) error {
@@ -413,6 +416,96 @@ func printDoctor(output io.Writer, report doctor.Report) {
 			fmt.Fprintf(output, "  - %s\n", detail)
 		}
 	}
+}
+
+func runHistory(args []string, stdout, stderr io.Writer) error {
+	if len(args) == 0 || (args[0] != "list" && args[0] != "show" && args[0] != "check") {
+		return errors.New("history requires list, show, or check")
+	}
+	set := flag.NewFlagSet("history "+args[0], flag.ContinueOnError)
+	set.SetOutput(stderr)
+	stateDirectory := set.String("state-dir", "", "private scanner state directory (required)")
+	format := set.String("format", "human", "human or json")
+	limit := set.Int("limit", 20, "maximum runs to list")
+	targetName := set.String("target-name", "", "exact target name filter")
+	profileID := set.String("profile", "", "exact profile ID filter")
+	terminalState := set.String("terminal-state", "", "exact terminal state filter")
+	if err := set.Parse(args[1:]); err != nil {
+		return err
+	}
+	if strings.TrimSpace(*stateDirectory) == "" {
+		return errors.New("state directory is required")
+	}
+	if *format != "human" && *format != "json" {
+		return fmt.Errorf("unsupported format %q", *format)
+	}
+	store, err := state.Open(context.Background(), *stateDirectory)
+	if err != nil {
+		return err
+	}
+	defer store.Close()
+	if args[0] == "check" {
+		if set.NArg() != 0 {
+			return errors.New("history check accepts no positional arguments")
+		}
+		if err := store.IntegrityCheck(context.Background()); err != nil {
+			return err
+		}
+		counts, err := store.Counts(context.Background())
+		if err != nil {
+			return err
+		}
+		report := state.CheckReport{
+			SchemaVersion: state.CheckSchema, CheckedAt: time.Now().UTC(),
+			StatePath: store.Path(), Integrity: "ok", Counts: counts,
+		}
+		if *format == "json" {
+			return encodeJSON(stdout, report)
+		}
+		fmt.Fprintf(stdout, "State: %s\n", report.StatePath)
+		fmt.Fprintln(stdout, "Integrity: ok")
+		fmt.Fprintf(stdout, "Records: %d runs, %d results, %d evidence, %d files, %d facts, %d audit events\n",
+			counts.Runs, counts.Results, counts.Evidence, counts.InventoryFiles, counts.InventoryFacts, counts.AuditEvents)
+		return nil
+	}
+	if args[0] == "show" {
+		if set.NArg() != 1 {
+			return errors.New("history show requires one run ID")
+		}
+		run, err := store.LoadRun(context.Background(), set.Arg(0))
+		if err != nil {
+			return err
+		}
+		if *format == "json" {
+			return encodeJSON(stdout, run)
+		}
+		printRun(stdout, run)
+		return nil
+	}
+	if set.NArg() != 0 {
+		return errors.New("history list accepts no positional arguments")
+	}
+	runs, err := store.ListRuns(context.Background(), state.Query{
+		Limit: *limit, TargetName: *targetName, ProfileID: *profileID, TerminalState: *terminalState,
+	})
+	if err != nil {
+		return err
+	}
+	report := state.HistoryReport{
+		SchemaVersion: state.HistorySchema, GeneratedAt: time.Now().UTC(),
+		StatePath: store.Path(), Runs: runs,
+	}
+	if *format == "json" {
+		return encodeJSON(stdout, report)
+	}
+	fmt.Fprintf(stdout, "State: %s\n", report.StatePath)
+	fmt.Fprintf(stdout, "Runs: %d\n", len(report.Runs))
+	for _, item := range report.Runs {
+		fmt.Fprintf(stdout, "- %s %s %s %s pass=%d fail=%d blocked=%d\n",
+			item.CompletedAt.Format(time.RFC3339), item.RunID, item.TargetName, item.TerminalState,
+			item.PassCount, item.FailCount, item.BlockedCount)
+	}
+	return nil
 }
 
 func runRemediateProposal(args []string, stdout, stderr io.Writer) (bool, error) {
@@ -837,8 +930,21 @@ func runScan(args []string, stdout, stderr io.Writer) (bool, error) {
 	if err != nil {
 		return false, err
 	}
+	var stateStore *state.Store
+	if *stateDirectory != "" {
+		stateStore, err = state.Open(context.Background(), *stateDirectory)
+		if err != nil {
+			return false, err
+		}
+		defer stateStore.Close()
+	}
 	if err := evidence.WriteRun(*stateDirectory, run); err != nil {
 		return false, err
+	}
+	if stateStore != nil {
+		if err := stateStore.IndexRun(context.Background(), run); err != nil {
+			return false, err
+		}
 	}
 	if *format == "json" {
 		if err := encodeJSON(stdout, run); err != nil {

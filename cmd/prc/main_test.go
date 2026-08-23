@@ -363,6 +363,73 @@ func TestDoctorCommandFailsForUnsafeCandidateParent(t *testing.T) {
 	}
 }
 
+func TestScanIndexesDurableHistoryAndHistoryCommandsReadCanonicalRun(t *testing.T) {
+	target := t.TempDir()
+	if err := os.WriteFile(filepath.Join(target, "app.py"), []byte("print('ready')\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	stateDirectory := t.TempDir()
+	if err := os.Chmod(stateDirectory, 0o700); err != nil {
+		t.Fatal(err)
+	}
+	var scanOutput, stderr bytes.Buffer
+	code := run([]string{
+		"scan", "--target", target, "--catalog-root", filepath.Join("..", ".."),
+		"--state-dir", stateDirectory, "--format", "json", "--exit-policy", "never",
+	}, &scanOutput, &stderr)
+	if code != 0 {
+		t.Fatalf("scan exit=%d stderr=%s", code, stderr.String())
+	}
+	var scanned model.RunResult
+	if err := json.Unmarshal(scanOutput.Bytes(), &scanned); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := os.Stat(filepath.Join(stateDirectory, "state.sqlite")); err != nil {
+		t.Fatalf("state index was not created: %v", err)
+	}
+	var historyOutput bytes.Buffer
+	stderr.Reset()
+	code = run([]string{
+		"history", "list", "--state-dir", stateDirectory, "--target-name", scanned.Inventory.TargetName,
+		"--format", "json",
+	}, &historyOutput, &stderr)
+	if code != 0 {
+		t.Fatalf("history exit=%d stderr=%s", code, stderr.String())
+	}
+	var history struct {
+		SchemaVersion string `json:"schema_version"`
+		Runs          []struct {
+			RunID string `json:"run_id"`
+		} `json:"runs"`
+	}
+	if err := json.Unmarshal(historyOutput.Bytes(), &history); err != nil {
+		t.Fatal(err)
+	}
+	if history.SchemaVersion != "prc.history/v0.1" || len(history.Runs) != 1 || history.Runs[0].RunID != scanned.RunID {
+		t.Fatalf("unexpected history: %+v", history)
+	}
+	var showOutput bytes.Buffer
+	stderr.Reset()
+	code = run([]string{
+		"history", "show", "--state-dir", stateDirectory, "--format", "json", scanned.RunID,
+	}, &showOutput, &stderr)
+	if code != 0 {
+		t.Fatalf("history show exit=%d stderr=%s", code, stderr.String())
+	}
+	var shown model.RunResult
+	if err := json.Unmarshal(showOutput.Bytes(), &shown); err != nil || shown.RunID != scanned.RunID {
+		t.Fatalf("shown run=%s err=%v", shown.RunID, err)
+	}
+	var checkOutput bytes.Buffer
+	stderr.Reset()
+	code = run([]string{
+		"history", "check", "--state-dir", stateDirectory, "--format", "json",
+	}, &checkOutput, &stderr)
+	if code != 0 || !strings.Contains(checkOutput.String(), `"integrity": "ok"`) {
+		t.Fatalf("history check exit=%d stdout=%s stderr=%s", code, checkOutput.String(), stderr.String())
+	}
+}
+
 func TestRemediateCommandConsumesConfiguredPolicy(t *testing.T) {
 	target := t.TempDir()
 	if err := os.WriteFile(filepath.Join(target, "app.py"), []byte("print('ready')"), 0o644); err != nil {

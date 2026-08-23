@@ -32,6 +32,9 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 - A non-executing `prc doctor` command and versioned diagnostics report for
   target/catalog validity, private evidence storage, candidate filesystem
   isolation, OCI runtime identity, and optional agent-provider identity.
+- A CGO-free embedded SQLite state index with strict migrations, transactional
+  run/result/evidence/inventory indexing, canonical-record identity checks,
+  audit events, integrity checks, and `history list`/`history show` queries.
 
 ### Fixed
 

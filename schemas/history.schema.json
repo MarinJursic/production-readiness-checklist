@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/history.schema.json",
+  "title": "Production Readiness Scanner Run History v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "generated_at", "state_path", "runs"],
+  "properties": {
+    "schema_version": {"const": "prc.history/v0.1"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "state_path": {"type": "string", "minLength": 1},
+    "runs": {
+      "type": "array",
+      "maxItems": 1000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["run_id", "started_at", "completed_at", "target_name", "profile_id", "profile_version", "inventory_digest", "terminal_state", "pass_count", "fail_count", "blocked_count"],
+        "properties": {
+          "run_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "started_at": {"type": "string", "format": "date-time"},
+          "completed_at": {"type": "string", "format": "date-time"},
+          "target_name": {"type": "string", "minLength": 1},
+          "profile_id": {"type": "string", "pattern": "^prc/[a-z0-9-]+$"},
+          "profile_version": {"type": "string", "minLength": 1},
+          "inventory_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "configuration_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "project_id": {"type": "string", "pattern": "^[a-z0-9](?:[a-z0-9-]{0,62})$"},
+          "terminal_state": {"enum": ["profile_satisfied", "machine_work_complete_manual_evidence_remaining", "assessment_incomplete", "environment_blocked", "no_go"]},
+          "pass_count": {"type": "integer", "minimum": 0},
+          "fail_count": {"type": "integer", "minimum": 0},
+          "blocked_count": {"type": "integer", "minimum": 0}
+        }
+      }
+    }
+  }
+}

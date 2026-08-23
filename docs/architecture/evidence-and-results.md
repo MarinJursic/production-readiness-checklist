@@ -86,6 +86,14 @@ Every evidence item records:
 Evidence content is stored by digest. Reports refer to evidence identifiers and
 redacted previews rather than copying sensitive content indiscriminately.
 
+The durable state layer keeps immutable JSON as the canonical record and adds a
+transactional SQLite query index for runs, results, evidence metadata, inventory
+files, sourced facts, relationships, and audit events. It verifies canonical
+identities before indexing, uses strict tables and foreign keys, and repairs
+derived rows by re-indexing an immutable run. Indexed record paths are relative
+and must resolve inside the state root. See [durable state and run
+history](../scanner/state-and-history.md).
+
 ## Authority is assertion-specific
 
 Authority is not a universal numeric confidence score. A repository configuration
