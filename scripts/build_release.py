@@ -22,6 +22,11 @@ import tempfile
 import zipfile
 from typing import Any
 
+try:
+    from scripts import npm_distribution
+except ModuleNotFoundError:  # Direct `python scripts/build_release.py` execution.
+    import npm_distribution
+
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 MODULE = "github.com/MarinJursic/production-readiness-checklist"
@@ -359,8 +364,21 @@ def build_release(args: argparse.Namespace) -> None:
                 }
             )
 
+        npm_staging = staging / "npm"
+        npm_packages = npm_distribution.build_packages(
+            version=args.version,
+            commit=args.commit,
+            built_at=built_at,
+            epoch=epoch,
+            binaries=built,
+            support=support,
+            output=npm_staging,
+        )
+        for package in npm_packages:
+            os.replace(npm_staging / package["name"], distribution / package["name"])
+
         manifest = {
-            "schema_version": "prc.release-manifest/v0.1",
+            "schema_version": "prc.release-manifest/v0.2",
             "product": "prc-scanner",
             "version": args.version,
             "source_commit": args.commit,
@@ -369,6 +387,7 @@ def build_release(args: argparse.Namespace) -> None:
             "catalog": catalog,
             "packs": packs,
             "artifacts": artifacts,
+            "npm_packages": npm_packages,
             "sbom": {
                 "name": sbom_name,
                 "format": "CycloneDX",

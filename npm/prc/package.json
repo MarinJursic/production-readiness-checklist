@@ -1,0 +1,43 @@
+{
+  "name": "@marinjursic/prc",
+  "version": "0.0.0-development",
+  "private": true,
+  "description": "Safe launcher for the Production Readiness Scanner",
+  "type": "module",
+  "bin": {
+    "prc": "bin/prc.js"
+  },
+  "files": [
+    "bin/prc.js",
+    "platforms.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22.14.0"
+  },
+  "license": "MIT",
+  "author": "Marin Jursic",
+  "homepage": "https://marinjursic.github.io/production-readiness-checklist/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarinJursic/production-readiness-checklist.git",
+    "directory": "npm/prc"
+  },
+  "bugs": "https://github.com/MarinJursic/production-readiness-checklist/issues",
+  "keywords": [
+    "production-readiness",
+    "scanner",
+    "security",
+    "checklist",
+    "devops"
+  ],
+  "optionalDependencies": {
+    "@marinjursic/prc-darwin-arm64": "0.0.0-development",
+    "@marinjursic/prc-darwin-x64": "0.0.0-development",
+    "@marinjursic/prc-linux-arm64": "0.0.0-development",
+    "@marinjursic/prc-linux-x64": "0.0.0-development",
+    "@marinjursic/prc-windows-arm64": "0.0.0-development",
+    "@marinjursic/prc-windows-x64": "0.0.0-development"
+  }
+}

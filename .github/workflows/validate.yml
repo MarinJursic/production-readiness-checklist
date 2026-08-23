@@ -21,6 +21,12 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Set up Node.js for the npm launcher contract
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        with:
+          node-version: "24"
+          package-manager-cache: false
+
       - name: Install catalog dependencies
         run: pip install -r requirements-dev.lock.txt
 
@@ -35,6 +41,13 @@ jobs:
 
       - name: Run validator tests
         run: python -m unittest discover -s tests -p "test_*.py" -v
+
+      - name: Test the dependency-free npm launcher
+        run: |
+          node --test npm/prc/test/*.test.mjs
+          node --check npm/prc/bin/prc.js
+          npm pack ./npm/prc --ignore-scripts --dry-run --json > "$RUNNER_TEMP/npm-pack.json"
+          python -c 'import json,sys; p=json.load(open(sys.argv[1], encoding="utf-8"))[0]; assert {x["path"] for x in p["files"]}=={"LICENSE","README.md","bin/prc.js","package.json","platforms.json"}' "$RUNNER_TEMP/npm-pack.json"
 
       - name: Check catalog schemas and generated files
         run: python scripts/catalog.py check
@@ -371,6 +384,12 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Set up Node.js for packaged-launcher verification
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        with:
+          node-version: "24"
+          package-manager-cache: false
+
       - name: Install schema validation dependencies
         run: pip install -r requirements-dev.lock.txt
 
@@ -420,6 +439,14 @@ jobs:
             "$RUNNER_TEMP/release-first/prc_0.0.0-ci_self-scan.json"
           python -c 'import json,os,sys; d=json.load(open(sys.argv[1], encoding="utf-8")); assert d["inventory"]["git_commit"]==os.environ["GITHUB_SHA"] and d["plan"]["target_commit"]==os.environ["GITHUB_SHA"] and len(d["results"])>0' \
             "$RUNNER_TEMP/release-first/prc_0.0.0-ci_self-scan.json"
+          mkdir "$RUNNER_TEMP/npm-smoke"
+          cd "$RUNNER_TEMP/npm-smoke"
+          npm install --ignore-scripts --offline --no-audit --no-fund --package-lock=false \
+            "$RUNNER_TEMP/release-first/marinjursic-prc-linux-x64-0.0.0-ci.tgz" \
+            "$RUNNER_TEMP/release-first/marinjursic-prc-0.0.0-ci.tgz"
+          ./node_modules/.bin/prc version --format json > "$RUNNER_TEMP/npm-version.json"
+          cd "$GITHUB_WORKSPACE"
+          python scripts/validate_instance.py version.schema.json "$RUNNER_TEMP/npm-version.json"
           python -c 'import pathlib,sys; from scripts.build_release import write_checksums; write_checksums(pathlib.Path(sys.argv[1]))' \
             "$RUNNER_TEMP/release-first"
           (cd "$RUNNER_TEMP/release-first" && sha256sum --check SHA256SUMS)

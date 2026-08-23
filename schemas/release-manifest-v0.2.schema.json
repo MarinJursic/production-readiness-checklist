@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/release-manifest-v0.2.schema.json",
+  "title": "Production Readiness Scanner release manifest v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "product", "version", "source_commit", "built_at",
+    "go_version", "catalog", "packs", "artifacts", "npm_packages", "sbom"
+  ],
+  "properties": {
+    "schema_version": {"const": "prc.release-manifest/v0.2"},
+    "product": {"const": "prc-scanner"},
+    "version": {"$ref": "#/$defs/version"},
+    "source_commit": {"type": "string", "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$"},
+    "built_at": {"type": "string", "format": "date-time"},
+    "go_version": {"type": "string", "pattern": "^go1\\.[0-9]+(?:\\.[0-9]+)?"},
+    "catalog": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "catalog_version", "catalog_digest", "objective_count", "assertion_count", "profile_count"],
+      "properties": {
+        "schema_version": {"const": "prc.catalog-manifest/v0.1"},
+        "catalog_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+        "catalog_digest": {"$ref": "#/$defs/digest"},
+        "objective_count": {"type": "integer", "minimum": 1},
+        "assertion_count": {"type": "integer", "minimum": 1},
+        "profile_count": {"type": "integer", "minimum": 1}
+      }
+    },
+    "packs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "path", "digest", "suite_digest", "benchmark_corpus_digest", "catalog_digest"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "path": {"type": "string", "pattern": "^packs/[A-Za-z0-9._-]+\\.ya?ml$"},
+          "digest": {"$ref": "#/$defs/digest"},
+          "suite_digest": {"$ref": "#/$defs/digest"},
+          "benchmark_corpus_digest": {"$ref": "#/$defs/digest"},
+          "catalog_digest": {"$ref": "#/$defs/digest"}
+        }
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "allOf": [
+        {"contains": {"properties": {"goos": {"const": "darwin"}, "goarch": {"const": "amd64"}}, "required": ["goos", "goarch"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"goos": {"const": "darwin"}, "goarch": {"const": "arm64"}}, "required": ["goos", "goarch"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"goos": {"const": "linux"}, "goarch": {"const": "amd64"}}, "required": ["goos", "goarch"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"goos": {"const": "linux"}, "goarch": {"const": "arm64"}}, "required": ["goos", "goarch"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"goos": {"const": "windows"}, "goarch": {"const": "amd64"}}, "required": ["goos", "goarch"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"goos": {"const": "windows"}, "goarch": {"const": "arm64"}}, "required": ["goos", "goarch"]}, "minContains": 1, "maxContains": 1}
+      ],
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "goos", "goarch", "archive_format", "sha256", "size"],
+        "properties": {
+          "name": {"type": "string", "pattern": "^prc_[0-9A-Za-z.-]+_(?:linux|darwin|windows)_(?:amd64|arm64)\\.(?:tar\\.gz|zip)$"},
+          "goos": {"enum": ["linux", "darwin", "windows"]},
+          "goarch": {"enum": ["amd64", "arm64"]},
+          "archive_format": {"enum": ["tar.gz", "zip"]},
+          "sha256": {"$ref": "#/$defs/digest"},
+          "size": {"type": "integer", "minimum": 1}
+        },
+        "oneOf": [
+          {"properties": {"name": {"pattern": "^prc_[0-9A-Za-z.-]+_darwin_amd64\\.tar\\.gz$"}, "goos": {"const": "darwin"}, "goarch": {"const": "amd64"}, "archive_format": {"const": "tar.gz"}}},
+          {"properties": {"name": {"pattern": "^prc_[0-9A-Za-z.-]+_darwin_arm64\\.tar\\.gz$"}, "goos": {"const": "darwin"}, "goarch": {"const": "arm64"}, "archive_format": {"const": "tar.gz"}}},
+          {"properties": {"name": {"pattern": "^prc_[0-9A-Za-z.-]+_linux_amd64\\.tar\\.gz$"}, "goos": {"const": "linux"}, "goarch": {"const": "amd64"}, "archive_format": {"const": "tar.gz"}}},
+          {"properties": {"name": {"pattern": "^prc_[0-9A-Za-z.-]+_linux_arm64\\.tar\\.gz$"}, "goos": {"const": "linux"}, "goarch": {"const": "arm64"}, "archive_format": {"const": "tar.gz"}}},
+          {"properties": {"name": {"pattern": "^prc_[0-9A-Za-z.-]+_windows_amd64\\.zip$"}, "goos": {"const": "windows"}, "goarch": {"const": "amd64"}, "archive_format": {"const": "zip"}}},
+          {"properties": {"name": {"pattern": "^prc_[0-9A-Za-z.-]+_windows_arm64\\.zip$"}, "goos": {"const": "windows"}, "goarch": {"const": "arm64"}, "archive_format": {"const": "zip"}}}
+        ]
+      }
+    },
+    "npm_packages": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "uniqueItems": true,
+      "allOf": [
+        {"contains": {"properties": {"package_name": {"const": "@marinjursic/prc"}}, "required": ["package_name"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"package_name": {"const": "@marinjursic/prc-darwin-arm64"}}, "required": ["package_name"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"package_name": {"const": "@marinjursic/prc-darwin-x64"}}, "required": ["package_name"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"package_name": {"const": "@marinjursic/prc-linux-arm64"}}, "required": ["package_name"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"package_name": {"const": "@marinjursic/prc-linux-x64"}}, "required": ["package_name"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"package_name": {"const": "@marinjursic/prc-windows-arm64"}}, "required": ["package_name"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"package_name": {"const": "@marinjursic/prc-windows-x64"}}, "required": ["package_name"]}, "minContains": 1, "maxContains": 1}
+      ],
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "package_name", "kind", "sha256", "size"],
+        "properties": {
+          "name": {"type": "string", "pattern": "^marinjursic-prc(?:-(?:darwin|linux|windows)-(?:arm64|x64))?-[0-9A-Za-z.-]+\\.tgz$"},
+          "package_name": {"type": "string", "pattern": "^@marinjursic/prc(?:-(?:darwin|linux|windows)-(?:arm64|x64))?$"},
+          "kind": {"enum": ["launcher", "platform"]},
+          "os": {"enum": ["darwin", "linux", "win32"]},
+          "cpu": {"enum": ["arm64", "x64"]},
+          "sha256": {"$ref": "#/$defs/digest"},
+          "size": {"type": "integer", "minimum": 1}
+        },
+        "allOf": [
+          {"if": {"properties": {"kind": {"const": "platform"}}}, "then": {"required": ["os", "cpu"]}},
+          {"if": {"properties": {"kind": {"const": "launcher"}}}, "then": {"not": {"anyOf": [{"required": ["os"]}, {"required": ["cpu"]}]}}}
+        ],
+        "oneOf": [
+          {"properties": {"name": {"pattern": "^marinjursic-prc-[0-9A-Za-z.-]+\\.tgz$"}, "package_name": {"const": "@marinjursic/prc"}, "kind": {"const": "launcher"}}},
+          {"properties": {"name": {"pattern": "^marinjursic-prc-darwin-arm64-[0-9A-Za-z.-]+\\.tgz$"}, "package_name": {"const": "@marinjursic/prc-darwin-arm64"}, "kind": {"const": "platform"}, "os": {"const": "darwin"}, "cpu": {"const": "arm64"}}},
+          {"properties": {"name": {"pattern": "^marinjursic-prc-darwin-x64-[0-9A-Za-z.-]+\\.tgz$"}, "package_name": {"const": "@marinjursic/prc-darwin-x64"}, "kind": {"const": "platform"}, "os": {"const": "darwin"}, "cpu": {"const": "x64"}}},
+          {"properties": {"name": {"pattern": "^marinjursic-prc-linux-arm64-[0-9A-Za-z.-]+\\.tgz$"}, "package_name": {"const": "@marinjursic/prc-linux-arm64"}, "kind": {"const": "platform"}, "os": {"const": "linux"}, "cpu": {"const": "arm64"}}},
+          {"properties": {"name": {"pattern": "^marinjursic-prc-linux-x64-[0-9A-Za-z.-]+\\.tgz$"}, "package_name": {"const": "@marinjursic/prc-linux-x64"}, "kind": {"const": "platform"}, "os": {"const": "linux"}, "cpu": {"const": "x64"}}},
+          {"properties": {"name": {"pattern": "^marinjursic-prc-windows-arm64-[0-9A-Za-z.-]+\\.tgz$"}, "package_name": {"const": "@marinjursic/prc-windows-arm64"}, "kind": {"const": "platform"}, "os": {"const": "win32"}, "cpu": {"const": "arm64"}}},
+          {"properties": {"name": {"pattern": "^marinjursic-prc-windows-x64-[0-9A-Za-z.-]+\\.tgz$"}, "package_name": {"const": "@marinjursic/prc-windows-x64"}, "kind": {"const": "platform"}, "os": {"const": "win32"}, "cpu": {"const": "x64"}}}
+        ]
+      }
+    },
+    "sbom": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "format", "spec_version", "sha256", "size"],
+      "properties": {
+        "name": {"type": "string", "pattern": "^prc_[0-9A-Za-z.-]+\\.cdx\\.json$"},
+        "format": {"const": "CycloneDX"},
+        "spec_version": {"const": "1.6"},
+        "sha256": {"$ref": "#/$defs/digest"},
+        "size": {"type": "integer", "minimum": 1}
+      }
+    }
+  },
+  "$defs": {
+    "digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "version": {
+      "type": "string",
+      "maxLength": 128,
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-(?:(?:0|[1-9][0-9]*)|(?:[0-9A-Za-z-]*[A-Za-z-][0-9A-Za-z-]*))(?:\\.(?:(?:0|[1-9][0-9]*)|(?:[0-9A-Za-z-]*[A-Za-z-][0-9A-Za-z-]*)))*)?$"
+    }
+  }
+}

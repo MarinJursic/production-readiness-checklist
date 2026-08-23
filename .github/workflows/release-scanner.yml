@@ -37,6 +37,12 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Set up Node.js for packaged-launcher verification
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        with:
+          node-version: "24"
+          package-manager-cache: false
+
       - name: Validate release identity
         id: metadata
         shell: bash
@@ -173,7 +179,7 @@ jobs:
           python scripts/validate_instance.py run-result.schema.json \
             "release/prc_${PRC_VERSION}_self-scan.json"
           (cd release && sha256sum --check SHA256SUMS)
-          awk '$2 ~ /\.(tar\.gz|zip)$/ {print}' release/SHA256SUMS \
+          awk '$2 ~ /\.(tar\.gz|zip|tgz)$/ {print}' release/SHA256SUMS \
             > "$RUNNER_TEMP/release-archive-checksums"
           test -s "$RUNNER_TEMP/release-archive-checksums"
           mkdir "$RUNNER_TEMP/smoke"
@@ -182,6 +188,15 @@ jobs:
             > "$RUNNER_TEMP/version.json"
           python scripts/validate_instance.py version.schema.json "$RUNNER_TEMP/version.json"
           python -c 'import json,os,sys; d=json.load(open(sys.argv[1], encoding="utf-8")); assert d["version"]==os.environ["PRC_VERSION"] and d["revision"]==os.environ["GITHUB_SHA"]' "$RUNNER_TEMP/version.json"
+          mkdir "$RUNNER_TEMP/npm-smoke"
+          cd "$RUNNER_TEMP/npm-smoke"
+          npm install --ignore-scripts --offline --no-audit --no-fund --package-lock=false \
+            "$GITHUB_WORKSPACE/release/marinjursic-prc-linux-x64-${PRC_VERSION}.tgz" \
+            "$GITHUB_WORKSPACE/release/marinjursic-prc-${PRC_VERSION}.tgz"
+          ./node_modules/.bin/prc version --format json > "$RUNNER_TEMP/npm-version.json"
+          cd "$GITHUB_WORKSPACE"
+          python scripts/validate_instance.py version.schema.json "$RUNNER_TEMP/npm-version.json"
+          python -c 'import json,os,sys; d=json.load(open(sys.argv[1], encoding="utf-8")); assert d["version"]==os.environ["PRC_VERSION"] and d["revision"]==os.environ["GITHUB_SHA"]' "$RUNNER_TEMP/npm-version.json"
 
       - name: Attest SLSA build provenance
         uses: actions/attest@508db95dd578ae2727ebd6217d5ba78e4fbda05d # v4.2.1

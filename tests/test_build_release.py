@@ -130,6 +130,19 @@ class ReleaseBuilderTests(unittest.TestCase):
         ):
             self.assertIn(expected, names)
 
+    def test_current_release_manifest_schema_includes_exact_npm_packages(self) -> None:
+        schema = json.loads((build_release.ROOT / "schemas" / "release-manifest-v0.2.schema.json").read_text())
+        self.assertEqual(schema["properties"]["schema_version"]["const"], "prc.release-manifest/v0.2")
+        archives = schema["properties"]["artifacts"]
+        self.assertTrue(archives["uniqueItems"])
+        self.assertEqual(len(archives["allOf"]), 6)
+        self.assertEqual(len(archives["items"]["oneOf"]), 6)
+        npm_packages = schema["properties"]["npm_packages"]
+        self.assertEqual((npm_packages["minItems"], npm_packages["maxItems"]), (7, 7))
+        self.assertTrue(npm_packages["uniqueItems"])
+        self.assertEqual(len(npm_packages["allOf"]), 7)
+        self.assertEqual(len(npm_packages["items"]["oneOf"]), 7)
+
     def test_checksums_are_sorted_and_reject_nonfiles(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = pathlib.Path(temporary)
