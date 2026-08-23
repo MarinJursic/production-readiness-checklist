@@ -16,8 +16,12 @@ func reportRun() model.RunResult {
 	started := time.Date(2026, 8, 23, 10, 0, 0, 0, time.UTC)
 	return model.RunResult{
 		SchemaVersion: model.RunSchema, RunID: digest, StartedAt: started, CompletedAt: started.Add(time.Second),
-		Plan:      model.Plan{ProfileID: "prc/core-repository", ProfileVersion: "0.2"},
+		Plan:      model.Plan{ProfileID: "prc/core-repository", ProfileVersion: "0.3"},
 		Inventory: model.Inventory{TargetName: "<unsafe & target>", Digest: digest}, TerminalState: "no_go",
+		AdapterExecutions: []model.AdapterExecution{{
+			AdapterID: "<unsafe-adapter>", ManifestSHA256: digest, ExecutionID: digest,
+			Transcript: model.AdapterTranscript{Summary: model.AdapterSummary{Status: "completed"}},
+		}},
 		Results: []model.AssertionResult{
 			{AssertionID: "PRC-A-CORE-001", Assessment: "fail", Execution: "completed", Severity: "high", Gate: "required", Summary: "Missing README | required.", RemediationClass: "R2", ControlIDs: []string{"USEQ-FDCA6C71"}, EvidenceObserved: []model.Evidence{}},
 			{AssertionID: "PRC-A-CORE-012", Assessment: "manual_review", Execution: "completed", Severity: "high", Gate: "required", Summary: "Reviewer required.", RemediationClass: "R0", EvidenceObserved: []model.Evidence{}},
@@ -32,7 +36,7 @@ func TestMarkdownReportIsScopedAndEscapesTableCells(t *testing.T) {
 		t.Fatal(err)
 	}
 	text := output.String()
-	for _, expected := range []string{"# Production readiness assessment", "Missing README \\| required.", "not an unqualified production-readiness"} {
+	for _, expected := range []string{"# Production readiness assessment", "Missing README \\| required.", "## Adapter executions", "not an unqualified production-readiness"} {
 		if !strings.Contains(text, expected) {
 			t.Errorf("missing %q in report", expected)
 		}
@@ -80,7 +84,8 @@ func TestHTMLReportEscapesUntrustedText(t *testing.T) {
 		t.Fatal(err)
 	}
 	text := output.String()
-	if strings.Contains(text, "<unsafe & target>") || !strings.Contains(text, "&lt;unsafe &amp; target&gt;") {
+	if strings.Contains(text, "<unsafe & target>") || !strings.Contains(text, "&lt;unsafe &amp; target&gt;") ||
+		strings.Contains(text, "<unsafe-adapter>") || !strings.Contains(text, "&lt;unsafe-adapter&gt;") {
 		t.Fatalf("HTML output was not escaped: %s", text)
 	}
 }

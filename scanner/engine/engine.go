@@ -63,6 +63,14 @@ func (e *Engine) Plan(profileID string, inventory model.Inventory) (model.Plan, 
 }
 
 func (e *Engine) Scan(profileID string, inventory model.Inventory) (model.RunResult, error) {
+	return e.ScanWithAdapterEvidence(profileID, inventory, nil)
+}
+
+func (e *Engine) ScanWithAdapterEvidence(
+	profileID string,
+	inventory model.Inventory,
+	executions []model.AdapterExecution,
+) (model.RunResult, error) {
 	profile, err := e.Catalog.Profile(profileID)
 	if err != nil {
 		return model.RunResult{}, err
@@ -72,8 +80,22 @@ func (e *Engine) Scan(profileID string, inventory model.Inventory) (model.RunRes
 		return model.RunResult{}, err
 	}
 	started := e.Now()
+	validatedExecutions, err := validateAdapterExecutions(inventory, executions)
+	if err != nil {
+		return model.RunResult{}, err
+	}
+	for _, execution := range validatedExecutions {
+		authorized, err := e.authorizesAdapterInPlan(plan, execution.AdapterID, execution.ManifestSHA256)
+		if err != nil {
+			return model.RunResult{}, err
+		}
+		if !authorized {
+			return model.RunResult{}, fmt.Errorf("adapter execution %s is not authorized by an applicable assertion", execution.ExecutionID)
+		}
+	}
 	run := model.RunResult{
 		SchemaVersion: model.RunSchema, StartedAt: started, Plan: plan, Inventory: inventory,
+		AdapterExecutions: validatedExecutions,
 	}
 	for _, planned := range plan.Assertions {
 		assertion := e.Catalog.Assertions[planned.AssertionID]
@@ -92,6 +114,8 @@ func (e *Engine) Scan(profileID string, inventory model.Inventory) (model.RunRes
 			result.Execution = "not_run"
 			result.Assessment = "unknown"
 			result.Summary = "Applicability could not be determined by the supported expression evaluator."
+		} else if assertion.ImplementationID == "prc.native.analysis-evidence@0.1" {
+			result = evaluateAnalysisEvidence(assertion, inventory, validatedExecutions, result)
 		} else {
 			result = e.evaluate(assertion, inventory, result, started)
 		}
@@ -204,9 +228,9 @@ func (e *Engine) evaluate(
 		result.Summary = "This assertion requires scoped evidence from an accountable reviewer."
 		return result
 	case "prc.native.analysis-evidence@0.1":
-		result.Execution = "blocked"
+		result.Execution = "error"
 		result.Assessment = "unknown"
-		result.Summary = "No analysis adapter result was supplied for this scanner version."
+		result.Summary = "Analysis evidence must be evaluated through the bound adapter-evidence path."
 		return result
 	default:
 		result.Execution = "error"
@@ -690,7 +714,8 @@ func terminalState(profile model.Profile, results []model.AssertionResult) strin
 		if result.Assessment == "manual_review" {
 			hasManual = true
 		}
-		if result.Assessment == "unknown" || result.Applicability == "undetermined" {
+		if result.Assessment == "unknown" || result.Assessment == "stale" ||
+			result.Assessment == "conflicting" || result.Applicability == "undetermined" {
 			hasIncomplete = true
 		}
 		if result.Execution == "error" || result.Execution == "blocked" {

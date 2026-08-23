@@ -358,15 +358,9 @@ func runOCIAdapter(commandName string, args []string, stdout, stderr io.Writer) 
 	if commandName == "plan-oci" {
 		return encodeJSON(stdout, ociPlan)
 	}
-	facts := map[string]any{
-		"source_files": item.SourceFiles, "package_ecosystems": item.PackageEcosystems,
-		"manifests": item.Manifests, "lock_files": item.LockFiles, "container_files": item.ContainerFiles,
-		"symlinks": item.Symlinks, "ci": item.CI, "infrastructure": item.Infrastructure,
-		"components": item.Components, "relations": item.Relations, "facts": item.Facts,
-	}
 	input, err := adapter.InputJSONL(runID, adapter.Subject{
 		TargetName: item.TargetName, TargetCommit: item.GitCommit, InventoryDigest: item.Digest,
-	}, facts, map[string]any{})
+	}, inventoryFacts(item), map[string]any{})
 	if err != nil {
 		return err
 	}
@@ -374,7 +368,13 @@ func runOCIAdapter(commandName string, args []string, stdout, stderr io.Writer) 
 	if err != nil {
 		return err
 	}
-	return encodeJSON(stdout, result)
+	execution, err := adapter.BindExecution(runID, adapter.Subject{
+		TargetName: item.TargetName, TargetCommit: item.GitCommit, InventoryDigest: item.Digest,
+	}, manifest, result)
+	if err != nil {
+		return err
+	}
+	return encodeJSON(stdout, execution)
 }
 
 func randomRunID() (string, error) {
@@ -480,6 +480,8 @@ func runScan(args []string, stdout, stderr io.Writer) (bool, error) {
 	format := set.String("format", "human", "human, json, markdown, html, sarif, or junit")
 	stateDirectory := set.String("state-dir", "", "optional directory for content-addressed evidence and run records")
 	exitPolicy := set.String("exit-policy", "profile", "profile, no-go, or never")
+	adapterManifest := set.String("adapter-manifest", "", "optional immutable OCI adapter manifest authorized by the selected profile")
+	adapterRuntime := set.String("adapter-runtime", "docker", "docker or podman executable for the authorized adapter")
 	if err := set.Parse(args); err != nil {
 		return false, err
 	}
@@ -498,7 +500,49 @@ func runScan(args []string, stdout, stderr io.Writer) (bool, error) {
 	if err != nil {
 		return false, err
 	}
-	run, err := scanner.Scan(*profile, item)
+	executions := []model.AdapterExecution{}
+	if *adapterManifest != "" {
+		manifest, err := adapter.LoadManifest(*adapterManifest)
+		if err != nil {
+			return false, err
+		}
+		manifestDigest, err := adapter.ManifestDigest(manifest)
+		if err != nil {
+			return false, err
+		}
+		authorized, err := scanner.AuthorizesAdapter(*profile, item, manifest.ID, manifestDigest)
+		if err != nil {
+			return false, err
+		}
+		if !authorized {
+			return false, fmt.Errorf("adapter %s with manifest digest %s is not authorized by an applicable assertion in %s", manifest.ID, manifestDigest, *profile)
+		}
+		adapterRunID, err := randomRunID()
+		if err != nil {
+			return false, err
+		}
+		subject := adapter.Subject{
+			TargetName: item.TargetName, TargetCommit: item.GitCommit, InventoryDigest: item.Digest,
+		}
+		input, err := adapter.InputJSONL(adapterRunID, subject, inventoryFacts(item), map[string]any{})
+		if err != nil {
+			return false, err
+		}
+		ociPlan, err := adapter.BuildOCIPlan(*adapterRuntime, item.Root, adapterRunID, manifest)
+		if err != nil {
+			return false, err
+		}
+		output, err := adapter.RunOCI(context.Background(), ociPlan, manifest, input)
+		if err != nil {
+			return false, err
+		}
+		execution, err := adapter.BindExecution(adapterRunID, subject, manifest, output)
+		if err != nil {
+			return false, err
+		}
+		executions = append(executions, execution)
+	}
+	run, err := scanner.ScanWithAdapterEvidence(*profile, item, executions)
 	if err != nil {
 		return false, err
 	}
@@ -525,10 +569,20 @@ func runScan(args []string, stdout, stderr io.Writer) (bool, error) {
 	panic("validated exit policy was not handled")
 }
 
+func inventoryFacts(item model.Inventory) map[string]any {
+	return map[string]any{
+		"source_files": item.SourceFiles, "package_ecosystems": item.PackageEcosystems,
+		"manifests": item.Manifests, "lock_files": item.LockFiles, "container_files": item.ContainerFiles,
+		"symlinks": item.Symlinks, "ci": item.CI, "infrastructure": item.Infrastructure,
+		"components": item.Components, "relations": item.Relations, "facts": item.Facts,
+	}
+}
+
 func printRun(output io.Writer, run model.RunResult) {
 	fmt.Fprintf(output, "Run: %s\n", run.RunID)
 	fmt.Fprintf(output, "Profile: %s@%s\n", run.Plan.ProfileID, run.Plan.ProfileVersion)
 	fmt.Fprintf(output, "Target: %s (%s)\n", run.Inventory.TargetName, run.Inventory.Digest)
+	fmt.Fprintf(output, "Adapter executions: %d\n", len(run.AdapterExecutions))
 	fmt.Fprintf(output, "Terminal state: %s\n\n", run.TerminalState)
 	for _, result := range run.Results {
 		fmt.Fprintf(output, "[%s] %s (%s/%s): %s\n", strings.ToUpper(result.Assessment),

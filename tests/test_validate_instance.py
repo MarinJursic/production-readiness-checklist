@@ -68,6 +68,44 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         self.assertTrue(errors)
         self.assertTrue(any("prc.inventory/v0.2" in error for error in errors))
 
+    def test_legacy_run_contract_remains_validatable(self) -> None:
+        digest = "a" * 64
+        legacy = {
+            "schema_version": "prc.run/v0.1",
+            "run_id": digest,
+            "started_at": "2026-08-23T12:00:00Z",
+            "completed_at": "2026-08-23T12:00:01Z",
+            "plan": {
+                "schema_version": "prc.plan/v0.1",
+                "digest": digest,
+                "target_name": "example",
+                "inventory_digest": digest,
+                "profile_id": "prc/core-repository",
+                "profile_version": "0.2",
+                "assertions": [],
+            },
+            "inventory": {
+                "schema_version": "prc.inventory/v0.1",
+                "target_name": "example",
+                "digest": digest,
+                "file_count": 0,
+                "source_files": 0,
+                "package_ecosystems": [],
+                "manifests": [],
+                "lock_files": [],
+                "ci": {"github_actions": False},
+                "files": [],
+            },
+            "results": [],
+            "terminal_state": "profile_satisfied",
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(
+                legacy, "run-result-v0.1.schema.json"
+            ),
+            [],
+        )
+
     def test_minimal_remediation_candidate_conforms(self) -> None:
         digest = "a" * 64
         contract = {
@@ -216,6 +254,53 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         self.assertTrue(
             validate_instance.validation_errors(
                 json.loads(first_line), "adapter-message.schema.json"
+            )
+        )
+
+    def test_bound_adapter_execution_conforms(self) -> None:
+        digest = "a" * 64
+        execution = {
+            "schema_version": "prc.adapter-execution/v0.1",
+            "execution_id": digest,
+            "adapter_run_id": "b" * 64,
+            "adapter_id": "prc.adapter.fixture@0.1",
+            "manifest_sha256": "c" * 64,
+            "image": "registry.example/prc/fixture@sha256:" + "d" * 64,
+            "subject": {
+                "target_name": "example",
+                "inventory_digest": "e" * 64,
+            },
+            "started_at": "2026-08-23T12:00:00Z",
+            "completed_at": "2026-08-23T12:00:01Z",
+            "duration_ms": 1000,
+            "diagnostics_sha256": "f" * 64,
+            "diagnostics_bytes": 0,
+            "transcript": {
+                "logs": [],
+                "observations": [{
+                    "id": "OBS-1",
+                    "kind": "fixture-result",
+                    "outcome": "not_found",
+                    "summary": "No fixture match.",
+                    "locations": [],
+                }],
+                "artifacts": [],
+                "summary": {
+                    "status": "completed",
+                    "counts": {"observations": 1},
+                },
+            },
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(
+                execution, "adapter-execution.schema.json"
+            ),
+            [],
+        )
+        execution["transcript"]["observations"][0]["assessment"] = "pass"
+        self.assertTrue(
+            validate_instance.validation_errors(
+                execution, "adapter-execution.schema.json"
             )
         )
 

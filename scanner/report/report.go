@@ -66,6 +66,17 @@ func writeMarkdown(output io.Writer, run model.RunResult) error {
 			return err
 		}
 	}
+	if len(run.AdapterExecutions) > 0 {
+		if _, err := fmt.Fprintln(output, "\n## Adapter executions\n\n| Adapter | Manifest | Status | Execution |\n| --- | --- | --- | --- |"); err != nil {
+			return err
+		}
+		for _, execution := range run.AdapterExecutions {
+			if _, err := fmt.Fprintf(output, "| `%s` | `%s` | %s | `%s` |\n",
+				execution.AdapterID, execution.ManifestSHA256, execution.Transcript.Summary.Status, execution.ExecutionID); err != nil {
+				return err
+			}
+		}
+	}
 	if _, err := fmt.Fprintln(output, "\n## Assertions\n\n| Assessment | Assertion | Severity | Gate | Summary | Evidence |\n| --- | --- | --- | --- | --- | ---: |"); err != nil {
 		return err
 	}
@@ -174,9 +185,13 @@ func writeSARIF(output io.Writer, run model.RunResult) error {
 	log := sarifLog{
 		Version: "2.1.0", Schema: "https://json.schemastore.org/sarif-2.1.0.json",
 		Runs: []sarifRun{{
-			Tool:       sarifTool{Driver: sarifDriver{Name: "Production Readiness Scanner", InformationURI: "https://marinjursic.github.io/production-readiness-checklist/", Rules: rules}},
-			Results:    results,
-			Properties: map[string]string{"run_id": run.RunID, "profile": run.Plan.ProfileID + "@" + run.Plan.ProfileVersion, "inventory_digest": run.Inventory.Digest, "terminal_state": run.TerminalState},
+			Tool:    sarifTool{Driver: sarifDriver{Name: "Production Readiness Scanner", InformationURI: "https://marinjursic.github.io/production-readiness-checklist/", Rules: rules}},
+			Results: results,
+			Properties: map[string]string{
+				"run_id": run.RunID, "profile": run.Plan.ProfileID + "@" + run.Plan.ProfileVersion,
+				"inventory_digest": run.Inventory.Digest, "terminal_state": run.TerminalState,
+				"adapter_execution_count": strconv.Itoa(len(run.AdapterExecutions)),
+			},
 		}},
 	}
 	encoder := json.NewEncoder(output)
@@ -223,6 +238,7 @@ func writeJUnit(output io.Writer, run model.RunResult) error {
 		Properties: []junitProperty{
 			{Name: "run_id", Value: run.RunID}, {Name: "inventory_digest", Value: run.Inventory.Digest},
 			{Name: "terminal_state", Value: run.TerminalState},
+			{Name: "adapter_execution_count", Value: strconv.Itoa(len(run.AdapterExecutions))},
 		},
 	}
 	for _, result := range run.Results {
@@ -277,6 +293,11 @@ const htmlReport = `<!doctype html>
       <dt>Inventory</dt><dd><code>{{.Run.Inventory.Digest}}</code></dd>
       <dt>Terminal state</dt><dd class="status">{{.Run.TerminalState}}</dd>
     </dl>
+    {{if .Run.AdapterExecutions}}<table>
+      <caption>Adapter executions</caption>
+      <thead><tr><th scope="col">Adapter</th><th scope="col">Manifest</th><th scope="col">Status</th><th scope="col">Execution</th></tr></thead>
+      <tbody>{{range .Run.AdapterExecutions}}<tr><td><code>{{.AdapterID}}</code></td><td><code>{{.ManifestSHA256}}</code></td><td>{{.Transcript.Summary.Status}}</td><td><code>{{.ExecutionID}}</code></td></tr>{{end}}</tbody>
+    </table>{{end}}
     <table>
       <caption>Assertion results</caption>
       <thead><tr><th scope="col">Assessment</th><th scope="col">Assertion</th><th scope="col">Severity</th><th scope="col">Gate</th><th scope="col">Summary</th><th scope="col">Evidence</th></tr></thead>

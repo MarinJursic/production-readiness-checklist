@@ -89,7 +89,8 @@ prc adapter plan-oci \
   --runtime docker
 ```
 
-Run an already-present pinned image in the bounded OCI environment:
+Run an already-present pinned image in the bounded OCI environment and emit a
+content-addressed execution record bound to the exact manifest and inventory:
 
 ```bash
 prc adapter run-oci \
@@ -99,9 +100,29 @@ prc adapter run-oci \
 ```
 
 `--pull=never` means the command fails if the exact image is not already
-available. The current profile scan does not consume external observations yet,
-so `PRC-A-CORE-013` remains Blocked. This prevents a protocol demonstration or
-tool exit code from becoming a false Pass.
+available. Run result v0.2 can embed these records. A scan may execute one
+adapter only when an applicable assertion binds the exact adapter ID, manifest
+SHA-256 digest, and observation kind:
+
+```bash
+prc scan \
+  --target /path/to/project \
+  --catalog-root /path/to/trusted/catalog \
+  --adapter-manifest /path/to/pinned-adapter.yaml \
+  --adapter-runtime docker
+```
+
+Authorization is checked before the OCI runtime is invoked. The adapter cannot
+declare an assertion assessment: the engine maps `found`, `not_found`,
+`unsupported`, incomplete, and conflicting observations through the catalog's
+immutable binding. The execution and each resulting evidence envelope are bound
+to the exact inventory digest. Offline execution-record import is deliberately
+unsupported because a content digest alone does not prove that a tool ran.
+
+The default `PRC-A-CORE-013` binding list remains empty until a production
+analysis adapter image is published, reviewed, and digest-pinned. It therefore
+remains Blocked in an ordinary core scan. The checked-in fixture exercises the
+plumbing in tests but is not authorized by the production profile.
 
 ## Design references
 

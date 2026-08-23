@@ -205,7 +205,8 @@ assertions:
         minimum_authority: executed
         description: Current tool results for each analysis class selected by policy.
     implementation_id: prc.native.analysis-evidence@0.1
-    parameters: {}
+    parameters:
+      adapter_bindings: []
     severity: high
     gate: required
     remediation_class: R2

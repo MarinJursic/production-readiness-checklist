@@ -4,11 +4,12 @@ The scanner CLI is an experimental deterministic vertical slice. It inventories 
 repository, creates an immutable plan for `prc/core-repository@0.3`, evaluates
 native assertions, records evidence, and reports explicit unresolved states.
 
-The profile evaluator does not yet consume external adapter observations. The
-generated-code review remains manual, and the
-analysis-evidence assertion remains blocked until an adapter supplies current
-executed evidence that the engine can evaluate. A separate experimental OCI
-adapter protocol and runner are available for protocol and sandbox development.
+The profile evaluator can consume a live, sandboxed adapter execution only when
+the selected profile binds its exact ID, manifest digest, and observation kind.
+The generated-code review remains manual, and the default analysis-evidence
+assertion remains blocked because no production adapter is authorized yet. A
+separate experimental OCI adapter protocol and runner are available for protocol
+and sandbox development.
 One deterministic R1 remediation is available for recognized source files that
 lack a final line-feed byte; it produces an isolated candidate instead of editing
 the target.
@@ -120,8 +121,9 @@ unsupported applicability expressions, unavailable adapters, and manual review
 are never converted into Pass.
 
 Read the [sandboxed adapter protocol](../architecture/adapters.md) to validate an
-adapter transcript, inspect an OCI execution plan, or run an already-present
-digest-pinned adapter image outside profile evaluation.
+adapter transcript, inspect an OCI execution plan, run an already-present
+digest-pinned adapter image, or understand live profile-authorized evidence
+consumption.
 
 Read [bounded isolated remediation](remediation.md) to create and verify an R1
 candidate or to apply one validated R2 provider proposal outside the source

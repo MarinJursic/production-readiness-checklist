@@ -12,6 +12,7 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 - A documented long-term vision for a technology-neutral AI readiness scanner that evaluates available evidence against every applicable control and produces a complete gap report.
 - A deterministic inventory v0.2 graph with sourced, confidence-bearing package, CI, container, Terraform, Kubernetes, and symlink facts.
 - A 30-assertion core repository profile with additional source-integrity, workflow-safety, dependency, runtime, container, Terraform, and Kubernetes checks.
+- Profile-authorized live OCI adapter evidence, content-addressed execution records, exact inventory binding, and deterministic observation-to-assessment evaluation.
 
 ### Fixed
 

@@ -8,6 +8,8 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/MarinJursic/production-readiness-checklist/scanner/adapter"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/provider"
 )
 
@@ -75,6 +77,123 @@ func TestScanReportFormats(t *testing.T) {
 				t.Fatalf("exit=%d stderr=%s output=%s", code, stderr.String(), stdout.String())
 			}
 		})
+	}
+}
+
+func copyCatalogFile(t *testing.T, sourceRoot, targetRoot, relative string) []byte {
+	t.Helper()
+	data, err := os.ReadFile(filepath.Join(sourceRoot, filepath.FromSlash(relative)))
+	if err != nil {
+		t.Fatal(err)
+	}
+	target := filepath.Join(targetRoot, filepath.FromSlash(relative))
+	if err := os.MkdirAll(filepath.Dir(target), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(target, data, 0o644); err != nil {
+		t.Fatal(err)
+	}
+	return data
+}
+
+func fakeDockerRuntime(t *testing.T) string {
+	t.Helper()
+	path := filepath.Join(t.TempDir(), "docker")
+	script := `#!/bin/sh
+printf '%s\n' \
+  '{"type":"log","level":"info","message":"fixture executed"}' \
+  '{"type":"observation","observation":{"id":"OBS-FIXTURE-001","kind":"fixture-result","outcome":"not_found","summary":"Fixture pattern absent.","locations":[]}}' \
+  '{"type":"summary","status":"completed","counts":{"logs":1,"observations":1,"artifacts":0}}'
+`
+	if err := os.WriteFile(path, []byte(script), 0o700); err != nil {
+		t.Fatal(err)
+	}
+	return path
+}
+
+func TestScanConsumesOnlyProfileAuthorizedLiveAdapterEvidence(t *testing.T) {
+	repository := filepath.Join("..", "..")
+	manifestPath := filepath.Join(repository, "fixtures", "adapters", "fixture-adapter.yaml")
+	manifest, err := adapter.LoadManifest(manifestPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	manifestDigest, err := adapter.ManifestDigest(manifest)
+	if err != nil {
+		t.Fatal(err)
+	}
+	catalogRoot := t.TempDir()
+	copyCatalogFile(t, repository, catalogRoot, "catalog/objectives/core-repository.yaml")
+	assertions := copyCatalogFile(t, repository, catalogRoot, "catalog/assertions/core-repository.yaml")
+	copyCatalogFile(t, repository, catalogRoot, "catalog/profiles/core-repository.yaml")
+	binding := "adapter_bindings:\n" +
+		"        - adapter_id: " + manifest.ID + "\n" +
+		"          manifest_sha256: " + manifestDigest + "\n" +
+		"          observation_kind: fixture-result"
+	assertions = bytes.Replace(assertions, []byte("adapter_bindings: []"), []byte(binding), 1)
+	if !bytes.Contains(assertions, []byte(manifestDigest)) {
+		t.Fatal("test catalog binding replacement failed")
+	}
+	if err := os.WriteFile(filepath.Join(catalogRoot, "catalog", "assertions", "core-repository.yaml"), assertions, 0o644); err != nil {
+		t.Fatal(err)
+	}
+	target := t.TempDir()
+	if err := os.WriteFile(filepath.Join(target, "app.py"), []byte("print('ready')\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	var stdout, stderr bytes.Buffer
+	code := run([]string{
+		"scan", "--target", target, "--catalog-root", catalogRoot,
+		"--adapter-manifest", manifestPath, "--adapter-runtime", fakeDockerRuntime(t),
+		"--format", "json", "--exit-policy", "never",
+	}, &stdout, &stderr)
+	if code != 0 {
+		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
+	}
+	var result model.RunResult
+	if err := json.Unmarshal(stdout.Bytes(), &result); err != nil {
+		t.Fatal(err)
+	}
+	if len(result.AdapterExecutions) != 1 || result.AdapterExecutions[0].AdapterID != manifest.ID {
+		t.Fatalf("bound executions = %+v", result.AdapterExecutions)
+	}
+	found := false
+	for _, assertion := range result.Results {
+		if assertion.AssertionID == "PRC-A-CORE-013" {
+			found = true
+			if assertion.Assessment != "pass" || len(assertion.EvidenceObserved) != 1 {
+				t.Fatalf("adapter-backed assertion = %+v", assertion)
+			}
+		}
+	}
+	if !found {
+		t.Fatal("missing adapter-backed assertion")
+	}
+}
+
+func TestScanRejectsUnauthorizedAdapterBeforeRuntimeExecution(t *testing.T) {
+	repository := filepath.Join("..", "..")
+	target := t.TempDir()
+	if err := os.WriteFile(filepath.Join(target, "app.py"), []byte("print('ready')\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	marker := filepath.Join(t.TempDir(), "executed")
+	runtimeDirectory := t.TempDir()
+	runtime := filepath.Join(runtimeDirectory, "docker")
+	if err := os.WriteFile(runtime, []byte("#!/bin/sh\ntouch \""+marker+"\"\n"), 0o700); err != nil {
+		t.Fatal(err)
+	}
+	var stdout, stderr bytes.Buffer
+	code := run([]string{
+		"scan", "--target", target, "--catalog-root", repository,
+		"--adapter-manifest", filepath.Join(repository, "fixtures", "adapters", "fixture-adapter.yaml"),
+		"--adapter-runtime", runtime, "--format", "json", "--exit-policy", "never",
+	}, &stdout, &stderr)
+	if code != 2 || !strings.Contains(stderr.String(), "not authorized") {
+		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
+	}
+	if _, err := os.Stat(marker); !os.IsNotExist(err) {
+		t.Fatal("unauthorized adapter runtime was executed")
 	}
 }
 

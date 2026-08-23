@@ -3,10 +3,11 @@ package model
 import "time"
 
 const (
-	InventorySchema = "prc.inventory/v0.2"
-	PlanSchema      = "prc.plan/v0.1"
-	RunSchema       = "prc.run/v0.1"
-	EvidenceSchema  = "prc.evidence/v0.1"
+	InventorySchema        = "prc.inventory/v0.2"
+	PlanSchema             = "prc.plan/v0.1"
+	RunSchema              = "prc.run/v0.2"
+	EvidenceSchema         = "prc.evidence/v0.1"
+	AdapterExecutionSchema = "prc.adapter-execution/v0.1"
 )
 
 type Source struct {
@@ -170,12 +171,76 @@ type AssertionResult struct {
 }
 
 type RunResult struct {
-	SchemaVersion string            `json:"schema_version"`
-	RunID         string            `json:"run_id"`
-	StartedAt     time.Time         `json:"started_at"`
-	CompletedAt   time.Time         `json:"completed_at"`
-	Plan          Plan              `json:"plan"`
-	Inventory     Inventory         `json:"inventory"`
-	Results       []AssertionResult `json:"results"`
-	TerminalState string            `json:"terminal_state"`
+	SchemaVersion     string             `json:"schema_version"`
+	RunID             string             `json:"run_id"`
+	StartedAt         time.Time          `json:"started_at"`
+	CompletedAt       time.Time          `json:"completed_at"`
+	Plan              Plan               `json:"plan"`
+	Inventory         Inventory          `json:"inventory"`
+	AdapterExecutions []AdapterExecution `json:"adapter_executions"`
+	Results           []AssertionResult  `json:"results"`
+	TerminalState     string             `json:"terminal_state"`
+}
+
+type AdapterSubject struct {
+	TargetName      string `json:"target_name"`
+	TargetCommit    string `json:"target_commit,omitempty"`
+	InventoryDigest string `json:"inventory_digest"`
+}
+
+type AdapterLog struct {
+	Level   string `json:"level"`
+	Message string `json:"message"`
+}
+
+type AdapterLocation struct {
+	Path   string `json:"path"`
+	Line   int    `json:"line,omitempty"`
+	Column int    `json:"column,omitempty"`
+}
+
+type AdapterObservation struct {
+	ID        string            `json:"id"`
+	Kind      string            `json:"kind"`
+	Outcome   string            `json:"outcome"`
+	Summary   string            `json:"summary"`
+	Locations []AdapterLocation `json:"locations"`
+	Data      map[string]any    `json:"data,omitempty"`
+}
+
+type AdapterArtifact struct {
+	ID        string `json:"id"`
+	MediaType string `json:"media_type"`
+	Digest    string `json:"digest"`
+	Size      int64  `json:"size"`
+	Path      string `json:"path,omitempty"`
+}
+
+type AdapterSummary struct {
+	Status string         `json:"status"`
+	Counts map[string]int `json:"counts"`
+	Reason string         `json:"reason,omitempty"`
+}
+
+type AdapterTranscript struct {
+	Logs         []AdapterLog         `json:"logs"`
+	Observations []AdapterObservation `json:"observations"`
+	Artifacts    []AdapterArtifact    `json:"artifacts"`
+	Summary      AdapterSummary       `json:"summary"`
+}
+
+type AdapterExecution struct {
+	SchemaVersion     string            `json:"schema_version"`
+	ExecutionID       string            `json:"execution_id"`
+	AdapterRunID      string            `json:"adapter_run_id"`
+	AdapterID         string            `json:"adapter_id"`
+	ManifestSHA256    string            `json:"manifest_sha256"`
+	Image             string            `json:"image"`
+	Subject           AdapterSubject    `json:"subject"`
+	StartedAt         time.Time         `json:"started_at"`
+	CompletedAt       time.Time         `json:"completed_at"`
+	DurationMS        int64             `json:"duration_ms"`
+	DiagnosticsSHA256 string            `json:"diagnostics_sha256"`
+	DiagnosticsBytes  int               `json:"diagnostics_bytes"`
+	Transcript        AdapterTranscript `json:"transcript"`
 }

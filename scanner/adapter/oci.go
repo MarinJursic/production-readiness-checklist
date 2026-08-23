@@ -100,6 +100,8 @@ func BuildOCIPlan(runtime, workspace, runID string, manifest Manifest) (OCIPlan,
 
 type RunOutput struct {
 	Transcript        Transcript `json:"transcript"`
+	StartedAt         time.Time  `json:"started_at"`
+	CompletedAt       time.Time  `json:"completed_at"`
 	DiagnosticsSHA256 string     `json:"diagnostics_sha256"`
 	DiagnosticsBytes  int        `json:"diagnostics_bytes"`
 	DurationMS        int64      `json:"duration_ms"`
@@ -137,25 +139,25 @@ func RunOCI(
 	command.Stdin = bytes.NewReader(input)
 	command.Stdout = stdout
 	command.Stderr = stderr
-	started := time.Now()
+	started := time.Now().UTC()
 	err = command.Run()
-	duration := time.Since(started)
+	completed := time.Now().UTC()
 	if ctx.Err() != nil {
 		cleanupOCI(plan)
-		return outputMetadata(stderr.String(), duration), fmt.Errorf("adapter timed out after %s: %w", manifest.Timeout(), ctx.Err())
+		return outputMetadata(stderr.String(), started, completed), fmt.Errorf("adapter timed out after %s: %w", manifest.Timeout(), ctx.Err())
 	}
 	if errors.Is(stdout.Err(), errOutputLimit) || errors.Is(stderr.Err(), errOutputLimit) {
 		cleanupOCI(plan)
-		return outputMetadata(stderr.String(), duration), fmt.Errorf("adapter output exceeded its configured byte limit")
+		return outputMetadata(stderr.String(), started, completed), fmt.Errorf("adapter output exceeded its configured byte limit")
 	}
 	if err != nil {
-		return outputMetadata(stderr.String(), duration), fmt.Errorf("OCI adapter process failed: %w", err)
+		return outputMetadata(stderr.String(), started, completed), fmt.Errorf("OCI adapter process failed: %w", err)
 	}
 	transcript, err := ParseOutput(strings.NewReader(stdout.String()), manifest.Resources.Limits)
 	if err != nil {
-		return outputMetadata(stderr.String(), duration), err
+		return outputMetadata(stderr.String(), started, completed), err
 	}
-	output := outputMetadata(stderr.String(), duration)
+	output := outputMetadata(stderr.String(), started, completed)
 	output.Transcript = transcript
 	return output, nil
 }
@@ -196,10 +198,12 @@ func hashExecutable(path string) (string, error) {
 	return fmt.Sprintf("%x", hasher.Sum(nil)), nil
 }
 
-func outputMetadata(diagnostics string, duration time.Duration) RunOutput {
+func outputMetadata(diagnostics string, started, completed time.Time) RunOutput {
 	digest := sha256.Sum256([]byte(diagnostics))
 	return RunOutput{
-		DiagnosticsSHA256: fmt.Sprintf("%x", digest), DiagnosticsBytes: len(diagnostics), DurationMS: duration.Milliseconds(),
+		StartedAt: started, CompletedAt: completed,
+		DiagnosticsSHA256: fmt.Sprintf("%x", digest), DiagnosticsBytes: len(diagnostics),
+		DurationMS: completed.Sub(started).Milliseconds(),
 	}
 }
 
