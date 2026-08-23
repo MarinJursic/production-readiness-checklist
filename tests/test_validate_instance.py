@@ -970,6 +970,25 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             [],
         )
 
+    def test_checked_in_adapter_registry_conforms(self) -> None:
+        path = ROOT / "fixtures" / "adapters" / "fixture-registry.yaml"
+        instance = yaml.safe_load(path.read_text(encoding="utf-8"))
+        self.assertEqual(
+            validate_instance.validation_errors(instance, "adapter-registry.schema.json"),
+            [],
+        )
+        report = {
+            "schema_version": "prc.adapter-registry-report/v0.1",
+            "registry": instance,
+            "digest": "a" * 64,
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(
+                report, "adapter-registry-report.schema.json"
+            ),
+            [],
+        )
+
     def test_checked_in_agent_task_and_output_conform(self) -> None:
         task = json.loads(
             (ROOT / "fixtures" / "providers" / "suggest-task.json").read_text(

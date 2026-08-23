@@ -80,6 +80,31 @@ must keep the runtime and host patched, review adapter images, and treat runtime
 or resource-control failure as an execution error. Podman documents that some
 rootless resource limits depend on the host cgroup configuration.
 
+## Registry lockfile and revocation
+
+[`adapter-registry.schema.json`](https://github.com/MarinJursic/production-readiness-checklist/blob/main/schemas/adapter-registry.schema.json)
+defines the local registry trust root. Each entry pins the adapter ID, manifest
+SHA-256, publisher ID, registry-assigned trust, lifecycle status, and normalized
+relative manifest path. The loader hashes and validates the manifest, rejects
+publisher or lifecycle drift, rejects symlinked or escaping paths, and verifies
+current engine compatibility.
+
+`revoked` entries remain effective even when the compromised manifest has been
+removed. Default resolution permits only `first-party-sandboxed` and
+`verified-community` entries; it denies deprecated, unverified-community, and
+local entries. A manifest cannot alter these registry decisions. The current
+lockfile is a local trust root, not yet a signed distribution system; signed
+registry releases and publisher-key verification remain required before a
+public adapter ecosystem can be considered complete.
+
+Validate and inspect a lockfile without executing anything:
+
+```bash
+prc adapter registry-validate \
+  --file /path/to/adapter-registry.yaml \
+  --format json
+```
+
 ## Inspect and validate
 
 Validate a transcript without executing an adapter:
@@ -122,6 +147,24 @@ prc scan \
   --adapter-manifest /path/to/pinned-adapter.yaml \
   --adapter-runtime docker
 ```
+
+For registry-assigned trust and revocation, resolve the same catalog-pinned
+adapter through a lockfile instead:
+
+```bash
+prc scan \
+  --target /path/to/project \
+  --catalog-root /path/to/trusted/catalog \
+  --mode verify-local \
+  --adapter-registry /path/to/adapter-registry.yaml \
+  --adapter-id prc.adapter.example@1.0 \
+  --adapter-runtime docker
+```
+
+`--adapter-manifest` is the explicit local-operator path and is mutually
+exclusive with `--adapter-registry`. Both paths still require an exact manifest
+digest binding in an applicable catalog assertion; registry approval cannot
+authorize a catalog-unbound adapter.
 
 The explicit mode grants only the reviewed no-network OCI capability envelope;
 authorization is checked before the OCI runtime is invoked. The adapter cannot

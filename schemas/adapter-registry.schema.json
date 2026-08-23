@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/adapter-registry.schema.json",
+  "title": "Production Readiness Adapter Registry v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "revision", "entries"],
+  "properties": {
+    "schema_version": {"const": "prc.adapter-registry/v0.1"},
+    "id": {"type": "string", "pattern": "^prc\\.adapter-registry\\.[a-z0-9.-]+@[0-9]+\\.[0-9]+$"},
+    "revision": {"type": "integer", "minimum": 1},
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 4096,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["adapter_id", "manifest_path", "manifest_sha256", "publisher_id", "trust", "status"],
+        "properties": {
+          "adapter_id": {"type": "string", "pattern": "^prc\\.adapter\\.[a-z0-9.-]+@[0-9]+\\.[0-9]+$"},
+          "manifest_path": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*\\.ya?ml$",
+            "not": {"pattern": "(^|/)\\.\\.?(/|$)"}
+          },
+          "manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "publisher_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9.-]{0,127}$"},
+          "trust": {"enum": ["first-party-sandboxed", "verified-community", "unverified-community", "local"]},
+          "status": {"enum": ["active", "deprecated", "revoked"]},
+          "reason": {"type": "string", "minLength": 1}
+        },
+        "allOf": [
+          {
+            "if": {"properties": {"status": {"enum": ["deprecated", "revoked"]}}, "required": ["status"]},
+            "then": {"required": ["reason"]}
+          },
+          {
+            "if": {"properties": {"status": {"const": "active"}}, "required": ["status"]},
+            "then": {"not": {"required": ["reason"]}}
+          }
+        ]
+      }
+    }
+  }
+}

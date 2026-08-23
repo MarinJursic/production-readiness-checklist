@@ -164,6 +164,22 @@ func TestAdapterValidateOutputCommand(t *testing.T) {
 	}
 }
 
+func TestAdapterRegistryValidateCommand(t *testing.T) {
+	var stdout, stderr bytes.Buffer
+	path := filepath.Join("..", "..", "fixtures", "adapters", "fixture-registry.yaml")
+	if code := run([]string{"adapter", "registry-validate", "--file", path, "--format", "json"}, &stdout, &stderr); code != 0 {
+		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
+	}
+	var report adapter.RegistryReport
+	if err := json.Unmarshal(stdout.Bytes(), &report); err != nil {
+		t.Fatal(err)
+	}
+	if report.SchemaVersion != adapter.RegistryReportSchema || len(report.Digest) != 64 ||
+		len(report.Registry.Entries) != 1 || report.Registry.Entries[0].Status != "active" {
+		t.Fatalf("registry output = %+v", report)
+	}
+}
+
 func TestAdapterValidateOutputRejectsAuthorityAttack(t *testing.T) {
 	var stdout, stderr bytes.Buffer
 	path := filepath.Join("..", "..", "fixtures", "adapters", "malicious-authority-output.jsonl")
@@ -256,6 +272,34 @@ printf '%s\n' \
 	return path
 }
 
+func fixtureRegistry(t *testing.T, manifestPath, manifestDigest, trust, status, reason string) string {
+	t.Helper()
+	directory := t.TempDir()
+	data, err := os.ReadFile(manifestPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(directory, "adapter.yaml"), data, 0o600); err != nil {
+		t.Fatal(err)
+	}
+	registry := "schema_version: prc.adapter-registry/v0.1\n" +
+		"id: prc.adapter-registry.test@0.1\nrevision: 1\nentries:\n" +
+		"  - adapter_id: prc.adapter.fixture@0.1\n" +
+		"    manifest_path: adapter.yaml\n" +
+		"    manifest_sha256: " + manifestDigest + "\n" +
+		"    publisher_id: prc-project\n" +
+		"    trust: " + trust + "\n" +
+		"    status: " + status + "\n"
+	if reason != "" {
+		registry += "    reason: " + reason + "\n"
+	}
+	path := filepath.Join(directory, "registry.yaml")
+	if err := os.WriteFile(path, []byte(registry), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	return path
+}
+
 func TestScanConsumesOnlyProfileAuthorizedLiveAdapterEvidence(t *testing.T) {
 	repository := filepath.Join("..", "..")
 	manifestPath := filepath.Join(repository, "fixtures", "adapters", "fixture-adapter.yaml")
@@ -324,6 +368,25 @@ func TestScanConsumesOnlyProfileAuthorizedLiveAdapterEvidence(t *testing.T) {
 	}
 	if !found {
 		t.Fatal("missing adapter-backed assertion")
+	}
+
+	registryPath := fixtureRegistry(t, manifestPath, manifestDigest, "first-party-sandboxed", "active", "")
+	stdout.Reset()
+	stderr.Reset()
+	code = run([]string{
+		"scan", "--target", target, "--catalog-root", catalogRoot,
+		"--mode", "verify-local", "--adapter-registry", registryPath,
+		"--adapter-id", manifest.ID, "--adapter-runtime", fakeDockerRuntime(t),
+		"--format", "json", "--exit-policy", "never",
+	}, &stdout, &stderr)
+	if code != 0 {
+		t.Fatalf("registry scan exit=%d stderr=%s", code, stderr.String())
+	}
+	if err := json.Unmarshal(stdout.Bytes(), &result); err != nil {
+		t.Fatal(err)
+	}
+	if len(result.AdapterExecutions) != 1 || result.AdapterExecutions[0].ManifestSHA256 != manifestDigest {
+		t.Fatalf("registry-resolved executions = %+v", result.AdapterExecutions)
 	}
 }
 

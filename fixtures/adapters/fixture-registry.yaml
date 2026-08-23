@@ -1,0 +1,10 @@
+schema_version: prc.adapter-registry/v0.1
+id: prc.adapter-registry.fixtures@0.1
+revision: 1
+entries:
+  - adapter_id: prc.adapter.fixture@0.1
+    manifest_path: fixture-adapter.yaml
+    manifest_sha256: 4e63176c5a0a32c36d47ef705b076d1d90c7d75905bbb5fd85b21c175ed3b7b2
+    publisher_id: prc-project
+    trust: first-party-sandboxed
+    status: active

@@ -21,6 +21,8 @@ process behavior into the scanner protocol; the scanner then decides whether
 the tool completed, found something, was partial, was unsupported, or failed.
 Requesting a live adapter without the explicit `--mode verify-local` capability
 grant returns `5` before the adapter runtime is resolved or invoked.
+Registry revocation, lifecycle, and trust-policy denials also return `5` before
+the runtime is selected. A malformed registry is a configuration failure.
 
 Errors are written to stderr with their stable class, for example:
 

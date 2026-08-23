@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/adapter-registry-report.schema.json",
+  "title": "Production Readiness Adapter Registry Report v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "registry", "digest"],
+  "properties": {
+    "schema_version": {"const": "prc.adapter-registry-report/v0.1"},
+    "registry": {"$ref": "adapter-registry.schema.json"},
+    "digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

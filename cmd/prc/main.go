@@ -859,7 +859,7 @@ func printCandidate(output io.Writer, candidate remediation.Candidate) {
 
 func runAdapter(args []string, stdout, stderr io.Writer) error {
 	if len(args) == 0 {
-		return errors.New("adapter requires validate-output, plan-oci, or run-oci")
+		return errors.New("adapter requires validate-output, registry-validate, plan-oci, or run-oci")
 	}
 	switch args[0] {
 	case "validate-output":
@@ -899,6 +899,36 @@ func runAdapter(args []string, stdout, stderr io.Writer) error {
 			}
 		}
 		return encodeJSON(stdout, transcript)
+	case "registry-validate":
+		set := flag.NewFlagSet("adapter registry-validate", flag.ContinueOnError)
+		set.SetOutput(stderr)
+		path := set.String("file", "", "adapter registry lockfile")
+		format := set.String("format", "human", "human or json")
+		if err := set.Parse(args[1:]); err != nil {
+			return exitError(exitConfiguration, err)
+		}
+		if *path == "" {
+			return exitError(exitConfiguration, errors.New("--file is required"))
+		}
+		if set.NArg() != 0 {
+			return exitError(exitConfiguration, fmt.Errorf("unexpected registry arguments: %s", strings.Join(set.Args(), " ")))
+		}
+		registry, err := adapter.LoadRegistry(*path)
+		if err != nil {
+			return exitError(exitConfiguration, err)
+		}
+		if *format == "json" {
+			return encodeJSON(stdout, registry.Report())
+		}
+		if *format != "human" {
+			return exitError(exitConfiguration, fmt.Errorf("unsupported format %q", *format))
+		}
+		fmt.Fprintf(stdout, "Registry: %s revision %d\n", registry.ID, registry.Revision)
+		fmt.Fprintf(stdout, "Digest: %s\n", registry.Digest)
+		for _, entry := range registry.Entries {
+			fmt.Fprintf(stdout, "- %s: %s, %s (%s)\n", entry.AdapterID, entry.Status, entry.Trust, entry.ManifestSHA256)
+		}
+		return nil
 	case "plan-oci", "run-oci":
 		return runOCIAdapter(args[0], args[1:], stdout, stderr)
 	default:
@@ -1106,6 +1136,8 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	stateDirectory := set.String("state-dir", "", "optional directory for content-addressed evidence and run records")
 	exitPolicy := set.String("exit-policy", "profile", "profile, no-go, or never")
 	adapterManifest := set.String("adapter-manifest", "", "optional immutable OCI adapter manifest authorized by the selected profile")
+	adapterRegistry := set.String("adapter-registry", "", "optional adapter registry lockfile")
+	adapterID := set.String("adapter-id", "", "adapter ID to resolve from --adapter-registry")
 	adapterRuntime := set.String("adapter-runtime", "docker", "docker or podman executable for the authorized adapter")
 	if err := set.Parse(args); err != nil {
 		return exitInternal, exitError(exitConfiguration, err)
@@ -1120,6 +1152,12 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	if *mode != engine.ExecutionModeInspect && *mode != engine.ExecutionModeVerifyLocal {
 		return exitInternal, exitError(exitConfiguration, fmt.Errorf("unsupported execution mode %q", *mode))
 	}
+	if *adapterManifest != "" && *adapterRegistry != "" {
+		return exitInternal, exitError(exitConfiguration, fmt.Errorf("--adapter-manifest and --adapter-registry are mutually exclusive"))
+	}
+	if (*adapterRegistry == "") != (*adapterID == "") {
+		return exitInternal, exitError(exitConfiguration, fmt.Errorf("--adapter-registry and --adapter-id must be supplied together"))
+	}
 	item, validation, err := configuredInventory(*target, *configPath)
 	if err != nil {
 		return exitInternal, exitError(exitConfiguration, err)
@@ -1132,13 +1170,26 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		return exitInternal, exitError(exitConfiguration, err)
 	}
 	executions := []model.AdapterExecution{}
-	if *adapterManifest != "" {
+	if *adapterManifest != "" || *adapterRegistry != "" {
 		if !flagWasSet(set, "mode") || *mode != engine.ExecutionModeVerifyLocal {
-			return exitInternal, exitError(exitPolicyDenied, fmt.Errorf("--adapter-manifest requires an explicit --mode verify-local capability grant"))
+			return exitInternal, exitError(exitPolicyDenied, fmt.Errorf("adapter execution requires an explicit --mode verify-local capability grant"))
 		}
-		manifest, err := adapter.LoadManifest(*adapterManifest)
-		if err != nil {
-			return exitInternal, exitError(exitConfiguration, err)
+		var manifest adapter.Manifest
+		if *adapterManifest != "" {
+			manifest, err = adapter.LoadManifest(*adapterManifest)
+			if err != nil {
+				return exitInternal, exitError(exitConfiguration, err)
+			}
+		} else {
+			registry, registryErr := adapter.LoadRegistry(*adapterRegistry)
+			if registryErr != nil {
+				return exitInternal, exitError(exitConfiguration, registryErr)
+			}
+			resolved, resolveErr := registry.Resolve(*adapterID, "", nil, adapter.DefaultRegistryPolicy())
+			if resolveErr != nil {
+				return exitInternal, exitError(exitPolicyDenied, resolveErr)
+			}
+			manifest = resolved.Manifest
 		}
 		manifestDigest, err := adapter.ManifestDigest(manifest)
 		if err != nil {
