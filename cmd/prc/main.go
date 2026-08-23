@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"context"
 	"crypto/rand"
 	"encoding/hex"
@@ -1688,13 +1689,13 @@ func executeScanAdapter(
 	item model.Inventory,
 	resolved resolvedScanAdapter,
 	runtime string,
-) (model.AdapterExecution, error) {
+) (model.AdapterExecution, map[string][]byte, error) {
 	if err := ctx.Err(); err != nil {
-		return model.AdapterExecution{}, fmt.Errorf("adapter execution budget is exhausted: %w", err)
+		return model.AdapterExecution{}, nil, fmt.Errorf("adapter execution budget is exhausted: %w", err)
 	}
 	runID, err := randomRunID()
 	if err != nil {
-		return model.AdapterExecution{}, err
+		return model.AdapterExecution{}, nil, err
 	}
 	subject := adapter.Subject{
 		TargetName: item.TargetName, TargetCommit: item.GitCommit, InventoryDigest: item.Digest,
@@ -1703,27 +1704,33 @@ func executeScanAdapter(
 		resolved.Manifest, runID, subject, inventoryFacts(item), map[string]any{},
 	)
 	if err != nil {
-		return model.AdapterExecution{}, err
+		return model.AdapterExecution{}, nil, err
 	}
 	snapshot, err := adapter.PrepareSnapshotForManifest(item, resolved.Manifest)
 	if err != nil {
-		return model.AdapterExecution{}, err
+		return model.AdapterExecution{}, nil, err
 	}
 	defer snapshot.Close()
 	plan, err := adapter.BuildSnapshotOCIPlan(runtime, snapshot, runID, resolved.Manifest)
 	if err != nil {
-		return model.AdapterExecution{}, err
+		return model.AdapterExecution{}, nil, err
 	}
 	output, err := adapter.RunOCI(ctx, plan, resolved.Manifest, input)
 	if err != nil {
-		return model.AdapterExecution{}, err
+		return model.AdapterExecution{}, nil, err
 	}
+	var execution model.AdapterExecution
 	if resolved.Resolution == nil {
-		return adapter.BindExecution(runID, subject, resolved.Manifest, output)
+		execution, err = adapter.BindExecution(runID, subject, resolved.Manifest, output)
+	} else {
+		execution, err = adapter.BindExecutionWithResolution(
+			runID, subject, resolved.Manifest, *resolved.Resolution, output,
+		)
 	}
-	return adapter.BindExecutionWithResolution(
-		runID, subject, resolved.Manifest, *resolved.Resolution, output,
-	)
+	if err != nil {
+		return model.AdapterExecution{}, nil, err
+	}
+	return execution, output.ArtifactPayloads, nil
 }
 
 func runScan(args []string, stdout, stderr io.Writer) (int, error) {
@@ -1783,6 +1790,7 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		return exitInternal, exitError(exitConfiguration, err)
 	}
 	executions := []model.AdapterExecution{}
+	artifactPayloads := map[string][]byte{}
 	if requestedAdapters > 0 {
 		if !flagWasSet(set, "mode") || *mode != engine.ExecutionModeVerifyLocal {
 			return exitInternal, exitError(exitPolicyDenied, fmt.Errorf("adapter execution requires an explicit --mode verify-local capability grant"))
@@ -1803,11 +1811,17 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		}
 		defer cancelAdapters()
 		for _, resolved := range resolvedAdapters {
-			execution, executeErr := executeScanAdapter(adapterContext, item, resolved, *adapterRuntime)
+			execution, payloads, executeErr := executeScanAdapter(adapterContext, item, resolved, *adapterRuntime)
 			if executeErr != nil {
 				return exitInternal, exitError(exitExecution, executeErr)
 			}
 			executions = append(executions, execution)
+			for descriptor, payload := range payloads {
+				if existing, exists := artifactPayloads[descriptor]; exists && !bytes.Equal(existing, payload) {
+					return exitInternal, exitError(exitExecution, fmt.Errorf("adapters produced conflicting payloads for %s", descriptor))
+				}
+				artifactPayloads[descriptor] = payload
+			}
 		}
 	}
 	run, err := scanner.ScanMode(*profile, item, executions, *mode)
@@ -1822,7 +1836,7 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		}
 		defer stateStore.Close()
 	}
-	if err := evidence.WriteRun(*stateDirectory, run); err != nil {
+	if err := evidence.WriteRunWithArtifacts(*stateDirectory, run, artifactPayloads); err != nil {
 		return exitInternal, exitError(exitInternal, err)
 	}
 	if stateStore != nil {

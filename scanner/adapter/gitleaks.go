@@ -124,26 +124,37 @@ func ExecutionInput(
 }
 
 // ParseManifestOutput converts one exact external format into the authority-
-// free PRC transcript. Generic JSONL remains the extension protocol; the only
-// native format is the reviewed Gitleaks 8.30.0 JSON contract.
+// free PRC transcript. Artifact payloads are deliberately discarded by this
+// validation-only API; scanner execution uses ParseManifestOutputWithArtifacts.
 func ParseManifestOutput(manifest Manifest, input io.Reader) (Transcript, error) {
+	transcript, _, err := ParseManifestOutputWithArtifacts(manifest, input)
+	return transcript, err
+}
+
+// ParseManifestOutputWithArtifacts returns only payloads produced and
+// normalized by a reviewed native protocol. Generic adapters cannot smuggle
+// undeclared host files into the state store, and Gitleaks intentionally keeps
+// its raw report ephemeral even though its transcript binds a descriptor.
+func ParseManifestOutputWithArtifacts(manifest Manifest, input io.Reader) (Transcript, map[string][]byte, error) {
 	if err := manifest.ValidateForCurrentEngine(); err != nil {
-		return Transcript{}, err
+		return Transcript{}, nil, err
 	}
 	switch manifest.Protocol {
 	case ProtocolVersion:
-		return ParseOutput(input, manifest.Resources.Limits)
+		transcript, err := ParseOutput(input, manifest.Resources.Limits)
+		return transcript, nil, err
 	case GitleaksProtocolVersion:
 		data, err := io.ReadAll(io.LimitReader(input, int64(manifest.Resources.MaxStdout)+1))
 		if err != nil {
-			return Transcript{}, fmt.Errorf("read gitleaks output: %w", err)
+			return Transcript{}, nil, fmt.Errorf("read gitleaks output: %w", err)
 		}
 		if len(data) > manifest.Resources.MaxStdout {
-			return Transcript{}, fmt.Errorf("gitleaks output exceeds %d bytes", manifest.Resources.MaxStdout)
+			return Transcript{}, nil, fmt.Errorf("gitleaks output exceeds %d bytes", manifest.Resources.MaxStdout)
 		}
-		return parseGitleaksOutput(data, manifest.Resources.MaxMessages)
+		transcript, err := parseGitleaksOutput(data, manifest.Resources.MaxMessages)
+		return transcript, nil, err
 	default:
-		return Transcript{}, fmt.Errorf("unsupported adapter output protocol %q", manifest.Protocol)
+		return Transcript{}, nil, fmt.Errorf("unsupported adapter output protocol %q", manifest.Protocol)
 	}
 }
 

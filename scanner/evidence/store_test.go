@@ -1,6 +1,8 @@
 package evidence
 
 import (
+	"crypto/sha256"
+	"fmt"
 	"os"
 	"path/filepath"
 	"testing"
@@ -57,6 +59,81 @@ func TestWriteRunStoresEvidenceAndRunAtomically(t *testing.T) {
 	}
 	if len(matches) != 0 {
 		t.Fatalf("temporary files remain: %v", matches)
+	}
+}
+
+func TestWriteRunStoresDeclaredArtifactPayloadByDigest(t *testing.T) {
+	root := t.TempDir()
+	payload := []byte("{\"bomFormat\":\"CycloneDX\"}\n")
+	digest := fmt.Sprintf("%x", sha256.Sum256(payload))
+	run := signRun(t, model.RunResult{
+		SchemaVersion: model.RunSchema, Findings: []model.Finding{},
+		AdapterExecutions: []model.AdapterExecution{{
+			Transcript: model.AdapterTranscript{Artifacts: []model.AdapterArtifact{{
+				ID: "sbom", Digest: "sha256:" + digest, Size: int64(len(payload)),
+			}}},
+		}},
+	})
+	if err := WriteRunWithArtifacts(root, run, map[string][]byte{"sha256:" + digest: payload}); err != nil {
+		t.Fatal(err)
+	}
+	path := filepath.Join(root, "artifacts", "sha256", digest[:2], digest)
+	stored, err := os.ReadFile(path)
+	if err != nil || string(stored) != string(payload) {
+		t.Fatalf("stored artifact = %q, %v", stored, err)
+	}
+	info, err := os.Stat(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if info.Mode().Perm() != 0o600 {
+		t.Fatalf("artifact mode = %v, %v", info.Mode().Perm(), err)
+	}
+}
+
+func TestWriteRunRejectsUndeclaredOrMismatchedArtifactPayload(t *testing.T) {
+	payload := []byte("sbom")
+	digest := fmt.Sprintf("%x", sha256.Sum256(payload))
+	run := signRun(t, model.RunResult{SchemaVersion: model.RunSchema, Findings: []model.Finding{}})
+	if err := WriteRunWithArtifacts(t.TempDir(), run, map[string][]byte{"sha256:" + digest: payload}); err == nil {
+		t.Fatal("expected undeclared artifact rejection")
+	}
+	run = signRun(t, model.RunResult{
+		SchemaVersion: model.RunSchema, Findings: []model.Finding{},
+		AdapterExecutions: []model.AdapterExecution{{Transcript: model.AdapterTranscript{
+			Artifacts: []model.AdapterArtifact{{Digest: "sha256:" + digest, Size: int64(len(payload))}},
+		}}},
+	})
+	if err := WriteRunWithArtifacts(t.TempDir(), run, map[string][]byte{"sha256:" + digest: []byte("tampered")}); err == nil {
+		t.Fatal("expected artifact payload mismatch rejection")
+	}
+}
+
+func TestWriteRunRejectsImmutableArtifactCollision(t *testing.T) {
+	root := t.TempDir()
+	payload := []byte("sbom")
+	digest := fmt.Sprintf("%x", sha256.Sum256(payload))
+	path := filepath.Join(root, "artifacts", "sha256", digest[:2], digest)
+	if err := os.MkdirAll(filepath.Dir(path), 0o700); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(path, []byte("different"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	run := signRun(t, model.RunResult{
+		SchemaVersion: model.RunSchema, Findings: []model.Finding{},
+		AdapterExecutions: []model.AdapterExecution{{Transcript: model.AdapterTranscript{
+			Artifacts: []model.AdapterArtifact{{Digest: "sha256:" + digest, Size: int64(len(payload))}},
+		}}},
+	})
+	if err := WriteRunWithArtifacts(root, run, map[string][]byte{"sha256:" + digest: payload}); err == nil {
+		t.Fatal("expected immutable artifact collision")
+	}
+}
+
+func TestWriteRunWithArtifactsIsNoOpWithoutStateRoot(t *testing.T) {
+	if err := WriteRunWithArtifacts("", model.RunResult{}, map[string][]byte{"invalid": []byte("ignored")}); err != nil {
+		t.Fatal(err)
 	}
 }
 

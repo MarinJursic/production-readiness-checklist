@@ -8,6 +8,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"strings"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/finding"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
@@ -36,8 +37,19 @@ func runID(run model.RunResult) (string, error) {
 }
 
 func WriteRun(root string, run model.RunResult) error {
+	return WriteRunWithArtifacts(root, run, nil)
+}
+
+// WriteRunWithArtifacts stores reviewed native-adapter payloads before the
+// immutable records that reference them. The caller supplies payloads by
+// sha256: descriptor; every supplied payload must be declared by an adapter
+// execution in this run and match its declared size and digest.
+func WriteRunWithArtifacts(root string, run model.RunResult, artifacts map[string][]byte) error {
 	if root == "" {
 		return nil
+	}
+	if err := validateArtifactPayloads(run, artifacts); err != nil {
+		return err
 	}
 	if !digestPattern.MatchString(run.RunID) {
 		return fmt.Errorf("invalid run ID %q", run.RunID)
@@ -77,9 +89,49 @@ func WriteRun(root string, run model.RunResult) error {
 			}
 		}
 	}
+	for descriptor, payload := range artifacts {
+		digest := descriptor[len("sha256:"):]
+		path := filepath.Join(root, "artifacts", "sha256", digest[:2], digest)
+		if err := writeBytesImmutable(path, payload); err != nil {
+			return fmt.Errorf("write artifact %s: %w", descriptor, err)
+		}
+	}
 	path := filepath.Join(root, "runs", run.RunID+".json")
 	if err := writeJSONImmutable(path, run); err != nil {
 		return fmt.Errorf("write run %s: %w", run.RunID, err)
+	}
+	return nil
+}
+
+func validateArtifactPayloads(run model.RunResult, payloads map[string][]byte) error {
+	declared := map[string]map[int64]bool{}
+	for _, execution := range run.AdapterExecutions {
+		for _, artifact := range execution.Transcript.Artifacts {
+			digest := strings.TrimPrefix(artifact.Digest, "sha256:")
+			if !strings.HasPrefix(artifact.Digest, "sha256:") || !digestPattern.MatchString(digest) {
+				return fmt.Errorf("adapter execution declares invalid artifact digest %q", artifact.Digest)
+			}
+			if artifact.Size < 0 {
+				return fmt.Errorf("adapter execution declares invalid artifact size")
+			}
+			if declared[artifact.Digest] == nil {
+				declared[artifact.Digest] = map[int64]bool{}
+			}
+			declared[artifact.Digest][artifact.Size] = true
+		}
+	}
+	for descriptor, payload := range payloads {
+		digest := strings.TrimPrefix(descriptor, "sha256:")
+		if !strings.HasPrefix(descriptor, "sha256:") || !digestPattern.MatchString(digest) {
+			return fmt.Errorf("invalid artifact payload descriptor %q", descriptor)
+		}
+		if !declared[descriptor][int64(len(payload))] {
+			return fmt.Errorf("artifact payload %s is undeclared or has the wrong size", descriptor)
+		}
+		actual := sha256.Sum256(payload)
+		if fmt.Sprintf("%x", actual) != digest {
+			return fmt.Errorf("artifact payload %s does not match its digest", descriptor)
+		}
 	}
 	return nil
 }
@@ -90,6 +142,10 @@ func writeJSONImmutable(path string, value any) error {
 		return err
 	}
 	data = append(data, '\n')
+	return writeBytesImmutable(path, data)
+}
+
+func writeBytesImmutable(path string, data []byte) error {
 	if err := os.MkdirAll(filepath.Dir(path), 0o700); err != nil {
 		return err
 	}

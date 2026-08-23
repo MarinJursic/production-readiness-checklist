@@ -144,6 +144,10 @@ type RunOutput struct {
 	DiagnosticsSHA256 string     `json:"diagnostics_sha256"`
 	DiagnosticsBytes  int        `json:"diagnostics_bytes"`
 	DurationMS        int64      `json:"duration_ms"`
+	// ArtifactPayloads carries scanner-owned artifact bytes out of the native
+	// normalizer. Payloads are keyed by their sha256: descriptor and are never
+	// serialized into an execution or run record.
+	ArtifactPayloads map[string][]byte `json:"-"`
 }
 
 func RunOCI(
@@ -205,7 +209,7 @@ func RunOCI(
 	if err != nil {
 		return outputMetadata(stderr.String(), started, completed), fmt.Errorf("OCI adapter process failed: %w", err)
 	}
-	transcript, err := ParseManifestOutput(manifest, strings.NewReader(stdout.String()))
+	transcript, artifactPayloads, err := ParseManifestOutputWithArtifacts(manifest, bytes.NewReader(stdout.Bytes()))
 	if err != nil {
 		return outputMetadata(stderr.String(), started, completed), err
 	}
@@ -214,6 +218,7 @@ func RunOCI(
 	}
 	output := outputMetadata(stderr.String(), started, completed)
 	output.Transcript = transcript
+	output.ArtifactPayloads = artifactPayloads
 	return output, nil
 }
 
@@ -319,4 +324,5 @@ func (buffer *boundedBuffer) Write(input []byte) (int, error) {
 }
 
 func (buffer *boundedBuffer) String() string { return string(buffer.data) }
+func (buffer *boundedBuffer) Bytes() []byte  { return bytes.Clone(buffer.data) }
 func (buffer *boundedBuffer) Err() error     { return buffer.err }
