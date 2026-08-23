@@ -63,6 +63,44 @@ func TestVersionCommand(t *testing.T) {
 	}
 }
 
+func TestMCPServeCommandCompletesHandshakeAndListsReadOnlyTools(t *testing.T) {
+	repository := filepath.Join("..", "..")
+	input := strings.NewReader(strings.Join([]string{
+		`{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"cli-test","version":"1.0.0"}}}`,
+		`{"jsonrpc":"2.0","method":"notifications/initialized"}`,
+		`{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}`,
+	}, "\n") + "\n")
+	var stdout, stderr bytes.Buffer
+	code := runWithInput([]string{
+		"mcp", "serve", "--catalog-root", repository, "--target", repository,
+		"--profile", "prc/core-repository",
+	}, input, &stdout, &stderr)
+	if code != 0 {
+		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
+	}
+	if stderr.Len() != 0 {
+		t.Fatalf("MCP server wrote unexpected stderr: %s", stderr.String())
+	}
+	lines := strings.Split(strings.TrimSpace(stdout.String()), "\n")
+	if len(lines) != 2 {
+		t.Fatalf("MCP responses = %d: %s", len(lines), stdout.String())
+	}
+	if !strings.Contains(lines[0], `"protocolVersion":"2025-11-25"`) ||
+		!strings.Contains(lines[1], `"name":"prc_scan"`) ||
+		!strings.Contains(lines[1], `"readOnlyHint":true`) ||
+		strings.Contains(stdout.String(), "Production Readiness Scanner\n") {
+		t.Fatalf("unexpected MCP output: %s", stdout.String())
+	}
+}
+
+func TestMCPServeRejectsUnboundArguments(t *testing.T) {
+	var stdout, stderr bytes.Buffer
+	code := runWithInput([]string{"mcp", "serve", "unexpected"}, strings.NewReader(""), &stdout, &stderr)
+	if code != exitConfiguration || !strings.Contains(stderr.String(), "unexpected mcp serve arguments") || stdout.Len() != 0 {
+		t.Fatalf("exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
+	}
+}
+
 func TestConfigValidateCommand(t *testing.T) {
 	path := filepath.Join("..", "..", "fixtures", "config", "production-readiness.yaml")
 	var stdout, stderr bytes.Buffer

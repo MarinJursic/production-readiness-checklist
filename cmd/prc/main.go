@@ -26,6 +26,7 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/exception"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/invalidation"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/mcpserver"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/pack"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/provider"
@@ -94,6 +95,10 @@ func main() {
 }
 
 func run(args []string, stdout, stderr io.Writer) int {
+	return runWithInput(args, os.Stdin, stdout, stderr)
+}
+
+func runWithInput(args []string, stdin io.Reader, stdout, stderr io.Writer) int {
 	if len(args) == 0 {
 		usage(stderr)
 		return exitConfiguration
@@ -150,6 +155,9 @@ func run(args []string, stdout, stderr io.Writer) int {
 	case "provider":
 		errorFallback = exitExecution
 		err = runProvider(args[1:], stdout, stderr)
+	case "mcp":
+		errorFallback = exitConfiguration
+		err = runMCP(args[1:], stdin, stdout, stderr)
 	case "help", "-h", "--help":
 		usage(stdout)
 		return 0
@@ -168,7 +176,39 @@ func run(args []string, stdout, stderr io.Writer) int {
 
 func usage(output io.Writer) {
 	fmt.Fprintln(output, "Production Readiness Scanner")
-	fmt.Fprintln(output, "usage: prc <catalog|pack|benchmark|config|inventory|plan|scan|diff|fix|remediate|remediate-proposal|doctor|history|explain|adapter|exception|provider|version> [options]")
+	fmt.Fprintln(output, "usage: prc <catalog|pack|benchmark|config|inventory|plan|scan|diff|fix|remediate|remediate-proposal|doctor|history|explain|adapter|exception|provider|mcp|version> [options]")
+}
+
+func runMCP(args []string, stdin io.Reader, stdout, stderr io.Writer) error {
+	if len(args) == 0 || args[0] != "serve" {
+		return exitError(exitConfiguration, errors.New("mcp requires serve"))
+	}
+	set := flag.NewFlagSet("mcp serve", flag.ContinueOnError)
+	set.SetOutput(stderr)
+	target := set.String("target", ".", "path-locked repository to inspect")
+	catalogRoot := set.String("catalog-root", ".", "path-locked repository containing the PRC catalog")
+	configPath := set.String("config", "", "optional path-locked validated project configuration")
+	profile := set.String("profile", "", "locked profile; defaults to configuration or prc/core-repository")
+	if err := set.Parse(args[1:]); err != nil {
+		return exitError(exitConfiguration, err)
+	}
+	if set.NArg() != 0 {
+		return exitError(exitConfiguration, fmt.Errorf("unexpected mcp serve arguments: %s", strings.Join(set.Args(), " ")))
+	}
+	service, err := mcpserver.NewService(mcpserver.Options{
+		CatalogRoot: *catalogRoot, Target: *target, ConfigPath: *configPath, ProfileID: *profile,
+	})
+	if err != nil {
+		return exitError(exitConfiguration, err)
+	}
+	server, err := mcpserver.NewServer(service, version)
+	if err != nil {
+		return exitError(exitInternal, err)
+	}
+	if err := server.Serve(stdin, stdout); err != nil {
+		return exitError(exitExecution, err)
+	}
+	return nil
 }
 
 func runException(args []string, stdout, stderr io.Writer) error {

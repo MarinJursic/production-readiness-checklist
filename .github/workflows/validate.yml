@@ -111,6 +111,22 @@ jobs:
             exit 1
           fi
 
+      - name: Exercise read-only MCP stdio server
+        run: |
+          printf '%s\n' \
+            '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"ci-smoke","version":"1.0.0"}}}' \
+            '{"jsonrpc":"2.0","method":"notifications/initialized"}' \
+            '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}' \
+            '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"prc_explain","arguments":{"assertion_id":"PRC-A-CORE-001"}}}' \
+            > "$RUNNER_TEMP/mcp-input.jsonl"
+          "$RUNNER_TEMP/prc" mcp serve \
+            --catalog-root . \
+            --target . \
+            --profile prc/core-repository \
+            < "$RUNNER_TEMP/mcp-input.jsonl" \
+            > "$RUNNER_TEMP/mcp-output.jsonl"
+          python -c 'import json,jsonschema,sys; rows=[json.loads(line) for line in open(sys.argv[1], encoding="utf-8")]; assert len(rows)==3; tools=rows[1]["result"]["tools"]; assert [tool["name"] for tool in tools]==["prc_plan","prc_scan","prc_explain"]; assert all(tool["annotations"]["readOnlyHint"] and not tool["annotations"]["openWorldHint"] for tool in tools); result=rows[2]["result"]; assert result["structuredContent"]["assertion"]["id"]=="PRC-A-CORE-001"; assert result["content"][0]["text"]==json.dumps(result["structuredContent"], separators=(",", ":")); jsonschema.validate(result["structuredContent"], tools[2]["outputSchema"])' "$RUNNER_TEMP/mcp-output.jsonl"
+
       - name: Generate scanner outputs
         run: |
           mkdir "$RUNNER_TEMP/doctor-state" "$RUNNER_TEMP/doctor-candidates"
