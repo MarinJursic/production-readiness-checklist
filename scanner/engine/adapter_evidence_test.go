@@ -13,13 +13,20 @@ import (
 func analysisManifest() adapter.Manifest {
 	limits := adapter.DefaultLimits()
 	return adapter.Manifest{
-		SchemaVersion: adapter.ManifestSchema,
-		ID:            "prc.adapter.analysis-fixture@0.1",
-		Title:         "Analysis evidence fixture",
-		Trust:         "first-party-sandboxed",
-		Runner:        "oci",
-		Image:         "registry.example/prc/analysis-fixture@sha256:" + strings.Repeat("a", 64),
-		Command:       []string{"/adapter", "scan"},
+		SchemaVersion: adapter.ManifestSchema, ID: "prc.adapter.analysis-fixture@0.1",
+		Title: "Analysis evidence fixture", Description: "Produces static-analysis observations for engine tests.",
+		Publisher: adapter.Publisher{ID: "prc-project", Name: "Production Readiness Checklist"},
+		Owner:     "scanner-maintainers", Maintenance: "active",
+		Protocol: adapter.ProtocolVersion, OutputSchema: adapter.OutputSchemaVersion,
+		ObservationKinds: []string{"static-analysis"},
+		Compatibility:    adapter.Compatibility{EngineAPIs: []string{model.EngineVersion}},
+		Tool: adapter.Tool{
+			Name: "analysis-fixture", Version: "1.0.0", Upstream: "https://example.com/analysis-fixture",
+			Formats: []adapter.ToolFormat{{Name: "fixture-json", Versions: []string{"1.0"}}},
+		},
+		Limitations: []string{"Test-only fixture; it does not execute a real analyzer."}, Runner: "oci",
+		Image:   "registry.example/prc/analysis-fixture@sha256:" + strings.Repeat("a", 64),
+		Command: []string{"/adapter", "scan"},
 		Capabilities: adapter.Capabilities{
 			ReadWorkspace: true, WriteScratch: true, Network: "deny",
 			NetworkHosts: []string{}, SecretHandles: []string{}, ChildProcesses: false,

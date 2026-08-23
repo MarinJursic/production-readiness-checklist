@@ -26,7 +26,7 @@ type OCIPlan struct {
 }
 
 func BuildOCIPlan(runtime, workspace, runID string, manifest Manifest) (OCIPlan, error) {
-	if err := manifest.Validate(); err != nil {
+	if err := manifest.ValidateForCurrentEngine(); err != nil {
 		return OCIPlan{}, err
 	}
 	runtimePath, err := exec.LookPath(runtime)
@@ -155,6 +155,9 @@ func RunOCI(
 	}
 	transcript, err := ParseOutput(strings.NewReader(stdout.String()), manifest.Resources.Limits)
 	if err != nil {
+		return outputMetadata(stderr.String(), started, completed), err
+	}
+	if err := ValidateTranscriptContract(manifest, transcript); err != nil {
 		return outputMetadata(stderr.String(), started, completed), err
 	}
 	output := outputMetadata(stderr.String(), started, completed)

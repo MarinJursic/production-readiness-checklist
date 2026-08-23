@@ -934,6 +934,42 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             validate_instance.validation_errors(instance, "adapter-manifest.schema.json"), []
         )
 
+        legacy = {
+            "schema_version": "prc.adapter-manifest/v0.1",
+            "id": "prc.adapter.fixture@0.1",
+            "title": "Legacy fixture",
+            "trust": "first-party-sandboxed",
+            "runner": "oci",
+            "image": "registry.example/fixture@sha256:" + "a" * 64,
+            "command": ["/adapter"],
+            "capabilities": {
+                "read_workspace": True,
+                "write_scratch": True,
+                "network": "deny",
+                "network_hosts": [],
+                "secret_handles": [],
+                "child_processes": False,
+            },
+            "resources": {
+                "timeout_seconds": 60,
+                "memory_mb": 512,
+                "cpus": 1,
+                "pids": 64,
+                "tmpfs_mb": 64,
+                "max_line_bytes": 262144,
+                "max_messages": 10000,
+                "max_stdin_bytes": 1048576,
+                "max_stdout_bytes": 4194304,
+                "max_stderr_bytes": 65536,
+            },
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(
+                legacy, "adapter-manifest-v0.1.schema.json"
+            ),
+            [],
+        )
+
     def test_checked_in_agent_task_and_output_conform(self) -> None:
         task = json.loads(
             (ROOT / "fixtures" / "providers" / "suggest-task.json").read_text(

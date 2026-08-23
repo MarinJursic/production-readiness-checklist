@@ -6,20 +6,50 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"net/url"
 	"os"
 	"regexp"
 	"strings"
 	"time"
 
+	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 	"gopkg.in/yaml.v3"
 )
 
-const ManifestSchema = "prc.adapter-manifest/v0.1"
+const (
+	ManifestSchema      = "prc.adapter-manifest/v0.2"
+	OutputSchemaVersion = "prc.adapter-message/v0.1"
+)
 
 var (
-	adapterIDPattern = regexp.MustCompile(`^prc\.adapter\.[a-z0-9.-]+@[0-9]+\.[0-9]+$`)
-	imagePattern     = regexp.MustCompile(`^[A-Za-z0-9][A-Za-z0-9._:/-]*@sha256:[0-9a-f]{64}$`)
+	adapterIDPattern       = regexp.MustCompile(`^prc\.adapter\.[a-z0-9.-]+@[0-9]+\.[0-9]+$`)
+	imagePattern           = regexp.MustCompile(`^[A-Za-z0-9][A-Za-z0-9._:/-]*@sha256:[0-9a-f]{64}$`)
+	publisherIDPattern     = regexp.MustCompile(`^[a-z0-9][a-z0-9.-]{0,127}$`)
+	observationKindPattern = regexp.MustCompile(`^[a-z0-9][a-z0-9.-]{0,127}$`)
+	versionTokenPattern    = regexp.MustCompile(`^[A-Za-z0-9][A-Za-z0-9._+-]{0,127}$`)
+	engineAPIPattern       = regexp.MustCompile(`^prc\.engine/v[0-9]+\.[0-9]+$`)
 )
+
+type Publisher struct {
+	ID   string `json:"id" yaml:"id"`
+	Name string `json:"name" yaml:"name"`
+}
+
+type ToolFormat struct {
+	Name     string   `json:"name" yaml:"name"`
+	Versions []string `json:"versions" yaml:"versions"`
+}
+
+type Tool struct {
+	Name     string       `json:"name" yaml:"name"`
+	Version  string       `json:"version" yaml:"version"`
+	Upstream string       `json:"upstream" yaml:"upstream"`
+	Formats  []ToolFormat `json:"formats" yaml:"formats"`
+}
+
+type Compatibility struct {
+	EngineAPIs []string `json:"engine_apis" yaml:"engine_apis"`
+}
 
 type Capabilities struct {
 	ReadWorkspace  bool     `json:"read_workspace" yaml:"read_workspace"`
@@ -40,15 +70,24 @@ type Resources struct {
 }
 
 type Manifest struct {
-	SchemaVersion string       `json:"schema_version" yaml:"schema_version"`
-	ID            string       `json:"id" yaml:"id"`
-	Title         string       `json:"title" yaml:"title"`
-	Trust         string       `json:"trust" yaml:"trust"`
-	Runner        string       `json:"runner" yaml:"runner"`
-	Image         string       `json:"image" yaml:"image"`
-	Command       []string     `json:"command" yaml:"command"`
-	Capabilities  Capabilities `json:"capabilities" yaml:"capabilities"`
-	Resources     Resources    `json:"resources" yaml:"resources"`
+	SchemaVersion    string        `json:"schema_version" yaml:"schema_version"`
+	ID               string        `json:"id" yaml:"id"`
+	Title            string        `json:"title" yaml:"title"`
+	Description      string        `json:"description" yaml:"description"`
+	Publisher        Publisher     `json:"publisher" yaml:"publisher"`
+	Owner            string        `json:"owner" yaml:"owner"`
+	Maintenance      string        `json:"maintenance" yaml:"maintenance"`
+	Protocol         string        `json:"protocol" yaml:"protocol"`
+	OutputSchema     string        `json:"output_schema" yaml:"output_schema"`
+	ObservationKinds []string      `json:"observation_kinds" yaml:"observation_kinds"`
+	Compatibility    Compatibility `json:"compatibility" yaml:"compatibility"`
+	Tool             Tool          `json:"tool" yaml:"tool"`
+	Limitations      []string      `json:"limitations" yaml:"limitations"`
+	Runner           string        `json:"runner" yaml:"runner"`
+	Image            string        `json:"image" yaml:"image"`
+	Command          []string      `json:"command" yaml:"command"`
+	Capabilities     Capabilities  `json:"capabilities" yaml:"capabilities"`
+	Resources        Resources     `json:"resources" yaml:"resources"`
 }
 
 func LoadManifest(path string) (Manifest, error) {
@@ -89,13 +128,35 @@ func (manifest Manifest) Validate() error {
 	if !adapterIDPattern.MatchString(manifest.ID) {
 		return fmt.Errorf("invalid adapter ID %q", manifest.ID)
 	}
-	if strings.TrimSpace(manifest.Title) == "" {
-		return fmt.Errorf("adapter title is required")
+	if strings.TrimSpace(manifest.Title) == "" || strings.TrimSpace(manifest.Description) == "" {
+		return fmt.Errorf("adapter title and description are required")
 	}
-	switch manifest.Trust {
-	case "first-party-sandboxed", "verified-community", "unverified-community", "local":
-	default:
-		return fmt.Errorf("unsupported adapter trust level %q", manifest.Trust)
+	if !publisherIDPattern.MatchString(manifest.Publisher.ID) || strings.TrimSpace(manifest.Publisher.Name) == "" {
+		return fmt.Errorf("adapter publisher identity is invalid")
+	}
+	if strings.TrimSpace(manifest.Owner) == "" {
+		return fmt.Errorf("adapter owner is required")
+	}
+	if manifest.Maintenance != "active" && manifest.Maintenance != "deprecated" {
+		return fmt.Errorf("unsupported adapter maintenance state %q", manifest.Maintenance)
+	}
+	if manifest.Protocol != ProtocolVersion {
+		return fmt.Errorf("unsupported adapter protocol %q", manifest.Protocol)
+	}
+	if manifest.OutputSchema != OutputSchemaVersion {
+		return fmt.Errorf("unsupported adapter output schema %q", manifest.OutputSchema)
+	}
+	if !uniqueTokens(manifest.ObservationKinds, observationKindPattern) {
+		return fmt.Errorf("adapter observation kinds must be a nonempty unique token array")
+	}
+	if !uniqueTokens(manifest.Compatibility.EngineAPIs, engineAPIPattern) {
+		return fmt.Errorf("adapter engine compatibility must be a nonempty unique API array")
+	}
+	if err := validateTool(manifest.Tool); err != nil {
+		return err
+	}
+	if !uniqueNonemptyText(manifest.Limitations) {
+		return fmt.Errorf("adapter limitations must be a nonempty unique text array")
 	}
 	if manifest.Runner != "oci" {
 		return fmt.Errorf("external adapters require the OCI runner")
@@ -138,6 +199,76 @@ func (manifest Manifest) Validate() error {
 	}
 	if err := validateResources(manifest.Resources); err != nil {
 		return err
+	}
+	return nil
+}
+
+func validateTool(tool Tool) error {
+	if strings.TrimSpace(tool.Name) == "" || !versionTokenPattern.MatchString(tool.Version) || strings.EqualFold(tool.Version, "latest") {
+		return fmt.Errorf("adapter tool requires a name and immutable version token")
+	}
+	upstream, err := url.Parse(tool.Upstream)
+	if err != nil || upstream.Scheme != "https" || upstream.Host == "" || upstream.User != nil {
+		return fmt.Errorf("adapter tool upstream must be an absolute HTTPS URL without credentials")
+	}
+	if len(tool.Formats) == 0 {
+		return fmt.Errorf("adapter tool must declare at least one supported format")
+	}
+	seen := map[string]bool{}
+	for _, format := range tool.Formats {
+		if !observationKindPattern.MatchString(format.Name) || seen[format.Name] ||
+			!uniqueTokens(format.Versions, versionTokenPattern) {
+			return fmt.Errorf("adapter tool formats must have unique names and nonempty unique versions")
+		}
+		seen[format.Name] = true
+	}
+	return nil
+}
+
+func uniqueTokens(values []string, pattern *regexp.Regexp) bool {
+	if len(values) == 0 {
+		return false
+	}
+	seen := map[string]bool{}
+	for _, value := range values {
+		if !pattern.MatchString(value) || seen[value] {
+			return false
+		}
+		seen[value] = true
+	}
+	return true
+}
+
+func uniqueNonemptyText(values []string) bool {
+	if len(values) == 0 {
+		return false
+	}
+	seen := map[string]bool{}
+	for _, value := range values {
+		value = strings.TrimSpace(value)
+		if value == "" || seen[value] {
+			return false
+		}
+		seen[value] = true
+	}
+	return true
+}
+
+func (manifest Manifest) SupportsEngine(engineAPI string) bool {
+	for _, supported := range manifest.Compatibility.EngineAPIs {
+		if supported == engineAPI {
+			return true
+		}
+	}
+	return false
+}
+
+func (manifest Manifest) ValidateForCurrentEngine() error {
+	if err := manifest.Validate(); err != nil {
+		return err
+	}
+	if !manifest.SupportsEngine(model.EngineVersion) {
+		return fmt.Errorf("adapter %s does not support engine API %s", manifest.ID, model.EngineVersion)
 	}
 	return nil
 }

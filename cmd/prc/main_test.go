@@ -172,6 +172,21 @@ func TestAdapterValidateOutputRejectsAuthorityAttack(t *testing.T) {
 	}
 }
 
+func TestAdapterValidateOutputRejectsUndeclaredObservationKind(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "output.jsonl")
+	data := []byte("{\"type\":\"observation\",\"observation\":{\"id\":\"OBS-1\",\"kind\":\"undeclared\",\"outcome\":\"not_found\",\"summary\":\"fixture\",\"locations\":[]}}\n{\"type\":\"summary\",\"status\":\"completed\",\"counts\":{\"observations\":1}}\n")
+	if err := os.WriteFile(path, data, 0o600); err != nil {
+		t.Fatal(err)
+	}
+	var stdout, stderr bytes.Buffer
+	if code := run([]string{
+		"adapter", "validate-output", "--manifest", filepath.Join("..", "..", "fixtures", "adapters", "fixture-adapter.yaml"),
+		"--file", path,
+	}, &stdout, &stderr); code != exitExecution || !strings.Contains(stderr.String(), "undeclared observation kind") {
+		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
+	}
+}
+
 func TestProviderCapabilitiesAreReadOnly(t *testing.T) {
 	for _, name := range []string{"codex", "claude"} {
 		t.Run(name, func(t *testing.T) {

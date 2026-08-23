@@ -7,18 +7,27 @@ import (
 	"slices"
 	"strings"
 	"testing"
+
+	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 )
 
 func validManifest() Manifest {
 	limits := DefaultLimits()
 	return Manifest{
-		SchemaVersion: ManifestSchema,
-		ID:            "prc.adapter.fixture@0.1",
-		Title:         "Fixture adapter",
-		Trust:         "first-party-sandboxed",
-		Runner:        "oci",
-		Image:         "registry.example/prc/fixture@sha256:" + strings.Repeat("a", 64),
-		Command:       []string{"/adapter", "scan"},
+		SchemaVersion: ManifestSchema, ID: "prc.adapter.fixture@0.1",
+		Title: "Fixture adapter", Description: "Produces bounded fixture observations for protocol tests.",
+		Publisher: Publisher{ID: "prc-project", Name: "Production Readiness Checklist"},
+		Owner:     "scanner-maintainers", Maintenance: "active",
+		Protocol: ProtocolVersion, OutputSchema: OutputSchemaVersion,
+		ObservationKinds: []string{"fixture-result"},
+		Compatibility:    Compatibility{EngineAPIs: []string{model.EngineVersion}},
+		Tool: Tool{
+			Name: "prc-fixture", Version: "1.0.0", Upstream: "https://example.com/prc-fixture",
+			Formats: []ToolFormat{{Name: "fixture-json", Versions: []string{"1.0"}}},
+		},
+		Limitations: []string{"This adapter is a protocol fixture and does not inspect production projects."},
+		Runner:      "oci", Image: "registry.example/prc/fixture@sha256:" + strings.Repeat("a", 64),
+		Command: []string{"/adapter", "scan"},
 		Capabilities: Capabilities{
 			ReadWorkspace: true, WriteScratch: true, Network: "deny",
 			NetworkHosts: []string{}, SecretHandles: []string{},
@@ -31,12 +40,15 @@ func validManifest() Manifest {
 
 func TestManifestFailsClosedOnMutableOrPrivilegedConfiguration(t *testing.T) {
 	tests := map[string]func(*Manifest){
-		"mutable image": func(value *Manifest) { value.Image = "registry.example/prc/fixture:latest" },
-		"network":       func(value *Manifest) { value.Capabilities.Network = "allow" },
-		"secret":        func(value *Manifest) { value.Capabilities.SecretHandles = []string{"TOKEN"} },
-		"process":       func(value *Manifest) { value.Capabilities.ChildProcesses = true },
-		"native runner": func(value *Manifest) { value.Runner = "process" },
-		"short timeout": func(value *Manifest) { value.Resources.TimeoutSeconds = 0 },
+		"mutable image":  func(value *Manifest) { value.Image = "registry.example/prc/fixture:latest" },
+		"network":        func(value *Manifest) { value.Capabilities.Network = "allow" },
+		"secret":         func(value *Manifest) { value.Capabilities.SecretHandles = []string{"TOKEN"} },
+		"process":        func(value *Manifest) { value.Capabilities.ChildProcesses = true },
+		"native runner":  func(value *Manifest) { value.Runner = "process" },
+		"short timeout":  func(value *Manifest) { value.Resources.TimeoutSeconds = 0 },
+		"protocol":       func(value *Manifest) { value.Protocol = "prc-adapter-jsonl-v2" },
+		"latest tool":    func(value *Manifest) { value.Tool.Version = "latest" },
+		"no limitations": func(value *Manifest) { value.Limitations = nil },
 	}
 	for name, mutate := range tests {
 		t.Run(name, func(t *testing.T) {
@@ -51,7 +63,7 @@ func TestManifestFailsClosedOnMutableOrPrivilegedConfiguration(t *testing.T) {
 
 func TestLoadManifestRejectsUnknownFields(t *testing.T) {
 	path := filepath.Join(t.TempDir(), "adapter.yaml")
-	data := []byte("schema_version: prc.adapter-manifest/v0.1\nid: prc.adapter.fixture@0.1\nunexpected: true\n")
+	data := []byte("schema_version: prc.adapter-manifest/v0.2\nid: prc.adapter.fixture@0.1\nunexpected: true\n")
 	if err := os.WriteFile(path, data, 0o600); err != nil {
 		t.Fatal(err)
 	}
@@ -67,6 +79,26 @@ func TestCheckedInManifestLoads(t *testing.T) {
 	}
 	if manifest.ID != "prc.adapter.fixture@0.1" {
 		t.Fatalf("unexpected fixture manifest: %+v", manifest)
+	}
+}
+
+func TestManifestCompatibilityAndObservationContractFailClosed(t *testing.T) {
+	manifest := validManifest()
+	manifest.Compatibility.EngineAPIs = []string{"prc.engine/v9.9"}
+	if err := manifest.Validate(); err != nil {
+		t.Fatalf("structurally valid future compatibility was rejected: %v", err)
+	}
+	if err := manifest.ValidateForCurrentEngine(); err == nil || !strings.Contains(err.Error(), "does not support") {
+		t.Fatalf("unexpected compatibility error: %v", err)
+	}
+
+	manifest = validManifest()
+	output := validRunOutput("not_found")
+	output.Transcript.Observations[0].Kind = "undeclared-result"
+	if _, err := BindExecution(strings.Repeat("f", 64), Subject{
+		TargetName: "fixture", InventoryDigest: strings.Repeat("e", 64),
+	}, manifest, output); err == nil || !strings.Contains(err.Error(), "undeclared observation kind") {
+		t.Fatalf("unexpected observation contract error: %v", err)
 	}
 }
 

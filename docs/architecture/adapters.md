@@ -45,6 +45,16 @@ inject a passing assessment.
 
 Every external adapter has a strict
 [`adapter-manifest.schema.json`](https://github.com/MarinJursic/production-readiness-checklist/blob/main/schemas/adapter-manifest.schema.json).
+Manifest v0.2 binds the exact JSONL protocol and output schema, compatible
+engine APIs, publisher and owner identities, immutable tool version and
+supported format versions, declared observation kinds, maintenance state, and
+known limitations. Output validation rejects an observation kind that is not
+declared by that exact manifest. The archived v0.1 schema remains available for
+record interpretation but is not accepted for new execution.
+
+Trust is deliberately not self-declared by the adapter. A registry or explicit
+local operator grant must bind trust to the exact manifest digest and publisher;
+the manifest alone cannot promote itself to first-party or verified status.
 The current experimental runner deliberately supports only a narrow subset:
 
 - OCI execution through Docker or Podman;

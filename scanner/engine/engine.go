@@ -24,7 +24,7 @@ import (
 const (
 	applicabilityEvaluator = "cel-go/v0.30.0+prc-inventory/v0.3"
 	applicabilityCostLimit = 10_000
-	engineVersion          = "prc.engine/v0.1"
+	engineVersion          = model.EngineVersion
 )
 
 var (

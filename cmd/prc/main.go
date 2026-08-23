@@ -871,12 +871,14 @@ func runAdapter(args []string, stdout, stderr io.Writer) error {
 			return err
 		}
 		limits := adapter.DefaultLimits()
+		var manifest *adapter.Manifest
 		if *manifestPath != "" {
-			manifest, err := adapter.LoadManifest(*manifestPath)
+			loaded, err := adapter.LoadManifest(*manifestPath)
 			if err != nil {
 				return err
 			}
-			limits = manifest.Resources.Limits
+			manifest = &loaded
+			limits = loaded.Resources.Limits
 		}
 		input := io.Reader(os.Stdin)
 		if *path != "-" {
@@ -890,6 +892,11 @@ func runAdapter(args []string, stdout, stderr io.Writer) error {
 		transcript, err := adapter.ParseOutput(input, limits)
 		if err != nil {
 			return err
+		}
+		if manifest != nil {
+			if err := adapter.ValidateTranscriptContract(*manifest, transcript); err != nil {
+				return err
+			}
 		}
 		return encodeJSON(stdout, transcript)
 	case "plan-oci", "run-oci":

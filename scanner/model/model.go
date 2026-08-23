@@ -6,6 +6,7 @@ import (
 )
 
 const (
+	EngineVersion          = "prc.engine/v0.1"
 	InventorySchema        = "prc.inventory/v0.3"
 	PlanSchema             = "prc.plan/v0.6"
 	RunSchema              = "prc.run/v0.7"

@@ -1,15 +1,82 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/adapter-manifest.schema.json",
-  "title": "Production Readiness Adapter Manifest",
+  "title": "Production Readiness Adapter Manifest v0.2",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "id", "title", "trust", "runner", "image", "command", "capabilities", "resources"],
+  "required": ["schema_version", "id", "title", "description", "publisher", "owner", "maintenance", "protocol", "output_schema", "observation_kinds", "compatibility", "tool", "limitations", "runner", "image", "command", "capabilities", "resources"],
   "properties": {
-    "schema_version": {"const": "prc.adapter-manifest/v0.1"},
+    "schema_version": {"const": "prc.adapter-manifest/v0.2"},
     "id": {"type": "string", "pattern": "^prc\\.adapter\\.[a-z0-9.-]+@[0-9]+\\.[0-9]+$"},
     "title": {"type": "string", "minLength": 1},
-    "trust": {"enum": ["first-party-sandboxed", "verified-community", "unverified-community", "local"]},
+    "description": {"type": "string", "minLength": 1},
+    "publisher": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9.-]{0,127}$"},
+        "name": {"type": "string", "minLength": 1}
+      }
+    },
+    "owner": {"type": "string", "minLength": 1},
+    "maintenance": {"enum": ["active", "deprecated"]},
+    "protocol": {"const": "prc-adapter-jsonl-v1"},
+    "output_schema": {"const": "prc.adapter-message/v0.1"},
+    "observation_kinds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^[a-z0-9][a-z0-9.-]{0,127}$"}
+    },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["engine_apis"],
+      "properties": {
+        "engine_apis": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^prc\\.engine/v[0-9]+\\.[0-9]+$"}
+        }
+      }
+    },
+    "tool": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version", "upstream", "formats"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._+-]{0,127}$", "not": {"enum": ["latest", "LATEST", "Latest"]}},
+        "upstream": {"type": "string", "format": "uri", "pattern": "^https://"},
+        "formats": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "versions"],
+            "properties": {
+              "name": {"type": "string", "pattern": "^[a-z0-9][a-z0-9.-]{0,127}$"},
+              "versions": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._+-]{0,127}$"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
     "runner": {"const": "oci"},
     "image": {
       "type": "string",

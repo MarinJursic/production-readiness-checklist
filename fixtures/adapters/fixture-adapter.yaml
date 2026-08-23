@@ -1,7 +1,26 @@
-schema_version: prc.adapter-manifest/v0.1
+schema_version: prc.adapter-manifest/v0.2
 id: prc.adapter.fixture@0.1
 title: Protocol fixture adapter
-trust: first-party-sandboxed
+description: Produces bounded fixture observations for protocol and runner tests.
+publisher:
+  id: prc-project
+  name: Production Readiness Checklist
+owner: scanner-maintainers
+maintenance: active
+protocol: prc-adapter-jsonl-v1
+output_schema: prc.adapter-message/v0.1
+observation_kinds: [fixture-result]
+compatibility:
+  engine_apis: [prc.engine/v0.1]
+tool:
+  name: prc-fixture
+  version: 1.0.0
+  upstream: https://example.com/prc-fixture
+  formats:
+    - name: fixture-json
+      versions: ["1.0"]
+limitations:
+  - This adapter is a protocol fixture and does not inspect production projects.
 runner: oci
 image: registry.example/prc/fixture@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 command: [/adapter, scan]

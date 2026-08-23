@@ -49,7 +49,7 @@ func BindExecution(runID string, subject Subject, manifest Manifest, output RunO
 	if output.StartedAt.IsZero() || output.CompletedAt.Before(output.StartedAt) || output.DurationMS < 0 {
 		return model.AdapterExecution{}, fmt.Errorf("adapter execution timestamps are invalid")
 	}
-	if err := validateTranscript(output.Transcript); err != nil {
+	if err := ValidateTranscriptContract(manifest, output.Transcript); err != nil {
 		return model.AdapterExecution{}, err
 	}
 	execution := model.AdapterExecution{
@@ -70,6 +70,28 @@ func BindExecution(runID string, subject Subject, manifest Manifest, output RunO
 		return model.AdapterExecution{}, err
 	}
 	return execution, nil
+}
+
+// ValidateTranscriptContract binds structurally valid protocol output to the
+// exact current-engine manifest contract. An adapter cannot introduce a new
+// observation class merely by emitting it.
+func ValidateTranscriptContract(manifest Manifest, transcript Transcript) error {
+	if err := manifest.ValidateForCurrentEngine(); err != nil {
+		return err
+	}
+	if err := validateTranscript(transcript); err != nil {
+		return err
+	}
+	allowed := make(map[string]bool, len(manifest.ObservationKinds))
+	for _, kind := range manifest.ObservationKinds {
+		allowed[kind] = true
+	}
+	for _, observation := range transcript.Observations {
+		if !allowed[observation.Kind] {
+			return fmt.Errorf("adapter emitted undeclared observation kind %q", observation.Kind)
+		}
+	}
+	return nil
 }
 
 func ValidateExecution(execution model.AdapterExecution) error {
