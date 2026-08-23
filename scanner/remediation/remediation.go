@@ -48,7 +48,7 @@ func Run(options Options) (Candidate, error) {
 		return Candidate{}, fmt.Errorf("unknown assertion %q", options.AssertionID)
 	}
 	if assertion.RemediationClass != "R1" {
-		return Candidate{}, fmt.Errorf("assertion %s is not eligible for the registered R1 fixer", assertion.ID)
+		return Candidate{}, policyDenied(fmt.Errorf("assertion %s is not eligible for the registered R1 fixer", assertion.ID))
 	}
 
 	baseline, err := inventory.Build(options.Target)
@@ -69,7 +69,7 @@ func Run(options Options) (Candidate, error) {
 	}
 	before, ok := resultFor(beforeRun, assertion.ID)
 	if !ok || before.Assessment != "fail" {
-		return Candidate{}, fmt.Errorf("assertion %s is not a failing finding in the baseline", assertion.ID)
+		return Candidate{}, policyDenied(fmt.Errorf("assertion %s is not a failing finding in the baseline", assertion.ID))
 	}
 	var paths []string
 	var fixerID, goal string
@@ -97,23 +97,23 @@ func Run(options Options) (Candidate, error) {
 			"The original workspace remains byte-for-byte and mode-for-mode unchanged.",
 		}
 	default:
-		return Candidate{}, fmt.Errorf("no deterministic fixer is registered for %s", options.AssertionID)
+		return Candidate{}, policyDenied(fmt.Errorf("no deterministic fixer is registered for %s", options.AssertionID))
 	}
 	if err != nil {
 		return Candidate{}, err
 	}
 	if len(paths) == 0 {
-		return Candidate{}, fmt.Errorf("assertion %s reported no deterministic violations", assertion.ID)
+		return Candidate{}, policyDenied(fmt.Errorf("assertion %s reported no deterministic violations", assertion.ID))
 	}
 	if len(paths) > policy.maxFiles {
-		return Candidate{}, fmt.Errorf("fix requires %d files, above the configured budget", len(paths))
+		return Candidate{}, policyDenied(fmt.Errorf("fix requires %d files, above the configured budget", len(paths)))
 	}
 	if fixerID == finalNewlineFixer && len(paths) > policy.maxChangedLines {
-		return Candidate{}, fmt.Errorf("fix requires %d changed lines, above the configured budget", len(paths))
+		return Candidate{}, policyDenied(fmt.Errorf("fix requires %d changed lines, above the configured budget", len(paths)))
 	}
 	for _, path := range paths {
 		if protected(path, policy.protectedPaths) {
-			return Candidate{}, fmt.Errorf("fix would touch protected path %s", path)
+			return Candidate{}, policyDenied(fmt.Errorf("fix would touch protected path %s", path))
 		}
 	}
 

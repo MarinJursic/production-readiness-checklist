@@ -31,8 +31,8 @@ and the destination itself must not exist.
 ```
 
 The command exits `0` only when the candidate passes every acceptance check. A
-validated but rejected candidate is still printed and exits `1`. Invalid input,
-an ineligible baseline, or an infrastructure failure exits `2`. Use
+validated but rejected candidate is still printed and exits `8`. Invalid input
+exits `3`; a policy-denied remediation exits `5`. Use
 `--format json` for the versioned `prc.remediation-candidate/v0.2` record.
 
 With `--config`, the exact canonical configuration digest and project identity
@@ -101,9 +101,10 @@ code for every unresolved result. Its terminal states are:
 - `stopped_by_policy_or_budget`: an eligible fix could not run within policy; or
 - `candidate_rejected`: independent acceptance rejected an attempted fix.
 
-Exit status `0` is reserved for `profile_satisfied`. A valid report that still
-has unresolved gate work exits `1`; invalid input or infrastructure failure
-exits `2`. `machine_work_complete` is not a production-readiness claim. The loop
+Exit status `0` is reserved for `profile_satisfied`. A no-go gate exits `1`,
+incomplete or blocked assessment work exits `2`, a policy or budget stop exits
+`5`, and candidate rejection exits `8`. `machine_work_complete` is not a
+production-readiness claim. The loop
 does not invoke Codex, Claude Code, project commands, R2 proposals, deployment,
 or version-control operations.
 

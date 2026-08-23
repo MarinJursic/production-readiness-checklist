@@ -29,10 +29,10 @@ func RunProposal(options ProposalOptions) (Candidate, error) {
 		return Candidate{}, err
 	}
 	if err := provider.ValidateOutput(options.Provider, options.Output, options.Task); err != nil {
-		return Candidate{}, err
+		return Candidate{}, policyDenied(err)
 	}
 	if options.Output.Status != "candidate" {
-		return Candidate{}, fmt.Errorf("provider output status %s has no candidate patch", options.Output.Status)
+		return Candidate{}, policyDenied(fmt.Errorf("provider output status %s has no candidate patch", options.Output.Status))
 	}
 
 	c, err := catalog.Load(options.CatalogRoot)
@@ -44,10 +44,10 @@ func RunProposal(options ProposalOptions) (Candidate, error) {
 		return Candidate{}, fmt.Errorf("unknown assertion %q", options.Task.AssertionID)
 	}
 	if assertion.RemediationClass != "R2" {
-		return Candidate{}, fmt.Errorf("assertion %s is not eligible for isolated R2 proposal application", assertion.ID)
+		return Candidate{}, policyDenied(fmt.Errorf("assertion %s is not eligible for isolated R2 proposal application", assertion.ID))
 	}
 	if !sameStrings(assertion.ControlIDs, options.Task.ControlIDs) {
-		return Candidate{}, fmt.Errorf("agent task controls do not match assertion %s", assertion.ID)
+		return Candidate{}, policyDenied(fmt.Errorf("agent task controls do not match assertion %s", assertion.ID))
 	}
 
 	baseline, err := inventory.Build(options.Target)
@@ -62,7 +62,7 @@ func RunProposal(options ProposalOptions) (Candidate, error) {
 		return Candidate{}, err
 	}
 	if baseline.Digest != options.Task.WorkspaceInventoryDigest {
-		return Candidate{}, fmt.Errorf("source workspace does not match the sealed agent task")
+		return Candidate{}, policyDenied(fmt.Errorf("source workspace does not match the sealed agent task"))
 	}
 	scanner := engine.New(c)
 	beforeRun, err := scanner.Scan(options.ProfileID, baseline)
@@ -71,10 +71,10 @@ func RunProposal(options ProposalOptions) (Candidate, error) {
 	}
 	before, ok := resultFor(beforeRun, assertion.ID)
 	if !ok || before.Assessment != "fail" {
-		return Candidate{}, fmt.Errorf("assertion %s is not a failing finding in the baseline", assertion.ID)
+		return Candidate{}, policyDenied(fmt.Errorf("assertion %s is not a failing finding in the baseline", assertion.ID))
 	}
 	if reasons := auditProposalAntiGaming(baseline, options.Output); len(reasons) > 0 {
-		return Candidate{}, fmt.Errorf("provider proposal failed anti-gaming audit: %s", strings.Join(reasons, " "))
+		return Candidate{}, policyDenied(fmt.Errorf("provider proposal failed anti-gaming audit: %s", strings.Join(reasons, " ")))
 	}
 
 	proposalID, err := provider.OutputID(options.Output)
@@ -112,7 +112,7 @@ func RunProposal(options ProposalOptions) (Candidate, error) {
 	changes, err := applyProviderPatch(candidateRoot, baseline, options.Task, options.Output,
 		policy.protectedPaths, policy.maxFiles, policy.maxChangedLines)
 	if err != nil {
-		return Candidate{}, err
+		return Candidate{}, policyDenied(err)
 	}
 	candidateInventory, err := inventory.Build(candidateRoot)
 	if err != nil {

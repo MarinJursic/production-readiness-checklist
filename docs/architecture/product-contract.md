@@ -70,3 +70,7 @@ The scanner will not:
 Catalog, profile, result, evidence, adapter, and provider formats are versioned
 independently. Until a format is declared stable, consumers must pin a supported
 version. Breaking changes require a migration path and explicit release notes.
+
+The process interface follows the [stable CLI and exit-code
+contract](../scanner/cli-contract.md); child-tool exit statuses never become
+assessment truth without protocol mapping and engine evaluation.

@@ -110,10 +110,12 @@ findings. Unknown, blocked, manual, and not-applicable results remain in the
 canonical JSON, Markdown, HTML, and JUnit reports instead of being mislabeled as
 source findings.
 
-`--exit-policy profile` is the default and exits nonzero unless the profile is
-fully satisfied. `no-go` exits nonzero only for a no-go terminal state. `never`
-always returns success after a completed scan but does not change the result in
-the report.
+`--exit-policy profile` is the default and uses the [stable CLI exit-code
+contract](cli-contract.md): a failed active gate is `1`, while incomplete,
+blocked, or manual evidence is `2`. `no-go` never hides incomplete execution.
+`never` is an explicit report-generation override that returns `0` after a
+completed scan but does not change the terminal state in the report; do not use
+it as a release gate.
 
 ## Fix eligible deterministic findings
 

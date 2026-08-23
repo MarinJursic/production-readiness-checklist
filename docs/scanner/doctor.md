@@ -67,5 +67,5 @@ python scripts/validate_instance.py doctor.schema.json doctor.json
 
 JSON conforms to `prc.doctor/v0.1`. Each check is `pass`, `warn`, or `fail` and
 states whether it is required. The command exits `0` when all requested required
-capabilities pass and `1` when at least one required capability fails. Warnings
+capabilities pass and `2` when at least one required capability fails. Warnings
 never silently claim that an untested optional capability is available.

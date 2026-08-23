@@ -166,7 +166,7 @@ func TestRunRejectsConfiguredBudgetExpansionAndDisabledPolicy(t *testing.T) {
 		ProfileID: "prc/core-repository", AssertionID: finalNewlineAssertion,
 		MaxFiles: 21, MaxChangedLines: 200, MaxAttempts: 3, Configuration: configuration,
 	})
-	if err == nil || !strings.Contains(err.Error(), "budget exceeds") {
+	if err == nil || !strings.Contains(err.Error(), "budget exceeds") || !IsPolicyDenied(err) {
 		t.Fatalf("unexpected budget error: %v", err)
 	}
 
@@ -179,7 +179,7 @@ func TestRunRejectsConfiguredBudgetExpansionAndDisabledPolicy(t *testing.T) {
 		ProfileID: "prc/core-repository", AssertionID: finalNewlineAssertion,
 		MaxFiles: 20, MaxChangedLines: 200, MaxAttempts: 3, Configuration: disabled,
 	})
-	if err == nil || !strings.Contains(err.Error(), "disabled") {
+	if err == nil || !strings.Contains(err.Error(), "disabled") || !IsPolicyDenied(err) {
 		t.Fatalf("unexpected disabled-policy error: %v", err)
 	}
 }
@@ -196,7 +196,7 @@ func TestRunAddsConfiguredProtectedPaths(t *testing.T) {
 		ProfileID: "prc/core-repository", AssertionID: finalNewlineAssertion,
 		MaxFiles: 20, MaxChangedLines: 200, MaxAttempts: 3, Configuration: configuration,
 	})
-	if err == nil || !strings.Contains(err.Error(), "protected path app.py") {
+	if err == nil || !strings.Contains(err.Error(), "protected path app.py") || !IsPolicyDenied(err) {
 		t.Fatalf("unexpected protected-path error: %v", err)
 	}
 }

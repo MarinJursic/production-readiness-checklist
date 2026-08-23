@@ -2,7 +2,9 @@ package main
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
+	"errors"
 	"os"
 	"path/filepath"
 	"slices"
@@ -49,7 +51,7 @@ func TestConfigValidateRejectsCapabilityExpansion(t *testing.T) {
 		t.Fatal(err)
 	}
 	var stdout, stderr bytes.Buffer
-	if code := run([]string{"config", "validate", "--file", path}, &stdout, &stderr); code != 2 {
+	if code := run([]string{"config", "validate", "--file", path}, &stdout, &stderr); code != exitConfiguration {
 		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
 	}
 }
@@ -93,7 +95,7 @@ func TestAdapterValidateOutputCommand(t *testing.T) {
 func TestAdapterValidateOutputRejectsAuthorityAttack(t *testing.T) {
 	var stdout, stderr bytes.Buffer
 	path := filepath.Join("..", "..", "fixtures", "adapters", "malicious-authority-output.jsonl")
-	if code := run([]string{"adapter", "validate-output", "--file", path}, &stdout, &stderr); code != 2 {
+	if code := run([]string{"adapter", "validate-output", "--file", path}, &stdout, &stderr); code != exitExecution {
 		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
 	}
 }
@@ -245,7 +247,7 @@ func TestScanRejectsUnauthorizedAdapterBeforeRuntimeExecution(t *testing.T) {
 		"--adapter-manifest", filepath.Join(repository, "fixtures", "adapters", "fixture-adapter.yaml"),
 		"--adapter-runtime", runtime, "--format", "json", "--exit-policy", "never",
 	}, &stdout, &stderr)
-	if code != 2 || !strings.Contains(stderr.String(), "not authorized") {
+	if code != exitPolicyDenied || !strings.Contains(stderr.String(), "not authorized") {
 		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
 	}
 	if _, err := os.Stat(marker); !os.IsNotExist(err) {
@@ -255,7 +257,7 @@ func TestScanRejectsUnauthorizedAdapterBeforeRuntimeExecution(t *testing.T) {
 
 func TestUnknownCommandIsUsageError(t *testing.T) {
 	var stdout, stderr bytes.Buffer
-	if code := run([]string{"unknown"}, &stdout, &stderr); code != 2 {
+	if code := run([]string{"unknown"}, &stdout, &stderr); code != exitConfiguration {
 		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
 	}
 }
@@ -360,8 +362,66 @@ func TestDoctorCommandFailsForUnsafeCandidateParent(t *testing.T) {
 		"doctor", "--target", target, "--catalog-root", filepath.Join("..", ".."),
 		"--candidate-parent", target, "--format", "json",
 	}, &stdout, &stderr)
-	if code != 1 || !strings.Contains(stdout.String(), `"ready": false`) {
+	if code != exitIncomplete || !strings.Contains(stdout.String(), `"ready": false`) {
 		t.Fatalf("exit=%d stdout=%s stderr=%s", code, stdout.String(), stderr.String())
+	}
+}
+
+func TestStableExitCodeContract(t *testing.T) {
+	wantTerminal := map[string]int{
+		"profile_satisfied":     exitSuccess,
+		"no_go":                 exitGateFailed,
+		"assessment_incomplete": exitIncomplete,
+		"environment_blocked":   exitIncomplete,
+		"machine_work_complete_manual_evidence_remaining": exitIncomplete,
+		"policy_stopped":   exitPolicyDenied,
+		"budget_exhausted": exitPolicyDenied,
+		"unrecognized":     exitInternal,
+	}
+	for terminal, want := range wantTerminal {
+		if got := scanTerminalExitCode(terminal); got != want {
+			t.Errorf("terminal %s exit=%d want=%d", terminal, got, want)
+		}
+	}
+	if got := errorExitCode(context.Canceled, exitInternal); got != exitCancelled {
+		t.Fatalf("cancelled exit=%d", got)
+	}
+	if got := remediationExitCode(remediation.RemediationRun{TerminalState: "candidate_rejected"}); got != exitCandidateRejected {
+		t.Fatalf("candidate rejection exit=%d", got)
+	}
+	if got := remediationExitCode(remediation.RemediationRun{TerminalState: "stopped_by_policy_or_budget"}); got != exitPolicyDenied {
+		t.Fatalf("policy stop exit=%d", got)
+	}
+	if got := errorExitCode(errors.New("unclassified"), exitInternal); got != exitInternal {
+		t.Fatalf("internal fallback exit=%d", got)
+	}
+}
+
+type failingWriter struct{}
+
+func (failingWriter) Write([]byte) (int, error) { return 0, errors.New("fixture write failed") }
+
+func TestJSONOutputFailureUsesInternalExitCode(t *testing.T) {
+	path := filepath.Join("..", "..", "fixtures", "config", "production-readiness.yaml")
+	var stderr bytes.Buffer
+	code := run([]string{"config", "validate", "--file", path, "--format", "json"}, failingWriter{}, &stderr)
+	if code != exitInternal || !strings.Contains(stderr.String(), "PRC-EXIT-6") {
+		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
+	}
+}
+
+func TestRemediationPolicyDenialUsesPolicyExitCode(t *testing.T) {
+	target := t.TempDir()
+	if err := os.WriteFile(filepath.Join(target, "app.py"), []byte("print('ready')"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	var stdout, stderr bytes.Buffer
+	code := run([]string{
+		"remediate", "--target", target, "--catalog-root", filepath.Join("..", ".."),
+		"--candidate-dir", filepath.Join(t.TempDir(), "candidate"), "--assertion", "PRC-A-CORE-001",
+	}, &stdout, &stderr)
+	if code != exitPolicyDenied || !strings.Contains(stderr.String(), "PRC-EXIT-5") {
+		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
 	}
 }
 

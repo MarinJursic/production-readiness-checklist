@@ -31,6 +31,55 @@ import (
 
 const version = "0.1.0-dev"
 
+const (
+	exitSuccess           = 0
+	exitGateFailed        = 1
+	exitIncomplete        = 2
+	exitConfiguration     = 3
+	exitExecution         = 4
+	exitPolicyDenied      = 5
+	exitInternal          = 6
+	exitCancelled         = 7
+	exitCandidateRejected = 8
+)
+
+type classifiedError struct {
+	code int
+	err  error
+}
+
+func (err classifiedError) Error() string { return err.err.Error() }
+func (err classifiedError) Unwrap() error { return err.err }
+
+func exitError(code int, err error) error {
+	if err == nil {
+		return nil
+	}
+	var classified classifiedError
+	if errors.As(err, &classified) || errors.Is(err, context.Canceled) {
+		return err
+	}
+	return classifiedError{code: code, err: err}
+}
+
+func errorExitCode(err error, fallback int) int {
+	if errors.Is(err, context.Canceled) {
+		return exitCancelled
+	}
+	var classified classifiedError
+	if errors.As(err, &classified) {
+		return classified.code
+	}
+	return fallback
+}
+
+func remediationCommandError(err error) error {
+	if remediation.IsPolicyDenied(err) {
+		return exitError(exitPolicyDenied, err)
+	}
+	return exitError(exitConfiguration, err)
+}
+
 func main() {
 	os.Exit(run(os.Args[1:], os.Stdout, os.Stderr))
 }
@@ -38,45 +87,48 @@ func main() {
 func run(args []string, stdout, stderr io.Writer) int {
 	if len(args) == 0 {
 		usage(stderr)
-		return 2
+		return exitConfiguration
 	}
 	var err error
-	var successful = true
-	var resultExit bool
+	outcome := exitSuccess
+	errorFallback := exitInternal
 	switch args[0] {
 	case "version":
 		fmt.Fprintf(stdout, "prc %s\n", version)
 		return 0
 	case "inventory":
+		errorFallback = exitConfiguration
 		err = runInventory(args[1:], stdout, stderr)
 	case "config":
+		errorFallback = exitConfiguration
 		err = runConfig(args[1:], stdout, stderr)
 	case "plan":
+		errorFallback = exitConfiguration
 		err = runPlan(args[1:], stdout, stderr)
 	case "scan":
-		resultExit = true
-		successful, err = runScan(args[1:], stdout, stderr)
+		outcome, err = runScan(args[1:], stdout, stderr)
 	case "fix":
-		resultExit = true
-		successful, err = runFix(args[1:], stdout, stderr)
+		outcome, err = runFix(args[1:], stdout, stderr)
 	case "doctor":
-		resultExit = true
-		successful, err = runDoctor(args[1:], stdout, stderr)
+		outcome, err = runDoctor(args[1:], stdout, stderr)
 	case "history":
+		errorFallback = exitConfiguration
 		err = runHistory(args[1:], stdout, stderr)
 	case "diff":
+		errorFallback = exitConfiguration
 		err = runDiff(args[1:], stdout, stderr)
 	case "remediate":
-		resultExit = true
-		successful, err = runRemediate(args[1:], stdout, stderr)
+		outcome, err = runRemediate(args[1:], stdout, stderr)
 	case "remediate-proposal":
-		resultExit = true
-		successful, err = runRemediateProposal(args[1:], stdout, stderr)
+		outcome, err = runRemediateProposal(args[1:], stdout, stderr)
 	case "explain":
+		errorFallback = exitConfiguration
 		err = runExplain(args[1:], stdout, stderr)
 	case "adapter":
+		errorFallback = exitExecution
 		err = runAdapter(args[1:], stdout, stderr)
 	case "provider":
+		errorFallback = exitExecution
 		err = runProvider(args[1:], stdout, stderr)
 	case "help", "-h", "--help":
 		usage(stdout)
@@ -84,16 +136,14 @@ func run(args []string, stdout, stderr io.Writer) int {
 	default:
 		fmt.Fprintf(stderr, "unknown command %q\n", args[0])
 		usage(stderr)
-		return 2
+		return exitConfiguration
 	}
 	if err != nil {
-		fmt.Fprintln(stderr, "error:", err)
-		return 2
+		code := errorExitCode(err, errorFallback)
+		fmt.Fprintf(stderr, "error [PRC-EXIT-%d]: %v\n", code, err)
+		return code
 	}
-	if resultExit && !successful {
-		return 1
-	}
-	return 0
+	return outcome
 }
 
 func usage(output io.Writer) {
@@ -236,7 +286,7 @@ func runProvider(args []string, stdout, stderr io.Writer) error {
 	return encodeJSON(stdout, execution)
 }
 
-func runRemediate(args []string, stdout, stderr io.Writer) (bool, error) {
+func runRemediate(args []string, stdout, stderr io.Writer) (int, error) {
 	set, target, catalogRoot, profile := parseCommon("remediate", args, stderr)
 	configPath := set.String("config", "", "optional validated project configuration")
 	assertionID := set.String("assertion", "PRC-A-CORE-014", "registered R1 assertion ID to remediate")
@@ -245,14 +295,14 @@ func runRemediate(args []string, stdout, stderr io.Writer) (bool, error) {
 	maxChangedLines := set.Int("max-changed-lines", 20, "maximum changed lines")
 	format := set.String("format", "human", "human or json")
 	if err := set.Parse(args); err != nil {
-		return false, err
+		return exitInternal, exitError(exitConfiguration, err)
 	}
 	if *format != "human" && *format != "json" {
-		return false, fmt.Errorf("unsupported format %q", *format)
+		return exitInternal, exitError(exitConfiguration, fmt.Errorf("unsupported format %q", *format))
 	}
 	configuration, err := loadRemediationConfiguration(*configPath)
 	if err != nil {
-		return false, err
+		return exitInternal, remediationCommandError(err)
 	}
 	maxAttempts := 1
 	if configuration != nil {
@@ -275,19 +325,22 @@ func runRemediate(args []string, stdout, stderr io.Writer) (bool, error) {
 		Attempt: 1, MaxAttempts: maxAttempts, Configuration: configuration,
 	})
 	if err != nil {
-		return false, err
+		return exitInternal, remediationCommandError(err)
 	}
 	if *format == "json" {
 		if err := encodeJSON(stdout, candidate); err != nil {
-			return false, err
+			return exitInternal, exitError(exitInternal, err)
 		}
 	} else {
 		printCandidate(stdout, candidate)
 	}
-	return candidate.Accepted, nil
+	if !candidate.Accepted {
+		return exitCandidateRejected, nil
+	}
+	return exitSuccess, nil
 }
 
-func runFix(args []string, stdout, stderr io.Writer) (bool, error) {
+func runFix(args []string, stdout, stderr io.Writer) (int, error) {
 	set, target, catalogRoot, profile := parseCommon("fix", args, stderr)
 	configPath := set.String("config", "", "optional validated project configuration")
 	candidateRoot := set.String("candidate-root", "", "new root for isolated attempt workspaces (required)")
@@ -296,14 +349,14 @@ func runFix(args []string, stdout, stderr io.Writer) (bool, error) {
 	maxChangedLines := set.Int("max-changed-lines", 200, "maximum changed lines across all attempts")
 	format := set.String("format", "human", "human or json")
 	if err := set.Parse(args); err != nil {
-		return false, err
+		return exitInternal, exitError(exitConfiguration, err)
 	}
 	if *format != "human" && *format != "json" {
-		return false, fmt.Errorf("unsupported format %q", *format)
+		return exitInternal, exitError(exitConfiguration, fmt.Errorf("unsupported format %q", *format))
 	}
 	configuration, err := loadRemediationConfiguration(*configPath)
 	if err != nil {
-		return false, err
+		return exitInternal, remediationCommandError(err)
 	}
 	if configuration != nil {
 		document := configuration.Validation.Configuration
@@ -326,16 +379,28 @@ func runFix(args []string, stdout, stderr io.Writer) (bool, error) {
 		MaxChangedLines: *maxChangedLines, Configuration: configuration,
 	})
 	if err != nil {
-		return false, err
+		return exitInternal, remediationCommandError(err)
 	}
 	if *format == "json" {
 		if err := encodeJSON(stdout, result); err != nil {
-			return false, err
+			return exitInternal, exitError(exitInternal, err)
 		}
 	} else {
 		printRemediationRun(stdout, result)
 	}
-	return result.GateState == "profile_satisfied", nil
+	return remediationExitCode(result), nil
+}
+
+func remediationExitCode(result remediation.RemediationRun) int {
+	switch result.TerminalState {
+	case "profile_satisfied":
+		return exitSuccess
+	case "candidate_rejected":
+		return exitCandidateRejected
+	case "stopped_by_policy_or_budget":
+		return exitPolicyDenied
+	}
+	return scanTerminalExitCode(result.GateState)
 }
 
 func printRemediationRun(output io.Writer, result remediation.RemediationRun) {
@@ -372,7 +437,7 @@ func (values *repeatedStringFlag) Set(value string) error {
 	return nil
 }
 
-func runDoctor(args []string, stdout, stderr io.Writer) (bool, error) {
+func runDoctor(args []string, stdout, stderr io.Writer) (int, error) {
 	set := flag.NewFlagSet("doctor", flag.ContinueOnError)
 	set.SetOutput(stderr)
 	target := set.String("target", ".", "repository to inspect")
@@ -384,10 +449,10 @@ func runDoctor(args []string, stdout, stderr io.Writer) (bool, error) {
 	providers := repeatedStringFlag{}
 	set.Var(&providers, "provider", "codex or claude executable to inspect without running; repeatable")
 	if err := set.Parse(args); err != nil {
-		return false, err
+		return exitInternal, exitError(exitConfiguration, err)
 	}
 	if *format != "human" && *format != "json" {
-		return false, fmt.Errorf("unsupported format %q", *format)
+		return exitInternal, exitError(exitConfiguration, fmt.Errorf("unsupported format %q", *format))
 	}
 	report := doctor.Run(doctor.Options{
 		Target: *target, CatalogRoot: *catalogRoot, StateDirectory: *stateDirectory,
@@ -395,12 +460,15 @@ func runDoctor(args []string, stdout, stderr io.Writer) (bool, error) {
 	})
 	if *format == "json" {
 		if err := encodeJSON(stdout, report); err != nil {
-			return false, err
+			return exitInternal, exitError(exitInternal, err)
 		}
 	} else {
 		printDoctor(stdout, report)
 	}
-	return report.Ready, nil
+	if !report.Ready {
+		return exitIncomplete, nil
+	}
+	return exitSuccess, nil
 }
 
 func printDoctor(output io.Writer, report doctor.Report) {
@@ -590,7 +658,7 @@ func printInvalidation(output io.Writer, report invalidation.Report) {
 	}
 }
 
-func runRemediateProposal(args []string, stdout, stderr io.Writer) (bool, error) {
+func runRemediateProposal(args []string, stdout, stderr io.Writer) (int, error) {
 	set, target, catalogRoot, profile := parseCommon("remediate-proposal", args, stderr)
 	configPath := set.String("config", "", "optional validated project configuration")
 	providerName := set.String("provider", "", "codex or claude")
@@ -601,17 +669,17 @@ func runRemediateProposal(args []string, stdout, stderr io.Writer) (bool, error)
 	maxChangedLines := set.Int("max-changed-lines", 200, "maximum changed lines")
 	format := set.String("format", "human", "human or json")
 	if err := set.Parse(args); err != nil {
-		return false, err
+		return exitInternal, exitError(exitConfiguration, err)
 	}
 	if *providerName == "" || *taskPath == "" || *outputPath == "" || *candidateDirectory == "" {
-		return false, errors.New("--provider, --task, --output, and --candidate-dir are required")
+		return exitInternal, exitError(exitConfiguration, errors.New("--provider, --task, --output, and --candidate-dir are required"))
 	}
 	if *format != "human" && *format != "json" {
-		return false, fmt.Errorf("unsupported format %q", *format)
+		return exitInternal, exitError(exitConfiguration, fmt.Errorf("unsupported format %q", *format))
 	}
 	configuration, err := loadRemediationConfiguration(*configPath)
 	if err != nil {
-		return false, err
+		return exitInternal, exitError(exitConfiguration, err)
 	}
 	maxAttempts := 1
 	if configuration != nil {
@@ -629,15 +697,15 @@ func runRemediateProposal(args []string, stdout, stderr io.Writer) (bool, error)
 	}
 	task, err := provider.LoadTask(*taskPath)
 	if err != nil {
-		return false, err
+		return exitInternal, exitError(exitConfiguration, err)
 	}
 	data, err := readBoundedRegularFile(*outputPath, int64(task.MaxOutputBytes))
 	if err != nil {
-		return false, err
+		return exitInternal, exitError(exitConfiguration, err)
 	}
 	proposal, err := provider.ParseOutput(*providerName, data, task)
 	if err != nil {
-		return false, err
+		return exitInternal, exitError(exitExecution, err)
 	}
 	candidate, err := remediation.RunProposal(remediation.ProposalOptions{
 		CatalogRoot: *catalogRoot, Target: *target, CandidateDir: *candidateDirectory,
@@ -646,16 +714,19 @@ func runRemediateProposal(args []string, stdout, stderr io.Writer) (bool, error)
 		Attempt: 1, MaxAttempts: maxAttempts, Configuration: configuration,
 	})
 	if err != nil {
-		return false, err
+		return exitInternal, remediationCommandError(err)
 	}
 	if *format == "json" {
 		if err := encodeJSON(stdout, candidate); err != nil {
-			return false, err
+			return exitInternal, exitError(exitInternal, err)
 		}
 	} else {
 		printCandidate(stdout, candidate)
 	}
-	return candidate.Accepted, nil
+	if !candidate.Accepted {
+		return exitCandidateRejected, nil
+	}
+	return exitSuccess, nil
 }
 
 func loadRemediationConfiguration(path string) (*remediation.ProjectConfiguration, error) {
@@ -815,7 +886,10 @@ func encodeJSON(output io.Writer, value any) error {
 	encoder := json.NewEncoder(output)
 	encoder.SetEscapeHTML(false)
 	encoder.SetIndent("", "  ")
-	return encoder.Encode(value)
+	if err := encoder.Encode(value); err != nil {
+		return exitError(exitInternal, fmt.Errorf("write JSON output: %w", err))
+	}
+	return nil
 }
 
 func runInventory(args []string, stdout, stderr io.Writer) error {
@@ -928,7 +1002,7 @@ func runPlan(args []string, stdout, stderr io.Writer) error {
 	return nil
 }
 
-func runScan(args []string, stdout, stderr io.Writer) (bool, error) {
+func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	set, target, catalogRoot, profile := parseCommon("scan", args, stderr)
 	configPath := set.String("config", "", "optional validated project configuration")
 	format := set.String("format", "human", "human, json, markdown, html, sarif, or junit")
@@ -937,57 +1011,57 @@ func runScan(args []string, stdout, stderr io.Writer) (bool, error) {
 	adapterManifest := set.String("adapter-manifest", "", "optional immutable OCI adapter manifest authorized by the selected profile")
 	adapterRuntime := set.String("adapter-runtime", "docker", "docker or podman executable for the authorized adapter")
 	if err := set.Parse(args); err != nil {
-		return false, err
+		return exitInternal, exitError(exitConfiguration, err)
 	}
 	if *format != "human" && *format != "json" && *format != "markdown" &&
 		*format != "html" && *format != "sarif" && *format != "junit" {
-		return false, fmt.Errorf("unsupported format %q", *format)
+		return exitInternal, exitError(exitConfiguration, fmt.Errorf("unsupported format %q", *format))
 	}
 	if *exitPolicy != "profile" && *exitPolicy != "no-go" && *exitPolicy != "never" {
-		return false, fmt.Errorf("unsupported exit policy %q", *exitPolicy)
+		return exitInternal, exitError(exitConfiguration, fmt.Errorf("unsupported exit policy %q", *exitPolicy))
 	}
 	item, validation, err := configuredInventory(*target, *configPath)
 	if err != nil {
-		return false, err
+		return exitInternal, exitError(exitConfiguration, err)
 	}
 	if validation != nil && !flagWasSet(set, "profile") {
 		*profile = validation.Configuration.Assessment.Profile
 	}
 	scanner, err := loadEngine(*catalogRoot)
 	if err != nil {
-		return false, err
+		return exitInternal, exitError(exitConfiguration, err)
 	}
 	executions := []model.AdapterExecution{}
 	if *adapterManifest != "" {
 		manifest, err := adapter.LoadManifest(*adapterManifest)
 		if err != nil {
-			return false, err
+			return exitInternal, exitError(exitConfiguration, err)
 		}
 		manifestDigest, err := adapter.ManifestDigest(manifest)
 		if err != nil {
-			return false, err
+			return exitInternal, exitError(exitConfiguration, err)
 		}
 		authorized, err := scanner.AuthorizesAdapter(*profile, item, manifest.ID, manifestDigest)
 		if err != nil {
-			return false, err
+			return exitInternal, exitError(exitConfiguration, err)
 		}
 		if !authorized {
-			return false, fmt.Errorf("adapter %s with manifest digest %s is not authorized by an applicable assertion in %s", manifest.ID, manifestDigest, *profile)
+			return exitInternal, exitError(exitPolicyDenied, fmt.Errorf("adapter %s with manifest digest %s is not authorized by an applicable assertion in %s", manifest.ID, manifestDigest, *profile))
 		}
 		adapterRunID, err := randomRunID()
 		if err != nil {
-			return false, err
+			return exitInternal, exitError(exitInternal, err)
 		}
 		subject := adapter.Subject{
 			TargetName: item.TargetName, TargetCommit: item.GitCommit, InventoryDigest: item.Digest,
 		}
 		input, err := adapter.InputJSONL(adapterRunID, subject, inventoryFacts(item), map[string]any{})
 		if err != nil {
-			return false, err
+			return exitInternal, exitError(exitExecution, err)
 		}
 		ociPlan, err := adapter.BuildOCIPlan(*adapterRuntime, item.Root, adapterRunID, manifest)
 		if err != nil {
-			return false, err
+			return exitInternal, exitError(exitExecution, err)
 		}
 		adapterContext := context.Background()
 		cancel := func() {}
@@ -1000,52 +1074,65 @@ func runScan(args []string, stdout, stderr io.Writer) (bool, error) {
 		output, err := adapter.RunOCI(adapterContext, ociPlan, manifest, input)
 		cancel()
 		if err != nil {
-			return false, err
+			return exitInternal, exitError(exitExecution, err)
 		}
 		execution, err := adapter.BindExecution(adapterRunID, subject, manifest, output)
 		if err != nil {
-			return false, err
+			return exitInternal, exitError(exitExecution, err)
 		}
 		executions = append(executions, execution)
 	}
 	run, err := scanner.ScanWithAdapterEvidence(*profile, item, executions)
 	if err != nil {
-		return false, err
+		return exitInternal, exitError(exitExecution, err)
 	}
 	var stateStore *state.Store
 	if *stateDirectory != "" {
 		stateStore, err = state.Open(context.Background(), *stateDirectory)
 		if err != nil {
-			return false, err
+			return exitInternal, exitError(exitConfiguration, err)
 		}
 		defer stateStore.Close()
 	}
 	if err := evidence.WriteRun(*stateDirectory, run); err != nil {
-		return false, err
+		return exitInternal, exitError(exitInternal, err)
 	}
 	if stateStore != nil {
 		if err := stateStore.IndexRun(context.Background(), run); err != nil {
-			return false, err
+			return exitInternal, exitError(exitInternal, err)
 		}
 	}
 	if *format == "json" {
 		if err := encodeJSON(stdout, run); err != nil {
-			return false, err
+			return exitInternal, exitError(exitInternal, err)
 		}
 	} else if *format == "human" {
 		printRun(stdout, run)
 	} else if err := report.Write(*format, stdout, run); err != nil {
-		return false, err
+		return exitInternal, exitError(exitInternal, err)
 	}
 	switch *exitPolicy {
-	case "profile":
-		return run.TerminalState == "profile_satisfied", nil
-	case "no-go":
-		return run.TerminalState != "no_go", nil
+	case "profile", "no-go":
+		return scanTerminalExitCode(run.TerminalState), nil
 	case "never":
-		return true, nil
+		return exitSuccess, nil
 	}
 	panic("validated exit policy was not handled")
+}
+
+func scanTerminalExitCode(terminalState string) int {
+	switch terminalState {
+	case "profile_satisfied":
+		return exitSuccess
+	case "no_go":
+		return exitGateFailed
+	case "assessment_incomplete", "environment_blocked", "machine_work_complete_manual_evidence_remaining":
+		return exitIncomplete
+	case "policy_stopped", "budget_exhausted":
+		return exitPolicyDenied
+	default:
+		return exitInternal
+	}
 }
 
 func inventoryFacts(item model.Inventory) map[string]any {

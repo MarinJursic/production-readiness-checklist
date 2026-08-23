@@ -39,6 +39,9 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
   rules, conservative non-repository freshness handling, and plan/run v0.4
   identities that bind the engine, profile, assertion revisions, parameters,
   and implementation definitions while preserving v0.3 schema access.
+- A stable eight-class CLI failure contract that separates gate failures,
+  incomplete assessments, configuration, execution, policy, internal,
+  cancellation, and rejected-candidate outcomes.
 
 ### Fixed
 

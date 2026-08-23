@@ -1,12 +1,29 @@
 package remediation
 
 import (
+	"errors"
 	"time"
 
 	projectconfig "github.com/MarinJursic/production-readiness-checklist/scanner/config"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/provider"
 )
+
+// PolicyDeniedError marks a requested remediation that is syntactically valid
+// but forbidden by the scanner or project capability policy.
+type PolicyDeniedError struct{ Err error }
+
+func (err PolicyDeniedError) Error() string { return err.Err.Error() }
+func (err PolicyDeniedError) Unwrap() error { return err.Err }
+
+func policyDenied(err error) error { return PolicyDeniedError{Err: err} }
+
+// IsPolicyDenied reports whether an error represents a denied operation rather
+// than invalid configuration or an execution failure.
+func IsPolicyDenied(err error) bool {
+	var denied PolicyDeniedError
+	return errors.As(err, &denied)
+}
 
 const (
 	FixContractSchema = "prc.fix-contract/v0.2"

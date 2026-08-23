@@ -44,10 +44,10 @@ func resolvePolicy(target, profileID string, maxFiles, maxChangedLines, attempt,
 		}
 		document := configuration.Validation.Configuration
 		if !document.Remediation.Enabled {
-			return activePolicy{}, fmt.Errorf("remediation is disabled by project configuration")
+			return activePolicy{}, policyDenied(fmt.Errorf("remediation is disabled by project configuration"))
 		}
 		if profileID != document.Assessment.Profile {
-			return activePolicy{}, fmt.Errorf("configured profile %s does not match selected profile %s", document.Assessment.Profile, profileID)
+			return activePolicy{}, policyDenied(fmt.Errorf("configured profile %s does not match selected profile %s", document.Assessment.Profile, profileID))
 		}
 		if policy.maxFiles == 0 {
 			policy.maxFiles = min(document.Remediation.MaxFiles, maximumFixFiles)
@@ -61,7 +61,7 @@ func resolvePolicy(target, profileID string, maxFiles, maxChangedLines, attempt,
 		if policy.maxFiles > document.Remediation.MaxFiles ||
 			policy.maxChangedLines > document.Remediation.MaxChangedLines ||
 			policy.maxAttempts > document.Remediation.MaxAttempts {
-			return activePolicy{}, fmt.Errorf("command remediation budget exceeds project configuration")
+			return activePolicy{}, policyDenied(fmt.Errorf("command remediation budget exceeds project configuration"))
 		}
 		policy.configurationID = configuration.Validation.Digest
 		policy.projectID = document.Project.ID

@@ -171,7 +171,7 @@ func TestRunProposalAddsDefaultProtectedPathsToWeakTask(t *testing.T) {
 		Provider: "codex", Task: task, Output: proposalOutput(task, "catalog/attack.md", patch),
 		MaxFiles: 2, MaxChangedLines: 10,
 	})
-	if err == nil || !strings.Contains(err.Error(), "outside the R2 fix contract") {
+	if err == nil || !strings.Contains(err.Error(), "outside the R2 fix contract") || !IsPolicyDenied(err) {
 		t.Fatalf("unexpected error: %v", err)
 	}
 }
@@ -187,7 +187,7 @@ func TestRunProposalRejectsVacuousTestBeforeCreatingCandidate(t *testing.T) {
 		Provider: "codex", Task: task, Output: proposalOutput(task, "app_test.py", patch),
 		MaxFiles: 2, MaxChangedLines: 10,
 	})
-	if err == nil || !strings.Contains(err.Error(), "constant assertion") {
+	if err == nil || !strings.Contains(err.Error(), "constant assertion") || !IsPolicyDenied(err) {
 		t.Fatalf("unexpected error: %v", err)
 	}
 	if _, statErr := os.Stat(candidatePath); !os.IsNotExist(statErr) {

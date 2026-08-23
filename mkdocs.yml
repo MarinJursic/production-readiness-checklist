@@ -53,6 +53,7 @@ nav:
       - AI-assisted review: guides/ai-assisted-review.md
   - Scanner architecture:
       - Scanner quick start: scanner/getting-started.md
+      - CLI and exit codes: scanner/cli-contract.md
       - Scanner diagnostics: scanner/doctor.md
       - Project configuration: scanner/configuration.md
       - Durable state and history: scanner/state-and-history.md
