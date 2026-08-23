@@ -288,7 +288,10 @@ jobs:
           test "$(tail -c 1 "$RUNNER_TEMP/remediation-loop-candidates/attempt-002/app.py")" = ""
 
       - name: Exercise isolated provider-proposal remediation
+        env:
+          PRC_TEST_GO_VERIFIER_IMAGE: docker.io/library/golang@sha256:4c9fe60190a2a3350ddc51de80d0224b8a6698d12bdfc999fee45ea9d6c46dbc # golang:1.27.0-alpine
         run: |
+          docker pull "$PRC_TEST_GO_VERIFIER_IMAGE"
           "$RUNNER_TEMP/prc" remediate-proposal \
             --target fixtures/providers/workspace \
             --catalog-root . \
@@ -296,6 +299,7 @@ jobs:
             --task fixtures/providers/suggest-task.json \
             --output fixtures/providers/valid-output.json \
             --candidate-dir "$RUNNER_TEMP/provider-candidate" \
+            --verifier-image "$PRC_TEST_GO_VERIFIER_IMAGE" \
             --format json > "$RUNNER_TEMP/provider-remediation.json"
           test ! -e fixtures/providers/workspace/app_test.go
           test -f "$RUNNER_TEMP/provider-candidate/app_test.go"
