@@ -30,6 +30,7 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/remediation"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/report"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/state"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/trust"
 )
 
 const version = "0.1.0-dev"
@@ -166,14 +167,18 @@ func usage(output io.Writer) {
 }
 
 func runPack(args []string, stdout, stderr io.Writer) error {
-	if len(args) == 0 || args[0] != "validate" {
-		return exitError(exitConfiguration, errors.New("pack requires validate"))
+	if len(args) == 0 || (args[0] != "validate" && args[0] != "verify") {
+		return exitError(exitConfiguration, errors.New("pack requires validate or verify"))
 	}
-	set := flag.NewFlagSet("pack validate", flag.ContinueOnError)
+	action := args[0]
+	set := flag.NewFlagSet("pack "+action, flag.ContinueOnError)
 	set.SetOutput(stderr)
 	path := set.String("file", "", "pack manifest YAML file")
 	root := set.String("catalog-root", ".", "repository containing the catalog, packs, and fixtures")
 	format := set.String("format", "human", "human or json")
+	trustStorePath := set.String("trust-store", "", "publisher trust store for signature verification")
+	signaturePath := set.String("signature", "", "detached publisher signature envelope")
+	verifiedAtText := set.String("verified-at", "", "required UTC RFC3339 verification time")
 	if err := set.Parse(args[1:]); err != nil {
 		return exitError(exitConfiguration, err)
 	}
@@ -193,6 +198,38 @@ func runPack(args []string, stdout, stderr io.Writer) error {
 	loaded, err := pack.Load(*root, *path, catalogValue)
 	if err != nil {
 		return exitError(exitConfiguration, err)
+	}
+	if action == "verify" {
+		if *trustStorePath == "" || *signaturePath == "" || *verifiedAtText == "" {
+			return exitError(exitConfiguration, errors.New("pack verify requires --trust-store, --signature, and --verified-at"))
+		}
+		verifiedAt, err := time.Parse(time.RFC3339Nano, *verifiedAtText)
+		if err != nil {
+			return exitError(exitConfiguration, fmt.Errorf("parse --verified-at: %w", err))
+		}
+		store, err := trust.LoadStore(*trustStorePath)
+		if err != nil {
+			return exitError(exitConfiguration, err)
+		}
+		signature, err := trust.LoadSignature(*signaturePath)
+		if err != nil {
+			return exitError(exitConfiguration, err)
+		}
+		verification, err := trust.Verify(store, signature, "pack", loaded.Manifest.ID, loaded.Digest, verifiedAt)
+		if err != nil {
+			return exitError(exitPolicyDenied, err)
+		}
+		if *format == "json" {
+			return encodeJSON(stdout, verification)
+		}
+		fmt.Fprintf(stdout, "Verified pack: %s (%s)\n", verification.ArtifactID, verification.SHA256)
+		fmt.Fprintf(stdout, "Publisher key: %s\n", verification.KeyID)
+		fmt.Fprintf(stdout, "Trust store: %s (%s)\n", verification.TrustStoreID, verification.TrustStoreDigest)
+		fmt.Fprintf(stdout, "Verified at: %s\n", verification.VerifiedAt.Format(time.RFC3339))
+		return nil
+	}
+	if *trustStorePath != "" || *signaturePath != "" || *verifiedAtText != "" {
+		return exitError(exitConfiguration, errors.New("signature flags require pack verify"))
 	}
 	if *format == "json" {
 		return encodeJSON(stdout, loaded.Report())
@@ -972,7 +1009,7 @@ func printCandidate(output io.Writer, candidate remediation.Candidate) {
 
 func runAdapter(args []string, stdout, stderr io.Writer) error {
 	if len(args) == 0 {
-		return errors.New("adapter requires validate-output, registry-validate, plan-oci, or run-oci")
+		return errors.New("adapter requires validate-output, registry-validate, registry-verify, plan-oci, or run-oci")
 	}
 	switch args[0] {
 	case "validate-output":
@@ -1012,11 +1049,15 @@ func runAdapter(args []string, stdout, stderr io.Writer) error {
 			}
 		}
 		return encodeJSON(stdout, transcript)
-	case "registry-validate":
-		set := flag.NewFlagSet("adapter registry-validate", flag.ContinueOnError)
+	case "registry-validate", "registry-verify":
+		action := args[0]
+		set := flag.NewFlagSet("adapter "+action, flag.ContinueOnError)
 		set.SetOutput(stderr)
 		path := set.String("file", "", "adapter registry lockfile")
 		format := set.String("format", "human", "human or json")
+		trustStorePath := set.String("trust-store", "", "publisher trust store for signature verification")
+		signaturePath := set.String("signature", "", "detached publisher signature envelope")
+		verifiedAtText := set.String("verified-at", "", "required UTC RFC3339 verification time")
 		if err := set.Parse(args[1:]); err != nil {
 			return exitError(exitConfiguration, err)
 		}
@@ -1029,6 +1070,41 @@ func runAdapter(args []string, stdout, stderr io.Writer) error {
 		registry, err := adapter.LoadRegistry(*path)
 		if err != nil {
 			return exitError(exitConfiguration, err)
+		}
+		if action == "registry-verify" {
+			if *trustStorePath == "" || *signaturePath == "" || *verifiedAtText == "" {
+				return exitError(exitConfiguration, errors.New("adapter registry-verify requires --trust-store, --signature, and --verified-at"))
+			}
+			verifiedAt, err := time.Parse(time.RFC3339Nano, *verifiedAtText)
+			if err != nil {
+				return exitError(exitConfiguration, fmt.Errorf("parse --verified-at: %w", err))
+			}
+			store, err := trust.LoadStore(*trustStorePath)
+			if err != nil {
+				return exitError(exitConfiguration, err)
+			}
+			signature, err := trust.LoadSignature(*signaturePath)
+			if err != nil {
+				return exitError(exitConfiguration, err)
+			}
+			verification, err := trust.Verify(store, signature, "adapter-registry", registry.ID, registry.Digest, verifiedAt)
+			if err != nil {
+				return exitError(exitPolicyDenied, err)
+			}
+			if *format == "json" {
+				return encodeJSON(stdout, verification)
+			}
+			if *format != "human" {
+				return exitError(exitConfiguration, fmt.Errorf("unsupported format %q", *format))
+			}
+			fmt.Fprintf(stdout, "Verified adapter registry: %s (%s)\n", verification.ArtifactID, verification.SHA256)
+			fmt.Fprintf(stdout, "Publisher key: %s\n", verification.KeyID)
+			fmt.Fprintf(stdout, "Trust store: %s (%s)\n", verification.TrustStoreID, verification.TrustStoreDigest)
+			fmt.Fprintf(stdout, "Verified at: %s\n", verification.VerifiedAt.Format(time.RFC3339))
+			return nil
+		}
+		if *trustStorePath != "" || *signaturePath != "" || *verifiedAtText != "" {
+			return exitError(exitConfiguration, errors.New("signature flags require adapter registry-verify"))
 		}
 		if *format == "json" {
 			return encodeJSON(stdout, registry.Report())

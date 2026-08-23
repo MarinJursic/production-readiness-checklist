@@ -98,6 +98,8 @@ measured only in their fail-closed states. All limitations are part of the pack
 manifest and therefore its digest.
 
 Pack membership does not authorize adapter execution and does not change gate
-semantics. The current manifests and benchmark pins are local integrity
-contracts; signed pack releases and publisher-key verification remain future
-work before packs can be treated as a remote trust channel.
+semantics. Detached, scoped Ed25519 verification is supported through an
+explicit [publisher trust store](../architecture/publisher-trust.md). The
+repository does not yet publish an official release trust store or signed pack,
+so checked-in packs remain local integrity contracts rather than a remote trust
+channel.

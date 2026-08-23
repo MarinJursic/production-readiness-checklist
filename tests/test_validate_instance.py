@@ -1132,6 +1132,66 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             [],
         )
 
+    def test_publisher_trust_contracts_conform(self) -> None:
+        digest = "a" * 64
+        store = {
+            "schema_version": "prc.trust-store/v0.1",
+            "id": "release-keys",
+            "revision": 1,
+            "keys": [{
+                "id": "release-2026",
+                "algorithm": "ed25519",
+                "public_key": "A" * 43 + "=",
+                "scopes": ["adapter-registry", "pack"],
+                "status": "active",
+                "not_before": "2026-08-23T00:00:00Z",
+                "not_after": "2027-08-23T00:00:00Z",
+            }],
+        }
+        signature = {
+            "schema_version": "prc.signature/v0.1",
+            "artifact_kind": "pack",
+            "artifact_id": "prc.pack.core-native@0.3",
+            "sha256": digest,
+            "key_id": "release-2026",
+            "algorithm": "ed25519",
+            "issued_at": "2026-08-23T12:00:00Z",
+            "signature": "A" * 86 + "==",
+        }
+        verification = {
+            "schema_version": "prc.signature-verification/v0.1",
+            "artifact_kind": signature["artifact_kind"],
+            "artifact_id": signature["artifact_id"],
+            "sha256": digest,
+            "key_id": signature["key_id"],
+            "algorithm": "ed25519",
+            "issued_at": signature["issued_at"],
+            "verified_at": "2026-08-23T13:00:00Z",
+            "trust_store_id": store["id"],
+            "trust_store_digest": "b" * 64,
+            "signature_digest": "c" * 64,
+            "verified": True,
+        }
+        for instance, schema in [
+            (store, "trust-store.schema.json"),
+            (signature, "signature.schema.json"),
+            (verification, "signature-verification.schema.json"),
+        ]:
+            self.assertEqual(
+                validate_instance.validation_errors(instance, schema),
+                [],
+            )
+
+        revoked_without_reason = {
+            **store,
+            "keys": [{**store["keys"][0], "status": "revoked"}],
+        }
+        self.assertTrue(
+            validate_instance.validation_errors(
+                revoked_without_reason, "trust-store.schema.json"
+            )
+        )
+
     def test_checked_in_agent_task_and_output_conform(self) -> None:
         task = json.loads(
             (ROOT / "fixtures" / "providers" / "suggest-task.json").read_text(

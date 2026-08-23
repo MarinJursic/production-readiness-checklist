@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/trust-store.schema.json",
+  "title": "Production Readiness Publisher Trust Store v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "revision", "keys"],
+  "properties": {
+    "schema_version": {"const": "prc.trust-store/v0.1"},
+    "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9.-]{0,127}$"},
+    "revision": {"type": "integer", "minimum": 1},
+    "keys": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 256,
+      "items": {"$ref": "#/$defs/key"}
+    }
+  },
+  "$defs": {
+    "scope": {"enum": ["pack", "adapter-registry", "catalog-bundle"]},
+    "key": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "algorithm", "public_key", "scopes", "status", "not_before", "not_after"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9.-]{0,127}$"},
+        "algorithm": {"const": "ed25519"},
+        "public_key": {"type": "string", "pattern": "^[A-Za-z0-9+/]{43}=$"},
+        "scopes": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/scope"}
+        },
+        "status": {"enum": ["active", "revoked"]},
+        "not_before": {"type": "string", "format": "date-time"},
+        "not_after": {"type": "string", "format": "date-time"},
+        "reason": {"type": "string", "minLength": 1, "maxLength": 1000}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"status": {"const": "active"}}},
+          "then": {"not": {"required": ["reason"]}},
+          "else": {"required": ["reason"]}
+        }
+      ]
+    }
+  }
+}

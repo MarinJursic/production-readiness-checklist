@@ -92,10 +92,11 @@ current engine compatibility.
 `revoked` entries remain effective even when the compromised manifest has been
 removed. Default resolution permits only `first-party-sandboxed` and
 `verified-community` entries; it denies deprecated, unverified-community, and
-local entries. A manifest cannot alter these registry decisions. The current
-lockfile is a local trust root, not yet a signed distribution system; signed
-registry releases and publisher-key verification remain required before a
-public adapter ecosystem can be considered complete.
+local entries. A manifest cannot alter these registry decisions. Detached,
+scoped Ed25519 verification is available through an explicitly selected
+[publisher trust store](publisher-trust.md). The current repository does not
+yet publish an official release trust store or signed registry, so a public
+adapter distribution channel is not yet complete.
 
 Validate and inspect a lockfile without executing anything:
 

@@ -65,6 +65,7 @@ nav:
       - Catalog integrity: architecture/catalog-integrity.md
       - Execution plans and capability policy: architecture/execution-plans.md
       - Sandboxed adapters: architecture/adapters.md
+      - Offline publisher trust: architecture/publisher-trust.md
       - Read-only agent providers: architecture/agent-providers.md
       - Bounded applicability: architecture/applicability.md
       - Evidence and results: architecture/evidence-and-results.md

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/signature.schema.json",
+  "title": "Production Readiness Publisher Signature v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "artifact_kind", "artifact_id", "sha256", "key_id", "algorithm", "issued_at", "signature"],
+  "properties": {
+    "schema_version": {"const": "prc.signature/v0.1"},
+    "artifact_kind": {"enum": ["pack", "adapter-registry", "catalog-bundle"]},
+    "artifact_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9./@_-]{0,255}$"},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "key_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9.-]{0,127}$"},
+    "algorithm": {"const": "ed25519"},
+    "issued_at": {"type": "string", "format": "date-time"},
+    "signature": {"type": "string", "pattern": "^[A-Za-z0-9+/]{86}==$"}
+  }
+}

@@ -3,6 +3,9 @@ package main
 import (
 	"bytes"
 	"context"
+	"crypto/ed25519"
+	"crypto/rand"
+	"encoding/base64"
 	"encoding/json"
 	"errors"
 	"os"
@@ -10,6 +13,7 @@ import (
 	"slices"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/adapter"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/benchmark"
@@ -21,6 +25,7 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/pack"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/provider"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/remediation"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/trust"
 )
 
 func commandFinding(t *testing.T, target, assertionID string) model.Finding {
@@ -192,6 +197,136 @@ func TestPackValidateCommand(t *testing.T) {
 	}
 	if report.SchemaVersion != pack.ReportSchema || len(report.Digest) != 64 || len(report.Manifest.Assertions) != 3 {
 		t.Fatalf("pack report = %+v", report)
+	}
+}
+
+func TestPackAndRegistryPublisherVerificationCommands(t *testing.T) {
+	repository := filepath.Join("..", "..")
+	catalogValue, err := catalog.Load(repository)
+	if err != nil {
+		t.Fatal(err)
+	}
+	loadedPack, err := pack.Load(repository, filepath.Join(repository, "packs", "core-foundation.yaml"), catalogValue)
+	if err != nil {
+		t.Fatal(err)
+	}
+	registryPath := filepath.Join(repository, "fixtures", "adapters", "fixture-registry.yaml")
+	registry, err := adapter.LoadRegistry(registryPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	issuedAt := time.Date(2026, 8, 23, 12, 0, 0, 0, time.UTC)
+	storePath, packSignature := writePublisherFixture(
+		t, "pack", loadedPack.Manifest.ID, loadedPack.Digest, issuedAt,
+	)
+	_, registrySignature := writePublisherFixtureWithStore(
+		t, storePath, "adapter-registry", registry.ID, registry.Digest, issuedAt,
+	)
+
+	tests := []struct {
+		name string
+		args []string
+	}{
+		{
+			name: "pack",
+			args: []string{
+				"pack", "verify", "--catalog-root", repository,
+				"--file", filepath.Join(repository, "packs", "core-foundation.yaml"),
+				"--trust-store", storePath, "--signature", packSignature,
+				"--verified-at", "2026-08-23T13:00:00Z", "--format", "json",
+			},
+		},
+		{
+			name: "registry",
+			args: []string{
+				"adapter", "registry-verify", "--file", registryPath,
+				"--trust-store", storePath, "--signature", registrySignature,
+				"--verified-at", "2026-08-23T13:00:00Z", "--format", "json",
+			},
+		},
+	}
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			var stdout, stderr bytes.Buffer
+			if code := run(test.args, &stdout, &stderr); code != 0 {
+				t.Fatalf("exit=%d stderr=%s", code, stderr.String())
+			}
+			var verification trust.Verification
+			if err := json.Unmarshal(stdout.Bytes(), &verification); err != nil {
+				t.Fatal(err)
+			}
+			if !verification.Verified || verification.SchemaVersion != trust.VerificationSchema ||
+				len(verification.TrustStoreDigest) != 64 {
+				t.Fatalf("verification = %+v", verification)
+			}
+		})
+	}
+
+	var stdout, stderr bytes.Buffer
+	code := run([]string{
+		"pack", "verify", "--catalog-root", repository,
+		"--file", filepath.Join(repository, "packs", "core-foundation.yaml"),
+		"--trust-store", storePath, "--signature", registrySignature,
+		"--verified-at", "2026-08-23T13:00:00Z", "--format", "json",
+	}, &stdout, &stderr)
+	if code != exitPolicyDenied || !strings.Contains(stderr.String(), "subject") {
+		t.Fatalf("mismatched signature exit=%d stderr=%s", code, stderr.String())
+	}
+}
+
+func writePublisherFixture(t *testing.T, kind, artifactID, digest string, issuedAt time.Time) (string, string) {
+	t.Helper()
+	publicKey, privateKey, err := ed25519.GenerateKey(rand.Reader)
+	if err != nil {
+		t.Fatal(err)
+	}
+	directory := t.TempDir()
+	storePath := filepath.Join(directory, "trust-store.json")
+	store := trust.Store{
+		SchemaVersion: trust.StoreSchema, ID: "test-release-keys", Revision: 1,
+		Keys: []trust.Key{{
+			ID: "test-release", Algorithm: trust.AlgorithmEd25519,
+			PublicKey: base64.StdEncoding.EncodeToString(publicKey), Scopes: []string{"adapter-registry", "pack"},
+			Status: "active", NotBefore: issuedAt.Add(-time.Hour), NotAfter: issuedAt.Add(24 * time.Hour),
+		}},
+	}
+	writeJSONFixture(t, storePath, store)
+	privateKeyPath := filepath.Join(directory, "private-key")
+	if err := os.WriteFile(privateKeyPath, privateKey, 0o600); err != nil {
+		t.Fatal(err)
+	}
+	return writePublisherFixtureWithStore(t, storePath, kind, artifactID, digest, issuedAt)
+}
+
+func writePublisherFixtureWithStore(t *testing.T, storePath, kind, artifactID, digest string, issuedAt time.Time) (string, string) {
+	t.Helper()
+	privateKeyPath := filepath.Join(filepath.Dir(storePath), "private-key")
+	privateKey, err := os.ReadFile(privateKeyPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	signature := trust.Signature{
+		SchemaVersion: trust.SignatureSchema, ArtifactKind: kind, ArtifactID: artifactID,
+		SHA256: digest, KeyID: "test-release", Algorithm: trust.AlgorithmEd25519, IssuedAt: issuedAt,
+	}
+	payload, err := trust.SigningPayload(signature)
+	if err != nil {
+		t.Fatal(err)
+	}
+	signature.Value = base64.StdEncoding.EncodeToString(ed25519.Sign(ed25519.PrivateKey(privateKey), payload))
+	path := filepath.Join(filepath.Dir(storePath), strings.ReplaceAll(kind, "-", "_")+"-signature.json")
+	writeJSONFixture(t, path, signature)
+	return storePath, path
+}
+
+func writeJSONFixture(t *testing.T, path string, value any) {
+	t.Helper()
+	payload, err := json.Marshal(value)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(path, payload, 0o600); err != nil {
+		t.Fatal(err)
 	}
 }
 
