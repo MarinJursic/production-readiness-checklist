@@ -76,7 +76,7 @@ prc pack validate \
 
 The smaller `core-foundation` pack contains three assertions and remains a
 fast contract test. The `core-native` pack binds all 30 assertions in the core
-profile to a 16-case, 98-expectation fixture corpus:
+profile to a 21-case, 103-expectation fixture corpus:
 
 ```bash
 prc benchmark run \
@@ -88,12 +88,14 @@ prc pack validate \
   --file packs/core-native.yaml
 ```
 
-The comprehensive pack distinguishes measured state coverage from complete
-validation. Manual and adapter-backed assertions are currently measured only
-in their fail-closed states, while Git identity, file-mode, final-newline,
-merge-conflict, and empty-manifest checks lack both positive and negative
-committed fixtures.
-These limitations are part of the pack manifest and therefore its digest.
+The v0.2 benchmark contract can materialize five bounded fixture conditions in
+a temporary copy: exact text-token replacement, final-newline removal, file
+truncation, permission-mode changes, and a synthetic immutable Git HEAD. It
+never executes target code, follows symlinks, or modifies the checked-in
+fixture. This gives each deterministic native assertion both its relevant
+positive and negative outcome; manual and adapter-backed assertions remain
+measured only in their fail-closed states. All limitations are part of the pack
+manifest and therefore its digest.
 
 Pack membership does not authorize adapter execution and does not change gate
 semantics. The current manifests and benchmark pins are local integrity

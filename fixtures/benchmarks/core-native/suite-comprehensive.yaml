@@ -1,5 +1,5 @@
-schema_version: prc.benchmark-suite/v0.1
-id: prc.benchmark.core-native@0.2
+schema_version: prc.benchmark-suite/v0.2
+id: prc.benchmark.core-native@0.3
 title: Comprehensive core native assertion benchmark
 profile_id: prc/core-repository
 cases:
@@ -149,6 +149,38 @@ cases:
     expectations:
       - {assertion_id: PRC-A-CORE-029, assessment: fail, execution: completed}
       - {assertion_id: PRC-A-CORE-030, assessment: fail, execution: completed}
+  - id: conflict-markers-materialized
+    target: targets/conflict-template
+    setup:
+      - {operation: replace_text, path: app.js, find: PRC_CONFLICT_START, replace: "<<<<<<< HEAD"}
+      - {operation: replace_text, path: app.js, find: PRC_CONFLICT_MIDDLE, replace: "======="}
+      - {operation: replace_text, path: app.js, find: PRC_CONFLICT_END, replace: ">>>>>>> feature"}
+    expectations:
+      - {assertion_id: PRC-A-CORE-021, assessment: fail, execution: completed}
+  - id: empty-manifest-materialized
+    target: targets/empty-manifest-template
+    setup:
+      - {operation: truncate, path: package.json}
+    expectations:
+      - {assertion_id: PRC-A-CORE-023, assessment: fail, execution: completed}
+  - id: final-newline-materialized
+    target: targets/final-newline-template
+    setup:
+      - {operation: remove_final_newline, path: app.py}
+    expectations:
+      - {assertion_id: PRC-A-CORE-014, assessment: fail, execution: completed}
+  - id: git-head-materialized
+    target: targets/baseline
+    setup:
+      - {operation: git_head, value: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa}
+    expectations:
+      - {assertion_id: PRC-A-CORE-015, assessment: pass, execution: completed}
+  - id: writable-mode-materialized
+    target: targets/baseline
+    setup:
+      - {operation: chmod, path: app.go, mode: 438}
+    expectations:
+      - {assertion_id: PRC-A-CORE-022, assessment: fail, execution: completed}
 quality_budget:
   minimum_precision: 1
   minimum_recall: 1

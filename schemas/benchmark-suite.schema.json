@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/benchmark-suite.schema.json",
-  "title": "Production Readiness Benchmark Suite v0.1",
+  "title": "Production Readiness Benchmark Suite v0.2",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_version", "id", "title", "profile_id", "cases", "quality_budget"],
   "properties": {
-    "schema_version": {"const": "prc.benchmark-suite/v0.1"},
+    "schema_version": {"enum": ["prc.benchmark-suite/v0.1", "prc.benchmark-suite/v0.2"]},
     "id": {"type": "string", "pattern": "^prc\\.benchmark\\.[a-z0-9.-]+@[0-9]+\\.[0-9]+$"},
     "title": {"type": "string", "minLength": 1},
     "profile_id": {"type": "string", "pattern": "^prc/[a-z0-9-]+$"},
@@ -30,16 +30,66 @@
         "execution": {"enum": ["not_run", "completed", "blocked", "error"]}
       }
     },
+    "setup_operation": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["operation", "path", "find"],
+          "properties": {
+            "operation": {"const": "replace_text"},
+            "path": {"$ref": "#/$defs/relative_path"},
+            "find": {"type": "string", "minLength": 1, "maxLength": 4096},
+            "replace": {"type": "string", "maxLength": 4096}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["operation", "path"],
+          "properties": {
+            "operation": {"enum": ["remove_final_newline", "truncate"]},
+            "path": {"$ref": "#/$defs/relative_path"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["operation", "path", "mode"],
+          "properties": {
+            "operation": {"const": "chmod"},
+            "path": {"$ref": "#/$defs/relative_path"},
+            "mode": {"type": "integer", "minimum": 0, "maximum": 511}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["operation", "value"],
+          "properties": {
+            "operation": {"const": "git_head"},
+            "value": {"type": "string", "pattern": "^[0-9a-f]{40,64}$"}
+          }
+        }
+      ]
+    },
+    "relative_path": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$",
+      "not": {"pattern": "(^|/)\\.\\.?(/|$)"}
+    },
     "case": {
       "type": "object",
       "additionalProperties": false,
       "required": ["id", "target", "expectations"],
       "properties": {
         "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9.-]{0,127}$"},
-        "target": {
-          "type": "string",
-          "pattern": "^[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$",
-          "not": {"pattern": "(^|/)\\.\\.?(/|$)"}
+        "target": {"$ref": "#/$defs/relative_path"},
+        "setup": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 16,
+          "items": {"$ref": "#/$defs/setup_operation"}
         },
         "expectations": {
           "type": "array",

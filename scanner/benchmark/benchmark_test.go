@@ -71,7 +71,7 @@ func TestComprehensiveCoreBenchmarkCoversEveryCatalogAssertion(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if !report.Passed || report.Summary.Cases != 16 || report.Summary.Expectations != 98 ||
+	if !report.Passed || report.Summary.Cases != 21 || report.Summary.Expectations != 103 ||
 		report.Summary.Mismatched != 0 || report.Summary.DeterministicCases != report.Summary.Cases ||
 		report.Metrics.Precision != 1 || report.Metrics.Recall != 1 || report.Metrics.FalsePositiveRate != 0 {
 		t.Fatalf("comprehensive benchmark report = %+v", report)
@@ -136,5 +136,64 @@ quality_budget:
 	}
 	if _, err := Load(path, catalogValue); err == nil || !strings.Contains(err.Error(), "requires field") {
 		t.Fatalf("unexpected incomplete budget error: %v", err)
+	}
+
+	legacySetup := strings.Replace(suite, "    target: target\n", "    target: target\n    setup:\n      - operation: truncate\n        path: README.md\n", 1)
+	if err := os.WriteFile(path, []byte(legacySetup), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := Load(path, catalogValue); err == nil || !strings.Contains(err.Error(), "setup requires schema") {
+		t.Fatalf("unexpected legacy setup error: %v", err)
+	}
+}
+
+func TestFixtureSetupIsBoundedAndDoesNotMutateSource(t *testing.T) {
+	source := t.TempDir()
+	path := filepath.Join(source, "app.py")
+	if err := os.WriteFile(path, []byte("print('ready')\n"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	mode := uint32(0o666)
+	materialized, cleanup, err := materializeTarget(source, []SetupOperation{
+		{Operation: "remove_final_newline", Path: "app.py"},
+		{Operation: "chmod", Path: "app.py", Mode: &mode},
+		{Operation: "git_head", Value: strings.Repeat("a", 40)},
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer cleanup()
+	original, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	changed, err := os.ReadFile(filepath.Join(materialized, "app.py"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	head, err := os.ReadFile(filepath.Join(materialized, ".git", "HEAD"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	info, err := os.Stat(filepath.Join(materialized, "app.py"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if string(original) != "print('ready')\n" || string(changed) != "print('ready')" ||
+		string(head) != strings.Repeat("a", 40)+"\n" || info.Mode().Perm() != 0o666 {
+		t.Fatalf("materialized fixture original=%q changed=%q head=%q mode=%#o", original, changed, head, info.Mode().Perm())
+	}
+
+	invalidMode := uint32(0o1000)
+	if err := validateSetupOperation(SetupOperation{Operation: "chmod", Path: "app.py", Mode: &invalidMode}); err == nil {
+		t.Fatal("out-of-range fixture mode was accepted")
+	}
+	if err := validateSetupOperation(SetupOperation{Operation: "truncate", Path: "../outside"}); err == nil {
+		t.Fatal("fixture path traversal was accepted")
+	}
+	if _, _, err := materializeTarget(source, []SetupOperation{{
+		Operation: "replace_text", Path: "app.py", Find: "missing", Replace: "value",
+	}}); err == nil || !strings.Contains(err.Error(), "exactly once") {
+		t.Fatalf("missing replacement token error = %v", err)
 	}
 }

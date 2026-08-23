@@ -27,16 +27,22 @@ import (
 )
 
 const (
-	SuiteSchema  = "prc.benchmark-suite/v0.1"
-	ReportSchema = "prc.benchmark-report/v0.1"
+	SuiteSchemaV1 = "prc.benchmark-suite/v0.1"
+	SuiteSchema   = "prc.benchmark-suite/v0.2"
+	ReportSchema  = "prc.benchmark-report/v0.1"
 )
 
-const maximumSuiteBytes = 1024 * 1024
+const (
+	maximumSuiteBytes        = 1024 * 1024
+	maximumMaterializedBytes = 256 * 1024 * 1024
+	maximumSetupFileBytes    = 16 * 1024 * 1024
+)
 
 var (
 	suiteIDPattern = regexp.MustCompile(`^prc\.benchmark\.[a-z0-9.-]+@[0-9]+\.[0-9]+$`)
 	caseIDPattern  = regexp.MustCompile(`^[a-z0-9][a-z0-9.-]{0,127}$`)
 	assertionID    = regexp.MustCompile(`^PRC-A-[A-Z0-9]+-[0-9]{3}$`)
+	gitHeadPattern = regexp.MustCompile(`^[0-9a-f]{40,64}$`)
 )
 
 type Expectation struct {
@@ -46,9 +52,19 @@ type Expectation struct {
 }
 
 type Case struct {
-	ID           string        `json:"id" yaml:"id"`
-	Target       string        `json:"target" yaml:"target"`
-	Expectations []Expectation `json:"expectations" yaml:"expectations"`
+	ID           string           `json:"id" yaml:"id"`
+	Target       string           `json:"target" yaml:"target"`
+	Setup        []SetupOperation `json:"setup,omitempty" yaml:"setup,omitempty"`
+	Expectations []Expectation    `json:"expectations" yaml:"expectations"`
+}
+
+type SetupOperation struct {
+	Operation string  `json:"operation" yaml:"operation"`
+	Path      string  `json:"path,omitempty" yaml:"path,omitempty"`
+	Find      string  `json:"find,omitempty" yaml:"find,omitempty"`
+	Replace   string  `json:"replace,omitempty" yaml:"replace,omitempty"`
+	Mode      *uint32 `json:"mode,omitempty" yaml:"mode,omitempty"`
+	Value     string  `json:"value,omitempty" yaml:"value,omitempty"`
 }
 
 type QualityBudget struct {
@@ -235,19 +251,9 @@ func Evaluate(catalogValue *catalog.Catalog, suitePath string, evaluatedAt time.
 		if err != nil {
 			return Report{}, fmt.Errorf("benchmark case %s target: %w", benchmarkCase.ID, err)
 		}
-		item, err := inventory.Build(target)
+		first, second, err := scanCase(catalogValue, loaded.Suite.ProfileID, benchmarkCase, target, evaluatedAt.UTC())
 		if err != nil {
-			return Report{}, fmt.Errorf("benchmark case %s inventory: %w", benchmarkCase.ID, err)
-		}
-		runner := engine.New(catalogValue)
-		runner.Now = func() time.Time { return evaluatedAt.UTC() }
-		first, err := runner.Scan(loaded.Suite.ProfileID, item)
-		if err != nil {
-			return Report{}, fmt.Errorf("benchmark case %s first scan: %w", benchmarkCase.ID, err)
-		}
-		second, err := runner.Scan(loaded.Suite.ProfileID, item)
-		if err != nil {
-			return Report{}, fmt.Errorf("benchmark case %s repeated scan: %w", benchmarkCase.ID, err)
+			return Report{}, fmt.Errorf("benchmark case %s: %w", benchmarkCase.ID, err)
 		}
 		caseResult := evaluateCase(benchmarkCase, first, second)
 		report.Cases = append(report.Cases, caseResult)
@@ -259,6 +265,36 @@ func Evaluate(catalogValue *catalog.Catalog, suitePath string, evaluatedAt time.
 	}
 	finalize(&report)
 	return report, nil
+}
+
+func scanCase(catalogValue *catalog.Catalog, profileID string, benchmarkCase Case, source string, evaluatedAt time.Time) (
+	model.RunResult, model.RunResult, error,
+) {
+	target := source
+	cleanup := func() {}
+	if len(benchmarkCase.Setup) > 0 {
+		var err error
+		target, cleanup, err = materializeTarget(source, benchmarkCase.Setup)
+		if err != nil {
+			return model.RunResult{}, model.RunResult{}, fmt.Errorf("materialize fixture: %w", err)
+		}
+	}
+	defer cleanup()
+	item, err := inventory.Build(target)
+	if err != nil {
+		return model.RunResult{}, model.RunResult{}, fmt.Errorf("inventory: %w", err)
+	}
+	runner := engine.New(catalogValue)
+	runner.Now = func() time.Time { return evaluatedAt }
+	first, err := runner.Scan(profileID, item)
+	if err != nil {
+		return model.RunResult{}, model.RunResult{}, fmt.Errorf("first scan: %w", err)
+	}
+	second, err := runner.Scan(profileID, item)
+	if err != nil {
+		return model.RunResult{}, model.RunResult{}, fmt.Errorf("repeated scan: %w", err)
+	}
+	return first, second, nil
 }
 
 func corpusDigest(suiteDigest string, cases []CaseResult) (string, error) {
@@ -417,7 +453,8 @@ func readSuite(path string) ([]byte, string, error) {
 }
 
 func validateAndNormalize(suite *Suite, catalogValue *catalog.Catalog) error {
-	if suite.SchemaVersion != SuiteSchema || !suiteIDPattern.MatchString(suite.ID) || strings.TrimSpace(suite.Title) == "" {
+	if (suite.SchemaVersion != SuiteSchemaV1 && suite.SchemaVersion != SuiteSchema) ||
+		!suiteIDPattern.MatchString(suite.ID) || strings.TrimSpace(suite.Title) == "" {
 		return fmt.Errorf("benchmark suite requires a supported schema, valid ID, and title")
 	}
 	profile, err := catalogValue.Profile(suite.ProfileID)
@@ -447,6 +484,17 @@ func validateAndNormalize(suite *Suite, catalogValue *catalog.Catalog) error {
 		if err := validateRelativePath(item.Target); err != nil {
 			return fmt.Errorf("benchmark case %s: %w", item.ID, err)
 		}
+		if suite.SchemaVersion == SuiteSchemaV1 && len(item.Setup) > 0 {
+			return fmt.Errorf("benchmark case %s setup requires schema %s", item.ID, SuiteSchema)
+		}
+		if len(item.Setup) > 16 {
+			return fmt.Errorf("benchmark case %s setup exceeds 16 operations", item.ID)
+		}
+		for operationIndex := range item.Setup {
+			if err := validateSetupOperation(item.Setup[operationIndex]); err != nil {
+				return fmt.Errorf("benchmark case %s setup operation %d: %w", item.ID, operationIndex+1, err)
+			}
+		}
 		if len(item.Expectations) == 0 || len(item.Expectations) > 1000 {
 			return fmt.Errorf("benchmark case %s must contain between 1 and 1000 expectations", item.ID)
 		}
@@ -468,6 +516,53 @@ func validateAndNormalize(suite *Suite, catalogValue *catalog.Catalog) error {
 		})
 	}
 	sort.Slice(suite.Cases, func(left, right int) bool { return suite.Cases[left].ID < suite.Cases[right].ID })
+	return nil
+}
+
+func validateSetupOperation(operation SetupOperation) error {
+	hasMode := operation.Mode != nil
+	switch operation.Operation {
+	case "replace_text":
+		if err := validateFixturePath(operation.Path); err != nil {
+			return err
+		}
+		if operation.Find == "" || len(operation.Find) > 4096 || len(operation.Replace) > 4096 ||
+			hasMode || operation.Value != "" || strings.ContainsRune(operation.Find, '\x00') ||
+			strings.ContainsRune(operation.Replace, '\x00') {
+			return fmt.Errorf("replace_text requires a bounded nonempty find value and optional bounded replacement")
+		}
+	case "remove_final_newline", "truncate":
+		if err := validateFixturePath(operation.Path); err != nil {
+			return err
+		}
+		if operation.Find != "" || operation.Replace != "" || hasMode || operation.Value != "" {
+			return fmt.Errorf("%s accepts only path", operation.Operation)
+		}
+	case "chmod":
+		if err := validateFixturePath(operation.Path); err != nil {
+			return err
+		}
+		if !hasMode || *operation.Mode > 0o777 || operation.Find != "" || operation.Replace != "" || operation.Value != "" {
+			return fmt.Errorf("chmod requires only path and a mode between 0 and 0777")
+		}
+	case "git_head":
+		if operation.Path != "" || operation.Find != "" || operation.Replace != "" || hasMode ||
+			!gitHeadPattern.MatchString(operation.Value) {
+			return fmt.Errorf("git_head requires only a lowercase 40-64 character commit value")
+		}
+	default:
+		return fmt.Errorf("unsupported setup operation %q", operation.Operation)
+	}
+	return nil
+}
+
+func validateFixturePath(path string) error {
+	if err := validateRelativePath(path); err != nil {
+		return fmt.Errorf("fixture path: %w", err)
+	}
+	if path == ".git" || strings.HasPrefix(path, ".git/") {
+		return fmt.Errorf("fixture path cannot address Git metadata")
+	}
 	return nil
 }
 
@@ -545,4 +640,150 @@ func resolveTarget(base, relative string) (string, error) {
 		return "", fmt.Errorf("benchmark target escapes the suite directory")
 	}
 	return resolved, nil
+}
+
+func materializeTarget(source string, operations []SetupOperation) (string, func(), error) {
+	parent, err := os.MkdirTemp("", "prc-benchmark-")
+	if err != nil {
+		return "", func() {}, fmt.Errorf("create temporary fixture root: %w", err)
+	}
+	cleanup := func() { _ = os.RemoveAll(parent) }
+	target := filepath.Join(parent, filepath.Base(source))
+	if err := copyFixtureTree(source, target); err != nil {
+		cleanup()
+		return "", func() {}, err
+	}
+	for index, operation := range operations {
+		if err := applySetupOperation(target, operation); err != nil {
+			cleanup()
+			return "", func() {}, fmt.Errorf("operation %d: %w", index+1, err)
+		}
+	}
+	return target, cleanup, nil
+}
+
+func copyFixtureTree(source, target string) error {
+	entries := 0
+	var totalBytes int64
+	return filepath.WalkDir(source, func(path string, entry fs.DirEntry, walkErr error) error {
+		if walkErr != nil {
+			return walkErr
+		}
+		entries++
+		if entries > 10000 {
+			return fmt.Errorf("materialized fixture exceeds 10000 entries")
+		}
+		relative, err := filepath.Rel(source, path)
+		if err != nil {
+			return err
+		}
+		destination := filepath.Join(target, relative)
+		if entry.Type()&os.ModeSymlink != 0 {
+			return fmt.Errorf("materialized fixture cannot contain symlinks")
+		}
+		if entry.IsDir() {
+			return os.Mkdir(destination, 0o700)
+		}
+		info, err := entry.Info()
+		if err != nil {
+			return err
+		}
+		if !info.Mode().IsRegular() {
+			return fmt.Errorf("materialized fixture contains a non-regular file")
+		}
+		totalBytes += info.Size()
+		if totalBytes > maximumMaterializedBytes {
+			return fmt.Errorf("materialized fixture exceeds 256 MiB")
+		}
+		input, err := os.Open(path)
+		if err != nil {
+			return err
+		}
+		output, err := os.OpenFile(destination, os.O_CREATE|os.O_EXCL|os.O_WRONLY, 0o600)
+		if err != nil {
+			_ = input.Close()
+			return err
+		}
+		_, copyErr := io.Copy(output, input)
+		closeOutputErr := output.Close()
+		closeInputErr := input.Close()
+		if copyErr != nil {
+			return copyErr
+		}
+		if closeOutputErr != nil {
+			return closeOutputErr
+		}
+		if closeInputErr != nil {
+			return closeInputErr
+		}
+		return os.Chmod(destination, info.Mode().Perm())
+	})
+}
+
+func applySetupOperation(root string, operation SetupOperation) error {
+	if err := validateSetupOperation(operation); err != nil {
+		return err
+	}
+	if operation.Operation == "git_head" {
+		gitDirectory := filepath.Join(root, ".git")
+		if err := os.Mkdir(gitDirectory, 0o700); err != nil {
+			return fmt.Errorf("create fixture Git metadata: %w", err)
+		}
+		if err := os.WriteFile(filepath.Join(gitDirectory, "HEAD"), []byte(operation.Value+"\n"), 0o600); err != nil {
+			return fmt.Errorf("write fixture Git HEAD: %w", err)
+		}
+		return nil
+	}
+	path := filepath.Join(root, filepath.FromSlash(operation.Path))
+	info, err := os.Lstat(path)
+	if err != nil {
+		return fmt.Errorf("inspect fixture path %s: %w", operation.Path, err)
+	}
+	if info.Mode()&os.ModeSymlink != 0 || !info.Mode().IsRegular() {
+		return fmt.Errorf("fixture path %s must be a non-symlink regular file", operation.Path)
+	}
+	switch operation.Operation {
+	case "replace_text":
+		if info.Size() > maximumSetupFileBytes {
+			return fmt.Errorf("fixture path %s exceeds the 16 MiB setup limit", operation.Path)
+		}
+		data, err := os.ReadFile(path)
+		if err != nil {
+			return err
+		}
+		if bytes.Count(data, []byte(operation.Find)) != 1 {
+			return fmt.Errorf("fixture path %s must contain the setup token exactly once", operation.Path)
+		}
+		return rewriteFixtureFile(path, bytes.Replace(data, []byte(operation.Find), []byte(operation.Replace), 1))
+	case "remove_final_newline":
+		if info.Size() > maximumSetupFileBytes {
+			return fmt.Errorf("fixture path %s exceeds the 16 MiB setup limit", operation.Path)
+		}
+		data, err := os.ReadFile(path)
+		if err != nil {
+			return err
+		}
+		if len(data) == 0 || data[len(data)-1] != '\n' {
+			return fmt.Errorf("fixture path %s does not end with a line feed", operation.Path)
+		}
+		return rewriteFixtureFile(path, data[:len(data)-1])
+	case "truncate":
+		return os.Truncate(path, 0)
+	case "chmod":
+		return os.Chmod(path, os.FileMode(*operation.Mode))
+	default:
+		return fmt.Errorf("unsupported setup operation %q", operation.Operation)
+	}
+}
+
+func rewriteFixtureFile(path string, data []byte) error {
+	file, err := os.OpenFile(path, os.O_WRONLY|os.O_TRUNC, 0)
+	if err != nil {
+		return err
+	}
+	if _, err := file.Write(data); err != nil {
+		_ = file.Close()
+		return err
+	}
+	return file.Close()
 }

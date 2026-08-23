@@ -1018,6 +1018,39 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             validate_instance.validation_errors(suite, "benchmark-suite.schema.json"),
             [],
         )
+        comprehensive = yaml.safe_load(
+            (
+                ROOT
+                / "fixtures"
+                / "benchmarks"
+                / "core-native"
+                / "suite-comprehensive.yaml"
+            ).read_text(encoding="utf-8")
+        )
+        self.assertEqual(
+            validate_instance.validation_errors(
+                comprehensive, "benchmark-suite.schema.json"
+            ),
+            [],
+        )
+        invalid_setup = {
+            **comprehensive,
+            "cases": [{
+                "id": "unsafe",
+                "target": "targets/baseline",
+                "setup": [{
+                    "operation": "chmod",
+                    "path": "../outside",
+                    "mode": 1024,
+                }],
+                "expectations": comprehensive["cases"][0]["expectations"][:1],
+            }],
+        }
+        self.assertTrue(
+            validate_instance.validation_errors(
+                invalid_setup, "benchmark-suite.schema.json"
+            )
+        )
         digest = "a" * 64
         report = {
             "schema_version": "prc.benchmark-report/v0.1",
