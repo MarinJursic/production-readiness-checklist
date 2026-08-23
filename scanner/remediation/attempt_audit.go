@@ -6,6 +6,9 @@ import (
 )
 
 func validateAttemptAudit(run RemediationRun) error {
+	if run.MaxDurationSeconds < 1 || run.MaxDurationSeconds > maximumFixDurationSeconds {
+		return fmt.Errorf("remediation run duration budget is invalid")
+	}
 	if len(run.Attempts) != run.Usage.Attempts {
 		return fmt.Errorf("remediation attempt audit count does not match budget usage")
 	}
@@ -117,7 +120,7 @@ func validateAttemptAudit(run RemediationRun) error {
 				candidate, err := linkedAttemptCandidate(record, candidates, seenCandidates)
 				if err != nil || candidate.Accepted || candidateAttemptTaskID(record, candidate) != record.TaskID ||
 					!validVerificationLink(record, candidate) ||
-					record.ReasonCode != "verification_rejected" {
+					(record.ReasonCode != "verification_rejected" && record.ReasonCode != "budget_rejected") {
 					return fmt.Errorf("rejected remediation attempt %d has invalid candidate linkage: %v", record.Attempt, err)
 				}
 			}

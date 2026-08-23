@@ -10,7 +10,11 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 )
 
-const maximumFixAttempts = 10
+const (
+	maximumFixAttempts        = 10
+	defaultFixDurationSeconds = 1800
+	maximumFixDurationSeconds = 86400
+)
 
 type activePolicy struct {
 	configuration   *ProjectConfiguration
@@ -82,6 +86,26 @@ func resolvePolicy(target, profileID string, maxFiles, maxChangedLines, attempt,
 	policy.protectedPaths = protectedPaths
 	policy.configRelative = relative
 	return policy, nil
+}
+
+func resolveLoopDuration(requested int, configuration *ProjectConfiguration) (int, error) {
+	configured := 0
+	if configuration != nil {
+		configured = configuration.Validation.Configuration.Execution.MaxDurationSeconds
+	}
+	if requested == 0 {
+		requested = configured
+		if requested == 0 {
+			requested = defaultFixDurationSeconds
+		}
+	}
+	if requested < 1 || requested > maximumFixDurationSeconds {
+		return 0, fmt.Errorf("max duration must be between 1 and %d seconds", maximumFixDurationSeconds)
+	}
+	if configured > 0 && requested > configured {
+		return 0, policyDenied(fmt.Errorf("command remediation duration exceeds project configuration"))
+	}
+	return requested, nil
 }
 
 // RequiredProtectedPaths returns the scanner defaults, configured policy paths,

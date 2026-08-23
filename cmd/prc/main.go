@@ -706,6 +706,7 @@ func runFix(args []string, stdout, stderr io.Writer) (int, error) {
 	maxAttempts := set.Int("max-attempts", 3, "maximum remediation attempts")
 	maxFiles := set.Int("max-files", 20, "maximum changed files across all attempts")
 	maxChangedLines := set.Int("max-changed-lines", 200, "maximum changed lines across all attempts")
+	maxDuration := set.Int("max-duration-seconds", 1800, "maximum wall-clock duration for the full remediation loop")
 	providerName := set.String("provider", "", "optional suggest-only provider: codex or claude")
 	providerExecutable := set.String("provider-executable", "", "provider CLI executable; defaults to provider name")
 	agentOutputSchema := set.String("agent-output-schema", "", "agent output JSON schema; defaults to catalog schema")
@@ -753,6 +754,9 @@ func runFix(args []string, stdout, stderr io.Writer) (int, error) {
 		if !flagWasSet(set, "max-changed-lines") {
 			*maxChangedLines = 0
 		}
+		if !flagWasSet(set, "max-duration-seconds") {
+			*maxDuration = document.Execution.MaxDurationSeconds
+		}
 	}
 	var agent *remediation.AgentOptions
 	var verification *verifier.Options
@@ -788,7 +792,8 @@ func runFix(args []string, stdout, stderr io.Writer) (int, error) {
 	result, err := remediation.RunLoop(remediation.LoopOptions{
 		CatalogRoot: *catalogRoot, Target: *target, CandidateRoot: *candidateRoot,
 		ProfileID: *profile, MaxAttempts: *maxAttempts, MaxFiles: *maxFiles,
-		MaxChangedLines: *maxChangedLines, Configuration: configuration, Agent: agent, Verifier: verification,
+		MaxChangedLines: *maxChangedLines, MaxDurationSeconds: *maxDuration,
+		Configuration: configuration, Agent: agent, Verifier: verification,
 	})
 	if err != nil {
 		return exitInternal, remediationCommandError(err)
@@ -831,6 +836,7 @@ func printRemediationRun(output io.Writer, result remediation.RemediationRun) {
 	fmt.Fprintf(output, "Budget: %d/%d attempts, %d/%d files, %d/%d lines\n",
 		result.Usage.Attempts, result.MaxAttempts, result.Usage.ChangedFiles, result.MaxFiles,
 		result.Usage.ChangedLines, result.MaxChangedLines)
+	fmt.Fprintf(output, "Duration ceiling: %d seconds\n", result.MaxDurationSeconds)
 	for _, candidate := range result.Candidates {
 		status := "rejected"
 		if candidate.Accepted {

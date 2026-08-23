@@ -37,6 +37,12 @@ func RunLoop(options LoopOptions) (RemediationRun, error) {
 	if err != nil {
 		return RemediationRun{}, err
 	}
+	maxDurationSeconds, err := resolveLoopDuration(options.MaxDurationSeconds, options.Configuration)
+	if err != nil {
+		return RemediationRun{}, err
+	}
+	runContext, cancelRun := context.WithTimeout(options.Context, time.Duration(maxDurationSeconds)*time.Second)
+	defer cancelRun()
 	c, err := catalog.Load(options.CatalogRoot)
 	if err != nil {
 		return RemediationRun{}, err
@@ -89,22 +95,10 @@ func RunLoop(options LoopOptions) (RemediationRun, error) {
 		if assertionID == "" {
 			break
 		}
-		if mode == "agent" {
-			if options.Verifier == nil {
-				return RemediationRun{}, policyDenied(fmt.Errorf("agent remediation requires an independent sandbox verifier"))
-			}
-			kind, kindErr := verifier.InferKind(agentTask.RelevantPaths[0])
-			if kindErr != nil {
-				return RemediationRun{}, policyDenied(kindErr)
-			}
-			verificationOptions := *options.Verifier
-			verificationOptions.Kind = kind
-			if err := verifier.ValidateOptions(verificationOptions); err != nil {
-				return RemediationRun{}, policyDenied(err)
-			}
-			if err := verifier.Preflight(options.Context, verificationOptions); err != nil {
-				return RemediationRun{}, policyDenied(err)
-			}
+		if remediationDeadlineReached(runContext) {
+			stoppedAssertion, stoppedCode = assertionID, "time_budget_exhausted"
+			stopReasons = append(stopReasons, "The configured remediation duration budget is exhausted.")
+			break
 		}
 		if usage.Attempts >= policy.maxAttempts {
 			stoppedAssertion, stoppedCode = assertionID, "budget_exhausted"
@@ -126,6 +120,28 @@ func RunLoop(options LoopOptions) (RemediationRun, error) {
 				fmt.Sprintf("Assertion %s requires %d files and %d changed lines, exceeding the remaining budget of %d files and %d lines.",
 					assertionID, requiredFiles, requiredLines, remainingFiles, remainingLines))
 			break
+		}
+		if mode == "agent" {
+			if options.Verifier == nil {
+				return RemediationRun{}, policyDenied(fmt.Errorf("agent remediation requires an independent sandbox verifier"))
+			}
+			kind, kindErr := verifier.InferKind(agentTask.RelevantPaths[0])
+			if kindErr != nil {
+				return RemediationRun{}, policyDenied(kindErr)
+			}
+			verificationOptions := *options.Verifier
+			verificationOptions.Kind = kind
+			if err := verifier.ValidateOptions(verificationOptions); err != nil {
+				return RemediationRun{}, policyDenied(err)
+			}
+			if err := verifier.Preflight(runContext, verificationOptions); err != nil {
+				if runContext.Err() == context.DeadlineExceeded {
+					stoppedAssertion, stoppedCode = assertionID, "time_budget_exhausted"
+					stopReasons = append(stopReasons, "The configured remediation duration budget expired during verifier preflight.")
+					break
+				}
+				return RemediationRun{}, policyDenied(err)
+			}
 		}
 		if !candidateContainerPrepared {
 			candidateRoot, err = prepareCandidateContainer(original.Root, candidateRoot)
@@ -177,7 +193,7 @@ func RunLoop(options LoopOptions) (RemediationRun, error) {
 			if err != nil {
 				return RemediationRun{}, providerExecution(err)
 			}
-			execution, executionErr := provider.Run(options.Context, launchPlan, agentTask)
+			execution, executionErr := provider.Run(runContext, launchPlan, agentTask)
 			if err := verifySealedAgentTask(outputDirectory, agentTask); err != nil {
 				return RemediationRun{}, providerExecution(err)
 			}
@@ -194,8 +210,14 @@ func RunLoop(options LoopOptions) (RemediationRun, error) {
 				attemptRecord.Reason = failure.Reason
 				attemptRecords = append(attemptRecords, attemptRecord)
 				usage.Attempts++
-				stoppedAssertion, stoppedCode = assertionID, "provider_failed"
-				stopReasons = append(stopReasons, failure.Reason)
+				if runContext.Err() == context.DeadlineExceeded {
+					stoppedAssertion, stoppedCode = assertionID, "time_budget_exhausted"
+					stopReasons = append(stopReasons, failure.Reason,
+						"The configured remediation duration budget expired during provider execution.")
+				} else {
+					stoppedAssertion, stoppedCode = assertionID, "provider_failed"
+					stopReasons = append(stopReasons, failure.Reason)
+				}
 				break
 			}
 			providerExecutions = append(providerExecutions, execution)
@@ -217,7 +239,7 @@ func RunLoop(options LoopOptions) (RemediationRun, error) {
 				Provider: options.Agent.Provider, Task: agentTask, Output: execution.Output,
 				MaxFiles: remainingFiles, MaxChangedLines: lineAllowance,
 				Attempt: attempt, MaxAttempts: policy.maxAttempts, Configuration: activeConfiguration,
-				Verifier: options.Verifier, Context: options.Context,
+				Verifier: options.Verifier, Context: runContext,
 			})
 			if err != nil {
 				if IsPolicyDenied(err) {
@@ -226,12 +248,23 @@ func RunLoop(options LoopOptions) (RemediationRun, error) {
 					attemptRecord.ReasonCode = proposalPolicyReasonCode(err)
 					attemptRecord.Reason = err.Error()
 					attemptRecords = append(attemptRecords, attemptRecord)
-					stoppedAssertion, stoppedCode = assertionID, "candidate_rejected"
-					stopReasons = append(stopReasons, "Provider proposal rejected by scanner policy: "+err.Error())
+					if runContext.Err() == context.DeadlineExceeded {
+						stoppedAssertion, stoppedCode = assertionID, "time_budget_exhausted"
+						stopReasons = append(stopReasons,
+							"The configured remediation duration budget expired while evaluating the provider proposal.")
+					} else {
+						stoppedAssertion, stoppedCode = assertionID, "candidate_rejected"
+						stopReasons = append(stopReasons, "Provider proposal rejected by scanner policy: "+err.Error())
+					}
 					break
 				}
 				return RemediationRun{}, err
 			}
+		}
+		deadlineRejected := false
+		candidate, deadlineRejected, err = enforceCandidateDeadline(runContext, candidate)
+		if err != nil {
+			return RemediationRun{}, err
 		}
 		candidates = append(candidates, candidate)
 		attemptRecord.CompletedAt = options.Now().UTC()
@@ -250,10 +283,20 @@ func RunLoop(options LoopOptions) (RemediationRun, error) {
 		if !candidate.Accepted {
 			attemptRecord.Outcome = "rejected"
 			attemptRecord.ReasonCode = "verification_rejected"
+			if deadlineRejected {
+				attemptRecord.ReasonCode = "budget_rejected"
+			}
 			attemptRecord.Reason = candidateRejectionReason(candidate)
 			attemptRecords = append(attemptRecords, attemptRecord)
-			stoppedAssertion, stoppedCode = assertionID, "candidate_rejected"
-			stopReasons = append(stopReasons, "The independently verified candidate was rejected; the loop did not retry or advance its source workspace.")
+			if runContext.Err() == context.DeadlineExceeded {
+				stoppedAssertion, stoppedCode = assertionID, "time_budget_exhausted"
+				stopReasons = append(stopReasons,
+					"The configured remediation duration budget expired during candidate verification.")
+			} else {
+				stoppedAssertion, stoppedCode = assertionID, "candidate_rejected"
+				stopReasons = append(stopReasons,
+					"The independently verified candidate was rejected; the loop did not retry or advance its source workspace.")
+			}
 			break
 		}
 		attemptRecord.Outcome = "accepted"
@@ -288,7 +331,7 @@ func RunLoop(options LoopOptions) (RemediationRun, error) {
 	}
 	remaining := classifyRemaining(activeRun, c, stoppedAssertion, stoppedCode, options.Agent != nil)
 	terminalState := "machine_work_complete"
-	if stoppedCode == "budget_exhausted" {
+	if stoppedCode == "budget_exhausted" || stoppedCode == "time_budget_exhausted" {
 		terminalState = "stopped_by_policy_or_budget"
 	} else if stoppedCode == "candidate_rejected" {
 		terminalState = "candidate_rejected"
@@ -305,7 +348,8 @@ func RunLoop(options LoopOptions) (RemediationRun, error) {
 		SourceInventoryDigest: original.Digest, CandidateRoot: candidateRoot, ResultWorkspace: activeTarget,
 		FinalInventoryDigest: activeInventory.Digest, OriginalUnchanged: true,
 		MaxAttempts: policy.maxAttempts, MaxFiles: policy.maxFiles, MaxChangedLines: policy.maxChangedLines,
-		Usage: usage, Attempts: attemptRecords, Candidates: candidates, ProviderExecutions: providerExecutions,
+		MaxDurationSeconds: maxDurationSeconds,
+		Usage:              usage, Attempts: attemptRecords, Candidates: candidates, ProviderExecutions: providerExecutions,
 		ProviderFailures: providerFailures,
 		FinalRun:         activeRun, GateState: activeRun.TerminalState,
 		TerminalState: terminalState, Remaining: remaining, StopReasons: uniqueSorted(stopReasons),
@@ -318,6 +362,24 @@ func RunLoop(options LoopOptions) (RemediationRun, error) {
 		return RemediationRun{}, err
 	}
 	return result, nil
+}
+
+func remediationDeadlineReached(ctx context.Context) bool {
+	return ctx.Err() == context.DeadlineExceeded
+}
+
+func enforceCandidateDeadline(ctx context.Context, candidate Candidate) (Candidate, bool, error) {
+	if !candidate.Accepted || !remediationDeadlineReached(ctx) {
+		return candidate, false, nil
+	}
+	candidate.Accepted = false
+	candidate.Reasons = []string{"Candidate completed after the scanner-owned remediation duration budget expired."}
+	identifier, err := candidateContentID(candidate)
+	if err != nil {
+		return Candidate{}, false, err
+	}
+	candidate.CandidateID = identifier
+	return candidate, true, nil
 }
 
 func proposalPolicyReasonCode(err error) string {
@@ -503,6 +565,9 @@ func remainingReason(assertion model.Assertion, result model.AssertionResult, st
 	if assertion.ID == stoppedAssertion && stoppedCode != "" {
 		if stoppedCode == "budget_exhausted" {
 			return stoppedCode, "The eligible deterministic fix exceeded the remaining configured attempt or change budget."
+		}
+		if stoppedCode == "time_budget_exhausted" {
+			return stoppedCode, "The eligible fix was not started or accepted because the configured remediation duration budget was exhausted."
 		}
 		if stoppedCode == "provider_stopped" {
 			return stoppedCode, "The read-only provider could not produce a candidate and the loop stopped without retrying."

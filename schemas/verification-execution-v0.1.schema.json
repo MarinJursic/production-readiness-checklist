@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/verification-execution-v0.1.schema.json",
+  "title": "Production Readiness Verification Execution v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "execution_id", "plan_id", "runtime_sha256", "kind", "image", "command", "policy", "candidate_inventory_digest", "started_at", "completed_at", "duration_ms", "outcome", "reason_code", "exit_code", "stdout", "stderr", "workspace_unchanged"],
+  "properties": {
+    "schema_version": {"const": "prc.verification-execution/v0.1"},
+    "execution_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "plan_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "runtime_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "kind": {"enum": ["go", "python", "javascript"]},
+    "image": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*@sha256:[0-9a-f]{64}$"},
+    "command": {
+      "oneOf": [
+        {"const": ["go", "test", "./..."]},
+        {"const": ["python", "-m", "pytest", "-q"]},
+        {"const": ["node", "--test"]}
+      ]
+    },
+    "policy": {"$ref": "#/$defs/policy"},
+    "candidate_inventory_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "started_at": {"type": "string", "format": "date-time"},
+    "completed_at": {"type": "string", "format": "date-time"},
+    "duration_ms": {"type": "integer", "minimum": 0},
+    "outcome": {"enum": ["pass", "fail", "timeout", "cancelled", "output_limit", "infrastructure_error", "workspace_changed"]},
+    "reason_code": {"enum": ["tests_passed", "tests_failed", "timeout", "cancelled", "output_limit", "runtime_failed", "workspace_changed"]},
+    "exit_code": {"type": "integer", "minimum": -1, "maximum": 255},
+    "stdout": {"$ref": "#/$defs/stream"},
+    "stderr": {"$ref": "#/$defs/stream"},
+    "workspace_unchanged": {"type": "boolean"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"kind": {"const": "go"}}, "required": ["kind"]},
+      "then": {"properties": {"command": {"const": ["go", "test", "./..."]}}},
+      "else": {
+        "if": {"properties": {"kind": {"const": "python"}}, "required": ["kind"]},
+        "then": {"properties": {"command": {"const": ["python", "-m", "pytest", "-q"]}}},
+        "else": {"properties": {"command": {"const": ["node", "--test"]}}}
+      }
+    },
+    {
+      "if": {"properties": {"outcome": {"const": "pass"}}, "required": ["outcome"]},
+      "then": {
+        "properties": {
+          "reason_code": {"const": "tests_passed"},
+          "exit_code": {"const": 0},
+          "workspace_unchanged": {"const": true}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"outcome": {"const": "fail"}}, "required": ["outcome"]},
+      "then": {
+        "properties": {
+          "reason_code": {"const": "tests_failed"},
+          "exit_code": {"minimum": 1, "not": {"enum": [125, 126, 127]}}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"outcome": {"const": "infrastructure_error"}}, "required": ["outcome"]},
+      "then": {"properties": {"reason_code": {"const": "runtime_failed"}, "exit_code": {"enum": [-1, 125, 126, 127]}}}
+    },
+    {
+      "if": {"properties": {"outcome": {"const": "workspace_changed"}}, "required": ["outcome"]},
+      "then": {"properties": {"reason_code": {"const": "workspace_changed"}, "workspace_unchanged": {"const": false}}},
+      "else": {"properties": {"workspace_unchanged": {"const": true}}}
+    }
+  ],
+  "$defs": {
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["network", "workspace", "root_filesystem", "pull", "capabilities", "privilege_escalation", "user", "timeout_seconds", "memory_mb", "cpus", "pids", "tmpfs_mb", "max_stdout_bytes", "max_stderr_bytes"],
+      "properties": {
+        "network": {"const": "deny"},
+        "workspace": {"const": "read_only"},
+        "root_filesystem": {"const": "read_only"},
+        "pull": {"const": "never"},
+        "capabilities": {"const": "none"},
+        "privilege_escalation": {"const": false},
+        "user": {"const": "non_root"},
+        "timeout_seconds": {"type": "integer", "minimum": 1, "maximum": 3600},
+        "memory_mb": {"type": "integer", "minimum": 64, "maximum": 32768},
+        "cpus": {"type": "number", "exclusiveMinimum": 0, "maximum": 32},
+        "pids": {"type": "integer", "minimum": 2, "maximum": 4096},
+        "tmpfs_mb": {"type": "integer", "minimum": 32, "maximum": 4096},
+        "max_stdout_bytes": {"type": "integer", "minimum": 1024, "maximum": 16777216},
+        "max_stderr_bytes": {"type": "integer", "minimum": 1024, "maximum": 16777216}
+      }
+    },
+    "stream": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sha256", "bytes"],
+      "properties": {
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "bytes": {"type": "integer", "minimum": 0, "maximum": 16777216}
+      }
+    }
+  }
+}

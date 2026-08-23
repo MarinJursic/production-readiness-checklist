@@ -85,16 +85,25 @@ and budget preflight.
   --max-attempts 3 \
   --max-files 20 \
   --max-changed-lines 200 \
+  --max-duration-seconds 1800 \
   --format json > remediation-run.json
 ```
 
 The loop evaluates findings in profile order and stops predictably when it has
 closed all eligible findings, a cumulative budget is exhausted, a provider
 cannot return a candidate, or an independently checked candidate is rejected.
-File and changed-line usage accumulates across accepted candidates;
-command-line values cannot raise limits declared in project configuration.
+File and changed-line usage accumulates across accepted candidates. One
+wall-clock budget spans planning, provider execution, candidate generation, and
+verification. It is propagated as a hard deadline to provider and verifier
+child processes and checked at scanner phase boundaries; a synchronous
+candidate operation that returns after the deadline is preserved but rejected,
+never accepted. Command-line values cannot raise limits declared in project
+configuration. Go contexts propagate deadline cancellation, and commands
+started with `CommandContext` are interrupted when that context completes
+([context package](https://pkg.go.dev/context),
+[os/exec package](https://pkg.go.dev/os/exec)).
 
-The `prc.remediation-run/v0.7` report records every actual attempt, including
+The `prc.remediation-run/v0.8` report records every actual attempt, including
 proposals rejected before candidate creation. Each attempt binds its sequence,
 mode, exact finding and fingerprint, scanner-owned task, before and after
 inventory digests, provider execution or failure and candidate when present, timestamps,
@@ -103,7 +112,7 @@ scanner verifies this linkage before computing the run content ID. The report
 also preserves every candidate, provider transcript digest, cumulative budget
 usage, final fresh assessment, final isolated workspace, and a reason code for
 every unresolved result. Its embedded v0.9 scan result preserves adapter
-resolution provenance; frozen v0.3 through v0.6 remediation schemas retain their
+resolution provenance; frozen v0.3 through v0.7 remediation schemas retain their
 version-pinned dependency graphs. Every unresolved failure includes its
 canonical finding ID and stable fingerprint. Its terminal states are:
 
@@ -149,6 +158,7 @@ verification.
   --verifier-runtime docker \
   --verifier-image registry.example/prc/python-verifier@sha256:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef \
   --max-attempts 3 \
+  --max-duration-seconds 1800 \
   --format json > remediation-run.json
 ```
 

@@ -1,6 +1,7 @@
 package remediation
 
 import (
+	"context"
 	"os"
 	"path/filepath"
 	"strings"
@@ -114,12 +115,78 @@ func TestRunLoopStopsPredictablyAtAttemptBudget(t *testing.T) {
 	}
 }
 
+func TestRunLoopStopsBeforeWorkAtDurationBudget(t *testing.T) {
+	target := remediationTarget(t)
+	expired, cancel := context.WithDeadline(context.Background(), time.Now().Add(-time.Second))
+	defer cancel()
+	candidateRoot := filepath.Join(t.TempDir(), "candidates")
+	result, err := RunLoop(LoopOptions{
+		CatalogRoot: testCatalogRoot(t), Target: target, CandidateRoot: candidateRoot,
+		ProfileID: "prc/core-repository", MaxAttempts: 3, MaxFiles: 20, MaxChangedLines: 20,
+		MaxDurationSeconds: 1, Context: expired, Now: loopClock(),
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if result.TerminalState != "stopped_by_policy_or_budget" || result.MaxDurationSeconds != 1 ||
+		len(result.Attempts) != 0 || len(result.Candidates) != 0 {
+		t.Fatalf("unexpected duration stop: %+v", result)
+	}
+	if _, err := os.Stat(candidateRoot); !os.IsNotExist(err) {
+		t.Fatal("duration stop created a candidate root")
+	}
+	found := false
+	for _, item := range result.Remaining {
+		if item.AssertionID == finalNewlineAssertion && item.ReasonCode == "time_budget_exhausted" {
+			found = true
+		}
+	}
+	if !found {
+		t.Fatalf("remaining work does not explain duration stop: %+v", result.Remaining)
+	}
+}
+
+func TestRunLoopCannotRaiseConfiguredDurationBudget(t *testing.T) {
+	target := remediationTarget(t)
+	configuration := configuredRemediation(t, target, func(content string) string {
+		return strings.Replace(content, "max_duration_seconds: 1800", "max_duration_seconds: 7", 1)
+	})
+	_, err := RunLoop(LoopOptions{
+		CatalogRoot: testCatalogRoot(t), Target: target, CandidateRoot: filepath.Join(t.TempDir(), "candidates"),
+		ProfileID: "prc/core-repository", MaxAttempts: 3, MaxFiles: 20, MaxChangedLines: 20,
+		MaxDurationSeconds: 1801, Configuration: configuration,
+	})
+	if err == nil || !IsPolicyDenied(err) || !strings.Contains(err.Error(), "duration exceeds") {
+		t.Fatalf("unexpected configured duration error: %v", err)
+	}
+}
+
+func TestCandidateCompletingAfterDeadlineIsRejectedAndReaddressed(t *testing.T) {
+	expired, cancel := context.WithDeadline(context.Background(), time.Now().Add(-time.Second))
+	defer cancel()
+	candidate := Candidate{SchemaVersion: CandidateSchema, CandidateID: strings.Repeat("a", 64), Accepted: true, Reasons: []string{}}
+	rejected, deadlineRejected, err := enforceCandidateDeadline(expired, candidate)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !deadlineRejected || rejected.Accepted || rejected.CandidateID == candidate.CandidateID ||
+		!strings.Contains(strings.Join(rejected.Reasons, " "), "duration budget") {
+		t.Fatalf("candidate was not safely rejected after deadline: %+v", rejected)
+	}
+	want, err := candidateContentID(rejected)
+	if err != nil || want != rejected.CandidateID {
+		t.Fatalf("deadline rejection identity mismatch: %v %s", err, want)
+	}
+}
+
 func TestRunLoopRebasesInternalConfigurationAcrossCandidates(t *testing.T) {
 	target := remediationTarget(t)
 	if err := os.Chmod(filepath.Join(target, "app.py"), 0o666); err != nil {
 		t.Fatal(err)
 	}
-	configuration := configuredRemediation(t, target, nil)
+	configuration := configuredRemediation(t, target, func(content string) string {
+		return strings.Replace(content, "max_duration_seconds: 1800", "max_duration_seconds: 7", 1)
+	})
 	result, err := RunLoop(LoopOptions{
 		CatalogRoot: testCatalogRoot(t), Target: target, CandidateRoot: filepath.Join(t.TempDir(), "candidates"),
 		ProfileID: "prc/core-repository", MaxAttempts: 3, MaxFiles: 20, MaxChangedLines: 200,
@@ -129,6 +196,7 @@ func TestRunLoopRebasesInternalConfigurationAcrossCandidates(t *testing.T) {
 		t.Fatal(err)
 	}
 	if len(result.Candidates) != 2 || result.ConfigurationDigest != configuration.Validation.Digest ||
+		result.MaxDurationSeconds != 7 ||
 		result.ProjectID != "example-product" {
 		t.Fatalf("configured loop identity mismatch: %+v", result)
 	}

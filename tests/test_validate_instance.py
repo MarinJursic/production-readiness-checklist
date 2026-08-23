@@ -185,7 +185,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
     def test_versioned_run_contracts_pin_their_dependency_graph(self) -> None:
         roots = [
             *(f"run-result-v0.{version}.schema.json" for version in range(1, 10)),
-            *(f"remediation-run-v0.{version}.schema.json" for version in range(1, 7)),
+            *(f"remediation-run-v0.{version}.schema.json" for version in range(1, 8)),
         ]
         pending = list(roots)
         visited: set[str] = set()
@@ -790,7 +790,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             [],
         )
         remediation_run = {
-            "schema_version": "prc.remediation-run/v0.7",
+            "schema_version": "prc.remediation-run/v0.8",
             "run_id": digest,
             "started_at": "2026-08-23T12:00:00Z",
             "completed_at": "2026-08-23T12:00:01Z",
@@ -803,6 +803,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "max_attempts": 3,
             "max_files": 20,
             "max_changed_lines": 200,
+            "max_duration_seconds": 1800,
             "usage": {"attempts": 0, "changed_files": 0, "changed_lines": 0},
             "attempts": [],
             "candidates": [],
@@ -819,6 +820,12 @@ class ScannerOutputSchemaTests(unittest.TestCase):
                 remediation_run, "remediation-run.schema.json"
             ),
             [],
+        )
+        self.assertTrue(
+            validate_instance.validation_errors(
+                {**remediation_run, "max_duration_seconds": 0},
+                "remediation-run.schema.json",
+            )
         )
 
         attempt = {
@@ -922,8 +929,20 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             )
         )
 
-        v06_remediation_run = {
+        v07_remediation_run = {
             **remediation_run,
+            "schema_version": "prc.remediation-run/v0.7",
+        }
+        del v07_remediation_run["max_duration_seconds"]
+        self.assertEqual(
+            validate_instance.validation_errors(
+                v07_remediation_run, "remediation-run-v0.7.schema.json"
+            ),
+            [],
+        )
+
+        v06_remediation_run = {
+            **v07_remediation_run,
             "schema_version": "prc.remediation-run/v0.6",
         }
         self.assertEqual(
@@ -1119,6 +1138,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         del legacy_remediation_run["provider_executions"]
         del legacy_remediation_run["provider_failures"]
         del legacy_remediation_run["attempts"]
+        del legacy_remediation_run["max_duration_seconds"]
         self.assertEqual(
             validate_instance.validation_errors(
                 legacy_remediation_run, "remediation-run-v0.1.schema.json"
@@ -1140,6 +1160,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         }
         del v02_remediation_run["provider_failures"]
         del v02_remediation_run["attempts"]
+        del v02_remediation_run["max_duration_seconds"]
         self.assertEqual(
             validate_instance.validation_errors(
                 v02_remediation_run, "remediation-run-v0.2.schema.json"

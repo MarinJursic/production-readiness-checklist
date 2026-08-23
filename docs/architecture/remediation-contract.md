@@ -46,8 +46,9 @@ evidence, credentials, and previous agent memory are excluded.
 9. Accept only when the original finding closes and no protected result regresses.
 10. Preserve the candidate, transcript, evidence, and rejection or acceptance reason.
 
-The current v0.7 remediation-run record adds a scanner-validated attempt chain
-and binds any launched R2 test verification to its exact candidate inventory.
+The current v0.8 remediation-run record adds a scanner-validated attempt chain,
+binds any launched R2 test verification to its exact candidate inventory, and
+records the scanner-owned wall-clock ceiling for the complete loop.
 An accepted attempt must link to exactly one content-addressed candidate; an
 agent attempt must link to exactly one successful provider execution or failed
 provider invocation; a pre-candidate
@@ -68,7 +69,7 @@ The loop stops when:
 - a no-go finding cannot be remediated within policy;
 - an attempt makes no measurable improvement;
 - the same root cause repeats without progress;
-- any capability or change budget is exhausted; or
+- any capability, change, attempt, or duration budget is exhausted; or
 - the environment cannot execute the verifier safely.
 
 The general loop never deploys and never accepts residual risk.

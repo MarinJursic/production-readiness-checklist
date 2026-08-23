@@ -84,12 +84,13 @@ update.
 
 The native scanner currently evaluates serially, so it remains below
 `max_parallel`. `max_duration_seconds` is enforced for configured live adapter
-execution; native file discovery uses fixed internal size and traversal limits
-but is not yet interrupted by this setting. `remediate`, `remediate-proposal`,
-and `provider seal-task` also accept `--config`. Remediation must be enabled;
-configured file, line, and attempt ceilings cannot be raised by command-line
-flags; configured protected paths and an in-target configuration source are
-always added to the immutable guard set.
+execution and as the total `fix` loop deadline, including provider and verifier
+child processes. Native file discovery uses fixed internal size and traversal
+limits but is not yet interrupted by this setting. `remediate`,
+`remediate-proposal`, and `provider seal-task` also accept `--config`.
+Remediation must be enabled; configured duration, file, line, and attempt
+ceilings cannot be raised by command-line flags; configured protected paths and
+an in-target configuration source are always added to the immutable guard set.
 
 ## Parser and file safety
 

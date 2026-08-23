@@ -44,7 +44,7 @@ func IsProviderExecution(err error) bool {
 const (
 	FixContractSchema = "prc.fix-contract/v0.3"
 	CandidateSchema   = "prc.remediation-candidate/v0.4"
-	RunSchema         = "prc.remediation-run/v0.7"
+	RunSchema         = "prc.remediation-run/v0.8"
 )
 
 type FixContract struct {
@@ -141,18 +141,19 @@ type ProposalOptions struct {
 }
 
 type LoopOptions struct {
-	CatalogRoot     string
-	Target          string
-	CandidateRoot   string
-	ProfileID       string
-	MaxFiles        int
-	MaxChangedLines int
-	MaxAttempts     int
-	Configuration   *ProjectConfiguration
-	Agent           *AgentOptions
-	Verifier        *verifier.Options
-	Context         context.Context
-	Now             func() time.Time
+	CatalogRoot        string
+	Target             string
+	CandidateRoot      string
+	ProfileID          string
+	MaxFiles           int
+	MaxChangedLines    int
+	MaxAttempts        int
+	MaxDurationSeconds int
+	Configuration      *ProjectConfiguration
+	Agent              *AgentOptions
+	Verifier           *verifier.Options
+	Context            context.Context
+	Now                func() time.Time
 }
 
 // AgentOptions enable the fail-closed suggest-only provider path in the
@@ -228,6 +229,7 @@ type RemediationRun struct {
 	MaxAttempts           int                  `json:"max_attempts"`
 	MaxFiles              int                  `json:"max_files"`
 	MaxChangedLines       int                  `json:"max_changed_lines"`
+	MaxDurationSeconds    int                  `json:"max_duration_seconds"`
 	Usage                 BudgetUsage          `json:"usage"`
 	Attempts              []AttemptRecord      `json:"attempts"`
 	Candidates            []Candidate          `json:"candidates"`

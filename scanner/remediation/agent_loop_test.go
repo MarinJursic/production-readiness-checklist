@@ -7,6 +7,7 @@ import (
 	"slices"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/catalog"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/engine"
@@ -151,6 +152,41 @@ func TestRunLoopExecutesReadOnlyProviderAndAcceptsBoundedR2Candidate(t *testing.
 		if remaining.AssertionID == agentTestSuiteAssertion {
 			t.Fatalf("closed test-suite finding remains: %+v", remaining)
 		}
+	}
+}
+
+func TestRunLoopDurationCancelsInFlightProvider(t *testing.T) {
+	target := agentLoopTarget(t)
+	options := agentLoopOptions(t, target, "candidate")
+	providerPath := filepath.Join(t.TempDir(), "codex")
+	if err := os.WriteFile(providerPath, []byte("#!/bin/sh\nexec /bin/sleep 5\n"), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	options.Agent.Executable = providerPath
+	options.MaxDurationSeconds = 1
+	fixed := time.Date(2026, 8, 23, 12, 0, 0, 0, time.UTC)
+	options.Now = func() time.Time { return fixed }
+	started := time.Now()
+	result, err := RunLoop(options)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if elapsed := time.Since(started); elapsed > 3*time.Second {
+		t.Fatalf("provider exceeded total run deadline: %s", elapsed)
+	}
+	if result.TerminalState != "stopped_by_policy_or_budget" || result.MaxDurationSeconds != 1 ||
+		len(result.ProviderFailures) != 1 || result.ProviderFailures[0].ReasonCode != "cancelled" ||
+		len(result.Attempts) != 1 || result.Attempts[0].Outcome != "provider_failed" {
+		t.Fatalf("unexpected in-flight duration result: %+v", result)
+	}
+	found := false
+	for _, item := range result.Remaining {
+		if item.AssertionID == agentTestSuiteAssertion && item.ReasonCode == "time_budget_exhausted" {
+			found = true
+		}
+	}
+	if !found {
+		t.Fatalf("remaining work does not explain provider deadline: %+v", result.Remaining)
 	}
 }
 
