@@ -269,6 +269,11 @@ content. Gitleaks rules are heuristic; both false positives and false negatives
 remain possible, so this binding is one selected analysis class rather than a
 claim of complete secret or static-analysis coverage.
 
+Normal validation and scanner-release workflows pull that exact digest and run
+the clean and suppression-resistant finding cases through the production OCI
+runner. A nonempty test-image override that differs from the reviewed digest is
+an error, not a skipped test.
+
 ## Design references
 
 - [OCI content descriptors](https://specs.opencontainers.org/image-spec/descriptor/?v=v1.1.0)

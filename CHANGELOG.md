@@ -59,7 +59,8 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
   and after execution, and run under the invoking non-root identity.
 - A production-profile Gitleaks 8.30.0 binding with an immutable official image,
   embedded digest-checked upstream rules, target-suppression resistance,
-  redacted native-report normalization, and clean/finding live OCI tests.
+  redacted native-report normalization, and clean/finding live OCI tests in
+  validation and release workflows.
 - Bounded CEL applicability evaluation over a deterministic inventory projection,
   with fail-closed resource limits and reason-bearing plan v0.2 records.
 - A byte-preserving R1 remediation for broadly writable repository files, with

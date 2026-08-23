@@ -74,6 +74,15 @@ jobs:
       - name: Run scanner tests with the race detector
         run: go test -race ./...
 
+      - name: Exercise pinned production Gitleaks adapter
+        env:
+          PRC_TEST_GITLEAKS_IMAGE: ghcr.io/gitleaks/gitleaks@sha256:691af3c7c5a48b16f187ce3446d5f194838f91238f27270ed36eef6359a574d9
+        run: |
+          docker pull "$PRC_TEST_GITLEAKS_IMAGE"
+          go test -race ./scanner/adapter \
+            -run '^TestLiveGitleaksOCIUsesPinnedRulesAndIgnoresTargetSuppressions$' \
+            -count=1
+
       - name: Vet scanner
         run: go vet ./...
 

@@ -12,8 +12,12 @@ import (
 )
 
 func TestLiveGitleaksOCIUsesPinnedRulesAndIgnoresTargetSuppressions(t *testing.T) {
-	if os.Getenv("PRC_TEST_GITLEAKS_IMAGE") != GitleaksImage {
+	configuredImage := os.Getenv("PRC_TEST_GITLEAKS_IMAGE")
+	if configuredImage == "" {
 		t.Skip("set PRC_TEST_GITLEAKS_IMAGE to the reviewed image after pulling it by digest")
+	}
+	if configuredImage != GitleaksImage {
+		t.Fatalf("PRC_TEST_GITLEAKS_IMAGE does not match the reviewed image: %s", configuredImage)
 	}
 	manifest, err := LoadManifest(filepath.Join("..", "..", "adapters", "gitleaks-v8.30.0.yaml"))
 	if err != nil {

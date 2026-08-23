@@ -79,6 +79,15 @@ jobs:
           go run github.com/securego/gosec/v2/cmd/gosec@v2.28.0 -include=G703,G122 ./...
           go run golang.org/x/vuln/cmd/govulncheck@v1.7.0 ./...
 
+      - name: Exercise pinned production Gitleaks adapter
+        env:
+          PRC_TEST_GITLEAKS_IMAGE: ghcr.io/gitleaks/gitleaks@sha256:691af3c7c5a48b16f187ce3446d5f194838f91238f27270ed36eef6359a574d9
+        run: |
+          docker pull "$PRC_TEST_GITLEAKS_IMAGE"
+          go test -race ./scanner/adapter \
+            -run '^TestLiveGitleaksOCIUsesPinnedRulesAndIgnoresTargetSuppressions$' \
+            -count=1
+
       - name: Install schema validation dependencies
         run: |
           pip install -r requirements-dev.lock.txt
