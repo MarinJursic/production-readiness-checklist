@@ -4,8 +4,8 @@ import "time"
 
 const (
 	InventorySchema        = "prc.inventory/v0.3"
-	PlanSchema             = "prc.plan/v0.3"
-	RunSchema              = "prc.run/v0.3"
+	PlanSchema             = "prc.plan/v0.4"
+	RunSchema              = "prc.run/v0.4"
 	EvidenceSchema         = "prc.evidence/v0.1"
 	AdapterExecutionSchema = "prc.adapter-execution/v0.1"
 )
@@ -154,6 +154,8 @@ type Inventory struct {
 
 type PlannedAssertion struct {
 	AssertionID         string `json:"assertion_id"`
+	AssertionRevision   int    `json:"assertion_revision,omitempty"`
+	DefinitionDigest    string `json:"definition_digest,omitempty"`
 	Implementation      string `json:"implementation_id"`
 	Applicability       string `json:"applicability"`
 	ApplicabilityBy     string `json:"applicability_evaluator"`
@@ -163,11 +165,13 @@ type PlannedAssertion struct {
 type Plan struct {
 	SchemaVersion       string             `json:"schema_version"`
 	Digest              string             `json:"digest"`
+	EngineVersion       string             `json:"engine_version,omitempty"`
 	TargetName          string             `json:"target_name"`
 	TargetCommit        string             `json:"target_commit,omitempty"`
 	InventoryDigest     string             `json:"inventory_digest"`
 	ProfileID           string             `json:"profile_id"`
 	ProfileVersion      string             `json:"profile_version"`
+	ProfileDigest       string             `json:"profile_digest,omitempty"`
 	ConfigurationDigest string             `json:"configuration_digest,omitempty"`
 	ProjectID           string             `json:"project_id,omitempty"`
 	ArtifactDigests     []string           `json:"artifact_digests"`

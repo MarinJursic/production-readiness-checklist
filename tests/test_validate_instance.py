@@ -127,16 +127,20 @@ class ScannerOutputSchemaTests(unittest.TestCase):
     def test_current_plan_records_applicability_reason(self) -> None:
         digest = "a" * 64
         plan = {
-            "schema_version": "prc.plan/v0.3",
+            "schema_version": "prc.plan/v0.4",
             "digest": digest,
+            "engine_version": "prc.engine/v0.1",
             "target_name": "example",
             "inventory_digest": digest,
             "profile_id": "prc/core-repository",
             "profile_version": "0.3",
+            "profile_digest": digest,
             "artifact_digests": [],
             "target_environments": [],
             "assertions": [{
                 "assertion_id": "PRC-A-CORE-001",
+                "assertion_revision": 2,
+                "definition_digest": digest,
                 "implementation_id": "prc.native.file-present@0.1",
                 "applicability": "applicable",
                 "applicability_evaluator": "cel-go/v0.30.0+prc-inventory/v0.3",
@@ -149,6 +153,55 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         del plan["assertions"][0]["applicability_reason"]
         self.assertTrue(
             validate_instance.validation_errors(plan, "plan.schema.json")
+        )
+
+    def test_v03_plan_contract_remains_validatable(self) -> None:
+        digest = "a" * 64
+        plan = {
+            "schema_version": "prc.plan/v0.3",
+            "digest": digest,
+            "target_name": "example",
+            "inventory_digest": digest,
+            "profile_id": "prc/core-repository",
+            "profile_version": "0.3",
+            "artifact_digests": [],
+            "target_environments": [],
+            "assertions": [],
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(plan, "plan-v0.3.schema.json"), []
+        )
+        inventory = {
+            "schema_version": "prc.inventory/v0.3",
+            "target_name": "example",
+            "digest": digest,
+            "file_count": 0,
+            "source_files": 0,
+            "package_ecosystems": [],
+            "manifests": [],
+            "lock_files": [],
+            "container_files": [],
+            "symlinks": [],
+            "ci": {"github_actions": False, "workflow_files": []},
+            "infrastructure": {"terraform_files": [], "kubernetes_files": []},
+            "components": [],
+            "relations": [],
+            "facts": [],
+            "files": [],
+        }
+        run = {
+            "schema_version": "prc.run/v0.3",
+            "run_id": digest,
+            "started_at": "2026-08-23T12:00:00Z",
+            "completed_at": "2026-08-23T12:00:01Z",
+            "plan": plan,
+            "inventory": inventory,
+            "adapter_executions": [],
+            "results": [],
+            "terminal_state": "profile_satisfied",
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(run, "run-result-v0.3.schema.json"), []
         )
 
     def test_v02_run_contract_remains_validatable(self) -> None:
@@ -315,18 +368,20 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "files": [],
         }
         plan = {
-            "schema_version": "prc.plan/v0.3",
+            "schema_version": "prc.plan/v0.4",
             "digest": digest,
+            "engine_version": "prc.engine/v0.1",
             "target_name": "example",
             "inventory_digest": digest,
             "profile_id": "prc/core-repository",
             "profile_version": "0.3",
+            "profile_digest": digest,
             "artifact_digests": [],
             "target_environments": [],
             "assertions": [],
         }
         final_run = {
-            "schema_version": "prc.run/v0.3",
+            "schema_version": "prc.run/v0.4",
             "run_id": digest,
             "started_at": "2026-08-23T12:00:00Z",
             "completed_at": "2026-08-23T12:00:01Z",

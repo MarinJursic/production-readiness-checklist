@@ -24,6 +24,7 @@ import (
 const (
 	applicabilityEvaluator = "cel-go/v0.30.0+prc-inventory/v0.3"
 	applicabilityCostLimit = 10_000
+	engineVersion          = "prc.engine/v0.1"
 )
 
 var (
@@ -57,15 +58,25 @@ type compiledApplicability struct {
 }
 
 func (e *Engine) Plan(profileID string, inventory model.Inventory) (model.Plan, error) {
+	if inventory.SchemaVersion != model.InventorySchema {
+		return model.Plan{}, fmt.Errorf("unsupported inventory schema %q", inventory.SchemaVersion)
+	}
+	if err := workspaceinventory.VerifyIdentity(inventory); err != nil {
+		return model.Plan{}, err
+	}
 	profile, err := e.Catalog.Profile(profileID)
 	if err != nil {
 		return model.Plan{}, err
 	}
 	plan := model.Plan{
-		SchemaVersion: model.PlanSchema, TargetName: inventory.TargetName,
+		SchemaVersion: model.PlanSchema, EngineVersion: engineVersion, TargetName: inventory.TargetName,
 		TargetCommit: inventory.GitCommit, InventoryDigest: inventory.Digest,
 		ProfileID: profile.ID, ProfileVersion: profile.Version,
 		ArtifactDigests: []string{}, TargetEnvironments: []string{},
+	}
+	plan.ProfileDigest, err = canonicalDigest(profile)
+	if err != nil {
+		return model.Plan{}, fmt.Errorf("bind profile definition: %w", err)
 	}
 	if inventory.DeclaredScope != nil {
 		if inventory.DeclaredScope.ProfileID != profile.ID {
@@ -78,9 +89,14 @@ func (e *Engine) Plan(profileID string, inventory model.Inventory) (model.Plan, 
 	}
 	for _, assertionID := range profile.AssertionIDs {
 		assertion := e.Catalog.Assertions[assertionID]
+		definitionDigest, digestErr := canonicalDigest(assertion)
+		if digestErr != nil {
+			return model.Plan{}, fmt.Errorf("bind assertion %s definition: %w", assertion.ID, digestErr)
+		}
 		applicability, reason := e.evaluateApplicability(assertion.Applicability, inventory)
 		plan.Assertions = append(plan.Assertions, model.PlannedAssertion{
-			AssertionID: assertion.ID, Implementation: assertion.ImplementationID,
+			AssertionID: assertion.ID, AssertionRevision: assertion.Revision,
+			DefinitionDigest: definitionDigest, Implementation: assertion.ImplementationID,
 			Applicability: applicability, ApplicabilityBy: applicabilityEvaluator,
 			ApplicabilityReason: reason,
 		})
@@ -92,6 +108,15 @@ func (e *Engine) Plan(profileID string, inventory model.Inventory) (model.Plan, 
 	digest := sha256.Sum256(payload)
 	plan.Digest = hex.EncodeToString(digest[:])
 	return plan, nil
+}
+
+func canonicalDigest(value any) (string, error) {
+	payload, err := json.Marshal(value)
+	if err != nil {
+		return "", err
+	}
+	digest := sha256.Sum256(payload)
+	return hex.EncodeToString(digest[:]), nil
 }
 
 func (e *Engine) Scan(profileID string, inventory model.Inventory) (model.RunResult, error) {

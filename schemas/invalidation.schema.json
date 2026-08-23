@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/invalidation.schema.json",
+  "title": "Production Readiness Evidence Invalidation Analysis v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "rules_version", "generated_at", "target_name", "base_run_id", "base_inventory_digest", "current_inventory_digest", "base_plan_digest", "current_plan_digest", "changed_dimensions", "changed_files", "assertions", "summary"],
+  "properties": {
+    "schema_version": {"const": "prc.invalidation/v0.1"},
+    "rules_version": {"const": "prc.invalidation-rules/v0.1"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "target_name": {"type": "string", "minLength": 1},
+    "base_run_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "base_inventory_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "current_inventory_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "base_plan_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "current_plan_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "changed_dimensions": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"enum": ["inventory_schema", "git_commit", "files", "source_files", "package_ecosystems", "manifests", "lock_files", "container_files", "symlinks", "ci", "infrastructure", "components", "relations", "facts", "declared_scope", "engine", "profile"]}
+    },
+    "changed_files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "change", "content_changed", "mode_changed"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "change": {"enum": ["added", "modified", "deleted", "mode_changed"]},
+          "before_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "after_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "before_size": {"type": "integer", "minimum": 0},
+          "after_size": {"type": "integer", "minimum": 0},
+          "before_mode": {"type": "integer", "minimum": 0},
+          "after_mode": {"type": "integer", "minimum": 0},
+          "content_changed": {"type": "boolean"},
+          "mode_changed": {"type": "boolean"}
+        }
+      }
+    },
+    "assertions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["assertion_id", "conclusion", "reuse_allowed", "fresh_evaluation_required", "relevant_changed_paths", "reasons"],
+        "properties": {
+          "assertion_id": {"type": "string", "minLength": 1},
+          "previous_assessment": {"enum": ["pass", "fail", "unknown", "manual_review", "not_applicable", "stale", "conflicting"]},
+          "previous_applicability": {"enum": ["applicable", "not_applicable", "undetermined"]},
+          "current_applicability": {"enum": ["applicable", "not_applicable", "undetermined"]},
+          "conclusion": {"enum": ["invalidated", "unchanged_inputs", "new", "removed"]},
+          "reuse_allowed": {"type": "boolean"},
+          "fresh_evaluation_required": {"type": "boolean"},
+          "relevant_changed_paths": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+          "reasons": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["code", "detail"],
+              "properties": {
+                "code": {"type": "string", "pattern": "^[a-z0-9_]+$"},
+                "detail": {"type": "string", "minLength": 1}
+              }
+            }
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["invalidated", "unchanged_inputs", "reusable", "new", "removed"],
+      "properties": {
+        "invalidated": {"type": "integer", "minimum": 0},
+        "unchanged_inputs": {"type": "integer", "minimum": 0},
+        "reusable": {"type": "integer", "minimum": 0},
+        "new": {"type": "integer", "minimum": 0},
+        "removed": {"type": "integer", "minimum": 0}
+      }
+    }
+  }
+}

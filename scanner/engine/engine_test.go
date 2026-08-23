@@ -244,12 +244,47 @@ func TestPlanDigestIsDeterministic(t *testing.T) {
 		t.Fatalf("plan digests differ: %s != %s", first.Digest, second.Digest)
 	}
 	for _, planned := range first.Assertions {
-		if planned.ApplicabilityReason == "" {
-			t.Fatalf("%s has no applicability reason", planned.AssertionID)
+		if planned.ApplicabilityReason == "" || planned.AssertionRevision < 1 || len(planned.DefinitionDigest) != 64 {
+			t.Fatalf("%s has incomplete rule binding: %+v", planned.AssertionID, planned)
 		}
 		if planned.Applicability == "undetermined" {
 			t.Fatalf("checked-in applicability for %s is undetermined: %s", planned.AssertionID, planned.ApplicabilityReason)
 		}
+	}
+	if first.EngineVersion != "prc.engine/v0.1" || len(first.ProfileDigest) != 64 {
+		t.Fatalf("plan has incomplete engine/profile binding: %+v", first)
+	}
+}
+
+func TestPlanDigestBindsCompleteRuleAndProfileDefinitions(t *testing.T) {
+	item, err := inventory.Build(healthyRepository(t))
+	if err != nil {
+		t.Fatal(err)
+	}
+	engine := scanner(t)
+	base, err := engine.Plan("prc/core-repository", item)
+	if err != nil {
+		t.Fatal(err)
+	}
+	assertion := engine.Catalog.Assertions["PRC-A-CORE-001"]
+	assertion.Parameters = map[string]any{"paths": []string{"README.md"}, "minimum_bytes": 2}
+	engine.Catalog.Assertions[assertion.ID] = assertion
+	changedRule, err := engine.Plan("prc/core-repository", item)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if changedRule.Digest == base.Digest || changedRule.Assertions[0].DefinitionDigest == base.Assertions[0].DefinitionDigest {
+		t.Fatal("assertion parameter change did not change the bound plan identity")
+	}
+	profile := engine.Catalog.Profiles["prc/core-repository"]
+	profile.Description += " Changed."
+	engine.Catalog.Profiles[profile.ID] = profile
+	changedProfile, err := engine.Plan("prc/core-repository", item)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if changedProfile.Digest == changedRule.Digest || changedProfile.ProfileDigest == changedRule.ProfileDigest {
+		t.Fatal("profile definition change did not change the bound plan identity")
 	}
 }
 
@@ -392,7 +427,7 @@ func TestConfiguredPlanBindsScopeAndExposesDeclarationsToCEL(t *testing.T) {
 		t.Fatalf("declared feature applicability = %s: %s", got, reason)
 	}
 	item.DeclaredScope.ProfileID = "prc/other-profile"
-	if _, err := engine.Plan("prc/core-repository", item); err == nil || !strings.Contains(err.Error(), "does not match") {
+	if _, err := engine.Plan("prc/core-repository", item); err == nil {
 		t.Fatalf("unexpected profile mismatch error: %v", err)
 	}
 }

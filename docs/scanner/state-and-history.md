@@ -96,3 +96,7 @@ Run both checks and obtain indexed record counts with:
 
 A successful JSON response conforms to `prc.state-check/v0.1`. Corruption or a
 foreign-key violation is an error and never produces an `integrity: ok` report.
+
+Use [diff-aware evidence invalidation](diff-and-invalidation.md) to compare one
+of these canonical runs to a current target without treating the SQLite index
+as assessment authority.

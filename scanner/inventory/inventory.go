@@ -270,6 +270,15 @@ func Build(target string) (model.Inventory, error) {
 }
 
 func seal(result *model.Inventory) error {
+	digest, err := identity(*result)
+	if err != nil {
+		return err
+	}
+	result.Digest = digest
+	return nil
+}
+
+func identity(result model.Inventory) (string, error) {
 	payload, err := json.Marshal(digestInput{
 		GitCommit: result.GitCommit, Files: result.Files, PackageEcosystems: result.PackageEcosystems,
 		Manifests: result.Manifests, LockFiles: result.LockFiles, ContainerFiles: result.ContainerFiles,
@@ -278,10 +287,22 @@ func seal(result *model.Inventory) error {
 		DeclaredScope: result.DeclaredScope,
 	})
 	if err != nil {
-		return fmt.Errorf("encode inventory digest: %w", err)
+		return "", fmt.Errorf("encode inventory digest: %w", err)
 	}
 	digest := sha256.Sum256(payload)
-	result.Digest = hex.EncodeToString(digest[:])
+	return hex.EncodeToString(digest[:]), nil
+}
+
+// VerifyIdentity recomputes the deterministic inventory digest without
+// reading the workspace. It is safe to use for canonical stored records.
+func VerifyIdentity(result model.Inventory) error {
+	expected, err := identity(result)
+	if err != nil {
+		return err
+	}
+	if result.Digest != expected {
+		return fmt.Errorf("inventory digest does not match record content")
+	}
 	return nil
 }
 

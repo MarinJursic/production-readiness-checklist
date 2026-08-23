@@ -17,6 +17,7 @@ import (
 	"strings"
 	"time"
 
+	workspaceinventory "github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 	_ "modernc.org/sqlite"
 )
@@ -454,15 +455,57 @@ func validateRun(run model.RunResult) error {
 	if !digest(run.RunID) || runIdentity(run) != run.RunID {
 		return fmt.Errorf("run ID does not match record content")
 	}
-	if !digest(run.Inventory.Digest) || run.Plan.InventoryDigest != run.Inventory.Digest {
+	if !((run.SchemaVersion == model.RunSchema && run.Plan.SchemaVersion == model.PlanSchema) ||
+		(run.SchemaVersion == "prc.run/v0.3" && run.Plan.SchemaVersion == "prc.plan/v0.3")) {
+		return fmt.Errorf("unsupported or mismatched run and plan schemas %q and %q", run.SchemaVersion, run.Plan.SchemaVersion)
+	}
+	if run.Inventory.SchemaVersion != model.InventorySchema {
+		return fmt.Errorf("unsupported inventory schema %q", run.Inventory.SchemaVersion)
+	}
+	if !digest(run.Inventory.Digest) || run.Plan.InventoryDigest != run.Inventory.Digest ||
+		run.Plan.TargetName != run.Inventory.TargetName || run.Plan.TargetCommit != run.Inventory.GitCommit {
 		return fmt.Errorf("run inventory identity is invalid")
 	}
+	if err := workspaceinventory.VerifyIdentity(run.Inventory); err != nil {
+		return err
+	}
+	if !digest(run.Plan.Digest) || planIdentity(run.Plan) != run.Plan.Digest {
+		return fmt.Errorf("plan digest does not match record content")
+	}
+	if run.Plan.SchemaVersion == model.PlanSchema {
+		if run.Plan.EngineVersion == "" || !digest(run.Plan.ProfileDigest) {
+			return fmt.Errorf("current plan lacks engine or profile binding")
+		}
+		for _, planned := range run.Plan.Assertions {
+			if planned.AssertionRevision < 1 || !digest(planned.DefinitionDigest) {
+				return fmt.Errorf("current plan assertion %s lacks a definition binding", planned.AssertionID)
+			}
+		}
+	}
+	planned := map[string]bool{}
+	for _, item := range run.Plan.Assertions {
+		if item.AssertionID == "" || planned[item.AssertionID] {
+			return fmt.Errorf("plan contains an empty or duplicate assertion ID")
+		}
+		planned[item.AssertionID] = true
+	}
+	results := map[string]bool{}
 	for _, result := range run.Results {
+		if !planned[result.AssertionID] || results[result.AssertionID] {
+			return fmt.Errorf("run contains an unplanned or duplicate result for %s", result.AssertionID)
+		}
+		results[result.AssertionID] = true
 		for _, evidence := range result.EvidenceObserved {
 			if !digest(evidence.ID) || evidenceIdentity(evidence) != evidence.ID {
 				return fmt.Errorf("evidence ID does not match record content")
 			}
+			if evidence.TargetDigest != run.Inventory.Digest {
+				return fmt.Errorf("evidence %s is bound to a different inventory", evidence.ID)
+			}
 		}
+	}
+	if len(results) != len(planned) {
+		return fmt.Errorf("run does not contain exactly one result for every planned assertion")
 	}
 	return nil
 }
@@ -470,6 +513,13 @@ func validateRun(run model.RunResult) error {
 func runIdentity(run model.RunResult) string {
 	run.RunID = ""
 	payload, _ := json.Marshal(run)
+	value := sha256.Sum256(payload)
+	return hex.EncodeToString(value[:])
+}
+
+func planIdentity(plan model.Plan) string {
+	plan.Digest = ""
+	payload, _ := json.Marshal(plan)
 	value := sha256.Sum256(payload)
 	return hex.EncodeToString(value[:])
 }

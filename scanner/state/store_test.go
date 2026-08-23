@@ -2,6 +2,9 @@ package state
 
 import (
 	"context"
+	"crypto/sha256"
+	"encoding/hex"
+	"encoding/json"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -104,6 +107,56 @@ func TestStoreIndexesQueriesAndReloadsCanonicalRun(t *testing.T) {
 	if err := store.IntegrityCheck(ctx); err != nil {
 		t.Fatal(err)
 	}
+}
+
+func TestStoreReadsLegacyV03RunAfterRuleBindingUpgrade(t *testing.T) {
+	run := testRun(t)
+	run.SchemaVersion = "prc.run/v0.3"
+	run.Plan.SchemaVersion = "prc.plan/v0.3"
+	run.Plan.EngineVersion = ""
+	run.Plan.ProfileDigest = ""
+	for index := range run.Plan.Assertions {
+		run.Plan.Assertions[index].AssertionRevision = 0
+		run.Plan.Assertions[index].DefinitionDigest = ""
+	}
+	run.Plan.Digest = ""
+	payload, err := json.Marshal(run.Plan)
+	if err != nil {
+		t.Fatal(err)
+	}
+	digest := sha256.Sum256(payload)
+	run.Plan.Digest = hex.EncodeToString(digest[:])
+	run.RunID = runIdentity(run)
+	store, _ := writeAndOpen(t, run)
+	if err := store.IndexRun(context.Background(), run); err != nil {
+		t.Fatal(err)
+	}
+	loaded, err := store.LoadRun(context.Background(), run.RunID)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if loaded.SchemaVersion != "prc.run/v0.3" || loaded.Plan.SchemaVersion != "prc.plan/v0.3" || loaded.Plan.EngineVersion != "" {
+		t.Fatalf("legacy run was not preserved: %+v", loaded.Plan)
+	}
+}
+
+func TestValidateRunRejectsTamperedNestedIdentities(t *testing.T) {
+	t.Run("plan", func(t *testing.T) {
+		run := testRun(t)
+		run.Plan.ProfileVersion = "tampered"
+		run.RunID = runIdentity(run)
+		if err := validateRun(run); err == nil || !strings.Contains(err.Error(), "plan digest") {
+			t.Fatalf("unexpected error: %v", err)
+		}
+	})
+	t.Run("inventory", func(t *testing.T) {
+		run := testRun(t)
+		run.Inventory.Files[0].SHA256 = strings.Repeat("0", 64)
+		run.RunID = runIdentity(run)
+		if err := validateRun(run); err == nil || !strings.Contains(err.Error(), "inventory digest") {
+			t.Fatalf("unexpected error: %v", err)
+		}
+	})
 }
 
 func TestStoreReindexIsIdempotentAndRepairsDerivedRows(t *testing.T) {

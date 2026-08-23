@@ -35,6 +35,10 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 - A CGO-free embedded SQLite state index with strict migrations, transactional
   run/result/evidence/inventory indexing, canonical-record identity checks,
   audit events, integrity checks, and `history list`/`history show` queries.
+- Diff-aware evidence invalidation with implementation-specific dependency
+  rules, conservative non-repository freshness handling, and plan/run v0.4
+  identities that bind the engine, profile, assertion revisions, parameters,
+  and implementation definitions while preserving v0.3 schema access.
 
 ### Fixed
 

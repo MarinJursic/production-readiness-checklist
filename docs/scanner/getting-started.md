@@ -85,6 +85,9 @@ target unless target-local scanner state is intentional. See
 [durable state and history](state-and-history.md) for the storage contract and
 `history` commands.
 
+After a later change, use [`prc diff`](diff-and-invalidation.md) with a canonical
+base run to see exactly which rule inputs were invalidated before rescanning.
+
 JSON is available for automation:
 
 ```bash

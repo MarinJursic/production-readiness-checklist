@@ -139,9 +139,10 @@ func TestAdapterEvidenceIsBoundToExactInventory(t *testing.T) {
 		t.Fatal(err)
 	}
 	execution := boundAnalysisExecution(t, item, "not_found", "completed")
+	engine := scannerWithAnalysisBinding(t, item)
 	other := item
 	other.Digest = strings.Repeat("e", 64)
-	if _, err := scannerWithAnalysisBinding(t, other).ScanWithAdapterEvidence(
+	if _, err := engine.ScanWithAdapterEvidence(
 		"prc/core-repository", other, []model.AdapterExecution{execution}); err == nil {
 		t.Fatal("adapter execution was reused for a different inventory")
 	}

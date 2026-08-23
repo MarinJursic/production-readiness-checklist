@@ -10,6 +10,7 @@ import (
 	"testing"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/adapter"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/invalidation"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/provider"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/remediation"
@@ -71,7 +72,8 @@ func TestPlanConsumesValidatedConfiguration(t *testing.T) {
 	if err := json.Unmarshal(stdout.Bytes(), &plan); err != nil {
 		t.Fatal(err)
 	}
-	if plan.SchemaVersion != "prc.plan/v0.3" || len(plan.ConfigurationDigest) != 64 ||
+	if plan.SchemaVersion != "prc.plan/v0.4" || plan.EngineVersion != "prc.engine/v0.1" ||
+		len(plan.ProfileDigest) != 64 || len(plan.ConfigurationDigest) != 64 ||
 		plan.ProjectID != "example-product" || !slices.Equal(plan.TargetEnvironments, []string{"staging"}) {
 		t.Fatalf("configured plan = %+v", plan)
 	}
@@ -427,6 +429,37 @@ func TestScanIndexesDurableHistoryAndHistoryCommandsReadCanonicalRun(t *testing.
 	}, &checkOutput, &stderr)
 	if code != 0 || !strings.Contains(checkOutput.String(), `"integrity": "ok"`) {
 		t.Fatalf("history check exit=%d stdout=%s stderr=%s", code, checkOutput.String(), stderr.String())
+	}
+	if err := os.WriteFile(filepath.Join(target, "app.py"), []byte("print('changed')\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	var diffOutput bytes.Buffer
+	stderr.Reset()
+	code = run([]string{
+		"diff", "--state-dir", stateDirectory, "--base-run", scanned.RunID,
+		"--target", target, "--catalog-root", filepath.Join("..", ".."), "--format", "json",
+	}, &diffOutput, &stderr)
+	if code != 0 {
+		t.Fatalf("diff exit=%d stderr=%s", code, stderr.String())
+	}
+	var diff invalidation.Report
+	if err := json.Unmarshal(diffOutput.Bytes(), &diff); err != nil {
+		t.Fatal(err)
+	}
+	if diff.SchemaVersion != invalidation.SchemaVersion || len(diff.ChangedFiles) != 1 || diff.ChangedFiles[0].Path != "app.py" {
+		t.Fatalf("unexpected invalidation report: %+v", diff)
+	}
+	var sourceInvalidated, readmeUnchanged bool
+	for _, impact := range diff.Assertions {
+		if impact.AssertionID == "PRC-A-CORE-014" && impact.Conclusion == "invalidated" {
+			sourceInvalidated = true
+		}
+		if impact.AssertionID == "PRC-A-CORE-001" && impact.Conclusion == "unchanged_inputs" && !impact.ReuseAllowed {
+			readmeUnchanged = true
+		}
+	}
+	if !sourceInvalidated || !readmeUnchanged {
+		t.Fatalf("unexpected assertion impact: %+v", diff.Assertions)
 	}
 }
 

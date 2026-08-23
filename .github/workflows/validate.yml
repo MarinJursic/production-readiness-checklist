@@ -131,6 +131,7 @@ jobs:
           "$RUNNER_TEMP/prc" history check --state-dir "$RUNNER_TEMP/state" --format json > "$RUNNER_TEMP/state-check.json"
           PRC_HISTORY_RUN_ID=$(python -c 'import json,sys; print(json.load(open(sys.argv[1], encoding="utf-8"))["run_id"])' "$RUNNER_TEMP/run.json")
           "$RUNNER_TEMP/prc" history show --state-dir "$RUNNER_TEMP/state" --format json "$PRC_HISTORY_RUN_ID" > "$RUNNER_TEMP/historical-run.json"
+          "$RUNNER_TEMP/prc" diff --state-dir "$RUNNER_TEMP/state" --base-run "$PRC_HISTORY_RUN_ID" --target . --catalog-root . --format json > "$RUNNER_TEMP/invalidation.json"
           "$RUNNER_TEMP/prc" scan --target . --catalog-root . --format markdown --exit-policy never > "$RUNNER_TEMP/run.md"
           "$RUNNER_TEMP/prc" scan --target . --catalog-root . --format html --exit-policy never > "$RUNNER_TEMP/run.html"
           "$RUNNER_TEMP/prc" scan --target . --catalog-root . --format sarif --exit-policy never > "$RUNNER_TEMP/run.sarif"
@@ -219,6 +220,7 @@ jobs:
           python scripts/validate_instance.py history.schema.json "$RUNNER_TEMP/history.json"
           python scripts/validate_instance.py state-check.schema.json "$RUNNER_TEMP/state-check.json"
           python scripts/validate_instance.py run-result.schema.json "$RUNNER_TEMP/historical-run.json"
+          python scripts/validate_instance.py invalidation.schema.json "$RUNNER_TEMP/invalidation.json"
           python scripts/validate_instance.py agent-task.schema.json "$RUNNER_TEMP/configured-provider-task.json"
           python scripts/validate_instance.py remediation-candidate.schema.json "$RUNNER_TEMP/remediation.json"
           python scripts/validate_instance.py remediation-candidate.schema.json "$RUNNER_TEMP/mode-remediation.json"

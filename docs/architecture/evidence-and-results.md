@@ -94,6 +94,11 @@ derived rows by re-indexing an immutable run. Indexed record paths are relative
 and must resolve inside the state root. See [durable state and run
 history](../scanner/state-and-history.md).
 
+The [diff-aware invalidation model](../scanner/diff-and-invalidation.md) binds
+new plans to exact profile and assertion definitions, maps native
+implementations to their repository inputs, and refuses to carry evidence to a
+different target identity without revalidation.
+
 ## Authority is assertion-specific
 
 Authority is not a universal numeric confidence score. A repository configuration

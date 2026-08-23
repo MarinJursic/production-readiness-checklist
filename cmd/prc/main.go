@@ -20,6 +20,7 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/doctor"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/engine"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/evidence"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/invalidation"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/provider"
@@ -63,6 +64,8 @@ func run(args []string, stdout, stderr io.Writer) int {
 		successful, err = runDoctor(args[1:], stdout, stderr)
 	case "history":
 		err = runHistory(args[1:], stdout, stderr)
+	case "diff":
+		err = runDiff(args[1:], stdout, stderr)
 	case "remediate":
 		resultExit = true
 		successful, err = runRemediate(args[1:], stdout, stderr)
@@ -95,7 +98,7 @@ func run(args []string, stdout, stderr io.Writer) int {
 
 func usage(output io.Writer) {
 	fmt.Fprintln(output, "Production Readiness Scanner")
-	fmt.Fprintln(output, "usage: prc <config|inventory|plan|scan|fix|remediate|remediate-proposal|doctor|history|explain|adapter|provider|version> [options]")
+	fmt.Fprintln(output, "usage: prc <config|inventory|plan|scan|diff|fix|remediate|remediate-proposal|doctor|history|explain|adapter|provider|version> [options]")
 }
 
 func runConfig(args []string, stdout, stderr io.Writer) error {
@@ -506,6 +509,85 @@ func runHistory(args []string, stdout, stderr io.Writer) error {
 			item.PassCount, item.FailCount, item.BlockedCount)
 	}
 	return nil
+}
+
+func runDiff(args []string, stdout, stderr io.Writer) error {
+	set := flag.NewFlagSet("diff", flag.ContinueOnError)
+	set.SetOutput(stderr)
+	stateDirectory := set.String("state-dir", "", "private scanner state directory (required)")
+	baseRunID := set.String("base-run", "", "canonical prior run ID (required)")
+	target := set.String("target", ".", "current repository to inspect")
+	catalogRoot := set.String("catalog-root", ".", "repository containing the PRC catalog")
+	configPath := set.String("config", "", "optional validated project configuration")
+	profile := set.String("profile", "", "profile to compare; defaults to configuration or base run")
+	format := set.String("format", "human", "human or json")
+	if err := set.Parse(args); err != nil {
+		return err
+	}
+	if set.NArg() != 0 {
+		return errors.New("diff accepts no positional arguments")
+	}
+	if strings.TrimSpace(*stateDirectory) == "" || strings.TrimSpace(*baseRunID) == "" {
+		return errors.New("--state-dir and --base-run are required")
+	}
+	if *format != "human" && *format != "json" {
+		return fmt.Errorf("unsupported format %q", *format)
+	}
+	store, err := state.Open(context.Background(), *stateDirectory)
+	if err != nil {
+		return err
+	}
+	defer store.Close()
+	base, err := store.LoadRun(context.Background(), *baseRunID)
+	if err != nil {
+		return err
+	}
+	item, validation, err := configuredInventory(*target, *configPath)
+	if err != nil {
+		return err
+	}
+	if *profile == "" {
+		if validation != nil {
+			*profile = validation.Configuration.Assessment.Profile
+		} else {
+			*profile = base.Plan.ProfileID
+		}
+	}
+	scanner, err := loadEngine(*catalogRoot)
+	if err != nil {
+		return err
+	}
+	plan, err := scanner.Plan(*profile, item)
+	if err != nil {
+		return err
+	}
+	report, err := invalidation.Analyze(base, item, plan, scanner.Catalog.Assertions, time.Now().UTC())
+	if err != nil {
+		return err
+	}
+	if *format == "json" {
+		return encodeJSON(stdout, report)
+	}
+	printInvalidation(stdout, report)
+	return nil
+}
+
+func printInvalidation(output io.Writer, report invalidation.Report) {
+	fmt.Fprintf(output, "Invalidation analysis: %s -> %s\n", report.BaseInventoryDigest, report.CurrentInventoryDigest)
+	fmt.Fprintf(output, "Base run: %s\n", report.BaseRunID)
+	fmt.Fprintf(output, "Changed files: %d\n", len(report.ChangedFiles))
+	fmt.Fprintf(output, "Assertions: %d invalidated, %d input-equivalent with rebinding required, %d reusable, %d new, %d removed\n",
+		report.Summary.Invalidated, report.Summary.UnchangedInputs, report.Summary.Reusable, report.Summary.New, report.Summary.Removed)
+	for _, impact := range report.Assertions {
+		fmt.Fprintf(output, "- %s: %s", impact.AssertionID, impact.Conclusion)
+		if impact.ReuseAllowed {
+			fmt.Fprint(output, " (reuse allowed)")
+		}
+		fmt.Fprintln(output)
+		for _, reason := range impact.Reasons {
+			fmt.Fprintf(output, "  - %s: %s\n", reason.Code, reason.Detail)
+		}
+	}
 }
 
 func runRemediateProposal(args []string, stdout, stderr io.Writer) (bool, error) {

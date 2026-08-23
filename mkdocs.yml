@@ -56,6 +56,7 @@ nav:
       - Scanner diagnostics: scanner/doctor.md
       - Project configuration: scanner/configuration.md
       - Durable state and history: scanner/state-and-history.md
+      - Diff and evidence invalidation: scanner/diff-and-invalidation.md
       - Bounded R1 remediation: scanner/remediation.md
       - Product contract: architecture/product-contract.md
       - Trust and threat model: architecture/trust-model.md
