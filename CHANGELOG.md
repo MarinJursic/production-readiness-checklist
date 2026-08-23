@@ -17,6 +17,8 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
   with fail-closed resource limits and reason-bearing plan v0.2 records.
 - A byte-preserving R1 remediation for broadly writable repository files, with
   exact mode postconditions and original-workspace integrity verification.
+- A conservative R2 anti-gaming audit that blocks existing-test rewrites,
+  suppression and skip directives, constant assertions, and empty Go tests.
 
 ### Fixed
 

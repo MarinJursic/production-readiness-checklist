@@ -3,6 +3,7 @@ package remediation
 import (
 	"fmt"
 	"sort"
+	"strings"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/catalog"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/engine"
@@ -65,6 +66,9 @@ func RunProposal(options ProposalOptions) (Candidate, error) {
 	before, ok := resultFor(beforeRun, assertion.ID)
 	if !ok || before.Assessment != "fail" {
 		return Candidate{}, fmt.Errorf("assertion %s is not a failing finding in the baseline", assertion.ID)
+	}
+	if reasons := auditProposalAntiGaming(baseline, options.Output); len(reasons) > 0 {
+		return Candidate{}, fmt.Errorf("provider proposal failed anti-gaming audit: %s", strings.Join(reasons, " "))
 	}
 
 	proposalID, err := provider.OutputID(options.Output)

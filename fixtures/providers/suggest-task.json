@@ -1,8 +1,8 @@
 {
   "schema_version": "prc.agent-task/v0.1",
-  "task_id": "62bb66d3d5e7c1d8e67c27ad6fb4ab2ef37254931cf23204f27a195262458b15",
+  "task_id": "b5227988f8df8a85ea61fdf12825ed0b3026f0e06d19e249c1f7152ed2d1d0c9",
   "mode": "suggest",
-  "workspace_inventory_digest": "d44894f700a21f76f857a8c9fbc91814f623bb5afa2d30a039d62d8aad58d40c",
+  "workspace_inventory_digest": "efbd85c671e39997eebea33b8706fc366b6d6aebc29375be3c11bfc0de047862",
   "assertion_id": "PRC-A-CORE-010",
   "control_ids": ["USEQ-12655775"],
   "goal": "Propose a focused regression test for the missing behavior.",
@@ -11,8 +11,8 @@
   "inputs": [
     {
       "path": "app.go",
-      "sha256": "75d99e22087438b67ab1768073505b6ad05fa235b57f02efe129400534b6053c",
-      "content": "package app\n"
+      "sha256": "0b13ad5eb4ed20358f6d5330213a9044373894638dab5a4c85e15eca78cc7752",
+      "content": "package app\n\nfunc Ready() bool {\n\treturn true\n}\n"
     }
   ],
   "allowed_paths": ["app.go", "app_test.go"],

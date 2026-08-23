@@ -292,7 +292,7 @@ func TestRemediateProposalCommandCreatesAcceptedIsolatedCandidate(t *testing.T) 
 	proposal := provider.Output{
 		SchemaVersion: provider.OutputSchema, TaskID: task.TaskID, Status: "candidate",
 		RootCause: "No test is present.", ChangedFiles: []string{"app_test.py"},
-		Patch:                  "diff --git a/app_test.py b/app_test.py\n--- /dev/null\n+++ b/app_test.py\n@@ -0,0 +1,2 @@\n+def test_ready():\n+    assert True\n",
+		Patch:                  "diff --git a/app_test.py b/app_test.py\n--- /dev/null\n+++ b/app_test.py\n@@ -0,0 +1,4 @@\n+from app import ready\n+\n+def test_ready():\n+    assert ready() is True\n",
 		CommandsRequestedOrRun: []provider.CommandResult{}, Limitations: []string{}, RequestedCapabilityChanges: []string{},
 	}
 	proposalData, _ := json.Marshal(proposal)

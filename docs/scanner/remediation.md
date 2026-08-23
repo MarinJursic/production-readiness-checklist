@@ -80,11 +80,15 @@ The strict internal unified-diff parser supports exact-context modification and
 mode-`0644` text-file addition. It rejects deletions, renames, copies, binary or
 mode changes, CRLF patch encoding, non-newline markers, malformed coordinates,
 context mismatches, unlisted or protected paths, and budget overruns before
-acceptance. The raw-tree, byte, mode, target assertion, baseline regression, and
-source-integrity audits then run from fresh inventories.
+acceptance. A conservative anti-gaming pass also rejects changes to existing test
+or specification files, newly introduced suppression or skip directives,
+constant assertions, and empty Go tests before creating a candidate. New focused
+tests remain permitted. The raw-tree, byte, mode, target assertion, baseline
+regression, and source-integrity audits then run from fresh inventories.
 
 Current R2 acceptance proves only the declared deterministic scanner
-postcondition and non-regression envelope. It does not execute project code or
-prove that generated tests are meaningful. Broader code-changing autonomy must
-add sandboxed project-specific verification commands and stronger behavioral
+postcondition, structural anti-gaming checks, and non-regression envelope. The
+anti-gaming checks catch known unsafe patch shapes; they do not prove that a new
+test is behaviorally sufficient. Broader code-changing autonomy must add
+sandboxed project-specific verification commands and stronger behavioral
 assertions before it can be enabled by policy.

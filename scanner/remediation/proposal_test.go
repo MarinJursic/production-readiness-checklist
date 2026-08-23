@@ -64,7 +64,7 @@ func TestRunProposalAppliesAndAcceptsIsolatedR2Candidate(t *testing.T) {
 	task := sealedProposalTask(t, target, []string{"app_test.py"}, defaultProposalProtectedPaths())
 	patch := "diff --git a/app_test.py b/app_test.py\n" +
 		"new file mode 100644\n--- /dev/null\n+++ b/app_test.py\n" +
-		"@@ -0,0 +1,2 @@\n+def test_ready():\n+    assert True\n"
+		"@@ -0,0 +1,4 @@\n+from app import ready\n+\n+def test_ready():\n+    assert ready() is True\n"
 	output := proposalOutput(task, "app_test.py", patch)
 	candidate, err := RunProposal(ProposalOptions{
 		CatalogRoot: testCatalogRoot(t), Target: target, CandidateDir: filepath.Join(t.TempDir(), "candidate"),
@@ -81,10 +81,10 @@ func TestRunProposalAppliesAndAcceptsIsolatedR2Candidate(t *testing.T) {
 		t.Fatal("source workspace was modified")
 	}
 	content, err := os.ReadFile(filepath.Join(candidate.CandidatePath, "app_test.py"))
-	if err != nil || string(content) != "def test_ready():\n    assert True\n" {
+	if err != nil || string(content) != "from app import ready\n\ndef test_ready():\n    assert ready() is True\n" {
 		t.Fatalf("unexpected candidate content %q: %v", content, err)
 	}
-	if len(candidate.Changes) != 1 || candidate.Changes[0].Kind != "added" || candidate.Changes[0].AddedLines != 2 {
+	if len(candidate.Changes) != 1 || candidate.Changes[0].Kind != "added" || candidate.Changes[0].AddedLines != 4 {
 		t.Fatalf("unexpected changes: %+v", candidate.Changes)
 	}
 }
@@ -120,6 +120,59 @@ func TestRunProposalAddsDefaultProtectedPathsToWeakTask(t *testing.T) {
 	})
 	if err == nil || !strings.Contains(err.Error(), "outside the R2 fix contract") {
 		t.Fatalf("unexpected error: %v", err)
+	}
+}
+
+func TestRunProposalRejectsVacuousTestBeforeCreatingCandidate(t *testing.T) {
+	target := proposalTarget(t)
+	task := sealedProposalTask(t, target, []string{"app_test.py"}, defaultProposalProtectedPaths())
+	patch := "diff --git a/app_test.py b/app_test.py\n--- /dev/null\n+++ b/app_test.py\n" +
+		"@@ -0,0 +1,2 @@\n+def test_ready():\n+    assert True\n"
+	candidatePath := filepath.Join(t.TempDir(), "candidate")
+	_, err := RunProposal(ProposalOptions{
+		CatalogRoot: testCatalogRoot(t), Target: target, CandidateDir: candidatePath,
+		Provider: "codex", Task: task, Output: proposalOutput(task, "app_test.py", patch),
+		MaxFiles: 2, MaxChangedLines: 10,
+	})
+	if err == nil || !strings.Contains(err.Error(), "constant assertion") {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if _, statErr := os.Stat(candidatePath); !os.IsNotExist(statErr) {
+		t.Fatal("anti-gaming rejection created a candidate directory")
+	}
+}
+
+func TestProposalAntiGamingRejectsExistingTestChangesAndSuppressions(t *testing.T) {
+	target := remediationTarget(t)
+	baseline, err := inventory.Build(target)
+	if err != nil {
+		t.Fatal(err)
+	}
+	output := provider.Output{
+		ChangedFiles: []string{"tests/test_app.py"},
+		Patch: "diff --git a/tests/test_app.py b/tests/test_app.py\n" +
+			"--- a/tests/test_app.py\n+++ b/tests/test_app.py\n" +
+			"@@ -1 +1,2 @@\n def test_ready(): assert True\n+# noqa\n",
+	}
+	reasons := strings.Join(auditProposalAntiGaming(baseline, output), " ")
+	if !strings.Contains(reasons, "modifies existing test") || !strings.Contains(reasons, "suppression or skip") {
+		t.Fatalf("anti-gaming audit missed proposal: %s", reasons)
+	}
+}
+
+func TestProposalAntiGamingAllowsFocusedBehavioralTest(t *testing.T) {
+	target := proposalTarget(t)
+	baseline, err := inventory.Build(target)
+	if err != nil {
+		t.Fatal(err)
+	}
+	output := provider.Output{
+		ChangedFiles: []string{"app_test.py"},
+		Patch: "diff --git a/app_test.py b/app_test.py\n--- /dev/null\n+++ b/app_test.py\n" +
+			"@@ -0,0 +1,4 @@\n+from app import ready\n+\n+def test_ready():\n+    assert ready() is True\n",
+	}
+	if reasons := auditProposalAntiGaming(baseline, output); len(reasons) != 0 {
+		t.Fatalf("focused behavioral test was rejected: %v", reasons)
 	}
 }
 
