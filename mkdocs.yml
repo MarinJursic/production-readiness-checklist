@@ -63,6 +63,7 @@ nav:
       - OpenAPI contract analysis: scanner/openapi-contracts.md
       - Test discovery evidence: scanner/test-discovery.md
       - Kubernetes workload analysis: scanner/kubernetes-workloads.md
+      - Infrastructure policy profile: scanner/infrastructure-policy.md
       - Software supply-chain profile: scanner/supply-chain.md
       - Project configuration: scanner/configuration.md
       - Durable state and history: scanner/state-and-history.md

@@ -46,6 +46,19 @@ increase use `3`; the command never executes the adapter.
 
 ## Scan policy
 
+`prc scan` inspects the current directory; `prc scan /path/to/project` inspects
+one explicit project. Scan options may appear before or after that path. The
+equivalent advanced `--target` flag remains available, but it cannot be combined
+with the positional project path.
+
+Human output creates one detailed standalone HTML report by default. The file is
+created privately outside the target, its absolute path is printed, and an
+existing file is never overwritten. `--report PATH` chooses a new file;
+`--no-report` disables the automatic report. JSON, Markdown, HTML, SARIF, and
+JUnit stdout formats do not create an extra report unless `--report` is also
+given. Report creation is output generation, not remediation: `scan` never
+invokes `fix`, `remediate`, a provider, or a write-capable target process.
+
 The default `--exit-policy profile` maps `profile_satisfied` to `0`, `no_go` to
 `1`, and incomplete, blocked, or manual-evidence states to `2`. A policy or
 budget terminal state maps to `5`.

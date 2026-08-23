@@ -8,6 +8,18 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 
 ### Added
 
+- A one-command `prc scan [project]` experience with automatic bundled-catalog
+  discovery, interspersed options, private standalone HTML reports, explicit
+  custom/no-report controls, non-overwrite guarantees, and tests proving the
+  scan path does not change target bytes or modes.
+- Detailed HTML findings and assertion evidence, including controls, source
+  locations, required and observed evidence, remediation classes, and stable
+  finding identities.
+- A digest-pinned Checkov 3.3.8 adapter for offline Terraform, Kubernetes, and
+  Dockerfile policy evaluation, with target-configuration isolation, discarded
+  raw graph entities, strict output normalization, and adversarial live OCI
+  coverage, plus a focused `prc/iac@0.1` profile that can authorize it.
+
 - Immutable CodeQL gates for Go, Python, and GitHub Actions, pull-request
   dependency review across all dependency scopes, and complete-history Gitleaks
   scanning with redacted output. Scanner releases repeat secret and pinned

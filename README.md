@@ -77,30 +77,93 @@ Do not modify code and do not make the final release decision.
 - [Evidence challenge prompt](docs/prompts/evidence-challenge.md)
 - [AI-assisted review guide](docs/guides/ai-assisted-review.md)
 
-## Experimental scanner: evidence-driven and bounded
+## Scanner: quickest path
 
-The repository now includes an experimental deterministic scanner vertical slice. It inventories a declared repository without executing target code, creates a versioned assessment plan, evaluates the 40-assertion `prc/core-repository@1.0` profile, stores content-addressed evidence, emits stable fingerprinted findings for verified failures, and preserves unknown and manual results separately. Native checks cover repository governance, source identity and integrity, dependency inputs and runtime declarations, structurally verified test discovery, GitHub Actions safety, committed private-key armor, OpenAPI root and operation contracts, Go HTTP client and server timeout hazards, container build definitions, Terraform locks, and Kubernetes workload policy. Focused `prc/api@0.1`, `prc/kubernetes@0.1`, and `prc/supply-chain@0.2` profiles expose domain checks independently. A strict OCI adapter protocol can feed live observations into an exact profile binding while leaving assessment authority with the engine. The production adapters pin reviewed Gitleaks 8.30.0, Syft 1.51.0, and Grype 0.116.1 images and native-output normalizers for current-tree secret detection, deterministic CycloneDX 1.7 SBOM generation, and fresh offline known-dependency-vulnerability analysis; they run only after an explicit local verification grant and operator preparation of immutable images and any required database. A bounded loop composes independently verified R1 candidates for missing source-file final newlines and broadly writable file modes, enforces cumulative budgets, and reports all remaining work; it never changes the original workspace or merges, deploys, or releases a candidate. Experimental Codex and Claude Code provider adapters produce read-only, schema-constrained proposals. When explicitly enabled, the loop can construct one scanner-owned missing-test task, invoke either provider without workspace, shell, network-tool, secret, or MCP access, and parse its proposal into a fresh isolated candidate. R2 acceptance requires a separate operator-selected, digest-pinned OCI verifier: the scanner runs an exact Go, Python, or plain-JavaScript test command with no network, a read-only candidate mount, dropped capabilities, a non-root user, and bounded CPU, memory, processes, scratch, time, and output. New tests must also contain a conventionally discoverable declaration and a behavioral failure check; every other R2 class remains disabled until it has a dedicated task planner and strong deterministic verification. A path-locked, read-only MCP server lets local Codex and Claude Code clients request scanner plans, scans, and catalog explanations without gaining a scanner-owned write path.
+The experimental scanner turns the checklist into a repeatable repository assessment. A normal scan is deliberately read-only: it inventories files, evaluates the 40-assertion `prc/core-repository@1.0` profile, prints a summary, and creates a private standalone HTML report. It does **not** fix files, run project code, install project dependencies, or turn unknown evidence into a pass.
 
-The scanner is designed to:
+### One-time setup from source
 
-- map findings to stable `USEQ-*` and `PRC-*` control IDs;
-- cite the exact code, configuration, documentation, test, or operational evidence behind every result;
-- distinguish verified facts from assumptions and unavailable production or organizational evidence;
-- generate a full, prioritized list of gaps, required manual checks, and recommended next actions;
-- export scoped JSON, Markdown, HTML, SARIF, and JUnit results without collapsing them into a readiness score;
-- support different languages, frameworks, platforms, and deployment models without locking the project to one technology vendor; and
-- keep risk acceptance and the final release decision with accountable humans.
+You need Git and Go 1.27 or a compatible later supported toolchain.
 
-The scanner will not claim that a project has zero defects or make an unqualified production-readiness decision. It may report that a versioned profile is satisfied for a specific target and evidence set. Coding agents will be replaceable, constrained patch generators; deterministic checks and policy will own truth and patch acceptance.
+```bash
+git clone https://github.com/MarinJursic/production-readiness-checklist.git
+cd production-readiness-checklist
+go mod verify
+go build -trimpath -o prc ./cmd/prc
+```
 
-Start with the [scanner quick start](docs/scanner/getting-started.md), [stable CLI contract](docs/scanner/cli-contract.md), [scanner diagnostics](docs/scanner/doctor.md), [read-only MCP agent integration](docs/scanner/mcp-agent-integration.md), [declared project configuration](docs/scanner/configuration.md), [software supply-chain profile](docs/scanner/supply-chain.md), [durable state and history](docs/scanner/state-and-history.md), [diff-aware evidence invalidation](docs/scanner/diff-and-invalidation.md), [isolated remediation guide](docs/scanner/remediation.md), and [read-only agent provider guide](docs/architecture/agent-providers.md), then read the [product contract](docs/architecture/product-contract.md), [trust model](docs/architecture/trust-model.md), [catalog integrity contract](docs/architecture/catalog-integrity.md), [adapter protocol](docs/architecture/adapters.md), [bounded applicability model](docs/architecture/applicability.md), [evidence model](docs/architecture/evidence-and-results.md), and [bounded remediation contract](docs/architecture/remediation-contract.md). The CLI remains experimental and intentionally reports unsupported analysis as blocked rather than treating it as a pass.
+The `prc` binary is now ready. Keep it in this directory, because the scanner automatically finds the compatible bundled `catalog/` beside it. Published scanner release archives already contain the binary, catalog, adapter manifests, schemas, and scanner guides together; verify a downloaded archive as described in the [release guide](docs/scanner/releases.md), extract it, and run from anywhere without installing project dependencies.
 
-Scanner binary releases use separate `scanner-vX.Y.Z` tags and include the
-compatible catalog, objective sources, packs, benchmark corpus, schemas,
-checksums, CycloneDX SBOM, release manifest, and signed GitHub artifact
-attestations. Follow the
-[release verification guide](docs/scanner/releases.md) before running a
-downloaded binary.
+To use `prc` without the `./` prefix, add this entire directory to `PATH`; do not move only the binary away from its compatible catalog. On macOS or Linux, for example: `export PATH="/absolute/path/to/production-readiness-checklist:$PATH"`.
+
+### Scan a project
+
+From the extracted or cloned scanner directory:
+
+```bash
+./prc scan /path/to/your/project
+```
+
+To scan the current directory, use:
+
+```bash
+./prc scan
+```
+
+The command accepts options before or after the project path. Its terminal output is intentionally short:
+
+```text
+Run: 91c2…
+Profile: prc/core-repository@1.0
+Target: example-api (4c0e…)
+Terminal state: no_go
+Assessment counts: fail=12, unknown=2, manual_review=1, pass=15, not_applicable=10
+Verified findings: 12
+
+[FAIL] PRC-A-CORE-001 (high/required): Required repository documentation is missing.
+… 4 more findings are in the detailed report.
+Scan mode: report only; no fixes were applied.
+Detailed report: /Users/you/Library/Caches/prc/reports/example-api-91c2….html
+```
+
+Open the reported HTML file in a browser. It contains every verified finding with severity, gate, control IDs, exact file locations, evidence IDs, remediation class, and stable fingerprint. It also contains every assertion—including pass, blocked, unknown, manual-review, and not-applicable results—with required evidence and observed evidence shown separately. Reports are created with private file permissions and are stored outside the scanned project by default, so generating a report cannot change the inventory being assessed.
+
+A result-bearing exit code is not a crash: `0` means the selected profile passed, `1` means an active gate failed, and `2` means evidence remains incomplete or blocked. Use `--exit-policy never` only when a script should always receive `0` after a completed report; the report still preserves the real terminal state.
+
+Useful report options:
+
+```bash
+# Choose a new output path; an existing file is never overwritten.
+./prc scan /path/to/project --report /safe/path/readiness.html
+
+# Print JSON for another tool. Machine formats do not create an extra HTML file.
+./prc scan /path/to/project --format json --exit-policy never > readiness.json
+
+# Explicitly suppress the default HTML report.
+./prc scan /path/to/project --no-report
+```
+
+For a Node project, npm's standard custom-script syntax is `npm run scan`, not `npm scan`. After placing `prc` on `PATH`, this optional `package.json` entry provides that shortcut without making the scanner Node-specific:
+
+```json
+{
+  "scripts": {
+    "scan": "prc scan ."
+  }
+}
+```
+
+Then run `npm run scan`. The native `prc scan` command remains the simplest choice for Go, Python, Java, Rust, infrastructure, and mixed repositories.
+
+### What it checks today
+
+The default profile checks repository governance, immutable source identity, dependency and runtime declarations, discoverable tests, GitHub Actions safety, private-key armor, OpenAPI contracts, Go HTTP timeout hazards, container definitions, Terraform locks, and Kubernetes workload policy. Focused API, Kubernetes, supply-chain, and infrastructure-as-code profiles are also available. Reviewed offline OCI adapters exist for Gitleaks, Syft, Grype, and Checkov, but external analyzers are never launched by the simple command; they require an explicit `verify-local` capability grant, an exact profile binding, and pinned local inputs. The [infrastructure policy guide](docs/scanner/infrastructure-policy.md) includes the exact Checkov command and its limits.
+
+The scanner does not yet inspect every production concern automatically. Unsupported runtime, organizational, environment, and human evidence stays visibly blocked or manual. That is intentional: the report describes what was actually proven for one target and evidence set, not an unqualified claim that software has no defects.
+
+Fixing is a separate workflow. `prc scan` never calls it. The bounded `prc fix` command works only in isolated candidate directories and supports a deliberately small set of independently verifiable changes; it never merges, deploys, or releases anything automatically.
+
+Continue with the [complete scanner quick start](docs/scanner/getting-started.md), [CLI and exit codes](docs/scanner/cli-contract.md), [diagnostics](docs/scanner/doctor.md), [read-only agent integration](docs/scanner/mcp-agent-integration.md), [project configuration](docs/scanner/configuration.md), [state and history](docs/scanner/state-and-history.md), [supply-chain scanning](docs/scanner/supply-chain.md), and [isolated remediation](docs/scanner/remediation.md). Architecture details live in the [product contract](docs/architecture/product-contract.md), [trust model](docs/architecture/trust-model.md), [adapter protocol](docs/architecture/adapters.md), [evidence model](docs/architecture/evidence-and-results.md), and [remediation contract](docs/architecture/remediation-contract.md).
 
 ## Evidence, not checkbox theater
 
@@ -120,6 +183,7 @@ Use the [evidence record](docs/records/evidence-record.md) and [risk exception](
 
 ```text
 .
+├── adapters/                 # Reviewed, immutable external-analyzer manifests
 ├── CLAUDE.md                  # Guardrails for AI-assisted reviews
 ├── catalog/                   # Versioned objectives, assertions, and profiles
 ├── cmd/prc/                   # Experimental scanner CLI

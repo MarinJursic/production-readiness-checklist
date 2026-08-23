@@ -188,7 +188,7 @@ func ParseManifestOutputWithArtifacts(manifest Manifest, input io.Reader) (Trans
 		}
 		return parseGrypeOutput(data, manifest.Resources.MaxMessages, time.Now().UTC())
 	case CheckovProtocolVersion:
-		return Transcript{}, nil, fmt.Errorf("Checkov output requires the expected file set from a sealed execution snapshot")
+		return Transcript{}, nil, fmt.Errorf("checkov output requires the expected file set from a sealed execution snapshot")
 	default:
 		return Transcript{}, nil, fmt.Errorf("unsupported adapter output protocol %q", manifest.Protocol)
 	}

@@ -32,10 +32,10 @@ func reportRun() model.RunResult {
 			AssertionID: "PRC-A-CORE-001", ControlIDs: []string{"USEQ-FDCA6C71"},
 			Title: "README present", Summary: "Missing README | required.", Severity: "high", Gate: "required",
 			RemediationClass: "R2", Subject: model.FindingSubject{Kind: "project", ID: "example-product", InventoryDigest: digest},
-			Locations: []model.FindingLocation{{Path: "README.md", Line: 1}}, EvidenceIDs: []string{},
+			Locations: []model.FindingLocation{{Path: "README.md", Line: 1, Column: 2}}, EvidenceIDs: []string{"evidence-001"},
 		}},
 		Results: []model.AssertionResult{
-			{AssertionID: "PRC-A-CORE-001", Assessment: "fail", Execution: "completed", Severity: "high", Gate: "required", Summary: "Missing README | required.", RemediationClass: "R2", ControlIDs: []string{"USEQ-FDCA6C71"}, EvidenceObserved: []model.Evidence{}},
+			{AssertionID: "PRC-A-CORE-001", Applicability: "applicable", Assessment: "fail", Execution: "completed", Severity: "high", Gate: "required", Summary: "Missing README | required.", RemediationClass: "R2", ControlIDs: []string{"USEQ-FDCA6C71"}, Locations: []model.FindingLocation{{Path: "README.md", Line: 1, Column: 2}}, EvidenceRequired: []model.EvidenceRequirement{{Kind: "file", MinimumAuthority: "repository", Description: "A root README must exist."}}, EvidenceObserved: []model.Evidence{{ID: "evidence-001", Kind: "file", Source: "README.md", Summary: "README was not present."}}},
 			{AssertionID: "PRC-A-CORE-012", Assessment: "manual_review", Execution: "completed", Severity: "high", Gate: "required", Summary: "Reviewer required.", RemediationClass: "R0", EvidenceObserved: []model.Evidence{}},
 			{AssertionID: "PRC-A-CORE-013", Assessment: "unknown", Execution: "blocked", Severity: "high", Gate: "required", Summary: "Adapter unavailable.", RemediationClass: "R2", EvidenceObserved: []model.Evidence{}},
 		},
@@ -123,5 +123,10 @@ func TestHTMLReportEscapesUntrustedText(t *testing.T) {
 	}
 	if !strings.Contains(text, "example-product") || !strings.Contains(text, "staging") {
 		t.Fatal("configured scope missing from HTML")
+	}
+	for _, expected := range []string{"Detailed findings", "All assertion results", "README.md:1:2", "USEQ-FDCA6C71", "A root README must exist.", "README was not present.", "evidence-001", "remediation class R2", "isolated agent-authored candidate", "Report-only scan"} {
+		if !strings.Contains(text, expected) {
+			t.Errorf("detailed HTML report missing %q", expected)
+		}
 	}
 }

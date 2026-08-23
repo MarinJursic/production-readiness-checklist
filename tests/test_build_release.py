@@ -120,6 +120,16 @@ class ReleaseBuilderTests(unittest.TestCase):
                     ["prc_0.1.0_windows_amd64/LICENSE", "prc_0.1.0_windows_amd64/prc"],
                 )
 
+    def test_release_support_contains_runtime_catalog_and_user_guides(self) -> None:
+        names = {name for name, _data, _mode in build_release.release_support_files()}
+        for expected in (
+            "THIRD_PARTY_NOTICES.md",
+            "adapters/checkov-v3.3.8.yaml",
+            "catalog/profiles/core-repository.yaml",
+            "docs/scanner/getting-started.md",
+        ):
+            self.assertIn(expected, names)
+
     def test_checksums_are_sorted_and_reject_nonfiles(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = pathlib.Path(temporary)

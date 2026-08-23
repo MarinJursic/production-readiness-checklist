@@ -40,9 +40,10 @@ import (
 )
 
 var (
-	version  = "0.1.0-dev"
-	revision = "unknown"
-	builtAt  = "unknown"
+	version            = "0.1.0-dev"
+	revision           = "unknown"
+	builtAt            = "unknown"
+	userCacheDirectory = os.UserCacheDir
 )
 
 type versionInformation struct {
@@ -1474,9 +1475,37 @@ func parseCommon(name string, args []string, stderr io.Writer) (*flag.FlagSet, *
 	set := flag.NewFlagSet(name, flag.ContinueOnError)
 	set.SetOutput(stderr)
 	target := set.String("target", ".", "repository to inspect")
-	catalogRoot := set.String("catalog-root", ".", "repository containing the PRC catalog")
+	catalogRoot := set.String("catalog-root", defaultCatalogRoot(), "directory containing the PRC catalog")
 	profile := set.String("profile", "prc/core-repository", "profile ID")
 	return set, target, catalogRoot, profile
+}
+
+func defaultCatalogRoot() string {
+	if hasBundledCatalog(".") {
+		return "."
+	}
+	executable, err := os.Executable()
+	if err == nil {
+		root := filepath.Dir(executable)
+		if hasBundledCatalog(root) {
+			return root
+		}
+	}
+	return "."
+}
+
+func hasBundledCatalog(root string) bool {
+	for _, relative := range []string{
+		"catalog/profiles/core-repository.yaml",
+		"catalog/assertions/core-repository.yaml",
+		"catalog/objectives/core-repository.yaml",
+	} {
+		info, err := os.Lstat(filepath.Join(root, filepath.FromSlash(relative)))
+		if err != nil || !info.Mode().IsRegular() {
+			return false
+		}
+	}
+	return true
 }
 
 func encodeJSON(output io.Writer, value any) error {
@@ -1783,6 +1812,8 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	configPath := set.String("config", "", "optional validated project configuration")
 	mode := set.String("mode", engine.ExecutionModeInspect, "execution mode: inspect or verify-local")
 	format := set.String("format", "human", "human, json, markdown, html, sarif, or junit")
+	reportPath := set.String("report", "", "write a detailed HTML report to this new file")
+	noReport := set.Bool("no-report", false, "do not create the default HTML report")
 	stateDirectory := set.String("state-dir", "", "optional directory for content-addressed evidence and run records")
 	exitPolicy := set.String("exit-policy", "profile", "profile, no-go, or never")
 	adapterManifests := repeatedStringFlag{}
@@ -1793,8 +1824,20 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	adapterRuntime := set.String("adapter-runtime", "docker", "docker or podman executable for the authorized adapter")
 	adapterData := repeatedStringFlag{}
 	set.Var(&adapterData, "adapter-data", "read-only adapter data as ADAPTER_ID/NAME=PATH; repeatable")
-	if err := set.Parse(args); err != nil {
+	if err := set.Parse(reorderInterspersedFlags(set, args)); err != nil {
 		return exitInternal, exitError(exitConfiguration, err)
+	}
+	if set.NArg() > 1 {
+		return exitInternal, exitError(exitConfiguration, fmt.Errorf("scan accepts at most one project path"))
+	}
+	if set.NArg() == 1 {
+		if flagWasSet(set, "target") {
+			return exitInternal, exitError(exitConfiguration, fmt.Errorf("use either a project path or --target, not both"))
+		}
+		*target = set.Arg(0)
+	}
+	if *noReport && *reportPath != "" {
+		return exitInternal, exitError(exitConfiguration, fmt.Errorf("--report and --no-report are mutually exclusive"))
 	}
 	if *format != "human" && *format != "json" && *format != "markdown" &&
 		*format != "html" && *format != "sarif" && *format != "junit" {
@@ -1909,12 +1952,25 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 			return exitInternal, exitError(exitInternal, err)
 		}
 	}
+	writtenReport := ""
+	if *reportPath != "" || *format == "human" && !*noReport {
+		writtenReport, err = writeScanReport(run, *reportPath)
+		if err != nil {
+			return exitInternal, exitError(exitInternal, err)
+		}
+	}
 	if *format == "json" {
 		if err := encodeJSON(stdout, run); err != nil {
 			return exitInternal, exitError(exitInternal, err)
 		}
 	} else if *format == "human" {
-		printRun(stdout, run)
+		printScanSummary(stdout, run)
+		fmt.Fprintln(stdout, "Scan mode: report only; no fixes were applied.")
+		if writtenReport == "" {
+			fmt.Fprintln(stdout, "Detailed report: disabled")
+		} else {
+			fmt.Fprintf(stdout, "Detailed report: %s\n", writtenReport)
+		}
 	} else if err := report.Write(*format, stdout, run); err != nil {
 		return exitInternal, exitError(exitInternal, err)
 	}
@@ -1925,6 +1981,155 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		return exitSuccess, nil
 	}
 	panic("validated exit policy was not handled")
+}
+
+func reorderInterspersedFlags(set *flag.FlagSet, args []string) []string {
+	flags := make([]string, 0, len(args))
+	positionals := make([]string, 0, 1)
+	usedDelimiter := false
+	for index := 0; index < len(args); index++ {
+		argument := args[index]
+		if argument == "--" {
+			positionals = append(positionals, args[index+1:]...)
+			usedDelimiter = true
+			break
+		}
+		if len(argument) > 1 && argument[0] == '-' {
+			flags = append(flags, argument)
+			name := strings.TrimLeft(argument, "-")
+			if separator := strings.IndexByte(name, '='); separator >= 0 {
+				continue
+			}
+			defined := set.Lookup(name)
+			boolean := false
+			if defined != nil {
+				if value, ok := defined.Value.(interface{ IsBoolFlag() bool }); ok {
+					boolean = value.IsBoolFlag()
+				}
+			}
+			if defined != nil && !boolean && index+1 < len(args) {
+				index++
+				flags = append(flags, args[index])
+			}
+			continue
+		}
+		positionals = append(positionals, argument)
+	}
+	if usedDelimiter {
+		flags = append(flags, "--")
+	}
+	return append(flags, positionals...)
+}
+
+func printScanSummary(output io.Writer, run model.RunResult) {
+	fmt.Fprintf(output, "Run: %s\n", run.RunID)
+	fmt.Fprintf(output, "Profile: %s@%s\n", run.Plan.ProfileID, run.Plan.ProfileVersion)
+	fmt.Fprintf(output, "Target: %s (%s)\n", run.Inventory.TargetName, run.Inventory.Digest)
+	fmt.Fprintf(output, "Terminal state: %s\n", run.TerminalState)
+	counts := map[string]int{}
+	for _, result := range run.Results {
+		counts[result.Assessment]++
+	}
+	parts := make([]string, 0, len(counts))
+	for _, assessment := range []string{"fail", "unknown", "manual_review", "pass", "not_applicable"} {
+		if count := counts[assessment]; count > 0 {
+			parts = append(parts, assessment+"="+fmt.Sprint(count))
+		}
+	}
+	fmt.Fprintf(output, "Assessment counts: %s\n", strings.Join(parts, ", "))
+	fmt.Fprintf(output, "Verified findings: %d\n\n", len(run.Findings))
+	const displayedFindings = 8
+	for index, finding := range run.Findings {
+		if index == displayedFindings {
+			fmt.Fprintf(output, "… %d more findings are in the detailed report.\n", len(run.Findings)-displayedFindings)
+			break
+		}
+		fmt.Fprintf(output, "[FAIL] %s (%s/%s): %s\n", finding.AssertionID, finding.Severity, finding.Gate, finding.Summary)
+	}
+}
+
+func writeScanReport(run model.RunResult, requestedPath string) (string, error) {
+	path := requestedPath
+	if path == "" {
+		cacheRoot, err := userCacheDirectory()
+		if err != nil {
+			return "", fmt.Errorf("locate the user cache for the scan report: %w", err)
+		}
+		directory := filepath.Join(cacheRoot, "prc", "reports")
+		if pathWithin(run.Inventory.Root, directory) {
+			return "", fmt.Errorf("default report directory is inside the scanned project; use --report with a path outside the project or --no-report")
+		}
+		if err := os.MkdirAll(directory, 0o700); err != nil {
+			return "", fmt.Errorf("create private scan report directory: %w", err)
+		}
+		info, err := os.Lstat(directory)
+		if err != nil || !info.IsDir() || info.Mode()&os.ModeSymlink != 0 {
+			return "", fmt.Errorf("scan report directory is not a regular directory")
+		}
+		if err := os.Chmod(directory, 0o700); err != nil {
+			return "", fmt.Errorf("protect scan report directory: %w", err)
+		}
+		runID := run.RunID
+		if len(runID) > 16 {
+			runID = runID[:16]
+		}
+		path = filepath.Join(directory, sanitizeReportName(run.Inventory.TargetName)+"-"+runID+".html")
+	} else {
+		absolute, err := filepath.Abs(path)
+		if err != nil {
+			return "", fmt.Errorf("resolve scan report path: %w", err)
+		}
+		path = absolute
+		if err := os.MkdirAll(filepath.Dir(path), 0o700); err != nil {
+			return "", fmt.Errorf("create scan report parent: %w", err)
+		}
+	}
+	file, err := os.OpenFile(path, os.O_WRONLY|os.O_CREATE|os.O_EXCL, 0o600)
+	if err != nil {
+		return "", fmt.Errorf("create scan report without overwriting an existing file: %w", err)
+	}
+	if err := report.Write("html", file, run); err != nil {
+		_ = file.Close()
+		_ = os.Remove(path)
+		return "", fmt.Errorf("write detailed scan report: %w", err)
+	}
+	if err := file.Close(); err != nil {
+		_ = os.Remove(path)
+		return "", fmt.Errorf("finish detailed scan report: %w", err)
+	}
+	absolute, err := filepath.Abs(path)
+	if err != nil {
+		return "", fmt.Errorf("resolve completed scan report path: %w", err)
+	}
+	return absolute, nil
+}
+
+func pathWithin(root, path string) bool {
+	if root == "" {
+		return false
+	}
+	relative, err := filepath.Rel(filepath.Clean(root), filepath.Clean(path))
+	return err == nil && relative != ".." && !strings.HasPrefix(relative, ".."+string(filepath.Separator))
+}
+
+func sanitizeReportName(value string) string {
+	var result strings.Builder
+	for _, character := range value {
+		if character >= 'a' && character <= 'z' || character >= 'A' && character <= 'Z' ||
+			character >= '0' && character <= '9' || character == '-' || character == '_' {
+			result.WriteRune(character)
+		} else if result.Len() > 0 && result.String()[result.Len()-1] != '-' {
+			result.WriteByte('-')
+		}
+		if result.Len() >= 48 {
+			break
+		}
+	}
+	name := strings.Trim(result.String(), "-")
+	if name == "" {
+		return "project"
+	}
+	return name
 }
 
 func scanTerminalExitCode(terminalState string) int {

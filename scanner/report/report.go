@@ -324,11 +324,19 @@ const htmlReport = `<!doctype html>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Production readiness assessment</title>
   <style>
-    body { color: #17202a; font: 16px/1.5 system-ui, sans-serif; margin: 2rem auto; max-width: 90rem; padding: 0 1rem; }
+    :root { color-scheme: light; --ink: #17202a; --muted: #52606d; --line: #c8d0d8; --panel: #f7f9fb; --accent: #175cd3; }
+    body { color: var(--ink); font: 16px/1.55 system-ui, sans-serif; margin: 2rem auto; max-width: 90rem; padding: 0 1rem; }
     code { overflow-wrap: anywhere; } table { border-collapse: collapse; width: 100%; }
     caption { font-size: 1.25rem; font-weight: 700; margin: 1rem 0; text-align: left; }
     th, td { border: 1px solid #c8d0d8; padding: .6rem; text-align: left; vertical-align: top; }
     th { background: #edf2f7; } .status { font-weight: 700; }
+    .notice { background: #eef5ff; border-left: .35rem solid var(--accent); padding: .8rem 1rem; }
+    .counts { display: flex; flex-wrap: wrap; gap: .75rem; list-style: none; padding: 0; }
+    .counts li { background: var(--panel); border: 1px solid var(--line); border-radius: .4rem; padding: .6rem .9rem; }
+    .card, details { border: 1px solid var(--line); border-radius: .5rem; margin: 1rem 0; padding: 1rem; }
+    .card h3 { margin-top: 0; } .meta { color: var(--muted); }
+    summary { cursor: pointer; font-weight: 700; } dt { font-weight: 700; } dd { margin-bottom: .5rem; }
+    ul { padding-left: 1.4rem; }
   </style>
 </head>
 <body>
@@ -345,21 +353,43 @@ const htmlReport = `<!doctype html>
       <dt>Artifact digests</dt><dd>{{join .Run.Plan.ArtifactDigests}}</dd>{{end}}
       <dt>Terminal state</dt><dd class="status">{{.Run.TerminalState}}</dd>
     </dl>
+    <p class="notice"><strong>Report-only scan:</strong> this command assessed the project and did not apply fixes. Results are scoped to the profile, target inventory, and evidence named above.</p>
+    <h2>Assessment summary</h2>
+    <ul class="counts">{{range .Counts}}<li><strong>{{index . 0}}</strong>: {{index . 1}}</li>{{end}}<li><strong>findings</strong>: {{len .Run.Findings}}</li></ul>
     {{if .Run.AdapterExecutions}}<table>
       <caption>Adapter executions</caption>
       <thead><tr><th scope="col">Adapter</th><th scope="col">Manifest</th><th scope="col">Authorization</th><th scope="col">Trust</th><th scope="col">Registry</th><th scope="col">Status</th><th scope="col">Execution</th></tr></thead>
       <tbody>{{range .Run.AdapterExecutions}}<tr><td><code>{{.AdapterID}}</code></td><td><code>{{.ManifestSHA256}}</code></td><td>{{.Resolution.Source}}</td><td>{{.Resolution.Trust}}</td><td><code>{{.Resolution.RegistryID}}</code></td><td>{{.Transcript.Summary.Status}}</td><td><code>{{.ExecutionID}}</code></td></tr>{{end}}</tbody>
     </table>{{end}}
-    {{if .Run.Findings}}<table>
-      <caption>Findings</caption>
-      <thead><tr><th scope="col">Severity</th><th scope="col">Finding</th><th scope="col">Assertion</th><th scope="col">Gate</th><th scope="col">Summary</th><th scope="col">Locations</th><th scope="col">Evidence</th></tr></thead>
-      <tbody>{{range .Run.Findings}}<tr><td class="status">{{.Severity}}</td><td><code>{{.ID}}</code></td><td><code>{{.AssertionID}}</code></td><td>{{.Gate}}</td><td>{{.Summary}}</td><td>{{len .Locations}}</td><td>{{len .EvidenceIDs}}</td></tr>{{end}}</tbody>
-    </table>{{end}}
-    <table>
-      <caption>Assertion results</caption>
-      <thead><tr><th scope="col">Assessment</th><th scope="col">Assertion</th><th scope="col">Severity</th><th scope="col">Gate</th><th scope="col">Summary</th><th scope="col">Evidence</th></tr></thead>
-      <tbody>{{range .Run.Results}}<tr><td class="status">{{.Assessment}}</td><td><code>{{.AssertionID}}</code></td><td>{{.Severity}}</td><td>{{.Gate}}</td><td>{{.Summary}}</td><td>{{len .EvidenceObserved}}</td></tr>{{end}}</tbody>
-    </table>
+    <h2>Detailed findings</h2>
+    {{if .Run.Findings}}{{range .Run.Findings}}<article class="card">
+      <h3>{{.Title}}</h3>
+      <p class="meta"><strong>{{.Severity}}</strong> severity · {{.Gate}} gate · remediation class {{.RemediationClass}}</p>
+      <p>{{.Summary}}</p>
+      <dl>
+        <dt>Assertion</dt><dd><code>{{.AssertionID}}</code></dd>
+        <dt>Control IDs</dt><dd>{{if .ControlIDs}}<code>{{join .ControlIDs}}</code>{{else}}—{{end}}</dd>
+        <dt>Next action</dt><dd>{{remediation .RemediationClass}}</dd>
+        <dt>Locations</dt><dd>{{if .Locations}}<ul>{{range .Locations}}<li><code>{{location .}}</code></li>{{end}}</ul>{{else}}No source location was emitted.{{end}}</dd>
+        <dt>Evidence IDs</dt><dd>{{if .EvidenceIDs}}<ul>{{range .EvidenceIDs}}<li><code>{{.}}</code></li>{{end}}</ul>{{else}}No evidence identifier was attached.{{end}}</dd>
+        <dt>Finding ID</dt><dd><code>{{.ID}}</code></dd>
+        <dt>Stable fingerprint</dt><dd><code>{{.Fingerprint}}</code></dd>
+      </dl>
+    </article>{{end}}{{else}}<p>No verified failure was converted into an actionable finding. Review incomplete and manual assertion results below.</p>{{end}}
+    <h2>All assertion results</h2>
+    <p>Open each result to see applicability, execution state, required evidence, observed evidence, source locations, controls, and remediation class.</p>
+    {{range .Run.Results}}<details {{if eq .Assessment "fail"}}open{{end}}>
+      <summary>[{{.Assessment}}] <code>{{.AssertionID}}</code> — {{.Summary}}</summary>
+      <dl>
+        <dt>Applicability / execution</dt><dd>{{.Applicability}} / {{.Execution}}</dd>
+        <dt>Severity / gate</dt><dd>{{.Severity}} / {{.Gate}}</dd>
+        <dt>Control IDs</dt><dd>{{if .ControlIDs}}<code>{{join .ControlIDs}}</code>{{else}}—{{end}}</dd>
+        <dt>Remediation class</dt><dd>{{.RemediationClass}}</dd>
+        <dt>Locations</dt><dd>{{if .Locations}}<ul>{{range .Locations}}<li><code>{{location .}}</code></li>{{end}}</ul>{{else}}No source location was emitted.{{end}}</dd>
+        <dt>Required evidence</dt><dd>{{if .EvidenceRequired}}<ul>{{range .EvidenceRequired}}<li><strong>{{.Kind}}</strong> (minimum authority: {{.MinimumAuthority}}): {{.Description}}</li>{{end}}</ul>{{else}}No evidence requirement was declared.{{end}}</dd>
+        <dt>Observed evidence</dt><dd>{{if .EvidenceObserved}}<ul>{{range .EvidenceObserved}}<li><strong>{{.Kind}}</strong> from <code>{{.Source}}</code>: {{.Summary}} <span class="meta">(<code>{{.ID}}</code>)</span></li>{{end}}</ul>{{else}}No evidence was observed.{{end}}</dd>
+      </dl>
+    </details>{{end}}
     <p>This report is scoped to the named profile, target inventory, and evidence set. It is not an unqualified production-readiness or compliance claim.</p>
   </main>
 </body>
@@ -367,8 +397,41 @@ const htmlReport = `<!doctype html>
 `
 
 func writeHTML(output io.Writer, run model.RunResult) error {
-	view := struct{ Run model.RunResult }{Run: run}
+	view := struct {
+		Run    model.RunResult
+		Counts [][2]string
+	}{Run: run, Counts: assessmentCounts(run.Results)}
 	return template.Must(template.New("report").Funcs(template.FuncMap{
 		"join": func(values []string) string { return strings.Join(values, ", ") },
+		"location": func(value model.FindingLocation) string {
+			result := value.Path
+			if value.Line > 0 {
+				result += ":" + strconv.Itoa(value.Line)
+				if value.Column > 0 {
+					result += ":" + strconv.Itoa(value.Column)
+				}
+			}
+			return result
+		},
+		"remediation": func(class string) string {
+			switch class {
+			case "R0":
+				return "Review and resolve this manually; the scanner does not author a change for this class."
+			case "R1":
+				return "A deterministic, behavior-preserving candidate may be available through the separate prc fix workflow."
+			case "R2":
+				return "Use an isolated agent-authored candidate only with independent deterministic verification."
+			case "R3":
+				return "Treat this as a dependency or build-behavior change requiring explicit opt-in and stronger verification."
+			case "R4":
+				return "Infrastructure or deployment-definition changes require human authorization and environment-specific validation."
+			case "R5":
+				return "External staging-system changes require a separate connector policy and approval."
+			case "R6":
+				return "Production, destructive, legal, financial, and risk decisions are prohibited in the general remediation loop."
+			default:
+				return "Review the finding and its evidence before selecting a remediation path."
+			}
+		},
 	}).Parse(htmlReport)).Execute(output, view)
 }

@@ -1,0 +1,13 @@
+schema_version: prc.objectives/v0.1
+catalog_version: 1.0.0
+objectives:
+  - id: USEQ-212AE882
+    revision: 1
+    title: Infrastructure, configuration, and policy analysis
+    statement: Infrastructure, configuration, and policy analysis has run.
+    source:
+      path: docs/engineering/08-security-and-cryptography.md
+      line: 82
+    domains: [infrastructure, security]
+    automation_class: partial
+    assertion_ids: [PRC-A-IAC-001]

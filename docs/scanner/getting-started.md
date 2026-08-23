@@ -3,6 +3,16 @@
 The scanner CLI is an experimental deterministic vertical slice. It inventories a
 repository, creates an immutable plan for `prc/core-repository@1.0`, evaluates
 native assertions, records evidence, and reports explicit unresolved states.
+The ordinary scan path is one command:
+
+```bash
+./prc scan /path/to/project
+```
+
+Use `./prc scan` to scan the current directory. The command does not fix files or
+execute project code. It prints a summary and creates a private, standalone HTML
+report outside the target. Open the exact path printed as `Detailed report:` to
+review verified findings and every incomplete or manual result.
 
 The profile evaluator can consume a live, sandboxed adapter execution only when
 the selected profile binds its exact ID, manifest digest, and observation kind.
@@ -17,20 +27,41 @@ lack a final line-feed byte, and another restricts broadly writable file modes.
 The bounded `fix` loop can compose those repairs in isolated sibling candidates
 without editing the target.
 
-## Build
+## One-time setup
 
 Go 1.27 or a compatible later supported toolchain is required.
 
 ```bash
 go mod verify
 go build -trimpath -o prc ./cmd/prc
+./prc version
+```
+
+Run these commands from the Production Readiness Checklist repository. The
+binary automatically discovers the compatible `catalog/` in the current
+directory or beside the executable. Keep release-archive files together when
+moving the binary. If `go` is not found, install the supported Go toolchain and
+open a new shell so its binary directory is on `PATH`.
+
+Add the entire extracted or cloned scanner directory to `PATH` when you want to
+run `prc` without `./`; moving only the executable separates it from its
+compatible catalog. For a current macOS or Linux shell:
+
+```bash
+export PATH="/absolute/path/to/production-readiness-checklist:$PATH"
 ```
 
 `prc version --format json` reports the scanner version, exact source revision,
 reproducible source timestamp, and Go toolchain embedded in a release build.
 Downloadable scanner releases use a separate `scanner-vX.Y.Z` tag namespace and
-bundle the compatible catalog, packs, and schemas with every binary. See
+bundle the compatible catalog, adapter manifests, packs, schemas, and scanner
+guides with every binary. See
 [releases and verification](releases.md) before trusting a downloaded artifact.
+
+The native CLI stays language-neutral. Node projects may optionally add
+`"scan": "prc scan ."` under `package.json` scripts and run `npm run scan`.
+The standard npm syntax for an arbitrary project script is `npm run scan`; npm
+does not turn it into a generic `npm scan` command.
 
 ## Inventory without executing target code
 
@@ -66,8 +97,8 @@ Optionally validate or export the exact catalog first:
 The manifest and bundle are deterministic and contain no local path or timestamp.
 They identify validated definitions; release signing is a separate trust step.
 
-Run this command from the Production Readiness Checklist repository, or pass its
-location through `--catalog-root`:
+The scanner normally discovers its bundled catalog. Pass `--catalog-root` only
+when intentionally testing a different local catalog:
 
 ```bash
 ./prc plan \
@@ -90,13 +121,37 @@ never silently become Not Applicable. See
 [bounded applicability evaluation](../architecture/applicability.md) for the
 available inventory fields and limits.
 
-## Scan and preserve evidence
+## Scan and read the report
+
+```bash
+./prc scan /path/to/project
+```
+
+Options may appear before or after the project path. The default report is
+created with mode `0600` under the operating system's user cache directory and
+is never written inside the target. Its name includes the target and run ID.
+It contains:
+
+- a terminal-state and assessment-count summary;
+- every verified finding with severity, gate, controls, locations, evidence,
+  remediation class, finding ID, and stable fingerprint; and
+- every assertion result with applicability, execution state, required
+  evidence, observed evidence, and locations.
+
+The scanner creates report files with exclusive creation and will not overwrite
+an existing path. Use `--report /safe/path/readiness.html` to choose a new path,
+or `--no-report` to explicitly suppress the default HTML report.
+
+`prc scan` has no code path to the remediation commands. A missing final newline
+or broad file mode may appear as a finding, but the target bytes and modes remain
+unchanged. `prc fix` is a separate, explicitly invoked candidate workflow.
+
+## Preserve evidence and history
 
 ```bash
 mkdir -m 0700 /safe/path/prc-state
 
 ./prc scan \
-  --catalog-root /path/to/production-readiness-checklist \
   --target /path/to/project \
   --profile prc/core-repository \
   --state-dir /safe/path/prc-state
@@ -115,8 +170,11 @@ base run to see exactly which rule inputs were invalidated before rescanning.
 JSON is available for automation:
 
 ```bash
-./prc scan --target . --catalog-root . --format json --exit-policy never
+./prc scan . --format json --exit-policy never
 ```
+
+Explicit machine formats write to stdout and do not also create the default HTML
+file. Add `--report /safe/path/readiness.html` when both forms are wanted.
 
 To let Codex, Claude Code, or another local agent request the same read-only
 plans, scans, and assertion explanations, use the
@@ -128,10 +186,10 @@ SARIF 2.1.0 failed findings, or JUnit XML with failures, execution errors, and
 manual/not-applicable skips kept distinct:
 
 ```bash
-./prc scan --target . --catalog-root . --format markdown --exit-policy never
-./prc scan --target . --catalog-root . --format html --exit-policy never
-./prc scan --target . --catalog-root . --format sarif --exit-policy never
-./prc scan --target . --catalog-root . --format junit --exit-policy never
+./prc scan . --format markdown --exit-policy never
+./prc scan . --format html --exit-policy never
+./prc scan . --format sarif --exit-policy never
+./prc scan . --format junit --exit-policy never
 ```
 
 SARIF intentionally contains only failed assertions that can be represented as
@@ -205,6 +263,31 @@ Read the [sandboxed adapter protocol](../architecture/adapters.md) to validate a
 adapter transcript, inspect an OCI execution plan, run an already-present
 digest-pinned adapter image, or understand live profile-authorized evidence
 consumption.
+
+## Optional offline infrastructure policy scan
+
+The focused `prc/iac@0.1` profile authorizes the exact checked-in Checkov 3.3.8
+manifest when Terraform, Kubernetes, or container definitions are inventoried.
+This is not part of the simple native scan because it launches a pinned OCI
+analyzer. Read the [infrastructure policy profile](infrastructure-policy.md),
+review the manifest, pre-pull its exact digest, and grant local verification
+explicitly:
+
+```bash
+docker pull docker.io/bridgecrew/checkov@sha256:c64ffb6d6fc8087c896341a2c697770a04a1cf558db04fa7b8129d8ca6bce336
+
+./prc scan /path/to/project \
+  --profile prc/iac \
+  --mode verify-local \
+  --adapter-manifest adapters/checkov-v3.3.8.yaml
+```
+
+The scanner mounts a sealed inventory read-only, denies network access, uses
+scanner-owned offline policy, and prevents target `.checkov.yml` settings from
+hiding results. A policy violation becomes a detailed finding. Parsing errors,
+inline suppressions, unsupported output, or unsafe metadata fail closed. The
+command still produces a report only and never applies an infrastructure
+change.
 
 Read [bounded isolated remediation](remediation.md) to run the deterministic R1
 loop, create and verify one R1 candidate, or apply one validated R2 provider

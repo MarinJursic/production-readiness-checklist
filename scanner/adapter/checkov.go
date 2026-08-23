@@ -451,25 +451,25 @@ func decodeCheckovReports(data []byte) ([]json.RawMessage, error) {
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	var document json.RawMessage
 	if err := decoder.Decode(&document); err != nil {
-		return nil, fmt.Errorf("decode Checkov output: %w", err)
+		return nil, fmt.Errorf("decode checkov output: %w", err)
 	}
 	var trailing any
 	if err := decoder.Decode(&trailing); !errors.Is(err, io.EOF) {
-		return nil, fmt.Errorf("Checkov output contains trailing content")
+		return nil, fmt.Errorf("checkov output contains trailing content")
 	}
 	trimmed := bytes.TrimSpace(document)
 	if len(trimmed) == 0 {
-		return nil, fmt.Errorf("Checkov output is empty")
+		return nil, fmt.Errorf("checkov output is empty")
 	}
 	if trimmed[0] == '{' {
 		return []json.RawMessage{document}, nil
 	}
 	if trimmed[0] != '[' {
-		return nil, fmt.Errorf("Checkov output must be one report object or report array")
+		return nil, fmt.Errorf("checkov output must be one report object or report array")
 	}
 	var reports []json.RawMessage
 	if err := json.Unmarshal(document, &reports); err != nil || reports == nil || len(reports) > len(checkovFrameworks) {
-		return nil, fmt.Errorf("Checkov output report array is invalid")
+		return nil, fmt.Errorf("checkov output report array is invalid")
 	}
 	return reports, nil
 }

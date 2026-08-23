@@ -157,11 +157,15 @@ def normalized_sbom(source: pathlib.Path, version: str, commit: str) -> bytes:
 
 
 def release_support_files() -> list[tuple[str, bytes, int]]:
-    files: list[pathlib.Path] = [ROOT / "LICENSE", ROOT / "README.md"]
+    files: list[pathlib.Path] = [
+        ROOT / "LICENSE",
+        ROOT / "README.md",
+        ROOT / "THIRD_PARTY_NOTICES.md",
+    ]
     for directory in (
+        "adapters",
         "catalog",
-        "docs/checklists",
-        "docs/engineering",
+        "docs",
         "fixtures/benchmarks",
         "packs",
         "schemas",

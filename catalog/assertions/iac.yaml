@@ -1,0 +1,24 @@
+schema_version: prc.assertions/v0.1
+catalog_version: 1.0.0
+assertions:
+  - id: PRC-A-IAC-001
+    revision: 1
+    control_ids: [USEQ-212AE882]
+    title: Inventoried infrastructure definitions satisfy reviewed policy checks
+    statement: No reviewed offline Checkov policy reports a violation in the sealed inventoried Terraform, Kubernetes, or container definition files.
+    applicability: inventory.infrastructure.terraform_files.size() > 0 || inventory.infrastructure.kubernetes_files.size() > 0 || inventory.container_files.size() > 0
+    evidence_required:
+      - kind: analysis-result
+        minimum_authority: executed
+        description: A completed digest-bound Checkov analysis of exactly the sealed inventoried Terraform, Kubernetes, and container definition files.
+    implementation_id: prc.native.analysis-evidence@0.1
+    parameters:
+      adapter_bindings:
+        - adapter_id: prc.adapter.checkov@3.3
+          manifest_sha256: 643069c38a3507b5ac36093f16f8e1932ca6c7fa3cd972a8576c8913ae821be7
+          observation_kind: iac-policy
+          pass_outcomes: [not_found]
+          fail_outcomes: [found]
+    severity: high
+    gate: required
+    remediation_class: R4

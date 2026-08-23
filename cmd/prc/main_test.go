@@ -670,6 +670,131 @@ func TestScanReportFormats(t *testing.T) {
 	}
 }
 
+func TestSimpleScanDiscoversCatalogCreatesPrivateReportAndNeverFixesTarget(t *testing.T) {
+	repository, err := filepath.Abs(filepath.Join("..", ".."))
+	if err != nil {
+		t.Fatal(err)
+	}
+	workingDirectory, err := os.Getwd()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := os.Chdir(repository); err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() { _ = os.Chdir(workingDirectory) })
+
+	cacheRoot := t.TempDir()
+	previousCacheDirectory := userCacheDirectory
+	userCacheDirectory = func() (string, error) { return cacheRoot, nil }
+	t.Cleanup(func() { userCacheDirectory = previousCacheDirectory })
+
+	target := t.TempDir()
+	sourcePath := filepath.Join(target, "app.py")
+	before := []byte("print('ready')")
+	if err := os.WriteFile(sourcePath, before, 0o666); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.Chmod(sourcePath, 0o666); err != nil {
+		t.Fatal(err)
+	}
+	beforeInfo, err := os.Stat(sourcePath)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	var stdout, stderr bytes.Buffer
+	code := run([]string{"scan", target, "--exit-policy", "never"}, &stdout, &stderr)
+	if code != 0 || stderr.Len() != 0 {
+		t.Fatalf("exit=%d stdout=%s stderr=%s", code, stdout.String(), stderr.String())
+	}
+	if !strings.Contains(stdout.String(), "Scan mode: report only; no fixes were applied.") ||
+		!strings.Contains(stdout.String(), "Detailed report: ") {
+		t.Fatalf("simple scan output = %s", stdout.String())
+	}
+	reportDirectory := filepath.Join(cacheRoot, "prc", "reports")
+	entries, err := os.ReadDir(reportDirectory)
+	if err != nil || len(entries) != 1 {
+		t.Fatalf("reports=%v err=%v", entries, err)
+	}
+	reportPath := filepath.Join(reportDirectory, entries[0].Name())
+	reportInfo, err := os.Stat(reportPath)
+	if err != nil || reportInfo.Mode().Perm() != 0o600 {
+		t.Fatalf("report mode=%v err=%v", reportInfo.Mode().Perm(), err)
+	}
+	reportBody, err := os.ReadFile(reportPath)
+	if err != nil || !bytes.Contains(reportBody, []byte("Detailed findings")) ||
+		!bytes.Contains(reportBody, []byte("All assertion results")) {
+		t.Fatalf("detailed report is incomplete: %v", err)
+	}
+	after, err := os.ReadFile(sourcePath)
+	if err != nil || !bytes.Equal(after, before) {
+		t.Fatalf("scan changed target bytes: %q (%v)", after, err)
+	}
+	afterInfo, err := os.Stat(sourcePath)
+	if err != nil || afterInfo.Mode().Perm() != beforeInfo.Mode().Perm() {
+		t.Fatalf("scan changed target mode: before=%v after=%v err=%v", beforeInfo.Mode().Perm(), afterInfo.Mode().Perm(), err)
+	}
+}
+
+func TestScanCustomReportNeverOverwrites(t *testing.T) {
+	target := t.TempDir()
+	reportPath := filepath.Join(t.TempDir(), "readiness.html")
+	args := []string{
+		"scan", "--catalog-root", filepath.Join("..", ".."), "--report", reportPath,
+		"--exit-policy", "never", target,
+	}
+	var stdout, stderr bytes.Buffer
+	if code := run(args, &stdout, &stderr); code != 0 {
+		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
+	}
+	original, err := os.ReadFile(reportPath)
+	if err != nil || len(original) == 0 {
+		t.Fatalf("custom report was not created: %v", err)
+	}
+	stdout.Reset()
+	stderr.Reset()
+	if code := run(args, &stdout, &stderr); code != exitInternal || !strings.Contains(stderr.String(), "without overwriting") {
+		t.Fatalf("overwrite exit=%d stderr=%s", code, stderr.String())
+	}
+	after, err := os.ReadFile(reportPath)
+	if err != nil || !bytes.Equal(after, original) {
+		t.Fatalf("existing report changed: %v", err)
+	}
+}
+
+func TestIaCProfileAloneAuthorizesCheckedInCheckovAdapter(t *testing.T) {
+	repository := filepath.Join("..", "..")
+	target := t.TempDir()
+	if err := os.WriteFile(filepath.Join(target, "main.tf"), []byte("resource \"aws_s3_bucket\" \"logs\" {}\n"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	item, err := inventory.Build(target)
+	if err != nil {
+		t.Fatal(err)
+	}
+	manifest, err := adapter.LoadManifest(filepath.Join(repository, "adapters", "checkov-v3.3.8.yaml"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	digest, err := adapter.ManifestDigest(manifest)
+	if err != nil {
+		t.Fatal(err)
+	}
+	scanner, err := loadEngine(repository)
+	if err != nil {
+		t.Fatal(err)
+	}
+	authorized, err := scanner.AuthorizesAdapter("prc/iac", item, manifest.ID, digest)
+	if err != nil || !authorized {
+		t.Fatalf("IaC profile Checkov authorization=%t err=%v", authorized, err)
+	}
+	authorized, err = scanner.AuthorizesAdapter("prc/core-repository", item, manifest.ID, digest)
+	if err != nil || authorized {
+		t.Fatalf("core profile unexpectedly authorized Checkov=%t err=%v", authorized, err)
+	}
+}
+
 func copyCatalogFile(t *testing.T, sourceRoot, targetRoot, relative string) []byte {
 	t.Helper()
 	data, err := os.ReadFile(filepath.Join(sourceRoot, filepath.FromSlash(relative)))
