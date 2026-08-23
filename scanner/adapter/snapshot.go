@@ -55,6 +55,8 @@ func PrepareSnapshotForManifest(item model.Inventory, manifest Manifest) (*Snaps
 		remapped = map[string]string{gitleaksIgnoreSourcePath: gitleaksIgnoreSnapshotPath}
 	} else if manifest.Protocol == SyftProtocolVersion {
 		injected = map[string][]byte{SyftConfigSnapshotPath: syftConfig}
+	} else if manifest.Protocol == GrypeProtocolVersion {
+		injected = map[string][]byte{GrypeConfigSnapshotPath: grypeConfig}
 	}
 	return prepareSnapshot(item, remapped, injected)
 }

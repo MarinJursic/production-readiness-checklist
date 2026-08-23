@@ -1,0 +1,58 @@
+schema_version: prc.adapter-manifest/v0.4
+id: prc.adapter.grype@0.116
+title: Grype offline dependency vulnerability analysis
+description: Runs the reviewed Grype 0.116.1 image against the exact sealed inventory with a hash-bound fresh offline database and preserves a canonical enriched report.
+publisher:
+  id: prc-project
+  name: Production Readiness Checklist
+owner: scanner-maintainers
+maintenance: active
+protocol: prc-adapter-grype-json-v1
+output_schema: grype.report/v0.116.1+prc-v1
+observation_kinds: [dependency-vulnerability]
+compatibility:
+  engine_apis: [prc.engine/v0.1]
+tool:
+  name: grype
+  version: 0.116.1
+  upstream: https://github.com/anchore/grype
+  formats:
+    - name: grype-json
+      versions: [0.116.1]
+limitations:
+  - Scans packages discoverable from regular files in the current sealed repository inventory; it does not assess a built release artifact or container image.
+  - Requires an operator-supplied Grype schema-v6 database built no more than 120 hours before the scan and acquired separately with the reviewed Grype database workflow.
+  - Package discovery, ecosystem matching, advisory correlation, severity, fixes, CVSS, EPSS, KEV, and risk data can contain false positives, false negatives, aliases, delays, or incomplete metadata.
+  - The scanner-owned configuration disables network access, application update checks, database updates, external Maven lookup, target ignore/VEX policy, and target Grype configuration.
+  - Default Grype matcher behavior and its built-in kernel-header ignore rules remain in effect; ignored or suppressed matches and package alerts cause this adapter to fail closed.
+  - A clean repository result is time-bound to the recorded database and is not proof that no vulnerability exists or that dependencies are reachable in production.
+runner: oci
+image: ghcr.io/anchore/grype@sha256:1e71065c0a4cff3e6bd3b8add525ffac4343eb4971694eb90a31cf6d4d3e85db
+command:
+  - dir:/workspace
+  - --quiet
+  - --config=/workspace/.prc/grype-config.yaml
+  - --output=json
+capabilities:
+  read_workspace: true
+  write_scratch: true
+  network: deny
+  network_hosts: []
+  secret_handles: []
+  child_processes: true
+resources:
+  timeout_seconds: 300
+  memory_mb: 2048
+  cpus: 1
+  pids: 128
+  tmpfs_mb: 256
+  max_line_bytes: 262144
+  max_messages: 10000
+  max_stdin_bytes: 1024
+  max_stdout_bytes: 134217728
+  max_stderr_bytes: 65536
+data_mounts:
+  - name: grype-db
+    destination: /prc-inputs/grype-db
+    max_files: 16
+    max_bytes: 3221225472

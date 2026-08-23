@@ -21,8 +21,8 @@
     },
     "owner": {"type": "string", "minLength": 1},
     "maintenance": {"enum": ["active", "deprecated"]},
-    "protocol": {"enum": ["prc-adapter-jsonl-v1", "prc-adapter-gitleaks-json-v1", "prc-adapter-syft-cyclonedx-json-v1"]},
-    "output_schema": {"enum": ["prc.adapter-message/v0.1", "gitleaks.report/v8.30.0", "cyclonedx.bom/v1.7+syft-1.51.0"]},
+    "protocol": {"enum": ["prc-adapter-jsonl-v1", "prc-adapter-gitleaks-json-v1", "prc-adapter-syft-cyclonedx-json-v1", "prc-adapter-grype-json-v1"]},
+    "output_schema": {"enum": ["prc.adapter-message/v0.1", "gitleaks.report/v8.30.0", "cyclonedx.bom/v1.7+syft-1.51.0", "grype.report/v0.116.1+prc-v1"]},
     "observation_kinds": {
       "type": "array",
       "minItems": 1,
@@ -215,6 +215,45 @@
               "max_stdout_bytes": {"minimum": 1048576}
             }
           }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"protocol": {"const": "prc-adapter-grype-json-v1"}},
+        "required": ["protocol"]
+      },
+      "then": {
+        "required": ["data_mounts"],
+        "properties": {
+          "output_schema": {"const": "grype.report/v0.116.1+prc-v1"},
+          "observation_kinds": {"const": ["dependency-vulnerability"]},
+          "image": {"const": "ghcr.io/anchore/grype@sha256:1e71065c0a4cff3e6bd3b8add525ffac4343eb4971694eb90a31cf6d4d3e85db"},
+          "command": {"const": ["dir:/workspace", "--quiet", "--config=/workspace/.prc/grype-config.yaml", "--output=json"]},
+          "tool": {
+            "properties": {
+              "name": {"const": "grype"},
+              "version": {"const": "0.116.1"},
+              "upstream": {"const": "https://github.com/anchore/grype"},
+              "formats": {"const": [{"name": "grype-json", "versions": ["0.116.1"]}]}
+            }
+          },
+          "capabilities": {
+            "properties": {
+              "write_scratch": {"const": true},
+              "child_processes": {"const": true}
+            }
+          },
+          "resources": {
+            "properties": {
+              "timeout_seconds": {"minimum": 60},
+              "memory_mb": {"minimum": 1024},
+              "pids": {"minimum": 32, "maximum": 256},
+              "tmpfs_mb": {"minimum": 128},
+              "max_stdout_bytes": {"minimum": 16777216}
+            }
+          },
+          "data_mounts": {"const": [{"name": "grype-db", "destination": "/prc-inputs/grype-db", "max_files": 16, "max_bytes": 3221225472}]}
         }
       }
     }

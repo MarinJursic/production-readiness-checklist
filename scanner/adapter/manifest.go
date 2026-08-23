@@ -164,6 +164,10 @@ func (manifest Manifest) Validate() error {
 		if manifest.OutputSchema != SyftOutputSchemaVersion {
 			return fmt.Errorf("unsupported Syft adapter output schema %q", manifest.OutputSchema)
 		}
+	case GrypeProtocolVersion:
+		if manifest.OutputSchema != GrypeOutputSchemaVersion {
+			return fmt.Errorf("unsupported Grype adapter output schema %q", manifest.OutputSchema)
+		}
 	default:
 		return fmt.Errorf("unsupported adapter protocol %q", manifest.Protocol)
 	}
@@ -224,12 +228,19 @@ func (manifest Manifest) Validate() error {
 	if err := validateDataMounts(manifest.DataMounts); err != nil {
 		return err
 	}
+	if len(manifest.DataMounts) > 0 && manifest.Protocol != GrypeProtocolVersion {
+		return fmt.Errorf("external data mounts are currently supported only by the reviewed Grype protocol")
+	}
 	if manifest.Protocol == GitleaksProtocolVersion {
 		if err := validateGitleaksManifest(manifest); err != nil {
 			return err
 		}
 	} else if manifest.Protocol == SyftProtocolVersion {
 		if err := validateSyftManifest(manifest); err != nil {
+			return err
+		}
+	} else if manifest.Protocol == GrypeProtocolVersion {
+		if err := validateGrypeManifest(manifest); err != nil {
 			return err
 		}
 	}

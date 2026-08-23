@@ -109,6 +109,32 @@ func TestSyftSnapshotInjectsScannerOwnedConfiguration(t *testing.T) {
 	}
 }
 
+func TestGrypeSnapshotInjectsScannerOwnedConfiguration(t *testing.T) {
+	root := t.TempDir()
+	writeSnapshotFixture(t, root, ".grype.yaml", "ignore: everything\n")
+	writeSnapshotFixture(t, root, ".prc/grype-config.yaml", "target-owned: true\n")
+	writeSnapshotFixture(t, root, "package-lock.json", "{}\n")
+	item, err := inventory.Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	snapshot, err := PrepareSnapshotForManifest(item, manifestWithDataMount())
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer snapshot.Close()
+	data, err := os.ReadFile(filepath.Join(snapshot.Path, filepath.FromSlash(GrypeConfigSnapshotPath)))
+	if err != nil || string(data) != string(grypeConfig) {
+		t.Fatalf("scanner-owned Grype configuration = %q, %v", data, err)
+	}
+	if snapshot.Files != 2 || snapshot.Bytes <= 0 {
+		t.Fatalf("snapshot inventory accounting included protocol input: %+v", snapshot)
+	}
+	if untrusted, err := os.ReadFile(filepath.Join(snapshot.Path, ".grype.yaml")); err != nil || string(untrusted) != "ignore: everything\n" {
+		t.Fatalf("target file was not preserved as scan input: %q, %v", untrusted, err)
+	}
+}
+
 func TestRunOCIRejectsSnapshotDriftBeforeRuntime(t *testing.T) {
 	root := t.TempDir()
 	writeSnapshotFixture(t, root, "README.md", "sealed\n")

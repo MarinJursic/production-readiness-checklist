@@ -1316,6 +1316,14 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             ),
             [],
         )
+        grype_path = ROOT / "adapters" / "grype-v0.116.1.yaml"
+        grype = yaml.safe_load(grype_path.read_text(encoding="utf-8"))
+        self.assertEqual(
+            validate_instance.validation_errors(
+                grype, "adapter-manifest.schema.json"
+            ),
+            [],
+        )
 
         legacy = {
             "schema_version": "prc.adapter-manifest/v0.1",
@@ -1383,6 +1391,49 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         self.assertEqual(
             validate_instance.validation_errors(
                 report, "adapter-registry-report.schema.json"
+            ),
+            [],
+        )
+
+    def test_normalized_grype_report_conforms(self) -> None:
+        report = {
+            "schema": "prc.grype-vulnerability-report/v1",
+            "tool": {"name": "grype", "version": "0.116.1"},
+            "database": {
+                "schema_version": "v6.1.9",
+                "built": "2026-08-23T06:15:27Z",
+                "archive_sha256": "a" * 64,
+                "epss_captured": "2026-08-23T00:17:43Z",
+                "kev_captured": "2026-08-23T00:18:12Z",
+                "nvd_captured": "2026-08-23T00:18:37Z",
+            },
+            "findings": [
+                {
+                    "id": "CVE-2021-23337",
+                    "aliases": ["CVE-2021-23337", "GHSA-35jh-r3h4-6jhm"],
+                    "package_name": "lodash",
+                    "package_version": "4.17.15",
+                    "package_type": "npm",
+                    "package_url": "pkg:npm/lodash@4.17.15",
+                    "locations": ["package-lock.json"],
+                    "severity": "High",
+                    "cvss_score": 7.2,
+                    "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+                    "epss": 0.21333,
+                    "epss_percentile": 0.97411,
+                    "epss_date": "2026-08-22",
+                    "known_exploited": False,
+                    "known_ransomware_use": False,
+                    "risk": 15.679755,
+                    "fix_state": "fixed",
+                    "fixed_versions": ["4.17.21"],
+                    "description": "Command injection in lodash.",
+                }
+            ],
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(
+                report, "grype-vulnerability-report.schema.json"
             ),
             [],
         )

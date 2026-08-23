@@ -1,5 +1,20 @@
 # Third-party notices
 
+## Grype executable image and vulnerability database
+
+`adapters/grype-v0.116.1.yaml` references the official immutable
+[Grype v0.116.1](https://github.com/anchore/grype/releases/tag/v0.116.1) OCI
+image for offline repository dependency-vulnerability analysis. The image and
+the separately acquired vulnerability database are not vendored in this
+repository. Grype is copyright Anchore, Inc. and contributors and is licensed
+under the [Apache License 2.0](https://github.com/anchore/grype/blob/v0.116.1/LICENSE).
+
+Grype databases are distributed by Anchore from `grype.anchore.io`. A scan
+accepts only a locally mounted schema-v6 database whose official archive URL
+contains an immutable SHA-256 checksum and whose recorded build time is no more
+than 120 hours old. Database content and provider feeds retain their respective
+upstream terms; consult the database source metadata before redistribution.
+
 ## Syft executable image
 
 `adapters/syft-v1.51.0.yaml` references the official immutable non-root
