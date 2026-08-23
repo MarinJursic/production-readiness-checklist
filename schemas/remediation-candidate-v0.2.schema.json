@@ -1,15 +1,15 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/remediation-candidate.schema.json",
-  "title": "Production Readiness Remediation Candidate v0.3",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/remediation-candidate-v0.2.schema.json",
+  "title": "Production Readiness Remediation Candidate v0.2",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_version", "candidate_id", "candidate_path", "contract", "candidate_inventory_digest", "candidate_run_id", "changes", "before_assessment", "after_assessment", "accepted", "reasons"],
   "properties": {
-    "schema_version": {"const": "prc.remediation-candidate/v0.3"},
+    "schema_version": {"const": "prc.remediation-candidate/v0.2"},
     "candidate_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "candidate_path": {"type": "string", "minLength": 1},
-    "contract": {"$ref": "fix-contract.schema.json"},
+    "contract": {"$ref": "fix-contract-v0.2.schema.json"},
     "candidate_inventory_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "candidate_run_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "changes": {

@@ -33,7 +33,7 @@ and the destination itself must not exist.
 The command exits `0` only when the candidate passes every acceptance check. A
 validated but rejected candidate is still printed and exits `8`. Invalid input
 exits `3`; a policy-denied remediation exits `5`. Use
-`--format json` for the versioned `prc.remediation-candidate/v0.2` record.
+`--format json` for the versioned `prc.remediation-candidate/v0.3` record.
 
 With `--config`, the exact canonical configuration digest and project identity
 are recorded in the fix contract. The configured profile is mandatory,
@@ -46,9 +46,10 @@ configuration.
 
 ## What acceptance verifies
 
-The scanner creates a content-addressed fix contract with the baseline run and
-inventory, exact allowed paths, protected paths, network denial, one-attempt
-limit, and file and line budgets. After applying the fix in the copy, it:
+The scanner creates a content-addressed fix contract with the baseline run,
+inventory, exact canonical finding ID and stable finding fingerprint, allowed
+paths, protected paths, network denial, one-attempt limit, and file and line
+budgets. After applying the fix in the copy, it:
 
 1. inventories the candidate from fresh bytes;
 2. walks the raw candidate tree so excluded directories cannot hide additions;
@@ -91,10 +92,11 @@ cannot return a candidate, or an independently checked candidate is rejected.
 File and changed-line usage accumulates across accepted candidates;
 command-line values cannot raise limits declared in project configuration.
 
-The `prc.remediation-run/v0.2` report records every candidate, provider
+The `prc.remediation-run/v0.3` report records every candidate, provider
 execution and transcript digest, cumulative budget usage, the final fresh
 assessment, the final isolated workspace, and a reason code for every
-unresolved result. Its terminal states are:
+unresolved result. Every unresolved failure includes its canonical finding ID
+and stable fingerprint. Its terminal states are:
 
 - `profile_satisfied`: every required result in the selected profile passed;
 - `machine_work_complete`: no registered deterministic R1 failure remains, but
@@ -117,7 +119,8 @@ or performs version-control operations.
 Code provider adapter. This is not general repository autonomy. The current
 task planner supports only a failing `PRC-A-CORE-010` test-discovery assertion:
 it selects one bounded source file, derives a small allowlist of new test paths,
-and asks for exactly one non-vacuous test file. Every other R2 finding remains
+binds the exact triggering finding into the sealed task, and asks for exactly
+one non-vacuous test file. Every other R2 finding remains
 `no_safe_agent_task` until it has a dedicated planner and sufficiently strong
 verification.
 
@@ -155,7 +158,11 @@ and assertion-specific behavioral contracts are implemented.
 Claude Code `suggest` result to an isolated candidate. It never asks the provider
 to edit files and never executes provider-authored commands. The source task must
 still match the current workspace inventory, the assertion must be classified
-R2, and the candidate destination must be new and outside the source tree.
+R2, its exact finding ID and stable fingerprint must still match a freshly
+reproduced failure, and the candidate destination must be new and outside the
+source tree. The v0.3 fix contract records both the task's triggering finding
+ID and the freshly verified baseline finding ID so the provider handoff remains
+auditable end to end.
 
 ```bash
 ./prc remediate-proposal \

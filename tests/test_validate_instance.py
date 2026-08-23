@@ -404,10 +404,12 @@ class ScannerOutputSchemaTests(unittest.TestCase):
     def test_minimal_remediation_candidate_conforms(self) -> None:
         digest = "a" * 64
         contract = {
-            "schema_version": "prc.fix-contract/v0.2",
+            "schema_version": "prc.fix-contract/v0.3",
             "task_id": digest,
             "baseline_run_id": digest,
             "baseline_inventory_digest": digest,
+            "finding_id": digest,
+            "finding_fingerprint": "b" * 64,
             "assertion_id": "PRC-A-CORE-014",
             "control_ids": ["USEQ-DAF77C8F"],
             "goal": "Append one final line-feed byte.",
@@ -423,7 +425,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "acceptance": ["The target assertion passes."],
         }
         candidate = {
-            "schema_version": "prc.remediation-candidate/v0.2",
+            "schema_version": "prc.remediation-candidate/v0.3",
             "candidate_id": digest,
             "candidate_path": "/tmp/candidate",
             "contract": contract,
@@ -454,6 +456,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "provider": "codex",
             "proposal_task_id": digest,
             "proposal_sha256": "b" * 64,
+            "proposal_finding_id": "c" * 64,
         }
         self.assertEqual(
             validate_instance.validation_errors(
@@ -474,8 +477,26 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             [],
         )
 
-        legacy_contract = {
+        v02_contract = {
             **contract,
+            "schema_version": "prc.fix-contract/v0.2",
+        }
+        del v02_contract["finding_id"]
+        del v02_contract["finding_fingerprint"]
+        v02_candidate = {
+            **candidate,
+            "schema_version": "prc.remediation-candidate/v0.2",
+            "contract": v02_contract,
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(
+                v02_candidate, "remediation-candidate-v0.2.schema.json"
+            ),
+            [],
+        )
+
+        legacy_contract = {
+            **v02_contract,
             "schema_version": "prc.fix-contract/v0.1",
         }
         del legacy_contract["attempt"]
@@ -538,7 +559,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "terminal_state": "profile_satisfied",
         }
         remediation_run = {
-            "schema_version": "prc.remediation-run/v0.2",
+            "schema_version": "prc.remediation-run/v0.3",
             "run_id": digest,
             "started_at": "2026-08-23T12:00:00Z",
             "completed_at": "2026-08-23T12:00:01Z",
@@ -590,6 +611,19 @@ class ScannerOutputSchemaTests(unittest.TestCase):
 
         v05_run = {**final_run, "schema_version": "prc.run/v0.5"}
         del v05_run["findings"]
+
+        v02_remediation_run = {
+            **remediation_run,
+            "schema_version": "prc.remediation-run/v0.2",
+            "final_run": v05_run,
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(
+                v02_remediation_run, "remediation-run-v0.2.schema.json"
+            ),
+            [],
+        )
+
         self.assertEqual(
             validate_instance.validation_errors(
                 v05_run, "run-result-v0.5.schema.json"
@@ -725,6 +759,18 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         )
         self.assertEqual(
             validate_instance.validation_errors(task, "agent-task.schema.json"), []
+        )
+        legacy_task = {
+            **task,
+            "schema_version": "prc.agent-task/v0.1",
+        }
+        del legacy_task["finding_id"]
+        del legacy_task["finding_fingerprint"]
+        self.assertEqual(
+            validate_instance.validation_errors(
+                legacy_task, "agent-task-v0.1.schema.json"
+            ),
+            [],
         )
         self.assertEqual(
             validate_instance.validation_errors(output, "agent-output.schema.json"), []

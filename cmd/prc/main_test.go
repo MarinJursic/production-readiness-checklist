@@ -12,11 +12,37 @@ import (
 	"testing"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/adapter"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/catalog"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/engine"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/invalidation"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/provider"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/remediation"
 )
+
+func commandFinding(t *testing.T, target, assertionID string) model.Finding {
+	t.Helper()
+	item, err := inventory.Build(target)
+	if err != nil {
+		t.Fatal(err)
+	}
+	c, err := catalog.Load(filepath.Join("..", ".."))
+	if err != nil {
+		t.Fatal(err)
+	}
+	run, err := engine.New(c).Scan("prc/core-repository", item)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, finding := range run.Findings {
+		if finding.AssertionID == assertionID {
+			return finding
+		}
+	}
+	t.Fatalf("missing finding for %s", assertionID)
+	return model.Finding{}
+}
 
 func TestVersionCommand(t *testing.T) {
 	var stdout, stderr bytes.Buffer
@@ -364,7 +390,7 @@ func TestFixCommandRunsBoundedDeterministicLoop(t *testing.T) {
 	if err := json.Unmarshal(stdout.Bytes(), &result); err != nil {
 		t.Fatal(err)
 	}
-	if result.SchemaVersion != "prc.remediation-run/v0.2" || len(result.Candidates) != 2 ||
+	if result.SchemaVersion != "prc.remediation-run/v0.3" || len(result.Candidates) != 2 ||
 		result.ProviderExecutions == nil || len(result.ProviderExecutions) != 0 ||
 		result.TerminalState != "machine_work_complete" || !result.OriginalUnchanged {
 		t.Fatalf("unexpected remediation run: %+v", result)
@@ -706,7 +732,7 @@ func TestRemediateCommandConsumesConfiguredPolicy(t *testing.T) {
 	if err := json.Unmarshal(stdout.Bytes(), &candidate); err != nil {
 		t.Fatal(err)
 	}
-	if candidate.SchemaVersion != "prc.remediation-candidate/v0.2" ||
+	if candidate.SchemaVersion != "prc.remediation-candidate/v0.3" ||
 		len(candidate.Contract.ConfigurationDigest) != 64 || candidate.Contract.ProjectID != "example-product" ||
 		candidate.Contract.MaxAttempts != 3 {
 		t.Fatalf("configured candidate = %+v", candidate)
@@ -749,8 +775,10 @@ func TestRemediateProposalCommandCreatesAcceptedIsolatedCandidate(t *testing.T) 
 	if err := os.WriteFile(filepath.Join(target, "app.py"), []byte("def ready(): return True\n"), 0o644); err != nil {
 		t.Fatal(err)
 	}
+	finding := commandFinding(t, target, "PRC-A-CORE-010")
 	draft := provider.Task{
 		SchemaVersion: provider.TaskSchema, Mode: "suggest", WorkspaceInventoryDigest: strings.Repeat("b", 64),
+		FindingID: finding.ID, FindingFingerprint: finding.Fingerprint,
 		AssertionID: "PRC-A-CORE-010", ControlIDs: []string{"USEQ-12655775"},
 		Goal: "Add one focused test.", ReadScope: "task-inputs", RelevantPaths: []string{"app.py"},
 		Inputs: []provider.InputFile{}, AllowedPaths: []string{"app_test.py"},

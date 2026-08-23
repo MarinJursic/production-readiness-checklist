@@ -7,9 +7,29 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/MarinJursic/production-readiness-checklist/scanner/catalog"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/engine"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/provider"
 )
+
+func proposalFinding(t *testing.T, item model.Inventory) model.Finding {
+	t.Helper()
+	c, err := catalog.Load(testCatalogRoot(t))
+	if err != nil {
+		t.Fatal(err)
+	}
+	run, err := engine.New(c).Scan("prc/core-repository", item)
+	if err != nil {
+		t.Fatal(err)
+	}
+	finding, ok := findingFor(run, agentTestSuiteAssertion)
+	if !ok {
+		t.Fatal("missing test-suite finding")
+	}
+	return finding
+}
 
 func proposalTarget(t *testing.T) string {
 	t.Helper()
@@ -22,9 +42,15 @@ func proposalTarget(t *testing.T) string {
 
 func sealedProposalTask(t *testing.T, target string, allowed, protectedPaths []string) provider.Task {
 	t.Helper()
+	item, err := inventory.Build(target)
+	if err != nil {
+		t.Fatal(err)
+	}
+	finding := proposalFinding(t, item)
 	draft := provider.Task{
 		SchemaVersion: provider.TaskSchema, Mode: "suggest",
 		WorkspaceInventoryDigest: strings.Repeat("b", 64), AssertionID: "PRC-A-CORE-010",
+		FindingID: finding.ID, FindingFingerprint: finding.Fingerprint,
 		ControlIDs: []string{"USEQ-12655775"}, Goal: "Add one focused, discoverable regression test.",
 		ReadScope: "task-inputs", RelevantPaths: []string{"app.py"}, Inputs: []provider.InputFile{},
 		AllowedPaths: allowed, ProtectedPaths: protectedPaths, AllowedCommands: [][]string{},
@@ -74,7 +100,8 @@ func TestRunProposalAppliesAndAcceptsIsolatedR2Candidate(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if !candidate.Accepted || candidate.Contract.RemediationClass != "R2" || candidate.Contract.ProposalTaskID != task.TaskID {
+	if !candidate.Accepted || candidate.Contract.RemediationClass != "R2" || candidate.Contract.ProposalTaskID != task.TaskID ||
+		candidate.Contract.ProposalFindingID != task.FindingID || candidate.Contract.FindingFingerprint != task.FindingFingerprint {
 		t.Fatalf("unexpected candidate: %+v", candidate)
 	}
 	if _, err := os.Stat(filepath.Join(target, "app_test.py")); !os.IsNotExist(err) {
@@ -100,8 +127,10 @@ func TestRunProposalBindsConfiguredPolicyAndInventory(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+	finding := proposalFinding(t, item)
 	draft := provider.Task{
 		SchemaVersion: provider.TaskSchema, Mode: "suggest", WorkspaceInventoryDigest: strings.Repeat("b", 64),
+		FindingID: finding.ID, FindingFingerprint: finding.Fingerprint,
 		AssertionID: "PRC-A-CORE-010", ControlIDs: []string{"USEQ-12655775"},
 		Goal: "Add one focused, discoverable regression test.", ReadScope: "task-inputs",
 		RelevantPaths: []string{"app.py"}, Inputs: []provider.InputFile{}, AllowedPaths: []string{"app_test.py"},
@@ -158,6 +187,28 @@ func TestRunProposalRejectsMalformedHunkBeforeWriting(t *testing.T) {
 	}
 	if _, statErr := os.Stat(filepath.Join(candidatePath, "app_test.py")); !os.IsNotExist(statErr) {
 		t.Fatal("malformed proposal wrote its target file")
+	}
+}
+
+func TestRunProposalRejectsTaskForDifferentFindingFingerprint(t *testing.T) {
+	target := proposalTarget(t)
+	task := sealedProposalTask(t, target, []string{"app_test.py"}, defaultProposalProtectedPaths())
+	task.FindingFingerprint = strings.Repeat("e", 64)
+	identifier, err := provider.TaskID(task)
+	if err != nil {
+		t.Fatal(err)
+	}
+	task.TaskID = identifier
+	patch := "diff --git a/app_test.py b/app_test.py\n" +
+		"new file mode 100644\n--- /dev/null\n+++ b/app_test.py\n" +
+		"@@ -0,0 +1,4 @@\n+from app import ready\n+\n+def test_ready():\n+    assert ready() is True\n"
+	output := proposalOutput(task, "app_test.py", patch)
+	_, err = RunProposal(ProposalOptions{
+		CatalogRoot: testCatalogRoot(t), Target: target, CandidateDir: filepath.Join(t.TempDir(), "candidate"),
+		Provider: "codex", Task: task, Output: output, MaxFiles: 2, MaxChangedLines: 10,
+	})
+	if err == nil || !strings.Contains(err.Error(), "exact current finding") || !IsPolicyDenied(err) {
+		t.Fatalf("unexpected error: %v", err)
 	}
 }
 

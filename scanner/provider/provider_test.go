@@ -17,6 +17,7 @@ func testTask(t *testing.T) Task {
 	t.Helper()
 	task := Task{
 		SchemaVersion: TaskSchema, Mode: "suggest", WorkspaceInventoryDigest: strings.Repeat("b", 64),
+		FindingID: strings.Repeat("c", 64), FindingFingerprint: strings.Repeat("d", 64),
 		AssertionID: "PRC-A-CORE-010",
 		ControlIDs:  []string{"USEQ-12655775"}, Goal: "Propose a focused test for the missing behavior.",
 		ReadScope: "task-inputs", RelevantPaths: []string{"app.go", "app_test.go"},

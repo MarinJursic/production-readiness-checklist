@@ -2,7 +2,7 @@
   "is_error": false,
   "structured_output": {
     "schema_version": "prc.agent-output/v0.1",
-    "task_id": "698caa63e2eef5b343831db1bf6583f4ec6ee3406036999d45b1ba76b251eac7",
+    "task_id": "58381bee3dce3a20b64f19d72d8e7fc2cedf66c42b2b74ba91082f25dd359196",
     "status": "candidate",
     "root_cause": "The target behavior has no regression coverage.",
     "changed_files": ["app_test.go"],

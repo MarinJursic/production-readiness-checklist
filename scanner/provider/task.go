@@ -185,6 +185,9 @@ func (task Task) Validate() error {
 	if !hexDigest.MatchString(task.WorkspaceInventoryDigest) {
 		return fmt.Errorf("agent task requires a workspace inventory digest")
 	}
+	if !hexDigest.MatchString(task.FindingID) || !hexDigest.MatchString(task.FindingFingerprint) {
+		return fmt.Errorf("agent task requires an exact finding ID and stable fingerprint")
+	}
 	if !assertion.MatchString(task.AssertionID) || len(task.ControlIDs) == 0 || strings.TrimSpace(task.Goal) == "" || len(task.Goal) > 16384 {
 		return fmt.Errorf("agent task requires a valid assertion, controls, and goal")
 	}

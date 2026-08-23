@@ -73,6 +73,13 @@ func RunProposal(options ProposalOptions) (Candidate, error) {
 	if !ok || before.Assessment != "fail" {
 		return Candidate{}, policyDenied(fmt.Errorf("assertion %s is not a failing finding in the baseline", assertion.ID))
 	}
+	baselineFinding, ok := findingFor(beforeRun, assertion.ID)
+	if !ok {
+		return Candidate{}, fmt.Errorf("failed assertion %s has no canonical baseline finding", assertion.ID)
+	}
+	if options.Task.FindingID != baselineFinding.ID || options.Task.FindingFingerprint != baselineFinding.Fingerprint {
+		return Candidate{}, policyDenied(fmt.Errorf("agent task does not match the exact current finding for assertion %s", assertion.ID))
+	}
 	if reasons := auditProposalAntiGaming(baseline, options.Output); len(reasons) > 0 {
 		return Candidate{}, policyDenied(fmt.Errorf("provider proposal failed anti-gaming audit: %s", strings.Join(reasons, " ")))
 	}
@@ -84,8 +91,12 @@ func RunProposal(options ProposalOptions) (Candidate, error) {
 	protectedPaths := proposalProtectedPaths(options.Task.ProtectedPaths, policy.protectedPaths)
 	contract := FixContract{
 		SchemaVersion: FixContractSchema, BaselineRunID: beforeRun.RunID,
-		BaselineInventoryDigest: baseline.Digest, AssertionID: assertion.ID,
-		ConfigurationDigest: policy.configurationID, ProjectID: policy.projectID,
+		BaselineInventoryDigest: baseline.Digest,
+		FindingID:               baselineFinding.ID,
+		FindingFingerprint:      baselineFinding.Fingerprint,
+		ProposalFindingID:       options.Task.FindingID,
+		AssertionID:             assertion.ID,
+		ConfigurationDigest:     policy.configurationID, ProjectID: policy.projectID,
 		ControlIDs: append([]string(nil), assertion.ControlIDs...), Goal: options.Task.Goal,
 		FixerID: proposalFixer, RemediationClass: "R2", Provider: options.Provider,
 		ProposalTaskID: options.Task.TaskID, ProposalSHA256: proposalID,
@@ -133,6 +144,9 @@ func RunProposal(options ProposalOptions) (Candidate, error) {
 	after, ok := resultFor(afterRun, assertion.ID)
 	if !ok || after.Assessment != "pass" {
 		reasons = append(reasons, "Target assertion did not pass in the candidate.")
+	}
+	if findingFingerprintPresent(afterRun, baselineFinding.Fingerprint) {
+		reasons = append(reasons, "The exact baseline finding fingerprint remains in the candidate.")
 	}
 	for _, result := range beforeRun.Results {
 		if result.Assessment != "pass" {

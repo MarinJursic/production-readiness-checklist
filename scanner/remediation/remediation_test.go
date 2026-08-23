@@ -119,6 +119,10 @@ func TestRunCreatesAcceptedIsolatedFinalNewlineCandidate(t *testing.T) {
 	if candidate.BeforeAssessment != "fail" || candidate.AfterAssessment != "pass" || candidate.Reasons == nil {
 		t.Fatalf("unexpected assessments: %+v", candidate)
 	}
+	if len(candidate.Contract.FindingID) != 64 || len(candidate.Contract.FindingFingerprint) != 64 ||
+		candidate.Contract.ProposalFindingID != "" {
+		t.Fatalf("deterministic contract lost canonical finding identity: %+v", candidate.Contract)
+	}
 	contractIdentity := candidate.Contract
 	contractIdentity.TaskID = ""
 	wantTaskID, err := contentID(contractIdentity)

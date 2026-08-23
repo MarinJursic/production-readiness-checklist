@@ -3,7 +3,7 @@ package provider
 import "time"
 
 const (
-	TaskSchema      = "prc.agent-task/v0.1"
+	TaskSchema      = "prc.agent-task/v0.2"
 	OutputSchema    = "prc.agent-output/v0.1"
 	ExecutionSchema = "prc.agent-execution/v0.1"
 )
@@ -13,6 +13,8 @@ type Task struct {
 	TaskID                      string      `json:"task_id"`
 	Mode                        string      `json:"mode"`
 	WorkspaceInventoryDigest    string      `json:"workspace_inventory_digest"`
+	FindingID                   string      `json:"finding_id"`
+	FindingFingerprint          string      `json:"finding_fingerprint"`
 	AssertionID                 string      `json:"assertion_id"`
 	ControlIDs                  []string    `json:"control_ids"`
 	Goal                        string      `json:"goal"`

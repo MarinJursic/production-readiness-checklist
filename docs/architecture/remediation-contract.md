@@ -19,7 +19,8 @@ automatically grant an agent permission to change a repository.
 
 Every attempt is bound to a signed or hashed contract containing:
 
-- finding, assertion, target, and baseline result identifiers;
+- exact finding content ID, stable finding fingerprint, assertion, target, and
+  baseline result identifiers;
 - desired postcondition;
 - permitted and protected paths;
 - permitted commands, tools, network, secrets, and external systems;
@@ -81,10 +82,14 @@ Claude Code proposals. The separate `remediate-proposal` command validates and
 parses one proposal, applies it to a fresh external candidate without invoking
 the provider, and runs raw-tree, exact-byte, mode, budget, target-result,
 regression, and source-integrity audits. The provider never approves its own
-work. Both one-shot remediation paths can bind the exact project configuration,
-its protected paths, and its file, line, and attempt ceilings into a v0.2 fix
-contract. The default loop does not invoke providers. When explicitly enabled,
+work. Both one-shot remediation paths bind the exact verified baseline finding,
+project configuration, protected paths, and file, line, and attempt ceilings
+into a v0.3 fix contract. The default loop does not invoke providers. When
+explicitly enabled,
 `fix --provider` composes the read-only provider and scanner-owned proposal
 paths only for a missing-test assertion with one bounded source input and new
-test-file allowlist. General R2 repair planning, sandboxed project command
-execution, merges, deployments, and releases remain unimplemented.
+test-file allowlist. The R2 contract also preserves the exact triggering
+finding ID from the sealed provider task and requires both its content ID and
+stable fingerprint to match a freshly reproduced failure. General R2 repair
+planning, sandboxed project command execution, merges, deployments, and releases
+remain unimplemented.

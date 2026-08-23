@@ -20,12 +20,17 @@ const agentTestSuiteAssertion = "PRC-A-CORE-010"
 func planAgentTask(
 	item model.Inventory,
 	assertion model.Assertion,
+	finding model.Finding,
 	protectedPaths []string,
 	options AgentOptions,
 ) (provider.Task, bool, error) {
 	if assertion.ID != agentTestSuiteAssertion || assertion.ImplementationID != "prc.native.test-suite@0.1" ||
 		assertion.RemediationClass != "R2" {
 		return provider.Task{}, false, nil
+	}
+	if finding.AssertionID != assertion.ID || finding.Subject.InventoryDigest != item.Digest ||
+		finding.ID == "" || finding.Fingerprint == "" {
+		return provider.Task{}, false, fmt.Errorf("agent task requires the exact current finding for %s", assertion.ID)
 	}
 	if !options.AllowRemoteSourceProcessing {
 		return provider.Task{}, false, policyDenied(fmt.Errorf("agent remediation requires explicit remote source processing acknowledgement"))
@@ -69,6 +74,7 @@ func planAgentTask(
 		sort.Strings(controls)
 		draft := provider.Task{
 			SchemaVersion: provider.TaskSchema, Mode: "suggest",
+			FindingID: finding.ID, FindingFingerprint: finding.Fingerprint,
 			AssertionID: assertion.ID, ControlIDs: controls,
 			Goal: "Add one focused, non-vacuous, discoverable test for behavior visible in " + record.Path +
 				". Add exactly one new test file from allowed_paths. Do not modify production code.",

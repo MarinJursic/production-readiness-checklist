@@ -1,18 +1,15 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/fix-contract.schema.json",
-  "title": "Production Readiness Fix Contract v0.3",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/fix-contract-v0.2.schema.json",
+  "title": "Production Readiness Fix Contract v0.2",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "task_id", "baseline_run_id", "baseline_inventory_digest", "finding_id", "finding_fingerprint", "assertion_id", "control_ids", "goal", "fixer_id", "remediation_class", "allowed_paths", "protected_paths", "network", "max_changed_lines", "max_files", "attempt", "max_attempts", "acceptance"],
+  "required": ["schema_version", "task_id", "baseline_run_id", "baseline_inventory_digest", "assertion_id", "control_ids", "goal", "fixer_id", "remediation_class", "allowed_paths", "protected_paths", "network", "max_changed_lines", "max_files", "attempt", "max_attempts", "acceptance"],
   "properties": {
-    "schema_version": {"const": "prc.fix-contract/v0.3"},
+    "schema_version": {"const": "prc.fix-contract/v0.2"},
     "task_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "baseline_run_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "baseline_inventory_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-    "finding_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-    "finding_fingerprint": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-    "proposal_finding_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "configuration_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "project_id": {"type": "string", "pattern": "^[a-z0-9](?:[a-z0-9-]{0,62})$"},
     "assertion_id": {"type": "string", "pattern": "^PRC-A-[A-Z0-9]+-[0-9]{3}$"},
@@ -35,7 +32,7 @@
   "allOf": [
     {
       "if": {"properties": {"remediation_class": {"const": "R2"}}, "required": ["remediation_class"]},
-      "then": {"required": ["provider", "proposal_task_id", "proposal_sha256", "proposal_finding_id"]}
+      "then": {"required": ["provider", "proposal_task_id", "proposal_sha256"]}
     },
     {
       "if": {"required": ["configuration_digest"]},

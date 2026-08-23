@@ -71,6 +71,10 @@ func Run(options Options) (Candidate, error) {
 	if !ok || before.Assessment != "fail" {
 		return Candidate{}, policyDenied(fmt.Errorf("assertion %s is not a failing finding in the baseline", assertion.ID))
 	}
+	baselineFinding, ok := findingFor(beforeRun, assertion.ID)
+	if !ok {
+		return Candidate{}, fmt.Errorf("failed assertion %s has no canonical baseline finding", assertion.ID)
+	}
 	var paths []string
 	var fixerID, goal string
 	var acceptance []string
@@ -119,8 +123,11 @@ func Run(options Options) (Candidate, error) {
 
 	contract := FixContract{
 		SchemaVersion: FixContractSchema, BaselineRunID: beforeRun.RunID,
-		BaselineInventoryDigest: baseline.Digest, AssertionID: assertion.ID,
-		ConfigurationDigest: policy.configurationID, ProjectID: policy.projectID,
+		BaselineInventoryDigest: baseline.Digest,
+		FindingID:               baselineFinding.ID,
+		FindingFingerprint:      baselineFinding.Fingerprint,
+		AssertionID:             assertion.ID,
+		ConfigurationDigest:     policy.configurationID, ProjectID: policy.projectID,
 		ControlIDs: append([]string(nil), assertion.ControlIDs...),
 		Goal:       goal,
 		FixerID:    fixerID, RemediationClass: "R1",
@@ -169,6 +176,9 @@ func Run(options Options) (Candidate, error) {
 	if !ok || after.Assessment != "pass" {
 		reasons = append(reasons, "Target assertion did not pass in the candidate.")
 	}
+	if findingFingerprintPresent(afterRun, baselineFinding.Fingerprint) {
+		reasons = append(reasons, "The exact baseline finding fingerprint remains in the candidate.")
+	}
 	for _, result := range beforeRun.Results {
 		if result.Assessment != "pass" {
 			continue
@@ -209,6 +219,24 @@ func resultFor(run model.RunResult, assertionID string) (model.AssertionResult, 
 		}
 	}
 	return model.AssertionResult{}, false
+}
+
+func findingFor(run model.RunResult, assertionID string) (model.Finding, bool) {
+	for _, item := range run.Findings {
+		if item.AssertionID == assertionID {
+			return item, true
+		}
+	}
+	return model.Finding{}, false
+}
+
+func findingFingerprintPresent(run model.RunResult, fingerprint string) bool {
+	for _, item := range run.Findings {
+		if item.Fingerprint == fingerprint {
+			return true
+		}
+	}
+	return false
 }
 
 func contentID(value any) (string, error) {

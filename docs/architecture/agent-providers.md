@@ -19,7 +19,8 @@ review.
 
 Both launch plans require:
 
-- a content-addressed `prc.agent-task/v0.1` task;
+- a content-addressed `prc.agent-task/v0.2` task bound to one canonical finding
+  ID and stable fingerprint;
 - explicit acknowledgement that relevant source may be processed by a remote
   provider;
 - an exact workspace inventory plus bounded, content-addressed task inputs;
@@ -72,11 +73,15 @@ modifying the draft:
 Sealing reads only the sorted `relevant_paths`, rejects non-regular, binary, or
 larger-than-256-KiB inputs, and embeds their text and SHA-256 digests. Total input
 text is limited to 768 KiB. It also binds the current workspace inventory digest
-into the task. When configured, that inventory includes the declared-scope
-digest, and the scanner merges its default guards, configured protected paths,
-and the in-target configuration path into the sealed task. Changing a task
-field, configuration declaration, or any inventoried workspace file invalidates
-the execution plan.
+into the task. The task's `finding_id` names the exact scan finding that caused
+the task to be created; both it and `finding_fingerprint` are revalidated
+against a fresh baseline before a proposal can be applied. For a manual draft,
+copy both values from the same canonical finding in a current JSON scan; the
+bounded loop does this automatically. When configured, that inventory includes
+the declared-scope digest, and the scanner merges its default guards, configured
+protected paths, and the in-target configuration path into the sealed task.
+Changing a task field, finding binding, configuration declaration, or any
+inventoried workspace file invalidates the execution plan.
 
 ## Inspect a launch plan
 

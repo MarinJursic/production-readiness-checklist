@@ -41,9 +41,9 @@ func IsProviderExecution(err error) bool {
 }
 
 const (
-	FixContractSchema = "prc.fix-contract/v0.2"
-	CandidateSchema   = "prc.remediation-candidate/v0.2"
-	RunSchema         = "prc.remediation-run/v0.2"
+	FixContractSchema = "prc.fix-contract/v0.3"
+	CandidateSchema   = "prc.remediation-candidate/v0.3"
+	RunSchema         = "prc.remediation-run/v0.3"
 )
 
 type FixContract struct {
@@ -51,6 +51,9 @@ type FixContract struct {
 	TaskID                  string   `json:"task_id"`
 	BaselineRunID           string   `json:"baseline_run_id"`
 	BaselineInventoryDigest string   `json:"baseline_inventory_digest"`
+	FindingID               string   `json:"finding_id"`
+	FindingFingerprint      string   `json:"finding_fingerprint"`
+	ProposalFindingID       string   `json:"proposal_finding_id,omitempty"`
 	ConfigurationDigest     string   `json:"configuration_digest,omitempty"`
 	ProjectID               string   `json:"project_id,omitempty"`
 	AssertionID             string   `json:"assertion_id"`
@@ -166,17 +169,19 @@ type BudgetUsage struct {
 }
 
 type RemainingWork struct {
-	AssertionID      string   `json:"assertion_id"`
-	ControlIDs       []string `json:"control_ids"`
-	Title            string   `json:"title"`
-	Assessment       string   `json:"assessment"`
-	Execution        string   `json:"execution"`
-	Severity         string   `json:"severity"`
-	Gate             string   `json:"gate"`
-	RemediationClass string   `json:"remediation_class"`
-	Summary          string   `json:"summary"`
-	ReasonCode       string   `json:"reason_code"`
-	Reason           string   `json:"reason"`
+	FindingID          string   `json:"finding_id,omitempty"`
+	FindingFingerprint string   `json:"finding_fingerprint,omitempty"`
+	AssertionID        string   `json:"assertion_id"`
+	ControlIDs         []string `json:"control_ids"`
+	Title              string   `json:"title"`
+	Assessment         string   `json:"assessment"`
+	Execution          string   `json:"execution"`
+	Severity           string   `json:"severity"`
+	Gate               string   `json:"gate"`
+	RemediationClass   string   `json:"remediation_class"`
+	Summary            string   `json:"summary"`
+	ReasonCode         string   `json:"reason_code"`
+	Reason             string   `json:"reason"`
 }
 
 type RemediationRun struct {

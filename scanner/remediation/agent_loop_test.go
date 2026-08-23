@@ -1,6 +1,7 @@
 package remediation
 
 import (
+	"encoding/json"
 	"os"
 	"path/filepath"
 	"slices"
@@ -8,7 +9,9 @@ import (
 	"testing"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/catalog"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/engine"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/provider"
 )
 
 func fakeAgentExecutable(t *testing.T, name, status string) string {
@@ -78,7 +81,15 @@ func TestPlanAgentTaskBindsOneSourceAndNewTestAllowlist(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	task, supported, err := planAgentTask(item, c.Assertions[agentTestSuiteAssertion], paths, AgentOptions{
+	run, err := engine.New(c).Scan("prc/core-repository", item)
+	if err != nil {
+		t.Fatal(err)
+	}
+	baselineFinding, ok := findingFor(run, agentTestSuiteAssertion)
+	if !ok {
+		t.Fatal("missing test-suite finding")
+	}
+	task, supported, err := planAgentTask(item, c.Assertions[agentTestSuiteAssertion], baselineFinding, paths, AgentOptions{
 		Provider: "codex", AllowRemoteSourceProcessing: true,
 	})
 	if err != nil {
@@ -86,7 +97,8 @@ func TestPlanAgentTaskBindsOneSourceAndNewTestAllowlist(t *testing.T) {
 	}
 	if !supported || task.AssertionID != agentTestSuiteAssertion || task.RelevantPaths[0] != "app.py" ||
 		len(task.AllowedPaths) != 1 || !slices.Contains(task.AllowedPaths, "app_test.py") || len(task.Inputs) != 1 ||
-		task.Inputs[0].Content != "def ready(): return True\n" || task.TaskID == "" {
+		task.Inputs[0].Content != "def ready(): return True\n" || task.TaskID == "" ||
+		task.FindingID != baselineFinding.ID || task.FindingFingerprint != baselineFinding.Fingerprint {
 		t.Fatalf("unexpected task: %+v", task)
 	}
 }
@@ -107,6 +119,10 @@ func TestRunLoopExecutesReadOnlyProviderAndAcceptsBoundedR2Candidate(t *testing.
 	if execution.TaskID != result.Candidates[0].Contract.ProposalTaskID || execution.Output.Status != "candidate" {
 		t.Fatalf("provider execution is not bound to candidate: %+v", execution)
 	}
+	if result.Candidates[0].Contract.ProposalFindingID == "" ||
+		result.Candidates[0].Contract.ProposalFindingID != agentTaskFindingID(t, execution) {
+		t.Fatalf("provider candidate lost triggering finding identity: %+v", result.Candidates[0].Contract)
+	}
 	if _, err := os.Stat(filepath.Join(filepath.Dir(execution.StdoutPath), "agent-task.json")); err != nil {
 		t.Fatalf("sealed task record is missing: %v", err)
 	}
@@ -122,6 +138,19 @@ func TestRunLoopExecutesReadOnlyProviderAndAcceptsBoundedR2Candidate(t *testing.
 			t.Fatalf("closed test-suite finding remains: %+v", remaining)
 		}
 	}
+}
+
+func agentTaskFindingID(t *testing.T, execution provider.Execution) string {
+	t.Helper()
+	data, err := os.ReadFile(filepath.Join(filepath.Dir(execution.StdoutPath), "agent-task.json"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	var task provider.Task
+	if err := json.Unmarshal(data, &task); err != nil {
+		t.Fatal(err)
+	}
+	return task.FindingID
 }
 
 func TestRunLoopStopsWithoutPatchWhenProviderIsUnable(t *testing.T) {

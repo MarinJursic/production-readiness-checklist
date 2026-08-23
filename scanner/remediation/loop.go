@@ -294,7 +294,11 @@ func nextAgentFailure(
 			continue
 		}
 		assertion := c.Assertions[result.AssertionID]
-		task, supported, err := planAgentTask(item, assertion, protectedPaths, options)
+		finding, ok := findingFor(run, result.AssertionID)
+		if !ok {
+			return "", provider.Task{}, fmt.Errorf("failed assertion %s has no canonical finding", result.AssertionID)
+		}
+		task, supported, err := planAgentTask(item, assertion, finding, protectedPaths, options)
 		if err != nil {
 			return "", provider.Task{}, err
 		}
@@ -366,11 +370,15 @@ func classifyRemaining(run model.RunResult, c *catalog.Catalog, stoppedAssertion
 		}
 		assertion := c.Assertions[result.AssertionID]
 		code, reason := remainingReason(assertion, result, stoppedAssertion, stoppedCode, agentEnabled)
-		remaining = append(remaining, RemainingWork{
+		work := RemainingWork{
 			AssertionID: assertion.ID, ControlIDs: append([]string{}, assertion.ControlIDs...), Title: assertion.Title,
 			Assessment: result.Assessment, Execution: result.Execution, Severity: result.Severity, Gate: result.Gate,
 			RemediationClass: result.RemediationClass, Summary: result.Summary, ReasonCode: code, Reason: reason,
-		})
+		}
+		if finding, ok := findingFor(run, result.AssertionID); ok {
+			work.FindingID, work.FindingFingerprint = finding.ID, finding.Fingerprint
+		}
+		remaining = append(remaining, work)
 	}
 	return remaining
 }
