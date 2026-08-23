@@ -1,10 +1,10 @@
 {
   "schema_version": "prc.agent-output/v0.1",
-  "task_id": "a66940bceec2544cb99db7af3227cdcaa12be6a06793ab8ac16319fe542bab41",
+  "task_id": "62bb66d3d5e7c1d8e67c27ad6fb4ab2ef37254931cf23204f27a195262458b15",
   "status": "candidate",
   "root_cause": "The target behavior has no regression coverage.",
   "changed_files": ["app_test.go"],
-  "patch": "diff --git a/app_test.go b/app_test.go\n--- a/app_test.go\n+++ b/app_test.go\n@@ -1 +1,2 @@\n package app\n+// regression\n",
+  "patch": "diff --git a/app_test.go b/app_test.go\nnew file mode 100644\n--- /dev/null\n+++ b/app_test.go\n@@ -0,0 +1,5 @@\n+package app\n+\n+import \"testing\"\n+\n+func TestReady(t *testing.T) {}\n",
   "commands_requested_or_run": [],
   "limitations": ["The proposal has not been applied or verified."],
   "requested_capability_changes": []

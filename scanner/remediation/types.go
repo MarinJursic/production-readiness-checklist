@@ -1,5 +1,7 @@
 package remediation
 
+import "github.com/MarinJursic/production-readiness-checklist/scanner/provider"
+
 const (
 	FixContractSchema = "prc.fix-contract/v0.1"
 	CandidateSchema   = "prc.remediation-candidate/v0.1"
@@ -15,6 +17,9 @@ type FixContract struct {
 	Goal                    string   `json:"goal"`
 	FixerID                 string   `json:"fixer_id"`
 	RemediationClass        string   `json:"remediation_class"`
+	Provider                string   `json:"provider,omitempty"`
+	ProposalTaskID          string   `json:"proposal_task_id,omitempty"`
+	ProposalSHA256          string   `json:"proposal_sha256,omitempty"`
 	AllowedPaths            []string `json:"allowed_paths"`
 	ProtectedPaths          []string `json:"protected_paths"`
 	Network                 string   `json:"network"`
@@ -55,6 +60,18 @@ type Options struct {
 	CandidateDir    string
 	ProfileID       string
 	AssertionID     string
+	MaxFiles        int
+	MaxChangedLines int
+}
+
+type ProposalOptions struct {
+	CatalogRoot     string
+	Target          string
+	CandidateDir    string
+	ProfileID       string
+	Provider        string
+	Task            provider.Task
+	Output          provider.Output
 	MaxFiles        int
 	MaxChangedLines int
 }

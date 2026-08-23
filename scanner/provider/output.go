@@ -3,6 +3,8 @@ package provider
 import (
 	"bufio"
 	"bytes"
+	"crypto/sha256"
+	"encoding/hex"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -34,6 +36,25 @@ func ParseOutput(provider string, data []byte, task Task) (Output, error) {
 		return Output{}, err
 	}
 	return output, nil
+}
+
+// ValidateOutput validates an already-decoded proposal against its sealed task.
+// Callers must treat the proposal as untrusted until this returns nil.
+func ValidateOutput(provider string, output Output, task Task) error {
+	if err := task.Validate(); err != nil {
+		return err
+	}
+	return validateOutput(provider, output, task)
+}
+
+// OutputID returns the canonical SHA-256 identity of one decoded proposal.
+func OutputID(output Output) (string, error) {
+	payload, err := json.Marshal(output)
+	if err != nil {
+		return "", fmt.Errorf("encode agent output identity: %w", err)
+	}
+	digest := sha256.Sum256(payload)
+	return hex.EncodeToString(digest[:]), nil
 }
 
 func unwrapClaude(data []byte) ([]byte, error) {

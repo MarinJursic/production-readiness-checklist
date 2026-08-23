@@ -1,4 +1,4 @@
-# Bounded R1 remediation
+# Bounded isolated remediation
 
 The experimental `remediate` command supports one deterministic fixer:
 `PRC-A-CORE-014`, which appends one line-feed byte to each recognized source file
@@ -47,3 +47,36 @@ limit, and file and line budgets. After applying the fix in the copy, it:
 The candidate directory is preserved for review. Acceptance is permission to
 inspect or continue testing that isolated candidate; it is not authorization to
 merge, deploy, release, accept risk, or claim that the full profile is satisfied.
+
+## Apply one validated R2 proposal
+
+`remediate-proposal` is the scanner-owned bridge from a validated Codex or
+Claude Code `suggest` result to an isolated candidate. It never asks the provider
+to edit files and never executes provider-authored commands. The source task must
+still match the current workspace inventory, the assertion must be classified
+R2, and the candidate destination must be new and outside the source tree.
+
+```bash
+./prc remediate-proposal \
+  --catalog-root /path/to/production-readiness-checklist \
+  --target /path/to/project \
+  --provider codex \
+  --task /safe/path/task.json \
+  --output /safe/path/validated-provider-output.json \
+  --candidate-dir /safe/path/prc-r2-candidate \
+  --max-files 20 \
+  --max-changed-lines 200
+```
+
+The strict internal unified-diff parser supports exact-context modification and
+mode-`0644` text-file addition. It rejects deletions, renames, copies, binary or
+mode changes, CRLF patch encoding, non-newline markers, malformed coordinates,
+context mismatches, unlisted or protected paths, and budget overruns before
+acceptance. The raw-tree, byte, mode, target assertion, baseline regression, and
+source-integrity audits then run from fresh inventories.
+
+Current R2 acceptance proves only the declared deterministic scanner
+postcondition and non-regression envelope. It does not execute project code or
+prove that generated tests are meaningful. Broader code-changing autonomy must
+add sandboxed project-specific verification commands and stronger behavioral
+assertions before it can be enabled by policy.

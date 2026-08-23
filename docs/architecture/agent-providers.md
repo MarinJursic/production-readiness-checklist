@@ -44,11 +44,12 @@ source text needed for either provider is inside the sealed task prompt. Claude'
 optional provider-side cost limit is passed through; the current Codex CLI
 adapter rejects a nonzero cost limit because it cannot enforce one.
 
-These controls are not an R2 write sandbox. Neither provider may mutate the
-candidate workspace in this release. An agent proposal is untrusted data and is
-not automatically applied. A future R2 milestone must add a scanner-owned patch
-parser, external write sandbox, targeted tests, and the independent candidate
-acceptance pipeline before agent changes can be accepted.
+These controls are not an R2 write sandbox. Neither provider may mutate a
+candidate workspace. An agent proposal remains untrusted data. The separate
+scanner-owned [`remediate-proposal`](../scanner/remediation.md#apply-one-validated-r2-proposal)
+path can explicitly parse one validated proposal into a fresh isolated candidate
+and run deterministic acceptance checks; the provider does not apply or approve
+that result.
 
 ## Create and seal a task
 
@@ -125,3 +126,7 @@ unsorted or duplicate files, changes outside the allowlist, protected paths,
 reported command execution, requested capability expansion, trailing JSON, and
 oversized output. Claude's outer JSON envelope must contain a non-error
 `structured_output` value that passes the same validation.
+
+After validation, follow the [isolated R2 proposal](../scanner/remediation.md#apply-one-validated-r2-proposal)
+workflow when the task's assertion is R2. There is no automatic handoff from
+`provider run`, and a proposal is never applied to the source workspace.

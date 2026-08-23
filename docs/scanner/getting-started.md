@@ -95,8 +95,9 @@ Read the [sandboxed adapter protocol](../architecture/adapters.md) to validate a
 adapter transcript, inspect an OCI execution plan, or run an already-present
 digest-pinned adapter image outside profile evaluation.
 
-Read [bounded R1 remediation](remediation.md) to create and verify an isolated
-candidate for the supported deterministic finding.
+Read [bounded isolated remediation](remediation.md) to create and verify an R1
+candidate or to apply one validated R2 provider proposal outside the source
+workspace.
 
 Read [read-only agent providers](../architecture/agent-providers.md) to inspect
 or explicitly run the experimental Codex and Claude Code `suggest` adapters.

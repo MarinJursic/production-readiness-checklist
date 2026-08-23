@@ -84,6 +84,26 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         self.assertEqual(
             validate_instance.validation_errors(contract, "fix-contract.schema.json"), []
         )
+        r2_contract = {
+            **contract,
+            "remediation_class": "R2",
+            "fixer_id": "prc.provider-proposal@0.1",
+            "provider": "codex",
+            "proposal_task_id": digest,
+            "proposal_sha256": "b" * 64,
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(
+                r2_contract, "fix-contract.schema.json"
+            ),
+            [],
+        )
+        del r2_contract["proposal_sha256"]
+        self.assertTrue(
+            validate_instance.validation_errors(
+                r2_contract, "fix-contract.schema.json"
+            )
+        )
         self.assertEqual(
             validate_instance.validation_errors(
                 candidate, "remediation-candidate.schema.json"

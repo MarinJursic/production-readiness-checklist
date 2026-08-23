@@ -69,7 +69,14 @@ fixer appends one final line-feed byte to exact allowlisted source paths in a ne
 external workspace. The acceptance audit verifies the raw tree, content hashes,
 permission modes, protected paths, budgets, target result, and baseline passing
 results. See the [R1 remediation guide](../scanner/remediation.md) for the exact
-command and limitations. Agent-authored R2 changes and broader autonomous loops
-remain unimplemented. The [read-only provider layer](agent-providers.md) can
-produce bounded Codex or Claude Code patch proposals, but it cannot apply or
-accept them.
+command and limitations.
+
+## Implemented R2 proposal pilot
+
+The [read-only provider layer](agent-providers.md) can produce bounded Codex or
+Claude Code proposals. The separate `remediate-proposal` command validates and
+parses one proposal, applies it to a fresh external candidate without invoking
+the provider, and runs raw-tree, exact-byte, mode, budget, target-result,
+regression, and source-integrity audits. The provider never approves its own
+work. Project command execution, repeated repair loops, merges, deployments, and
+releases remain unimplemented.

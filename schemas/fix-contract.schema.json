@@ -14,7 +14,10 @@
     "control_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^[A-Z]+-[0-9A-F]{8}$"}},
     "goal": {"type": "string", "minLength": 1},
     "fixer_id": {"type": "string", "pattern": "^[a-z0-9.-]+@[0-9]+\\.[0-9]+$"},
-    "remediation_class": {"const": "R1"},
+    "remediation_class": {"enum": ["R1", "R2"]},
+    "provider": {"enum": ["codex", "claude"]},
+    "proposal_task_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "proposal_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "allowed_paths": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"}},
     "protected_paths": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"}},
     "network": {"const": "deny"},
@@ -22,5 +25,11 @@
     "max_files": {"type": "integer", "minimum": 1, "maximum": 1000},
     "max_attempts": {"const": 1},
     "acceptance": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
-  }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"remediation_class": {"const": "R2"}}, "required": ["remediation_class"]},
+      "then": {"required": ["provider", "proposal_task_id", "proposal_sha256"]}
+    }
+  ]
 }

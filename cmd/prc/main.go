@@ -51,6 +51,9 @@ func run(args []string, stdout, stderr io.Writer) int {
 	case "remediate":
 		resultExit = true
 		successful, err = runRemediate(args[1:], stdout, stderr)
+	case "remediate-proposal":
+		resultExit = true
+		successful, err = runRemediateProposal(args[1:], stdout, stderr)
 	case "explain":
 		err = runExplain(args[1:], stdout, stderr)
 	case "adapter":
@@ -77,7 +80,7 @@ func run(args []string, stdout, stderr io.Writer) int {
 
 func usage(output io.Writer) {
 	fmt.Fprintln(output, "Production Readiness Scanner")
-	fmt.Fprintln(output, "usage: prc <inventory|plan|scan|remediate|explain|adapter|provider|version> [options]")
+	fmt.Fprintln(output, "usage: prc <inventory|plan|scan|remediate|remediate-proposal|explain|adapter|provider|version> [options]")
 }
 
 func runProvider(args []string, stdout, stderr io.Writer) error {
@@ -125,7 +128,7 @@ func runProvider(args []string, stdout, stderr io.Writer) error {
 		if err != nil {
 			return err
 		}
-		data, err := os.ReadFile(*path)
+		data, err := readBoundedRegularFile(*path, int64(task.MaxOutputBytes))
 		if err != nil {
 			return err
 		}
@@ -198,6 +201,69 @@ func runRemediate(args []string, stdout, stderr io.Writer) (bool, error) {
 		printCandidate(stdout, candidate)
 	}
 	return candidate.Accepted, nil
+}
+
+func runRemediateProposal(args []string, stdout, stderr io.Writer) (bool, error) {
+	set, target, catalogRoot, profile := parseCommon("remediate-proposal", args, stderr)
+	providerName := set.String("provider", "", "codex or claude")
+	taskPath := set.String("task", "", "sealed agent task JSON file")
+	outputPath := set.String("output", "", "provider output JSON file")
+	candidateDirectory := set.String("candidate-dir", "", "new isolated candidate directory (required)")
+	maxFiles := set.Int("max-files", 20, "maximum files the proposal may change")
+	maxChangedLines := set.Int("max-changed-lines", 200, "maximum changed lines")
+	format := set.String("format", "human", "human or json")
+	if err := set.Parse(args); err != nil {
+		return false, err
+	}
+	if *providerName == "" || *taskPath == "" || *outputPath == "" || *candidateDirectory == "" {
+		return false, errors.New("--provider, --task, --output, and --candidate-dir are required")
+	}
+	if *format != "human" && *format != "json" {
+		return false, fmt.Errorf("unsupported format %q", *format)
+	}
+	task, err := provider.LoadTask(*taskPath)
+	if err != nil {
+		return false, err
+	}
+	data, err := readBoundedRegularFile(*outputPath, int64(task.MaxOutputBytes))
+	if err != nil {
+		return false, err
+	}
+	proposal, err := provider.ParseOutput(*providerName, data, task)
+	if err != nil {
+		return false, err
+	}
+	candidate, err := remediation.RunProposal(remediation.ProposalOptions{
+		CatalogRoot: *catalogRoot, Target: *target, CandidateDir: *candidateDirectory,
+		ProfileID: *profile, Provider: *providerName, Task: task, Output: proposal,
+		MaxFiles: *maxFiles, MaxChangedLines: *maxChangedLines,
+	})
+	if err != nil {
+		return false, err
+	}
+	if *format == "json" {
+		if err := encodeJSON(stdout, candidate); err != nil {
+			return false, err
+		}
+	} else {
+		printCandidate(stdout, candidate)
+	}
+	return candidate.Accepted, nil
+}
+
+func readBoundedRegularFile(path string, limit int64) ([]byte, error) {
+	info, err := os.Stat(path)
+	if err != nil || !info.Mode().IsRegular() || info.Size() > limit {
+		return nil, fmt.Errorf("input must be a regular file no larger than %d bytes", limit)
+	}
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return nil, err
+	}
+	if int64(len(data)) > limit {
+		return nil, fmt.Errorf("input exceeds %d bytes", limit)
+	}
+	return data, nil
 }
 
 func printCandidate(output io.Writer, candidate remediation.Candidate) {
