@@ -309,7 +309,8 @@ func TestFixCommandRunsBoundedDeterministicLoop(t *testing.T) {
 	if err := json.Unmarshal(stdout.Bytes(), &result); err != nil {
 		t.Fatal(err)
 	}
-	if result.SchemaVersion != "prc.remediation-run/v0.1" || len(result.Candidates) != 2 ||
+	if result.SchemaVersion != "prc.remediation-run/v0.2" || len(result.Candidates) != 2 ||
+		result.ProviderExecutions == nil || len(result.ProviderExecutions) != 0 ||
 		result.TerminalState != "machine_work_complete" || !result.OriginalUnchanged {
 		t.Fatalf("unexpected remediation run: %+v", result)
 	}
@@ -324,6 +325,98 @@ func TestFixCommandRunsBoundedDeterministicLoop(t *testing.T) {
 	if strings.HasSuffix(string(original), "\n") || info.Mode().Perm() != 0o666 {
 		t.Fatal("fix command modified the original workspace")
 	}
+}
+
+func TestFixCommandRunsBoundedSuggestOnlyProvider(t *testing.T) {
+	target := t.TempDir()
+	if err := os.WriteFile(filepath.Join(target, "app.py"), []byte("def ready(): return True\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	providerPath := fakeFixCodex(t)
+	candidateRoot := filepath.Join(t.TempDir(), "candidates")
+	var stdout, stderr bytes.Buffer
+	code := run([]string{
+		"fix", "--target", target, "--catalog-root", filepath.Join("..", ".."),
+		"--candidate-root", candidateRoot, "--max-attempts", "1", "--format", "json",
+		"--provider", "codex", "--provider-executable", providerPath,
+		"--allow-remote-source-processing",
+	}, &stdout, &stderr)
+	if code != exitIncomplete {
+		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
+	}
+	var result remediation.RemediationRun
+	if err := json.Unmarshal(stdout.Bytes(), &result); err != nil {
+		t.Fatal(err)
+	}
+	if len(result.ProviderExecutions) != 1 || len(result.Candidates) != 1 ||
+		!result.Candidates[0].Accepted || result.Candidates[0].Contract.Provider != "codex" {
+		t.Fatalf("unexpected provider remediation: %+v", result)
+	}
+	if _, err := os.Stat(filepath.Join(target, "app_test.py")); !os.IsNotExist(err) {
+		t.Fatal("fix provider modified the original workspace")
+	}
+	if _, err := os.Stat(filepath.Join(result.ResultWorkspace, "app_test.py")); err != nil {
+		t.Fatalf("provider candidate test is missing: %v", err)
+	}
+}
+
+func TestFixCommandRequiresRemoteSourceAcknowledgement(t *testing.T) {
+	target := t.TempDir()
+	if err := os.WriteFile(filepath.Join(target, "app.py"), []byte("def ready(): return True\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	candidateRoot := filepath.Join(t.TempDir(), "candidates")
+	var stdout, stderr bytes.Buffer
+	code := run([]string{
+		"fix", "--target", target, "--catalog-root", filepath.Join("..", ".."),
+		"--candidate-root", candidateRoot, "--provider", "codex",
+		"--provider-executable", fakeFixCodex(t),
+	}, &stdout, &stderr)
+	if code != exitPolicyDenied || !strings.Contains(stderr.String(), "PRC-EXIT-5") {
+		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
+	}
+	if _, err := os.Stat(candidateRoot); !os.IsNotExist(err) {
+		t.Fatal("source-processing denial created a candidate root")
+	}
+}
+
+func TestFixProviderLaunchFailureUsesExecutionExitCode(t *testing.T) {
+	target := t.TempDir()
+	if err := os.WriteFile(filepath.Join(target, "app.py"), []byte("def ready(): return True\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	var stdout, stderr bytes.Buffer
+	code := run([]string{
+		"fix", "--target", target, "--catalog-root", filepath.Join("..", ".."),
+		"--candidate-root", filepath.Join(t.TempDir(), "candidates"),
+		"--provider", "codex", "--provider-executable", filepath.Join(t.TempDir(), "codex"),
+		"--allow-remote-source-processing",
+	}, &stdout, &stderr)
+	if code != exitExecution || !strings.Contains(stderr.String(), "PRC-EXIT-4") {
+		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
+	}
+	if _, err := os.Stat(filepath.Join(target, "app_test.py")); !os.IsNotExist(err) {
+		t.Fatal("provider launch failure modified the original workspace")
+	}
+}
+
+func fakeFixCodex(t *testing.T) string {
+	t.Helper()
+	body := `prompt=$(/bin/cat)
+task_id=$(printf '%s' "$prompt" | /usr/bin/sed -n 's/.*"task_id": "\([0-9a-f]*\)".*/\1/p' | /usr/bin/head -n 1)
+result=""
+while [ "$#" -gt 0 ]; do
+  if [ "$1" = "--output-last-message" ]; then shift; result="$1"; fi
+  shift
+done
+printf '%s' '{"schema_version":"prc.agent-output/v0.1","task_id":"'"$task_id"'","status":"candidate","root_cause":"No recognized automated test exists.","changed_files":["app_test.py"],"patch":"diff --git a/app_test.py b/app_test.py\nnew file mode 100644\n--- /dev/null\n+++ b/app_test.py\n@@ -0,0 +1,4 @@\n+from app import ready\n+\n+def test_ready():\n+    assert ready() is True\n","commands_requested_or_run":[],"limitations":[],"requested_capability_changes":[]}' > "$result"
+printf '%s\n' '{"type":"turn.completed"}'
+`
+	path := filepath.Join(t.TempDir(), "codex")
+	if err := os.WriteFile(path, []byte("#!/bin/sh\nset -eu\n"+body), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	return path
 }
 
 func TestDoctorCommandReportsVerifiedEnvironment(t *testing.T) {
@@ -391,6 +484,9 @@ func TestStableExitCodeContract(t *testing.T) {
 	}
 	if got := remediationExitCode(remediation.RemediationRun{TerminalState: "stopped_by_policy_or_budget"}); got != exitPolicyDenied {
 		t.Fatalf("policy stop exit=%d", got)
+	}
+	if got := remediationExitCode(remediation.RemediationRun{TerminalState: "provider_stopped"}); got != exitIncomplete {
+		t.Fatalf("provider stop exit=%d", got)
 	}
 	if got := errorExitCode(errors.New("unclassified"), exitInternal); got != exitInternal {
 		t.Fatalf("internal fallback exit=%d", got)

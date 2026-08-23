@@ -106,6 +106,9 @@ func Run(ctx context.Context, plan Plan, task Task) (Execution, error) {
 		return Execution{}, writeErr
 	}
 	if runContext.Err() != nil {
+		if ctx.Err() != nil {
+			return Execution{}, fmt.Errorf("provider execution cancelled: %w", ctx.Err())
+		}
 		return Execution{}, fmt.Errorf("provider timed out after %d seconds: %w", task.TimeoutSeconds, runContext.Err())
 	}
 	if errors.Is(stdout.err, errLimit) || errors.Is(stderr.err, errLimit) {

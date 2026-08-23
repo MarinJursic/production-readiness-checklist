@@ -83,6 +83,8 @@ the provider, and runs raw-tree, exact-byte, mode, budget, target-result,
 regression, and source-integrity audits. The provider never approves its own
 work. Both one-shot remediation paths can bind the exact project configuration,
 its protected paths, and its file, line, and attempt ceilings into a v0.2 fix
-contract. The deterministic R1 loop does not invoke providers. Provider-driven
-repair loops, project command execution, merges, deployments, and releases remain
-unimplemented.
+contract. The default loop does not invoke providers. When explicitly enabled,
+`fix --provider` composes the read-only provider and scanner-owned proposal
+paths only for a missing-test assertion with one bounded source input and new
+test-file allowlist. General R2 repair planning, sandboxed project command
+execution, merges, deployments, and releases remain unimplemented.

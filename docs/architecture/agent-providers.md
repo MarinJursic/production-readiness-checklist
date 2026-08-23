@@ -45,11 +45,12 @@ optional provider-side cost limit is passed through; the current Codex CLI
 adapter rejects a nonzero cost limit because it cannot enforce one.
 
 These controls are not an R2 write sandbox. Neither provider may mutate a
-candidate workspace. An agent proposal remains untrusted data. The separate
+candidate workspace. An agent proposal remains untrusted data. The
 scanner-owned [`remediate-proposal`](../scanner/remediation.md#apply-one-validated-r2-proposal)
-path can explicitly parse one validated proposal into a fresh isolated candidate
-and run deterministic acceptance checks; the provider does not apply or approve
-that result.
+path can explicitly parse one validated proposal into a fresh isolated
+candidate and run deterministic acceptance checks; the provider does not apply
+or approve that result. The bounded `prc fix --provider` path composes those
+same two stages only for a scanner-planned missing-test task.
 
 ## Create and seal a task
 
@@ -133,5 +134,8 @@ oversized output. Claude's outer JSON envelope must contain a non-error
 `structured_output` value that passes the same validation.
 
 After validation, follow the [isolated R2 proposal](../scanner/remediation.md#apply-one-validated-r2-proposal)
-workflow when the task's assertion is R2. There is no automatic handoff from
-`provider run`, and a proposal is never applied to the source workspace.
+workflow when the task's assertion is R2. `provider run` itself never applies a
+proposal. The optional [bounded R2 loop](../scanner/remediation.md#opt-in-to-one-scanner-planned-r2-task)
+constructs and seals its own narrow task, invokes the same read-only provider
+protocol, and hands valid output to the isolated scanner-owned application
+path. A proposal is never applied to the source workspace.

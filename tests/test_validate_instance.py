@@ -445,7 +445,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "terminal_state": "profile_satisfied",
         }
         remediation_run = {
-            "schema_version": "prc.remediation-run/v0.1",
+            "schema_version": "prc.remediation-run/v0.2",
             "run_id": digest,
             "started_at": "2026-08-23T12:00:00Z",
             "completed_at": "2026-08-23T12:00:01Z",
@@ -460,6 +460,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "max_changed_lines": 200,
             "usage": {"attempts": 0, "changed_files": 0, "changed_lines": 0},
             "candidates": [],
+            "provider_executions": [],
             "final_run": final_run,
             "gate_state": "profile_satisfied",
             "terminal_state": "profile_satisfied",
@@ -469,6 +470,26 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         self.assertEqual(
             validate_instance.validation_errors(
                 remediation_run, "remediation-run.schema.json"
+            ),
+            [],
+        )
+
+        legacy_plan = {**plan, "schema_version": "prc.plan/v0.4"}
+        del legacy_plan["catalog_digest"]
+        legacy_final_run = {
+            **final_run,
+            "schema_version": "prc.run/v0.4",
+            "plan": legacy_plan,
+        }
+        legacy_remediation_run = {
+            **remediation_run,
+            "schema_version": "prc.remediation-run/v0.1",
+            "final_run": legacy_final_run,
+        }
+        del legacy_remediation_run["provider_executions"]
+        self.assertEqual(
+            validate_instance.validation_errors(
+                legacy_remediation_run, "remediation-run-v0.1.schema.json"
             ),
             [],
         )

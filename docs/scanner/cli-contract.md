@@ -53,9 +53,12 @@ request that exceeds an allowed remediation class, protected-path rule, or
 configured capability budget returns `5`.
 
 The `fix` loop returns `0` only for `profile_satisfied`, `8` when candidate
-acceptance stops the loop, and `5` when policy or budget stops it. Otherwise its
-embedded assessment gate maps through the scan table, so machine work ending
-with manual or unavailable evidence is `2`, not a production-readiness claim.
+acceptance stops the loop, and `5` when policy or budget stops it. A configured
+provider launch, timeout, or protocol failure returns `4`; a valid provider
+`unable` or `needs_escalation` response is recorded as `provider_stopped` and
+returns `2`. Otherwise its embedded assessment gate maps through the scan table,
+so machine work ending with manual or unavailable evidence is `2`, not a
+production-readiness claim.
 
 `doctor` returns `2` when a requested required capability is unavailable. Its
 JSON report still distinguishes each passing, warning, and failing probe.

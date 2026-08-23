@@ -1,6 +1,7 @@
 package remediation
 
 import (
+	"context"
 	"errors"
 	"time"
 
@@ -25,10 +26,24 @@ func IsPolicyDenied(err error) bool {
 	return errors.As(err, &denied)
 }
 
+// ProviderExecutionError marks a provider launch, timeout, or protocol failure
+// after the scanner has accepted the provider configuration.
+type ProviderExecutionError struct{ Err error }
+
+func (err ProviderExecutionError) Error() string { return err.Err.Error() }
+func (err ProviderExecutionError) Unwrap() error { return err.Err }
+
+func providerExecution(err error) error { return ProviderExecutionError{Err: err} }
+
+func IsProviderExecution(err error) bool {
+	var execution ProviderExecutionError
+	return errors.As(err, &execution)
+}
+
 const (
 	FixContractSchema = "prc.fix-contract/v0.2"
 	CandidateSchema   = "prc.remediation-candidate/v0.2"
-	RunSchema         = "prc.remediation-run/v0.1"
+	RunSchema         = "prc.remediation-run/v0.2"
 )
 
 type FixContract struct {
@@ -127,7 +142,21 @@ type LoopOptions struct {
 	MaxChangedLines int
 	MaxAttempts     int
 	Configuration   *ProjectConfiguration
+	Agent           *AgentOptions
+	Context         context.Context
 	Now             func() time.Time
+}
+
+// AgentOptions enable the fail-closed suggest-only provider path in the
+// bounded remediation loop. Source processing must be acknowledged explicitly.
+type AgentOptions struct {
+	Provider                    string
+	Executable                  string
+	OutputSchemaPath            string
+	AllowRemoteSourceProcessing bool
+	TimeoutSeconds              int
+	MaxOutputBytes              int
+	MaxCostUSD                  float64
 }
 
 type BudgetUsage struct {
@@ -151,26 +180,27 @@ type RemainingWork struct {
 }
 
 type RemediationRun struct {
-	SchemaVersion         string          `json:"schema_version"`
-	RunID                 string          `json:"run_id"`
-	StartedAt             time.Time       `json:"started_at"`
-	CompletedAt           time.Time       `json:"completed_at"`
-	ProfileID             string          `json:"profile_id"`
-	ConfigurationDigest   string          `json:"configuration_digest,omitempty"`
-	ProjectID             string          `json:"project_id,omitempty"`
-	SourceInventoryDigest string          `json:"source_inventory_digest"`
-	CandidateRoot         string          `json:"candidate_root"`
-	ResultWorkspace       string          `json:"result_workspace"`
-	FinalInventoryDigest  string          `json:"final_inventory_digest"`
-	OriginalUnchanged     bool            `json:"original_unchanged"`
-	MaxAttempts           int             `json:"max_attempts"`
-	MaxFiles              int             `json:"max_files"`
-	MaxChangedLines       int             `json:"max_changed_lines"`
-	Usage                 BudgetUsage     `json:"usage"`
-	Candidates            []Candidate     `json:"candidates"`
-	FinalRun              model.RunResult `json:"final_run"`
-	GateState             string          `json:"gate_state"`
-	TerminalState         string          `json:"terminal_state"`
-	Remaining             []RemainingWork `json:"remaining"`
-	StopReasons           []string        `json:"stop_reasons"`
+	SchemaVersion         string               `json:"schema_version"`
+	RunID                 string               `json:"run_id"`
+	StartedAt             time.Time            `json:"started_at"`
+	CompletedAt           time.Time            `json:"completed_at"`
+	ProfileID             string               `json:"profile_id"`
+	ConfigurationDigest   string               `json:"configuration_digest,omitempty"`
+	ProjectID             string               `json:"project_id,omitempty"`
+	SourceInventoryDigest string               `json:"source_inventory_digest"`
+	CandidateRoot         string               `json:"candidate_root"`
+	ResultWorkspace       string               `json:"result_workspace"`
+	FinalInventoryDigest  string               `json:"final_inventory_digest"`
+	OriginalUnchanged     bool                 `json:"original_unchanged"`
+	MaxAttempts           int                  `json:"max_attempts"`
+	MaxFiles              int                  `json:"max_files"`
+	MaxChangedLines       int                  `json:"max_changed_lines"`
+	Usage                 BudgetUsage          `json:"usage"`
+	Candidates            []Candidate          `json:"candidates"`
+	ProviderExecutions    []provider.Execution `json:"provider_executions"`
+	FinalRun              model.RunResult      `json:"final_run"`
+	GateState             string               `json:"gate_state"`
+	TerminalState         string               `json:"terminal_state"`
+	Remaining             []RemainingWork      `json:"remaining"`
+	StopReasons           []string             `json:"stop_reasons"`
 }

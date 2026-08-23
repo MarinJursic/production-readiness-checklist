@@ -3,6 +3,7 @@ package provider
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"os"
 	"path/filepath"
 	"slices"
@@ -377,6 +378,32 @@ printf '%s\n' '{"type":"turn.completed"}'
 	}
 }
 
+func TestRunExecutesFakeClaudeStructuredOutput(t *testing.T) {
+	workspace := providerWorkspace(t)
+	task := taskForWorkspace(t, workspace)
+	structured, err := json.Marshal(testOutput(task))
+	if err != nil {
+		t.Fatal(err)
+	}
+	envelope, err := json.Marshal(map[string]any{"is_error": false, "structured_output": json.RawMessage(structured)})
+	if err != nil {
+		t.Fatal(err)
+	}
+	shellOutput := strings.ReplaceAll(string(envelope), "'", "'\\''")
+	plan, err := BuildPlan("claude", fakeExecutable(t, "claude", "printf '%s' '"+shellOutput+"'\n"), workspace,
+		privateOutputDirectory(t), filepath.Join(repositoryRoot(t), "schemas", "agent-output.schema.json"), task)
+	if err != nil {
+		t.Fatal(err)
+	}
+	execution, err := Run(context.Background(), plan, task)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if execution.Provider != "claude" || execution.Output.Status != "candidate" || execution.ExecutionID == "" {
+		t.Fatalf("unexpected Claude execution: %+v", execution)
+	}
+}
+
 func TestRunRejectsPlanMutation(t *testing.T) {
 	workspace := providerWorkspace(t)
 	task := taskForWorkspace(t, workspace)
@@ -388,6 +415,22 @@ func TestRunRejectsPlanMutation(t *testing.T) {
 	plan.Arguments = append(plan.Arguments, "--dangerously-bypass-approvals-and-sandbox")
 	if _, err := Run(context.Background(), plan, task); err == nil || !strings.Contains(err.Error(), "changed after capability") {
 		t.Fatalf("unexpected error: %v", err)
+	}
+}
+
+func TestRunPreservesCallerCancellation(t *testing.T) {
+	workspace := providerWorkspace(t)
+	task := taskForWorkspace(t, workspace)
+	plan, err := BuildPlan("codex", fakeExecutable(t, "codex", "sleep 5\n"), workspace, privateOutputDirectory(t),
+		filepath.Join(repositoryRoot(t), "schemas", "agent-output.schema.json"), task)
+	if err != nil {
+		t.Fatal(err)
+	}
+	ctx, cancel := context.WithCancel(context.Background())
+	cancel()
+	_, err = Run(ctx, plan, task)
+	if !errors.Is(err, context.Canceled) || !strings.Contains(err.Error(), "cancelled") {
+		t.Fatalf("unexpected cancellation error: %v", err)
 	}
 }
 

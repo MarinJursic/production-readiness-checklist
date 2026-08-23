@@ -66,12 +66,12 @@ The candidate directory is preserved for review. Acceptance is permission to
 inspect or continue testing that isolated candidate; it is not authorization to
 merge, deploy, release, accept risk, or claim that the full profile is satisfied.
 
-## Run the bounded deterministic loop
+## Run the bounded remediation loop
 
-`prc fix` repeatedly applies only the registered R1 fixers. Each accepted
-candidate becomes the source of a new sibling candidate, so fixes compose
-without changing the original project. The candidate root must be a new path
-outside the target tree.
+Without a provider, `prc fix` repeatedly applies only the registered R1 fixers.
+Each accepted candidate becomes the source of a new sibling candidate, so fixes
+compose without changing the original project. The candidate root must be a new
+path outside the target tree.
 
 ```bash
 ./prc fix \
@@ -86,27 +86,68 @@ outside the target tree.
 ```
 
 The loop evaluates findings in profile order and stops predictably when it has
-closed all eligible deterministic findings, a cumulative budget is exhausted,
-or an independently checked candidate is rejected. File and changed-line usage
-accumulates across accepted candidates; command-line values cannot raise limits
-declared in project configuration.
+closed all eligible findings, a cumulative budget is exhausted, a provider
+cannot return a candidate, or an independently checked candidate is rejected.
+File and changed-line usage accumulates across accepted candidates;
+command-line values cannot raise limits declared in project configuration.
 
-The `prc.remediation-run/v0.1` report records every candidate, cumulative budget
-usage, the final fresh assessment, the final isolated workspace, and a reason
-code for every unresolved result. Its terminal states are:
+The `prc.remediation-run/v0.2` report records every candidate, provider
+execution and transcript digest, cumulative budget usage, the final fresh
+assessment, the final isolated workspace, and a reason code for every
+unresolved result. Its terminal states are:
 
 - `profile_satisfied`: every required result in the selected profile passed;
 - `machine_work_complete`: no registered deterministic R1 failure remains, but
   manual evidence, blocked checks, or higher-risk work can still remain;
-- `stopped_by_policy_or_budget`: an eligible fix could not run within policy; or
-- `candidate_rejected`: independent acceptance rejected an attempted fix.
+- `stopped_by_policy_or_budget`: an eligible fix could not run within policy;
+- `candidate_rejected`: independent acceptance rejected an attempted fix; or
+- `provider_stopped`: the provider returned `unable` or `needs_escalation`
+  without a patch.
 
 Exit status `0` is reserved for `profile_satisfied`. A no-go gate exits `1`,
-incomplete or blocked assessment work exits `2`, a policy or budget stop exits
-`5`, and candidate rejection exits `8`. `machine_work_complete` is not a
-production-readiness claim. The loop
-does not invoke Codex, Claude Code, project commands, R2 proposals, deployment,
-or version-control operations.
+incomplete or blocked assessment work and `provider_stopped` exit `2`, a policy
+or budget stop exits `5`, and candidate rejection exits `8`.
+`machine_work_complete` is not a production-readiness claim. The default loop
+does not invoke an agent. No loop mode runs project commands, deploys, merges,
+or performs version-control operations.
+
+## Opt in to one scanner-planned R2 task
+
+`prc fix --provider` connects the bounded loop to the read-only Codex or Claude
+Code provider adapter. This is not general repository autonomy. The current
+task planner supports only a failing `PRC-A-CORE-010` test-discovery assertion:
+it selects one bounded source file, derives a small allowlist of new test paths,
+and asks for exactly one non-vacuous test file. Every other R2 finding remains
+`no_safe_agent_task` until it has a dedicated planner and sufficiently strong
+verification.
+
+```bash
+./prc fix \
+  --catalog-root /path/to/production-readiness-checklist \
+  --target /path/to/project \
+  --config /path/to/project/production-readiness.yaml \
+  --candidate-root /safe/path/prc-remediation-run \
+  --provider codex \
+  --allow-remote-source-processing \
+  --max-attempts 3 \
+  --format json > remediation-run.json
+```
+
+The remote-processing flag is mandatory because the sealed prompt contains the
+selected source file. The provider receives no source-workspace access, shell,
+network tool, MCP server, secret, edit tool, or candidate workspace. Its output
+directory is private and separate from both source and candidate. Each provider
+attempt preserves `agent-task.json`, bounded stdout/stderr transcripts, their
+digests, the executable digest, and the schema digest. A proposal is parsed and
+applied by the scanner exactly once in a fresh candidate, then passes the same
+structural, anti-gaming, target-assertion, regression, and source-integrity
+checks as `remediate-proposal`.
+
+Current acceptance establishes that a discoverable, structurally non-vacuous
+test was added without weakening existing tests or regressing prior scanner
+passes. It does not execute project tests or prove behavioral coverage. Broader
+R2 autonomy stays disabled until sandboxed, scanner-owned verification commands
+and assertion-specific behavioral contracts are implemented.
 
 ## Apply one validated R2 proposal
 

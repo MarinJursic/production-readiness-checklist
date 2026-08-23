@@ -57,6 +57,13 @@ func SealTaskWithInventory(path, workspace string, item model.Inventory, require
 	if err != nil {
 		return Task{}, err
 	}
+	return SealTaskValueWithInventory(task, workspace, item, requiredProtectedPaths)
+}
+
+// SealTaskValueWithInventory seals a scanner-constructed draft without first
+// persisting it. It applies the same inventory, input, and protected-path
+// checks as the file-based task workflow.
+func SealTaskValueWithInventory(task Task, workspace string, item model.Inventory, requiredProtectedPaths []string) (Task, error) {
 	task.TaskID = ""
 	task.Inputs = []InputFile{}
 	if err := validatePaths(task.RelevantPaths, "relevant"); err != nil {

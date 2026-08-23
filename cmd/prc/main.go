@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"path/filepath"
 	"sort"
 	"strings"
 	"time"
@@ -76,6 +77,9 @@ func errorExitCode(err error, fallback int) int {
 func remediationCommandError(err error) error {
 	if remediation.IsPolicyDenied(err) {
 		return exitError(exitPolicyDenied, err)
+	}
+	if remediation.IsProviderExecution(err) {
+		return exitError(exitExecution, err)
 	}
 	return exitError(exitConfiguration, err)
 }
@@ -344,15 +348,29 @@ func runFix(args []string, stdout, stderr io.Writer) (int, error) {
 	set, target, catalogRoot, profile := parseCommon("fix", args, stderr)
 	configPath := set.String("config", "", "optional validated project configuration")
 	candidateRoot := set.String("candidate-root", "", "new root for isolated attempt workspaces (required)")
-	maxAttempts := set.Int("max-attempts", 3, "maximum deterministic remediation attempts")
+	maxAttempts := set.Int("max-attempts", 3, "maximum remediation attempts")
 	maxFiles := set.Int("max-files", 20, "maximum changed files across all attempts")
 	maxChangedLines := set.Int("max-changed-lines", 200, "maximum changed lines across all attempts")
+	providerName := set.String("provider", "", "optional suggest-only provider: codex or claude")
+	providerExecutable := set.String("provider-executable", "", "provider CLI executable; defaults to provider name")
+	agentOutputSchema := set.String("agent-output-schema", "", "agent output JSON schema; defaults to catalog schema")
+	allowRemoteSource := set.Bool("allow-remote-source-processing", false, "explicitly allow sealed task inputs to be processed by the provider")
+	agentTimeout := set.Int("agent-timeout-seconds", 300, "provider timeout per attempt")
+	agentMaxOutput := set.Int("agent-max-output-bytes", 256*1024, "provider output byte limit per attempt")
+	agentMaxCost := set.Float64("agent-max-cost-usd", 0, "provider-enforced cost limit per attempt; unsupported by Codex")
 	format := set.String("format", "human", "human or json")
 	if err := set.Parse(args); err != nil {
 		return exitInternal, exitError(exitConfiguration, err)
 	}
 	if *format != "human" && *format != "json" {
 		return exitInternal, exitError(exitConfiguration, fmt.Errorf("unsupported format %q", *format))
+	}
+	if *providerName == "" {
+		for _, name := range []string{"provider-executable", "agent-output-schema", "allow-remote-source-processing", "agent-timeout-seconds", "agent-max-output-bytes", "agent-max-cost-usd"} {
+			if flagWasSet(set, name) {
+				return exitInternal, exitError(exitConfiguration, fmt.Errorf("--%s requires --provider", name))
+			}
+		}
 	}
 	configuration, err := loadRemediationConfiguration(*configPath)
 	if err != nil {
@@ -373,10 +391,24 @@ func runFix(args []string, stdout, stderr io.Writer) (int, error) {
 			*maxChangedLines = 0
 		}
 	}
+	var agent *remediation.AgentOptions
+	if *providerName != "" {
+		if *providerExecutable == "" {
+			*providerExecutable = *providerName
+		}
+		if *agentOutputSchema == "" {
+			*agentOutputSchema = filepath.Join(*catalogRoot, "schemas", "agent-output.schema.json")
+		}
+		agent = &remediation.AgentOptions{
+			Provider: *providerName, Executable: *providerExecutable, OutputSchemaPath: *agentOutputSchema,
+			AllowRemoteSourceProcessing: *allowRemoteSource, TimeoutSeconds: *agentTimeout,
+			MaxOutputBytes: *agentMaxOutput, MaxCostUSD: *agentMaxCost,
+		}
+	}
 	result, err := remediation.RunLoop(remediation.LoopOptions{
 		CatalogRoot: *catalogRoot, Target: *target, CandidateRoot: *candidateRoot,
 		ProfileID: *profile, MaxAttempts: *maxAttempts, MaxFiles: *maxFiles,
-		MaxChangedLines: *maxChangedLines, Configuration: configuration,
+		MaxChangedLines: *maxChangedLines, Configuration: configuration, Agent: agent,
 	})
 	if err != nil {
 		return exitInternal, remediationCommandError(err)
@@ -399,6 +431,8 @@ func remediationExitCode(result remediation.RemediationRun) int {
 		return exitCandidateRejected
 	case "stopped_by_policy_or_budget":
 		return exitPolicyDenied
+	case "provider_stopped":
+		return exitIncomplete
 	}
 	return scanTerminalExitCode(result.GateState)
 }
@@ -419,6 +453,9 @@ func printRemediationRun(output io.Writer, result remediation.RemediationRun) {
 		}
 		fmt.Fprintf(output, "- %s candidate %d: %s (%s)\n", status, candidate.Contract.Attempt,
 			candidate.Contract.AssertionID, candidate.CandidatePath)
+	}
+	for _, execution := range result.ProviderExecutions {
+		fmt.Fprintf(output, "- provider %s execution %s: %s\n", execution.Provider, execution.ExecutionID, execution.Output.Status)
 	}
 	for _, item := range result.Remaining {
 		fmt.Fprintf(output, "- remaining %s [%s]: %s\n", item.AssertionID, item.ReasonCode, item.Reason)

@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/remediation-run.schema.json",
-  "title": "Production Readiness Remediation Run v0.2",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/remediation-run-v0.1.schema.json",
+  "title": "Production Readiness Remediation Run v0.1",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "run_id", "started_at", "completed_at", "profile_id", "source_inventory_digest", "candidate_root", "result_workspace", "final_inventory_digest", "original_unchanged", "max_attempts", "max_files", "max_changed_lines", "usage", "candidates", "provider_executions", "final_run", "gate_state", "terminal_state", "remaining", "stop_reasons"],
+  "required": ["schema_version", "run_id", "started_at", "completed_at", "profile_id", "source_inventory_digest", "candidate_root", "result_workspace", "final_inventory_digest", "original_unchanged", "max_attempts", "max_files", "max_changed_lines", "usage", "candidates", "final_run", "gate_state", "terminal_state", "remaining", "stop_reasons"],
   "properties": {
-    "schema_version": {"const": "prc.remediation-run/v0.2"},
+    "schema_version": {"const": "prc.remediation-run/v0.1"},
     "run_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "started_at": {"type": "string", "format": "date-time"},
     "completed_at": {"type": "string", "format": "date-time"},
@@ -23,22 +23,15 @@
     "max_changed_lines": {"type": "integer", "minimum": 1, "maximum": 1000},
     "usage": {"$ref": "#/$defs/usage"},
     "candidates": {"type": "array", "maxItems": 10, "items": {"$ref": "remediation-candidate.schema.json"}},
-    "provider_executions": {"type": "array", "maxItems": 10, "items": {"$ref": "agent-execution.schema.json"}},
-    "final_run": {"$ref": "run-result.schema.json"},
+    "final_run": {"$ref": "run-result-v0.4.schema.json"},
     "gate_state": {"enum": ["profile_satisfied", "machine_work_complete_manual_evidence_remaining", "assessment_incomplete", "environment_blocked", "no_go"]},
-    "terminal_state": {"enum": ["profile_satisfied", "machine_work_complete", "stopped_by_policy_or_budget", "candidate_rejected", "provider_stopped"]},
+    "terminal_state": {"enum": ["profile_satisfied", "machine_work_complete", "stopped_by_policy_or_budget", "candidate_rejected"]},
     "remaining": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/remaining_work"}},
     "stop_reasons": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
   },
   "allOf": [
-    {
-      "if": {"required": ["configuration_digest"]},
-      "then": {"required": ["project_id"]}
-    },
-    {
-      "if": {"required": ["project_id"]},
-      "then": {"required": ["configuration_digest"]}
-    },
+    {"if": {"required": ["configuration_digest"]}, "then": {"required": ["project_id"]}},
+    {"if": {"required": ["project_id"]}, "then": {"required": ["configuration_digest"]}},
     {
       "if": {"properties": {"terminal_state": {"enum": ["profile_satisfied", "machine_work_complete"]}}, "required": ["terminal_state"]},
       "then": {"properties": {"stop_reasons": {"maxItems": 0}}},
@@ -47,8 +40,7 @@
   ],
   "$defs": {
     "usage": {
-      "type": "object",
-      "additionalProperties": false,
+      "type": "object", "additionalProperties": false,
       "required": ["attempts", "changed_files", "changed_lines"],
       "properties": {
         "attempts": {"type": "integer", "minimum": 0, "maximum": 10},
@@ -57,8 +49,7 @@
       }
     },
     "remaining_work": {
-      "type": "object",
-      "additionalProperties": false,
+      "type": "object", "additionalProperties": false,
       "required": ["assertion_id", "control_ids", "title", "assessment", "execution", "severity", "gate", "remediation_class", "summary", "reason_code", "reason"],
       "properties": {
         "assertion_id": {"type": "string", "pattern": "^PRC-A-[A-Z0-9]+-[0-9]{3}$"},
@@ -70,7 +61,7 @@
         "gate": {"enum": ["advisory", "required", "no-go"]},
         "remediation_class": {"enum": ["R0", "R1", "R2", "R3", "R4", "R5", "R6"]},
         "summary": {"type": "string", "minLength": 1},
-        "reason_code": {"enum": ["budget_exhausted", "candidate_rejected", "provider_stopped", "human_evidence_required", "evidence_or_execution_required", "detect_explain_only", "no_registered_fixer", "agent_proposal_required", "no_safe_agent_task", "human_review_required", "specialized_approval_required", "separate_operational_workflow_required", "human_decision_required", "unsupported_remediation_class"]},
+        "reason_code": {"enum": ["budget_exhausted", "candidate_rejected", "human_evidence_required", "evidence_or_execution_required", "detect_explain_only", "no_registered_fixer", "agent_proposal_required", "human_review_required", "specialized_approval_required", "separate_operational_workflow_required", "human_decision_required", "unsupported_remediation_class"]},
         "reason": {"type": "string", "minLength": 1}
       }
     }
