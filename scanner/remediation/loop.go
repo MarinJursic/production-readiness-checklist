@@ -69,6 +69,7 @@ func RunLoop(options LoopOptions) (RemediationRun, error) {
 	candidates := []Candidate{}
 	attemptRecords := []AttemptRecord{}
 	providerExecutions := []provider.Execution{}
+	providerFailures := []provider.Failure{}
 	usage := BudgetUsage{}
 	stopReasons := []string{}
 	stoppedAssertion, stoppedCode := "", ""
@@ -158,12 +159,26 @@ func RunLoop(options LoopOptions) (RemediationRun, error) {
 			if err != nil {
 				return RemediationRun{}, providerExecution(err)
 			}
-			execution, err := provider.Run(options.Context, launchPlan, agentTask)
-			if err != nil {
-				return RemediationRun{}, providerExecution(err)
-			}
+			execution, executionErr := provider.Run(options.Context, launchPlan, agentTask)
 			if err := verifySealedAgentTask(outputDirectory, agentTask); err != nil {
 				return RemediationRun{}, providerExecution(err)
+			}
+			if executionErr != nil {
+				failure, ok := provider.FailureFromError(executionErr)
+				if !ok {
+					return RemediationRun{}, providerExecution(executionErr)
+				}
+				providerFailures = append(providerFailures, failure)
+				attemptRecord.ProviderFailureID = failure.FailureID
+				attemptRecord.CompletedAt = options.Now().UTC()
+				attemptRecord.Outcome = "provider_failed"
+				attemptRecord.ReasonCode = "provider_" + failure.ReasonCode
+				attemptRecord.Reason = failure.Reason
+				attemptRecords = append(attemptRecords, attemptRecord)
+				usage.Attempts++
+				stoppedAssertion, stoppedCode = assertionID, "provider_failed"
+				stopReasons = append(stopReasons, failure.Reason)
+				break
 			}
 			providerExecutions = append(providerExecutions, execution)
 			attemptRecord.ProviderExecutionID = execution.ExecutionID
@@ -257,6 +272,8 @@ func RunLoop(options LoopOptions) (RemediationRun, error) {
 		terminalState = "candidate_rejected"
 	} else if stoppedCode == "provider_stopped" {
 		terminalState = "provider_stopped"
+	} else if stoppedCode == "provider_failed" {
+		terminalState = "provider_failed"
 	} else if activeRun.TerminalState == "profile_satisfied" {
 		terminalState = "profile_satisfied"
 	}
@@ -267,7 +284,8 @@ func RunLoop(options LoopOptions) (RemediationRun, error) {
 		FinalInventoryDigest: activeInventory.Digest, OriginalUnchanged: true,
 		MaxAttempts: policy.maxAttempts, MaxFiles: policy.maxFiles, MaxChangedLines: policy.maxChangedLines,
 		Usage: usage, Attempts: attemptRecords, Candidates: candidates, ProviderExecutions: providerExecutions,
-		FinalRun: activeRun, GateState: activeRun.TerminalState,
+		ProviderFailures: providerFailures,
+		FinalRun:         activeRun, GateState: activeRun.TerminalState,
 		TerminalState: terminalState, Remaining: remaining, StopReasons: uniqueSorted(stopReasons),
 	}
 	if err := validateAttemptAudit(result); err != nil {
@@ -466,6 +484,9 @@ func remainingReason(assertion model.Assertion, result model.AssertionResult, st
 		}
 		if stoppedCode == "provider_stopped" {
 			return stoppedCode, "The read-only provider could not produce a candidate and the loop stopped without retrying."
+		}
+		if stoppedCode == "provider_failed" {
+			return stoppedCode, "The provider invocation failed safely and the loop stopped without retrying."
 		}
 		return stoppedCode, "The independently verified candidate was rejected and was not used as the next baseline."
 	}

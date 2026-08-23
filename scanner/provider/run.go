@@ -44,36 +44,43 @@ func Run(ctx context.Context, plan Plan, task Task) (Execution, error) {
 	if err := task.Validate(); err != nil {
 		return Execution{}, err
 	}
+	invocationStarted := time.Now().UTC()
+	failPreflight := func(cause error) (Execution, error) {
+		return Execution{}, newRunFailure(
+			plan, task, invocationStarted, time.Now().UTC(), "preflight", "preflight_failed",
+			"Provider invocation failed scanner preflight before launch.", cause, "", nil, false, "", nil, false,
+		)
+	}
 	workspace, err := existingDirectory(plan.Workspace, "agent workspace")
 	if err != nil || workspace != plan.Workspace {
-		return Execution{}, fmt.Errorf("agent workspace changed after execution planning")
+		return failPreflight(fmt.Errorf("agent workspace changed after execution planning"))
 	}
 	outputDirectory, err := existingDirectory(plan.OutputDirectory, "agent output directory")
 	if err != nil || outputDirectory != plan.OutputDirectory {
-		return Execution{}, fmt.Errorf("agent output directory changed after execution planning")
+		return failPreflight(fmt.Errorf("agent output directory changed after execution planning"))
 	}
 	if err := validatePrivateOutputDirectory(outputDirectory); err != nil {
-		return Execution{}, err
+		return failPreflight(err)
 	}
 	executionDirectory, err := existingDirectory(plan.ExecutionDirectory, "agent execution directory")
 	if err != nil || executionDirectory != plan.ExecutionDirectory || executionDirectory != outputDirectory {
-		return Execution{}, fmt.Errorf("agent execution directory changed after execution planning")
+		return failPreflight(fmt.Errorf("agent execution directory changed after execution planning"))
 	}
 	item, err := workspaceinventory.Build(plan.Workspace)
 	if err != nil || item.Digest != task.WorkspaceInventoryDigest {
-		return Execution{}, fmt.Errorf("agent workspace changed after execution planning")
+		return failPreflight(fmt.Errorf("agent workspace changed after execution planning"))
 	}
 	expectedSeal, err := sealPlan(plan, task)
 	if err != nil || expectedSeal != plan.seal {
-		return Execution{}, fmt.Errorf("provider execution plan or task changed after capability evaluation")
+		return failPreflight(fmt.Errorf("provider execution plan or task changed after capability evaluation"))
 	}
 	executableDigest, err := hashFile(plan.ExecutablePath, 1024*1024*1024)
 	if err != nil || executableDigest != plan.ExecutableSHA256 {
-		return Execution{}, fmt.Errorf("provider executable changed after execution planning")
+		return failPreflight(fmt.Errorf("provider executable changed after execution planning"))
 	}
 	_, schemaDigest, _, err := verifiedFile(plan.OutputSchemaPath, "agent output schema", 1024*1024)
 	if err != nil || schemaDigest != plan.OutputSchemaSHA256 {
-		return Execution{}, fmt.Errorf("agent output schema changed after execution planning")
+		return failPreflight(fmt.Errorf("agent output schema changed after execution planning"))
 	}
 	stdoutPath := filepath.Join(plan.OutputDirectory, "provider-stdout.log")
 	stderrPath := filepath.Join(plan.OutputDirectory, "provider-stderr.log")
@@ -83,7 +90,7 @@ func Run(ctx context.Context, plan Plan, task Task) (Execution, error) {
 	}
 	for _, path := range paths {
 		if _, err := os.Lstat(path); !os.IsNotExist(err) {
-			return Execution{}, fmt.Errorf("provider output path already exists")
+			return failPreflight(fmt.Errorf("provider output path already exists"))
 		}
 	}
 	stdout := &limitedBuffer{data: make([]byte, 0, min(task.MaxOutputBytes, 64*1024)), limit: task.MaxOutputBytes}
@@ -100,43 +107,90 @@ func Run(ctx context.Context, plan Plan, task Task) (Execution, error) {
 	runErr := command.Run()
 	completed := time.Now().UTC()
 	if writeErr := writeExclusive(stdoutPath, stdout.data); writeErr != nil {
-		return Execution{}, writeErr
+		return Execution{}, newRunFailure(
+			plan, task, started, time.Now().UTC(), "transcript", "transcript_failed",
+			"Provider transcript persistence failed; no candidate was accepted.", writeErr,
+			stdoutPath, stdout.data, false, stderrPath, stderr.data, false,
+		)
 	}
 	if writeErr := writeExclusive(stderrPath, stderr.data); writeErr != nil {
-		return Execution{}, writeErr
+		return Execution{}, newRunFailure(
+			plan, task, started, time.Now().UTC(), "transcript", "transcript_failed",
+			"Provider transcript persistence failed; no candidate was accepted.", writeErr,
+			stdoutPath, stdout.data, true, stderrPath, stderr.data, false,
+		)
 	}
 	if runContext.Err() != nil {
 		if ctx.Err() != nil {
-			return Execution{}, fmt.Errorf("provider execution cancelled: %w", ctx.Err())
+			cause := fmt.Errorf("provider execution cancelled: %w", ctx.Err())
+			return Execution{}, newRunFailure(
+				plan, task, started, completed, "execution", "cancelled",
+				"Provider invocation was cancelled; no candidate was accepted.", cause,
+				stdoutPath, stdout.data, true, stderrPath, stderr.data, true,
+			)
 		}
-		return Execution{}, fmt.Errorf("provider timed out after %d seconds: %w", task.TimeoutSeconds, runContext.Err())
+		cause := fmt.Errorf("provider timed out after %d seconds: %w", task.TimeoutSeconds, runContext.Err())
+		return Execution{}, newRunFailure(
+			plan, task, started, completed, "execution", "timeout",
+			"Provider invocation exceeded its scanner-owned timeout; no candidate was accepted.", cause,
+			stdoutPath, stdout.data, true, stderrPath, stderr.data, true,
+		)
 	}
 	if errors.Is(stdout.err, errLimit) || errors.Is(stderr.err, errLimit) {
-		return Execution{}, fmt.Errorf("provider output exceeded its configured byte limit")
+		cause := fmt.Errorf("provider output exceeded its configured byte limit")
+		return Execution{}, newRunFailure(
+			plan, task, started, completed, "execution", "output_limit",
+			"Provider output exceeded its scanner-owned byte limit; no candidate was accepted.", cause,
+			stdoutPath, stdout.data, true, stderrPath, stderr.data, true,
+		)
 	}
 	if runErr != nil {
-		return Execution{}, fmt.Errorf("provider process failed; diagnostics digest %s: %w", digestBytes(stderr.data), runErr)
+		cause := fmt.Errorf("provider process failed; diagnostics digest %s: %w", digestBytes(stderr.data), runErr)
+		return Execution{}, newRunFailure(
+			plan, task, started, completed, "execution", "process_failed",
+			"Provider process exited unsuccessfully; no candidate was accepted.", cause,
+			stdoutPath, stdout.data, true, stderrPath, stderr.data, true,
+		)
 	}
 	item, err = workspaceinventory.Build(plan.Workspace)
 	if err != nil || item.Digest != task.WorkspaceInventoryDigest {
-		return Execution{}, fmt.Errorf("agent workspace changed during provider execution")
+		cause := fmt.Errorf("agent workspace changed during provider execution")
+		return Execution{}, newRunFailure(
+			plan, task, started, completed, "postflight", "workspace_changed",
+			"Source workspace integrity changed during provider invocation; no candidate was accepted.", cause,
+			stdoutPath, stdout.data, true, stderrPath, stderr.data, true,
+		)
 	}
 	var outputData []byte
 	if plan.Provider == "codex" {
 		info, err := os.Stat(plan.ResultPath)
 		if err != nil || !info.Mode().IsRegular() || info.Size() > int64(task.MaxOutputBytes) {
-			return Execution{}, fmt.Errorf("codex result is missing or exceeds the output limit")
+			cause := fmt.Errorf("codex result is missing or exceeds the output limit")
+			return Execution{}, newRunFailure(
+				plan, task, started, completed, "postflight", "result_missing",
+				"Provider result was unavailable within its scanner-owned bound; no candidate was accepted.", cause,
+				stdoutPath, stdout.data, true, stderrPath, stderr.data, true,
+			)
 		}
 		outputData, err = os.ReadFile(plan.ResultPath)
 		if err != nil {
-			return Execution{}, fmt.Errorf("read codex result: %w", err)
+			cause := fmt.Errorf("read codex result: %w", err)
+			return Execution{}, newRunFailure(
+				plan, task, started, completed, "postflight", "result_missing",
+				"Provider result was unavailable within its scanner-owned bound; no candidate was accepted.", cause,
+				stdoutPath, stdout.data, true, stderrPath, stderr.data, true,
+			)
 		}
 	} else {
 		outputData = stdout.data
 	}
 	output, err := ParseOutput(plan.Provider, outputData, task)
 	if err != nil {
-		return Execution{}, err
+		return Execution{}, newRunFailure(
+			plan, task, started, completed, "protocol", "protocol_rejected",
+			"Provider result failed the sealed output protocol; no candidate was accepted.", err,
+			stdoutPath, stdout.data, true, stderrPath, stderr.data, true,
+		)
 	}
 	execution := Execution{
 		SchemaVersion: ExecutionSchema, Provider: plan.Provider, TaskID: task.TaskID,

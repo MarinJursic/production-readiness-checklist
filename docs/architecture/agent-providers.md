@@ -138,8 +138,10 @@ task's remote-source acknowledgement and launch plan.
 
 The scanner writes raw standard output and diagnostics as mode-`0600` transcript
 files in the output directory, records their byte counts and SHA-256 digests,
-and emits a `prc.agent-execution/v0.1` record. Treat transcripts as sensitive
-source-derived evidence.
+and emits a `prc.agent-execution/v0.1` record after valid output. A failed
+invocation instead returns a content-addressed `prc.agent-failure/v0.1` record
+with scanner-authored stage and reason codes plus complete or partial transcript
+metadata. Treat transcripts as sensitive source-derived evidence.
 
 ## Validate without running
 

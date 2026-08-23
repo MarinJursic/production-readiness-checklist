@@ -34,8 +34,18 @@ func validateAttemptAudit(run RemediationRun) error {
 		}
 		executions[execution.ExecutionID] = providerExecutionLink{id: execution.ExecutionID, taskID: execution.TaskID}
 	}
+	failures := make(map[string]providerExecutionLink, len(run.ProviderFailures))
+	for _, failure := range run.ProviderFailures {
+		if failure.Validate() != nil || failures[failure.FailureID].id != "" {
+			return fmt.Errorf("remediation provider failure identity is invalid or duplicated")
+		}
+		failures[failure.FailureID] = providerExecutionLink{
+			id: failure.FailureID, taskID: failure.TaskID, reasonCode: failure.ReasonCode, reason: failure.Reason,
+		}
+	}
 	seenCandidates := map[string]bool{}
 	seenExecutions := map[string]bool{}
+	seenFailures := map[string]bool{}
 	expectedBefore := run.SourceInventoryDigest
 	for index, record := range run.Attempts {
 		if record.Attempt != index+1 || !digestIdentifier(record.FindingID) ||
@@ -47,21 +57,33 @@ func validateAttemptAudit(run RemediationRun) error {
 		}
 		switch record.Mode {
 		case "deterministic":
-			if record.ProviderExecutionID != "" {
-				return fmt.Errorf("deterministic remediation attempt %d links a provider execution", record.Attempt)
+			if record.ProviderExecutionID != "" || record.ProviderFailureID != "" {
+				return fmt.Errorf("deterministic remediation attempt %d links a provider invocation", record.Attempt)
 			}
 		case "agent":
-			execution, ok := executions[record.ProviderExecutionID]
-			if !ok || seenExecutions[record.ProviderExecutionID] || execution.taskID != record.TaskID {
-				return fmt.Errorf("agent remediation attempt %d has invalid provider linkage", record.Attempt)
+			execution, executionOK := executions[record.ProviderExecutionID]
+			failure, failureOK := failures[record.ProviderFailureID]
+			if executionOK == failureOK {
+				return fmt.Errorf("agent remediation attempt %d must link exactly one provider result", record.Attempt)
 			}
-			seenExecutions[record.ProviderExecutionID] = true
+			if executionOK {
+				if seenExecutions[record.ProviderExecutionID] || execution.taskID != record.TaskID {
+					return fmt.Errorf("agent remediation attempt %d has invalid provider execution linkage", record.Attempt)
+				}
+				seenExecutions[record.ProviderExecutionID] = true
+			} else {
+				if seenFailures[record.ProviderFailureID] || failure.taskID != record.TaskID {
+					return fmt.Errorf("agent remediation attempt %d has invalid provider failure linkage", record.Attempt)
+				}
+				seenFailures[record.ProviderFailureID] = true
+			}
 		default:
 			return fmt.Errorf("remediation attempt %d has unsupported mode", record.Attempt)
 		}
 		switch record.Outcome {
 		case "accepted":
-			if record.ReasonCode != "accepted" {
+			if record.ReasonCode != "accepted" ||
+				record.Mode == "agent" && (record.ProviderExecutionID == "" || record.ProviderFailureID != "") {
 				return fmt.Errorf("accepted remediation attempt %d has an invalid reason code", record.Attempt)
 			}
 			candidate, err := linkedAttemptCandidate(record, candidates, seenCandidates)
@@ -70,6 +92,9 @@ func validateAttemptAudit(run RemediationRun) error {
 			}
 			expectedBefore = record.AfterInventoryDigest
 		case "rejected":
+			if record.Mode == "agent" && (record.ProviderExecutionID == "" || record.ProviderFailureID != "") {
+				return fmt.Errorf("rejected remediation attempt %d has invalid provider linkage", record.Attempt)
+			}
 			if record.CandidateID == "" {
 				if record.AfterInventoryDigest != "" || !proposalRejectionCode(record.ReasonCode) {
 					return fmt.Errorf("pre-candidate rejection %d has invalid audit fields", record.Attempt)
@@ -85,25 +110,47 @@ func validateAttemptAudit(run RemediationRun) error {
 				return fmt.Errorf("rejected remediation attempt %d is not terminal", record.Attempt)
 			}
 		case "provider_stopped":
-			if record.Mode != "agent" || record.CandidateID != "" || record.AfterInventoryDigest != "" ||
+			if record.Mode != "agent" || record.ProviderExecutionID == "" || record.ProviderFailureID != "" ||
+				record.CandidateID != "" || record.AfterInventoryDigest != "" ||
 				(record.ReasonCode != "provider_unable" && record.ReasonCode != "provider_needs_escalation") ||
 				index != len(run.Attempts)-1 {
 				return fmt.Errorf("stopped provider attempt %d has invalid audit fields", record.Attempt)
+			}
+		case "provider_failed":
+			failure := failures[record.ProviderFailureID]
+			if record.Mode != "agent" || record.ProviderExecutionID != "" || record.ProviderFailureID == "" ||
+				record.CandidateID != "" || record.AfterInventoryDigest != "" ||
+				!providerFailureReasonCode(record.ReasonCode) || record.ReasonCode != "provider_"+failure.reasonCode ||
+				record.Reason != failure.reason || index != len(run.Attempts)-1 {
+				return fmt.Errorf("failed provider attempt %d has invalid audit fields", record.Attempt)
 			}
 		default:
 			return fmt.Errorf("remediation attempt %d has unsupported outcome", record.Attempt)
 		}
 	}
 	if expectedBefore != run.FinalInventoryDigest || len(seenCandidates) != len(candidates) ||
-		len(seenExecutions) != len(executions) {
-		return fmt.Errorf("remediation attempt audit does not cover the final inventory, candidates, and provider executions")
+		len(seenExecutions) != len(executions) || len(seenFailures) != len(failures) {
+		return fmt.Errorf("remediation attempt audit does not cover the final inventory, candidates, and provider invocations")
 	}
 	return nil
 }
 
+func providerFailureReasonCode(code string) bool {
+	switch code {
+	case "provider_preflight_failed", "provider_transcript_failed", "provider_cancelled", "provider_timeout",
+		"provider_output_limit", "provider_process_failed", "provider_workspace_changed",
+		"provider_result_missing", "provider_protocol_rejected":
+		return true
+	default:
+		return false
+	}
+}
+
 type providerExecutionLink struct {
-	id     string
-	taskID string
+	id         string
+	taskID     string
+	reasonCode string
+	reason     string
 }
 
 func linkedAttemptCandidate(record AttemptRecord, candidates map[string]Candidate, seen map[string]bool) (Candidate, error) {

@@ -94,16 +94,16 @@ cannot return a candidate, or an independently checked candidate is rejected.
 File and changed-line usage accumulates across accepted candidates;
 command-line values cannot raise limits declared in project configuration.
 
-The `prc.remediation-run/v0.5` report records every actual attempt, including
+The `prc.remediation-run/v0.6` report records every actual attempt, including
 proposals rejected before candidate creation. Each attempt binds its sequence,
 mode, exact finding and fingerprint, scanner-owned task, before and after
-inventory digests, provider execution and candidate when present, timestamps,
+inventory digests, provider execution or failure and candidate when present, timestamps,
 outcome, machine-readable reason code, and exact scanner rejection reason. The
 scanner verifies this linkage before computing the run content ID. The report
 also preserves every candidate, provider transcript digest, cumulative budget
 usage, final fresh assessment, final isolated workspace, and a reason code for
 every unresolved result. Its embedded v0.9 scan result preserves adapter
-resolution provenance; frozen v0.3 and v0.4 remediation schemas retain their
+resolution provenance; frozen v0.3, v0.4, and v0.5 remediation schemas retain their
 version-pinned dependency graphs. Every unresolved failure includes its
 canonical finding ID and stable fingerprint. Its terminal states are:
 
@@ -111,13 +111,18 @@ canonical finding ID and stable fingerprint. Its terminal states are:
 - `machine_work_complete`: no registered deterministic R1 failure remains, but
   manual evidence, blocked checks, or higher-risk work can still remain;
 - `stopped_by_policy_or_budget`: an eligible fix could not run within policy;
-- `candidate_rejected`: independent acceptance rejected an attempted fix; or
+- `candidate_rejected`: independent acceptance rejected an attempted fix;
 - `provider_stopped`: the provider returned `unable` or `needs_escalation`
-  without a patch.
+  without a patch; or
+- `provider_failed`: scanner preflight, transcript persistence, process,
+  timeout, output-bound, postflight-integrity, or output-protocol validation
+  failed and the loop did not retry.
 
 Exit status `0` is reserved for `profile_satisfied`. A no-go gate exits `1`,
 incomplete or blocked assessment work and `provider_stopped` exit `2`, a policy
-or budget stop exits `5`, and candidate rejection exits `8`.
+or budget stop exits `5`, provider failure exits `4`, and candidate rejection
+exits `8`. Caller cancellation retains exit `7` while preserving its failure
+record.
 `machine_work_complete` is not a production-readiness claim. The default loop
 does not invoke an agent. No loop mode runs project commands, deploys, merges,
 or performs version-control operations.
@@ -148,14 +153,22 @@ verification.
 The remote-processing flag is mandatory because the sealed prompt contains the
 selected source file. High-confidence secret-like material in that input causes
 a policy stop before the candidate root or provider output directory is created;
-the error identifies only the source path and detector family. The provider receives no source-workspace access, shell,
-network tool, MCP server, secret, edit tool, or candidate workspace. Its output
+the error identifies only the source path and detector family. The provider
+receives no source-workspace access, shell, network tool, MCP server, secret,
+edit tool, or candidate workspace. Its output
 directory is private and separate from both source and candidate. Each provider
 attempt preserves `agent-task.json`, bounded stdout/stderr transcripts, their
 digests, the executable digest, and the schema digest. A proposal is parsed and
 applied by the scanner exactly once in a fresh candidate, then passes the same
 structural, anti-gaming, target-assertion, regression, and source-integrity
 checks as `remediate-proposal`.
+
+If invocation fails before a valid provider output exists, the scanner writes a
+content-addressed `prc.agent-failure/v0.1` record. It uses a scanner-authored
+safe reason, links the sealed task and provider identities, distinguishes the
+failure stage and reason code, and records whichever bounded transcripts were
+successfully persisted. The failed attempt consumes one attempt, is terminal,
+and is never retried automatically.
 
 Current acceptance reconstructs the proposed test before candidate creation,
 requires a conventionally collectable declaration and a recognized behavioral

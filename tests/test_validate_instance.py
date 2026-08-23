@@ -185,7 +185,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
     def test_versioned_run_contracts_pin_their_dependency_graph(self) -> None:
         roots = [
             *(f"run-result-v0.{version}.schema.json" for version in range(1, 10)),
-            *(f"remediation-run-v0.{version}.schema.json" for version in range(1, 5)),
+            *(f"remediation-run-v0.{version}.schema.json" for version in range(1, 6)),
         ]
         pending = list(roots)
         visited: set[str] = set()
@@ -719,7 +719,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             [],
         )
         remediation_run = {
-            "schema_version": "prc.remediation-run/v0.5",
+            "schema_version": "prc.remediation-run/v0.6",
             "run_id": digest,
             "started_at": "2026-08-23T12:00:00Z",
             "completed_at": "2026-08-23T12:00:01Z",
@@ -736,6 +736,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "attempts": [],
             "candidates": [],
             "provider_executions": [],
+            "provider_failures": [],
             "final_run": final_run,
             "gate_state": "profile_satisfied",
             "terminal_state": "profile_satisfied",
@@ -784,8 +785,75 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             )
         )
 
-        v04_remediation_run = {
+        provider_failure = {
+            "schema_version": "prc.agent-failure/v0.1",
+            "failure_id": digest,
+            "provider": "codex",
+            "task_id": digest,
+            "executable_sha256": digest,
+            "output_schema_sha256": digest,
+            "started_at": "2026-08-23T12:00:00Z",
+            "completed_at": "2026-08-23T12:00:01Z",
+            "duration_ms": 1000,
+            "stage": "execution",
+            "reason_code": "timeout",
+            "reason": "Provider invocation exceeded its scanner-owned timeout; no candidate was accepted.",
+            "transcripts_complete": True,
+            "stdout_path": "/tmp/stdout.log",
+            "stdout_sha256": digest,
+            "stdout_bytes": 0,
+            "stderr_path": "/tmp/stderr.log",
+            "stderr_sha256": digest,
+            "stderr_bytes": 0,
+        }
+        failed_attempt = {
+            **attempt,
+            "mode": "agent",
+            "provider_failure_id": digest,
+            "outcome": "provider_failed",
+            "reason_code": "provider_timeout",
+            "reason": "Provider invocation exceeded its scanner-owned timeout; no candidate was accepted.",
+        }
+        del failed_attempt["after_inventory_digest"]
+        del failed_attempt["candidate_id"]
+        failed_remediation_run = {
             **remediation_run,
+            "usage": {"attempts": 1, "changed_files": 0, "changed_lines": 0},
+            "attempts": [failed_attempt],
+            "provider_failures": [provider_failure],
+            "terminal_state": "provider_failed",
+            "stop_reasons": ["Provider invocation failed safely."],
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(
+                failed_remediation_run, "remediation-run.schema.json"
+            ),
+            [],
+        )
+        self.assertTrue(
+            validate_instance.validation_errors(
+                {
+                    **failed_remediation_run,
+                    "attempts": [{**failed_attempt, "provider_execution_id": digest}],
+                },
+                "remediation-run.schema.json",
+            )
+        )
+
+        v05_remediation_run = {
+            **remediation_run,
+            "schema_version": "prc.remediation-run/v0.5",
+        }
+        del v05_remediation_run["provider_failures"]
+        self.assertEqual(
+            validate_instance.validation_errors(
+                v05_remediation_run, "remediation-run-v0.5.schema.json"
+            ),
+            [],
+        )
+
+        v04_remediation_run = {
+            **v05_remediation_run,
             "schema_version": "prc.remediation-run/v0.4",
         }
         del v04_remediation_run["attempts"]
@@ -825,7 +893,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             [],
         )
         v03_remediation_run = {
-            **remediation_run,
+            **v05_remediation_run,
             "schema_version": "prc.remediation-run/v0.3",
             "final_run": v07_run,
         }
@@ -956,6 +1024,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "final_run": legacy_final_run,
         }
         del legacy_remediation_run["provider_executions"]
+        del legacy_remediation_run["provider_failures"]
         del legacy_remediation_run["attempts"]
         self.assertEqual(
             validate_instance.validation_errors(
@@ -976,6 +1045,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "schema_version": "prc.remediation-run/v0.2",
             "final_run": v05_run,
         }
+        del v02_remediation_run["provider_failures"]
         del v02_remediation_run["attempts"]
         self.assertEqual(
             validate_instance.validation_errors(
@@ -1548,6 +1618,37 @@ class ScannerOutputSchemaTests(unittest.TestCase):
                 execution, "agent-execution.schema.json"
             ),
             [],
+        )
+
+        failure = {
+            "schema_version": "prc.agent-failure/v0.1",
+            "failure_id": digest,
+            "provider": "codex",
+            "task_id": task["task_id"],
+            "executable_sha256": digest,
+            "output_schema_sha256": digest,
+            "started_at": "2026-08-23T10:00:00Z",
+            "completed_at": "2026-08-23T10:00:01Z",
+            "duration_ms": 1000,
+            "stage": "execution",
+            "reason_code": "timeout",
+            "reason": "Provider invocation exceeded its scanner-owned timeout; no candidate was accepted.",
+            "transcripts_complete": True,
+            "stdout_path": "/tmp/stdout.log",
+            "stdout_sha256": digest,
+            "stdout_bytes": 0,
+            "stderr_path": "/tmp/stderr.log",
+            "stderr_sha256": digest,
+            "stderr_bytes": 0,
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(failure, "agent-failure.schema.json"),
+            [],
+        )
+        self.assertTrue(
+            validate_instance.validation_errors(
+                {**failure, "stage": "protocol"}, "agent-failure.schema.json"
+            )
         )
 
     def test_adapter_jsonl_messages_conform_and_authority_attack_fails(self) -> None:

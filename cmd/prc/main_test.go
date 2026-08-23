@@ -595,6 +595,59 @@ func TestProviderCapabilitiesAreReadOnly(t *testing.T) {
 	}
 }
 
+func TestProviderRunEmitsFailureRecordBeforeExecutionExit(t *testing.T) {
+	workspace := t.TempDir()
+	if err := os.WriteFile(filepath.Join(workspace, "app.go"), []byte("package app\n"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	item, err := inventory.Build(workspace)
+	if err != nil {
+		t.Fatal(err)
+	}
+	draft := provider.Task{
+		SchemaVersion: provider.TaskSchema, Mode: "suggest",
+		FindingID: strings.Repeat("a", 64), FindingFingerprint: strings.Repeat("b", 64),
+		AssertionID: "PRC-A-CORE-010", ControlIDs: []string{"USEQ-12655775"},
+		Goal: "Add one focused test.", ReadScope: "task-inputs", RelevantPaths: []string{"app.go"},
+		Inputs: []provider.InputFile{}, AllowedPaths: []string{"app_test.go"},
+		ProtectedPaths: []string{".git/", "catalog/", "schemas/"}, AllowedCommands: [][]string{},
+		Network: "deny", Secrets: "none", AllowRemoteSourceProcessing: true,
+		TimeoutSeconds: 30, MaxOutputBytes: 64 * 1024,
+	}
+	task, err := provider.SealTaskValueWithInventory(draft, workspace, item, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	taskData, _ := json.Marshal(task)
+	taskPath := filepath.Join(t.TempDir(), "task.json")
+	if err := os.WriteFile(taskPath, taskData, 0o600); err != nil {
+		t.Fatal(err)
+	}
+	executable := filepath.Join(t.TempDir(), "codex")
+	if err := os.WriteFile(executable, []byte("#!/bin/sh\nprintf diagnostic >&2\nexit 9\n"), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	outputDirectory := t.TempDir()
+	if err := os.Chmod(outputDirectory, 0o700); err != nil {
+		t.Fatal(err)
+	}
+	var stdout, stderr bytes.Buffer
+	code := run([]string{
+		"provider", "run", "--provider", "codex", "--task", taskPath,
+		"--workspace", workspace, "--output-dir", outputDirectory,
+		"--output-schema", filepath.Join("..", "..", "schemas", "agent-output.schema.json"),
+		"--executable", executable,
+	}, &stdout, &stderr)
+	if code != exitExecution || !strings.Contains(stderr.String(), "PRC-EXIT-4") {
+		t.Fatalf("exit=%d stderr=%s stdout=%s", code, stderr.String(), stdout.String())
+	}
+	var failure provider.Failure
+	if err := json.Unmarshal(stdout.Bytes(), &failure); err != nil || failure.Validate() != nil ||
+		failure.ReasonCode != "process_failed" || !failure.TranscriptsComplete {
+		t.Fatalf("provider failure=%+v decode=%v", failure, err)
+	}
+}
+
 func TestScanReportFormats(t *testing.T) {
 	target := t.TempDir()
 	expected := map[string]string{
@@ -906,7 +959,7 @@ func TestFixCommandRunsBoundedDeterministicLoop(t *testing.T) {
 	if err := json.Unmarshal(stdout.Bytes(), &result); err != nil {
 		t.Fatal(err)
 	}
-	if result.SchemaVersion != "prc.remediation-run/v0.5" || len(result.Candidates) != 2 || len(result.Attempts) != 2 ||
+	if result.SchemaVersion != "prc.remediation-run/v0.6" || len(result.Candidates) != 2 || len(result.Attempts) != 2 ||
 		result.ProviderExecutions == nil || len(result.ProviderExecutions) != 0 ||
 		result.TerminalState != "machine_work_complete" || !result.OriginalUnchanged {
 		t.Fatalf("unexpected remediation run: %+v", result)
@@ -1084,6 +1137,14 @@ func TestStableExitCodeContract(t *testing.T) {
 	}
 	if got := remediationExitCode(remediation.RemediationRun{TerminalState: "provider_stopped"}); got != exitIncomplete {
 		t.Fatalf("provider stop exit=%d", got)
+	}
+	if got := remediationExitCode(remediation.RemediationRun{TerminalState: "provider_failed"}); got != exitExecution {
+		t.Fatalf("provider failure exit=%d", got)
+	}
+	if got := remediationExitCode(remediation.RemediationRun{
+		TerminalState: "provider_failed", Attempts: []remediation.AttemptRecord{{ReasonCode: "provider_cancelled"}},
+	}); got != exitCancelled {
+		t.Fatalf("provider cancellation exit=%d", got)
 	}
 	if got := errorExitCode(errors.New("unclassified"), exitInternal); got != exitInternal {
 		t.Fatalf("internal fallback exit=%d", got)

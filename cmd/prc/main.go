@@ -634,6 +634,11 @@ func runProvider(args []string, stdout, stderr io.Writer) error {
 	}
 	execution, err := provider.Run(context.Background(), launchPlan, task)
 	if err != nil {
+		if failure, ok := provider.FailureFromError(err); ok {
+			if encodeErr := encodeJSON(stdout, failure); encodeErr != nil {
+				return encodeErr
+			}
+		}
 		return err
 	}
 	return encodeJSON(stdout, execution)
@@ -782,6 +787,11 @@ func remediationExitCode(result remediation.RemediationRun) int {
 		return exitPolicyDenied
 	case "provider_stopped":
 		return exitIncomplete
+	case "provider_failed":
+		if len(result.Attempts) > 0 && result.Attempts[len(result.Attempts)-1].ReasonCode == "provider_cancelled" {
+			return exitCancelled
+		}
+		return exitExecution
 	}
 	return scanTerminalExitCode(result.GateState)
 }
@@ -805,6 +815,9 @@ func printRemediationRun(output io.Writer, result remediation.RemediationRun) {
 	}
 	for _, execution := range result.ProviderExecutions {
 		fmt.Fprintf(output, "- provider %s execution %s: %s\n", execution.Provider, execution.ExecutionID, execution.Output.Status)
+	}
+	for _, failure := range result.ProviderFailures {
+		fmt.Fprintf(output, "- provider %s failure %s: %s\n", failure.Provider, failure.FailureID, failure.ReasonCode)
 	}
 	for _, item := range result.Remaining {
 		fmt.Fprintf(output, "- remaining %s [%s]: %s\n", item.AssertionID, item.ReasonCode, item.Reason)

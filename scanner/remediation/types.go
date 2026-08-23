@@ -43,7 +43,7 @@ func IsProviderExecution(err error) bool {
 const (
 	FixContractSchema = "prc.fix-contract/v0.3"
 	CandidateSchema   = "prc.remediation-candidate/v0.3"
-	RunSchema         = "prc.remediation-run/v0.5"
+	RunSchema         = "prc.remediation-run/v0.6"
 )
 
 type FixContract struct {
@@ -199,6 +199,7 @@ type AttemptRecord struct {
 	BeforeInventoryDigest string    `json:"before_inventory_digest"`
 	AfterInventoryDigest  string    `json:"after_inventory_digest,omitempty"`
 	ProviderExecutionID   string    `json:"provider_execution_id,omitempty"`
+	ProviderFailureID     string    `json:"provider_failure_id,omitempty"`
 	CandidateID           string    `json:"candidate_id,omitempty"`
 	Outcome               string    `json:"outcome"`
 	ReasonCode            string    `json:"reason_code"`
@@ -225,6 +226,7 @@ type RemediationRun struct {
 	Attempts              []AttemptRecord      `json:"attempts"`
 	Candidates            []Candidate          `json:"candidates"`
 	ProviderExecutions    []provider.Execution `json:"provider_executions"`
+	ProviderFailures      []provider.Failure   `json:"provider_failures"`
 	FinalRun              model.RunResult      `json:"final_run"`
 	GateState             string               `json:"gate_state"`
 	TerminalState         string               `json:"terminal_state"`

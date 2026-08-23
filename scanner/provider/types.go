@@ -6,6 +6,7 @@ const (
 	TaskSchema      = "prc.agent-task/v0.2"
 	OutputSchema    = "prc.agent-output/v0.1"
 	ExecutionSchema = "prc.agent-execution/v0.1"
+	FailureSchema   = "prc.agent-failure/v0.1"
 )
 
 type Task struct {
@@ -109,4 +110,29 @@ type Execution struct {
 	StderrSHA256       string    `json:"stderr_sha256"`
 	StderrBytes        int       `json:"stderr_bytes"`
 	Output             Output    `json:"output"`
+}
+
+// Failure records a provider invocation that did not produce a valid Output.
+// Reason is scanner-authored and deliberately excludes raw provider content;
+// bounded transcript digests preserve the underlying evidence separately.
+type Failure struct {
+	SchemaVersion       string    `json:"schema_version"`
+	FailureID           string    `json:"failure_id"`
+	Provider            string    `json:"provider"`
+	TaskID              string    `json:"task_id"`
+	ExecutableSHA256    string    `json:"executable_sha256"`
+	OutputSchemaSHA256  string    `json:"output_schema_sha256"`
+	StartedAt           time.Time `json:"started_at"`
+	CompletedAt         time.Time `json:"completed_at"`
+	DurationMS          int64     `json:"duration_ms"`
+	Stage               string    `json:"stage"`
+	ReasonCode          string    `json:"reason_code"`
+	Reason              string    `json:"reason"`
+	TranscriptsComplete bool      `json:"transcripts_complete"`
+	StdoutPath          string    `json:"stdout_path,omitempty"`
+	StdoutSHA256        string    `json:"stdout_sha256,omitempty"`
+	StdoutBytes         int       `json:"stdout_bytes"`
+	StderrPath          string    `json:"stderr_path,omitempty"`
+	StderrSHA256        string    `json:"stderr_sha256,omitempty"`
+	StderrBytes         int       `json:"stderr_bytes"`
 }

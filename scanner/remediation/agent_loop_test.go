@@ -184,6 +184,50 @@ func TestRunLoopStopsWithoutPatchWhenProviderIsUnable(t *testing.T) {
 	}
 }
 
+func TestRunLoopRecordsProviderProcessFailureWithoutRetry(t *testing.T) {
+	target := agentLoopTarget(t)
+	options := agentLoopOptions(t, target, "candidate")
+	executable := filepath.Join(t.TempDir(), "codex")
+	if err := os.WriteFile(executable, []byte("#!/bin/sh\nset -eu\nprintf diagnostic >&2\nexit 9\n"), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	options.Agent.Executable = executable
+	result, err := RunLoop(options)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if result.TerminalState != "provider_failed" || len(result.ProviderFailures) != 1 ||
+		len(result.ProviderExecutions) != 0 || len(result.Candidates) != 0 ||
+		result.Usage.Attempts != 1 || len(result.Attempts) != 1 || len(result.StopReasons) != 1 {
+		t.Fatalf("unexpected provider failure result: %+v", result)
+	}
+	failure, attempt := result.ProviderFailures[0], result.Attempts[0]
+	if failure.ReasonCode != "process_failed" || !failure.TranscriptsComplete || failure.StderrBytes == 0 ||
+		attempt.Outcome != "provider_failed" || attempt.ReasonCode != "provider_process_failed" ||
+		attempt.ProviderFailureID != failure.FailureID || attempt.ProviderExecutionID != "" {
+		t.Fatalf("provider failure audit linkage is incomplete: failure=%+v attempt=%+v", failure, attempt)
+	}
+	foundFailureReason := false
+	for _, remaining := range result.Remaining {
+		if remaining.AssertionID == agentTestSuiteAssertion && remaining.ReasonCode == "provider_failed" &&
+			strings.Contains(remaining.Reason, "failed safely") {
+			foundFailureReason = true
+		}
+	}
+	if !foundFailureReason {
+		t.Fatalf("provider failure is not explained safely: %+v", result.Remaining)
+	}
+	tampered := result
+	tampered.Attempts = append([]AttemptRecord(nil), result.Attempts...)
+	tampered.Attempts[0].Reason = "different failure reason"
+	if validateAttemptAudit(tampered) == nil {
+		t.Fatal("attempt audit accepted a failure reason that did not match its provider record")
+	}
+	if _, err := os.Stat(filepath.Join(target, "app_test.py")); !os.IsNotExist(err) {
+		t.Fatal("failed provider modified the original workspace")
+	}
+}
+
 func TestRunLoopRecordsAntiGamingProposalAsRejected(t *testing.T) {
 	target := agentLoopTarget(t)
 	options := agentLoopOptions(t, target, "candidate")

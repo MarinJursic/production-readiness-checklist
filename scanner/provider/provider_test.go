@@ -499,6 +499,8 @@ func TestRunRejectsPlanMutation(t *testing.T) {
 	plan.Arguments = append(plan.Arguments, "--dangerously-bypass-approvals-and-sandbox")
 	if _, err := Run(context.Background(), plan, task); err == nil || !strings.Contains(err.Error(), "changed after capability") {
 		t.Fatalf("unexpected error: %v", err)
+	} else if failure, ok := FailureFromError(err); !ok || failure.ReasonCode != "preflight_failed" || failure.TranscriptsComplete {
+		t.Fatalf("preflight failure was not recorded safely: %+v, %t", failure, ok)
 	}
 }
 
@@ -515,6 +517,55 @@ func TestRunPreservesCallerCancellation(t *testing.T) {
 	_, err = Run(ctx, plan, task)
 	if !errors.Is(err, context.Canceled) || !strings.Contains(err.Error(), "cancelled") {
 		t.Fatalf("unexpected cancellation error: %v", err)
+	}
+	failure, ok := FailureFromError(err)
+	if !ok || failure.ReasonCode != "cancelled" || !failure.TranscriptsComplete {
+		t.Fatalf("cancellation failure was not recorded: %+v, %t", failure, ok)
+	}
+}
+
+func TestRunRecordsBoundedProviderFailures(t *testing.T) {
+	tests := []struct {
+		name, body, code string
+		configure        func(*Task)
+	}{
+		{"process", "printf diagnostic >&2\nexit 7\n", "process_failed", nil},
+		{"output limit", "i=0\nwhile [ \"$i\" -lt 2048 ]; do printf x; i=$((i+1)); done\n", "output_limit", func(task *Task) {
+			task.MaxOutputBytes = 1024
+		}},
+		{"protocol", `result=""
+while [ "$#" -gt 0 ]; do
+  if [ "$1" = "--output-last-message" ]; then shift; result="$1"; fi
+  shift
+done
+printf '{' > "$result"
+printf '%s\n' '{"type":"turn.completed"}'
+`, "protocol_rejected", nil},
+	}
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			workspace := providerWorkspace(t)
+			task := taskForWorkspace(t, workspace)
+			if test.configure != nil {
+				test.configure(&task)
+				task.TaskID, _ = TaskID(task)
+			}
+			plan, err := BuildPlan("codex", fakeExecutable(t, "codex", test.body), workspace,
+				privateOutputDirectory(t), filepath.Join(repositoryRoot(t), "schemas", "agent-output.schema.json"), task)
+			if err != nil {
+				t.Fatal(err)
+			}
+			_, err = Run(context.Background(), plan, task)
+			failure, ok := FailureFromError(err)
+			if !ok || failure.ReasonCode != test.code || !failure.TranscriptsComplete ||
+				failure.FailureID == "" || failure.Reason == "" || failure.Validate() != nil {
+				t.Fatalf("provider failure = %+v, %t, err=%v", failure, ok, err)
+			}
+			failure.Reason = "tampered"
+			if failure.Validate() == nil {
+				t.Fatal("tampered provider failure retained its identity")
+			}
+		})
 	}
 }
 
