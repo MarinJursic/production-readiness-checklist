@@ -292,6 +292,7 @@ jobs:
           PRC_TEST_GO_VERIFIER_IMAGE: docker.io/library/golang@sha256:4c9fe60190a2a3350ddc51de80d0224b8a6698d12bdfc999fee45ea9d6c46dbc # golang:1.27.0-alpine
         run: |
           docker pull "$PRC_TEST_GO_VERIFIER_IMAGE"
+          set +e
           "$RUNNER_TEMP/prc" remediate-proposal \
             --target fixtures/providers/workspace \
             --catalog-root . \
@@ -301,6 +302,12 @@ jobs:
             --candidate-dir "$RUNNER_TEMP/provider-candidate" \
             --verifier-image "$PRC_TEST_GO_VERIFIER_IMAGE" \
             --format json > "$RUNNER_TEMP/provider-remediation.json"
+          status=$?
+          set -e
+          if [ "$status" -ne 0 ]; then
+            cat "$RUNNER_TEMP/provider-remediation.json"
+            exit "$status"
+          fi
           test ! -e fixtures/providers/workspace/app_test.go
           test -f "$RUNNER_TEMP/provider-candidate/app_test.go"
           (cd "$RUNNER_TEMP/provider-candidate" && go test ./...)
