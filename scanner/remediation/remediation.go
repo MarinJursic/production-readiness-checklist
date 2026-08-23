@@ -34,11 +34,10 @@ func Run(options Options) (Candidate, error) {
 	if options.CandidateDir == "" {
 		return Candidate{}, fmt.Errorf("candidate directory is required")
 	}
-	if options.MaxFiles < 1 || options.MaxFiles > maximumFixFiles {
-		return Candidate{}, fmt.Errorf("max files must be between 1 and %d", maximumFixFiles)
-	}
-	if options.MaxChangedLines < 1 || options.MaxChangedLines > maximumFixLines {
-		return Candidate{}, fmt.Errorf("max changed lines must be between 1 and %d", maximumFixLines)
+	policy, err := resolvePolicy(options.Target, options.ProfileID, options.MaxFiles, options.MaxChangedLines,
+		options.Attempt, options.MaxAttempts, options.Configuration)
+	if err != nil {
+		return Candidate{}, err
 	}
 	c, err := catalog.Load(options.CatalogRoot)
 	if err != nil {
@@ -53,6 +52,10 @@ func Run(options Options) (Candidate, error) {
 	}
 
 	baseline, err := inventory.Build(options.Target)
+	if err != nil {
+		return Candidate{}, err
+	}
+	baseline, err = policy.bind(baseline, "")
 	if err != nil {
 		return Candidate{}, err
 	}
@@ -99,14 +102,14 @@ func Run(options Options) (Candidate, error) {
 	if len(paths) == 0 {
 		return Candidate{}, fmt.Errorf("assertion %s reported no deterministic violations", assertion.ID)
 	}
-	if len(paths) > options.MaxFiles {
+	if len(paths) > policy.maxFiles {
 		return Candidate{}, fmt.Errorf("fix requires %d files, above the configured budget", len(paths))
 	}
-	if fixerID == finalNewlineFixer && len(paths) > options.MaxChangedLines {
+	if fixerID == finalNewlineFixer && len(paths) > policy.maxChangedLines {
 		return Candidate{}, fmt.Errorf("fix requires %d changed lines, above the configured budget", len(paths))
 	}
 	for _, path := range paths {
-		if protected(path, defaultProtectedPaths) {
+		if protected(path, policy.protectedPaths) {
 			return Candidate{}, fmt.Errorf("fix would touch protected path %s", path)
 		}
 	}
@@ -114,14 +117,15 @@ func Run(options Options) (Candidate, error) {
 	contract := FixContract{
 		SchemaVersion: FixContractSchema, BaselineRunID: beforeRun.RunID,
 		BaselineInventoryDigest: baseline.Digest, AssertionID: assertion.ID,
+		ConfigurationDigest: policy.configurationID, ProjectID: policy.projectID,
 		ControlIDs: append([]string(nil), assertion.ControlIDs...),
 		Goal:       goal,
 		FixerID:    fixerID, RemediationClass: "R1",
 		AllowedPaths:   append([]string(nil), paths...),
-		ProtectedPaths: append([]string(nil), defaultProtectedPaths...),
-		Network:        "deny", MaxChangedLines: options.MaxChangedLines, MaxFiles: options.MaxFiles,
-		MaxAttempts: 1,
-		Acceptance:  acceptance,
+		ProtectedPaths: append([]string(nil), policy.protectedPaths...),
+		Network:        "deny", MaxChangedLines: policy.maxChangedLines, MaxFiles: policy.maxFiles,
+		Attempt: policy.attempt, MaxAttempts: policy.maxAttempts,
+		Acceptance: acceptance,
 	}
 	sort.Strings(contract.ControlIDs)
 	contract.TaskID, err = contentID(contract)
@@ -146,6 +150,10 @@ func Run(options Options) (Candidate, error) {
 	if err != nil {
 		return Candidate{}, err
 	}
+	candidateInventory, err = policy.bind(candidateInventory, candidateRoot)
+	if err != nil {
+		return Candidate{}, err
+	}
 	changes, reasons := auditCandidate(baseline, candidateInventory, contract)
 	afterRun, err := scanner.Scan(options.ProfileID, candidateInventory)
 	if err != nil {
@@ -165,6 +173,9 @@ func Run(options Options) (Candidate, error) {
 		}
 	}
 	currentBaseline, err := inventory.Build(options.Target)
+	if err == nil {
+		currentBaseline, err = policy.bind(currentBaseline, "")
+	}
 	if err != nil || currentBaseline.Digest != baseline.Digest {
 		return Candidate{}, fmt.Errorf("source workspace changed during deterministic remediation")
 	}

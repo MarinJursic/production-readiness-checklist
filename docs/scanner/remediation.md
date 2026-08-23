@@ -23,6 +23,7 @@ and the destination itself must not exist.
 ./prc remediate \
   --catalog-root /path/to/production-readiness-checklist \
   --target /path/to/project \
+  --config /path/to/project/production-readiness.yaml \
   --assertion PRC-A-CORE-014 \
   --candidate-dir /safe/path/prc-candidate \
   --max-files 20 \
@@ -32,7 +33,16 @@ and the destination itself must not exist.
 The command exits `0` only when the candidate passes every acceptance check. A
 validated but rejected candidate is still printed and exits `1`. Invalid input,
 an ineligible baseline, or an infrastructure failure exits `2`. Use
-`--format json` for the versioned `prc.remediation-candidate/v0.1` record.
+`--format json` for the versioned `prc.remediation-candidate/v0.2` record.
+
+With `--config`, the exact canonical configuration digest and project identity
+are recorded in the fix contract. The configured profile is mandatory,
+`remediation.enabled` must be true, and command-line file or line limits cannot
+raise the configured ceilings. The configured attempt ceiling is recorded even
+though this command performs exactly one attempt. Scanner defaults, configured
+protected paths, and the configuration file itself are unioned into the guard
+set. Baseline, candidate, and final source-integrity scans all rebind the same
+configuration.
 
 ## What acceptance verifies
 
@@ -68,6 +78,7 @@ R2, and the candidate destination must be new and outside the source tree.
 ./prc remediate-proposal \
   --catalog-root /path/to/production-readiness-checklist \
   --target /path/to/project \
+  --config /path/to/project/production-readiness.yaml \
   --provider codex \
   --task /safe/path/task.json \
   --output /safe/path/validated-provider-output.json \

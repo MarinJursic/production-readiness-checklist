@@ -283,6 +283,45 @@ func TestRemediateCommandCreatesAcceptedCandidate(t *testing.T) {
 	}
 }
 
+func TestRemediateCommandConsumesConfiguredPolicy(t *testing.T) {
+	target := t.TempDir()
+	if err := os.WriteFile(filepath.Join(target, "app.py"), []byte("print('ready')"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	configData, err := os.ReadFile(filepath.Join("..", "..", "fixtures", "config", "production-readiness.yaml"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	configPath := filepath.Join(target, "production-readiness.yaml")
+	if err := os.WriteFile(configPath, configData, 0o600); err != nil {
+		t.Fatal(err)
+	}
+	var stdout, stderr bytes.Buffer
+	code := run([]string{
+		"remediate", "--target", target, "--catalog-root", filepath.Join("..", ".."),
+		"--config", configPath, "--candidate-dir", filepath.Join(t.TempDir(), "candidate"), "--format", "json",
+	}, &stdout, &stderr)
+	if code != 0 {
+		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
+	}
+	var candidate struct {
+		SchemaVersion string `json:"schema_version"`
+		Contract      struct {
+			ConfigurationDigest string `json:"configuration_digest"`
+			ProjectID           string `json:"project_id"`
+			MaxAttempts         int    `json:"max_attempts"`
+		} `json:"contract"`
+	}
+	if err := json.Unmarshal(stdout.Bytes(), &candidate); err != nil {
+		t.Fatal(err)
+	}
+	if candidate.SchemaVersion != "prc.remediation-candidate/v0.2" ||
+		len(candidate.Contract.ConfigurationDigest) != 64 || candidate.Contract.ProjectID != "example-product" ||
+		candidate.Contract.MaxAttempts != 3 {
+		t.Fatalf("configured candidate = %+v", candidate)
+	}
+}
+
 func TestRemediateCommandRestrictsCandidateModeOnly(t *testing.T) {
 	target := t.TempDir()
 	targetPath := filepath.Join(target, "app.py")

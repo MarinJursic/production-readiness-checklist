@@ -3,9 +3,11 @@ package remediation
 import (
 	"os"
 	"path/filepath"
+	"slices"
 	"strings"
 	"testing"
 
+	projectconfig "github.com/MarinJursic/production-readiness-checklist/scanner/config"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
 )
 
@@ -51,6 +53,27 @@ func remediationTarget(t *testing.T) string {
 		writeTestFile(t, root, relative, content)
 	}
 	return root
+}
+
+func configuredRemediation(t *testing.T, target string, mutate func(string) string) *ProjectConfiguration {
+	t.Helper()
+	data, err := os.ReadFile(filepath.Join(testCatalogRoot(t), "fixtures", "config", "production-readiness.yaml"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	content := string(data)
+	if mutate != nil {
+		content = mutate(content)
+	}
+	path := filepath.Join(target, "production-readiness.yaml")
+	if err := os.WriteFile(path, []byte(content), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	validation, err := projectconfig.Load(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	return &ProjectConfiguration{Validation: validation, SourcePath: path}
 }
 
 func runAcceptedCandidate(t *testing.T) (string, Candidate) {
@@ -105,6 +128,76 @@ func TestRunCreatesAcceptedIsolatedFinalNewlineCandidate(t *testing.T) {
 	wantCandidateID, err := candidateContentID(candidate)
 	if err != nil || wantCandidateID != candidate.CandidateID {
 		t.Fatalf("candidate identity mismatch: %v %s", err, wantCandidateID)
+	}
+}
+
+func TestRunEnforcesAndRecordsConfiguredRemediationPolicy(t *testing.T) {
+	target := remediationTarget(t)
+	configuration := configuredRemediation(t, target, nil)
+	candidate, err := Run(Options{
+		CatalogRoot: testCatalogRoot(t), Target: target, CandidateDir: filepath.Join(t.TempDir(), "candidate"),
+		ProfileID: "prc/core-repository", AssertionID: finalNewlineAssertion,
+		MaxFiles: 20, MaxChangedLines: 200, Attempt: 1, MaxAttempts: 3, Configuration: configuration,
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !candidate.Accepted || candidate.SchemaVersion != CandidateSchema ||
+		candidate.Contract.ConfigurationDigest != configuration.Validation.Digest ||
+		candidate.Contract.ProjectID != "example-product" || candidate.Contract.Attempt != 1 ||
+		candidate.Contract.MaxAttempts != 3 || !slices.Contains(candidate.Contract.ProtectedPaths, "production-readiness.yaml") {
+		t.Fatalf("configured candidate lost policy identity: %+v", candidate)
+	}
+	source, err := os.ReadFile(configuration.SourcePath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	copied, err := os.ReadFile(filepath.Join(candidate.CandidatePath, "production-readiness.yaml"))
+	if err != nil || string(copied) != string(source) {
+		t.Fatalf("candidate configuration changed: %v", err)
+	}
+}
+
+func TestRunRejectsConfiguredBudgetExpansionAndDisabledPolicy(t *testing.T) {
+	target := remediationTarget(t)
+	configuration := configuredRemediation(t, target, nil)
+	_, err := Run(Options{
+		CatalogRoot: testCatalogRoot(t), Target: target, CandidateDir: filepath.Join(t.TempDir(), "candidate"),
+		ProfileID: "prc/core-repository", AssertionID: finalNewlineAssertion,
+		MaxFiles: 21, MaxChangedLines: 200, MaxAttempts: 3, Configuration: configuration,
+	})
+	if err == nil || !strings.Contains(err.Error(), "budget exceeds") {
+		t.Fatalf("unexpected budget error: %v", err)
+	}
+
+	disabledTarget := remediationTarget(t)
+	disabled := configuredRemediation(t, disabledTarget, func(content string) string {
+		return strings.Replace(content, "  enabled: true", "  enabled: false", 1)
+	})
+	_, err = Run(Options{
+		CatalogRoot: testCatalogRoot(t), Target: disabledTarget, CandidateDir: filepath.Join(t.TempDir(), "candidate"),
+		ProfileID: "prc/core-repository", AssertionID: finalNewlineAssertion,
+		MaxFiles: 20, MaxChangedLines: 200, MaxAttempts: 3, Configuration: disabled,
+	})
+	if err == nil || !strings.Contains(err.Error(), "disabled") {
+		t.Fatalf("unexpected disabled-policy error: %v", err)
+	}
+}
+
+func TestRunAddsConfiguredProtectedPaths(t *testing.T) {
+	target := remediationTarget(t)
+	configuration := configuredRemediation(t, target, func(content string) string {
+		return strings.Replace(content,
+			"protected_paths: [.git/, .github/workflows/, .prc/, catalog/",
+			"protected_paths: [.git/, .github/workflows/, .prc/, app.py, catalog/", 1)
+	})
+	_, err := Run(Options{
+		CatalogRoot: testCatalogRoot(t), Target: target, CandidateDir: filepath.Join(t.TempDir(), "candidate"),
+		ProfileID: "prc/core-repository", AssertionID: finalNewlineAssertion,
+		MaxFiles: 20, MaxChangedLines: 200, MaxAttempts: 3, Configuration: configuration,
+	})
+	if err == nil || !strings.Contains(err.Error(), "protected path app.py") {
+		t.Fatalf("unexpected protected-path error: %v", err)
 	}
 }
 

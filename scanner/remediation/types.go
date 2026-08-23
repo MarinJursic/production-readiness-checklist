@@ -1,10 +1,13 @@
 package remediation
 
-import "github.com/MarinJursic/production-readiness-checklist/scanner/provider"
+import (
+	projectconfig "github.com/MarinJursic/production-readiness-checklist/scanner/config"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/provider"
+)
 
 const (
-	FixContractSchema = "prc.fix-contract/v0.1"
-	CandidateSchema   = "prc.remediation-candidate/v0.1"
+	FixContractSchema = "prc.fix-contract/v0.2"
+	CandidateSchema   = "prc.remediation-candidate/v0.2"
 )
 
 type FixContract struct {
@@ -12,6 +15,8 @@ type FixContract struct {
 	TaskID                  string   `json:"task_id"`
 	BaselineRunID           string   `json:"baseline_run_id"`
 	BaselineInventoryDigest string   `json:"baseline_inventory_digest"`
+	ConfigurationDigest     string   `json:"configuration_digest,omitempty"`
+	ProjectID               string   `json:"project_id,omitempty"`
 	AssertionID             string   `json:"assertion_id"`
 	ControlIDs              []string `json:"control_ids"`
 	Goal                    string   `json:"goal"`
@@ -25,8 +30,16 @@ type FixContract struct {
 	Network                 string   `json:"network"`
 	MaxChangedLines         int      `json:"max_changed_lines"`
 	MaxFiles                int      `json:"max_files"`
+	Attempt                 int      `json:"attempt"`
 	MaxAttempts             int      `json:"max_attempts"`
 	Acceptance              []string `json:"acceptance"`
+}
+
+// ProjectConfiguration binds one already validated project policy and its exact
+// source file into every inventory used during remediation.
+type ProjectConfiguration struct {
+	Validation projectconfig.Validation
+	SourcePath string
 }
 
 type Change struct {
@@ -62,6 +75,9 @@ type Options struct {
 	AssertionID     string
 	MaxFiles        int
 	MaxChangedLines int
+	Attempt         int
+	MaxAttempts     int
+	Configuration   *ProjectConfiguration
 }
 
 type ProposalOptions struct {
@@ -74,4 +90,7 @@ type ProposalOptions struct {
 	Output          provider.Output
 	MaxFiles        int
 	MaxChangedLines int
+	Attempt         int
+	MaxAttempts     int
+	Configuration   *ProjectConfiguration
 }

@@ -29,6 +29,7 @@ var (
 	factKeyPattern    = regexp.MustCompile(`^[a-z][a-z0-9-]{0,62}$`)
 	digestPattern     = regexp.MustCompile(`^sha256:[0-9a-f]{64}$`)
 	sourceRefPattern  = regexp.MustCompile(`^[0-9a-f]{40,64}$`)
+	hexDigestPattern  = regexp.MustCompile(`^[0-9a-f]{64}$`)
 )
 
 type Document struct {
@@ -40,6 +41,42 @@ type Document struct {
 	Data          Data            `yaml:"data" json:"data"`
 	Execution     Execution       `yaml:"execution" json:"execution"`
 	Remediation   Remediation     `yaml:"remediation" json:"remediation"`
+}
+
+// Validate verifies that a decoded validation record still represents the
+// canonical configuration identity produced by Load.
+func (validation Validation) Validate() error {
+	if validation.SchemaVersion != ValidationSchema {
+		return fmt.Errorf("unsupported project configuration validation schema %q", validation.SchemaVersion)
+	}
+	if err := validation.Configuration.Validate(); err != nil {
+		return err
+	}
+	payload, err := json.Marshal(validation.Configuration)
+	if err != nil {
+		return fmt.Errorf("encode canonical project configuration: %w", err)
+	}
+	digest := sha256.Sum256(payload)
+	if validation.Digest != hex.EncodeToString(digest[:]) {
+		return fmt.Errorf("project configuration digest does not match its canonical content")
+	}
+	if !hexDigestPattern.MatchString(validation.SourceSHA256) {
+		return fmt.Errorf("project configuration source digest is invalid")
+	}
+	return nil
+}
+
+// VerifySource reopens and reparses the source so callers cannot continue with
+// an in-memory policy after its exact bytes have changed.
+func (validation Validation) VerifySource(path string) error {
+	current, err := Load(path)
+	if err != nil {
+		return err
+	}
+	if current.SourceSHA256 != validation.SourceSHA256 || current.Digest != validation.Digest {
+		return fmt.Errorf("project configuration source changed after validation")
+	}
+	return nil
 }
 
 type Project struct {
@@ -130,6 +167,9 @@ func Load(path string) (Validation, error) {
 	if err := decoder.Decode(&trailing); !errors.Is(err, io.EOF) {
 		return Validation{}, fmt.Errorf("project configuration contains multiple YAML documents or trailing data")
 	}
+	if err := validateYAMLShape(data); err != nil {
+		return Validation{}, err
+	}
 	normalize(&document)
 	if err := document.Validate(); err != nil {
 		return Validation{}, err
@@ -146,6 +186,115 @@ func Load(path string) (Validation, error) {
 		SourceSHA256:  hex.EncodeToString(sourceDigest[:]),
 		Configuration: document,
 	}, nil
+}
+
+func validateYAMLShape(data []byte) error {
+	var syntax yaml.Node
+	if err := yaml.Unmarshal(data, &syntax); err != nil {
+		return fmt.Errorf("decode project configuration syntax: %w", err)
+	}
+	if len(syntax.Content) != 1 {
+		return fmt.Errorf("project configuration requires one mapping document")
+	}
+	root := syntax.Content[0]
+	if err := rejectNullsAndAliases(root); err != nil {
+		return err
+	}
+	if err := requireMappingKeys(root, "configuration", "schema_version", "project", "assessment", "components", "features", "data", "execution", "remediation"); err != nil {
+		return err
+	}
+	mappings := []struct {
+		path string
+		keys []string
+	}{
+		{"project", []string{"id", "name", "risk_profile"}},
+		{"assessment", []string{"profile", "source_ref", "artifact_digests", "target_environments"}},
+		{"components", []string{"include", "exclude"}},
+		{"data", []string{"classifications", "regulated", "prohibited_in_evidence"}},
+		{"execution", []string{"network", "allow_commands", "production_connected", "max_parallel", "max_duration_seconds"}},
+		{"remediation", []string{"enabled", "max_attempts", "max_files", "max_changed_lines", "protected_paths"}},
+	}
+	for _, mapping := range mappings {
+		node := mappingValue(root, mapping.path)
+		if err := requireMappingKeys(node, mapping.path, mapping.keys...); err != nil {
+			return err
+		}
+	}
+	if node := mappingValue(root, "features"); node == nil || node.Kind != yaml.MappingNode {
+		return fmt.Errorf("project configuration features must be a mapping")
+	}
+	sequences := []string{
+		"assessment.artifact_digests", "assessment.target_environments",
+		"components.include", "components.exclude", "data.classifications", "data.regulated",
+		"data.prohibited_in_evidence", "execution.allow_commands", "remediation.protected_paths",
+	}
+	for _, path := range sequences {
+		node := nodeAt(root, path)
+		if node == nil || node.Kind != yaml.SequenceNode {
+			return fmt.Errorf("project configuration %s must be an array", path)
+		}
+	}
+	for _, item := range nodeAt(root, "components.include").Content {
+		if err := requireMappingKeys(item, "components.include item", "path", "type"); err != nil {
+			return err
+		}
+	}
+	for _, item := range nodeAt(root, "components.exclude").Content {
+		if err := requireMappingKeys(item, "components.exclude item", "path", "rationale"); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func rejectNullsAndAliases(node *yaml.Node) error {
+	if node.Kind == yaml.AliasNode {
+		return fmt.Errorf("project configuration YAML aliases are not supported")
+	}
+	if node.Tag == "!!null" {
+		return fmt.Errorf("project configuration values cannot be null")
+	}
+	for _, child := range node.Content {
+		if err := rejectNullsAndAliases(child); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func requireMappingKeys(node *yaml.Node, name string, keys ...string) error {
+	if node == nil || node.Kind != yaml.MappingNode {
+		return fmt.Errorf("project configuration %s must be a mapping", name)
+	}
+	for _, key := range keys {
+		if mappingValue(node, key) == nil {
+			return fmt.Errorf("project configuration %s is missing required field %s", name, key)
+		}
+	}
+	return nil
+}
+
+func nodeAt(root *yaml.Node, path string) *yaml.Node {
+	node := root
+	for _, part := range strings.Split(path, ".") {
+		node = mappingValue(node, part)
+		if node == nil {
+			return nil
+		}
+	}
+	return node
+}
+
+func mappingValue(mapping *yaml.Node, key string) *yaml.Node {
+	if mapping == nil || mapping.Kind != yaml.MappingNode {
+		return nil
+	}
+	for index := 0; index+1 < len(mapping.Content); index += 2 {
+		if mapping.Content[index].Value == key {
+			return mapping.Content[index+1]
+		}
+	}
+	return nil
 }
 
 func normalize(document *Document) {

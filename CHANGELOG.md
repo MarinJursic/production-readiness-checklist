@@ -23,6 +23,9 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
   with default-deny capability semantics and adversarial parser validation.
 - Configuration-bound inventory v0.3, plan v0.3, and run v0.3 identities with
   sourced declared facts, scoped CEL fields, and frozen v0.2 schemas.
+- Configuration-governed remediation v0.2 contracts that bind project identity,
+  protected paths, and non-expandable file, line, and attempt ceilings into
+  deterministic and provider-proposal candidates.
 
 ### Fixed
 

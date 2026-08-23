@@ -148,8 +148,10 @@ func auditRawProviderWorkspace(baseline model.Inventory, candidateRoot string, e
 	return uniqueSorted(reasons)
 }
 
-func proposalProtectedPaths(taskPaths []string) []string {
+func proposalProtectedPaths(pathGroups ...[]string) []string {
 	paths := append([]string(nil), defaultProtectedPaths...)
-	paths = append(paths, taskPaths...)
+	for _, group := range pathGroups {
+		paths = append(paths, group...)
+	}
 	return uniqueSorted(paths)
 }

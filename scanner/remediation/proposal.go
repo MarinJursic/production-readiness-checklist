@@ -23,11 +23,10 @@ func RunProposal(options ProposalOptions) (Candidate, error) {
 	if options.CandidateDir == "" {
 		return Candidate{}, fmt.Errorf("candidate directory is required")
 	}
-	if options.MaxFiles < 1 || options.MaxFiles > maximumFixFiles {
-		return Candidate{}, fmt.Errorf("max files must be between 1 and %d", maximumFixFiles)
-	}
-	if options.MaxChangedLines < 1 || options.MaxChangedLines > maximumFixLines {
-		return Candidate{}, fmt.Errorf("max changed lines must be between 1 and %d", maximumFixLines)
+	policy, err := resolvePolicy(options.Target, options.ProfileID, options.MaxFiles, options.MaxChangedLines,
+		options.Attempt, options.MaxAttempts, options.Configuration)
+	if err != nil {
+		return Candidate{}, err
 	}
 	if err := provider.ValidateOutput(options.Provider, options.Output, options.Task); err != nil {
 		return Candidate{}, err
@@ -55,6 +54,10 @@ func RunProposal(options ProposalOptions) (Candidate, error) {
 	if err != nil {
 		return Candidate{}, err
 	}
+	baseline, err = policy.bind(baseline, "")
+	if err != nil {
+		return Candidate{}, err
+	}
 	if baseline.Digest != options.Task.WorkspaceInventoryDigest {
 		return Candidate{}, fmt.Errorf("source workspace does not match the sealed agent task")
 	}
@@ -75,16 +78,17 @@ func RunProposal(options ProposalOptions) (Candidate, error) {
 	if err != nil {
 		return Candidate{}, err
 	}
-	protectedPaths := proposalProtectedPaths(options.Task.ProtectedPaths)
+	protectedPaths := proposalProtectedPaths(options.Task.ProtectedPaths, policy.protectedPaths)
 	contract := FixContract{
 		SchemaVersion: FixContractSchema, BaselineRunID: beforeRun.RunID,
 		BaselineInventoryDigest: baseline.Digest, AssertionID: assertion.ID,
+		ConfigurationDigest: policy.configurationID, ProjectID: policy.projectID,
 		ControlIDs: append([]string(nil), assertion.ControlIDs...), Goal: options.Task.Goal,
 		FixerID: proposalFixer, RemediationClass: "R2", Provider: options.Provider,
 		ProposalTaskID: options.Task.TaskID, ProposalSHA256: proposalID,
 		AllowedPaths: append([]string(nil), options.Output.ChangedFiles...), ProtectedPaths: protectedPaths,
-		Network: "deny", MaxChangedLines: options.MaxChangedLines, MaxFiles: options.MaxFiles,
-		MaxAttempts: 1,
+		Network: "deny", MaxChangedLines: policy.maxChangedLines, MaxFiles: policy.maxFiles,
+		Attempt: policy.attempt, MaxAttempts: policy.maxAttempts,
 		Acceptance: []string{
 			"The scanner-owned parser applies exactly the validated proposal in a new isolated candidate.",
 			"No unproposed or protected path changes, no file deletion, and no mode change occur.",
@@ -102,11 +106,16 @@ func RunProposal(options ProposalOptions) (Candidate, error) {
 	if err != nil {
 		return Candidate{}, err
 	}
-	changes, err := applyProviderPatch(candidateRoot, baseline, options.Task, options.Output, options.MaxFiles, options.MaxChangedLines)
+	changes, err := applyProviderPatch(candidateRoot, baseline, options.Task, options.Output,
+		policy.protectedPaths, policy.maxFiles, policy.maxChangedLines)
 	if err != nil {
 		return Candidate{}, err
 	}
 	candidateInventory, err := inventory.Build(candidateRoot)
+	if err != nil {
+		return Candidate{}, err
+	}
+	candidateInventory, err = policy.bind(candidateInventory, candidateRoot)
 	if err != nil {
 		return Candidate{}, err
 	}
@@ -129,6 +138,9 @@ func RunProposal(options ProposalOptions) (Candidate, error) {
 		}
 	}
 	currentBaseline, err := inventory.Build(options.Target)
+	if err == nil {
+		currentBaseline, err = policy.bind(currentBaseline, "")
+	}
 	if err != nil || currentBaseline.Digest != baseline.Digest {
 		return Candidate{}, fmt.Errorf("source workspace changed during proposal remediation")
 	}

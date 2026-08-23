@@ -43,7 +43,9 @@ Paths are repository-relative, normalized slash paths. Absolute paths,
 backslashes, traversal, duplicate paths, and unsorted declarations are rejected.
 Excluding a component does not delete it or cause the inventory walker to ignore
 it in v0.1. A configuration inside the target must match the exact regular file
-captured by inventory; a change between validation and inventory fails the run.
+captured by inventory. An external configuration is also reopened and compared
+by both raw-source and canonical digests. A change after validation fails the
+run in either case.
 
 ```bash
 prc inventory --target . --config production-readiness.yaml --format json
@@ -79,14 +81,16 @@ update.
 The native scanner currently evaluates serially, so it remains below
 `max_parallel`. `max_duration_seconds` is enforced for configured live adapter
 execution; native file discovery uses fixed internal size and traversal limits
-but is not yet interrupted by this setting. Remediation policy is validated and
-bound into configuration identity, but the current `remediate` and
-`remediate-proposal` commands still require explicit command-line budgets. They
-do not silently claim to have enforced the configuration's remediation limits.
+but is not yet interrupted by this setting. `remediate`, `remediate-proposal`,
+and `provider seal-task` also accept `--config`. Remediation must be enabled;
+configured file, line, and attempt ceilings cannot be raised by command-line
+flags; configured protected paths and an in-target configuration source are
+always added to the immutable guard set.
 
 ## Parser and file safety
 
 The loader accepts one regular YAML file no larger than 1 MiB. It rejects
-symlinks, unknown fields, duplicate keys, multiple YAML documents, unsafe paths,
-unsupported enum values, capability expansion, and out-of-range budgets. The
-JSON Schema and Go semantic validator are both exercised in CI.
+symlinks, missing or unknown fields, duplicate keys, null values, YAML aliases,
+multiple YAML documents, unsafe paths, unsupported enum values, capability
+expansion, and out-of-range budgets. The JSON Schema and Go semantic validator
+are both exercised in CI.

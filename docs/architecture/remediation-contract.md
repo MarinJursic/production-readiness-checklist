@@ -64,12 +64,12 @@ The general loop never deploys and never accepts residual risk.
 
 ## Implemented R1 pilot
 
-The current CLI implements this lifecycle only for `PRC-A-CORE-014`. Its trusted
-fixer appends one final line-feed byte to exact allowlisted source paths in a new
-external workspace. The acceptance audit verifies the raw tree, content hashes,
-permission modes, protected paths, budgets, target result, and baseline passing
-results. See the [R1 remediation guide](../scanner/remediation.md) for the exact
-command and limitations.
+The current CLI implements this lifecycle for final-newline and restrictive-mode
+R1 assertions. Its trusted fixers make exact byte or mode transformations in a
+new external workspace. The acceptance audit verifies the raw tree, content
+hashes, permission modes, protected paths, budgets, target result, and baseline
+passing results. See the [R1 remediation guide](../scanner/remediation.md) for
+the exact commands and limitations.
 
 ## Implemented R2 proposal pilot
 
@@ -78,5 +78,7 @@ Claude Code proposals. The separate `remediate-proposal` command validates and
 parses one proposal, applies it to a fresh external candidate without invoking
 the provider, and runs raw-tree, exact-byte, mode, budget, target-result,
 regression, and source-integrity audits. The provider never approves its own
-work. Project command execution, repeated repair loops, merges, deployments, and
-releases remain unimplemented.
+work. Both one-shot remediation paths can bind the exact project configuration,
+its protected paths, and its file, line, and attempt ceilings into a v0.2 fix
+contract. Project command execution, repeated repair loops, merges, deployments,
+and releases remain unimplemented.

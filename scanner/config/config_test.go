@@ -57,6 +57,31 @@ func TestLoadValidatesAndCanonicalizesConfiguration(t *testing.T) {
 	}
 }
 
+func TestValidationRejectsMutatedCanonicalIdentity(t *testing.T) {
+	validation, err := Load(fixturePath(t))
+	if err != nil {
+		t.Fatal(err)
+	}
+	validation.Configuration.Project.Name = "Changed after validation"
+	if err := validation.Validate(); err == nil || !strings.Contains(err.Error(), "digest does not match") {
+		t.Fatalf("unexpected error: %v", err)
+	}
+}
+
+func TestValidationRejectsChangedSourceBytes(t *testing.T) {
+	path := writeConfig(t, validContent(t))
+	validation, err := Load(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(path, []byte("# changed\n"+validContent(t)), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	if err := validation.VerifySource(path); err == nil || !strings.Contains(err.Error(), "changed") {
+		t.Fatalf("unexpected error: %v", err)
+	}
+}
+
 func TestLoadRejectsUnknownDuplicateAndTrailingDocuments(t *testing.T) {
 	tests := []struct {
 		name    string
@@ -65,6 +90,8 @@ func TestLoadRejectsUnknownDuplicateAndTrailingDocuments(t *testing.T) {
 		{name: "unknown field", content: validContent(t) + "unexpected: true\n"},
 		{name: "duplicate field", content: strings.Replace(validContent(t), "  id: example-product", "  id: example-product\n  id: duplicate", 1)},
 		{name: "trailing document", content: validContent(t) + "---\nextra: true\n"},
+		{name: "missing required field", content: strings.Replace(validContent(t), "features:\n  authentication: true\n  payments: false\n", "", 1)},
+		{name: "null required value", content: strings.Replace(validContent(t), `  source_ref: ""`, "  source_ref: null", 1)},
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {

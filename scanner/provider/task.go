@@ -18,6 +18,7 @@ import (
 	"unicode/utf8"
 
 	workspaceinventory "github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 )
 
 var (
@@ -41,21 +42,45 @@ func LoadTask(path string) (Task, error) {
 // task_id with its canonical content digest, and returns it without changing the
 // draft file.
 func SealTask(path, workspace string) (Task, error) {
+	item, err := workspaceinventory.Build(workspace)
+	if err != nil {
+		return Task{}, err
+	}
+	return SealTaskWithInventory(path, workspace, item, nil)
+}
+
+// SealTaskWithInventory binds a previously constructed current inventory and
+// mandatory protected paths into a task. This lets configured callers use the
+// same declared-scope identity that remediation will independently verify.
+func SealTaskWithInventory(path, workspace string, item model.Inventory, requiredProtectedPaths []string) (Task, error) {
 	task, err := readTask(path)
 	if err != nil {
 		return Task{}, err
 	}
 	task.TaskID = ""
-	task.Inputs = nil
+	task.Inputs = []InputFile{}
 	if err := validatePaths(task.RelevantPaths, "relevant"); err != nil {
 		return Task{}, err
 	}
 	if !slices.Equal(task.RelevantPaths, sortedCopy(task.RelevantPaths)) {
 		return Task{}, fmt.Errorf("agent task relevant paths must be sorted")
 	}
-	item, err := workspaceinventory.Build(workspace)
-	if err != nil {
+	if err := validatePaths(task.ProtectedPaths, "protected"); err != nil {
 		return Task{}, err
+	}
+	if !slices.Equal(task.ProtectedPaths, sortedCopy(task.ProtectedPaths)) {
+		return Task{}, fmt.Errorf("agent task protected paths must be sorted")
+	}
+	task.ProtectedPaths = mergedSortedUnique(task.ProtectedPaths, requiredProtectedPaths)
+	workspaceRoot, err := filepath.Abs(workspace)
+	if err != nil {
+		return Task{}, fmt.Errorf("resolve agent workspace: %w", err)
+	}
+	if resolved, resolveErr := filepath.EvalSymlinks(workspaceRoot); resolveErr == nil {
+		workspaceRoot = resolved
+	}
+	if item.SchemaVersion != model.InventorySchema || item.Root != workspaceRoot || item.Digest == "" {
+		return Task{}, fmt.Errorf("agent task requires the current rooted workspace inventory")
 	}
 	task.WorkspaceInventoryDigest = item.Digest
 	records := make(map[string]string, len(item.Files))
@@ -81,6 +106,21 @@ func SealTask(path, workspace string) (Task, error) {
 		return Task{}, err
 	}
 	return task, nil
+}
+
+func mergedSortedUnique(groups ...[]string) []string {
+	seen := map[string]bool{}
+	for _, group := range groups {
+		for _, value := range group {
+			seen[value] = true
+		}
+	}
+	values := make([]string, 0, len(seen))
+	for value := range seen {
+		values = append(values, value)
+	}
+	sort.Strings(values)
+	return values
 }
 
 func readInputFile(workspace, relativePath, expectedDigest string) (string, error) {

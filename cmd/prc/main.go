@@ -131,13 +131,26 @@ func runProvider(args []string, stdout, stderr io.Writer) error {
 	if args[0] == "seal-task" {
 		path := set.String("file", "", "draft agent task JSON file")
 		workspace := set.String("workspace", ".", "workspace to bind into the task")
+		configPath := set.String("config", "", "optional validated project configuration")
 		if err := set.Parse(args[1:]); err != nil {
 			return err
 		}
 		if *path == "" {
 			return errors.New("--file is required")
 		}
-		task, err := provider.SealTask(*path, *workspace)
+		item, validation, err := configuredInventory(*workspace, *configPath)
+		if err != nil {
+			return err
+		}
+		var requiredProtectedPaths []string
+		if validation != nil {
+			configuration := &remediation.ProjectConfiguration{Validation: *validation, SourcePath: *configPath}
+			requiredProtectedPaths, err = remediation.RequiredProtectedPaths(*workspace, configuration)
+			if err != nil {
+				return err
+			}
+		}
+		task, err := provider.SealTaskWithInventory(*path, *workspace, item, requiredProtectedPaths)
 		if err != nil {
 			return err
 		}
@@ -212,6 +225,7 @@ func runProvider(args []string, stdout, stderr io.Writer) error {
 
 func runRemediate(args []string, stdout, stderr io.Writer) (bool, error) {
 	set, target, catalogRoot, profile := parseCommon("remediate", args, stderr)
+	configPath := set.String("config", "", "optional validated project configuration")
 	assertionID := set.String("assertion", "PRC-A-CORE-014", "registered R1 assertion ID to remediate")
 	candidateDirectory := set.String("candidate-dir", "", "new isolated candidate directory (required)")
 	maxFiles := set.Int("max-files", 20, "maximum files the fix may change")
@@ -223,10 +237,29 @@ func runRemediate(args []string, stdout, stderr io.Writer) (bool, error) {
 	if *format != "human" && *format != "json" {
 		return false, fmt.Errorf("unsupported format %q", *format)
 	}
+	configuration, err := loadRemediationConfiguration(*configPath)
+	if err != nil {
+		return false, err
+	}
+	maxAttempts := 1
+	if configuration != nil {
+		document := configuration.Validation.Configuration
+		if !flagWasSet(set, "profile") {
+			*profile = document.Assessment.Profile
+		}
+		if !flagWasSet(set, "max-files") {
+			*maxFiles = 0
+		}
+		if !flagWasSet(set, "max-changed-lines") {
+			*maxChangedLines = 0
+		}
+		maxAttempts = document.Remediation.MaxAttempts
+	}
 	candidate, err := remediation.Run(remediation.Options{
 		CatalogRoot: *catalogRoot, Target: *target, CandidateDir: *candidateDirectory,
 		ProfileID: *profile, AssertionID: *assertionID,
 		MaxFiles: *maxFiles, MaxChangedLines: *maxChangedLines,
+		Attempt: 1, MaxAttempts: maxAttempts, Configuration: configuration,
 	})
 	if err != nil {
 		return false, err
@@ -243,6 +276,7 @@ func runRemediate(args []string, stdout, stderr io.Writer) (bool, error) {
 
 func runRemediateProposal(args []string, stdout, stderr io.Writer) (bool, error) {
 	set, target, catalogRoot, profile := parseCommon("remediate-proposal", args, stderr)
+	configPath := set.String("config", "", "optional validated project configuration")
 	providerName := set.String("provider", "", "codex or claude")
 	taskPath := set.String("task", "", "sealed agent task JSON file")
 	outputPath := set.String("output", "", "provider output JSON file")
@@ -258,6 +292,24 @@ func runRemediateProposal(args []string, stdout, stderr io.Writer) (bool, error)
 	}
 	if *format != "human" && *format != "json" {
 		return false, fmt.Errorf("unsupported format %q", *format)
+	}
+	configuration, err := loadRemediationConfiguration(*configPath)
+	if err != nil {
+		return false, err
+	}
+	maxAttempts := 1
+	if configuration != nil {
+		document := configuration.Validation.Configuration
+		if !flagWasSet(set, "profile") {
+			*profile = document.Assessment.Profile
+		}
+		if !flagWasSet(set, "max-files") {
+			*maxFiles = 0
+		}
+		if !flagWasSet(set, "max-changed-lines") {
+			*maxChangedLines = 0
+		}
+		maxAttempts = document.Remediation.MaxAttempts
 	}
 	task, err := provider.LoadTask(*taskPath)
 	if err != nil {
@@ -275,6 +327,7 @@ func runRemediateProposal(args []string, stdout, stderr io.Writer) (bool, error)
 		CatalogRoot: *catalogRoot, Target: *target, CandidateDir: *candidateDirectory,
 		ProfileID: *profile, Provider: *providerName, Task: task, Output: proposal,
 		MaxFiles: *maxFiles, MaxChangedLines: *maxChangedLines,
+		Attempt: 1, MaxAttempts: maxAttempts, Configuration: configuration,
 	})
 	if err != nil {
 		return false, err
@@ -287,6 +340,17 @@ func runRemediateProposal(args []string, stdout, stderr io.Writer) (bool, error)
 		printCandidate(stdout, candidate)
 	}
 	return candidate.Accepted, nil
+}
+
+func loadRemediationConfiguration(path string) (*remediation.ProjectConfiguration, error) {
+	if path == "" {
+		return nil, nil
+	}
+	validation, err := projectconfig.Load(path)
+	if err != nil {
+		return nil, err
+	}
+	return &remediation.ProjectConfiguration{Validation: validation, SourcePath: path}, nil
 }
 
 func readBoundedRegularFile(path string, limit int64) ([]byte, error) {

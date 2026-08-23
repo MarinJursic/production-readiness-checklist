@@ -95,6 +95,11 @@ jobs:
             --provider claude \
             --task fixtures/providers/suggest-task.json \
             --file fixtures/providers/valid-claude-envelope.json
+          "$RUNNER_TEMP/prc" provider seal-task \
+            --file fixtures/providers/suggest-task.json \
+            --workspace fixtures/providers/workspace \
+            --config fixtures/config/production-readiness.yaml \
+            > "$RUNNER_TEMP/configured-provider-task.json"
           if "$RUNNER_TEMP/prc" provider validate-output \
             --provider codex \
             --task fixtures/providers/suggest-task.json \
@@ -145,6 +150,16 @@ jobs:
           test "$(stat -c '%a' "$RUNNER_TEMP/mode-target/app.py")" = "666"
           test "$(stat -c '%a' "$RUNNER_TEMP/mode-candidate/app.py")" = "644"
 
+          mkdir "$RUNNER_TEMP/configured-remediation-target"
+          cp fixtures/config/production-readiness.yaml "$RUNNER_TEMP/configured-remediation-target/production-readiness.yaml"
+          printf "print('ready')" > "$RUNNER_TEMP/configured-remediation-target/app.py"
+          "$RUNNER_TEMP/prc" remediate \
+            --target "$RUNNER_TEMP/configured-remediation-target" \
+            --catalog-root . \
+            --config "$RUNNER_TEMP/configured-remediation-target/production-readiness.yaml" \
+            --candidate-dir "$RUNNER_TEMP/configured-remediation-candidate" \
+            --format json > "$RUNNER_TEMP/configured-remediation.json"
+
       - name: Exercise isolated provider-proposal remediation
         run: |
           "$RUNNER_TEMP/prc" remediate-proposal \
@@ -169,8 +184,10 @@ jobs:
           python scripts/validate_instance.py inventory.schema.json "$RUNNER_TEMP/configured-inventory.json"
           python scripts/validate_instance.py plan.schema.json "$RUNNER_TEMP/configured-plan.json"
           python scripts/validate_instance.py run-result.schema.json "$RUNNER_TEMP/configured-run.json"
+          python scripts/validate_instance.py agent-task.schema.json "$RUNNER_TEMP/configured-provider-task.json"
           python scripts/validate_instance.py remediation-candidate.schema.json "$RUNNER_TEMP/remediation.json"
           python scripts/validate_instance.py remediation-candidate.schema.json "$RUNNER_TEMP/mode-remediation.json"
+          python scripts/validate_instance.py remediation-candidate.schema.json "$RUNNER_TEMP/configured-remediation.json"
           python scripts/validate_instance.py remediation-candidate.schema.json "$RUNNER_TEMP/provider-remediation.json"
 
   documentation:

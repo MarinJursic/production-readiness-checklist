@@ -207,7 +207,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
     def test_minimal_remediation_candidate_conforms(self) -> None:
         digest = "a" * 64
         contract = {
-            "schema_version": "prc.fix-contract/v0.1",
+            "schema_version": "prc.fix-contract/v0.2",
             "task_id": digest,
             "baseline_run_id": digest,
             "baseline_inventory_digest": digest,
@@ -221,11 +221,12 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "network": "deny",
             "max_changed_lines": 20,
             "max_files": 20,
+            "attempt": 1,
             "max_attempts": 1,
             "acceptance": ["The target assertion passes."],
         }
         candidate = {
-            "schema_version": "prc.remediation-candidate/v0.1",
+            "schema_version": "prc.remediation-candidate/v0.2",
             "candidate_id": digest,
             "candidate_path": "/tmp/candidate",
             "contract": contract,
@@ -272,6 +273,23 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         self.assertEqual(
             validate_instance.validation_errors(
                 candidate, "remediation-candidate.schema.json"
+            ),
+            [],
+        )
+
+        legacy_contract = {
+            **contract,
+            "schema_version": "prc.fix-contract/v0.1",
+        }
+        del legacy_contract["attempt"]
+        legacy_candidate = {
+            **candidate,
+            "schema_version": "prc.remediation-candidate/v0.1",
+            "contract": legacy_contract,
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(
+                legacy_candidate, "remediation-candidate-v0.1.schema.json"
             ),
             [],
         )

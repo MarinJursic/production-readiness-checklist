@@ -63,14 +63,19 @@ modifying the draft:
 ```bash
 ./prc provider seal-task \
   --file /path/to/draft-task.json \
-  --workspace /path/to/project > /safe/path/task.json
+  --workspace /path/to/project \
+  --config /path/to/project/production-readiness.yaml \
+  > /safe/path/task.json
 ```
 
 Sealing reads only the sorted `relevant_paths`, rejects non-regular, binary, or
 larger-than-256-KiB inputs, and embeds their text and SHA-256 digests. Total input
 text is limited to 768 KiB. It also binds the current workspace inventory digest
-into the task. Changing a task field or any inventoried workspace file
-invalidates the execution plan.
+into the task. When configured, that inventory includes the declared-scope
+digest, and the scanner merges its default guards, configured protected paths,
+and the in-target configuration path into the sealed task. Changing a task
+field, configuration declaration, or any inventoried workspace file invalidates
+the execution plan.
 
 ## Inspect a launch plan
 

@@ -89,6 +89,59 @@ func TestRunProposalAppliesAndAcceptsIsolatedR2Candidate(t *testing.T) {
 	}
 }
 
+func TestRunProposalBindsConfiguredPolicyAndInventory(t *testing.T) {
+	target := proposalTarget(t)
+	configuration := configuredRemediation(t, target, nil)
+	item, err := inventory.Build(target)
+	if err != nil {
+		t.Fatal(err)
+	}
+	item, err = inventory.BindConfiguration(item, configuration.Validation, configuration.SourcePath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	draft := provider.Task{
+		SchemaVersion: provider.TaskSchema, Mode: "suggest", WorkspaceInventoryDigest: strings.Repeat("b", 64),
+		AssertionID: "PRC-A-CORE-010", ControlIDs: []string{"USEQ-12655775"},
+		Goal: "Add one focused, discoverable regression test.", ReadScope: "task-inputs",
+		RelevantPaths: []string{"app.py"}, Inputs: []provider.InputFile{}, AllowedPaths: []string{"app_test.py"},
+		ProtectedPaths: []string{".git/"}, AllowedCommands: [][]string{}, Network: "deny", Secrets: "none",
+		AllowRemoteSourceProcessing: true, TimeoutSeconds: 60, MaxOutputBytes: 256 * 1024,
+	}
+	data, err := json.Marshal(draft)
+	if err != nil {
+		t.Fatal(err)
+	}
+	draftPath := filepath.Join(t.TempDir(), "draft.json")
+	if err := os.WriteFile(draftPath, data, 0o600); err != nil {
+		t.Fatal(err)
+	}
+	protectedPaths, err := RequiredProtectedPaths(target, configuration)
+	if err != nil {
+		t.Fatal(err)
+	}
+	task, err := provider.SealTaskWithInventory(draftPath, target, item, protectedPaths)
+	if err != nil {
+		t.Fatal(err)
+	}
+	patch := "diff --git a/app_test.py b/app_test.py\n" +
+		"new file mode 100644\n--- /dev/null\n+++ b/app_test.py\n" +
+		"@@ -0,0 +1,4 @@\n+from app import ready\n+\n+def test_ready():\n+    assert ready() is True\n"
+	candidate, err := RunProposal(ProposalOptions{
+		CatalogRoot: testCatalogRoot(t), Target: target, CandidateDir: filepath.Join(t.TempDir(), "candidate"),
+		ProfileID: "prc/core-repository", Provider: "codex", Task: task,
+		Output: proposalOutput(task, "app_test.py", patch), MaxFiles: 2, MaxChangedLines: 10,
+		Attempt: 1, MaxAttempts: 3, Configuration: configuration,
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !candidate.Accepted || candidate.Contract.ConfigurationDigest != configuration.Validation.Digest ||
+		candidate.Contract.ProjectID != "example-product" || candidate.Contract.MaxAttempts != 3 {
+		t.Fatalf("configured proposal candidate lost policy identity: %+v", candidate)
+	}
+}
+
 func TestRunProposalRejectsMalformedHunkBeforeWriting(t *testing.T) {
 	target := proposalTarget(t)
 	task := sealedProposalTask(t, target, []string{"app_test.py"}, defaultProposalProtectedPaths())
@@ -192,7 +245,7 @@ func TestApplyProviderPatchModifiesOnlyMatchingText(t *testing.T) {
 		ChangedFiles: []string{"app.py"},
 		Patch:        "diff --git a/app.py b/app.py\n--- a/app.py\n+++ b/app.py\n@@ -1,2 +1,2 @@\n def ready():\n-    return False\n+    return True\n",
 	}
-	changes, err := applyProviderPatch(candidateRoot, baseline, task, output, 1, 2)
+	changes, err := applyProviderPatch(candidateRoot, baseline, task, output, nil, 1, 2)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -208,7 +261,7 @@ func TestApplyProviderPatchModifiesOnlyMatchingText(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if _, err := applyProviderPatch(otherCandidate, baseline, task, output, 1, 2); err == nil || !strings.Contains(err.Error(), "does not match") {
+	if _, err := applyProviderPatch(otherCandidate, baseline, task, output, nil, 1, 2); err == nil || !strings.Contains(err.Error(), "does not match") {
 		t.Fatalf("unexpected error: %v", err)
 	}
 }

@@ -46,7 +46,9 @@ type textLine struct {
 	newline bool
 }
 
-func applyProviderPatch(candidateRoot string, baseline model.Inventory, task provider.Task, output provider.Output, maxFiles, maxChangedLines int) ([]Change, error) {
+func applyProviderPatch(candidateRoot string, baseline model.Inventory, task provider.Task, output provider.Output,
+	additionalProtectedPaths []string, maxFiles, maxChangedLines int,
+) ([]Change, error) {
 	files, err := parseProviderPatch(output.Patch)
 	if err != nil {
 		return nil, err
@@ -62,7 +64,7 @@ func applyProviderPatch(candidateRoot string, baseline model.Inventory, task pro
 	for _, path := range task.AllowedPaths {
 		allowed[path] = true
 	}
-	protectedPaths := proposalProtectedPaths(task.ProtectedPaths)
+	protectedPaths := proposalProtectedPaths(task.ProtectedPaths, additionalProtectedPaths)
 	type pendingWrite struct {
 		path    string
 		content []byte

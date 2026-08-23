@@ -292,6 +292,12 @@ func BindConfiguration(item model.Inventory, validation projectconfig.Validation
 	if item.SchemaVersion != model.InventorySchema || item.Root == "" {
 		return model.Inventory{}, fmt.Errorf("configuration requires a current rooted inventory")
 	}
+	if err := validation.Validate(); err != nil {
+		return model.Inventory{}, err
+	}
+	if err := validation.VerifySource(sourcePath); err != nil {
+		return model.Inventory{}, err
+	}
 	if item.DeclaredScope != nil {
 		return model.Inventory{}, fmt.Errorf("inventory already has a bound configuration")
 	}

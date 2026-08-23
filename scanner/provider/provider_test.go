@@ -197,6 +197,32 @@ func TestSealTaskReplacesDraftIdentityWithoutEditingDraft(t *testing.T) {
 	}
 }
 
+func TestSealTaskWithInventoryAddsMandatoryProtectedPaths(t *testing.T) {
+	task := testTask(t)
+	task.TaskID = ""
+	data, _ := json.Marshal(task)
+	path := filepath.Join(t.TempDir(), "draft.json")
+	if err := os.WriteFile(path, data, 0o600); err != nil {
+		t.Fatal(err)
+	}
+	workspace := providerWorkspace(t)
+	item, err := workspaceinventory.Build(workspace)
+	if err != nil {
+		t.Fatal(err)
+	}
+	sealed, err := SealTaskWithInventory(path, workspace, item, []string{".prc/", "policy/"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !slices.Contains(sealed.ProtectedPaths, ".prc/") || !slices.Contains(sealed.ProtectedPaths, "policy/") ||
+		sealed.WorkspaceInventoryDigest != item.Digest {
+		t.Fatalf("sealed task lost mandatory policy: %+v", sealed)
+	}
+	if err := sealed.Validate(); err != nil {
+		t.Fatal(err)
+	}
+}
+
 func TestCodexPlanUsesReadOnlyEphemeralStructuredExecution(t *testing.T) {
 	workspace, output := providerWorkspace(t), privateOutputDirectory(t)
 	task := taskForWorkspace(t, workspace)
