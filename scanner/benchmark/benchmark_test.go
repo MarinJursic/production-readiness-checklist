@@ -41,6 +41,43 @@ func TestCoreNativeBenchmarkMeetsQualityBudget(t *testing.T) {
 	}
 }
 
+func TestComprehensiveCoreBenchmarkCoversEveryCatalogAssertion(t *testing.T) {
+	root := repositoryRoot(t)
+	catalogValue, err := catalog.Load(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	path := filepath.Join(root, "fixtures", "benchmarks", "core-native", "suite-comprehensive.yaml")
+	loaded, err := Load(path, catalogValue)
+	if err != nil {
+		t.Fatal(err)
+	}
+	covered := map[string]bool{}
+	for _, benchmarkCase := range loaded.Suite.Cases {
+		for _, expectation := range benchmarkCase.Expectations {
+			covered[expectation.AssertionID] = true
+		}
+	}
+	profile := catalogValue.Profiles["prc/core-repository"]
+	if len(covered) != len(profile.AssertionIDs) {
+		t.Fatalf("covered assertions = %d, profile assertions = %d", len(covered), len(profile.AssertionIDs))
+	}
+	for _, assertionID := range profile.AssertionIDs {
+		if !covered[assertionID] {
+			t.Errorf("profile assertion is not covered: %s", assertionID)
+		}
+	}
+	report, err := Evaluate(catalogValue, path, time.Date(2026, 8, 23, 12, 0, 0, 0, time.UTC))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !report.Passed || report.Summary.Cases != 16 || report.Summary.Expectations != 98 ||
+		report.Summary.Mismatched != 0 || report.Summary.DeterministicCases != report.Summary.Cases ||
+		report.Metrics.Precision != 1 || report.Metrics.Recall != 1 || report.Metrics.FalsePositiveRate != 0 {
+		t.Fatalf("comprehensive benchmark report = %+v", report)
+	}
+}
+
 func TestBenchmarkMismatchFailsBudgetAndTraversalIsRejected(t *testing.T) {
 	root := repositoryRoot(t)
 	catalogValue, err := catalog.Load(root)

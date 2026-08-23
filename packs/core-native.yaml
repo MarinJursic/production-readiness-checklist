@@ -1,0 +1,47 @@
+schema_version: prc.pack/v0.1
+id: prc.pack.core-native@0.2
+title: Core native assertion pack
+description: Catalog-wide deterministic checks measured against the comprehensive core fixture corpus.
+publisher_id: prc-project
+maintenance: active
+engine_apis: [prc.engine/v0.1]
+profile_ids: [prc/core-repository]
+assertions:
+  - {assertion_id: PRC-A-CORE-001, implementation_id: prc.native.file-present@0.1, validated_outcomes: [pass, fail]}
+  - {assertion_id: PRC-A-CORE-002, implementation_id: prc.native.file-present@0.1, validated_outcomes: [pass, fail]}
+  - {assertion_id: PRC-A-CORE-003, implementation_id: prc.native.file-present@0.1, validated_outcomes: [pass, fail]}
+  - {assertion_id: PRC-A-CORE-004, implementation_id: prc.native.file-present@0.1, validated_outcomes: [pass, fail]}
+  - {assertion_id: PRC-A-CORE-005, implementation_id: prc.native.file-present@0.1, validated_outcomes: [pass, fail]}
+  - {assertion_id: PRC-A-CORE-006, implementation_id: prc.native.file-present@0.1, validated_outcomes: [pass, fail]}
+  - {assertion_id: PRC-A-CORE-007, implementation_id: prc.native.dependency-lock@0.1, validated_outcomes: [pass, fail, not_applicable]}
+  - {assertion_id: PRC-A-CORE-008, implementation_id: prc.native.github-action-pin@0.1, validated_outcomes: [pass, fail, not_applicable]}
+  - {assertion_id: PRC-A-CORE-009, implementation_id: prc.native.ci-present@0.1, validated_outcomes: [pass, fail]}
+  - {assertion_id: PRC-A-CORE-010, implementation_id: prc.native.test-suite@0.1, validated_outcomes: [pass, fail]}
+  - {assertion_id: PRC-A-CORE-011, implementation_id: prc.native.github-workflow-permissions@0.1, validated_outcomes: [pass, fail, not_applicable, error]}
+  - {assertion_id: PRC-A-CORE-012, implementation_id: prc.native.manual-evidence@0.1, validated_outcomes: [manual_review]}
+  - {assertion_id: PRC-A-CORE-013, implementation_id: prc.native.analysis-evidence@0.1, validated_outcomes: [blocked]}
+  - {assertion_id: PRC-A-CORE-014, implementation_id: prc.native.final-newline@0.1, validated_outcomes: [pass]}
+  - {assertion_id: PRC-A-CORE-015, implementation_id: prc.native.git-revision@0.1, validated_outcomes: [fail]}
+  - {assertion_id: PRC-A-CORE-016, implementation_id: prc.native.file-present@0.1, validated_outcomes: [pass, fail, not_applicable]}
+  - {assertion_id: PRC-A-CORE-017, implementation_id: prc.native.github-workflow-valid@0.1, validated_outcomes: [pass, not_applicable, error]}
+  - {assertion_id: PRC-A-CORE-018, implementation_id: prc.native.github-workflow-jobs@0.1, validated_outcomes: [pass, fail, not_applicable, error]}
+  - {assertion_id: PRC-A-CORE-019, implementation_id: prc.native.github-workflow-timeouts@0.1, validated_outcomes: [pass, fail, not_applicable, error]}
+  - {assertion_id: PRC-A-CORE-020, implementation_id: prc.native.github-no-pull-request-target@0.1, validated_outcomes: [pass, fail, not_applicable, error]}
+  - {assertion_id: PRC-A-CORE-021, implementation_id: prc.native.merge-conflict-markers@0.1, validated_outcomes: [pass]}
+  - {assertion_id: PRC-A-CORE-022, implementation_id: prc.native.restrictive-file-modes@0.1, validated_outcomes: [pass]}
+  - {assertion_id: PRC-A-CORE-023, implementation_id: prc.native.inventory-files-nonempty@0.1, validated_outcomes: [pass, not_applicable]}
+  - {assertion_id: PRC-A-CORE-024, implementation_id: prc.native.inventory-files-nonempty@0.1, validated_outcomes: [pass, fail, not_applicable]}
+  - {assertion_id: PRC-A-CORE-025, implementation_id: prc.native.runtime-version@0.1, validated_outcomes: [pass, fail, not_applicable]}
+  - {assertion_id: PRC-A-CORE-026, implementation_id: prc.native.container-base-pin@0.1, validated_outcomes: [pass, fail, not_applicable]}
+  - {assertion_id: PRC-A-CORE-027, implementation_id: prc.native.container-nonroot@0.1, validated_outcomes: [pass, fail, not_applicable]}
+  - {assertion_id: PRC-A-CORE-028, implementation_id: prc.native.terraform-lock@0.1, validated_outcomes: [pass, fail, not_applicable]}
+  - {assertion_id: PRC-A-CORE-029, implementation_id: prc.native.kubernetes-nonroot@0.1, validated_outcomes: [pass, fail, not_applicable]}
+  - {assertion_id: PRC-A-CORE-030, implementation_id: prc.native.kubernetes-resources@0.1, validated_outcomes: [pass, fail, not_applicable]}
+benchmark:
+  suite_id: prc.benchmark.core-native@0.2
+  suite_path: fixtures/benchmarks/core-native/suite-comprehensive.yaml
+  suite_sha256: 070c1cf24207232d693f15a3010c11278fc1b5660f6861aee546e13f51b48d8b
+limitations:
+  - Manual-review and adapter-backed assertions are validated only in their fail-closed manual or blocked states.
+  - Git revision, file-mode, final-newline, merge-conflict, and empty-manifest checks still lack both positive and negative committed fixtures.
+  - The fixture corpus does not yet establish cross-platform, large-repository, or adversarial parser performance.

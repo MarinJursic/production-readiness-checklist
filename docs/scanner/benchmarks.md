@@ -74,8 +74,28 @@ prc pack validate \
   --format human
 ```
 
-The first pack contains three assertions, not the entire core profile. Pack
-membership does not authorize adapter execution and does not change gate
-semantics. The current manifest and benchmark pins are local integrity
+The smaller `core-foundation` pack contains three assertions and remains a
+fast contract test. The `core-native` pack binds all 30 assertions in the core
+profile to a 16-case, 98-expectation fixture corpus:
+
+```bash
+prc benchmark run \
+  --catalog-root . \
+  --suite fixtures/benchmarks/core-native/suite-comprehensive.yaml \
+  --evaluated-at 2026-08-23T12:00:00Z
+prc pack validate \
+  --catalog-root . \
+  --file packs/core-native.yaml
+```
+
+The comprehensive pack distinguishes measured state coverage from complete
+validation. Manual and adapter-backed assertions are currently measured only
+in their fail-closed states, while Git identity, file-mode, final-newline,
+merge-conflict, and empty-manifest checks lack both positive and negative
+committed fixtures.
+These limitations are part of the pack manifest and therefore its digest.
+
+Pack membership does not authorize adapter execution and does not change gate
+semantics. The current manifests and benchmark pins are local integrity
 contracts; signed pack releases and publisher-key verification remain future
 work before packs can be treated as a remote trust channel.

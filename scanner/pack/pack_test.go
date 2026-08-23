@@ -36,6 +36,34 @@ func TestCoreFoundationPackBindsCatalogAndBenchmarkCoverage(t *testing.T) {
 	}
 }
 
+func TestCoreNativePackBindsEveryProfileAssertion(t *testing.T) {
+	root := repositoryRoot(t)
+	catalogValue, err := catalog.Load(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	loaded, err := Load(root, filepath.Join(root, "packs", "core-native.yaml"), catalogValue)
+	if err != nil {
+		t.Fatal(err)
+	}
+	profile := catalogValue.Profiles["prc/core-repository"]
+	if len(loaded.Manifest.Assertions) != len(profile.AssertionIDs) {
+		t.Fatalf("pack assertions = %d, profile assertions = %d", len(loaded.Manifest.Assertions), len(profile.AssertionIDs))
+	}
+	bound := map[string]bool{}
+	for _, assertion := range loaded.Manifest.Assertions {
+		bound[assertion.AssertionID] = true
+	}
+	for _, assertionID := range profile.AssertionIDs {
+		if !bound[assertionID] {
+			t.Errorf("profile assertion is not bound: %s", assertionID)
+		}
+	}
+	if loaded.SuiteDigest != loaded.Manifest.Benchmark.SuiteSHA256 || len(loaded.BenchmarkCorpusDigest) != 64 {
+		t.Fatalf("loaded comprehensive pack = %+v", loaded)
+	}
+}
+
 func TestPackRejectsUnpinnedBenchmarkAndCatalogDrift(t *testing.T) {
 	root := repositoryRoot(t)
 	catalogValue, err := catalog.Load(root)

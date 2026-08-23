@@ -1,0 +1,9 @@
+name: Empty workflow fixture
+
+on:
+  push:
+
+permissions:
+  contents: read
+
+jobs: {}

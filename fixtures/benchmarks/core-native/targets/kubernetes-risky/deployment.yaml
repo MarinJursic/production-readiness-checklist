@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: risky
+spec:
+  template:
+    spec:
+      containers:
+        - name: app
+          image: example.invalid/app:latest
+          securityContext:
+            runAsUser: 0
