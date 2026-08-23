@@ -1,5 +1,5 @@
 schema_version: prc.assertions/v0.1
-catalog_version: 0.7.0
+catalog_version: 0.8.0
 assertions:
   - id: PRC-A-CORE-001
     revision: 2
@@ -526,6 +526,36 @@ assertions:
         minimum_authority: repository
         description: Content-addressed bounded parsing of detected OpenAPI YAML or JSON documents for required 3.0, 3.1, or 3.2 root structure and metadata.
     implementation_id: prc.native.openapi-root@0.1
+    parameters: {}
+    severity: medium
+    gate: required
+    remediation_class: R2
+  - id: PRC-A-API-002
+    revision: 1
+    control_ids: [USEQ-13208C54]
+    title: OpenAPI operations define valid responses
+    statement: Every directly declared operation under OpenAPI paths or webhooks has a nonempty Responses Object whose response keys and inline response descriptions satisfy the supported OpenAPI structure.
+    applicability: 'inventory.components.exists(c, c.kind == "api-description" && c.ecosystem == "openapi")'
+    evidence_required:
+      - kind: openapi-parse
+        minimum_authority: repository
+        description: Content-addressed bounded parsing of directly declared OpenAPI path and webhook operations, including 3.2 query and additionalOperations entries.
+    implementation_id: prc.native.openapi-operation-responses@0.1
+    parameters: {}
+    severity: high
+    gate: required
+    remediation_class: R2
+  - id: PRC-A-API-003
+    revision: 1
+    control_ids: [USEQ-13208C54]
+    title: Declared OpenAPI operation IDs are unique
+    statement: Every operationId declared by a directly declared OpenAPI path or webhook operation is a nonempty string and is unique within its OpenAPI document.
+    applicability: 'inventory.components.exists(c, c.kind == "api-description" && c.ecosystem == "openapi")'
+    evidence_required:
+      - kind: openapi-parse
+        minimum_authority: repository
+        description: Content-addressed bounded parsing of operationId fields on directly declared OpenAPI path and webhook operations, including 3.2 query and additionalOperations entries.
+    implementation_id: prc.native.openapi-operation-ids@0.1
     parameters: {}
     severity: medium
     gate: required

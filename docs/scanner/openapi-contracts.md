@@ -1,16 +1,24 @@
 # OpenAPI contract analysis
 
-`PRC-A-API-001` is a language-neutral, no-execution check for the bounded root
-structure of detected OpenAPI YAML and JSON documents. Inventory recognizes the
+`PRC-A-API-001` through `PRC-A-API-003` are language-neutral, no-execution
+checks for the bounded root and directly declared operation structure of
+detected OpenAPI YAML and JSON documents. They are available as the focused
+`prc/api@0.1` profile and as part of `prc/core-repository@0.8`. Inventory recognizes the
 conventional `openapi.yaml`, `openapi.yml`, and `openapi.json` names, plus
 bounded YAML files with a top-level OpenAPI 3.x marker. Each detection is
 recorded as an `api-description` component and a sourced fact with an explicit
 limitation: a description does not prove that its API is implemented, reachable,
 or deployed.
 
+Run only these contract checks with:
+
+```bash
+prc scan --target PATH --catalog-root PATH_TO_RELEASE --profile prc/api
+```
+
 ## What the rule proves
 
-For published OpenAPI 3.0, 3.1, and 3.2 feature versions, the native check
+For published OpenAPI 3.0, 3.1, and 3.2 feature versions, the native checks
 verifies that:
 
 - the file contains exactly one parseable YAML or JSON document with an object
@@ -19,7 +27,15 @@ verifies that:
 - `info` is an object with nonempty string `title` and `version` fields;
 - OpenAPI 3.0 has a `paths` object; and
 - OpenAPI 3.1 and 3.2 have at least one object-valued `paths`, `components`, or
-  `webhooks` field.
+  `webhooks` field;
+- every directly declared operation under `paths` or `webhooks` has a nonempty
+  Responses Object containing at least one valid response code or `default`;
+- every inline Response Object has its required nonempty `description`, while a
+  structurally valid `$ref` remains a reference rather than an invented pass for
+  its remote target; and
+- every declared `operationId` is a nonempty string and is unique within that
+  OpenAPI document. Because `operationId` is optional, the check does not require
+  one where the specification does not.
 
 These are requirements from the authoritative
 [OpenAPI 3.0.4 specification](https://spec.openapis.org/oas/v3.0.4.html),
@@ -46,10 +62,14 @@ never document content, and reports at most 100 structural problems.
 
 ## Deliberate limitations
 
-This is not a complete OpenAPI conformance validator. It does not resolve
-references, retrieve remote documents, validate every nested object, compare the
+This is not a complete OpenAPI conformance validator. Operation checks cover
+operations declared directly under `paths` and `webhooks`, including the
+OpenAPI 3.2 `query` and `additionalOperations` fields. They do not resolve Path
+Item references, callbacks, multi-document descriptions, response references,
+or remote documents. A reference is therefore not proof that its target is
+valid. The checks also do not validate every nested object, compare the
 description with application routes or deployed behavior, lint API design, test
 requests, infer exposure, or decide compatibility. Full conformance, contract
-testing, and runtime drift require separately versioned adapters with explicit
-filesystem, process, network, authentication, target, and destructive-request
-policies.
+testing, reference resolution, and runtime drift require separately versioned
+adapters with explicit filesystem, process, network, authentication, target,
+and destructive-request policies.

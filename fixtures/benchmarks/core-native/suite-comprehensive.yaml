@@ -1,5 +1,5 @@
 schema_version: prc.benchmark-suite/v0.2
-id: prc.benchmark.core-native@0.7
+id: prc.benchmark.core-native@0.8
 title: Comprehensive core native assertion benchmark
 profile_id: prc/core-repository
 cases:
@@ -40,6 +40,8 @@ cases:
       - {assertion_id: PRC-A-GO-001, assessment: not_applicable, execution: not_run}
       - {assertion_id: PRC-A-GO-002, assessment: not_applicable, execution: not_run}
       - {assertion_id: PRC-A-API-001, assessment: not_applicable, execution: not_run}
+      - {assertion_id: PRC-A-API-002, assessment: not_applicable, execution: not_run}
+      - {assertion_id: PRC-A-API-003, assessment: not_applicable, execution: not_run}
   - id: foundation-present
     target: targets/foundation-present
     expectations:
@@ -229,6 +231,8 @@ cases:
     target: targets/openapi-root-valid
     expectations:
       - {assertion_id: PRC-A-API-001, assessment: pass, execution: completed}
+      - {assertion_id: PRC-A-API-002, assessment: pass, execution: completed}
+      - {assertion_id: PRC-A-API-003, assessment: pass, execution: completed}
   - id: openapi-root-risky
     target: targets/openapi-root-risky-template
     setup:
@@ -241,6 +245,22 @@ cases:
       - {operation: replace_text, path: openapi.yaml, find: 'openapi: 3.2.0', replace: 'openapi: ['}
     expectations:
       - {assertion_id: PRC-A-API-001, assessment: unknown, execution: error}
+      - {assertion_id: PRC-A-API-002, assessment: unknown, execution: error}
+      - {assertion_id: PRC-A-API-003, assessment: unknown, execution: error}
+  - id: openapi-operation-responses-risky
+    target: targets/openapi-operation-responses-risky-template
+    setup:
+      - {operation: replace_text, path: openapi.yaml, find: '"200":', replace: 'x-internal-note:'}
+    expectations:
+      - {assertion_id: PRC-A-API-002, assessment: fail, execution: completed}
+      - {assertion_id: PRC-A-API-003, assessment: pass, execution: completed}
+  - id: openapi-operation-ids-risky
+    target: targets/openapi-operation-ids-risky-template
+    setup:
+      - {operation: replace_text, path: openapi.yaml, find: getStatus, replace: duplicateOperation}
+    expectations:
+      - {assertion_id: PRC-A-API-002, assessment: pass, execution: completed}
+      - {assertion_id: PRC-A-API-003, assessment: fail, execution: completed}
 quality_budget:
   minimum_precision: 1
   minimum_recall: 1

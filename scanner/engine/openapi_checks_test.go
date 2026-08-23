@@ -108,9 +108,11 @@ func TestOpenAPIRootCheckFailsClosedOnParseAndUnsupportedVersions(t *testing.T) 
 			if err != nil {
 				t.Fatal(err)
 			}
-			result := findResult(t, run, "PRC-A-API-001")
-			if result.Execution != "error" || result.Assessment != "unknown" || !strings.Contains(result.Summary, testCase.summary) {
-				t.Fatalf("OpenAPI fail-closed result = %+v", result)
+			for _, assertionID := range []string{"PRC-A-API-001", "PRC-A-API-002", "PRC-A-API-003"} {
+				result := findResult(t, run, assertionID)
+				if result.Execution != "error" || result.Assessment != "unknown" || !strings.Contains(result.Summary, testCase.summary) {
+					t.Fatalf("OpenAPI fail-closed %s result = %+v", assertionID, result)
+				}
 			}
 		})
 	}
@@ -140,5 +142,123 @@ func TestOpenAPIRootCheckRejectsUnprovableInputBounds(t *testing.T) {
 	}
 	if _, err := openAPIDescriptionPaths(item); err == nil || !strings.Contains(err.Error(), "total bytes") {
 		t.Fatalf("OpenAPI byte limit error = %v", err)
+	}
+}
+
+func TestOpenAPIOperationChecksSupportDirectOperations(t *testing.T) {
+	root := healthyRepository(t)
+	writeFixture(t, root, "api/openapi.yaml", `openapi: 3.2.0
+info: {title: Example, version: 1.0.0}
+paths:
+  /items:
+    query:
+      operationId: queryItems
+      responses:
+        "200": {$ref: "#/components/responses/Items"}
+    additionalOperations:
+      COPY:
+        operationId: copyItems
+        responses:
+          2XX: {description: copied}
+webhooks:
+  itemChanged:
+    post:
+      operationId: itemChanged
+      responses:
+        default: {description: accepted}
+components:
+  responses:
+    Items: {description: items}
+`)
+	item, err := inventory.Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	run, err := scanner(t).Scan("prc/api", item)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, assertionID := range []string{"PRC-A-API-001", "PRC-A-API-002", "PRC-A-API-003"} {
+		result := findResult(t, run, assertionID)
+		if result.Execution != "completed" || result.Assessment != "pass" || len(result.EvidenceObserved) != 2 {
+			t.Fatalf("%s result = %+v", assertionID, result)
+		}
+	}
+}
+
+func TestOpenAPIOperationChecksReportResponseAndIdentityProblems(t *testing.T) {
+	root := healthyRepository(t)
+	writeFixture(t, root, "api/openapi.yaml", `openapi: 3.1.2
+info: {title: Example, version: 1.0.0}
+paths:
+  /first:
+    get:
+      operationId: repeated
+      responses:
+        2xx: {description: invalid lowercase range}
+  /second:
+    post:
+      operationId: repeated
+      responses:
+        "200": {}
+  /third:
+    delete:
+      operationId: ""
+`)
+	item, err := inventory.Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	run, err := scanner(t).Scan("prc/api", item)
+	if err != nil {
+		t.Fatal(err)
+	}
+	responses := findResult(t, run, "PRC-A-API-002")
+	if responses.Execution != "completed" || responses.Assessment != "fail" || len(responses.Locations) < 3 ||
+		!strings.Contains(responses.Summary, "invalid response key 2xx") ||
+		!strings.Contains(responses.Summary, "description must be a nonempty string") ||
+		!strings.Contains(responses.Summary, "responses must be an object") {
+		t.Fatalf("OpenAPI response result = %+v", responses)
+	}
+	identifiers := findResult(t, run, "PRC-A-API-003")
+	if identifiers.Execution != "completed" || identifiers.Assessment != "fail" || len(identifiers.Locations) != 2 ||
+		!strings.Contains(identifiers.Summary, "duplicates paths /first GET") ||
+		!strings.Contains(identifiers.Summary, "operationId must be a nonempty string") {
+		t.Fatalf("OpenAPI operationId result = %+v", identifiers)
+	}
+}
+
+func TestOpenAPIOperationChecksRejectAmbiguousOperationFields(t *testing.T) {
+	root := healthyRepository(t)
+	writeFixture(t, root, "api/openapi.yaml", `openapi: 3.2.0
+info: {title: Example, version: 1.0.0}
+paths:
+  /uppercase:
+    GET:
+      operationId: uppercaseGet
+      responses:
+        "200": {description: accepted}
+  /additional:
+    additionalOperations:
+      POST:
+        operationId: duplicatePost
+        responses:
+          "200": {description: accepted}
+`)
+	item, err := inventory.Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	run, err := scanner(t).Scan("prc/api", item)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, assertionID := range []string{"PRC-A-API-002", "PRC-A-API-003"} {
+		result := findResult(t, run, assertionID)
+		if result.Execution != "completed" || result.Assessment != "fail" || len(result.Locations) != 2 ||
+			!strings.Contains(result.Summary, "fixed operation field must be lowercase") ||
+			!strings.Contains(result.Summary, "duplicates a fixed operation field") {
+			t.Fatalf("%s ambiguous operation-field result = %+v", assertionID, result)
+		}
 	}
 }

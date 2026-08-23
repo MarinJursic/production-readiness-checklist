@@ -1,6 +1,6 @@
 schema_version: prc.profile/v0.1
 id: prc/core-repository
-version: "0.7"
+version: "0.8"
 title: Core repository readiness
 description: Deterministic repository governance, documentation, workflow, dependency, security, API-contract, and test foundations.
 assertion_ids:
@@ -38,6 +38,8 @@ assertion_ids:
   - PRC-A-GO-001
   - PRC-A-GO-002
   - PRC-A-API-001
+  - PRC-A-API-002
+  - PRC-A-API-003
 terminal_policy:
   block_on: [critical, high]
   allow_manual_remaining: true

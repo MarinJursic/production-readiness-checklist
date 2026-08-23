@@ -5,7 +5,7 @@ info:
 paths:
   /health:
     get:
-      operationId: getHealth
+      operationId: duplicateOperation
       responses:
         "200":
           description: Healthy
@@ -13,5 +13,5 @@ paths:
     get:
       operationId: getStatus
       responses:
-        default:
+        "200":
           description: Current service status

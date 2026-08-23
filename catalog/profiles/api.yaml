@@ -1,0 +1,12 @@
+schema_version: prc.profile/v0.1
+id: prc/api
+version: "0.1"
+title: API contract readiness
+description: Language-neutral bounded structural analysis of detected OpenAPI 3.0, 3.1, and 3.2 descriptions.
+assertion_ids:
+  - PRC-A-API-001
+  - PRC-A-API-002
+  - PRC-A-API-003
+terminal_policy:
+  block_on: [critical, high]
+  allow_manual_remaining: true

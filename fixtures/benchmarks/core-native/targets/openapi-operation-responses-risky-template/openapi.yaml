@@ -9,9 +9,3 @@ paths:
       responses:
         "200":
           description: Healthy
-  /status:
-    get:
-      operationId: getStatus
-      responses:
-        default:
-          description: Current service status

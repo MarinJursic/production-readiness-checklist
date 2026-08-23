@@ -21,15 +21,26 @@ const (
 )
 
 var (
-	openAPIVersionPattern = regexp.MustCompile(`^3\.([0-9]+)\.[0-9]+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$`)
-	errUnsupportedOpenAPI = errors.New("unsupported OpenAPI feature version")
+	openAPIVersionPattern      = regexp.MustCompile(`^3\.([0-9]+)\.[0-9]+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$`)
+	openAPIResponseCodePattern = regexp.MustCompile(`^(?:default|[1-5](?:[0-9]{2}|XX))$`)
+	errUnsupportedOpenAPI      = errors.New("unsupported OpenAPI feature version")
 )
+
+var openAPIOperationFields = map[string]bool{
+	"get": true, "put": true, "post": true, "delete": true, "options": true,
+	"head": true, "patch": true, "trace": true,
+}
 
 type openAPIProblem struct {
 	Path    string
 	Line    int
 	Column  int
 	Message string
+}
+
+type openAPIOperation struct {
+	Label string
+	Node  *yaml.Node
 }
 
 func openAPIDescriptionPaths(inventory model.Inventory) ([]string, error) {
@@ -218,6 +229,203 @@ func openAPIRootProblems(path string, root *yaml.Node) ([]openAPIProblem, error)
 	return problems, nil
 }
 
+func openAPIFeatureMinor(root *yaml.Node) int {
+	root = resolveOpenAPINode(root)
+	version := resolveOpenAPINode(mappingValue(root, "openapi"))
+	if version == nil || version.Kind != yaml.ScalarNode || version.Tag != "!!str" {
+		return -1
+	}
+	match := openAPIVersionPattern.FindStringSubmatch(strings.TrimSpace(version.Value))
+	if match == nil {
+		return -1
+	}
+	switch match[1] {
+	case "0":
+		return 0
+	case "1":
+		return 1
+	case "2":
+		return 2
+	default:
+		return -1
+	}
+}
+
+func appendOpenAPIOperations(
+	documentPath, sectionName string,
+	section *yaml.Node,
+	featureMinor int,
+	operations *[]openAPIOperation,
+	problems *[]openAPIProblem,
+) {
+	section = resolveOpenAPINode(section)
+	if section == nil {
+		return
+	}
+	if section.Kind != yaml.MappingNode {
+		appendOpenAPIProblem(problems, documentPath, section, sectionName+" must be an object")
+		return
+	}
+	for item := 0; item+1 < len(section.Content); item += 2 {
+		pathKey, pathItem := section.Content[item], resolveOpenAPINode(section.Content[item+1])
+		if pathItem == nil || pathItem.Kind != yaml.MappingNode {
+			appendOpenAPIProblem(problems, documentPath, section.Content[item+1], sectionName+" path item "+pathKey.Value+" must be an object")
+			continue
+		}
+		for field := 0; field+1 < len(pathItem.Content); field += 2 {
+			methodKey, operationNode := pathItem.Content[field], resolveOpenAPINode(pathItem.Content[field+1])
+			method := strings.ToLower(methodKey.Value)
+			if openAPIOperationFields[method] || (featureMinor == 2 && method == "query") {
+				label := sectionName + " " + pathKey.Value + " " + strings.ToUpper(method)
+				if methodKey.Value != method {
+					appendOpenAPIProblem(problems, documentPath, methodKey, label+" fixed operation field must be lowercase")
+				}
+				if operationNode == nil || operationNode.Kind != yaml.MappingNode {
+					appendOpenAPIProblem(problems, documentPath, pathItem.Content[field+1], label+" operation must be an object")
+					continue
+				}
+				*operations = append(*operations, openAPIOperation{Label: label, Node: operationNode})
+				continue
+			}
+			if featureMinor != 2 || methodKey.Value != "additionalOperations" {
+				continue
+			}
+			if operationNode == nil || operationNode.Kind != yaml.MappingNode {
+				appendOpenAPIProblem(problems, documentPath, pathItem.Content[field+1], sectionName+" "+pathKey.Value+" additionalOperations must be an object")
+				continue
+			}
+			for additional := 0; additional+1 < len(operationNode.Content); additional += 2 {
+				additionalKey := operationNode.Content[additional]
+				additionalOperation := resolveOpenAPINode(operationNode.Content[additional+1])
+				label := sectionName + " " + pathKey.Value + " " + additionalKey.Value
+				fixedMethod := strings.ToLower(additionalKey.Value)
+				if openAPIOperationFields[fixedMethod] || fixedMethod == "query" {
+					appendOpenAPIProblem(problems, documentPath, additionalKey, label+" duplicates a fixed operation field")
+				}
+				if additionalOperation == nil || additionalOperation.Kind != yaml.MappingNode {
+					appendOpenAPIProblem(problems, documentPath, operationNode.Content[additional+1], label+" operation must be an object")
+					continue
+				}
+				*operations = append(*operations, openAPIOperation{Label: label, Node: additionalOperation})
+			}
+		}
+	}
+}
+
+func directOpenAPIOperations(path string, root *yaml.Node) ([]openAPIOperation, []openAPIProblem) {
+	operations := make([]openAPIOperation, 0)
+	problems := make([]openAPIProblem, 0)
+	root = resolveOpenAPINode(root)
+	if root == nil || root.Kind != yaml.MappingNode {
+		return operations, problems
+	}
+	featureMinor := openAPIFeatureMinor(root)
+	appendOpenAPIOperations(path, "paths", mappingValue(root, "paths"), featureMinor, &operations, &problems)
+	if featureMinor >= 1 {
+		appendOpenAPIOperations(path, "webhooks", mappingValue(root, "webhooks"), featureMinor, &operations, &problems)
+	}
+	return operations, problems
+}
+
+func openAPIOperationResponseProblems(path string, operations []openAPIOperation) []openAPIProblem {
+	problems := make([]openAPIProblem, 0)
+	for _, operation := range operations {
+		responsesNode := mappingValue(operation.Node, "responses")
+		responses := resolveOpenAPINode(responsesNode)
+		if responses == nil || responses.Kind != yaml.MappingNode {
+			appendOpenAPIProblem(&problems, path, operation.Node, operation.Label+" responses must be an object")
+			continue
+		}
+		responseCount := 0
+		for item := 0; item+1 < len(responses.Content); item += 2 {
+			responseKey, responseNode := responses.Content[item], resolveOpenAPINode(responses.Content[item+1])
+			if strings.HasPrefix(strings.ToLower(responseKey.Value), "x-") {
+				continue
+			}
+			if responseKey.Kind != yaml.ScalarNode || responseKey.Tag != "!!str" || !openAPIResponseCodePattern.MatchString(responseKey.Value) {
+				appendOpenAPIProblem(&problems, path, responseKey, operation.Label+" has invalid response key "+responseKey.Value)
+				continue
+			}
+			responseCount++
+			if responseNode == nil || responseNode.Kind != yaml.MappingNode {
+				appendOpenAPIProblem(&problems, path, responses.Content[item+1], operation.Label+" response "+responseKey.Value+" must be an object")
+				continue
+			}
+			if reference := mappingValue(responseNode, "$ref"); reference != nil {
+				reference = resolveOpenAPINode(reference)
+				if reference == nil || reference.Kind != yaml.ScalarNode || reference.Tag != "!!str" || strings.TrimSpace(reference.Value) == "" {
+					appendOpenAPIProblem(&problems, path, responseNode, operation.Label+" response "+responseKey.Value+" $ref must be a nonempty string")
+				}
+				continue
+			}
+			description := resolveOpenAPINode(mappingValue(responseNode, "description"))
+			if description == nil || description.Kind != yaml.ScalarNode || description.Tag != "!!str" || strings.TrimSpace(description.Value) == "" {
+				appendOpenAPIProblem(&problems, path, responseNode, operation.Label+" response "+responseKey.Value+" description must be a nonempty string")
+			}
+		}
+		if responseCount == 0 {
+			appendOpenAPIProblem(&problems, path, responses, operation.Label+" responses must contain at least one response code or default")
+		}
+	}
+	return problems
+}
+
+func openAPIOperationIDProblems(path string, operations []openAPIOperation) ([]openAPIProblem, int) {
+	problems := make([]openAPIProblem, 0)
+	seen := map[string]string{}
+	declared := 0
+	for _, operation := range operations {
+		identifier := mappingValue(operation.Node, "operationId")
+		if identifier == nil {
+			continue
+		}
+		declared++
+		identifier = resolveOpenAPINode(identifier)
+		if identifier == nil || identifier.Kind != yaml.ScalarNode || identifier.Tag != "!!str" || strings.TrimSpace(identifier.Value) == "" {
+			appendOpenAPIProblem(&problems, path, identifier, operation.Label+" operationId must be a nonempty string")
+			continue
+		}
+		if previous, exists := seen[identifier.Value]; exists {
+			appendOpenAPIProblem(&problems, path, identifier, operation.Label+" operationId "+identifier.Value+" duplicates "+previous)
+			continue
+		}
+		seen[identifier.Value] = operation.Label
+	}
+	return problems, declared
+}
+
+func applyOpenAPIProblems(
+	result model.AssertionResult,
+	problems []openAPIProblem,
+	successSummary, failureKind string,
+) model.AssertionResult {
+	if len(problems) == 0 {
+		result.Assessment = "pass"
+		result.Summary = successSummary
+		return result
+	}
+	reported := problems
+	if len(reported) > maximumOpenAPIProblems {
+		reported = reported[:maximumOpenAPIProblems]
+	}
+	messages := make([]string, 0, len(reported))
+	locationSeen := map[string]bool{}
+	for _, problem := range reported {
+		messages = append(messages, fmt.Sprintf("%s:%d:%d (%s)", problem.Path, problem.Line, problem.Column, problem.Message))
+		locationKey := fmt.Sprintf("%s:%d:%d", problem.Path, problem.Line, problem.Column)
+		if !locationSeen[locationKey] {
+			locationSeen[locationKey] = true
+			result.Locations = append(result.Locations, model.FindingLocation{
+				Path: problem.Path, Line: problem.Line, Column: problem.Column,
+			})
+		}
+	}
+	result.Assessment = "fail"
+	result.Summary = fmt.Sprintf("Detected %d %s problem(s); reporting up to %d: %s.",
+		len(problems), failureKind, maximumOpenAPIProblems, strings.Join(messages, ", "))
+	return result
+}
+
 func evaluateOpenAPIRootStructure(
 	assertion model.Assertion,
 	inventory model.Inventory,
@@ -252,29 +460,93 @@ func evaluateOpenAPIRootStructure(
 		inventory, "openapi-parse", assertion.ImplementationID, ".",
 		fmt.Sprintf("Bounded OpenAPI root analysis inspected %d inventoried document(s).", len(paths)), observedAt,
 	)}, result.EvidenceObserved...)
-	if len(problems) == 0 {
-		result.Assessment = "pass"
-		result.Summary = fmt.Sprintf("All %d detected OpenAPI document(s) have supported 3.0, 3.1, or 3.2 root structure and required metadata.", len(paths))
-		return result
+	return applyOpenAPIProblems(result, problems,
+		fmt.Sprintf("All %d detected OpenAPI document(s) have supported 3.0, 3.1, or 3.2 root structure and required metadata.", len(paths)),
+		"OpenAPI root-structure")
+}
+
+func evaluateOpenAPIOperationResponses(
+	assertion model.Assertion,
+	inventory model.Inventory,
+	result model.AssertionResult,
+	observedAt time.Time,
+) model.AssertionResult {
+	paths, err := openAPIDescriptionPaths(inventory)
+	if err != nil {
+		return nativeReadFailure(result, err)
 	}
-	reported := problems
-	if len(reported) > maximumOpenAPIProblems {
-		reported = reported[:maximumOpenAPIProblems]
-	}
-	messages := make([]string, 0, len(reported))
-	locationSeen := map[string]bool{}
-	for _, problem := range reported {
-		messages = append(messages, fmt.Sprintf("%s:%d:%d (%s)", problem.Path, problem.Line, problem.Column, problem.Message))
-		locationKey := fmt.Sprintf("%s:%d:%d", problem.Path, problem.Line, problem.Column)
-		if !locationSeen[locationKey] {
-			locationSeen[locationKey] = true
-			result.Locations = append(result.Locations, model.FindingLocation{
-				Path: problem.Path, Line: problem.Line, Column: problem.Column,
-			})
+	problems := make([]openAPIProblem, 0)
+	operationCount := 0
+	for _, path := range paths {
+		data, evidence, readErr := readVerifiedEvidence(
+			inventory, path, "openapi-parse", assertion.ImplementationID,
+			"Parsed directly declared OpenAPI operations and response objects.", observedAt,
+		)
+		if readErr != nil {
+			return nativeReadFailure(result, readErr)
 		}
+		result.EvidenceObserved = append(result.EvidenceObserved, evidence)
+		root, parseErr := decodeOpenAPIDocument(data)
+		if parseErr != nil {
+			return nativeReadFailure(result, fmt.Errorf("cannot parse %s as one OpenAPI YAML or JSON document: %w", path, parseErr))
+		}
+		if _, validationErr := openAPIRootProblems(path, root); validationErr != nil {
+			return nativeReadFailure(result, validationErr)
+		}
+		operations, traversalProblems := directOpenAPIOperations(path, root)
+		operationCount += len(operations)
+		problems = append(problems, traversalProblems...)
+		problems = append(problems, openAPIOperationResponseProblems(path, operations)...)
 	}
-	result.Assessment = "fail"
-	result.Summary = fmt.Sprintf("Detected %d OpenAPI root-structure problem(s); reporting up to %d: %s.",
-		len(problems), maximumOpenAPIProblems, strings.Join(messages, ", "))
-	return result
+	result.EvidenceObserved = append([]model.Evidence{inventoryEvidence(
+		inventory, "openapi-parse", assertion.ImplementationID, ".",
+		fmt.Sprintf("Bounded OpenAPI operation-response analysis inspected %d directly declared operation(s) in %d document(s).", operationCount, len(paths)), observedAt,
+	)}, result.EvidenceObserved...)
+	return applyOpenAPIProblems(result, problems,
+		fmt.Sprintf("All %d directly declared OpenAPI operation(s) provide a nonempty Responses Object with structurally valid inline responses or references.", operationCount),
+		"OpenAPI operation-response")
+}
+
+func evaluateOpenAPIOperationIDs(
+	assertion model.Assertion,
+	inventory model.Inventory,
+	result model.AssertionResult,
+	observedAt time.Time,
+) model.AssertionResult {
+	paths, err := openAPIDescriptionPaths(inventory)
+	if err != nil {
+		return nativeReadFailure(result, err)
+	}
+	problems := make([]openAPIProblem, 0)
+	operationCount, declaredCount := 0, 0
+	for _, path := range paths {
+		data, evidence, readErr := readVerifiedEvidence(
+			inventory, path, "openapi-parse", assertion.ImplementationID,
+			"Parsed directly declared OpenAPI operationId values.", observedAt,
+		)
+		if readErr != nil {
+			return nativeReadFailure(result, readErr)
+		}
+		result.EvidenceObserved = append(result.EvidenceObserved, evidence)
+		root, parseErr := decodeOpenAPIDocument(data)
+		if parseErr != nil {
+			return nativeReadFailure(result, fmt.Errorf("cannot parse %s as one OpenAPI YAML or JSON document: %w", path, parseErr))
+		}
+		if _, validationErr := openAPIRootProblems(path, root); validationErr != nil {
+			return nativeReadFailure(result, validationErr)
+		}
+		operations, traversalProblems := directOpenAPIOperations(path, root)
+		operationCount += len(operations)
+		problems = append(problems, traversalProblems...)
+		identifierProblems, count := openAPIOperationIDProblems(path, operations)
+		declaredCount += count
+		problems = append(problems, identifierProblems...)
+	}
+	result.EvidenceObserved = append([]model.Evidence{inventoryEvidence(
+		inventory, "openapi-parse", assertion.ImplementationID, ".",
+		fmt.Sprintf("Bounded OpenAPI operation identity analysis inspected %d directly declared operation(s) and %d declared operationId value(s) in %d document(s).", operationCount, declaredCount, len(paths)), observedAt,
+	)}, result.EvidenceObserved...)
+	return applyOpenAPIProblems(result, problems,
+		fmt.Sprintf("All %d declared operationId value(s) across %d directly declared OpenAPI operation(s) are nonempty and unique within each document.", declaredCount, operationCount),
+		"OpenAPI operationId")
 }

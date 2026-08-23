@@ -2,7 +2,7 @@
 
 # Core repository readiness
 
-Profile: `prc/core-repository@0.7`
+Profile: `prc/core-repository@0.8`
 
 Deterministic repository governance, documentation, workflow, dependency, security, API-contract, and test foundations.
 
@@ -48,6 +48,8 @@ implementation is present and verified by the scanner test suite.
 | `PRC-A-GO-001` — Go net/http package helpers do not use the default client | [USEQ-F6ACEF15](../engineering/06-application-services-and-apis.md) | high | required | go-ast-analysis | R2 |
 | `PRC-A-GO-002` — Go HTTP servers use configurable Server instances | [USEQ-B66A3064](../engineering/11-developer-experience-platform-and-delivery.md) | high | required | go-ast-analysis | R2 |
 | `PRC-A-API-001` — OpenAPI documents expose required root metadata | [USEQ-13208C54](../engineering/06-application-services-and-apis.md) | medium | required | openapi-parse | R2 |
+| `PRC-A-API-002` — OpenAPI operations define valid responses | [USEQ-13208C54](../engineering/06-application-services-and-apis.md) | high | required | openapi-parse | R2 |
+| `PRC-A-API-003` — Declared OpenAPI operation IDs are unique | [USEQ-13208C54](../engineering/06-application-services-and-apis.md) | medium | required | openapi-parse | R2 |
 
 ## Result interpretation
 

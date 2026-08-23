@@ -383,6 +383,10 @@ func (e *Engine) evaluate(
 		return evaluateGoHTTPServerTimeouts(assertion, inventory, result, observedAt)
 	case "prc.native.openapi-root@0.1":
 		return evaluateOpenAPIRootStructure(assertion, inventory, result, observedAt)
+	case "prc.native.openapi-operation-responses@0.1":
+		return evaluateOpenAPIOperationResponses(assertion, inventory, result, observedAt)
+	case "prc.native.openapi-operation-ids@0.1":
+		return evaluateOpenAPIOperationIDs(assertion, inventory, result, observedAt)
 	case "prc.native.manual-evidence@0.1":
 		result.Assessment = "manual_review"
 		result.Summary = "This assertion requires scoped evidence from an accountable reviewer."

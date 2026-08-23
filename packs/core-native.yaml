@@ -1,11 +1,11 @@
 schema_version: prc.pack/v0.1
-id: prc.pack.core-native@0.7
+id: prc.pack.core-native@0.8
 title: Core native assertion pack
 description: Catalog-wide deterministic checks measured against the comprehensive core fixture corpus.
 publisher_id: prc-project
 maintenance: active
 engine_apis: [prc.engine/v0.1]
-profile_ids: [prc/core-repository]
+profile_ids: [prc/core-repository, prc/api]
 assertions:
   - {assertion_id: PRC-A-CORE-001, implementation_id: prc.native.file-present@0.1, validated_outcomes: [pass, fail]}
   - {assertion_id: PRC-A-CORE-002, implementation_id: prc.native.file-present@0.1, validated_outcomes: [pass, fail]}
@@ -41,10 +41,13 @@ assertions:
   - {assertion_id: PRC-A-GO-001, implementation_id: prc.native.go-http-timeout@0.1, validated_outcomes: [pass, fail, not_applicable, error]}
   - {assertion_id: PRC-A-GO-002, implementation_id: prc.native.go-http-server-timeout@0.1, validated_outcomes: [pass, fail, not_applicable, error]}
   - {assertion_id: PRC-A-API-001, implementation_id: prc.native.openapi-root@0.1, validated_outcomes: [pass, fail, not_applicable, error]}
+  - {assertion_id: PRC-A-API-002, implementation_id: prc.native.openapi-operation-responses@0.1, validated_outcomes: [pass, fail, not_applicable, error]}
+  - {assertion_id: PRC-A-API-003, implementation_id: prc.native.openapi-operation-ids@0.1, validated_outcomes: [pass, fail, not_applicable, error]}
 benchmark:
-  suite_id: prc.benchmark.core-native@0.7
+  suite_id: prc.benchmark.core-native@0.8
   suite_path: fixtures/benchmarks/core-native/suite-comprehensive.yaml
-  suite_sha256: 3468573478d992c04e495ec4b266cacff45645897754cf31a5cfb79def392c10
+  suite_sha256: f6996adfdbb91e24e23436466c15c118d869bd949d564072a1fbffd0054a4e03
 limitations:
   - Manual-review and adapter-backed assertions are validated only in their fail-closed manual or blocked states.
+  - OpenAPI operation checks cover direct path and webhook operations; referenced Path Items, callbacks, multi-document descriptions, and referenced responses require a future bounded resolver or adapter.
   - The fixture corpus does not yet establish cross-platform, large-repository, or adversarial parser performance.

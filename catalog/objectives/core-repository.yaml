@@ -1,5 +1,5 @@
 schema_version: prc.objectives/v0.1
-catalog_version: 0.7.0
+catalog_version: 0.8.0
 objectives:
   - id: USEQ-FDCA6C71
     revision: 1
@@ -240,4 +240,4 @@ objectives:
       line: 305
     domains: [apis, architecture, testing]
     automation_class: partial
-    assertion_ids: [PRC-A-API-001]
+    assertion_ids: [PRC-A-API-001, PRC-A-API-002, PRC-A-API-003]
