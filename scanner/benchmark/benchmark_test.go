@@ -73,7 +73,7 @@ func TestComprehensiveCoreBenchmarkCoversEveryCatalogAssertion(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if !report.Passed || report.Summary.Cases != 25 || report.Summary.Expectations != 109 ||
+	if !report.Passed || report.Summary.Cases != 26 || report.Summary.Expectations != 113 ||
 		report.Summary.Mismatched != 0 || report.Summary.DeterministicCases != report.Summary.Cases ||
 		report.Metrics.Precision != 1 || report.Metrics.Recall != 1 || report.Metrics.FalsePositiveRate != 0 {
 		t.Fatalf("comprehensive benchmark report = %+v", report)
@@ -102,6 +102,7 @@ func TestCheckedInBenchmarkSourcesAreNonViolating(t *testing.T) {
 	for _, assertionID := range []string{
 		"PRC-A-CORE-026", "PRC-A-CORE-027", "PRC-A-CORE-028",
 		"PRC-A-CORE-029", "PRC-A-CORE-030", "PRC-A-CORE-031", "PRC-A-GO-001",
+		"PRC-A-GO-002",
 	} {
 		if results[assertionID] != "pass" {
 			t.Errorf("checked-in fixture corpus %s = %s; negative state must be materialized", assertionID, results[assertionID])

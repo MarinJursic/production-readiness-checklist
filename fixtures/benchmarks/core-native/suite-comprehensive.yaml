@@ -1,5 +1,5 @@
 schema_version: prc.benchmark-suite/v0.2
-id: prc.benchmark.core-native@0.5
+id: prc.benchmark.core-native@0.6
 title: Comprehensive core native assertion benchmark
 profile_id: prc/core-repository
 cases:
@@ -38,6 +38,7 @@ cases:
       - {assertion_id: PRC-A-CORE-030, assessment: not_applicable, execution: not_run}
       - {assertion_id: PRC-A-CORE-031, assessment: pass, execution: completed}
       - {assertion_id: PRC-A-GO-001, assessment: not_applicable, execution: not_run}
+      - {assertion_id: PRC-A-GO-002, assessment: not_applicable, execution: not_run}
   - id: foundation-present
     target: targets/foundation-present
     expectations:
@@ -203,6 +204,7 @@ cases:
     target: targets/go-http-timeout-safe
     expectations:
       - {assertion_id: PRC-A-GO-001, assessment: pass, execution: completed}
+      - {assertion_id: PRC-A-GO-002, assessment: pass, execution: completed}
   - id: go-http-timeout-risky
     target: targets/go-http-timeout-risky-template
     setup:
@@ -215,6 +217,13 @@ cases:
       - {operation: replace_text, path: client.go, find: "// PRC_INVALID_GO_TOKEN", replace: "func broken( {"}
     expectations:
       - {assertion_id: PRC-A-GO-001, assessment: unknown, execution: error}
+      - {assertion_id: PRC-A-GO-002, assessment: unknown, execution: error}
+  - id: go-http-server-timeout-risky
+    target: targets/go-http-server-timeout-risky-template
+    setup:
+      - {operation: replace_text, path: server.go, find: server.ListenAndServe(), replace: 'http.ListenAndServe(":8080", nil)'}
+    expectations:
+      - {assertion_id: PRC-A-GO-002, assessment: fail, execution: completed}
 quality_budget:
   minimum_precision: 1
   minimum_recall: 1

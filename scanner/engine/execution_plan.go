@@ -46,6 +46,7 @@ var implementationRegistry = func() map[string]implementationSpec {
 		"prc.native.kubernetes-resources@0.1",
 		"prc.native.private-key-armor@0.1",
 		"prc.native.go-http-timeout@0.1",
+		"prc.native.go-http-server-timeout@0.1",
 	} {
 		registry[identifier] = implementationSpec{kind: "built-in", capabilities: readOnly}
 	}

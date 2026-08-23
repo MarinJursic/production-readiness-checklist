@@ -1,5 +1,5 @@
 schema_version: prc.pack/v0.1
-id: prc.pack.core-native@0.5
+id: prc.pack.core-native@0.6
 title: Core native assertion pack
 description: Catalog-wide deterministic checks measured against the comprehensive core fixture corpus.
 publisher_id: prc-project
@@ -39,10 +39,11 @@ assertions:
   - {assertion_id: PRC-A-CORE-030, implementation_id: prc.native.kubernetes-resources@0.1, validated_outcomes: [pass, fail, not_applicable]}
   - {assertion_id: PRC-A-CORE-031, implementation_id: prc.native.private-key-armor@0.1, validated_outcomes: [pass, fail]}
   - {assertion_id: PRC-A-GO-001, implementation_id: prc.native.go-http-timeout@0.1, validated_outcomes: [pass, fail, not_applicable, error]}
+  - {assertion_id: PRC-A-GO-002, implementation_id: prc.native.go-http-server-timeout@0.1, validated_outcomes: [pass, fail, not_applicable, error]}
 benchmark:
-  suite_id: prc.benchmark.core-native@0.5
+  suite_id: prc.benchmark.core-native@0.6
   suite_path: fixtures/benchmarks/core-native/suite-comprehensive.yaml
-  suite_sha256: bd4308277661d83ed92f599a48cbaf437c92141f7cde2cab2162e66d85ccf69d
+  suite_sha256: f891cbd72783036e54988375694079f8a8c1ac11654d7e9a587915eb49d178da
 limitations:
   - Manual-review and adapter-backed assertions are validated only in their fail-closed manual or blocked states.
   - The fixture corpus does not yet establish cross-platform, large-repository, or adversarial parser performance.

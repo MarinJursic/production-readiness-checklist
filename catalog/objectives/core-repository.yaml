@@ -1,5 +1,5 @@
 schema_version: prc.objectives/v0.1
-catalog_version: 0.5.0
+catalog_version: 0.6.0
 objectives:
   - id: USEQ-FDCA6C71
     revision: 1
@@ -160,7 +160,7 @@ objectives:
       line: 60
     domains: [delivery, reliability]
     automation_class: partial
-    assertion_ids: [PRC-A-CORE-019]
+    assertion_ids: [PRC-A-CORE-019, PRC-A-GO-002]
   - id: USEQ-D60E6950
     revision: 1
     title: Intended package metadata

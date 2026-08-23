@@ -342,6 +342,15 @@ func dependencies(assertion model.Assertion, before, after model.Inventory) depe
 		}
 		return paths
 	}
+	goSource := func(inventory model.Inventory) []string {
+		paths := []string{}
+		for _, file := range inventory.Files {
+			if strings.EqualFold(filepath.Ext(file.Path), ".go") && !strings.HasSuffix(strings.ToLower(file.Path), "_test.go") {
+				paths = append(paths, file.Path)
+			}
+		}
+		return paths
+	}
 	workflows := append(append([]string{}, before.CI.WorkflowFiles...), after.CI.WorkflowFiles...)
 	switch assertion.ImplementationID {
 	case "prc.native.file-present@0.1":
@@ -410,6 +419,8 @@ func dependencies(assertion model.Assertion, before, after model.Inventory) depe
 		}
 	case "prc.native.kubernetes-nonroot@0.1", "prc.native.kubernetes-resources@0.1":
 		add(before.Infrastructure.KubernetesFiles, after.Infrastructure.KubernetesFiles)
+	case "prc.native.go-http-timeout@0.1", "prc.native.go-http-server-timeout@0.1":
+		add(goSource(before), goSource(after))
 	case "prc.native.manual-evidence@0.1":
 		dep.content, dep.presence, dep.alwaysFresh = false, false, true
 	case "prc.native.analysis-evidence@0.1":

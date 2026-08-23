@@ -18,7 +18,7 @@ class CatalogValidationTests(unittest.TestCase):
     def test_catalog_references_and_schemas_validate(self) -> None:
         objectives, assertions, profiles = catalog.validate_catalog()
         self.assertEqual(len(objectives), 23)
-        self.assertEqual(len(assertions), 32)
+        self.assertEqual(len(assertions), 33)
         self.assertEqual([profile["id"] for profile in profiles], ["prc/core-repository"])
 
     def test_registry_freezes_every_current_control(self) -> None:

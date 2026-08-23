@@ -1,7 +1,7 @@
 # Scanner quick start
 
 The scanner CLI is an experimental deterministic vertical slice. It inventories a
-repository, creates an immutable plan for `prc/core-repository@0.5`, evaluates
+repository, creates an immutable plan for `prc/core-repository@0.6`, evaluates
 native assertions, records evidence, and reports explicit unresolved states.
 
 The profile evaluator can consume a live, sandboxed adapter execution only when

@@ -1,5 +1,5 @@
 schema_version: prc.assertions/v0.1
-catalog_version: 0.5.0
+catalog_version: 0.6.0
 assertions:
   - id: PRC-A-CORE-001
     revision: 2
@@ -486,16 +486,31 @@ assertions:
     gate: no-go
     remediation_class: R2
   - id: PRC-A-GO-001
-    revision: 1
+    revision: 2
     control_ids: [USEQ-F6ACEF15]
     title: Go net/http package helpers do not use the default client
-    statement: Go source does not call net/http Get, Head, Post, or PostForm package helpers whose end-to-end timeout depends on mutable global DefaultClient state.
+    statement: Non-test Go source does not call net/http Get, Head, Post, or PostForm package helpers whose end-to-end timeout depends on mutable global DefaultClient state.
     applicability: '"go" in inventory.package_ecosystems'
     evidence_required:
       - kind: go-ast-analysis
         minimum_authority: repository
-        description: Bounded syntax-aware inspection of inventoried Go source for direct calls to net/http package convenience helpers backed by mutable global DefaultClient state.
+        description: Bounded syntax-aware inspection of inventoried non-test Go source for direct calls to net/http package convenience helpers backed by mutable global DefaultClient state.
     implementation_id: prc.native.go-http-timeout@0.1
+    parameters: {}
+    severity: high
+    gate: required
+    remediation_class: R2
+  - id: PRC-A-GO-002
+    revision: 1
+    control_ids: [USEQ-B66A3064]
+    title: Go HTTP servers use configurable Server instances
+    statement: Non-test Go source does not call net/http ListenAndServe, ListenAndServeTLS, Serve, or ServeTLS package helpers whose constructed Server cannot configure request timeout fields.
+    applicability: '"go" in inventory.package_ecosystems'
+    evidence_required:
+      - kind: go-ast-analysis
+        minimum_authority: repository
+        description: Bounded syntax-aware inspection of inventoried non-test Go source for direct calls to net/http package server helpers that construct Server values without configurable timeout fields.
+    implementation_id: prc.native.go-http-server-timeout@0.1
     parameters: {}
     severity: high
     gate: required

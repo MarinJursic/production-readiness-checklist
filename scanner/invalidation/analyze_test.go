@@ -113,6 +113,26 @@ func TestAnalyzeInvalidatesCatalogIdentityChange(t *testing.T) {
 	}
 }
 
+func TestGoHTTPDependenciesTrackOnlyNonTestGoSource(t *testing.T) {
+	files := []model.FileRecord{
+		{Path: "server.go", Size: 1},
+		{Path: "server_test.go", Size: 1},
+		{Path: "README.md", Size: 1},
+	}
+	before := testInventory("a", files)
+	after := testInventory("b", files)
+	for _, implementation := range []string{
+		"prc.native.go-http-timeout@0.1",
+		"prc.native.go-http-server-timeout@0.1",
+	} {
+		assertion := model.Assertion{ImplementationID: implementation}
+		dependency := dependencies(assertion, before, after)
+		if !dependency.paths["server.go"] || dependency.paths["server_test.go"] || dependency.paths["README.md"] || dependency.allFiles {
+			t.Fatalf("%s dependencies = %+v", implementation, dependency)
+		}
+	}
+}
+
 func TestAnalyzeRejectsConfiguredToUnconfiguredComparison(t *testing.T) {
 	inventory := testInventory("a", nil)
 	assertion := testAssertion("README", []string{"README.md"})

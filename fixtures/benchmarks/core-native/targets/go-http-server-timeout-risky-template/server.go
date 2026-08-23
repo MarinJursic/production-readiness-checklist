@@ -1,14 +1,9 @@
-package safeclient
+package riskyserver
 
 import (
 	"net/http"
 	"time"
 )
-
-func fetch() (*http.Response, error) {
-	client := http.Client{Timeout: 10 * time.Second}
-	return client.Get("https://example.invalid")
-}
 
 func serve() error {
 	server := http.Server{
@@ -18,5 +13,6 @@ func serve() error {
 		WriteTimeout:      30 * time.Second,
 		IdleTimeout:       60 * time.Second,
 	}
+	_ = server
 	return server.ListenAndServe()
 }

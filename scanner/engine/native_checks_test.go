@@ -319,6 +319,128 @@ func TestGoHTTPTimeoutCheckRejectsUnprovableInputBounds(t *testing.T) {
 	}
 }
 
+func TestGoHTTPTimeoutChecksExcludeTestOnlyHelpers(t *testing.T) {
+	root := healthyRepository(t)
+	writeFixture(t, root, "go.mod", "module example.invalid/service\n\ngo 1.27\n")
+	writeFixture(t, root, "helpers_test.go", `package service
+
+import "net/http"
+
+func testOnlyHelpers() error {
+	_, _ = http.Get("https://example.invalid")
+	return http.ListenAndServe(":8080", nil)
+}
+`)
+	results := scanFixture(t, root)
+	if results["PRC-A-GO-001"] != "pass" || results["PRC-A-GO-002"] != "pass" {
+		t.Fatalf("test-only Go HTTP helpers = %s/%s", results["PRC-A-GO-001"], results["PRC-A-GO-002"])
+	}
+}
+
+func TestGoHTTPServerTimeoutCheckUsesSyntaxAwarePackageResolution(t *testing.T) {
+	for name, source := range map[string]string{
+		"default import": `package service
+
+import "net/http"
+
+func serve() error { return http.ListenAndServe(":8080", nil) }
+`,
+		"aliased import": `package service
+
+import web "net/http"
+
+func serve() error { return web.ListenAndServeTLS(":8443", "cert.pem", "key.pem", nil) }
+`,
+		"dot import": `package service
+
+import . "net/http"
+
+func serve() error { return ListenAndServe(":8080", nil) }
+`,
+		"listener helpers": `package service
+
+import (
+	"net"
+	"net/http"
+)
+
+func serve(listener net.Listener) error {
+	if err := http.Serve(listener, nil); err != nil { return err }
+	return http.ServeTLS(listener, nil, "cert.pem", "key.pem")
+}
+`,
+	} {
+		t.Run(name, func(t *testing.T) {
+			root := healthyRepository(t)
+			writeFixture(t, root, "go.mod", "module example.invalid/service\n\ngo 1.27\n")
+			writeFixture(t, root, "server.go", source)
+			item, err := inventory.Build(root)
+			if err != nil {
+				t.Fatal(err)
+			}
+			run, err := scanner(t).Scan("prc/core-repository", item)
+			if err != nil {
+				t.Fatal(err)
+			}
+			result := findResult(t, run, "PRC-A-GO-002")
+			if result.Execution != "completed" || result.Assessment != "fail" ||
+				!strings.Contains(result.Summary, "server.go:") || len(result.EvidenceObserved) != 2 || len(result.Locations) == 0 {
+				t.Fatalf("Go HTTP server timeout result = %+v", result)
+			}
+			if result.Locations[0].Path != "server.go" || result.Locations[0].Line == 0 || result.Locations[0].Column == 0 {
+				t.Fatalf("Go HTTP server timeout location = %+v", result.Locations)
+			}
+		})
+	}
+
+	t.Run("explicit server and shadowed names", func(t *testing.T) {
+		root := healthyRepository(t)
+		writeFixture(t, root, "go.mod", "module example.invalid/service\n\ngo 1.27\n")
+		writeFixture(t, root, "server.go", `package service
+
+import (
+	"net/http"
+	"time"
+)
+
+func serve() error {
+	server := http.Server{
+		Addr: ":8080",
+		ReadHeaderTimeout: 5 * time.Second,
+		ReadTimeout: 30 * time.Second,
+		WriteTimeout: 30 * time.Second,
+		IdleTimeout: 60 * time.Second,
+	}
+	if false { return server.ListenAndServe() }
+	http := struct { ListenAndServe func(string, http.Handler) error }{}
+	return http.ListenAndServe(":8081", nil)
+}
+`)
+		result := scanFixture(t, root)["PRC-A-GO-002"]
+		if result != "pass" {
+			t.Fatalf("Go HTTP server timeout assertion = %s", result)
+		}
+	})
+
+	t.Run("unparseable source fails closed", func(t *testing.T) {
+		root := healthyRepository(t)
+		writeFixture(t, root, "go.mod", "module example.invalid/service\n\ngo 1.27\n")
+		writeFixture(t, root, "server.go", "package service\nfunc broken( {\n")
+		item, err := inventory.Build(root)
+		if err != nil {
+			t.Fatal(err)
+		}
+		run, err := scanner(t).Scan("prc/core-repository", item)
+		if err != nil {
+			t.Fatal(err)
+		}
+		result := findResult(t, run, "PRC-A-GO-002")
+		if result.Execution != "error" || result.Assessment != "unknown" || !strings.Contains(result.Summary, "cannot parse server.go") {
+			t.Fatalf("unparseable Go server result = %+v", result)
+		}
+	})
+}
+
 func TestContainerChecksHavePassAndFailFixtures(t *testing.T) {
 	pinned := strings.Repeat("b", 64)
 	root := healthyRepository(t)

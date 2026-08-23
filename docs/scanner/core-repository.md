@@ -2,7 +2,7 @@
 
 # Core repository readiness
 
-Profile: `prc/core-repository@0.5`
+Profile: `prc/core-repository@0.6`
 
 Deterministic repository governance, documentation, workflow, dependency, security, and test foundations.
 
@@ -46,6 +46,7 @@ implementation is present and verified by the scanner test suite.
 | `PRC-A-CORE-030` — Kubernetes containers declare resource policy | [USEQ-13CBD6C6](../engineering/16-specialized-domains-and-release-assurance.md) | high | required | kubernetes-parse | R2 |
 | `PRC-A-CORE-031` — Private-key armor is absent from repository files | [USEQ-E85957E3](../engineering/08-security-and-cryptography.md) | critical | no-go | sensitive-material-scan | R2 |
 | `PRC-A-GO-001` — Go net/http package helpers do not use the default client | [USEQ-F6ACEF15](../engineering/06-application-services-and-apis.md) | high | required | go-ast-analysis | R2 |
+| `PRC-A-GO-002` — Go HTTP servers use configurable Server instances | [USEQ-B66A3064](../engineering/11-developer-experience-platform-and-delivery.md) | high | required | go-ast-analysis | R2 |
 
 ## Result interpretation
 
