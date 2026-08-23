@@ -61,6 +61,7 @@ Existing lifecycle and production control IDs are permanent and recorded in `cat
    go test -race ./...
    go vet ./...
    go build -trimpath ./cmd/prc
+   go run golang.org/x/vuln/cmd/govulncheck@v1.7.0 ./...
    ```
 
 6. Build the documentation site when navigation or rendering changes:
@@ -70,6 +71,14 @@ Existing lifecycle and production control IDs are permanent and recorded in `cat
    . .venv/bin/activate
    pip install -r requirements-docs.lock.txt
    mkdocs build --strict
+   ```
+
+   Audit both pinned Python environments before changing dependency locks:
+
+   ```bash
+   python3 -m pip install pip-audit==2.10.1
+   python3 -m pip_audit -r requirements-dev.lock.txt
+   python3 -m pip_audit -r requirements-docs.lock.txt
    ```
 
 7. Open a pull request using the repository template.

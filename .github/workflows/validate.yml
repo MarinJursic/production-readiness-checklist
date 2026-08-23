@@ -24,6 +24,12 @@ jobs:
       - name: Install catalog dependencies
         run: pip install -r requirements-dev.lock.txt
 
+      - name: Audit pinned Python dependencies
+        run: |
+          pip install pip-audit==2.10.1
+          python -m pip_audit -r requirements-dev.lock.txt
+          python -m pip_audit -r requirements-docs.lock.txt
+
       - name: Validate control IDs and links
         run: python scripts/validate.py
 
@@ -61,6 +67,9 @@ jobs:
 
       - name: Verify Go modules
         run: go mod verify
+
+      - name: Audit reachable Go vulnerabilities
+        run: go run golang.org/x/vuln/cmd/govulncheck@v1.7.0 ./...
 
       - name: Run scanner tests with the race detector
         run: go test -race ./...

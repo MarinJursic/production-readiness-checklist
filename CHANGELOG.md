@@ -67,6 +67,11 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 
 ### Fixed
 
+- Upgraded the pinned documentation renderer to `pymdown-extensions` 11.0.1,
+  closing its path-traversal file disclosure and exponential-backtracking
+  denial-of-service advisories.
+- Added CI vulnerability audits for pinned Python dependencies and reachable Go
+  call paths, plus monthly Go module update monitoring.
 - Pinned every transitive local dependency of archived scan and remediation
   schemas to a version-specific contract, preventing future mutable schema
   aliases from changing validation of historical records.
