@@ -21,6 +21,7 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/provider"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/remediation"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/report"
 )
 
 const version = "0.1.0-dev"
@@ -470,13 +471,14 @@ func runPlan(args []string, stdout, stderr io.Writer) error {
 
 func runScan(args []string, stdout, stderr io.Writer) (bool, error) {
 	set, target, catalogRoot, profile := parseCommon("scan", args, stderr)
-	format := set.String("format", "human", "human or json")
+	format := set.String("format", "human", "human, json, markdown, html, sarif, or junit")
 	stateDirectory := set.String("state-dir", "", "optional directory for content-addressed evidence and run records")
 	exitPolicy := set.String("exit-policy", "profile", "profile, no-go, or never")
 	if err := set.Parse(args); err != nil {
 		return false, err
 	}
-	if *format != "human" && *format != "json" {
+	if *format != "human" && *format != "json" && *format != "markdown" &&
+		*format != "html" && *format != "sarif" && *format != "junit" {
 		return false, fmt.Errorf("unsupported format %q", *format)
 	}
 	if *exitPolicy != "profile" && *exitPolicy != "no-go" && *exitPolicy != "never" {
@@ -503,6 +505,8 @@ func runScan(args []string, stdout, stderr io.Writer) (bool, error) {
 		}
 	} else if *format == "human" {
 		printRun(stdout, run)
+	} else if err := report.Write(*format, stdout, run); err != nil {
+		return false, err
 	}
 	switch *exitPolicy {
 	case "profile":

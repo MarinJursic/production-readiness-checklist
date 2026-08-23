@@ -56,6 +56,28 @@ func TestProviderCapabilitiesAreReadOnly(t *testing.T) {
 	}
 }
 
+func TestScanReportFormats(t *testing.T) {
+	target := t.TempDir()
+	expected := map[string]string{
+		"markdown": "# Production readiness assessment",
+		"html":     "<!doctype html>",
+		"sarif":    `"version": "2.1.0"`,
+		"junit":    "<testsuite ",
+	}
+	for format, marker := range expected {
+		t.Run(format, func(t *testing.T) {
+			var stdout, stderr bytes.Buffer
+			code := run([]string{
+				"scan", "--target", target, "--catalog-root", filepath.Join("..", ".."),
+				"--format", format, "--exit-policy", "never",
+			}, &stdout, &stderr)
+			if code != 0 || !strings.Contains(stdout.String(), marker) {
+				t.Fatalf("exit=%d stderr=%s output=%s", code, stderr.String(), stdout.String())
+			}
+		})
+	}
+}
+
 func TestUnknownCommandIsUsageError(t *testing.T) {
 	var stdout, stderr bytes.Buffer
 	if code := run([]string{"unknown"}, &stdout, &stderr); code != 2 {

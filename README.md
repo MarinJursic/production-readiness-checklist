@@ -87,6 +87,7 @@ The scanner is designed to:
 - cite the exact code, configuration, documentation, test, or operational evidence behind every result;
 - distinguish verified facts from assumptions and unavailable production or organizational evidence;
 - generate a full, prioritized list of gaps, required manual checks, and recommended next actions;
+- export scoped JSON, Markdown, HTML, SARIF, and JUnit results without collapsing them into a readiness score;
 - support different languages, frameworks, platforms, and deployment models without locking the project to one technology vendor; and
 - keep risk acceptance and the final release decision with accountable humans.
 

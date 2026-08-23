@@ -66,6 +66,22 @@ JSON is available for automation:
 ./prc scan --target . --catalog-root . --format json --exit-policy never
 ```
 
+The same scan can emit a scoped Markdown report, self-contained accessible HTML,
+SARIF 2.1.0 failed findings, or JUnit XML with failures, execution errors, and
+manual/not-applicable skips kept distinct:
+
+```bash
+./prc scan --target . --catalog-root . --format markdown --exit-policy never
+./prc scan --target . --catalog-root . --format html --exit-policy never
+./prc scan --target . --catalog-root . --format sarif --exit-policy never
+./prc scan --target . --catalog-root . --format junit --exit-policy never
+```
+
+SARIF intentionally contains only failed assertions that can be represented as
+findings. Unknown, blocked, manual, and not-applicable results remain in the
+canonical JSON, Markdown, HTML, and JUnit reports instead of being mislabeled as
+source findings.
+
 `--exit-policy profile` is the default and exits nonzero unless the profile is
 fully satisfied. `no-go` exits nonzero only for a no-go terminal state. `never`
 always returns success after a completed scan but does not change the result in
@@ -83,7 +99,7 @@ the report.
 - detected dependency ecosystems and corresponding lock or checksum files;
 - GitHub Actions presence and full-commit action pins;
 - explicit GitHub Actions permissions; and
-- discoverable source-level tests; and
+- discoverable source-level tests;
 - final line-feed bytes on recognized source files.
 
 The engine rejects repository path and symlink escapes and detects a target file

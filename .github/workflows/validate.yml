@@ -106,6 +106,13 @@ jobs:
           "$RUNNER_TEMP/prc" inventory --target . --format json > "$RUNNER_TEMP/inventory.json"
           "$RUNNER_TEMP/prc" plan --target . --catalog-root . --format json > "$RUNNER_TEMP/plan.json"
           "$RUNNER_TEMP/prc" scan --target . --catalog-root . --state-dir "$RUNNER_TEMP/state" --format json --exit-policy never > "$RUNNER_TEMP/run.json"
+          "$RUNNER_TEMP/prc" scan --target . --catalog-root . --format markdown --exit-policy never > "$RUNNER_TEMP/run.md"
+          "$RUNNER_TEMP/prc" scan --target . --catalog-root . --format html --exit-policy never > "$RUNNER_TEMP/run.html"
+          "$RUNNER_TEMP/prc" scan --target . --catalog-root . --format sarif --exit-policy never > "$RUNNER_TEMP/run.sarif"
+          "$RUNNER_TEMP/prc" scan --target . --catalog-root . --format junit --exit-policy never > "$RUNNER_TEMP/run.xml"
+          python -c 'import json,sys; json.load(open(sys.argv[1], encoding="utf-8"))' "$RUNNER_TEMP/run.sarif"
+          python -c 'import sys,xml.etree.ElementTree as ET; ET.parse(sys.argv[1])' "$RUNNER_TEMP/run.xml"
+          grep -q '<!doctype html>' "$RUNNER_TEMP/run.html"
 
       - name: Exercise isolated deterministic remediation
         run: |
