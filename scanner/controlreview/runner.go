@@ -118,7 +118,7 @@ func (runner *cliRunner) Run(ctx context.Context, task Task) (Output, Execution,
 	if plan.Provider == "codex" {
 		info, err := os.Lstat(plan.ResultPath)
 		if err != nil || !info.Mode().IsRegular() || info.Mode()&os.ModeSymlink != 0 || info.Size() > maximumReviewOutput {
-			return Output{}, Execution{}, fmt.Errorf("Codex review result is missing or exceeds its byte limit")
+			return Output{}, Execution{}, fmt.Errorf("codex review result is missing or exceeds its byte limit")
 		}
 		data, err = os.ReadFile(plan.ResultPath)
 		if err != nil {

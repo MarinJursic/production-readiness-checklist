@@ -140,7 +140,7 @@ func normalizeOptions(options *Options) error {
 		return fmt.Errorf("AI review reasoning effort must be high or xhigh")
 	}
 	if options.Provider == "claude" && options.ReasoningEffort != "high" {
-		return fmt.Errorf("Claude AI review supports high reasoning effort; xhigh is Codex-only")
+		return fmt.Errorf("claude AI review supports high reasoning effort; xhigh is Codex-only")
 	}
 	if options.BatchSize == 0 {
 		options.BatchSize = 8
@@ -396,11 +396,12 @@ func runPendingBatches(
 		wait.Add(1)
 		go worker()
 	}
+enqueue:
 	for _, index := range pending {
 		select {
 		case jobs <- index:
 		case <-workContext.Done():
-			break
+			break enqueue
 		}
 		if workContext.Err() != nil {
 			break

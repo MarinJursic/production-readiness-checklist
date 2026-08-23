@@ -104,11 +104,11 @@ func parseOutput(providerName string, data []byte, task Task, lineCounts map[str
 		}
 		var isError bool
 		if raw := envelope["is_error"]; len(raw) > 0 && json.Unmarshal(raw, &isError) != nil {
-			return Output{}, fmt.Errorf("Claude review envelope has invalid is_error")
+			return Output{}, fmt.Errorf("claude review envelope has invalid is_error")
 		}
 		structured := envelope["structured_output"]
 		if isError || len(structured) == 0 || string(structured) == "null" {
-			return Output{}, fmt.Errorf("Claude did not return a successful structured review")
+			return Output{}, fmt.Errorf("claude did not return a successful structured review")
 		}
 		data = structured
 	} else if providerName != "codex" {

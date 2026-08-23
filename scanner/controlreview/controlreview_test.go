@@ -18,6 +18,15 @@ type recordingRunner struct {
 	calls int
 }
 
+type failingRunner struct {
+	calls int
+}
+
+func (runner *failingRunner) Run(_ context.Context, _ Task) (Output, Execution, error) {
+	runner.calls++
+	return Output{}, Execution{}, errors.New("provider failed")
+}
+
 func (runner *recordingRunner) Run(_ context.Context, task Task) (Output, Execution, error) {
 	runner.calls++
 	reviews := make([]Review, 0, len(task.Controls))
@@ -190,6 +199,18 @@ func TestClaudeRejectsUnsupportedXHighEffort(t *testing.T) {
 	options := Options{Provider: "claude", ReasoningEffort: "xhigh", AllowRemoteSourceProcessing: true}
 	if err := normalizeOptions(&options); err == nil || !strings.Contains(err.Error(), "Codex-only") {
 		t.Fatalf("unsupported Claude effort was accepted: %v", err)
+	}
+}
+
+func TestRunPendingBatchesStopsSchedulingAfterFailure(t *testing.T) {
+	tasks := []Task{{TaskID: "one"}, {TaskID: "two"}, {TaskID: "three"}}
+	runner := &failingRunner{}
+	err := runPendingBatches(
+		context.Background(), runner, tasks, []int{0, 1, 2}, make([]Output, len(tasks)),
+		map[string]int{}, t.TempDir(), 1,
+	)
+	if err == nil || runner.calls != 1 {
+		t.Fatalf("failed batch did not stop scheduling: calls=%d err=%v", runner.calls, err)
 	}
 }
 
