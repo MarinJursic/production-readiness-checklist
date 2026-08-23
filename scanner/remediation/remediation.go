@@ -55,6 +55,9 @@ func Run(options Options) (Candidate, error) {
 	if err != nil {
 		return Candidate{}, err
 	}
+	if options.TargetName != "" {
+		baseline.TargetName = options.TargetName
+	}
 	baseline, err = policy.bind(baseline, "")
 	if err != nil {
 		return Candidate{}, err
@@ -150,6 +153,9 @@ func Run(options Options) (Candidate, error) {
 	if err != nil {
 		return Candidate{}, err
 	}
+	if options.TargetName != "" {
+		candidateInventory.TargetName = options.TargetName
+	}
 	candidateInventory, err = policy.bind(candidateInventory, candidateRoot)
 	if err != nil {
 		return Candidate{}, err
@@ -173,10 +179,13 @@ func Run(options Options) (Candidate, error) {
 		}
 	}
 	currentBaseline, err := inventory.Build(options.Target)
+	if err == nil && options.TargetName != "" {
+		currentBaseline.TargetName = options.TargetName
+	}
 	if err == nil {
 		currentBaseline, err = policy.bind(currentBaseline, "")
 	}
-	if err != nil || currentBaseline.Digest != baseline.Digest {
+	if err != nil || currentBaseline.Root != baseline.Root || currentBaseline.Digest != baseline.Digest {
 		return Candidate{}, fmt.Errorf("source workspace changed during deterministic remediation")
 	}
 	reasons = uniqueSorted(reasons)

@@ -160,6 +160,25 @@ jobs:
             --candidate-dir "$RUNNER_TEMP/configured-remediation-candidate" \
             --format json > "$RUNNER_TEMP/configured-remediation.json"
 
+      - name: Exercise bounded deterministic remediation loop
+        run: |
+          mkdir "$RUNNER_TEMP/remediation-loop-target"
+          printf "print('ready')" > "$RUNNER_TEMP/remediation-loop-target/app.py"
+          chmod 0666 "$RUNNER_TEMP/remediation-loop-target/app.py"
+          set +e
+          "$RUNNER_TEMP/prc" fix \
+            --target "$RUNNER_TEMP/remediation-loop-target" \
+            --catalog-root . \
+            --candidate-root "$RUNNER_TEMP/remediation-loop-candidates" \
+            --format json > "$RUNNER_TEMP/remediation-run.json"
+          status=$?
+          set -e
+          test "$status" -eq 1
+          test "$(stat -c '%a' "$RUNNER_TEMP/remediation-loop-target/app.py")" = "666"
+          test "$(stat -c '%a' "$RUNNER_TEMP/remediation-loop-candidates/attempt-002/app.py")" = "644"
+          test "$(tail -c 1 "$RUNNER_TEMP/remediation-loop-target/app.py")" = ")"
+          test "$(tail -c 1 "$RUNNER_TEMP/remediation-loop-candidates/attempt-002/app.py")" = ""
+
       - name: Exercise isolated provider-proposal remediation
         run: |
           "$RUNNER_TEMP/prc" remediate-proposal \
@@ -189,6 +208,7 @@ jobs:
           python scripts/validate_instance.py remediation-candidate.schema.json "$RUNNER_TEMP/mode-remediation.json"
           python scripts/validate_instance.py remediation-candidate.schema.json "$RUNNER_TEMP/configured-remediation.json"
           python scripts/validate_instance.py remediation-candidate.schema.json "$RUNNER_TEMP/provider-remediation.json"
+          python scripts/validate_instance.py remediation-run.schema.json "$RUNNER_TEMP/remediation-run.json"
 
   documentation:
     runs-on: ubuntu-latest

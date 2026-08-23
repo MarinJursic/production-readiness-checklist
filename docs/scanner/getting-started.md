@@ -11,8 +11,9 @@ assertion remains blocked because no production adapter is authorized yet. A
 separate experimental OCI adapter protocol and runner are available for protocol
 and sandbox development.
 One deterministic R1 remediation is available for recognized source files that
-lack a final line-feed byte; it produces an isolated candidate instead of editing
-the target.
+lack a final line-feed byte, and another restricts broadly writable file modes.
+The bounded `fix` loop can compose those repairs in isolated sibling candidates
+without editing the target.
 
 ## Build
 
@@ -101,6 +102,21 @@ fully satisfied. `no-go` exits nonzero only for a no-go terminal state. `never`
 always returns success after a completed scan but does not change the result in
 the report.
 
+## Fix eligible deterministic findings
+
+```bash
+./prc fix \
+  --target /path/to/project \
+  --catalog-root /path/to/production-readiness-checklist \
+  --candidate-root /safe/path/prc-remediation-run \
+  --format json
+```
+
+The command creates a new candidate per accepted R1 fix and rescans from fresh
+evidence after every attempt. It returns success only when the selected profile
+is satisfied. Read [bounded isolated remediation](remediation.md) for budgets,
+configuration policy, terminal states, and the machine-work-complete report.
+
 ## Explain an assertion
 
 ```bash
@@ -134,9 +150,9 @@ adapter transcript, inspect an OCI execution plan, run an already-present
 digest-pinned adapter image, or understand live profile-authorized evidence
 consumption.
 
-Read [bounded isolated remediation](remediation.md) to create and verify an R1
-candidate or to apply one validated R2 provider proposal outside the source
-workspace.
+Read [bounded isolated remediation](remediation.md) to run the deterministic R1
+loop, create and verify one R1 candidate, or apply one validated R2 provider
+proposal outside the source workspace.
 
 Read [read-only agent providers](../architecture/agent-providers.md) to inspect
 or explicitly run the experimental Codex and Claude Code `suggest` adapters.

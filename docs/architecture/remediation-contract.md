@@ -68,8 +68,11 @@ The current CLI implements this lifecycle for final-newline and restrictive-mode
 R1 assertions. Its trusted fixers make exact byte or mode transformations in a
 new external workspace. The acceptance audit verifies the raw tree, content
 hashes, permission modes, protected paths, budgets, target result, and baseline
-passing results. See the [R1 remediation guide](../scanner/remediation.md) for
-the exact commands and limitations.
+passing results. The bounded `fix` loop can repeat these registered operations in
+sibling candidates, rescan after every accepted attempt, enforce cumulative
+attempt, file, and line limits, and report why every unresolved item remains.
+See the [R1 remediation guide](../scanner/remediation.md) for the exact commands
+and limitations.
 
 ## Implemented R2 proposal pilot
 
@@ -80,5 +83,6 @@ the provider, and runs raw-tree, exact-byte, mode, budget, target-result,
 regression, and source-integrity audits. The provider never approves its own
 work. Both one-shot remediation paths can bind the exact project configuration,
 its protected paths, and its file, line, and attempt ceilings into a v0.2 fix
-contract. Project command execution, repeated repair loops, merges, deployments,
-and releases remain unimplemented.
+contract. The deterministic R1 loop does not invoke providers. Provider-driven
+repair loops, project command execution, merges, deployments, and releases remain
+unimplemented.

@@ -12,6 +12,7 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/adapter"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/provider"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/remediation"
 )
 
 func TestVersionCommand(t *testing.T) {
@@ -280,6 +281,44 @@ func TestRemediateCommandCreatesAcceptedCandidate(t *testing.T) {
 	}
 	if strings.HasSuffix(string(original), "\n") {
 		t.Fatal("command modified original target")
+	}
+}
+
+func TestFixCommandRunsBoundedDeterministicLoop(t *testing.T) {
+	target := t.TempDir()
+	targetPath := filepath.Join(target, "app.py")
+	if err := os.WriteFile(targetPath, []byte("print('ready')"), 0o666); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.Chmod(targetPath, 0o666); err != nil {
+		t.Fatal(err)
+	}
+	var stdout, stderr bytes.Buffer
+	code := run([]string{
+		"fix", "--target", target, "--catalog-root", filepath.Join("..", ".."),
+		"--candidate-root", filepath.Join(t.TempDir(), "candidates"), "--format", "json",
+	}, &stdout, &stderr)
+	if code != 1 {
+		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
+	}
+	var result remediation.RemediationRun
+	if err := json.Unmarshal(stdout.Bytes(), &result); err != nil {
+		t.Fatal(err)
+	}
+	if result.SchemaVersion != "prc.remediation-run/v0.1" || len(result.Candidates) != 2 ||
+		result.TerminalState != "machine_work_complete" || !result.OriginalUnchanged {
+		t.Fatalf("unexpected remediation run: %+v", result)
+	}
+	original, err := os.ReadFile(targetPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	info, err := os.Stat(targetPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if strings.HasSuffix(string(original), "\n") || info.Mode().Perm() != 0o666 {
+		t.Fatal("fix command modified the original workspace")
 	}
 }
 

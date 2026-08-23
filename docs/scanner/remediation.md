@@ -66,6 +66,47 @@ The candidate directory is preserved for review. Acceptance is permission to
 inspect or continue testing that isolated candidate; it is not authorization to
 merge, deploy, release, accept risk, or claim that the full profile is satisfied.
 
+## Run the bounded deterministic loop
+
+`prc fix` repeatedly applies only the registered R1 fixers. Each accepted
+candidate becomes the source of a new sibling candidate, so fixes compose
+without changing the original project. The candidate root must be a new path
+outside the target tree.
+
+```bash
+./prc fix \
+  --catalog-root /path/to/production-readiness-checklist \
+  --target /path/to/project \
+  --config /path/to/project/production-readiness.yaml \
+  --candidate-root /safe/path/prc-remediation-run \
+  --max-attempts 3 \
+  --max-files 20 \
+  --max-changed-lines 200 \
+  --format json > remediation-run.json
+```
+
+The loop evaluates findings in profile order and stops predictably when it has
+closed all eligible deterministic findings, a cumulative budget is exhausted,
+or an independently checked candidate is rejected. File and changed-line usage
+accumulates across accepted candidates; command-line values cannot raise limits
+declared in project configuration.
+
+The `prc.remediation-run/v0.1` report records every candidate, cumulative budget
+usage, the final fresh assessment, the final isolated workspace, and a reason
+code for every unresolved result. Its terminal states are:
+
+- `profile_satisfied`: every required result in the selected profile passed;
+- `machine_work_complete`: no registered deterministic R1 failure remains, but
+  manual evidence, blocked checks, or higher-risk work can still remain;
+- `stopped_by_policy_or_budget`: an eligible fix could not run within policy; or
+- `candidate_rejected`: independent acceptance rejected an attempted fix.
+
+Exit status `0` is reserved for `profile_satisfied`. A valid report that still
+has unresolved gate work exits `1`; invalid input or infrastructure failure
+exits `2`. `machine_work_complete` is not a production-readiness claim. The loop
+does not invoke Codex, Claude Code, project commands, R2 proposals, deployment,
+or version-control operations.
+
 ## Apply one validated R2 proposal
 
 `remediate-proposal` is the scanner-owned bridge from a validated Codex or

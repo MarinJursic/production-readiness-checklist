@@ -53,6 +53,9 @@ func run(args []string, stdout, stderr io.Writer) int {
 	case "scan":
 		resultExit = true
 		successful, err = runScan(args[1:], stdout, stderr)
+	case "fix":
+		resultExit = true
+		successful, err = runFix(args[1:], stdout, stderr)
 	case "remediate":
 		resultExit = true
 		successful, err = runRemediate(args[1:], stdout, stderr)
@@ -85,7 +88,7 @@ func run(args []string, stdout, stderr io.Writer) int {
 
 func usage(output io.Writer) {
 	fmt.Fprintln(output, "Production Readiness Scanner")
-	fmt.Fprintln(output, "usage: prc <config|inventory|plan|scan|remediate|remediate-proposal|explain|adapter|provider|version> [options]")
+	fmt.Fprintln(output, "usage: prc <config|inventory|plan|scan|fix|remediate|remediate-proposal|explain|adapter|provider|version> [options]")
 }
 
 func runConfig(args []string, stdout, stderr io.Writer) error {
@@ -272,6 +275,82 @@ func runRemediate(args []string, stdout, stderr io.Writer) (bool, error) {
 		printCandidate(stdout, candidate)
 	}
 	return candidate.Accepted, nil
+}
+
+func runFix(args []string, stdout, stderr io.Writer) (bool, error) {
+	set, target, catalogRoot, profile := parseCommon("fix", args, stderr)
+	configPath := set.String("config", "", "optional validated project configuration")
+	candidateRoot := set.String("candidate-root", "", "new root for isolated attempt workspaces (required)")
+	maxAttempts := set.Int("max-attempts", 3, "maximum deterministic remediation attempts")
+	maxFiles := set.Int("max-files", 20, "maximum changed files across all attempts")
+	maxChangedLines := set.Int("max-changed-lines", 200, "maximum changed lines across all attempts")
+	format := set.String("format", "human", "human or json")
+	if err := set.Parse(args); err != nil {
+		return false, err
+	}
+	if *format != "human" && *format != "json" {
+		return false, fmt.Errorf("unsupported format %q", *format)
+	}
+	configuration, err := loadRemediationConfiguration(*configPath)
+	if err != nil {
+		return false, err
+	}
+	if configuration != nil {
+		document := configuration.Validation.Configuration
+		if !flagWasSet(set, "profile") {
+			*profile = document.Assessment.Profile
+		}
+		if !flagWasSet(set, "max-attempts") {
+			*maxAttempts = document.Remediation.MaxAttempts
+		}
+		if !flagWasSet(set, "max-files") {
+			*maxFiles = 0
+		}
+		if !flagWasSet(set, "max-changed-lines") {
+			*maxChangedLines = 0
+		}
+	}
+	result, err := remediation.RunLoop(remediation.LoopOptions{
+		CatalogRoot: *catalogRoot, Target: *target, CandidateRoot: *candidateRoot,
+		ProfileID: *profile, MaxAttempts: *maxAttempts, MaxFiles: *maxFiles,
+		MaxChangedLines: *maxChangedLines, Configuration: configuration,
+	})
+	if err != nil {
+		return false, err
+	}
+	if *format == "json" {
+		if err := encodeJSON(stdout, result); err != nil {
+			return false, err
+		}
+	} else {
+		printRemediationRun(stdout, result)
+	}
+	return result.GateState == "profile_satisfied", nil
+}
+
+func printRemediationRun(output io.Writer, result remediation.RemediationRun) {
+	fmt.Fprintf(output, "Remediation run: %s\n", result.RunID)
+	fmt.Fprintf(output, "Terminal state: %s\n", result.TerminalState)
+	fmt.Fprintf(output, "Assessment gate: %s\n", result.GateState)
+	fmt.Fprintf(output, "Result workspace: %s\n", result.ResultWorkspace)
+	fmt.Fprintf(output, "Original unchanged: %t\n", result.OriginalUnchanged)
+	fmt.Fprintf(output, "Budget: %d/%d attempts, %d/%d files, %d/%d lines\n",
+		result.Usage.Attempts, result.MaxAttempts, result.Usage.ChangedFiles, result.MaxFiles,
+		result.Usage.ChangedLines, result.MaxChangedLines)
+	for _, candidate := range result.Candidates {
+		status := "rejected"
+		if candidate.Accepted {
+			status = "accepted"
+		}
+		fmt.Fprintf(output, "- %s candidate %d: %s (%s)\n", status, candidate.Contract.Attempt,
+			candidate.Contract.AssertionID, candidate.CandidatePath)
+	}
+	for _, item := range result.Remaining {
+		fmt.Fprintf(output, "- remaining %s [%s]: %s\n", item.AssertionID, item.ReasonCode, item.Reason)
+	}
+	for _, reason := range result.StopReasons {
+		fmt.Fprintf(output, "- stop: %s\n", reason)
+	}
 }
 
 func runRemediateProposal(args []string, stdout, stderr io.Writer) (bool, error) {

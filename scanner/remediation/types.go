@@ -1,13 +1,17 @@
 package remediation
 
 import (
+	"time"
+
 	projectconfig "github.com/MarinJursic/production-readiness-checklist/scanner/config"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/provider"
 )
 
 const (
 	FixContractSchema = "prc.fix-contract/v0.2"
 	CandidateSchema   = "prc.remediation-candidate/v0.2"
+	RunSchema         = "prc.remediation-run/v0.1"
 )
 
 type FixContract struct {
@@ -72,6 +76,7 @@ type Options struct {
 	Target          string
 	CandidateDir    string
 	ProfileID       string
+	TargetName      string
 	AssertionID     string
 	MaxFiles        int
 	MaxChangedLines int
@@ -85,6 +90,7 @@ type ProposalOptions struct {
 	Target          string
 	CandidateDir    string
 	ProfileID       string
+	TargetName      string
 	Provider        string
 	Task            provider.Task
 	Output          provider.Output
@@ -93,4 +99,61 @@ type ProposalOptions struct {
 	Attempt         int
 	MaxAttempts     int
 	Configuration   *ProjectConfiguration
+}
+
+type LoopOptions struct {
+	CatalogRoot     string
+	Target          string
+	CandidateRoot   string
+	ProfileID       string
+	MaxFiles        int
+	MaxChangedLines int
+	MaxAttempts     int
+	Configuration   *ProjectConfiguration
+	Now             func() time.Time
+}
+
+type BudgetUsage struct {
+	Attempts     int `json:"attempts"`
+	ChangedFiles int `json:"changed_files"`
+	ChangedLines int `json:"changed_lines"`
+}
+
+type RemainingWork struct {
+	AssertionID      string   `json:"assertion_id"`
+	ControlIDs       []string `json:"control_ids"`
+	Title            string   `json:"title"`
+	Assessment       string   `json:"assessment"`
+	Execution        string   `json:"execution"`
+	Severity         string   `json:"severity"`
+	Gate             string   `json:"gate"`
+	RemediationClass string   `json:"remediation_class"`
+	Summary          string   `json:"summary"`
+	ReasonCode       string   `json:"reason_code"`
+	Reason           string   `json:"reason"`
+}
+
+type RemediationRun struct {
+	SchemaVersion         string          `json:"schema_version"`
+	RunID                 string          `json:"run_id"`
+	StartedAt             time.Time       `json:"started_at"`
+	CompletedAt           time.Time       `json:"completed_at"`
+	ProfileID             string          `json:"profile_id"`
+	ConfigurationDigest   string          `json:"configuration_digest,omitempty"`
+	ProjectID             string          `json:"project_id,omitempty"`
+	SourceInventoryDigest string          `json:"source_inventory_digest"`
+	CandidateRoot         string          `json:"candidate_root"`
+	ResultWorkspace       string          `json:"result_workspace"`
+	FinalInventoryDigest  string          `json:"final_inventory_digest"`
+	OriginalUnchanged     bool            `json:"original_unchanged"`
+	MaxAttempts           int             `json:"max_attempts"`
+	MaxFiles              int             `json:"max_files"`
+	MaxChangedLines       int             `json:"max_changed_lines"`
+	Usage                 BudgetUsage     `json:"usage"`
+	Candidates            []Candidate     `json:"candidates"`
+	FinalRun              model.RunResult `json:"final_run"`
+	GateState             string          `json:"gate_state"`
+	TerminalState         string          `json:"terminal_state"`
+	Remaining             []RemainingWork `json:"remaining"`
+	StopReasons           []string        `json:"stop_reasons"`
 }

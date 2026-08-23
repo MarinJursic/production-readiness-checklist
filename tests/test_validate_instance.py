@@ -294,6 +294,77 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             [],
         )
 
+    def test_minimal_remediation_run_conforms(self) -> None:
+        digest = "a" * 64
+        inventory = {
+            "schema_version": "prc.inventory/v0.3",
+            "target_name": "example",
+            "digest": digest,
+            "file_count": 0,
+            "source_files": 0,
+            "package_ecosystems": [],
+            "manifests": [],
+            "lock_files": [],
+            "container_files": [],
+            "symlinks": [],
+            "ci": {"github_actions": False, "workflow_files": []},
+            "infrastructure": {"terraform_files": [], "kubernetes_files": []},
+            "components": [{"id": "repository:.", "kind": "repository", "path": "."}],
+            "relations": [],
+            "facts": [],
+            "files": [],
+        }
+        plan = {
+            "schema_version": "prc.plan/v0.3",
+            "digest": digest,
+            "target_name": "example",
+            "inventory_digest": digest,
+            "profile_id": "prc/core-repository",
+            "profile_version": "0.3",
+            "artifact_digests": [],
+            "target_environments": [],
+            "assertions": [],
+        }
+        final_run = {
+            "schema_version": "prc.run/v0.3",
+            "run_id": digest,
+            "started_at": "2026-08-23T12:00:00Z",
+            "completed_at": "2026-08-23T12:00:01Z",
+            "plan": plan,
+            "inventory": inventory,
+            "adapter_executions": [],
+            "results": [],
+            "terminal_state": "profile_satisfied",
+        }
+        remediation_run = {
+            "schema_version": "prc.remediation-run/v0.1",
+            "run_id": digest,
+            "started_at": "2026-08-23T12:00:00Z",
+            "completed_at": "2026-08-23T12:00:01Z",
+            "profile_id": "prc/core-repository",
+            "source_inventory_digest": digest,
+            "candidate_root": "/tmp/candidates",
+            "result_workspace": "/tmp/example",
+            "final_inventory_digest": digest,
+            "original_unchanged": True,
+            "max_attempts": 3,
+            "max_files": 20,
+            "max_changed_lines": 200,
+            "usage": {"attempts": 0, "changed_files": 0, "changed_lines": 0},
+            "candidates": [],
+            "final_run": final_run,
+            "gate_state": "profile_satisfied",
+            "terminal_state": "profile_satisfied",
+            "remaining": [],
+            "stop_reasons": [],
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(
+                remediation_run, "remediation-run.schema.json"
+            ),
+            [],
+        )
+
     def test_checked_in_adapter_manifest_conforms(self) -> None:
         path = ROOT / "fixtures" / "adapters" / "fixture-adapter.yaml"
         instance = yaml.safe_load(path.read_text(encoding="utf-8"))

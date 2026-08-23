@@ -26,6 +26,9 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 - Configuration-governed remediation v0.2 contracts that bind project identity,
   protected paths, and non-expandable file, line, and attempt ceilings into
   deterministic and provider-proposal candidates.
+- A bounded deterministic R1 remediation loop with isolated sequential
+  candidates, cumulative budgets, fresh rescans, fail-closed acceptance, and a
+  versioned machine-work-complete report that classifies every remaining result.
 
 ### Fixed
 
