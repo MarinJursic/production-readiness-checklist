@@ -26,14 +26,14 @@ implementation is present and verified by the scanner test suite.
 | `PRC-A-CORE-010` — Automated tests are discoverable | [USEQ-12655775](../engineering/05-code-quality-and-implementation.md) | high | required | repository-structure | R2 |
 | `PRC-A-CORE-011` — Workflow permissions are explicit | [USEQ-73488048](../engineering/11-developer-experience-platform-and-delivery.md) | high | required | workflow-parse | R2 |
 | `PRC-A-CORE-012` — Generated code follows normal review controls | [USEQ-F0F5ACE7](../engineering/05-code-quality-and-implementation.md) | high | required | reviewer-attestation | R0 |
-| `PRC-A-CORE-013` — Applicable analyses have executed | [USEQ-70E9D5AA](../engineering/10-verification-and-testing.md) | high | required | analysis-result | R2 |
+| `PRC-A-CORE-013` — Configured secret detection has executed | [USEQ-70E9D5AA](../engineering/10-verification-and-testing.md) | high | required | analysis-result | R2 |
 | `PRC-A-CORE-014` — Source files end with a newline | [USEQ-DAF77C8F](../engineering/05-code-quality-and-implementation.md) | low | advisory | source-format | R1 |
 | `PRC-A-CORE-015` — Source revision is identifiable | [USEQ-72088469](../engineering/01-governance-and-foundations.md) | medium | required | repository-identity | R0 |
 | `PRC-A-CORE-016` — Dependency updates are configured | [PRC-36-011](../checklists/08-maintenance-vendors-compliance.md) | medium | advisory | repository-file | R2 |
 | `PRC-A-CORE-017` — Workflow definitions parse | [USEQ-F4D6E3B3](../engineering/11-developer-experience-platform-and-delivery.md) | high | required | workflow-parse | R2 |
 | `PRC-A-CORE-018` — Workflows define executable jobs | [USEQ-12655775](../engineering/05-code-quality-and-implementation.md) | high | required | workflow-parse | R2 |
 | `PRC-A-CORE-019` — Workflow jobs have bounded runtimes | [USEQ-B66A3064](../engineering/11-developer-experience-platform-and-delivery.md) | medium | required | workflow-parse | R2 |
-| `PRC-A-CORE-020` — Privileged untrusted workflow trigger is absent | [USEQ-73488048](../engineering/11-developer-experience-platform-and-delivery.md) | critical | no-go | workflow-parse | R2 |
+| `PRC-A-CORE-020` — pull_request_target workflows receive security review | [USEQ-73488048](../engineering/11-developer-experience-platform-and-delivery.md) | critical | required | workflow-parse | R0 |
 | `PRC-A-CORE-021` — Unresolved merge conflicts are absent | [USEQ-12655775](../engineering/05-code-quality-and-implementation.md) | high | no-go | source-integrity | R2 |
 | `PRC-A-CORE-022` — Repository files are not broadly writable | [USEQ-D60E6950](../engineering/11-developer-experience-platform-and-delivery.md) | medium | advisory | repository-metadata | R1 |
 | `PRC-A-CORE-023` — Dependency manifests are nonempty | [USEQ-D1076D92](../engineering/11-developer-experience-platform-and-delivery.md) | high | required | repository-file | R2 |

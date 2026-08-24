@@ -55,6 +55,7 @@ func agentLoopTarget(t *testing.T) string {
 
 func agentLoopOptions(t *testing.T, target, status string) LoopOptions {
 	t.Helper()
+	t.Setenv("OPENAI_API_KEY", "test-only-token")
 	root := testCatalogRoot(t)
 	return LoopOptions{
 		CatalogRoot: root, Target: target, CandidateRoot: filepath.Join(t.TempDir(), "candidates"),

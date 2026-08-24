@@ -195,15 +195,15 @@ assertions:
     gate: required
     remediation_class: R0
   - id: PRC-A-CORE-013
-    revision: 1
+    revision: 2
     control_ids: [USEQ-70E9D5AA]
-    title: Applicable analyses have executed
-    statement: Required analysis classes for the detected project have current executed results.
+    title: Configured secret detection has executed
+    statement: The selected profile's pinned secret-detection adapter has a current executed result for the scanned inventory.
     applicability: inventory.source_files > 0
     evidence_required:
       - kind: analysis-result
         minimum_authority: executed
-        description: Current tool results for each analysis class selected by policy.
+        description: Current output from the exact pinned secret-detection adapter selected by this profile.
     implementation_id: prc.native.analysis-evidence@0.1
     parameters:
       adapter_bindings:
@@ -307,20 +307,20 @@ assertions:
     gate: required
     remediation_class: R2
   - id: PRC-A-CORE-020
-    revision: 1
+    revision: 2
     control_ids: [USEQ-73488048]
-    title: Privileged untrusted workflow trigger is absent
-    statement: No GitHub Actions workflow uses the pull_request_target trigger.
+    title: pull_request_target workflows receive security review
+    statement: Each workflow using pull_request_target avoids executing untrusted pull-request code and keeps permissions and secrets least privileged.
     applicability: inventory.ci.github_actions == true
     evidence_required:
       - kind: workflow-parse
         minimum_authority: repository
-        description: Parsed trigger declarations from every detected workflow.
+        description: Parsed trigger declarations identify workflows that need data-flow and permission review; trigger presence alone is not proof of unsafe execution.
     implementation_id: prc.native.github-no-pull-request-target@0.1
     parameters: {}
     severity: critical
-    gate: no-go
-    remediation_class: R2
+    gate: required
+    remediation_class: R0
   - id: PRC-A-CORE-021
     revision: 1
     control_ids: [USEQ-12655775]

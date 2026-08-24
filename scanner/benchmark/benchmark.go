@@ -270,14 +270,13 @@ func Evaluate(catalogValue *catalog.Catalog, suitePath string, evaluatedAt time.
 func scanCase(catalogValue *catalog.Catalog, profileID string, benchmarkCase Case, source string, evaluatedAt time.Time) (
 	model.RunResult, model.RunResult, error,
 ) {
-	target := source
-	cleanup := func() {}
-	if len(benchmarkCase.Setup) > 0 {
-		var err error
-		target, cleanup, err = materializeTarget(source, benchmarkCase.Setup)
-		if err != nil {
-			return model.RunResult{}, model.RunResult{}, fmt.Errorf("materialize fixture: %w", err)
-		}
+	// Always materialize fixtures outside the source tree. Otherwise a fixture
+	// nested inside the scanner's own Git worktree inherits that repository's
+	// commit, while the same distributed fixture scanned elsewhere does not.
+	// A hermetic benchmark must not change outcome based on its install path.
+	target, cleanup, err := materializeTarget(source, benchmarkCase.Setup)
+	if err != nil {
+		return model.RunResult{}, model.RunResult{}, fmt.Errorf("materialize fixture: %w", err)
 	}
 	defer cleanup()
 	item, err := inventory.Build(target)

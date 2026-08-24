@@ -51,6 +51,7 @@ Existing lifecycle and production control IDs are permanent and recorded in `cat
    ```bash
    python3 -m pip install -r requirements-dev.lock.txt
    python3 scripts/catalog.py check
+   python3 scripts/control_contracts.py check
    python3 -m unittest discover -s tests -p "test_*.py"
    ```
 

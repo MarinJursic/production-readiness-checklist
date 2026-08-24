@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 	"sort"
 	"strings"
+	"unicode/utf8"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/provider"
 )
@@ -46,15 +47,35 @@ func validateTask(task Task) error {
 		return fmt.Errorf("control-review task ID does not match canonical content")
 	}
 	seen := map[string]bool{}
+	validEvaluation := map[string]bool{"repository": true, "environment": true, "human_external": true, "mixed": true, "unclassified": true}
+	validAutomation := map[string]bool{
+		"deterministic_candidate": true, "ai_advisory_candidate": true, "environment_evidence_required": true,
+		"human_or_external_required": true, "mixed_evidence_required": true,
+	}
+	validAuthority := map[string]bool{"declared": true, "repository": true, "artifact": true, "environment": true, "human": true}
 	for index, control := range task.Controls {
 		if control.ControlID == "" || seen[control.ControlID] || strings.TrimSpace(control.Statement) == "" ||
-			len(control.Statement) > 16*1024 || len(control.CurrentAssertionChecks) > 256 {
+			len(control.Statement) > 16*1024 || !lowerHexDigest(control.ContractSHA256) ||
+			(control.ContractStatus != "generated_unreviewed" && control.ContractStatus != "reviewed") ||
+			control.CanonicalControlID == "" || control.CanonicalControlID > control.ControlID ||
+			!validEvaluation[control.EvaluationClass] || !validAutomation[control.AutomationClass] ||
+			(control.ApplicabilityClass != "conditional" && control.ApplicabilityClass != "scope_required") ||
+			(control.Atomicity != "apparently_atomic" && control.Atomicity != "compound_review_required") ||
+			len(control.EvidenceAuthorities) == 0 || strings.TrimSpace(control.NotApplicableProof) == "" ||
+			len(control.NotApplicableProof) > 1000 || len(control.CurrentAssertionChecks) > 256 {
 			return fmt.Errorf("invalid control-review task control %q", control.ControlID)
 		}
 		if index > 0 && task.Controls[index-1].ControlID >= control.ControlID {
 			return fmt.Errorf("control-review task controls must be strictly ordered")
 		}
 		seen[control.ControlID] = true
+		seenAuthorities := map[string]bool{}
+		for _, authority := range control.EvidenceAuthorities {
+			if !validAuthority[authority] || seenAuthorities[authority] {
+				return fmt.Errorf("control-review task %s has an invalid evidence authority", control.ControlID)
+			}
+			seenAuthorities[authority] = true
+		}
 	}
 	seenPaths := map[string]bool{}
 	pathBytes := 0
@@ -72,7 +93,9 @@ func validateTask(task Task) error {
 	seenContext := map[string]bool{}
 	for _, input := range task.ContextFiles {
 		if err := safeReviewPath(input.Path); err != nil || seenContext[input.Path] || input.StartLine < 1 ||
-			!seenPaths[input.Path] || len(input.Content) > maximumContextFileBytes {
+			input.EndLine < input.StartLine || !seenPaths[input.Path] || input.Content == "" ||
+			len(input.Content) > maximumContextFileBytes || !utf8.ValidString(input.Content) ||
+			input.EndLine-input.StartLine+1 != visibleLineCount(input.Content) {
 			return fmt.Errorf("invalid or duplicate review context file %q", input.Path)
 		}
 		digest := sha256.Sum256([]byte(input.Content))
@@ -88,6 +111,14 @@ func validateTask(task Task) error {
 	return nil
 }
 
+func visibleLineCount(content string) int {
+	lines := strings.Count(content, "\n")
+	if !strings.HasSuffix(content, "\n") {
+		lines++
+	}
+	return lines
+}
+
 func safeReviewPath(path string) error {
 	if path == "" || filepath.IsAbs(path) || strings.Contains(path, "\\") ||
 		filepath.ToSlash(filepath.Clean(filepath.FromSlash(path))) != path || strings.HasPrefix(path, "../") {
@@ -96,7 +127,7 @@ func safeReviewPath(path string) error {
 	return nil
 }
 
-func parseOutput(providerName string, data []byte, task Task, lineCounts map[string]int) (Output, error) {
+func parseOutput(providerName string, data []byte, task Task) (Output, error) {
 	if providerName == "claude" {
 		var envelope map[string]json.RawMessage
 		if err := provider.DecodeStrictJSON(data, &envelope); err != nil {
@@ -118,7 +149,7 @@ func parseOutput(providerName string, data []byte, task Task, lineCounts map[str
 	if err := decodeInnerOutput(data, &output); err != nil {
 		return Output{}, fmt.Errorf("decode control-review output: %w", err)
 	}
-	if err := validateOutput(output, task, lineCounts); err != nil {
+	if err := validateOutput(output, task); err != nil {
 		return Output{}, err
 	}
 	return output, nil
@@ -128,7 +159,7 @@ func decodeInnerOutput(data []byte, output *Output) error {
 	return provider.DecodeStrictJSON(data, output)
 }
 
-func validateOutput(output Output, task Task, lineCounts map[string]int) error {
+func validateOutput(output Output, task Task) error {
 	if output.SchemaVersion != OutputSchema {
 		return fmt.Errorf("control-review output uses unsupported schema %q", output.SchemaVersion)
 	}
@@ -142,14 +173,14 @@ func validateOutput(output Output, task Task, lineCounts map[string]int) error {
 		if review.ControlID != task.Controls[index].ControlID {
 			return fmt.Errorf("control-review output is missing, duplicate, or out of order for %s", task.Controls[index].ControlID)
 		}
-		if err := validateReview(review, lineCounts); err != nil {
+		if err := validateReview(review, task.ContextFiles); err != nil {
 			return fmt.Errorf("invalid advisory review for %s: %w", review.ControlID, err)
 		}
 	}
 	return nil
 }
 
-func validateReview(review Review, lineCounts map[string]int) error {
+func validateReview(review Review, contextFiles []ContextFile) error {
 	validAssessment := map[string]bool{
 		"advisory_pass_candidate": true, "advisory_fail_candidate": true,
 		"needs_evidence": true, "not_applicable_candidate": true,
@@ -166,13 +197,18 @@ func validateReview(review Review, lineCounts map[string]int) error {
 		return fmt.Errorf("high confidence requires cited repository evidence")
 	}
 	seenEvidence := map[string]bool{}
+	visible := map[string]ContextFile{}
+	for _, contextFile := range contextFiles {
+		visible[contextFile.Path] = contextFile
+	}
 	for _, evidence := range review.Evidence {
 		clean := filepath.ToSlash(filepath.Clean(filepath.FromSlash(evidence.Path)))
-		lines, exists := lineCounts[evidence.Path]
+		excerpt, exists := visible[evidence.Path]
 		key := fmt.Sprintf("%s:%d:%d", evidence.Path, evidence.Line, evidence.Column)
 		if evidence.Path == "" || filepath.IsAbs(evidence.Path) || clean != evidence.Path ||
-			!exists || evidence.Line < 1 || evidence.Line > lines || evidence.Column < 0 || seenEvidence[key] {
-			return fmt.Errorf("unsafe, nonexistent, or duplicate evidence location %q", key)
+			!exists || evidence.Line < excerpt.StartLine || evidence.Line > excerpt.EndLine ||
+			evidence.Column < 0 || seenEvidence[key] {
+			return fmt.Errorf("unsafe, unseen, or duplicate evidence location %q", key)
 		}
 		seenEvidence[key] = true
 	}

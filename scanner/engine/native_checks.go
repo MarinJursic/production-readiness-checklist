@@ -355,12 +355,12 @@ func evaluateNoPullRequestTarget(assertion model.Assertion, inventory model.Inve
 	}
 	result.EvidenceObserved = evidence
 	if len(violations) > 0 {
-		result.Assessment = "fail"
-		result.Summary = "Workflows using pull_request_target: " + strings.Join(violations, ", ") + "."
+		result.Assessment = "manual_review"
+		result.Summary = "Workflows using pull_request_target require security review of untrusted-code data flow, permissions, and secrets: " + strings.Join(violations, ", ") + ". Trigger presence alone is not treated as proof of a vulnerability."
 		return result
 	}
 	result.Assessment = "pass"
-	result.Summary = "No detected workflow uses pull_request_target."
+	result.Summary = "No detected workflow uses pull_request_target, so the privileged-trigger review condition is absent."
 	return result
 }
 

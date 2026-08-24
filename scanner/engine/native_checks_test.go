@@ -76,7 +76,7 @@ func TestWorkflowStructureChecksRejectUnsafeDefinitions(t *testing.T) {
 			t.Fatal(err)
 		}
 		writeFixture(t, root, ".github/workflows/ci.yml", strings.ReplaceAll(string(data), "on: [push]", "on: [push, pull_request_target]"))
-		if got := scanFixture(t, root)["PRC-A-CORE-020"]; got != "fail" {
+		if got := scanFixture(t, root)["PRC-A-CORE-020"]; got != "manual_review" {
 			t.Fatalf("untrusted trigger assertion = %s", got)
 		}
 	})

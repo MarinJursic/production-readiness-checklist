@@ -9,7 +9,7 @@ const (
 	EngineVersion          = "prc.engine/v0.1"
 	InventorySchema        = "prc.inventory/v0.3"
 	PlanSchema             = "prc.plan/v0.6"
-	RunSchema              = "prc.run/v0.11"
+	RunSchema              = "prc.run/v0.12"
 	EvidenceSchema         = "prc.evidence/v0.1"
 	FindingSchema          = "prc.finding/v0.1"
 	AdapterExecutionSchema = "prc.adapter-execution/v0.3"
@@ -34,18 +34,23 @@ type Control struct {
 }
 
 type ControlCatalogSummary struct {
-	SchemaVersion        string `json:"schema_version"`
-	RegistryVersion      string `json:"registry_version"`
-	RegistrySHA256       string `json:"registry_sha256"`
-	SourceSHA256         string `json:"source_sha256"`
-	ControlCount         int    `json:"control_count"`
-	ActiveControlCount   int    `json:"active_control_count"`
-	ProfileTerminalState string `json:"profile_terminal_state"`
-	AIReviewProvider     string `json:"ai_review_provider,omitempty"`
-	AIReviewModel        string `json:"ai_review_model,omitempty"`
-	AIReviewState        string `json:"ai_review_state,omitempty"`
-	AIReviewedCount      int    `json:"ai_reviewed_count,omitempty"`
-	AIAdvisoryFailCount  int    `json:"ai_advisory_fail_count,omitempty"`
+	SchemaVersion               string `json:"schema_version"`
+	RegistryVersion             string `json:"registry_version"`
+	RegistrySHA256              string `json:"registry_sha256"`
+	SourceSHA256                string `json:"source_sha256"`
+	ContractSchemaVersion       string `json:"contract_schema_version"`
+	ContractSHA256              string `json:"contract_sha256"`
+	ControlCount                int    `json:"control_count"`
+	ActiveControlCount          int    `json:"active_control_count"`
+	ContractCount               int    `json:"contract_count"`
+	GeneratedContractCount      int    `json:"generated_contract_count"`
+	ExpertReviewedContractCount int    `json:"expert_reviewed_contract_count"`
+	ProfileTerminalState        string `json:"profile_terminal_state"`
+	AIReviewProvider            string `json:"ai_review_provider,omitempty"`
+	AIReviewModel               string `json:"ai_review_model,omitempty"`
+	AIReviewState               string `json:"ai_review_state,omitempty"`
+	AIReviewedCount             int    `json:"ai_reviewed_count,omitempty"`
+	AIAdvisoryFailCount         int    `json:"ai_advisory_fail_count,omitempty"`
 }
 
 // AIControlReview is advisory evidence produced by an explicitly selected AI
@@ -68,17 +73,29 @@ type AIControlReview struct {
 // narrower deterministic assertions. "partially_verified" means every linked
 // assertion in this run passed, not that the complete broad control passed.
 type ControlResult struct {
-	ControlID            string           `json:"control_id"`
-	Revision             int              `json:"revision"`
-	Statement            string           `json:"statement"`
-	Source               Source           `json:"source"`
-	Disposition          string           `json:"disposition"`
-	Coverage             string           `json:"coverage"`
-	Authority            string           `json:"authority"`
-	AssertionIDs         []string         `json:"assertion_ids"`
-	ExecutedAssertionIDs []string         `json:"executed_assertion_ids"`
-	Summary              string           `json:"summary"`
-	AIReview             *AIControlReview `json:"ai_review,omitempty"`
+	ControlID                 string           `json:"control_id"`
+	Revision                  int              `json:"revision"`
+	Statement                 string           `json:"statement"`
+	Source                    Source           `json:"source"`
+	ContractSHA256            string           `json:"contract_sha256"`
+	ContractStatus            string           `json:"contract_status"`
+	CanonicalControlID        string           `json:"canonical_control_id"`
+	EvaluationClass           string           `json:"evaluation_class"`
+	AutomationClass           string           `json:"automation_class"`
+	ApplicabilityClass        string           `json:"applicability_class"`
+	Atomicity                 string           `json:"atomicity"`
+	CompleteInventoryRequired bool             `json:"complete_inventory_required"`
+	NegativeCondition         bool             `json:"negative_condition"`
+	ProjectThresholdsRequired bool             `json:"project_thresholds_required"`
+	EvidenceAuthorities       []string         `json:"evidence_authorities"`
+	NotApplicableProof        string           `json:"not_applicable_proof"`
+	Disposition               string           `json:"disposition"`
+	Coverage                  string           `json:"coverage"`
+	Authority                 string           `json:"authority"`
+	AssertionIDs              []string         `json:"assertion_ids"`
+	ExecutedAssertionIDs      []string         `json:"executed_assertion_ids"`
+	Summary                   string           `json:"summary"`
+	AIReview                  *AIControlReview `json:"ai_review,omitempty"`
 }
 
 type Objective struct {
@@ -409,6 +426,75 @@ func (run RunResult) MarshalJSON() ([]byte, error) {
 	type current RunResult
 	if run.SchemaVersion == RunSchema {
 		return json.Marshal(current(run))
+	}
+	if run.SchemaVersion == "prc.run/v0.11" {
+		type catalogV011 struct {
+			SchemaVersion        string `json:"schema_version"`
+			RegistryVersion      string `json:"registry_version"`
+			RegistrySHA256       string `json:"registry_sha256"`
+			SourceSHA256         string `json:"source_sha256"`
+			ControlCount         int    `json:"control_count"`
+			ActiveControlCount   int    `json:"active_control_count"`
+			ProfileTerminalState string `json:"profile_terminal_state"`
+			AIReviewProvider     string `json:"ai_review_provider,omitempty"`
+			AIReviewModel        string `json:"ai_review_model,omitempty"`
+			AIReviewState        string `json:"ai_review_state,omitempty"`
+			AIReviewedCount      int    `json:"ai_reviewed_count,omitempty"`
+			AIAdvisoryFailCount  int    `json:"ai_advisory_fail_count,omitempty"`
+		}
+		type controlV011 struct {
+			ControlID            string           `json:"control_id"`
+			Revision             int              `json:"revision"`
+			Statement            string           `json:"statement"`
+			Source               Source           `json:"source"`
+			Disposition          string           `json:"disposition"`
+			Coverage             string           `json:"coverage"`
+			Authority            string           `json:"authority"`
+			AssertionIDs         []string         `json:"assertion_ids"`
+			ExecutedAssertionIDs []string         `json:"executed_assertion_ids"`
+			Summary              string           `json:"summary"`
+			AIReview             *AIControlReview `json:"ai_review,omitempty"`
+		}
+		type runV011 struct {
+			SchemaVersion     string             `json:"schema_version"`
+			RunID             string             `json:"run_id"`
+			StartedAt         time.Time          `json:"started_at"`
+			CompletedAt       time.Time          `json:"completed_at"`
+			Plan              Plan               `json:"plan"`
+			Inventory         Inventory          `json:"inventory"`
+			AdapterExecutions []AdapterExecution `json:"adapter_executions"`
+			Results           []AssertionResult  `json:"results"`
+			Findings          []Finding          `json:"findings"`
+			ControlCatalog    *catalogV011       `json:"control_catalog,omitempty"`
+			ControlResults    []controlV011      `json:"control_results,omitempty"`
+			TerminalState     string             `json:"terminal_state"`
+		}
+		legacy := runV011{
+			SchemaVersion: run.SchemaVersion, RunID: run.RunID, StartedAt: run.StartedAt,
+			CompletedAt: run.CompletedAt, Plan: run.Plan, Inventory: run.Inventory,
+			AdapterExecutions: run.AdapterExecutions, Results: run.Results, Findings: run.Findings,
+			TerminalState: run.TerminalState,
+		}
+		if run.ControlCatalog != nil {
+			legacy.ControlCatalog = &catalogV011{
+				SchemaVersion: run.ControlCatalog.SchemaVersion, RegistryVersion: run.ControlCatalog.RegistryVersion,
+				RegistrySHA256: run.ControlCatalog.RegistrySHA256, SourceSHA256: run.ControlCatalog.SourceSHA256,
+				ControlCount: run.ControlCatalog.ControlCount, ActiveControlCount: run.ControlCatalog.ActiveControlCount,
+				ProfileTerminalState: run.ControlCatalog.ProfileTerminalState,
+				AIReviewProvider:     run.ControlCatalog.AIReviewProvider, AIReviewModel: run.ControlCatalog.AIReviewModel,
+				AIReviewState: run.ControlCatalog.AIReviewState, AIReviewedCount: run.ControlCatalog.AIReviewedCount,
+				AIAdvisoryFailCount: run.ControlCatalog.AIAdvisoryFailCount,
+			}
+		}
+		for _, control := range run.ControlResults {
+			legacy.ControlResults = append(legacy.ControlResults, controlV011{
+				ControlID: control.ControlID, Revision: control.Revision, Statement: control.Statement, Source: control.Source,
+				Disposition: control.Disposition, Coverage: control.Coverage, Authority: control.Authority,
+				AssertionIDs: control.AssertionIDs, ExecutedAssertionIDs: control.ExecutedAssertionIDs,
+				Summary: control.Summary, AIReview: control.AIReview,
+			})
+		}
+		return json.Marshal(legacy)
 	}
 	if run.SchemaVersion == "prc.run/v0.10" || run.SchemaVersion == "prc.run/v0.9" || run.SchemaVersion == "prc.run/v0.8" || run.SchemaVersion == "prc.run/v0.7" || run.SchemaVersion == "prc.run/v0.6" {
 		type withFindings struct {

@@ -2,6 +2,7 @@ package inventory
 
 import (
 	"os"
+	"os/exec"
 	"path/filepath"
 	"slices"
 	"strings"
@@ -53,8 +54,8 @@ func TestBuildHashesContentAndDetectsEcosystems(t *testing.T) {
 		!slices.Contains(first.Infrastructure.KubernetesFiles, "deploy/app.yaml") {
 		t.Fatalf("missing deployment inventory: containers=%v infrastructure=%+v", first.ContainerFiles, first.Infrastructure)
 	}
-	if len(first.Facts) != 7 {
-		t.Fatalf("expected seven provenance facts, got %+v", first.Facts)
+	if len(first.Facts) != 8 {
+		t.Fatalf("expected eight provenance facts, got %+v", first.Facts)
 	}
 	openAPIDetected := false
 	for _, component := range first.Components {
@@ -125,6 +126,114 @@ func TestBuildSkipsCachesAndSymlinks(t *testing.T) {
 	}
 	if !slices.Equal(item.Symlinks, []string{"linked.py"}) {
 		t.Fatalf("symlinks = %v", item.Symlinks)
+	}
+}
+
+func TestBuildInventoriesAmbiguousSiteAndVendorDirectoriesAndReportsExclusions(t *testing.T) {
+	root := t.TempDir()
+	writeFile(t, root, "site/app.py", "print('site')\n")
+	writeFile(t, root, "vendor/first_party.go", "package vendor\n")
+	writeFile(t, root, "node_modules/dependency.js", "module.exports = {}\n")
+	item, err := Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	paths := []string{}
+	for _, record := range item.Files {
+		paths = append(paths, record.Path)
+	}
+	if !slices.Equal(paths, []string{"site/app.py", "vendor/first_party.go"}) {
+		t.Fatalf("ambiguous first-party directories were skipped or dependencies were included: %v", paths)
+	}
+	foundExclusion := false
+	for _, fact := range item.Facts {
+		if fact.Key == "repository.exclusion" && fact.Source == "node_modules" {
+			foundExclusion = true
+		}
+	}
+	if !foundExclusion {
+		t.Fatalf("inventory exclusion was not reported: %+v", item.Facts)
+	}
+}
+
+func TestBuildRecordsCleanDirtyAndExternalGitWorktreeState(t *testing.T) {
+	if _, err := exec.LookPath("git"); err != nil {
+		t.Skip("Git is not available")
+	}
+	repository := t.TempDir()
+	runGit(t, repository, "init", "-q")
+	runGit(t, repository, "config", "user.name", "PRC Test")
+	runGit(t, repository, "config", "user.email", "prc-test@example.invalid")
+	writeFile(t, repository, "app.go", "package app\n")
+	runGit(t, repository, "add", "app.go")
+	runGit(t, repository, "commit", "-q", "-m", "fixture")
+	clean, err := Build(repository)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if clean.GitCommit == "" || inventoryFactValue(clean.Facts, "repository.git_worktree_state") != "clean" {
+		t.Fatalf("clean repository identity was not established: commit=%q facts=%+v", clean.GitCommit, clean.Facts)
+	}
+	candidateRoot := t.TempDir()
+	writeFile(t, candidateRoot, "app.go", "package candidate\n")
+	candidate, err := Build(candidateRoot)
+	if err != nil {
+		t.Fatal(err)
+	}
+	candidate, err = BindDerivedSource(candidate, clean)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if candidate.GitCommit != clean.GitCommit || inventoryFactValue(candidate.Facts, "repository.git_worktree_state") != "dirty" {
+		t.Fatalf("derived candidate lost source provenance: commit=%q facts=%+v", candidate.GitCommit, candidate.Facts)
+	}
+	if err := VerifyIdentity(candidate); err != nil {
+		t.Fatalf("derived candidate identity is invalid: %v", err)
+	}
+	writeFile(t, repository, "app.go", "package changed\n")
+	dirty, err := Build(repository)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if dirty.GitCommit != clean.GitCommit || inventoryFactValue(dirty.Facts, "repository.git_worktree_state") != "dirty" {
+		t.Fatalf("dirty repository was mislabeled: commit=%q facts=%+v", dirty.GitCommit, dirty.Facts)
+	}
+	runGit(t, repository, "restore", "app.go")
+	worktree := filepath.Join(t.TempDir(), "external-worktree")
+	runGit(t, repository, "worktree", "add", "--detach", worktree)
+	worktreeInventory, err := Build(worktree)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if worktreeInventory.GitCommit != clean.GitCommit || inventoryFactValue(worktreeInventory.Facts, "repository.git_worktree_state") != "clean" {
+		t.Fatalf("standard external Git worktree was not supported: commit=%q facts=%+v", worktreeInventory.GitCommit, worktreeInventory.Facts)
+	}
+}
+
+func TestBuildRejectsOversizedSparseFileBeforeHashing(t *testing.T) {
+	root := t.TempDir()
+	path := filepath.Join(root, "oversized.bin")
+	file, err := os.Create(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := file.Close(); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.Truncate(path, maxInventoryFileBytes+1); err != nil {
+		t.Skipf("filesystem cannot create a sparse limit fixture: %v", err)
+	}
+	if _, err := Build(root); err == nil || !strings.Contains(err.Error(), "inventory limit") {
+		t.Fatalf("oversized file was accepted: %v", err)
+	}
+}
+
+func runGit(t *testing.T, root string, arguments ...string) {
+	t.Helper()
+	command := exec.Command("git", append([]string{"-C", root}, arguments...)...)
+	command.Env = append(os.Environ(), "GIT_CONFIG_NOSYSTEM=1", "GIT_CONFIG_GLOBAL="+os.DevNull, "GIT_TERMINAL_PROMPT=0")
+	if output, err := command.CombinedOutput(); err != nil {
+		t.Fatalf("git %v failed: %v: %s", arguments, err, output)
 	}
 }
 

@@ -14,7 +14,7 @@ func TestPrepareSnapshotMaterializesOnlySealedRegularFiles(t *testing.T) {
 	root := t.TempDir()
 	writeSnapshotFixture(t, root, "src/main.go", "package main\n")
 	writeSnapshotFixture(t, root, ".git/private", "excluded\n")
-	writeSnapshotFixture(t, root, "site/generated.html", "excluded\n")
+	writeSnapshotFixture(t, root, "site/generated.html", "included\n")
 	if err := os.Symlink("src/main.go", filepath.Join(root, "source-link")); err != nil {
 		t.Fatal(err)
 	}
@@ -27,7 +27,7 @@ func TestPrepareSnapshotMaterializesOnlySealedRegularFiles(t *testing.T) {
 		t.Fatal(err)
 	}
 	defer snapshot.Close()
-	if snapshot.Files != 1 || snapshot.Bytes != int64(len("package main\n")) ||
+	if snapshot.Files != 2 || snapshot.Bytes != int64(len("package main\n")+len("included\n")) ||
 		!hexDigestPattern.MatchString(snapshot.Digest) {
 		t.Fatalf("snapshot identity = %+v", snapshot)
 	}
@@ -35,7 +35,11 @@ func TestPrepareSnapshotMaterializesOnlySealedRegularFiles(t *testing.T) {
 	if err != nil || string(data) != "package main\n" {
 		t.Fatalf("snapshot content = %q, %v", data, err)
 	}
-	for _, excluded := range []string{".git/private", "site/generated.html", "source-link"} {
+	generated, err := os.ReadFile(filepath.Join(snapshot.Path, "site", "generated.html"))
+	if err != nil || string(generated) != "included\n" {
+		t.Fatalf("site content = %q, %v", generated, err)
+	}
+	for _, excluded := range []string{".git/private", "source-link"} {
 		if _, err := os.Lstat(filepath.Join(snapshot.Path, filepath.FromSlash(excluded))); !os.IsNotExist(err) {
 			t.Fatalf("excluded path %s was materialized: %v", excluded, err)
 		}

@@ -81,10 +81,14 @@ func advisoryLocationText(locations []model.FindingLocation) string {
 }
 
 func writeMarkdown(output io.Writer, run model.RunResult) error {
+	profileState := run.TerminalState
+	if run.ControlCatalog != nil && run.ControlCatalog.ProfileTerminalState != "" {
+		profileState = run.ControlCatalog.ProfileTerminalState
+	}
 	if _, err := fmt.Fprintf(output, "# Production readiness assessment\n\n"+
-		"- Run: `%s`\n- Profile: `%s@%s`\n- Target: `%s`\n- Inventory: `%s`\n- Terminal state: **%s**\n\n",
+		"- Run: `%s`\n- Profile: `%s@%s`\n- Target: `%s`\n- Inventory: `%s`\n- Local profile result: **%s**\n- Full catalog coverage result: **%s**\n\n",
 		run.RunID, run.Plan.ProfileID, run.Plan.ProfileVersion, markdownCell(run.Inventory.TargetName),
-		run.Inventory.Digest, run.TerminalState); err != nil {
+		run.Inventory.Digest, profileState, run.TerminalState); err != nil {
 		return err
 	}
 	if run.Plan.ConfigurationDigest != "" {
@@ -400,17 +404,19 @@ const htmlReport = `<!doctype html>
   <style>
     :root { color-scheme: light; --ink: #17202a; --muted: #52606d; --line: #c8d0d8; --panel: #f7f9fb; --accent: #175cd3; }
     body { color: var(--ink); font: 16px/1.55 system-ui, sans-serif; margin: 2rem auto; max-width: 90rem; padding: 0 1rem; }
-    code { overflow-wrap: anywhere; } table { border-collapse: collapse; width: 100%; }
+	    code { overflow-wrap: anywhere; } table { border-collapse: collapse; width: 100%; }
     caption { font-size: 1.25rem; font-weight: 700; margin: 1rem 0; text-align: left; }
     th, td { border: 1px solid #c8d0d8; padding: .6rem; text-align: left; vertical-align: top; }
     th { background: #edf2f7; } .status { font-weight: 700; }
     .notice { background: #eef5ff; border-left: .35rem solid var(--accent); padding: .8rem 1rem; }
     .counts { display: flex; flex-wrap: wrap; gap: .75rem; list-style: none; padding: 0; }
     .counts li { background: var(--panel); border: 1px solid var(--line); border-radius: .4rem; padding: .6rem .9rem; }
-    .card, details { border: 1px solid var(--line); border-radius: .5rem; margin: 1rem 0; padding: 1rem; }
-    .card h3 { margin-top: 0; } .meta { color: var(--muted); }
-    summary { cursor: pointer; font-weight: 700; } dt { font-weight: 700; } dd { margin-bottom: .5rem; }
-    ul { padding-left: 1.4rem; }
+	    .card, details { border: 1px solid var(--line); border-radius: .5rem; content-visibility: auto; contain-intrinsic-size: auto 8rem; margin: 1rem 0; padding: 1rem; }
+	    .card h3 { margin-top: 0; } .meta { color: var(--muted); }
+	    summary { cursor: pointer; font-weight: 700; } dt { font-weight: 700; } dd { margin-bottom: .5rem; }
+	    ul { padding-left: 1.4rem; } .filters { align-items: end; display: flex; flex-wrap: wrap; gap: .75rem; margin: 1rem 0; }
+	    .filters label { display: grid; font-weight: 700; gap: .25rem; } .filters input, .filters select { font: inherit; min-width: 15rem; padding: .45rem; }
+	    [hidden] { display: none !important; }
   </style>
 </head>
 <body>
@@ -425,7 +431,11 @@ const htmlReport = `<!doctype html>
       <dt>Project</dt><dd><code>{{.Run.Plan.ProjectID}}</code></dd>
       <dt>Target environments</dt><dd>{{join .Run.Plan.TargetEnvironments}}</dd>
       <dt>Artifact digests</dt><dd>{{join .Run.Plan.ArtifactDigests}}</dd>{{end}}
-      <dt>Terminal state</dt><dd class="status">{{.Run.TerminalState}}</dd>
+	      <dt>Local profile result</dt><dd class="status">{{.ProfileState}}</dd>
+	      <dt>Full catalog coverage result</dt><dd class="status">{{.Run.TerminalState}}</dd>
+	      {{if .Run.Inventory.GitCommit}}<dt>Git HEAD</dt><dd><code>{{.Run.Inventory.GitCommit}}</code> ({{.GitState}} worktree)</dd>{{end}}
+	      <dt>Hashed inventory bytes</dt><dd>{{.InventoryBytes}}</dd>
+	      <dt>Reported automatic exclusions</dt><dd>{{.ExclusionCount}}</dd>
     </dl>
     <p class="notice"><strong>Report-only scan:</strong> this command assessed the project and did not apply fixes. Results are scoped to the profile, target inventory, and evidence named above.</p>
     <h2>Assessment summary</h2>
@@ -440,9 +450,13 @@ const htmlReport = `<!doctype html>
 	  {{if .Run.ControlCatalog.AIReviewProvider}}<dt>Advisory AI review</dt><dd>{{.Run.ControlCatalog.AIReviewProvider}}{{if .Run.ControlCatalog.AIReviewModel}} / {{.Run.ControlCatalog.AIReviewModel}}{{end}} — {{.Run.ControlCatalog.AIReviewState}}, {{.Run.ControlCatalog.AIReviewedCount}} controls reviewed, {{.Run.ControlCatalog.AIAdvisoryFailCount}} advisory failure candidates. AI advice cannot create a verified Pass or final Not Applicable result.</dd>{{end}}
 	</dl>
 	<ul class="counts">{{range .ControlCounts}}<li><strong>{{index . 0}}</strong>: {{index . 1}}</li>{{end}}</ul>
-	<p>Use browser search to find a control ID or phrase. Open a control to see its source, coverage, linked assertions, and any advisory AI review.</p>
-	{{range .Run.ControlResults}}<details {{if eq .Disposition "confirmed_failure"}}open{{end}}>
-	  <summary>[{{.Disposition}}] <code>{{.ControlID}}</code> — {{.Statement}}</summary>
+		<div class="filters" aria-label="Control filters">
+		  <label>Search controls<input id="control-search" type="search" placeholder="ID, statement, source, or advice"></label>
+		  <label>Disposition<select id="control-disposition"><option value="">All dispositions</option><option>confirmed_failure</option><option>blocked</option><option>needs_review</option><option>partially_verified</option><option>retired</option></select></label>
+		  <span id="control-filter-count" role="status"></span>
+		</div>
+		<section id="control-results">{{range .Run.ControlResults}}<details data-disposition="{{.Disposition}}" {{if eq .Disposition "confirmed_failure"}}open{{end}}>
+		  <summary>[{{.Disposition}}] <code>{{.ControlID}}</code> — {{.Statement}}</summary>
 	  <dl>
 	    <dt>Coverage / authority</dt><dd>{{.Coverage}} / {{.Authority}}</dd>
 	    <dt>Source</dt><dd><code>{{.Source.Path}}:{{.Source.Line}}</code></dd>
@@ -453,7 +467,7 @@ const htmlReport = `<!doctype html>
 	    <dt>AI-cited evidence</dt><dd>{{if .AIReview.Evidence}}<ul>{{range .AIReview.Evidence}}<li><code>{{location .}}</code></li>{{end}}</ul>{{else}}No repository line was cited.{{end}}</dd>
 	    <dt>AI review limits</dt><dd><ul>{{range .AIReview.Limitations}}<li>{{.}}</li>{{end}}</ul></dd>{{end}}
 	  </dl>
-	</details>{{end}}{{end}}
+		</details>{{end}}</section>{{end}}
     {{if .Run.AdapterExecutions}}<table>
       <caption>Adapter executions</caption>
       <thead><tr><th scope="col">Adapter</th><th scope="col">Manifest</th><th scope="col">Authorization</th><th scope="col">Trust</th><th scope="col">Registry</th><th scope="col">Status</th><th scope="col">Execution</th></tr></thead>
@@ -489,17 +503,50 @@ const htmlReport = `<!doctype html>
       </dl>
     </details>{{end}}
     <p>This report is scoped to the named profile, target inventory, and evidence set. It is not an unqualified production-readiness or compliance claim.</p>
-  </main>
-</body>
+	  </main>
+	  <script>
+	  (() => {
+	    const root = document.getElementById('control-results');
+	    if (!root) return;
+	    const items = Array.from(root.querySelectorAll(':scope > details'));
+	    const search = document.getElementById('control-search');
+	    const disposition = document.getElementById('control-disposition');
+	    const count = document.getElementById('control-filter-count');
+	    const apply = () => {
+	      const query = search.value.trim().toLocaleLowerCase();
+	      let visible = 0;
+	      for (const item of items) {
+	        const shown = (!query || item.textContent.toLocaleLowerCase().includes(query)) &&
+	          (!disposition.value || item.dataset.disposition === disposition.value);
+	        item.hidden = !shown;
+	        if (shown) visible++;
+	      }
+	      count.textContent = visible + ' of ' + items.length + ' controls shown';
+	    };
+	    search.addEventListener('input', apply);
+	    disposition.addEventListener('change', apply);
+	    apply();
+	  })();
+	  </script>
+	</body>
 </html>
 `
 
 func writeHTML(output io.Writer, run model.RunResult) error {
 	view := struct {
-		Run           model.RunResult
-		Counts        [][2]string
-		ControlCounts [][2]string
-	}{Run: run, Counts: assessmentCounts(run.Results), ControlCounts: controlDispositionCounts(run.ControlResults)}
+		Run            model.RunResult
+		Counts         [][2]string
+		ControlCounts  [][2]string
+		ProfileState   string
+		GitState       string
+		InventoryBytes string
+		ExclusionCount int
+	}{
+		Run: run, Counts: assessmentCounts(run.Results), ControlCounts: controlDispositionCounts(run.ControlResults),
+		ProfileState: profileTerminalState(run), GitState: inventoryFact(run.Inventory, "repository.git_worktree_state"),
+		InventoryBytes: inventoryFact(run.Inventory, "repository.inventory_bytes"),
+		ExclusionCount: inventoryFactCount(run.Inventory, "repository.exclusion"),
+	}
 	return template.Must(template.New("report").Funcs(template.FuncMap{
 		"join": func(values []string) string { return strings.Join(values, ", ") },
 		"location": func(value model.FindingLocation) string {
@@ -533,4 +580,30 @@ func writeHTML(output io.Writer, run model.RunResult) error {
 			}
 		},
 	}).Parse(htmlReport)).Execute(output, view)
+}
+
+func profileTerminalState(run model.RunResult) string {
+	if run.ControlCatalog != nil && run.ControlCatalog.ProfileTerminalState != "" {
+		return run.ControlCatalog.ProfileTerminalState
+	}
+	return run.TerminalState
+}
+
+func inventoryFact(item model.Inventory, key string) string {
+	for _, fact := range item.Facts {
+		if fact.Key == key {
+			return fact.Value
+		}
+	}
+	return "not available"
+}
+
+func inventoryFactCount(item model.Inventory, key string) int {
+	count := 0
+	for _, fact := range item.Facts {
+		if fact.Key == key {
+			count++
+		}
+	}
+	return count
 }

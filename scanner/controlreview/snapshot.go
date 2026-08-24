@@ -36,11 +36,12 @@ var reviewNames = map[string]bool{
 }
 
 type reviewSnapshot struct {
-	Directory  string
-	LineCounts map[string]int
-	Paths      []string
-	Contents   map[string][]byte
-	Digests    map[string]string
+	Directory   string
+	LineCounts  map[string]int
+	Paths       []string
+	Contents    map[string][]byte
+	Digests     map[string]string
+	Limitations []string
 }
 
 func createSnapshot(inventory model.Inventory) (reviewSnapshot, error) {
@@ -57,11 +58,18 @@ func createSnapshot(inventory model.Inventory) (reviewSnapshot, error) {
 	}
 	result := reviewSnapshot{
 		Directory: directory, LineCounts: map[string]int{}, Paths: []string{},
-		Contents: map[string][]byte{}, Digests: map[string]string{},
+		Contents: map[string][]byte{}, Digests: map[string]string{}, Limitations: []string{},
 	}
+	omitted := map[string]int{}
 	total := int64(0)
 	for _, record := range inventory.Files {
-		if !remoteReviewCandidate(record.Path) || record.Size > maximumSnapshotFileBytes {
+		candidate, reason := remoteReviewCandidate(record.Path)
+		if !candidate {
+			omitted[reason]++
+			continue
+		}
+		if record.Size > maximumSnapshotFileBytes {
+			omitted["larger than the 2 MiB per-file remote-review limit"]++
 			continue
 		}
 		if total+record.Size > maximumSnapshotTotalBytes {
@@ -72,6 +80,7 @@ func createSnapshot(inventory model.Inventory) (reviewSnapshot, error) {
 			return cleanup(err)
 		}
 		if bytes.IndexByte(data, 0) >= 0 || !utf8.Valid(data) {
+			omitted["binary or not valid UTF-8 text"]++
 			continue
 		}
 		if err := provider.ScreenRemoteContent(record.Path, data); err != nil {
@@ -98,31 +107,42 @@ func createSnapshot(inventory model.Inventory) (reviewSnapshot, error) {
 		result.Digests[record.Path] = record.SHA256
 		total += record.Size
 	}
+	for reason, count := range omitted {
+		result.Limitations = append(result.Limitations, fmt.Sprintf(
+			"The scanner omitted %d inventoried file(s) from remote review because they were %s.", count, reason,
+		))
+	}
+	result.Limitations = uniqueSorted(result.Limitations)
 	return result, nil
 }
 
-func remoteReviewCandidate(path string) bool {
+func remoteReviewCandidate(path string) (bool, string) {
 	lower := strings.ToLower(filepath.ToSlash(path))
 	parts := strings.Split(lower, "/")
 	for _, part := range parts {
 		if part == ".claude" || part == ".codex" || part == ".agents" || part == ".git" {
-			return false
+			return false, "provider-instruction or scanner-private content"
 		}
 	}
 	base := parts[len(parts)-1]
-	if base == "agents.md" || base == "claude.md" || base == "copilot-instructions.md" ||
-		base == ".env" || strings.HasPrefix(base, ".env.") || base == ".npmrc" || base == ".pypirc" ||
+	if base == "agents.md" || base == "claude.md" || base == "copilot-instructions.md" {
+		return false, "provider-instruction content"
+	}
+	if base == ".env" || strings.HasPrefix(base, ".env.") || base == ".npmrc" || base == ".pypirc" ||
 		base == ".netrc" || base == "auth.json" || base == "credentials" ||
 		base == "id_rsa" || base == "id_ed25519" || strings.Contains(base, "secret") ||
 		strings.Contains(base, "credential") {
-		return false
+		return false, "named like sensitive configuration or credentials"
 	}
 	switch strings.ToLower(filepath.Ext(base)) {
 	case ".key", ".pem", ".p12", ".pfx", ".jks", ".keystore", ".kdbx":
-		return false
+		return false, "a private-key, credential-store, or certificate container"
 	}
 	extension := strings.ToLower(filepath.Ext(base))
-	return reviewExtensions[extension] || reviewNames[base]
+	if reviewExtensions[extension] || reviewNames[base] {
+		return true, ""
+	}
+	return false, "not a supported remote-review text type"
 }
 
 func readInventoryFile(root string, record model.FileRecord) ([]byte, error) {

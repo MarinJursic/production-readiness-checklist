@@ -61,7 +61,7 @@ func WriteRunWithArtifacts(root string, run model.RunResult, artifacts map[strin
 	if run.RunID != expectedRunID {
 		return fmt.Errorf("run ID does not match record content")
 	}
-	if run.SchemaVersion == model.RunSchema || run.SchemaVersion == "prc.run/v0.10" || run.SchemaVersion == "prc.run/v0.9" || run.SchemaVersion == "prc.run/v0.8" || run.SchemaVersion == "prc.run/v0.7" || run.SchemaVersion == "prc.run/v0.6" {
+	if run.SchemaVersion == model.RunSchema || run.SchemaVersion == "prc.run/v0.11" || run.SchemaVersion == "prc.run/v0.10" || run.SchemaVersion == "prc.run/v0.9" || run.SchemaVersion == "prc.run/v0.8" || run.SchemaVersion == "prc.run/v0.7" || run.SchemaVersion == "prc.run/v0.6" {
 		if run.Findings == nil {
 			return fmt.Errorf("current run findings must encode as an array")
 		}

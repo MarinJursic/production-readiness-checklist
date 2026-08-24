@@ -84,6 +84,10 @@ func BuildPlan(name, executable, workspace, outputDirectory, schemaPath string, 
 	if err := validatePrivateOutputDirectory(outputDirectory); err != nil {
 		return Plan{}, err
 	}
+	environmentNames, environment, err := IsolatedEnvironment(name, outputDirectory)
+	if err != nil {
+		return Plan{}, err
+	}
 	schemaPath, schemaDigest, schemaData, err := verifiedFile(schemaPath, "agent output schema", 1024*1024)
 	if err != nil {
 		return Plan{}, err
@@ -97,7 +101,8 @@ func BuildPlan(name, executable, workspace, outputDirectory, schemaPath string, 
 		Provider: name, ExecutablePath: executablePath, ExecutableSHA256: executableDigest,
 		Workspace: workspace, ExecutionDirectory: outputDirectory, OutputDirectory: outputDirectory, OutputSchemaPath: schemaPath,
 		OutputSchemaSHA256: schemaDigest, Capabilities: capabilities, TaskID: task.TaskID,
-		PromptSHA256: hex.EncodeToString(promptDigest[:]), prompt: prompt,
+		PromptSHA256: hex.EncodeToString(promptDigest[:]), EnvironmentVariables: environmentNames,
+		Environment: environment, prompt: prompt,
 	}
 	switch name {
 	case "codex":
@@ -116,10 +121,10 @@ func BuildPlan(name, executable, workspace, outputDirectory, schemaPath string, 
 			"--disable", "browser_use_external", "--disable", "computer_use",
 			"--disable", "in_app_browser", "--disable", "image_generation",
 			"--disable", "enable_mcp_apps", "--disable", "tool_suggest", "--ignore-rules",
+			"--skip-git-repo-check",
 			"--output-schema", schemaPath, "--output-last-message", plan.ResultPath,
 			"--color", "never", "--json", "--cd", outputDirectory, "-",
 		}
-		plan.EnvironmentVariables = []string{"CODEX_HOME", "HOME", "LANG", "LC_ALL", "OPENAI_API_KEY", "PATH", "TMPDIR"}
 	case "claude":
 		compactSchema := string(schemaData)
 		var schema any
@@ -132,14 +137,13 @@ func BuildPlan(name, executable, workspace, outputDirectory, schemaPath string, 
 		plan.Arguments = []string{
 			"-p", "--output-format", "json", "--json-schema", compactSchema,
 			"--permission-mode", "dontAsk", "--tools", "",
-			"--disallowedTools", "Bash,Edit,Write,NotebookEdit,WebFetch,WebSearch",
-			"--disable-slash-commands", "--no-session-persistence", "--strict-mcp-config",
+			"--disallowedTools", "Agent,AskUserQuestion,Bash,Edit,Glob,Grep,NotebookEdit,Read,WebFetch,WebSearch,Write",
+			"--disable-slash-commands", "--no-session-persistence", "--no-chrome", "--strict-mcp-config",
 			"--mcp-config", `{"mcpServers":{}}`, "--setting-sources", "",
 		}
 		if task.MaxCostUSD > 0 {
 			plan.Arguments = append(plan.Arguments, "--max-budget-usd", strconv.FormatFloat(task.MaxCostUSD, 'f', -1, 64))
 		}
-		plan.EnvironmentVariables = []string{"ANTHROPIC_API_KEY", "CLAUDE_CONFIG_DIR", "HOME", "LANG", "LC_ALL", "PATH", "TMPDIR"}
 	}
 	plan.seal, err = sealPlan(plan, task)
 	if err != nil {
@@ -254,24 +258,25 @@ func within(root, path string) bool {
 
 func sealPlan(plan Plan, task Task) ([32]byte, error) {
 	payload, err := json.Marshal(struct {
-		Provider             string       `json:"provider"`
-		ExecutablePath       string       `json:"executable_path"`
-		ExecutableSHA256     string       `json:"executable_sha256"`
-		Workspace            string       `json:"workspace"`
-		ExecutionDirectory   string       `json:"execution_directory"`
-		OutputDirectory      string       `json:"output_directory"`
-		ResultPath           string       `json:"result_path"`
-		OutputSchemaPath     string       `json:"output_schema_path"`
-		OutputSchemaSHA256   string       `json:"output_schema_sha256"`
-		Arguments            []string     `json:"arguments"`
-		EnvironmentVariables []string     `json:"environment_variables"`
-		Capabilities         Capabilities `json:"capabilities"`
-		Task                 Task         `json:"task"`
-		Prompt               string       `json:"prompt"`
+		Provider             string            `json:"provider"`
+		ExecutablePath       string            `json:"executable_path"`
+		ExecutableSHA256     string            `json:"executable_sha256"`
+		Workspace            string            `json:"workspace"`
+		ExecutionDirectory   string            `json:"execution_directory"`
+		OutputDirectory      string            `json:"output_directory"`
+		ResultPath           string            `json:"result_path"`
+		OutputSchemaPath     string            `json:"output_schema_path"`
+		OutputSchemaSHA256   string            `json:"output_schema_sha256"`
+		Arguments            []string          `json:"arguments"`
+		EnvironmentVariables []string          `json:"environment_variables"`
+		Environment          map[string]string `json:"environment"`
+		Capabilities         Capabilities      `json:"capabilities"`
+		Task                 Task              `json:"task"`
+		Prompt               string            `json:"prompt"`
 	}{
 		plan.Provider, plan.ExecutablePath, plan.ExecutableSHA256, plan.Workspace, plan.ExecutionDirectory,
 		plan.OutputDirectory, plan.ResultPath, plan.OutputSchemaPath, plan.OutputSchemaSHA256,
-		plan.Arguments, plan.EnvironmentVariables, plan.Capabilities, task, plan.prompt,
+		plan.Arguments, plan.EnvironmentVariables, plan.Environment, plan.Capabilities, task, plan.prompt,
 	})
 	if err != nil {
 		return [32]byte{}, fmt.Errorf("seal provider plan: %w", err)

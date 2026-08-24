@@ -99,7 +99,7 @@ func Run(ctx context.Context, plan Plan, task Task) (Execution, error) {
 	defer cancel()
 	command := exec.CommandContext(runContext, plan.ExecutablePath, plan.Arguments...)
 	command.Dir = plan.ExecutionDirectory
-	command.Env = filteredEnvironment(plan.EnvironmentVariables)
+	command.Env = FilteredEnvironment(plan.EnvironmentVariables, plan.Environment)
 	command.Stdin = strings.NewReader(plan.prompt)
 	command.Stdout = stdout
 	command.Stderr = stderr
@@ -205,21 +205,6 @@ func Run(ctx context.Context, plan Plan, task Task) (Execution, error) {
 		return Execution{}, err
 	}
 	return execution, nil
-}
-
-func filteredEnvironment(names []string) []string {
-	allowed := map[string]bool{}
-	for _, name := range names {
-		allowed[name] = true
-	}
-	result := make([]string, 0, len(names))
-	for _, item := range os.Environ() {
-		name, _, found := strings.Cut(item, "=")
-		if found && allowed[name] {
-			result = append(result, item)
-		}
-	}
-	return result
 }
 
 func writeExclusive(path string, data []byte) error {

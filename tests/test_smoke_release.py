@@ -1,0 +1,62 @@
+from __future__ import annotations
+
+import hashlib
+import io
+import pathlib
+import tarfile
+import tempfile
+import unittest
+from unittest import mock
+
+from scripts import smoke_release
+
+
+class SmokeReleaseTests(unittest.TestCase):
+    def test_supported_host_mapping_is_exact(self) -> None:
+        with mock.patch("platform.system", return_value="Windows"), mock.patch("platform.machine", return_value="ARM64"):
+            self.assertEqual(smoke_release.host(), ("windows", "arm64", "win32", "arm64"))
+        with mock.patch("platform.system", return_value="Plan9"), mock.patch("platform.machine", return_value="mips"):
+            with self.assertRaisesRegex(RuntimeError, "unsupported"):
+                smoke_release.host()
+
+    def test_tar_extraction_rejects_links_and_parent_paths(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = pathlib.Path(temporary)
+            for name, kind in (("../escape", tarfile.REGTYPE), ("root/link", tarfile.SYMTYPE)):
+                archive = root / ("bad-" + kind.decode("ascii") + ".tar.gz")
+                with tarfile.open(archive, "w:gz") as output:
+                    member = tarfile.TarInfo(name)
+                    member.type = kind
+                    member.size = 1 if kind == tarfile.REGTYPE else 0
+                    output.addfile(member, io.BytesIO(b"x") if member.size else None)
+                with self.assertRaisesRegex(ValueError, "archive"):
+                    smoke_release.extract_archive(archive, root / "out")
+
+    def test_complete_report_contract_is_required(self) -> None:
+        valid = {
+            "schema_version": "prc.run/v0.12",
+            "results": [{}],
+            "control_results": [{}] * 10_042,
+            "control_catalog": {"control_count": 10_042},
+        }
+        smoke_release.verify_result(valid, "test")
+        valid["control_results"] = valid["control_results"][:-1]
+        with self.assertRaisesRegex(RuntimeError, "incomplete"):
+            smoke_release.verify_result(valid, "test")
+
+    def test_manifest_cannot_authorize_an_oversized_artifact(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = pathlib.Path(temporary)
+            artifact = root / "artifact.tgz"
+            artifact.write_bytes(b"small")
+            item = {
+                "name": artifact.name,
+                "size": smoke_release.MAXIMUM_ARTIFACT_BYTES + 1,
+                "sha256": hashlib.sha256(b"small").hexdigest(),
+            }
+            with self.assertRaisesRegex(ValueError, "unsafe"):
+                smoke_release.checked_artifact(root, item)
+
+
+if __name__ == "__main__":
+    unittest.main()

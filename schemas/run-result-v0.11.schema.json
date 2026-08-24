@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/run-result-v0.11.schema.json",
+  "title": "Production Readiness Run Result v0.11",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "run_id", "started_at", "completed_at", "plan", "inventory", "adapter_executions", "results", "findings", "terminal_state"],
+  "properties": {
+    "schema_version": {"const": "prc.run/v0.11"},
+    "run_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "started_at": {"type": "string", "format": "date-time"},
+    "completed_at": {"type": "string", "format": "date-time"},
+    "plan": {"$ref": "plan.schema.json"},
+    "inventory": {"$ref": "inventory.schema.json"},
+    "adapter_executions": {"type": "array", "items": {"$ref": "adapter-execution.schema.json"}},
+    "results": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/assertion_result"}
+    },
+    "findings": {"type": "array", "items": {"$ref": "finding.schema.json"}},
+    "control_catalog": {"$ref": "#/$defs/control_catalog"},
+    "control_results": {
+      "type": "array",
+      "maxItems": 100000,
+      "items": {"$ref": "#/$defs/control_result"}
+    },
+    "terminal_state": {"$ref": "#/$defs/terminal_state"}
+  },
+  "$defs": {
+    "control_catalog": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "registry_version", "registry_sha256", "source_sha256", "control_count", "active_control_count", "profile_terminal_state"],
+      "properties": {
+        "schema_version": {"const": "prc.control-catalog-summary/v0.1"},
+        "registry_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+        "registry_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "source_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "control_count": {"type": "integer", "minimum": 1, "maximum": 100000},
+        "active_control_count": {"type": "integer", "minimum": 0, "maximum": 100000},
+        "profile_terminal_state": {"$ref": "#/$defs/terminal_state"},
+        "ai_review_provider": {"enum": ["codex", "claude"]},
+        "ai_review_model": {"type": "string"},
+        "ai_review_state": {"enum": ["complete", "focused"]},
+        "ai_reviewed_count": {"type": "integer", "minimum": 0, "maximum": 100000},
+        "ai_advisory_fail_count": {"type": "integer", "minimum": 0, "maximum": 100000}
+      }
+    },
+    "control_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["control_id", "revision", "statement", "source", "disposition", "coverage", "authority", "assertion_ids", "executed_assertion_ids", "summary"],
+      "properties": {
+        "control_id": {"type": "string", "pattern": "^(PRC-[0-9]{2}-[0-9]{3}|USEQ-[A-F0-9]{8})$"},
+        "revision": {"type": "integer", "minimum": 1},
+        "statement": {"type": "string", "minLength": 1, "maxLength": 16384},
+        "source": {"$ref": "#/$defs/control_source"},
+        "disposition": {"enum": ["confirmed_failure", "blocked", "partially_verified", "needs_review", "retired"]},
+        "coverage": {"enum": ["unmapped", "not_in_selected_profile", "partial_assertions", "retired"]},
+        "authority": {"enum": ["none", "deterministic_partial"]},
+        "assertion_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "executed_assertion_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "summary": {"type": "string", "minLength": 1},
+        "ai_review": {"$ref": "#/$defs/ai_control_review"}
+      }
+    },
+    "control_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "line"],
+      "properties": {
+        "path": {"type": "string", "pattern": "^docs/(checklists|engineering)/.+\\.md$"},
+        "line": {"type": "integer", "minimum": 1}
+      }
+    },
+    "ai_control_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider", "assessment_candidate", "applicability_candidate", "confidence", "reason", "advice", "evidence", "limitations", "task_id"],
+      "properties": {
+        "provider": {"enum": ["codex", "claude"]},
+        "model": {"type": "string"},
+        "assessment_candidate": {"enum": ["advisory_pass_candidate", "advisory_fail_candidate", "needs_evidence", "not_applicable_candidate"]},
+        "applicability_candidate": {"enum": ["applicable", "not_applicable", "undetermined"]},
+        "confidence": {"enum": ["low", "medium", "high"]},
+        "reason": {"type": "string", "minLength": 1, "maxLength": 16384},
+        "advice": {"type": "string", "maxLength": 16384},
+        "evidence": {"type": "array", "maxItems": 256, "items": {"$ref": "#/$defs/location"}},
+        "limitations": {"type": "array", "minItems": 1, "maxItems": 256, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 16384}},
+        "task_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "assertion_result": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["assertion_id", "control_ids", "applicability", "execution", "assessment", "severity", "gate", "summary", "evidence_required", "evidence_observed", "remediation_class"],
+        "properties": {
+          "assertion_id": {"type": "string"},
+          "control_ids": {"type": "array", "items": {"type": "string"}},
+          "applicability": {"enum": ["applicable", "not_applicable", "undetermined"]},
+          "execution": {"enum": ["not_run", "completed", "blocked", "error"]},
+          "assessment": {"enum": ["pass", "fail", "unknown", "manual_review", "not_applicable", "stale", "conflicting"]},
+          "severity": {"enum": ["info", "low", "medium", "high", "critical"]},
+          "gate": {"enum": ["advisory", "required", "no-go"]},
+          "summary": {"type": "string"},
+          "locations": {
+            "type": "array",
+            "maxItems": 4096,
+            "uniqueItems": true,
+            "items": {"$ref": "#/$defs/location"}
+          },
+          "evidence_required": {
+            "type": "array",
+            "items": {"$ref": "#/$defs/evidence_requirement"}
+          },
+          "evidence_observed": {"type": "array", "items": {"$ref": "evidence.schema.json"}},
+          "remediation_class": {"enum": ["R0", "R1", "R2", "R3", "R4", "R5", "R6"]}
+        }
+    },
+    "terminal_state": {
+      "enum": ["profile_satisfied", "machine_work_complete_manual_evidence_remaining", "assessment_incomplete", "no_go", "policy_stopped", "budget_exhausted", "environment_blocked"]
+    },
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "line": {"type": "integer", "minimum": 0},
+        "column": {"type": "integer", "minimum": 0}
+      }
+    },
+    "evidence_requirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "minimum_authority", "description"],
+      "properties": {
+        "kind": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+        "minimum_authority": {
+          "enum": ["declared", "repository", "executed", "artifact", "environment", "human"]
+        },
+        "description": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

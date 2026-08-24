@@ -3,6 +3,7 @@ package inventory
 import (
 	"bufio"
 	"bytes"
+	"context"
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
@@ -10,10 +11,12 @@ import (
 	"io"
 	"io/fs"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"regexp"
 	"sort"
 	"strings"
+	"time"
 
 	projectconfig "github.com/MarinJursic/production-readiness-checklist/scanner/config"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
@@ -21,9 +24,13 @@ import (
 
 const (
 	maxEntries             = 200_000
+	maxInventoryFileBytes  = 1024 * 1024 * 1024
+	maxInventoryTotalBytes = 8 * 1024 * 1024 * 1024
 	maxStructuredFileBytes = 2 * 1024 * 1024
 	maxGitReferenceBytes   = 4 * 1024
 	maxPackedRefsBytes     = 8 * 1024 * 1024
+	maxGitStatusBytes      = 32 * 1024 * 1024
+	gitInspectionTimeout   = 10 * time.Second
 )
 
 const detectorVersion = "0.4"
@@ -35,10 +42,14 @@ var (
 	gitCommitPattern     = regexp.MustCompile(`^[0-9a-f]{40}(?:[0-9a-f]{24})?$`)
 )
 
-var excludedDirectories = map[string]bool{
-	".git": true, ".mypy_cache": true, ".prc": true, ".pytest_cache": true,
-	".venv": true, "__pycache__": true, "node_modules": true, "site": true,
-	"vendor": true,
+var excludedDirectories = map[string]string{
+	".git":          "Git metadata is inspected separately with bounded readers.",
+	".mypy_cache":   "Generated mypy cache content is not project source.",
+	".prc":          "Scanner-owned output is excluded to avoid scanning prior reports as project input.",
+	".pytest_cache": "Generated pytest cache content is not project source.",
+	".venv":         "A local Python virtual environment is third-party generated content.",
+	"__pycache__":   "Generated Python bytecode cache content is not project source.",
+	"node_modules":  "Installed Node dependencies are third-party generated content; lockfiles and manifests remain inventoried.",
 }
 
 var sourceExtensions = map[string]bool{
@@ -150,6 +161,8 @@ func Build(target string) (model.Inventory, error) {
 			Limitations: append([]string{}, limitations...),
 		})
 	}
+	visitedEntries := 0
+	var totalBytes int64
 	err = filepath.WalkDir(root, func(path string, entry fs.DirEntry, walkErr error) error {
 		if walkErr != nil {
 			return fmt.Errorf("walk %s: %w", path, walkErr)
@@ -157,7 +170,17 @@ func Build(target string) (model.Inventory, error) {
 		if path == root {
 			return nil
 		}
-		if entry.IsDir() && excludedDirectories[entry.Name()] {
+		visitedEntries++
+		if visitedEntries > maxEntries {
+			return fmt.Errorf("target exceeds %d filesystem entries", maxEntries)
+		}
+		if reason, excluded := excludedDirectories[entry.Name()]; entry.IsDir() && excluded {
+			relative, relativeErr := filepath.Rel(root, path)
+			if relativeErr != nil {
+				return relativeErr
+			}
+			addFact("repository.exclusion", reason, filepath.ToSlash(relative), "prc.inventory.exclusion", 1,
+				"Entries below this directory were not counted or hashed.")
 			return filepath.SkipDir
 		}
 		if entry.IsDir() {
@@ -181,8 +204,11 @@ func Build(target string) (model.Inventory, error) {
 		if !entryInfo.Mode().IsRegular() {
 			return nil
 		}
-		if len(result.Files) >= maxEntries {
-			return fmt.Errorf("target exceeds %d files", maxEntries)
+		if entryInfo.Size() > maxInventoryFileBytes {
+			return fmt.Errorf("file %s exceeds the %d-byte inventory limit", path, maxInventoryFileBytes)
+		}
+		if entryInfo.Size() > maxInventoryTotalBytes-totalBytes {
+			return fmt.Errorf("target exceeds the %d-byte total inventory limit", maxInventoryTotalBytes)
 		}
 		relative, err := filepath.Rel(root, path)
 		if err != nil {
@@ -197,7 +223,11 @@ func Build(target string) (model.Inventory, error) {
 		if err != nil {
 			return err
 		}
+		if fileRecord.Size > maxInventoryTotalBytes-totalBytes {
+			return fmt.Errorf("target exceeds the %d-byte total inventory limit", maxInventoryTotalBytes)
+		}
 		result.Files = append(result.Files, fileRecord)
+		totalBytes += fileRecord.Size
 		ecosystem, manifest := manifests[name]
 		if strings.HasPrefix(name, "requirements") && strings.HasSuffix(name, ".txt") &&
 			!strings.HasSuffix(name, ".lock.txt") {
@@ -284,7 +314,24 @@ func Build(target string) (model.Inventory, error) {
 	}
 	sort.Strings(result.PackageEcosystems)
 	result.FileCount = len(result.Files)
-	result.GitCommit = gitCommit(root)
+	result.GitCommit, err = gitRepositoryState(root)
+	if err != nil {
+		addFact("repository.git_worktree_state", "unverified", ".", "prc.inventory.git-state", 0,
+			"The Git working-tree state could not be established safely: "+err.Error())
+	} else if result.GitCommit != "" {
+		state := gitWorktreeState(root)
+		addFact("repository.git_worktree_state", state.Value, ".", "prc.inventory.git-state", state.Confidence, state.Limitations...)
+	}
+	addFact("repository.inventory_bytes", fmt.Sprintf("%d", totalBytes), ".", "prc.inventory.bytes", 1)
+	sort.Slice(result.Facts, func(i, j int) bool {
+		if result.Facts[i].Key != result.Facts[j].Key {
+			return result.Facts[i].Key < result.Facts[j].Key
+		}
+		if result.Facts[i].Source != result.Facts[j].Source {
+			return result.Facts[i].Source < result.Facts[j].Source
+		}
+		return result.Facts[i].Value < result.Facts[j].Value
+	})
 
 	if err := seal(&result); err != nil {
 		return model.Inventory{}, err
@@ -327,6 +374,52 @@ func VerifyIdentity(result model.Inventory) error {
 		return fmt.Errorf("inventory digest does not match record content")
 	}
 	return nil
+}
+
+// BindDerivedSource records the source revision from which a scanner-owned
+// candidate copy was made. The candidate is deliberately marked dirty: this
+// preserves provenance for checks that ask whether a source revision is known
+// without pretending the uncommitted candidate itself is a clean checkout.
+func BindDerivedSource(item, source model.Inventory) (model.Inventory, error) {
+	if err := VerifyIdentity(item); err != nil {
+		return model.Inventory{}, fmt.Errorf("verify derived candidate inventory: %w", err)
+	}
+	if err := VerifyIdentity(source); err != nil {
+		return model.Inventory{}, fmt.Errorf("verify source inventory: %w", err)
+	}
+	if source.GitCommit == "" {
+		return item, nil
+	}
+	if item.GitCommit != "" && item.GitCommit != source.GitCommit {
+		return model.Inventory{}, fmt.Errorf("candidate belongs to a different Git revision")
+	}
+	item.GitCommit = source.GitCommit
+	facts := item.Facts[:0]
+	for _, fact := range item.Facts {
+		if fact.Key != "repository.git_worktree_state" {
+			facts = append(facts, fact)
+		}
+	}
+	item.Facts = append(facts, model.InventoryFact{
+		Key: "repository.git_worktree_state", Value: "dirty", Source: "scanner-derived-candidate",
+		Detector: "prc.remediation.candidate-origin", DetectorVersion: "0.1", Confidence: 1, ScopePath: ".",
+		Limitations: []string{
+			"The candidate is an uncommitted scanner-owned copy derived from the recorded Git revision; it is not a clean checkout of that revision.",
+		},
+	})
+	sort.Slice(item.Facts, func(left, right int) bool {
+		if item.Facts[left].Key != item.Facts[right].Key {
+			return item.Facts[left].Key < item.Facts[right].Key
+		}
+		if item.Facts[left].Source != item.Facts[right].Source {
+			return item.Facts[left].Source < item.Facts[right].Source
+		}
+		return item.Facts[left].Value < item.Facts[right].Value
+	})
+	if err := seal(&item); err != nil {
+		return model.Inventory{}, err
+	}
+	return item, nil
 }
 
 // BindConfiguration adds reviewed declarations as explicitly sourced facts and
@@ -379,6 +472,9 @@ func BindConfiguration(item model.Inventory, validation projectconfig.Validation
 		}
 		if document.Assessment.SourceRef != item.GitCommit {
 			return model.Inventory{}, fmt.Errorf("declared source_ref does not match the inventoried Git revision")
+		}
+		if inventoryFactValue(item.Facts, "repository.git_worktree_state") != "clean" {
+			return model.Inventory{}, fmt.Errorf("declared source_ref cannot identify the scanned bytes because the Git working tree is not verified clean")
 		}
 	}
 	scope := &model.DeclaredScope{
@@ -516,6 +612,9 @@ func inspectFile(path, relative string, capture bool, captureLimit int64) (model
 			chunk := buffer[:count]
 			_, _ = hasher.Write(chunk)
 			size += int64(count)
+			if size > maxInventoryFileBytes {
+				return model.FileRecord{}, nil, fmt.Errorf("file %s exceeded the %d-byte inventory limit while reading", relative, maxInventoryFileBytes)
+			}
 			if capturing {
 				if size <= captureLimit {
 					_, _ = captured.Write(chunk)
@@ -532,6 +631,17 @@ func inspectFile(path, relative string, capture bool, captureLimit int64) (model
 			return model.FileRecord{}, nil, fmt.Errorf("hash %s: %w", relative, readErr)
 		}
 	}
+	finalOpenInfo, err := file.Stat()
+	if err != nil {
+		return model.FileRecord{}, nil, fmt.Errorf("reinspect open file %s: %w", relative, err)
+	}
+	finalPathInfo, err := os.Lstat(path)
+	if err != nil || !finalPathInfo.Mode().IsRegular() || !os.SameFile(openedInfo, finalOpenInfo) ||
+		!os.SameFile(openedInfo, finalPathInfo) || finalOpenInfo.Size() != size ||
+		finalOpenInfo.Mode().Perm() != openedInfo.Mode().Perm() ||
+		!finalOpenInfo.ModTime().Equal(openedInfo.ModTime()) {
+		return model.FileRecord{}, nil, fmt.Errorf("file changed while hashing: %s", relative)
+	}
 	record := model.FileRecord{
 		Path: relative, Size: size, SHA256: hex.EncodeToString(hasher.Sum(nil)), Mode: uint32(openedInfo.Mode().Perm()),
 	}
@@ -539,6 +649,115 @@ func inspectFile(path, relative string, capture bool, captureLimit int64) (model
 		return record, nil, nil
 	}
 	return record, append([]byte(nil), captured.Bytes()...), nil
+}
+
+type gitStateResult struct {
+	Value       string
+	Confidence  float64
+	Limitations []string
+}
+
+func gitRepositoryState(root string) (string, error) {
+	data, err := runBoundedGit(root, "rev-parse", "--verify", "HEAD")
+	if err == nil {
+		commit := strings.TrimSpace(string(data))
+		if gitCommitPattern.MatchString(commit) {
+			return commit, nil
+		}
+		return "", fmt.Errorf("git returned an invalid HEAD object name")
+	}
+	if commit := gitCommit(root); commit != "" {
+		return commit, fmt.Errorf("git HEAD was read with bounded metadata access, but worktree-aware Git inspection failed")
+	}
+	return "", nil
+}
+
+func gitWorktreeState(root string) gitStateResult {
+	data, err := runBoundedGit(root, "-c", "core.fsmonitor=false", "-c", "core.untrackedCache=false",
+		"-c", "core.hooksPath="+os.DevNull, "status", "--porcelain=v1", "-z", "--untracked-files=all", "--ignore-submodules=none", "--", ".")
+	if err != nil {
+		return gitStateResult{Value: "unverified", Confidence: 0, Limitations: []string{
+			"A clean Git state could not be proven with the bounded, configuration-isolated status check.",
+		}}
+	}
+	if len(data) == 0 {
+		return gitStateResult{Value: "clean", Confidence: 1, Limitations: []string{
+			"Git cleanliness binds tracked and untracked worktree state to HEAD; the scanner inventory digest separately binds the bytes that were read.",
+		}}
+	}
+	return gitStateResult{Value: "dirty", Confidence: 1, Limitations: []string{
+		"The scanned bytes do not exactly identify the recorded Git HEAD because tracked or untracked worktree changes are present.",
+	}}
+}
+
+func runBoundedGit(root string, arguments ...string) ([]byte, error) {
+	executable, err := exec.LookPath("git")
+	if err != nil {
+		return nil, fmt.Errorf("find Git executable: %w", err)
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), gitInspectionTimeout)
+	defer cancel()
+	args := append([]string{"-C", root}, arguments...)
+	command := exec.CommandContext(ctx, executable, args...)
+	command.Env = gitEnvironment()
+	stdout := &limitedWriter{limit: maxGitStatusBytes}
+	stderr := &limitedWriter{limit: 64 * 1024}
+	command.Stdout = stdout
+	command.Stderr = stderr
+	if err := command.Run(); err != nil {
+		if ctx.Err() != nil {
+			return nil, fmt.Errorf("git inspection timed out: %w", ctx.Err())
+		}
+		return nil, fmt.Errorf("git inspection failed with diagnostics digest %x: %w", sha256.Sum256(stderr.data), err)
+	}
+	if stdout.err != nil || stderr.err != nil {
+		return nil, fmt.Errorf("git inspection output exceeded its scanner-owned limit")
+	}
+	return append([]byte{}, stdout.data...), nil
+}
+
+type limitedWriter struct {
+	data  []byte
+	limit int
+	err   error
+}
+
+func (writer *limitedWriter) Write(data []byte) (int, error) {
+	if writer.err != nil {
+		return 0, writer.err
+	}
+	remaining := writer.limit - len(writer.data)
+	if len(data) > remaining {
+		if remaining > 0 {
+			writer.data = append(writer.data, data[:remaining]...)
+		}
+		writer.err = fmt.Errorf("bounded output limit exceeded")
+		return max(remaining, 0), writer.err
+	}
+	writer.data = append(writer.data, data...)
+	return len(data), nil
+}
+
+func gitEnvironment() []string {
+	result := []string{
+		"GIT_CONFIG_NOSYSTEM=1", "GIT_OPTIONAL_LOCKS=0", "GIT_TERMINAL_PROMPT=0",
+		"GIT_CONFIG_GLOBAL=" + os.DevNull,
+	}
+	for _, name := range []string{"PATH", "SystemRoot", "WINDIR", "TMPDIR", "TEMP", "TMP"} {
+		if value := os.Getenv(name); value != "" {
+			result = append(result, name+"="+value)
+		}
+	}
+	return result
+}
+
+func inventoryFactValue(facts []model.InventoryFact, key string) string {
+	for _, fact := range facts {
+		if fact.Key == key {
+			return fact.Value
+		}
+	}
+	return ""
 }
 
 func gitCommit(root string) string {

@@ -75,7 +75,7 @@ gh attestation verify prc_0.1.0_linux_amd64.tar.gz \
 Finally, inspect `prc_X.Y.Z_release-manifest.json` and compare its
 `source_commit`, catalog digest, pack digests, and artifact digest with the
 assessment scope you intend to use. Inspect `prc_X.Y.Z_self-scan.json` as a
-normal `prc.run/v0.11` report: a valid signed self-assessment may still be
+normal `prc.run/v0.12` report: a valid signed self-assessment may still be
 `environment_blocked` because organizational, production, or adapter evidence
 is deliberately unavailable in the release job. After extraction:
 
@@ -98,10 +98,37 @@ npm install --ignore-scripts --offline --no-audit --no-fund --package-lock=false
 
 The platform package contains the native binary and its exact catalog. The
 launcher checks the platform manifest and binary SHA-256 and never downloads a
-fallback or starts a binary found on `PATH`. Public npm publishing should use
-npm trusted publishing from the pinned release workflow so no long-lived npm
-token is stored. npm provenance links a package to its build source; it does
-not prove the package has no unsafe code.
+fallback or starts a binary found on `PATH`. Public npm publishing uses npm
+trusted publishing from the pinned release workflow, so the workflow refuses
+`NPM_TOKEN` and `NODE_AUTH_TOKEN`. It verifies all seven tarballs against the
+release manifest, publishes the six native packages before the launcher,
+verifies the registry SHA-512 for every package, and safely skips only an
+already-published version with exactly matching bytes. Because npm versions are
+immutable, any byte mismatch stops the release. The publisher also runs npm in
+a new empty working directory with user, global, and environment npm
+configuration removed, so a saved `.npmrc` token cannot silently replace OIDC.
+
+The release job builds once, uploads those exact bytes, then runs the matching
+native archive and npm launcher on Linux x64, Linux ARM64, macOS x64, macOS
+ARM64, Windows x64, and Windows ARM64. Publication starts only after every host
+has completed a real 10,042-control smoke scan.
+
+### One-time npm owner setup
+
+npm requires a package to exist before a trusted publisher can be configured.
+The owner must therefore bootstrap each of the seven package names once from
+the exact verified release tarballs, with npm's required human authentication.
+Then configure the same trusted-publisher identity on every package:
+
+- repository owner: `MarinJursic`;
+- repository: `production-readiness-checklist`;
+- workflow filename: `release-scanner.yml`; and
+- no GitHub environment unless the workflow is later changed to use one.
+
+After that one-time setup, `scanner-vX.Y.Z` tags use OIDC and no long-lived npm
+publishing secret. The release workflow requires Node.js 22.14 or newer and npm
+11.5.1 or newer for trusted publishing. npm provenance links a package to its
+build source; it does not prove the package has no unsafe code.
 
 Do not substitute a successful signature check for vulnerability review or a
 production-readiness decision. An attestation proves the signed claim's origin

@@ -37,8 +37,8 @@ After a scanner release is published to npm, install one exact version as a
 development tool:
 
 ```bash
-npm install --save-dev --save-exact --ignore-scripts @marinjursic/prc@X.Y.Z
-npx prc scan .
+npm install --save-dev --save-exact --ignore-scripts --no-audit --no-fund @marinjursic/prc@X.Y.Z
+npm exec --offline --no -- prc scan .
 ```
 
 The npm launcher has no install hooks or third-party JavaScript dependencies.
@@ -47,8 +47,9 @@ public package names were not yet published when this guide was updated, so
 check the scanner release notes before using the registry command.
 
 To give a Node project one short repeatable command, add
-`"scan": "prc scan ."` to `package.json`, then run `npm run scan`. `npm scan`
-is not npm's syntax for a custom script.
+`"scan": "prc scan ."` to `package.json`, then run
+`npm run --ignore-scripts scan`. The scan script runs, but npm does not run a
+`prescan` or `postscan` hook. `npm scan` is not npm's syntax for a custom script.
 
 ### Build from source
 
@@ -173,20 +174,26 @@ A normal scan does not contact an AI provider. Add an explicitly authorized,
 advisory review for one control while testing the setup:
 
 ```bash
+export OPENAI_API_KEY='your-provider-key'
 ./prc scan . \
   --review-provider codex \
   --review-control PRC-02-001 \
   --allow-remote-source-processing
 ```
 
-Remove `--review-control` to review every active control. Each control gets a
-separate subagent inside a sealed batch. Completed batches resume from private
-state outside the target. This full run can take a long time and use many
+Remove `--review-control` to review every active control. The coordinator is
+required to assign each control to a separate subagent inside a sealed batch.
+Completed batches resume from private state outside the target. This full run can take a long time and use many
 tokens. The provider receives bounded, secret-screened excerpts but no target
 workspace path or source-reading, shell, write, install, web, browser, or MCP
 tools. Its result stays advisory and never turns a control into a verified
 Pass. Read [safe AI control review](ai-control-review.md) for the full command,
 cost warning, result meanings, and stop conditions.
+
+Saved interactive logins are deliberately not loaded. Use `OPENAI_API_KEY` or
+`CODEX_API_KEY` for Codex. Use `ANTHROPIC_API_KEY`, `ANTHROPIC_AUTH_TOKEN`, or
+`CLAUDE_CODE_OAUTH_TOKEN` for Claude, and remove the temporary variable when the
+review is done.
 
 ## Preserve evidence and history
 

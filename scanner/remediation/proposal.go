@@ -149,6 +149,10 @@ func RunProposal(options ProposalOptions) (Candidate, error) {
 	if err != nil {
 		return Candidate{}, err
 	}
+	candidateInventory, err = inventory.BindDerivedSource(candidateInventory, baseline)
+	if err != nil {
+		return Candidate{}, err
+	}
 	if options.TargetName != "" {
 		candidateInventory.TargetName = options.TargetName
 	}

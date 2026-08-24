@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	TaskSchema   = "prc.control-review-task/v0.1"
+	TaskSchema   = "prc.control-review-task/v0.2"
 	OutputSchema = "prc.control-review-output/v0.1"
 )
 
@@ -23,6 +23,18 @@ type TaskControl struct {
 	ControlID              string             `json:"control_id"`
 	Statement              string             `json:"statement"`
 	ChecklistSource        model.Source       `json:"checklist_source"`
+	ContractSHA256         string             `json:"contract_sha256"`
+	ContractStatus         string             `json:"contract_status"`
+	CanonicalControlID     string             `json:"canonical_control_id"`
+	EvaluationClass        string             `json:"evaluation_class"`
+	AutomationClass        string             `json:"automation_class"`
+	ApplicabilityClass     string             `json:"applicability_class"`
+	Atomicity              string             `json:"atomicity"`
+	CompleteInventory      bool               `json:"complete_inventory_required"`
+	NegativeCondition      bool               `json:"negative_condition"`
+	ProjectThresholds      bool               `json:"project_thresholds_required"`
+	EvidenceAuthorities    []string           `json:"evidence_authorities"`
+	NotApplicableProof     string             `json:"not_applicable_proof"`
 	CurrentDisposition     string             `json:"current_disposition"`
 	CurrentCoverage        string             `json:"current_coverage"`
 	CurrentAssertionChecks []AssertionContext `json:"current_assertion_checks"`
@@ -32,6 +44,7 @@ type ContextFile struct {
 	Path      string `json:"path"`
 	SHA256    string `json:"sha256"`
 	StartLine int    `json:"start_line"`
+	EndLine   int    `json:"end_line"`
 	Content   string `json:"content"`
 }
 

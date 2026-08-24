@@ -14,6 +14,7 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"sort"
 	"strings"
 	"time"
 
@@ -507,6 +508,7 @@ func validateRun(run model.RunResult) error {
 		return fmt.Errorf("run ID does not match record content")
 	}
 	if !((run.SchemaVersion == model.RunSchema && run.Plan.SchemaVersion == model.PlanSchema) ||
+		(run.SchemaVersion == "prc.run/v0.11" && run.Plan.SchemaVersion == model.PlanSchema) ||
 		(run.SchemaVersion == "prc.run/v0.10" && run.Plan.SchemaVersion == model.PlanSchema) ||
 		(run.SchemaVersion == "prc.run/v0.9" && run.Plan.SchemaVersion == model.PlanSchema) ||
 		(run.SchemaVersion == "prc.run/v0.8" && run.Plan.SchemaVersion == model.PlanSchema) ||
@@ -552,7 +554,7 @@ func validateRun(run model.RunResult) error {
 		}
 	}
 	expectedExecutionSchema := "prc.adapter-execution/v0.1"
-	if run.SchemaVersion == model.RunSchema || run.SchemaVersion == "prc.run/v0.10" || run.SchemaVersion == "prc.run/v0.9" || run.SchemaVersion == "prc.run/v0.8" {
+	if run.SchemaVersion == model.RunSchema || run.SchemaVersion == "prc.run/v0.11" || run.SchemaVersion == "prc.run/v0.10" || run.SchemaVersion == "prc.run/v0.9" || run.SchemaVersion == "prc.run/v0.8" {
 		expectedExecutionSchema = model.AdapterExecutionSchema
 	}
 	seenExecutions := map[string]bool{}
@@ -609,7 +611,7 @@ func validateRun(run model.RunResult) error {
 	if len(results) != len(planned) {
 		return fmt.Errorf("run does not contain exactly one result for every planned assertion")
 	}
-	if run.SchemaVersion == model.RunSchema || run.SchemaVersion == "prc.run/v0.10" || run.SchemaVersion == "prc.run/v0.9" || run.SchemaVersion == "prc.run/v0.8" || run.SchemaVersion == "prc.run/v0.7" || run.SchemaVersion == "prc.run/v0.6" {
+	if run.SchemaVersion == model.RunSchema || run.SchemaVersion == "prc.run/v0.11" || run.SchemaVersion == "prc.run/v0.10" || run.SchemaVersion == "prc.run/v0.9" || run.SchemaVersion == "prc.run/v0.8" || run.SchemaVersion == "prc.run/v0.7" || run.SchemaVersion == "prc.run/v0.6" {
 		if run.Findings == nil {
 			return fmt.Errorf("current run findings must encode as an array")
 		}
@@ -675,7 +677,10 @@ func validateControlResults(run model.RunResult, assertionResults map[string]boo
 	}
 	summary := run.ControlCatalog
 	if summary.SchemaVersion != "prc.control-catalog-summary/v0.1" || !digest(summary.RegistrySHA256) ||
-		!digest(summary.SourceSHA256) || summary.ControlCount < 1 || summary.ControlCount != len(run.ControlResults) ||
+		!digest(summary.SourceSHA256) || summary.ContractSchemaVersion != "prc.control-contracts/v0.1" ||
+		!digest(summary.ContractSHA256) || summary.ControlCount < 1 || summary.ControlCount != len(run.ControlResults) ||
+		summary.ContractCount != summary.ControlCount || summary.GeneratedContractCount < 0 ||
+		summary.ExpertReviewedContractCount < 0 || summary.GeneratedContractCount+summary.ExpertReviewedContractCount != summary.ContractCount ||
 		summary.ActiveControlCount < 0 || summary.ActiveControlCount > summary.ControlCount {
 		return fmt.Errorf("run has an invalid complete control catalog binding")
 	}
@@ -686,7 +691,16 @@ func validateControlResults(run model.RunResult, assertionResults map[string]boo
 	validCoverage := map[string]bool{
 		"unmapped": true, "not_in_selected_profile": true, "partial_assertions": true, "retired": true,
 	}
+	validContractStatus := map[string]bool{"generated_unreviewed": true, "reviewed": true, "retired": true}
+	validEvaluation := map[string]bool{"repository": true, "environment": true, "human_external": true, "mixed": true, "unclassified": true}
+	validAutomation := map[string]bool{
+		"deterministic_candidate": true, "ai_advisory_candidate": true, "environment_evidence_required": true,
+		"human_or_external_required": true, "mixed_evidence_required": true,
+	}
+	validEvidenceAuthority := map[string]bool{"declared": true, "repository": true, "artifact": true, "environment": true, "human": true}
 	active := 0
+	generatedContracts := 0
+	expertReviewedContracts := 0
 	aiReviews := 0
 	aiAdvisoryFailures := 0
 	seen := map[string]bool{}
@@ -695,6 +709,13 @@ func validateControlResults(run model.RunResult, assertionResults map[string]boo
 			strings.TrimSpace(control.Statement) == "" || control.Source.Line < 1 ||
 			!strings.HasPrefix(control.Source.Path, "docs/") || filepath.IsAbs(control.Source.Path) ||
 			filepath.ToSlash(filepath.Clean(filepath.FromSlash(control.Source.Path))) != control.Source.Path ||
+			!digest(control.ContractSHA256) || !validContractStatus[control.ContractStatus] ||
+			control.CanonicalControlID == "" || control.CanonicalControlID > control.ControlID ||
+			!validEvaluation[control.EvaluationClass] || !validAutomation[control.AutomationClass] ||
+			(control.ApplicabilityClass != "conditional" && control.ApplicabilityClass != "scope_required") ||
+			(control.Atomicity != "apparently_atomic" && control.Atomicity != "compound_review_required") ||
+			len(control.EvidenceAuthorities) == 0 || strings.TrimSpace(control.NotApplicableProof) == "" ||
+			len(control.NotApplicableProof) > 1000 ||
 			!validDisposition[control.Disposition] || !validCoverage[control.Coverage] ||
 			(control.Authority != "none" && control.Authority != "deterministic_partial") ||
 			strings.TrimSpace(control.Summary) == "" {
@@ -706,6 +727,21 @@ func validateControlResults(run model.RunResult, assertionResults map[string]boo
 		}
 		if control.Disposition != "retired" {
 			active++
+		}
+		if control.ContractStatus == "reviewed" {
+			expertReviewedContracts++
+		} else {
+			generatedContracts++
+		}
+		if control.Disposition == "retired" != (control.ContractStatus == "retired") {
+			return fmt.Errorf("control %s retirement status does not match its contract", control.ControlID)
+		}
+		seenAuthorities := map[string]bool{}
+		for _, authority := range control.EvidenceAuthorities {
+			if !validEvidenceAuthority[authority] || seenAuthorities[authority] {
+				return fmt.Errorf("control %s contains an invalid contract evidence authority", control.ControlID)
+			}
+			seenAuthorities[authority] = true
 		}
 		known := map[string]bool{}
 		for _, assertionID := range control.AssertionIDs {
@@ -759,6 +795,15 @@ func validateControlResults(run model.RunResult, assertionResults map[string]boo
 	if active != summary.ActiveControlCount {
 		return fmt.Errorf("complete-control active count does not match its results")
 	}
+	if generatedContracts != summary.GeneratedContractCount || expertReviewedContracts != summary.ExpertReviewedContractCount {
+		return fmt.Errorf("complete-control contract review counts do not match their results")
+	}
+	for _, control := range run.ControlResults {
+		canonical, ok := controlByID(run.ControlResults, control.CanonicalControlID)
+		if !ok || normalizeControlStatement(canonical.Statement) != normalizeControlStatement(control.Statement) {
+			return fmt.Errorf("control %s has an invalid canonical-control binding", control.ControlID)
+		}
+	}
 	if summary.ProfileTerminalState == "profile_satisfied" && run.TerminalState == "profile_satisfied" {
 		return fmt.Errorf("complete-control run cannot hide remaining review behind a satisfied narrow profile")
 	}
@@ -775,6 +820,18 @@ func validateControlResults(run model.RunResult, assertionResults map[string]boo
 		return fmt.Errorf("complete-control run has an invalid advisory AI review summary")
 	}
 	return nil
+}
+
+func controlByID(controls []model.ControlResult, id string) (model.ControlResult, bool) {
+	index := sort.Search(len(controls), func(index int) bool { return controls[index].ControlID >= id })
+	if index >= len(controls) || controls[index].ControlID != id {
+		return model.ControlResult{}, false
+	}
+	return controls[index], true
+}
+
+func normalizeControlStatement(value string) string {
+	return strings.TrimSuffix(strings.Join(strings.Fields(strings.ToLower(value)), " "), ".")
 }
 
 func runIdentity(run model.RunResult) string {

@@ -50,7 +50,9 @@ jobs:
           python -c 'import json,sys; p=json.load(open(sys.argv[1], encoding="utf-8"))[0]; assert {x["path"] for x in p["files"]}=={"LICENSE","README.md","bin/prc.js","package.json","platforms.json"}' "$RUNNER_TEMP/npm-pack.json"
 
       - name: Check catalog schemas and generated files
-        run: python scripts/catalog.py check
+        run: |
+          python scripts/catalog.py check
+          python scripts/control_contracts.py check
 
       - name: Lint Markdown
         uses: DavidAnson/markdownlint-cli2-action@21c1be1b93ad9ed58fa840aacc3f279cde2a72ff # v24

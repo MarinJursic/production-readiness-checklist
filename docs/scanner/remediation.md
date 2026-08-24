@@ -77,6 +77,7 @@ does not create it until an eligible attempt has passed task, source, policy,
 and budget preflight.
 
 ```bash
+export OPENAI_API_KEY='your-provider-key'
 ./prc fix \
   --catalog-root /path/to/production-readiness-checklist \
   --target /path/to/project \

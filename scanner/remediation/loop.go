@@ -309,6 +309,10 @@ func RunLoop(options LoopOptions) (RemediationRun, error) {
 		if err != nil {
 			return RemediationRun{}, err
 		}
+		activeInventory, err = inventory.BindDerivedSource(activeInventory, original)
+		if err != nil {
+			return RemediationRun{}, err
+		}
 		activeInventory.TargetName = original.TargetName
 		if activeConfiguration != nil {
 			activeInventory, err = inventory.BindConfiguration(activeInventory, activeConfiguration.Validation, activeConfiguration.SourcePath)

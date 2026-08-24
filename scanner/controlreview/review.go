@@ -1,6 +1,7 @@
 package controlreview
 
 import (
+	"bytes"
 	"context"
 	"crypto/sha256"
 	"encoding/hex"
@@ -14,6 +15,7 @@ import (
 	"sync"
 	"time"
 	"unicode"
+	"unicode/utf8"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/fullscan"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
@@ -55,7 +57,7 @@ func Apply(ctx context.Context, run model.RunResult, options Options) (model.Run
 	}
 	runner := options.Runner
 	if runner == nil {
-		runner, err = newCLIRunner(options, snapshot.LineCounts)
+		runner, err = newCLIRunner(options)
 		if err != nil {
 			return model.RunResult{}, Summary{}, err
 		}
@@ -64,7 +66,7 @@ func Apply(ctx context.Context, run model.RunResult, options Options) (model.Run
 	reused := 0
 	pending := make([]int, 0, len(tasks))
 	for index, task := range tasks {
-		cached, ok, cacheErr := loadCachedOutput(stateDirectory, task, snapshot.LineCounts)
+		cached, ok, cacheErr := loadCachedOutput(stateDirectory, task)
 		if cacheErr != nil {
 			return model.RunResult{}, Summary{}, cacheErr
 		}
@@ -75,7 +77,7 @@ func Apply(ctx context.Context, run model.RunResult, options Options) (model.Run
 			pending = append(pending, index)
 		}
 	}
-	if err := runPendingBatches(ctx, runner, tasks, pending, outputs, snapshot.LineCounts, stateDirectory, options.Workers); err != nil {
+	if err := runPendingBatches(ctx, runner, tasks, pending, outputs, stateDirectory, options.Workers); err != nil {
 		return model.RunResult{}, Summary{}, err
 	}
 	reviews := map[string]Review{}
@@ -241,7 +243,14 @@ func buildTasks(run model.RunResult, snapshot reviewSnapshot, options Options) (
 			item := TaskControl{
 				ControlID: control.ControlID, Statement: control.Statement,
 				ChecklistSource: control.Source, CurrentDisposition: control.Disposition,
-				CurrentCoverage: control.Coverage, CurrentAssertionChecks: []AssertionContext{},
+				ContractSHA256: control.ContractSHA256, ContractStatus: control.ContractStatus,
+				CanonicalControlID: control.CanonicalControlID, EvaluationClass: control.EvaluationClass,
+				AutomationClass: control.AutomationClass, ApplicabilityClass: control.ApplicabilityClass,
+				Atomicity: control.Atomicity, CompleteInventory: control.CompleteInventoryRequired,
+				NegativeCondition: control.NegativeCondition, ProjectThresholds: control.ProjectThresholdsRequired,
+				EvidenceAuthorities: append([]string{}, control.EvidenceAuthorities...),
+				NotApplicableProof:  control.NotApplicableProof,
+				CurrentCoverage:     control.Coverage, CurrentAssertionChecks: []AssertionContext{},
 			}
 			for _, assertionID := range control.ExecutedAssertionIDs {
 				result := assertions[assertionID]
@@ -252,7 +261,7 @@ func buildTasks(run model.RunResult, snapshot reviewSnapshot, options Options) (
 			}
 			task.Controls = append(task.Controls, item)
 		}
-		task.RepositoryPaths, task.SnapshotLimitations = boundedPaths(snapshot.Paths)
+		task.RepositoryPaths, task.SnapshotLimitations = boundedPaths(snapshot.Paths, snapshot.Limitations)
 		task.ContextFiles, task.SnapshotLimitations = selectContext(task.Controls, snapshot, task.SnapshotLimitations)
 		sealed, err := sealTask(task)
 		if err != nil {
@@ -263,22 +272,23 @@ func buildTasks(run model.RunResult, snapshot reviewSnapshot, options Options) (
 	return tasks, len(controls) < run.ControlCatalog.ActiveControlCount, nil
 }
 
-func boundedPaths(paths []string) ([]string, []string) {
+func boundedPaths(paths []string, limitations []string) ([]string, []string) {
 	result := make([]string, 0, len(paths))
 	used := 0
 	for _, path := range paths {
 		if used+len(path)+1 > maximumPathContextBytes {
-			return result, []string{"Repository path inventory was truncated at its scanner-owned byte limit."}
+			return result, uniqueSorted(append(limitations, "Repository path inventory was truncated at its scanner-owned byte limit."))
 		}
 		result = append(result, path)
 		used += len(path) + 1
 	}
-	return result, []string{}
+	return result, uniqueSorted(limitations)
 }
 
 type scoredPath struct {
-	path  string
-	score int
+	path       string
+	score      int
+	anchorLine int
 }
 
 func selectContext(controls []TaskControl, snapshot reviewSnapshot, limitations []string) ([]ContextFile, []string) {
@@ -295,12 +305,17 @@ func selectContext(controls []TaskControl, snapshot reviewSnapshot, limitations 
 		lowerPath := strings.ToLower(path)
 		lowerContent := strings.ToLower(string(snapshot.Contents[path]))
 		score := 0
+		anchorLine := 1
+		firstMatch := -1
 		for token := range tokens {
 			if strings.Contains(lowerPath, token) {
 				score += 20
 			}
-			if strings.Contains(lowerContent, token) {
+			if offset := strings.Index(lowerContent, token); offset >= 0 {
 				score += 2
+				if firstMatch < 0 || offset < firstMatch {
+					firstMatch = offset
+				}
 			}
 		}
 		base := strings.ToLower(filepath.Base(path))
@@ -309,7 +324,10 @@ func selectContext(controls []TaskControl, snapshot reviewSnapshot, limitations 
 			score += 10
 		}
 		if score > 0 {
-			scores = append(scores, scoredPath{path: path, score: score})
+			if firstMatch >= 0 {
+				anchorLine = bytes.Count(snapshot.Contents[path][:firstMatch], []byte{'\n'}) + 1
+			}
+			scores = append(scores, scoredPath{path: path, score: score, anchorLine: anchorLine})
 		}
 	}
 	sort.Slice(scores, func(left, right int) bool {
@@ -321,18 +339,20 @@ func selectContext(controls []TaskControl, snapshot reviewSnapshot, limitations 
 	files := make([]ContextFile, 0)
 	used := 0
 	for _, scored := range scores {
-		data := snapshot.Contents[scored.path]
-		truncated := false
-		if len(data) > maximumContextFileBytes {
-			data = data[:maximumContextFileBytes]
-			truncated = true
+		if len(snapshot.Contents[scored.path]) == 0 {
+			limitations = append(limitations, "At least one relevant empty text file could not provide a citable excerpt.")
+			continue
 		}
+		data, startLine, endLine, truncated := contextExcerpt(snapshot.Contents[scored.path], scored.anchorLine)
 		if used+len(data) > maximumContextTotal {
 			limitations = append(limitations, "Relevant repository excerpts were capped at the scanner-owned total byte limit.")
 			break
 		}
 		digest := sha256.Sum256(data)
-		files = append(files, ContextFile{Path: scored.path, SHA256: hex.EncodeToString(digest[:]), StartLine: 1, Content: string(data)})
+		files = append(files, ContextFile{
+			Path: scored.path, SHA256: hex.EncodeToString(digest[:]),
+			StartLine: startLine, EndLine: endLine, Content: string(data),
+		})
 		used += len(data)
 		if truncated {
 			limitations = append(limitations, "At least one relevant file excerpt was truncated at 128 KiB.")
@@ -344,6 +364,59 @@ func selectContext(controls []TaskControl, snapshot reviewSnapshot, limitations 
 	}
 	limitations = uniqueSorted(limitations)
 	return files, limitations
+}
+
+func contextExcerpt(data []byte, anchorLine int) ([]byte, int, int, bool) {
+	lines := bytes.SplitAfter(data, []byte{'\n'})
+	if len(lines) > 1 && len(lines[len(lines)-1]) == 0 {
+		lines = lines[:len(lines)-1]
+	}
+	if len(lines) == 0 {
+		return []byte{}, 1, 1, false
+	}
+	anchor := max(1, min(anchorLine, len(lines))) - 1
+	if len(data) <= maximumContextFileBytes {
+		return append([]byte{}, data...), 1, len(lines), false
+	}
+	if len(lines[anchor]) > maximumContextFileBytes {
+		return utf8Prefix(lines[anchor], maximumContextFileBytes), anchor + 1, anchor + 1, true
+	}
+	start, end := anchor, anchor+1
+	used := len(lines[anchor])
+	left, right := anchor-1, anchor+1
+	takeLeft := true
+	for left >= 0 || right < len(lines) {
+		if takeLeft && left >= 0 || right >= len(lines) {
+			if used+len(lines[left]) <= maximumContextFileBytes {
+				used += len(lines[left])
+				start = left
+				left--
+			} else {
+				left = -1
+			}
+		} else if right < len(lines) {
+			if used+len(lines[right]) <= maximumContextFileBytes {
+				used += len(lines[right])
+				end = right + 1
+				right++
+			} else {
+				right = len(lines)
+			}
+		}
+		takeLeft = !takeLeft
+	}
+	return bytes.Join(lines[start:end], nil), start + 1, end, true
+}
+
+func utf8Prefix(data []byte, limit int) []byte {
+	if len(data) <= limit {
+		return append([]byte{}, data...)
+	}
+	end := limit
+	for end > 0 && !utf8.Valid(data[:end]) {
+		end--
+	}
+	return append([]byte{}, data[:end]...)
 }
 
 func uniqueSorted(values []string) []string {
@@ -361,7 +434,7 @@ func uniqueSorted(values []string) []string {
 
 func runPendingBatches(
 	ctx context.Context, runner BatchRunner, tasks []Task, pending []int, outputs []Output,
-	lineCounts map[string]int, stateDirectory string, workers int,
+	stateDirectory string, workers int,
 ) error {
 	workContext, cancel := context.WithCancel(ctx)
 	defer cancel()
@@ -377,7 +450,8 @@ func runPendingBatches(
 			}
 			output, _, err := runner.Run(workContext, tasks[index])
 			if err == nil {
-				err = validateOutput(output, tasks[index], lineCounts)
+				output = attachTaskLimitations(output, tasks[index])
+				err = validateOutput(output, tasks[index])
 			}
 			if err == nil {
 				err = storeCachedOutput(stateDirectory, output)
@@ -415,7 +489,7 @@ enqueue:
 	return ctx.Err()
 }
 
-func loadCachedOutput(directory string, task Task, lineCounts map[string]int) (Output, bool, error) {
+func loadCachedOutput(directory string, task Task) (Output, bool, error) {
 	path := filepath.Join(directory, task.TaskID+".json")
 	info, err := os.Lstat(path)
 	if os.IsNotExist(err) {
@@ -429,10 +503,19 @@ func loadCachedOutput(directory string, task Task, lineCounts map[string]int) (O
 		return Output{}, false, fmt.Errorf("read cached AI review: %w", err)
 	}
 	var output Output
-	if err := decodeInnerOutput(data, &output); err != nil || validateOutput(output, task, lineCounts) != nil {
+	if err := decodeInnerOutput(data, &output); err != nil || validateOutput(output, task) != nil {
 		return Output{}, false, fmt.Errorf("cached AI review %s failed its sealed protocol", task.TaskID)
 	}
 	return output, true, nil
+}
+
+func attachTaskLimitations(output Output, task Task) Output {
+	for index := range output.Reviews {
+		output.Reviews[index].Limitations = uniqueSorted(append(
+			append([]string{}, output.Reviews[index].Limitations...), task.SnapshotLimitations...,
+		))
+	}
+	return output
 }
 
 func storeCachedOutput(directory string, output Output) error {

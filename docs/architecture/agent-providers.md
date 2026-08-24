@@ -1,8 +1,9 @@
 # Read-only agent providers
 
 The experimental provider layer connects the scanner to installed Codex and
-Claude Code CLIs without making either provider part of the trust base. Its
-current mode is deliberately `suggest`: an agent receives only content-addressed
+Claude Code CLIs without giving either provider authority over scanner truth.
+The local CLI binary and remote provider are still trusted process and data
+processing dependencies. The current mode is deliberately `suggest`: an agent receives only content-addressed
 copies of declared relevant text files and returns a schema-constrained patch
 proposal. It cannot inspect the source workspace, edit files, run shell commands,
 use web or MCP tools, change capabilities, or mark an assertion as passed.
@@ -36,6 +37,12 @@ Both launch plans require:
 - filtered process environments that exclude unrelated credentials such as
   cloud, repository, and deployment tokens.
 
+Saved interactive sessions are not loaded. Codex requires an explicit
+`OPENAI_API_KEY` or `CODEX_API_KEY`; Claude requires `ANTHROPIC_API_KEY`,
+`ANTHROPIC_AUTH_TOKEN`, or `CLAUDE_CODE_OAUTH_TOKEN`. Each execution gets a new
+private home and provider configuration directory. Only the chosen credential,
+basic locale/path variables, and scanner-owned overrides reach the process.
+
 Codex runs from the private output directory with ignored user configuration,
 strict configuration, ephemeral sessions, the read-only sandbox, approval policy
 `never`, no inherited shell environment, and the default shell tool disabled.
@@ -47,6 +54,16 @@ servers, project setting sources, and session persistence are disabled. The
 source text needed for either provider is inside the sealed task prompt. Claude's
 optional provider-side cost limit is passed through; the current Codex CLI
 adapter rejects a nonzero cost limit because it cannot enforce one.
+
+These command flags cannot contain a malicious local executable. A replaced or
+compromised `codex` or `claude` program runs as the current operating-system
+user and could ignore every argument before the scanner detects the changed
+digest. Install the CLI from its official source, keep it updated, inspect the
+resolved path and digest with `prc doctor`, and use a separate OS account or
+strong external sandbox when the host contains secrets the CLI must never see.
+The scanner also stops when it can see local Claude managed settings that may
+force hooks, plugins, or MCP configuration, but it cannot inspect every policy
+delivered by a provider server.
 
 Repository text is always untrusted data, including comments that resemble
 instructions or the scanner's task delimiter. The scanner JSON-encodes the
@@ -111,6 +128,7 @@ capabilities before any provider call:
 
 ```bash
 install -d -m 700 /safe/path/provider-output
+export OPENAI_API_KEY='your-provider-key'
 
 ./prc provider plan \
   --provider codex \

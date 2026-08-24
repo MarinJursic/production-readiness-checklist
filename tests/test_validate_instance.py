@@ -754,7 +754,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "assertions": [],
         }
         final_run = {
-            "schema_version": "prc.run/v0.11",
+            "schema_version": "prc.run/v0.12",
             "run_id": digest,
             "started_at": "2026-08-23T12:00:00Z",
             "completed_at": "2026-08-23T12:00:01Z",

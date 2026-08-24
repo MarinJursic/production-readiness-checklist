@@ -24,8 +24,10 @@ import (
 
 const (
 	registrySchema          = "prc.control-id-registry/v0.1"
+	contractSchema          = "prc.control-contracts/v0.1"
 	controlCatalogSchema    = "prc.control-catalog-summary/v0.1"
 	maximumRegistryBytes    = 16 * 1024 * 1024
+	maximumContractBytes    = 16 * 1024 * 1024
 	maximumSourceFileBytes  = 16 * 1024 * 1024
 	maximumSourceTotalBytes = 128 * 1024 * 1024
 	maximumControls         = 100_000
@@ -50,6 +52,32 @@ type registryDocument struct {
 	Entries         []model.Control `json:"entries"`
 }
 
+type contractDocument struct {
+	SchemaVersion   string            `json:"schema_version"`
+	RegistrySHA256  string            `json:"registry_sha256"`
+	RegistryVersion string            `json:"registry_version"`
+	ContractCount   int               `json:"contract_count"`
+	Contracts       []controlContract `json:"contracts"`
+}
+
+type controlContract struct {
+	ControlID                 string   `json:"control_id"`
+	Revision                  int      `json:"revision"`
+	ContractStatus            string   `json:"contract_status"`
+	CanonicalControlID        string   `json:"canonical_control_id"`
+	EvaluationClass           string   `json:"evaluation_class"`
+	AutomationClass           string   `json:"automation_class"`
+	ApplicabilityClass        string   `json:"applicability_class"`
+	Atomicity                 string   `json:"atomicity"`
+	CompleteInventoryRequired bool     `json:"complete_inventory_required"`
+	NegativeCondition         bool     `json:"negative_condition"`
+	ProjectThresholdsRequired bool     `json:"project_thresholds_required"`
+	EvidenceAuthorities       []string `json:"evidence_authorities"`
+	NotApplicableProof        string   `json:"not_applicable_proof"`
+	ReviewerStatus            string   `json:"reviewer_status"`
+	ContractSHA256            string   `json:"contract_sha256"`
+}
+
 // Attach loads and verifies the complete registry, adds one result for every
 // registered control, and recomputes the content-addressed run identity.
 func Attach(root string, scannerCatalog *catalog.Catalog, run model.RunResult) (model.RunResult, error) {
@@ -60,27 +88,145 @@ func Attach(root string, scannerCatalog *catalog.Catalog, run model.RunResult) (
 	if err := validateCatalogReferences(scannerCatalog, registry); err != nil {
 		return model.RunResult{}, err
 	}
+	contracts, contractDigest, err := loadContracts(root, registry, registryDigest)
+	if err != nil {
+		return model.RunResult{}, err
+	}
 	profileState := run.TerminalState
 	run.ControlCatalog = &model.ControlCatalogSummary{
 		SchemaVersion: controlCatalogSchema, RegistryVersion: registry.RegistryVersion,
 		RegistrySHA256: registryDigest, SourceSHA256: registry.SourceSHA256,
-		ControlCount: len(registry.Entries), ProfileTerminalState: profileState,
+		ContractSchemaVersion: contracts.SchemaVersion, ContractSHA256: contractDigest,
+		ControlCount: len(registry.Entries), ContractCount: len(contracts.Contracts),
+		ProfileTerminalState: profileState,
 	}
 	run.ControlResults = make([]model.ControlResult, 0, len(registry.Entries))
 	active := 0
 	allAssertions := assertionsByControl(scannerCatalog)
 	executed := executedByControl(run.Results)
-	for _, control := range registry.Entries {
+	for index, control := range registry.Entries {
 		if control.Status == "active" {
 			active++
 		}
-		run.ControlResults = append(run.ControlResults, controlResult(control, allAssertions[control.ID], executed[control.ID]))
+		contract := contracts.Contracts[index]
+		if contract.ReviewerStatus == "expert_reviewed" {
+			run.ControlCatalog.ExpertReviewedContractCount++
+		} else {
+			run.ControlCatalog.GeneratedContractCount++
+		}
+		run.ControlResults = append(run.ControlResults, controlResult(control, contract, allAssertions[control.ID], executed[control.ID]))
 	}
 	run.ControlCatalog.ActiveControlCount = active
 	if run.TerminalState == "profile_satisfied" && hasIncompleteControls(run.ControlResults) {
 		run.TerminalState = "assessment_incomplete"
 	}
 	return Reidentify(run)
+}
+
+func loadContracts(root string, registry registryDocument, registryDigest string) (contractDocument, string, error) {
+	absolute, err := filepath.Abs(root)
+	if err != nil {
+		return contractDocument{}, "", fmt.Errorf("resolve catalog root: %w", err)
+	}
+	path := filepath.Join(absolute, "catalog", "control-contracts.json")
+	data, err := readRegularBounded(path, maximumContractBytes, "control contracts")
+	if err != nil {
+		return contractDocument{}, "", err
+	}
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	var document contractDocument
+	if err := decoder.Decode(&document); err != nil {
+		return contractDocument{}, "", fmt.Errorf("parse control contracts: %w", err)
+	}
+	var trailing any
+	if err := decoder.Decode(&trailing); !errors.Is(err, io.EOF) {
+		return contractDocument{}, "", fmt.Errorf("control contracts contain trailing JSON")
+	}
+	if err := validateContracts(document, registry, registryDigest); err != nil {
+		return contractDocument{}, "", err
+	}
+	digest := sha256.Sum256(data)
+	return document, hex.EncodeToString(digest[:]), nil
+}
+
+func validateContracts(document contractDocument, registry registryDocument, registryDigest string) error {
+	if document.SchemaVersion != contractSchema || document.RegistrySHA256 != registryDigest ||
+		document.RegistryVersion != registry.RegistryVersion || document.ContractCount != len(document.Contracts) ||
+		document.ContractCount != len(registry.Entries) || document.ContractCount < 1 || document.ContractCount > maximumControls {
+		return fmt.Errorf("control contracts do not exactly bind the current registry")
+	}
+	registered := make(map[string]model.Control, len(registry.Entries))
+	for _, control := range registry.Entries {
+		registered[control.ID] = control
+	}
+	validEvaluation := map[string]bool{"repository": true, "environment": true, "human_external": true, "mixed": true, "unclassified": true}
+	validAutomation := map[string]bool{
+		"deterministic_candidate": true, "ai_advisory_candidate": true, "environment_evidence_required": true,
+		"human_or_external_required": true, "mixed_evidence_required": true,
+	}
+	validAuthority := map[string]bool{"declared": true, "repository": true, "artifact": true, "environment": true, "human": true}
+	for index, contract := range document.Contracts {
+		control := registry.Entries[index]
+		if contract.ControlID != control.ID || contract.Revision != control.Revision ||
+			!digestPattern.MatchString(contract.ContractSHA256) || !registeredCanonical(contract, control, registered) ||
+			!validEvaluation[contract.EvaluationClass] || !validAutomation[contract.AutomationClass] ||
+			(contract.ApplicabilityClass != "conditional" && contract.ApplicabilityClass != "scope_required") ||
+			(contract.Atomicity != "apparently_atomic" && contract.Atomicity != "compound_review_required") ||
+			strings.TrimSpace(contract.NotApplicableProof) == "" || len(contract.NotApplicableProof) > 1000 ||
+			len(contract.EvidenceAuthorities) == 0 {
+			return fmt.Errorf("control %s has an invalid machine-readable contract", control.ID)
+		}
+		if control.Status == "retired" {
+			if contract.ContractStatus != "retired" {
+				return fmt.Errorf("retired control %s has an active contract", control.ID)
+			}
+		} else if contract.ContractStatus != "generated_unreviewed" && contract.ContractStatus != "reviewed" {
+			return fmt.Errorf("active control %s has an unsupported contract status", control.ID)
+		}
+		if contract.ContractStatus == "reviewed" && contract.ReviewerStatus != "expert_reviewed" ||
+			contract.ContractStatus != "reviewed" && contract.ReviewerStatus != "generated_unreviewed" {
+			return fmt.Errorf("control %s contract review status is inconsistent", control.ID)
+		}
+		seenAuthorities := map[string]bool{}
+		for _, authority := range contract.EvidenceAuthorities {
+			if !validAuthority[authority] || seenAuthorities[authority] {
+				return fmt.Errorf("control %s has an invalid evidence authority", control.ID)
+			}
+			seenAuthorities[authority] = true
+		}
+		if contractDigest(contract) != contract.ContractSHA256 {
+			return fmt.Errorf("control %s contract digest does not match its content", control.ID)
+		}
+	}
+	return nil
+}
+
+func registeredCanonical(contract controlContract, control model.Control, registered map[string]model.Control) bool {
+	canonical, ok := registered[contract.CanonicalControlID]
+	return ok && contract.CanonicalControlID <= control.ID &&
+		normalizedStatement(canonical.Statement) == normalizedStatement(control.Statement)
+}
+
+func normalizedStatement(value string) string {
+	return strings.TrimSuffix(strings.Join(strings.Fields(strings.ToLower(value)), " "), ".")
+}
+
+func contractDigest(contract controlContract) string {
+	unsigned := map[string]any{
+		"control_id": contract.ControlID, "revision": contract.Revision,
+		"contract_status": contract.ContractStatus, "canonical_control_id": contract.CanonicalControlID,
+		"evaluation_class": contract.EvaluationClass, "automation_class": contract.AutomationClass,
+		"applicability_class": contract.ApplicabilityClass, "atomicity": contract.Atomicity,
+		"complete_inventory_required": contract.CompleteInventoryRequired,
+		"negative_condition":          contract.NegativeCondition,
+		"project_thresholds_required": contract.ProjectThresholdsRequired,
+		"evidence_authorities":        contract.EvidenceAuthorities, "not_applicable_proof": contract.NotApplicableProof,
+		"reviewer_status": contract.ReviewerStatus,
+	}
+	payload, _ := json.Marshal(unsigned)
+	value := sha256.Sum256(payload)
+	return hex.EncodeToString(value[:])
 }
 
 // Reidentify returns a run whose ID binds every current field. It is used again
@@ -322,10 +468,17 @@ func executedByControl(results []model.AssertionResult) map[string][]model.Asser
 	return linked
 }
 
-func controlResult(control model.Control, assertionIDs []string, executed []model.AssertionResult) model.ControlResult {
+func controlResult(control model.Control, contract controlContract, assertionIDs []string, executed []model.AssertionResult) model.ControlResult {
 	result := model.ControlResult{
 		ControlID: control.ID, Revision: control.Revision, Statement: control.Statement, Source: control.Source,
-		Disposition: "needs_review", Coverage: "unmapped", Authority: "none",
+		ContractSHA256: contract.ContractSHA256, ContractStatus: contract.ContractStatus,
+		CanonicalControlID: contract.CanonicalControlID, EvaluationClass: contract.EvaluationClass,
+		AutomationClass: contract.AutomationClass, ApplicabilityClass: contract.ApplicabilityClass,
+		Atomicity: contract.Atomicity, CompleteInventoryRequired: contract.CompleteInventoryRequired,
+		NegativeCondition: contract.NegativeCondition, ProjectThresholdsRequired: contract.ProjectThresholdsRequired,
+		EvidenceAuthorities: append([]string{}, contract.EvidenceAuthorities...),
+		NotApplicableProof:  contract.NotApplicableProof,
+		Disposition:         "needs_review", Coverage: "unmapped", Authority: "none",
 		AssertionIDs: append([]string{}, assertionIDs...), ExecutedAssertionIDs: []string{},
 		Summary: "No executable assertion currently covers this broad control; scoped evidence and review are still required.",
 	}

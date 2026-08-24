@@ -8,6 +8,23 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 
 ### Added
 
+- A machine-readable acceptance and routing contract for all 10,042 controls,
+  with exact registry binding, applicability, evidence authority, complete-scope,
+  negative-condition, threshold, atomicity, and review-status fields. Every
+  generated contract is honestly marked unreviewed until a control owner
+  approves it.
+- Complete-catalog run result v0.12 bindings that fail closed when the control
+  contract file is missing, stale, reordered, or changed, while retaining the
+  frozen v0.11 report contract for archived records.
+- Optional advisory Codex and Claude review over all active controls, with
+  one subagent per rule, resumable batches, exact excerpt-line validation,
+  omission accounting, contract-aware prompts, and no authority to create a
+  verified Pass or final Not Applicable result.
+- A token-free npm trusted-publishing path that verifies all seven release
+  tarballs, safely resumes partial publication, publishes native packages
+  before the launcher, and rejects immutable-version byte mismatches.
+- Exact release smoke tests for native archives and npm launchers on Linux,
+  macOS, and Windows across x64 and ARM64 before publication.
 - A one-command `prc scan [project]` experience with automatic bundled-catalog
   discovery, interspersed options, private standalone HTML reports, explicit
   custom/no-report controls, non-overwrite guarantees, and tests proving the
@@ -133,6 +150,16 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 
 ### Fixed
 
+- Isolated Codex and Claude provider processes from saved logins, user and
+  project settings, unrelated environment variables, plugins, MCP servers, and
+  target workspace paths; explicit environment credentials are now required.
+- Preserved Git source provenance for dirty remediation candidates without
+  claiming that candidate content equals the clean commit, and scoped Git
+  cleanliness checks to the actual target worktree.
+- Reclassified `pull_request_target` detection as required security review
+  instead of treating trigger presence alone as proof of a vulnerability, and
+  narrowed the core analysis assertion to the secret-detection adapter it
+  actually binds.
 - Prevented hostile Git metadata and filesystem races from escaping scanner
   roots during inventory and benchmark materialization, with adversarial tests
   and pinned static-analysis gates for traversal and walk-race regressions.

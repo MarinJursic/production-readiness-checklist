@@ -85,6 +85,8 @@ func fakeExecutable(t *testing.T, provider string, body string) string {
 
 func privateOutputDirectory(t *testing.T) string {
 	t.Helper()
+	t.Setenv("OPENAI_API_KEY", "test-only-openai-token")
+	t.Setenv("CLAUDE_CODE_OAUTH_TOKEN", "test-only-claude-token")
 	directory := t.TempDir()
 	if err := os.Chmod(directory, 0o700); err != nil {
 		t.Fatal(err)
@@ -327,7 +329,7 @@ func TestCodexPlanUsesReadOnlyEphemeralStructuredExecution(t *testing.T) {
 		t.Fatal(err)
 	}
 	joined := strings.Join(plan.Arguments, " ")
-	for _, expected := range []string{"--ignore-user-config", "--strict-config", "--ephemeral", "--sandbox read-only", `approval_policy="never"`, "features.shell_tool=false", "features.multi_agent=false", `web_search="disabled"`, "tools.web_search=false", "mcp_servers={}", "--disable apps", "--disable browser_use", "--output-schema", "--json"} {
+	for _, expected := range []string{"--ignore-user-config", "--strict-config", "--ephemeral", "--sandbox read-only", `approval_policy="never"`, "features.shell_tool=false", "features.multi_agent=false", `web_search="disabled"`, "tools.web_search=false", "mcp_servers={}", "--disable apps", "--disable browser_use", "--skip-git-repo-check", "--output-schema", "--json"} {
 		if !strings.Contains(joined, expected) {
 			t.Errorf("missing %q in %s", expected, joined)
 		}
@@ -342,6 +344,9 @@ func TestCodexPlanUsesReadOnlyEphemeralStructuredExecution(t *testing.T) {
 	}
 	if plan.ExecutionDirectory != plan.OutputDirectory || strings.Contains(strings.Join(plan.Arguments, " "), "--cd "+plan.Workspace) {
 		t.Fatalf("provider plan exposes source workspace: %+v", plan)
+	}
+	if plan.Environment["HOME"] == "" || plan.Environment["CODEX_HOME"] == "" || plan.Environment["HOME"] == os.Getenv("HOME") {
+		t.Fatalf("Codex plan did not isolate provider configuration: %+v", plan.Environment)
 	}
 }
 
@@ -381,7 +386,7 @@ func TestClaudePlanDisablesMutationShellWebMCPAndPersistence(t *testing.T) {
 		t.Fatal(err)
 	}
 	joined := strings.Join(plan.Arguments, " ")
-	for _, expected := range []string{"--permission-mode dontAsk", "--tools  --disallowedTools", "Bash,Edit,Write,NotebookEdit,WebFetch,WebSearch", "--no-session-persistence", "--strict-mcp-config", "--max-budget-usd 1.25"} {
+	for _, expected := range []string{"--permission-mode dontAsk", "--tools  --disallowedTools", "Agent,AskUserQuestion,Bash,Edit,Glob,Grep,NotebookEdit,Read,WebFetch,WebSearch,Write", "--no-session-persistence", "--no-chrome", "--strict-mcp-config", "--max-budget-usd 1.25"} {
 		if !strings.Contains(joined, expected) {
 			t.Errorf("missing %q in Claude plan", expected)
 		}
@@ -390,6 +395,10 @@ func TestClaudePlanDisablesMutationShellWebMCPAndPersistence(t *testing.T) {
 		if slices.Contains(plan.EnvironmentVariables, name) {
 			t.Errorf("ambient credential %s was allowed", name)
 		}
+	}
+	if plan.Environment["HOME"] == "" || plan.Environment["CLAUDE_CONFIG_DIR"] == "" ||
+		plan.Environment["HOME"] == os.Getenv("HOME") || plan.Environment["CLAUDE_CODE_DISABLE_AUTO_MEMORY"] != "1" {
+		t.Fatalf("Claude plan did not isolate provider configuration: %+v", plan.Environment)
 	}
 }
 

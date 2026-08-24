@@ -79,6 +79,24 @@ func TestVersionCommand(t *testing.T) {
 	}
 }
 
+func TestFriendlyRootHelpVersionAliasAndScanHelp(t *testing.T) {
+	var stdout, stderr bytes.Buffer
+	if code := run(nil, &stdout, &stderr); code != exitSuccess || !strings.Contains(stdout.String(), "prc scan .") || stderr.Len() != 0 {
+		t.Fatalf("root help exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
+	}
+	stdout.Reset()
+	if code := run([]string{"--version"}, &stdout, &stderr); code != exitSuccess || !strings.HasPrefix(stdout.String(), "prc ") {
+		t.Fatalf("version alias exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
+	}
+	stdout.Reset()
+	stderr.Reset()
+	if code := run([]string{"scan", "--help"}, &stdout, &stderr); code != exitSuccess ||
+		!strings.Contains(stderr.String(), "Usage: prc scan [project path] [options]") ||
+		strings.Contains(stderr.String(), "PRC-EXIT") {
+		t.Fatalf("scan help exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
+	}
+}
+
 func TestMCPServeCommandCompletesHandshakeAndListsReadOnlyTools(t *testing.T) {
 	repository := filepath.Join("..", "..")
 	input := strings.NewReader(strings.Join([]string{
@@ -596,6 +614,7 @@ func TestProviderCapabilitiesAreReadOnly(t *testing.T) {
 }
 
 func TestProviderRunEmitsFailureRecordBeforeExecutionExit(t *testing.T) {
+	t.Setenv("OPENAI_API_KEY", "test-only-provider-key")
 	workspace := t.TempDir()
 	if err := os.WriteFile(filepath.Join(workspace, "app.go"), []byte("package app\n"), 0o600); err != nil {
 		t.Fatal(err)
@@ -738,6 +757,7 @@ func TestSimpleScanDiscoversCatalogCreatesPrivateReportAndNeverFixesTarget(t *te
 }
 
 func TestScanCanAddOneResumableAdvisoryCodexReviewWithoutFixingTarget(t *testing.T) {
+	t.Setenv("OPENAI_API_KEY", "test-only-provider-key")
 	repository, err := filepath.Abs(filepath.Join("..", ".."))
 	if err != nil {
 		t.Fatal(err)
@@ -1361,6 +1381,7 @@ func TestFixCommandRunsBoundedDeterministicLoop(t *testing.T) {
 }
 
 func TestFixCommandRunsBoundedSuggestOnlyProvider(t *testing.T) {
+	t.Setenv("OPENAI_API_KEY", "test-only-provider-key")
 	target := t.TempDir()
 	if err := os.WriteFile(filepath.Join(target, "app.py"), []byte("def ready(): return True\n"), 0o644); err != nil {
 		t.Fatal(err)
@@ -1517,6 +1538,15 @@ func TestStableExitCodeContract(t *testing.T) {
 		"policy_stopped":   exitPolicyDenied,
 		"budget_exhausted": exitPolicyDenied,
 		"unrecognized":     exitInternal,
+	}
+	for terminal, want := range map[string]int{
+		"no_go": exitGateFailed, "policy_stopped": exitPolicyDenied,
+		"assessment_incomplete": exitSuccess, "environment_blocked": exitSuccess,
+		"profile_satisfied": exitSuccess,
+	} {
+		if got := scanNoGoExitCode(terminal); got != want {
+			t.Errorf("no-go policy terminal %s exit=%d want=%d", terminal, got, want)
+		}
 	}
 	for terminal, want := range wantTerminal {
 		if got := scanTerminalExitCode(terminal); got != want {

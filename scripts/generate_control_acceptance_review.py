@@ -335,7 +335,7 @@ def current_scanner_text(assertions: list[dict[str, Any]]) -> list[str]:
         return [
             "Included in every complete `prc scan` report as `needs_review`, but not deterministically "
             "checked today. No missing implementation is turned into a Pass.",
-            "With an explicitly enabled Codex or Claude review, one separate subagent receives this rule "
+            "With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent "
             "plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and "
             "limitations are advisory only; they cannot create a verified Pass or final Not Applicable result."
         ]
@@ -396,7 +396,7 @@ def generated_text() -> str:
         "This file reviews every control, but it does not claim that every control is already machine-checkable. "
         "Every `prc scan` report now contains all 10,042 controls. The deterministic profile proves only its "
         "narrow assertions; the remaining controls stay visibly `needs_review`. An optional AI review can add "
-        "one-subagent-per-control advice, but it cannot turn subjective judgment into a verified Pass. Turning "
+        "a one-subagent-per-control review task, but current provider output cannot prove every internal subagent call happened and no advice can turn subjective judgment into a verified Pass. Turning "
         "broad objectives directly into hard-coded rules would create false passes and one-size-fits-all designs.",
         "",
         "### The rule design that should be used everywhere",

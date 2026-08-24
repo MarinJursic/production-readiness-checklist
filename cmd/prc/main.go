@@ -119,8 +119,11 @@ func run(args []string, stdout, stderr io.Writer) int {
 
 func runWithInput(args []string, stdin io.Reader, stdout, stderr io.Writer) int {
 	if len(args) == 0 {
-		usage(stderr)
-		return exitConfiguration
+		usage(stdout)
+		return exitSuccess
+	}
+	if args[0] == "--version" || args[0] == "-v" {
+		args = append([]string{"version"}, args[1:]...)
 	}
 	var err error
 	outcome := exitSuccess
@@ -186,6 +189,9 @@ func runWithInput(args []string, stdin io.Reader, stdout, stderr io.Writer) int 
 		return exitConfiguration
 	}
 	if err != nil {
+		if errors.Is(err, flag.ErrHelp) {
+			return exitSuccess
+		}
 		code := errorExitCode(err, errorFallback)
 		fmt.Fprintf(stderr, "error [PRC-EXIT-%d]: %v\n", code, err)
 		return code
@@ -225,7 +231,15 @@ func runVersion(args []string, stdout, stderr io.Writer) error {
 
 func usage(output io.Writer) {
 	fmt.Fprintln(output, "Production Readiness Scanner")
-	fmt.Fprintln(output, "usage: prc <catalog|pack|benchmark|config|inventory|plan|scan|diff|fix|remediate|remediate-proposal|doctor|history|explain|adapter|exception|provider|mcp|version> [options]")
+	fmt.Fprintln(output, "Usage: prc <command> [options]")
+	fmt.Fprintln(output)
+	fmt.Fprintln(output, "Start here:")
+	fmt.Fprintln(output, "  prc doctor --target .    Check whether scanning tools are ready")
+	fmt.Fprintln(output, "  prc scan .               Scan only and write a detailed report")
+	fmt.Fprintln(output, "  prc scan --help          Show every scan option")
+	fmt.Fprintln(output)
+	fmt.Fprintln(output, "Main commands: doctor, scan, inventory, plan, diff, history, fix, version")
+	fmt.Fprintln(output, "Advanced commands: catalog, pack, benchmark, config, remediate, remediate-proposal, explain, adapter, exception, provider, mcp")
 }
 
 func runMCP(args []string, stdin io.Reader, stdout, stderr io.Writer) error {
@@ -1476,6 +1490,17 @@ func randomRunID() (string, error) {
 func parseCommon(name string, args []string, stderr io.Writer) (*flag.FlagSet, *string, *string, *string) {
 	set := flag.NewFlagSet(name, flag.ContinueOnError)
 	set.SetOutput(stderr)
+	set.Usage = func() {
+		if name == "scan" {
+			fmt.Fprintln(stderr, "Usage: prc scan [project path] [options]")
+			fmt.Fprintln(stderr, "Scans without modifying the project and writes a detailed report by default.")
+			fmt.Fprintln(stderr, "Example: prc scan .")
+		} else {
+			fmt.Fprintf(stderr, "Usage: prc %s [options]\n", name)
+		}
+		fmt.Fprintln(stderr)
+		set.PrintDefaults()
+	}
 	target := set.String("target", ".", "repository to inspect")
 	catalogRoot := set.String("catalog-root", defaultCatalogRoot(), "directory containing the PRC catalog")
 	profile := set.String("profile", "prc/core-repository", "profile ID")
@@ -1541,7 +1566,12 @@ func runInventory(args []string, stdout, stderr io.Writer) error {
 	}
 	fmt.Fprintf(stdout, "Target: %s\n", item.TargetName)
 	fmt.Fprintf(stdout, "Inventory digest: %s\n", item.Digest)
+	if item.GitCommit != "" {
+		fmt.Fprintf(stdout, "Git HEAD: %s (%s worktree)\n", item.GitCommit, inventoryFact(item, "repository.git_worktree_state"))
+	}
 	fmt.Fprintf(stdout, "Files: %d (%d recognized source files)\n", item.FileCount, item.SourceFiles)
+	fmt.Fprintf(stdout, "Hashed bytes: %s\n", inventoryFact(item, "repository.inventory_bytes"))
+	fmt.Fprintf(stdout, "Automatic exclusions reported: %d\n", inventoryFactCount(item, "repository.exclusion"))
 	fmt.Fprintf(stdout, "Package ecosystems: %s\n", displayList(item.PackageEcosystems))
 	fmt.Fprintf(stdout, "Manifests: %s\n", displayList(item.Manifests))
 	fmt.Fprintf(stdout, "Lock files: %s\n", displayList(item.LockFiles))
@@ -1910,6 +1940,11 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	if err != nil {
 		return exitInternal, exitError(exitConfiguration, err)
 	}
+	var progressStyle terminalStyle
+	if *format == "human" {
+		progressStyle = newTerminalStyle(*colorMode, stdout)
+		fmt.Fprintln(stdout, progressStyle.paint(ansiBlue, "[1/4] Building a safe, content-hashed inventory..."))
+	}
 	item, validation, err := configuredInventory(*target, *configPath)
 	if err != nil {
 		return exitInternal, exitError(exitConfiguration, err)
@@ -1920,6 +1955,9 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	scanner, err := loadEngine(*catalogRoot)
 	if err != nil {
 		return exitInternal, exitError(exitConfiguration, err)
+	}
+	if *format == "human" {
+		fmt.Fprintln(stdout, progressStyle.paint(ansiBlue, "[2/4] Running the selected deterministic checks..."))
 	}
 	executions := []model.AdapterExecution{}
 	artifactPayloads := map[string][]byte{}
@@ -1977,6 +2015,9 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	} else if !errors.Is(attachErr, fullscan.ErrRegistryUnavailable) {
 		return exitInternal, exitError(exitConfiguration, attachErr)
 	}
+	if *format == "human" {
+		fmt.Fprintln(stdout, progressStyle.paint(ansiBlue, "[3/4] Classifying complete-catalog coverage without guessing..."))
+	}
 	var reviewSummary controlreview.Summary
 	if *reviewProvider != "none" {
 		reviewed, summary, reviewErr := controlreview.Apply(context.Background(), run, controlreview.Options{
@@ -2009,6 +2050,10 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		}
 	}
 	writtenReport := ""
+	if *format == "human" {
+		fmt.Fprintln(stdout, progressStyle.paint(ansiBlue, "[4/4] Writing the report..."))
+		fmt.Fprintln(stdout)
+	}
 	if *reportPath != "" || *format == "human" && !*noReport {
 		writtenReport, err = writeScanReport(run, *reportPath)
 		if err != nil {
@@ -2036,8 +2081,10 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		return exitInternal, exitError(exitInternal, err)
 	}
 	switch *exitPolicy {
-	case "profile", "no-go":
-		return scanTerminalExitCode(run.TerminalState), nil
+	case "profile":
+		return scanTerminalExitCode(profileTerminalState(run)), nil
+	case "no-go":
+		return scanNoGoExitCode(profileTerminalState(run)), nil
 	case "never":
 		return exitSuccess, nil
 	}
@@ -2094,7 +2141,12 @@ func printScanSummary(output io.Writer, run model.RunResult, style terminalStyle
 			terminalText(result.AssertionID), terminalText(result.Summary))
 	}
 	fmt.Fprintln(output, "\nResult")
-	fmt.Fprintf(output, "Terminal state: %s\n", terminalText(run.TerminalState))
+	fmt.Fprintf(output, "Local profile result: %s\n", terminalText(profileTerminalState(run)))
+	if run.ControlCatalog != nil {
+		fmt.Fprintf(output, "Full catalog result: %s\n", terminalText(run.TerminalState))
+	} else {
+		fmt.Fprintf(output, "Terminal state: %s\n", terminalText(run.TerminalState))
+	}
 	counts := map[string]int{}
 	for _, result := range run.Results {
 		counts[result.Assessment]++
@@ -2119,6 +2171,13 @@ func printScanSummary(output io.Writer, run model.RunResult, style terminalStyle
 			}
 		}
 		fmt.Fprintf(output, "Complete control catalog: %d/%d controls included\n", len(run.ControlResults), run.ControlCatalog.ControlCount)
+		mapped := 0
+		for _, result := range run.ControlResults {
+			if result.Coverage != "unmapped" {
+				mapped++
+			}
+		}
+		fmt.Fprintf(output, "Controls with an executable mapping: %d/%d\n", mapped, run.ControlCatalog.ActiveControlCount)
 		fmt.Fprintf(output, "Control dispositions: %s\n", strings.Join(controlParts, ", "))
 		fmt.Fprintln(output, "A partially_verified control is not a complete pass.")
 		fmt.Fprintln(output, "Every registered control is in the detailed report; AI advice is marked advisory.")
@@ -2225,6 +2284,24 @@ func scanTerminalExitCode(terminalState string) int {
 	}
 }
 
+func profileTerminalState(run model.RunResult) string {
+	if run.ControlCatalog != nil && run.ControlCatalog.ProfileTerminalState != "" {
+		return run.ControlCatalog.ProfileTerminalState
+	}
+	return run.TerminalState
+}
+
+func scanNoGoExitCode(terminalState string) int {
+	switch terminalState {
+	case "no_go":
+		return exitGateFailed
+	case "policy_stopped", "budget_exhausted":
+		return exitPolicyDenied
+	default:
+		return exitSuccess
+	}
+}
+
 func inventoryFacts(item model.Inventory) map[string]any {
 	return map[string]any{
 		"source_files": item.SourceFiles, "package_ecosystems": item.PackageEcosystems,
@@ -2233,6 +2310,25 @@ func inventoryFacts(item model.Inventory) map[string]any {
 		"components": item.Components, "relations": item.Relations, "facts": item.Facts,
 		"declared_scope": item.DeclaredScope,
 	}
+}
+
+func inventoryFact(item model.Inventory, key string) string {
+	for _, fact := range item.Facts {
+		if fact.Key == key {
+			return fact.Value
+		}
+	}
+	return "not available"
+}
+
+func inventoryFactCount(item model.Inventory, key string) int {
+	count := 0
+	for _, fact := range item.Facts {
+		if fact.Key == key {
+			count++
+		}
+	}
+	return count
 }
 
 func flagWasSet(set *flag.FlagSet, name string) bool {

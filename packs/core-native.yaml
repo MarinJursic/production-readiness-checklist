@@ -26,7 +26,7 @@ assertions:
   - {assertion_id: PRC-A-CORE-017, implementation_id: prc.native.github-workflow-valid@0.1, validated_outcomes: [pass, not_applicable, error]}
   - {assertion_id: PRC-A-CORE-018, implementation_id: prc.native.github-workflow-jobs@0.1, validated_outcomes: [pass, fail, not_applicable, error]}
   - {assertion_id: PRC-A-CORE-019, implementation_id: prc.native.github-workflow-timeouts@0.1, validated_outcomes: [pass, fail, not_applicable, error]}
-  - {assertion_id: PRC-A-CORE-020, implementation_id: prc.native.github-no-pull-request-target@0.1, validated_outcomes: [pass, fail, not_applicable, error]}
+  - {assertion_id: PRC-A-CORE-020, implementation_id: prc.native.github-no-pull-request-target@0.1, validated_outcomes: [pass, manual_review, not_applicable, error]}
   - {assertion_id: PRC-A-CORE-021, implementation_id: prc.native.merge-conflict-markers@0.1, validated_outcomes: [pass, fail]}
   - {assertion_id: PRC-A-CORE-022, implementation_id: prc.native.restrictive-file-modes@0.1, validated_outcomes: [pass, fail]}
   - {assertion_id: PRC-A-CORE-023, implementation_id: prc.native.inventory-files-nonempty@0.1, validated_outcomes: [pass, fail, not_applicable]}
@@ -50,7 +50,7 @@ assertions:
 benchmark:
   suite_id: prc.benchmark.core-native@1.0
   suite_path: fixtures/benchmarks/core-native/suite-comprehensive.yaml
-  suite_sha256: d229b2e4bc09cd8b20ac96f0bead62e9262a458be757046dfddd8ca934e0b16d
+  suite_sha256: 1035fef3034185344a18bbf3e308143418f1b0bbd7f1fdd0a71a8adc138c9968
 limitations:
   - Manual-review and adapter-backed assertions are validated only in their fail-closed manual or blocked states.
   - OpenAPI operation checks cover direct path and webhook operations; referenced Path Items, callbacks, multi-document descriptions, and referenced responses require a future bounded resolver or adapter.

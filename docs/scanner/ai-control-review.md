@@ -10,13 +10,29 @@ scanner's real pass, fail, blocked, or review state, and it never fixes files.
 
 ## Before you start
 
-Install and sign in to one supported command-line tool:
+Install one supported command-line tool:
 
 - `codex` for Codex; or
 - `claude` for Claude Code.
 
-The scanner does not handle the provider login. It starts the already-installed
-tool with a locked-down argument list.
+The scanner does not load the tool's saved interactive login. Supply an explicit
+credential only for the review process:
+
+```bash
+# Codex: choose one supported credential variable.
+export OPENAI_API_KEY='your-provider-key'
+# or: export CODEX_API_KEY='your-provider-key'
+
+# Claude: choose one supported credential variable.
+export ANTHROPIC_API_KEY='your-provider-key'
+# or use ANTHROPIC_AUTH_TOKEN or CLAUDE_CODE_OAUTH_TOKEN.
+```
+
+The provider starts with a new private home and configuration directory. Only
+the selected credential plus a small runtime allowlist reaches the child
+process; saved sessions, project instructions, user settings, plugins, MCP
+servers, and normal shell environment variables are not inherited. Remove the
+temporary variable from your shell when the review is done.
 
 AI review can send source excerpts to a remote model and can cost money. Read
 the provider's data and billing rules first. The scanner requires
@@ -79,6 +95,12 @@ result per control. With 10,042 active controls and the default batch size,
 expect about 1,256 provider calls and 10,042 subagent reviews. The exact token
 and money cost depends on the chosen provider and model.
 
+The scanner can require this orchestration in the sealed task and verify that
+one final result returns for every control. Current provider output does not
+offer trustworthy proof of each internal subagent call, so the scanner does not
+treat claimed orchestration as evidence. A provider that skips a requested
+subagent can at most produce untrusted advisory text, never a verified Pass.
+
 Completed batches are stored privately outside the target project. If a later
 batch fails or the run is stopped, run the same command again. Matching finished
 batches are checked and reused. The report is written only after every requested
@@ -114,6 +136,12 @@ paths and real line numbers, and fixed size limits.
 
 This screen is a safety layer, not a complete secret scanner. Do not opt in with
 source that you are not allowed to send to the selected provider.
+
+The scanner stops if it can see local Claude managed settings because those can
+force hooks, plugins, or MCP policy that an ordinary setting cannot override.
+It cannot inspect every policy delivered by a provider's server. The provider
+binary and remote service therefore remain trusted dependencies even though
+they receive no target path or general-purpose workspace tools.
 
 ## Result meanings
 

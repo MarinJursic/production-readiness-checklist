@@ -131,7 +131,7 @@ cases:
       - {assertion_id: PRC-A-CORE-017, assessment: pass, execution: completed}
       - {assertion_id: PRC-A-CORE-018, assessment: pass, execution: completed}
       - {assertion_id: PRC-A-CORE-019, assessment: fail, execution: completed}
-      - {assertion_id: PRC-A-CORE-020, assessment: fail, execution: completed}
+      - {assertion_id: PRC-A-CORE-020, assessment: manual_review, execution: completed}
   - id: workflow-no-jobs
     target: targets/workflow-no-jobs
     expectations:

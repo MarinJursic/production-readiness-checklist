@@ -88,11 +88,13 @@ A normal scan is read-only. It does **not** fix files, run project code, install
 The npm package source, launcher, six native platform packages, and release builder are implemented. The public package names were still unpublished when this README was updated, so use this command only after the linked release notes confirm that the exact version is on npm:
 
 ```bash
-npm install --save-dev --save-exact --ignore-scripts @marinjursic/prc@X.Y.Z
-npx prc scan .
+npm install --save-dev --save-exact --ignore-scripts --no-audit --no-fund @marinjursic/prc@X.Y.Z
+npm exec --offline --no -- prc scan .
 ```
 
 The package has no install scripts and no third-party JavaScript dependencies. It does not download a binary after installation. npm selects one exact platform package; the launcher checks its release manifest and native binary hash, then starts it without a shell.
+
+Use an exact version that appears in this repository's scanner release notes. `--ignore-scripts` stops dependency install hooks, and `--offline --no` prevents the run command from fetching a missing package. The install still places reviewed package files in `node_modules` and updates `package.json` and `package-lock.json`; review those changes before committing them.
 
 For a short command that the whole project can reuse, add this to `package.json`:
 
@@ -104,7 +106,7 @@ For a short command that the whole project can reuse, add this to `package.json`
 }
 ```
 
-Run it with `npm run scan`. npm does not support arbitrary shortcuts such as `npm scan`.
+Run it with `npm run --ignore-scripts scan`. The named `scan` script still runs, but npm does not run `prescan` or `postscan` hooks. npm does not support arbitrary shortcuts such as `npm scan`.
 
 ### One-time setup from source
 
@@ -153,7 +155,8 @@ Checking 40 deterministic assertions...
   ? MANUAL   PRC-A-CORE-012  An accountable reviewer must supply evidence.
 
 Result
-Terminal state: no_go
+Local profile result: no_go
+Full catalog result: needs_review
 Assessment counts: fail=1, unknown=1, manual_review=1, pass=37
 Complete control catalog: 10042/10042 controls included
 
@@ -187,6 +190,7 @@ The ordinary scan is local and deterministic. AI review is a separate, explicit 
 Test one control first:
 
 ```bash
+export OPENAI_API_KEY='your-provider-key'
 prc scan . \
   --review-provider codex \
   --review-control PRC-02-001 \
@@ -204,6 +208,8 @@ prc scan . \
 
 Use `--review-provider claude` for Claude Code. The full run is intentionally large: controls are sent in sealed batches of at most eight, and the coordinator must create one separate subagent for every control. Completed batches are saved outside the target and reused when the same scan resumes. This can take a long time and use many tokens. AI results are always labeled advisory; they cannot create a verified Pass, a final Not Applicable decision, or modify the project.
 
+The scanner deliberately does not load a saved interactive provider login. Codex requires `OPENAI_API_KEY` or `CODEX_API_KEY`; Claude requires `ANTHROPIC_API_KEY`, `ANTHROPIC_AUTH_TOKEN`, or `CLAUDE_CODE_OAUTH_TOKEN`. Only the selected credential and a small runtime environment allowlist reach the provider process. Remove the temporary variable from your shell when the review is done.
+
 See [safe AI control review](docs/scanner/ai-control-review.md) before running the full corpus.
 
 ### What it checks today
@@ -214,7 +220,7 @@ The scanner includes every production concern in its report, but it does not pre
 
 Fixing is a separate workflow. `prc scan` never calls it. The bounded `prc fix` command works only in isolated candidate directories and supports a deliberately small set of independently verifiable changes; it never merges, deploys, or releases anything automatically.
 
-Continue with the [complete scanner quick start](docs/scanner/getting-started.md), [CLI and exit codes](docs/scanner/cli-contract.md), [diagnostics](docs/scanner/doctor.md), [read-only agent integration](docs/scanner/mcp-agent-integration.md), [project configuration](docs/scanner/configuration.md), [state and history](docs/scanner/state-and-history.md), [supply-chain scanning](docs/scanner/supply-chain.md), and [isolated remediation](docs/scanner/remediation.md). Architecture details live in the [product contract](docs/architecture/product-contract.md), [trust model](docs/architecture/trust-model.md), [adapter protocol](docs/architecture/adapters.md), [evidence model](docs/architecture/evidence-and-results.md), and [remediation contract](docs/architecture/remediation-contract.md).
+Continue with the [complete scanner quick start](docs/scanner/getting-started.md), [safe start-to-finish walkthrough](docs/scanner/security-walkthrough.md), [CLI and exit codes](docs/scanner/cli-contract.md), [diagnostics](docs/scanner/doctor.md), [read-only agent integration](docs/scanner/mcp-agent-integration.md), [project configuration](docs/scanner/configuration.md), [state and history](docs/scanner/state-and-history.md), [supply-chain scanning](docs/scanner/supply-chain.md), and [isolated remediation](docs/scanner/remediation.md). Architecture details live in the [product contract](docs/architecture/product-contract.md), [trust model](docs/architecture/trust-model.md), [adapter protocol](docs/architecture/adapters.md), [evidence model](docs/architecture/evidence-and-results.md), and [remediation contract](docs/architecture/remediation-contract.md).
 
 ## Evidence, not checkbox theater
 

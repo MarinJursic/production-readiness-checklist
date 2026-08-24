@@ -75,20 +75,21 @@ type Capabilities struct {
 }
 
 type Plan struct {
-	Provider             string       `json:"provider"`
-	ExecutablePath       string       `json:"executable_path"`
-	ExecutableSHA256     string       `json:"executable_sha256"`
-	Workspace            string       `json:"workspace"`
-	ExecutionDirectory   string       `json:"execution_directory"`
-	OutputDirectory      string       `json:"output_directory"`
-	ResultPath           string       `json:"result_path,omitempty"`
-	OutputSchemaPath     string       `json:"output_schema_path"`
-	OutputSchemaSHA256   string       `json:"output_schema_sha256"`
-	Arguments            []string     `json:"arguments"`
-	EnvironmentVariables []string     `json:"environment_variables"`
-	Capabilities         Capabilities `json:"capabilities"`
-	TaskID               string       `json:"task_id"`
-	PromptSHA256         string       `json:"prompt_sha256"`
+	Provider             string            `json:"provider"`
+	ExecutablePath       string            `json:"executable_path"`
+	ExecutableSHA256     string            `json:"executable_sha256"`
+	Workspace            string            `json:"workspace"`
+	ExecutionDirectory   string            `json:"execution_directory"`
+	OutputDirectory      string            `json:"output_directory"`
+	ResultPath           string            `json:"result_path,omitempty"`
+	OutputSchemaPath     string            `json:"output_schema_path"`
+	OutputSchemaSHA256   string            `json:"output_schema_sha256"`
+	Arguments            []string          `json:"arguments"`
+	EnvironmentVariables []string          `json:"environment_variables"`
+	Environment          map[string]string `json:"environment,omitempty"`
+	Capabilities         Capabilities      `json:"capabilities"`
+	TaskID               string            `json:"task_id"`
+	PromptSHA256         string            `json:"prompt_sha256"`
 	prompt               string
 	seal                 [32]byte
 }
