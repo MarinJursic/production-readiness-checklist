@@ -145,6 +145,8 @@ jobs:
 
       - name: Exercise provider protocol fixtures
         run: |
+          mkdir "$RUNNER_TEMP/provider-workspace"
+          cp -R fixtures/providers/workspace/. "$RUNNER_TEMP/provider-workspace/"
           "$RUNNER_TEMP/prc" provider capabilities --provider codex
           "$RUNNER_TEMP/prc" provider capabilities --provider claude
           "$RUNNER_TEMP/prc" provider validate-output \
@@ -157,7 +159,7 @@ jobs:
             --file fixtures/providers/valid-claude-envelope.json
           "$RUNNER_TEMP/prc" provider seal-task \
             --file fixtures/providers/suggest-task.json \
-            --workspace fixtures/providers/workspace \
+            --workspace "$RUNNER_TEMP/provider-workspace" \
             --config fixtures/config/production-readiness.yaml \
             > "$RUNNER_TEMP/configured-provider-task.json"
           if "$RUNNER_TEMP/prc" provider validate-output \
@@ -296,7 +298,7 @@ jobs:
           docker pull "$PRC_TEST_GO_VERIFIER_IMAGE"
           set +e
           "$RUNNER_TEMP/prc" remediate-proposal \
-            --target fixtures/providers/workspace \
+            --target "$RUNNER_TEMP/provider-workspace" \
             --catalog-root . \
             --provider codex \
             --task fixtures/providers/suggest-task.json \
@@ -325,6 +327,7 @@ jobs:
             exit "$status"
           fi
           test ! -e fixtures/providers/workspace/app_test.go
+          test ! -e "$RUNNER_TEMP/provider-workspace/app_test.go"
           test -f "$RUNNER_TEMP/provider-candidate/app_test.go"
           (cd "$RUNNER_TEMP/provider-candidate" && go test ./...)
 

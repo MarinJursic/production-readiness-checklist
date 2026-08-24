@@ -75,9 +75,19 @@ func proposalTarget(t *testing.T) string {
 	return target
 }
 
+func checkedProviderProposalWorkspace(t *testing.T) string {
+	t.Helper()
+	source := filepath.Join(testCatalogRoot(t), "fixtures", "providers", "workspace")
+	destination := filepath.Join(t.TempDir(), "workspace")
+	if err := os.CopyFS(destination, os.DirFS(source)); err != nil {
+		t.Fatal(err)
+	}
+	return destination
+}
+
 func TestCheckedInProviderProposalFixtureMatchesCurrentWorkspaceAndFinding(t *testing.T) {
 	root := testCatalogRoot(t)
-	target := filepath.Join(root, "fixtures", "providers", "workspace")
+	target := checkedProviderProposalWorkspace(t)
 	task, err := provider.LoadTask(filepath.Join(root, "fixtures", "providers", "suggest-task.json"))
 	if err != nil {
 		t.Fatal(err)

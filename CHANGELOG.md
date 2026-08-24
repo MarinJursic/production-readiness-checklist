@@ -150,6 +150,8 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 
 ### Fixed
 
+- Made checked provider task and proposal fixtures independent of the source
+  repository commit by sealing and exercising them from detached workspaces.
 - Isolated Codex and Claude provider processes from saved logins, user and
   project settings, unrelated environment variables, plugins, MCP servers, and
   target workspace paths; explicit environment credentials are now required.

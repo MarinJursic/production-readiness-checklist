@@ -105,6 +105,16 @@ func providerWorkspace(t *testing.T) string {
 	return directory
 }
 
+func checkedProviderWorkspace(t *testing.T) string {
+	t.Helper()
+	source := filepath.Join(repositoryRoot(t), "fixtures", "providers", "workspace")
+	destination := filepath.Join(t.TempDir(), "workspace")
+	if err := os.CopyFS(destination, os.DirFS(source)); err != nil {
+		t.Fatal(err)
+	}
+	return destination
+}
+
 func TestTaskIdentityAndValidationFailClosed(t *testing.T) {
 	task := testTask(t)
 	if err := task.Validate(); err != nil {
@@ -228,7 +238,14 @@ func TestBuildPlanRejectsInputThatDoesNotMatchWorkspace(t *testing.T) {
 func TestCheckedInTaskAndProviderFixtures(t *testing.T) {
 	root := repositoryRoot(t)
 	taskPath := filepath.Join(root, "fixtures", "providers", "suggest-task.json")
-	workspace := filepath.Join(root, "fixtures", "providers", "workspace")
+	workspace := checkedProviderWorkspace(t)
+	inventory, err := workspaceinventory.Build(workspace)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if inventory.GitCommit != "" {
+		t.Fatalf("checked provider fixture inherited repository commit %s", inventory.GitCommit)
+	}
 	task, err := LoadTask(taskPath)
 	if err != nil {
 		t.Fatal(err)
