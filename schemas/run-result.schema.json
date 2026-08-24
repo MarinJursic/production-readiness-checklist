@@ -104,6 +104,8 @@
         "advice": {"type": "string", "maxLength": 16384},
         "evidence": {"type": "array", "maxItems": 256, "items": {"$ref": "#/$defs/location"}},
         "limitations": {"type": "array", "minItems": 1, "maxItems": 256, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 16384}},
+        "citation_verification": {"enum": ["not_cited", "snapshot_location_validated"]},
+        "claim_verification": {"const": "advisory_unverified"},
         "task_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
       }
     },

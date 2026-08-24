@@ -35,7 +35,7 @@ the target repository on a local filesystem and restrict it to the current user:
 ```bash
 mkdir -m 0700 /safe/local/path/prc-state
 
-./prc scan \
+./everylast scan \
   --target /path/to/project \
   --catalog-root /path/to/production-readiness-checklist \
   --state-dir /safe/local/path/prc-state \
@@ -58,7 +58,7 @@ not a supported state location even with the rollback journal.
 ## List indexed runs
 
 ```bash
-./prc history list \
+./everylast history list \
   --state-dir /safe/local/path/prc-state \
   --limit 20
 ```
@@ -67,7 +67,7 @@ Exact filters are available for `--target-name`, `--profile`, and
 `--terminal-state`. JSON output conforms to `prc.history/v0.1`:
 
 ```bash
-./prc history list \
+./everylast history list \
   --state-dir /safe/local/path/prc-state \
   --target-name project \
   --format json > history.json
@@ -79,7 +79,7 @@ never averaged into a score.
 ## Load a canonical run
 
 ```bash
-./prc history show \
+./everylast history show \
   --state-dir /safe/local/path/prc-state \
   --format json \
   <run-id>
@@ -98,7 +98,7 @@ and `PRAGMA foreign_key_check`.
 Run both checks and obtain indexed record counts with:
 
 ```bash
-./prc history check \
+./everylast history check \
   --state-dir /safe/local/path/prc-state \
   --format json
 ```

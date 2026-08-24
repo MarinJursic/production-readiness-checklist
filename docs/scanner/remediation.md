@@ -20,7 +20,7 @@ Choose a new destination outside the target tree. Its parent must already exist,
 and the destination itself must not exist.
 
 ```bash
-./prc remediate \
+./everylast remediate \
   --catalog-root /path/to/production-readiness-checklist \
   --target /path/to/project \
   --config /path/to/project/production-readiness.yaml \
@@ -69,7 +69,7 @@ merge, deploy, release, accept risk, or claim that the full profile is satisfied
 
 ## Run the bounded remediation loop
 
-Without a provider, `prc fix` repeatedly applies only the registered R1 fixers.
+Without a provider, `everylast fix` repeatedly applies only the registered R1 fixers.
 Each accepted candidate becomes the source of a new sibling candidate, so fixes
 compose without changing the original project. The candidate root must be a new
 path outside the target tree. The scanner validates that destination first but
@@ -78,7 +78,7 @@ and budget preflight.
 
 ```bash
 export OPENAI_API_KEY='your-provider-key'
-./prc fix \
+./everylast fix \
   --catalog-root /path/to/production-readiness-checklist \
   --target /path/to/project \
   --config /path/to/project/production-readiness.yaml \
@@ -139,7 +139,7 @@ or performs version-control operations.
 
 ## Opt in to one scanner-planned R2 task
 
-`prc fix --provider` connects the bounded loop to the read-only Codex or Claude
+`everylast fix --provider` connects the bounded loop to the read-only Codex or Claude
 Code provider adapter. This is not general repository autonomy. The current
 task planner supports only a failing `PRC-A-CORE-010` test-discovery assertion:
 it selects one bounded source file, derives a small allowlist of new test paths,
@@ -149,7 +149,7 @@ one non-vacuous test file. Every other R2 finding remains
 verification.
 
 ```bash
-./prc fix \
+./everylast fix \
   --catalog-root /path/to/production-readiness-checklist \
   --target /path/to/project \
   --config /path/to/project/production-readiness.yaml \
@@ -233,7 +233,7 @@ ID and the freshly verified baseline finding ID so the provider handoff remains
 auditable end to end.
 
 ```bash
-./prc remediate-proposal \
+./everylast remediate-proposal \
   --catalog-root /path/to/production-readiness-checklist \
   --target /path/to/project \
   --config /path/to/project/production-readiness.yaml \

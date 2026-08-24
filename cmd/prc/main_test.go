@@ -58,7 +58,7 @@ func TestVersionCommand(t *testing.T) {
 	if code := run([]string{"version"}, &stdout, &stderr); code != 0 {
 		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
 	}
-	if !strings.Contains(stdout.String(), "prc 0.1.0-dev (revision unknown, built unknown, go1.") {
+	if !strings.Contains(stdout.String(), "everylast 0.1.0-dev (revision unknown, built unknown, go1.") {
 		t.Fatalf("unexpected output %q", stdout.String())
 	}
 	stdout.Reset()
@@ -81,19 +81,144 @@ func TestVersionCommand(t *testing.T) {
 
 func TestFriendlyRootHelpVersionAliasAndScanHelp(t *testing.T) {
 	var stdout, stderr bytes.Buffer
-	if code := run(nil, &stdout, &stderr); code != exitSuccess || !strings.Contains(stdout.String(), "prc scan .") || stderr.Len() != 0 {
+	if code := run(nil, &stdout, &stderr); code != exitSuccess || !strings.Contains(stdout.String(), "everylast quick") ||
+		!strings.Contains(stdout.String(), "everylast full codex") || stderr.Len() != 0 {
 		t.Fatalf("root help exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
 	}
 	stdout.Reset()
-	if code := run([]string{"--version"}, &stdout, &stderr); code != exitSuccess || !strings.HasPrefix(stdout.String(), "prc ") {
+	if code := run([]string{"--version"}, &stdout, &stderr); code != exitSuccess || !strings.HasPrefix(stdout.String(), "everylast ") {
 		t.Fatalf("version alias exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
 	}
 	stdout.Reset()
 	stderr.Reset()
 	if code := run([]string{"scan", "--help"}, &stdout, &stderr); code != exitSuccess ||
-		!strings.Contains(stderr.String(), "Usage: prc scan [project path] [options]") ||
+		!strings.Contains(stderr.String(), "Usage: everylast scan [project path] [options]") ||
 		strings.Contains(stderr.String(), "PRC-EXIT") {
 		t.Fatalf("scan help exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
+	}
+}
+
+func TestQuickScanUsesBoundedProfileAndStillReportsCompleteCatalog(t *testing.T) {
+	var stdout, stderr bytes.Buffer
+	code := run([]string{
+		"quick", t.TempDir(), "--catalog-root", filepath.Join("..", ".."),
+		"--format", "json", "--no-report", "--exit-policy", "never",
+	}, &stdout, &stderr)
+	if code != exitSuccess {
+		t.Fatalf("quick exit=%d stderr=%s", code, stderr.String())
+	}
+	var result model.RunResult
+	if err := json.Unmarshal(stdout.Bytes(), &result); err != nil {
+		t.Fatal(err)
+	}
+	if result.Plan.ProfileID != "prc/quick" || len(result.Results) != 18 ||
+		result.ControlCatalog == nil || len(result.ControlResults) != 10_042 {
+		t.Fatalf("quick result profile=%s assertions=%d controls=%d summary=%+v",
+			result.Plan.ProfileID, len(result.Results), len(result.ControlResults), result.ControlCatalog)
+	}
+}
+
+func TestScanAliasesRejectAmbiguousProviderAndProfileOverrides(t *testing.T) {
+	for _, test := range []struct {
+		args    []string
+		message string
+	}{
+		{[]string{"full"}, "usage: everylast full"},
+		{[]string{"full", "other"}, "usage: everylast full"},
+		{[]string{"full", "codex", "--ai", "claude"}, "already selects"},
+		{[]string{"quick", "--ai", "codex"}, "local only"},
+		{[]string{"quick", "--profile", "prc/core-repository"}, "selects its own profile"},
+	} {
+		var stdout, stderr bytes.Buffer
+		if code := run(test.args, &stdout, &stderr); code != exitConfiguration ||
+			!strings.Contains(stderr.String(), test.message) {
+			t.Fatalf("args=%v exit=%d stdout=%q stderr=%q", test.args, code, stdout.String(), stderr.String())
+		}
+	}
+}
+
+func TestScanAliasHelpExplainsScope(t *testing.T) {
+	for _, name := range []string{"quick", "full"} {
+		var stdout, stderr bytes.Buffer
+		if code := run([]string{name, "--help"}, &stdout, &stderr); code != exitSuccess || stderr.Len() != 0 ||
+			!strings.Contains(stdout.String(), "10,042") && name == "quick" ||
+			!strings.Contains(stdout.String(), "screened remote source processing") && name == "full" {
+			t.Fatalf("%s help exit=%d stdout=%q stderr=%q", name, code, stdout.String(), stderr.String())
+		}
+	}
+}
+
+func TestProviderLoginStatusAndLogoutUsePrivatePRCAuthentication(t *testing.T) {
+	t.Setenv("HOME", t.TempDir())
+	t.Setenv("OPENAI_API_KEY", "")
+	t.Setenv("CODEX_API_KEY", "")
+	t.Setenv("ANTHROPIC_API_KEY", "")
+	t.Setenv("ANTHROPIC_AUTH_TOKEN", "")
+	t.Setenv("CLAUDE_CODE_OAUTH_TOKEN", "")
+	t.Setenv("PRC_TEST_SECRET", "must-not-reach-auth-cli")
+	executables := t.TempDir()
+	script := `#!/bin/sh
+if [ -n "${PRC_TEST_SECRET-}" ]; then exit 9; fi
+case " $* " in
+  *" status "*) printf 'Logged in for test\n' ;;
+esac
+exit 0
+`
+	for _, name := range []string{"codex", "claude"} {
+		if err := os.WriteFile(filepath.Join(executables, name), []byte(script), 0o755); err != nil {
+			t.Fatal(err)
+		}
+	}
+	t.Setenv("PATH", executables)
+
+	for _, name := range []string{"codex", "claude"} {
+		t.Run(name, func(t *testing.T) {
+			var stdout, stderr bytes.Buffer
+			if code := run([]string{"login", name}, &stdout, &stderr); code != 0 ||
+				!strings.Contains(stdout.String(), "everylast scan --ai "+name) {
+				t.Fatalf("login exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
+			}
+			names, environment, err := provider.IsolatedEnvironment(name, t.TempDir())
+			if err != nil || len(names) == 0 || environment["HOME"] == "" {
+				t.Fatalf("stored login isolation names=%v env=%v err=%v", names, environment, err)
+			}
+			configurationName := "CODEX_HOME"
+			if name == "claude" {
+				configurationName = "CLAUDE_CONFIG_DIR"
+			}
+			if !strings.Contains(environment[configurationName], filepath.Join("everylast", "provider-auth", name)) {
+				t.Fatalf("provider login was not isolated: %+v", environment)
+			}
+
+			stdout.Reset()
+			stderr.Reset()
+			if code := run([]string{"auth", name}, &stdout, &stderr); code != 0 ||
+				!strings.Contains(stdout.String(), "Logged in for test") {
+				t.Fatalf("auth exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
+			}
+
+			stdout.Reset()
+			stderr.Reset()
+			if code := run([]string{"logout", name}, &stdout, &stderr); code != 0 {
+				t.Fatalf("logout exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
+			}
+			if _, _, err := provider.IsolatedEnvironment(name, t.TempDir()); err == nil ||
+				!strings.Contains(err.Error(), "everylast login "+name) {
+				t.Fatalf("logged-out provider was accepted: %v", err)
+			}
+		})
+	}
+}
+
+func TestAuthenticationStatusOutputIsBounded(t *testing.T) {
+	var output authenticationOutput
+	value := bytes.Repeat([]byte("x"), maximumAuthenticationOutput+1024)
+	count, err := output.Write(value)
+	if err != nil || count != len(value) {
+		t.Fatalf("write count=%d err=%v", count, err)
+	}
+	if !output.exceeded || len(output.data) != maximumAuthenticationOutput {
+		t.Fatalf("bounded output exceeded=%t bytes=%d", output.exceeded, len(output.data))
 	}
 }
 
@@ -122,7 +247,7 @@ func TestMCPServeCommandCompletesHandshakeAndListsReadOnlyTools(t *testing.T) {
 	if !strings.Contains(lines[0], `"protocolVersion":"2025-11-25"`) ||
 		!strings.Contains(lines[1], `"name":"prc_scan"`) ||
 		!strings.Contains(lines[1], `"readOnlyHint":true`) ||
-		strings.Contains(stdout.String(), "Production Readiness Scanner\n") {
+		strings.Contains(stdout.String(), "Everylast\n") {
 		t.Fatalf("unexpected MCP output: %s", stdout.String())
 	}
 }
@@ -731,7 +856,7 @@ func TestSimpleScanDiscoversCatalogCreatesPrivateReportAndNeverFixesTarget(t *te
 		!strings.Contains(stdout.String(), "Detailed report: ") {
 		t.Fatalf("simple scan output = %s", stdout.String())
 	}
-	reportDirectory := filepath.Join(cacheRoot, "prc", "reports")
+	reportDirectory := filepath.Join(cacheRoot, "everylast", "reports")
 	entries, err := os.ReadDir(reportDirectory)
 	if err != nil || len(entries) != 1 {
 		t.Fatalf("reports=%v err=%v", entries, err)
@@ -803,9 +928,8 @@ print('{"type":"turn.completed"}')
 	stateDirectory := t.TempDir()
 	arguments := []string{
 		"scan", target, "--catalog-root", repository, "--format", "json", "--no-report", "--exit-policy", "never",
-		"--review-provider", "codex", "--review-executable", executable,
+		"--ai", "codex", "--review-executable", executable,
 		"--review-state-dir", stateDirectory, "--review-control", "PRC-02-001",
-		"--allow-remote-source-processing",
 	}
 	var stdout, stderr bytes.Buffer
 	if code := run(arguments, &stdout, &stderr); code != 0 {

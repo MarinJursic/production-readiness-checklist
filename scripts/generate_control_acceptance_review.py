@@ -17,6 +17,10 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = ROOT / "catalog" / "control-id-registry.json"
 OUTPUT = ROOT / "research" / "CONTROL_ACCEPTANCE_CRITERIA_REVIEW.md"
+OUTPUT_DIRECTORY = ROOT / "research" / "control-acceptance-criteria"
+INDEX_OUTPUT = OUTPUT_DIRECTORY / "README.md"
+MAX_PART_BYTES = 3_000_000
+TARGET_PART_BYTES = 2_850_000
 
 HEADING = re.compile(r"^(#{1,6})\s+(.+?)\s*$")
 
@@ -333,7 +337,7 @@ def review_notes(flags: dict[str, Any]) -> list[str]:
 def current_scanner_text(assertions: list[dict[str, Any]]) -> list[str]:
     if not assertions:
         return [
-            "Included in every complete `prc scan` report as `needs_review`, but not deterministically "
+            "Included in every complete `everylast scan` report as `needs_review`, but not deterministically "
             "checked today. No missing implementation is turned into a Pass.",
             "With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent "
             "plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and "
@@ -385,16 +389,16 @@ def generated_text() -> str:
         "",
         "# Review of all production-readiness control acceptance criteria",
         "",
-        f"Registry: `{registry['schema_version']}` / `{registry['registry_version']}`  ",
-        f"Source digest: `{registry['source_sha256']}`  ",
-        f"Controls reviewed: **{len(entries):,}**  ",
-        f"Controls connected to current scanner assertions: **{mapped_controls:,}**  ",
-        f"Current assertions connected to those controls: **{assertion_count:,}**",
+        f"- Registry: `{registry['schema_version']}` / `{registry['registry_version']}`",
+        f"- Source digest: `{registry['source_sha256']}`",
+        f"- Controls reviewed: **{len(entries):,}**",
+        f"- Controls connected to current scanner assertions: **{mapped_controls:,}**",
+        f"- Current assertions connected to those controls: **{assertion_count:,}**",
         "",
         "## Read this first: the important problems found",
         "",
         "This file reviews every control, but it does not claim that every control is already machine-checkable. "
-        "Every `prc scan` report now contains all 10,042 controls. The deterministic profile proves only its "
+        "Every `everylast scan` report now contains all 10,042 controls. The deterministic profile proves only its "
         "narrow assertions; the remaining controls stay visibly `needs_review`. An optional AI review can add "
         "a one-subagent-per-control review task, but current provider output cannot prove every internal subagent call happened and no advice can turn subjective judgment into a verified Pass. Turning "
         "broad objectives directly into hard-coded rules would create false passes and one-size-fits-all designs.",
@@ -459,7 +463,7 @@ def generated_text() -> str:
         "",
         "### How to read each control below",
         "",
-        "Each entry keeps the exact source rule, gives a proposed pass contract, states what `prc scan` really "
+        "Each entry keeps the exact source rule, gives a proposed pass contract, states what `everylast scan` really "
         "checks today, and proposes a future method. The proposal is a review starting point. It must be approved "
         "by a control owner and tested against positive, negative, unusual-layout, and adversarial fixtures before "
         "it becomes executable.",
@@ -482,9 +486,9 @@ def generated_text() -> str:
                 f"<!-- BEGIN CONTROL {entry['id']} -->",
                 f"### {entry['id']}",
                 "",
-                f"Source: `{source['path']}:{source['line']}`  ",
-                f"Section: `{' > '.join(context) if context else 'unknown'}`  ",
-                f"Status/revision: `{entry['status']}` / `{entry['revision']}`",
+                f"- Source: `{source['path']}:{source['line']}`",
+                f"- Section: `{' > '.join(context) if context else 'unknown'}`",
+                f"- Status/revision: `{entry['status']}` / `{entry['revision']}`",
                 "",
                 f"> {entry['statement']}",
                 "",
@@ -508,20 +512,135 @@ def generated_text() -> str:
     return "\n".join(lines).rstrip() + "\n"
 
 
+def split_review(text: str) -> dict[Path, str]:
+    """Return a small compatibility page, one index, and bounded control parts."""
+
+    divider = "## All controls\n\n"
+    preamble, found, controls_text = text.partition(divider)
+    if not found:
+        raise ValueError("generated review has no all-controls divider")
+    block_pattern = re.compile(
+        r"<!-- BEGIN CONTROL ([A-Z0-9-]+) -->\n.*?<!-- END CONTROL \1 -->\n",
+        re.DOTALL,
+    )
+    source_pattern = re.compile(r"^- Source: `([^`]+):\d+`$", re.MULTILINE)
+    blocks: list[tuple[str, str, str]] = []
+    for match in block_pattern.finditer(controls_text):
+        block = match.group(0)
+        source = source_pattern.search(block)
+        if source is None:
+            raise ValueError(f"control {match.group(1)} has no source path")
+        blocks.append((match.group(1), source.group(1), block))
+    if not blocks:
+        raise ValueError("generated review has no control blocks")
+
+    groups: list[list[tuple[str, str, str]]] = []
+    current: list[tuple[str, str, str]] = []
+    current_bytes = 2048
+    previous_source = ""
+    for control_id, source, block in blocks:
+        addition = len(block.encode("utf-8"))
+        if source != previous_source:
+            addition += len(f"## `{source}`\n\n".encode("utf-8"))
+        if current and current_bytes + addition > TARGET_PART_BYTES:
+            groups.append(current)
+            current = []
+            current_bytes = 2048
+            previous_source = ""
+            addition = len(block.encode("utf-8")) + len(f"## `{source}`\n\n".encode("utf-8"))
+        current.append((control_id, source, block))
+        current_bytes += addition
+        previous_source = source
+    if current:
+        groups.append(current)
+
+    files: dict[Path, str] = {}
+    part_rows: list[str] = []
+    total_parts = len(groups)
+    for index, group in enumerate(groups, start=1):
+        relative = Path(f"part-{index:03d}.md")
+        part_lines = [
+            "<!-- Generated by scripts/generate_control_acceptance_review.py. Do not edit by hand. -->",
+            "",
+            f"# Control acceptance criteria — part {index} of {total_parts}",
+            "",
+            "[Back to the acceptance-criteria index](README.md).",
+            "",
+            f"Controls in this file: **{len(group):,}** (`{group[0][0]}` through `{group[-1][0]}` in source order).",
+            "",
+        ]
+        previous_source = ""
+        for _control_id, source, block in group:
+            if source != previous_source:
+                part_lines.extend([f"## `{source}`", ""])
+                previous_source = source
+            part_lines.extend([block.rstrip(), ""])
+        part_text = "\n".join(part_lines).rstrip() + "\n"
+        part_bytes = len(part_text.encode("utf-8"))
+        if part_bytes >= MAX_PART_BYTES:
+            raise ValueError(f"{relative} is {part_bytes} bytes; limit is below {MAX_PART_BYTES}")
+        files[relative] = part_text
+        part_rows.append(
+            f"| [{relative.name}]({relative.name}) | {len(group):,} | `{group[0][0]}` | "
+            f"`{group[-1][0]}` | {part_bytes:,} |"
+        )
+
+    index_lines = [
+        preamble.rstrip(),
+        "",
+        "## Split control files",
+        "",
+        "The per-control review is split at control boundaries so it stays easy to open, diff, and review. "
+        f"Every part is below **{MAX_PART_BYTES:,} bytes**. The order is the same as the registry source order.",
+        "",
+        "| File | Controls | First control | Last control | Bytes |",
+        "| --- | ---: | --- | --- | ---: |",
+        *part_rows,
+        "",
+    ]
+    files[Path("README.md")] = "\n".join(index_lines).rstrip() + "\n"
+    files[Path("../CONTROL_ACCEPTANCE_CRITERIA_REVIEW.md")] = (
+        "<!-- Generated by scripts/generate_control_acceptance_review.py. Do not edit by hand. -->\n\n"
+        "# Review of all production-readiness control acceptance criteria\n\n"
+        "The complete 10,042-control review is split into files smaller than 3 MB. "
+        "Open the [acceptance-criteria index](control-acceptance-criteria/README.md) for the method, "
+        "findings, and links to every part.\n"
+    )
+    return files
+
+
+def generated_files() -> dict[Path, str]:
+    return split_review(generated_text())
+
+
 def generate() -> None:
-    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT.write_text(generated_text(), encoding="utf-8")
-    print(f"generated {OUTPUT.relative_to(ROOT)}")
+    OUTPUT_DIRECTORY.mkdir(parents=True, exist_ok=True)
+    files = generated_files()
+    expected_parts = {path.name for path in files if path.name.startswith("part-")}
+    for stale in OUTPUT_DIRECTORY.glob("part-*.md"):
+        if stale.name not in expected_parts:
+            stale.unlink()
+    for relative, content in files.items():
+        destination = OUTPUT_DIRECTORY / relative
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text(content, encoding="utf-8")
+    print(f"generated {len(files) - 2} bounded parts and {INDEX_OUTPUT.relative_to(ROOT)}")
 
 
 def check() -> None:
-    expected = generated_text()
-    if not OUTPUT.exists() or OUTPUT.read_text(encoding="utf-8") != expected:
-        raise ValueError(
-            f"{OUTPUT.relative_to(ROOT)} is stale; run "
-            "python3 scripts/generate_control_acceptance_review.py generate"
-        )
-    print(f"verified {OUTPUT.relative_to(ROOT)}")
+    files = generated_files()
+    for relative, expected in files.items():
+        destination = OUTPUT_DIRECTORY / relative
+        if not destination.exists() or destination.read_text(encoding="utf-8") != expected:
+            raise ValueError(
+                f"{destination.relative_to(ROOT)} is stale; run "
+                "python3 scripts/generate_control_acceptance_review.py generate"
+            )
+    expected_parts = {path.name for path in files if path.name.startswith("part-")}
+    actual_parts = {path.name for path in OUTPUT_DIRECTORY.glob("part-*.md")}
+    if actual_parts != expected_parts:
+        raise ValueError("control acceptance review has unexpected or missing part files")
+    print(f"verified {len(expected_parts)} bounded control-review parts")
 
 
 def main() -> int:

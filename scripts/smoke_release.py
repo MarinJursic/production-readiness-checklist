@@ -192,9 +192,9 @@ def smoke(release: pathlib.Path, version: str, commit: str) -> None:
     if not build_release.SEMVER.fullmatch(version) or not build_release.COMMIT.fullmatch(commit):
         raise ValueError("version or commit is invalid")
     goos, goarch, npm_os, npm_cpu = host()
-    manifest_path = release / f"prc_{version}_release-manifest.json"
+    manifest_path = release / f"everylast_{version}_release-manifest.json"
     manifest = load_json(manifest_path, "release manifest")
-    if manifest.get("schema_version") != "prc.release-manifest/v0.2" or manifest.get("version") != version or manifest.get("source_commit") != commit:
+    if manifest.get("schema_version") != "prc.release-manifest/v0.3" or manifest.get("version") != version or manifest.get("source_commit") != commit:
         raise ValueError("release manifest identity does not match the requested smoke test")
 
     archive_item = record(manifest.get("artifacts", []), goos=goos, goarch=goarch)
@@ -202,13 +202,13 @@ def smoke(release: pathlib.Path, version: str, commit: str) -> None:
     platform_package = checked_artifact(release, record(manifest.get("npm_packages", []), kind="platform", os=npm_os, cpu=npm_cpu))
     launcher_package = checked_artifact(release, record(manifest.get("npm_packages", []), kind="launcher"))
 
-    with tempfile.TemporaryDirectory(prefix="prc-release-smoke-") as temporary:
+    with tempfile.TemporaryDirectory(prefix="everylast-release-smoke-") as temporary:
         root = pathlib.Path(temporary)
         extracted = root / "native"
         extracted.mkdir()
         extract_archive(archive, extracted)
-        binary_name = "prc.exe" if goos == "windows" else "prc"
-        binary = extracted / f"prc_{version}_{goos}_{goarch}" / binary_name
+        binary_name = "everylast.exe" if goos == "windows" else "everylast"
+        binary = extracted / f"everylast_{version}_{goos}_{goarch}" / binary_name
         version_info = run_json([str(binary), "version", "--format", "json"], "native version check")
         if version_info.get("version") != version or version_info.get("revision") != commit:
             raise RuntimeError("native archive reports the wrong release identity")
@@ -242,7 +242,7 @@ def smoke(release: pathlib.Path, version: str, commit: str) -> None:
         )
         if install.returncode != 0:
             raise RuntimeError(f"offline npm tarball install failed: {(install.stderr or install.stdout)[:4_000]}")
-        launcher = npm_project / "node_modules" / "@marinjursic" / "prc" / "bin" / "prc.js"
+        launcher = npm_project / "node_modules" / "@marinjursic" / "everylast" / "bin" / "everylast.js"
         npm_version = run_json([node_executable, str(launcher), "version", "--format", "json"], "npm launcher version check")
         if npm_version.get("version") != version or npm_version.get("revision") != commit:
             raise RuntimeError("npm launcher reports the wrong release identity")

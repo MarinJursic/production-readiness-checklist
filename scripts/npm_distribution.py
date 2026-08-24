@@ -14,14 +14,14 @@ from typing import Any
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SCOPE = "@marinjursic"
-LAUNCHER_NAME = f"{SCOPE}/prc"
+LAUNCHER_NAME = f"{SCOPE}/everylast"
 PLATFORMS = {
-    ("darwin", "arm64"): ("darwin-arm64", f"{SCOPE}/prc-darwin-arm64", "darwin", "arm64"),
-    ("darwin", "amd64"): ("darwin-x64", f"{SCOPE}/prc-darwin-x64", "darwin", "x64"),
-    ("linux", "arm64"): ("linux-arm64", f"{SCOPE}/prc-linux-arm64", "linux", "arm64"),
-    ("linux", "amd64"): ("linux-x64", f"{SCOPE}/prc-linux-x64", "linux", "x64"),
-    ("windows", "arm64"): ("win32-arm64", f"{SCOPE}/prc-windows-arm64", "win32", "arm64"),
-    ("windows", "amd64"): ("win32-x64", f"{SCOPE}/prc-windows-x64", "win32", "x64"),
+    ("darwin", "arm64"): ("darwin-arm64", f"{SCOPE}/everylast-darwin-arm64", "darwin", "arm64"),
+    ("darwin", "amd64"): ("darwin-x64", f"{SCOPE}/everylast-darwin-x64", "darwin", "x64"),
+    ("linux", "arm64"): ("linux-arm64", f"{SCOPE}/everylast-linux-arm64", "linux", "arm64"),
+    ("linux", "amd64"): ("linux-x64", f"{SCOPE}/everylast-linux-x64", "linux", "x64"),
+    ("windows", "arm64"): ("win32-arm64", f"{SCOPE}/everylast-windows-arm64", "win32", "arm64"),
+    ("windows", "amd64"): ("win32-x64", f"{SCOPE}/everylast-windows-x64", "win32", "x64"),
 }
 
 
@@ -98,7 +98,7 @@ def build_packages(
     output: pathlib.Path,
 ) -> list[dict[str, Any]]:
     output.mkdir(mode=0o700)
-    launcher_path = ROOT / "npm" / "prc" / "bin" / "prc.js"
+    launcher_path = ROOT / "npm" / "prc" / "bin" / "everylast.js"
     launcher_readme_path = ROOT / "npm" / "prc" / "README.md"
     license_path = ROOT / "LICENSE"
     for source in (launcher_path, launcher_readme_path, license_path):
@@ -122,8 +122,8 @@ def build_packages(
         raise ValueError("npm launcher violates the no-shell, no-install-hook contract")
     license_data = license_path.read_bytes()
     platform_readme = (
-        "# Production Readiness Scanner native package\n\n"
-        "This internal platform package is installed automatically by `@marinjursic/prc`. "
+        "# Everylast native package\n\n"
+        "This internal platform package is installed automatically by `@marinjursic/everylast`. "
         "Install and invoke the launcher package instead of depending on this package directly.\n"
     ).encode("utf-8")
 
@@ -134,7 +134,7 @@ def build_packages(
         if binary_path is None or binary_path.is_symlink() or not binary_path.is_file():
             raise ValueError(f"missing regular release binary for {target[0]}/{target[1]}")
         binary = binary_path.read_bytes()
-        binary_name = "prc.exe" if target[0] == "windows" else "prc"
+        binary_name = "everylast.exe" if target[0] == "windows" else "everylast"
         manifest = {
             "schema_version": "prc.npm-platform/v0.1",
             "package_name": package_name,
@@ -146,7 +146,7 @@ def build_packages(
         }
         manifest_data = json_bytes(manifest)
         platform_bindings[key] = {"package_name": package_name, "manifest_sha256": sha256(manifest_data)}
-        metadata = common_metadata(package_name, version, f"Native {npm_os}/{npm_cpu} binary for the Production Readiness Scanner")
+        metadata = common_metadata(package_name, version, f"Native {npm_os}/{npm_cpu} binary for Everylast")
         metadata.update(
             {
                 "os": [npm_os],
@@ -167,12 +167,12 @@ def build_packages(
         artifacts.append(package_artifact(destination, package_name, "platform", npm_os, npm_cpu))
 
     optional_dependencies = {binding[1]: version for binding in PLATFORMS.values()}
-    launcher_metadata = common_metadata(LAUNCHER_NAME, version, "Safe launcher for the Production Readiness Scanner")
+    launcher_metadata = common_metadata(LAUNCHER_NAME, version, "Safe launcher for Everylast")
     launcher_metadata.update(
         {
             "type": "module",
-            "bin": {"prc": "bin/prc.js"},
-            "files": ["bin/prc.js", "platforms.json", "README.md", "LICENSE"],
+            "bin": {"everylast": "bin/everylast.js"},
+            "files": ["bin/everylast.js", "platforms.json", "README.md", "LICENSE"],
             "engines": {"node": ">=22.14.0"},
             "keywords": ["production-readiness", "scanner", "security", "checklist", "devops"],
             "optionalDependencies": dict(sorted(optional_dependencies.items())),
@@ -183,11 +183,11 @@ def build_packages(
         "version": version,
         "platforms": dict(sorted(platform_bindings.items())),
     }
-    readme = launcher_readme_path.read_text(encoding="utf-8").replace("@marinjursic/prc@VERSION", f"@marinjursic/prc@{version}")
+    readme = launcher_readme_path.read_text(encoding="utf-8").replace("@marinjursic/everylast@VERSION", f"@marinjursic/everylast@{version}")
     launcher_entries = [
         ("LICENSE", license_data, 0o644),
         ("README.md", readme.encode("utf-8"), 0o644),
-        ("bin/prc.js", launcher, 0o755),
+        ("bin/everylast.js", launcher, 0o755),
         ("package.json", json_bytes(launcher_metadata), 0o644),
         ("platforms.json", json_bytes(platforms), 0o644),
     ]

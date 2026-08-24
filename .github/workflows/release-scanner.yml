@@ -123,62 +123,62 @@ jobs:
         run: |
           go run github.com/CycloneDX/cyclonedx-gomod/cmd/cyclonedx-gomod@v1.10.0 \
             mod -json -noserial -notimestamp -short-purls \
-            -output "$RUNNER_TEMP/prc.cdx.json" .
+            -output "$RUNNER_TEMP/everylast.cdx.json" .
 
       - name: Build release twice and compare
         env:
-          PRC_VERSION: ${{ steps.metadata.outputs.version }}
-          PRC_BUILT_AT: ${{ steps.metadata.outputs.built_at }}
+          EVERYLAST_VERSION: ${{ steps.metadata.outputs.version }}
+          EVERYLAST_BUILT_AT: ${{ steps.metadata.outputs.built_at }}
         run: |
           python scripts/build_release.py \
-            --version "$PRC_VERSION" \
+            --version "$EVERYLAST_VERSION" \
             --commit "$GITHUB_SHA" \
-            --built-at "$PRC_BUILT_AT" \
-            --sbom "$RUNNER_TEMP/prc.cdx.json" \
+            --built-at "$EVERYLAST_BUILT_AT" \
+            --sbom "$RUNNER_TEMP/everylast.cdx.json" \
             --output "$RUNNER_TEMP/release-first"
           python scripts/build_release.py \
-            --version "$PRC_VERSION" \
+            --version "$EVERYLAST_VERSION" \
             --commit "$GITHUB_SHA" \
-            --built-at "$PRC_BUILT_AT" \
-            --sbom "$RUNNER_TEMP/prc.cdx.json" \
+            --built-at "$EVERYLAST_BUILT_AT" \
+            --sbom "$RUNNER_TEMP/everylast.cdx.json" \
             --output "$RUNNER_TEMP/release-second"
           diff --recursive --no-dereference "$RUNNER_TEMP/release-first" "$RUNNER_TEMP/release-second"
           mkdir "$RUNNER_TEMP/self-scan"
-          tar -xzf "$RUNNER_TEMP/release-first/prc_${PRC_VERSION}_linux_amd64.tar.gz" \
+          tar -xzf "$RUNNER_TEMP/release-first/everylast_${EVERYLAST_VERSION}_linux_amd64.tar.gz" \
             -C "$RUNNER_TEMP/self-scan"
-          release_root="$RUNNER_TEMP/self-scan/prc_${PRC_VERSION}_linux_amd64"
-          "$release_root/prc" scan \
+          release_root="$RUNNER_TEMP/self-scan/everylast_${EVERYLAST_VERSION}_linux_amd64"
+          "$release_root/everylast" scan \
             --target . \
             --catalog-root "$release_root" \
             --format json \
             --no-report \
             --exit-policy never \
-            > "$RUNNER_TEMP/release-first/prc_${PRC_VERSION}_self-scan.json"
+            > "$RUNNER_TEMP/release-first/everylast_${EVERYLAST_VERSION}_self-scan.json"
           python scripts/validate_instance.py run-result.schema.json \
-            "$RUNNER_TEMP/release-first/prc_${PRC_VERSION}_self-scan.json"
+            "$RUNNER_TEMP/release-first/everylast_${EVERYLAST_VERSION}_self-scan.json"
           python -c 'import json,os,sys; d=json.load(open(sys.argv[1], encoding="utf-8")); assert d["inventory"]["git_commit"]==os.environ["GITHUB_SHA"] and d["plan"]["target_commit"]==os.environ["GITHUB_SHA"] and len(d["control_results"])==10042' \
-            "$RUNNER_TEMP/release-first/prc_${PRC_VERSION}_self-scan.json"
+            "$RUNNER_TEMP/release-first/everylast_${EVERYLAST_VERSION}_self-scan.json"
           python -c 'import pathlib,sys; from scripts.build_release import write_checksums; write_checksums(pathlib.Path(sys.argv[1]))' \
             "$RUNNER_TEMP/release-first"
           mv "$RUNNER_TEMP/release-first" release
 
       - name: Verify release contracts and checksums
         env:
-          PRC_VERSION: ${{ steps.metadata.outputs.version }}
+          EVERYLAST_VERSION: ${{ steps.metadata.outputs.version }}
         run: |
           python scripts/validate_instance.py \
             release-manifest.schema.json \
-            "release/prc_${PRC_VERSION}_release-manifest.json"
+            "release/everylast_${EVERYLAST_VERSION}_release-manifest.json"
           python -c 'import json,sys; d=json.load(open(sys.argv[1], encoding="utf-8")); assert d["bomFormat"]=="CycloneDX" and d["specVersion"]=="1.6" and "serialNumber" not in d and "timestamp" not in d["metadata"]' \
-            "release/prc_${PRC_VERSION}.cdx.json"
+            "release/everylast_${EVERYLAST_VERSION}.cdx.json"
           python scripts/validate_instance.py run-result.schema.json \
-            "release/prc_${PRC_VERSION}_self-scan.json"
+            "release/everylast_${EVERYLAST_VERSION}_self-scan.json"
           (cd release && sha256sum --check SHA256SUMS)
 
       - name: Upload exact release for native smoke tests
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: prc-release-${{ github.sha }}
+          name: everylast-release-${{ github.sha }}
           path: release/
           if-no-files-found: error
           compression-level: 0
@@ -223,7 +223,7 @@ jobs:
       - name: Download the exact release
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
-          name: prc-release-${{ github.sha }}
+          name: everylast-release-${{ github.sha }}
           path: release
 
       - name: Run native archive and npm launcher
@@ -260,14 +260,14 @@ jobs:
       - name: Download the exact tested release
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
-          name: prc-release-${{ github.sha }}
+          name: everylast-release-${{ github.sha }}
           path: release
 
       - name: Recheck release checksums
         run: |
           (cd release && sha256sum --check SHA256SUMS)
           python scripts/validate_instance.py release-manifest.schema.json \
-            "release/prc_${{ needs.build.outputs.version }}_release-manifest.json"
+            "release/everylast_${{ needs.build.outputs.version }}_release-manifest.json"
 
       - name: Prepare SBOM attestation subjects
         run: |
@@ -284,19 +284,19 @@ jobs:
         uses: actions/attest@508db95dd578ae2727ebd6217d5ba78e4fbda05d # v4.2.1
         with:
           subject-checksums: ${{ runner.temp }}/release-archive-checksums
-          sbom-path: release/prc_${{ needs.build.outputs.version }}.cdx.json
+          sbom-path: release/everylast_${{ needs.build.outputs.version }}.cdx.json
 
       - name: Publish npm packages with trusted publishing
         run: >-
           python scripts/publish_npm.py
           --release release
-          --manifest "release/prc_${{ needs.build.outputs.version }}_release-manifest.json"
+          --manifest "release/everylast_${{ needs.build.outputs.version }}_release-manifest.json"
           --version "${{ needs.build.outputs.version }}"
 
       - name: Publish scanner release assets
         uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228 # v3.0.2
         with:
-          name: Production Readiness Scanner ${{ needs.build.outputs.version }}
+          name: Everylast ${{ needs.build.outputs.version }}
           files: release/*
           fail_on_unmatched_files: true
           generate_release_notes: true

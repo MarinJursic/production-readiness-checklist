@@ -16,13 +16,13 @@ docker pull docker.io/bridgecrew/checkov@sha256:c64ffb6d6fc8087c896341a2c697770a
 Run the profile with an explicit local-verification capability grant:
 
 ```bash
-./prc scan /path/to/project \
+./everylast scan /path/to/project \
   --profile prc/iac \
   --mode verify-local \
   --adapter-manifest adapters/checkov-v3.3.8.yaml
 ```
 
-The ordinary `prc scan` command does not launch Checkov or any other external
+The ordinary `everylast scan` command does not launch Checkov or any other external
 analyzer. The `verify-local` mode and exact manifest are both required.
 
 ## What is evaluated
@@ -60,5 +60,5 @@ The adapter:
 
 A verified policy violation becomes a canonical finding in the detailed HTML
 report. Unsupported files, ambiguous outcomes, parser failures, and safety
-violations never become a pass. `prc scan` still does not modify Terraform,
+violations never become a pass. `everylast scan` still does not modify Terraform,
 Kubernetes, Dockerfiles, cloud resources, clusters, or any other target.

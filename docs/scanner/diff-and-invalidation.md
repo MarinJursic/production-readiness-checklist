@@ -1,11 +1,11 @@
 # Diff-aware evidence invalidation
 
-`prc diff` compares a canonical prior run with a freshly inventoried target and
+`everylast diff` compares a canonical prior run with a freshly inventoried target and
 answers a narrower question than `scan`: which prior conclusions had relevant
 inputs changed?
 
 ```bash
-./prc diff \
+./everylast diff \
   --state-dir /safe/local/path/prc-state \
   --base-run <run-id> \
   --target /path/to/project \
@@ -29,7 +29,7 @@ The scanner deliberately distinguishes input equivalence from evidence reuse.
 Repository evidence is bound to the complete inventory digest. If an unrelated
 file changes, an assertion may be `unchanged_inputs` while `reuse_allowed` is
 false and `fresh_evaluation_required` is true: its old evidence still names the
-old target. `prc diff` does not manufacture a new evidence envelope or relabel a
+old target. `everylast diff` does not manufacture a new evidence envelope or relabel a
 prior Pass.
 
 Reuse is permitted only when the current inventory and plan identities exactly
@@ -73,7 +73,7 @@ fresh work than necessary, but it cannot preserve a stale Pass due to an
 unrecognized dependency. Adapter and manual-evidence assertions also require
 freshness proof instead of being inferred from a filename diff.
 
-`prc diff` is an analysis and planning command. `prc scan` still evaluates the
+`everylast diff` is an analysis and planning command. `everylast scan` still evaluates the
 current target afresh; automatic cache reuse is intentionally deferred until a
 future evidence-rebinding protocol can preserve subject identity and validity
 without weakening the trust model.

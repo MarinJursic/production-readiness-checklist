@@ -49,7 +49,7 @@ a database built more than 120 hours earlier. Refresh it before that boundary.
 ```bash
 mkdir -m 0700 /safe/path/prc-state
 
-prc scan \
+everylast scan \
   --target PATH \
   --catalog-root PATH_TO_RELEASE \
   --profile prc/supply-chain \

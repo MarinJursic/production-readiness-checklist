@@ -112,6 +112,7 @@ func BuildPlan(name, executable, workspace, outputDirectory, schemaPath string, 
 		}
 		plan.Arguments = []string{
 			"exec", "--ignore-user-config", "--strict-config", "--ephemeral",
+			"-c", `cli_auth_credentials_store="file"`,
 			"--sandbox", "read-only", "-c", `approval_policy="never"`,
 			"-c", `shell_environment_policy.inherit="none"`,
 			"-c", `features.shell_tool=false`, "-c", `features.multi_agent=false`,

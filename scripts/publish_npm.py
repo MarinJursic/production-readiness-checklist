@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify and publish one PRC npm release with npm trusted publishing."""
+"""Verify and publish one Everylast npm release with npm trusted publishing."""
 
 from __future__ import annotations
 
@@ -52,7 +52,7 @@ def default_run(command: list[str]) -> subprocess.CompletedProcess[str]:
     }
     # Do not let a saved user/global npm token or repository .npmrc influence
     # trusted publishing. GitHub's OIDC request variables remain available.
-    with tempfile.TemporaryDirectory(prefix="prc-npm-publish-") as directory:
+    with tempfile.TemporaryDirectory(prefix="everylast-npm-publish-") as directory:
         for filename, variable in (("user.npmrc", "NPM_CONFIG_USERCONFIG"), ("global.npmrc", "NPM_CONFIG_GLOBALCONFIG")):
             path = pathlib.Path(directory, filename)
             path.touch(mode=0o600, exist_ok=False)
@@ -185,8 +185,8 @@ def load_packages(release: pathlib.Path, manifest_path: pathlib.Path, version: s
         raise ValueError("release manifest must be valid UTF-8 JSON") from error
     if (
         not isinstance(manifest, dict)
-        or manifest.get("schema_version") != "prc.release-manifest/v0.2"
-        or manifest.get("product") != "prc-scanner"
+        or manifest.get("schema_version") != "prc.release-manifest/v0.3"
+        or manifest.get("product") != "everylast"
         or manifest.get("version") != version
     ):
         raise ValueError("release manifest identity does not match the requested npm release")

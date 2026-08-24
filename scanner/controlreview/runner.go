@@ -163,6 +163,7 @@ func (runner *cliRunner) buildPlan(directory string, task Task) (LaunchPlan, err
 		plan.Arguments = append(plan.Arguments,
 			"-c", `model_reasoning_effort="`+runner.options.ReasoningEffort+`"`,
 			"--ignore-user-config", "--strict-config", "--ephemeral",
+			"-c", `cli_auth_credentials_store="file"`,
 			"--sandbox", "read-only", "-c", `approval_policy="never"`,
 			"-c", `shell_environment_policy.inherit="none"`,
 			"-c", `features.shell_tool=false`, "-c", `features.multi_agent=true`,

@@ -1,6 +1,6 @@
 # Safe AI review of all controls
 
-`prc scan` always puts all 10,042 controls in the report. By default it checks
+`everylast scan` always puts all 10,042 controls in the report. By default it checks
 only facts that the local scanner can prove safely. Broad questions stay
 `needs_review` instead of being guessed.
 
@@ -15,44 +15,54 @@ Install one supported command-line tool:
 - `codex` for Codex; or
 - `claude` for Claude Code.
 
-The scanner does not load the tool's saved interactive login. Supply an explicit
-credential only for the review process:
+Sign in once through PRC. This launches the provider's official login flow but
+stores its credentials in a private Everylast-only directory:
 
 ```bash
-# Codex: choose one supported credential variable.
-export OPENAI_API_KEY='your-provider-key'
-# or: export CODEX_API_KEY='your-provider-key'
+everylast login codex
+# or: everylast login claude
 
-# Claude: choose one supported credential variable.
-export ANTHROPIC_API_KEY='your-provider-key'
-# or use ANTHROPIC_AUTH_TOKEN or CLAUDE_CODE_OAUTH_TOKEN.
+everylast auth
 ```
 
-The provider starts with a new private home and configuration directory. Only
-the selected credential plus a small runtime allowlist reaches the child
-process; saved sessions, project instructions, user settings, plugins, MCP
-servers, and normal shell environment variables are not inherited. Remove the
-temporary variable from your shell when the review is done.
+PRC does not reuse the provider's normal user configuration, sessions,
+instructions, plugins, hooks, or MCP servers. A scan uses the Everylast-only login
+with a fresh temporary home and a small runtime environment allowlist. Use
+`everylast logout codex` or `everylast logout claude` to remove the saved Everylast login.
+
+Supported API-key environment variables remain an alternative: Codex accepts
+`OPENAI_API_KEY` or `CODEX_API_KEY`; Claude accepts `ANTHROPIC_API_KEY`,
+`ANTHROPIC_AUTH_TOKEN`, or `CLAUDE_CODE_OAUTH_TOKEN`. Only the selected
+credential is forwarded. Remove a temporary variable from the shell after use.
 
 AI review can send source excerpts to a remote model and can cost money. Read
-the provider's data and billing rules first. The scanner requires
-`--allow-remote-source-processing` so this cannot happen by accident.
+the provider's data and billing rules first. The short `--ai` option is explicit
+permission for screened source processing. The advanced form requires the
+separate `--allow-remote-source-processing` switch.
 
 ## Try one control first
 
-Run a normal scan plus one advisory Codex review:
+The shortest full-review command is:
 
 ```bash
-prc scan /path/to/project \
+everylast full codex
+```
+
+Use `everylast full claude` for Claude Code. `everylast scan --ai codex|claude` remains an
+equivalent advanced-friendly spelling. To test only one control first, use the
+advanced form:
+
+```bash
+everylast scan /path/to/project \
   --review-provider codex \
   --review-control PRC-02-001 \
   --allow-remote-source-processing
 ```
 
-For Claude Code:
+For Claude Code, replace the provider name:
 
 ```bash
-prc scan /path/to/project \
+everylast scan /path/to/project \
   --review-provider claude \
   --review-control PRC-02-001 \
   --allow-remote-source-processing
@@ -65,26 +75,31 @@ normal scanner state is still present. The AI section separately shows:
 - whether it thinks the rule applies;
 - confidence;
 - reason and advice;
-- exact excerpt lines it used; and
+- exact excerpt lines it used;
+- separate citation-location and claim verification states; and
 - what it could not prove.
+
+`snapshot_location_validated` means the path and line existed in the exact
+screened snapshot bound to the task. It does not mean the line supports the AI
+sentence. The claim therefore remains `advisory_unverified` until an independent
+typed verifier or a qualified person proves it.
 
 ## Review all 10,042 controls
 
-Remove `--review-control`:
+The short commands review all active controls:
 
 ```bash
-prc scan /path/to/project \
-  --review-provider codex \
-  --review-effort xhigh \
-  --allow-remote-source-processing
+everylast full codex
+everylast full claude
 ```
 
-The Claude form uses `high` effort:
+Use the advanced form only when changing defaults, for example Codex `xhigh`
+effort:
 
 ```bash
-prc scan /path/to/project \
-  --review-provider claude \
-  --review-effort high \
+everylast scan /path/to/project \
+  --review-provider codex \
+  --review-effort xhigh \
   --allow-remote-source-processing
 ```
 
@@ -163,6 +178,7 @@ language, build system, size, boundaries, and conventions.
 
 | Option | Default | Meaning |
 | --- | ---: | --- |
+| `--ai` | off | Short form: choose `codex` or `claude` and explicitly allow screened remote processing. |
 | `--review-provider` | `none` | Choose `codex` or `claude`. No AI starts by default. |
 | `--review-control ID` | all active | Review one named control; repeat for a small test set. |
 | `--review-batch-size` | `8` | Provider calls contain 1–8 controls; every control still gets its own subagent. |

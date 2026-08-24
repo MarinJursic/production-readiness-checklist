@@ -66,6 +66,8 @@ type AIControlReview struct {
 	Advice                 string            `json:"advice"`
 	Evidence               []FindingLocation `json:"evidence"`
 	Limitations            []string          `json:"limitations"`
+	CitationVerification   string            `json:"citation_verification,omitempty"`
+	ClaimVerification      string            `json:"claim_verification,omitempty"`
 	TaskID                 string            `json:"task_id"`
 }
 

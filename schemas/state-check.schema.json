@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/state-check.schema.json",
-  "title": "Production Readiness Scanner State Check v0.2",
+  "title": "Everylast State Check v0.2",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_version", "checked_at", "state_path", "integrity", "counts"],

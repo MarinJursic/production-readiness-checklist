@@ -88,7 +88,9 @@ func TestApplyReviewsControlsWithoutChangingAuthoritativeDispositionAndResumes(t
 		t.Fatalf("review identity or summary was not updated: %+v", reviewed.ControlCatalog)
 	}
 	for index, result := range reviewed.ControlResults {
-		if result.Disposition != run.ControlResults[index].Disposition || result.AIReview == nil || result.AIReview.AssessmentCandidate != "needs_evidence" {
+		if result.Disposition != run.ControlResults[index].Disposition || result.AIReview == nil ||
+			result.AIReview.AssessmentCandidate != "needs_evidence" || result.AIReview.CitationVerification != "not_cited" ||
+			result.AIReview.ClaimVerification != "advisory_unverified" {
 			t.Fatalf("review changed authority or was omitted: %+v", result)
 		}
 	}
@@ -108,6 +110,21 @@ func TestApplyReviewsControlsWithoutChangingAuthoritativeDispositionAndResumes(t
 		if statErr != nil || info.Mode().Perm() != 0o600 {
 			t.Fatalf("cache mode=%v err=%v", info.Mode().Perm(), statErr)
 		}
+	}
+}
+
+func TestCitationLocationValidationNeverClaimsSemanticSupport(t *testing.T) {
+	if got := citationVerification(nil); got != "not_cited" {
+		t.Fatalf("uncited review status = %q", got)
+	}
+	// The referenced line is real but intentionally irrelevant to the claim.
+	// Location validation must never be named or treated as semantic proof.
+	locations := []model.FindingLocation{{Path: "README.md", Line: 1}}
+	if got := citationVerification(locations); got != "snapshot_location_validated" {
+		t.Fatalf("cited review status = %q", got)
+	}
+	if citationVerification(locations) == "claim_verified" {
+		t.Fatal("a real but irrelevant citation was treated as claim verification")
 	}
 }
 
@@ -161,7 +178,7 @@ func TestProviderPlansExposeOnlySubagentOrchestration(t *testing.T) {
 			}
 			arguments := strings.Join(plan.Arguments, " ")
 			if providerName == "codex" {
-				for _, required := range []string{"features.multi_agent=true", "features.shell_tool=false", `mcp_servers={}`, "web_search=\"disabled\"", "--sandbox read-only", "approval_policy=\"never\"", "--ephemeral"} {
+				for _, required := range []string{"features.multi_agent=true", "features.shell_tool=false", `mcp_servers={}`, "web_search=\"disabled\"", "--sandbox read-only", "approval_policy=\"never\"", "cli_auth_credentials_store=\"file\"", "--ephemeral"} {
 					if !strings.Contains(arguments, required) {
 						t.Fatalf("Codex plan omitted %q: %s", required, arguments)
 					}

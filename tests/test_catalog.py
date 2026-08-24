@@ -26,6 +26,7 @@ class CatalogValidationTests(unittest.TestCase):
                 "prc/core-repository",
                 "prc/iac",
                 "prc/kubernetes",
+                "prc/quick",
                 "prc/supply-chain",
             ],
         )

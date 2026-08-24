@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/history.schema.json",
-  "title": "Production Readiness Scanner Run History v0.1",
+  "title": "Everylast Run History v0.1",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_version", "generated_at", "state_path", "runs"],

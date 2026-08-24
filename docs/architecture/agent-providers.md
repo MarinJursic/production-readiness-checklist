@@ -37,11 +37,13 @@ Both launch plans require:
 - filtered process environments that exclude unrelated credentials such as
   cloud, repository, and deployment tokens.
 
-Saved interactive sessions are not loaded. Codex requires an explicit
-`OPENAI_API_KEY` or `CODEX_API_KEY`; Claude requires `ANTHROPIC_API_KEY`,
-`ANTHROPIC_AUTH_TOKEN`, or `CLAUDE_CODE_OAUTH_TOKEN`. Each execution gets a new
-private home and provider configuration directory. Only the chosen credential,
-basic locale/path variables, and scanner-owned overrides reach the process.
+Everylast can reuse only a login created by `everylast login codex` or `everylast login claude`.
+Those commands call the provider's official authentication flow with a private
+Everylast credential directory. They do not reuse the provider's normal user
+configuration, sessions, instructions, plugins, hooks, or MCP servers. Supported
+API-key environment variables remain an alternative. Each scan still gets a
+new private home; only the selected credential, basic runtime variables, and
+scanner-owned overrides reach the process.
 
 Codex runs from the private output directory with ignored user configuration,
 strict configuration, ephemeral sessions, the read-only sandbox, approval policy
@@ -59,7 +61,7 @@ These command flags cannot contain a malicious local executable. A replaced or
 compromised `codex` or `claude` program runs as the current operating-system
 user and could ignore every argument before the scanner detects the changed
 digest. Install the CLI from its official source, keep it updated, inspect the
-resolved path and digest with `prc doctor`, and use a separate OS account or
+resolved path and digest with `everylast doctor`, and use a separate OS account or
 strong external sandbox when the host contains secrets the CLI must never see.
 The scanner also stops when it can see local Claude managed settings that may
 force hooks, plugins, or MCP configuration, but it cannot inspect every policy
@@ -81,7 +83,7 @@ candidate workspace. An agent proposal remains untrusted data. The
 scanner-owned [`remediate-proposal`](../scanner/remediation.md#apply-one-validated-r2-proposal)
 path can explicitly parse one validated proposal into a fresh isolated
 candidate and run deterministic acceptance checks; the provider does not apply
-or approve that result. The bounded `prc fix --provider` path composes those
+or approve that result. The bounded `everylast fix --provider` path composes those
 same two stages only for a scanner-planned missing-test task.
 
 ## Create and seal a task
@@ -94,7 +96,7 @@ allowlists, and make the remote-processing decision explicit. Seal it without
 modifying the draft:
 
 ```bash
-./prc provider seal-task \
+./everylast provider seal-task \
   --file /path/to/draft-task.json \
   --workspace /path/to/project \
   --config /path/to/project/production-readiness.yaml \
@@ -130,7 +132,7 @@ capabilities before any provider call:
 install -d -m 700 /safe/path/provider-output
 export OPENAI_API_KEY='your-provider-key'
 
-./prc provider plan \
+./everylast provider plan \
   --provider codex \
   --task /safe/path/task.json \
   --workspace /path/to/project \
@@ -147,7 +149,7 @@ incur provider charges. It should be called only after the operator reviews the
 task's remote-source acknowledgement and launch plan.
 
 ```bash
-./prc provider run \
+./everylast provider run \
   --provider codex \
   --task /safe/path/task.json \
   --workspace /path/to/project \
@@ -166,7 +168,7 @@ metadata. Treat transcripts as sensitive source-derived evidence.
 Golden and adversarial provider outputs can be checked independently:
 
 ```bash
-./prc provider validate-output \
+./everylast provider validate-output \
   --provider codex \
   --task fixtures/providers/suggest-task.json \
   --file fixtures/providers/valid-output.json

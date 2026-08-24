@@ -1,36 +1,45 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 280" role="img" aria-labelledby="title desc">
-  <title id="title">Production Readiness Checklist</title>
-  <desc id="desc">A checklist shield beside the words ship with evidence, not optimism.</desc>
+  <title id="title">Everylast</title>
+  <desc id="desc">Know what's left before you ship.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#111827"/>
-      <stop offset="0.55" stop-color="#312e81"/>
-      <stop offset="1" stop-color="#115e59"/>
+      <stop offset="0" stop-color="#0b1020"/>
+      <stop offset="0.55" stop-color="#2e1065"/>
+      <stop offset="1" stop-color="#134e4a"/>
     </linearGradient>
-    <linearGradient id="mark" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="trail" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="#818cf8"/>
-      <stop offset="1" stop-color="#2dd4bf"/>
+      <stop offset="1" stop-color="#c4b5fd"/>
     </linearGradient>
     <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-opacity=".25"/>
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-opacity=".3"/>
     </filter>
   </defs>
   <rect width="1200" height="280" rx="24" fill="url(#bg)"/>
-  <circle cx="1120" cy="25" r="150" fill="#fff" opacity=".035"/>
-  <circle cx="1060" cy="270" r="110" fill="#2dd4bf" opacity=".07"/>
-  <circle cx="90" cy="250" r="125" fill="#818cf8" opacity=".06"/>
-  <g transform="translate(92 58)" filter="url(#shadow)">
-    <path d="M82 0 154 26v51c0 44-27 75-72 91C37 152 10 121 10 77V26L82 0Z" fill="url(#mark)"/>
-    <path d="m46 82 24 24 50-56" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="1125" cy="15" r="155" fill="#fff" opacity=".035"/>
+  <circle cx="1080" cy="285" r="120" fill="#5eead4" opacity=".06"/>
+  <circle cx="75" cy="260" r="125" fill="#818cf8" opacity=".07"/>
+  <g transform="translate(70 67)" filter="url(#shadow)">
+    <rect width="208" height="146" rx="38" fill="#111827" stroke="#8b5cf6" stroke-width="3"/>
+    <path d="M34 73h105" fill="none" stroke="url(#trail)" stroke-width="5" stroke-linecap="round" opacity=".8"/>
+    <g fill="#e0e7ff">
+      <circle cx="38" cy="73" r="8"/>
+      <circle cx="64" cy="73" r="8"/>
+      <circle cx="90" cy="73" r="8"/>
+      <circle cx="116" cy="73" r="8"/>
+      <circle cx="142" cy="73" r="8"/>
+    </g>
+    <path d="m151 75 13 13 26-33" fill="none" stroke="#5eead4" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <text x="300" y="111" fill="#fff" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="50" font-weight="750" letter-spacing="-1.5">Production Readiness Checklist</text>
-  <text x="302" y="164" fill="#ccfbf1" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="25" font-weight="500">Ship with evidence, not optimism.</text>
-  <g transform="translate(302 194)" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="16" font-weight="600">
-    <rect width="150" height="36" rx="18" fill="#fff" opacity=".12"/>
-    <text x="20" y="24" fill="#e0e7ff">10,042 controls</text>
-    <rect x="165" width="178" height="36" rx="18" fill="#fff" opacity=".12"/>
-    <text x="185" y="24" fill="#ccfbf1">16 lifecycle phases</text>
-    <rect x="358" width="154" height="36" rx="18" fill="#fff" opacity=".12"/>
-    <text x="378" y="24" fill="#e0e7ff">AI-compatible</text>
+  <text x="330" y="93" fill="#a7f3d0" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="18" font-weight="750" letter-spacing="3.2">OPEN-SOURCE PROJECT SCANNER</text>
+  <text x="326" y="157" fill="#fff" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="62" font-weight="820" letter-spacing="-2">Everylast</text>
+  <text x="330" y="199" fill="#ddd6fe" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="25" font-weight="500">Know what's left before you ship.</text>
+  <g transform="translate(330 222)" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="700">
+    <rect width="146" height="34" rx="17" fill="#fff" opacity=".12"/>
+    <text x="19" y="23" fill="#e0e7ff">10,042 controls</text>
+    <rect x="160" width="171" height="34" rx="17" fill="#fff" opacity=".12"/>
+    <text x="179" y="23" fill="#ccfbf1">scan-only by default</text>
+    <rect x="345" width="154" height="34" rx="17" fill="#fff" opacity=".12"/>
+    <text x="364" y="23" fill="#e0e7ff">Codex + Claude</text>
   </g>
 </svg>

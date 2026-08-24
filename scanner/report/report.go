@@ -9,6 +9,7 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 )
@@ -62,6 +63,56 @@ func controlDispositionCounts(results []model.ControlResult) [][2]string {
 	return values
 }
 
+// resultMeaning keeps unlike kinds of evidence separate. A deterministic
+// assertion pass is narrower than a complete-control pass, while an AI review
+// remains advice even when its citation points to a real snapshot line.
+type resultMeaning struct {
+	VerifiedProblems      int
+	NarrowChecksPassed    int
+	LocalChecksUnresolved int
+	ManualDecisions       int
+	ControlsNeedingReview int
+	AIAdvice              int
+}
+
+func summarizeMeaning(run model.RunResult) resultMeaning {
+	summary := resultMeaning{VerifiedProblems: len(run.Findings)}
+	for _, result := range run.Results {
+		switch result.Assessment {
+		case "pass":
+			summary.NarrowChecksPassed++
+		case "manual_review":
+			summary.ManualDecisions++
+		case "unknown", "stale", "conflicting":
+			summary.LocalChecksUnresolved++
+		}
+	}
+	for _, result := range run.ControlResults {
+		if result.Disposition == "needs_review" || result.Disposition == "blocked" {
+			summary.ControlsNeedingReview++
+		}
+		if result.AIReview != nil {
+			summary.AIAdvice++
+		}
+	}
+	return summary
+}
+
+func advisoryVerificationText(review *model.AIControlReview) string {
+	if review == nil {
+		return "—"
+	}
+	citation := review.CitationVerification
+	if citation == "" { // A readable label for archived v0.12 run records.
+		citation = "legacy_unrecorded"
+	}
+	claim := review.ClaimVerification
+	if claim == "" {
+		claim = "legacy_unrecorded"
+	}
+	return "citation=" + citation + "; claim=" + claim
+}
+
 func markdownCell(value string) string {
 	value = strings.ReplaceAll(value, "\\", "\\\\")
 	value = strings.ReplaceAll(value, "|", "\\|")
@@ -81,6 +132,7 @@ func advisoryLocationText(locations []model.FindingLocation) string {
 }
 
 func writeMarkdown(output io.Writer, run model.RunResult) error {
+	meaning := summarizeMeaning(run)
 	profileState := run.TerminalState
 	if run.ControlCatalog != nil && run.ControlCatalog.ProfileTerminalState != "" {
 		profileState = run.ControlCatalog.ProfileTerminalState
@@ -99,6 +151,18 @@ func writeMarkdown(output io.Writer, run model.RunResult) error {
 			markdownCell(strings.Join(run.Plan.ArtifactDigests, ", "))); err != nil {
 			return err
 		}
+	}
+	if _, err := fmt.Fprintf(output,
+		"## What the result means\n\n| Kind | Count | Meaning |\n| --- | ---: | --- |\n"+
+			"| Verified problems | %d | Narrow failures backed by scanner evidence. |\n"+
+			"| Narrow checks passed | %d | Exact local assertions that passed; not whole-control certification. |\n"+
+			"| Local checks unresolved | %d | Local assertions that still lack usable evidence or conflict. |\n"+
+			"| Manual decisions | %d | Assertions that require a person or higher-authority evidence. |\n"+
+			"| Controls still needing review or evidence | %d | Broad controls not proved by the selected local profile. |\n"+
+			"| Advisory AI reviews | %d | Suggestions only; never verified Pass or final Not Applicable. |\n\n",
+		meaning.VerifiedProblems, meaning.NarrowChecksPassed, meaning.LocalChecksUnresolved,
+		meaning.ManualDecisions, meaning.ControlsNeedingReview, meaning.AIAdvice); err != nil {
+		return err
 	}
 	if _, err := fmt.Fprintln(output, "## Result counts\n\n| Assessment | Count |\n| --- | ---: |"); err != nil {
 		return err
@@ -133,22 +197,23 @@ func writeMarkdown(output io.Writer, run model.RunResult) error {
 				return err
 			}
 		}
-		if _, err := fmt.Fprintln(output, "\n### Every registered control\n\n| Disposition | Control | Coverage | Authority | Statement | Source | Assertions | AI candidate | AI reason and advice | AI evidence | AI limitations |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |"); err != nil {
+		if _, err := fmt.Fprintln(output, "\n### Every registered control\n\n| Disposition | Control | Coverage | Authority | Statement | Source | Assertions | AI candidate | AI reason and advice | AI citation locations | AI verification | AI limitations |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |"); err != nil {
 			return err
 		}
 		for _, result := range run.ControlResults {
-			aiCandidate, aiReason, aiEvidence, aiLimitations := "—", "—", "—", "—"
+			aiCandidate, aiReason, aiEvidence, aiVerification, aiLimitations := "—", "—", "—", "—", "—"
 			if result.AIReview != nil {
 				aiCandidate = result.AIReview.AssessmentCandidate + " / " + result.AIReview.ApplicabilityCandidate + " / " + result.AIReview.Confidence
 				aiReason = result.AIReview.Reason + " " + result.AIReview.Advice
 				aiEvidence = advisoryLocationText(result.AIReview.Evidence)
+				aiVerification = advisoryVerificationText(result.AIReview)
 				aiLimitations = strings.Join(result.AIReview.Limitations, "; ")
 			}
-			if _, err := fmt.Fprintf(output, "| %s | `%s` | %s | %s | %s | `%s:%d` | %s | %s | %s | %s | %s |\n",
+			if _, err := fmt.Fprintf(output, "| %s | `%s` | %s | %s | %s | `%s:%d` | %s | %s | %s | %s | %s | %s |\n",
 				result.Disposition, result.ControlID, result.Coverage, result.Authority,
 				markdownCell(result.Statement), result.Source.Path, result.Source.Line,
 				markdownCell(strings.Join(result.ExecutedAssertionIDs, ", ")), markdownCell(aiCandidate),
-				markdownCell(aiReason), markdownCell(aiEvidence), markdownCell(aiLimitations)); err != nil {
+				markdownCell(aiReason), markdownCell(aiEvidence), markdownCell(aiVerification), markdownCell(aiLimitations)); err != nil {
 				return err
 			}
 		}
@@ -297,7 +362,7 @@ func writeSARIF(output io.Writer, run model.RunResult) error {
 	log := sarifLog{
 		Version: "2.1.0", Schema: "https://json.schemastore.org/sarif-2.1.0.json",
 		Runs: []sarifRun{{
-			Tool:    sarifTool{Driver: sarifDriver{Name: "Production Readiness Scanner", InformationURI: "https://marinjursic.github.io/production-readiness-checklist/", Rules: rules}},
+			Tool:    sarifTool{Driver: sarifDriver{Name: "Everylast", InformationURI: "https://marinjursic.github.io/production-readiness-checklist/", Rules: rules}},
 			Results: results,
 			Properties: map[string]string{
 				"run_id": run.RunID, "profile": run.Plan.ProfileID + "@" + run.Plan.ProfileVersion,
@@ -440,6 +505,15 @@ const htmlReport = `<!doctype html>
     <p class="notice"><strong>Report-only scan:</strong> this command assessed the project and did not apply fixes. Results are scoped to the profile, target inventory, and evidence named above.</p>
     <h2>Assessment summary</h2>
     <ul class="counts">{{range .Counts}}<li><strong>{{index . 0}}</strong>: {{index . 1}}</li>{{end}}<li><strong>findings</strong>: {{len .Run.Findings}}</li></ul>
+	<h2>What the result means</h2>
+	<ul class="counts">
+	  <li><strong>Verified problems</strong>: {{.Meaning.VerifiedProblems}}<br><span class="meta">Narrow failures backed by scanner evidence.</span></li>
+	  <li><strong>Narrow checks passed</strong>: {{.Meaning.NarrowChecksPassed}}<br><span class="meta">Exact local assertions, not whole-control certification.</span></li>
+	  <li><strong>Local checks unresolved</strong>: {{.Meaning.LocalChecksUnresolved}}<br><span class="meta">Missing or conflicting local evidence.</span></li>
+	  <li><strong>Manual decisions</strong>: {{.Meaning.ManualDecisions}}<br><span class="meta">A person or higher-authority evidence is required.</span></li>
+	  <li><strong>Controls needing review or evidence</strong>: {{.Meaning.ControlsNeedingReview}}<br><span class="meta">Broad controls not proved by this local profile.</span></li>
+	  <li><strong>Advisory AI reviews</strong>: {{.Meaning.AIAdvice}}<br><span class="meta">Suggestions only.</span></li>
+	</ul>
 	{{if .Run.ControlCatalog}}<h2>Complete control catalog</h2>
 	<p class="notice"><strong>All {{.Run.ControlCatalog.ControlCount}} registered controls are included.</strong> Deterministic assertions prove only their exact, narrow statements. A <code>partially_verified</code> result is not a complete Pass, and an AI review is advisory only.</p>
 	<dl>
@@ -464,7 +538,8 @@ const htmlReport = `<!doctype html>
 	    <dt>All known assertions</dt><dd>{{if .AssertionIDs}}<code>{{join .AssertionIDs}}</code>{{else}}None yet.{{end}}</dd>
 	    <dt>Assertions executed in this profile</dt><dd>{{if .ExecutedAssertionIDs}}<code>{{join .ExecutedAssertionIDs}}</code>{{else}}None.{{end}}</dd>
 	    {{if .AIReview}}<dt>Advisory AI review</dt><dd><strong>{{.AIReview.Provider}}{{if .AIReview.Model}} / {{.AIReview.Model}}{{end}}</strong>: {{.AIReview.AssessmentCandidate}} / {{.AIReview.ApplicabilityCandidate}} / confidence {{.AIReview.Confidence}}. {{.AIReview.Reason}} {{.AIReview.Advice}} This cannot create a verified Pass.</dd>
-	    <dt>AI-cited evidence</dt><dd>{{if .AIReview.Evidence}}<ul>{{range .AIReview.Evidence}}<li><code>{{location .}}</code></li>{{end}}</ul>{{else}}No repository line was cited.{{end}}</dd>
+	    <dt>AI citation locations</dt><dd>{{if .AIReview.Evidence}}<ul>{{range .AIReview.Evidence}}<li><code>{{location .}}</code></li>{{end}}</ul>{{else}}No repository line was cited.{{end}}</dd>
+	    <dt>AI verification state</dt><dd><code>{{verification .AIReview}}</code>. A valid snapshot location proves only that the cited line existed in the screened input. It does not prove that the line supports the AI claim; claim text remains advisory and unverified.</dd>
 	    <dt>AI review limits</dt><dd><ul>{{range .AIReview.Limitations}}<li>{{.}}</li>{{end}}</ul></dd>{{end}}
 	  </dl>
 		</details>{{end}}</section>{{end}}
@@ -499,10 +574,11 @@ const htmlReport = `<!doctype html>
         <dt>Remediation class</dt><dd>{{.RemediationClass}}</dd>
         <dt>Locations</dt><dd>{{if .Locations}}<ul>{{range .Locations}}<li><code>{{location .}}</code></li>{{end}}</ul>{{else}}No source location was emitted.{{end}}</dd>
         <dt>Required evidence</dt><dd>{{if .EvidenceRequired}}<ul>{{range .EvidenceRequired}}<li><strong>{{.Kind}}</strong> (minimum authority: {{.MinimumAuthority}}): {{.Description}}</li>{{end}}</ul>{{else}}No evidence requirement was declared.{{end}}</dd>
-        <dt>Observed evidence</dt><dd>{{if .EvidenceObserved}}<ul>{{range .EvidenceObserved}}<li><strong>{{.Kind}}</strong> from <code>{{.Source}}</code>: {{.Summary}} <span class="meta">(<code>{{.ID}}</code>)</span></li>{{end}}</ul>{{else}}No evidence was observed.{{end}}</dd>
-      </dl>
-    </details>{{end}}
-    <p>This report is scoped to the named profile, target inventory, and evidence set. It is not an unqualified production-readiness or compliance claim.</p>
+        <dt>Observed evidence</dt><dd>{{if .EvidenceObserved}}<ul>{{range .EvidenceObserved}}<li><strong>{{.Kind}}</strong> from <code>{{.Source}}</code>: {{.Summary}} <span class="meta">(authority: {{.Authority}}; observed: {{observedAt .}}; ID: <code>{{.ID}}</code>)</span></li>{{end}}</ul>{{else}}No evidence was observed.{{end}}</dd>
+	      </dl>
+	    </details>{{end}}
+	    <p class="notice"><strong>Evidence time:</strong> an observation time says when evidence was collected. It does not prove that the evidence is still fresh; the required age depends on the project, environment, and rule.</p>
+	    <p>This report is scoped to the named profile, target inventory, and evidence set. It is not an unqualified production-readiness or compliance claim.</p>
 	  </main>
 	  <script>
 	  (() => {
@@ -537,18 +613,27 @@ func writeHTML(output io.Writer, run model.RunResult) error {
 		Run            model.RunResult
 		Counts         [][2]string
 		ControlCounts  [][2]string
+		Meaning        resultMeaning
 		ProfileState   string
 		GitState       string
 		InventoryBytes string
 		ExclusionCount int
 	}{
 		Run: run, Counts: assessmentCounts(run.Results), ControlCounts: controlDispositionCounts(run.ControlResults),
+		Meaning:      summarizeMeaning(run),
 		ProfileState: profileTerminalState(run), GitState: inventoryFact(run.Inventory, "repository.git_worktree_state"),
 		InventoryBytes: inventoryFact(run.Inventory, "repository.inventory_bytes"),
 		ExclusionCount: inventoryFactCount(run.Inventory, "repository.exclusion"),
 	}
 	return template.Must(template.New("report").Funcs(template.FuncMap{
-		"join": func(values []string) string { return strings.Join(values, ", ") },
+		"join":         func(values []string) string { return strings.Join(values, ", ") },
+		"verification": advisoryVerificationText,
+		"observedAt": func(value model.Evidence) string {
+			if value.ObservedAt.IsZero() {
+				return "not recorded in this legacy/test record"
+			}
+			return value.ObservedAt.UTC().Format(time.RFC3339)
+		},
 		"location": func(value model.FindingLocation) string {
 			result := value.Path
 			if value.Line > 0 {
@@ -564,7 +649,7 @@ func writeHTML(output io.Writer, run model.RunResult) error {
 			case "R0":
 				return "Review and resolve this manually; the scanner does not author a change for this class."
 			case "R1":
-				return "A deterministic, behavior-preserving candidate may be available through the separate prc fix workflow."
+				return "A deterministic, behavior-preserving candidate may be available through the separate everylast fix workflow."
 			case "R2":
 				return "Use an isolated agent-authored candidate only with independent deterministic verification."
 			case "R3":

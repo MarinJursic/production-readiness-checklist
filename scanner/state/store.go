@@ -767,6 +767,16 @@ func validateControlResults(run model.RunResult, assertionResults map[string]boo
 				review.Confidence == "high" && len(review.Evidence) == 0 {
 				return fmt.Errorf("control %s contains an invalid advisory AI review", control.ControlID)
 			}
+			// These fields were added to the existing v0.12 record contract, so
+			// empty values remain readable for older archived v0.12 runs. Every
+			// newly produced review sets both fields explicitly.
+			if review.CitationVerification != "" &&
+				(review.CitationVerification != "not_cited" && review.CitationVerification != "snapshot_location_validated") ||
+				review.ClaimVerification != "" && review.ClaimVerification != "advisory_unverified" ||
+				review.CitationVerification == "not_cited" && len(review.Evidence) != 0 ||
+				review.CitationVerification == "snapshot_location_validated" && len(review.Evidence) == 0 {
+				return fmt.Errorf("control %s contains invalid advisory verification states", control.ControlID)
+			}
 			seenEvidence := map[model.FindingLocation]bool{}
 			for _, location := range review.Evidence {
 				if location.Path == "" || filepath.IsAbs(location.Path) ||

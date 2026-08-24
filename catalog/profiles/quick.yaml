@@ -1,0 +1,27 @@
+schema_version: prc.profile/v0.1
+id: prc/quick
+version: "1.0"
+title: Quick repository risk screen
+description: A small language-neutral screen for high-signal repository, dependency, test, workflow, container, and workload risks; it is not a production-readiness certificate.
+assertion_ids:
+  - PRC-A-CORE-001
+  - PRC-A-CORE-004
+  - PRC-A-CORE-007
+  - PRC-A-CORE-008
+  - PRC-A-CORE-009
+  - PRC-A-CORE-010
+  - PRC-A-CORE-011
+  - PRC-A-CORE-015
+  - PRC-A-CORE-017
+  - PRC-A-CORE-018
+  - PRC-A-CORE-021
+  - PRC-A-CORE-023
+  - PRC-A-CORE-024
+  - PRC-A-CORE-025
+  - PRC-A-CORE-026
+  - PRC-A-CORE-027
+  - PRC-A-CORE-029
+  - PRC-A-CORE-030
+terminal_policy:
+  block_on: [critical, high]
+  allow_manual_remaining: true

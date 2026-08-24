@@ -10,21 +10,24 @@ import (
 	"strings"
 )
 
-// IsolatedEnvironment creates private provider configuration roots and returns
-// the small environment allowlist used by scanner-owned provider processes.
-// Stored interactive sessions are intentionally unavailable; an explicit
-// environment credential is required for a reproducible, inspectable launch.
+// IsolatedEnvironment creates a private provider runtime HOME and returns the
+// small environment allowlist used by scanner-owned provider processes. An
+// explicit environment credential gets a throwaway provider configuration. A
+// login made through `everylast login` gets a dedicated Everylast-owned credential root;
+// normal provider settings and project instructions are never loaded.
 func IsolatedEnvironment(providerName, directory string) ([]string, map[string]string, error) {
 	switch providerName {
 	case "codex":
-		if !hasEnvironmentCredential("OPENAI_API_KEY", "CODEX_API_KEY") {
-			return nil, nil, fmt.Errorf("locked-down Codex execution requires OPENAI_API_KEY or CODEX_API_KEY; saved interactive login is intentionally not loaded")
-		}
 		home, err := privateDirectory(directory, "home")
 		if err != nil {
 			return nil, nil, err
 		}
-		config, err := privateDirectory(directory, "codex-home")
+		config := ""
+		if hasEnvironmentCredential("OPENAI_API_KEY", "CODEX_API_KEY") {
+			config, err = privateDirectory(directory, "codex-home")
+		} else {
+			config, err = storedAuthenticationDirectory("codex")
+		}
 		if err != nil {
 			return nil, nil, err
 		}
@@ -35,14 +38,16 @@ func IsolatedEnvironment(providerName, directory string) ([]string, map[string]s
 		if err := rejectClaudeManagedConfiguration(); err != nil {
 			return nil, nil, err
 		}
-		if !hasEnvironmentCredential("ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN", "CLAUDE_CODE_OAUTH_TOKEN") {
-			return nil, nil, fmt.Errorf("locked-down Claude execution requires ANTHROPIC_API_KEY, ANTHROPIC_AUTH_TOKEN, or CLAUDE_CODE_OAUTH_TOKEN; saved interactive login is intentionally not loaded")
-		}
 		home, err := privateDirectory(directory, "home")
 		if err != nil {
 			return nil, nil, err
 		}
-		config, err := privateDirectory(directory, "claude-config")
+		config := ""
+		if hasEnvironmentCredential("ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN", "CLAUDE_CODE_OAUTH_TOKEN") {
+			config, err = privateDirectory(directory, "claude-config")
+		} else {
+			config, err = storedAuthenticationDirectory("claude")
+		}
 		if err != nil {
 			return nil, nil, err
 		}

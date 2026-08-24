@@ -151,10 +151,17 @@ func runWithInput(args []string, stdin io.Reader, stdout, stderr io.Writer) int 
 		err = runPlan(args[1:], stdout, stderr)
 	case "scan":
 		outcome, err = runScan(args[1:], stdout, stderr)
+	case "quick":
+		outcome, err = runScanAlias("quick", args[1:], stdout, stderr)
+	case "full":
+		outcome, err = runScanAlias("full", args[1:], stdout, stderr)
 	case "fix":
 		outcome, err = runFix(args[1:], stdout, stderr)
 	case "doctor":
 		outcome, err = runDoctor(args[1:], stdout, stderr)
+	case "login", "logout", "auth":
+		errorFallback = exitConfiguration
+		err = runAuthentication(args[0], args[1:], stdin, stdout, stderr)
 	case "history":
 		errorFallback = exitConfiguration
 		err = runHistory(args[1:], stdout, stderr)
@@ -215,7 +222,7 @@ func runVersion(args []string, stdout, stderr io.Writer) error {
 	}
 	switch *format {
 	case "text":
-		fmt.Fprintf(stdout, "prc %s (revision %s, built %s, %s)\n",
+		fmt.Fprintf(stdout, "everylast %s (revision %s, built %s, %s)\n",
 			information.Version, information.Revision, information.BuiltAt, information.GoVersion)
 	case "json":
 		encoder := json.NewEncoder(stdout)
@@ -230,16 +237,64 @@ func runVersion(args []string, stdout, stderr io.Writer) error {
 }
 
 func usage(output io.Writer) {
-	fmt.Fprintln(output, "Production Readiness Scanner")
-	fmt.Fprintln(output, "Usage: prc <command> [options]")
+	printBrandBanner(output, newTerminalStyle("auto", output))
+	fmt.Fprintln(output, "Usage: everylast <command> [options]")
 	fmt.Fprintln(output)
 	fmt.Fprintln(output, "Start here:")
-	fmt.Fprintln(output, "  prc doctor --target .    Check whether scanning tools are ready")
-	fmt.Fprintln(output, "  prc scan .               Scan only and write a detailed report")
-	fmt.Fprintln(output, "  prc scan --help          Show every scan option")
+	fmt.Fprintln(output, "  everylast quick                Run a small local risk screen")
+	fmt.Fprintln(output, "  everylast scan                 Run the core local scan and write a detailed report")
+	fmt.Fprintln(output, "  everylast login codex          Sign in for an optional Codex review")
+	fmt.Fprintln(output, "  everylast full codex           Review all controls with safe, advisory Codex AI")
+	fmt.Fprintln(output, "  everylast doctor               Check whether scanning tools are ready")
+	fmt.Fprintln(output, "  everylast scan --help          Show advanced scan options")
 	fmt.Fprintln(output)
-	fmt.Fprintln(output, "Main commands: doctor, scan, inventory, plan, diff, history, fix, version")
+	fmt.Fprintln(output, "Main commands: quick, scan, full, login, logout, auth, doctor, inventory, plan, diff, history, fix, version")
 	fmt.Fprintln(output, "Advanced commands: catalog, pack, benchmark, config, remediate, remediate-proposal, explain, adapter, exception, provider, mcp")
+}
+
+func runScanAlias(name string, args []string, stdout, stderr io.Writer) (int, error) {
+	if len(args) == 1 && (args[0] == "--help" || args[0] == "-h") {
+		switch name {
+		case "quick":
+			fmt.Fprintln(stdout, "Usage: everylast quick [project path] [scan options]")
+			fmt.Fprintln(stdout, "Runs 18 high-signal local checks, includes all 10,042 controls in the report, and never starts AI.")
+			fmt.Fprintln(stdout, "Use everylast scan --help for the shared report and output options.")
+		case "full":
+			fmt.Fprintln(stdout, "Usage: everylast full <codex|claude> [project path] [scan options]")
+			fmt.Fprintln(stdout, "Runs the 40-check core scan and advisory AI review of every active control.")
+			fmt.Fprintln(stdout, "The provider name explicitly allows bounded, screened remote source processing.")
+			fmt.Fprintln(stdout, "Use everylast scan --help for advanced review, report, and output options.")
+		}
+		return exitSuccess, nil
+	}
+	for _, argument := range args {
+		if argument == "--profile" || strings.HasPrefix(argument, "--profile=") {
+			return exitInternal, exitError(exitConfiguration, fmt.Errorf("everylast %s selects its own profile; use everylast scan --profile for a custom profile", name))
+		}
+	}
+	switch name {
+	case "quick":
+		for _, argument := range args {
+			if argument == "--ai" || strings.HasPrefix(argument, "--ai=") ||
+				argument == "--review-provider" || strings.HasPrefix(argument, "--review-provider=") {
+				return exitInternal, exitError(exitConfiguration, errors.New("everylast quick is local only; use everylast full codex or everylast full claude for AI review"))
+			}
+		}
+		return runScan(append([]string{"--profile", "prc/quick"}, args...), stdout, stderr)
+	case "full":
+		if len(args) == 0 || args[0] != "codex" && args[0] != "claude" {
+			return exitInternal, exitError(exitConfiguration, errors.New("usage: everylast full codex [project path] or everylast full claude [project path]"))
+		}
+		for _, argument := range args[1:] {
+			if argument == "--ai" || strings.HasPrefix(argument, "--ai=") ||
+				argument == "--review-provider" || strings.HasPrefix(argument, "--review-provider=") {
+				return exitInternal, exitError(exitConfiguration, errors.New("everylast full already selects the AI provider"))
+			}
+		}
+		return runScan(append([]string{"--ai", args[0]}, args[1:]...), stdout, stderr)
+	default:
+		panic("unknown scan alias")
+	}
 }
 
 func runMCP(args []string, stdin io.Reader, stdout, stderr io.Writer) error {
@@ -1492,11 +1547,11 @@ func parseCommon(name string, args []string, stderr io.Writer) (*flag.FlagSet, *
 	set.SetOutput(stderr)
 	set.Usage = func() {
 		if name == "scan" {
-			fmt.Fprintln(stderr, "Usage: prc scan [project path] [options]")
+			fmt.Fprintln(stderr, "Usage: everylast scan [project path] [options]")
 			fmt.Fprintln(stderr, "Scans without modifying the project and writes a detailed report by default.")
-			fmt.Fprintln(stderr, "Example: prc scan .")
+			fmt.Fprintln(stderr, "Examples: everylast scan   |   everylast scan --ai codex   |   everylast scan ../project")
 		} else {
-			fmt.Fprintf(stderr, "Usage: prc %s [options]\n", name)
+			fmt.Fprintf(stderr, "Usage: everylast %s [options]\n", name)
 		}
 		fmt.Fprintln(stderr)
 		set.PrintDefaults()
@@ -1850,6 +1905,7 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	stateDirectory := set.String("state-dir", "", "optional directory for content-addressed evidence and run records")
 	exitPolicy := set.String("exit-policy", "profile", "profile, no-go, or never")
 	reviewProvider := set.String("review-provider", "none", "advisory review: none, codex, or claude")
+	aiProvider := set.String("ai", "", "simple AI review: codex or claude; also acknowledges screened remote source processing")
 	reviewExecutable := set.String("review-executable", "", "optional exact Codex or Claude executable")
 	reviewModel := set.String("review-model", "", "optional model override for advisory review")
 	reviewEffort := set.String("review-effort", "high", "advisory reasoning effort: high, or xhigh for Codex")
@@ -1900,6 +1956,19 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	if *mode != engine.ExecutionModeInspect && *mode != engine.ExecutionModeVerifyLocal {
 		return exitInternal, exitError(exitConfiguration, fmt.Errorf("unsupported execution mode %q", *mode))
 	}
+	if *aiProvider != "" {
+		if *aiProvider != "codex" && *aiProvider != "claude" {
+			return exitInternal, exitError(exitConfiguration, fmt.Errorf("unsupported AI provider %q; use codex or claude", *aiProvider))
+		}
+		if flagWasSet(set, "review-provider") && *reviewProvider != *aiProvider {
+			return exitInternal, exitError(exitConfiguration, fmt.Errorf("--ai and --review-provider select different providers"))
+		}
+		if flagWasSet(set, "allow-remote-source-processing") && !*allowRemoteReview {
+			return exitInternal, exitError(exitConfiguration, fmt.Errorf("--ai cannot be combined with --allow-remote-source-processing=false"))
+		}
+		*reviewProvider = *aiProvider
+		*allowRemoteReview = true
+	}
 	if *reviewProvider != "none" && *reviewProvider != "codex" && *reviewProvider != "claude" {
 		return exitInternal, exitError(exitConfiguration, fmt.Errorf("unsupported review provider %q", *reviewProvider))
 	}
@@ -1943,6 +2012,7 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	var progressStyle terminalStyle
 	if *format == "human" {
 		progressStyle = newTerminalStyle(*colorMode, stdout)
+		printBrandBanner(stdout, progressStyle)
 		fmt.Fprintln(stdout, progressStyle.paint(ansiBlue, "[1/4] Building a safe, content-hashed inventory..."))
 	}
 	item, validation, err := configuredInventory(*target, *configPath)
@@ -2020,6 +2090,10 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	}
 	var reviewSummary controlreview.Summary
 	if *reviewProvider != "none" {
+		if *format == "human" {
+			fmt.Fprintln(stdout, progressStyle.paint(ansiBlue,
+				"      Running the locked-down "+authenticationProviderTitle(*reviewProvider)+" advisory review; this can take a while..."))
+		}
 		reviewed, summary, reviewErr := controlreview.Apply(context.Background(), run, controlreview.Options{
 			Provider: *reviewProvider, Executable: *reviewExecutable, Model: *reviewModel,
 			ReasoningEffort: *reviewEffort, StateDirectory: *reviewStateDirectory,
@@ -2130,7 +2204,7 @@ func reorderInterspersedFlags(set *flag.FlagSet, args []string) []string {
 }
 
 func printScanSummary(output io.Writer, run model.RunResult, style terminalStyle) {
-	fmt.Fprintf(output, "Production Readiness Scanner %s\n\n", terminalText(version))
+	fmt.Fprintf(output, "Everylast %s\n\n", terminalText(version))
 	fmt.Fprintf(output, "Run: %s\n", terminalText(run.RunID))
 	fmt.Fprintf(output, "Profile: %s@%s\n", terminalText(run.Plan.ProfileID), terminalText(run.Plan.ProfileVersion))
 	fmt.Fprintf(output, "Target: %s (%s)\n", terminalText(run.Inventory.TargetName), terminalText(run.Inventory.Digest))
@@ -2159,6 +2233,9 @@ func printScanSummary(output io.Writer, run model.RunResult, style terminalStyle
 	}
 	fmt.Fprintf(output, "Assessment counts: %s\n", strings.Join(parts, ", "))
 	fmt.Fprintf(output, "Verified findings: %d\n", len(run.Findings))
+	fmt.Fprintf(output, "Narrow checks passed: %d\n", counts["pass"])
+	fmt.Fprintf(output, "Local checks unresolved: %d\n", counts["unknown"]+counts["stale"]+counts["conflicting"])
+	fmt.Fprintf(output, "Manual decisions: %d\n", counts["manual_review"])
 	if run.ControlCatalog != nil {
 		controlCounts := map[string]int{}
 		for _, result := range run.ControlResults {
@@ -2179,6 +2256,8 @@ func printScanSummary(output io.Writer, run model.RunResult, style terminalStyle
 		}
 		fmt.Fprintf(output, "Controls with an executable mapping: %d/%d\n", mapped, run.ControlCatalog.ActiveControlCount)
 		fmt.Fprintf(output, "Control dispositions: %s\n", strings.Join(controlParts, ", "))
+		fmt.Fprintf(output, "Controls still needing review or evidence: %d\n", controlCounts["needs_review"]+controlCounts["blocked"])
+		fmt.Fprintf(output, "Advisory AI reviews: %d\n", run.ControlCatalog.AIReviewedCount)
 		fmt.Fprintln(output, "A partially_verified control is not a complete pass.")
 		fmt.Fprintln(output, "Every registered control is in the detailed report; AI advice is marked advisory.")
 	}
@@ -2192,7 +2271,7 @@ func writeScanReport(run model.RunResult, requestedPath string) (string, error) 
 		if err != nil {
 			return "", fmt.Errorf("locate the user cache for the scan report: %w", err)
 		}
-		directory := filepath.Join(cacheRoot, "prc", "reports")
+		directory := filepath.Join(cacheRoot, "everylast", "reports")
 		if pathWithin(run.Inventory.Root, directory) {
 			return "", fmt.Errorf("default report directory is inside the scanned project; use --report with a path outside the project or --no-report")
 		}

@@ -12,7 +12,7 @@ Do not copy a similar package name from a search result.
 For a Node project:
 
 ```bash
-npm install --save-dev --save-exact --ignore-scripts --no-audit --no-fund @marinjursic/prc@X.Y.Z
+npm install --save-dev --save-exact --ignore-scripts --no-audit --no-fund @marinjursic/everylast@X.Y.Z
 ```
 
 What this changes:
@@ -25,7 +25,7 @@ What this changes:
 What could be attacked:
 
 - A misspelled name could install somebody else's package. Use the exact scoped
-  name `@marinjursic/prc` from this repository.
+  name `@marinjursic/everylast` from this repository.
 - A floating version such as `latest` can change between machines. Use the exact
   release number and commit the lock file.
 - Any package manager or registry can be compromised. Check the release's npm
@@ -47,23 +47,23 @@ Add this one line to the existing `scripts` object in `package.json`:
 ```json
 {
   "scripts": {
-    "scan": "prc scan ."
+    "scan": "everylast scan"
   }
 }
 ```
 
-Run it with:
+The shortest repeatable command is:
 
 ```bash
-npm run --ignore-scripts scan
+npm run scan
 ```
 
-The named `scan` script runs, but `prescan` and `postscan` hooks do not. If you
-do not want to edit `package.json`, use this after the exact package is already
-installed:
+For the stricter run, use `npm run --ignore-scripts scan`; the named `scan`
+script runs, but local `prescan` and `postscan` hooks do not. If you do not want
+to edit `package.json`, use this after the exact package is already installed:
 
 ```bash
-npm exec --offline --no -- prc scan .
+npm exec --offline --no -- everylast scan
 ```
 
 `--offline --no` makes a missing local command fail instead of asking to fetch
@@ -122,9 +122,10 @@ work; they are not 10,042 approved automatic tests. Broad controls remain
 exists. This is how the scanner uses every rule without inventing thousands of
 false passes.
 
-The full proposed acceptance review for every control is in
-`research/CONTROL_ACCEPTANCE_CRITERIA_REVIEW.md`. A control owner must still
-approve and test a contract before it can become a trusted automatic check.
+The full proposed acceptance review for every control is split into bounded
+parts under `research/control-acceptance-criteria/`. Its `README.md` is the
+index. A control owner must still approve and test a contract before it can
+become a trusted automatic check.
 
 ## 6. Write the report
 
@@ -148,26 +149,29 @@ not upload them automatically.
 
 ## 7. Optional AI review
 
-A normal scan never contacts Codex, Claude, or another remote model. AI review
-starts only when the command names a provider and includes
-`--allow-remote-source-processing`.
-
-Use an explicit temporary credential. Saved interactive logins are deliberately
-unavailable:
+A normal scan never contacts Codex, Claude, or another remote model. Sign in
+through PRC once, then use the short AI option:
 
 ```bash
-export OPENAI_API_KEY='your-provider-key'
-prc scan . \
-  --review-provider codex \
-  --review-control PRC-02-001 \
-  --allow-remote-source-processing
+everylast login codex
+everylast full codex
 ```
+
+Use `claude` in both commands for Claude Code. The login is kept in a private
+Everylast-only directory; normal provider settings, sessions, instructions, plugins,
+hooks, and MCP servers are not loaded. `--ai` is also explicit permission to
+send bounded, screened source excerpts to the chosen provider. Supported
+temporary API-key environment variables and the longer
+`--review-provider`/`--allow-remote-source-processing` form remain available.
+`everylast full codex` is the short spelling of `everylast scan --ai codex`.
 
 Before the provider starts, the scanner makes a private snapshot of bounded text
 excerpts. It skips sensitive names and known key or token shapes, gives the
 provider no target path, and marks repository text as untrusted data. Output
-must cite a path and line that was actually shown. Missing, omitted, runtime,
-legal, company, or human evidence stays a limitation.
+must cite a path and line that was actually shown. A valid location is recorded
+as `snapshot_location_validated`, while the claim remains
+`advisory_unverified`; a real line can still be irrelevant or misunderstood.
+Missing, omitted, runtime, legal, company, or human evidence stays a limitation.
 
 Prompt injection is still possible whenever untrusted text reaches a model.
 The provider gets no general shell, source-reading, write, browser, web, or MCP
@@ -183,7 +187,7 @@ The local provider program itself is a bigger trust boundary. A malicious
 `codex` or `claude` executable runs as your OS user and could ignore command
 flags. The scanner hashes it and isolates configuration and environment, but it
 cannot make a malicious executable safe. Install the official CLI, inspect its
-path with `prc doctor`, and use a separate OS account or stronger outer sandbox
+path with `everylast doctor`, and use a separate OS account or stronger outer sandbox
 on a sensitive computer. The remote provider also receives the approved
 excerpts and may charge money. Start with one rule.
 
@@ -192,8 +196,8 @@ Pass, make the final Not Applicable decision, or fix a file.
 
 ## 8. Optional fixes
 
-`prc scan` has no path to the fix code. Fixing starts only with the separate
-`prc fix` command.
+`everylast scan` has no path to the fix code. Fixing starts only with the separate
+`everylast fix` command.
 
 The fix system copies the target into a new private sibling candidate. It never
 edits the original project. Deterministic fixes are limited to scanner-owned

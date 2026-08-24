@@ -1,6 +1,6 @@
 # Production-readiness review instructions
 
-Use this file when reviewing an application repository against the complete engineering and Production Readiness Checklist.
+Use this file when reviewing an application repository against the complete Everylast engineering and release-control catalog.
 
 ## Role
 

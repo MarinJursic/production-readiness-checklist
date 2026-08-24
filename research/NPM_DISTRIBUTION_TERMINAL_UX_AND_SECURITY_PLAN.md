@@ -11,12 +11,16 @@
 
 Yes, the scanner can be made easy to install and run with npm.
 
-The recommended user flow is:
+The normal short user flow is:
 
 ```sh
-npm install --save-dev --save-exact --ignore-scripts @marinjursic/prc@0.2.0
-npx prc scan .
+npm install -D @marinjursic/everylast
+npx everylast scan
 ```
+
+The security-sensitive flow pins the released version and adds
+`--ignore-scripts`, `--no-audit`, and `--no-fund`; the offline execution form is
+`npm exec --offline --no -- everylast scan`.
 
 The package name was checked against the public npm registry on 2026-08-23. The launcher and six platform names returned `E404`, meaning no public package was visible. That does not prove the maintainer owns the `@marinjursic` npm scope. Public instructions therefore continue to say “after publication” until the maintainer configures the scope and trusted publisher.
 
@@ -27,7 +31,7 @@ For a project that wants a short repeatable command:
 ```json
 {
   "scripts": {
-    "scan": "prc scan ."
+    "scan": "everylast scan"
   }
 }
 ```
@@ -38,7 +42,7 @@ Then the normal command is:
 npm run scan
 ```
 
-`npm scan` cannot be added as a custom npm command. `npm run scan` is npm's standard custom-script form. A user can also run `npx prc scan .` after the package is installed.
+`npm scan` cannot be added as a custom npm command. `npm run scan` is npm's standard custom-script form. A user can also run `npx everylast scan` after the package is installed.
 
 The npm package must be an optional way to get the same native `prc` scanner. The direct release archive must remain available for Go, Python, Java, Rust, infrastructure, air-gapped, and non-Node users.
 
@@ -64,13 +68,13 @@ The npm documentation confirms that `ignore-scripts` disables package scripts an
 Use one small launcher package and one package for each supported platform:
 
 ```text
-@marinjursic/prc
-@marinjursic/prc-darwin-arm64
-@marinjursic/prc-darwin-x64
-@marinjursic/prc-linux-arm64
-@marinjursic/prc-linux-x64
-@marinjursic/prc-windows-arm64
-@marinjursic/prc-windows-x64
+@marinjursic/everylast
+@marinjursic/everylast-darwin-arm64
+@marinjursic/everylast-darwin-x64
+@marinjursic/everylast-linux-arm64
+@marinjursic/everylast-linux-x64
+@marinjursic/everylast-windows-arm64
+@marinjursic/everylast-windows-x64
 ```
 
 The public registry lookup found no visible package under these names. Scope
@@ -80,7 +84,7 @@ maintainer. Do not publish placeholder packages merely to hold names.
 The launcher package should contain only:
 
 - `package.json`;
-- a small `bin/prc.js` launcher;
+- a small `bin/everylast.js` launcher;
 - `README.md`;
 - `LICENSE`;
 - exact-version optional dependencies on the six platform packages.
@@ -96,7 +100,7 @@ Each platform package should contain only:
 The current binary finds its catalog beside its executable. Therefore the platform package should use a layout such as:
 
 ```text
-@marinjursic/prc-darwin-arm64/
+@marinjursic/everylast-darwin-arm64/
 └── bin/
     ├── prc
     ├── catalog/
@@ -136,8 +140,8 @@ The native binary does the scan. Node is only the launcher, so the JavaScript sh
 ### Recommended project install
 
 ```sh
-npm install --save-dev --save-exact --ignore-scripts @marinjursic/prc@0.2.0
-npx prc scan .
+npm install --save-dev --save-exact --ignore-scripts @marinjursic/everylast@0.2.0
+npx everylast scan .
 ```
 
 Why each option exists:
@@ -152,7 +156,7 @@ The command still changes `package.json`, `package-lock.json`, and `node_modules
 ### One-time run without adding a dependency
 
 ```sh
-npm exec --yes --ignore-scripts --package=@marinjursic/prc@0.2.0 -- prc scan .
+npm exec --yes --ignore-scripts --package=@marinjursic/everylast@0.2.0 -- everylast scan .
 ```
 
 This is convenient but it downloads code into npm's cache and executes it. It is not safer than a reviewed, exact project dependency. Show it as the quick trial, not the strongest repeatable setup.
@@ -164,7 +168,7 @@ After the exact package is installed, add:
 ```json
 {
   "scripts": {
-    "scan": "prc scan ."
+    "scan": "everylast scan ."
   }
 }
 ```
@@ -179,8 +183,8 @@ npm run scan
 
 ```sh
 npm audit signatures
-npx prc version
-npx prc scan .
+npx everylast version
+npx everylast scan .
 ```
 
 `npm audit signatures` checks registry signatures and available provenance attestations. Provenance says where and how a package was built; it does not prove that the code is harmless. The README must say this plainly.
@@ -222,7 +226,7 @@ The Go `x/term` package supplies terminal detection. The `NO_COLOR` convention s
 ### Example output
 
 ```text
-Production Readiness Scanner 0.2.0
+Everylast 0.2.0
 
 Target   invoice-api
 Profile  prc/core-repository@1.0
@@ -247,7 +251,7 @@ Result
   Required profile checks did not pass. Exit code: 1
 
 Detailed report
-  /Users/you/Library/Caches/prc/reports/invoice-api-a71c9f42.html
+  /Users/you/Library/Caches/everylast/reports/invoice-api-a71c9f42.html
 
 Scan only: no project files were changed and no fixes were applied.
 ```
@@ -310,7 +314,7 @@ The following table covers every normal step.
 
 The current code already has useful protections:
 
-- `prc scan` is separate from `prc fix` and does not call the fix path;
+- `everylast scan` is separate from `everylast fix` and does not call the fix path;
 - it does not run project dependency installation or target-project scripts;
 - symlinks are inventoried but not followed;
 - regular files are opened and compared with their earlier file identity before hashing;
@@ -381,7 +385,7 @@ This table checks whether the current pass rule is useful and whether it is too 
 
 ## Plan for all 10,042 controls
 
-The companion file [`CONTROL_ACCEPTANCE_CRITERIA_REVIEW.md`](CONTROL_ACCEPTANCE_CRITERIA_REVIEW.md) contains every control. For each one it records:
+The companion index [`control-acceptance-criteria/README.md`](control-acceptance-criteria/README.md) links bounded parts containing every control. For each one they record:
 
 - its exact source and source section;
 - when it may apply;
@@ -442,7 +446,7 @@ Use this model instead:
 7. Run a secret scan against the exact unpacked and packed contents.
 8. Use `npm pack --json` and independently inspect the file list, sizes, modes, scripts, dependencies, and hashes.
 9. Install each tarball into a clean empty project with `--ignore-scripts` and no network after the tarball is present.
-10. Run `prc version`, a positive fixture scan, a failing fixture scan, and a hostile fixture scan from each package.
+10. Run `everylast version`, a positive fixture scan, a failing fixture scan, and a hostile fixture scan from each package.
 
 ### Publish
 

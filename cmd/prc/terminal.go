@@ -46,6 +46,19 @@ func (style terminalStyle) paint(code, value string) string {
 	return code + value + ansiReset
 }
 
+func printBrandBanner(output io.Writer, style terminalStyle) {
+	fmt.Fprintf(output, "%s\n", style.paint(ansiBlue, "   ╭─────────────────╮"))
+	fmt.Fprintf(output, "%s%s%s\n",
+		style.paint(ansiBlue, "   │  ● ● ● ● ● ● "),
+		style.paint(ansiGreen, "✓"),
+		style.paint(ansiBlue, "  │"),
+	)
+	fmt.Fprintf(output, "%s\n", style.paint(ansiBlue, "   ╰─────────────────╯"))
+	fmt.Fprintf(output, "       %s%s\n", style.paint(ansiBlue, "EVERY"), style.paint(ansiGreen, "LAST"))
+	fmt.Fprintln(output, "  Know what's left before you ship.")
+	fmt.Fprintln(output)
+}
+
 // terminalText makes untrusted repository text one printable terminal line.
 // It prevents filenames and diagnostics from injecting ANSI/OSC controls,
 // cursor movement, fake lines, backspaces, or bidirectional display changes.

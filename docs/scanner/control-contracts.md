@@ -33,10 +33,11 @@ assertions. Optional AI review receives the contract as a routing hint and must
 keep repository, environment, and human evidence authority separate.
 
 The generated
-[`research/CONTROL_ACCEPTANCE_CRITERIA_REVIEW.md`](https://github.com/MarinJursic/production-readiness-checklist/blob/main/research/CONTROL_ACCEPTANCE_CRITERIA_REVIEW.md)
-lists proposed acceptance criteria, today's real scanner behavior, future check
-method, and wording warnings for every control. It is a review queue, not a
-claim that 10,042 expert-approved acceptance tests already exist.
+[`research/control-acceptance-criteria/README.md`](https://github.com/MarinJursic/production-readiness-checklist/blob/main/research/control-acceptance-criteria/README.md)
+indexes bounded parts that list proposed acceptance criteria, today's real
+scanner behavior, future check method, and wording warnings for every control.
+It is a review queue, not a claim that 10,042 expert-approved acceptance tests
+already exist.
 
 Regenerate and verify the file with:
 

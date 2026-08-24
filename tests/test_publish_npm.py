@@ -19,15 +19,15 @@ class PublishNpmTests(unittest.TestCase):
     def packages(self) -> list[publish_npm.Package]:
         root = pathlib.Path("/release")
         return [
-            publish_npm.Package("@marinjursic/prc-linux-x64", "1.2.3", root / "platform.tgz", "sha512-platform", "platform"),
-            publish_npm.Package("@marinjursic/prc", "1.2.3", root / "launcher.tgz", "sha512-launcher", "launcher"),
+            publish_npm.Package("@marinjursic/everylast-linux-x64", "1.2.3", root / "platform.tgz", "sha512-platform", "platform"),
+            publish_npm.Package("@marinjursic/everylast", "1.2.3", root / "launcher.tgz", "sha512-launcher", "launcher"),
         ]
 
     def test_publish_is_platform_first_idempotent_and_verifies_registry_bytes(self) -> None:
         calls: list[list[str]] = []
         lookups = {
-            "@marinjursic/prc-linux-x64@1.2.3": [None, "sha512-platform"],
-            "@marinjursic/prc@1.2.3": ["sha512-launcher"],
+            "@marinjursic/everylast-linux-x64@1.2.3": [None, "sha512-platform"],
+            "@marinjursic/everylast@1.2.3": ["sha512-launcher"],
         }
 
         def run(command: list[str]) -> subprocess.CompletedProcess[str]:
@@ -116,16 +116,16 @@ class PublishNpmTests(unittest.TestCase):
                 support=[("catalog/example.json", b"{}\n", 0o644)],
                 output=output,
             )
-            manifest = output / f"prc_{version}_release-manifest.json"
+            manifest = output / f"everylast_{version}_release-manifest.json"
             manifest.write_text(json.dumps({
-                "schema_version": "prc.release-manifest/v0.2",
-                "product": "prc-scanner",
+                "schema_version": "prc.release-manifest/v0.3",
+                "product": "everylast",
                 "version": version,
                 "npm_packages": artifacts,
             }), encoding="utf-8")
             packages = publish_npm.load_packages(output, manifest, version)
             self.assertEqual(len(packages), 7)
-            self.assertEqual(packages[-1].name, "@marinjursic/prc")
+            self.assertEqual(packages[-1].name, "@marinjursic/everylast")
             self.assertTrue(all(package.integrity.startswith("sha512-") for package in packages))
             oversized = json.loads(manifest.read_text(encoding="utf-8"))
             oversized["npm_packages"][0]["size"] = publish_npm.MAXIMUM_NPM_PACKAGE_BYTES + 1

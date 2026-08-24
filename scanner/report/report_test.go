@@ -39,6 +39,19 @@ func reportRun() model.RunResult {
 			{AssertionID: "PRC-A-CORE-012", Assessment: "manual_review", Execution: "completed", Severity: "high", Gate: "required", Summary: "Reviewer required.", RemediationClass: "R0", EvidenceObserved: []model.Evidence{}},
 			{AssertionID: "PRC-A-CORE-013", Assessment: "unknown", Execution: "blocked", Severity: "high", Gate: "required", Summary: "Adapter unavailable.", RemediationClass: "R2", EvidenceObserved: []model.Evidence{}},
 		},
+		ControlCatalog: &model.ControlCatalogSummary{
+			ControlCount: 2, ActiveControlCount: 2, AIReviewProvider: "codex",
+			AIReviewState: "focused", AIReviewedCount: 1, AIAdvisoryFailCount: 1,
+		},
+		ControlResults: []model.ControlResult{
+			{ControlID: "USEQ-11111111", Disposition: "needs_review", Statement: "A broad rule needs more evidence."},
+			{ControlID: "USEQ-22222222", Disposition: "needs_review", Statement: "A cited rule remains advisory.", AIReview: &model.AIControlReview{
+				Provider: "codex", AssessmentCandidate: "advisory_fail_candidate", ApplicabilityCandidate: "applicable",
+				Confidence: "medium", Reason: "The cited line looks risky.", Advice: "Review the real behavior.",
+				Evidence: []model.FindingLocation{{Path: "README.md", Line: 1}}, Limitations: []string{"Only repository text was visible."},
+				CitationVerification: "snapshot_location_validated", ClaimVerification: "advisory_unverified", TaskID: digest,
+			}},
+		},
 	}
 }
 
@@ -48,7 +61,7 @@ func TestMarkdownReportIsScopedAndEscapesTableCells(t *testing.T) {
 		t.Fatal(err)
 	}
 	text := output.String()
-	for _, expected := range []string{"# Production readiness assessment", "Missing README \\| required.", "## Adapter executions", "local-explicit", "## Findings", "example-product", "staging", "not an unqualified production-readiness"} {
+	for _, expected := range []string{"# Production readiness assessment", "Missing README \\| required.", "## What the result means", "Verified problems", "Narrow checks passed", "citation=snapshot_location_validated; claim=advisory_unverified", "## Adapter executions", "local-explicit", "## Findings", "example-product", "staging", "not an unqualified production-readiness"} {
 		if !strings.Contains(text, expected) {
 			t.Errorf("missing %q in report", expected)
 		}
@@ -124,7 +137,7 @@ func TestHTMLReportEscapesUntrustedText(t *testing.T) {
 	if !strings.Contains(text, "example-product") || !strings.Contains(text, "staging") {
 		t.Fatal("configured scope missing from HTML")
 	}
-	for _, expected := range []string{"Detailed findings", "All assertion results", "README.md:1:2", "USEQ-FDCA6C71", "A root README must exist.", "README was not present.", "evidence-001", "remediation class R2", "isolated agent-authored candidate", "Report-only scan"} {
+	for _, expected := range []string{"What the result means", "Verified problems", "Controls needing review or evidence", "AI verification state", "citation=snapshot_location_validated; claim=advisory_unverified", "does not prove that the line supports the AI claim", "Detailed findings", "All assertion results", "README.md:1:2", "USEQ-FDCA6C71", "A root README must exist.", "README was not present.", "authority:", "observed: not recorded", "Evidence time:", "evidence-001", "remediation class R2", "isolated agent-authored candidate", "Report-only scan"} {
 		if !strings.Contains(text, expected) {
 			t.Errorf("detailed HTML report missing %q", expected)
 		}

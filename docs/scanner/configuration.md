@@ -50,7 +50,7 @@ run in either case.
 ```bash
 prc inventory --target . --config production-readiness.yaml --format json
 prc plan --target . --catalog-root . --config production-readiness.yaml
-prc scan --target . --catalog-root . --config production-readiness.yaml
+everylast scan --target . --catalog-root . --config production-readiness.yaml
 ```
 
 When `--profile` is omitted, plan and scan use the configured profile. An

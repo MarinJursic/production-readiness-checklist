@@ -33,7 +33,7 @@ error [PRC-EXIT-5]: adapter ... is not authorized by an applicable assertion
 Machine-readable reports remain on stdout. A completed assessment that does not
 pass is still a valid report and normally has no stderr error.
 
-`prc version` emits a human-readable build identity. `prc version --format json`
+`everylast version` emits a human-readable build identity. `everylast version --format json`
 emits `prc.version/v0.1`, including the semantic scanner version, exact source
 revision, reproducible source timestamp, and Go toolchain. Development builds
 report `unknown` for identity fields that were not injected by the release
@@ -46,10 +46,17 @@ increase use `3`; the command never executes the adapter.
 
 ## Scan policy
 
-`prc scan` inspects the current directory; `prc scan /path/to/project` inspects
+`everylast scan` inspects the current directory; `everylast scan /path/to/project` inspects
 one explicit project. Scan options may appear before or after that path. The
 equivalent advanced `--target` flag remains available, but it cannot be combined
 with the positional project path.
+
+`everylast quick` selects the 18-assertion `prc/quick` local profile. `everylast scan`
+selects the 40-assertion core local profile. `everylast full codex` and
+`everylast full claude` select the core profile plus advisory AI review of every
+active control. `quick` rejects AI-provider flags, and both aliases reject a
+profile override so their meaning cannot be silently changed. Every mode still
+includes all 10,042 controls in the complete report.
 
 Human output creates one detailed standalone HTML report by default. The file is
 created privately outside the target, its absolute path is printed, and an
@@ -69,10 +76,12 @@ terminal rendering.
 
 Every complete scan includes all 10,042 registered controls. Broad controls
 without complete proof remain `needs_review`; narrow passing assertions produce
-only `partially_verified`. Optional Codex or Claude review must be selected with
-`--review-provider` and separately acknowledged with
-`--allow-remote-source-processing`. Those providers add strict-schema advisory
-candidates and cannot change the authoritative disposition. Provider launch,
+only `partially_verified`. `everylast full codex|claude` and the equivalent
+`--ai codex|claude` form acknowledge screened remote source processing. The advanced form uses
+`--review-provider` plus `--allow-remote-source-processing`. Those providers add
+strict-schema advisory candidates and cannot change the authoritative
+disposition. Cited paths and lines are snapshot-location validated, while the
+AI claims remain explicitly `advisory_unverified`. Provider launch,
 timeout, secret-screening, or protocol failures return `4`. See
 [safe AI control review](ai-control-review.md).
 

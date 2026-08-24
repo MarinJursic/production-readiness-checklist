@@ -1,6 +1,6 @@
 # Scanner product contract
 
-The Production Readiness Scanner is an evidence and policy engine for a declared
+The Everylast is an evidence and policy engine for a declared
 target. It does not claim that a nontrivial system has no defects, certify an
 organization, or make a release decision for an accountable owner.
 

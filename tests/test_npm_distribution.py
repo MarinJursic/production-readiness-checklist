@@ -30,7 +30,7 @@ class NpmDistributionTests(unittest.TestCase):
             binaries: dict[tuple[str, str], pathlib.Path] = {}
             for target in npm_distribution.PLATFORMS:
                 suffix = ".exe" if target[0] == "windows" else ""
-                path = root / f"prc-{target[0]}-{target[1]}{suffix}"
+                path = root / f"everylast-{target[0]}-{target[1]}{suffix}"
                 path.write_bytes(f"binary:{target[0]}:{target[1]}".encode())
                 binaries[target] = path
             support = [("catalog/example.json", b"{}\n", 0o644), ("docs/checklists/example.md", b"# Example\n", 0o644)]
@@ -53,10 +53,10 @@ class NpmDistributionTests(unittest.TestCase):
             launcher_files = archive_files(first / launcher_name)
             self.assertEqual(
                 set(launcher_files),
-                {"package/LICENSE", "package/README.md", "package/bin/prc.js", "package/package.json", "package/platforms.json"},
+                {"package/LICENSE", "package/README.md", "package/bin/everylast.js", "package/package.json", "package/platforms.json"},
             )
             launcher_metadata = json.loads(launcher_files["package/package.json"])
-            launcher = launcher_files["package/bin/prc.js"]
+            launcher = launcher_files["package/bin/everylast.js"]
             self.assertNotIn("scripts", launcher_metadata)
             self.assertNotIn("dependencies", launcher_metadata)
             self.assertNotIn("private", launcher_metadata)
@@ -66,7 +66,7 @@ class NpmDistributionTests(unittest.TestCase):
             self.assertEqual(launcher_metadata["engines"], {"node": ">=22.14.0"})
             bindings = json.loads(launcher_files["package/platforms.json"])
 
-            platform_name = "@marinjursic/prc-linux-x64"
+            platform_name = "@marinjursic/everylast-linux-x64"
             platform_files = archive_files(first / npm_distribution.package_filename(platform_name, version))
             metadata = json.loads(platform_files["package/package.json"])
             manifest_bytes = platform_files["package/manifest.json"]
@@ -76,14 +76,14 @@ class NpmDistributionTests(unittest.TestCase):
             self.assertEqual(metadata["os"], ["linux"])
             self.assertEqual(metadata["cpu"], ["x64"])
             self.assertEqual(bindings["platforms"]["linux-x64"]["manifest_sha256"], hashlib.sha256(manifest_bytes).hexdigest())
-            self.assertEqual(manifest["binary_sha256"], hashlib.sha256(platform_files["package/bin/prc"]).hexdigest())
+            self.assertEqual(manifest["binary_sha256"], hashlib.sha256(platform_files["package/bin/everylast"]).hexdigest())
             self.assertIn("package/bin/catalog/example.json", platform_files)
             self.assertIn("package/bin/docs/checklists/example.md", platform_files)
 
     def test_package_filename_never_uses_scope_syntax(self) -> None:
         self.assertEqual(
-            npm_distribution.package_filename("@marinjursic/prc-linux-x64", "1.2.3"),
-            "marinjursic-prc-linux-x64-1.2.3.tgz",
+            npm_distribution.package_filename("@marinjursic/everylast-linux-x64", "1.2.3"),
+            "marinjursic-everylast-linux-x64-1.2.3.tgz",
         )
 
 

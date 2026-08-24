@@ -1,20 +1,24 @@
 # Scanner quick start
 
-The scanner CLI inventories a repository, creates an immutable plan for
-`prc/core-repository@1.0`, evaluates native assertions, records evidence, and
-reports explicit unresolved states. It also binds all 10,042 registered
-controls into every complete scan report. The narrow assertions do not
-overclaim that they proved a whole broad control.
-The ordinary scan path is one command:
+The scanner CLI inventories a repository, creates an immutable plan, evaluates
+native assertions, records evidence, and reports explicit unresolved states.
+It also binds all 10,042 registered controls into every complete scan report.
+The narrow assertions do not overclaim that they proved a whole broad control.
+
+Choose one clear level:
 
 ```bash
-./prc scan /path/to/project
+./everylast quick /path/to/project       # 18 high-signal local checks
+./everylast scan /path/to/project        # 40 core local checks
+./everylast full codex /path/to/project  # core scan plus advisory AI review of all controls
 ```
 
-Use `./prc scan` to scan the current directory. The command does not fix files or
-execute project code. It prints a summary and creates a private, standalone HTML
-report outside the target. Open the exact path printed as `Detailed report:` to
-review verified findings and every incomplete or manual result.
+Use any command without a path to scan the current directory. `everylast full claude`
+selects Claude Code instead. The commands do not fix files or execute project
+code. They print a summary and create a private, standalone HTML report outside
+the target. Open the exact path printed as `Detailed report:` to review verified
+findings and every incomplete or manual result. `quick` still includes every
+control in that report; it only runs fewer local assertions.
 
 The profile evaluator can consume a live, sandboxed adapter execution only when
 the selected profile binds its exact ID, manifest digest, and observation kind.
@@ -33,23 +37,27 @@ without editing the target.
 
 ### npm release package
 
-After a scanner release is published to npm, install one exact version as a
-development tool:
+After a scanner release is published to npm, the normal short path is:
 
 ```bash
-npm install --save-dev --save-exact --ignore-scripts --no-audit --no-fund @marinjursic/prc@X.Y.Z
-npm exec --offline --no -- prc scan .
+npm install -D @marinjursic/everylast
+npx everylast quick
 ```
+
+Use `npx everylast scan` for the core local scan.
 
 The npm launcher has no install hooks or third-party JavaScript dependencies.
 It uses one exact native platform package and never downloads a fallback. The
 public package names were not yet published when this guide was updated, so
 check the scanner release notes before using the registry command.
 
-To give a Node project one short repeatable command, add
-`"scan": "prc scan ."` to `package.json`, then run
-`npm run --ignore-scripts scan`. The scan script runs, but npm does not run a
-`prescan` or `postscan` hook. `npm scan` is not npm's syntax for a custom script.
+For a pinned install with dependency hooks disabled, use
+`npm install -D -E --ignore-scripts --no-audit --no-fund @marinjursic/everylast@X.Y.Z`,
+then `npm exec --offline --no -- everylast scan`. To give a Node project one short
+repeatable command, add `"scan": "everylast scan"` to `package.json`, then run
+`npm run scan`. Use `npm run --ignore-scripts scan` to skip local `prescan` and
+`postscan` hooks. npm does not let a project add a custom top-level `npm scan`
+command.
 
 ### Build from source
 
@@ -58,10 +66,10 @@ Go 1.27 or a compatible later supported toolchain is required.
 ```bash
 go mod verify
 go build -trimpath -o prc ./cmd/prc
-./prc version
+./everylast version
 ```
 
-Run these commands from the Production Readiness Checklist repository. The
+Run these commands from the Everylast repository. The
 binary automatically discovers the compatible `catalog/` in the current
 directory or beside the executable. Keep release-archive files together when
 moving the binary. If `go` is not found, install the supported Go toolchain and
@@ -75,7 +83,7 @@ compatible catalog. For a current macOS or Linux shell:
 export PATH="/absolute/path/to/production-readiness-checklist:$PATH"
 ```
 
-`prc version --format json` reports the scanner version, exact source revision,
+`everylast version --format json` reports the scanner version, exact source revision,
 reproducible source timestamp, and Go toolchain embedded in a release build.
 Downloadable scanner releases use a separate `scanner-vX.Y.Z` tag namespace and
 bundle the compatible catalog, adapter manifests, packs, schemas, and scanner
@@ -87,7 +95,7 @@ The native CLI stays language-neutral and remains available without Node.
 ## Inventory without executing target code
 
 ```bash
-./prc inventory --target /path/to/project
+./everylast inventory --target /path/to/project
 ```
 
 The inventory walks regular files without following symlinks or executing project
@@ -102,7 +110,7 @@ v0.1, v0.2, and v0.3 schema files remain available for consumers of pinned
 output contracts; only the unversioned alias advances with a later contract.
 
 Before enabling persistent evidence, OCI adapters, or isolated remediation, run
-[`prc doctor`](doctor.md) with the corresponding paths and executables. It probes
+[`everylast doctor`](doctor.md) with the corresponding paths and executables. It probes
 only explicitly requested host capabilities and never launches target code,
 containers, or agent providers.
 
@@ -111,8 +119,8 @@ containers, or agent providers.
 Optionally validate or export the exact catalog first:
 
 ```bash
-./prc catalog validate --catalog-root /path/to/production-readiness-checklist
-./prc catalog bundle --catalog-root /path/to/production-readiness-checklist > catalog-bundle.json
+./everylast catalog validate --catalog-root /path/to/production-readiness-checklist
+./everylast catalog bundle --catalog-root /path/to/production-readiness-checklist > catalog-bundle.json
 ```
 
 The manifest and bundle are deterministic and contain no local path or timestamp.
@@ -122,7 +130,7 @@ The scanner normally discovers its bundled catalog. Pass `--catalog-root` only
 when intentionally testing a different local catalog:
 
 ```bash
-./prc plan \
+./everylast plan \
   --catalog-root /path/to/production-readiness-checklist \
   --target /path/to/project \
   --config /path/to/project/production-readiness.yaml \
@@ -145,7 +153,7 @@ available inventory fields and limits.
 ## Scan and read the report
 
 ```bash
-./prc scan /path/to/project
+./everylast scan /path/to/project
 ```
 
 Options may appear before or after the project path. The default report is
@@ -154,7 +162,8 @@ is never written inside the target. Its name includes the target and run ID.
 It contains:
 
 - all 10,042 registered controls and an honest disposition for each one;
-- a terminal-state and assessment-count summary;
+- a plain-language split between verified problems, narrow passes, unresolved
+  local checks, manual decisions, controls needing evidence, and AI advice;
 - every verified finding with severity, gate, controls, locations, evidence,
   remediation class, finding ID, and stable fingerprint; and
 - every assertion result with applicability, execution state, required
@@ -164,22 +173,23 @@ The scanner creates report files with exclusive creation and will not overwrite
 an existing path. Use `--report /safe/path/readiness.html` to choose a new path,
 or `--no-report` to explicitly suppress the default HTML report.
 
-`prc scan` has no code path to the remediation commands. A missing final newline
+`everylast scan` has no code path to the remediation commands. A missing final newline
 or broad file mode may appear as a finding, but the target bytes and modes remain
-unchanged. `prc fix` is a separate, explicitly invoked candidate workflow.
+unchanged. `everylast fix` is a separate, explicitly invoked candidate workflow.
 
 ## Optional Codex or Claude review
 
-A normal scan does not contact an AI provider. Add an explicitly authorized,
-advisory review for one control while testing the setup:
+A normal scan does not contact an AI provider. Use the provider's official CLI
+sign-in flow once, then start the review with one short option:
 
 ```bash
-export OPENAI_API_KEY='your-provider-key'
-./prc scan . \
-  --review-provider codex \
-  --review-control PRC-02-001 \
-  --allow-remote-source-processing
+everylast login codex
+everylast full codex
 ```
+
+Replace `codex` with `claude` for Claude Code. `everylast auth` shows whether each
+private Everylast login is ready, and `everylast logout codex` or `everylast logout claude`
+removes it. A supported API-key environment variable remains an alternative.
 
 Remove `--review-control` to review every active control. The coordinator is
 required to assign each control to a separate subagent inside a sealed batch.
@@ -187,20 +197,18 @@ Completed batches resume from private state outside the target. This full run ca
 tokens. The provider receives bounded, secret-screened excerpts but no target
 workspace path or source-reading, shell, write, install, web, browser, or MCP
 tools. Its result stays advisory and never turns a control into a verified
-Pass. Read [safe AI control review](ai-control-review.md) for the full command,
-cost warning, result meanings, and stop conditions.
-
-Saved interactive logins are deliberately not loaded. Use `OPENAI_API_KEY` or
-`CODEX_API_KEY` for Codex. Use `ANTHROPIC_API_KEY`, `ANTHROPIC_AUTH_TOKEN`, or
-`CLAUDE_CODE_OAUTH_TOKEN` for Claude, and remove the temporary variable when the
-review is done.
+Pass. A cited path and line are checked against the exact screened snapshot,
+but the claim remains `advisory_unverified` because a real line does not prove
+the AI understood it. `everylast full` and `--ai` are also explicit permission to send
+those screened excerpts to the remote provider. Read [safe AI control review](ai-control-review.md) for
+one-control testing, cost warnings, result meanings, and stop conditions.
 
 ## Preserve evidence and history
 
 ```bash
 mkdir -m 0700 /safe/path/prc-state
 
-./prc scan \
+./everylast scan \
   --target /path/to/project \
   --profile prc/core-repository \
   --state-dir /safe/path/prc-state
@@ -213,13 +221,13 @@ target unless target-local scanner state is intentional. See
 [durable state and history](state-and-history.md) for the storage contract and
 `history` commands.
 
-After a later change, use [`prc diff`](diff-and-invalidation.md) with a canonical
+After a later change, use [`everylast diff`](diff-and-invalidation.md) with a canonical
 base run to see exactly which rule inputs were invalidated before rescanning.
 
 JSON is available for automation:
 
 ```bash
-./prc scan . --format json --exit-policy never
+./everylast scan . --format json --exit-policy never
 ```
 
 Explicit machine formats write to stdout and do not also create the default HTML
@@ -235,10 +243,10 @@ SARIF 2.1.0 failed findings, or JUnit XML with failures, execution errors, and
 manual/not-applicable skips kept distinct:
 
 ```bash
-./prc scan . --format markdown --exit-policy never
-./prc scan . --format html --exit-policy never
-./prc scan . --format sarif --exit-policy never
-./prc scan . --format junit --exit-policy never
+./everylast scan . --format markdown --exit-policy never
+./everylast scan . --format html --exit-policy never
+./everylast scan . --format sarif --exit-policy never
+./everylast scan . --format junit --exit-policy never
 ```
 
 SARIF intentionally contains only failed assertions that can be represented as
@@ -266,7 +274,7 @@ it as a release gate.
 ## Fix eligible deterministic findings
 
 ```bash
-./prc fix \
+./everylast fix \
   --target /path/to/project \
   --catalog-root /path/to/production-readiness-checklist \
   --candidate-root /safe/path/prc-remediation-run \
@@ -281,7 +289,7 @@ configuration policy, terminal states, and the machine-work-complete report.
 ## Explain an assertion
 
 ```bash
-./prc explain --catalog-root . PRC-A-CORE-008
+./everylast explain --catalog-root . PRC-A-CORE-008
 ```
 
 ## Current native checks
@@ -325,7 +333,7 @@ explicitly:
 ```bash
 docker pull docker.io/bridgecrew/checkov@sha256:c64ffb6d6fc8087c896341a2c697770a04a1cf558db04fa7b8129d8ca6bce336
 
-./prc scan /path/to/project \
+./everylast scan /path/to/project \
   --profile prc/iac \
   --mode verify-local \
   --adapter-manifest adapters/checkov-v3.3.8.yaml

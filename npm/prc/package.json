@@ -1,14 +1,14 @@
 {
-  "name": "@marinjursic/prc",
+  "name": "@marinjursic/everylast",
   "version": "0.0.0-development",
   "private": true,
-  "description": "Safe launcher for the Production Readiness Scanner",
+  "description": "Safe launcher for Everylast",
   "type": "module",
   "bin": {
-    "prc": "bin/prc.js"
+    "everylast": "bin/everylast.js"
   },
   "files": [
-    "bin/prc.js",
+    "bin/everylast.js",
     "platforms.json",
     "README.md",
     "LICENSE"
@@ -33,11 +33,11 @@
     "devops"
   ],
   "optionalDependencies": {
-    "@marinjursic/prc-darwin-arm64": "0.0.0-development",
-    "@marinjursic/prc-darwin-x64": "0.0.0-development",
-    "@marinjursic/prc-linux-arm64": "0.0.0-development",
-    "@marinjursic/prc-linux-x64": "0.0.0-development",
-    "@marinjursic/prc-windows-arm64": "0.0.0-development",
-    "@marinjursic/prc-windows-x64": "0.0.0-development"
+    "@marinjursic/everylast-darwin-arm64": "0.0.0-development",
+    "@marinjursic/everylast-darwin-x64": "0.0.0-development",
+    "@marinjursic/everylast-linux-arm64": "0.0.0-development",
+    "@marinjursic/everylast-linux-x64": "0.0.0-development",
+    "@marinjursic/everylast-windows-arm64": "0.0.0-development",
+    "@marinjursic/everylast-windows-x64": "0.0.0-development"
   }
 }

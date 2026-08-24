@@ -1,10 +1,12 @@
 <div align="center">
 
-<img src="docs/assets/social-card.png" alt="Production Readiness Checklist — Ship with evidence, not optimism" width="100%">
+<img src="docs/assets/social-card.png" alt="Everylast — Know what's left before you ship" width="100%">
 
-# Production Readiness Checklist
+# Everylast
 
-**10,042 evidence-driven controls for engineering and shipping software with confidence.**
+**Know what's left before you ship.**
+
+10,042 evidence-driven controls plus a read-only scanner for understanding what a project has proved, what failed, and what still needs review.
 
 [![Controls](https://img.shields.io/badge/controls-10%2C042-2563eb)](docs/engineering/00-overview.md)
 [![Validate](https://github.com/MarinJursic/production-readiness-checklist/actions/workflows/validate.yml/badge.svg)](https://github.com/MarinJursic/production-readiness-checklist/actions/workflows/validate.yml)
@@ -14,7 +16,7 @@
 
 [Begin the complete review](docs/engineering/00-overview.md) · [Check a release quickly](docs/guides/getting-started.md) · [Use with an AI agent](docs/guides/ai-assisted-review.md) · [Contribute](CONTRIBUTING.md)
 
-⭐ [Star this project](https://github.com/MarinJursic/production-readiness-checklist) · 🤝 [Help improve it](CONTRIBUTING.md) · [Share on LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fmarinjursic.github.io%2Fproduction-readiness-checklist%2F) · [Share on X](https://twitter.com/intent/tweet?text=Production%20Readiness%20Checklist%3A%2010%2C042%20evidence-driven%20software%20engineering%20and%20release%20controls.&url=https%3A%2F%2Fmarinjursic.github.io%2Fproduction-readiness-checklist%2F)
+⭐ [Star this project](https://github.com/MarinJursic/production-readiness-checklist) · 🤝 [Help improve it](CONTRIBUTING.md) · [Share on LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fmarinjursic.github.io%2Fproduction-readiness-checklist%2F) · [Share on X](https://twitter.com/intent/tweet?text=Everylast%3A%20know%20what%27s%20left%20before%20you%20ship.&url=https%3A%2F%2Fmarinjursic.github.io%2Fproduction-readiness-checklist%2F)
 
 </div>
 
@@ -79,34 +81,41 @@ Do not modify code and do not make the final release decision.
 
 ## Scanner: quickest path
 
-The experimental scanner turns the checklist into a repeatable repository assessment. Every scan puts all **10,042 controls** in the detailed report. It also runs the 40 narrow, deterministic checks in `prc/core-repository@1.0`. A narrow check can prove one exact fact, but it cannot silently mark a broader control as fully passed. Everything that still needs proof stays visible.
+The experimental scanner turns the checklist into a repeatable repository assessment. Every scan puts all **10,042 controls** in the detailed report. The quick profile runs 18 high-signal local checks, while the default `prc/core-repository@1.0` profile runs 40 narrow deterministic checks. A narrow check can prove one exact fact, but it cannot silently mark a broader control as fully passed. Everything that still needs proof stays visible.
 
 A normal scan is read-only. It does **not** fix files, run project code, install project dependencies, or turn missing evidence into a pass.
 
 ### Easiest setup with npm
 
-The npm package source, launcher, six native platform packages, and release builder are implemented. The public package names were still unpublished when this README was updated, so use this command only after the linked release notes confirm that the exact version is on npm:
+The npm package source, launcher, six native platform packages, and release builder are implemented. The public package names were still unpublished when checked on August 25, 2026, so the commands below start working after the first release is listed in this project's release notes.
 
 ```bash
-npm install --save-dev --save-exact --ignore-scripts --no-audit --no-fund @marinjursic/prc@X.Y.Z
-npm exec --offline --no -- prc scan .
+npm install -D @marinjursic/everylast
+npx everylast quick
 ```
 
-The package has no install scripts and no third-party JavaScript dependencies. It does not download a binary after installation. npm selects one exact platform package; the launcher checks its release manifest and native binary hash, then starts it without a shell.
+Use `npx everylast scan` for the larger 40-check local scan. That is the normal short path. The package has no install scripts and no third-party JavaScript dependencies. It does not download a binary after installation. npm selects one platform package; the launcher checks its release manifest and native binary hash, then starts it without a shell.
 
-Use an exact version that appears in this repository's scanner release notes. `--ignore-scripts` stops dependency install hooks, and `--offline --no` prevents the run command from fetching a missing package. The install still places reviewed package files in `node_modules` and updates `package.json` and `package-lock.json`; review those changes before committing them.
+For a security-sensitive or repeatable install, pin a version from the scanner release notes and disable dependency install hooks:
+
+```bash
+npm install -D -E --ignore-scripts --no-audit --no-fund @marinjursic/everylast@X.Y.Z
+npm exec --offline --no -- everylast scan
+```
+
+The install places reviewed package files in `node_modules` and updates `package.json` and `package-lock.json`; review those changes before committing them. The offline run fails instead of downloading a missing package.
 
 For a short command that the whole project can reuse, add this to `package.json`:
 
 ```json
 {
   "scripts": {
-    "scan": "prc scan ."
+    "scan": "everylast scan"
   }
 }
 ```
 
-Run it with `npm run --ignore-scripts scan`. The named `scan` script still runs, but npm does not run `prescan` or `postscan` hooks. npm does not support arbitrary shortcuts such as `npm scan`.
+Run it with `npm run scan`. npm reserves its top-level command names, so a project cannot add a custom `npm scan` command. Use `npm run --ignore-scripts scan` when you also want npm to skip `prescan` and `postscan` hooks.
 
 ### One-time setup from source
 
@@ -116,31 +125,59 @@ You need Git and Go 1.27 or a compatible later supported toolchain.
 git clone https://github.com/MarinJursic/production-readiness-checklist.git
 cd production-readiness-checklist
 go mod verify
-go build -trimpath -o prc ./cmd/prc
+go build -trimpath -o everylast ./cmd/prc
+./everylast doctor
 ```
 
-The `prc` binary is now ready. Keep it in this directory, because the scanner automatically finds the compatible bundled `catalog/` beside it. Published scanner release archives already contain the binary, catalog, adapter manifests, schemas, and scanner guides together; verify a downloaded archive as described in the [release guide](docs/scanner/releases.md), extract it, and run from anywhere without installing project dependencies.
+The `everylast` binary is now ready. `doctor` checks that the target and bundled catalog
+can be read and explains any missing optional tool; it does not run the target.
+Keep the binary in this directory, because the scanner automatically finds the compatible bundled `catalog/` beside it. Published scanner release archives already contain the binary, catalog, adapter manifests, schemas, and scanner guides together; verify a downloaded archive as described in the [release guide](docs/scanner/releases.md), extract it, and run from anywhere without installing project dependencies.
 
-To use `prc` without the `./` prefix, add this entire directory to `PATH`; do not move only the binary away from its compatible catalog. On macOS or Linux, for example: `export PATH="/absolute/path/to/production-readiness-checklist:$PATH"`.
+To use `everylast` without the `./` prefix, add this entire directory to `PATH`; do not move only the binary away from its compatible catalog. On macOS or Linux, for example: `export PATH="/absolute/path/to/production-readiness-checklist:$PATH"`.
 
 ### Scan a project
+
+Choose one of three clear levels:
+
+```bash
+# Fast local screen: 18 high-signal checks, no AI.
+./everylast quick /path/to/your/project
+
+# Core local scan: 40 checks, no AI.
+./everylast scan /path/to/your/project
+
+# Full catalog AI advice, after provider login.
+./everylast full codex /path/to/your/project
+# or: ./everylast full claude /path/to/your/project
+```
+
+Every level still lists all 10,042 controls in the report. `quick` means fewer
+local checks and less terminal noise; it does not mean the other controls
+passed. `full` runs the core local scan and asks the selected AI provider for
+advice on every active control. AI advice remains unverified.
 
 From the extracted or cloned scanner directory:
 
 ```bash
-./prc scan /path/to/your/project
+./everylast scan /path/to/your/project
 ```
 
 To scan the current directory, use:
 
 ```bash
-./prc scan
+./everylast scan
 ```
 
 The command accepts options before or after the project path. The terminal shows every deterministic result with a word and symbol. On a real terminal, Pass is green and Fail is red; redirected and machine output has no color:
 
 ```text
-Production Readiness Scanner 0.2.0
+   ╭─────────────────╮
+   │  ● ● ● ● ● ● ✓  │
+   ╰─────────────────╯
+       EVERYLAST
+  Know what's left before you ship.
+
+Everylast 0.1.0-dev
 
 Run: 91c2…
 Profile: prc/core-repository@1.0
@@ -158,13 +195,25 @@ Result
 Local profile result: no_go
 Full catalog result: needs_review
 Assessment counts: fail=1, unknown=1, manual_review=1, pass=37
+Verified findings: 1
+Narrow checks passed: 37
+Local checks unresolved: 1
+Manual decisions: 1
 Complete control catalog: 10042/10042 controls included
+Controls still needing review or evidence: 10020
+Advisory AI reviews: 0
 
 Scan mode: report only; no fixes were applied.
-Detailed report: /Users/you/Library/Caches/prc/reports/example-api-91c2….html
+Detailed report: /Users/you/Library/Caches/everylast/reports/example-api-91c2….html
 ```
 
 Open the reported HTML file in a browser. It contains all 10,042 controls, every verified finding, every narrow assertion result, exact evidence, and any advisory AI review. `needs_review` means the scanner has not proved the broad rule. `partially_verified` means linked narrow checks passed; it is still not a complete Pass. Reports are private and stored outside the scanned project by default, so creating one does not change the project being scanned.
+
+The report separates verified problems, narrow checks that passed, unresolved
+local checks, manual decisions, broad controls still needing evidence, and AI
+advice. An AI citation can be marked `snapshot_location_validated` only when it
+points to a real line in the exact screened snapshot. Its claim is still marked
+`advisory_unverified`: a real line can be irrelevant or misunderstood.
 
 A result-bearing exit code is not a crash: `0` means the selected profile passed, `1` means an active gate failed, and `2` means evidence remains incomplete or blocked. Use `--exit-policy never` only when a script should always receive `0` after a completed report; the report still preserves the real terminal state.
 
@@ -172,45 +221,40 @@ Useful report options:
 
 ```bash
 # Choose a new output path; an existing file is never overwritten.
-./prc scan /path/to/project --report /safe/path/readiness.html
+./everylast scan /path/to/project --report /safe/path/readiness.html
 
 # Print JSON for another tool. Machine formats do not create an extra HTML file.
-./prc scan /path/to/project --format json --exit-policy never > readiness.json
+./everylast scan /path/to/project --format json --exit-policy never > readiness.json
 
 # Explicitly suppress the default HTML report.
-./prc scan /path/to/project --no-report
+./everylast scan /path/to/project --no-report
 ```
 
-The native `prc scan` command remains available for Go, Python, Java, Rust, infrastructure, air-gapped, and mixed repositories that do not use npm.
+The native `everylast scan` command remains available for Go, Python, Java, Rust, infrastructure, air-gapped, and mixed repositories that do not use npm.
 
 ### Optional deep review with Codex or Claude Code
 
-The ordinary scan is local and deterministic. AI review is a separate, explicit option for broad or subjective rules such as project-appropriate folder structure. It sends only bounded, secret-screened text excerpts to the chosen provider. The provider receives no target workspace path and gets no shell, file-reading, write, web, MCP, or install tools.
-
-Test one control first:
+The ordinary scan is local and deterministic. AI review is a separate option for broad or subjective rules such as project-appropriate folder structure. First sign in through an installed provider CLI, then scan:
 
 ```bash
-export OPENAI_API_KEY='your-provider-key'
-prc scan . \
-  --review-provider codex \
-  --review-control PRC-02-001 \
-  --allow-remote-source-processing
+everylast login codex
+everylast full codex
 ```
 
-Remove `--review-control` to review every active control:
+For Claude Code, use:
 
 ```bash
-prc scan . \
-  --review-provider codex \
-  --review-effort xhigh \
-  --allow-remote-source-processing
+everylast login claude
+everylast full claude
 ```
 
-Use `--review-provider claude` for Claude Code. The full run is intentionally large: controls are sent in sealed batches of at most eight, and the coordinator must create one separate subagent for every control. Completed batches are saved outside the target and reused when the same scan resumes. This can take a long time and use many tokens. AI results are always labeled advisory; they cannot create a verified Pass, a final Not Applicable decision, or modify the project.
+`everylast auth` shows login status and `everylast logout codex` or `everylast logout claude` clears Everylast's saved login. These commands use each provider's official sign-in flow. Everylast stores that login in a private Everylast-only directory, separate from the provider's normal configuration, plugins, instructions, and sessions. Existing supported API-key environment variables remain an alternative.
 
-The scanner deliberately does not load a saved interactive provider login. Codex requires `OPENAI_API_KEY` or `CODEX_API_KEY`; Claude requires `ANTHROPIC_API_KEY`, `ANTHROPIC_AUTH_TOKEN`, or `CLAUDE_CODE_OAUTH_TOKEN`. Only the selected credential and a small runtime environment allowlist reach the provider process. Remove the temporary variable from your shell when the review is done.
+`everylast full` uses the same guarded path as `everylast scan --ai`. Selecting the provider is also your explicit permission to send bounded, secret-screened source excerpts to that remote provider. The provider receives no target workspace path and gets no shell, file-reading, write, web, MCP, or install tools. Do not enable AI review for source that its provider is not allowed to process.
 
-See [safe AI control review](docs/scanner/ai-control-review.md) before running the full corpus.
+The full run is intentionally large: controls are sent in sealed batches of at most eight, and the coordinator must create one separate subagent for every control. Completed batches are saved outside the target and reused when the same scan resumes. This can take a long time and use many tokens. AI results are always labeled advisory; they cannot create a verified Pass, a final Not Applicable decision, or modify the project.
+
+Advanced options such as reviewing one control, changing effort, or setting a Claude cost limit remain available in the [safe AI control review](docs/scanner/ai-control-review.md).
 
 ### What it checks today
 
@@ -218,9 +262,9 @@ The default profile checks repository governance, immutable source identity, dep
 
 The scanner includes every production concern in its report, but it does not pretend every concern can be proved from source code. Unsupported runtime, organizational, environment, legal, and human evidence stays visibly blocked or in review. That is intentional: the report describes what was actually proven for one target and evidence set, not an unqualified claim that software has no defects.
 
-Fixing is a separate workflow. `prc scan` never calls it. The bounded `prc fix` command works only in isolated candidate directories and supports a deliberately small set of independently verifiable changes; it never merges, deploys, or releases anything automatically.
+Fixing is a separate workflow. `everylast scan` never calls it. The bounded `everylast fix` command works only in isolated candidate directories and supports a deliberately small set of independently verifiable changes; it never merges, deploys, or releases anything automatically.
 
-Continue with the [complete scanner quick start](docs/scanner/getting-started.md), [safe start-to-finish walkthrough](docs/scanner/security-walkthrough.md), [CLI and exit codes](docs/scanner/cli-contract.md), [diagnostics](docs/scanner/doctor.md), [read-only agent integration](docs/scanner/mcp-agent-integration.md), [project configuration](docs/scanner/configuration.md), [state and history](docs/scanner/state-and-history.md), [supply-chain scanning](docs/scanner/supply-chain.md), and [isolated remediation](docs/scanner/remediation.md). Architecture details live in the [product contract](docs/architecture/product-contract.md), [trust model](docs/architecture/trust-model.md), [adapter protocol](docs/architecture/adapters.md), [evidence model](docs/architecture/evidence-and-results.md), and [remediation contract](docs/architecture/remediation-contract.md).
+Continue with the [complete scanner quick start](docs/scanner/getting-started.md), [safe start-to-finish walkthrough](docs/scanner/security-walkthrough.md), [CLI and exit codes](docs/scanner/cli-contract.md), [diagnostics](docs/scanner/doctor.md), [read-only agent integration](docs/scanner/mcp-agent-integration.md), [project configuration](docs/scanner/configuration.md), [state and history](docs/scanner/state-and-history.md), [supply-chain scanning](docs/scanner/supply-chain.md), and [isolated remediation](docs/scanner/remediation.md). The [research findings and improvement plan](research/PROJECT_RESEARCH_AND_IMPROVEMENT_PLAN.md) records the Reddit audit, standards review, coverage gaps, and prioritized next work. Architecture details live in the [product contract](docs/architecture/product-contract.md), [trust model](docs/architecture/trust-model.md), [adapter protocol](docs/architecture/adapters.md), [evidence model](docs/architecture/evidence-and-results.md), and [remediation contract](docs/architecture/remediation-contract.md).
 
 ## Evidence, not checkbox theater
 

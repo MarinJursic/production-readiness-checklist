@@ -103,9 +103,11 @@ func Apply(ctx context.Context, run model.RunResult, options Options) (model.Run
 			AssessmentCandidate:    review.AssessmentCandidate,
 			ApplicabilityCandidate: review.ApplicabilityCandidate,
 			Confidence:             review.Confidence, Reason: review.Reason, Advice: review.Advice,
-			Evidence:    append([]model.FindingLocation{}, review.Evidence...),
-			Limitations: append([]string{}, review.Limitations...),
-			TaskID:      taskForControl(tasks, review.ControlID),
+			Evidence:             append([]model.FindingLocation{}, review.Evidence...),
+			Limitations:          append([]string{}, review.Limitations...),
+			CitationVerification: citationVerification(review.Evidence),
+			ClaimVerification:    "advisory_unverified",
+			TaskID:               taskForControl(tasks, review.ControlID),
 		}
 	}
 	run.ControlCatalog.AIReviewProvider = options.Provider
@@ -126,6 +128,13 @@ func Apply(ctx context.Context, run model.RunResult, options Options) (model.Run
 		AdvisoryFailures: advisoryFailures, ReusedBatches: reused,
 		CompletedBatches: len(tasks), StateDirectory: stateDirectory, Focused: focused,
 	}, nil
+}
+
+func citationVerification(evidence []model.FindingLocation) string {
+	if len(evidence) == 0 {
+		return "not_cited"
+	}
+	return "snapshot_location_validated"
 }
 
 func normalizeOptions(options *Options) error {
@@ -175,7 +184,7 @@ func prepareStateDirectory(run model.RunResult, options Options) (string, error)
 		if err != nil {
 			return "", fmt.Errorf("locate user cache for resumable AI review: %w", err)
 		}
-		path = filepath.Join(cache, "prc", "control-reviews", run.Inventory.Digest, run.ControlCatalog.RegistrySHA256, options.Provider)
+		path = filepath.Join(cache, "everylast", "control-reviews", run.Inventory.Digest, run.ControlCatalog.RegistrySHA256, options.Provider)
 	}
 	absolute, err := filepath.Abs(path)
 	if err != nil {

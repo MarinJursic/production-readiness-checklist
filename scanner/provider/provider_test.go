@@ -346,7 +346,7 @@ func TestCodexPlanUsesReadOnlyEphemeralStructuredExecution(t *testing.T) {
 		t.Fatal(err)
 	}
 	joined := strings.Join(plan.Arguments, " ")
-	for _, expected := range []string{"--ignore-user-config", "--strict-config", "--ephemeral", "--sandbox read-only", `approval_policy="never"`, "features.shell_tool=false", "features.multi_agent=false", `web_search="disabled"`, "tools.web_search=false", "mcp_servers={}", "--disable apps", "--disable browser_use", "--skip-git-repo-check", "--output-schema", "--json"} {
+	for _, expected := range []string{"--ignore-user-config", "--strict-config", "--ephemeral", "--sandbox read-only", `approval_policy="never"`, `cli_auth_credentials_store="file"`, "features.shell_tool=false", "features.multi_agent=false", `web_search="disabled"`, "tools.web_search=false", "mcp_servers={}", "--disable apps", "--disable browser_use", "--skip-git-repo-check", "--output-schema", "--json"} {
 		if !strings.Contains(joined, expected) {
 			t.Errorf("missing %q in %s", expected, joined)
 		}
