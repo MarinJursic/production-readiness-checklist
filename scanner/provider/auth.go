@@ -99,14 +99,14 @@ func storedAuthenticationDirectory(providerName string) (string, error) {
 		return "", fmt.Errorf("no private Vuk %s login was found; run `vuk login %s`", providerName, providerName)
 	}
 	if runtime.GOOS != "windows" && information.Mode().Perm()&0o077 != 0 {
-		return "", fmt.Errorf("Vuk %s login directory is accessible by other users", providerName)
+		return "", fmt.Errorf("the Vuk %s login directory is accessible by other users", providerName)
 	}
 	marker, err := os.Lstat(filepath.Join(path, authenticationMarker))
 	if err != nil || !marker.Mode().IsRegular() || marker.Mode()&os.ModeSymlink != 0 || marker.Size() > 128 {
 		return "", fmt.Errorf("no private Vuk %s login was found; run `vuk login %s`", providerName, providerName)
 	}
 	if runtime.GOOS != "windows" && marker.Mode().Perm()&0o077 != 0 {
-		return "", fmt.Errorf("Vuk %s login marker is accessible by other users", providerName)
+		return "", fmt.Errorf("the Vuk %s login marker is accessible by other users", providerName)
 	}
 	return path, nil
 }
