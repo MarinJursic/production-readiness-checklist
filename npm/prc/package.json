@@ -1,14 +1,14 @@
 {
-  "name": "@marinjursic/everylast",
+  "name": "@marinjursic/vuk",
   "version": "0.0.0-development",
   "private": true,
-  "description": "Safe launcher for Everylast",
+  "description": "Safe launcher for Vuk",
   "type": "module",
   "bin": {
-    "everylast": "bin/everylast.js"
+    "vuk": "bin/vuk.js"
   },
   "files": [
-    "bin/everylast.js",
+    "bin/vuk.js",
     "platforms.json",
     "README.md",
     "LICENSE"
@@ -33,11 +33,11 @@
     "devops"
   ],
   "optionalDependencies": {
-    "@marinjursic/everylast-darwin-arm64": "0.0.0-development",
-    "@marinjursic/everylast-darwin-x64": "0.0.0-development",
-    "@marinjursic/everylast-linux-arm64": "0.0.0-development",
-    "@marinjursic/everylast-linux-x64": "0.0.0-development",
-    "@marinjursic/everylast-windows-arm64": "0.0.0-development",
-    "@marinjursic/everylast-windows-x64": "0.0.0-development"
+    "@marinjursic/vuk-darwin-arm64": "0.0.0-development",
+    "@marinjursic/vuk-darwin-x64": "0.0.0-development",
+    "@marinjursic/vuk-linux-arm64": "0.0.0-development",
+    "@marinjursic/vuk-linux-x64": "0.0.0-development",
+    "@marinjursic/vuk-windows-arm64": "0.0.0-development",
+    "@marinjursic/vuk-windows-x64": "0.0.0-development"
   }
 }

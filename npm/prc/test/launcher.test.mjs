@@ -8,16 +8,16 @@ import { spawnSync } from "node:child_process";
 import { mkdtemp } from "node:fs/promises";
 import test from "node:test";
 
-const SOURCE = join(dirname(fileURLToPath(import.meta.url)), "..", "bin", "everylast.js");
+const SOURCE = join(dirname(fileURLToPath(import.meta.url)), "..", "bin", "vuk.js");
 const VERSION = "1.2.3-test.1";
 const COMMIT = "a".repeat(40);
 const PLATFORM_NAMES = {
-  "darwin-arm64": "@marinjursic/everylast-darwin-arm64",
-  "darwin-x64": "@marinjursic/everylast-darwin-x64",
-  "linux-arm64": "@marinjursic/everylast-linux-arm64",
-  "linux-x64": "@marinjursic/everylast-linux-x64",
-  "win32-arm64": "@marinjursic/everylast-windows-arm64",
-  "win32-x64": "@marinjursic/everylast-windows-x64"
+  "darwin-arm64": "@marinjursic/vuk-darwin-arm64",
+  "darwin-x64": "@marinjursic/vuk-darwin-x64",
+  "linux-arm64": "@marinjursic/vuk-linux-arm64",
+  "linux-x64": "@marinjursic/vuk-linux-x64",
+  "win32-arm64": "@marinjursic/vuk-windows-arm64",
+  "win32-x64": "@marinjursic/vuk-windows-x64"
 };
 
 function digest(value) {
@@ -25,18 +25,18 @@ function digest(value) {
 }
 
 async function fixture({ corruptBinary = false, omitPlatform = false } = {}) {
-  const root = await mkdtemp(join(tmpdir(), "everylast-npm-test-"));
+  const root = await mkdtemp(join(tmpdir(), "vuk-npm-test-"));
   const scope = join(root, "node_modules", "@marinjursic");
-  const launcher = join(scope, "everylast");
+  const launcher = join(scope, "vuk");
   await mkdir(join(launcher, "bin"), { recursive: true });
-  await cp(SOURCE, join(launcher, "bin", "everylast.js"));
-  await chmod(join(launcher, "bin", "everylast.js"), 0o755);
-  await writeFile(join(launcher, "package.json"), JSON.stringify({ name: "@marinjursic/everylast", version: VERSION, type: "module" }));
+  await cp(SOURCE, join(launcher, "bin", "vuk.js"));
+  await chmod(join(launcher, "bin", "vuk.js"), 0o755);
+  await writeFile(join(launcher, "package.json"), JSON.stringify({ name: "@marinjursic/vuk", version: VERSION, type: "module" }));
 
   const key = `${process.platform}-${process.arch}`;
   const packageName = PLATFORM_NAMES[key];
   assert.ok(packageName, `test host ${key} is supported`);
-  const binaryName = process.platform === "win32" ? "everylast.exe" : "everylast";
+  const binaryName = process.platform === "win32" ? "vuk.exe" : "vuk";
   const platformRoot = join(scope, packageName.slice("@marinjursic/".length));
   const resultPath = join(root, "arguments.json");
   let binary = Buffer.from(`#!/usr/bin/env node\nrequire("node:fs").writeFileSync(process.env.PRC_TEST_RESULT, JSON.stringify(process.argv.slice(2))); process.exit(2);\n`);
@@ -59,7 +59,7 @@ async function fixture({ corruptBinary = false, omitPlatform = false } = {}) {
     await writeFile(join(platformRoot, "bin", binaryName), binary);
     await chmod(join(platformRoot, "bin", binaryName), 0o755);
   }
-  return { launcher: join(launcher, "bin", "everylast.js"), resultPath };
+  return { launcher: join(launcher, "bin", "vuk.js"), resultPath };
 }
 
 test("launcher verifies the package and forwards literal arguments and exit code", async () => {

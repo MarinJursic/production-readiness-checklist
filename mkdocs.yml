@@ -1,6 +1,6 @@
-site_name: Everylast
+site_name: Vuk
 site_description: 10,042 evidence-driven controls for engineering and shipping software with confidence.
-site_author: Everylast contributors
+site_author: Vuk contributors
 site_url: https://marinjursic.github.io/production-readiness-checklist/
 repo_url: https://github.com/MarinJursic/production-readiness-checklist
 repo_name: GitHub
@@ -143,6 +143,6 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/MarinJursic/production-readiness-checklist
-      name: Everylast on GitHub
+      name: Vuk on GitHub
 
-copyright: Copyright &copy; 2026 Everylast contributors · MIT License
+copyright: Copyright &copy; 2026 Vuk contributors · MIT License

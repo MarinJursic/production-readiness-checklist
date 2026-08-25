@@ -222,7 +222,7 @@ func runVersion(args []string, stdout, stderr io.Writer) error {
 	}
 	switch *format {
 	case "text":
-		fmt.Fprintf(stdout, "everylast %s (revision %s, built %s, %s)\n",
+		fmt.Fprintf(stdout, "vuk %s (revision %s, built %s, %s)\n",
 			information.Version, information.Revision, information.BuiltAt, information.GoVersion)
 	case "json":
 		encoder := json.NewEncoder(stdout)
@@ -238,15 +238,15 @@ func runVersion(args []string, stdout, stderr io.Writer) error {
 
 func usage(output io.Writer) {
 	printBrandBanner(output, newTerminalStyle("auto", output))
-	fmt.Fprintln(output, "Usage: everylast <command> [options]")
+	fmt.Fprintln(output, "Usage: vuk <command> [options]")
 	fmt.Fprintln(output)
 	fmt.Fprintln(output, "Start here:")
-	fmt.Fprintln(output, "  everylast quick                Run a small local risk screen")
-	fmt.Fprintln(output, "  everylast scan                 Run the core local scan and write a detailed report")
-	fmt.Fprintln(output, "  everylast login codex          Sign in for an optional Codex review")
-	fmt.Fprintln(output, "  everylast full codex           Review all controls with safe, advisory Codex AI")
-	fmt.Fprintln(output, "  everylast doctor               Check whether scanning tools are ready")
-	fmt.Fprintln(output, "  everylast scan --help          Show advanced scan options")
+	fmt.Fprintln(output, "  vuk quick                Run a small local risk screen")
+	fmt.Fprintln(output, "  vuk scan                 Run the core local scan and write a detailed report")
+	fmt.Fprintln(output, "  vuk login codex          Sign in for an optional Codex review")
+	fmt.Fprintln(output, "  vuk full codex           Review all controls with safe, advisory Codex AI")
+	fmt.Fprintln(output, "  vuk doctor               Check whether scanning tools are ready")
+	fmt.Fprintln(output, "  vuk scan --help          Show advanced scan options")
 	fmt.Fprintln(output)
 	fmt.Fprintln(output, "Main commands: quick, scan, full, login, logout, auth, doctor, inventory, plan, diff, history, fix, version")
 	fmt.Fprintln(output, "Advanced commands: catalog, pack, benchmark, config, remediate, remediate-proposal, explain, adapter, exception, provider, mcp")
@@ -256,20 +256,20 @@ func runScanAlias(name string, args []string, stdout, stderr io.Writer) (int, er
 	if len(args) == 1 && (args[0] == "--help" || args[0] == "-h") {
 		switch name {
 		case "quick":
-			fmt.Fprintln(stdout, "Usage: everylast quick [project path] [scan options]")
+			fmt.Fprintln(stdout, "Usage: vuk quick [project path] [scan options]")
 			fmt.Fprintln(stdout, "Runs 18 high-signal local checks, includes all 10,042 controls in the report, and never starts AI.")
-			fmt.Fprintln(stdout, "Use everylast scan --help for the shared report and output options.")
+			fmt.Fprintln(stdout, "Use vuk scan --help for the shared report and output options.")
 		case "full":
-			fmt.Fprintln(stdout, "Usage: everylast full <codex|claude> [project path] [scan options]")
+			fmt.Fprintln(stdout, "Usage: vuk full <codex|claude> [project path] [scan options]")
 			fmt.Fprintln(stdout, "Runs the 40-check core scan and advisory AI review of every active control.")
 			fmt.Fprintln(stdout, "The provider name explicitly allows bounded, screened remote source processing.")
-			fmt.Fprintln(stdout, "Use everylast scan --help for advanced review, report, and output options.")
+			fmt.Fprintln(stdout, "Use vuk scan --help for advanced review, report, and output options.")
 		}
 		return exitSuccess, nil
 	}
 	for _, argument := range args {
 		if argument == "--profile" || strings.HasPrefix(argument, "--profile=") {
-			return exitInternal, exitError(exitConfiguration, fmt.Errorf("everylast %s selects its own profile; use everylast scan --profile for a custom profile", name))
+			return exitInternal, exitError(exitConfiguration, fmt.Errorf("vuk %s selects its own profile; use vuk scan --profile for a custom profile", name))
 		}
 	}
 	switch name {
@@ -277,18 +277,18 @@ func runScanAlias(name string, args []string, stdout, stderr io.Writer) (int, er
 		for _, argument := range args {
 			if argument == "--ai" || strings.HasPrefix(argument, "--ai=") ||
 				argument == "--review-provider" || strings.HasPrefix(argument, "--review-provider=") {
-				return exitInternal, exitError(exitConfiguration, errors.New("everylast quick is local only; use everylast full codex or everylast full claude for AI review"))
+				return exitInternal, exitError(exitConfiguration, errors.New("vuk quick is local only; use vuk full codex or vuk full claude for AI review"))
 			}
 		}
 		return runScan(append([]string{"--profile", "prc/quick"}, args...), stdout, stderr)
 	case "full":
 		if len(args) == 0 || args[0] != "codex" && args[0] != "claude" {
-			return exitInternal, exitError(exitConfiguration, errors.New("usage: everylast full codex [project path] or everylast full claude [project path]"))
+			return exitInternal, exitError(exitConfiguration, errors.New("usage: vuk full codex [project path] or vuk full claude [project path]"))
 		}
 		for _, argument := range args[1:] {
 			if argument == "--ai" || strings.HasPrefix(argument, "--ai=") ||
 				argument == "--review-provider" || strings.HasPrefix(argument, "--review-provider=") {
-				return exitInternal, exitError(exitConfiguration, errors.New("everylast full already selects the AI provider"))
+				return exitInternal, exitError(exitConfiguration, errors.New("vuk full already selects the AI provider"))
 			}
 		}
 		return runScan(append([]string{"--ai", args[0]}, args[1:]...), stdout, stderr)
@@ -1547,11 +1547,11 @@ func parseCommon(name string, args []string, stderr io.Writer) (*flag.FlagSet, *
 	set.SetOutput(stderr)
 	set.Usage = func() {
 		if name == "scan" {
-			fmt.Fprintln(stderr, "Usage: everylast scan [project path] [options]")
+			fmt.Fprintln(stderr, "Usage: vuk scan [project path] [options]")
 			fmt.Fprintln(stderr, "Scans without modifying the project and writes a detailed report by default.")
-			fmt.Fprintln(stderr, "Examples: everylast scan   |   everylast scan --ai codex   |   everylast scan ../project")
+			fmt.Fprintln(stderr, "Examples: vuk scan   |   vuk scan --ai codex   |   vuk scan ../project")
 		} else {
-			fmt.Fprintf(stderr, "Usage: everylast %s [options]\n", name)
+			fmt.Fprintf(stderr, "Usage: vuk %s [options]\n", name)
 		}
 		fmt.Fprintln(stderr)
 		set.PrintDefaults()
@@ -2204,7 +2204,7 @@ func reorderInterspersedFlags(set *flag.FlagSet, args []string) []string {
 }
 
 func printScanSummary(output io.Writer, run model.RunResult, style terminalStyle) {
-	fmt.Fprintf(output, "Everylast %s\n\n", terminalText(version))
+	fmt.Fprintf(output, "Vuk %s\n\n", terminalText(version))
 	fmt.Fprintf(output, "Run: %s\n", terminalText(run.RunID))
 	fmt.Fprintf(output, "Profile: %s@%s\n", terminalText(run.Plan.ProfileID), terminalText(run.Plan.ProfileVersion))
 	fmt.Fprintf(output, "Target: %s (%s)\n", terminalText(run.Inventory.TargetName), terminalText(run.Inventory.Digest))
@@ -2271,7 +2271,7 @@ func writeScanReport(run model.RunResult, requestedPath string) (string, error) 
 		if err != nil {
 			return "", fmt.Errorf("locate the user cache for the scan report: %w", err)
 		}
-		directory := filepath.Join(cacheRoot, "everylast", "reports")
+		directory := filepath.Join(cacheRoot, "vuk", "reports")
 		if pathWithin(run.Inventory.Root, directory) {
 			return "", fmt.Errorf("default report directory is inside the scanned project; use --report with a path outside the project or --no-report")
 		}

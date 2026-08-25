@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/release-manifest.schema.json",
-  "title": "Everylast release manifest",
+  "title": "Vuk release manifest",
   "$ref": "release-manifest-v0.3.schema.json"
 }

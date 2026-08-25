@@ -184,7 +184,7 @@ func prepareStateDirectory(run model.RunResult, options Options) (string, error)
 		if err != nil {
 			return "", fmt.Errorf("locate user cache for resumable AI review: %w", err)
 		}
-		path = filepath.Join(cache, "everylast", "control-reviews", run.Inventory.Digest, run.ControlCatalog.RegistrySHA256, options.Provider)
+		path = filepath.Join(cache, "vuk", "control-reviews", run.Inventory.Digest, run.ControlCatalog.RegistrySHA256, options.Provider)
 	}
 	absolute, err := filepath.Abs(path)
 	if err != nil {

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/release-manifest-v0.3.schema.json",
-  "title": "Everylast release manifest v0.3",
+  "title": "Vuk release manifest v0.3",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -10,7 +10,7 @@
   ],
   "properties": {
     "schema_version": {"const": "prc.release-manifest/v0.3"},
-    "product": {"const": "everylast"},
+    "product": {"const": "vuk"},
     "version": {"$ref": "#/$defs/version"},
     "source_commit": {"type": "string", "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$"},
     "built_at": {"type": "string", "format": "date-time"},
@@ -63,7 +63,7 @@
         "additionalProperties": false,
         "required": ["name", "goos", "goarch", "archive_format", "sha256", "size"],
         "properties": {
-          "name": {"type": "string", "pattern": "^everylast_[0-9A-Za-z.-]+_(?:linux|darwin|windows)_(?:amd64|arm64)\\.(?:tar\\.gz|zip)$"},
+          "name": {"type": "string", "pattern": "^vuk_[0-9A-Za-z.-]+_(?:linux|darwin|windows)_(?:amd64|arm64)\\.(?:tar\\.gz|zip)$"},
           "goos": {"enum": ["linux", "darwin", "windows"]},
           "goarch": {"enum": ["amd64", "arm64"]},
           "archive_format": {"enum": ["tar.gz", "zip"]},
@@ -71,12 +71,12 @@
           "size": {"type": "integer", "minimum": 1}
         },
         "oneOf": [
-          {"properties": {"name": {"pattern": "^everylast_[0-9A-Za-z.-]+_darwin_amd64\\.tar\\.gz$"}, "goos": {"const": "darwin"}, "goarch": {"const": "amd64"}, "archive_format": {"const": "tar.gz"}}},
-          {"properties": {"name": {"pattern": "^everylast_[0-9A-Za-z.-]+_darwin_arm64\\.tar\\.gz$"}, "goos": {"const": "darwin"}, "goarch": {"const": "arm64"}, "archive_format": {"const": "tar.gz"}}},
-          {"properties": {"name": {"pattern": "^everylast_[0-9A-Za-z.-]+_linux_amd64\\.tar\\.gz$"}, "goos": {"const": "linux"}, "goarch": {"const": "amd64"}, "archive_format": {"const": "tar.gz"}}},
-          {"properties": {"name": {"pattern": "^everylast_[0-9A-Za-z.-]+_linux_arm64\\.tar\\.gz$"}, "goos": {"const": "linux"}, "goarch": {"const": "arm64"}, "archive_format": {"const": "tar.gz"}}},
-          {"properties": {"name": {"pattern": "^everylast_[0-9A-Za-z.-]+_windows_amd64\\.zip$"}, "goos": {"const": "windows"}, "goarch": {"const": "amd64"}, "archive_format": {"const": "zip"}}},
-          {"properties": {"name": {"pattern": "^everylast_[0-9A-Za-z.-]+_windows_arm64\\.zip$"}, "goos": {"const": "windows"}, "goarch": {"const": "arm64"}, "archive_format": {"const": "zip"}}}
+          {"properties": {"name": {"pattern": "^vuk_[0-9A-Za-z.-]+_darwin_amd64\\.tar\\.gz$"}, "goos": {"const": "darwin"}, "goarch": {"const": "amd64"}, "archive_format": {"const": "tar.gz"}}},
+          {"properties": {"name": {"pattern": "^vuk_[0-9A-Za-z.-]+_darwin_arm64\\.tar\\.gz$"}, "goos": {"const": "darwin"}, "goarch": {"const": "arm64"}, "archive_format": {"const": "tar.gz"}}},
+          {"properties": {"name": {"pattern": "^vuk_[0-9A-Za-z.-]+_linux_amd64\\.tar\\.gz$"}, "goos": {"const": "linux"}, "goarch": {"const": "amd64"}, "archive_format": {"const": "tar.gz"}}},
+          {"properties": {"name": {"pattern": "^vuk_[0-9A-Za-z.-]+_linux_arm64\\.tar\\.gz$"}, "goos": {"const": "linux"}, "goarch": {"const": "arm64"}, "archive_format": {"const": "tar.gz"}}},
+          {"properties": {"name": {"pattern": "^vuk_[0-9A-Za-z.-]+_windows_amd64\\.zip$"}, "goos": {"const": "windows"}, "goarch": {"const": "amd64"}, "archive_format": {"const": "zip"}}},
+          {"properties": {"name": {"pattern": "^vuk_[0-9A-Za-z.-]+_windows_arm64\\.zip$"}, "goos": {"const": "windows"}, "goarch": {"const": "arm64"}, "archive_format": {"const": "zip"}}}
         ]
       }
     },
@@ -86,21 +86,21 @@
       "maxItems": 7,
       "uniqueItems": true,
       "allOf": [
-        {"contains": {"properties": {"package_name": {"const": "@marinjursic/everylast"}}, "required": ["package_name"]}, "minContains": 1, "maxContains": 1},
-        {"contains": {"properties": {"package_name": {"const": "@marinjursic/everylast-darwin-arm64"}}, "required": ["package_name"]}, "minContains": 1, "maxContains": 1},
-        {"contains": {"properties": {"package_name": {"const": "@marinjursic/everylast-darwin-x64"}}, "required": ["package_name"]}, "minContains": 1, "maxContains": 1},
-        {"contains": {"properties": {"package_name": {"const": "@marinjursic/everylast-linux-arm64"}}, "required": ["package_name"]}, "minContains": 1, "maxContains": 1},
-        {"contains": {"properties": {"package_name": {"const": "@marinjursic/everylast-linux-x64"}}, "required": ["package_name"]}, "minContains": 1, "maxContains": 1},
-        {"contains": {"properties": {"package_name": {"const": "@marinjursic/everylast-windows-arm64"}}, "required": ["package_name"]}, "minContains": 1, "maxContains": 1},
-        {"contains": {"properties": {"package_name": {"const": "@marinjursic/everylast-windows-x64"}}, "required": ["package_name"]}, "minContains": 1, "maxContains": 1}
+        {"contains": {"properties": {"package_name": {"const": "@marinjursic/vuk"}}, "required": ["package_name"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"package_name": {"const": "@marinjursic/vuk-darwin-arm64"}}, "required": ["package_name"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"package_name": {"const": "@marinjursic/vuk-darwin-x64"}}, "required": ["package_name"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"package_name": {"const": "@marinjursic/vuk-linux-arm64"}}, "required": ["package_name"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"package_name": {"const": "@marinjursic/vuk-linux-x64"}}, "required": ["package_name"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"package_name": {"const": "@marinjursic/vuk-windows-arm64"}}, "required": ["package_name"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"package_name": {"const": "@marinjursic/vuk-windows-x64"}}, "required": ["package_name"]}, "minContains": 1, "maxContains": 1}
       ],
       "items": {
         "type": "object",
         "additionalProperties": false,
         "required": ["name", "package_name", "kind", "sha256", "size"],
         "properties": {
-          "name": {"type": "string", "pattern": "^marinjursic-everylast(?:-(?:darwin|linux|windows)-(?:arm64|x64))?-[0-9A-Za-z.-]+\\.tgz$"},
-          "package_name": {"type": "string", "pattern": "^@marinjursic/everylast(?:-(?:darwin|linux|windows)-(?:arm64|x64))?$"},
+          "name": {"type": "string", "pattern": "^marinjursic-vuk(?:-(?:darwin|linux|windows)-(?:arm64|x64))?-[0-9A-Za-z.-]+\\.tgz$"},
+          "package_name": {"type": "string", "pattern": "^@marinjursic/vuk(?:-(?:darwin|linux|windows)-(?:arm64|x64))?$"},
           "kind": {"enum": ["launcher", "platform"]},
           "os": {"enum": ["darwin", "linux", "win32"]},
           "cpu": {"enum": ["arm64", "x64"]},
@@ -112,13 +112,13 @@
           {"if": {"properties": {"kind": {"const": "launcher"}}}, "then": {"not": {"anyOf": [{"required": ["os"]}, {"required": ["cpu"]}]}}}
         ],
         "oneOf": [
-          {"properties": {"name": {"pattern": "^marinjursic-everylast-[0-9A-Za-z.-]+\\.tgz$"}, "package_name": {"const": "@marinjursic/everylast"}, "kind": {"const": "launcher"}}},
-          {"properties": {"name": {"pattern": "^marinjursic-everylast-darwin-arm64-[0-9A-Za-z.-]+\\.tgz$"}, "package_name": {"const": "@marinjursic/everylast-darwin-arm64"}, "kind": {"const": "platform"}, "os": {"const": "darwin"}, "cpu": {"const": "arm64"}}},
-          {"properties": {"name": {"pattern": "^marinjursic-everylast-darwin-x64-[0-9A-Za-z.-]+\\.tgz$"}, "package_name": {"const": "@marinjursic/everylast-darwin-x64"}, "kind": {"const": "platform"}, "os": {"const": "darwin"}, "cpu": {"const": "x64"}}},
-          {"properties": {"name": {"pattern": "^marinjursic-everylast-linux-arm64-[0-9A-Za-z.-]+\\.tgz$"}, "package_name": {"const": "@marinjursic/everylast-linux-arm64"}, "kind": {"const": "platform"}, "os": {"const": "linux"}, "cpu": {"const": "arm64"}}},
-          {"properties": {"name": {"pattern": "^marinjursic-everylast-linux-x64-[0-9A-Za-z.-]+\\.tgz$"}, "package_name": {"const": "@marinjursic/everylast-linux-x64"}, "kind": {"const": "platform"}, "os": {"const": "linux"}, "cpu": {"const": "x64"}}},
-          {"properties": {"name": {"pattern": "^marinjursic-everylast-windows-arm64-[0-9A-Za-z.-]+\\.tgz$"}, "package_name": {"const": "@marinjursic/everylast-windows-arm64"}, "kind": {"const": "platform"}, "os": {"const": "win32"}, "cpu": {"const": "arm64"}}},
-          {"properties": {"name": {"pattern": "^marinjursic-everylast-windows-x64-[0-9A-Za-z.-]+\\.tgz$"}, "package_name": {"const": "@marinjursic/everylast-windows-x64"}, "kind": {"const": "platform"}, "os": {"const": "win32"}, "cpu": {"const": "x64"}}}
+          {"properties": {"name": {"pattern": "^marinjursic-vuk-[0-9A-Za-z.-]+\\.tgz$"}, "package_name": {"const": "@marinjursic/vuk"}, "kind": {"const": "launcher"}}},
+          {"properties": {"name": {"pattern": "^marinjursic-vuk-darwin-arm64-[0-9A-Za-z.-]+\\.tgz$"}, "package_name": {"const": "@marinjursic/vuk-darwin-arm64"}, "kind": {"const": "platform"}, "os": {"const": "darwin"}, "cpu": {"const": "arm64"}}},
+          {"properties": {"name": {"pattern": "^marinjursic-vuk-darwin-x64-[0-9A-Za-z.-]+\\.tgz$"}, "package_name": {"const": "@marinjursic/vuk-darwin-x64"}, "kind": {"const": "platform"}, "os": {"const": "darwin"}, "cpu": {"const": "x64"}}},
+          {"properties": {"name": {"pattern": "^marinjursic-vuk-linux-arm64-[0-9A-Za-z.-]+\\.tgz$"}, "package_name": {"const": "@marinjursic/vuk-linux-arm64"}, "kind": {"const": "platform"}, "os": {"const": "linux"}, "cpu": {"const": "arm64"}}},
+          {"properties": {"name": {"pattern": "^marinjursic-vuk-linux-x64-[0-9A-Za-z.-]+\\.tgz$"}, "package_name": {"const": "@marinjursic/vuk-linux-x64"}, "kind": {"const": "platform"}, "os": {"const": "linux"}, "cpu": {"const": "x64"}}},
+          {"properties": {"name": {"pattern": "^marinjursic-vuk-windows-arm64-[0-9A-Za-z.-]+\\.tgz$"}, "package_name": {"const": "@marinjursic/vuk-windows-arm64"}, "kind": {"const": "platform"}, "os": {"const": "win32"}, "cpu": {"const": "arm64"}}},
+          {"properties": {"name": {"pattern": "^marinjursic-vuk-windows-x64-[0-9A-Za-z.-]+\\.tgz$"}, "package_name": {"const": "@marinjursic/vuk-windows-x64"}, "kind": {"const": "platform"}, "os": {"const": "win32"}, "cpu": {"const": "x64"}}}
         ]
       }
     },
@@ -127,7 +127,7 @@
       "additionalProperties": false,
       "required": ["name", "format", "spec_version", "sha256", "size"],
       "properties": {
-        "name": {"type": "string", "pattern": "^everylast_[0-9A-Za-z.-]+\\.cdx\\.json$"},
+        "name": {"type": "string", "pattern": "^vuk_[0-9A-Za-z.-]+\\.cdx\\.json$"},
         "format": {"const": "CycloneDX"},
         "spec_version": {"const": "1.6"},
         "sha256": {"$ref": "#/$defs/digest"},

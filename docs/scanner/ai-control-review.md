@@ -1,6 +1,6 @@
 # Safe AI review of all controls
 
-`everylast scan` always puts all 10,042 controls in the report. By default it checks
+`vuk scan` always puts all 10,042 controls in the report. By default it checks
 only facts that the local scanner can prove safely. Broad questions stay
 `needs_review` instead of being guessed.
 
@@ -16,19 +16,19 @@ Install one supported command-line tool:
 - `claude` for Claude Code.
 
 Sign in once through PRC. This launches the provider's official login flow but
-stores its credentials in a private Everylast-only directory:
+stores its credentials in a private Vuk-only directory:
 
 ```bash
-everylast login codex
-# or: everylast login claude
+vuk login codex
+# or: vuk login claude
 
-everylast auth
+vuk auth
 ```
 
 PRC does not reuse the provider's normal user configuration, sessions,
-instructions, plugins, hooks, or MCP servers. A scan uses the Everylast-only login
+instructions, plugins, hooks, or MCP servers. A scan uses the Vuk-only login
 with a fresh temporary home and a small runtime environment allowlist. Use
-`everylast logout codex` or `everylast logout claude` to remove the saved Everylast login.
+`vuk logout codex` or `vuk logout claude` to remove the saved Vuk login.
 
 Supported API-key environment variables remain an alternative: Codex accepts
 `OPENAI_API_KEY` or `CODEX_API_KEY`; Claude accepts `ANTHROPIC_API_KEY`,
@@ -45,15 +45,15 @@ separate `--allow-remote-source-processing` switch.
 The shortest full-review command is:
 
 ```bash
-everylast full codex
+vuk full codex
 ```
 
-Use `everylast full claude` for Claude Code. `everylast scan --ai codex|claude` remains an
+Use `vuk full claude` for Claude Code. `vuk scan --ai codex|claude` remains an
 equivalent advanced-friendly spelling. To test only one control first, use the
 advanced form:
 
 ```bash
-everylast scan /path/to/project \
+vuk scan /path/to/project \
   --review-provider codex \
   --review-control PRC-02-001 \
   --allow-remote-source-processing
@@ -62,7 +62,7 @@ everylast scan /path/to/project \
 For Claude Code, replace the provider name:
 
 ```bash
-everylast scan /path/to/project \
+vuk scan /path/to/project \
   --review-provider claude \
   --review-control PRC-02-001 \
   --allow-remote-source-processing
@@ -89,15 +89,15 @@ typed verifier or a qualified person proves it.
 The short commands review all active controls:
 
 ```bash
-everylast full codex
-everylast full claude
+vuk full codex
+vuk full claude
 ```
 
 Use the advanced form only when changing defaults, for example Codex `xhigh`
 effort:
 
 ```bash
-everylast scan /path/to/project \
+vuk scan /path/to/project \
   --review-provider codex \
   --review-effort xhigh \
   --allow-remote-source-processing

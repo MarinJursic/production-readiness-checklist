@@ -58,7 +58,7 @@ func TestVersionCommand(t *testing.T) {
 	if code := run([]string{"version"}, &stdout, &stderr); code != 0 {
 		t.Fatalf("exit=%d stderr=%s", code, stderr.String())
 	}
-	if !strings.Contains(stdout.String(), "everylast 0.1.0-dev (revision unknown, built unknown, go1.") {
+	if !strings.Contains(stdout.String(), "vuk 0.1.0-dev (revision unknown, built unknown, go1.") {
 		t.Fatalf("unexpected output %q", stdout.String())
 	}
 	stdout.Reset()
@@ -81,18 +81,19 @@ func TestVersionCommand(t *testing.T) {
 
 func TestFriendlyRootHelpVersionAliasAndScanHelp(t *testing.T) {
 	var stdout, stderr bytes.Buffer
-	if code := run(nil, &stdout, &stderr); code != exitSuccess || !strings.Contains(stdout.String(), "everylast quick") ||
-		!strings.Contains(stdout.String(), "everylast full codex") || stderr.Len() != 0 {
+	if code := run(nil, &stdout, &stderr); code != exitSuccess || !strings.Contains(stdout.String(), "vuk quick") ||
+		!strings.Contains(stdout.String(), "vuk full codex") || !strings.Contains(stdout.String(), "/\\       /\\") ||
+		!strings.Contains(stdout.String(), "           VUK") || stderr.Len() != 0 {
 		t.Fatalf("root help exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
 	}
 	stdout.Reset()
-	if code := run([]string{"--version"}, &stdout, &stderr); code != exitSuccess || !strings.HasPrefix(stdout.String(), "everylast ") {
+	if code := run([]string{"--version"}, &stdout, &stderr); code != exitSuccess || !strings.HasPrefix(stdout.String(), "vuk ") {
 		t.Fatalf("version alias exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
 	}
 	stdout.Reset()
 	stderr.Reset()
 	if code := run([]string{"scan", "--help"}, &stdout, &stderr); code != exitSuccess ||
-		!strings.Contains(stderr.String(), "Usage: everylast scan [project path] [options]") ||
+		!strings.Contains(stderr.String(), "Usage: vuk scan [project path] [options]") ||
 		strings.Contains(stderr.String(), "PRC-EXIT") {
 		t.Fatalf("scan help exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
 	}
@@ -123,8 +124,8 @@ func TestScanAliasesRejectAmbiguousProviderAndProfileOverrides(t *testing.T) {
 		args    []string
 		message string
 	}{
-		{[]string{"full"}, "usage: everylast full"},
-		{[]string{"full", "other"}, "usage: everylast full"},
+		{[]string{"full"}, "usage: vuk full"},
+		{[]string{"full", "other"}, "usage: vuk full"},
 		{[]string{"full", "codex", "--ai", "claude"}, "already selects"},
 		{[]string{"quick", "--ai", "codex"}, "local only"},
 		{[]string{"quick", "--profile", "prc/core-repository"}, "selects its own profile"},
@@ -175,7 +176,7 @@ exit 0
 		t.Run(name, func(t *testing.T) {
 			var stdout, stderr bytes.Buffer
 			if code := run([]string{"login", name}, &stdout, &stderr); code != 0 ||
-				!strings.Contains(stdout.String(), "everylast scan --ai "+name) {
+				!strings.Contains(stdout.String(), "vuk scan --ai "+name) {
 				t.Fatalf("login exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
 			}
 			names, environment, err := provider.IsolatedEnvironment(name, t.TempDir())
@@ -186,7 +187,7 @@ exit 0
 			if name == "claude" {
 				configurationName = "CLAUDE_CONFIG_DIR"
 			}
-			if !strings.Contains(environment[configurationName], filepath.Join("everylast", "provider-auth", name)) {
+			if !strings.Contains(environment[configurationName], filepath.Join("vuk", "provider-auth", name)) {
 				t.Fatalf("provider login was not isolated: %+v", environment)
 			}
 
@@ -203,7 +204,7 @@ exit 0
 				t.Fatalf("logout exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
 			}
 			if _, _, err := provider.IsolatedEnvironment(name, t.TempDir()); err == nil ||
-				!strings.Contains(err.Error(), "everylast login "+name) {
+				!strings.Contains(err.Error(), "vuk login "+name) {
 				t.Fatalf("logged-out provider was accepted: %v", err)
 			}
 		})
@@ -247,7 +248,7 @@ func TestMCPServeCommandCompletesHandshakeAndListsReadOnlyTools(t *testing.T) {
 	if !strings.Contains(lines[0], `"protocolVersion":"2025-11-25"`) ||
 		!strings.Contains(lines[1], `"name":"prc_scan"`) ||
 		!strings.Contains(lines[1], `"readOnlyHint":true`) ||
-		strings.Contains(stdout.String(), "Everylast\n") {
+		strings.Contains(stdout.String(), "Vuk\n") {
 		t.Fatalf("unexpected MCP output: %s", stdout.String())
 	}
 }
@@ -856,7 +857,7 @@ func TestSimpleScanDiscoversCatalogCreatesPrivateReportAndNeverFixesTarget(t *te
 		!strings.Contains(stdout.String(), "Detailed report: ") {
 		t.Fatalf("simple scan output = %s", stdout.String())
 	}
-	reportDirectory := filepath.Join(cacheRoot, "everylast", "reports")
+	reportDirectory := filepath.Join(cacheRoot, "vuk", "reports")
 	entries, err := os.ReadDir(reportDirectory)
 	if err != nil || len(entries) != 1 {
 		t.Fatalf("reports=%v err=%v", entries, err)

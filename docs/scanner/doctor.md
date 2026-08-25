@@ -1,6 +1,6 @@
 # Diagnose scanner capabilities
 
-`everylast doctor` checks whether the local host can perform the scanner operations
+`vuk doctor` checks whether the local host can perform the scanner operations
 you intend to use. It does not execute project code, containers, Codex, or Claude
 Code. Requested executable capabilities are resolved, identity-checked, and
 hashed without being launched.
@@ -8,7 +8,7 @@ hashed without being launched.
 ## Check read-only scanning
 
 ```bash
-./everylast doctor \
+./vuk doctor \
   --target /path/to/project \
   --catalog-root /path/to/production-readiness-checklist
 ```
@@ -24,7 +24,7 @@ Create the state directory with private permissions before probing it:
 ```bash
 mkdir -m 0700 /safe/path/prc-state
 
-./everylast doctor \
+./vuk doctor \
   --target /path/to/project \
   --catalog-root /path/to/production-readiness-checklist \
   --state-dir /safe/path/prc-state \
@@ -44,7 +44,7 @@ disjoint sibling of the target.
 ## Inspect optional executables
 
 ```bash
-./everylast doctor \
+./vuk doctor \
   --target /path/to/project \
   --catalog-root /path/to/production-readiness-checklist \
   --oci-runtime docker \
@@ -61,7 +61,7 @@ requests, pull images, or prove that a daemon is running.
 ## Automation output
 
 ```bash
-./everylast doctor --target . --catalog-root . --format json > doctor.json
+./vuk doctor --target . --catalog-root . --format json > doctor.json
 python scripts/validate_instance.py doctor.schema.json doctor.json
 ```
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build deterministic, self-describing Everylast releases."""
+"""Build deterministic, self-describing Vuk releases."""
 
 from __future__ import annotations
 
@@ -251,7 +251,7 @@ def build_release(args: argparse.Namespace) -> None:
     if args.sbom.resolve() == output or output in args.sbom.resolve().parents:
         raise ValueError("SBOM input cannot be inside the output directory")
 
-    staging = pathlib.Path(tempfile.mkdtemp(prefix=".everylast-release-", dir=output.parent))
+    staging = pathlib.Path(tempfile.mkdtemp(prefix=".vuk-release-", dir=output.parent))
     try:
         binaries = staging / "binaries"
         distribution = staging / "distribution"
@@ -272,7 +272,7 @@ def build_release(args: argparse.Namespace) -> None:
         for goos, goarch in TARGETS:
             environment = base_environment | {"GOOS": goos, "GOARCH": goarch}
             suffix = ".exe" if goos == "windows" else ""
-            binary = binaries / f"everylast_{goos}_{goarch}{suffix}"
+            binary = binaries / f"vuk_{goos}_{goarch}{suffix}"
             subprocess.run(
                 [
                     args.go,
@@ -335,15 +335,15 @@ def build_release(args: argparse.Namespace) -> None:
                 }
             )
 
-        sbom_name = f"everylast_{args.version}.cdx.json"
+        sbom_name = f"vuk_{args.version}.cdx.json"
         sbom_path = distribution / sbom_name
         sbom_path.write_bytes(normalized_sbom(args.sbom, args.version, args.commit))
         support = release_support_files()
         artifacts: list[dict[str, Any]] = []
         for goos, goarch in TARGETS:
             suffix = ".exe" if goos == "windows" else ""
-            entries = [(f"everylast{suffix}", built[(goos, goarch)].read_bytes(), 0o755), *support]
-            stem = f"everylast_{args.version}_{goos}_{goarch}"
+            entries = [(f"vuk{suffix}", built[(goos, goarch)].read_bytes(), 0o755), *support]
+            stem = f"vuk_{args.version}_{goos}_{goarch}"
             root_name = stem
             if goos == "windows":
                 archive_path = distribution / f"{stem}.zip"
@@ -379,7 +379,7 @@ def build_release(args: argparse.Namespace) -> None:
 
         manifest = {
             "schema_version": "prc.release-manifest/v0.3",
-            "product": "everylast",
+            "product": "vuk",
             "version": args.version,
             "source_commit": args.commit,
             "built_at": built_at,
@@ -395,7 +395,7 @@ def build_release(args: argparse.Namespace) -> None:
                 **file_identity(sbom_path),
             },
         }
-        manifest_path = distribution / f"everylast_{args.version}_release-manifest.json"
+        manifest_path = distribution / f"vuk_{args.version}_release-manifest.json"
         manifest_path.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
         write_checksums(distribution)

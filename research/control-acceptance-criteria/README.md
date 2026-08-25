@@ -10,7 +10,7 @@
 
 ## Read this first: the important problems found
 
-This file reviews every control, but it does not claim that every control is already machine-checkable. Every `everylast scan` report now contains all 10,042 controls. The deterministic profile proves only its narrow assertions; the remaining controls stay visibly `needs_review`. An optional AI review can add a one-subagent-per-control review task, but current provider output cannot prove every internal subagent call happened and no advice can turn subjective judgment into a verified Pass. Turning broad objectives directly into hard-coded rules would create false passes and one-size-fits-all designs.
+This file reviews every control, but it does not claim that every control is already machine-checkable. Every `vuk scan` report now contains all 10,042 controls. The deterministic profile proves only its narrow assertions; the remaining controls stay visibly `needs_review`. An optional AI review can add a one-subagent-per-control review task, but current provider output cannot prove every internal subagent call happened and no advice can turn subjective judgment into a verified Pass. Turning broad objectives directly into hard-coded rules would create false passes and one-size-fits-all designs.
 
 ### The rule design that should be used everywhere
 
@@ -58,7 +58,7 @@ The current 43 catalog assertions are much safer than pretending all 10,042 rule
 
 ### How to read each control below
 
-Each entry keeps the exact source rule, gives a proposed pass contract, states what `everylast scan` really checks today, and proposes a future method. The proposal is a review starting point. It must be approved by a control owner and tested against positive, negative, unusual-layout, and adversarial fixtures before it becomes executable.
+Each entry keeps the exact source rule, gives a proposed pass contract, states what `vuk scan` really checks today, and proposes a future method. The proposal is a review starting point. It must be approved by a control owner and tested against positive, negative, unusual-layout, and adversarial fixtures before it becomes executable.
 
 ## Split control files
 
@@ -66,13 +66,13 @@ The per-control review is split at control boundaries so it stays easy to open, 
 
 | File | Controls | First control | Last control | Bytes |
 | --- | ---: | --- | --- | ---: |
-| [part-001.md](part-001.md) | 1,149 | `PRC-02-001` | `PRC-38-006` | 2,849,194 |
-| [part-002.md](part-002.md) | 1,074 | `PRC-38-007` | `USEQ-9B8E587D` | 2,848,761 |
-| [part-003.md](part-003.md) | 1,024 | `USEQ-EDE89DB2` | `USEQ-F64F6149` | 2,847,803 |
-| [part-004.md](part-004.md) | 1,052 | `USEQ-745E0AA2` | `USEQ-CE328AB7` | 2,847,755 |
-| [part-005.md](part-005.md) | 1,036 | `USEQ-31202793` | `USEQ-1111C3BC` | 2,848,402 |
-| [part-006.md](part-006.md) | 1,025 | `USEQ-CC7E87FB` | `USEQ-379D10F1` | 2,848,697 |
-| [part-007.md](part-007.md) | 1,042 | `USEQ-4DA9C46D` | `USEQ-0B9A4977` | 2,847,258 |
-| [part-008.md](part-008.md) | 1,027 | `USEQ-E0A45D6A` | `USEQ-A055B3FA` | 2,847,857 |
-| [part-009.md](part-009.md) | 1,000 | `USEQ-D2AFE23D` | `USEQ-48B9998C` | 2,847,279 |
-| [part-010.md](part-010.md) | 613 | `USEQ-C1C0BF4C` | `USEQ-87B20C17` | 1,681,846 |
+| [part-001.md](part-001.md) | 1,151 | `PRC-02-001` | `PRC-38-008` | 2,847,376 |
+| [part-002.md](part-002.md) | 1,076 | `PRC-38-009` | `USEQ-EE6096D0` | 2,848,073 |
+| [part-003.md](part-003.md) | 1,027 | `USEQ-6A1ECCAB` | `USEQ-77C403FB` | 2,849,106 |
+| [part-004.md](part-004.md) | 1,055 | `USEQ-5DDDC794` | `USEQ-9115A638` | 2,849,239 |
+| [part-005.md](part-005.md) | 1,038 | `USEQ-13717FE0` | `USEQ-93A61AF7` | 2,848,504 |
+| [part-006.md](part-006.md) | 1,027 | `USEQ-042D0B84` | `USEQ-86610CCA` | 2,847,052 |
+| [part-007.md](part-007.md) | 1,043 | `USEQ-0B8FCCA8` | `USEQ-E630B3A9` | 2,848,306 |
+| [part-008.md](part-008.md) | 1,031 | `USEQ-0070EAA7` | `USEQ-38F7FBD9` | 2,847,249 |
+| [part-009.md](part-009.md) | 1,001 | `USEQ-75CA82FD` | `USEQ-EE822CDB` | 2,849,022 |
+| [part-010.md](part-010.md) | 593 | `USEQ-E59769F2` | `USEQ-87B20C17` | 1,620,829 |

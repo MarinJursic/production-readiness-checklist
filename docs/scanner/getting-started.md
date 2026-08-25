@@ -8,12 +8,12 @@ The narrow assertions do not overclaim that they proved a whole broad control.
 Choose one clear level:
 
 ```bash
-./everylast quick /path/to/project       # 18 high-signal local checks
-./everylast scan /path/to/project        # 40 core local checks
-./everylast full codex /path/to/project  # core scan plus advisory AI review of all controls
+./vuk quick /path/to/project       # 18 high-signal local checks
+./vuk scan /path/to/project        # 40 core local checks
+./vuk full codex /path/to/project  # core scan plus advisory AI review of all controls
 ```
 
-Use any command without a path to scan the current directory. `everylast full claude`
+Use any command without a path to scan the current directory. `vuk full claude`
 selects Claude Code instead. The commands do not fix files or execute project
 code. They print a summary and create a private, standalone HTML report outside
 the target. Open the exact path printed as `Detailed report:` to review verified
@@ -40,11 +40,11 @@ without editing the target.
 After a scanner release is published to npm, the normal short path is:
 
 ```bash
-npm install -D @marinjursic/everylast
-npx everylast quick
+npm install -D @marinjursic/vuk
+npx vuk quick
 ```
 
-Use `npx everylast scan` for the core local scan.
+Use `npx vuk scan` for the core local scan.
 
 The npm launcher has no install hooks or third-party JavaScript dependencies.
 It uses one exact native platform package and never downloads a fallback. The
@@ -52,9 +52,9 @@ public package names were not yet published when this guide was updated, so
 check the scanner release notes before using the registry command.
 
 For a pinned install with dependency hooks disabled, use
-`npm install -D -E --ignore-scripts --no-audit --no-fund @marinjursic/everylast@X.Y.Z`,
-then `npm exec --offline --no -- everylast scan`. To give a Node project one short
-repeatable command, add `"scan": "everylast scan"` to `package.json`, then run
+`npm install -D -E --ignore-scripts --no-audit --no-fund @marinjursic/vuk@X.Y.Z`,
+then `npm exec --offline --no -- vuk scan`. To give a Node project one short
+repeatable command, add `"scan": "vuk scan"` to `package.json`, then run
 `npm run scan`. Use `npm run --ignore-scripts scan` to skip local `prescan` and
 `postscan` hooks. npm does not let a project add a custom top-level `npm scan`
 command.
@@ -66,10 +66,10 @@ Go 1.27 or a compatible later supported toolchain is required.
 ```bash
 go mod verify
 go build -trimpath -o prc ./cmd/prc
-./everylast version
+./vuk version
 ```
 
-Run these commands from the Everylast repository. The
+Run these commands from the Vuk repository. The
 binary automatically discovers the compatible `catalog/` in the current
 directory or beside the executable. Keep release-archive files together when
 moving the binary. If `go` is not found, install the supported Go toolchain and
@@ -83,7 +83,7 @@ compatible catalog. For a current macOS or Linux shell:
 export PATH="/absolute/path/to/production-readiness-checklist:$PATH"
 ```
 
-`everylast version --format json` reports the scanner version, exact source revision,
+`vuk version --format json` reports the scanner version, exact source revision,
 reproducible source timestamp, and Go toolchain embedded in a release build.
 Downloadable scanner releases use a separate `scanner-vX.Y.Z` tag namespace and
 bundle the compatible catalog, adapter manifests, packs, schemas, and scanner
@@ -95,7 +95,7 @@ The native CLI stays language-neutral and remains available without Node.
 ## Inventory without executing target code
 
 ```bash
-./everylast inventory --target /path/to/project
+./vuk inventory --target /path/to/project
 ```
 
 The inventory walks regular files without following symlinks or executing project
@@ -110,7 +110,7 @@ v0.1, v0.2, and v0.3 schema files remain available for consumers of pinned
 output contracts; only the unversioned alias advances with a later contract.
 
 Before enabling persistent evidence, OCI adapters, or isolated remediation, run
-[`everylast doctor`](doctor.md) with the corresponding paths and executables. It probes
+[`vuk doctor`](doctor.md) with the corresponding paths and executables. It probes
 only explicitly requested host capabilities and never launches target code,
 containers, or agent providers.
 
@@ -119,8 +119,8 @@ containers, or agent providers.
 Optionally validate or export the exact catalog first:
 
 ```bash
-./everylast catalog validate --catalog-root /path/to/production-readiness-checklist
-./everylast catalog bundle --catalog-root /path/to/production-readiness-checklist > catalog-bundle.json
+./vuk catalog validate --catalog-root /path/to/production-readiness-checklist
+./vuk catalog bundle --catalog-root /path/to/production-readiness-checklist > catalog-bundle.json
 ```
 
 The manifest and bundle are deterministic and contain no local path or timestamp.
@@ -130,7 +130,7 @@ The scanner normally discovers its bundled catalog. Pass `--catalog-root` only
 when intentionally testing a different local catalog:
 
 ```bash
-./everylast plan \
+./vuk plan \
   --catalog-root /path/to/production-readiness-checklist \
   --target /path/to/project \
   --config /path/to/project/production-readiness.yaml \
@@ -153,7 +153,7 @@ available inventory fields and limits.
 ## Scan and read the report
 
 ```bash
-./everylast scan /path/to/project
+./vuk scan /path/to/project
 ```
 
 Options may appear before or after the project path. The default report is
@@ -173,9 +173,9 @@ The scanner creates report files with exclusive creation and will not overwrite
 an existing path. Use `--report /safe/path/readiness.html` to choose a new path,
 or `--no-report` to explicitly suppress the default HTML report.
 
-`everylast scan` has no code path to the remediation commands. A missing final newline
+`vuk scan` has no code path to the remediation commands. A missing final newline
 or broad file mode may appear as a finding, but the target bytes and modes remain
-unchanged. `everylast fix` is a separate, explicitly invoked candidate workflow.
+unchanged. `vuk fix` is a separate, explicitly invoked candidate workflow.
 
 ## Optional Codex or Claude review
 
@@ -183,12 +183,12 @@ A normal scan does not contact an AI provider. Use the provider's official CLI
 sign-in flow once, then start the review with one short option:
 
 ```bash
-everylast login codex
-everylast full codex
+vuk login codex
+vuk full codex
 ```
 
-Replace `codex` with `claude` for Claude Code. `everylast auth` shows whether each
-private Everylast login is ready, and `everylast logout codex` or `everylast logout claude`
+Replace `codex` with `claude` for Claude Code. `vuk auth` shows whether each
+private Vuk login is ready, and `vuk logout codex` or `vuk logout claude`
 removes it. A supported API-key environment variable remains an alternative.
 
 Remove `--review-control` to review every active control. The coordinator is
@@ -199,7 +199,7 @@ workspace path or source-reading, shell, write, install, web, browser, or MCP
 tools. Its result stays advisory and never turns a control into a verified
 Pass. A cited path and line are checked against the exact screened snapshot,
 but the claim remains `advisory_unverified` because a real line does not prove
-the AI understood it. `everylast full` and `--ai` are also explicit permission to send
+the AI understood it. `vuk full` and `--ai` are also explicit permission to send
 those screened excerpts to the remote provider. Read [safe AI control review](ai-control-review.md) for
 one-control testing, cost warnings, result meanings, and stop conditions.
 
@@ -208,7 +208,7 @@ one-control testing, cost warnings, result meanings, and stop conditions.
 ```bash
 mkdir -m 0700 /safe/path/prc-state
 
-./everylast scan \
+./vuk scan \
   --target /path/to/project \
   --profile prc/core-repository \
   --state-dir /safe/path/prc-state
@@ -221,13 +221,13 @@ target unless target-local scanner state is intentional. See
 [durable state and history](state-and-history.md) for the storage contract and
 `history` commands.
 
-After a later change, use [`everylast diff`](diff-and-invalidation.md) with a canonical
+After a later change, use [`vuk diff`](diff-and-invalidation.md) with a canonical
 base run to see exactly which rule inputs were invalidated before rescanning.
 
 JSON is available for automation:
 
 ```bash
-./everylast scan . --format json --exit-policy never
+./vuk scan . --format json --exit-policy never
 ```
 
 Explicit machine formats write to stdout and do not also create the default HTML
@@ -243,10 +243,10 @@ SARIF 2.1.0 failed findings, or JUnit XML with failures, execution errors, and
 manual/not-applicable skips kept distinct:
 
 ```bash
-./everylast scan . --format markdown --exit-policy never
-./everylast scan . --format html --exit-policy never
-./everylast scan . --format sarif --exit-policy never
-./everylast scan . --format junit --exit-policy never
+./vuk scan . --format markdown --exit-policy never
+./vuk scan . --format html --exit-policy never
+./vuk scan . --format sarif --exit-policy never
+./vuk scan . --format junit --exit-policy never
 ```
 
 SARIF intentionally contains only failed assertions that can be represented as
@@ -274,7 +274,7 @@ it as a release gate.
 ## Fix eligible deterministic findings
 
 ```bash
-./everylast fix \
+./vuk fix \
   --target /path/to/project \
   --catalog-root /path/to/production-readiness-checklist \
   --candidate-root /safe/path/prc-remediation-run \
@@ -289,7 +289,7 @@ configuration policy, terminal states, and the machine-work-complete report.
 ## Explain an assertion
 
 ```bash
-./everylast explain --catalog-root . PRC-A-CORE-008
+./vuk explain --catalog-root . PRC-A-CORE-008
 ```
 
 ## Current native checks
@@ -333,7 +333,7 @@ explicitly:
 ```bash
 docker pull docker.io/bridgecrew/checkov@sha256:c64ffb6d6fc8087c896341a2c697770a04a1cf558db04fa7b8129d8ca6bce336
 
-./everylast scan /path/to/project \
+./vuk scan /path/to/project \
   --profile prc/iac \
   --mode verify-local \
   --adapter-manifest adapters/checkov-v3.3.8.yaml

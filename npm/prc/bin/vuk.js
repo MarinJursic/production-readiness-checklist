@@ -12,12 +12,12 @@ const DIGEST = /^[0-9a-f]{64}$/;
 const VERSION = /^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$/;
 const COMMIT = /^(?:[0-9a-f]{40}|[0-9a-f]{64})$/;
 const EXPECTED_PACKAGES = Object.freeze({
-  "darwin-arm64": "@marinjursic/everylast-darwin-arm64",
-  "darwin-x64": "@marinjursic/everylast-darwin-x64",
-  "linux-arm64": "@marinjursic/everylast-linux-arm64",
-  "linux-x64": "@marinjursic/everylast-linux-x64",
-  "win32-arm64": "@marinjursic/everylast-windows-arm64",
-  "win32-x64": "@marinjursic/everylast-windows-x64"
+  "darwin-arm64": "@marinjursic/vuk-darwin-arm64",
+  "darwin-x64": "@marinjursic/vuk-darwin-x64",
+  "linux-arm64": "@marinjursic/vuk-linux-arm64",
+  "linux-x64": "@marinjursic/vuk-linux-x64",
+  "win32-arm64": "@marinjursic/vuk-windows-arm64",
+  "win32-x64": "@marinjursic/vuk-windows-x64"
 });
 
 function safeText(value) {
@@ -33,7 +33,7 @@ function safeText(value) {
 }
 
 function fail(message) {
-  process.stderr.write(`everylast npm launcher: ${safeText(message)}\n`);
+  process.stderr.write(`vuk npm launcher: ${safeText(message)}\n`);
   process.exitCode = 3;
 }
 
@@ -82,7 +82,7 @@ function inside(root, path) {
 async function main() {
   const launcherRoot = realpathSync(join(dirname(fileURLToPath(import.meta.url)), ".."));
   const launcherPackage = readBoundedJSON(join(launcherRoot, "package.json"), "launcher package metadata");
-  if (launcherPackage.name !== "@marinjursic/everylast" || !VERSION.test(launcherPackage.version)) {
+  if (launcherPackage.name !== "@marinjursic/vuk" || !VERSION.test(launcherPackage.version)) {
     throw new Error("launcher package identity is invalid");
   }
   const platformDocument = readBoundedJSON(join(launcherRoot, "platforms.json"), "platform binding");
@@ -133,7 +133,7 @@ async function main() {
   }
   const manifest = JSON.parse(manifestBytes.toString("utf8"));
   exactKeys(manifest, ["schema_version", "package_name", "version", "source_commit", "built_at", "binary_path", "binary_sha256"], "platform package manifest");
-  const expectedBinary = process.platform === "win32" ? "bin/everylast.exe" : "bin/everylast";
+  const expectedBinary = process.platform === "win32" ? "bin/vuk.exe" : "bin/vuk";
   if (manifest.schema_version !== "prc.npm-platform/v0.1" || manifest.package_name !== packageName ||
       manifest.version !== launcherPackage.version || !COMMIT.test(manifest.source_commit) ||
       typeof manifest.built_at !== "string" || manifest.binary_path !== expectedBinary || !DIGEST.test(manifest.binary_sha256)) {

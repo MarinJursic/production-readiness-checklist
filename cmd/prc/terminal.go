@@ -14,6 +14,7 @@ const (
 	ansiRed    = "\x1b[31m"
 	ansiYellow = "\x1b[33m"
 	ansiBlue   = "\x1b[34m"
+	ansiCyan   = "\x1b[36m"
 	ansiDim    = "\x1b[2m"
 )
 
@@ -47,14 +48,14 @@ func (style terminalStyle) paint(code, value string) string {
 }
 
 func printBrandBanner(output io.Writer, style terminalStyle) {
-	fmt.Fprintf(output, "%s\n", style.paint(ansiBlue, "   ╭─────────────────╮"))
-	fmt.Fprintf(output, "%s%s%s\n",
-		style.paint(ansiBlue, "   │  ● ● ● ● ● ● "),
-		style.paint(ansiGreen, "✓"),
-		style.paint(ansiBlue, "  │"),
-	)
-	fmt.Fprintf(output, "%s\n", style.paint(ansiBlue, "   ╰─────────────────╯"))
-	fmt.Fprintf(output, "       %s%s\n", style.paint(ansiBlue, "EVERY"), style.paint(ansiGreen, "LAST"))
+	fmt.Fprintln(output, style.paint(ansiBlue, "        /\\       /\\"))
+	fmt.Fprintln(output, style.paint(ansiBlue, "       /  \\_____/  \\"))
+	fmt.Fprintln(output, style.paint(ansiBlue, "      /             \\"))
+	fmt.Fprintln(output, style.paint(ansiBlue, "     |   o       o   |"))
+	fmt.Fprintln(output, style.paint(ansiBlue, "      \\      ^      /"))
+	fmt.Fprintln(output, style.paint(ansiBlue, "       \\   /___\\   /"))
+	fmt.Fprintln(output, style.paint(ansiBlue, "       `-._____.-'"))
+	fmt.Fprintf(output, "           %s\n", style.paint(ansiCyan, "VUK"))
 	fmt.Fprintln(output, "  Know what's left before you ship.")
 	fmt.Fprintln(output)
 }

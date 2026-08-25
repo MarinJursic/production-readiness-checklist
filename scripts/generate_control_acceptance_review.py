@@ -337,7 +337,7 @@ def review_notes(flags: dict[str, Any]) -> list[str]:
 def current_scanner_text(assertions: list[dict[str, Any]]) -> list[str]:
     if not assertions:
         return [
-            "Included in every complete `everylast scan` report as `needs_review`, but not deterministically "
+            "Included in every complete `vuk scan` report as `needs_review`, but not deterministically "
             "checked today. No missing implementation is turned into a Pass.",
             "With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent "
             "plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and "
@@ -398,7 +398,7 @@ def generated_text() -> str:
         "## Read this first: the important problems found",
         "",
         "This file reviews every control, but it does not claim that every control is already machine-checkable. "
-        "Every `everylast scan` report now contains all 10,042 controls. The deterministic profile proves only its "
+        "Every `vuk scan` report now contains all 10,042 controls. The deterministic profile proves only its "
         "narrow assertions; the remaining controls stay visibly `needs_review`. An optional AI review can add "
         "a one-subagent-per-control review task, but current provider output cannot prove every internal subagent call happened and no advice can turn subjective judgment into a verified Pass. Turning "
         "broad objectives directly into hard-coded rules would create false passes and one-size-fits-all designs.",
@@ -463,7 +463,7 @@ def generated_text() -> str:
         "",
         "### How to read each control below",
         "",
-        "Each entry keeps the exact source rule, gives a proposed pass contract, states what `everylast scan` really "
+        "Each entry keeps the exact source rule, gives a proposed pass contract, states what `vuk scan` really "
         "checks today, and proposes a future method. The proposal is a review starting point. It must be approved "
         "by a control owner and tested against positive, negative, unusual-layout, and adversarial fixtures before "
         "it becomes executable.",

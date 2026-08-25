@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/doctor.schema.json",
-  "title": "Everylast Doctor Report v0.1",
+  "title": "Vuk Doctor Report v0.1",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_version", "generated_at", "platform", "architecture", "target", "catalog_root", "ready", "summary", "checks"],

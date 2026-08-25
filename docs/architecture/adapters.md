@@ -277,7 +277,7 @@ SHA-256 digest, and observation kind. Repeat `--adapter-manifest` for an
 explicit local set:
 
 ```bash
-everylast scan \
+vuk scan \
   --target /path/to/project \
   --catalog-root /path/to/trusted/catalog \
   --mode verify-local \
@@ -290,7 +290,7 @@ Scan-level data bindings use an adapter-qualified name so multi-adapter runs
 cannot consume one another's inputs:
 
 ```bash
-everylast scan \
+vuk scan \
   --target /path/to/project \
   --catalog-root /path/to/trusted/catalog \
   --profile prc/supply-chain \
@@ -303,7 +303,7 @@ For registry-assigned trust and revocation, resolve the same catalog-pinned
 adapter through a lockfile instead:
 
 ```bash
-everylast scan \
+vuk scan \
   --target /path/to/project \
   --catalog-root /path/to/trusted/catalog \
   --mode verify-local \
@@ -343,7 +343,7 @@ authorized by the production profile.
 docker pull \
   ghcr.io/gitleaks/gitleaks@sha256:691af3c7c5a48b16f187ce3446d5f194838f91238f27270ed36eef6359a574d9
 
-everylast scan \
+vuk scan \
   --target /path/to/project \
   --catalog-root /path/to/production-readiness-checklist \
   --mode verify-local \

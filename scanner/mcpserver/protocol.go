@@ -272,7 +272,7 @@ func (server *Server) handleRequest(message incomingMessage) (any, *rpcError) {
 		return initializeResult{
 			ProtocolVersion: protocolVersion,
 			Capabilities:    serverCapabilities{Tools: toolsCapability{ListChanged: false}},
-			ServerInfo:      implementation{Name: "production-readiness-scanner", Title: "Everylast", Version: server.version},
+			ServerInfo:      implementation{Name: "production-readiness-scanner", Title: "Vuk", Version: server.version},
 			Instructions:    serverInstructions,
 		}, nil
 	case "ping":

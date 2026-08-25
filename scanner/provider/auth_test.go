@@ -16,7 +16,7 @@ func TestStoredAuthenticationUsesPrivateProviderDirectory(t *testing.T) {
 
 	for _, name := range []string{"codex", "claude"} {
 		if _, err := storedAuthenticationDirectory(name); err == nil ||
-			!strings.Contains(err.Error(), "everylast login "+name) {
+			!strings.Contains(err.Error(), "vuk login "+name) {
 			t.Fatalf("missing %s login error = %v", name, err)
 		}
 		if err := MarkStoredAuthentication(name); err != nil {
@@ -26,7 +26,7 @@ func TestStoredAuthenticationUsesPrivateProviderDirectory(t *testing.T) {
 		if err != nil {
 			t.Fatal(err)
 		}
-		if !strings.HasPrefix(path, filepath.Join(root, "everylast", "provider-auth")) {
+		if !strings.HasPrefix(path, filepath.Join(root, "vuk", "provider-auth")) {
 			t.Fatalf("authentication path %q escaped root %q", path, root)
 		}
 		if runtime.GOOS != "windows" {

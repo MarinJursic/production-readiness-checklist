@@ -1,6 +1,6 @@
-# Everylast for npm
+# Vuk for npm
 
-This is the small npm launcher for the native `everylast` scanner. A normal scan reads
+This is the small npm launcher for the native `vuk` scanner. A normal scan reads
 the project and writes a report; it does not fix files, install project
 dependencies, or run project scripts.
 
@@ -12,20 +12,20 @@ fallback.
 After a published version is available, the short path is:
 
 ```sh
-npm install -D @marinjursic/everylast
-npx everylast quick
+npm install -D @marinjursic/vuk
+npx vuk quick
 ```
 
-Use `npx everylast scan` for the 40-check core local scan. After `everylast login codex` or
-`everylast login claude`, use `everylast full codex` or `everylast full claude` for advisory AI
+Use `npx vuk scan` for the 40-check core local scan. After `vuk login codex` or
+`vuk login claude`, use `vuk full codex` or `vuk full claude` for advisory AI
 review of every active control. Every mode keeps all 10,042 controls visible in
 the report; AI advice cannot create a verified pass.
 
 For a pinned, security-sensitive install, use
-`npm install -D -E --ignore-scripts --no-audit --no-fund @marinjursic/everylast@VERSION`,
-then `npm exec --offline --no -- everylast scan`.
+`npm install -D -E --ignore-scripts --no-audit --no-fund @marinjursic/vuk@VERSION`,
+then `npm exec --offline --no -- vuk scan`.
 
-Add `"scan": "everylast scan"` to the project's `scripts` object when you want to
+Add `"scan": "vuk scan"` to the project's `scripts` object when you want to
 run `npm run scan`. Use `npm run --ignore-scripts scan` to skip any local
 `prescan` and `postscan` hooks. npm does not support a custom top-level
 `npm scan` command. The report path is printed at the end. See the main

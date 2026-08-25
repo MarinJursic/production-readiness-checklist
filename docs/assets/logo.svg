@@ -1,25 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
-  <title id="title">Everylast</title>
-  <desc id="desc">A row of scan points ending in a check mark.</desc>
+  <title id="title">Vuk</title>
+  <desc id="desc">A compact wolf head for the Vuk project scanner.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#111827"/>
-      <stop offset="0.58" stop-color="#4c1d95"/>
-      <stop offset="1" stop-color="#115e59"/>
+      <stop offset="0" stop-color="#0b1020"/>
+      <stop offset="0.56" stop-color="#312e81"/>
+      <stop offset="1" stop-color="#155e75"/>
     </linearGradient>
-    <linearGradient id="trail" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#818cf8"/>
-      <stop offset="1" stop-color="#c4b5fd"/>
+    <linearGradient id="fur" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e0f2fe"/>
+      <stop offset="1" stop-color="#a5b4fc"/>
     </linearGradient>
   </defs>
   <rect width="64" height="64" rx="16" fill="url(#bg)"/>
-  <path d="M11 32h33" fill="none" stroke="url(#trail)" stroke-width="3" stroke-linecap="round" opacity=".8"/>
-  <g fill="#e0e7ff">
-    <circle cx="12" cy="32" r="3"/>
-    <circle cx="20" cy="32" r="3"/>
-    <circle cx="28" cy="32" r="3"/>
-    <circle cx="36" cy="32" r="3"/>
-    <circle cx="44" cy="32" r="3"/>
-  </g>
-  <path d="m46.5 32.5 4.5 4.5 8-10" fill="none" stroke="#5eead4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="m13 12 12 9h14l12-9-3 26 4 8-11 2-9 7-9-7-11-2 4-8Z" fill="#0f172a" stroke="url(#fur)" stroke-width="3" stroke-linejoin="round"/>
+  <path d="m17 17 4 13m26-13-4 13" fill="none" stroke="#67e8f9" stroke-width="2" stroke-linecap="round" opacity=".75"/>
+  <circle cx="25" cy="34" r="2.3" fill="#67e8f9"/>
+  <circle cx="39" cy="34" r="2.3" fill="#67e8f9"/>
+  <path d="m29 41 3-2 3 2-3 3Z" fill="#c7d2fe"/>
+  <path d="M25 47c4 2 10 2 14 0" fill="none" stroke="#818cf8" stroke-width="2" stroke-linecap="round"/>
 </svg>
