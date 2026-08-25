@@ -1,6 +1,6 @@
 # Production-readiness review instructions
 
-Use this file when reviewing an application repository against the complete Vuk engineering and release-control catalog.
+Use this file when reviewing an application repository against the complete Production Readiness Checklist engineering and release-control catalog.
 
 ## Role
 

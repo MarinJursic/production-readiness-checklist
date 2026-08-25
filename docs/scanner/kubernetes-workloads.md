@@ -9,7 +9,7 @@ The same assertions are included in `prc/core-repository@1.0`.
 Run only the Kubernetes assertions with:
 
 ```bash
-vuk scan \
+prc scan \
   --target PATH \
   --catalog-root PATH_TO_RELEASE \
   --profile prc/kubernetes

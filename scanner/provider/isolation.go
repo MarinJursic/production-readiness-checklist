@@ -13,7 +13,7 @@ import (
 // IsolatedEnvironment creates a private provider runtime HOME and returns the
 // small environment allowlist used by scanner-owned provider processes. An
 // explicit environment credential gets a throwaway provider configuration. A
-// login made through `vuk login` gets a dedicated Vuk-owned credential root;
+// login made through `prc login` gets a dedicated scanner-owned credential root;
 // normal provider settings and project instructions are never loaded.
 func IsolatedEnvironment(providerName, directory string) ([]string, map[string]string, error) {
 	switch providerName {

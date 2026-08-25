@@ -13,7 +13,7 @@ or deployed.
 Run only these contract checks with:
 
 ```bash
-vuk scan --target PATH --catalog-root PATH_TO_RELEASE --profile prc/api
+prc scan --target PATH --catalog-root PATH_TO_RELEASE --profile prc/api
 ```
 
 ## What the rule proves

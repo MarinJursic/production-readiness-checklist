@@ -33,7 +33,7 @@ error [PRC-EXIT-5]: adapter ... is not authorized by an applicable assertion
 Machine-readable reports remain on stdout. A completed assessment that does not
 pass is still a valid report and normally has no stderr error.
 
-`vuk version` emits a human-readable build identity. `vuk version --format json`
+`prc version` emits a human-readable build identity. `prc version --format json`
 emits `prc.version/v0.1`, including the semantic scanner version, exact source
 revision, reproducible source timestamp, and Go toolchain. Development builds
 report `unknown` for identity fields that were not injected by the release
@@ -46,14 +46,14 @@ increase use `3`; the command never executes the adapter.
 
 ## Scan policy
 
-`vuk scan` inspects the current directory; `vuk scan /path/to/project` inspects
+`prc scan` inspects the current directory; `prc scan /path/to/project` inspects
 one explicit project. Scan options may appear before or after that path. The
 equivalent advanced `--target` flag remains available, but it cannot be combined
 with the positional project path.
 
-`vuk quick` selects the 18-assertion `prc/quick` local profile. `vuk scan`
-selects the 40-assertion core local profile. `vuk full codex` and
-`vuk full claude` select the core profile plus advisory AI review of every
+`prc quick` selects the 18-assertion `prc/quick` local profile. `prc scan`
+selects the 40-assertion core local profile. `prc full codex` and
+`prc full claude` select the core profile plus advisory AI review of every
 active control. `quick` rejects AI-provider flags, and both aliases reject a
 profile override so their meaning cannot be silently changed. Every mode still
 includes all 10,042 controls in the complete report.
@@ -76,7 +76,7 @@ terminal rendering.
 
 Every complete scan includes all 10,042 registered controls. Broad controls
 without complete proof remain `needs_review`; narrow passing assertions produce
-only `partially_verified`. `vuk full codex|claude` and the equivalent
+only `partially_verified`. `prc full codex|claude` and the equivalent
 `--ai codex|claude` form acknowledge screened remote source processing. The advanced form uses
 `--review-provider` plus `--allow-remote-source-processing`. Those providers add
 strict-schema advisory candidates and cannot change the authoritative

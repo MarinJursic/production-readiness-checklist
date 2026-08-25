@@ -1,6 +1,6 @@
 # Scanner product contract
 
-The Vuk is an evidence and policy engine for a declared
+The Production Readiness Checklist is an evidence and policy engine for a declared
 target. It does not claim that a nontrivial system has no defects, certify an
 organization, or make a release decision for an accountable owner.
 

@@ -1,14 +1,14 @@
 {
-  "name": "@marinjursic/vuk",
+  "name": "@marinjursic/prc",
   "version": "0.0.0-development",
   "private": true,
-  "description": "Safe launcher for Vuk",
+  "description": "Safe launcher for Production Readiness Checklist",
   "type": "module",
   "bin": {
-    "vuk": "bin/vuk.js"
+    "prc": "bin/prc.js"
   },
   "files": [
-    "bin/vuk.js",
+    "bin/prc.js",
     "platforms.json",
     "README.md",
     "LICENSE"
@@ -33,11 +33,11 @@
     "devops"
   ],
   "optionalDependencies": {
-    "@marinjursic/vuk-darwin-arm64": "0.0.0-development",
-    "@marinjursic/vuk-darwin-x64": "0.0.0-development",
-    "@marinjursic/vuk-linux-arm64": "0.0.0-development",
-    "@marinjursic/vuk-linux-x64": "0.0.0-development",
-    "@marinjursic/vuk-windows-arm64": "0.0.0-development",
-    "@marinjursic/vuk-windows-x64": "0.0.0-development"
+    "@marinjursic/prc-darwin-arm64": "0.0.0-development",
+    "@marinjursic/prc-darwin-x64": "0.0.0-development",
+    "@marinjursic/prc-linux-arm64": "0.0.0-development",
+    "@marinjursic/prc-linux-x64": "0.0.0-development",
+    "@marinjursic/prc-windows-arm64": "0.0.0-development",
+    "@marinjursic/prc-windows-x64": "0.0.0-development"
   }
 }

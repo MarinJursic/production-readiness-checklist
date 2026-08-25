@@ -91,33 +91,33 @@ class ReleaseBuilderTests(unittest.TestCase):
                 build_release.normalized_sbom(source, "0.1.0", "b" * 40)
 
     def test_archives_are_reproducible_and_rooted(self) -> None:
-        entries = [("vuk", b"binary", 0o755), ("LICENSE", b"license\n", 0o644)]
+        entries = [("prc", b"binary", 0o755), ("LICENSE", b"license\n", 0o644)]
         timestamp = dt.datetime(2026, 8, 23, 10, 0, tzinfo=dt.timezone.utc)
         epoch = int(timestamp.timestamp())
         with tempfile.TemporaryDirectory() as temporary:
             root = pathlib.Path(temporary)
             first_tar = root / "first.tar.gz"
             second_tar = root / "second.tar.gz"
-            build_release.create_tar_gz(first_tar, "vuk_0.1.0_linux_amd64", entries, epoch)
-            build_release.create_tar_gz(second_tar, "vuk_0.1.0_linux_amd64", entries, epoch)
+            build_release.create_tar_gz(first_tar, "prc_0.1.0_linux_amd64", entries, epoch)
+            build_release.create_tar_gz(second_tar, "prc_0.1.0_linux_amd64", entries, epoch)
             self.assertEqual(first_tar.read_bytes(), second_tar.read_bytes())
             with gzip.open(first_tar, "rb") as compressed:
                 with tarfile.open(fileobj=compressed, mode="r:") as archive:
                     self.assertEqual(
                         archive.getnames(),
-                        ["vuk_0.1.0_linux_amd64/LICENSE", "vuk_0.1.0_linux_amd64/vuk"],
+                        ["prc_0.1.0_linux_amd64/LICENSE", "prc_0.1.0_linux_amd64/prc"],
                     )
-                    self.assertEqual(archive.getmember("vuk_0.1.0_linux_amd64/vuk").mode, 0o755)
+                    self.assertEqual(archive.getmember("prc_0.1.0_linux_amd64/prc").mode, 0o755)
 
             first_zip = root / "first.zip"
             second_zip = root / "second.zip"
-            build_release.create_zip(first_zip, "vuk_0.1.0_windows_amd64", entries, timestamp)
-            build_release.create_zip(second_zip, "vuk_0.1.0_windows_amd64", entries, timestamp)
+            build_release.create_zip(first_zip, "prc_0.1.0_windows_amd64", entries, timestamp)
+            build_release.create_zip(second_zip, "prc_0.1.0_windows_amd64", entries, timestamp)
             self.assertEqual(first_zip.read_bytes(), second_zip.read_bytes())
             with zipfile.ZipFile(first_zip) as archive:
                 self.assertEqual(
                     archive.namelist(),
-                    ["vuk_0.1.0_windows_amd64/LICENSE", "vuk_0.1.0_windows_amd64/vuk"],
+                    ["prc_0.1.0_windows_amd64/LICENSE", "prc_0.1.0_windows_amd64/prc"],
                 )
 
     def test_release_support_contains_runtime_catalog_and_user_guides(self) -> None:

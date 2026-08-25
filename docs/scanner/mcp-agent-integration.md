@@ -16,9 +16,9 @@ Build the scanner, then give the server absolute paths for both the trusted
 catalog and the repository being assessed:
 
 ```bash
-go build -trimpath -o /absolute/path/vuk ./cmd/prc
+go build -trimpath -o /absolute/path/prc ./cmd/prc
 
-/absolute/path/vuk mcp serve \
+/absolute/path/prc mcp serve \
   --catalog-root /absolute/path/production-readiness-checklist \
   --target /absolute/path/project \
   --profile prc/core-repository
@@ -27,7 +27,7 @@ go build -trimpath -o /absolute/path/vuk ./cmd/prc
 An optional validated configuration can be locked into the assessment:
 
 ```bash
-/absolute/path/vuk mcp serve \
+/absolute/path/prc mcp serve \
   --catalog-root /absolute/path/production-readiness-checklist \
   --target /absolute/path/project \
   --config /absolute/path/project/production-readiness.yaml
@@ -74,7 +74,7 @@ scanner with the same absolute, operator-reviewed arguments:
 
 ```bash
 codex mcp add production-readiness -- \
-  /absolute/path/vuk mcp serve \
+  /absolute/path/prc mcp serve \
   --catalog-root /absolute/path/production-readiness-checklist \
   --target /absolute/path/project \
   --profile prc/core-repository
@@ -91,7 +91,7 @@ team:
 
 ```bash
 claude mcp add --transport stdio --scope local production-readiness -- \
-  /absolute/path/vuk mcp serve \
+  /absolute/path/prc mcp serve \
   --catalog-root /absolute/path/production-readiness-checklist \
   --target /absolute/path/project \
   --profile prc/core-repository

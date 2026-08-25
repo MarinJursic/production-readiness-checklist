@@ -8,11 +8,11 @@ import (
 	"runtime"
 )
 
-const authenticationMarker = ".vuk-authenticated"
+const authenticationMarker = ".prc-authenticated"
 
 var locateUserConfigDirectory = os.UserConfigDir
 
-// AuthenticationDirectory returns Vuk's provider-specific credential root.
+// AuthenticationDirectory returns the scanner's provider-specific credential root.
 // It is deliberately separate from the provider's normal user configuration,
 // so a scan can reuse login credentials without loading normal hooks, plugins,
 // MCP servers, instructions, or session history.
@@ -22,12 +22,12 @@ func AuthenticationDirectory(providerName string) (string, error) {
 	}
 	root, err := locateUserConfigDirectory()
 	if err != nil {
-		return "", fmt.Errorf("locate Vuk provider authentication directory: %w", err)
+		return "", fmt.Errorf("locate scanner provider authentication directory: %w", err)
 	}
 	if root == "" {
-		return "", fmt.Errorf("locate Vuk provider authentication directory: empty user configuration path")
+		return "", fmt.Errorf("locate scanner provider authentication directory: empty user configuration path")
 	}
-	return filepath.Join(root, "vuk", "provider-auth", providerName), nil
+	return filepath.Join(root, "prc", "provider-auth", providerName), nil
 }
 
 // PrepareAuthenticationDirectory creates a private provider credential root.
@@ -66,7 +66,7 @@ func MarkStoredAuthentication(providerName string) error {
 	} else if statErr != nil && !errors.Is(statErr, os.ErrNotExist) {
 		return fmt.Errorf("inspect %s authentication marker: %w", providerName, statErr)
 	}
-	if err := os.WriteFile(marker, []byte("vuk-provider-login-v1\n"), 0o600); err != nil {
+	if err := os.WriteFile(marker, []byte("prc-provider-login-v1\n"), 0o600); err != nil {
 		return fmt.Errorf("record %s authentication: %w", providerName, err)
 	}
 	if err := os.Chmod(marker, 0o600); err != nil {
@@ -75,7 +75,7 @@ func MarkStoredAuthentication(providerName string) error {
 	return nil
 }
 
-// ClearStoredAuthentication removes Vuk's non-secret login marker after the
+// ClearStoredAuthentication removes the scanner's non-secret login marker after the
 // provider's own logout command has removed its credentials.
 func ClearStoredAuthentication(providerName string) error {
 	path, err := AuthenticationDirectory(providerName)
@@ -96,23 +96,23 @@ func storedAuthenticationDirectory(providerName string) (string, error) {
 	}
 	information, err := os.Lstat(path)
 	if err != nil || !information.IsDir() || information.Mode()&os.ModeSymlink != 0 {
-		return "", fmt.Errorf("no private Vuk %s login was found; run `vuk login %s`", providerName, providerName)
+		return "", fmt.Errorf("no private scanner %s login was found; run `prc login %s`", providerName, providerName)
 	}
 	if runtime.GOOS != "windows" && information.Mode().Perm()&0o077 != 0 {
-		return "", fmt.Errorf("the Vuk %s login directory is accessible by other users", providerName)
+		return "", fmt.Errorf("the scanner's %s login directory is accessible by other users", providerName)
 	}
 	marker, err := os.Lstat(filepath.Join(path, authenticationMarker))
 	if err != nil || !marker.Mode().IsRegular() || marker.Mode()&os.ModeSymlink != 0 || marker.Size() > 128 {
-		return "", fmt.Errorf("no private Vuk %s login was found; run `vuk login %s`", providerName, providerName)
+		return "", fmt.Errorf("no private scanner %s login was found; run `prc login %s`", providerName, providerName)
 	}
 	if runtime.GOOS != "windows" && marker.Mode().Perm()&0o077 != 0 {
-		return "", fmt.Errorf("the Vuk %s login marker is accessible by other users", providerName)
+		return "", fmt.Errorf("the scanner's %s login marker is accessible by other users", providerName)
 	}
 	return path, nil
 }
 
 // AuthenticationOverrides binds a provider's own login/status/logout command
-// to Vuk's private credential root. Normal HOME is left alone for the browser-
+// to the scanner's private credential root. Normal HOME is left alone for the browser-
 // based login UI; scans replace HOME separately.
 func AuthenticationOverrides(providerName string) (map[string]string, error) {
 	path, err := PrepareAuthenticationDirectory(providerName)

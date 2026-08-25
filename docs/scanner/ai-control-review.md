@@ -1,6 +1,6 @@
 # Safe AI review of all controls
 
-`vuk scan` always puts all 10,042 controls in the report. By default it checks
+`prc scan` always puts all 10,042 controls in the report. By default it checks
 only facts that the local scanner can prove safely. Broad questions stay
 `needs_review` instead of being guessed.
 
@@ -15,20 +15,20 @@ Install one supported command-line tool:
 - `codex` for Codex; or
 - `claude` for Claude Code.
 
-Sign in once through PRC. This launches the provider's official login flow but
-stores its credentials in a private Vuk-only directory:
+Sign in once through the scanner. This launches the provider's official login flow but
+stores its credentials in a private scanner-only directory:
 
 ```bash
-vuk login codex
-# or: vuk login claude
+prc login codex
+# or: prc login claude
 
-vuk auth
+prc auth
 ```
 
-PRC does not reuse the provider's normal user configuration, sessions,
-instructions, plugins, hooks, or MCP servers. A scan uses the Vuk-only login
+The scanner does not reuse the provider's normal user configuration, sessions,
+instructions, plugins, hooks, or MCP servers. A scan uses the scanner-only login
 with a fresh temporary home and a small runtime environment allowlist. Use
-`vuk logout codex` or `vuk logout claude` to remove the saved Vuk login.
+`prc logout codex` or `prc logout claude` to remove the saved scanner login.
 
 Supported API-key environment variables remain an alternative: Codex accepts
 `OPENAI_API_KEY` or `CODEX_API_KEY`; Claude accepts `ANTHROPIC_API_KEY`,
@@ -45,15 +45,15 @@ separate `--allow-remote-source-processing` switch.
 The shortest full-review command is:
 
 ```bash
-vuk full codex
+prc full codex
 ```
 
-Use `vuk full claude` for Claude Code. `vuk scan --ai codex|claude` remains an
+Use `prc full claude` for Claude Code. `prc scan --ai codex|claude` remains an
 equivalent advanced-friendly spelling. To test only one control first, use the
 advanced form:
 
 ```bash
-vuk scan /path/to/project \
+prc scan /path/to/project \
   --review-provider codex \
   --review-control PRC-02-001 \
   --allow-remote-source-processing
@@ -62,7 +62,7 @@ vuk scan /path/to/project \
 For Claude Code, replace the provider name:
 
 ```bash
-vuk scan /path/to/project \
+prc scan /path/to/project \
   --review-provider claude \
   --review-control PRC-02-001 \
   --allow-remote-source-processing
@@ -89,15 +89,15 @@ typed verifier or a qualified person proves it.
 The short commands review all active controls:
 
 ```bash
-vuk full codex
-vuk full claude
+prc full codex
+prc full claude
 ```
 
 Use the advanced form only when changing defaults, for example Codex `xhigh`
 effort:
 
 ```bash
-vuk scan /path/to/project \
+prc scan /path/to/project \
   --review-provider codex \
   --review-effort xhigh \
   --allow-remote-source-processing

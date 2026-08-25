@@ -1,4 +1,4 @@
-# Vuk: research findings and improvement plan
+# Production Readiness Checklist: research findings and improvement plan
 
 **Research date:** 2026-08-24
 
@@ -59,8 +59,8 @@ project.
 ### Scanner and reports
 
 - All 10,042 registered controls are included in a complete report.
-- `vuk quick` runs an 18-assertion, language-neutral high-signal profile;
-  `vuk scan` runs the 40-assertion core profile; and `vuk full codex|claude`
+- `prc quick` runs an 18-assertion, language-neutral high-signal profile;
+  `prc scan` runs the 40-assertion core profile; and `prc full codex|claude`
   runs the core profile plus advisory review of every active control.
 - The catalog contains 43
   assertions mapped to 26 objectives across core repository, infrastructure,
@@ -68,7 +68,7 @@ project.
 - Terminal output already uses a symbol and a word as well as color: green
   Pass, red Fail, yellow incomplete/manual states, and plain output when color
   is unavailable.
-- A normal `vuk scan` is report-only. It does not run target project code,
+- A normal `prc scan` is report-only. It does not run target project code,
   install target dependencies, or call remediation.
 - The default HTML report is private, stored outside the target, never silently
   overwrites an existing file, and prints its exact location.
@@ -79,27 +79,27 @@ project.
 ### Short CLI path added in this implementation
 
 ```text
-vuk quick
-vuk scan
-vuk login codex
-vuk full codex
-vuk login claude
-vuk full claude
-vuk auth
-vuk logout codex
+prc quick
+prc scan
+prc login codex
+prc full codex
+prc login claude
+prc full claude
+prc auth
+prc logout codex
 ```
 
 All three scan commands target the current directory when no path is supplied.
 The existing `--ai codex` and `--ai claude` spellings remain available and,
-like `vuk full`, explicitly permit screened source excerpts to be processed
+like `prc full`, explicitly permit screened source excerpts to be processed
 remotely. The longer advanced flags remain available
 for one-control tests, effort, concurrency, timeout, model, resume location, and
 Claude cost limits.
 
 The login commands call the providers' official CLIs. Codex officially supports
 browser-based ChatGPT sign-in and API-key sign-in. Claude Code exposes
-`claude auth login`, `logout`, and `status`. Vuk stores each login under a
-private Vuk-only configuration directory rather than loading the provider's
+`claude auth login`, `logout`, and `status`. The scanner stores each login under a
+private scanner-only configuration directory rather than loading the provider's
 normal configuration, plugins, hooks, instructions, MCP servers, or sessions.
 Scans still use a new temporary home and filtered environment. Supported API-key
 environment variables remain an alternative.
@@ -114,32 +114,32 @@ works until a release note confirms publication.
 After publication, the normal path is:
 
 ```bash
-npm install -D @marinjursic/vuk
-npx vuk quick
+npm install -D @marinjursic/prc
+npx prc quick
 ```
 
-Use `npx vuk scan` for the core local profile.
+Use `npx prc scan` for the core local profile.
 
 For a project shortcut:
 
 ```json
 {
   "scripts": {
-    "scan": "vuk scan"
+    "scan": "prc scan"
   }
 }
 ```
 
 Then run `npm run scan`. npm does not allow a project to define an arbitrary
 top-level `npm scan` command, so `npm run scan` is the shortest honest npm
-script form. `npx vuk scan` resolves the locally installed binary after the
+script form. `npx prc scan` resolves the locally installed binary after the
 dependency is installed.
 
 For a pinned, security-sensitive installation:
 
 ```bash
-npm install -D -E --ignore-scripts --no-audit --no-fund @marinjursic/vuk@X.Y.Z
-npm exec --offline --no -- vuk scan
+npm install -D -E --ignore-scripts --no-audit --no-fund @marinjursic/prc@X.Y.Z
+npm exec --offline --no -- prc scan
 ```
 
 The normal command is intentionally short. The hardened command remains
@@ -165,8 +165,8 @@ No control contract was shortened or omitted.
 ### Short path
 
 1. The user installs the published package with
-   `npm install -D @marinjursic/vuk`.
-2. The user runs `npx vuk quick` for the small screen or `npx vuk scan` for the
+   `npm install -D @marinjursic/prc`.
+2. The user runs `npx prc quick` for the small screen or `npx prc scan` for the
    core local scan.
 3. The terminal names the scanner, target, profile, scan-only mode, and number
    of deterministic checks.
@@ -182,11 +182,11 @@ No control contract was shortened or omitted.
 ### AI-assisted path
 
 1. The user installs the official Codex or Claude Code CLI.
-2. The user runs `vuk login codex` or `vuk login claude` and completes the
+2. The user runs `prc login codex` or `prc login claude` and completes the
    provider's official sign-in flow.
-3. `vuk auth` shows whether Vuk can use the private login.
-4. The user runs `vuk full codex` or `vuk full claude`.
-5. Vuk inventories and hashes the target locally, builds a bounded snapshot,
+3. `prc auth` shows whether the scanner can use the private login.
+4. The user runs `prc full codex` or `prc full claude`.
+5. Production Readiness Checklist inventories and hashes the target locally, builds a bounded snapshot,
    excludes sensitive names, screens token/key shapes, and marks repository
    text as untrusted.
 6. The provider receives sealed batches and no target path, general shell,
@@ -201,12 +201,12 @@ No control contract was shortened or omitted.
 | Step | Plausible attack or failure | Current protection | Remaining work |
 | --- | --- | --- | --- |
 | Find package | Typosquatted or similarly named package | Scoped canonical name in docs | Publish verified links from release notes only |
-| Install | Lifecycle script runs with user authority | Vuk packages have no install scripts or third-party JS runtime dependencies; hardened command uses `--ignore-scripts` | Publish package provenance, signatures/checksums, and reproducible package comparison |
+| Install | Lifecycle script runs with user authority | Production Readiness Checklist packages have no install scripts or third-party JS runtime dependencies; hardened command uses `--ignore-scripts` | Publish package provenance, signatures/checksums, and reproducible package comparison |
 | Resolve native binary | Launcher downloads or executes a PATH replacement | Exact platform package, release manifest, SHA-256 check, no shell, no download fallback | Release and revocation tests on every platform |
 | `npx` execution | Missing local package causes a registry fetch or prompt | Normal flow installs locally first | Document offline `npm exec --offline --no` for sensitive use and test missing-local failure |
 | Inventory hostile repository | Symlink escape, huge files, changing files, strange names, repository code execution | No target scripts, no symlink following, budgets, identity/hashes, rechecks, recorded exclusions | Expand archive/parser/Unicode/path and resource-exhaustion corpus |
 | Deterministic check | Parser bug or framework-specific assumption | Narrow assertion wording, bounds, explicit profile, incomplete state | Add benchmark repositories, precision/recall budgets, and more unusual-layout fixtures |
-| Provider login | Normal user hooks/plugins/settings alter the scan | Dedicated private Vuk credential root and official provider auth command | Test OS keyring/file variations and enterprise-managed-policy failure behavior |
+| Provider login | Normal user hooks/plugins/settings alter the scan | Dedicated private scanner credential root and official provider auth command | Test OS keyring/file variations and enterprise-managed-policy failure behavior |
 | Provider launch | Fake or compromised `codex`/`claude` binary ignores flags | Resolved executable name/digest, strict launch plan, filtered environment, temporary home | Optional external OS sandbox; signed provider verification where available |
 | Remote review | Secret leaves the host | Sensitive-name exclusion, token/key screening, byte/file/output limits, explicit `--ai` consent | Make clear the screen is not a complete secret scanner; add pluggable preflight and organization policy |
 | Prompt handling | Repository text instructs the model to escape rules | Sealed JSON, untrusted-data label, no general tools, strict result schema | Larger adversarial corpus and provider-version regression suite |
@@ -299,7 +299,7 @@ bulk controls immediately:
 
 ### P0 — finish and release the easy, trustworthy CLI
 
-- Complete docs and tests for `vuk login`, `auth`, `logout`, and `--ai`.
+- Complete docs and tests for `prc login`, `auth`, `logout`, and `--ai`.
 - Test browser login, status, logout, API-key fallback, missing provider,
   oversized output, provider failure, unsafe directory permissions, symlinks,
   and enterprise-managed settings on supported operating systems.
@@ -307,8 +307,8 @@ bulk controls immediately:
   workflow; remove development/private markers only in release artifacts.
 - Add npm provenance, release checksums/signatures, SBOM, build provenance, and
   a documented package/release revocation process.
-- Keep `npm install -D @marinjursic/vuk`, `npx vuk quick`, and
-  `npx vuk scan` as the normal docs;
+- Keep `npm install -D @marinjursic/prc`, `npx prc quick`, and
+  `npx prc scan` as the normal docs;
   keep the exact offline form next to the security explanation.
 
 **Done when:** a new user can install a published version, run one local scan,

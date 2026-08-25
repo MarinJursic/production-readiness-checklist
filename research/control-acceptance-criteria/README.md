@@ -10,7 +10,7 @@
 
 ## Read this first: the important problems found
 
-This file reviews every control, but it does not claim that every control is already machine-checkable. Every `vuk scan` report now contains all 10,042 controls. The deterministic profile proves only its narrow assertions; the remaining controls stay visibly `needs_review`. An optional AI review can add a one-subagent-per-control review task, but current provider output cannot prove every internal subagent call happened and no advice can turn subjective judgment into a verified Pass. Turning broad objectives directly into hard-coded rules would create false passes and one-size-fits-all designs.
+This file reviews every control, but it does not claim that every control is already machine-checkable. Every `prc scan` report now contains all 10,042 controls. The deterministic profile proves only its narrow assertions; the remaining controls stay visibly `needs_review`. An optional AI review can add a one-subagent-per-control review task, but current provider output cannot prove every internal subagent call happened and no advice can turn subjective judgment into a verified Pass. Turning broad objectives directly into hard-coded rules would create false passes and one-size-fits-all designs.
 
 ### The rule design that should be used everywhere
 
@@ -58,7 +58,7 @@ The current 43 catalog assertions are much safer than pretending all 10,042 rule
 
 ### How to read each control below
 
-Each entry keeps the exact source rule, gives a proposed pass contract, states what `vuk scan` really checks today, and proposes a future method. The proposal is a review starting point. It must be approved by a control owner and tested against positive, negative, unusual-layout, and adversarial fixtures before it becomes executable.
+Each entry keeps the exact source rule, gives a proposed pass contract, states what `prc scan` really checks today, and proposes a future method. The proposal is a review starting point. It must be approved by a control owner and tested against positive, negative, unusual-layout, and adversarial fixtures before it becomes executable.
 
 ## Split control files
 

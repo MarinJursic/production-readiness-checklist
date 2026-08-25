@@ -362,7 +362,7 @@ func writeSARIF(output io.Writer, run model.RunResult) error {
 	log := sarifLog{
 		Version: "2.1.0", Schema: "https://json.schemastore.org/sarif-2.1.0.json",
 		Runs: []sarifRun{{
-			Tool:    sarifTool{Driver: sarifDriver{Name: "Vuk", InformationURI: "https://marinjursic.github.io/production-readiness-checklist/", Rules: rules}},
+			Tool:    sarifTool{Driver: sarifDriver{Name: "Production Readiness Checklist", InformationURI: "https://marinjursic.github.io/production-readiness-checklist/", Rules: rules}},
 			Results: results,
 			Properties: map[string]string{
 				"run_id": run.RunID, "profile": run.Plan.ProfileID + "@" + run.Plan.ProfileVersion,
@@ -649,7 +649,7 @@ func writeHTML(output io.Writer, run model.RunResult) error {
 			case "R0":
 				return "Review and resolve this manually; the scanner does not author a change for this class."
 			case "R1":
-				return "A deterministic, behavior-preserving candidate may be available through the separate vuk fix workflow."
+				return "A deterministic, behavior-preserving candidate may be available through the separate prc fix workflow."
 			case "R2":
 				return "Use an isolated agent-authored candidate only with independent deterministic verification."
 			case "R3":

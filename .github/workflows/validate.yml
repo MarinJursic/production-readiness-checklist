@@ -45,9 +45,9 @@ jobs:
       - name: Test the dependency-free npm launcher
         run: |
           node --test npm/prc/test/*.test.mjs
-          node --check npm/prc/bin/vuk.js
+          node --check npm/prc/bin/prc.js
           npm pack ./npm/prc --ignore-scripts --dry-run --json > "$RUNNER_TEMP/npm-pack.json"
-          python -c 'import json,sys; p=json.load(open(sys.argv[1], encoding="utf-8"))[0]; assert {x["path"] for x in p["files"]}=={"LICENSE","README.md","bin/vuk.js","package.json","platforms.json"}' "$RUNNER_TEMP/npm-pack.json"
+          python -c 'import json,sys; p=json.load(open(sys.argv[1], encoding="utf-8"))[0]; assert {x["path"] for x in p["files"]}=={"LICENSE","README.md","bin/prc.js","package.json","platforms.json"}' "$RUNNER_TEMP/npm-pack.json"
 
       - name: Check catalog schemas and generated files
         run: |
@@ -126,17 +126,17 @@ jobs:
         run: go run github.com/securego/gosec/v2/cmd/gosec@v2.28.0 -include=G703,G122 ./...
 
       - name: Build scanner
-        run: go build -trimpath -o "$RUNNER_TEMP/vuk" ./cmd/prc
+        run: go build -trimpath -o "$RUNNER_TEMP/prc" ./cmd/prc
 
       - name: Exercise adapter protocol fixtures
         run: |
-          "$RUNNER_TEMP/vuk" adapter fixture-validate \
+          "$RUNNER_TEMP/prc" adapter fixture-validate \
             --suite fixtures/adapters/fixture-suite.yaml \
             --format json > "$RUNNER_TEMP/adapter-fixture-report.json"
-          "$RUNNER_TEMP/vuk" adapter validate-output \
+          "$RUNNER_TEMP/prc" adapter validate-output \
             --manifest fixtures/adapters/fixture-adapter.yaml \
             --file fixtures/adapters/valid-output.jsonl
-          if "$RUNNER_TEMP/vuk" adapter validate-output \
+          if "$RUNNER_TEMP/prc" adapter validate-output \
             --manifest fixtures/adapters/fixture-adapter.yaml \
             --file fixtures/adapters/malicious-authority-output.jsonl; then
             echo "malicious adapter fixture was accepted" >&2
@@ -147,22 +147,22 @@ jobs:
         run: |
           mkdir -p "$RUNNER_TEMP/provider-fixture/workspace"
           cp -R fixtures/providers/workspace/. "$RUNNER_TEMP/provider-fixture/workspace/"
-          "$RUNNER_TEMP/vuk" provider capabilities --provider codex
-          "$RUNNER_TEMP/vuk" provider capabilities --provider claude
-          "$RUNNER_TEMP/vuk" provider validate-output \
+          "$RUNNER_TEMP/prc" provider capabilities --provider codex
+          "$RUNNER_TEMP/prc" provider capabilities --provider claude
+          "$RUNNER_TEMP/prc" provider validate-output \
             --provider codex \
             --task fixtures/providers/suggest-task.json \
             --file fixtures/providers/valid-output.json
-          "$RUNNER_TEMP/vuk" provider validate-output \
+          "$RUNNER_TEMP/prc" provider validate-output \
             --provider claude \
             --task fixtures/providers/suggest-task.json \
             --file fixtures/providers/valid-claude-envelope.json
-          "$RUNNER_TEMP/vuk" provider seal-task \
+          "$RUNNER_TEMP/prc" provider seal-task \
             --file fixtures/providers/suggest-task.json \
             --workspace "$RUNNER_TEMP/provider-fixture/workspace" \
             --config fixtures/config/production-readiness.yaml \
             > "$RUNNER_TEMP/configured-provider-task.json"
-          if "$RUNNER_TEMP/vuk" provider validate-output \
+          if "$RUNNER_TEMP/prc" provider validate-output \
             --provider codex \
             --task fixtures/providers/suggest-task.json \
             --file fixtures/providers/malicious-capability-output.json; then
@@ -178,7 +178,7 @@ jobs:
             '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}' \
             '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"prc_explain","arguments":{"assertion_id":"PRC-A-CORE-001"}}}' \
             > "$RUNNER_TEMP/mcp-input.jsonl"
-          "$RUNNER_TEMP/vuk" mcp serve \
+          "$RUNNER_TEMP/prc" mcp serve \
             --catalog-root . \
             --target . \
             --profile prc/core-repository \
@@ -190,29 +190,29 @@ jobs:
         run: |
           mkdir "$RUNNER_TEMP/doctor-state" "$RUNNER_TEMP/doctor-candidates"
           chmod 0700 "$RUNNER_TEMP/doctor-state"
-          "$RUNNER_TEMP/vuk" doctor \
+          "$RUNNER_TEMP/prc" doctor \
             --target . \
             --catalog-root . \
             --state-dir "$RUNNER_TEMP/doctor-state" \
             --candidate-parent "$RUNNER_TEMP/doctor-candidates" \
             --format json > "$RUNNER_TEMP/doctor.json"
-          "$RUNNER_TEMP/vuk" config validate \
+          "$RUNNER_TEMP/prc" config validate \
             --file fixtures/config/production-readiness.yaml \
             --format json > "$RUNNER_TEMP/config-validation.json"
-          "$RUNNER_TEMP/vuk" catalog validate --catalog-root . --format json > "$RUNNER_TEMP/catalog-manifest.json"
-          "$RUNNER_TEMP/vuk" catalog bundle --catalog-root . > "$RUNNER_TEMP/catalog-bundle.json"
-          "$RUNNER_TEMP/vuk" benchmark run --catalog-root . --suite fixtures/benchmarks/core-native/suite.yaml --evaluated-at 2026-08-23T12:00:00Z --format json > "$RUNNER_TEMP/benchmark-report.json"
-          "$RUNNER_TEMP/vuk" benchmark run --catalog-root . --suite fixtures/benchmarks/core-native/suite-comprehensive.yaml --evaluated-at 2026-08-23T12:00:00Z --format json > "$RUNNER_TEMP/comprehensive-benchmark-report.json"
-          "$RUNNER_TEMP/vuk" pack validate --catalog-root . --file packs/core-foundation.yaml --format json > "$RUNNER_TEMP/pack-report.json"
-          "$RUNNER_TEMP/vuk" pack validate --catalog-root . --file packs/core-native.yaml --format json > "$RUNNER_TEMP/core-native-pack-report.json"
-          "$RUNNER_TEMP/vuk" inventory --target . --format json > "$RUNNER_TEMP/inventory.json"
-          "$RUNNER_TEMP/vuk" plan --target . --catalog-root . --format json > "$RUNNER_TEMP/plan.json"
-          "$RUNNER_TEMP/vuk" scan --target . --catalog-root . --state-dir "$RUNNER_TEMP/state" --format json --exit-policy never > "$RUNNER_TEMP/run.json"
-          "$RUNNER_TEMP/vuk" plan --target . --catalog-root . --profile prc/api --format json > "$RUNNER_TEMP/api-plan.json"
-          "$RUNNER_TEMP/vuk" scan --target . --catalog-root . --profile prc/api --format json --exit-policy never > "$RUNNER_TEMP/api-run.json"
-          "$RUNNER_TEMP/vuk" plan --target . --catalog-root . --profile prc/kubernetes --format json > "$RUNNER_TEMP/kubernetes-plan.json"
-          "$RUNNER_TEMP/vuk" scan --target . --catalog-root . --profile prc/kubernetes --format json --exit-policy never > "$RUNNER_TEMP/kubernetes-run.json"
-          "$RUNNER_TEMP/vuk" scan \
+          "$RUNNER_TEMP/prc" catalog validate --catalog-root . --format json > "$RUNNER_TEMP/catalog-manifest.json"
+          "$RUNNER_TEMP/prc" catalog bundle --catalog-root . > "$RUNNER_TEMP/catalog-bundle.json"
+          "$RUNNER_TEMP/prc" benchmark run --catalog-root . --suite fixtures/benchmarks/core-native/suite.yaml --evaluated-at 2026-08-23T12:00:00Z --format json > "$RUNNER_TEMP/benchmark-report.json"
+          "$RUNNER_TEMP/prc" benchmark run --catalog-root . --suite fixtures/benchmarks/core-native/suite-comprehensive.yaml --evaluated-at 2026-08-23T12:00:00Z --format json > "$RUNNER_TEMP/comprehensive-benchmark-report.json"
+          "$RUNNER_TEMP/prc" pack validate --catalog-root . --file packs/core-foundation.yaml --format json > "$RUNNER_TEMP/pack-report.json"
+          "$RUNNER_TEMP/prc" pack validate --catalog-root . --file packs/core-native.yaml --format json > "$RUNNER_TEMP/core-native-pack-report.json"
+          "$RUNNER_TEMP/prc" inventory --target . --format json > "$RUNNER_TEMP/inventory.json"
+          "$RUNNER_TEMP/prc" plan --target . --catalog-root . --format json > "$RUNNER_TEMP/plan.json"
+          "$RUNNER_TEMP/prc" scan --target . --catalog-root . --state-dir "$RUNNER_TEMP/state" --format json --exit-policy never > "$RUNNER_TEMP/run.json"
+          "$RUNNER_TEMP/prc" plan --target . --catalog-root . --profile prc/api --format json > "$RUNNER_TEMP/api-plan.json"
+          "$RUNNER_TEMP/prc" scan --target . --catalog-root . --profile prc/api --format json --exit-policy never > "$RUNNER_TEMP/api-run.json"
+          "$RUNNER_TEMP/prc" plan --target . --catalog-root . --profile prc/kubernetes --format json > "$RUNNER_TEMP/kubernetes-plan.json"
+          "$RUNNER_TEMP/prc" scan --target . --catalog-root . --profile prc/kubernetes --format json --exit-policy never > "$RUNNER_TEMP/kubernetes-run.json"
+          "$RUNNER_TEMP/prc" scan \
             --target . \
             --catalog-root . \
             --profile prc/supply-chain \
@@ -223,18 +223,18 @@ jobs:
             --exit-policy never \
             > "$RUNNER_TEMP/supply-run.json"
           python -c 'import hashlib,json,pathlib,sys; run=json.load(open(sys.argv[1], encoding="utf-8")); result=next(x for x in run["results"] if x["assertion_id"]=="PRC-A-SUPPLY-001"); assert result["assessment"]=="pass"; execution=next(x for x in run["adapter_executions"] if x["adapter_id"]=="prc.adapter.syft@1.51"); artifact=execution["transcript"]["artifacts"][0]; digest=artifact["digest"].removeprefix("sha256:"); path=pathlib.Path(sys.argv[2])/"artifacts"/"sha256"/digest[:2]/digest; payload=path.read_bytes(); assert len(payload)==artifact["size"] and hashlib.sha256(payload).hexdigest()==digest; bom=json.loads(payload); assert bom["bomFormat"]=="CycloneDX" and bom["specVersion"]=="1.7" and "serialNumber" not in bom' "$RUNNER_TEMP/supply-run.json" "$RUNNER_TEMP/supply-state"
-          "$RUNNER_TEMP/vuk" inventory --target . --config fixtures/config/production-readiness.yaml --format json > "$RUNNER_TEMP/configured-inventory.json"
-          "$RUNNER_TEMP/vuk" plan --target . --catalog-root . --config fixtures/config/production-readiness.yaml --format json > "$RUNNER_TEMP/configured-plan.json"
-          "$RUNNER_TEMP/vuk" scan --target . --catalog-root . --config fixtures/config/production-readiness.yaml --state-dir "$RUNNER_TEMP/configured-state" --format json --exit-policy never > "$RUNNER_TEMP/configured-run.json"
-          "$RUNNER_TEMP/vuk" history list --state-dir "$RUNNER_TEMP/state" --format json > "$RUNNER_TEMP/history.json"
-          "$RUNNER_TEMP/vuk" history check --state-dir "$RUNNER_TEMP/state" --format json > "$RUNNER_TEMP/state-check.json"
+          "$RUNNER_TEMP/prc" inventory --target . --config fixtures/config/production-readiness.yaml --format json > "$RUNNER_TEMP/configured-inventory.json"
+          "$RUNNER_TEMP/prc" plan --target . --catalog-root . --config fixtures/config/production-readiness.yaml --format json > "$RUNNER_TEMP/configured-plan.json"
+          "$RUNNER_TEMP/prc" scan --target . --catalog-root . --config fixtures/config/production-readiness.yaml --state-dir "$RUNNER_TEMP/configured-state" --format json --exit-policy never > "$RUNNER_TEMP/configured-run.json"
+          "$RUNNER_TEMP/prc" history list --state-dir "$RUNNER_TEMP/state" --format json > "$RUNNER_TEMP/history.json"
+          "$RUNNER_TEMP/prc" history check --state-dir "$RUNNER_TEMP/state" --format json > "$RUNNER_TEMP/state-check.json"
           PRC_HISTORY_RUN_ID=$(python -c 'import json,sys; print(json.load(open(sys.argv[1], encoding="utf-8"))["run_id"])' "$RUNNER_TEMP/run.json")
-          "$RUNNER_TEMP/vuk" history show --state-dir "$RUNNER_TEMP/state" --format json "$PRC_HISTORY_RUN_ID" > "$RUNNER_TEMP/historical-run.json"
-          "$RUNNER_TEMP/vuk" diff --state-dir "$RUNNER_TEMP/state" --base-run "$PRC_HISTORY_RUN_ID" --target . --catalog-root . --format json > "$RUNNER_TEMP/invalidation.json"
-          "$RUNNER_TEMP/vuk" scan --target . --catalog-root . --format markdown --exit-policy never > "$RUNNER_TEMP/run.md"
-          "$RUNNER_TEMP/vuk" scan --target . --catalog-root . --format html --exit-policy never > "$RUNNER_TEMP/run.html"
-          "$RUNNER_TEMP/vuk" scan --target . --catalog-root . --format sarif --exit-policy never > "$RUNNER_TEMP/run.sarif"
-          "$RUNNER_TEMP/vuk" scan --target . --catalog-root . --format junit --exit-policy never > "$RUNNER_TEMP/run.xml"
+          "$RUNNER_TEMP/prc" history show --state-dir "$RUNNER_TEMP/state" --format json "$PRC_HISTORY_RUN_ID" > "$RUNNER_TEMP/historical-run.json"
+          "$RUNNER_TEMP/prc" diff --state-dir "$RUNNER_TEMP/state" --base-run "$PRC_HISTORY_RUN_ID" --target . --catalog-root . --format json > "$RUNNER_TEMP/invalidation.json"
+          "$RUNNER_TEMP/prc" scan --target . --catalog-root . --format markdown --exit-policy never > "$RUNNER_TEMP/run.md"
+          "$RUNNER_TEMP/prc" scan --target . --catalog-root . --format html --exit-policy never > "$RUNNER_TEMP/run.html"
+          "$RUNNER_TEMP/prc" scan --target . --catalog-root . --format sarif --exit-policy never > "$RUNNER_TEMP/run.sarif"
+          "$RUNNER_TEMP/prc" scan --target . --catalog-root . --format junit --exit-policy never > "$RUNNER_TEMP/run.xml"
           python -c 'import json,sys; json.load(open(sys.argv[1], encoding="utf-8"))' "$RUNNER_TEMP/run.sarif"
           python -c 'import sys,xml.etree.ElementTree as ET; ET.parse(sys.argv[1])' "$RUNNER_TEMP/run.xml"
           grep -q '<!doctype html>' "$RUNNER_TEMP/run.html"
@@ -243,7 +243,7 @@ jobs:
         run: |
           mkdir "$RUNNER_TEMP/remediation-target"
           printf "print('ready')" > "$RUNNER_TEMP/remediation-target/app.py"
-          "$RUNNER_TEMP/vuk" remediate \
+          "$RUNNER_TEMP/prc" remediate \
             --target "$RUNNER_TEMP/remediation-target" \
             --catalog-root . \
             --candidate-dir "$RUNNER_TEMP/remediation-candidate" \
@@ -253,7 +253,7 @@ jobs:
           mkdir "$RUNNER_TEMP/mode-target"
           printf "print('ready')\n" > "$RUNNER_TEMP/mode-target/app.py"
           chmod 0666 "$RUNNER_TEMP/mode-target/app.py"
-          "$RUNNER_TEMP/vuk" remediate \
+          "$RUNNER_TEMP/prc" remediate \
             --target "$RUNNER_TEMP/mode-target" \
             --catalog-root . \
             --assertion PRC-A-CORE-022 \
@@ -265,7 +265,7 @@ jobs:
           mkdir "$RUNNER_TEMP/configured-remediation-target"
           cp fixtures/config/production-readiness.yaml "$RUNNER_TEMP/configured-remediation-target/production-readiness.yaml"
           printf "print('ready')" > "$RUNNER_TEMP/configured-remediation-target/app.py"
-          "$RUNNER_TEMP/vuk" remediate \
+          "$RUNNER_TEMP/prc" remediate \
             --target "$RUNNER_TEMP/configured-remediation-target" \
             --catalog-root . \
             --config "$RUNNER_TEMP/configured-remediation-target/production-readiness.yaml" \
@@ -278,7 +278,7 @@ jobs:
           printf "print('ready')" > "$RUNNER_TEMP/remediation-loop-target/app.py"
           chmod 0666 "$RUNNER_TEMP/remediation-loop-target/app.py"
           set +e
-          "$RUNNER_TEMP/vuk" fix \
+          "$RUNNER_TEMP/prc" fix \
             --target "$RUNNER_TEMP/remediation-loop-target" \
             --catalog-root . \
             --candidate-root "$RUNNER_TEMP/remediation-loop-candidates" \
@@ -297,7 +297,7 @@ jobs:
         run: |
           docker pull "$PRC_TEST_GO_VERIFIER_IMAGE"
           set +e
-          "$RUNNER_TEMP/vuk" remediate-proposal \
+          "$RUNNER_TEMP/prc" remediate-proposal \
             --target "$RUNNER_TEMP/provider-fixture/workspace" \
             --catalog-root . \
             --provider codex \
@@ -427,7 +427,7 @@ jobs:
         run: |
           go run github.com/CycloneDX/cyclonedx-gomod/cmd/cyclonedx-gomod@v1.10.0 \
             mod -json -noserial -notimestamp -short-purls \
-            -output "$RUNNER_TEMP/vuk.cdx.json" .
+            -output "$RUNNER_TEMP/prc.cdx.json" .
 
       - name: Rebuild all release targets reproducibly
         shell: bash
@@ -440,7 +440,7 @@ jobs:
               --version 0.0.0-ci \
               --commit "$GITHUB_SHA" \
               --built-at "$built_at" \
-              --sbom "$RUNNER_TEMP/vuk.cdx.json" \
+              --sbom "$RUNNER_TEMP/prc.cdx.json" \
               --output "$RUNNER_TEMP/$output"
           done
           diff --recursive --no-dereference \
@@ -450,31 +450,31 @@ jobs:
         run: |
           python scripts/validate_instance.py \
             release-manifest.schema.json \
-            "$RUNNER_TEMP/release-first/vuk_0.0.0-ci_release-manifest.json"
+            "$RUNNER_TEMP/release-first/prc_0.0.0-ci_release-manifest.json"
           mkdir "$RUNNER_TEMP/release-smoke"
-          tar -xzf "$RUNNER_TEMP/release-first/vuk_0.0.0-ci_linux_amd64.tar.gz" \
+          tar -xzf "$RUNNER_TEMP/release-first/prc_0.0.0-ci_linux_amd64.tar.gz" \
             -C "$RUNNER_TEMP/release-smoke"
-          release_root="$RUNNER_TEMP/release-smoke/vuk_0.0.0-ci_linux_amd64"
-          "$release_root/vuk" \
+          release_root="$RUNNER_TEMP/release-smoke/prc_0.0.0-ci_linux_amd64"
+          "$release_root/prc" \
             version --format json > "$RUNNER_TEMP/release-version.json"
           python scripts/validate_instance.py \
             version.schema.json "$RUNNER_TEMP/release-version.json"
-          "$release_root/vuk" scan \
+          "$release_root/prc" scan \
             --target . \
             --catalog-root "$release_root" \
             --format json \
             --exit-policy never \
-            > "$RUNNER_TEMP/release-first/vuk_0.0.0-ci_self-scan.json"
+            > "$RUNNER_TEMP/release-first/prc_0.0.0-ci_self-scan.json"
           python scripts/validate_instance.py run-result.schema.json \
-            "$RUNNER_TEMP/release-first/vuk_0.0.0-ci_self-scan.json"
+            "$RUNNER_TEMP/release-first/prc_0.0.0-ci_self-scan.json"
           python -c 'import json,os,sys; d=json.load(open(sys.argv[1], encoding="utf-8")); assert d["inventory"]["git_commit"]==os.environ["GITHUB_SHA"] and d["plan"]["target_commit"]==os.environ["GITHUB_SHA"] and len(d["results"])>0' \
-            "$RUNNER_TEMP/release-first/vuk_0.0.0-ci_self-scan.json"
+            "$RUNNER_TEMP/release-first/prc_0.0.0-ci_self-scan.json"
           mkdir "$RUNNER_TEMP/npm-smoke"
           cd "$RUNNER_TEMP/npm-smoke"
           npm install --ignore-scripts --offline --no-audit --no-fund --package-lock=false \
-            "$RUNNER_TEMP/release-first/marinjursic-vuk-linux-x64-0.0.0-ci.tgz" \
-            "$RUNNER_TEMP/release-first/marinjursic-vuk-0.0.0-ci.tgz"
-          ./node_modules/.bin/vuk version --format json > "$RUNNER_TEMP/npm-version.json"
+            "$RUNNER_TEMP/release-first/marinjursic-prc-linux-x64-0.0.0-ci.tgz" \
+            "$RUNNER_TEMP/release-first/marinjursic-prc-0.0.0-ci.tgz"
+          ./node_modules/.bin/prc version --format json > "$RUNNER_TEMP/npm-version.json"
           cd "$GITHUB_WORKSPACE"
           python scripts/validate_instance.py version.schema.json "$RUNNER_TEMP/npm-version.json"
           python -c 'import pathlib,sys; from scripts.build_release import write_checksums; write_checksums(pathlib.Path(sys.argv[1]))' \

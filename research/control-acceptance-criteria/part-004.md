@@ -31,7 +31,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -69,7 +69,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -107,7 +107,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -145,7 +145,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -183,7 +183,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -220,7 +220,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -258,7 +258,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -295,7 +295,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -333,7 +333,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -370,7 +370,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -409,7 +409,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -448,7 +448,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -487,7 +487,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -526,7 +526,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -563,7 +563,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -600,7 +600,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -638,7 +638,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -676,7 +676,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -713,7 +713,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -750,7 +750,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -787,7 +787,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -825,7 +825,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -862,7 +862,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -899,7 +899,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -937,7 +937,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -975,7 +975,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -1013,7 +1013,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -1051,7 +1051,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -1088,7 +1088,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -1126,7 +1126,7 @@ Use this rule only when its stated trigger and the source section `Architecture 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -1165,7 +1165,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -1202,7 +1202,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -1239,7 +1239,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -1276,7 +1276,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -1314,7 +1314,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -1351,7 +1351,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -1388,7 +1388,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -1426,7 +1426,7 @@ Use this rule only when its stated trigger and the source section `Architecture 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -1464,7 +1464,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -1502,7 +1502,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -1539,7 +1539,7 @@ Use this rule only when its stated trigger and the source section `Architecture 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -1576,7 +1576,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -1615,7 +1615,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -1653,7 +1653,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -1690,7 +1690,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -1727,7 +1727,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -1764,7 +1764,7 @@ Use this rule only when its stated trigger and the source section `Architecture 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -1802,7 +1802,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -1839,7 +1839,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -1876,7 +1876,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -1914,7 +1914,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -1951,7 +1951,7 @@ Use this rule only when its stated trigger and the source section `Architecture 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -1989,7 +1989,7 @@ Use this rule only when its stated trigger and the source section `Architecture 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -2028,7 +2028,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -2066,7 +2066,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -2103,7 +2103,7 @@ Use this rule only when its stated trigger and the source section `Architecture 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -2141,7 +2141,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -2179,7 +2179,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -2217,7 +2217,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -2256,7 +2256,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -2294,7 +2294,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -2332,7 +2332,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -2370,7 +2370,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -2407,7 +2407,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -2444,7 +2444,7 @@ Use this rule only when its stated trigger and the source section `Architecture 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -2481,7 +2481,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -2518,7 +2518,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -2555,7 +2555,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -2594,7 +2594,7 @@ Use this rule only when its stated trigger and the source section `Architecture 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -2634,7 +2634,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -2671,7 +2671,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -2708,7 +2708,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -2745,7 +2745,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -2783,7 +2783,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -2822,7 +2822,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -2860,7 +2860,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -2897,7 +2897,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -2935,7 +2935,7 @@ Use this rule only when its stated trigger and the source section `Architecture 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -2974,7 +2974,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -3012,7 +3012,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -3049,7 +3049,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -3087,7 +3087,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -3124,7 +3124,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -3162,7 +3162,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -3201,7 +3201,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -3239,7 +3239,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -3278,7 +3278,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -3316,7 +3316,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -3355,7 +3355,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -3392,7 +3392,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -3430,7 +3430,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -3468,7 +3468,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -3506,7 +3506,7 @@ Use this rule only when its stated trigger and the source section `Architecture 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -3544,7 +3544,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -3581,7 +3581,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -3618,7 +3618,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -3656,7 +3656,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -3693,7 +3693,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -3732,7 +3732,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -3770,7 +3770,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -3807,7 +3807,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -3845,7 +3845,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -3883,7 +3883,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -3922,7 +3922,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -3959,7 +3959,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -3997,7 +3997,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -4035,7 +4035,7 @@ Use this rule only when its stated trigger and the source section `Architecture 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -4076,7 +4076,7 @@ Use this rule only when its stated trigger and the source section `Architecture 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -4116,7 +4116,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -4155,7 +4155,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -4193,7 +4193,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -4232,7 +4232,7 @@ Use this rule only when its stated trigger and the source section `Architecture 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -4272,7 +4272,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -4311,7 +4311,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -4350,7 +4350,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -4387,7 +4387,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -4425,7 +4425,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -4462,7 +4462,7 @@ Use this rule only when its stated trigger and the source section `Architecture 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -4499,7 +4499,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -4536,7 +4536,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -4575,7 +4575,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -4613,7 +4613,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -4651,7 +4651,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -4688,7 +4688,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -4725,7 +4725,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -4762,7 +4762,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -4800,7 +4800,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -4838,7 +4838,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -4875,7 +4875,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -4913,7 +4913,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -4951,7 +4951,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -4989,7 +4989,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -5026,7 +5026,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -5064,7 +5064,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -5102,7 +5102,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -5140,7 +5140,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -5178,7 +5178,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -5215,7 +5215,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -5252,7 +5252,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -5290,7 +5290,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -5328,7 +5328,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -5365,7 +5365,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -5402,7 +5402,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -5439,7 +5439,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -5476,7 +5476,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -5514,7 +5514,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -5551,7 +5551,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -5589,7 +5589,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -5628,7 +5628,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -5666,7 +5666,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -5705,7 +5705,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -5743,7 +5743,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -5780,7 +5780,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -5817,7 +5817,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -5855,7 +5855,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -5892,7 +5892,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -5931,7 +5931,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -5970,7 +5970,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -6008,7 +6008,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -6045,7 +6045,7 @@ Use this rule only when its stated trigger and the source section `Architecture 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -6082,7 +6082,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -6119,7 +6119,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -6157,7 +6157,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -6196,7 +6196,7 @@ Use this rule only when its stated trigger and the source section `Architecture 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -6234,7 +6234,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -6272,7 +6272,7 @@ Use this rule only when its stated trigger and the source section `Architecture 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -6310,7 +6310,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -6348,7 +6348,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -6386,7 +6386,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -6423,7 +6423,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -6460,7 +6460,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -6498,7 +6498,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -6537,7 +6537,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -6575,7 +6575,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -6614,7 +6614,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -6653,7 +6653,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -6691,7 +6691,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -6729,7 +6729,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -6766,7 +6766,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -6805,7 +6805,7 @@ Use this rule only when its stated trigger and the source section `Architecture 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -6845,7 +6845,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -6883,7 +6883,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -6921,7 +6921,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -6959,7 +6959,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -6997,7 +6997,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -7035,7 +7035,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -7073,7 +7073,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -7110,7 +7110,7 @@ Consider this rule inside the selected profile and the source section `Architect
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -7152,7 +7152,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -7192,7 +7192,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -7230,7 +7230,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -7267,7 +7267,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -7304,7 +7304,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -7342,7 +7342,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -7380,7 +7380,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -7418,7 +7418,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -7456,7 +7456,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -7493,7 +7493,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -7530,7 +7530,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -7570,7 +7570,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -7609,7 +7609,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -7647,7 +7647,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -7685,7 +7685,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -7722,7 +7722,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -7759,7 +7759,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -7796,7 +7796,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -7834,7 +7834,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -7872,7 +7872,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -7909,7 +7909,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -7946,7 +7946,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -7983,7 +7983,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -8021,7 +8021,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -8061,7 +8061,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -8098,7 +8098,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -8135,7 +8135,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -8173,7 +8173,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -8211,7 +8211,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -8249,7 +8249,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -8287,7 +8287,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -8325,7 +8325,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -8400,7 +8400,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -8438,7 +8438,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -8476,7 +8476,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -8514,7 +8514,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -8552,7 +8552,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -8590,7 +8590,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -8628,7 +8628,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -8666,7 +8666,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -8704,7 +8704,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -8741,7 +8741,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -8778,7 +8778,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -8815,7 +8815,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -8853,7 +8853,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -8890,7 +8890,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -8928,7 +8928,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -8965,7 +8965,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -9003,7 +9003,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -9041,7 +9041,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -9079,7 +9079,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -9117,7 +9117,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -9155,7 +9155,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -9194,7 +9194,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -9233,7 +9233,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -9272,7 +9272,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -9310,7 +9310,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -9348,7 +9348,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -9386,7 +9386,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -9423,7 +9423,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -9461,7 +9461,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -9499,7 +9499,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -9536,7 +9536,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -9573,7 +9573,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -9610,7 +9610,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -9648,7 +9648,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -9688,7 +9688,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -9764,7 +9764,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -9801,7 +9801,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -9839,7 +9839,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -9877,7 +9877,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -9915,7 +9915,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -9954,7 +9954,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -9992,7 +9992,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -10029,7 +10029,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -10066,7 +10066,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -10104,7 +10104,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -10142,7 +10142,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -10179,7 +10179,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -10216,7 +10216,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -10253,7 +10253,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -10291,7 +10291,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -10328,7 +10328,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -10365,7 +10365,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -10403,7 +10403,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -10440,7 +10440,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -10477,7 +10477,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -10515,7 +10515,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -10554,7 +10554,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -10591,7 +10591,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -10628,7 +10628,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -10666,7 +10666,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -10703,7 +10703,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -10740,7 +10740,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -10778,7 +10778,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -10816,7 +10816,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -10853,7 +10853,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -10890,7 +10890,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -10927,7 +10927,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -10964,7 +10964,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -11002,7 +11002,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -11041,7 +11041,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -11083,7 +11083,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -11121,7 +11121,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -11159,7 +11159,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -11196,7 +11196,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -11234,7 +11234,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -11271,7 +11271,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -11309,7 +11309,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -11347,7 +11347,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -11384,7 +11384,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -11422,7 +11422,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -11460,7 +11460,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -11498,7 +11498,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -11538,7 +11538,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -11577,7 +11577,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -11614,7 +11614,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -11652,7 +11652,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -11690,7 +11690,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -11727,7 +11727,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -11764,7 +11764,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -11802,7 +11802,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -11839,7 +11839,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -11876,7 +11876,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -11915,7 +11915,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -11953,7 +11953,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -11992,7 +11992,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -12031,7 +12031,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -12070,7 +12070,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -12108,7 +12108,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -12145,7 +12145,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -12183,7 +12183,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -12221,7 +12221,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -12260,7 +12260,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -12297,7 +12297,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -12335,7 +12335,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -12373,7 +12373,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -12410,7 +12410,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -12448,7 +12448,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -12485,7 +12485,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -12523,7 +12523,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -12562,7 +12562,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -12599,7 +12599,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -12637,7 +12637,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -12674,7 +12674,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -12711,7 +12711,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -12749,7 +12749,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -12787,7 +12787,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -12826,7 +12826,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -12865,7 +12865,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -12902,7 +12902,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -12940,7 +12940,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -12979,7 +12979,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -13019,7 +13019,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -13057,7 +13057,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -13095,7 +13095,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -13133,7 +13133,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -13171,7 +13171,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -13210,7 +13210,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -13248,7 +13248,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -13286,7 +13286,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -13323,7 +13323,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -13360,7 +13360,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -13398,7 +13398,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -13437,7 +13437,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -13475,7 +13475,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -13512,7 +13512,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -13550,7 +13550,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -13589,7 +13589,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -13630,7 +13630,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -13669,7 +13669,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -13706,7 +13706,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -13743,7 +13743,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -13780,7 +13780,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -13817,7 +13817,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -13855,7 +13855,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -13893,7 +13893,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -13931,7 +13931,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -13970,7 +13970,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -14007,7 +14007,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -14044,7 +14044,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -14081,7 +14081,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -14118,7 +14118,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -14157,7 +14157,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -14198,7 +14198,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -14236,7 +14236,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -14273,7 +14273,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -14311,7 +14311,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -14349,7 +14349,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -14388,7 +14388,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -14426,7 +14426,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -14463,7 +14463,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -14500,7 +14500,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -14538,7 +14538,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -14576,7 +14576,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -14614,7 +14614,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -14651,7 +14651,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -14690,7 +14690,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -14730,7 +14730,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -14767,7 +14767,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -14805,7 +14805,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -14842,7 +14842,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -14880,7 +14880,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -14918,7 +14918,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -14956,7 +14956,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -14994,7 +14994,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -15032,7 +15032,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -15071,7 +15071,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -15109,7 +15109,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -15146,7 +15146,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -15184,7 +15184,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -15221,7 +15221,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -15259,7 +15259,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -15297,7 +15297,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -15334,7 +15334,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -15372,7 +15372,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -15410,7 +15410,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -15449,7 +15449,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -15487,7 +15487,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -15525,7 +15525,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -15564,7 +15564,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -15601,7 +15601,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -15638,7 +15638,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -15675,7 +15675,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -15712,7 +15712,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -15751,7 +15751,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -15788,7 +15788,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -15826,7 +15826,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -15864,7 +15864,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -15902,7 +15902,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -15940,7 +15940,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -15977,7 +15977,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -16015,7 +16015,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -16052,7 +16052,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -16089,7 +16089,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -16127,7 +16127,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -16165,7 +16165,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -16203,7 +16203,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -16241,7 +16241,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -16279,7 +16279,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -16317,7 +16317,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -16355,7 +16355,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -16392,7 +16392,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -16430,7 +16430,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -16470,7 +16470,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -16508,7 +16508,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -16545,7 +16545,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -16582,7 +16582,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -16620,7 +16620,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -16658,7 +16658,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -16696,7 +16696,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -16733,7 +16733,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -16771,7 +16771,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -16809,7 +16809,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -16848,7 +16848,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -16886,7 +16886,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -16924,7 +16924,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -16963,7 +16963,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -17002,7 +17002,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -17041,7 +17041,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -17078,7 +17078,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -17115,7 +17115,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -17152,7 +17152,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -17190,7 +17190,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -17227,7 +17227,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -17264,7 +17264,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -17301,7 +17301,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -17338,7 +17338,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -17376,7 +17376,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -17414,7 +17414,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -17452,7 +17452,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -17489,7 +17489,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -17526,7 +17526,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -17564,7 +17564,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -17603,7 +17603,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -17640,7 +17640,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -17677,7 +17677,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -17714,7 +17714,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -17752,7 +17752,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -17789,7 +17789,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -17826,7 +17826,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -17864,7 +17864,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -17901,7 +17901,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -17939,7 +17939,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -17976,7 +17976,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -18013,7 +18013,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -18051,7 +18051,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -18090,7 +18090,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -18129,7 +18129,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -18168,7 +18168,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -18206,7 +18206,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -18243,7 +18243,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -18281,7 +18281,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -18320,7 +18320,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -18358,7 +18358,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -18397,7 +18397,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -18436,7 +18436,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -18474,7 +18474,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -18512,7 +18512,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -18552,7 +18552,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -18591,7 +18591,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -18629,7 +18629,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -18666,7 +18666,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -18704,7 +18704,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -18744,7 +18744,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -18782,7 +18782,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -18820,7 +18820,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -18858,7 +18858,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -18896,7 +18896,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -18934,7 +18934,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -18973,7 +18973,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -19012,7 +19012,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -19051,7 +19051,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -19090,7 +19090,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -19129,7 +19129,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -19167,7 +19167,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -19204,7 +19204,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -19242,7 +19242,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -19281,7 +19281,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -19320,7 +19320,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -19359,7 +19359,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -19397,7 +19397,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -19437,7 +19437,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -19475,7 +19475,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -19513,7 +19513,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -19550,7 +19550,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -19589,7 +19589,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -19627,7 +19627,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -19664,7 +19664,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -19701,7 +19701,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -19739,7 +19739,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -19777,7 +19777,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -19815,7 +19815,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -19853,7 +19853,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -19892,7 +19892,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -19931,7 +19931,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -19969,7 +19969,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -20007,7 +20007,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -20045,7 +20045,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -20083,7 +20083,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -20120,7 +20120,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -20158,7 +20158,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -20195,7 +20195,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -20233,7 +20233,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -20271,7 +20271,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -20309,7 +20309,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -20348,7 +20348,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -20386,7 +20386,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -20424,7 +20424,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -20464,7 +20464,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -20502,7 +20502,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -20540,7 +20540,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -20578,7 +20578,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -20616,7 +20616,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -20653,7 +20653,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -20691,7 +20691,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -20731,7 +20731,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -20772,7 +20772,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -20813,7 +20813,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -20850,7 +20850,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -20888,7 +20888,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -20926,7 +20926,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -20964,7 +20964,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -21004,7 +21004,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -21043,7 +21043,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -21082,7 +21082,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -21120,7 +21120,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -21158,7 +21158,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -21196,7 +21196,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -21233,7 +21233,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -21271,7 +21271,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -21309,7 +21309,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -21347,7 +21347,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -21385,7 +21385,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -21422,7 +21422,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -21460,7 +21460,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -21500,7 +21500,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -21538,7 +21538,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -21576,7 +21576,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -21614,7 +21614,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -21654,7 +21654,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -21693,7 +21693,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -21730,7 +21730,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -21769,7 +21769,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -21807,7 +21807,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -21846,7 +21846,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -21885,7 +21885,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -21923,7 +21923,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -21961,7 +21961,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -22001,7 +22001,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -22038,7 +22038,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -22075,7 +22075,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -22112,7 +22112,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -22150,7 +22150,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -22187,7 +22187,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -22225,7 +22225,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -22263,7 +22263,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -22300,7 +22300,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -22338,7 +22338,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -22376,7 +22376,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -22415,7 +22415,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -22455,7 +22455,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -22496,7 +22496,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -22536,7 +22536,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -22574,7 +22574,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -22612,7 +22612,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -22651,7 +22651,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -22691,7 +22691,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -22729,7 +22729,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -22767,7 +22767,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -22806,7 +22806,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -22844,7 +22844,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -22881,7 +22881,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -22920,7 +22920,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -22959,7 +22959,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -22996,7 +22996,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -23034,7 +23034,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -23072,7 +23072,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -23110,7 +23110,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -23150,7 +23150,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -23191,7 +23191,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -23230,7 +23230,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -23268,7 +23268,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -23306,7 +23306,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -23343,7 +23343,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -23382,7 +23382,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -23422,7 +23422,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -23460,7 +23460,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -23500,7 +23500,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -23539,7 +23539,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -23577,7 +23577,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -23616,7 +23616,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -23655,7 +23655,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -23694,7 +23694,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -23732,7 +23732,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -23770,7 +23770,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -23809,7 +23809,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -23847,7 +23847,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -23885,7 +23885,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -23924,7 +23924,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -23963,7 +23963,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -24002,7 +24002,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -24040,7 +24040,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -24078,7 +24078,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -24116,7 +24116,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -24154,7 +24154,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -24192,7 +24192,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -24230,7 +24230,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -24270,7 +24270,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -24309,7 +24309,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -24346,7 +24346,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -24383,7 +24383,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -24421,7 +24421,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -24458,7 +24458,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -24496,7 +24496,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -24537,7 +24537,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -24578,7 +24578,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -24617,7 +24617,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -24658,7 +24658,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -24698,7 +24698,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -24737,7 +24737,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -24776,7 +24776,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -24814,7 +24814,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -24853,7 +24853,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -24891,7 +24891,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -24930,7 +24930,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -24968,7 +24968,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -25007,7 +25007,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -25048,7 +25048,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -25089,7 +25089,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -25129,7 +25129,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -25168,7 +25168,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -25206,7 +25206,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -25243,7 +25243,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -25281,7 +25281,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -25320,7 +25320,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -25358,7 +25358,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -25395,7 +25395,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -25433,7 +25433,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -25472,7 +25472,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -25509,7 +25509,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -25547,7 +25547,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -25624,7 +25624,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -25665,7 +25665,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -25705,7 +25705,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -25744,7 +25744,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -25784,7 +25784,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -25825,7 +25825,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -25864,7 +25864,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -25902,7 +25902,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -25941,7 +25941,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -25981,7 +25981,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -26021,7 +26021,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -26060,7 +26060,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -26099,7 +26099,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -26138,7 +26138,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -26214,7 +26214,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -26252,7 +26252,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -26290,7 +26290,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -26329,7 +26329,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -26368,7 +26368,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -26406,7 +26406,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -26443,7 +26443,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -26481,7 +26481,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -26520,7 +26520,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -26560,7 +26560,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -26597,7 +26597,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -26634,7 +26634,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -26672,7 +26672,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -26710,7 +26710,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -26748,7 +26748,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -26786,7 +26786,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -26824,7 +26824,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -26863,7 +26863,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -26902,7 +26902,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -26939,7 +26939,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -26977,7 +26977,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -27015,7 +27015,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -27054,7 +27054,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -27092,7 +27092,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -27130,7 +27130,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -27167,7 +27167,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -27205,7 +27205,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -27243,7 +27243,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -27280,7 +27280,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -27317,7 +27317,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -27354,7 +27354,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -27391,7 +27391,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -27429,7 +27429,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -27467,7 +27467,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -27504,7 +27504,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -27542,7 +27542,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -27580,7 +27580,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -27617,7 +27617,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -27655,7 +27655,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -27694,7 +27694,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -27732,7 +27732,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -27769,7 +27769,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -27807,7 +27807,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -27845,7 +27845,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -27883,7 +27883,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -27921,7 +27921,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -27958,7 +27958,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -27995,7 +27995,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -28033,7 +28033,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -28070,7 +28070,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -28108,7 +28108,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -28147,7 +28147,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -28188,7 +28188,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -28226,7 +28226,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -28264,7 +28264,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -28302,7 +28302,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -28341,7 +28341,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -28378,7 +28378,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -28416,7 +28416,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -28454,7 +28454,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -28492,7 +28492,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -28529,7 +28529,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -28567,7 +28567,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -28606,7 +28606,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -28645,7 +28645,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -28682,7 +28682,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -28720,7 +28720,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -28758,7 +28758,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -28795,7 +28795,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -28833,7 +28833,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -28871,7 +28871,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -28908,7 +28908,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -28946,7 +28946,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -28984,7 +28984,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -29021,7 +29021,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -29059,7 +29059,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -29096,7 +29096,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -29133,7 +29133,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -29171,7 +29171,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -29210,7 +29210,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -29248,7 +29248,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -29286,7 +29286,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -29324,7 +29324,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -29362,7 +29362,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -29400,7 +29400,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -29438,7 +29438,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -29476,7 +29476,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -29513,7 +29513,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -29551,7 +29551,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -29588,7 +29588,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -29627,7 +29627,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -29667,7 +29667,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -29708,7 +29708,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -29747,7 +29747,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -29784,7 +29784,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -29821,7 +29821,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -29859,7 +29859,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -29897,7 +29897,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -29935,7 +29935,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -29973,7 +29973,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -30011,7 +30011,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -30049,7 +30049,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -30087,7 +30087,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -30124,7 +30124,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -30162,7 +30162,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -30199,7 +30199,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -30236,7 +30236,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -30273,7 +30273,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -30311,7 +30311,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -30348,7 +30348,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -30388,7 +30388,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -30427,7 +30427,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -30467,7 +30467,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -30506,7 +30506,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -30544,7 +30544,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -30581,7 +30581,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -30619,7 +30619,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -30658,7 +30658,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -30698,7 +30698,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -30737,7 +30737,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -30776,7 +30776,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -30814,7 +30814,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -30852,7 +30852,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -30890,7 +30890,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -30928,7 +30928,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -30967,7 +30967,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -31007,7 +31007,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -31045,7 +31045,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -31082,7 +31082,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -31120,7 +31120,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -31157,7 +31157,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -31196,7 +31196,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -31234,7 +31234,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -31273,7 +31273,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -31311,7 +31311,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -31349,7 +31349,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -31387,7 +31387,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -31425,7 +31425,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -31462,7 +31462,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -31500,7 +31500,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -31538,7 +31538,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -31575,7 +31575,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -31612,7 +31612,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -31650,7 +31650,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -31688,7 +31688,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -31726,7 +31726,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -31763,7 +31763,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -31801,7 +31801,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -31839,7 +31839,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -31877,7 +31877,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -31914,7 +31914,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -31952,7 +31952,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -31990,7 +31990,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -32027,7 +32027,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -32065,7 +32065,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -32105,7 +32105,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -32146,7 +32146,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -32183,7 +32183,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -32221,7 +32221,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -32260,7 +32260,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -32298,7 +32298,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -32335,7 +32335,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -32373,7 +32373,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -32411,7 +32411,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -32449,7 +32449,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -32486,7 +32486,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -32524,7 +32524,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -32562,7 +32562,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -32600,7 +32600,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -32638,7 +32638,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -32677,7 +32677,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -32715,7 +32715,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -32753,7 +32753,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -32792,7 +32792,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -32831,7 +32831,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -32870,7 +32870,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -32908,7 +32908,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -32946,7 +32946,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -32983,7 +32983,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -33021,7 +33021,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -33059,7 +33059,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -33098,7 +33098,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -33136,7 +33136,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -33173,7 +33173,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -33211,7 +33211,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -33249,7 +33249,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -33286,7 +33286,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -33324,7 +33324,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -33362,7 +33362,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -33400,7 +33400,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -33438,7 +33438,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -33475,7 +33475,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -33513,7 +33513,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -33550,7 +33550,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -33589,7 +33589,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -33627,7 +33627,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -33664,7 +33664,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -33702,7 +33702,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -33739,7 +33739,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -33777,7 +33777,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -33816,7 +33816,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -33855,7 +33855,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -33893,7 +33893,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -33931,7 +33931,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -33969,7 +33969,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -34007,7 +34007,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -34046,7 +34046,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -34085,7 +34085,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -34123,7 +34123,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -34161,7 +34161,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -34202,7 +34202,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -34239,7 +34239,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -34277,7 +34277,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -34317,7 +34317,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -34355,7 +34355,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -34394,7 +34394,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -34434,7 +34434,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -34473,7 +34473,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -34511,7 +34511,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -34548,7 +34548,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -34585,7 +34585,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -34623,7 +34623,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -34661,7 +34661,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -34699,7 +34699,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -34738,7 +34738,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -34776,7 +34776,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -34814,7 +34814,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -34852,7 +34852,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -34889,7 +34889,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -34927,7 +34927,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -34965,7 +34965,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -35004,7 +35004,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -35043,7 +35043,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -35081,7 +35081,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -35121,7 +35121,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -35161,7 +35161,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -35201,7 +35201,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -35239,7 +35239,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -35277,7 +35277,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -35314,7 +35314,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -35352,7 +35352,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -35389,7 +35389,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -35427,7 +35427,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -35464,7 +35464,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -35501,7 +35501,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -35539,7 +35539,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -35577,7 +35577,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -35614,7 +35614,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -35651,7 +35651,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -35689,7 +35689,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -35727,7 +35727,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -35767,7 +35767,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -35806,7 +35806,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -35844,7 +35844,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -35885,7 +35885,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -35924,7 +35924,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -35962,7 +35962,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -35999,7 +35999,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -36036,7 +36036,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -36074,7 +36074,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -36112,7 +36112,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -36151,7 +36151,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -36191,7 +36191,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -36229,7 +36229,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -36267,7 +36267,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -36305,7 +36305,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -36343,7 +36343,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -36381,7 +36381,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -36418,7 +36418,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -36455,7 +36455,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -36494,7 +36494,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -36534,7 +36534,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -36573,7 +36573,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -36611,7 +36611,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -36648,7 +36648,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -36688,7 +36688,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -36726,7 +36726,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -36764,7 +36764,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -36802,7 +36802,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -36841,7 +36841,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -36880,7 +36880,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -36961,7 +36961,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -36999,7 +36999,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -37036,7 +37036,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -37074,7 +37074,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -37112,7 +37112,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -37150,7 +37150,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -37188,7 +37188,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -37226,7 +37226,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -37263,7 +37263,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -37301,7 +37301,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -37339,7 +37339,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -37377,7 +37377,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -37416,7 +37416,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -37454,7 +37454,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -37492,7 +37492,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -37530,7 +37530,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -37569,7 +37569,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -37606,7 +37606,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -37645,7 +37645,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -37682,7 +37682,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -37720,7 +37720,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -37758,7 +37758,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -37795,7 +37795,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -37833,7 +37833,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -37870,7 +37870,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -37907,7 +37907,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -37945,7 +37945,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -38022,7 +38022,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -38062,7 +38062,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -38102,7 +38102,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -38142,7 +38142,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -38181,7 +38181,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -38220,7 +38220,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -38258,7 +38258,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -38296,7 +38296,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -38335,7 +38335,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -38375,7 +38375,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -38414,7 +38414,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -38452,7 +38452,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -38489,7 +38489,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -38526,7 +38526,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -38564,7 +38564,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -38603,7 +38603,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -38643,7 +38643,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -38682,7 +38682,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -38722,7 +38722,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -38763,7 +38763,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -38802,7 +38802,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Authorized environment check**
@@ -38841,7 +38841,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -38881,7 +38881,7 @@ Use this rule only when its stated trigger and the source section `Code quality 
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -38920,7 +38920,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -38958,7 +38958,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -38995,7 +38995,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -39032,7 +39032,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -39070,7 +39070,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -39109,7 +39109,7 @@ Consider this rule inside the selected profile and the source section `Code qual
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -39150,7 +39150,7 @@ Consider this rule inside the selected profile and the source section `Applicati
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -39189,7 +39189,7 @@ Consider this rule inside the selected profile and the source section `Applicati
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -39229,7 +39229,7 @@ Consider this rule inside the selected profile and the source section `Applicati
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -39268,7 +39268,7 @@ Consider this rule inside the selected profile and the source section `Applicati
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -39306,7 +39306,7 @@ Consider this rule inside the selected profile and the source section `Applicati
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -39343,7 +39343,7 @@ Consider this rule inside the selected profile and the source section `Applicati
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -39381,7 +39381,7 @@ Consider this rule inside the selected profile and the source section `Applicati
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -39460,7 +39460,7 @@ Use this rule only when its stated trigger and the source section `Application s
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -39501,7 +39501,7 @@ Use this rule only when its stated trigger and the source section `Application s
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -39541,7 +39541,7 @@ Consider this rule inside the selected profile and the source section `Applicati
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -39579,7 +39579,7 @@ Consider this rule inside the selected profile and the source section `Applicati
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -39616,7 +39616,7 @@ Consider this rule inside the selected profile and the source section `Applicati
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -39653,7 +39653,7 @@ Consider this rule inside the selected profile and the source section `Applicati
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -39690,7 +39690,7 @@ Consider this rule inside the selected profile and the source section `Applicati
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -39728,7 +39728,7 @@ Consider this rule inside the selected profile and the source section `Applicati
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -39766,7 +39766,7 @@ Consider this rule inside the selected profile and the source section `Applicati
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -39804,7 +39804,7 @@ Consider this rule inside the selected profile and the source section `Applicati
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -39842,7 +39842,7 @@ Consider this rule inside the selected profile and the source section `Applicati
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -39880,7 +39880,7 @@ Consider this rule inside the selected profile and the source section `Applicati
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -39918,7 +39918,7 @@ Consider this rule inside the selected profile and the source section `Applicati
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -39956,7 +39956,7 @@ Consider this rule inside the selected profile and the source section `Applicati
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Repository or artifact check**
@@ -39994,7 +39994,7 @@ Consider this rule inside the selected profile and the source section `Applicati
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -40031,7 +40031,7 @@ Consider this rule inside the selected profile and the source section `Applicati
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Human or external evidence**
@@ -40069,7 +40069,7 @@ Consider this rule inside the selected profile and the source section `Applicati
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed repository and environment evidence**
@@ -40107,7 +40107,7 @@ Use this rule only when its stated trigger and the source section `Application s
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -40146,7 +40146,7 @@ Use this rule only when its stated trigger and the source section `Application s
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**
@@ -40185,7 +40185,7 @@ Use this rule only when its stated trigger and the source section `Application s
 
 **What the program checks today**
 
-- Included in every complete `vuk scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
 - With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
 
 **Proposed future check: Mixed evidence**

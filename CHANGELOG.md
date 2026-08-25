@@ -8,11 +8,10 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 
 ### Added
 
-- Rebranded the public product and CLI as **Vuk**, with the command
-  `vuk`, npm package `@marinjursic/vuk`, a terminal welcome mark,
-  and matching documentation and release artwork. Existing `prc.*` schemas,
-  `prc/` profile IDs, `PRC-*` control IDs, and MCP tool names remain stable
-  compatibility contracts.
+- Restored the descriptive **Production Readiness Checklist** identity and the
+  short `prc` command and `@marinjursic/prc` npm package. The standalone
+  nickname and mascot were removed in favor of a neutral terminal checklist
+  panel and matching documentation and release artwork.
 
 - A machine-readable acceptance and routing contract for all 10,042 controls,
   with exact registry binding, applicability, evidence authority, complete-scope,
@@ -31,7 +30,7 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
   before the launcher, and rejects immutable-version byte mismatches.
 - Exact release smoke tests for native archives and npm launchers on Linux,
   macOS, and Windows across x64 and ARM64 before publication.
-- A one-command `vuk scan [project]` experience with automatic bundled-catalog
+- A one-command `prc scan [project]` experience with automatic bundled-catalog
   discovery, interspersed options, private standalone HTML reports, explicit
   custom/no-report controls, non-overwrite guarantees, and tests proving the
   scan path does not change target bytes or modes.
@@ -136,7 +135,7 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 - A bounded deterministic R1 remediation loop with isolated sequential
   candidates, cumulative budgets, fresh rescans, fail-closed acceptance, and a
   versioned machine-work-complete report that classifies every remaining result.
-- A non-executing `vuk doctor` command and versioned diagnostics report for
+- A non-executing `prc doctor` command and versioned diagnostics report for
   target/catalog validity, private evidence storage, candidate filesystem
   isolation, OCI runtime identity, and optional agent-provider identity.
 - A CGO-free embedded SQLite state index with strict migrations, transactional

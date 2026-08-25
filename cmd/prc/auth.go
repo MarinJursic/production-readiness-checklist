@@ -99,12 +99,12 @@ func runAuthentication(operation string, args []string, stdin io.Reader, stdout,
 		if err := provider.MarkStoredAuthentication(providerName); err != nil {
 			return exitError(exitInternal, err)
 		}
-		fmt.Fprintf(stdout, "Ready. Run: vuk scan --ai %s\n", providerName)
+		fmt.Fprintf(stdout, "Ready. Run: prc scan --ai %s\n", providerName)
 	} else if operation == "logout" {
 		if err := provider.ClearStoredAuthentication(providerName); err != nil {
 			return exitError(exitInternal, err)
 		}
-		fmt.Fprintf(stdout, "Vuk's %s login has been cleared.\n", authenticationProviderTitle(providerName))
+		fmt.Fprintf(stdout, "The scanner's %s login has been cleared.\n", authenticationProviderTitle(providerName))
 	}
 	return nil
 }
@@ -112,14 +112,14 @@ func runAuthentication(operation string, args []string, stdin io.Reader, stdout,
 func printAuthenticationUsage(operation string, output io.Writer) {
 	switch operation {
 	case "login":
-		fmt.Fprintln(output, "Usage: vuk login <codex|claude>")
-		fmt.Fprintln(output, "Opens the provider's official sign-in flow in a private Vuk credential folder.")
+		fmt.Fprintln(output, "Usage: prc login <codex|claude>")
+		fmt.Fprintln(output, "Opens the provider's official sign-in flow in a private scanner credential folder.")
 	case "logout":
-		fmt.Fprintln(output, "Usage: vuk logout <codex|claude>")
-		fmt.Fprintln(output, "Removes the provider login stored for Vuk scans.")
+		fmt.Fprintln(output, "Usage: prc logout <codex|claude>")
+		fmt.Fprintln(output, "Removes the provider login stored for scanner runs.")
 	case "auth":
-		fmt.Fprintln(output, "Usage: vuk auth [codex|claude]")
-		fmt.Fprintln(output, "Shows whether Vuk can use each provider login.")
+		fmt.Fprintln(output, "Usage: prc auth [codex|claude]")
+		fmt.Fprintln(output, "Shows whether the scanner can use each provider login.")
 	}
 }
 

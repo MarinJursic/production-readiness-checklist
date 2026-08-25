@@ -12,7 +12,7 @@ Do not copy a similar package name from a search result.
 For a Node project:
 
 ```bash
-npm install --save-dev --save-exact --ignore-scripts --no-audit --no-fund @marinjursic/vuk@X.Y.Z
+npm install --save-dev --save-exact --ignore-scripts --no-audit --no-fund @marinjursic/prc@X.Y.Z
 ```
 
 What this changes:
@@ -25,7 +25,7 @@ What this changes:
 What could be attacked:
 
 - A misspelled name could install somebody else's package. Use the exact scoped
-  name `@marinjursic/vuk` from this repository.
+  name `@marinjursic/prc` from this repository.
 - A floating version such as `latest` can change between machines. Use the exact
   release number and commit the lock file.
 - Any package manager or registry can be compromised. Check the release's npm
@@ -47,7 +47,7 @@ Add this one line to the existing `scripts` object in `package.json`:
 ```json
 {
   "scripts": {
-    "scan": "vuk scan"
+    "scan": "prc scan"
   }
 }
 ```
@@ -63,7 +63,7 @@ script runs, but local `prescan` and `postscan` hooks do not. If you do not want
 to edit `package.json`, use this after the exact package is already installed:
 
 ```bash
-npm exec --offline --no -- vuk scan
+npm exec --offline --no -- prc scan
 ```
 
 `--offline --no` makes a missing local command fail instead of asking to fetch
@@ -150,20 +150,20 @@ not upload them automatically.
 ## 7. Optional AI review
 
 A normal scan never contacts Codex, Claude, or another remote model. Sign in
-through PRC once, then use the short AI option:
+through the scanner once, then use the short AI option:
 
 ```bash
-vuk login codex
-vuk full codex
+prc login codex
+prc full codex
 ```
 
 Use `claude` in both commands for Claude Code. The login is kept in a private
-Vuk-only directory; normal provider settings, sessions, instructions, plugins,
+scanner-only directory; normal provider settings, sessions, instructions, plugins,
 hooks, and MCP servers are not loaded. `--ai` is also explicit permission to
 send bounded, screened source excerpts to the chosen provider. Supported
 temporary API-key environment variables and the longer
 `--review-provider`/`--allow-remote-source-processing` form remain available.
-`vuk full codex` is the short spelling of `vuk scan --ai codex`.
+`prc full codex` is the short spelling of `prc scan --ai codex`.
 
 Before the provider starts, the scanner makes a private snapshot of bounded text
 excerpts. It skips sensitive names and known key or token shapes, gives the
@@ -187,7 +187,7 @@ The local provider program itself is a bigger trust boundary. A malicious
 `codex` or `claude` executable runs as your OS user and could ignore command
 flags. The scanner hashes it and isolates configuration and environment, but it
 cannot make a malicious executable safe. Install the official CLI, inspect its
-path with `vuk doctor`, and use a separate OS account or stronger outer sandbox
+path with `prc doctor`, and use a separate OS account or stronger outer sandbox
 on a sensitive computer. The remote provider also receives the approved
 excerpts and may charge money. Start with one rule.
 
@@ -196,8 +196,8 @@ Pass, make the final Not Applicable decision, or fix a file.
 
 ## 8. Optional fixes
 
-`vuk scan` has no path to the fix code. Fixing starts only with the separate
-`vuk fix` command.
+`prc scan` has no path to the fix code. Fixing starts only with the separate
+`prc fix` command.
 
 The fix system copies the target into a new private sibling candidate. It never
 edits the original project. Deterministic fixes are limited to scanner-owned

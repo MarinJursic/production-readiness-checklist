@@ -87,7 +87,7 @@ func TestLifecycleNegotiatesVersionAndListsFixedReadOnlyTools(t *testing.T) {
 		t.Fatal(err)
 	}
 	if initialized.ProtocolVersion != ProtocolVersion20250618 || initialized.Capabilities.Tools.ListChanged ||
-		initialized.ServerInfo.Name != "production-readiness-scanner" || initialized.ServerInfo.Title != "Vuk" ||
+		initialized.ServerInfo.Name != "production-readiness-scanner" || initialized.ServerInfo.Title != "Production Readiness Checklist" ||
 		initialized.ServerInfo.Version != "test-version" {
 		t.Fatalf("initialize result = %+v", initialized)
 	}

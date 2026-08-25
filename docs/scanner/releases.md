@@ -10,10 +10,10 @@ security, benchmark, and pack gates before publishing anything.
 Each scanner release contains:
 
 - Linux, macOS, and Windows archives for AMD64 and ARM64;
-- one dependency-free `@marinjursic/vuk` npm launcher tarball and six exact
+- one dependency-free `@marinjursic/prc` npm launcher tarball and six exact
   native npm platform tarballs for the same systems;
 - a binary with the scanner version, source revision, source timestamp, and Go
-  toolchain embedded in `vuk version --format json`;
+  toolchain embedded in `prc version --format json`;
 - the exact compatible `catalog/`, `packs/`, and `schemas/` trees in every
   archive, together with the catalog's human-readable objective sources and the
   packs' benchmark fixtures;
@@ -52,35 +52,35 @@ sha256sum --check SHA256SUMS
 On macOS, verify one downloaded archive against the matching line instead:
 
 ```bash
-shasum -a 256 vuk_0.1.0_darwin_arm64.tar.gz
-grep 'vuk_0.1.0_darwin_arm64.tar.gz' SHA256SUMS
+shasum -a 256 prc_0.1.0_darwin_arm64.tar.gz
+grep 'prc_0.1.0_darwin_arm64.tar.gz' SHA256SUMS
 ```
 
 Then verify that GitHub's signed provenance binds the archive to this repository
 and release workflow:
 
 ```bash
-gh attestation verify vuk_0.1.0_linux_amd64.tar.gz \
+gh attestation verify prc_0.1.0_linux_amd64.tar.gz \
   --repo MarinJursic/production-readiness-checklist
 ```
 
 Verify the separate CycloneDX SBOM attestation using its recognized predicate:
 
 ```bash
-gh attestation verify vuk_0.1.0_linux_amd64.tar.gz \
+gh attestation verify prc_0.1.0_linux_amd64.tar.gz \
   --repo MarinJursic/production-readiness-checklist \
   --predicate-type https://cyclonedx.org/bom
 ```
 
-Finally, inspect `vuk_X.Y.Z_release-manifest.json` and compare its
+Finally, inspect `prc_X.Y.Z_release-manifest.json` and compare its
 `source_commit`, catalog digest, pack digests, and artifact digest with the
-assessment scope you intend to use. Inspect `vuk_X.Y.Z_self-scan.json` as a
+assessment scope you intend to use. Inspect `prc_X.Y.Z_self-scan.json` as a
 normal `prc.run/v0.12` report: a valid signed self-assessment may still be
 `environment_blocked` because organizational, production, or adapter evidence
 is deliberately unavailable in the release job. After extraction:
 
 ```bash
-./vuk_X.Y.Z_linux_amd64/vuk version --format json
+./prc_X.Y.Z_linux_amd64/prc version --format json
 ```
 
 The release manifest also binds every npm tarball. Before the packages are
@@ -90,10 +90,10 @@ Linux x64, for example:
 ```bash
 mkdir npm-smoke && cd npm-smoke
 npm install --ignore-scripts --offline --no-audit --no-fund --package-lock=false \
-  ../marinjursic-vuk-linux-x64-X.Y.Z.tgz \
-  ../marinjursic-vuk-X.Y.Z.tgz
-./node_modules/.bin/vuk version --format json
-./node_modules/.bin/vuk scan /path/to/project
+  ../marinjursic-prc-linux-x64-X.Y.Z.tgz \
+  ../marinjursic-prc-X.Y.Z.tgz
+./node_modules/.bin/prc version --format json
+./node_modules/.bin/prc scan /path/to/project
 ```
 
 The platform package contains the native binary and its exact catalog. The

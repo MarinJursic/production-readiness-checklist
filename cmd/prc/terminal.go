@@ -47,16 +47,12 @@ func (style terminalStyle) paint(code, value string) string {
 	return code + value + ansiReset
 }
 
-func printBrandBanner(output io.Writer, style terminalStyle) {
-	fmt.Fprintln(output, style.paint(ansiBlue, "        /\\       /\\"))
-	fmt.Fprintln(output, style.paint(ansiBlue, "       /  \\_____/  \\"))
-	fmt.Fprintln(output, style.paint(ansiBlue, "      /             \\"))
-	fmt.Fprintln(output, style.paint(ansiBlue, "     |   o       o   |"))
-	fmt.Fprintln(output, style.paint(ansiBlue, "      \\      ^      /"))
-	fmt.Fprintln(output, style.paint(ansiBlue, "       \\   /___\\   /"))
-	fmt.Fprintln(output, style.paint(ansiBlue, "       `-._____.-'"))
-	fmt.Fprintf(output, "           %s\n", style.paint(ansiCyan, "VUK"))
-	fmt.Fprintln(output, "  Know what's left before you ship.")
+func printProductBanner(output io.Writer, style terminalStyle) {
+	fmt.Fprintln(output, style.paint(ansiBlue, "  ╭────────────────────────────────────────────────────╮"))
+	fmt.Fprintf(output, "  │  %s  %s                 │\n",
+		style.paint(ansiGreen, "✓"), style.paint(ansiCyan, "PRODUCTION READINESS CHECKLIST"))
+	fmt.Fprintln(output, "  │     Know what's ready and what still needs work.   │")
+	fmt.Fprintln(output, style.paint(ansiBlue, "  ╰────────────────────────────────────────────────────╯"))
 	fmt.Fprintln(output)
 }
 

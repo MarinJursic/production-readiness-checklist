@@ -47,17 +47,17 @@ func TestAssessmentLabelsKeepPlainMeaningWithAndWithoutColor(t *testing.T) {
 	}
 }
 
-func TestWolfBannerWorksWithAndWithoutColor(t *testing.T) {
+func TestProductBannerWorksWithAndWithoutColor(t *testing.T) {
 	for name, style := range map[string]terminalStyle{
 		"plain": {}, "colored": {color: true},
 	} {
 		t.Run(name, func(t *testing.T) {
 			var output bytes.Buffer
-			printBrandBanner(&output, style)
+			printProductBanner(&output, style)
 			text := output.String()
-			if !strings.Contains(text, "/\\       /\\") || !strings.Contains(text, "VUK") ||
-				!strings.Contains(text, "Know what's left before you ship.") {
-				t.Fatalf("missing wolf banner content: %q", text)
+			if !strings.Contains(text, "PRODUCTION READINESS CHECKLIST") || !strings.Contains(text, "✓") ||
+				!strings.Contains(text, "Know what's ready and what still needs work.") {
+				t.Fatalf("missing product banner content: %q", text)
 			}
 			if style.color != strings.Contains(text, "\x1b[") {
 				t.Fatalf("unexpected color state: %q", text)
