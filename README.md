@@ -215,11 +215,11 @@ Coverage
 
 Report
   Detailed report: /Users/you/Library/Caches/prc/reports/example-api-91c2….html
-  Open it for remediation steps, evidence, category scores, and all controls.
+  Click the report path to open remediation steps, evidence, category scores, and all controls.
   Scan mode: report only; no fixes were applied. No project scripts were run.
 ```
 
-Open the reported HTML file in a browser. The first screen shows the project, one large score, the readiness result, and four counts: passed, failed, review, and not needed. Smaller category scores come next, followed by verified problems sorted from critical to informational. Each problem begins as a compact, severity-colored row; open it to see the full reason and suggested next action. Scoring notes, passed checks, raw evidence, long file lists, IDs, scan metadata, and the complete 10,042-control catalog stay behind clearly labeled detail controls until you need them. `needs_review` means the scanner has not proved the broad rule. `partially_verified` means linked narrow checks passed; it is still not a complete Pass. Reports are private and stored outside the scanned project by default, so creating one does not change the project being scanned.
+Click the reported path in a supported terminal to open the HTML file in your browser; in other terminals, copy or open the same plain path normally. The first screen shows the project, one large score, the readiness result, and four counts: passed, failed, review, and not needed. Smaller category scores come next, followed by verified problems sorted from critical to informational. Each problem begins as a compact, severity-colored row; open it to see the full reason and suggested next action. Scoring notes, passed checks, raw evidence, long file lists, IDs, scan metadata, and the complete 10,042-control catalog stay behind clearly labeled detail controls until you need them. `needs_review` means the scanner has not proved the broad rule. `partially_verified` means linked narrow checks passed; it is still not a complete Pass. Reports are private and stored outside the scanned project by default, so creating one does not change the project being scanned.
 
 The report separates verified problems, narrow checks that passed, unresolved
 local checks, manual decisions, broad controls still needing evidence, and AI

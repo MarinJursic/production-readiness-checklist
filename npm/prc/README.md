@@ -28,6 +28,7 @@ then `npm exec --offline --no -- prc scan`.
 Add `"scan": "prc scan"` to the project's `scripts` object when you want to
 run `npm run scan`. Use `npm run --ignore-scripts scan` to skip any local
 `prescan` and `postscan` hooks. npm does not support a custom top-level
-`npm scan` command. The report path is printed at the end. See the main
+`npm scan` command. The report path is printed at the end and is clickable in
+supported terminals. See the main
 [project documentation](https://marinjursic.github.io/production-readiness-checklist/)
 for the full result meanings, AI review opt-in, and release verification.

@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"path/filepath"
 	"strings"
 	"testing"
 
@@ -42,6 +43,31 @@ func TestTerminalColorPolicy(t *testing.T) {
 	t.Setenv("NO_COLOR", "1")
 	if newTerminalStyle("always", &output).color {
 		t.Fatal("NO_COLOR did not disable explicit terminal color")
+	}
+}
+
+func TestTerminalFileLinkIsClickableAndEscapesTheTarget(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "readiness report #1.html")
+	plain, linked := (terminalStyle{}).fileLink(path)
+	if linked || plain != path || strings.ContainsRune(plain, '\x1b') {
+		t.Fatalf("plain report path was changed: linked=%t value=%q", linked, plain)
+	}
+
+	clickable, linked := (terminalStyle{hyperlink: true}).fileLink(path)
+	if !linked || !strings.Contains(clickable, "\x1b]8;;file://") ||
+		!strings.Contains(clickable, "%20") || !strings.Contains(clickable, "%231.html") ||
+		!strings.Contains(clickable, path) || !strings.HasSuffix(clickable, "\x1b]8;;\x1b\\") {
+		t.Fatalf("report path is not a safe OSC 8 file link: %q", clickable)
+	}
+}
+
+func TestTerminalFileLinkNeutralizesControlCharacters(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "safe\x1b]8;;https://attacker.invalid\a.html")
+	clickable, linked := (terminalStyle{hyperlink: true}).fileLink(path)
+	if !linked || strings.Count(clickable, "\x1b") != 4 || strings.ContainsRune(clickable, '\a') ||
+		!strings.Contains(clickable, `\u001B`) || !strings.Contains(clickable, `\u0007`) ||
+		!strings.Contains(clickable, "%1B") || !strings.Contains(clickable, "%07") {
+		t.Fatalf("unsafe report link: %q", clickable)
 	}
 }
 
@@ -128,5 +154,20 @@ func TestFinalScanSummaryIsActionableAndOrdered(t *testing.T) {
 	}
 	if strings.Contains(text, "Result details") || strings.Contains(text, "Control dispositions") {
 		t.Fatalf("dense implementation details leaked into the final handoff: %s", text)
+	}
+}
+
+func TestFinalScanSummaryMakesInteractiveReportPathClickable(t *testing.T) {
+	run := model.RunResult{
+		Plan:      model.Plan{ProfileID: "prc/quick", ProfileVersion: "1.0"},
+		Inventory: model.Inventory{TargetName: "sample-app", Digest: "digest"},
+	}
+	reportPath := filepath.Join(t.TempDir(), "readiness report.html")
+	var output bytes.Buffer
+	printScanSummary(&output, run, terminalStyle{hyperlink: true}, reportPath)
+	text := output.String()
+	if !strings.Contains(text, "\x1b]8;;file://") || !strings.Contains(text, "%20") ||
+		!strings.Contains(text, reportPath) || !strings.Contains(text, "Click the report path to open") {
+		t.Fatalf("interactive summary did not include a clickable report path: %q", text)
 	}
 }

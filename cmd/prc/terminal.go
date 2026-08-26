@@ -3,7 +3,10 @@ package main
 import (
 	"fmt"
 	"io"
+	"net/url"
 	"os"
+	"path/filepath"
+	"runtime"
 	"strings"
 	"unicode"
 )
@@ -19,25 +22,32 @@ const (
 )
 
 type terminalStyle struct {
-	color bool
+	color     bool
+	hyperlink bool
 }
 
 func newTerminalStyle(mode string, output io.Writer) terminalStyle {
-	if os.Getenv("NO_COLOR") != "" || os.Getenv("TERM") == "dumb" {
+	if os.Getenv("TERM") == "dumb" {
 		return terminalStyle{}
+	}
+	interactive := false
+	if file, ok := output.(*os.File); ok {
+		information, err := file.Stat()
+		interactive = err == nil && information.Mode()&os.ModeCharDevice != 0
+	}
+	style := terminalStyle{hyperlink: interactive}
+	if os.Getenv("NO_COLOR") != "" {
+		return style
 	}
 	if mode == "always" {
-		return terminalStyle{color: true}
+		style.color = true
+		return style
 	}
 	if mode != "auto" {
-		return terminalStyle{}
+		return style
 	}
-	file, ok := output.(*os.File)
-	if !ok {
-		return terminalStyle{}
-	}
-	information, err := file.Stat()
-	return terminalStyle{color: err == nil && information.Mode()&os.ModeCharDevice != 0}
+	style.color = interactive
+	return style
 }
 
 func (style terminalStyle) paint(code, value string) string {
@@ -45,6 +55,43 @@ func (style terminalStyle) paint(code, value string) string {
 		return value
 	}
 	return code + value + ansiReset
+}
+
+// fileLink returns a clickable OSC 8 link only for interactive terminals.
+// The visible label is neutralized separately from the percent-encoded file URL
+// so a crafted path cannot inject terminal control sequences.
+func (style terminalStyle) fileLink(value string) (string, bool) {
+	label := style.paint(ansiCyan, terminalText(value))
+	if !style.hyperlink {
+		return label, false
+	}
+	target, err := terminalFileURL(value)
+	if err != nil {
+		return label, false
+	}
+	return "\x1b]8;;" + target + "\x1b\\" + label + "\x1b]8;;\x1b\\", true
+}
+
+func terminalFileURL(value string) (string, error) {
+	absolute, err := filepath.Abs(value)
+	if err != nil {
+		return "", err
+	}
+	path := filepath.ToSlash(absolute)
+	if runtime.GOOS == "windows" {
+		if strings.HasPrefix(path, "//") {
+			parts := strings.SplitN(strings.TrimPrefix(path, "//"), "/", 2)
+			filePath := "/"
+			if len(parts) == 2 {
+				filePath += parts[1]
+			}
+			return (&url.URL{Scheme: "file", Host: parts[0], Path: filePath}).String(), nil
+		}
+		if !strings.HasPrefix(path, "/") {
+			path = "/" + path
+		}
+	}
+	return (&url.URL{Scheme: "file", Path: path}).String(), nil
 }
 
 func terminalToneColor(tone string) string {

@@ -16,8 +16,9 @@ Choose one clear level:
 Use any command without a path to scan the current directory. `prc full claude`
 selects Claude Code instead. The commands do not fix files or execute project
 code. They print a summary and create a private, standalone HTML report outside
-the target. Open the exact path printed as `Detailed report:` to review verified
-findings and every incomplete or manual result. `quick` still includes every
+the target. Click the exact path printed as `Detailed report:` in a supported
+terminal, or open the same plain path normally, to review verified findings and
+every incomplete or manual result. `quick` still includes every
 control in that report; it only runs fewer local assertions.
 
 The profile evaluator can consume a live, sandboxed adapter execution only when

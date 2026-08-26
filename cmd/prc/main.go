@@ -2265,8 +2265,13 @@ func printScanSummary(output io.Writer, run model.RunResult, style terminalStyle
 	if writtenReport == "" {
 		fmt.Fprintln(output, "  Detailed report: disabled")
 	} else {
-		fmt.Fprintf(output, "  Detailed report: %s\n", style.paint(ansiCyan, terminalText(writtenReport)))
-		fmt.Fprintln(output, "  Open it for remediation steps, evidence, category scores, and all controls.")
+		reportLink, clickable := style.fileLink(writtenReport)
+		fmt.Fprintf(output, "  Detailed report: %s\n", reportLink)
+		if clickable {
+			fmt.Fprintln(output, "  Click the report path to open remediation steps, evidence, category scores, and all controls.")
+		} else {
+			fmt.Fprintln(output, "  Open it for remediation steps, evidence, category scores, and all controls.")
+		}
 	}
 	fmt.Fprintln(output, "  Scan mode: report only; no fixes were applied. No project scripts were run.")
 	fmt.Fprintln(output)
