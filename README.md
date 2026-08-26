@@ -95,7 +95,7 @@ A normal scan is read-only. It does **not** fix files, run project code, install
 
 ### Easiest setup with npm
 
-The npm package source, launcher, six native platform packages, and release builder are implemented. The public package names were still unpublished when checked on August 25, 2026, so the commands below start working after the first release is listed in this project's release notes.
+Version `0.1.0` is published on npm as [`@marinjursic/prc`](https://www.npmjs.com/package/@marinjursic/prc). Install it in the project you want to check, then run the short quick scan:
 
 ```bash
 npm install -D @marinjursic/prc
@@ -107,7 +107,7 @@ Use `npx prc scan` for the larger 40-check local scan. That is the normal short 
 For a security-sensitive or repeatable install, pin a version from the scanner release notes and disable dependency install hooks:
 
 ```bash
-npm install -D -E --ignore-scripts --no-audit --no-fund @marinjursic/prc@X.Y.Z
+npm install -D -E --ignore-scripts --no-audit --no-fund @marinjursic/prc@0.1.0
 npm exec --offline --no -- prc scan
 ```
 
