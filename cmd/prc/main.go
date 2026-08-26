@@ -205,8 +205,9 @@ func runWithInput(args []string, stdin io.Reader, stdout, stderr io.Writer) int 
 }
 
 // friendlyTopLevelArgs keeps the common path intentionally small: `prc`
-// scans the current directory, and `prc /path/to/project` scans that directory.
-// Explicit commands and root help/version flags keep their existing meaning.
+// scans the current directory, and `prc /path/to/project` treats any value that
+// is not a known command or root flag as the scan target. The inventory layer
+// then performs all path resolution and hardened filesystem access.
 func friendlyTopLevelArgs(args []string) []string {
 	if len(args) == 0 {
 		return []string{"scan"}
@@ -215,10 +216,7 @@ func friendlyTopLevelArgs(args []string) []string {
 		strings.HasPrefix(args[0], "-") || isTopLevelCommand(args[0]) {
 		return args
 	}
-	if information, err := os.Stat(args[0]); err == nil && information.IsDir() {
-		return append([]string{"scan"}, args...)
-	}
-	return args
+	return append([]string{"scan"}, args...)
 }
 
 func isTopLevelCommand(value string) bool {

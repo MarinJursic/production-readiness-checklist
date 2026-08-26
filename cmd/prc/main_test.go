@@ -108,10 +108,14 @@ func TestFriendlyTopLevelArgsDefaultsToCoreScanAndAcceptsADirectory(t *testing.T
 	if result := friendlyTopLevelArgs([]string{target, "--no-report"}); !slices.Equal(result, []string{"scan", target, "--no-report"}) {
 		t.Fatalf("directory args = %v", result)
 	}
-	for _, args := range [][]string{{"quick"}, {"--help"}, {"--version"}, {"not-a-real-command"}} {
+	for _, args := range [][]string{{"quick"}, {"--help"}, {"--version"}} {
 		if result := friendlyTopLevelArgs(args); !slices.Equal(result, args) {
 			t.Fatalf("explicit args %v became %v", args, result)
 		}
+	}
+	if result := friendlyTopLevelArgs([]string{"not-yet-created-project"});
+		!slices.Equal(result, []string{"scan", "not-yet-created-project"}) {
+		t.Fatalf("target args = %v", result)
 	}
 	for _, command := range []string{"scan", "full", "login", "remediate-proposal", "mcp", "help"} {
 		if !isTopLevelCommand(command) {
