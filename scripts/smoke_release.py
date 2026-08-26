@@ -219,6 +219,7 @@ def smoke(release: pathlib.Path, version: str, commit: str) -> None:
         native_result = run_json(
             [str(binary), "scan", str(project), "--format", "json", "--no-report", "--exit-policy", "never"],
             "native scan",
+            cwd=project,
         )
         verify_result(native_result, "native archive")
 
@@ -264,6 +265,7 @@ def smoke(release: pathlib.Path, version: str, commit: str) -> None:
         npm_result = run_json(
             [node_executable, str(launcher), "scan", str(project), "--format", "json", "--no-report", "--exit-policy", "never"],
             "npm launcher scan",
+            cwd=project,
         )
         verify_result(npm_result, "npm launcher")
     print(f"release smoke test passed for {goos}/{goarch}")

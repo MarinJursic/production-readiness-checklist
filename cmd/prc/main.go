@@ -1589,17 +1589,24 @@ func parseCommon(name string, args []string, stderr io.Writer) (*flag.FlagSet, *
 }
 
 func defaultCatalogRoot() string {
-	if hasBundledCatalog(".") {
+	executable, err := os.Executable()
+	if err != nil {
 		return "."
 	}
-	executable, err := os.Executable()
-	if err == nil {
+	return resolveDefaultCatalogRoot(executable, ".")
+}
+
+func resolveDefaultCatalogRoot(executable, fallback string) string {
+	if executable != "" {
 		root := filepath.Dir(executable)
+		// Installed scanner resources must win over look-alike catalog files in
+		// the project being scanned. Development binaries have no adjacent
+		// bundle and therefore continue to use the source checkout fallback.
 		if hasBundledCatalog(root) {
 			return root
 		}
 	}
-	return "."
+	return fallback
 }
 
 func hasBundledCatalog(root string) bool {

@@ -113,8 +113,7 @@ func TestFriendlyTopLevelArgsDefaultsToCoreScanAndAcceptsADirectory(t *testing.T
 			t.Fatalf("explicit args %v became %v", args, result)
 		}
 	}
-	if result := friendlyTopLevelArgs([]string{"not-yet-created-project"});
-		!slices.Equal(result, []string{"scan", "not-yet-created-project"}) {
+	if result := friendlyTopLevelArgs([]string{"not-yet-created-project"}); !slices.Equal(result, []string{"scan", "not-yet-created-project"}) {
 		t.Fatalf("target args = %v", result)
 	}
 	for _, command := range []string{"scan", "full", "login", "remediate-proposal", "mcp", "help"} {
@@ -124,6 +123,39 @@ func TestFriendlyTopLevelArgsDefaultsToCoreScanAndAcceptsADirectory(t *testing.T
 	}
 	if isTopLevelCommand("not-a-real-command") {
 		t.Fatal("unknown value was recognized as a command")
+	}
+}
+
+func TestDefaultCatalogRootPrefersBundledExecutableResources(t *testing.T) {
+	writeBundle := func(root string) {
+		t.Helper()
+		for _, relative := range []string{
+			"catalog/profiles/core-repository.yaml",
+			"catalog/assertions/core-repository.yaml",
+			"catalog/objectives/core-repository.yaml",
+		} {
+			path := filepath.Join(root, filepath.FromSlash(relative))
+			if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
+				t.Fatal(err)
+			}
+			if err := os.WriteFile(path, []byte("bundled\n"), 0o644); err != nil {
+				t.Fatal(err)
+			}
+		}
+	}
+
+	executableRoot := t.TempDir()
+	workingRoot := t.TempDir()
+	writeBundle(executableRoot)
+	writeBundle(workingRoot)
+	executable := filepath.Join(executableRoot, "prc")
+	if got := resolveDefaultCatalogRoot(executable, workingRoot); got != executableRoot {
+		t.Fatalf("catalog root = %q, want bundled executable root %q", got, executableRoot)
+	}
+
+	unbundledExecutable := filepath.Join(t.TempDir(), "prc")
+	if got := resolveDefaultCatalogRoot(unbundledExecutable, workingRoot); got != workingRoot {
+		t.Fatalf("development fallback = %q, want %q", got, workingRoot)
 	}
 }
 
