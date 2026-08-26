@@ -6,6 +6,7 @@ package fullscan
 import (
 	"bufio"
 	"bytes"
+	"compress/gzip"
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
@@ -129,7 +130,7 @@ func loadContracts(root string, registry registryDocument, registryDigest string
 		return contractDocument{}, "", fmt.Errorf("resolve catalog root: %w", err)
 	}
 	path := filepath.Join(absolute, "catalog", "control-contracts.json")
-	data, err := readRegularBounded(path, maximumContractBytes, "control contracts")
+	data, err := readCatalogDocument(path, maximumContractBytes, "control contracts")
 	if err != nil {
 		return contractDocument{}, "", err
 	}
@@ -248,10 +249,10 @@ func loadRegistry(root string) (registryDocument, string, error) {
 		return registryDocument{}, "", fmt.Errorf("resolve catalog root: %w", err)
 	}
 	path := filepath.Join(absolute, "catalog", "control-id-registry.json")
-	if _, err := os.Lstat(path); os.IsNotExist(err) {
-		return registryDocument{}, "", fmt.Errorf("%w: %s", ErrRegistryUnavailable, path)
+	data, err := readCatalogDocument(path, maximumRegistryBytes, "control registry")
+	if errors.Is(err, os.ErrNotExist) {
+		return registryDocument{}, "", fmt.Errorf("%w: %s or %s.gz", ErrRegistryUnavailable, path, path)
 	}
-	data, err := readRegularBounded(path, maximumRegistryBytes, "control registry")
 	if err != nil {
 		return registryDocument{}, "", err
 	}
@@ -416,6 +417,54 @@ func readRegularBounded(path string, limit int64, label string) ([]byte, error) 
 		return nil, fmt.Errorf("%s %s changed while reading", label, path)
 	}
 	return data, nil
+}
+
+// readCatalogDocument accepts the ordinary source JSON or the deterministic
+// gzip form used only by the compact npm runtime package. Exactly one form may
+// exist. Both the compressed input and the expanded JSON are bounded, and gzip
+// checks its checksum before the document is trusted by the existing schema
+// and content-digest validation.
+func readCatalogDocument(path string, limit int64, label string) ([]byte, error) {
+	_, plainErr := os.Lstat(path)
+	compressedPath := path + ".gz"
+	_, compressedErr := os.Lstat(compressedPath)
+	plainExists := plainErr == nil
+	compressedExists := compressedErr == nil
+	if plainExists && compressedExists {
+		return nil, fmt.Errorf("%s has ambiguous plain and compressed files", label)
+	}
+	if plainExists {
+		return readRegularBounded(path, limit, label)
+	}
+	if compressedExists {
+		encoded, err := readRegularBounded(compressedPath, limit, label+" compressed data")
+		if err != nil {
+			return nil, err
+		}
+		reader, err := gzip.NewReader(bytes.NewReader(encoded))
+		if err != nil {
+			return nil, fmt.Errorf("open compressed %s %s: %w", label, compressedPath, err)
+		}
+		data, readErr := io.ReadAll(io.LimitReader(reader, limit+1))
+		closeErr := reader.Close()
+		if readErr != nil {
+			return nil, fmt.Errorf("read compressed %s %s: %w", label, compressedPath, readErr)
+		}
+		if closeErr != nil {
+			return nil, fmt.Errorf("close compressed %s %s: %w", label, compressedPath, closeErr)
+		}
+		if int64(len(data)) > limit {
+			return nil, fmt.Errorf("expanded %s %s exceeds its %d-byte limit", label, compressedPath, limit)
+		}
+		return data, nil
+	}
+	if plainErr != nil && !os.IsNotExist(plainErr) {
+		return nil, fmt.Errorf("inspect %s %s: %w", label, path, plainErr)
+	}
+	if compressedErr != nil && !os.IsNotExist(compressedErr) {
+		return nil, fmt.Errorf("inspect compressed %s %s: %w", label, compressedPath, compressedErr)
+	}
+	return nil, fmt.Errorf("%w: %s or %s", os.ErrNotExist, path, compressedPath)
 }
 
 func validateCatalogReferences(scannerCatalog *catalog.Catalog, document registryDocument) error {

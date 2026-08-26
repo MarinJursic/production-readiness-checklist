@@ -5,15 +5,16 @@ native assertions, records evidence, and reports explicit unresolved states.
 It also binds all 10,042 registered controls into every complete scan report.
 The narrow assertions do not overclaim that they proved a whole broad control.
 
-Choose one clear level:
+After a global install, the normal start is just:
 
 ```bash
-./prc quick /path/to/project       # 18 high-signal local checks
-./prc scan /path/to/project        # 40 core local checks
-./prc full codex /path/to/project  # core scan plus advisory AI review of all controls
+cd /path/to/project
+prc
 ```
 
-Use any command without a path to scan the current directory. `prc full claude`
+Bare `prc` runs the 40 core local checks. Use `prc /path/to/project` to scan a
+different directory, `prc quick` for an 18-check screen, or `prc full codex`
+for the core scan plus advisory AI review of all controls. `prc full claude`
 selects Claude Code instead. The commands do not fix files or execute project
 code. They print a summary and create a private, standalone HTML report outside
 the target. Click the exact path printed as `Detailed report:` in a supported
@@ -41,11 +42,12 @@ without editing the target.
 For a one-time global installation and a short command in every project:
 
 ```bash
-npm install -g --ignore-scripts @marinjursic/prc
-prc quick /path/to/project
+npm install -g @marinjursic/prc
+cd /path/to/project
+prc
 ```
 
-Use `prc scan /path/to/project` for the core local scan. npm stores this tool
+Use `prc /path/to/project` to scan another folder. npm stores this tool
 under its global prefix and exposes `prc` on `PATH`; it does not add a
 `node_modules` directory or package entry to the scanned project. Do not use
 `sudo` to work around a global-install permission error; install Node with a
@@ -53,7 +55,7 @@ version manager instead.
 
 The startup screen prints the exact project path. If the inventory reaches its
 8 GiB safety limit, check that path first and run inside the intended project
-root, or use `prc scan /exact/project/path`. The error identifies the next file
+root, or use `prc /exact/project/path`. The error identifies the next file
 that would cross the limit. Clear generated cache data when appropriate; do not
 delete real project data or raise the guard just to force a result.
 
@@ -68,7 +70,7 @@ one developer machine, but it is not pinned by a project lock file.
 For a pinned install with dependency hooks disabled, use
 `npm install -D -E --ignore-scripts --no-audit --no-fund @marinjursic/prc@X.Y.Z`,
 then `npm exec --offline --no -- prc scan`. To give a Node project one short
-repeatable command, add `"scan": "prc scan"` to `package.json`, then run
+repeatable command, add `"scan": "prc"` to `package.json`, then run
 `npm run scan`. Use `npm run --ignore-scripts scan` to skip local `prescan` and
 `postscan` hooks. npm does not let a project add a custom top-level `npm scan`
 command.

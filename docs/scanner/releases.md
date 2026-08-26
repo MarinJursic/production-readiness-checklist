@@ -48,6 +48,12 @@ at 512 files and 24 MiB, caps each compressed platform package at 24 MiB, and
 caps the launcher package at 128 KiB. A size-budget failure blocks publication;
 the builder never drops controls to make a package fit.
 
+The two largest machine-readable control indexes use deterministic gzip only in
+the npm runtime package. The native scanner expands them in memory with strict
+compressed and expanded byte limits, then applies the same schemas, source
+binding, per-control digests, and registry-to-contract checks as the plain JSON
+files. Standalone archives and repository source keep the plain JSON form.
+
 ## Verify before running
 
 Download the archive, `SHA256SUMS`, release manifest, and SBOM from the same

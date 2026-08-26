@@ -79,34 +79,43 @@ Do not modify code and do not make the final release decision.
 - [Evidence challenge prompt](docs/prompts/evidence-challenge.md)
 - [AI-assisted review guide](docs/guides/ai-assisted-review.md)
 
-## Scanner: quickest path
+## Scanner: install, run, read the report
 
-The experimental scanner turns the checklist into a repeatable repository assessment. Every scan puts all **10,042 controls** in the detailed report. The quick profile runs 18 high-signal local checks, while the default `prc/core-repository@1.0` profile runs 40 narrow deterministic checks. A narrow check can prove one exact fact, but it cannot silently mark a broader control as fully passed. Everything that still needs proof stays visible.
+Install [`@marinjursic/prc`](https://www.npmjs.com/package/@marinjursic/prc) once. Then open a project and run one command:
 
-A normal scan is read-only. It does **not** fix files, run project code, install project dependencies, or turn missing evidence into a pass.
+```bash
+npm install -g @marinjursic/prc
+cd /path/to/project
+prc
+```
+
+That is the normal 40-check local scan. To scan a different folder without changing directories, run `prc /path/to/project`. Use `prc --help` only when you need the other commands or options. There is no `npx` prefix.
+
+The scan is read-only: it does **not** fix files, run project code, install project dependencies, or write the report into the project. It checks exact local facts, prints a clear score and Pass/Fail/Review summary, and creates a private HTML report in your user cache. Every report includes all **10,042 controls**; broad rules that cannot be proved from source stay visibly in review instead of being counted as passed.
 
 <div align="center">
 
-<a href="docs/assets/production-readiness-scan-demo.mp4"><img src="docs/assets/production-readiness-scan-demo.gif" alt="A continuous 27-second demo of prc scan checking a sample project, showing pass and fail evidence, and opening the readiness report" width="960"></a>
+<a href="docs/assets/production-readiness-scan-demo.mp4"><img src="docs/assets/production-readiness-scan-demo.gif" alt="A continuous 27-second demo of the Production Readiness Checklist scanner checking a sample project and opening its HTML report" width="960"></a>
 
-<sub>Run one command, review exact evidence, then explore the full 10,042-control report. Click the demo for the sharper MP4.</sub>
+<sub>The latest 27-second demo: start the scan, read the terminal result, then open the full report. Click it for the sharper MP4.</sub>
 
 </div>
 
-### Easiest setup with npm
+### What happens when you run `prc`
 
-Install [`@marinjursic/prc`](https://www.npmjs.com/package/@marinjursic/prc) once as a command-line tool. After that, use `prc` directly in any project—there is no `npx` prefix:
+1. It reads the selected project without following symlinks or running project commands.
+2. It runs 40 narrow checks for facts it can prove from the files, such as a license, dependency lock files, test setup, CI safety, exposed private keys, API files, containers, Terraform, and Kubernetes settings.
+3. It connects those results to the full 10,042-control catalog. A small check never pretends it proved a much larger rule.
+4. It shows the overall result, score, passed count, failed count, and items that still need a person or more evidence.
+5. It prints the exact HTML report path. In supported terminals, that path is clickable. The report starts simple and keeps long evidence, IDs, and the full catalog inside expandable details.
 
-```bash
-npm install -g --ignore-scripts @marinjursic/prc
-prc quick /path/to/project
-```
+The global install lives in npm's tool directory, outside every project you scan. It does not add project `node_modules`, edit `package.json`, or change a lock file. The package has no install scripts and no third-party JavaScript dependencies, does not download a fallback binary, and does not update itself in the background. npm selects one native package for the current operating system; the small launcher verifies that binary and every bundled runtime file before starting it without a shell.
 
-Use `prc scan /path/to/project` for the larger 40-check local scan. A global install lives under npm's global prefix, not in the project being checked: it does not add project `node_modules`, edit `package.json`, or change a lock file. The package has no install scripts and no third-party JavaScript dependencies. It does not download a binary or update itself in the background after installation. npm selects one platform package; the launcher verifies the release-bound native binary and every bundled catalog, schema, adapter, pack, benchmark, and control-source file before starting the binary without a shell. If npm reports a global-install permission error, install Node with a version manager instead of using `sudo`.
+The package keeps the complete control data but excludes the website, video, and contributor-only files. Its two largest control indexes are stored in a bounded compressed form and are expanded only in memory, so this does not remove rules or weaken checks. Release builds also strip unused debug data and enforce compressed and installed-size limits.
 
-The npm launcher is about 12 KB. The native package contains one platform binary and the complete runtime data for all 10,042 controls. Website assets, demo video, and contributor-only documentation are not copied into the installed package, and release builds enforce compressed and expanded size budgets so future media or build output cannot silently bloat it.
+If npm reports a global-install permission error, install Node with a version manager instead of using `sudo`. For an extra-strict installation that disables package lifecycle scripts, the longer equivalent is `npm install -g --ignore-scripts @marinjursic/prc`.
 
-The scanner prints the exact project path before inventory begins. If an inventory limit stops the scan, first check that path: run the command inside the project root or pass it directly, for example `prc scan /path/to/project`. Clear framework caches when appropriate, but do not raise the 8 GiB safety guard or delete real project data just to force a scan through.
+The scanner prints the exact project path before inventory begins. If an inventory limit stops the scan, first check that path: run the command inside the project root or pass it directly, for example `prc /path/to/project`. Clear generated caches when appropriate, but do not raise the 8 GiB safety guard or delete real project data just to force a scan through.
 
 Only use a project-local install when a team or CI job specifically needs the scanner recorded in that project's lock file:
 
@@ -122,7 +131,7 @@ For a short command that the whole project can reuse, add this to `package.json`
 ```json
 {
   "scripts": {
-    "scan": "prc scan"
+    "scan": "prc"
   }
 }
 ```
@@ -147,20 +156,20 @@ Keep the binary in this directory, because the scanner automatically finds the c
 
 To use `prc` without the `./` prefix, add this entire directory to `PATH`; do not move only the binary away from its compatible catalog. On macOS or Linux, for example: `export PATH="/absolute/path/to/production-readiness-checklist:$PATH"`.
 
-### Scan a project
+### Choose a scan level
 
 Choose one of three clear levels:
 
 ```bash
-# Fast local screen: 18 high-signal checks, no AI.
-./prc quick /path/to/your/project
+# Normal local scan: 40 checks, no AI.
+prc
 
-# Core local scan: 40 checks, no AI.
-./prc scan /path/to/your/project
+# Fast local screen: 18 high-signal checks, no AI.
+prc quick
 
 # Full catalog AI advice, after provider login.
-./prc full codex /path/to/your/project
-# or: ./prc full claude /path/to/your/project
+prc full codex
+# or: prc full claude
 ```
 
 Every level still lists all 10,042 controls in the report. `quick` means fewer
@@ -168,16 +177,10 @@ local checks and less terminal noise; it does not mean the other controls
 passed. `full` runs the core local scan and asks the selected AI provider for
 advice on every active control. AI advice remains unverified.
 
-From the extracted or cloned scanner directory:
+When running a source build that is not on `PATH`, use the same commands with the `./` prefix:
 
 ```bash
-./prc scan /path/to/your/project
-```
-
-To scan the current directory, use:
-
-```bash
-./prc scan
+./prc
 ```
 
 The command accepts options before or after the project path. The terminal shows every deterministic result with a word and symbol. On a real terminal, Pass is green and Fail is red; redirected and machine output has no color:
@@ -281,6 +284,14 @@ The scanner includes every production concern in its report, but it does not pre
 Fixing is a separate workflow. `prc scan` never calls it. The bounded `prc fix` command works only in isolated candidate directories and supports a deliberately small set of independently verifiable changes; it never merges, deploys, or releases anything automatically.
 
 Continue with the [complete scanner quick start](docs/scanner/getting-started.md), [safe start-to-finish walkthrough](docs/scanner/security-walkthrough.md), [CLI and exit codes](docs/scanner/cli-contract.md), [diagnostics](docs/scanner/doctor.md), [read-only agent integration](docs/scanner/mcp-agent-integration.md), [project configuration](docs/scanner/configuration.md), [state and history](docs/scanner/state-and-history.md), [supply-chain scanning](docs/scanner/supply-chain.md), and [isolated remediation](docs/scanner/remediation.md). The [research findings and improvement plan](research/PROJECT_RESEARCH_AND_IMPROVEMENT_PLAN.md) records the Reddit audit, standards review, coverage gaps, and prioritized next work. Architecture details live in the [product contract](docs/architecture/product-contract.md), [trust model](docs/architecture/trust-model.md), [adapter protocol](docs/architecture/adapters.md), [evidence model](docs/architecture/evidence-and-results.md), and [remediation contract](docs/architecture/remediation-contract.md).
+
+### What is still being built
+
+- More narrow, tested local checks. Today 40 deterministic checks can prove selected repository facts; most broad controls still need evidence or review.
+- Expert review of the machine-readable acceptance contract for every control. Generated contracts remain labeled unreviewed until that work is complete.
+- Larger real-project accuracy tests for Codex and Claude review, including cost, resume, false-positive, and missed-finding measurements.
+- Safer native installation choices for people without Node, such as signed standalone installers or package-manager formulas. These should download a fixed, verified scanner release—not hide the npm command inside a mutable shell script.
+- Broader isolated fixes with independent tests. Scan will remain report-only, and no fix path will silently merge, deploy, or claim that every production concern was solved.
 
 ## Evidence, not checkbox theater
 

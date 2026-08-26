@@ -217,9 +217,25 @@ def npm_support_files() -> list[tuple[str, bytes, int]]:
         files.extend((ROOT / directory).rglob("*"))
     files.extend((ROOT / "docs" / "checklists").glob("*.md"))
     files.extend((ROOT / "docs" / "engineering").glob("[0-9][0-9]-*.md"))
-    return checked_support_files(
+    support = checked_support_files(
         files, maximum_files=MAX_NPM_SUPPORT_FILES, maximum_bytes=MAX_NPM_SUPPORT_BYTES
     )
+    compact: list[tuple[str, bytes, int]] = []
+    compressed_catalogs = {
+        "catalog/control-contracts.json",
+        "catalog/control-id-registry.json",
+    }
+    for name, data, mode in support:
+        if name in compressed_catalogs:
+            output = io.BytesIO()
+            with gzip.GzipFile(filename="", mode="wb", fileobj=output, compresslevel=9, mtime=0) as archive:
+                archive.write(data)
+            compact.append((name + ".gz", output.getvalue(), mode))
+        else:
+            compact.append((name, data, mode))
+    if sum(len(data) for _name, data, _mode in compact) > MAX_NPM_SUPPORT_BYTES:
+        raise ValueError("compact npm runtime support files exceed their byte limit")
+    return compact
 
 
 def create_tar_gz(path: pathlib.Path, root_name: str, entries: list[tuple[str, bytes, int]], epoch: int) -> None:

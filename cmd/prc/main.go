@@ -119,10 +119,7 @@ func run(args []string, stdout, stderr io.Writer) int {
 }
 
 func runWithInput(args []string, stdin io.Reader, stdout, stderr io.Writer) int {
-	if len(args) == 0 {
-		usage(stdout)
-		return exitSuccess
-	}
+	args = friendlyTopLevelArgs(args)
 	if args[0] == "--version" || args[0] == "-v" {
 		args = append([]string{"version"}, args[1:]...)
 	}
@@ -207,6 +204,23 @@ func runWithInput(args []string, stdin io.Reader, stdout, stderr io.Writer) int 
 	return outcome
 }
 
+// friendlyTopLevelArgs keeps the common path intentionally small: `prc`
+// scans the current directory, and `prc /path/to/project` scans that directory.
+// Explicit commands and root help/version flags keep their existing meaning.
+func friendlyTopLevelArgs(args []string) []string {
+	if len(args) == 0 {
+		return []string{"scan"}
+	}
+	if args[0] == "--help" || args[0] == "-h" || args[0] == "--version" || args[0] == "-v" ||
+		strings.HasPrefix(args[0], "-") {
+		return args
+	}
+	if information, err := os.Stat(args[0]); err == nil && information.IsDir() {
+		return append([]string{"scan"}, args...)
+	}
+	return args
+}
+
 func runVersion(args []string, stdout, stderr io.Writer) error {
 	set := flag.NewFlagSet("version", flag.ContinueOnError)
 	set.SetOutput(stderr)
@@ -239,11 +253,13 @@ func runVersion(args []string, stdout, stderr io.Writer) error {
 
 func usage(output io.Writer) {
 	printProductBanner(output, newTerminalStyle("auto", output))
-	fmt.Fprintln(output, "Usage: prc <command> [options]")
+	fmt.Fprintln(output, "Usage: prc [project path]")
+	fmt.Fprintln(output, "       prc <command> [options]")
 	fmt.Fprintln(output)
 	fmt.Fprintln(output, "Start here:")
+	fmt.Fprintln(output, "  prc                      Scan the current project and write a detailed report")
+	fmt.Fprintln(output, "  prc /path/to/project     Scan another project")
 	fmt.Fprintln(output, "  prc quick                Run a small local risk screen")
-	fmt.Fprintln(output, "  prc scan                 Run the core local scan and write a detailed report")
 	fmt.Fprintln(output, "  prc login codex          Sign in for an optional Codex review")
 	fmt.Fprintln(output, "  prc full codex           Review all controls with safe, advisory Codex AI")
 	fmt.Fprintln(output, "  prc doctor               Check whether scanning tools are ready")

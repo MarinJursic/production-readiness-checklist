@@ -81,7 +81,8 @@ func TestVersionCommand(t *testing.T) {
 
 func TestFriendlyRootHelpVersionAliasAndScanHelp(t *testing.T) {
 	var stdout, stderr bytes.Buffer
-	if code := run(nil, &stdout, &stderr); code != exitSuccess || !strings.Contains(stdout.String(), "prc quick") ||
+	if code := run([]string{"--help"}, &stdout, &stderr); code != exitSuccess || !strings.Contains(stdout.String(), "prc quick") ||
+		!strings.Contains(stdout.String(), "prc /path/to/project") ||
 		!strings.Contains(stdout.String(), "prc full codex") || !strings.Contains(stdout.String(), "PRODUCTION READINESS CHECKLIST") ||
 		!strings.Contains(stdout.String(), "Know what's ready and what still needs work.") || stderr.Len() != 0 {
 		t.Fatalf("root help exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
@@ -96,6 +97,21 @@ func TestFriendlyRootHelpVersionAliasAndScanHelp(t *testing.T) {
 		!strings.Contains(stderr.String(), "Usage: prc scan [project path] [options]") ||
 		strings.Contains(stderr.String(), "PRC-EXIT") {
 		t.Fatalf("scan help exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
+	}
+}
+
+func TestFriendlyTopLevelArgsDefaultsToCoreScanAndAcceptsADirectory(t *testing.T) {
+	if result := friendlyTopLevelArgs(nil); !slices.Equal(result, []string{"scan"}) {
+		t.Fatalf("empty args = %v", result)
+	}
+	target := t.TempDir()
+	if result := friendlyTopLevelArgs([]string{target, "--no-report"}); !slices.Equal(result, []string{"scan", target, "--no-report"}) {
+		t.Fatalf("directory args = %v", result)
+	}
+	for _, args := range [][]string{{"quick"}, {"--help"}, {"--version"}, {"not-a-real-command"}} {
+		if result := friendlyTopLevelArgs(args); !slices.Equal(result, args) {
+			t.Fatalf("explicit args %v became %v", args, result)
+		}
 	}
 }
 

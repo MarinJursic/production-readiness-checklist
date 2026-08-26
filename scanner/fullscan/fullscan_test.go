@@ -1,18 +1,78 @@
 package fullscan
 
 import (
+	"bytes"
+	"compress/gzip"
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
+	"os"
 	"path/filepath"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/catalog"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/engine"
 	workspaceinventory "github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 )
+
+func gzipBytes(t *testing.T, data []byte) []byte {
+	t.Helper()
+	var output bytes.Buffer
+	writer, err := gzip.NewWriterLevel(&output, gzip.BestCompression)
+	if err != nil {
+		t.Fatal(err)
+	}
+	writer.Header.ModTime = time.Unix(0, 0)
+	if _, err := writer.Write(data); err != nil {
+		t.Fatal(err)
+	}
+	if err := writer.Close(); err != nil {
+		t.Fatal(err)
+	}
+	return output.Bytes()
+}
+
+func TestReadCatalogDocumentAcceptsOneBoundedPlainOrCompressedFile(t *testing.T) {
+	root := t.TempDir()
+	path := filepath.Join(root, "catalog.json")
+	payload := []byte("{\"safe\":true}\n")
+	if err := os.WriteFile(path, payload, 0o600); err != nil {
+		t.Fatal(err)
+	}
+	plain, err := readCatalogDocument(path, 1024, "test catalog")
+	if err != nil || !bytes.Equal(plain, payload) {
+		t.Fatalf("plain data=%q err=%v", plain, err)
+	}
+	if err := os.Remove(path); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(path+".gz", gzipBytes(t, payload), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	compressed, err := readCatalogDocument(path, 1024, "test catalog")
+	if err != nil || !bytes.Equal(compressed, payload) {
+		t.Fatalf("compressed data=%q err=%v", compressed, err)
+	}
+	if err := os.WriteFile(path, payload, 0o600); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := readCatalogDocument(path, 1024, "test catalog"); err == nil || !strings.Contains(err.Error(), "ambiguous") {
+		t.Fatalf("plain and compressed error = %v", err)
+	}
+}
+
+func TestReadCatalogDocumentBoundsExpandedData(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "catalog.json")
+	if err := os.WriteFile(path+".gz", gzipBytes(t, bytes.Repeat([]byte("x"), 2048)), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := readCatalogDocument(path, 1024, "test catalog"); err == nil || !strings.Contains(err.Error(), "exceeds") {
+		t.Fatalf("expanded limit error = %v", err)
+	}
+}
 
 func repositoryRoot(t *testing.T) string {
 	t.Helper()

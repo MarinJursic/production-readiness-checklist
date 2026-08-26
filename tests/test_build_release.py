@@ -151,8 +151,8 @@ class ReleaseBuilderTests(unittest.TestCase):
         for expected in (
             "THIRD_PARTY_NOTICES.md",
             "adapters/checkov-v3.3.8.yaml",
-            "catalog/control-contracts.json",
-            "catalog/control-id-registry.json",
+            "catalog/control-contracts.json.gz",
+            "catalog/control-id-registry.json.gz",
             "catalog/profiles/core-repository.yaml",
             "docs/checklists/00-readiness-principle.md",
             "docs/engineering/16-specialized-domains-and-release-assurance.md",
@@ -163,6 +163,17 @@ class ReleaseBuilderTests(unittest.TestCase):
             self.assertIn(expected, names)
         self.assertFalse(any(name.startswith("docs/assets/") for name in names))
         self.assertFalse(any(name.startswith("docs/scanner/") for name in names))
+        self.assertNotIn("catalog/control-contracts.json", names)
+        self.assertNotIn("catalog/control-id-registry.json", names)
+        compact = dict((name, data) for name, data, _mode in support)
+        self.assertEqual(
+            gzip.decompress(compact["catalog/control-contracts.json.gz"]),
+            (build_release.ROOT / "catalog" / "control-contracts.json").read_bytes(),
+        )
+        self.assertEqual(
+            gzip.decompress(compact["catalog/control-id-registry.json.gz"]),
+            (build_release.ROOT / "catalog" / "control-id-registry.json").read_bytes(),
+        )
         self.assertLessEqual(len(support), build_release.MAX_NPM_SUPPORT_FILES)
         self.assertLessEqual(sum(len(data) for _name, data, _mode in support), build_release.MAX_NPM_SUPPORT_BYTES)
 
