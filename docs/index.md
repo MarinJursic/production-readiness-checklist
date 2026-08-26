@@ -6,12 +6,13 @@ description: 10,042 evidence-driven controls for engineering and shipping secure
 
 **Know what's ready and what still needs work.** Production Readiness Checklist is an open-source project scanner and review system for evaluating software from initial governance and requirements through design, implementation, operations, and final production approval. It provides **10,042 technology-neutral controls**, stable evidence IDs, reusable decision records, and guidance for automated, human, or AI-assisted reviews.
 
-The control set has two connected layers: **8,621 lifecycle and quality controls** across 16 engineering phases, followed by **1,421 production-readiness controls** for the release decision. It does not produce a readiness score. Every applicable requirement needs current evidence, and one material failure can block approval.
+The control set has two connected layers: **8,621 lifecycle and quality controls** across 16 engineering phases, followed by **1,421 production-readiness controls** for the release decision. The scanner shows a score for its narrow local checks, but that score is not a claim that every broad control passed. Every applicable requirement needs current evidence, and one material failure can block approval.
 
 ## Start here
 
 | Your goal | Start with | What you will produce |
 | --- | --- | --- |
+| Scan a repository without changing it | [Scanner quick start](scanner/getting-started.md) | A terminal summary and private HTML report containing all 10,042 controls |
 | Evaluate a product from start to finish | [Complete engineering review](engineering/00-overview.md) | A disposition for every applicable lifecycle and release control |
 | Check an upcoming release quickly | [15-minute quick start](guides/getting-started.md) | A scoped assessment and an initial no-go decision |
 | Ask Claude or another agent to inspect a repository | [AI-assisted review](guides/ai-assisted-review.md) | Evidence-backed findings with explicit unknowns |
@@ -34,6 +35,14 @@ This is an open-source, community-improvable control set. If you find a missing,
 ## The scanner
 
 Production Readiness Checklist can inspect a repository and its available engineering evidence against the complete control set. It maps every result to a stable control ID, cites the evidence behind each conclusion, distinguishes verified facts from unknowns, and generates a prioritized report of failures, blocked checks, manual verification work, and next actions.
+
+```bash
+npm install -g @marinjursic/prc
+cd /path/to/project
+prc
+```
+
+The global tool lives outside the project. A normal scan does not install project dependencies, run project code, fix files, or write the report into the project.
 
 The automated coverage is still growing. Production Readiness Checklist remains technology-neutral, treats unavailable production and organizational evidence as unknown rather than passed, and leaves risk acceptance and release approval to accountable humans.
 
