@@ -9,14 +9,14 @@ It selects one exact platform package, checks its release-bound manifest and
 binary SHA-256, and starts the native scanner without a shell or network
 fallback.
 
-After a published version is available, the short path is:
+For a one-time global installation and a short command in every project:
 
 ```sh
-npm install -D @marinjursic/prc
-npx prc quick
+npm install -g --ignore-scripts @marinjursic/prc
+prc quick
 ```
 
-Use `npx prc scan` for the 40-check core local scan. After `prc login codex` or
+Use `prc scan` for the 40-check core local scan. After `prc login codex` or
 `prc login claude`, use `prc full codex` or `prc full claude` for advisory AI
 review of every active control. Every mode keeps all 10,042 controls visible in
 the report; AI advice cannot create a verified pass.

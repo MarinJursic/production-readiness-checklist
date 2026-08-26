@@ -57,16 +57,17 @@ type versionInformation struct {
 }
 
 const (
-	exitSuccess           = 0
-	exitGateFailed        = 1
-	exitIncomplete        = 2
-	exitConfiguration     = 3
-	exitExecution         = 4
-	exitPolicyDenied      = 5
-	exitInternal          = 6
-	exitCancelled         = 7
-	exitCandidateRejected = 8
-	maxScanAdapters       = 16
+	exitSuccess            = 0
+	exitGateFailed         = 1
+	exitIncomplete         = 2
+	exitConfiguration      = 3
+	exitExecution          = 4
+	exitPolicyDenied       = 5
+	exitInternal           = 6
+	exitCancelled          = 7
+	exitCandidateRejected  = 8
+	maxScanAdapters        = 16
+	defaultReportRetention = 5
 )
 
 type classifiedError struct {
@@ -2013,6 +2014,11 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	if *format == "human" {
 		progressStyle = newTerminalStyle(*colorMode, stdout)
 		printProductBanner(stdout, progressStyle)
+		displayTarget := *target
+		if absolute, absoluteErr := filepath.Abs(*target); absoluteErr == nil {
+			displayTarget = absolute
+		}
+		fmt.Fprintf(stdout, "  Project  %s\n\n", progressStyle.paint(ansiCyan, terminalText(displayTarget)))
 		fmt.Fprintln(stdout, progressStyle.paint(ansiBlue, "[1/4] Building a safe, content-hashed inventory..."))
 	}
 	item, validation, err := configuredInventory(*target, *configPath)
@@ -2329,12 +2335,14 @@ func scanAttentionRank(result model.AssertionResult) int {
 
 func writeScanReport(run model.RunResult, requestedPath string) (string, error) {
 	path := requestedPath
+	defaultReport := requestedPath == ""
+	directory := ""
 	if path == "" {
 		cacheRoot, err := userCacheDirectory()
 		if err != nil {
 			return "", fmt.Errorf("locate the user cache for the scan report: %w", err)
 		}
-		directory := filepath.Join(cacheRoot, "prc", "reports")
+		directory = filepath.Join(cacheRoot, "prc", "reports")
 		if pathWithin(run.Inventory.Root, directory) {
 			return "", fmt.Errorf("default report directory is inside the scanned project; use --report with a path outside the project or --no-report")
 		}
@@ -2380,7 +2388,85 @@ func writeScanReport(run model.RunResult, requestedPath string) (string, error) 
 	if err != nil {
 		return "", fmt.Errorf("resolve completed scan report path: %w", err)
 	}
+	if defaultReport {
+		_, _, _ = pruneDefaultReports(directory, defaultReportRetention, absolute)
+	}
 	return absolute, nil
+}
+
+type cachedReport struct {
+	path     string
+	name     string
+	modified time.Time
+	size     int64
+}
+
+func pruneDefaultReports(directory string, keep int, preserve string) (int, int64, error) {
+	if keep < 1 {
+		return 0, 0, fmt.Errorf("default report retention must keep at least one report")
+	}
+	entries, err := os.ReadDir(directory)
+	if err != nil {
+		if os.IsNotExist(err) {
+			return 0, 0, nil
+		}
+		return 0, 0, err
+	}
+	reports := make([]cachedReport, 0, len(entries))
+	for _, entry := range entries {
+		if entry.IsDir() || entry.Type()&os.ModeSymlink != 0 || !scannerDefaultReportName(entry.Name()) {
+			continue
+		}
+		info, infoErr := entry.Info()
+		if infoErr != nil || !info.Mode().IsRegular() {
+			continue
+		}
+		reports = append(reports, cachedReport{
+			path: filepath.Join(directory, entry.Name()), name: entry.Name(),
+			modified: info.ModTime(), size: info.Size(),
+		})
+	}
+	preserved := filepath.Clean(preserve)
+	sort.SliceStable(reports, func(left, right int) bool {
+		leftPreserved := filepath.Clean(reports[left].path) == preserved
+		rightPreserved := filepath.Clean(reports[right].path) == preserved
+		if leftPreserved != rightPreserved {
+			return leftPreserved
+		}
+		if !reports[left].modified.Equal(reports[right].modified) {
+			return reports[left].modified.After(reports[right].modified)
+		}
+		return reports[left].name < reports[right].name
+	})
+	removed := 0
+	var freed int64
+	for _, item := range reports[min(keep, len(reports)):] {
+		if err := os.Remove(item.path); err != nil {
+			return removed, freed, err
+		}
+		removed++
+		freed += item.size
+	}
+	return removed, freed, nil
+}
+
+func scannerDefaultReportName(name string) bool {
+	if filepath.Ext(name) != ".html" {
+		return false
+	}
+	base := strings.TrimSuffix(name, ".html")
+	separator := strings.LastIndexByte(base, '-')
+	if separator < 1 || len(base)-separator-1 != 16 {
+		return false
+	}
+	for _, character := range base[separator+1:] {
+		if character < '0' || character > '9' {
+			if character < 'a' || character > 'f' {
+				return false
+			}
+		}
+	}
+	return true
 }
 
 func pathWithin(root, path string) bool {

@@ -40,6 +40,12 @@ The npm launcher never downloads a binary. It reads the exact platform manifest,
 checks the packaged native binary's SHA-256, and starts that file directly
 without a shell. It does not fall back to a program named `prc` on `PATH`.
 
+For a personal machine, a one-time
+`npm install -g --ignore-scripts @marinjursic/prc` makes `prc quick` and
+`prc scan` available without `npx`. A global install is easier but is not bound
+to the project's lock file. Keep the exact local install above for shared
+projects and CI. Do not use `sudo` to work around npm permissions.
+
 ## 2. Add the easy command
 
 Add this one line to the existing `scripts` object in `package.json`:
@@ -131,8 +137,10 @@ become a trusted automatic check.
 
 By default the scanner writes one private HTML file outside the target project
 and prints its exact path. It creates a new file and never overwrites an old
-one. The target bytes and file modes are checked before and after the scan in
-the test suite.
+one. The five newest default reports are retained; older scanner-generated
+cache reports are removed after a new report finishes successfully. A custom
+`--report` path is never pruned. The target bytes and file modes are checked
+before and after the scan in the test suite.
 
 The terminal uses green for Pass, red for Fail, yellow for blocked or manual
 work, and plain text when output is redirected. The report separates:

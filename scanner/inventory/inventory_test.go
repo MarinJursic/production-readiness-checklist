@@ -156,6 +156,64 @@ func TestBuildInventoriesAmbiguousSiteAndVendorDirectoriesAndReportsExclusions(t
 	}
 }
 
+func TestBuildSkipsOnlyClearOrMarkedGeneratedDirectories(t *testing.T) {
+	root := t.TempDir()
+	writeFile(t, root, "main.go", "package main\n")
+	writeFile(t, root, ".next/cache/bundle.bin", "generated\n")
+	writeFile(t, root, ".terraform/providers/provider.bin", "generated\n")
+	writeFile(t, root, "rust/Cargo.toml", "[package]\nname = \"sample\"\nversion = \"0.1.0\"\n")
+	writeFile(t, root, "rust/target/debug/sample", "generated\n")
+	writeFile(t, root, "cmake/CMakeLists.txt", "cmake_minimum_required(VERSION 3.20)\n")
+	writeFile(t, root, "cmake/build/app", "generated\n")
+	writeFile(t, root, "generated/coverage/lcov.info", "TN:\n")
+	writeFile(t, root, "generated/coverage/lcov-report/index.html", "generated\n")
+	writeFile(t, root, "ambiguous/target/source.go", "package target\n")
+	writeFile(t, root, "ambiguous/build/source.go", "package build\n")
+	writeFile(t, root, "ambiguous/coverage/source.go", "package coverage\n")
+
+	item, err := Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	paths := make([]string, 0, len(item.Files))
+	for _, record := range item.Files {
+		paths = append(paths, record.Path)
+	}
+	want := []string{
+		"ambiguous/build/source.go", "ambiguous/coverage/source.go", "ambiguous/target/source.go",
+		"cmake/CMakeLists.txt", "main.go", "rust/Cargo.toml",
+	}
+	if !slices.Equal(paths, want) {
+		t.Fatalf("generated and ambiguous directory handling = %v, want %v", paths, want)
+	}
+	wantExclusions := map[string]bool{
+		".next": true, ".terraform": true, "cmake/build": true,
+		"generated/coverage": true, "rust/target": true,
+	}
+	for _, fact := range item.Facts {
+		if fact.Key == "repository.exclusion" {
+			delete(wantExclusions, fact.Source)
+		}
+	}
+	if len(wantExclusions) != 0 {
+		t.Fatalf("missing transparent exclusion facts: %v", wantExclusions)
+	}
+}
+
+func TestInventoryTotalLimitErrorNamesTheTargetAndNextFile(t *testing.T) {
+	err := inventoryTotalLimitError(
+		filepath.FromSlash("/workspace/project"), filepath.FromSlash("/workspace/project/assets/archive.bin"),
+		7*1024*1024*1024, 2*1024*1024*1024,
+	)
+	for _, expected := range []string{
+		"assets/archive.bin", "7.0 GiB", "2.0 GiB", "8.0 GiB", "/workspace/project", "prc scan /path/to/project",
+	} {
+		if !strings.Contains(filepath.ToSlash(err.Error()), expected) {
+			t.Fatalf("actionable limit error missing %q: %v", expected, err)
+		}
+	}
+}
+
 func TestBuildRecordsCleanDirtyAndExternalGitWorktreeState(t *testing.T) {
 	if _, err := exec.LookPath("git"); err != nil {
 		t.Skip("Git is not available")

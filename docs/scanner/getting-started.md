@@ -38,19 +38,26 @@ without editing the target.
 
 ### npm release package
 
-After a scanner release is published to npm, the normal short path is:
+For a one-time global installation and a short command in every project:
 
 ```bash
-npm install -D @marinjursic/prc
-npx prc quick
+npm install -g --ignore-scripts @marinjursic/prc
+prc quick
 ```
 
-Use `npx prc scan` for the core local scan.
+Use `prc scan` for the core local scan. Do not use `sudo` to work around a
+global-install permission error; install Node with a version manager instead.
+
+The startup screen prints the exact project path. If the inventory reaches its
+8 GiB safety limit, check that path first and run inside the intended project
+root, or use `prc scan /exact/project/path`. The error identifies the next file
+that would cross the limit. Clear generated cache data when appropriate; do not
+delete real project data or raise the guard just to force a result.
 
 The npm launcher has no install hooks or third-party JavaScript dependencies.
 It uses one exact native platform package and never downloads a fallback. The
-public package names were not yet published when this guide was updated, so
-check the scanner release notes before using the registry command.
+global tool is convenient for one developer machine, but it is not pinned by a
+project lock file.
 
 For a pinned install with dependency hooks disabled, use
 `npm install -D -E --ignore-scripts --no-audit --no-fund @marinjursic/prc@X.Y.Z`,

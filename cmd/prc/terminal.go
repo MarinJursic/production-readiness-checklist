@@ -135,11 +135,15 @@ func localCheckBar(percentage, width int) string {
 }
 
 func printProductBanner(output io.Writer, style terminalStyle) {
-	fmt.Fprintln(output, style.paint(ansiBlue, "  ╭────────────────────────────────────────────────────╮"))
-	fmt.Fprintf(output, "  │  %s  %s                 │\n",
-		style.paint(ansiGreen, "✓"), style.paint(ansiCyan, "PRODUCTION READINESS CHECKLIST"))
-	fmt.Fprintln(output, "  │     Know what's ready and what still needs work.   │")
-	fmt.Fprintln(output, style.paint(ansiBlue, "  ╰────────────────────────────────────────────────────╯"))
+	fmt.Fprintln(output, style.paint(ansiBlue, "  ╭────────────────────────────────────────────────────────────────────╮"))
+	fmt.Fprintln(output, "  │        ╭──────╮                                                    │")
+	fmt.Fprintf(output, "  │       ╱        ╲   %s                  │\n",
+		style.paint(ansiCyan, "PRODUCTION READINESS CHECKLIST"))
+	fmt.Fprintf(output, "  │      │    %s     │  Know what's ready and what still needs work.    │\n",
+		style.paint(ansiGreen, "✓"))
+	fmt.Fprintln(output, "  │       ╲        ╱                                                   │")
+	fmt.Fprintln(output, "  │        ╰──────╯                                                    │")
+	fmt.Fprintln(output, style.paint(ansiBlue, "  ╰────────────────────────────────────────────────────────────────────╯"))
 	fmt.Fprintln(output)
 }
 

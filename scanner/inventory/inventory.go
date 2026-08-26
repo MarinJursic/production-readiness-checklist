@@ -43,13 +43,119 @@ var (
 )
 
 var excludedDirectories = map[string]string{
-	".git":          "Git metadata is inspected separately with bounded readers.",
-	".mypy_cache":   "Generated mypy cache content is not project source.",
-	".prc":          "Scanner-owned output is excluded to avoid scanning prior reports as project input.",
-	".pytest_cache": "Generated pytest cache content is not project source.",
-	".venv":         "A local Python virtual environment is third-party generated content.",
-	"__pycache__":   "Generated Python bytecode cache content is not project source.",
-	"node_modules":  "Installed Node dependencies are third-party generated content; lockfiles and manifests remain inventoried.",
+	".angular":          "Generated Angular cache content is not project source.",
+	".aws-sam":          "Generated AWS SAM build content is not project source.",
+	".build":            "Generated Swift package build content is not project source.",
+	".dart_tool":        "Generated Dart and Flutter tool state is not project source.",
+	".expo":             "Generated Expo tool state is not project source.",
+	".git":              "Git metadata is inspected separately with bounded readers.",
+	".gradle":           "Generated Gradle cache content is not project source.",
+	".hypothesis":       "Generated Hypothesis test cache content is not project source.",
+	".mypy_cache":       "Generated mypy cache content is not project source.",
+	".next":             "Generated Next.js build and cache content is not project source.",
+	".nox":              "Generated nox environment content is not project source.",
+	".nuxt":             "Generated Nuxt build content is not project source.",
+	".nyc_output":       "Generated test coverage process data is not project source.",
+	".output":           "Generated framework build output is not project source.",
+	".parcel-cache":     "Generated Parcel cache content is not project source.",
+	".pnpm-store":       "Installed pnpm package-store content is third-party generated data.",
+	".prc":              "Scanner-owned output is excluded to avoid scanning prior reports as project input.",
+	".pytest_cache":     "Generated pytest cache content is not project source.",
+	".ruff_cache":       "Generated Ruff cache content is not project source.",
+	".serverless":       "Generated Serverless Framework package content is not project source.",
+	".svelte-kit":       "Generated SvelteKit build content is not project source.",
+	".terraform":        "Downloaded Terraform providers and module cache content are not project source.",
+	".terragrunt-cache": "Downloaded Terragrunt working and module cache content is not project source.",
+	".tox":              "Generated tox environment content is not project source.",
+	".turbo":            "Generated Turborepo cache content is not project source.",
+	".venv":             "A local Python virtual environment is third-party generated content.",
+	".vite":             "Generated Vite cache content is not project source.",
+	"DerivedData":       "Generated Apple build and indexing content is not project source.",
+	"Pods":              "Installed CocoaPods dependencies are third-party generated content.",
+	"__pycache__":       "Generated Python bytecode cache content is not project source.",
+	"bower_components":  "Installed Bower dependencies are third-party generated content.",
+	"node_modules":      "Installed Node dependencies are third-party generated content; lockfiles and manifests remain inventoried.",
+	"venv":              "A local Python virtual environment is third-party generated content.",
+}
+
+func directoryExclusion(path string, entry fs.DirEntry) (string, bool) {
+	if !entry.IsDir() {
+		return "", false
+	}
+	if reason, excluded := excludedDirectories[entry.Name()]; excluded {
+		return reason, true
+	}
+	parent := filepath.Dir(path)
+	switch entry.Name() {
+	case "target":
+		if regularMarker(filepath.Join(path, "CACHEDIR.TAG")) ||
+			regularMarker(filepath.Join(parent, "Cargo.toml")) || regularMarker(filepath.Join(parent, "pom.xml")) {
+			return "A manifest or cache marker identifies this target directory as generated build output.", true
+		}
+	case "build":
+		if regularMarker(filepath.Join(parent, "CMakeLists.txt")) ||
+			regularMarker(filepath.Join(parent, "build.gradle")) || regularMarker(filepath.Join(parent, "build.gradle.kts")) ||
+			regularMarker(filepath.Join(path, "CMakeCache.txt")) {
+			return "A build-system marker identifies this build directory as generated output.", true
+		}
+	case "coverage":
+		if regularMarker(filepath.Join(path, "coverage-final.json")) || regularMarker(filepath.Join(path, "lcov.info")) ||
+			directoryMarker(filepath.Join(path, "lcov-report")) {
+			return "Coverage-tool markers identify this directory as generated test output.", true
+		}
+	}
+	return "", false
+}
+
+func regularMarker(path string) bool {
+	info, err := os.Lstat(path)
+	return err == nil && info.Mode().IsRegular()
+}
+
+func directoryMarker(path string) bool {
+	info, err := os.Lstat(path)
+	return err == nil && info.IsDir() && info.Mode()&os.ModeSymlink == 0
+}
+
+func inventoryFileLimitError(root, path string, size int64) error {
+	return fmt.Errorf(
+		"inventory stopped at %q: file size %s exceeds the %s inventory limit per file; target is %q. Run prc scan from the exact project root and remove generated or unrelated large files from that target",
+		inventoryRelativePath(root, path), formatInventoryBytes(size), formatInventoryBytes(maxInventoryFileBytes), root,
+	)
+}
+
+func inventoryTotalLimitError(root, path string, counted, next int64) error {
+	return fmt.Errorf(
+		"inventory stopped at %q after counting %s: adding the next %s file would exceed the %s total inventory limit; target is %q. Run prc scan from the exact project root, for example prc scan /path/to/project, and remove generated or unrelated large data from that target",
+		inventoryRelativePath(root, path), formatInventoryBytes(counted), formatInventoryBytes(next),
+		formatInventoryBytes(maxInventoryTotalBytes), root,
+	)
+}
+
+func inventoryRelativePath(root, path string) string {
+	relative, err := filepath.Rel(root, path)
+	if err != nil || relative == "." || relative == "" || relative == ".." || strings.HasPrefix(relative, ".."+string(filepath.Separator)) {
+		return filepath.ToSlash(path)
+	}
+	return filepath.ToSlash(relative)
+}
+
+func formatInventoryBytes(value int64) string {
+	const (
+		kib = int64(1024)
+		mib = 1024 * kib
+		gib = 1024 * mib
+	)
+	switch {
+	case value >= gib:
+		return fmt.Sprintf("%.1f GiB", float64(value)/float64(gib))
+	case value >= mib:
+		return fmt.Sprintf("%.1f MiB", float64(value)/float64(mib))
+	case value >= kib:
+		return fmt.Sprintf("%.1f KiB", float64(value)/float64(kib))
+	default:
+		return fmt.Sprintf("%d bytes", value)
+	}
 }
 
 var sourceExtensions = map[string]bool{
@@ -174,7 +280,7 @@ func Build(target string) (model.Inventory, error) {
 		if visitedEntries > maxEntries {
 			return fmt.Errorf("target exceeds %d filesystem entries", maxEntries)
 		}
-		if reason, excluded := excludedDirectories[entry.Name()]; entry.IsDir() && excluded {
+		if reason, excluded := directoryExclusion(path, entry); excluded {
 			relative, relativeErr := filepath.Rel(root, path)
 			if relativeErr != nil {
 				return relativeErr
@@ -205,10 +311,10 @@ func Build(target string) (model.Inventory, error) {
 			return nil
 		}
 		if entryInfo.Size() > maxInventoryFileBytes {
-			return fmt.Errorf("file %s exceeds the %d-byte inventory limit", path, maxInventoryFileBytes)
+			return inventoryFileLimitError(root, path, entryInfo.Size())
 		}
 		if entryInfo.Size() > maxInventoryTotalBytes-totalBytes {
-			return fmt.Errorf("target exceeds the %d-byte total inventory limit", maxInventoryTotalBytes)
+			return inventoryTotalLimitError(root, path, totalBytes, entryInfo.Size())
 		}
 		relative, err := filepath.Rel(root, path)
 		if err != nil {
@@ -224,7 +330,7 @@ func Build(target string) (model.Inventory, error) {
 			return err
 		}
 		if fileRecord.Size > maxInventoryTotalBytes-totalBytes {
-			return fmt.Errorf("target exceeds the %d-byte total inventory limit", maxInventoryTotalBytes)
+			return inventoryTotalLimitError(root, path, totalBytes, fileRecord.Size)
 		}
 		result.Files = append(result.Files, fileRecord)
 		totalBytes += fileRecord.Size

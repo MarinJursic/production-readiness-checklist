@@ -854,7 +854,8 @@ func TestSimpleScanDiscoversCatalogCreatesPrivateReportAndNeverFixesTarget(t *te
 		t.Fatalf("exit=%d stdout=%s stderr=%s", code, stdout.String(), stderr.String())
 	}
 	if !strings.Contains(stdout.String(), "Scan mode: report only; no fixes were applied.") ||
-		!strings.Contains(stdout.String(), "Detailed report: ") {
+		!strings.Contains(stdout.String(), "Detailed report: ") ||
+		!strings.Contains(stdout.String(), "Project  "+target) {
 		t.Fatalf("simple scan output = %s", stdout.String())
 	}
 	reportDirectory := filepath.Join(cacheRoot, "prc", "reports")
@@ -1003,6 +1004,47 @@ func TestScanCustomReportNeverOverwrites(t *testing.T) {
 	after, err := os.ReadFile(reportPath)
 	if err != nil || !bytes.Equal(after, original) {
 		t.Fatalf("existing report changed: %v", err)
+	}
+}
+
+func TestDefaultReportRetentionKeepsTheCurrentReportAndIgnoresCustomFiles(t *testing.T) {
+	directory := t.TempDir()
+	names := []string{
+		"sample-0000000000000000.html", "sample-0000000000000001.html", "sample-0000000000000002.html",
+		"sample-0000000000000003.html", "sample-0000000000000004.html", "sample-0000000000000005.html",
+		"sample-0000000000000006.html",
+	}
+	for index, name := range names {
+		path := filepath.Join(directory, name)
+		if err := os.WriteFile(path, bytes.Repeat([]byte("x"), index+1), 0o600); err != nil {
+			t.Fatal(err)
+		}
+		modified := time.Unix(int64(index+1), 0)
+		if err := os.Chtimes(path, modified, modified); err != nil {
+			t.Fatal(err)
+		}
+	}
+	custom := filepath.Join(directory, "my-report.html")
+	if err := os.WriteFile(custom, []byte("custom"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	preserve := filepath.Join(directory, names[0])
+	removed, freed, err := pruneDefaultReports(directory, 5, preserve)
+	if err != nil || removed != 2 || freed != 5 {
+		t.Fatalf("prune removed=%d freed=%d err=%v", removed, freed, err)
+	}
+	for _, kept := range []string{names[0], names[3], names[4], names[5], names[6], "my-report.html"} {
+		if _, err := os.Stat(filepath.Join(directory, kept)); err != nil {
+			t.Fatalf("expected report %s to remain: %v", kept, err)
+		}
+	}
+	for _, deleted := range []string{names[1], names[2]} {
+		if _, err := os.Stat(filepath.Join(directory, deleted)); !os.IsNotExist(err) {
+			t.Fatalf("old generated report %s remains: %v", deleted, err)
+		}
+	}
+	if _, _, err := pruneDefaultReports(directory, 0, preserve); err == nil {
+		t.Fatal("zero-report retention was accepted")
 	}
 }
 

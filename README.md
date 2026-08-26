@@ -95,16 +95,18 @@ A normal scan is read-only. It does **not** fix files, run project code, install
 
 ### Easiest setup with npm
 
-Version `0.1.0` is published on npm as [`@marinjursic/prc`](https://www.npmjs.com/package/@marinjursic/prc). Install it in the project you want to check, then run the short quick scan:
+Install [`@marinjursic/prc`](https://www.npmjs.com/package/@marinjursic/prc) once as a command-line tool. After that, use `prc` directly in any project—there is no `npx` prefix:
 
 ```bash
-npm install -D @marinjursic/prc
-npx prc quick
+npm install -g --ignore-scripts @marinjursic/prc
+prc quick
 ```
 
-Use `npx prc scan` for the larger 40-check local scan. That is the normal short path. The package has no install scripts and no third-party JavaScript dependencies. It does not download a binary after installation. npm selects one platform package; the launcher checks its release manifest and native binary hash, then starts it without a shell.
+Use `prc scan` for the larger 40-check local scan. The package has no install scripts and no third-party JavaScript dependencies. It does not download a binary after installation. npm selects one platform package; the launcher checks its release manifest and native binary hash, then starts it without a shell. If npm reports a global-install permission error, install Node with a version manager instead of using `sudo`.
 
-For a security-sensitive or repeatable install, pin a version from the scanner release notes and disable dependency install hooks:
+The scanner prints the exact project path before inventory begins. If an inventory limit stops the scan, first check that path: run the command inside the project root or pass it directly, for example `prc scan /path/to/project`. Clear framework caches when appropriate, but do not raise the 8 GiB safety guard or delete real project data just to force a scan through.
+
+For a team project or CI, prefer a project-local exact version so the scanner is recorded in the lock file and stays the same across machines:
 
 ```bash
 npm install -D -E --ignore-scripts --no-audit --no-fund @marinjursic/prc@0.1.0
@@ -219,7 +221,7 @@ Report
   Scan mode: report only; no fixes were applied. No project scripts were run.
 ```
 
-Click the reported path in a supported terminal to open the HTML file in your browser; in other terminals, copy or open the same plain path normally. The first screen shows the project, one large score, the readiness result, and four counts: passed, failed, review, and not needed. Smaller category scores come next, followed by verified problems sorted from critical to informational. Each problem begins as a compact, severity-colored row; open it to see the full reason and suggested next action. Scoring notes, passed checks, raw evidence, long file lists, IDs, scan metadata, and the complete 10,042-control catalog stay behind clearly labeled detail controls until you need them. `needs_review` means the scanner has not proved the broad rule. `partially_verified` means linked narrow checks passed; it is still not a complete Pass. Reports are private and stored outside the scanned project by default, so creating one does not change the project being scanned.
+Click the reported path in a supported terminal to open the HTML file in your browser; in other terminals, copy or open the same plain path normally. The first screen shows the project, one large score, the readiness result, and four counts: passed, failed, review, and not needed. Smaller category scores come next, followed by verified problems sorted from critical to informational. Each problem begins as a compact, severity-colored row; open it to see the full reason and suggested next action. Scoring notes, passed checks, raw evidence, long file lists, IDs, scan metadata, and the complete 10,042-control catalog stay behind clearly labeled detail controls until you need them. `needs_review` means the scanner has not proved the broad rule. `partially_verified` means linked narrow checks passed; it is still not a complete Pass. Reports are private and stored outside the scanned project by default, so creating one does not change the project being scanned. The cache keeps the five newest default reports and removes older scanner-generated reports; a path supplied with `--report` is never pruned.
 
 The report separates verified problems, narrow checks that passed, unresolved
 local checks, manual decisions, broad controls still needing evidence, and AI
