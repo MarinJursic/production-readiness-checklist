@@ -24,7 +24,7 @@ function digest(value) {
   return createHash("sha256").update(value).digest("hex");
 }
 
-async function fixture({ corruptBinary = false, omitPlatform = false } = {}) {
+async function fixture({ corruptBinary = false, corruptSupport = false, omitPlatform = false } = {}) {
   const root = await mkdtemp(join(tmpdir(), "prc-npm-test-"));
   const scope = join(root, "node_modules", "@marinjursic");
   const launcher = join(scope, "prc");
@@ -40,23 +40,28 @@ async function fixture({ corruptBinary = false, omitPlatform = false } = {}) {
   const platformRoot = join(scope, packageName.slice("@marinjursic/".length));
   const resultPath = join(root, "arguments.json");
   let binary = Buffer.from(`#!/usr/bin/env node\nrequire("node:fs").writeFileSync(process.env.PRC_TEST_RESULT, JSON.stringify(process.argv.slice(2))); process.exit(2);\n`);
+  const supportPath = "bin/catalog/runtime.json";
+  let support = Buffer.from('{"controls":10042}\n');
   const manifest = {
-    schema_version: "prc.npm-platform/v0.1", package_name: packageName, version: VERSION,
+    schema_version: "prc.npm-platform/v0.2", package_name: packageName, version: VERSION,
     source_commit: COMMIT, built_at: "2026-08-23T10:00:00Z", binary_path: `bin/${binaryName}`,
-    binary_sha256: digest(binary)
+    binary_sha256: digest(binary), support_file_count: 1, support_bytes: support.length,
+    support_files: [{ path: supportPath, size: support.length, sha256: digest(support) }]
   };
   const manifestBytes = Buffer.from(`${JSON.stringify(manifest)}\n`);
   const bindings = {};
   for (const [platform, name] of Object.entries(PLATFORM_NAMES)) {
     bindings[platform] = { package_name: name, manifest_sha256: platform === key ? digest(manifestBytes) : "0".repeat(64) };
   }
-  await writeFile(join(launcher, "platforms.json"), JSON.stringify({ schema_version: "prc.npm-platforms/v0.1", version: VERSION, platforms: bindings }));
+  await writeFile(join(launcher, "platforms.json"), JSON.stringify({ schema_version: "prc.npm-platforms/v0.2", version: VERSION, platforms: bindings }));
   if (!omitPlatform) {
-    await mkdir(join(platformRoot, "bin"), { recursive: true });
+    await mkdir(join(platformRoot, "bin", "catalog"), { recursive: true });
     await writeFile(join(platformRoot, "package.json"), JSON.stringify({ name: packageName, version: VERSION }));
     await writeFile(join(platformRoot, "manifest.json"), manifestBytes);
     if (corruptBinary) binary = Buffer.concat([binary, Buffer.from("// changed\n")]);
+    if (corruptSupport) support = Buffer.concat([support, Buffer.from("changed\n")]);
     await writeFile(join(platformRoot, "bin", binaryName), binary);
+    await writeFile(join(platformRoot, ...supportPath.split("/")), support);
     await chmod(join(platformRoot, "bin", binaryName), 0o755);
   }
   return { launcher: join(launcher, "bin", "prc.js"), resultPath };
@@ -77,6 +82,13 @@ test("launcher fails closed when the binary digest changes", async () => {
   const result = spawnSync(process.execPath, [item.launcher, "scan", "."], { encoding: "utf8" });
   assert.equal(result.status, 3);
   assert.match(result.stderr, /does not match its release manifest/);
+});
+
+test("launcher fails closed when the bundled catalog changes", async () => {
+  const item = await fixture({ corruptSupport: true });
+  const result = spawnSync(process.execPath, [item.launcher, "scan", "."], { encoding: "utf8" });
+  assert.equal(result.status, 3);
+  assert.match(result.stderr, /support file .* does not match its release manifest/);
 });
 
 test("launcher has no PATH or network fallback for a missing platform package", async () => {

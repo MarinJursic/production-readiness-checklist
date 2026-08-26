@@ -1,13 +1,16 @@
 #!/usr/bin/env node
 
 import { createHash } from "node:crypto";
-import { createReadStream, lstatSync, readFileSync, realpathSync } from "node:fs";
+import { closeSync, createReadStream, fstatSync, lstatSync, openSync, readSync, realpathSync } from "node:fs";
 import { dirname, isAbsolute, join, relative, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import { spawn } from "node:child_process";
 
 const MAX_JSON_BYTES = 1024 * 1024;
-const MAX_BINARY_BYTES = 1024 * 1024 * 1024;
+const MAX_BINARY_BYTES = 64 * 1024 * 1024;
+const MAX_SUPPORT_FILES = 512;
+const MAX_SUPPORT_BYTES = 24 * 1024 * 1024;
+const MAX_SUPPORT_FILE_BYTES = 16 * 1024 * 1024;
 const DIGEST = /^[0-9a-f]{64}$/;
 const VERSION = /^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$/;
 const COMMIT = /^(?:[0-9a-f]{40}|[0-9a-f]{64})$/;
@@ -42,13 +45,35 @@ function readBoundedJSON(path, label) {
 }
 
 function readBoundedFile(path, label) {
-  const information = lstatSync(path);
-  if (!information.isFile() || information.isSymbolicLink() || information.size > MAX_JSON_BYTES) {
+  const before = lstatSync(path);
+  if (!before.isFile() || before.isSymbolicLink() || before.size > MAX_JSON_BYTES) {
     throw new Error(`${label} is not a bounded regular file`);
   }
-  const data = readFileSync(path);
-  if (data.length !== information.size) throw new Error(`${label} changed while it was read`);
-  return data;
+  const descriptor = openSync(path, "r");
+  try {
+    const opened = fstatSync(descriptor);
+    if (!sameFile(before, opened)) throw new Error(`${label} changed while it was opened`);
+    const data = Buffer.alloc(before.size + 1);
+    let total = 0;
+    while (total < data.length) {
+      const count = readSync(descriptor, data, total, data.length - total, null);
+      if (count === 0) break;
+      total += count;
+    }
+    const afterOpen = fstatSync(descriptor);
+    const afterPath = lstatSync(path);
+    if (total !== before.size || !sameFile(before, afterOpen) || !sameFile(before, afterPath)) {
+      throw new Error(`${label} changed while it was read`);
+    }
+    return data.subarray(0, total);
+  } finally {
+    closeSync(descriptor);
+  }
+}
+
+function sameFile(before, after) {
+  return after.isFile() && !after.isSymbolicLink() && before.dev === after.dev && before.ino === after.ino &&
+    before.size === after.size && before.mtimeMs === after.mtimeMs;
 }
 
 function exactKeys(value, expected, label) {
@@ -63,20 +88,40 @@ function exactKeys(value, expected, label) {
 }
 
 async function sha256File(path, maximumBytes) {
-  const information = lstatSync(path);
-  if (!information.isFile() || information.isSymbolicLink() || information.size > maximumBytes) {
-    throw new Error("the packaged scanner binary is not a bounded regular file");
+  const before = lstatSync(path);
+  if (!before.isFile() || before.isSymbolicLink() || before.size > maximumBytes) {
+    throw new Error("a packaged scanner file is not a bounded regular file");
   }
   const hash = createHash("sha256");
+  let total = 0;
   for await (const chunk of createReadStream(path)) {
+    total += chunk.length;
+    if (total > maximumBytes) throw new Error("a packaged scanner file exceeded its byte limit while it was verified");
     hash.update(chunk);
   }
-  return hash.digest("hex");
+  const after = lstatSync(path);
+  if (total !== before.size || !sameFile(before, after)) {
+    throw new Error("a packaged scanner file changed while it was verified");
+  }
+  return { digest: hash.digest("hex"), size: after.size };
 }
 
 function inside(root, path) {
   const value = relative(root, path);
   return value !== "" && value !== ".." && !value.startsWith(`..${sep}`) && !isAbsolute(value);
+}
+
+function safeSupportPath(value) {
+  if (typeof value !== "string" || value.length < 1 || value.length > 512 || value.includes("\\")) return false;
+  const segments = value.split("/");
+  if (segments.some((segment) => segment === "" || segment === "." || segment === "..")) return false;
+  const allowed = [
+    "bin/adapters/", "bin/catalog/", "bin/docs/checklists/",
+    "bin/docs/engineering/", "bin/fixtures/benchmarks/", "bin/packs/", "bin/schemas/"
+  ];
+  return value === "bin/THIRD_PARTY_NOTICES.md" || allowed.some(
+    (prefix) => value.length > prefix.length && value.startsWith(prefix)
+  );
 }
 
 async function main() {
@@ -87,7 +132,7 @@ async function main() {
   }
   const platformDocument = readBoundedJSON(join(launcherRoot, "platforms.json"), "platform binding");
   exactKeys(platformDocument, ["schema_version", "version", "platforms"], "platform binding");
-  if (platformDocument.schema_version !== "prc.npm-platforms/v0.1" || platformDocument.version !== launcherPackage.version) {
+  if (platformDocument.schema_version !== "prc.npm-platforms/v0.2" || platformDocument.version !== launcherPackage.version) {
     throw new Error("platform binding does not match the launcher version");
   }
   exactKeys(platformDocument.platforms, Object.keys(EXPECTED_PACKAGES), "platform map");
@@ -132,16 +177,48 @@ async function main() {
     throw new Error("platform package manifest does not match the launcher binding");
   }
   const manifest = JSON.parse(manifestBytes.toString("utf8"));
-  exactKeys(manifest, ["schema_version", "package_name", "version", "source_commit", "built_at", "binary_path", "binary_sha256"], "platform package manifest");
+  exactKeys(manifest, [
+    "schema_version", "package_name", "version", "source_commit", "built_at", "binary_path", "binary_sha256",
+    "support_file_count", "support_bytes", "support_files"
+  ], "platform package manifest");
   const expectedBinary = process.platform === "win32" ? "bin/prc.exe" : "bin/prc";
-  if (manifest.schema_version !== "prc.npm-platform/v0.1" || manifest.package_name !== packageName ||
+  if (manifest.schema_version !== "prc.npm-platform/v0.2" || manifest.package_name !== packageName ||
       manifest.version !== launcherPackage.version || !COMMIT.test(manifest.source_commit) ||
       typeof manifest.built_at !== "string" || manifest.binary_path !== expectedBinary || !DIGEST.test(manifest.binary_sha256)) {
     throw new Error("platform package manifest identity is invalid");
   }
   const binaryPath = realpathSync(join(platformRoot, ...manifest.binary_path.split("/")));
-  if (!inside(platformRoot, binaryPath) || await sha256File(binaryPath, MAX_BINARY_BYTES) !== manifest.binary_sha256) {
+  if (!inside(platformRoot, binaryPath)) throw new Error("packaged scanner binary escapes its package");
+  const binaryIdentity = await sha256File(binaryPath, MAX_BINARY_BYTES);
+  if (binaryIdentity.digest !== manifest.binary_sha256) {
     throw new Error("packaged scanner binary does not match its release manifest");
+  }
+  if (!Array.isArray(manifest.support_files) || !Number.isSafeInteger(manifest.support_file_count) ||
+      manifest.support_file_count < 1 || manifest.support_file_count > MAX_SUPPORT_FILES ||
+      manifest.support_files.length !== manifest.support_file_count || !Number.isSafeInteger(manifest.support_bytes) ||
+      manifest.support_bytes < 1 || manifest.support_bytes > MAX_SUPPORT_BYTES) {
+    throw new Error("platform package support-file inventory is invalid");
+  }
+  let supportBytes = 0;
+  let previousSupportPath = "";
+  for (const [index, support] of manifest.support_files.entries()) {
+    exactKeys(support, ["path", "size", "sha256"], `platform support file ${index}`);
+    if (!safeSupportPath(support.path) || support.path <= previousSupportPath || !DIGEST.test(support.sha256) ||
+        !Number.isSafeInteger(support.size) || support.size < 0 || support.size > MAX_SUPPORT_FILE_BYTES) {
+      throw new Error(`platform support file ${index} is invalid`);
+    }
+    previousSupportPath = support.path;
+    supportBytes += support.size;
+    if (supportBytes > MAX_SUPPORT_BYTES) throw new Error("platform package support files exceed their byte limit");
+    const supportPath = realpathSync(join(platformRoot, ...support.path.split("/")));
+    if (!inside(platformRoot, supportPath)) throw new Error("platform support file escapes its package");
+    const identity = await sha256File(supportPath, MAX_SUPPORT_FILE_BYTES);
+    if (identity.size !== support.size || identity.digest !== support.sha256) {
+      throw new Error(`packaged support file ${safeText(support.path)} does not match its release manifest`);
+    }
+  }
+  if (supportBytes !== manifest.support_bytes) {
+    throw new Error("platform package support byte count does not match its release manifest");
   }
 
   const child = spawn(binaryPath, process.argv.slice(2), { stdio: "inherit", shell: false, windowsHide: true });

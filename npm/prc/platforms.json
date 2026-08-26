@@ -1,5 +1,5 @@
 {
-  "schema_version": "prc.npm-platforms/v0.1",
+  "schema_version": "prc.npm-platforms/v0.2",
   "version": "0.0.0-development",
   "platforms": {
     "darwin-arm64": {"package_name": "@marinjursic/prc-darwin-arm64", "manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000"},

@@ -60,6 +60,7 @@ class NpmDistributionTests(unittest.TestCase):
             self.assertNotIn("scripts", launcher_metadata)
             self.assertNotIn("dependencies", launcher_metadata)
             self.assertNotIn("private", launcher_metadata)
+            self.assertEqual(launcher_metadata["publishConfig"], {"access": "public", "provenance": True})
             for forbidden in (b"shell: true", b"node:http", b"node:https", b"node:net", b"node:tls", b"fetch("):
                 self.assertNotIn(forbidden, launcher)
             self.assertEqual(set(launcher_metadata["optionalDependencies"].values()), {version})
@@ -75,8 +76,19 @@ class NpmDistributionTests(unittest.TestCase):
             self.assertNotIn("dependencies", metadata)
             self.assertEqual(metadata["os"], ["linux"])
             self.assertEqual(metadata["cpu"], ["x64"])
+            self.assertEqual(metadata["publishConfig"], {"access": "public", "provenance": True})
             self.assertEqual(bindings["platforms"]["linux-x64"]["manifest_sha256"], hashlib.sha256(manifest_bytes).hexdigest())
             self.assertEqual(manifest["binary_sha256"], hashlib.sha256(platform_files["package/bin/prc"]).hexdigest())
+            self.assertEqual(manifest["schema_version"], "prc.npm-platform/v0.2")
+            self.assertEqual(manifest["support_file_count"], 2)
+            self.assertEqual(manifest["support_bytes"], len(b"{}\n") + len(b"# Example\n"))
+            self.assertEqual(
+                manifest["support_files"],
+                [
+                    {"path": "bin/catalog/example.json", "size": 3, "sha256": hashlib.sha256(b"{}\n").hexdigest()},
+                    {"path": "bin/docs/checklists/example.md", "size": 10, "sha256": hashlib.sha256(b"# Example\n").hexdigest()},
+                ],
+            )
             self.assertIn("package/bin/catalog/example.json", platform_files)
             self.assertIn("package/bin/docs/checklists/example.md", platform_files)
 

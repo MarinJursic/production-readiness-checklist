@@ -9,25 +9,28 @@ behavior should not depend on knowing security jargon.
 Find a `scanner-vX.Y.Z` release in this repository and use that exact version.
 Do not copy a similar package name from a search result.
 
-For a Node project:
+For a personal machine, install it once outside every scanned project:
 
 ```bash
-npm install --save-dev --save-exact --ignore-scripts --no-audit --no-fund @marinjursic/prc@X.Y.Z
+npm install -g --ignore-scripts @marinjursic/prc@X.Y.Z
+prc scan /path/to/project
 ```
 
 What this changes:
 
-- npm adds the exact scanner version to `devDependencies`;
-- npm installs the small launcher and one matching native package;
-- npm writes or updates `package-lock.json`; and
+- npm installs the small launcher and one matching native package under its
+  global prefix;
+- npm exposes `prc` on the user's `PATH`;
+- the scanned project receives no `node_modules`, dependency entry, or lock-file
+  change; and
 - npm does not run package install hooks because `--ignore-scripts` is present.
 
 What could be attacked:
 
 - A misspelled name could install somebody else's package. Use the exact scoped
   name `@marinjursic/prc` from this repository.
-- A floating version such as `latest` can change between machines. Use the exact
-  release number and commit the lock file.
+- A floating version such as `latest` can change when the tool is reinstalled.
+  Use an exact version where reproducibility matters.
 - Any package manager or registry can be compromised. Check the release's npm
   provenance and compare the version with the GitHub release before trusting
   it. The first npm publication also needs a one-time human bootstrap, which is
@@ -37,14 +40,21 @@ What could be attacked:
   disables hooks anyway.
 
 The npm launcher never downloads a binary. It reads the exact platform manifest,
-checks the packaged native binary's SHA-256, and starts that file directly
-without a shell. It does not fall back to a program named `prc` on `PATH`.
+checks the packaged native binary and every bundled catalog, schema, adapter,
+pack, benchmark, and control-source file, and starts that binary directly
+without a shell. It does not fall back to another program named `prc` on
+`PATH`. The installed runtime omits website media and contributor-only docs,
+but it does not omit controls or scanner evidence.
 
-For a personal machine, a one-time
-`npm install -g --ignore-scripts @marinjursic/prc` makes `prc quick` and
-`prc scan` available without `npx`. A global install is easier but is not bound
-to the project's lock file. Keep the exact local install above for shared
-projects and CI. Do not use `sudo` to work around npm permissions.
+For shared CI, a project-local exact install is still available when a committed
+lock-file entry is intentional:
+
+```bash
+npm install --save-dev --save-exact --ignore-scripts --no-audit --no-fund @marinjursic/prc@X.Y.Z
+npm exec --offline --no -- prc scan
+```
+
+Do not use `sudo` to work around npm permissions.
 
 ## 2. Add the easy command
 

@@ -4,6 +4,7 @@ import datetime as dt
 import gzip
 import json
 import pathlib
+import re
 import tarfile
 import tempfile
 import unittest
@@ -13,6 +14,20 @@ from scripts import build_release
 
 
 class ReleaseBuilderTests(unittest.TestCase):
+    def test_release_python_lock_matches_dev_versions_and_hashes_every_wheel(self) -> None:
+        development: dict[str, str] = {}
+        for line in (build_release.ROOT / "requirements-dev.lock.txt").read_text(encoding="utf-8").splitlines():
+            if line and not line.startswith("#"):
+                name, version = line.split("==", 1)
+                development[name.lower()] = version
+        release_text = (build_release.ROOT / "requirements-release.lock.txt").read_text(encoding="utf-8")
+        records = re.findall(
+            r"(?m)^([A-Za-z0-9_.-]+)==([^ \\]+) \\\n+\s+--hash=sha256:([0-9a-f]{64})$",
+            release_text,
+        )
+        self.assertEqual({name.lower(): version for name, version, _digest in records}, development)
+        self.assertEqual(len({digest for _name, _version, digest in records}), len(development))
+
     def test_release_version_uses_strict_semver_without_build_metadata(self) -> None:
         for value in ("0.1.0", "1.2.3-rc.1", "10.0.0-alpha-beta"):
             self.assertIsNotNone(build_release.SEMVER.fullmatch(value), value)
@@ -129,6 +144,27 @@ class ReleaseBuilderTests(unittest.TestCase):
             "docs/scanner/getting-started.md",
         ):
             self.assertIn(expected, names)
+
+    def test_npm_support_keeps_every_control_source_without_website_media(self) -> None:
+        support = build_release.npm_support_files()
+        names = {name for name, _data, _mode in support}
+        for expected in (
+            "THIRD_PARTY_NOTICES.md",
+            "adapters/checkov-v3.3.8.yaml",
+            "catalog/control-contracts.json",
+            "catalog/control-id-registry.json",
+            "catalog/profiles/core-repository.yaml",
+            "docs/checklists/00-readiness-principle.md",
+            "docs/engineering/16-specialized-domains-and-release-assurance.md",
+            "fixtures/benchmarks/core-native/suite.yaml",
+            "packs/core-native.yaml",
+            "schemas/control-review-output.schema.json",
+        ):
+            self.assertIn(expected, names)
+        self.assertFalse(any(name.startswith("docs/assets/") for name in names))
+        self.assertFalse(any(name.startswith("docs/scanner/") for name in names))
+        self.assertLessEqual(len(support), build_release.MAX_NPM_SUPPORT_FILES)
+        self.assertLessEqual(sum(len(data) for _name, data, _mode in support), build_release.MAX_NPM_SUPPORT_BYTES)
 
     def test_current_release_manifest_schema_includes_exact_npm_packages(self) -> None:
         schema = json.loads((build_release.ROOT / "schemas" / "release-manifest-v0.3.schema.json").read_text())

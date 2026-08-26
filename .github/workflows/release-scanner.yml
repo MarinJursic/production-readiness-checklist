@@ -106,12 +106,12 @@ jobs:
             -run '^TestLiveCheckovOCIUsesPinnedOfflinePolicyAndRejectsSuppressions$' \
             -count=1
 
-      - name: Install schema validation dependencies
-        run: |
-          pip install -r requirements-dev.lock.txt
-          pip install pip-audit==2.10.1
-          python -m pip_audit -r requirements-dev.lock.txt
-          python -m pip_audit -r requirements-docs.lock.txt
+      - name: Install hash-bound release validation dependencies
+        run: >-
+          pip install
+          --require-hashes
+          --only-binary=:all:
+          -r requirements-release.lock.txt
 
       - name: Validate catalog and release tooling
         run: |
@@ -266,8 +266,11 @@ jobs:
       - name: Recheck release checksums
         run: |
           (cd release && sha256sum --check SHA256SUMS)
-          python scripts/validate_instance.py release-manifest.schema.json \
-            "release/prc_${{ needs.build.outputs.version }}_release-manifest.json"
+          python scripts/publish_npm.py \
+            --release release \
+            --manifest "release/prc_${{ needs.build.outputs.version }}_release-manifest.json" \
+            --version "${{ needs.build.outputs.version }}" \
+            --verify-only
 
       - name: Prepare SBOM attestation subjects
         run: |

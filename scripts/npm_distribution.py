@@ -23,6 +23,26 @@ PLATFORMS = {
     ("windows", "arm64"): ("win32-arm64", f"{SCOPE}/prc-windows-arm64", "win32", "arm64"),
     ("windows", "amd64"): ("win32-x64", f"{SCOPE}/prc-windows-x64", "win32", "x64"),
 }
+MAXIMUM_SUPPORT_FILES = 512
+MAXIMUM_SUPPORT_BYTES = 24 * 1024 * 1024
+MAXIMUM_SUPPORT_FILE_BYTES = 16 * 1024 * 1024
+MAXIMUM_PLATFORM_TARBALL_BYTES = 24 * 1024 * 1024
+MAXIMUM_LAUNCHER_TARBALL_BYTES = 128 * 1024
+
+
+def allowed_support_name(name: str) -> bool:
+    prefixes = (
+        "adapters/",
+        "catalog/",
+        "docs/checklists/",
+        "docs/engineering/",
+        "fixtures/benchmarks/",
+        "packs/",
+        "schemas/",
+    )
+    return name == "THIRD_PARTY_NOTICES.md" or any(
+        len(name) > len(prefix) and name.startswith(prefix) for prefix in prefixes
+    )
 
 
 def json_bytes(document: Any) -> bytes:
@@ -68,8 +88,36 @@ def common_metadata(name: str, version: str, description: str) -> dict[str, Any]
             "url": "git+https://github.com/MarinJursic/production-readiness-checklist.git",
         },
         "bugs": "https://github.com/MarinJursic/production-readiness-checklist/issues",
-        "publishConfig": {"access": "public"},
+        "publishConfig": {"access": "public", "provenance": True},
     }
+
+
+def validate_support(support: list[tuple[str, bytes, int]]) -> list[tuple[str, bytes, int]]:
+    if not support or len(support) > MAXIMUM_SUPPORT_FILES:
+        raise ValueError("npm runtime support file count is outside its package limit")
+    normalized = sorted(support)
+    total = 0
+    previous = ""
+    for name, data, mode in normalized:
+        pure = pathlib.PurePosixPath(name)
+        if (
+            not name
+            or name <= previous
+            or pure.is_absolute()
+            or pure.as_posix() != name
+            or "\\" in name
+            or ".." in pure.parts
+            or not allowed_support_name(name)
+            or any(ord(character) < 0x20 or 0x7F <= ord(character) <= 0x9F for character in name)
+            or mode != 0o644
+            or len(data) > MAXIMUM_SUPPORT_FILE_BYTES
+        ):
+            raise ValueError(f"unsafe npm runtime support entry: {name}")
+        previous = name
+        total += len(data)
+        if total > MAXIMUM_SUPPORT_BYTES:
+            raise ValueError("npm runtime support files exceed their byte limit")
+    return normalized
 
 
 def package_artifact(path: pathlib.Path, package_name: str, kind: str, os_name: str = "", cpu: str = "") -> dict[str, Any]:
@@ -98,6 +146,7 @@ def build_packages(
     output: pathlib.Path,
 ) -> list[dict[str, Any]]:
     output.mkdir(mode=0o700)
+    support = validate_support(support)
     launcher_path = ROOT / "npm" / "prc" / "bin" / "prc.js"
     launcher_readme_path = ROOT / "npm" / "prc" / "README.md"
     license_path = ROOT / "LICENSE"
@@ -135,14 +184,21 @@ def build_packages(
             raise ValueError(f"missing regular release binary for {target[0]}/{target[1]}")
         binary = binary_path.read_bytes()
         binary_name = "prc.exe" if target[0] == "windows" else "prc"
+        support_records = [
+            {"path": f"bin/{name}", "size": len(data), "sha256": sha256(data)}
+            for name, data, _mode in support
+        ]
         manifest = {
-            "schema_version": "prc.npm-platform/v0.1",
+            "schema_version": "prc.npm-platform/v0.2",
             "package_name": package_name,
             "version": version,
             "source_commit": commit,
             "built_at": built_at,
             "binary_path": f"bin/{binary_name}",
             "binary_sha256": sha256(binary),
+            "support_file_count": len(support_records),
+            "support_bytes": sum(record["size"] for record in support_records),
+            "support_files": support_records,
         }
         manifest_data = json_bytes(manifest)
         platform_bindings[key] = {"package_name": package_name, "manifest_sha256": sha256(manifest_data)}
@@ -164,6 +220,8 @@ def build_packages(
         entries.extend((f"bin/{name}", data, mode) for name, data, mode in support)
         destination = output / package_filename(package_name, version)
         create_tgz(destination, entries, epoch)
+        if destination.stat().st_size > MAXIMUM_PLATFORM_TARBALL_BYTES:
+            raise ValueError(f"npm platform package exceeds its compressed size budget: {package_name}")
         artifacts.append(package_artifact(destination, package_name, "platform", npm_os, npm_cpu))
 
     optional_dependencies = {binding[1]: version for binding in PLATFORMS.values()}
@@ -179,7 +237,7 @@ def build_packages(
         }
     )
     platforms = {
-        "schema_version": "prc.npm-platforms/v0.1",
+        "schema_version": "prc.npm-platforms/v0.2",
         "version": version,
         "platforms": dict(sorted(platform_bindings.items())),
     }
@@ -193,5 +251,7 @@ def build_packages(
     ]
     destination = output / package_filename(LAUNCHER_NAME, version)
     create_tgz(destination, launcher_entries, epoch)
+    if destination.stat().st_size > MAXIMUM_LAUNCHER_TARBALL_BYTES:
+        raise ValueError("npm launcher package exceeds its compressed size budget")
     artifacts.append(package_artifact(destination, LAUNCHER_NAME, "launcher"))
     return sorted(artifacts, key=lambda item: item["package_name"])

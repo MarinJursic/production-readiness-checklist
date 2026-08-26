@@ -99,14 +99,16 @@ Install [`@marinjursic/prc`](https://www.npmjs.com/package/@marinjursic/prc) onc
 
 ```bash
 npm install -g --ignore-scripts @marinjursic/prc
-prc quick
+prc quick /path/to/project
 ```
 
-Use `prc scan` for the larger 40-check local scan. The package has no install scripts and no third-party JavaScript dependencies. It does not download a binary after installation. npm selects one platform package; the launcher checks its release manifest and native binary hash, then starts it without a shell. If npm reports a global-install permission error, install Node with a version manager instead of using `sudo`.
+Use `prc scan /path/to/project` for the larger 40-check local scan. A global install lives under npm's global prefix, not in the project being checked: it does not add project `node_modules`, edit `package.json`, or change a lock file. The package has no install scripts and no third-party JavaScript dependencies. It does not download a binary or update itself in the background after installation. npm selects one platform package; the launcher verifies the release-bound native binary and every bundled catalog, schema, adapter, pack, benchmark, and control-source file before starting the binary without a shell. If npm reports a global-install permission error, install Node with a version manager instead of using `sudo`.
+
+The npm launcher is about 12 KB. The native package contains one platform binary and the complete runtime data for all 10,042 controls. Website assets, demo video, and contributor-only documentation are not copied into the installed package, and release builds enforce compressed and expanded size budgets so future media or build output cannot silently bloat it.
 
 The scanner prints the exact project path before inventory begins. If an inventory limit stops the scan, first check that path: run the command inside the project root or pass it directly, for example `prc scan /path/to/project`. Clear framework caches when appropriate, but do not raise the 8 GiB safety guard or delete real project data just to force a scan through.
 
-For a team project or CI, prefer a project-local exact version so the scanner is recorded in the lock file and stays the same across machines:
+Only use a project-local install when a team or CI job specifically needs the scanner recorded in that project's lock file:
 
 ```bash
 npm install -D -E --ignore-scripts --no-audit --no-fund @marinjursic/prc@0.1.0

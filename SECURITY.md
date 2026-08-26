@@ -42,6 +42,36 @@ files and must be verified in repository administration after the workflows land
 These checks reduce specific risks; they do not replace review, private
 vulnerability reporting, incident response, or consumer verification.
 
+## npm distribution security
+
+The supported personal installation is global and stays outside scanned
+projects: `npm install -g --ignore-scripts @marinjursic/prc@X.Y.Z`. The launcher
+has no third-party JavaScript dependencies, lifecycle scripts, network fallback,
+post-install download, or background updater. npm installs only the matching
+OS/CPU package. The launcher verifies its release-bound manifest, native binary,
+and every bundled runtime file before each execution.
+
+Release packaging excludes website media and contributor-only documentation,
+while retaining every control source, catalog contract, schema, adapter
+manifest, pack, and benchmark fixture needed by scanner commands. Hard file and
+byte budgets stop unexpected package growth instead of silently reducing scan
+coverage. A normal scan does not install target dependencies or run target
+scripts, and its default reports are stored outside the target with bounded
+retention.
+
+New npm versions must come from the exact tagged GitHub Actions workflow using
+short-lived OIDC trusted publishing and npm provenance. Long-lived npm tokens,
+local execution of the publisher, mismatched workflow identity, missing OIDC,
+different immutable registry bytes, or an unbound tarball member stop the
+release. npm provenance establishes origin, not freedom from vulnerabilities;
+consumers should still use the latest supported patch and review security
+advisories.
+
+The release job's Python validation environment is binary-only and hash-bound
+to the exact Linux wheels in `requirements-release.lock.txt`. The final
+publication job verifies package structure with Python's standard library and
+does not install extra Python packages before attestation or npm publication.
+
 ## Scope and response
 
 Maintainers will assess reports affecting the repository’s content or automation. Application-specific findings discovered while using the checklist belong to the affected application’s security process, not this public repository.

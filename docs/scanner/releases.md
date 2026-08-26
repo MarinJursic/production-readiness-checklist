@@ -40,6 +40,14 @@ a byte-for-byte directory comparison. This is a reproducibility check under the
 same declared CI toolchain; it is not a claim that provenance or reproducibility
 proves the artifact is secure.
 
+The npm platform packages use a narrower runtime allowlist than the standalone
+archives. They retain all catalog files, all 10,042 source controls, schemas,
+adapter manifests, packs, and benchmark evidence. They exclude website assets,
+demo video, and contributor-only documentation. The builder caps runtime support
+at 512 files and 24 MiB, caps each compressed platform package at 24 MiB, and
+caps the launcher package at 128 KiB. A size-budget failure blocks publication;
+the builder never drops controls to make a package fit.
+
 ## Verify before running
 
 Download the archive, `SHA256SUMS`, release manifest, and SBOM from the same
@@ -96,8 +104,10 @@ npm install --ignore-scripts --offline --no-audit --no-fund --package-lock=false
 ./node_modules/.bin/prc scan /path/to/project
 ```
 
-The platform package contains the native binary and its exact catalog. The
-launcher checks the platform manifest and binary SHA-256 and never downloads a
+The platform package contains the native binary and its exact runtime catalog.
+The launcher checks the platform manifest, binary SHA-256, and the size and
+SHA-256 of every runtime support file on each start. It fails closed on a
+missing, changed, oversized, or unbound file and never downloads a
 fallback or starts a binary found on `PATH`. Public npm publishing uses npm
 trusted publishing from the pinned release workflow, so the workflow refuses
 `NPM_TOKEN` and `NODE_AUTH_TOKEN`. It verifies all seven tarballs against the
@@ -107,6 +117,14 @@ already-published version with exactly matching bytes. Because npm versions are
 immutable, any byte mismatch stops the release. The publisher also runs npm in
 a new empty working directory with user, global, and environment npm
 configuration removed, so a saved `.npmrc` token cannot silently replace OIDC.
+The publisher also independently requires the exact repository, workflow file,
+release tag, commit, and GitHub OIDC request variables. Running the publication
+script locally or from another workflow fails before contacting npm.
+Release-time Python validation installs only the seven exact CPython 3.12 Linux
+wheels in `requirements-release.lock.txt`, with required SHA-256 hashes and
+source builds disabled. The publication job uses the publisher's standard-
+library `--verify-only` path, so it does not add an unpinned Python dependency
+before attesting or publishing the tested bytes.
 
 The release job builds once, uploads those exact bytes, then runs the matching
 native archive and npm launcher on Linux x64, Linux ARM64, macOS x64, macOS
@@ -129,6 +147,18 @@ After that one-time setup, `scanner-vX.Y.Z` tags use OIDC and no long-lived npm
 publishing secret. The release workflow requires Node.js 22.14 or newer and npm
 11.5.1 or newer for trusted publishing. npm provenance links a package to its
 build source; it does not prove the package has no unsafe code.
+
+Version `0.1.0` was the one-time human bootstrap. npm registry signatures for
+its launcher and selected platform package can be verified, but that bootstrap
+version has no npm provenance attestation. Do not describe it as provenance-
+verified. All later releases must be published by the trusted workflow with
+provenance or fail closed.
+
+Protect the `scanner-v*` tag pattern with an active GitHub tag ruleset that
+restricts creation, update, and deletion to the release maintainer. Require the
+main-branch validation, CodeQL, dependency-review, and secret-scan checks before
+the tagged commit can enter `main`. These hosted controls cannot be truthfully
+claimed from repository files alone and must be verified in GitHub settings.
 
 Do not substitute a successful signature check for vulnerability review or a
 production-readiness decision. An attestation proves the signed claim's origin

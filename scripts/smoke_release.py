@@ -228,12 +228,27 @@ def smoke(release: pathlib.Path, version: str, commit: str) -> None:
         node_executable = shutil.which("node")
         if not npm_executable or not node_executable:
             raise RuntimeError("Node.js and npm are required for the npm launcher smoke test")
+        npm_environment = {
+            name: value for name, value in os.environ.items()
+            if not name.upper().startswith("NPM_CONFIG_")
+        }
+        npm_cache = root / "npm-cache"
+        npm_cache.mkdir()
+        npm_environment["NPM_CONFIG_CACHE"] = str(npm_cache)
+        for filename, variable in (
+            ("user.npmrc", "NPM_CONFIG_USERCONFIG"),
+            ("global.npmrc", "NPM_CONFIG_GLOBALCONFIG"),
+        ):
+            config = root / filename
+            config.touch(mode=0o600, exist_ok=False)
+            npm_environment[variable] = str(config)
         install = subprocess.run(
             [
                 npm_executable, "install", "--ignore-scripts", "--offline", "--no-audit", "--no-fund",
                 "--package-lock=false", str(platform_package), str(launcher_package),
             ],
             cwd=npm_project,
+            env=npm_environment,
             check=False,
             stdin=subprocess.DEVNULL,
             stdout=subprocess.PIPE,

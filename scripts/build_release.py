@@ -46,6 +46,8 @@ TARGETS = (
 )
 MAX_RELEASE_INPUT_FILES = 10_000
 MAX_RELEASE_INPUT_BYTES = 256 * 1024 * 1024
+MAX_NPM_SUPPORT_FILES = 512
+MAX_NPM_SUPPORT_BYTES = 24 * 1024 * 1024
 MAX_SBOM_BYTES = 16 * 1024 * 1024
 
 
@@ -161,12 +163,33 @@ def normalized_sbom(source: pathlib.Path, version: str, commit: str) -> bytes:
     return (json.dumps(document, indent=2, sort_keys=True, ensure_ascii=False) + "\n").encode("utf-8")
 
 
+def checked_support_files(
+    files: list[pathlib.Path], *, maximum_files: int, maximum_bytes: int
+) -> list[tuple[str, bytes, int]]:
+    result: list[tuple[str, bytes, int]] = []
+    seen: set[str] = set()
+    total_bytes = 0
+    for path in sorted(files):
+        if path.is_symlink():
+            raise ValueError(f"release support files cannot contain symlinks: {path.relative_to(ROOT)}")
+        if path.is_dir():
+            continue
+        if not path.is_file():
+            raise ValueError(f"release support entry is not a regular file: {path.relative_to(ROOT)}")
+        relative = path.relative_to(ROOT).as_posix()
+        if relative in seen:
+            raise ValueError(f"release support files contain a duplicate path: {relative}")
+        seen.add(relative)
+        data = path.read_bytes()
+        total_bytes += len(data)
+        if len(result) >= maximum_files or total_bytes > maximum_bytes:
+            raise ValueError("release support files exceed the bounded packaging limits")
+        result.append((relative, data, 0o644))
+    return result
+
+
 def release_support_files() -> list[tuple[str, bytes, int]]:
-    files: list[pathlib.Path] = [
-        ROOT / "LICENSE",
-        ROOT / "README.md",
-        ROOT / "THIRD_PARTY_NOTICES.md",
-    ]
+    files: list[pathlib.Path] = [ROOT / "LICENSE", ROOT / "README.md", ROOT / "THIRD_PARTY_NOTICES.md"]
     for directory in (
         "adapters",
         "catalog",
@@ -176,21 +199,27 @@ def release_support_files() -> list[tuple[str, bytes, int]]:
         "schemas",
     ):
         files.extend(sorted((ROOT / directory).rglob("*")))
-    result: list[tuple[str, bytes, int]] = []
-    total_bytes = 0
-    for path in files:
-        if path.is_symlink():
-            raise ValueError(f"release support files cannot contain symlinks: {path.relative_to(ROOT)}")
-        if path.is_dir():
-            continue
-        if not path.is_file():
-            raise ValueError(f"release support entry is not a regular file: {path.relative_to(ROOT)}")
-        data = path.read_bytes()
-        total_bytes += len(data)
-        if len(result) >= MAX_RELEASE_INPUT_FILES or total_bytes > MAX_RELEASE_INPUT_BYTES:
-            raise ValueError("release support files exceed the bounded packaging limits")
-        result.append((path.relative_to(ROOT).as_posix(), data, 0o644))
-    return result
+    return checked_support_files(
+        files, maximum_files=MAX_RELEASE_INPUT_FILES, maximum_bytes=MAX_RELEASE_INPUT_BYTES
+    )
+
+
+def npm_support_files() -> list[tuple[str, bytes, int]]:
+    """Return only files needed by installed scanner commands.
+
+    The website, demo media, contributor documentation, and other repository
+    material remain in source and standalone release archives. They are not
+    duplicated into every npm platform package. Complete control source files,
+    schemas, adapters, packs, and benchmark evidence remain present.
+    """
+    files: list[pathlib.Path] = [ROOT / "THIRD_PARTY_NOTICES.md"]
+    for directory in ("adapters", "catalog", "fixtures/benchmarks", "packs", "schemas"):
+        files.extend((ROOT / directory).rglob("*"))
+    files.extend((ROOT / "docs" / "checklists").glob("*.md"))
+    files.extend((ROOT / "docs" / "engineering").glob("[0-9][0-9]-*.md"))
+    return checked_support_files(
+        files, maximum_files=MAX_NPM_SUPPORT_FILES, maximum_bytes=MAX_NPM_SUPPORT_BYTES
+    )
 
 
 def create_tar_gz(path: pathlib.Path, root_name: str, entries: list[tuple[str, bytes, int]], epoch: int) -> None:
@@ -339,6 +368,7 @@ def build_release(args: argparse.Namespace) -> None:
         sbom_path = distribution / sbom_name
         sbom_path.write_bytes(normalized_sbom(args.sbom, args.version, args.commit))
         support = release_support_files()
+        npm_support = npm_support_files()
         artifacts: list[dict[str, Any]] = []
         for goos, goarch in TARGETS:
             suffix = ".exe" if goos == "windows" else ""
@@ -371,7 +401,7 @@ def build_release(args: argparse.Namespace) -> None:
             built_at=built_at,
             epoch=epoch,
             binaries=built,
-            support=support,
+            support=npm_support,
             output=npm_staging,
         )
         for package in npm_packages:

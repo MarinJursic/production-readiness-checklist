@@ -42,11 +42,14 @@ For a one-time global installation and a short command in every project:
 
 ```bash
 npm install -g --ignore-scripts @marinjursic/prc
-prc quick
+prc quick /path/to/project
 ```
 
-Use `prc scan` for the core local scan. Do not use `sudo` to work around a
-global-install permission error; install Node with a version manager instead.
+Use `prc scan /path/to/project` for the core local scan. npm stores this tool
+under its global prefix and exposes `prc` on `PATH`; it does not add a
+`node_modules` directory or package entry to the scanned project. Do not use
+`sudo` to work around a global-install permission error; install Node with a
+version manager instead.
 
 The startup screen prints the exact project path. If the inventory reaches its
 8 GiB safety limit, check that path first and run inside the intended project
@@ -55,9 +58,12 @@ that would cross the limit. Clear generated cache data when appropriate; do not
 delete real project data or raise the guard just to force a result.
 
 The npm launcher has no install hooks or third-party JavaScript dependencies.
-It uses one exact native platform package and never downloads a fallback. The
-global tool is convenient for one developer machine, but it is not pinned by a
-project lock file.
+It uses one exact native platform package and never downloads a fallback or
+updates itself in the background. Every launch verifies the binary and bundled
+runtime files against the release-bound manifest. The package retains the
+complete 10,042-control catalog and scanner evidence, while excluding website
+media and contributor-only documentation. The global tool is convenient for
+one developer machine, but it is not pinned by a project lock file.
 
 For a pinned install with dependency hooks disabled, use
 `npm install -D -E --ignore-scripts --no-audit --no-fund @marinjursic/prc@X.Y.Z`,

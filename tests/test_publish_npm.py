@@ -16,11 +16,35 @@ def completed(command: list[str], code: int = 0, stdout: str = "", stderr: str =
 
 
 class PublishNpmTests(unittest.TestCase):
+    commit = "a" * 40
+
+    def trusted_environment(self, version: str = "1.2.3") -> dict[str, str]:
+        tag = f"scanner-v{version}"
+        return {
+            "GITHUB_ACTIONS": "true",
+            "GITHUB_REPOSITORY": publish_npm.TRUSTED_REPOSITORY,
+            "GITHUB_SHA": self.commit,
+            "GITHUB_REF": f"refs/tags/{tag}",
+            "GITHUB_REF_TYPE": "tag",
+            "GITHUB_REF_NAME": tag,
+            "GITHUB_WORKFLOW_REF": (
+                f"{publish_npm.TRUSTED_REPOSITORY}/{publish_npm.TRUSTED_WORKFLOW}@refs/tags/{tag}"
+            ),
+            "ACTIONS_ID_TOKEN_REQUEST_URL": "https://oidc.invalid",
+            "ACTIONS_ID_TOKEN_REQUEST_TOKEN": "short-lived",
+        }
+
     def packages(self) -> list[publish_npm.Package]:
         root = pathlib.Path("/release")
         return [
-            publish_npm.Package("@marinjursic/prc-linux-x64", "1.2.3", root / "platform.tgz", "sha512-platform", "platform"),
-            publish_npm.Package("@marinjursic/prc", "1.2.3", root / "launcher.tgz", "sha512-launcher", "launcher"),
+            publish_npm.Package(
+                "@marinjursic/prc-linux-x64", "1.2.3", root / "platform.tgz",
+                "sha512-platform", "platform", self.commit,
+            ),
+            publish_npm.Package(
+                "@marinjursic/prc", "1.2.3", root / "launcher.tgz",
+                "sha512-launcher", "launcher", self.commit,
+            ),
         ]
 
     def test_publish_is_platform_first_idempotent_and_verifies_registry_bytes(self) -> None:
@@ -45,8 +69,7 @@ class PublishNpmTests(unittest.TestCase):
                 return completed(command, stdout="published")
             raise AssertionError(command)
 
-        with mock.patch.dict(os.environ, {"NODE_AUTH_TOKEN": "", "NPM_TOKEN": ""}):
-            publish_npm.publish(self.packages(), run)
+        publish_npm.publish(self.packages(), run, self.trusted_environment())
         publishes = [command for command in calls if command[:2] == ["npm", "publish"]]
         self.assertEqual(len(publishes), 1)
         self.assertEqual(publishes[0][2], "/release/platform.tgz")
@@ -84,17 +107,23 @@ class PublishNpmTests(unittest.TestCase):
             return completed(command, stdout=json.dumps("sha512-other"))
 
         with self.assertRaisesRegex(RuntimeError, "different bytes"):
-            publish_npm.publish(self.packages(), run)
+            publish_npm.publish(self.packages(), run, self.trusted_environment())
 
     def test_token_or_old_toolchain_is_rejected_before_publish(self) -> None:
-        with mock.patch.dict(os.environ, {"NPM_TOKEN": "secret"}):
-            with self.assertRaisesRegex(RuntimeError, "token-free"):
-                publish_npm.publish(self.packages(), lambda command: completed(command))
-        with mock.patch.dict(os.environ, {"NPM_TOKEN": "", "NODE_AUTH_TOKEN": ""}):
-            def old_run(command: list[str]) -> subprocess.CompletedProcess[str]:
-                return completed(command, stdout="v22.13.0" if command[0] == "node" else "11.5.1")
-            with self.assertRaisesRegex(RuntimeError, "requires Node"):
-                publish_npm.publish(self.packages(), old_run)
+        token_environment = self.trusted_environment() | {"NPM_TOKEN": "secret"}
+        with self.assertRaisesRegex(RuntimeError, "token-free"):
+            publish_npm.publish(self.packages(), lambda command: completed(command), token_environment)
+        def old_run(command: list[str]) -> subprocess.CompletedProcess[str]:
+            return completed(command, stdout="v22.13.0" if command[0] == "node" else "11.5.1")
+        with self.assertRaisesRegex(RuntimeError, "requires Node"):
+            publish_npm.publish(self.packages(), old_run, self.trusted_environment())
+
+    def test_publish_rejects_local_or_wrong_workflow_identity(self) -> None:
+        with self.assertRaisesRegex(RuntimeError, "exact trusted tagged release workflow"):
+            publish_npm.publish(self.packages(), environment={})
+        wrong = self.trusted_environment() | {"GITHUB_SHA": "b" * 40}
+        with self.assertRaisesRegex(RuntimeError, "exact trusted tagged release workflow"):
+            publish_npm.publish(self.packages(), environment=wrong)
 
     def test_load_packages_binds_manifest_tarball_identity_and_launcher_last(self) -> None:
         version = "1.2.3-test.1"
@@ -121,6 +150,7 @@ class PublishNpmTests(unittest.TestCase):
                 "schema_version": "prc.release-manifest/v0.3",
                 "product": "prc-scanner",
                 "version": version,
+                "source_commit": commit,
                 "npm_packages": artifacts,
             }), encoding="utf-8")
             packages = publish_npm.load_packages(output, manifest, version)
