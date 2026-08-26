@@ -113,6 +113,14 @@ func TestFriendlyTopLevelArgsDefaultsToCoreScanAndAcceptsADirectory(t *testing.T
 			t.Fatalf("explicit args %v became %v", args, result)
 		}
 	}
+	for _, command := range []string{"scan", "full", "login", "remediate-proposal", "mcp", "help"} {
+		if !isTopLevelCommand(command) {
+			t.Fatalf("%s was not recognized as an explicit command", command)
+		}
+	}
+	if isTopLevelCommand("not-a-real-command") {
+		t.Fatal("unknown value was recognized as a command")
+	}
 }
 
 func TestQuickScanUsesBoundedProfileAndStillReportsCompleteCatalog(t *testing.T) {

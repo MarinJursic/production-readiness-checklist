@@ -212,13 +212,24 @@ func friendlyTopLevelArgs(args []string) []string {
 		return []string{"scan"}
 	}
 	if args[0] == "--help" || args[0] == "-h" || args[0] == "--version" || args[0] == "-v" ||
-		strings.HasPrefix(args[0], "-") {
+		strings.HasPrefix(args[0], "-") || isTopLevelCommand(args[0]) {
 		return args
 	}
 	if information, err := os.Stat(args[0]); err == nil && information.IsDir() {
 		return append([]string{"scan"}, args...)
 	}
 	return args
+}
+
+func isTopLevelCommand(value string) bool {
+	switch value {
+	case "version", "inventory", "config", "catalog", "benchmark", "pack", "plan", "scan", "quick", "full",
+		"fix", "doctor", "login", "logout", "auth", "history", "diff", "remediate", "remediate-proposal",
+		"explain", "adapter", "exception", "provider", "mcp", "help":
+		return true
+	default:
+		return false
+	}
 }
 
 func runVersion(args []string, stdout, stderr io.Writer) error {
