@@ -47,6 +47,46 @@ func (style terminalStyle) paint(code, value string) string {
 	return code + value + ansiReset
 }
 
+func terminalToneColor(tone string) string {
+	switch tone {
+	case "great":
+		return ansiGreen
+	case "good":
+		return ansiCyan
+	case "review":
+		return ansiYellow
+	default:
+		return ansiRed
+	}
+}
+
+func terminalSeverityColor(severity string) string {
+	switch severity {
+	case "critical", "high":
+		return ansiRed
+	case "medium":
+		return ansiYellow
+	case "low":
+		return ansiBlue
+	default:
+		return ansiDim
+	}
+}
+
+func localCheckBar(percentage, width int) string {
+	if width < 1 {
+		return ""
+	}
+	if percentage < 0 {
+		percentage = 0
+	}
+	if percentage > 100 {
+		percentage = 100
+	}
+	filled := (percentage*width + 50) / 100
+	return strings.Repeat("█", filled) + strings.Repeat("░", width-filled)
+}
+
 func printProductBanner(output io.Writer, style terminalStyle) {
 	fmt.Fprintln(output, style.paint(ansiBlue, "  ╭────────────────────────────────────────────────────╮"))
 	fmt.Fprintf(output, "  │  %s  %s                 │\n",
@@ -73,6 +113,15 @@ func terminalText(value string) string {
 		result.WriteRune(character)
 	}
 	return result.String()
+}
+
+func terminalBrief(value string, limit int) string {
+	value = terminalText(strings.Join(strings.Fields(value), " "))
+	characters := []rune(value)
+	if limit <= 0 || len(characters) <= limit {
+		return value
+	}
+	return strings.TrimSpace(string(characters[:limit])) + "…"
 }
 
 func terminalUnsafe(character rune) bool {

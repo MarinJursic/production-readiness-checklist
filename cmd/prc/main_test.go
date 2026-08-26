@@ -868,8 +868,9 @@ func TestSimpleScanDiscoversCatalogCreatesPrivateReportAndNeverFixesTarget(t *te
 		t.Fatalf("report mode=%v err=%v", reportInfo.Mode().Perm(), err)
 	}
 	reportBody, err := os.ReadFile(reportPath)
-	if err != nil || !bytes.Contains(reportBody, []byte("Detailed findings")) ||
-		!bytes.Contains(reportBody, []byte("All assertion results")) {
+	if err != nil || !bytes.Contains(reportBody, []byte("What to fix first")) ||
+		!bytes.Contains(reportBody, []byte("Local check details")) ||
+		!bytes.Contains(reportBody, []byte("Technical evidence and IDs")) {
 		t.Fatalf("detailed report is incomplete: %v", err)
 	}
 	after, err := os.ReadFile(sourcePath)

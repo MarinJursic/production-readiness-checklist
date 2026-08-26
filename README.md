@@ -85,6 +85,14 @@ The experimental scanner turns the checklist into a repeatable repository assess
 
 A normal scan is read-only. It does **not** fix files, run project code, install project dependencies, or turn missing evidence into a pass.
 
+<div align="center">
+
+<a href="docs/assets/production-readiness-scan-demo.mp4"><img src="docs/assets/production-readiness-scan-demo.gif" alt="A continuous 27-second demo of prc scan checking a sample project, showing pass and fail evidence, and opening the readiness report" width="960"></a>
+
+<sub>Run one command, review exact evidence, then explore the full 10,042-control report. Click the demo for the sharper MP4.</sub>
+
+</div>
+
 ### Easiest setup with npm
 
 The npm package source, launcher, six native platform packages, and release builder are implemented. The public package names were still unpublished when checked on August 25, 2026, so the commands below start working after the first release is listed in this project's release notes.
@@ -190,23 +198,28 @@ Checking 40 deterministic assertions...
   ! BLOCKED  PRC-A-CORE-013  The optional analysis was not authorized.
   ? MANUAL   PRC-A-CORE-012  An accountable reviewer must supply evidence.
 
-Result
-Local profile result: no_go
-Full catalog result: needs_review
-Assessment counts: fail=1, unknown=1, manual_review=1, pass=37
-Verified findings: 1
-Narrow checks passed: 37
-Local checks unresolved: 1
-Manual decisions: 1
-Complete control catalog: 10042/10042 controls included
-Controls still needing review or evidence: 10020
-Advisory AI reviews: 0
+  ╭─ SCAN COMPLETE
+  │ Needs work
+  │ ██████████████████░░ 93% · 37/40 applicable checks passed
+  │ 1 failed · 1 unresolved · 1 manual · 0 not applicable
+  ╰─ One or more required local checks failed.
 
-Scan mode: report only; no fixes were applied.
-Detailed report: /Users/you/Library/Caches/prc/reports/example-api-91c2….html
+Needs attention
+  ✗ FAIL     HIGH     PRC-A-CORE-007  No supported lock file was found for node.
+  ! BLOCKED  MEDIUM   PRC-A-CORE-013  The optional analysis was not authorized.
+  ? MANUAL   LOW      PRC-A-CORE-012  An accountable reviewer must supply evidence.
+
+Coverage
+  Local checks     40 total · 37 passed · 3 need attention · 0 did not apply
+  Full catalog     10042/10042 included · 10020 need evidence or review
+
+Report
+  Detailed report: /Users/you/Library/Caches/prc/reports/example-api-91c2….html
+  Open it for remediation steps, evidence, category scores, and all controls.
+  Scan mode: report only; no fixes were applied. No project scripts were run.
 ```
 
-Open the reported HTML file in a browser. It contains all 10,042 controls, every verified finding, every narrow assertion result, exact evidence, and any advisory AI review. `needs_review` means the scanner has not proved the broad rule. `partially_verified` means linked narrow checks passed; it is still not a complete Pass. Reports are private and stored outside the scanned project by default, so creating one does not change the project being scanned.
+Open the reported HTML file in a browser. The first screen shows the project, one large score, the readiness result, and four counts: passed, failed, review, and not needed. Smaller category scores come next, followed by verified problems sorted from critical to informational. Each problem begins as a compact, severity-colored row; open it to see the full reason and suggested next action. Scoring notes, passed checks, raw evidence, long file lists, IDs, scan metadata, and the complete 10,042-control catalog stay behind clearly labeled detail controls until you need them. `needs_review` means the scanner has not proved the broad rule. `partially_verified` means linked narrow checks passed; it is still not a complete Pass. Reports are private and stored outside the scanned project by default, so creating one does not change the project being scanned.
 
 The report separates verified problems, narrow checks that passed, unresolved
 local checks, manual decisions, broad controls still needing evidence, and AI

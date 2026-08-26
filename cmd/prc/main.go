@@ -2140,17 +2140,11 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		}
 	} else if *format == "human" {
 		style := newTerminalStyle(*colorMode, stdout)
-		printScanSummary(stdout, run, style)
 		if *reviewProvider != "none" {
 			fmt.Fprintf(stdout, "AI review: %d controls reviewed by %s; %d advisory failure candidates\n", reviewSummary.ReviewedControls, terminalText(reviewSummary.Provider), reviewSummary.AdvisoryFailures)
 			fmt.Fprintf(stdout, "AI review resume data: %s\n\n", terminalText(reviewSummary.StateDirectory))
 		}
-		fmt.Fprintln(stdout, "Scan mode: report only; no fixes were applied.")
-		if writtenReport == "" {
-			fmt.Fprintln(stdout, "Detailed report: disabled")
-		} else {
-			fmt.Fprintf(stdout, "Detailed report: %s\n", terminalText(writtenReport))
-		}
+		printScanSummary(stdout, run, style, writtenReport)
 	} else if err := report.Write(*format, stdout, run); err != nil {
 		return exitInternal, exitError(exitInternal, err)
 	}
@@ -2203,7 +2197,7 @@ func reorderInterspersedFlags(set *flag.FlagSet, args []string) []string {
 	return append(flags, positionals...)
 }
 
-func printScanSummary(output io.Writer, run model.RunResult, style terminalStyle) {
+func printScanSummary(output io.Writer, run model.RunResult, style terminalStyle, writtenReport string) {
 	fmt.Fprintf(output, "Production Readiness Checklist %s\n\n", terminalText(version))
 	fmt.Fprintf(output, "Run: %s\n", terminalText(run.RunID))
 	fmt.Fprintf(output, "Profile: %s@%s\n", terminalText(run.Plan.ProfileID), terminalText(run.Plan.ProfileVersion))
@@ -2214,54 +2208,118 @@ func printScanSummary(output io.Writer, run model.RunResult, style terminalStyle
 		fmt.Fprintf(output, "  %s  %s  %s\n", assessmentLabel(result.Assessment, result.Execution, style),
 			terminalText(result.AssertionID), terminalText(result.Summary))
 	}
-	fmt.Fprintln(output, "\nResult")
-	fmt.Fprintf(output, "Local profile result: %s\n", terminalText(profileTerminalState(run)))
-	if run.ControlCatalog != nil {
-		fmt.Fprintf(output, "Full catalog result: %s\n", terminalText(run.TerminalState))
-	} else {
-		fmt.Fprintf(output, "Terminal state: %s\n", terminalText(run.TerminalState))
-	}
+	local := report.SummarizeLocalChecks(run)
+	tone := terminalToneColor(local.Tone)
+	fmt.Fprintln(output)
+	fmt.Fprintln(output, style.paint(tone, "  ╭─ SCAN COMPLETE"))
+	fmt.Fprintf(output, "  │ %s\n", style.paint(tone, local.Label))
+	fmt.Fprintf(output, "  │ %s %d%% · %d/%d applicable checks passed\n",
+		style.paint(tone, localCheckBar(local.Percentage, 20)), local.Percentage, local.Passed, local.Applicable)
+	fmt.Fprintf(output, "  │ %d failed · %d unresolved · %d manual · %d not applicable\n",
+		local.Failed, local.Unresolved, local.Manual, local.NotApplicable)
+	fmt.Fprintf(output, "  ╰─ %s\n", local.Explanation)
 	counts := map[string]int{}
 	for _, result := range run.Results {
 		counts[result.Assessment]++
 	}
-	parts := make([]string, 0, len(counts))
-	for _, assessment := range []string{"fail", "unknown", "manual_review", "pass", "not_applicable"} {
-		if count := counts[assessment]; count > 0 {
-			parts = append(parts, assessment+"="+fmt.Sprint(count))
+	fmt.Fprintln(output, "\nNeeds attention")
+	attention := sortedScanAttention(run.Results)
+	if len(attention) == 0 {
+		fmt.Fprintf(output, "  %s No local checks need attention.\n", style.paint(ansiGreen, "✓"))
+	} else {
+		visible := len(attention)
+		if visible > 6 {
+			visible = 6
+		}
+		for _, result := range attention[:visible] {
+			severity := strings.ToUpper(result.Severity)
+			if severity == "" {
+				severity = "UNSET"
+			}
+			fmt.Fprintf(output, "  %s  %-8s %s  %s\n",
+				assessmentLabel(result.Assessment, result.Execution, style),
+				style.paint(terminalSeverityColor(result.Severity), severity),
+				terminalText(result.AssertionID), terminalBrief(result.Summary, 96))
+		}
+		if remaining := len(attention) - visible; remaining > 0 {
+			fmt.Fprintf(output, "  … %d more checks need attention; see the HTML report.\n", remaining)
 		}
 	}
-	fmt.Fprintf(output, "Assessment counts: %s\n", strings.Join(parts, ", "))
-	fmt.Fprintf(output, "Verified findings: %d\n", len(run.Findings))
-	fmt.Fprintf(output, "Narrow checks passed: %d\n", counts["pass"])
-	fmt.Fprintf(output, "Local checks unresolved: %d\n", counts["unknown"]+counts["stale"]+counts["conflicting"])
-	fmt.Fprintf(output, "Manual decisions: %d\n", counts["manual_review"])
+
+	fmt.Fprintln(output, "\nCoverage")
+	fmt.Fprintf(output, "  Local checks     %d total · %d passed · %d need attention · %d did not apply\n",
+		len(run.Results), counts["pass"], len(attention), counts["not_applicable"])
 	if run.ControlCatalog != nil {
 		controlCounts := map[string]int{}
 		for _, result := range run.ControlResults {
 			controlCounts[result.Disposition]++
 		}
-		controlParts := make([]string, 0, len(controlCounts))
-		for _, disposition := range []string{"confirmed_failure", "blocked", "needs_review", "partially_verified", "retired"} {
-			if count := controlCounts[disposition]; count > 0 {
-				controlParts = append(controlParts, disposition+"="+fmt.Sprint(count))
-			}
+		fmt.Fprintf(output, "  Full catalog     %d/%d included · %d need evidence or review\n",
+			len(run.ControlResults), run.ControlCatalog.ControlCount, controlCounts["needs_review"]+controlCounts["blocked"])
+		if run.ControlCatalog.AIReviewedCount > 0 {
+			fmt.Fprintf(output, "  AI review        %d advisory reviews; no AI result creates a verified pass\n", run.ControlCatalog.AIReviewedCount)
 		}
-		fmt.Fprintf(output, "Complete control catalog: %d/%d controls included\n", len(run.ControlResults), run.ControlCatalog.ControlCount)
-		mapped := 0
-		for _, result := range run.ControlResults {
-			if result.Coverage != "unmapped" {
-				mapped++
-			}
-		}
-		fmt.Fprintf(output, "Controls with an executable mapping: %d/%d\n", mapped, run.ControlCatalog.ActiveControlCount)
-		fmt.Fprintf(output, "Control dispositions: %s\n", strings.Join(controlParts, ", "))
-		fmt.Fprintf(output, "Controls still needing review or evidence: %d\n", controlCounts["needs_review"]+controlCounts["blocked"])
-		fmt.Fprintf(output, "Advisory AI reviews: %d\n", run.ControlCatalog.AIReviewedCount)
-		fmt.Fprintln(output, "A partially_verified control is not a complete pass.")
-		fmt.Fprintln(output, "Every registered control is in the detailed report; AI advice is marked advisory.")
 	}
+
+	fmt.Fprintln(output, "\nReport")
+	if writtenReport == "" {
+		fmt.Fprintln(output, "  Detailed report: disabled")
+	} else {
+		fmt.Fprintf(output, "  Detailed report: %s\n", style.paint(ansiCyan, terminalText(writtenReport)))
+		fmt.Fprintln(output, "  Open it for remediation steps, evidence, category scores, and all controls.")
+	}
+	fmt.Fprintln(output, "  Scan mode: report only; no fixes were applied. No project scripts were run.")
 	fmt.Fprintln(output)
+}
+
+func sortedScanAttention(results []model.AssertionResult) []model.AssertionResult {
+	attention := make([]model.AssertionResult, 0, len(results))
+	for _, result := range results {
+		if result.Assessment == "pass" || result.Assessment == "not_applicable" {
+			continue
+		}
+		attention = append(attention, result)
+	}
+	sort.SliceStable(attention, func(left, right int) bool {
+		if leftRank, rightRank := scanSeverityRank(attention[left].Severity), scanSeverityRank(attention[right].Severity); leftRank != rightRank {
+			return leftRank < rightRank
+		}
+		if leftRank, rightRank := scanAttentionRank(attention[left]), scanAttentionRank(attention[right]); leftRank != rightRank {
+			return leftRank < rightRank
+		}
+		return attention[left].AssertionID < attention[right].AssertionID
+	})
+	return attention
+}
+
+func scanSeverityRank(severity string) int {
+	switch severity {
+	case "critical":
+		return 0
+	case "high":
+		return 1
+	case "medium":
+		return 2
+	case "low":
+		return 3
+	case "info":
+		return 4
+	default:
+		return 5
+	}
+}
+
+func scanAttentionRank(result model.AssertionResult) int {
+	if result.Assessment == "fail" {
+		return 0
+	}
+	if result.Execution == "blocked" || result.Execution == "error" || result.Assessment == "unknown" {
+		return 1
+	}
+	if result.Assessment == "manual_review" {
+		return 2
+	}
+	return 3
 }
 
 func writeScanReport(run model.RunResult, requestedPath string) (string, error) {

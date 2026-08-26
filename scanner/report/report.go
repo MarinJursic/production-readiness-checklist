@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"html/template"
 	"io"
+	"path"
 	"sort"
 	"strconv"
 	"strings"
@@ -75,6 +76,422 @@ type resultMeaning struct {
 	AIAdvice              int
 }
 
+// LocalCheckSummary is deliberately narrower than a production-readiness
+// score. It reports the pass rate for applicable assertions in the selected
+// local profile, while Label and Explanation continue to honor gate policy.
+// A single required failure can therefore produce an 88% pass rate and a
+// truthful NOT READY result at the same time.
+type LocalCheckSummary struct {
+	Passed        int
+	Applicable    int
+	NotApplicable int
+	Failed        int
+	Blocking      int
+	Unresolved    int
+	Manual        int
+	ToReview      int
+	Percentage    int
+	Label         string
+	Tone          string
+	Explanation   string
+	ProfileState  string
+}
+
+// SummarizeLocalChecks returns a transparent, unweighted pass rate for the
+// selected deterministic profile. It must never be presented as proof that
+// the complete control catalog or the project as a whole is ready.
+func SummarizeLocalChecks(run model.RunResult) LocalCheckSummary {
+	summary := LocalCheckSummary{ProfileState: profileTerminalState(run)}
+	for _, result := range run.Results {
+		if result.Assessment == "not_applicable" || result.Applicability == "not_applicable" {
+			summary.NotApplicable++
+			continue
+		}
+		summary.Applicable++
+		switch result.Assessment {
+		case "pass":
+			summary.Passed++
+		case "fail":
+			summary.Failed++
+			if strings.EqualFold(result.Gate, "required") {
+				summary.Blocking++
+			}
+		case "manual_review":
+			summary.Manual++
+		case "unknown", "stale", "conflicting":
+			summary.Unresolved++
+		}
+	}
+	summary.ToReview = summary.Unresolved + summary.Manual
+	if summary.Applicable > 0 {
+		summary.Percentage = (summary.Passed*100 + summary.Applicable/2) / summary.Applicable
+	}
+	switch summary.ProfileState {
+	case "profile_satisfied":
+		if summary.Applicable > 0 && summary.Passed == summary.Applicable {
+			summary.Label, summary.Tone = "GREAT", "great"
+			summary.Explanation = "All applicable checks in the selected local profile passed."
+		} else {
+			summary.Label, summary.Tone = "GOOD", "good"
+			summary.Explanation = "The selected local profile has no blocking result."
+		}
+	case "machine_work_complete_manual_evidence_remaining":
+		summary.Label, summary.Tone = "REVIEW NEEDED", "review"
+		summary.Explanation = "Automated checks are done, but a person still needs to review evidence."
+	case "assessment_incomplete":
+		summary.Label, summary.Tone = "NEEDS WORK", "review"
+		summary.Explanation = "Some required checks failed or still need trustworthy evidence."
+	case "environment_blocked":
+		summary.Label, summary.Tone = "SCAN BLOCKED", "bad"
+		summary.Explanation = "The scanner could not finish one or more required checks."
+	case "no_go":
+		summary.Label, summary.Tone = "NOT READY", "bad"
+		summary.Explanation = "One or more release-blocking checks failed."
+	default:
+		summary.Label, summary.Tone = "REVIEW NEEDED", "review"
+		summary.Explanation = "Review the detailed results before making a release decision."
+	}
+	return summary
+}
+
+type controlCategorySummary struct {
+	Key                string
+	Name               string
+	Total              int
+	ConfirmedFailures  int
+	Blocked            int
+	NeedsReview        int
+	PartiallyVerified  int
+	Retired            int
+	LocalPassed        int
+	LocalApplicable    int
+	LocalNotApplicable int
+	LocalFailed        int
+	LocalUnresolved    int
+	LocalManual        int
+	LocalPercentage    int
+	HasLocalScore      bool
+	LocalLabel         string
+	LocalTone          string
+}
+
+func summarizeControlCategories(run model.RunResult) []controlCategorySummary {
+	byKey := map[string]*controlCategorySummary{}
+	categoryByControlID := map[string]string{}
+	for _, result := range run.ControlResults {
+		key, name := controlCategory(result.Source.Path)
+		category := byKey[key]
+		if category == nil {
+			category = &controlCategorySummary{Key: key, Name: name}
+			byKey[key] = category
+		}
+		categoryByControlID[result.ControlID] = key
+		category.Total++
+		switch result.Disposition {
+		case "confirmed_failure":
+			category.ConfirmedFailures++
+		case "blocked":
+			category.Blocked++
+		case "needs_review":
+			category.NeedsReview++
+		case "partially_verified":
+			category.PartiallyVerified++
+		case "retired":
+			category.Retired++
+		}
+	}
+	for _, result := range run.Results {
+		linkedCategories := map[string]bool{}
+		for _, controlID := range result.ControlIDs {
+			if key := categoryByControlID[controlID]; key != "" {
+				linkedCategories[key] = true
+			}
+		}
+		for key := range linkedCategories {
+			category := byKey[key]
+			if result.Assessment == "not_applicable" || result.Applicability == "not_applicable" {
+				category.LocalNotApplicable++
+				continue
+			}
+			category.LocalApplicable++
+			switch result.Assessment {
+			case "pass":
+				category.LocalPassed++
+			case "fail":
+				category.LocalFailed++
+			case "manual_review":
+				category.LocalManual++
+			case "unknown", "stale", "conflicting":
+				category.LocalUnresolved++
+			}
+		}
+	}
+	categories := make([]controlCategorySummary, 0, len(byKey))
+	for _, category := range byKey {
+		if category.LocalApplicable > 0 {
+			category.HasLocalScore = true
+			category.LocalPercentage = (category.LocalPassed*100 + category.LocalApplicable/2) / category.LocalApplicable
+			switch {
+			case category.LocalFailed > 0:
+				category.LocalLabel, category.LocalTone = "NEEDS WORK", "bad"
+			case category.LocalUnresolved+category.LocalManual > 0:
+				category.LocalLabel, category.LocalTone = "REVIEW", "review"
+			case category.LocalPassed == category.LocalApplicable && category.LocalApplicable >= 3:
+				category.LocalLabel, category.LocalTone = "GREAT", "great"
+			case category.LocalPassed == category.LocalApplicable:
+				category.LocalLabel, category.LocalTone = "GOOD", "good"
+			default:
+				category.LocalLabel, category.LocalTone = "REVIEW", "review"
+			}
+		} else {
+			category.LocalLabel, category.LocalTone = "NOT SCORED", "unscored"
+		}
+		categories = append(categories, *category)
+	}
+	sort.Slice(categories, func(left, right int) bool {
+		leftRank := categoryScoreRank(categories[left])
+		rightRank := categoryScoreRank(categories[right])
+		if leftRank != rightRank {
+			return leftRank < rightRank
+		}
+		return categories[left].Name < categories[right].Name
+	})
+	return categories
+}
+
+func categoryScoreRank(category controlCategorySummary) int {
+	switch category.LocalTone {
+	case "bad":
+		return 0
+	case "review":
+		return 1
+	case "good":
+		return 2
+	case "great":
+		return 3
+	default:
+		return 4
+	}
+}
+
+func controlCategory(sourcePath string) (string, string) {
+	normalized := strings.ReplaceAll(sourcePath, "\\", "/")
+	base := strings.TrimSuffix(path.Base(normalized), path.Ext(normalized))
+	if separator := strings.IndexByte(base, '-'); separator > 0 {
+		numeric := true
+		for _, character := range base[:separator] {
+			if character < '0' || character > '9' {
+				numeric = false
+				break
+			}
+		}
+		if numeric {
+			base = base[separator+1:]
+		}
+	}
+	if base == "" || base == "." {
+		base = "uncategorized"
+	}
+	scope := "catalog"
+	if strings.Contains(normalized, "/engineering/") {
+		scope = "engineering"
+	} else if strings.Contains(normalized, "/checklists/") {
+		scope = "checklist"
+	}
+	key := scope + "-" + safeSlug(base)
+	return key, categoryDisplayName(base)
+}
+
+func categoryDisplayName(base string) string {
+	names := map[string]string{
+		"ai-ml-and-ai-assisted-development":          "AI, ML & agent-assisted development",
+		"application-services-and-apis":              "Application services & APIs",
+		"data-and-information-lifecycle":             "Data & information lifecycle",
+		"data-privacy-performance":                   "Data, privacy & performance",
+		"developer-experience-platform-and-delivery": "Developer experience, platform & delivery",
+		"environments-quality-experience":            "Environments, quality & experience",
+		"evidence-and-decision":                      "Evidence & decision",
+		"governance-and-foundations":                 "Governance & foundations",
+		"maintenance-vendors-compliance":             "Maintenance, vendors & compliance",
+		"operations-sre-and-support":                 "Operations, SRE & support",
+		"product-and-requirements":                   "Product & requirements",
+		"product-risk-architecture":                  "Product risk & architecture",
+		"security-and-cryptography":                  "Security & cryptography",
+		"source-build-supply-chain":                  "Source, build & supply chain",
+		"specialized-domains-and-release-assurance":  "Specialized domains & release assurance",
+		"trust-safety-and-ecosystems":                "Trust, safety & ecosystems",
+		"user-experience-web-and-content":            "User experience, web & content",
+	}
+	if name, ok := names[base]; ok {
+		return name
+	}
+	return humanizeWords(base)
+}
+
+func safeSlug(value string) string {
+	var result strings.Builder
+	previousDash := false
+	for _, character := range strings.ToLower(value) {
+		if character >= 'a' && character <= 'z' || character >= '0' && character <= '9' {
+			result.WriteRune(character)
+			previousDash = false
+		} else if !previousDash && result.Len() > 0 {
+			result.WriteByte('-')
+			previousDash = true
+		}
+	}
+	return strings.Trim(result.String(), "-")
+}
+
+func humanizeWords(value string) string {
+	words := strings.Fields(strings.NewReplacer("-", " ", "_", " ").Replace(value))
+	acronyms := map[string]string{"ai": "AI", "api": "API", "apis": "APIs", "ml": "ML", "sre": "SRE", "ux": "UX"}
+	for index, word := range words {
+		lower := strings.ToLower(word)
+		if acronym, ok := acronyms[lower]; ok {
+			words[index] = acronym
+			continue
+		}
+		if index == 0 && lower != "and" {
+			words[index] = strings.ToUpper(lower[:1]) + lower[1:]
+		} else {
+			words[index] = lower
+		}
+	}
+	if len(words) == 0 {
+		return "Uncategorized"
+	}
+	return strings.Join(words, " ")
+}
+
+func statusClass(value string) string {
+	switch value {
+	case "pass":
+		return "pass"
+	case "fail", "confirmed_failure":
+		return "fail"
+	case "unknown", "stale", "conflicting", "needs_review":
+		return "review"
+	case "manual_review":
+		return "manual"
+	case "blocked":
+		return "blocked"
+	case "not_applicable":
+		return "na"
+	case "partially_verified":
+		return "partial"
+	case "retired":
+		return "retired"
+	default:
+		return "good"
+	}
+}
+
+func statusSymbol(value string) string {
+	switch value {
+	case "great", "good", "pass":
+		return "✓"
+	case "bad", "fail", "confirmed_failure":
+		return "×"
+	case "not_applicable", "retired":
+		return "–"
+	case "partially_verified":
+		return "◐"
+	default:
+		return "!"
+	}
+}
+
+func prettyStatus(value string) string {
+	switch value {
+	case "confirmed_failure":
+		return "Confirmed failure"
+	case "needs_review":
+		return "Needs evidence"
+	case "partially_verified":
+		return "Partial evidence"
+	case "manual_review":
+		return "Manual review"
+	case "not_applicable":
+		return "Not applicable"
+	default:
+		return humanizeWords(value)
+	}
+}
+
+func severityRank(value string) int {
+	switch strings.ToLower(value) {
+	case "critical":
+		return 0
+	case "high":
+		return 1
+	case "medium":
+		return 2
+	case "low":
+		return 3
+	case "info":
+		return 4
+	default:
+		return 5
+	}
+}
+
+func gateRank(value string) int {
+	if strings.EqualFold(value, "required") {
+		return 0
+	}
+	return 1
+}
+
+func sortedFindings(findings []model.Finding) []model.Finding {
+	ordered := append([]model.Finding(nil), findings...)
+	sort.SliceStable(ordered, func(left, right int) bool {
+		if leftRank, rightRank := severityRank(ordered[left].Severity), severityRank(ordered[right].Severity); leftRank != rightRank {
+			return leftRank < rightRank
+		}
+		if leftRank, rightRank := gateRank(ordered[left].Gate), gateRank(ordered[right].Gate); leftRank != rightRank {
+			return leftRank < rightRank
+		}
+		if ordered[left].Title != ordered[right].Title {
+			return ordered[left].Title < ordered[right].Title
+		}
+		return ordered[left].AssertionID < ordered[right].AssertionID
+	})
+	return ordered
+}
+
+func sortedAttentionResults(results []model.AssertionResult) []model.AssertionResult {
+	attention := make([]model.AssertionResult, 0, len(results))
+	for _, result := range results {
+		if result.Assessment != "pass" && result.Assessment != "not_applicable" {
+			attention = append(attention, result)
+		}
+	}
+	sort.SliceStable(attention, func(left, right int) bool {
+		if leftRank, rightRank := severityRank(attention[left].Severity), severityRank(attention[right].Severity); leftRank != rightRank {
+			return leftRank < rightRank
+		}
+		if leftRank, rightRank := assessmentAttentionRank(attention[left]), assessmentAttentionRank(attention[right]); leftRank != rightRank {
+			return leftRank < rightRank
+		}
+		return attention[left].AssertionID < attention[right].AssertionID
+	})
+	return attention
+}
+
+func assessmentAttentionRank(result model.AssertionResult) int {
+	if result.Assessment == "fail" {
+		return 0
+	}
+	if result.Execution == "blocked" || result.Assessment == "unknown" {
+		return 1
+	}
+	if result.Assessment == "manual_review" {
+		return 2
+	}
+	return 3
+}
+
 func summarizeMeaning(run model.RunResult) resultMeaning {
 	summary := resultMeaning{VerifiedProblems: len(run.Findings)}
 	for _, result := range run.Results {
@@ -117,6 +534,15 @@ func markdownCell(value string) string {
 	value = strings.ReplaceAll(value, "\\", "\\\\")
 	value = strings.ReplaceAll(value, "|", "\\|")
 	return strings.Join(strings.Fields(value), " ")
+}
+
+func briefText(value string, limit int) string {
+	value = strings.Join(strings.Fields(value), " ")
+	characters := []rune(value)
+	if limit <= 0 || len(characters) <= limit {
+		return value
+	}
+	return strings.TrimSpace(string(characters[:limit])) + "…"
 }
 
 func advisoryLocationText(locations []model.FindingLocation) string {
@@ -238,7 +664,7 @@ func writeMarkdown(output io.Writer, run model.RunResult) error {
 		if _, err := fmt.Fprintln(output, "\n## Findings\n\n| Severity | Finding | Assertion | Gate | Summary | Locations | Evidence |\n| --- | --- | --- | --- | --- | ---: | ---: |"); err != nil {
 			return err
 		}
-		for _, finding := range run.Findings {
+		for _, finding := range sortedFindings(run.Findings) {
 			if _, err := fmt.Fprintf(output, "| %s | `%s` | `%s` | %s | %s | %d | %d |\n",
 				finding.Severity, finding.ID, finding.AssertionID, finding.Gate,
 				markdownCell(finding.Summary), len(finding.Locations), len(finding.EvidenceIDs)); err != nil {
@@ -333,7 +759,7 @@ func writeSARIF(output io.Writer, run model.RunResult) error {
 	rules := make([]sarifRule, 0)
 	results := make([]sarifResult, 0)
 	seenRules := map[string]bool{}
-	for _, finding := range run.Findings {
+	for _, finding := range sortedFindings(run.Findings) {
 		if !seenRules[finding.AssertionID] {
 			seenRules[finding.AssertionID] = true
 			rules = append(rules, sarifRule{
@@ -465,169 +891,447 @@ const htmlReport = `<!doctype html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Production readiness assessment</title>
+  <title>{{.Run.Inventory.TargetName}} — production readiness report</title>
   <style>
-    :root { color-scheme: light; --ink: #17202a; --muted: #52606d; --line: #c8d0d8; --panel: #f7f9fb; --accent: #175cd3; }
-    body { color: var(--ink); font: 16px/1.55 system-ui, sans-serif; margin: 2rem auto; max-width: 90rem; padding: 0 1rem; }
-	    code { overflow-wrap: anywhere; } table { border-collapse: collapse; width: 100%; }
-    caption { font-size: 1.25rem; font-weight: 700; margin: 1rem 0; text-align: left; }
-    th, td { border: 1px solid #c8d0d8; padding: .6rem; text-align: left; vertical-align: top; }
-    th { background: #edf2f7; } .status { font-weight: 700; }
-    .notice { background: #eef5ff; border-left: .35rem solid var(--accent); padding: .8rem 1rem; }
-    .counts { display: flex; flex-wrap: wrap; gap: .75rem; list-style: none; padding: 0; }
-    .counts li { background: var(--panel); border: 1px solid var(--line); border-radius: .4rem; padding: .6rem .9rem; }
-	    .card, details { border: 1px solid var(--line); border-radius: .5rem; content-visibility: auto; contain-intrinsic-size: auto 8rem; margin: 1rem 0; padding: 1rem; }
-	    .card h3 { margin-top: 0; } .meta { color: var(--muted); }
-	    summary { cursor: pointer; font-weight: 700; } dt { font-weight: 700; } dd { margin-bottom: .5rem; }
-	    ul { padding-left: 1.4rem; } .filters { align-items: end; display: flex; flex-wrap: wrap; gap: .75rem; margin: 1rem 0; }
-	    .filters label { display: grid; font-weight: 700; gap: .25rem; } .filters input, .filters select { font: inherit; min-width: 15rem; padding: .45rem; }
-	    [hidden] { display: none !important; }
+    :root {
+      color-scheme: light;
+      --canvas: #fff; --surface: #fff; --surface-soft: #f6f8fa;
+      --ink: #1f2328; --muted: #59636e; --line: #d1d9e0;
+      --blue: #0969da; --blue-bg: #ddf4ff; --green: #1a7f37; --green-bg: #dafbe1;
+      --yellow: #9a6700; --yellow-bg: #fff8c5; --red: #cf222e; --red-bg: #ffebe9;
+      --gray: #59636e; --gray-bg: #f6f8fa; --radius: .375rem;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: auto; }
+    body { background: var(--canvas); color: var(--ink); font: 14px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; margin: 0; }
+    a { color: var(--blue); } a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+    code { background: #f5f7fa; border-radius: 2px; color: #0938c2; font: .88em ui-monospace, "Roboto Mono", SFMono-Regular, Menlo, Consolas, monospace; overflow-wrap: anywhere; padding: .08rem .25rem; }
+    h1, h2, h3 { line-height: 1.25; } h2 { font-size: clamp(1.3rem, 2vw, 1.6rem); font-weight: 600; letter-spacing: -.015em; margin: 0 0 .35rem; }
+    .skip-link { background: white; left: 1rem; padding: .7rem 1rem; position: fixed; top: -5rem; z-index: 20; }
+    .skip-link:focus { top: 1rem; }
+    .hero { background: #fff; border-top: 3px solid var(--blue); color: var(--ink); padding: 0 1.25rem; }
+    .hero-inner, main, .nav-inner { margin: 0 auto; max-width: 68rem; }
+    .report-brand { align-items: center; border-bottom: 1px solid var(--line); display: flex; font-size: .78rem; justify-content: space-between; margin-bottom: 1.5rem; padding: .8rem 0; }
+    .report-brand strong { font-weight: 650; }
+    .report-brand span { color: var(--muted); }
+    .hero-heading { margin: 0 auto; max-width: 52rem; text-align: center; }
+    .hero h1 { font-size: clamp(1.8rem, 4vw, 2.45rem); font-weight: 600; letter-spacing: -.03em; margin: 0; overflow-wrap: anywhere; }
+    .rating { align-items: center; display: inline-flex; font-size: .72rem; font-weight: 700; gap: .35rem; letter-spacing: .06em; padding-top: .45rem; text-transform: uppercase; white-space: nowrap; }
+    .rating-great { color: var(--green); } .rating-good { color: #0d47a1; } .rating-review { color: var(--yellow); } .rating-bad { color: var(--red); }
+    .hero-grid { margin: 1rem auto 0; max-width: 46rem; text-align: center; }
+    .score-panel { align-items: center; display: flex; flex-direction: column; }
+    .score-gauge { --gauge-color: #0c6; aspect-ratio: 1; flex: 0 0 auto; position: relative; width: 8rem; }
+    .score-gauge svg { display: block; height: 100%; overflow: visible; width: 100%; }
+    .score-gauge-track, .score-gauge-value { fill: none; stroke-width: 8; }
+    .score-gauge-track { stroke: #f1f3f4; }
+    .score-gauge-value { stroke: var(--gauge-color); stroke-linecap: round; transform: rotate(-90deg); transform-origin: 50% 50%; }
+    .tone-good .hero-score-gauge { --gauge-color: #0969da; } .tone-review .hero-score-gauge { --gauge-color: #bf8700; } .tone-bad .hero-score-gauge { --gauge-color: #cf222e; }
+    .score-gauge-center { align-items: baseline; display: flex; inset: 0; justify-content: center; position: absolute; top: 3.45rem; }
+    .score-gauge-number { font-size: 2.35rem; font-weight: 500; letter-spacing: -.05em; line-height: 1; }
+    .score-gauge-scale { color: var(--muted); font-size: .65rem; font-weight: 600; margin-left: .15rem; }
+    .score-kicker { color: var(--muted); display: block; font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+    .hero-score-gauge { width: 10rem; }
+    .overall-rating { font-size: .8rem; justify-content: center; margin: .55rem 0 0; padding: 0; }
+    .score-status { font-size: 1rem; font-weight: 560; margin: .3rem auto 0; max-width: 34rem; }
+    .hero-metrics { border-bottom: 1px solid var(--line); border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(4, 1fr); margin: 1.15rem auto 0; max-width: 40rem; }
+    .hero-metric { padding: .75rem .5rem .7rem; }
+    .hero-metric + .hero-metric { border-left: 1px solid var(--line); }
+    .hero-metric strong { display: block; font-size: 1.2rem; font-weight: 600; line-height: 1.1; }
+    .hero-metric span { color: var(--muted); display: block; font-size: .7rem; margin-top: .2rem; text-transform: uppercase; }
+    .metric-pass strong { color: var(--green); } .metric-fail strong { color: var(--red); } .metric-review strong { color: var(--yellow); }
+    .hero-help { margin: .6rem auto .8rem; max-width: 40rem; text-align: left; }
+    .hero-help > summary { text-align: center; }
+    .report-nav { background: rgba(255,255,255,.98); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10; }
+    .nav-inner { display: flex; gap: .15rem; overflow-x: auto; padding: 0 1rem; scrollbar-width: none; }
+    .nav-inner::-webkit-scrollbar { display: none; }
+    .nav-inner a { border-bottom: 2px solid transparent; color: var(--muted); font-size: .78rem; font-weight: 600; padding: .65rem .7rem .55rem; text-decoration: none; white-space: nowrap; }
+    .nav-inner a:hover { border-bottom-color: var(--blue); color: var(--blue); }
+    main { padding: 2.25rem 1rem 5rem; }
+    .section { scroll-margin-top: 4rem; margin: 0 0 3.5rem; }
+    .section-intro { color: var(--muted); margin: 0 0 1.25rem; max-width: 54rem; }
+    .notice { background: #f8faff; border: 1px solid #d2e3fc; border-left: 3px solid var(--blue); border-radius: 3px; padding: .75rem .9rem; }
+    .finding-card { --severity-color: #59636e; --severity-bg: var(--gray-bg); background: var(--surface); border: 0; border-bottom: 1px solid var(--line); border-top: 1px solid var(--line); border-radius: 0; content-visibility: visible; contain-intrinsic-size: none; margin: 0 0 -.0625rem; overflow: hidden; }
+    .finding-card[open] { background: #fff; }
+    .finding-card > summary { align-items: center; display: grid; gap: .8rem; grid-template-columns: auto minmax(0, 1fr) auto; list-style: none; padding: .9rem 1rem; }
+    .finding-card > summary::-webkit-details-marker { display: none; }
+    .finding-card > summary::after { color: var(--muted); content: "Open"; font-size: .7rem; font-weight: 600; line-height: 1; }
+    .finding-card[open] > summary::after { content: "Close"; }
+    .finding-card > .finding-body { border-top: 1px solid var(--line); padding: .9rem 1rem 1rem; }
+    .finding-title { display: block; font-size: .95rem; font-weight: 650; line-height: 1.35; }
+    .finding-preview { color: var(--muted); display: block; font-size: .78rem; line-height: 1.45; margin-top: .15rem; }
+    .severity-pill { background: var(--severity-bg); color: var(--severity-color); }
+    .severity-critical { --severity-color: #a40e26; --severity-bg: #ffebe9; }
+    .severity-high { --severity-color: #cf222e; --severity-bg: var(--red-bg); }
+    .severity-medium { --severity-color: #9a6700; --severity-bg: var(--yellow-bg); }
+    .severity-low { --severity-color: #0969da; --severity-bg: var(--blue-bg); }
+    .severity-info, .severity-unknown { --severity-color: var(--gray); --severity-bg: var(--gray-bg); }
+    .severity-label { color: var(--severity-color); font-size: .66rem; font-weight: 700; letter-spacing: .04em; margin-left: auto; text-transform: uppercase; white-space: nowrap; }
+    .severity-key { align-items: center; color: var(--muted); display: flex; flex-wrap: wrap; font-size: .75rem; gap: .45rem .8rem; margin: -.45rem 0 1rem; }
+    .severity-key .key-dot { background: var(--severity-color); }
+    .pill { border: 1px solid transparent; border-radius: 3px; display: inline-flex; font-size: .66rem; font-weight: 650; gap: .25rem; letter-spacing: .03em; padding: .18rem .35rem; text-transform: uppercase; white-space: nowrap; }
+    .pill-pass { background: var(--green-bg); color: var(--green); } .pill-partial, .pill-good { background: var(--blue-bg); color: #1e40af; }
+    .pill-fail, .pill-bad { background: var(--red-bg); color: var(--red); } .pill-review, .pill-blocked, .pill-manual { background: var(--yellow-bg); color: var(--yellow); }
+    .pill-na, .pill-retired { background: var(--gray-bg); color: var(--gray); }
+    .next-action { background: var(--yellow-bg); border: 1px solid #d4a72c66; margin-top: .7rem; padding: .65rem .75rem; }
+    .primary-detail { margin: .3rem 0 .65rem; max-width: 58rem; }
+    .meta { color: var(--muted); } .compact { margin: .35rem 0; } ul { padding-left: 1.35rem; }
+    details { background: var(--surface); border: 0; border-bottom: 1px solid var(--line); content-visibility: auto; contain-intrinsic-size: auto 7rem; margin: 0; }
+    details[open] { background: #fff; }
+    summary { cursor: pointer; font-weight: 520; padding: .75rem .8rem; }
+    details > .detail-body { border-top: 1px solid var(--line); padding: .9rem 1rem 1rem; }
+    .summary-help { background: transparent; border: 0; border-top: 1px solid var(--line); margin-top: .8rem; }
+    .summary-help > summary { color: var(--blue); font-size: .78rem; padding: .65rem 0; }
+    .summary-help .detail-body { font-size: .82rem; }
+    .finding-details { background: transparent; border: 0; margin-top: .7rem; }
+    .finding-details > summary, .raw-details > summary { color: var(--blue); font-size: .78rem; font-weight: 650; padding: .45rem 0; }
+    .finding-details > .detail-body, .raw-details > .detail-body { background: var(--surface-soft); border: 1px solid var(--line); border-radius: var(--radius); padding: .8rem .9rem; }
+    .raw-details { background: transparent; border: 0; margin-top: .7rem; }
+    .raw-list { background: transparent; border: 0; margin-top: .35rem; }
+    .raw-list > summary { color: var(--blue); font-size: .75rem; padding: .35rem 0; }
+    .section-disclosure { border: 0; border-bottom: 1px solid var(--line); border-top: 1px solid var(--line); border-radius: 0; margin-bottom: -.0625rem; scroll-margin-top: 4rem; }
+    .section-disclosure[open] { margin-bottom: 2.5rem; }
+    .section-disclosure > summary { align-items: center; display: flex; gap: 1rem; justify-content: space-between; list-style: none; padding: 1rem 1.1rem; }
+    .section-disclosure > summary::-webkit-details-marker { display: none; }
+    .section-disclosure > summary::after { color: var(--blue); content: "Open"; flex: 0 0 auto; font-size: .72rem; font-weight: 650; }
+    .section-disclosure[open] > summary::after { content: "Close"; }
+    .disclosure-title { display: block; font-size: 1rem; font-weight: 650; }
+    .disclosure-note { color: var(--muted); display: block; font-size: .76rem; font-weight: 400; margin-top: .15rem; }
+    .section-disclosure > .section-disclosure-body { border-top: 1px solid var(--line); padding: 1.15rem; }
+    .section-disclosure-body h2 { font-size: 1.15rem; margin-top: .2rem; }
+    .result-group { border: 1px solid var(--line); border-radius: var(--radius); margin-top: .8rem; }
+    .result-group > summary { background: var(--surface-soft); display: flex; justify-content: space-between; }
+    .result-count { color: var(--muted); font-size: .75rem; font-weight: 500; }
+    .assertion-row > summary, .control-row > summary { align-items: flex-start; display: flex; gap: .55rem; }
+    .row-summary { color: var(--ink); min-width: 0; overflow-wrap: anywhere; }
+    .row-summary code { white-space: nowrap; }
+    .advice { background: var(--blue-bg); border-left: 3px solid var(--blue); margin: .8rem 0; padding: .7rem .8rem; }
+    .more-controls { display: block; margin: 1rem auto 0; min-width: 12rem; }
+    .result-pass { border-left: 3px solid #0c6; } .result-fail { border-left: 3px solid #f33; }
+    .result-review, .result-blocked, .result-manual { border-left: 3px solid #fa3; } .result-na { border-left: 3px solid #9e9e9e; } .result-partial { border-left: 3px solid #06f; }
+    dl { display: grid; gap: .25rem 1rem; grid-template-columns: minmax(10rem, .3fr) minmax(0, 1fr); margin: .5rem 0; }
+    dt { font-weight: 600; } dd { margin: 0 0 .55rem; min-width: 0; }
+    .category-key { align-items: center; color: var(--muted); display: flex; flex-wrap: wrap; font-size: .74rem; gap: .45rem .9rem; margin: 0; padding: .35rem 0 .8rem; }
+    .category-key strong { color: var(--ink); }
+    .key-item { align-items: center; display: inline-flex; gap: .35rem; }
+    .key-dot { background: var(--gray); border-radius: 999px; height: .5rem; width: .5rem; } .key-dot.great { background: #1a7f37; } .key-dot.good { background: #0969da; } .key-dot.review { background: #bf8700; } .key-dot.bad { background: #cf222e; }
+    .category-grid { border-bottom: 1px solid var(--line); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .category-card { --category-color: #59636e; background: #fff; border: 0; border-top: 1px solid var(--line); color: inherit; display: flex; min-width: 0; padding: 1.25rem .75rem 1.1rem; text-align: center; text-decoration: none; transition: background-color .12s; }
+    .category-card:hover { background: var(--surface-soft); }
+    .category-great { --category-color: #1a7f37; } .category-good { --category-color: #0969da; } .category-review { --category-color: #bf8700; } .category-bad { --category-color: #cf222e; }
+    .category-overview { align-items: center; display: flex; flex: 1; flex-direction: column; min-width: 0; }
+    .category-gauge { aspect-ratio: 1; display: block; position: relative; width: 6.75rem; }
+    .category-gauge svg { display: block; height: 100%; width: 100%; }
+    .category-gauge .score-gauge-track, .category-gauge .score-gauge-value { stroke-width: 8; }
+    .category-gauge .score-gauge-track { stroke: #f1f3f4; }
+    .category-gauge .score-gauge-value { stroke: var(--category-color); }
+    .category-score { align-items: baseline; display: flex; inset: 0; justify-content: center; position: absolute; top: 2.4rem; }
+    .category-score strong { font-size: 1.7rem; font-weight: 500; letter-spacing: -.05em; line-height: 1; } .category-score small { color: var(--muted); font-size: .55rem; font-weight: 600; margin-left: .1rem; }
+    .category-title { display: block; font-size: .88rem; font-weight: 600; line-height: 1.3; margin-top: .65rem; }
+    .category-score-label { color: var(--category-color); display: block; font-size: .65rem; font-weight: 650; letter-spacing: .05em; margin-top: .35rem; text-transform: uppercase; }
+    .category-unscored .category-score-label { color: var(--muted); }
+    .category-checks { color: var(--muted); display: block; font-size: .72rem; margin-top: .45rem; }
+    .unscored-group { border: 0; border-bottom: 1px solid var(--line); }
+    .unscored-group summary { align-items: center; background: var(--surface-soft); display: flex; justify-content: space-between; padding: .7rem .8rem; }
+    .unscored-group summary span { color: var(--muted); font-size: .75rem; font-weight: 400; }
+    .unscored-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .unscored-link { align-items: center; border-top: 1px solid var(--line); color: inherit; display: grid; gap: .65rem; grid-template-columns: 2rem minmax(0, 1fr); padding: .7rem .8rem; text-decoration: none; }
+    .unscored-link:hover { background: #fafafa; }
+    .unscored-mark { align-items: center; border: 3px solid #e0e0e0; border-radius: 50%; color: var(--muted); display: flex; font-size: 1rem; height: 2rem; justify-content: center; width: 2rem; }
+    .unscored-name { display: block; font-size: .78rem; font-weight: 600; line-height: 1.35; } .unscored-meta { color: var(--muted); display: block; font-size: .68rem; }
+    .filter-panel { align-items: end; background: #fafafa; border: 1px solid var(--line); display: grid; gap: .75rem; grid-template-columns: minmax(15rem, 2fr) minmax(12rem, 1fr) minmax(12rem, 1fr) auto; padding: .8rem; position: sticky; top: 2.85rem; z-index: 5; }
+    .filter-panel label { color: var(--muted); display: grid; font-size: .72rem; font-weight: 600; gap: .25rem; }
+    input, select, button { font: inherit; } input, select { background: white; border: 1px solid #bdbdbd; border-radius: 3px; color: var(--ink); min-height: 2.35rem; padding: .45rem .55rem; width: 100%; }
+    button { background: white; border: 1px solid #9e9e9e; border-radius: 3px; color: var(--ink); cursor: pointer; font-weight: 600; min-height: 2.35rem; padding: .45rem .7rem; }
+    button:hover { background: #f1f3f4; }
+    .filter-count { color: var(--muted); font-size: .78rem; font-weight: 600; margin: .65rem .1rem; }
+    .control-row summary code, .assertion-row summary code { margin: 0 .2rem; }
+    .technical { background: #fafafa; } .technical table { border-collapse: collapse; width: 100%; }
+    th, td { border-bottom: 1px solid var(--line); padding: .65rem; text-align: left; vertical-align: top; }
+    th { background: #eef1f4; color: var(--muted); font-weight: 600; } caption { font-size: 1rem; font-weight: 600; margin: 1rem 0; text-align: left; }
+    .footer-note { border-top: 1px solid var(--line); color: var(--muted); margin-top: 2rem; padding-top: 1.2rem; }
+    .back-top { display: none; }
+    [hidden] { display: none !important; }
+    @media (max-width: 900px) { .category-grid { grid-template-columns: repeat(3, 1fr); } .unscored-grid { grid-template-columns: repeat(2, 1fr); } .filter-panel { grid-template-columns: 1fr 1fr; position: static; } }
+    @media (max-width: 600px) { body { font-size: 13px; } .hero { padding: 0 1rem; } .report-brand { margin-bottom: 1.1rem; } .hero-score-gauge { width: 8.5rem; } .score-gauge-center { top: 2.85rem; } .score-gauge-number { font-size: 2rem; } .hero-metric { padding-left: .2rem; padding-right: .2rem; } .hero-metric strong { font-size: 1.05rem; } .hero-metric span { font-size: .62rem; } .filter-panel { grid-template-columns: 1fr; } .category-grid { grid-template-columns: repeat(2, 1fr); } .category-card { padding-left: .45rem; padding-right: .45rem; } .category-gauge { width: 5.75rem; } .category-score { top: 2rem; } .finding-card > summary { align-items: start; grid-template-columns: minmax(0, 1fr) auto; } .finding-card .severity-pill { grid-column: 1 / -1; grid-row: 1; width: max-content; } .finding-card .finding-summary-copy { grid-column: 1; grid-row: 2; } .finding-card > summary::after { grid-column: 2; grid-row: 2; } .unscored-grid { grid-template-columns: 1fr; } .section-disclosure > summary { align-items: flex-start; } .assertion-row > summary, .control-row > summary { flex-wrap: wrap; } dl { grid-template-columns: 1fr; } dt { margin-top: .45rem; } }
+    @media print { .report-nav, .filter-panel, .back-top, button { display: none !important; } .hero { border-top: 0; padding: 1rem 0; } main { padding: 1rem 0; } details { break-inside: avoid; } }
   </style>
 </head>
-<body>
-  <main>
-    <h1>Production readiness assessment</h1>
-    <dl>
-      <dt>Run</dt><dd><code>{{.Run.RunID}}</code></dd>
-      <dt>Profile</dt><dd><code>{{.Run.Plan.ProfileID}}@{{.Run.Plan.ProfileVersion}}</code></dd>
-      <dt>Target</dt><dd>{{.Run.Inventory.TargetName}}</dd>
-      <dt>Inventory</dt><dd><code>{{.Run.Inventory.Digest}}</code></dd>
-      {{if .Run.Plan.ConfigurationDigest}}<dt>Configuration</dt><dd><code>{{.Run.Plan.ConfigurationDigest}}</code></dd>
-      <dt>Project</dt><dd><code>{{.Run.Plan.ProjectID}}</code></dd>
-      <dt>Target environments</dt><dd>{{join .Run.Plan.TargetEnvironments}}</dd>
-      <dt>Artifact digests</dt><dd>{{join .Run.Plan.ArtifactDigests}}</dd>{{end}}
-	      <dt>Local profile result</dt><dd class="status">{{.ProfileState}}</dd>
-	      <dt>Full catalog coverage result</dt><dd class="status">{{.Run.TerminalState}}</dd>
-	      {{if .Run.Inventory.GitCommit}}<dt>Git HEAD</dt><dd><code>{{.Run.Inventory.GitCommit}}</code> ({{.GitState}} worktree)</dd>{{end}}
-	      <dt>Hashed inventory bytes</dt><dd>{{.InventoryBytes}}</dd>
-	      <dt>Reported automatic exclusions</dt><dd>{{.ExclusionCount}}</dd>
-    </dl>
-    <p class="notice"><strong>Report-only scan:</strong> this command assessed the project and did not apply fixes. Results are scoped to the profile, target inventory, and evidence named above.</p>
-    <h2>Assessment summary</h2>
-    <ul class="counts">{{range .Counts}}<li><strong>{{index . 0}}</strong>: {{index . 1}}</li>{{end}}<li><strong>findings</strong>: {{len .Run.Findings}}</li></ul>
-	<h2>What the result means</h2>
-	<ul class="counts">
-	  <li><strong>Verified problems</strong>: {{.Meaning.VerifiedProblems}}<br><span class="meta">Narrow failures backed by scanner evidence.</span></li>
-	  <li><strong>Narrow checks passed</strong>: {{.Meaning.NarrowChecksPassed}}<br><span class="meta">Exact local assertions, not whole-control certification.</span></li>
-	  <li><strong>Local checks unresolved</strong>: {{.Meaning.LocalChecksUnresolved}}<br><span class="meta">Missing or conflicting local evidence.</span></li>
-	  <li><strong>Manual decisions</strong>: {{.Meaning.ManualDecisions}}<br><span class="meta">A person or higher-authority evidence is required.</span></li>
-	  <li><strong>Controls needing review or evidence</strong>: {{.Meaning.ControlsNeedingReview}}<br><span class="meta">Broad controls not proved by this local profile.</span></li>
-	  <li><strong>Advisory AI reviews</strong>: {{.Meaning.AIAdvice}}<br><span class="meta">Suggestions only.</span></li>
-	</ul>
-	{{if .Run.ControlCatalog}}<h2>Complete control catalog</h2>
-	<p class="notice"><strong>All {{.Run.ControlCatalog.ControlCount}} registered controls are included.</strong> Deterministic assertions prove only their exact, narrow statements. A <code>partially_verified</code> result is not a complete Pass, and an AI review is advisory only.</p>
-	<dl>
-	  <dt>Registry version / digest</dt><dd><code>{{.Run.ControlCatalog.RegistryVersion}}</code> / <code>{{.Run.ControlCatalog.RegistrySHA256}}</code></dd>
-	  <dt>Source digest</dt><dd><code>{{.Run.ControlCatalog.SourceSHA256}}</code></dd>
-	  <dt>Controls</dt><dd>{{.Run.ControlCatalog.ControlCount}} registered / {{.Run.ControlCatalog.ActiveControlCount}} active</dd>
-	  <dt>Narrow profile state before expansion</dt><dd>{{.Run.ControlCatalog.ProfileTerminalState}}</dd>
-	  {{if .Run.ControlCatalog.AIReviewProvider}}<dt>Advisory AI review</dt><dd>{{.Run.ControlCatalog.AIReviewProvider}}{{if .Run.ControlCatalog.AIReviewModel}} / {{.Run.ControlCatalog.AIReviewModel}}{{end}} — {{.Run.ControlCatalog.AIReviewState}}, {{.Run.ControlCatalog.AIReviewedCount}} controls reviewed, {{.Run.ControlCatalog.AIAdvisoryFailCount}} advisory failure candidates. AI advice cannot create a verified Pass or final Not Applicable result.</dd>{{end}}
-	</dl>
-	<ul class="counts">{{range .ControlCounts}}<li><strong>{{index . 0}}</strong>: {{index . 1}}</li>{{end}}</ul>
-		<div class="filters" aria-label="Control filters">
-		  <label>Search controls<input id="control-search" type="search" placeholder="ID, statement, source, or advice"></label>
-		  <label>Disposition<select id="control-disposition"><option value="">All dispositions</option><option>confirmed_failure</option><option>blocked</option><option>needs_review</option><option>partially_verified</option><option>retired</option></select></label>
-		  <span id="control-filter-count" role="status"></span>
-		</div>
-		<section id="control-results">{{range .Run.ControlResults}}<details data-disposition="{{.Disposition}}" {{if eq .Disposition "confirmed_failure"}}open{{end}}>
-		  <summary>[{{.Disposition}}] <code>{{.ControlID}}</code> — {{.Statement}}</summary>
-	  <dl>
-	    <dt>Coverage / authority</dt><dd>{{.Coverage}} / {{.Authority}}</dd>
-	    <dt>Source</dt><dd><code>{{.Source.Path}}:{{.Source.Line}}</code></dd>
-	    <dt>Result explanation</dt><dd>{{.Summary}}</dd>
-	    <dt>All known assertions</dt><dd>{{if .AssertionIDs}}<code>{{join .AssertionIDs}}</code>{{else}}None yet.{{end}}</dd>
-	    <dt>Assertions executed in this profile</dt><dd>{{if .ExecutedAssertionIDs}}<code>{{join .ExecutedAssertionIDs}}</code>{{else}}None.{{end}}</dd>
-	    {{if .AIReview}}<dt>Advisory AI review</dt><dd><strong>{{.AIReview.Provider}}{{if .AIReview.Model}} / {{.AIReview.Model}}{{end}}</strong>: {{.AIReview.AssessmentCandidate}} / {{.AIReview.ApplicabilityCandidate}} / confidence {{.AIReview.Confidence}}. {{.AIReview.Reason}} {{.AIReview.Advice}} This cannot create a verified Pass.</dd>
-	    <dt>AI citation locations</dt><dd>{{if .AIReview.Evidence}}<ul>{{range .AIReview.Evidence}}<li><code>{{location .}}</code></li>{{end}}</ul>{{else}}No repository line was cited.{{end}}</dd>
-	    <dt>AI verification state</dt><dd><code>{{verification .AIReview}}</code>. A valid snapshot location proves only that the cited line existed in the screened input. It does not prove that the line supports the AI claim; claim text remains advisory and unverified.</dd>
-	    <dt>AI review limits</dt><dd><ul>{{range .AIReview.Limitations}}<li>{{.}}</li>{{end}}</ul></dd>{{end}}
-	  </dl>
-		</details>{{end}}</section>{{end}}
-    {{if .Run.AdapterExecutions}}<table>
-      <caption>Adapter executions</caption>
-      <thead><tr><th scope="col">Adapter</th><th scope="col">Manifest</th><th scope="col">Authorization</th><th scope="col">Trust</th><th scope="col">Registry</th><th scope="col">Status</th><th scope="col">Execution</th></tr></thead>
-      <tbody>{{range .Run.AdapterExecutions}}<tr><td><code>{{.AdapterID}}</code></td><td><code>{{.ManifestSHA256}}</code></td><td>{{.Resolution.Source}}</td><td>{{.Resolution.Trust}}</td><td><code>{{.Resolution.RegistryID}}</code></td><td>{{.Transcript.Summary.Status}}</td><td><code>{{.ExecutionID}}</code></td></tr>{{end}}</tbody>
-    </table>{{end}}
-    <h2>Detailed findings</h2>
-    {{if .Run.Findings}}{{range .Run.Findings}}<article class="card">
-      <h3>{{.Title}}</h3>
-      <p class="meta"><strong>{{.Severity}}</strong> severity · {{.Gate}} gate · remediation class {{.RemediationClass}}</p>
-      <p>{{.Summary}}</p>
-      <dl>
-        <dt>Assertion</dt><dd><code>{{.AssertionID}}</code></dd>
-        <dt>Control IDs</dt><dd>{{if .ControlIDs}}<code>{{join .ControlIDs}}</code>{{else}}—{{end}}</dd>
-        <dt>Next action</dt><dd>{{remediation .RemediationClass}}</dd>
-        <dt>Locations</dt><dd>{{if .Locations}}<ul>{{range .Locations}}<li><code>{{location .}}</code></li>{{end}}</ul>{{else}}No source location was emitted.{{end}}</dd>
-        <dt>Evidence IDs</dt><dd>{{if .EvidenceIDs}}<ul>{{range .EvidenceIDs}}<li><code>{{.}}</code></li>{{end}}</ul>{{else}}No evidence identifier was attached.{{end}}</dd>
-        <dt>Finding ID</dt><dd><code>{{.ID}}</code></dd>
-        <dt>Stable fingerprint</dt><dd><code>{{.Fingerprint}}</code></dd>
-      </dl>
-    </article>{{end}}{{else}}<p>No verified failure was converted into an actionable finding. Review incomplete and manual assertion results below.</p>{{end}}
-    <h2>All assertion results</h2>
-    <p>Open each result to see applicability, execution state, required evidence, observed evidence, source locations, controls, and remediation class.</p>
-    {{range .Run.Results}}<details {{if eq .Assessment "fail"}}open{{end}}>
-      <summary>[{{.Assessment}}] <code>{{.AssertionID}}</code> — {{.Summary}}</summary>
-      <dl>
-        <dt>Applicability / execution</dt><dd>{{.Applicability}} / {{.Execution}}</dd>
-        <dt>Severity / gate</dt><dd>{{.Severity}} / {{.Gate}}</dd>
-        <dt>Control IDs</dt><dd>{{if .ControlIDs}}<code>{{join .ControlIDs}}</code>{{else}}—{{end}}</dd>
-        <dt>Remediation class</dt><dd>{{.RemediationClass}}</dd>
-        <dt>Locations</dt><dd>{{if .Locations}}<ul>{{range .Locations}}<li><code>{{location .}}</code></li>{{end}}</ul>{{else}}No source location was emitted.{{end}}</dd>
-        <dt>Required evidence</dt><dd>{{if .EvidenceRequired}}<ul>{{range .EvidenceRequired}}<li><strong>{{.Kind}}</strong> (minimum authority: {{.MinimumAuthority}}): {{.Description}}</li>{{end}}</ul>{{else}}No evidence requirement was declared.{{end}}</dd>
-        <dt>Observed evidence</dt><dd>{{if .EvidenceObserved}}<ul>{{range .EvidenceObserved}}<li><strong>{{.Kind}}</strong> from <code>{{.Source}}</code>: {{.Summary}} <span class="meta">(authority: {{.Authority}}; observed: {{observedAt .}}; ID: <code>{{.ID}}</code>)</span></li>{{end}}</ul>{{else}}No evidence was observed.{{end}}</dd>
-	      </dl>
-	    </details>{{end}}
-	    <p class="notice"><strong>Evidence time:</strong> an observation time says when evidence was collected. It does not prove that the evidence is still fresh; the required age depends on the project, environment, and rule.</p>
-	    <p>This report is scoped to the named profile, target inventory, and evidence set. It is not an unqualified production-readiness or compliance claim.</p>
-	  </main>
-	  <script>
-	  (() => {
-	    const root = document.getElementById('control-results');
-	    if (!root) return;
-	    const items = Array.from(root.querySelectorAll(':scope > details'));
-	    const search = document.getElementById('control-search');
-	    const disposition = document.getElementById('control-disposition');
-	    const count = document.getElementById('control-filter-count');
-	    const apply = () => {
-	      const query = search.value.trim().toLocaleLowerCase();
-	      let visible = 0;
-	      for (const item of items) {
-	        const shown = (!query || item.textContent.toLocaleLowerCase().includes(query)) &&
-	          (!disposition.value || item.dataset.disposition === disposition.value);
-	        item.hidden = !shown;
-	        if (shown) visible++;
-	      }
-	      count.textContent = visible + ' of ' + items.length + ' controls shown';
-	    };
-	    search.addEventListener('input', apply);
-	    disposition.addEventListener('change', apply);
-	    apply();
-	  })();
-	  </script>
-	</body>
+<body class="tone-{{.Local.Tone}}" id="top">
+  <a class="skip-link" href="#main-content">Skip to report</a>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="report-brand"><strong>Production Readiness Checklist</strong><span>Scan report</span></div>
+      <div class="hero-heading">
+        <h1>{{.Run.Inventory.TargetName}}</h1>
+      </div>
+      <div class="hero-grid">
+        <section class="score-panel" aria-labelledby="local-score-title">
+          <div class="score-gauge hero-score-gauge" role="img" aria-label="Overall local score: {{.Local.Percentage}} out of 100">
+            <svg viewBox="0 0 120 120" aria-hidden="true"><circle class="score-gauge-track" cx="60" cy="60" r="50"></circle><circle class="score-gauge-value" cx="60" cy="60" r="50" pathLength="100" stroke-dasharray="{{.Local.Percentage}} 100"></circle></svg>
+            <span class="score-gauge-center"><strong class="score-gauge-number">{{.Local.Percentage}}</strong><span class="score-gauge-scale">/100</span></span>
+          </div>
+          <div><span class="score-kicker">Local score</span><span class="rating overall-rating rating-{{.Local.Tone}}" id="local-score-title"><span aria-hidden="true">{{statusSymbol .Local.Tone}}</span> {{.Local.Label}}</span><p class="score-status">{{if .Local.Blocking}}{{.Local.Blocking}} release-blocking {{if eq .Local.Blocking 1}}check{{else}}checks{{end}} failed.{{else}}{{.Local.Explanation}}{{end}}</p></div>
+        </section>
+      </div>
+      <div class="hero-metrics" aria-label="Local check counts"><div class="hero-metric metric-pass"><strong>{{.Local.Passed}}</strong><span>Passed</span></div><div class="hero-metric metric-fail"><strong>{{.Local.Failed}}</strong><span>Failed</span></div><div class="hero-metric metric-review"><strong>{{.Local.ToReview}}</strong><span>Review</span></div><div class="hero-metric"><strong>{{.Local.NotApplicable}}</strong><span>Not needed</span></div></div>
+      <details class="summary-help hero-help"><summary>About this score</summary><div class="detail-body">
+        <p><strong>{{.Local.Passed}} of {{.Local.Applicable}}</strong> applicable checks passed using <code>{{.Run.Plan.ProfileID}}@{{.Run.Plan.ProfileVersion}}</code>. {{.Local.NotApplicable}} checks did not apply.</p>
+        <p>The score is a simple local-check pass rate, not a readiness grade. One serious failure can outweigh many passing checks.</p>
+        <p><strong>Report-only scan:</strong> no files were fixed and no project scripts were run.{{if .Run.ControlCatalog}} The wider catalog still has {{.Meaning.ControlsNeedingReview}} controls needing evidence or review.{{end}}</p>
+        <p>AI suggestions, when present, are advice rather than verified passes.</p>
+      </div></details>
+    </div>
+  </header>
+  <nav class="report-nav" aria-label="Report sections"><div class="nav-inner">
+    <a href="#top">Overview</a>{{if .Run.ControlCatalog}}<a href="#categories">Categories</a>{{end}}<a href="#findings">Fix first</a><a href="#local-checks">Details</a>
+  </div></nav>
+  <main id="main-content">
+    {{if .Run.ControlCatalog}}<section class="section" id="categories">
+      <h2>Scores by category</h2>
+      <p class="section-intro">Each score uses only the local checks that ran for that category. Select a category to inspect its linked controls.</p>
+      <div class="category-key"><strong>Score colors</strong><span class="key-item"><span class="key-dot great"></span>Great</span><span class="key-item"><span class="key-dot good"></span>Good</span><span class="key-item"><span class="key-dot review"></span>Review</span><span class="key-item"><span class="key-dot bad"></span>Needs work</span><span class="key-item"><span class="key-dot"></span>Not scored</span></div>
+      <div class="category-grid">{{range .ScoredCategories}}<a class="category-card category-{{.LocalTone}}" href="#control-explorer" data-category-link="{{.Key}}">
+        <span class="category-overview">
+          <span class="category-gauge" role="img" aria-label="{{.Name}}: {{.LocalPercentage}} out of 100 from linked local checks">
+            <svg viewBox="0 0 120 120" aria-hidden="true"><circle class="score-gauge-track" cx="60" cy="60" r="50"></circle><circle class="score-gauge-value" cx="60" cy="60" r="50" pathLength="100" stroke-dasharray="{{.LocalPercentage}} 100"></circle></svg>
+            <span class="category-score"><strong>{{.LocalPercentage}}</strong><small>/100</small></span>
+          </span>
+          <span class="category-title">{{.Name}}</span><span class="category-score-label">{{.LocalLabel}}</span>
+          <span class="category-checks">{{.LocalPassed}} / {{.LocalApplicable}} checks passed{{if .LocalNotApplicable}} · {{.LocalNotApplicable}} did not apply{{end}}</span>
+        </span>
+      </a>{{end}}</div>
+      {{if .UnscoredCategories}}<details class="unscored-group"><summary>Not scored in this scan <span>{{len .UnscoredCategories}} categories without an applicable linked local check</span></summary><div class="unscored-grid">{{range .UnscoredCategories}}<a class="unscored-link" href="#control-explorer" data-category-link="{{.Key}}"><span class="unscored-mark" aria-hidden="true">—</span><span><span class="unscored-name">{{.Name}}</span><span class="unscored-meta">{{.Total}} controls · {{.NeedsReview}} need evidence{{if .LocalNotApplicable}} · {{.LocalNotApplicable}} did not apply{{end}}</span></span></a>{{end}}</div></details>{{end}}
+    </section>{{end}}
+
+    <section class="section" id="findings">
+      <h2>What to fix first</h2>
+      <p class="section-intro">Verified problems are sorted from most to least serious. Each row shows only the decision-making summary; open it for the full explanation and next action.</p>
+      {{if .Findings}}<div class="severity-key" aria-label="Severity colors"><strong>Severity</strong><span class="key-item severity-critical"><span class="key-dot"></span>Critical</span><span class="key-item severity-high"><span class="key-dot"></span>High</span><span class="key-item severity-medium"><span class="key-dot"></span>Medium</span><span class="key-item severity-low"><span class="key-dot"></span>Low</span><span class="key-item severity-info"><span class="key-dot"></span>Info</span></div>
+      {{range .Findings}}<details class="finding-card severity-{{severityClass .Severity}}">
+        <summary><span class="pill severity-pill severity-{{severityClass .Severity}}"><span aria-hidden="true">×</span> {{prettyStatus .Severity}} · {{prettyStatus .Gate}}</span><span class="finding-summary-copy"><span class="finding-title">{{.Title}}</span><span class="finding-preview">{{brief .Summary}}</span></span></summary>
+        <div class="finding-body">
+        <p class="primary-detail"><strong>What failed:</strong> {{.Summary}}</p>
+        <p class="next-action"><strong>Next action:</strong> {{remediation .RemediationClass}}</p>
+        <details class="finding-details"><summary>Technical details</summary><div class="detail-body"><dl>
+          <dt>Full scanner message</dt><dd>{{.Summary}}</dd>
+          <dt>Severity / gate</dt><dd>{{prettyStatus .Severity}} / {{prettyStatus .Gate}}</dd>
+          <dt>Remediation class</dt><dd>{{.RemediationClass}}</dd>
+          <dt>Assertion</dt><dd><code>{{.AssertionID}}</code></dd>
+          <dt>Control IDs</dt><dd>{{if .ControlIDs}}<code>{{join .ControlIDs}}</code>{{else}}—{{end}}</dd>
+          <dt>Locations</dt><dd>{{if .Locations}}{{if gt (len .Locations) 5}}<ul>{{range slice .Locations 0 5}}<li><code>{{location .}}</code></li>{{end}}</ul><details class="raw-list"><summary>Show all {{len .Locations}} locations</summary><ul>{{range .Locations}}<li><code>{{location .}}</code></li>{{end}}</ul></details>{{else}}<ul>{{range .Locations}}<li><code>{{location .}}</code></li>{{end}}</ul>{{end}}{{else}}No source location was emitted.{{end}}</dd>
+          <dt>Evidence IDs</dt><dd>{{if .EvidenceIDs}}<ul>{{range .EvidenceIDs}}<li><code>{{.}}</code></li>{{end}}</ul>{{else}}No evidence identifier was attached.{{end}}</dd>
+          <dt>Finding ID</dt><dd><code>{{.ID}}</code></dd><dt>Stable fingerprint</dt><dd><code>{{.Fingerprint}}</code></dd>
+        </dl></div></details>
+        </div>
+      </details>{{end}}{{else}}<p class="notice"><strong>No verified failures were found.</strong> Still review incomplete, manual, and complete-catalog results below.</p>{{end}}
+    </section>
+
+    <details class="section-disclosure" id="local-checks">
+      <summary><span><span class="disclosure-title">Local check details</span><span class="disclosure-note">Open only when you need the exact check results or raw evidence.</span></span><span class="result-count">{{len .Run.Results}} checks</span></summary>
+      <div class="section-disclosure-body">
+        <h2>Checks needing attention</h2>
+        <p class="section-intro">Failures, blocked checks, and manual decisions appear first. Open one result for its plain explanation; technical evidence is one more optional step inside.</p>
+        {{if and (eq .Local.Failed 0) (eq .Local.Unresolved 0) (eq .Local.Manual 0)}}<p class="notice"><strong>No local check needs attention.</strong></p>{{end}}
+        {{range .AttentionResults}}{{template "assertion-row" .}}{{end}}
+        {{if .Local.Passed}}<details class="result-group"><summary><span>Passed checks</span><span class="result-count">{{.Local.Passed}}</span></summary><div>{{range .Run.Results}}{{if eq .Assessment "pass"}}{{template "assertion-row" .}}{{end}}{{end}}</div></details>{{end}}
+        {{if .Local.NotApplicable}}<details class="result-group"><summary><span>Not applicable</span><span class="result-count">{{.Local.NotApplicable}}</span></summary><div>{{range .Run.Results}}{{if eq .Assessment "not_applicable"}}{{template "assertion-row" .}}{{end}}{{end}}</div></details>{{end}}
+        <p class="notice"><strong>Evidence time:</strong> observation time records when evidence was collected. It does not guarantee that evidence is still current.</p>
+      </div>
+    </details>
+
+    {{if .Run.ControlCatalog}}<details class="section-disclosure" id="control-explorer">
+      <summary><span><span class="disclosure-title">Search the complete control catalog</span><span class="disclosure-note">Use this when you need one specific rule, category, or evidence state.</span></span><span class="result-count">{{.Run.ControlCatalog.ControlCount}} controls</span></summary>
+      <div class="section-disclosure-body">
+      <h2>Search all controls</h2>
+      <p class="section-intro">Search by plain words or ID, then narrow the list by category or evidence state. Only the first 100 matches are shown at once.</p>
+      <div class="filter-panel" aria-label="Control filters">
+        <label>Search<input id="control-search" type="search" placeholder="Try: backups, authentication, PRC-02-003" autocomplete="off"></label>
+        <label>Category<select id="control-category"><option value="">All categories</option>{{range .Categories}}<option value="{{.Key}}">{{.Name}}</option>{{end}}</select></label>
+        <label>Evidence state<select id="control-disposition"><option value="">All states</option><option value="confirmed_failure">Confirmed failure</option><option value="blocked">Blocked</option><option value="needs_review">Needs evidence</option><option value="partially_verified">Partial evidence</option><option value="retired">Retired</option></select></label>
+        <button id="clear-control-filters" type="button">Clear</button>
+      </div>
+      <p class="filter-count" id="control-filter-count" role="status" aria-live="polite"></p>
+      <section id="control-results">{{range .Run.ControlResults}}<details class="control-row result-{{statusClass .Disposition}}" data-disposition="{{.Disposition}}" data-category="{{categoryKey .Source.Path}}">
+        <summary><span class="pill pill-{{statusClass .Disposition}}"><span aria-hidden="true">{{controlSymbol .Disposition}}</span> {{prettyStatus .Disposition}}</span><span class="row-summary"><code>{{.ControlID}}</code> — {{brief .Statement}}</span></summary>
+        <div class="detail-body">
+          <p class="primary-detail"><strong>What this control asks:</strong> {{.Statement}}</p>
+          <p class="primary-detail"><strong>Current result:</strong> {{.Summary}}</p>
+          {{if .AIReview}}<div class="advice"><strong>Advisory AI suggestion</strong><p>{{.AIReview.Reason}} {{.AIReview.Advice}}</p><span class="meta">This is advice only and cannot create a verified pass.</span></div>{{end}}
+          <details class="raw-details"><summary>Technical evidence and IDs</summary><div class="detail-body"><dl>
+          <dt>Category</dt><dd>{{categoryName .Source.Path}}</dd>
+          <dt>Evidence state</dt><dd>{{prettyStatus .Disposition}} — {{.Summary}}</dd>
+          <dt>Coverage / authority</dt><dd>{{prettyStatus .Coverage}} / {{prettyStatus .Authority}}</dd>
+          <dt>Source</dt><dd><code>{{.Source.Path}}:{{.Source.Line}}</code></dd>
+          <dt>All known assertions</dt><dd>{{if .AssertionIDs}}<code>{{join .AssertionIDs}}</code>{{else}}None yet.{{end}}</dd>
+          <dt>Assertions run in this profile</dt><dd>{{if .ExecutedAssertionIDs}}<code>{{join .ExecutedAssertionIDs}}</code>{{else}}None.{{end}}</dd>
+          {{if .AIReview}}<dt>Advisory AI review</dt><dd><strong>{{.AIReview.Provider}}{{if .AIReview.Model}} / {{.AIReview.Model}}{{end}}</strong>: {{.AIReview.AssessmentCandidate}} / {{.AIReview.ApplicabilityCandidate}} / confidence {{.AIReview.Confidence}}.</dd>
+          <dt>AI citation locations</dt><dd>{{if .AIReview.Evidence}}<ul>{{range .AIReview.Evidence}}<li><code>{{location .}}</code></li>{{end}}</ul>{{else}}No repository line was cited.{{end}}</dd>
+          <dt>AI verification state</dt><dd><code>{{verification .AIReview}}</code>. A valid snapshot location proves only that the cited line existed in the screened input. It does not prove that the line supports the AI claim; claim text remains advisory and unverified.</dd>
+          <dt>AI review limits</dt><dd><ul>{{range .AIReview.Limitations}}<li>{{.}}</li>{{end}}</ul></dd>{{end}}
+          </dl></div></details>
+        </div>
+      </details>{{end}}</section>
+      <button class="more-controls" id="show-more-controls" type="button" hidden>Show more controls</button>
+      </div>
+    </details>{{end}}
+
+    <details class="section-disclosure" id="technical">
+      <summary><span><span class="disclosure-title">Scan metadata</span><span class="disclosure-note">Run IDs, hashes, catalog identity, and adapter records.</span></span><span class="result-count">Technical</span></summary>
+      <div class="section-disclosure-body">
+      <h2>Scan metadata</h2>
+      <p class="section-intro">This information makes the report repeatable and auditable. Most readers do not need it.</p>
+      <details class="technical"><summary>Run, source, and catalog identity</summary><div class="detail-body"><dl>
+        <dt>Run</dt><dd><code>{{.Run.RunID}}</code></dd><dt>Profile</dt><dd><code>{{.Run.Plan.ProfileID}}@{{.Run.Plan.ProfileVersion}}</code></dd>
+        <dt>Target</dt><dd>{{.Run.Inventory.TargetName}}</dd><dt>Inventory</dt><dd><code>{{.Run.Inventory.Digest}}</code></dd>
+        {{if .Run.Plan.ConfigurationDigest}}<dt>Configuration</dt><dd><code>{{.Run.Plan.ConfigurationDigest}}</code></dd><dt>Project</dt><dd><code>{{.Run.Plan.ProjectID}}</code></dd><dt>Target environments</dt><dd>{{join .Run.Plan.TargetEnvironments}}</dd><dt>Artifact digests</dt><dd>{{join .Run.Plan.ArtifactDigests}}</dd>{{end}}
+        <dt>Local profile result</dt><dd>{{.ProfileState}}</dd><dt>Full catalog coverage result</dt><dd>{{.Run.TerminalState}}</dd>
+        {{if .Run.Inventory.GitCommit}}<dt>Git HEAD</dt><dd><code>{{.Run.Inventory.GitCommit}}</code> ({{.GitState}} worktree)</dd>{{end}}
+        <dt>Hashed inventory bytes</dt><dd>{{.InventoryBytes}}</dd><dt>Reported automatic exclusions</dt><dd>{{.ExclusionCount}}</dd>
+        {{if .Run.ControlCatalog}}<dt>Registry version / digest</dt><dd><code>{{.Run.ControlCatalog.RegistryVersion}}</code> / <code>{{.Run.ControlCatalog.RegistrySHA256}}</code></dd><dt>Catalog source digest</dt><dd><code>{{.Run.ControlCatalog.SourceSHA256}}</code></dd><dt>Controls</dt><dd>{{.Run.ControlCatalog.ControlCount}} registered / {{.Run.ControlCatalog.ActiveControlCount}} active</dd>{{end}}
+      </dl></div></details>
+      {{if .Run.AdapterExecutions}}<details class="technical"><summary>Adapter executions</summary><div class="detail-body"><table>
+        <caption>Adapter executions</caption><thead><tr><th scope="col">Adapter</th><th scope="col">Manifest</th><th scope="col">Authorization</th><th scope="col">Trust</th><th scope="col">Registry</th><th scope="col">Status</th><th scope="col">Execution</th></tr></thead>
+        <tbody>{{range .Run.AdapterExecutions}}<tr><td><code>{{.AdapterID}}</code></td><td><code>{{.ManifestSHA256}}</code></td><td>{{.Resolution.Source}}</td><td>{{.Resolution.Trust}}</td><td><code>{{.Resolution.RegistryID}}</code></td><td>{{.Transcript.Summary.Status}}</td><td><code>{{.ExecutionID}}</code></td></tr>{{end}}</tbody>
+      </table></div></details>{{end}}
+      <p class="footer-note">This report is scoped to the named profile, target inventory, and evidence set. It is not an unqualified production-readiness or compliance claim.</p>
+      </div>
+    </details>
+  </main>
+  <script>
+  (() => {
+    for (const link of document.querySelectorAll('a[href^="#"]')) {
+      link.addEventListener('click', event => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (!target) return;
+        event.preventDefault();
+        if (target instanceof HTMLDetailsElement) target.open = true;
+        history.pushState(null, '', link.getAttribute('href'));
+        const settle = () => window.scrollTo(0, target.getBoundingClientRect().top + window.scrollY - 48);
+        settle();
+        requestAnimationFrame(() => { settle(); setTimeout(settle, 80); });
+      });
+    }
+    const root = document.getElementById('control-results');
+    if (!root) return;
+    const items = Array.from(root.querySelectorAll(':scope > details'));
+    const search = document.getElementById('control-search');
+    const category = document.getElementById('control-category');
+    const disposition = document.getElementById('control-disposition');
+    const clear = document.getElementById('clear-control-filters');
+    const count = document.getElementById('control-filter-count');
+    const more = document.getElementById('show-more-controls');
+    const explorer = document.getElementById('control-explorer');
+    const pageSize = 100;
+    let limit = pageSize;
+    let timer;
+    const apply = () => {
+      const query = search.value.trim().toLocaleLowerCase();
+      const matches = [];
+      for (const item of items) {
+        const matchesFilter = (!query || item.textContent.toLocaleLowerCase().includes(query)) &&
+          (!category.value || item.dataset.category === category.value) &&
+          (!disposition.value || item.dataset.disposition === disposition.value);
+        if (matchesFilter) matches.push(item);
+      }
+      for (const item of items) item.hidden = true;
+      const visible = matches.slice(0, limit);
+      for (const item of visible) item.hidden = false;
+      count.textContent = 'Showing ' + visible.length.toLocaleString() + ' of ' + matches.length.toLocaleString() + ' matching controls';
+      const remaining = matches.length - visible.length;
+      more.hidden = remaining <= 0;
+      if (remaining > 0) more.textContent = 'Show ' + Math.min(pageSize, remaining).toLocaleString() + ' more';
+    };
+    const resetAndApply = () => { limit = pageSize; apply(); };
+    const schedule = () => { clearTimeout(timer); timer = setTimeout(resetAndApply, 120); };
+    search.addEventListener('input', schedule);
+    category.addEventListener('change', resetAndApply);
+    disposition.addEventListener('change', resetAndApply);
+    clear.addEventListener('click', () => { search.value = ''; category.value = ''; disposition.value = ''; resetAndApply(); search.focus(); });
+    more.addEventListener('click', () => { limit += pageSize; apply(); });
+    for (const link of document.querySelectorAll('[data-category-link]')) {
+      link.addEventListener('click', () => { explorer.open = true; category.value = link.dataset.categoryLink; search.value = ''; disposition.value = ''; resetAndApply(); });
+    }
+    apply();
+  })();
+  </script>
+</body>
 </html>
+{{define "assertion-row"}}<details class="assertion-row result-{{statusClass .Assessment}}">
+  <summary><span class="pill pill-{{statusClass .Assessment}}"><span aria-hidden="true">{{assessmentSymbol .Assessment}}</span> {{prettyStatus .Assessment}}</span><span class="row-summary"><code>{{.AssertionID}}</code> — {{brief .Summary}}</span><span class="severity-label severity-{{severityClass .Severity}}">{{prettyStatus .Severity}}</span></summary>
+  <div class="detail-body">
+    <p class="primary-detail"><strong>Result:</strong> {{.Summary}}</p>
+    <p class="primary-detail"><strong>Suggested next step:</strong> {{remediation .RemediationClass}}</p>
+    <details class="raw-details"><summary>Technical evidence and IDs</summary><div class="detail-body"><dl>
+      <dt>Applicability / execution</dt><dd>{{prettyStatus .Applicability}} / {{prettyStatus .Execution}}</dd>
+      <dt>Severity / gate</dt><dd>{{prettyStatus .Severity}} / {{prettyStatus .Gate}}</dd>
+      <dt>Control IDs</dt><dd>{{if .ControlIDs}}<code>{{join .ControlIDs}}</code>{{else}}—{{end}}</dd>
+      <dt>Remediation class</dt><dd>{{.RemediationClass}}</dd>
+      <dt>Locations</dt><dd>{{if .Locations}}{{if gt (len .Locations) 5}}<ul>{{range slice .Locations 0 5}}<li><code>{{location .}}</code></li>{{end}}</ul><details class="raw-list"><summary>Show all {{len .Locations}} locations</summary><ul>{{range .Locations}}<li><code>{{location .}}</code></li>{{end}}</ul></details>{{else}}<ul>{{range .Locations}}<li><code>{{location .}}</code></li>{{end}}</ul>{{end}}{{else}}No source location was emitted.{{end}}</dd>
+      <dt>Required evidence</dt><dd>{{if .EvidenceRequired}}<ul>{{range .EvidenceRequired}}<li><strong>{{.Kind}}</strong> (minimum authority: {{.MinimumAuthority}}): {{.Description}}</li>{{end}}</ul>{{else}}No evidence requirement was declared.{{end}}</dd>
+      <dt>Observed evidence</dt><dd>{{if .EvidenceObserved}}<ul>{{range .EvidenceObserved}}<li><strong>{{.Kind}}</strong> from <code>{{.Source}}</code>: {{.Summary}} <span class="meta">(authority: {{.Authority}}; observed: {{observedAt .}}; ID: <code>{{.ID}}</code>)</span></li>{{end}}</ul>{{else}}No evidence was observed.{{end}}</dd>
+    </dl></div></details>
+  </div>
+</details>{{end}}
 `
 
 func writeHTML(output io.Writer, run model.RunResult) error {
+	categories := summarizeControlCategories(run)
+	scoredCategories := make([]controlCategorySummary, 0, len(categories))
+	unscoredCategories := make([]controlCategorySummary, 0, len(categories))
+	for _, category := range categories {
+		if category.HasLocalScore {
+			scoredCategories = append(scoredCategories, category)
+		} else {
+			unscoredCategories = append(unscoredCategories, category)
+		}
+	}
 	view := struct {
-		Run            model.RunResult
-		Counts         [][2]string
-		ControlCounts  [][2]string
-		Meaning        resultMeaning
-		ProfileState   string
-		GitState       string
-		InventoryBytes string
-		ExclusionCount int
+		Run                model.RunResult
+		Findings           []model.Finding
+		AttentionResults   []model.AssertionResult
+		Meaning            resultMeaning
+		Local              LocalCheckSummary
+		Categories         []controlCategorySummary
+		ScoredCategories   []controlCategorySummary
+		UnscoredCategories []controlCategorySummary
+		ProfileState       string
+		GitState           string
+		InventoryBytes     string
+		ExclusionCount     int
 	}{
-		Run: run, Counts: assessmentCounts(run.Results), ControlCounts: controlDispositionCounts(run.ControlResults),
-		Meaning:      summarizeMeaning(run),
-		ProfileState: profileTerminalState(run), GitState: inventoryFact(run.Inventory, "repository.git_worktree_state"),
+		Run: run, Findings: sortedFindings(run.Findings), AttentionResults: sortedAttentionResults(run.Results),
+		Meaning: summarizeMeaning(run), Local: SummarizeLocalChecks(run),
+		Categories: categories, ScoredCategories: scoredCategories, UnscoredCategories: unscoredCategories,
+		ProfileState:   profileTerminalState(run),
+		GitState:       inventoryFact(run.Inventory, "repository.git_worktree_state"),
 		InventoryBytes: inventoryFact(run.Inventory, "repository.inventory_bytes"),
 		ExclusionCount: inventoryFactCount(run.Inventory, "repository.exclusion"),
 	}
 	return template.Must(template.New("report").Funcs(template.FuncMap{
 		"join":         func(values []string) string { return strings.Join(values, ", ") },
+		"brief":        func(value string) string { return briefText(value, 150) },
 		"verification": advisoryVerificationText,
+		"prettyStatus": prettyStatus,
+		"statusClass":  statusClass,
+		"severityClass": func(value string) string {
+			switch strings.ToLower(value) {
+			case "critical", "high", "medium", "low", "info":
+				return strings.ToLower(value)
+			default:
+				return "unknown"
+			}
+		},
+		"statusSymbol":     statusSymbol,
+		"assessmentSymbol": statusSymbol,
+		"controlSymbol":    statusSymbol,
+		"categoryKey": func(sourcePath string) string {
+			key, _ := controlCategory(sourcePath)
+			return key
+		},
+		"categoryName": func(sourcePath string) string {
+			_, name := controlCategory(sourcePath)
+			return name
+		},
 		"observedAt": func(value model.Evidence) string {
 			if value.ObservedAt.IsZero() {
 				return "not recorded in this legacy/test record"

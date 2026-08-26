@@ -4,6 +4,8 @@ import (
 	"bytes"
 	"strings"
 	"testing"
+
+	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 )
 
 func TestTerminalTextNeutralizesControlAndBidirectionalCharacters(t *testing.T) {
@@ -12,6 +14,18 @@ func TestTerminalTextNeutralizesControlAndBidirectionalCharacters(t *testing.T) 
 	if strings.ContainsAny(output, "\x1b\a\r\n\b") || strings.ContainsRune(output, '\u202e') ||
 		!strings.Contains(output, `\u001B`) || !strings.Contains(output, `\u202E`) {
 		t.Fatalf("unsafe terminal text: %q", output)
+	}
+}
+
+func TestTerminalBriefIsSafeAndRuneAware(t *testing.T) {
+	if got := terminalBrief("  a\n clearer   result  ", 100); got != "a clearer result" {
+		t.Fatalf("unexpected compact result: %q", got)
+	}
+	if got := terminalBrief("readiness ✓ evidence", 11); got != "readiness ✓…" {
+		t.Fatalf("unicode truncation was not rune-safe: %q", got)
+	}
+	if got := terminalBrief("safe\x1b[31m fake", 100); strings.ContainsRune(got, '\x1b') || !strings.Contains(got, `\u001B`) {
+		t.Fatalf("terminal control was not neutralized: %q", got)
 	}
 }
 
@@ -63,5 +77,56 @@ func TestProductBannerWorksWithAndWithoutColor(t *testing.T) {
 				t.Fatalf("unexpected color state: %q", text)
 			}
 		})
+	}
+}
+
+func TestLocalCheckBarIsBoundedAndReadable(t *testing.T) {
+	for _, item := range []struct {
+		percentage int
+		want       string
+	}{
+		{-10, "░░░░░░░░░░"},
+		{50, "█████░░░░░"},
+		{88, "█████████░"},
+		{120, "██████████"},
+	} {
+		if got := localCheckBar(item.percentage, 10); got != item.want {
+			t.Fatalf("localCheckBar(%d, 10) = %q, want %q", item.percentage, got, item.want)
+		}
+	}
+	if got := localCheckBar(50, 0); got != "" {
+		t.Fatalf("zero-width bar = %q", got)
+	}
+}
+
+func TestFinalScanSummaryIsActionableAndOrdered(t *testing.T) {
+	run := model.RunResult{
+		TerminalState: "no_go",
+		Plan:          model.Plan{ProfileID: "prc/core-repository", ProfileVersion: "1.0"},
+		Inventory:     model.Inventory{TargetName: "sample-app", Digest: "digest"},
+		Results: []model.AssertionResult{
+			{AssertionID: "PRC-LOW", Assessment: "fail", Execution: "completed", Severity: "low", Summary: "A lower-priority failure."},
+			{AssertionID: "PRC-CRITICAL", Assessment: "fail", Execution: "completed", Severity: "critical", Summary: "A release-blocking failure."},
+			{AssertionID: "PRC-MANUAL", Assessment: "manual_review", Execution: "completed", Severity: "medium", Summary: "A reviewer must decide."},
+			{AssertionID: "PRC-PASS", Assessment: "pass", Execution: "completed", Severity: "high", Summary: "Passed."},
+		},
+		ControlCatalog: &model.ControlCatalogSummary{ControlCount: 2, ProfileTerminalState: "no_go"},
+		ControlResults: []model.ControlResult{{Disposition: "needs_review"}, {Disposition: "confirmed_failure"}},
+	}
+	var output bytes.Buffer
+	printScanSummary(&output, run, terminalStyle{}, "/reports/sample.html")
+	text := output.String()
+	for _, expected := range []string{"SCAN COMPLETE", "Needs attention", "Coverage", "Report", "Detailed report: /reports/sample.html", "Open it for remediation steps", "No project scripts were run"} {
+		if !strings.Contains(text, expected) {
+			t.Errorf("final summary missing %q: %s", expected, text)
+		}
+	}
+	attentionText := text[strings.Index(text, "Needs attention"):]
+	criticalAt, manualAt, lowAt := strings.Index(attentionText, "PRC-CRITICAL"), strings.Index(attentionText, "PRC-MANUAL"), strings.Index(attentionText, "PRC-LOW")
+	if criticalAt < 0 || manualAt <= criticalAt || lowAt <= manualAt {
+		t.Fatalf("attention items are not ordered by severity: %d %d %d\n%s", criticalAt, manualAt, lowAt, text)
+	}
+	if strings.Contains(text, "Result details") || strings.Contains(text, "Control dispositions") {
+		t.Fatalf("dense implementation details leaked into the final handoff: %s", text)
 	}
 }

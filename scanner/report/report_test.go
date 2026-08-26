@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"encoding/xml"
+	"fmt"
 	"strings"
 	"testing"
 	"time"
@@ -137,9 +138,190 @@ func TestHTMLReportEscapesUntrustedText(t *testing.T) {
 	if !strings.Contains(text, "example-product") || !strings.Contains(text, "staging") {
 		t.Fatal("configured scope missing from HTML")
 	}
-	for _, expected := range []string{"What the result means", "Verified problems", "Controls needing review or evidence", "AI verification state", "citation=snapshot_location_validated; claim=advisory_unverified", "does not prove that the line supports the AI claim", "Detailed findings", "All assertion results", "README.md:1:2", "USEQ-FDCA6C71", "A root README must exist.", "README was not present.", "authority:", "observed: not recorded", "Evidence time:", "evidence-001", "remediation class R2", "isolated agent-authored candidate", "Report-only scan"} {
+	for _, expected := range []string{"report-brand", "Scan report", "Local score", "hero-metrics", "About this score", "score-gauge", "pathLength=\"100\"", "NOT READY", "simple local-check pass rate", "controls needing evidence or review", "Scores by category", "Not scored in this scan", "control-category", "AI verification state", "citation=snapshot_location_validated; claim=advisory_unverified", "does not prove that the line supports the AI claim", "What to fix first", "Local check details", "README.md:1:2", "USEQ-FDCA6C71", "A root README must exist.", "README was not present.", "authority:", "observed: not recorded", "Evidence time:", "evidence-001", "Remediation class", ">R2<", "isolated agent-authored candidate", "Report-only scan", "Show more controls", "Technical evidence and IDs"} {
 		if !strings.Contains(text, expected) {
 			t.Errorf("detailed HTML report missing %q", expected)
 		}
+	}
+	overallAt := strings.Index(text, "Overall local score")
+	categoriesAt := strings.Index(text, "Scores by category")
+	findingsAt := strings.Index(text, "What to fix first")
+	detailsAt := strings.Index(text, "Local check details")
+	if overallAt < 0 || categoriesAt <= overallAt || findingsAt <= categoriesAt || detailsAt <= findingsAt {
+		t.Fatalf("report hierarchy should be overall score, category scores, findings, then details: %d %d %d %d", overallAt, categoriesAt, findingsAt, detailsAt)
+	}
+	if strings.Contains(text, `class="assertion-row result-fail" open`) {
+		t.Fatal("failed assertions should start collapsed so large evidence lists do not break report navigation")
+	}
+	if strings.Contains(text, `class="finding-card severity-high" open`) || !strings.Contains(text, `class="finding-card severity-high"`) {
+		t.Fatal("verified failure cards should start as compact, severity-colored disclosures")
+	}
+	for _, collapsed := range []string{`class="section-disclosure" id="local-checks"`, `class="section-disclosure" id="control-explorer"`, `class="section-disclosure" id="technical"`} {
+		if !strings.Contains(text, collapsed) {
+			t.Errorf("advanced report section is not an explicit collapsed disclosure: %s", collapsed)
+		}
+	}
+}
+
+func TestHTMLFindingsAndAttentionChecksSortBySeverity(t *testing.T) {
+	run := reportRun()
+	base := run.Findings[0]
+	low := base
+	low.Title, low.Severity, low.AssertionID = "Low issue", "low", "PRC-A-LOW"
+	critical := base
+	critical.Title, critical.Severity, critical.AssertionID = "Critical issue", "critical", "PRC-A-CRITICAL"
+	medium := base
+	medium.Title, medium.Severity, medium.AssertionID = "Medium issue", "medium", "PRC-A-MEDIUM"
+	run.Findings = []model.Finding{low, medium, critical}
+	run.Results = []model.AssertionResult{
+		{AssertionID: "PRC-A-LOW", Assessment: "fail", Severity: "low"},
+		{AssertionID: "PRC-A-CRITICAL", Assessment: "fail", Severity: "critical"},
+		{AssertionID: "PRC-A-MEDIUM", Assessment: "manual_review", Severity: "medium"},
+	}
+
+	var output bytes.Buffer
+	if err := Write("html", &output, run); err != nil {
+		t.Fatal(err)
+	}
+	text := output.String()
+	criticalAt := strings.Index(text, "Critical issue")
+	mediumAt := strings.Index(text, "Medium issue")
+	lowAt := strings.Index(text, "Low issue")
+	if criticalAt < 0 || mediumAt <= criticalAt || lowAt <= mediumAt {
+		t.Fatalf("findings should be ordered critical, medium, low: %d %d %d", criticalAt, mediumAt, lowAt)
+	}
+	localDetailsAt := strings.Index(text, `id="local-checks"`)
+	if localDetailsAt < 0 {
+		t.Fatal("local check details section is missing")
+	}
+	localDetails := text[localDetailsAt:]
+	criticalCheckAt := strings.Index(localDetails, "PRC-A-CRITICAL")
+	mediumCheckAt := strings.Index(localDetails, "PRC-A-MEDIUM")
+	lowCheckAt := strings.Index(localDetails, "PRC-A-LOW")
+	if criticalCheckAt < 0 || mediumCheckAt <= criticalCheckAt || lowCheckAt <= mediumCheckAt {
+		t.Fatalf("attention checks should be ordered critical, medium, low: %d %d %d", criticalCheckAt, mediumCheckAt, lowCheckAt)
+	}
+	for _, expected := range []string{"severity-critical", "severity-medium", "severity-low", "Technical details"} {
+		if !strings.Contains(text, expected) {
+			t.Errorf("severity presentation missing %q", expected)
+		}
+	}
+}
+
+func TestBriefTextCollapsesWhitespaceAndPreservesUnicode(t *testing.T) {
+	if got := briefText("  a\n  clearer   result  ", 100); got != "a clearer result" {
+		t.Fatalf("unexpected short result: %q", got)
+	}
+	if got := briefText("readiness ✓ evidence", 11); got != "readiness ✓…" {
+		t.Fatalf("unicode truncation was not rune-safe: %q", got)
+	}
+}
+
+func TestHTMLReportKeepsLongDiagnosticsBehindNestedDetails(t *testing.T) {
+	run := reportRun()
+	locations := make([]model.FindingLocation, 0, 7)
+	for index := 1; index <= 7; index++ {
+		locations = append(locations, model.FindingLocation{Path: fmt.Sprintf("src/file-%d.go", index), Line: index})
+	}
+	run.Findings[0].Locations = locations
+	run.Results[0].Locations = locations
+	run.Results[0].Summary = strings.Repeat("long diagnostic output ", 12)
+
+	var output bytes.Buffer
+	if err := Write("html", &output, run); err != nil {
+		t.Fatal(err)
+	}
+	text := output.String()
+	if strings.Count(text, "Show all 7 locations") != 2 {
+		t.Fatalf("long finding and assertion locations should each require a second disclosure")
+	}
+	if !strings.Contains(text, `class="raw-details"><summary>Technical evidence and IDs</summary>`) {
+		t.Fatal("raw assertion evidence is not separated from the plain result")
+	}
+	if strings.Contains(text, `class="raw-details" open`) || strings.Contains(text, `class="finding-details" open`) {
+		t.Fatal("technical evidence should start collapsed")
+	}
+	if !strings.Contains(text, "long diagnostic output long diagnostic output") || !strings.Contains(text, "…") {
+		t.Fatal("the complete diagnostic and its shortened row label must both remain available")
+	}
+}
+
+func TestLocalCheckSummaryKeepsPassRateSeparateFromGateResult(t *testing.T) {
+	run := reportRun()
+	run.Results = nil
+	for index := 0; index < 14; index++ {
+		run.Results = append(run.Results, model.AssertionResult{Assessment: "pass", Applicability: "applicable"})
+	}
+	for index := 0; index < 2; index++ {
+		gate := "optional"
+		if index == 0 {
+			gate = "required"
+		}
+		run.Results = append(run.Results, model.AssertionResult{Assessment: "fail", Applicability: "applicable", Gate: gate})
+		run.Results = append(run.Results, model.AssertionResult{Assessment: "not_applicable", Applicability: "not_applicable"})
+	}
+	run.ControlCatalog.ProfileTerminalState = "no_go"
+
+	summary := SummarizeLocalChecks(run)
+	if summary.Passed != 14 || summary.Applicable != 16 || summary.NotApplicable != 2 || summary.Blocking != 1 || summary.ToReview != 0 ||
+		summary.Percentage != 88 || summary.Label != "NOT READY" || summary.Tone != "bad" {
+		t.Fatalf("unexpected local summary: %+v", summary)
+	}
+	if !strings.Contains(summary.Explanation, "release-blocking") {
+		t.Fatalf("gate explanation is unclear: %+v", summary)
+	}
+}
+
+func TestLocalCheckSummaryCallsACompletePassingProfileGreat(t *testing.T) {
+	run := reportRun()
+	run.ControlCatalog = nil
+	run.TerminalState = "profile_satisfied"
+	run.Results = []model.AssertionResult{
+		{Assessment: "pass", Applicability: "applicable"},
+		{Assessment: "pass", Applicability: "applicable"},
+		{Assessment: "not_applicable", Applicability: "not_applicable"},
+	}
+	summary := SummarizeLocalChecks(run)
+	if summary.Percentage != 100 || summary.Label != "GREAT" || summary.Tone != "great" {
+		t.Fatalf("unexpected passing summary: %+v", summary)
+	}
+}
+
+func TestCategoryScoresUseOnlyDistinctLinkedLocalChecks(t *testing.T) {
+	run := reportRun()
+	run.ControlResults = []model.ControlResult{
+		{ControlID: "USEQ-SECURITY-A", Source: model.Source{Path: "docs/engineering/08-security-and-cryptography.md"}},
+		{ControlID: "USEQ-SECURITY-B", Source: model.Source{Path: "docs/engineering/08-security-and-cryptography.md"}},
+		{ControlID: "USEQ-DOCS", Source: model.Source{Path: "docs/engineering/13-documentation-and-knowledge.md"}},
+		{ControlID: "USEQ-ARCH", Source: model.Source{Path: "docs/engineering/04-architecture-and-design.md"}},
+	}
+	run.Results = []model.AssertionResult{
+		{Assessment: "pass", Applicability: "applicable", ControlIDs: []string{"USEQ-SECURITY-A", "USEQ-SECURITY-B"}},
+		{Assessment: "fail", Applicability: "applicable", ControlIDs: []string{"USEQ-SECURITY-A"}},
+		{Assessment: "pass", Applicability: "applicable", ControlIDs: []string{"USEQ-DOCS"}},
+		{Assessment: "not_applicable", Applicability: "not_applicable", ControlIDs: []string{"USEQ-DOCS"}},
+	}
+
+	categories := summarizeControlCategories(run)
+	byKey := map[string]controlCategorySummary{}
+	for _, category := range categories {
+		byKey[category.Key] = category
+	}
+	security := byKey["engineering-security-and-cryptography"]
+	if security.LocalApplicable != 2 || security.LocalPassed != 1 || security.LocalFailed != 1 ||
+		security.LocalPercentage != 50 || security.LocalLabel != "NEEDS WORK" || security.LocalTone != "bad" {
+		t.Fatalf("unexpected security category: %+v", security)
+	}
+	documentation := byKey["engineering-documentation-and-knowledge"]
+	if documentation.LocalApplicable != 1 || documentation.LocalPassed != 1 || documentation.LocalNotApplicable != 1 ||
+		documentation.LocalPercentage != 100 || documentation.LocalLabel != "GOOD" || documentation.LocalTone != "good" {
+		t.Fatalf("unexpected documentation category: %+v", documentation)
+	}
+	architecture := byKey["engineering-architecture-and-design"]
+	if architecture.HasLocalScore || architecture.LocalLabel != "NOT SCORED" || architecture.LocalTone != "unscored" {
+		t.Fatalf("unexecuted category was presented as scored: %+v", architecture)
+	}
+	if len(categories) != 3 || categories[0].Key != security.Key || categories[1].Key != documentation.Key || categories[2].Key != architecture.Key {
+		t.Fatalf("categories were not ordered by useful score state: %+v", categories)
 	}
 }
