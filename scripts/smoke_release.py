@@ -117,7 +117,8 @@ def run_json(command: list[str], label: str, cwd: pathlib.Path | None = None) ->
         stdin=subprocess.DEVNULL,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
-        text=True,
+        encoding="utf-8",
+        errors="strict",
     )
     if completed.returncode != 0:
         detail = (completed.stderr.strip() or completed.stdout.strip() or "no diagnostic output")[:4_000]
@@ -254,7 +255,8 @@ def smoke(release: pathlib.Path, version: str, commit: str) -> None:
             stdin=subprocess.DEVNULL,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
-            text=True,
+            encoding="utf-8",
+            errors="strict",
         )
         if install.returncode != 0:
             raise RuntimeError(f"offline npm tarball install failed: {(install.stderr or install.stdout)[:4_000]}")

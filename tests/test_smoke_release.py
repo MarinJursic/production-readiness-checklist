@@ -44,6 +44,14 @@ class SmokeReleaseTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, "incomplete"):
             smoke_release.verify_result(valid, "test")
 
+    def test_json_process_output_is_always_strict_utf8(self) -> None:
+        completed = mock.Mock(returncode=0, stdout='{"message":"ready — yes"}', stderr="")
+        with mock.patch.object(smoke_release.subprocess, "run", return_value=completed) as run:
+            self.assertEqual(smoke_release.run_json(["scanner"], "test"), {"message": "ready — yes"})
+        self.assertEqual(run.call_args.kwargs["encoding"], "utf-8")
+        self.assertEqual(run.call_args.kwargs["errors"], "strict")
+        self.assertNotIn("text", run.call_args.kwargs)
+
     def test_manifest_cannot_authorize_an_oversized_artifact(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = pathlib.Path(temporary)
