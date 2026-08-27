@@ -8,6 +8,8 @@ import tempfile
 import unittest
 from unittest import mock
 
+import yaml
+
 from scripts import npm_distribution, publish_npm
 
 
@@ -97,6 +99,19 @@ class PublishNpmTests(unittest.TestCase):
         }), mock.patch("scripts.publish_npm.subprocess.run", side_effect=run):
             result = publish_npm.default_run(["npm", "--version"])
         self.assertEqual(result.returncode, 0)
+
+    def test_release_workflow_does_not_enable_legacy_npm_token_auth(self) -> None:
+        workflow = yaml.safe_load(
+            (publish_npm.build_release.ROOT / ".github/workflows/release-scanner.yml").read_text(
+                encoding="utf-8"
+            )
+        )
+        setup = next(
+            step
+            for step in workflow["jobs"]["publish"]["steps"]
+            if step.get("name") == "Set up Node.js for npm trusted publishing"
+        )
+        self.assertNotIn("registry-url", setup.get("with", {}))
 
     def test_existing_different_package_bytes_fail_closed(self) -> None:
         def run(command: list[str]) -> subprocess.CompletedProcess[str]:
