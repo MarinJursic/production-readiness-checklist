@@ -70,6 +70,22 @@ class ReleaseBuilderTests(unittest.TestCase):
         self.assertEqual(normalized["metadata"]["component"]["bom-ref"], reference)
         self.assertEqual(normalized["dependencies"][0]["ref"], reference)
         self.assertEqual(
+            normalized["serialNumber"],
+            build_release.release_sbom_serial("0.1.0", "a" * 40),
+        )
+        self.assertRegex(
+            normalized["serialNumber"],
+            r"^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+        )
+        self.assertNotEqual(
+            normalized["serialNumber"],
+            build_release.release_sbom_serial("0.1.1", "a" * 40),
+        )
+        self.assertNotEqual(
+            normalized["serialNumber"],
+            build_release.release_sbom_serial("0.1.0", "b" * 40),
+        )
+        self.assertEqual(
             normalized["metadata"]["properties"],
             [
                 {"name": "prc:build:version", "value": "0.1.0"},
@@ -87,7 +103,7 @@ class ReleaseBuilderTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             source = pathlib.Path(temporary) / "bom.json"
             source.write_text(json.dumps(document), encoding="utf-8")
-            with self.assertRaisesRegex(ValueError, "serial number"):
+            with self.assertRaisesRegex(ValueError, "builder owns"):
                 build_release.normalized_sbom(source, "0.1.0", "b" * 40)
 
     def test_sbom_rejects_predeclared_scanner_identity(self) -> None:

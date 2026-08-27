@@ -169,7 +169,7 @@ jobs:
           python scripts/validate_instance.py \
             release-manifest.schema.json \
             "release/prc_${PRC_VERSION}_release-manifest.json"
-          python -c 'import json,sys; d=json.load(open(sys.argv[1], encoding="utf-8")); assert d["bomFormat"]=="CycloneDX" and d["specVersion"]=="1.6" and "serialNumber" not in d and "timestamp" not in d["metadata"]' \
+          python -c 'import json,re,sys; d=json.load(open(sys.argv[1], encoding="utf-8")); assert d["bomFormat"]=="CycloneDX" and d["specVersion"]=="1.6" and re.fullmatch(r"urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}", d["serialNumber"]) and "timestamp" not in d["metadata"]' \
             "release/prc_${PRC_VERSION}.cdx.json"
           python scripts/validate_instance.py run-result.schema.json \
             "release/prc_${PRC_VERSION}_self-scan.json"

@@ -19,6 +19,7 @@ import subprocess
 import sys
 import tarfile
 import tempfile
+import uuid
 import zipfile
 from typing import Any
 
@@ -35,6 +36,14 @@ SEMVER = re.compile(
     r"(?:-(?:(?:0|[1-9][0-9]*)|(?:[0-9A-Za-z-]*[A-Za-z-][0-9A-Za-z-]*))"
     r"(?:\.(?:(?:0|[1-9][0-9]*)|(?:[0-9A-Za-z-]*[A-Za-z-][0-9A-Za-z-]*)))*)?$"
 )
+
+
+def release_sbom_serial(version: str, commit: str) -> str:
+    """Return a reproducible RFC 4122 identity unique to this release SBOM."""
+    identity = f"https://{MODULE}/releases/tag/scanner-v{version}#{commit}"
+    return f"urn:uuid:{uuid.uuid5(uuid.NAMESPACE_URL, identity)}"
+
+
 COMMIT = re.compile(r"^(?:[0-9a-f]{40}|[0-9a-f]{64})$")
 TARGETS = (
     ("linux", "amd64"),
@@ -115,7 +124,7 @@ def normalized_sbom(source: pathlib.Path, version: str, commit: str) -> bytes:
     if not isinstance(document, dict) or document.get("bomFormat") != "CycloneDX" or document.get("specVersion") != "1.6":
         raise ValueError("SBOM must be a CycloneDX 1.6 JSON document")
     if "serialNumber" in document:
-        raise ValueError("release SBOM must omit a nondeterministic serial number")
+        raise ValueError("SBOM input must omit its serial number; the release builder owns that identity")
     metadata = document.get("metadata")
     component = metadata.get("component") if isinstance(metadata, dict) else None
     if not isinstance(component, dict) or component.get("name") != MODULE:
@@ -144,6 +153,7 @@ def normalized_sbom(source: pathlib.Path, version: str, commit: str) -> bytes:
         return value
 
     document = replace_references(document)
+    document["serialNumber"] = release_sbom_serial(version, commit)
     metadata = document["metadata"]
     properties = metadata.setdefault("properties", [])
     if not isinstance(properties, list):

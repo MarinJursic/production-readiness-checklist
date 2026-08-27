@@ -451,6 +451,8 @@ jobs:
           python scripts/validate_instance.py \
             release-manifest.schema.json \
             "$RUNNER_TEMP/release-first/prc_0.0.0-ci_release-manifest.json"
+          python -c 'import json,re,sys; d=json.load(open(sys.argv[1], encoding="utf-8")); assert d["bomFormat"]=="CycloneDX" and d["specVersion"]=="1.6" and re.fullmatch(r"urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}", d["serialNumber"]) and "timestamp" not in d["metadata"]' \
+            "$RUNNER_TEMP/release-first/prc_0.0.0-ci.cdx.json"
           mkdir "$RUNNER_TEMP/release-smoke"
           tar -xzf "$RUNNER_TEMP/release-first/prc_0.0.0-ci_linux_amd64.tar.gz" \
             -C "$RUNNER_TEMP/release-smoke"
