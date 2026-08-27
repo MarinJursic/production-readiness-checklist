@@ -16,6 +16,7 @@ import subprocess
 import sys
 import tarfile
 import tempfile
+import time
 from dataclasses import dataclass
 from typing import Any, Callable
 
@@ -30,7 +31,7 @@ REGISTRY = "https://registry.npmjs.org/"
 TRUSTED_REPOSITORY = "MarinJursic/production-readiness-checklist"
 TRUSTED_WORKFLOW = ".github/workflows/release-scanner.yml"
 MINIMUM_NODE = (22, 14, 0)
-MINIMUM_NPM = (11, 5, 1)
+MINIMUM_NPM = (12, 0, 2)
 MAXIMUM_NPM_PACKAGE_BYTES = 24 * 1024 * 1024
 MAXIMUM_EXPANDED_PACKAGE_BYTES = 64 * 1024 * 1024
 VERSION_TEXT = re.compile(r"^v?(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(?:[-+].*)?$")
@@ -375,6 +376,17 @@ def registry_integrity(run: Run, package: Package) -> str | None:
     return integrity
 
 
+def wait_for_registry_integrity(run: Run, package: Package) -> str | None:
+    """Allow bounded public-registry propagation after a successful publish."""
+    for delay in (0, 1, 2, 4, 8, 16):
+        if delay:
+            time.sleep(delay)
+        integrity = registry_integrity(run, package)
+        if integrity is not None:
+            return integrity
+    return None
+
+
 def verify_trusted_environment(packages: list[Package], environment: dict[str, str]) -> None:
     versions = {package.version for package in packages}
     commits = {package.source_commit for package in packages}
@@ -408,10 +420,13 @@ def publish(
     for secret_name in ("NODE_AUTH_TOKEN", "NPM_TOKEN"):
         if environment.get(secret_name):
             raise RuntimeError(f"{secret_name} is set; this release requires token-free npm trusted publishing")
-    node = parse_tool_version(command_output(run, ["node", "--version"], "Node.js version check"), "Node.js")
-    npm = parse_tool_version(command_output(run, ["npm", "--version"], "npm version check"), "npm")
+    node_text = command_output(run, ["node", "--version"], "Node.js version check")
+    npm_text = command_output(run, ["npm", "--version"], "npm version check")
+    node = parse_tool_version(node_text, "Node.js")
+    npm = parse_tool_version(npm_text, "npm")
     if node < MINIMUM_NODE or npm < MINIMUM_NPM:
-        raise RuntimeError("npm trusted publishing requires Node.js >=22.14.0 and npm >=11.5.1")
+        raise RuntimeError("npm trusted publishing requires Node.js >=22.14.0 and npm >=12.0.2")
+    print(f"verified trusted publishing with Node.js {node_text} and npm {npm_text}")
 
     for package in packages:
         existing = registry_integrity(run, package)
@@ -426,7 +441,7 @@ def publish(
             "--provenance", "--ignore-scripts", "--registry", REGISTRY,
         ]
         command_output(run, command, f"npm publish {package.name}@{package.version}")
-        published = registry_integrity(run, package)
+        published = wait_for_registry_integrity(run, package)
         if published != package.integrity:
             raise RuntimeError(f"npm did not return the expected integrity for {package.name}@{package.version}")
         print(f"published and verified {package.name}@{package.version} ({tag})")

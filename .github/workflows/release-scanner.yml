@@ -256,6 +256,18 @@ jobs:
           node-version: "24"
           package-manager-cache: false
 
+      - name: Install hash-bound npm trusted-publishing client
+        env:
+          PRC_NPM_VERSION: "12.0.2"
+          PRC_NPM_INTEGRITY: "sha512-uIXokLlBj6FpNUTQX1PmT5pz7BlIN9QlixX+zdaSNHsd0qUXsbDLr50xzY6Sw7cJVr0uzHKDOle0swmPW/p5Qw=="
+        run: |
+          actual_integrity="$(npm view "npm@${PRC_NPM_VERSION}" dist.integrity --json \
+            --registry https://registry.npmjs.org/)"
+          test "$actual_integrity" = "\"${PRC_NPM_INTEGRITY}\""
+          npm install --global --ignore-scripts --no-audit --no-fund \
+            "npm@${PRC_NPM_VERSION}"
+          test "$(npm --version)" = "$PRC_NPM_VERSION"
+
       - name: Download the exact tested release
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
