@@ -11,12 +11,16 @@
     "bin/prc.js",
     "platforms.json",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "DISCLOSURE"
   ],
   "engines": {
     "node": ">=22.14.0"
   },
   "license": "MIT",
+  "contentPolicy": {
+    "class": "dual-use"
+  },
   "author": "Marin Jursic",
   "homepage": "https://marinjursic.github.io/production-readiness-checklist/",
   "repository": {

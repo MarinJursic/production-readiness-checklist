@@ -199,7 +199,9 @@ def checked_support_files(
 
 
 def release_support_files() -> list[tuple[str, bytes, int]]:
-    files: list[pathlib.Path] = [ROOT / "LICENSE", ROOT / "README.md", ROOT / "THIRD_PARTY_NOTICES.md"]
+    files: list[pathlib.Path] = [
+        ROOT / "DISCLOSURE", ROOT / "LICENSE", ROOT / "README.md", ROOT / "THIRD_PARTY_NOTICES.md"
+    ]
     for directory in (
         "adapters",
         "catalog",

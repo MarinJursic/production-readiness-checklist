@@ -1,0 +1,128 @@
+name: Finalize scanner release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Exact scanner-vX.Y.Z tag whose staged npm packages were approved
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: scanner-finalize-${{ inputs.tag }}
+  cancel-in-progress: false
+
+jobs:
+  finalize:
+    if: github.actor == 'MarinJursic' && github.repository == 'MarinJursic/production-readiness-checklist'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    permissions:
+      contents: write
+    env:
+      PRC_RELEASE_TAG: ${{ inputs.tag }}
+    steps:
+      - name: Check out the exact release tag
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ inputs.tag }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: "3.12"
+
+      - name: Set up Node.js for npm registry verification
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        with:
+          node-version: "24"
+          package-manager-cache: false
+
+      - name: Install hash-bound npm registry client
+        env:
+          PRC_NPM_VERSION: "12.0.2"
+          PRC_NPM_INTEGRITY: "sha512-uIXokLlBj6FpNUTQX1PmT5pz7BlIN9QlixX+zdaSNHsd0qUXsbDLr50xzY6Sw7cJVr0uzHKDOle0swmPW/p5Qw=="
+        run: |
+          set -euo pipefail
+          actual_integrity="$(npm view "npm@${PRC_NPM_VERSION}" dist.integrity --json \
+            --registry https://registry.npmjs.org/)"
+          test "$actual_integrity" = "\"${PRC_NPM_INTEGRITY}\""
+          npm install --global --ignore-scripts --no-audit --no-fund \
+            "npm@${PRC_NPM_VERSION}"
+          test "$(npm --version)" = "$PRC_NPM_VERSION"
+
+      - name: Validate tag, main ancestry, and draft release
+        id: metadata
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if [[ "$PRC_RELEASE_TAG" != scanner-v* ]]; then
+            echo "invalid scanner release tag: $PRC_RELEASE_TAG" >&2
+            exit 1
+          fi
+          version=${PRC_RELEASE_TAG#scanner-v}
+          if [[ ${#version} -gt 128 ]] || ! python -c \
+            'import sys; from scripts.build_release import SEMVER; raise SystemExit(0 if SEMVER.fullmatch(sys.argv[1]) else 1)' \
+            "$version"; then
+            echo "invalid scanner semantic version: $version" >&2
+            exit 1
+          fi
+          tagged_commit=$(git rev-parse "${PRC_RELEASE_TAG}^{commit}")
+          test "$tagged_commit" = "$(git rev-parse HEAD)"
+          git fetch --no-tags origin main:refs/remotes/origin/main
+          git merge-base --is-ancestor "$tagged_commit" origin/main
+          release_json=$(gh release view "$PRC_RELEASE_TAG" --json isDraft,tagName)
+          python -c 'import json,os,sys; d=json.loads(sys.argv[1]); assert d=={"isDraft": True, "tagName": os.environ["PRC_RELEASE_TAG"]}' \
+            "$release_json"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          if [[ "$version" == *-* ]]; then
+            echo "prerelease=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "prerelease=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Download and verify the exact draft release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir release
+          gh release download "$PRC_RELEASE_TAG" --dir release
+          (cd release && sha256sum --check SHA256SUMS)
+          python scripts/publish_npm.py \
+            --release release \
+            --manifest "release/prc_${{ steps.metadata.outputs.version }}_release-manifest.json" \
+            --version "${{ steps.metadata.outputs.version }}" \
+            --verify-only
+
+      - name: Wait for npm scanning and verify public bytes and provenance
+        run: >-
+          python scripts/publish_npm.py
+          --release release
+          --manifest "release/prc_${{ steps.metadata.outputs.version }}_release-manifest.json"
+          --version "${{ steps.metadata.outputs.version }}"
+          --verify-public
+
+      - name: Publish the verified GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if [[ "${{ steps.metadata.outputs.prerelease }}" == "true" ]]; then
+            gh release edit "$PRC_RELEASE_TAG" --draft=false --prerelease
+          else
+            gh release edit "$PRC_RELEASE_TAG" --draft=false --latest
+          fi
+
+      - name: Record verified completion
+        run: |
+          {
+            echo "### Scanner release finalized"
+            echo
+            echo "Verified all seven public npm packages byte-for-byte with npm provenance, then published ${PRC_RELEASE_TAG}."
+          } >> "$GITHUB_STEP_SUMMARY"

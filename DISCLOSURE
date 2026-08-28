@@ -1,0 +1,21 @@
+Production Readiness Checklist is a defensive, read-only assessment tool for
+software projects that the user owns or is authorized to inspect.
+
+The scanner includes security-related capabilities that can resemble dual-use
+security tooling. It can identify exposed-secret patterns with bundled,
+version-pinned Gitleaks rules. With an explicit verify-local capability grant,
+it can invoke pinned Gitleaks, Syft, Grype, or Checkov container images against
+local project files. It can also prepare bounded project context for an
+explicitly selected Codex or Claude review. These features are intended to help
+maintainers find production-readiness gaps in their own software.
+
+The default scan does not change project files, install project dependencies,
+run project lifecycle scripts, exploit a target, upload project contents, or
+contact external analyzers. External adapters are opt-in, use exact manifests
+and pinned inputs, and are designed to run without network access. AI review is
+opt-in and advisory; it cannot create a verified pass.
+
+The package contains no exploit payloads and is not intended for unauthorized
+access, credential collection, persistence, evasion, or harm. Users are
+responsible for scanning only projects and systems they are authorized to
+assess.

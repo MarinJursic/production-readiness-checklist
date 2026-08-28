@@ -113,18 +113,34 @@ npm install --ignore-scripts --offline --no-audit --no-fund --package-lock=false
 The platform package contains the native binary and its exact runtime catalog.
 The launcher checks the platform manifest, binary SHA-256, and the size and
 SHA-256 of every runtime support file on each start. It fails closed on a
-missing, changed, oversized, or unbound file and never downloads a
-fallback or starts a binary found on `PATH`. Public npm publishing uses npm
-trusted publishing from the pinned release workflow, so the workflow refuses
-`NPM_TOKEN` and `NODE_AUTH_TOKEN`. It verifies all seven tarballs against the
-release manifest, publishes the six native packages before the launcher,
-verifies the registry SHA-512 for every package, and safely skips only an
-already-published version with exactly matching bytes. Because npm versions are
-immutable, any byte mismatch stops the release. The publisher also runs npm in
-a new empty working directory with user, global, and environment npm
-configuration removed, so a saved `.npmrc` token cannot silently replace OIDC.
-The publisher also independently requires the exact repository, workflow file,
-release tag, commit, and GitHub OIDC request variables. Running the publication
+missing, changed, oversized, or unbound file and never downloads a fallback or
+starts a binary found on `PATH`.
+
+The scanner is declared as security-related dual-use software with npm's
+`contentPolicy` metadata and the same plain-text `DISCLOSURE` in the repository,
+launcher, platform packages, and standalone archives. The disclosure describes
+the defensive purpose, opt-in analyzers, and prohibited unauthorized use. See
+npm's [dual-use policy](https://docs.npmjs.com/policies/dual-use/).
+
+Public npm release is deliberately split into two workflows. The tagged release
+workflow uses npm trusted publishing from the exact pinned workflow identity,
+refuses `NPM_TOKEN` and `NODE_AUTH_TOKEN`, creates a draft GitHub release, and
+uses `npm stage publish` for the six native packages before the launcher. A
+trusted-publisher relationship is allowed to stage but not directly publish.
+The maintainer then reviews and approves each staged package with npm 2FA. The
+manual finalizer downloads the draft assets again, checks every SHA-256 and
+release-manifest binding, waits for npm's publish-time malware scan, verifies
+the public SHA-512 and npm SLSA provenance for all seven exact packages, and
+only then makes the GitHub release public. See npm's
+[staged-publishing guide](https://docs.npmjs.com/staged-publishing/) and
+[publish-time scanning announcement](https://github.blog/changelog/2026-07-28-npm-publish-time-malware-scanning-and-dual-use-metadata/).
+
+Because npm versions are immutable, any byte mismatch stops the release. The
+stager safely skips only an already-public version with exactly matching bytes.
+It runs npm in a new empty working directory with user, global, and environment
+npm configuration removed, so a saved `.npmrc` token cannot silently replace
+OIDC. It also independently requires the exact repository, workflow file,
+release tag, commit, and GitHub OIDC request variables. Running the staging
 script locally or from another workflow fails before contacting npm.
 Release-time Python validation installs only the seven exact CPython 3.12 Linux
 wheels in `requirements-release.lock.txt`, with required SHA-256 hashes and
@@ -149,10 +165,34 @@ Then configure the same trusted-publisher identity on every package:
 - workflow filename: `release-scanner.yml`; and
 - no GitHub environment unless the workflow is later changed to use one.
 
+For every package, allow `npm stage publish` and disable direct `npm publish` in
+the trusted-publisher relationship. At package level, require two-factor
+authentication and disallow token publishing. Remove any bypass-capable legacy
+publishing token. These settings are state held by npm and must be checked in
+the npm package settings; repository files cannot enforce them.
+
 After that one-time setup, `scanner-vX.Y.Z` tags use OIDC and no long-lived npm
-publishing secret. The release workflow requires Node.js 22.14 or newer and npm
-11.5.1 or newer for trusted publishing. npm provenance links a package to its
-build source; it does not prove the package has no unsafe code.
+publishing secret. The staging workflow requires Node.js 22.14 or newer and the
+exact hash-bound npm 12.0.2 client. npm provenance links a package to its build
+source; it does not prove the package has no unsafe code.
+
+For a normal release:
+
+1. push one new immutable `scanner-vX.Y.Z` tag from a commit already on `main`;
+2. wait for all builds, security gates, native scans, and package smoke tests;
+3. open npm's staged-package list, inspect all seven matching versions, and
+   approve each one with 2FA;
+4. run **Finalize scanner release** with that exact tag; and
+5. require the finalizer to verify checksums, public bytes, and npm provenance
+   before it publishes the draft GitHub release.
+
+Staged publication is per package rather than transactional. If staging stops
+after only some packages, do not move or recreate the tag. Use an authenticated
+owner session to list the staged records, compare their names, versions, tags,
+and downloaded tarball hashes with the draft release, approve only exact
+matches, and rerun the same tagged workflow. It will verify already-public exact
+packages and stage only the missing versions. Rejecting a staged package is a
+separate destructive 2FA action and is not part of automated recovery.
 
 Version `0.1.0` was the one-time human bootstrap. npm registry signatures for
 its launcher and selected platform package can be verified, but that bootstrap

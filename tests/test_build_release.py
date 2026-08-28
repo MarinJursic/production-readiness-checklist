@@ -154,6 +154,7 @@ class ReleaseBuilderTests(unittest.TestCase):
     def test_release_support_contains_runtime_catalog_and_user_guides(self) -> None:
         names = {name for name, _data, _mode in build_release.release_support_files()}
         for expected in (
+            "DISCLOSURE",
             "THIRD_PARTY_NOTICES.md",
             "adapters/checkov-v3.3.8.yaml",
             "catalog/profiles/core-repository.yaml",

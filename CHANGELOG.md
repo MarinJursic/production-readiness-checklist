@@ -28,6 +28,10 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 - A token-free npm trusted-publishing path that verifies all seven release
   tarballs, safely resumes partial publication, publishes native packages
   before the launcher, and rejects immutable-version byte mismatches.
+- npm dual-use metadata and disclosure in every distribution, stage-only OIDC
+  publishing with human 2FA approval, publish-time malware-scan waiting, exact
+  public-byte and provenance verification, and a draft-first GitHub release
+  finalizer that cannot announce a package before all seven records verify.
 - Exact release smoke tests for native archives and npm launchers on Linux,
   macOS, and Windows across x64 and ARM64 before publication.
 - A one-command `prc scan [project]` experience with automatic bundled-catalog

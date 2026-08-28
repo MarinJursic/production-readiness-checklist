@@ -111,6 +111,8 @@ The scan is read-only: it does **not** fix files, run project code, install proj
 
 The global install lives in npm's tool directory, outside every project you scan. It does not add project `node_modules`, edit `package.json`, or change a lock file. The package has no install scripts and no third-party JavaScript dependencies, does not download a fallback binary, and does not update itself in the background. npm selects one native package for the current operating system; the small launcher verifies that binary and every bundled runtime file before starting it without a shell.
 
+Every new npm release declares its security-related dual-use features, is built with no long-lived npm token, pauses for the maintainer's npm 2FA approval, and stays as a draft GitHub release until all seven public packages match the sealed release bytes and expose npm provenance. The [release verification guide](docs/scanner/releases.md) explains the complete chain. These checks protect package origin and integrity; they do not replace reviewing what a scanner is allowed to read or run.
+
 The package keeps the complete control data but excludes the website, video, and contributor-only files. Its two largest control indexes are stored in a bounded compressed form and are expanded only in memory, so this does not remove rules or weaken checks. Release builds also strip unused debug data and enforce compressed and installed-size limits.
 
 If npm reports a global-install permission error, install Node with a version manager instead of using `sudo`. For an extra-strict installation that disables package lifecycle scripts, the longer equivalent is `npm install -g --ignore-scripts @marinjursic/prc`.

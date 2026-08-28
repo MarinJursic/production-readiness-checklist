@@ -9,6 +9,13 @@ It selects one exact platform package, checks its release-bound manifest,
 native binary, and every bundled runtime file, and starts the scanner without a
 shell, network fallback, post-install download, or background updater.
 
+The package includes a plain-text `DISCLOSURE` because some opt-in scanner
+features are security-related dual-use capabilities. The normal scan remains
+local and read-only. Published versions are staged by an exact GitHub OIDC
+identity, require human npm 2FA approval, and are verified against their npm
+provenance and release-bound bytes before the matching GitHub release is made
+public.
+
 Install it once, open a project, and run it:
 
 ```sh

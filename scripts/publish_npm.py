@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify and publish one Production Readiness Checklist npm release with npm trusted publishing."""
+"""Verify or stage one Production Readiness Checklist npm release with trusted publishing."""
 
 from __future__ import annotations
 
@@ -17,6 +17,7 @@ import sys
 import tarfile
 import tempfile
 import time
+import urllib.parse
 from dataclasses import dataclass
 from typing import Any, Callable
 
@@ -34,7 +35,7 @@ MINIMUM_NODE = (22, 14, 0)
 MINIMUM_NPM = (12, 0, 2)
 MAXIMUM_NPM_PACKAGE_BYTES = 24 * 1024 * 1024
 MAXIMUM_EXPANDED_PACKAGE_BYTES = 64 * 1024 * 1024
-REGISTRY_VERIFICATION_DELAYS = (0, 1, 2, 4, 8, 16, 32, 64, 128)
+PUBLIC_VERIFICATION_DELAYS = (0, 15, 30, 60, 120, 240, 480, 900)
 VERSION_TEXT = re.compile(r"^v?(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(?:[-+].*)?$")
 Run = Callable[[list[str]], subprocess.CompletedProcess[str]]
 
@@ -50,13 +51,15 @@ class Package:
 
 
 def default_run(command: list[str]) -> subprocess.CompletedProcess[str]:
+    excluded_tokens = {"GH_TOKEN", "GITHUB_TOKEN", "NODE_AUTH_TOKEN", "NPM_TOKEN"}
     environment = {
         name: value
         for name, value in os.environ.items()
-        if not name.upper().startswith("NPM_CONFIG_")
+        if not name.upper().startswith("NPM_CONFIG_") and name.upper() not in excluded_tokens
     }
     # Do not let a saved user/global npm token or repository .npmrc influence
-    # trusted publishing. GitHub's OIDC request variables remain available.
+    # trusted publishing. GitHub's OIDC request variables remain available,
+    # while unrelated GitHub and npm bearer tokens are not passed to npm.
     with tempfile.TemporaryDirectory(prefix="prc-npm-publish-") as directory:
         environment["NPM_CONFIG_CACHE"] = str(pathlib.Path(directory, "cache"))
         for filename, variable in (("user.npmrc", "NPM_CONFIG_USERCONFIG"), ("global.npmrc", "NPM_CONFIG_GLOBALCONFIG")):
@@ -171,7 +174,7 @@ def verify_package_members(
             binding[1]: version for binding in npm_distribution.PLATFORMS.values()
         }
         expected_members = {
-            "package/LICENSE", "package/README.md", "package/bin/prc.js",
+            "package/DISCLOSURE", "package/LICENSE", "package/README.md", "package/bin/prc.js",
             "package/package.json", "package/platforms.json",
         }
         if (
@@ -242,7 +245,7 @@ def verify_package_members(
     ):
         raise ValueError("npm platform support-file inventory is invalid")
     expected_members = {
-        "package/LICENSE", "package/README.md", "package/manifest.json", "package/package.json",
+        "package/DISCLOSURE", "package/LICENSE", "package/README.md", "package/manifest.json", "package/package.json",
         f"package/{platform_manifest['binary_path']}",
         *(f"package/{path}" for path in support_paths),
     }
@@ -344,6 +347,7 @@ def load_packages(release: pathlib.Path, manifest_path: pathlib.Path, version: s
             metadata.get("name") != name
             or metadata.get("version") != version
             or metadata.get("license") != "MIT"
+            or metadata.get("contentPolicy") != {"class": "dual-use"}
             or metadata.get("scripts") is not None
             or metadata.get("publishConfig") != {"access": "public", "provenance": True}
             or "package/package.json" not in members
@@ -378,23 +382,96 @@ def registry_integrity(run: Run, package: Package) -> str | None:
     return integrity
 
 
-def wait_for_registry_integrity(run: Run, package: Package) -> str | None:
-    """Wait for the exact uploaded bytes to propagate after a successful publish.
+def registry_has_provenance(run: Run, package: Package) -> bool:
+    command = [
+        "npm", "view", f"{package.name}@{package.version}", "dist.attestations",
+        "--json", "--prefer-online", "--registry", REGISTRY,
+    ]
+    completed = run(command)
+    if completed.returncode != 0:
+        if npm_error_code(completed) == "E404":
+            return False
+        detail = clean_text(completed.stderr.strip() or completed.stdout.strip() or "no diagnostic output")
+        raise RuntimeError(f"npm provenance lookup failed for {package.name}: {detail}")
+    if not completed.stdout.strip():
+        return False
+    try:
+        attestations = json.loads(completed.stdout)
+    except json.JSONDecodeError as error:
+        raise RuntimeError(f"npm registry returned invalid provenance JSON for {package.name}") from error
+    if attestations is None or attestations == {}:
+        return False
+    if not isinstance(attestations, dict):
+        raise RuntimeError(f"npm registry returned invalid provenance metadata for {package.name}")
+    url = attestations.get("url")
+    provenance = attestations.get("provenance")
+    expected_subject = f"{package.name}@{package.version}"
+    if not isinstance(url, str):
+        raise RuntimeError(f"npm registry returned no provenance URL for {package.name}")
+    parsed = urllib.parse.urlsplit(url)
+    subject = urllib.parse.unquote(parsed.path.removeprefix("/-/npm/v1/attestations/"))
+    if (
+        parsed.scheme != "https"
+        or parsed.netloc != "registry.npmjs.org"
+        or parsed.query
+        or parsed.fragment
+        or not parsed.path.startswith("/-/npm/v1/attestations/")
+        or subject != expected_subject
+        or not isinstance(provenance, dict)
+        or provenance.get("predicateType") != "https://slsa.dev/provenance/v1"
+    ):
+        raise RuntimeError(f"npm registry returned unbound provenance metadata for {package.name}")
+    return True
 
-    The public registry can briefly expose incomplete or stale version metadata
-    after accepting a publish. A package found before publication still fails
-    closed immediately in ``publish``; only the post-success consistency check
-    receives this bounded retry window.
-    """
-    last_seen: str | None = None
-    for delay in REGISTRY_VERIFICATION_DELAYS:
+
+def staged_package_id(output: str, package: Package) -> str:
+    try:
+        document = json.loads(output)
+    except json.JSONDecodeError as error:
+        raise RuntimeError(f"npm stage returned invalid JSON for {package.name}") from error
+    result = document.get(package.name) if isinstance(document, dict) else None
+    expected_id = f"{package.name}@{package.version}"
+    if (
+        not isinstance(result, dict)
+        or result.get("id") != expected_id
+        or result.get("name") != package.name
+        or result.get("version") != package.version
+        or result.get("integrity") != package.integrity
+        or not isinstance(result.get("stageId"), str)
+        or not result["stageId"].strip()
+    ):
+        raise RuntimeError(f"npm stage did not bind the exact package identity for {expected_id}")
+    return result["stageId"]
+
+
+def verify_public(packages: list[Package], run: Run = default_run) -> None:
+    """Wait for npm's publish-time scan and verify every public package byte-for-byte."""
+    pending = {package.name: package for package in packages}
+    last_seen: dict[str, str | None] = {package.name: None for package in packages}
+    for delay in PUBLIC_VERIFICATION_DELAYS:
         if delay:
             time.sleep(delay)
-        integrity = registry_integrity(run, package)
-        if integrity == package.integrity:
-            return integrity
-        last_seen = integrity
-    return last_seen
+        for name, package in list(pending.items()):
+            integrity = registry_integrity(run, package)
+            last_seen[name] = integrity
+            if integrity is None:
+                continue
+            if integrity != package.integrity:
+                raise RuntimeError(
+                    f"npm has different bytes for immutable package {name}@{package.version}; "
+                    f"expected {package.integrity}, observed {integrity}"
+                )
+            if registry_has_provenance(run, package):
+                print(f"verified public {name}@{package.version} with provenance")
+                del pending[name]
+            else:
+                last_seen[name] = f"{integrity}; provenance not visible"
+        if not pending:
+            return
+    details = ", ".join(
+        f"{name} ({last_seen[name] or 'not visible'})" for name in sorted(pending)
+    )
+    raise RuntimeError(f"npm packages did not clear publish-time scanning: {details}")
 
 
 def verify_trusted_environment(packages: list[Package], environment: dict[str, str]) -> None:
@@ -422,7 +499,7 @@ def verify_trusted_environment(packages: list[Package], environment: dict[str, s
             raise RuntimeError("npm trusted publishing OIDC is unavailable in the release workflow")
 
 
-def publish(
+def stage(
     packages: list[Package], run: Run = default_run, environment: dict[str, str] | None = None
 ) -> None:
     environment = os.environ if environment is None else environment
@@ -436,7 +513,7 @@ def publish(
     npm = parse_tool_version(npm_text, "npm")
     if node < MINIMUM_NODE or npm < MINIMUM_NPM:
         raise RuntimeError("npm trusted publishing requires Node.js >=22.14.0 and npm >=12.0.2")
-    print(f"verified trusted publishing with Node.js {node_text} and npm {npm_text}")
+    print(f"verified trusted staging with Node.js {node_text} and npm {npm_text}")
 
     for package in packages:
         existing = registry_integrity(run, package)
@@ -447,18 +524,12 @@ def publish(
             continue
         tag = "next" if "-" in package.version else "latest"
         command = [
-            "npm", "publish", str(package.path), "--access", "public", "--tag", tag,
-            "--provenance", "--ignore-scripts", "--registry", REGISTRY,
+            "npm", "stage", "publish", str(package.path), "--json", "--access", "public",
+            "--tag", tag, "--provenance", "--ignore-scripts", "--registry", REGISTRY,
         ]
-        command_output(run, command, f"npm publish {package.name}@{package.version}")
-        published = wait_for_registry_integrity(run, package)
-        if published != package.integrity:
-            observed = published or "not visible"
-            raise RuntimeError(
-                f"npm did not return the expected integrity for {package.name}@{package.version}; "
-                f"expected {package.integrity}, observed {observed}"
-            )
-        print(f"published and verified {package.name}@{package.version} ({tag})")
+        output = command_output(run, command, f"npm stage {package.name}@{package.version}")
+        stage_id = staged_package_id(output, package)
+        print(f"staged and verified {package.name}@{package.version} ({tag}, stage {stage_id})")
 
 
 def parser() -> argparse.ArgumentParser:
@@ -471,6 +542,11 @@ def parser() -> argparse.ArgumentParser:
         action="store_true",
         help="verify the sealed package set without accessing or changing npm",
     )
+    result.add_argument(
+        "--verify-public",
+        action="store_true",
+        help="wait for publish-time scanning and verify all seven public registry packages",
+    )
     return result
 
 
@@ -478,10 +554,14 @@ def main() -> int:
     try:
         arguments = parser().parse_args()
         packages = load_packages(arguments.release, arguments.manifest.resolve(), arguments.version)
+        if arguments.verify_only and arguments.verify_public:
+            raise ValueError("--verify-only and --verify-public cannot be combined")
         if arguments.verify_only:
             print(f"verified {len(packages)} sealed npm packages for {arguments.version}")
+        elif arguments.verify_public:
+            verify_public(packages)
         else:
-            publish(packages)
+            stage(packages)
     except (OSError, ValueError, RuntimeError) as error:
         print(f"npm release failed: {error}", file=sys.stderr)
         return 1

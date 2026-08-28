@@ -81,6 +81,7 @@ def common_metadata(name: str, version: str, description: str) -> dict[str, Any]
         "version": version,
         "description": description,
         "license": "MIT",
+        "contentPolicy": {"class": "dual-use"},
         "author": "Marin Jursic",
         "homepage": "https://marinjursic.github.io/production-readiness-checklist/",
         "repository": {
@@ -150,7 +151,9 @@ def build_packages(
     launcher_path = ROOT / "npm" / "prc" / "bin" / "prc.js"
     launcher_readme_path = ROOT / "npm" / "prc" / "README.md"
     license_path = ROOT / "LICENSE"
-    for source in (launcher_path, launcher_readme_path, license_path):
+    disclosure_path = ROOT / "DISCLOSURE"
+    npm_disclosure_path = ROOT / "npm" / "prc" / "DISCLOSURE"
+    for source in (launcher_path, launcher_readme_path, license_path, disclosure_path, npm_disclosure_path):
         if source.is_symlink() or not source.is_file():
             raise ValueError(f"npm source must be a regular file: {source.relative_to(ROOT)}")
     launcher = launcher_path.read_bytes()
@@ -170,10 +173,24 @@ def build_packages(
     ):
         raise ValueError("npm launcher violates the no-shell, no-install-hook contract")
     license_data = license_path.read_bytes()
+    disclosure_data = disclosure_path.read_bytes()
+    if disclosure_data != npm_disclosure_path.read_bytes() or not disclosure_data.isascii():
+        raise ValueError("npm dual-use disclosure copies must be identical plain text")
     platform_readme = (
         "# Production Readiness Checklist native package\n\n"
-        "This internal platform package is installed automatically by `@marinjursic/prc`. "
-        "Install and invoke the launcher package instead of depending on this package directly.\n"
+        "This is one operating-system and CPU build of the native `prc` scanner. It is an "
+        "internal package installed automatically by `@marinjursic/prc`; install and invoke "
+        "the launcher instead of depending on this package directly.\n\n"
+        "The package has no npm dependencies and no install, update, or lifecycle scripts. "
+        "It does not download a binary after installation. The launcher selects the exact "
+        "package for the current machine, verifies the release-bound manifest, checks the "
+        "SHA-256 and size of the native executable and every runtime support file, and fails "
+        "closed if anything is missing or changed.\n\n"
+        "A normal scan reads a user-selected project and writes a private report outside that "
+        "project. It does not fix project files, install project dependencies, or run project "
+        "scripts. Security analyzers and Codex or Claude review require explicit opt-in. See "
+        "the launcher package and project documentation for installation, supported commands, "
+        "the dual-use disclosure, checksums, SBOM, and provenance information.\n"
     ).encode("utf-8")
 
     platform_bindings: dict[str, dict[str, str]] = {}
@@ -207,11 +224,12 @@ def build_packages(
             {
                 "os": [npm_os],
                 "cpu": [npm_cpu],
-                "files": ["bin", "manifest.json", "README.md", "LICENSE"],
+                "files": ["bin", "manifest.json", "README.md", "LICENSE", "DISCLOSURE"],
             }
         )
         entries = [
             ("LICENSE", license_data, 0o644),
+            ("DISCLOSURE", disclosure_data, 0o644),
             ("README.md", platform_readme, 0o644),
             ("manifest.json", manifest_data, 0o644),
             ("package.json", json_bytes(metadata), 0o644),
@@ -230,7 +248,7 @@ def build_packages(
         {
             "type": "module",
             "bin": {"prc": "bin/prc.js"},
-            "files": ["bin/prc.js", "platforms.json", "README.md", "LICENSE"],
+            "files": ["bin/prc.js", "platforms.json", "README.md", "LICENSE", "DISCLOSURE"],
             "engines": {"node": ">=22.14.0"},
             "keywords": ["production-readiness", "scanner", "security", "checklist", "devops"],
             "optionalDependencies": dict(sorted(optional_dependencies.items())),
@@ -244,6 +262,7 @@ def build_packages(
     readme = launcher_readme_path.read_text(encoding="utf-8").replace("@marinjursic/prc@VERSION", f"@marinjursic/prc@{version}")
     launcher_entries = [
         ("LICENSE", license_data, 0o644),
+        ("DISCLOSURE", disclosure_data, 0o644),
         ("README.md", readme.encode("utf-8"), 0o644),
         ("bin/prc.js", launcher, 0o755),
         ("package.json", json_bytes(launcher_metadata), 0o644),

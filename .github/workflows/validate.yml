@@ -47,7 +47,7 @@ jobs:
           node --test npm/prc/test/*.test.mjs
           node --check npm/prc/bin/prc.js
           npm pack ./npm/prc --ignore-scripts --dry-run --json > "$RUNNER_TEMP/npm-pack.json"
-          python -c 'import json,sys; p=json.load(open(sys.argv[1], encoding="utf-8"))[0]; assert {x["path"] for x in p["files"]}=={"LICENSE","README.md","bin/prc.js","package.json","platforms.json"}' "$RUNNER_TEMP/npm-pack.json"
+          python -c 'import json,sys; p=json.load(open(sys.argv[1], encoding="utf-8"))[0]; assert {x["path"] for x in p["files"]}=={"DISCLOSURE","LICENSE","README.md","bin/prc.js","package.json","platforms.json"}' "$RUNNER_TEMP/npm-pack.json"
 
       - name: Check catalog schemas and generated files
         run: |

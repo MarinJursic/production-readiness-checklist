@@ -53,7 +53,10 @@ class NpmDistributionTests(unittest.TestCase):
             launcher_files = archive_files(first / launcher_name)
             self.assertEqual(
                 set(launcher_files),
-                {"package/LICENSE", "package/README.md", "package/bin/prc.js", "package/package.json", "package/platforms.json"},
+                {
+                    "package/DISCLOSURE", "package/LICENSE", "package/README.md", "package/bin/prc.js",
+                    "package/package.json", "package/platforms.json",
+                },
             )
             launcher_metadata = json.loads(launcher_files["package/package.json"])
             launcher = launcher_files["package/bin/prc.js"]
@@ -61,6 +64,8 @@ class NpmDistributionTests(unittest.TestCase):
             self.assertNotIn("dependencies", launcher_metadata)
             self.assertNotIn("private", launcher_metadata)
             self.assertEqual(launcher_metadata["publishConfig"], {"access": "public", "provenance": True})
+            self.assertEqual(launcher_metadata["contentPolicy"], {"class": "dual-use"})
+            self.assertEqual(launcher_files["package/DISCLOSURE"], (npm_distribution.ROOT / "DISCLOSURE").read_bytes())
             for forbidden in (b"shell: true", b"node:http", b"node:https", b"node:net", b"node:tls", b"fetch("):
                 self.assertNotIn(forbidden, launcher)
             self.assertEqual(set(launcher_metadata["optionalDependencies"].values()), {version})
@@ -77,6 +82,8 @@ class NpmDistributionTests(unittest.TestCase):
             self.assertEqual(metadata["os"], ["linux"])
             self.assertEqual(metadata["cpu"], ["x64"])
             self.assertEqual(metadata["publishConfig"], {"access": "public", "provenance": True})
+            self.assertEqual(metadata["contentPolicy"], {"class": "dual-use"})
+            self.assertEqual(platform_files["package/DISCLOSURE"], (npm_distribution.ROOT / "DISCLOSURE").read_bytes())
             self.assertEqual(bindings["platforms"]["linux-x64"]["manifest_sha256"], hashlib.sha256(manifest_bytes).hexdigest())
             self.assertEqual(manifest["binary_sha256"], hashlib.sha256(platform_files["package/bin/prc"]).hexdigest())
             self.assertEqual(manifest["schema_version"], "prc.npm-platform/v0.2")
