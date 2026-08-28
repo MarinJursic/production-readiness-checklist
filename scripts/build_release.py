@@ -31,11 +31,56 @@ except ModuleNotFoundError:  # Direct `python scripts/build_release.py` executio
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 MODULE = "github.com/MarinJursic/production-readiness-checklist"
-SEMVER = re.compile(
-    r"^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)"
-    r"(?:-(?:(?:0|[1-9][0-9]*)|(?:[0-9A-Za-z-]*[A-Za-z-][0-9A-Za-z-]*))"
-    r"(?:\.(?:(?:0|[1-9][0-9]*)|(?:[0-9A-Za-z-]*[A-Za-z-][0-9A-Za-z-]*)))*)?$"
-)
+MAX_RELEASE_VERSION_LENGTH = 128
+
+
+def is_release_version(value: object) -> bool:
+    """Validate the supported SemVer subset in bounded, linear time.
+
+    Scanner releases deliberately reject build metadata so one public version
+    maps to exactly one sealed set of release bytes.
+    """
+    if (
+        not isinstance(value, str)
+        or not value
+        or len(value) > MAX_RELEASE_VERSION_LENGTH
+        or "+" in value
+    ):
+        return False
+    core, separator, prerelease = value.partition("-")
+    core_identifiers = core.split(".")
+    if len(core_identifiers) != 3 or any(not valid_numeric_identifier(item) for item in core_identifiers):
+        return False
+    if not separator:
+        return True
+    identifiers = prerelease.split(".")
+    return all(valid_prerelease_identifier(item) for item in identifiers)
+
+
+def valid_numeric_identifier(value: str) -> bool:
+    return (
+        bool(value)
+        and all("0" <= character <= "9" for character in value)
+        and (value == "0" or value[0] != "0")
+    )
+
+
+def valid_prerelease_identifier(value: str) -> bool:
+    if not value or any(
+        not (
+            "0" <= character <= "9"
+            or "A" <= character <= "Z"
+            or "a" <= character <= "z"
+            or character == "-"
+        )
+        for character in value
+    ):
+        return False
+    return not (
+        all("0" <= character <= "9" for character in value)
+        and len(value) > 1
+        and value[0] == "0"
+    )
 
 
 def release_sbom_serial(version: str, commit: str) -> str:
@@ -295,7 +340,7 @@ def host_target() -> tuple[str, str]:
 
 
 def build_release(args: argparse.Namespace) -> None:
-    if len(args.version) > 128 or not SEMVER.fullmatch(args.version):
+    if not is_release_version(args.version):
         raise ValueError("version must be semantic version X.Y.Z with an optional prerelease")
     if not COMMIT.fullmatch(args.commit):
         raise ValueError("commit must be a lowercase 40- or 64-character hexadecimal revision")

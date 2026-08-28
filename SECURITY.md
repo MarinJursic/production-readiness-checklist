@@ -42,6 +42,22 @@ files and must be verified in repository administration after the workflows land
 These checks reduce specific risks; they do not replace review, private
 vulnerability reporting, incident response, or consumer verification.
 
+### Historical upstream rules
+
+The scanner's Gitleaks adapter is based on a pinned upstream rules file. An
+older commit briefly stored that raw file at
+`scanner/adapter/gitleaks-v8.30.0.toml`. Some of its upstream detection examples
+look like Google API keys, so GitHub can report those examples as repository
+secrets even though they are rule data rather than project credentials.
+
+The raw historical path is the repository's only secret-scanning exclusion.
+Current releases store the rules as `gitleaks-v8.30.0.toml.gz`; the scanner
+checks the SHA-256 of both the compressed file and its expanded bytes before it
+uses them. A repository test also requires the raw path to stay absent, the
+exclusion to stay limited to that one path, and both hashes to match the Go
+adapter. All other source, documentation, workflow, test, and adapter files
+remain in GitHub secret scanning and the complete-history Gitleaks workflow.
+
 ## npm distribution security
 
 The supported personal installation is global and stays outside scanned
