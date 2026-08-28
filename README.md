@@ -18,6 +18,10 @@
 
 ⭐ [Star this project](https://github.com/MarinJursic/production-readiness-checklist) · 🤝 [Help improve it](CONTRIBUTING.md) · [Share on LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fmarinjursic.github.io%2Fproduction-readiness-checklist%2F) · [Share on X](https://twitter.com/intent/tweet?text=Production%20Readiness%20Checklist%3A%20know%20what%27s%20ready%20and%20what%20still%20needs%20work.&url=https%3A%2F%2Fmarinjursic.github.io%2Fproduction-readiness-checklist%2F)
 
+<a href="docs/assets/production-readiness-scan-demo.mp4"><img src="docs/assets/production-readiness-scan-demo.gif" alt="A continuous 27-second demo of the Production Readiness Checklist scanner checking a sample project and opening its HTML report" width="720"></a>
+
+<sub>Install once, run <code>prc</code>, then open the report. Click the preview for the full 720p video.</sub>
+
 </div>
 
 ---
@@ -81,10 +85,10 @@ Do not modify code and do not make the final release decision.
 
 ## Scanner: install, run, read the report
 
-Install [`@marinjursic/prc`](https://www.npmjs.com/package/@marinjursic/prc) once. Then open a project and run one command:
+Install the latest [`@marinjursic/prc`](https://www.npmjs.com/package/@marinjursic/prc) once. Then open a project and run one command:
 
 ```bash
-npm install -g @marinjursic/prc
+npm install -g @marinjursic/prc@latest
 cd /path/to/project
 prc
 ```
@@ -101,14 +105,6 @@ npm uninstall -g @marinjursic/prc
 Run `prc version` at any time to see the installed version. Installing, updating, removing, or running the global command does not add files to the project being scanned.
 
 The scan is read-only: it does **not** fix files, run project code, install project dependencies, or write the report into the project. It checks exact local facts, prints a clear score and Pass/Fail/Review summary, and creates a private HTML report in your user cache. Every report includes all **10,042 controls**; broad rules that cannot be proved from source stay visibly in review instead of being counted as passed.
-
-<div align="center">
-
-<a href="docs/assets/production-readiness-scan-demo.mp4"><img src="docs/assets/production-readiness-scan-demo.gif" alt="A continuous 27-second demo of the Production Readiness Checklist scanner checking a sample project and opening its HTML report" width="960"></a>
-
-<sub>The latest 27-second demo: start the scan, read the terminal result, then open the full report. Click it for the sharper MP4.</sub>
-
-</div>
 
 ### What happens when you run `prc`
 
@@ -131,7 +127,7 @@ The scanner prints the exact project path before inventory begins. If an invento
 Only use a project-local install when a team or CI job specifically needs the scanner recorded in that project's lock file:
 
 ```bash
-npm install -D -E --ignore-scripts --no-audit --no-fund @marinjursic/prc@0.1.0
+npm install -D -E --ignore-scripts --no-audit --no-fund @marinjursic/prc@0.1.9
 npm exec --offline --no -- prc scan
 ```
 
@@ -188,6 +184,20 @@ local checks and less terminal noise; it does not mean the other controls
 passed. `full` runs the core local scan and asks the selected AI provider for
 advice on every active control. AI advice remains unverified.
 
+### Where AI is used
+
+AI is **off by default**. You do not need Codex or Claude Code to install the scanner, run `prc` or `prc quick`, check local files, calculate the score, or create the HTML report.
+
+| Command | Uses AI? | What it does |
+| --- | --- | --- |
+| `prc quick` | No | Runs 18 small local checks and writes the report. |
+| `prc` | No | Runs the normal 40 local checks and writes the report. |
+| `prc full codex` | Yes, Codex | Runs the same 40 local checks, then asks Codex for advice on broad rules that simple file checks cannot settle. |
+| `prc full claude` | Yes, Claude Code | Runs the same full review with Claude Code instead. |
+| `prc fix ...` | Optional | A separate, advanced path can ask a chosen AI for a small patch idea inside an isolated copy. A scan never starts this path. |
+
+The AI step is useful for questions whose answer depends on context. For example, a script should not force every project to use folders named `src`, `components`, and `tests`. An AI review can look at the screened file list and short source excerpts, explain whether the layout is hard to follow for this project, and suggest a better fit. That answer is advice, not proof, so it cannot turn a rule into a verified Pass.
+
 When running a source build that is not on `PATH`, use the same commands with the `./` prefix:
 
 ```bash
@@ -202,7 +212,7 @@ The command accepts options before or after the project path. The terminal shows
   │     Know what's ready and what still needs work.   │
   ╰────────────────────────────────────────────────────╯
 
-Production Readiness Checklist 0.1.0-dev
+Production Readiness Checklist 0.1.9
 
 Run: 91c2…
 Profile: prc/core-repository@1.0
@@ -298,9 +308,11 @@ Continue with the [complete scanner quick start](docs/scanner/getting-started.md
 
 ### What is still being built
 
-- More narrow, tested local checks. Today 40 deterministic checks can prove selected repository facts; most broad controls still need evidence or review.
-- Expert review of the machine-readable acceptance contract for every control. Generated contracts remain labeled unreviewed until that work is complete.
-- Larger real-project accuracy tests for Codex and Claude review, including cost, resume, false-positive, and missed-finding measurements.
+- More narrow, tested local checks. The catalog currently has 43 executable assertions linked to 26 broad controls; the normal profile runs 40 and the quick profile runs 18. Most broad controls still need evidence or review.
+- Expert review of the machine-readable acceptance contract for every control. All 10,042 current contracts are generated and clearly labeled unreviewed; they are routing hints, not 10,042 finished automatic tests.
+- Stronger checks behind some current presence-only results, such as making sure a README, license, security policy, ownership file, test setup, or lock file contains enough useful and valid information without forcing one file name or folder layout.
+- Larger real-project accuracy tests for Codex and Claude review, including cost, resume, false-positive, missed-finding, prompt-injection, and unusual-project-layout measurements.
+- Independent checks of the meaning of AI advice. The scanner can prove that an AI-cited file and line existed in the screened snapshot, but it cannot yet prove that the sentence the AI wrote about that line is correct.
 - Safer native installation choices for people without Node, such as signed standalone installers or package-manager formulas. These should download a fixed, verified scanner release—not hide the npm command inside a mutable shell script.
 - Broader isolated fixes with independent tests. Scan will remain report-only, and no fix path will silently merge, deploy, or claim that every production concern was solved.
 
@@ -325,7 +337,7 @@ Use the [evidence record](docs/records/evidence-record.md) and [risk exception](
 ├── adapters/                 # Reviewed, immutable external-analyzer manifests
 ├── CLAUDE.md                  # Guardrails for AI-assisted reviews
 ├── catalog/                   # Versioned objectives, assertions, and profiles
-├── cmd/prc/                   # Experimental scanner CLI
+├── cmd/prc/                   # Scanner CLI
 ├── docs/
 │   ├── engineering/           # 16-phase lifecycle review + source manifest
 │   ├── checklists/            # 10 final production tracks
