@@ -34,7 +34,7 @@ MINIMUM_NODE = (22, 14, 0)
 MINIMUM_NPM = (12, 0, 2)
 MAXIMUM_NPM_PACKAGE_BYTES = 24 * 1024 * 1024
 MAXIMUM_EXPANDED_PACKAGE_BYTES = 64 * 1024 * 1024
-REGISTRY_VERIFICATION_DELAYS = (0, 1, 2, 4, 8, 16, 32, 64)
+REGISTRY_VERIFICATION_DELAYS = (0, 1, 2, 4, 8, 16, 32, 64, 128)
 VERSION_TEXT = re.compile(r"^v?(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(?:[-+].*)?$")
 Run = Callable[[list[str]], subprocess.CompletedProcess[str]]
 
@@ -58,6 +58,7 @@ def default_run(command: list[str]) -> subprocess.CompletedProcess[str]:
     # Do not let a saved user/global npm token or repository .npmrc influence
     # trusted publishing. GitHub's OIDC request variables remain available.
     with tempfile.TemporaryDirectory(prefix="prc-npm-publish-") as directory:
+        environment["NPM_CONFIG_CACHE"] = str(pathlib.Path(directory, "cache"))
         for filename, variable in (("user.npmrc", "NPM_CONFIG_USERCONFIG"), ("global.npmrc", "NPM_CONFIG_GLOBALCONFIG")):
             path = pathlib.Path(directory, filename)
             path.touch(mode=0o600, exist_ok=False)
@@ -360,7 +361,7 @@ def load_packages(release: pathlib.Path, manifest_path: pathlib.Path, version: s
 def registry_integrity(run: Run, package: Package) -> str | None:
     command = [
         "npm", "view", f"{package.name}@{package.version}", "dist.integrity",
-        "--json", "--registry", REGISTRY,
+        "--json", "--prefer-online", "--registry", REGISTRY,
     ]
     completed = run(command)
     if completed.returncode != 0:

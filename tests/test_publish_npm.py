@@ -86,9 +86,11 @@ class PublishNpmTests(unittest.TestCase):
             assert isinstance(environment, dict)
             user_config = pathlib.Path(environment["NPM_CONFIG_USERCONFIG"])
             global_config = pathlib.Path(environment["NPM_CONFIG_GLOBALCONFIG"])
+            npm_cache = pathlib.Path(environment["NPM_CONFIG_CACHE"])
             self.assertNotEqual(user_config, global_config)
             self.assertTrue(user_config.is_file())
             self.assertTrue(global_config.is_file())
+            self.assertEqual(npm_cache.parent, user_config.parent)
             self.assertNotIn("NPM_CONFIG__AUTH", environment)
             self.assertEqual(environment["ACTIONS_ID_TOKEN_REQUEST_URL"], "https://oidc.invalid")
             return completed(command, stdout="11.5.1\n")
@@ -148,25 +150,31 @@ class PublishNpmTests(unittest.TestCase):
 
     def test_post_publish_verification_retries_registry_propagation(self) -> None:
         calls = 0
+        published = False
 
         def run(command: list[str]) -> subprocess.CompletedProcess[str]:
-            nonlocal calls
+            nonlocal calls, published
             if command == ["node", "--version"]:
                 return completed(command, stdout="v24.19.0")
             if command == ["npm", "--version"]:
                 return completed(command, stdout="12.0.2")
             if command[:2] == ["npm", "publish"]:
+                published = True
                 return completed(command, stdout="published")
             if command[:2] == ["npm", "view"]:
+                self.assertIn("--prefer-online", command)
                 calls += 1
-                if calls < 4:
+                if not published or calls <= len(publish_npm.REGISTRY_VERIFICATION_DELAYS):
                     return completed(command, 1, stderr=json.dumps({"error": {"code": "E404"}}))
                 return completed(command, stdout=json.dumps("sha512-platform"))
             raise AssertionError(command)
 
         with mock.patch("scripts.publish_npm.time.sleep") as sleep:
             publish_npm.publish(self.packages()[:1], run, self.trusted_environment())
-        self.assertEqual(sleep.call_args_list, [mock.call(1), mock.call(2)])
+        self.assertEqual(
+            sleep.call_args_list,
+            [mock.call(delay) for delay in publish_npm.REGISTRY_VERIFICATION_DELAYS[1:]],
+        )
 
     def test_post_publish_verification_retries_transient_wrong_integrity(self) -> None:
         calls = 0
