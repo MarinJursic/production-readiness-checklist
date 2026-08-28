@@ -110,6 +110,26 @@ result per control. With 10,042 active controls and the default batch size,
 expect about 1,256 provider calls and 10,042 subagent reviews. The exact token
 and money cost depends on the chosen provider and model.
 
+Before the first provider call, the terminal shows the exact number of controls,
+batches, cached batches, workers, and the private resume directory. Small
+reviews print every completed batch. Large reviews print bounded progress at
+percentage changes, including elapsed time and completed control counts, so
+thousands of calls do not flood the terminal.
+
+Codex reviews use its JSONL event stream. When the installed Codex CLI reports
+usage on `turn.completed`, the scanner totals input, cached-input, output, and
+reasoning tokens for new batches. Claude JSON output provides an estimated cost;
+the scanner totals that estimate and labels it as an estimate rather than a
+bill. A nonzero Claude `--review-max-cost-usd` remains an enforced limit for
+each new batch, including subagent spend on supported Claude Code versions.
+Codex does not expose an equivalent hard dollar limit through this path.
+
+[OpenAI documents the Codex JSONL usage event](https://learn.chatgpt.com/docs/non-interactive-mode#make-output-machine-readable).
+[Claude Code documents JSON cost estimates and their limits](https://code.claude.com/docs/en/headless#pipe-data-through-claude).
+Cached review files contain sealed advice, not old billing records, so a run
+that reuses cached batches does not invent or re-count their past tokens or
+cost. The final terminal summary says how many new batches supplied accounting.
+
 The scanner can require this orchestration in the sealed task and verify that
 one final result returns for every control. Current provider output does not
 offer trustworthy proof of each internal subagent call, so the scanner does not
@@ -187,7 +207,7 @@ language, build system, size, boundaries, and conventions.
 | `--review-effort` | `high` | Codex supports `high` or `xhigh`; Claude uses `high`. |
 | `--review-model` | provider default | Pin a provider model when needed. |
 | `--review-state-dir` | user cache | Choose a private resume directory outside the target. |
-| `--review-max-cost-usd` | no limit | Claude-only cost limit for each batch. Codex does not expose the same hard CLI limit. |
+| `--review-max-cost-usd` | no limit | Claude-only enforced cost limit for each new batch. The terminal separately labels Claude's reported total as a client estimate. Codex does not expose the same hard CLI limit. |
 
 More workers can finish sooner but increase simultaneous cost and the chance of
 provider rate limits. More controls per call reduce top-level calls but make the

@@ -66,13 +66,13 @@ The per-control review is split at control boundaries so it stays easy to open, 
 
 | File | Controls | First control | Last control | Bytes |
 | --- | ---: | --- | --- | ---: |
-| [part-001.md](part-001.md) | 1,151 | `PRC-02-001` | `PRC-38-008` | 2,847,376 |
+| [part-001.md](part-001.md) | 1,151 | `PRC-02-001` | `PRC-38-008` | 2,847,441 |
 | [part-002.md](part-002.md) | 1,076 | `PRC-38-009` | `USEQ-EE6096D0` | 2,848,073 |
 | [part-003.md](part-003.md) | 1,027 | `USEQ-6A1ECCAB` | `USEQ-77C403FB` | 2,849,106 |
-| [part-004.md](part-004.md) | 1,055 | `USEQ-5DDDC794` | `USEQ-9115A638` | 2,849,239 |
-| [part-005.md](part-005.md) | 1,038 | `USEQ-13717FE0` | `USEQ-93A61AF7` | 2,848,504 |
-| [part-006.md](part-006.md) | 1,027 | `USEQ-042D0B84` | `USEQ-86610CCA` | 2,847,052 |
-| [part-007.md](part-007.md) | 1,043 | `USEQ-0B8FCCA8` | `USEQ-E630B3A9` | 2,848,306 |
-| [part-008.md](part-008.md) | 1,031 | `USEQ-0070EAA7` | `USEQ-38F7FBD9` | 2,847,249 |
-| [part-009.md](part-009.md) | 1,001 | `USEQ-75CA82FD` | `USEQ-EE822CDB` | 2,849,022 |
-| [part-010.md](part-010.md) | 593 | `USEQ-E59769F2` | `USEQ-87B20C17` | 1,620,829 |
+| [part-004.md](part-004.md) | 1,054 | `USEQ-5DDDC794` | `USEQ-84E3AA0F` | 2,846,704 |
+| [part-005.md](part-005.md) | 1,038 | `USEQ-9115A638` | `USEQ-395FF585` | 2,848,430 |
+| [part-006.md](part-006.md) | 1,027 | `USEQ-93A61AF7` | `USEQ-E1AD559F` | 2,847,029 |
+| [part-007.md](part-007.md) | 1,043 | `USEQ-86610CCA` | `USEQ-2E6ADA23` | 2,848,311 |
+| [part-008.md](part-008.md) | 1,031 | `USEQ-E630B3A9` | `USEQ-6065823A` | 2,847,379 |
+| [part-009.md](part-009.md) | 1,001 | `USEQ-38F7FBD9` | `USEQ-22BC5813` | 2,848,367 |
+| [part-010.md](part-010.md) | 594 | `USEQ-EE822CDB` | `USEQ-87B20C17` | 1,624,312 |

@@ -1,5 +1,5 @@
 schema_version: prc.pack/v0.1
-id: prc.pack.core-foundation@0.1
+id: prc.pack.core-foundation@0.2
 title: Core repository validated foundation
 description: A small, measured foundation of deterministic repository checks.
 publisher_id: prc-project
@@ -8,7 +8,7 @@ engine_apis: [prc.engine/v0.1]
 profile_ids: [prc/core-repository]
 assertions:
   - assertion_id: PRC-A-CORE-001
-    implementation_id: prc.native.file-present@0.1
+    implementation_id: prc.native.file-present@0.2
     validated_outcomes: [pass, fail]
   - assertion_id: PRC-A-CORE-007
     implementation_id: prc.native.dependency-lock@0.1
@@ -17,9 +17,9 @@ assertions:
     implementation_id: prc.native.github-workflow-valid@0.1
     validated_outcomes: [pass, not_applicable, error]
 benchmark:
-  suite_id: prc.benchmark.core-native@0.1
+  suite_id: prc.benchmark.core-native@0.2
   suite_path: fixtures/benchmarks/core-native/suite.yaml
-  suite_sha256: 208c180313d0bd0b13d09eaca040eb967fb6664f205b283841f386b9cacd2e7d
+  suite_sha256: 06a20e9bf344e4a1684043f6a90a1aed714eca4efc59a015d84e890e5acd5395
 limitations:
   - The pack covers only three native assertions and is not the complete core profile.
   - The initial fixtures do not establish cross-platform or large-repository performance.

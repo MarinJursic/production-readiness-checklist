@@ -220,9 +220,7 @@ func inspectExecutable(id, value string, allowedNames []string) Check {
 	if err != nil {
 		return failed(id, "The executable path could not be resolved.", err)
 	}
-	if resolved, resolveErr := filepath.EvalSymlinks(path); resolveErr == nil {
-		path = resolved
-	}
+	invocationPath := path
 	name := strings.TrimSuffix(strings.ToLower(filepath.Base(path)), ".exe")
 	allowed := false
 	for _, candidate := range allowedNames {
@@ -233,6 +231,9 @@ func inspectExecutable(id, value string, allowedNames []string) Check {
 	}
 	if !allowed {
 		return failed(id, "The executable name is not allowed for this capability.", fmt.Errorf("resolved to %s", name))
+	}
+	if resolved, resolveErr := filepath.EvalSymlinks(path); resolveErr == nil {
+		path = resolved
 	}
 	info, err := os.Stat(path)
 	if err != nil || !info.Mode().IsRegular() {
@@ -245,8 +246,11 @@ func inspectExecutable(id, value string, allowedNames []string) Check {
 	if err != nil {
 		return failed(id, "The executable could not be hashed.", err)
 	}
-	return passed(id, true, "The requested executable is available and content-addressable.",
-		"path="+path, "sha256="+digest)
+	details := []string{"path=" + path, "sha256=" + digest}
+	if invocationPath != path {
+		details = append(details, "invocation_path="+invocationPath)
+	}
+	return passed(id, true, "The requested executable is available and content-addressable.", details...)
 }
 
 func fileDigest(path string) (string, error) {

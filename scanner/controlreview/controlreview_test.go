@@ -41,7 +41,12 @@ func (runner *recordingRunner) Run(_ context.Context, task Task) (Output, Execut
 			Limitations: []string{"Runtime and human-process evidence was not available."},
 		})
 	}
-	return Output{SchemaVersion: OutputSchema, TaskID: task.TaskID, Reviews: reviews}, Execution{}, nil
+	return Output{SchemaVersion: OutputSchema, TaskID: task.TaskID, Reviews: reviews}, Execution{
+		TokenUsageKnown: true,
+		TokenUsage: TokenUsage{
+			InputTokens: 100, CachedInputTokens: 40, OutputTokens: 20, ReasoningOutputTokens: 5,
+		},
+	}, nil
 }
 
 func TestApplyReviewsControlsWithoutChangingAuthoritativeDispositionAndResumes(t *testing.T) {
@@ -72,10 +77,11 @@ func TestApplyReviewsControlsWithoutChangingAuthoritativeDispositionAndResumes(t
 	}
 	stateDirectory := t.TempDir()
 	runner := &recordingRunner{}
+	progress := []Progress{}
 	options := Options{
 		Provider: "codex", ReasoningEffort: "high", StateDirectory: stateDirectory,
 		AllowRemoteSourceProcessing: true, BatchSize: 1, Workers: 1, Timeout: time.Minute,
-		Runner: runner,
+		Runner: runner, Progress: func(value Progress) { progress = append(progress, value) },
 	}
 	reviewed, summary, err := Apply(context.Background(), run, options)
 	if err != nil {
@@ -83,6 +89,12 @@ func TestApplyReviewsControlsWithoutChangingAuthoritativeDispositionAndResumes(t
 	}
 	if runner.calls != 2 || summary.ReviewedControls != 2 || summary.CompletedBatches != 2 || summary.ReusedBatches != 0 {
 		t.Fatalf("calls=%d summary=%+v", runner.calls, summary)
+	}
+	if summary.TokenUsageBatches != 2 || summary.TokenUsage.InputTokens != 200 ||
+		summary.TokenUsage.CachedInputTokens != 80 || summary.TokenUsage.OutputTokens != 40 ||
+		len(progress) != 3 || progress[0].Phase != "prepared" ||
+		progress[2].CompletedBatches != 2 || progress[2].CompletedControls != 2 {
+		t.Fatalf("usage or progress summary is incomplete: summary=%+v progress=%+v", summary, progress)
 	}
 	if reviewed.RunID == run.RunID || reviewed.ControlCatalog.AIReviewState != "complete" || reviewed.ControlCatalog.AIReviewedCount != 2 {
 		t.Fatalf("review identity or summary was not updated: %+v", reviewed.ControlCatalog)
@@ -100,6 +112,10 @@ func TestApplyReviewsControlsWithoutChangingAuthoritativeDispositionAndResumes(t
 	}
 	if runner.calls != 2 || resumedSummary.ReusedBatches != 2 || resumed.RunID != reviewed.RunID {
 		t.Fatalf("sealed cache was not reused: calls=%d summary=%+v", runner.calls, resumedSummary)
+	}
+	if resumedSummary.TokenUsageBatches != 0 || len(progress) != 4 ||
+		progress[3].Phase != "prepared" || progress[3].CompletedBatches != 2 {
+		t.Fatalf("cached progress or accounting was misleading: summary=%+v progress=%+v", resumedSummary, progress)
 	}
 	entries, err := os.ReadDir(stateDirectory)
 	if err != nil || len(entries) != 2 {
@@ -264,12 +280,49 @@ func TestClaudeRejectsUnsupportedXHighEffort(t *testing.T) {
 func TestRunPendingBatchesStopsSchedulingAfterFailure(t *testing.T) {
 	tasks := []Task{{TaskID: "one"}, {TaskID: "two"}, {TaskID: "three"}}
 	runner := &failingRunner{}
-	err := runPendingBatches(
+	_, err := runPendingBatches(
 		context.Background(), runner, tasks, []int{0, 1, 2}, make([]Output, len(tasks)),
-		t.TempDir(), 1,
+		t.TempDir(), 1, nil, Progress{}, time.Now(),
 	)
 	if err == nil || runner.calls != 1 {
 		t.Fatalf("failed batch did not stop scheduling: calls=%d err=%v", runner.calls, err)
+	}
+}
+
+func TestCodexTokenUsageParsesBoundedJSONLEvents(t *testing.T) {
+	transcript := []byte(strings.Join([]string{
+		`{"type":"thread.started","thread_id":"example"}`,
+		`{"type":"item.completed","item":{"type":"agent_message","text":"done"}}`,
+		`{"type":"turn.completed","usage":{"input_tokens":24763,"cached_input_tokens":24448,"output_tokens":122,"reasoning_output_tokens":7}}`,
+		"",
+	}, "\n"))
+	usage, known, err := parseCodexTokenUsage(transcript)
+	if err != nil || !known || usage.InputTokens != 24763 || usage.CachedInputTokens != 24448 ||
+		usage.OutputTokens != 122 || usage.ReasoningOutputTokens != 7 {
+		t.Fatalf("Codex usage was not parsed: usage=%+v known=%t err=%v", usage, known, err)
+	}
+	if usage, known, err = parseCodexTokenUsage([]byte(`{"type":"turn.completed"}`)); err != nil || known || usage != (TokenUsage{}) {
+		t.Fatalf("missing usage did not remain safely unavailable: usage=%+v known=%t err=%v", usage, known, err)
+	}
+	if _, _, err = parseCodexTokenUsage([]byte(
+		`{"type":"turn.completed","usage":{"input_tokens":1,"cached_input_tokens":2,"output_tokens":0,"reasoning_output_tokens":0}}`,
+	)); err == nil {
+		t.Fatal("impossible cached token usage was accepted")
+	}
+}
+
+func TestClaudeCostEstimateIsOptionalAndValidated(t *testing.T) {
+	cost, known, err := parseClaudeEstimatedCost([]byte(
+		`{"structured_output":{},"total_cost_usd":1.2345}`,
+	))
+	if err != nil || !known || cost != 1.2345 {
+		t.Fatalf("Claude cost estimate was not parsed: cost=%f known=%t err=%v", cost, known, err)
+	}
+	if cost, known, err = parseClaudeEstimatedCost([]byte(`{"structured_output":{}}`)); err != nil || known || cost != 0 {
+		t.Fatalf("missing Claude estimate did not remain unavailable: cost=%f known=%t err=%v", cost, known, err)
+	}
+	if _, _, err = parseClaudeEstimatedCost([]byte(`{"total_cost_usd":-1}`)); err == nil {
+		t.Fatal("negative Claude cost estimate was accepted")
 	}
 }
 

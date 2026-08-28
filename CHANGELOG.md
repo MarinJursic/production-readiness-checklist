@@ -8,6 +8,13 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 
 ### Added
 
+- Live, bounded AI-review progress with resumable-batch counts, elapsed time,
+  Codex token usage, and Claude's provider-reported cost estimate, plus accurate
+  doctor checks for ordinary symlinked global CLI installations.
+- A generic readable-text baseline for repository documentation checks: empty,
+  whitespace-only, invalid UTF-8, NUL-containing, and control-character content
+  now fails without prescribing headings, prose, languages, or folder layouts.
+
 - Restored the descriptive **Production Readiness Checklist** identity and the
   short `prc` command and `@marinjursic/prc` npm package. The standalone
   nickname and mascot were removed in favor of a neutral terminal checklist

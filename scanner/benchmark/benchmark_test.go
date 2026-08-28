@@ -32,7 +32,7 @@ func TestCoreNativeBenchmarkMeetsQualityBudget(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if !report.Passed || len(report.CorpusDigest) != 64 || report.Summary.Cases != 6 || report.Summary.Expectations != 10 ||
+	if !report.Passed || len(report.CorpusDigest) != 64 || report.Summary.Cases != 7 || report.Summary.Expectations != 11 ||
 		report.Summary.Mismatched != 0 || report.Summary.DeterministicCases != report.Summary.Cases ||
 		report.Metrics.Precision != 1 || report.Metrics.Recall != 1 || report.Metrics.FalsePositiveRate != 0 {
 		t.Fatalf("benchmark report = %+v", report)
@@ -73,7 +73,7 @@ func TestComprehensiveCoreBenchmarkCoversEveryCatalogAssertion(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if !report.Passed || report.Summary.Cases != 35 || report.Summary.Expectations != 143 ||
+	if !report.Passed || report.Summary.Cases != 36 || report.Summary.Expectations != 144 ||
 		report.Summary.Mismatched != 0 || report.Summary.DeterministicCases != report.Summary.Cases ||
 		report.Metrics.Precision != 1 || report.Metrics.Recall != 1 || report.Metrics.FalsePositiveRate != 0 {
 		t.Fatalf("comprehensive benchmark report = %+v", report)

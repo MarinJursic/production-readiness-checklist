@@ -4,9 +4,46 @@
 
 [Back to the acceptance-criteria index](README.md).
 
-Controls in this file: **1,031** (`USEQ-0070EAA7` through `USEQ-38F7FBD9` in source order).
+Controls in this file: **1,031** (`USEQ-E630B3A9` through `USEQ-6065823A` in source order).
 
 ## `docs/engineering/11-developer-experience-platform-and-delivery.md`
+
+<!-- BEGIN CONTROL USEQ-E630B3A9 -->
+### USEQ-E630B3A9
+
+- Source: `docs/engineering/11-developer-experience-platform-and-delivery.md:463`
+- Section: `Developer experience, platform, and delivery > Developer Experience, Platform Engineering, and Engineering Economics Master Checklist > Expanded gap-closure controls > Scheduling, dependencies, and delivery forecasting`
+- Status/revision: `active` / `1`
+
+> Maintain a decision log explaining changes to committed scope and schedule.
+
+**When it applies**
+
+Consider this rule inside the selected profile and the source section `Developer experience, platform, and delivery > Developer Experience, Platform Engineering, and Engineering Economics Master Checklist > Expanded gap-closure controls > Scheduling, dependencies, and delivery forecasting`. Before checking it, the scanner must name the exact product part, release, environment, data, and people it covers. A broad heading does not make the rule apply to every project.
+
+**Proposed acceptance criteria**
+
+- The exact assessment target and the complete applicable scope are recorded.
+- Current trustworthy evidence shows that this statement is true: “Maintain a decision log explaining changes to committed scope and schedule.”
+- The evidence belongs to the exact source revision, artifact, configuration, environment, and time being assessed.
+- No equally strong or stronger evidence contradicts the result. If scope or proof is missing, stale, unsafe to collect, or conflicting, the result stays Blocked or Unknown.
+
+**What the program checks today**
+
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
+
+**Proposed future check: Mixed evidence**
+
+- First split the rule into one assertion per observable promise and bind each assertion to a versioned checker and an allowed evidence type.
+- Use separate repository, artifact, environment, and human assertions as needed. Keep the authority of each evidence source visible and require every applicable part.
+- Repository intent cannot prove deployed behavior, and a runtime snapshot cannot prove the source or review process by itself.
+
+**Review notes**
+
+- No automatic wording warning was found. A control author still needs to approve its applicability, evidence, and atomic assertions before automation.
+
+<!-- END CONTROL USEQ-E630B3A9 -->
 
 <!-- BEGIN CONTROL USEQ-0070EAA7 -->
 ### USEQ-0070EAA7
@@ -39303,41 +39340,3 @@ Consider this rule inside the selected profile and the source section `Documenta
 - No automatic wording warning was found. A control author still needs to approve its applicability, evidence, and atomic assertions before automation.
 
 <!-- END CONTROL USEQ-6065823A -->
-
-<!-- BEGIN CONTROL USEQ-38F7FBD9 -->
-### USEQ-38F7FBD9
-
-- Source: `docs/engineering/13-documentation-and-knowledge.md:57`
-- Section: `Documentation and knowledge > Product, Requirements, and Decision Documentation > Category-specific universal rules`
-- Status/revision: `active` / `1`
-
-> Use diagrams, examples, scenarios, and state models where text alone is ambiguous.
-
-**When it applies**
-
-Consider this rule inside the selected profile and the source section `Documentation and knowledge > Product, Requirements, and Decision Documentation > Category-specific universal rules`. Before checking it, the scanner must name the exact product part, release, environment, data, and people it covers. A broad heading does not make the rule apply to every project.
-
-**Proposed acceptance criteria**
-
-- The exact assessment target and the complete applicable scope are recorded.
-- Current trustworthy evidence shows that this statement is true: “Use diagrams, examples, scenarios, and state models where text alone is ambiguous.”
-- Each separate promise in the sentence is turned into its own atomic assertion, and every required assertion passes. One passing part cannot hide a failing part.
-- The evidence belongs to the exact source revision, artifact, configuration, environment, and time being assessed.
-- No equally strong or stronger evidence contradicts the result. If scope or proof is missing, stale, unsafe to collect, or conflicting, the result stays Blocked or Unknown.
-
-**What the program checks today**
-
-- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
-- With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
-
-**Proposed future check: Mixed evidence**
-
-- First split the rule into one assertion per observable promise and bind each assertion to a versioned checker and an allowed evidence type.
-- Use separate repository, artifact, environment, and human assertions as needed. Keep the authority of each evidence source visible and require every applicable part.
-- Repository intent cannot prove deployed behavior, and a runtime snapshot cannot prove the source or review process by itself.
-
-**Review notes**
-
-- May bundle several promises; split it before machine evaluation.
-
-<!-- END CONTROL USEQ-38F7FBD9 -->

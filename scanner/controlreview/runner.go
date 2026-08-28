@@ -1,6 +1,7 @@
 package controlreview
 
 import (
+	"bytes"
 	"context"
 	"crypto/sha256"
 	"encoding/hex"
@@ -8,6 +9,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"math"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -131,11 +133,26 @@ func (runner *cliRunner) Run(ctx context.Context, task Task) (Output, Execution,
 	if err != nil {
 		return Output{}, Execution{}, err
 	}
-	return output, Execution{
+	execution := Execution{
 		Provider: plan.Provider, Model: plan.Model, ExecutableSHA256: plan.ExecutableSHA256,
 		StdoutSHA256: digestBytes(stdout.data), StderrSHA256: digestBytes(stderr.data),
 		Duration: completed.Sub(started),
-	}, nil
+	}
+	switch plan.Provider {
+	case "codex":
+		usage, known, usageErr := parseCodexTokenUsage(stdout.data)
+		if usageErr != nil {
+			return Output{}, Execution{}, usageErr
+		}
+		execution.TokenUsage, execution.TokenUsageKnown = usage, known
+	case "claude":
+		cost, known, costErr := parseClaudeEstimatedCost(stdout.data)
+		if costErr != nil {
+			return Output{}, Execution{}, costErr
+		}
+		execution.EstimatedCostUSD, execution.EstimatedCostKnown = cost, known
+	}
+	return output, execution, nil
 }
 
 func (runner *cliRunner) buildPlan(directory string, task Task) (LaunchPlan, error) {
@@ -235,6 +252,92 @@ func (buffer *boundedBuffer) Write(input []byte) (int, error) {
 	}
 	buffer.data = append(buffer.data, input...)
 	return len(input), nil
+}
+
+func parseCodexTokenUsage(transcript []byte) (TokenUsage, bool, error) {
+	total := TokenUsage{}
+	found := false
+	for _, line := range bytes.Split(transcript, []byte{'\n'}) {
+		line = bytes.TrimSpace(line)
+		if len(line) == 0 {
+			continue
+		}
+		var event struct {
+			Type  string          `json:"type"`
+			Usage json.RawMessage `json:"usage"`
+		}
+		if err := json.Unmarshal(line, &event); err != nil || event.Type != "turn.completed" {
+			continue
+		}
+		if len(event.Usage) == 0 || bytes.Equal(event.Usage, []byte("null")) {
+			continue
+		}
+		var usage struct {
+			InputTokens           int64 `json:"input_tokens"`
+			CachedInputTokens     int64 `json:"cached_input_tokens"`
+			OutputTokens          int64 `json:"output_tokens"`
+			ReasoningOutputTokens int64 `json:"reasoning_output_tokens"`
+		}
+		if err := json.Unmarshal(event.Usage, &usage); err != nil {
+			return TokenUsage{}, false, fmt.Errorf("decode Codex token usage: %w", err)
+		}
+		next := TokenUsage{
+			InputTokens: usage.InputTokens, CachedInputTokens: usage.CachedInputTokens,
+			OutputTokens: usage.OutputTokens, ReasoningOutputTokens: usage.ReasoningOutputTokens,
+		}
+		if next.CachedInputTokens > next.InputTokens {
+			return TokenUsage{}, false, fmt.Errorf("codex reported more cached input tokens than input tokens")
+		}
+		if err := addTokenUsage(&total, next); err != nil {
+			return TokenUsage{}, false, err
+		}
+		found = true
+	}
+	return total, found, nil
+}
+
+func addTokenUsage(total *TokenUsage, next TokenUsage) error {
+	values := []struct {
+		name   string
+		value  int64
+		target *int64
+	}{
+		{"input_tokens", next.InputTokens, &total.InputTokens},
+		{"cached_input_tokens", next.CachedInputTokens, &total.CachedInputTokens},
+		{"output_tokens", next.OutputTokens, &total.OutputTokens},
+		{"reasoning_output_tokens", next.ReasoningOutputTokens, &total.ReasoningOutputTokens},
+	}
+	for _, item := range values {
+		if item.value < 0 || *item.target > math.MaxInt64-item.value {
+			return fmt.Errorf("codex reported invalid %s usage", item.name)
+		}
+		*item.target += item.value
+	}
+	return nil
+}
+
+func parseClaudeEstimatedCost(output []byte) (float64, bool, error) {
+	var envelope struct {
+		TotalCostUSD *float64 `json:"total_cost_usd"`
+	}
+	if err := json.Unmarshal(output, &envelope); err != nil {
+		return 0, false, fmt.Errorf("decode Claude cost estimate: %w", err)
+	}
+	if envelope.TotalCostUSD == nil {
+		return 0, false, nil
+	}
+	if *envelope.TotalCostUSD < 0 || math.IsInf(*envelope.TotalCostUSD, 0) || math.IsNaN(*envelope.TotalCostUSD) {
+		return 0, false, fmt.Errorf("claude reported an invalid cost estimate")
+	}
+	return *envelope.TotalCostUSD, true, nil
+}
+
+func addEstimatedCost(total *float64, next float64) error {
+	if next < 0 || math.IsInf(next, 0) || math.IsNaN(next) || *total > math.MaxFloat64-next {
+		return fmt.Errorf("provider reported an invalid cumulative cost estimate")
+	}
+	*total += next
+	return nil
 }
 
 func resolveExecutable(providerName, value string) (string, string, error) {

@@ -1,6 +1,7 @@
 package engine
 
 import (
+	"bufio"
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
@@ -13,6 +14,8 @@ import (
 	"strings"
 	"sync"
 	"time"
+	"unicode"
+	"unicode/utf8"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/catalog"
 	workspaceinventory "github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
@@ -334,7 +337,7 @@ func (e *Engine) evaluate(
 ) model.AssertionResult {
 	result.Execution = "completed"
 	switch assertion.ImplementationID {
-	case "prc.native.file-present@0.1":
+	case "prc.native.file-present@0.1", "prc.native.file-present@0.2":
 		return evaluateFilePresent(assertion, inventory, result, observedAt)
 	case "prc.native.dependency-lock@0.1":
 		return evaluateDependencyLocks(assertion, inventory, result, observedAt)
@@ -502,6 +505,62 @@ func fileEvidenceAndLastByte(
 		}
 	}
 	contentDigest := hex.EncodeToString(hasher.Sum(nil))
+	evidence, err := bindFileEvidence(
+		inventory, relative, kind, producer, summary, observedAt, contentDigest, size,
+	)
+	return evidence, lastByte, hasContent, err
+}
+
+func textFileEvidence(
+	inventory model.Inventory,
+	relative, kind, producer, summary string,
+	observedAt time.Time,
+) (model.Evidence, bool, error) {
+	path, err := safePath(inventory.Root, relative)
+	if err != nil {
+		return model.Evidence{}, false, err
+	}
+	file, err := os.Open(path)
+	if err != nil {
+		return model.Evidence{}, false, err
+	}
+	defer file.Close()
+	hasher := sha256.New()
+	reader := bufio.NewReader(io.TeeReader(file, hasher))
+	var size int64
+	validText := true
+	hasNonWhitespace := false
+	for {
+		value, width, readErr := reader.ReadRune()
+		if readErr != nil {
+			if readErr == io.EOF {
+				break
+			}
+			return model.Evidence{}, false, fmt.Errorf("read %s: %w", relative, readErr)
+		}
+		size += int64(width)
+		if (value == utf8.RuneError && width == 1) || value == 0 ||
+			unicode.IsControl(value) && value != '\t' && value != '\n' && value != '\r' {
+			validText = false
+		}
+		if value != '\ufeff' && !unicode.IsSpace(value) {
+			hasNonWhitespace = true
+		}
+	}
+	contentDigest := hex.EncodeToString(hasher.Sum(nil))
+	evidence, err := bindFileEvidence(
+		inventory, relative, kind, producer, summary, observedAt, contentDigest, size,
+	)
+	return evidence, validText && hasNonWhitespace, err
+}
+
+func bindFileEvidence(
+	inventory model.Inventory,
+	relative, kind, producer, summary string,
+	observedAt time.Time,
+	contentDigest string,
+	size int64,
+) (model.Evidence, error) {
 	expectedDigest := ""
 	for _, record := range inventory.Files {
 		if record.Path == filepath.ToSlash(relative) {
@@ -510,7 +569,7 @@ func fileEvidenceAndLastByte(
 		}
 	}
 	if expectedDigest == "" || expectedDigest != contentDigest {
-		return model.Evidence{}, 0, false, fmt.Errorf("target changed after inventory: %s", relative)
+		return model.Evidence{}, fmt.Errorf("target changed after inventory: %s", relative)
 	}
 	evidence := model.Evidence{
 		SchemaVersion: model.EvidenceSchema, Kind: kind, Authority: "repository",
@@ -519,11 +578,11 @@ func fileEvidenceAndLastByte(
 	}
 	identity, err := json.Marshal(evidence)
 	if err != nil {
-		return model.Evidence{}, 0, false, err
+		return model.Evidence{}, err
 	}
 	digest := sha256.Sum256(identity)
 	evidence.ID = hex.EncodeToString(digest[:])
-	return evidence, lastByte, hasContent, nil
+	return evidence, nil
 }
 
 func evaluateFilePresent(
@@ -551,6 +610,23 @@ func evaluateFilePresent(
 		if err != nil || !info.Mode().IsRegular() || info.Size() < minimumBytes {
 			continue
 		}
+		if assertion.ImplementationID == "prc.native.file-present@0.2" {
+			evidence, hasText, evidenceErr := textFileEvidence(
+				inventory, relative, "repository-file", assertion.ImplementationID,
+				"Required repository text file contains non-whitespace UTF-8 text.", observedAt,
+			)
+			if evidenceErr != nil {
+				result.Execution, result.Assessment, result.Summary = "error", "unknown", evidenceErr.Error()
+				return result
+			}
+			if !hasText {
+				continue
+			}
+			result.Assessment = "pass"
+			result.Summary = "Observed " + filepath.ToSlash(relative) + " with non-whitespace text."
+			result.EvidenceObserved = []model.Evidence{evidence}
+			return result
+		}
 		evidence, err := fileEvidence(inventory, relative, "repository-file", assertion.ImplementationID,
 			"Required repository file is present and nonempty.", observedAt)
 		if err != nil {
@@ -563,7 +639,11 @@ func evaluateFilePresent(
 		return result
 	}
 	result.Assessment = "fail"
-	result.Summary = "None of the required repository files were present and nonempty."
+	if assertion.ImplementationID == "prc.native.file-present@0.2" {
+		result.Summary = "None of the required repository files contained non-whitespace UTF-8 text."
+	} else {
+		result.Summary = "None of the required repository files were present and nonempty."
+	}
 	return result
 }
 

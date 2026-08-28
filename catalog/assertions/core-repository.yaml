@@ -2,16 +2,16 @@ schema_version: prc.assertions/v0.1
 catalog_version: 1.0.0
 assertions:
   - id: PRC-A-CORE-001
-    revision: 2
+    revision: 3
     control_ids: [USEQ-FDCA6C71]
     title: README is present
-    statement: A nonempty README file exists at the repository root.
+    statement: A README file containing non-whitespace UTF-8 text exists at the repository root.
     applicability: "true"
     evidence_required:
       - kind: repository-file
         minimum_authority: repository
-        description: A nonempty root README file from the scanned commit.
-    implementation_id: prc.native.file-present@0.1
+        description: A root README containing non-whitespace UTF-8 text from the scanned commit.
+    implementation_id: prc.native.file-present@0.2
     parameters:
       paths: [README.md, README.rst, README.txt]
       minimum_bytes: 1
@@ -19,16 +19,16 @@ assertions:
     gate: required
     remediation_class: R2
   - id: PRC-A-CORE-002
-    revision: 1
+    revision: 2
     control_ids: [USEQ-6497B434]
     title: License is present
-    statement: A nonempty license file exists at the repository root.
+    statement: A license file containing non-whitespace UTF-8 text exists at the repository root.
     applicability: "true"
     evidence_required:
       - kind: repository-file
         minimum_authority: repository
-        description: A nonempty root license file from the scanned commit.
-    implementation_id: prc.native.file-present@0.1
+        description: A root license file containing non-whitespace UTF-8 text from the scanned commit.
+    implementation_id: prc.native.file-present@0.2
     parameters:
       paths: [LICENSE, LICENSE.md, LICENSE.txt, COPYING]
       minimum_bytes: 1
@@ -36,16 +36,16 @@ assertions:
     gate: required
     remediation_class: R0
   - id: PRC-A-CORE-003
-    revision: 1
+    revision: 2
     control_ids: [USEQ-89F5E97A]
     title: Contribution guidance is present
-    statement: A nonempty contribution guide exists at the repository root.
+    statement: A contribution guide containing non-whitespace UTF-8 text exists at the repository root.
     applicability: "true"
     evidence_required:
       - kind: repository-file
         minimum_authority: repository
-        description: A nonempty root contribution guide from the scanned commit.
-    implementation_id: prc.native.file-present@0.1
+        description: A root contribution guide containing non-whitespace UTF-8 text from the scanned commit.
+    implementation_id: prc.native.file-present@0.2
     parameters:
       paths: [CONTRIBUTING.md, CONTRIBUTING.rst]
       minimum_bytes: 1
@@ -53,16 +53,16 @@ assertions:
     gate: advisory
     remediation_class: R0
   - id: PRC-A-CORE-004
-    revision: 1
+    revision: 2
     control_ids: [USEQ-AC6AC548]
     title: Security policy is present
-    statement: A nonempty security policy exists at the repository root.
+    statement: A security policy containing non-whitespace UTF-8 text exists at the repository root.
     applicability: "true"
     evidence_required:
       - kind: repository-file
         minimum_authority: repository
-        description: A nonempty root security policy from the scanned commit.
-    implementation_id: prc.native.file-present@0.1
+        description: A root security policy containing non-whitespace UTF-8 text from the scanned commit.
+    implementation_id: prc.native.file-present@0.2
     parameters:
       paths: [SECURITY.md, docs/SECURITY.md]
       minimum_bytes: 1
@@ -70,16 +70,16 @@ assertions:
     gate: required
     remediation_class: R0
   - id: PRC-A-CORE-005
-    revision: 1
+    revision: 2
     control_ids: [USEQ-D73106BF]
     title: Code of conduct is present
-    statement: A nonempty code-of-conduct document exists at the repository root.
+    statement: A code-of-conduct document containing non-whitespace UTF-8 text exists at the repository root.
     applicability: "true"
     evidence_required:
       - kind: repository-file
         minimum_authority: repository
-        description: A nonempty root code-of-conduct document from the scanned commit.
-    implementation_id: prc.native.file-present@0.1
+        description: A root code-of-conduct document containing non-whitespace UTF-8 text from the scanned commit.
+    implementation_id: prc.native.file-present@0.2
     parameters:
       paths: [CODE_OF_CONDUCT.md, CODE_OF_CONDUCT.rst]
       minimum_bytes: 1
@@ -87,16 +87,16 @@ assertions:
     gate: advisory
     remediation_class: R0
   - id: PRC-A-CORE-006
-    revision: 1
+    revision: 2
     control_ids: [USEQ-CA602113]
     title: Code ownership is declared
-    statement: A nonempty CODEOWNERS file exists in a supported repository location.
+    statement: A CODEOWNERS file containing non-whitespace UTF-8 text exists in a supported repository location.
     applicability: "true"
     evidence_required:
       - kind: repository-file
         minimum_authority: repository
-        description: A nonempty CODEOWNERS file from the scanned commit.
-    implementation_id: prc.native.file-present@0.1
+        description: A CODEOWNERS file containing non-whitespace UTF-8 text from the scanned commit.
+    implementation_id: prc.native.file-present@0.2
     parameters:
       paths: [.github/CODEOWNERS, CODEOWNERS, docs/CODEOWNERS]
       minimum_bytes: 1
@@ -244,16 +244,16 @@ assertions:
     gate: required
     remediation_class: R0
   - id: PRC-A-CORE-016
-    revision: 1
+    revision: 2
     control_ids: [PRC-36-011]
     title: Dependency updates are configured
-    statement: A supported dependency-update automation configuration is present.
+    statement: A supported dependency-update automation configuration containing non-whitespace UTF-8 text is present.
     applicability: inventory.package_ecosystems.size() > 0
     evidence_required:
       - kind: repository-file
         minimum_authority: repository
-        description: A nonempty supported dependency-update configuration.
-    implementation_id: prc.native.file-present@0.1
+        description: A supported dependency-update configuration containing non-whitespace UTF-8 text.
+    implementation_id: prc.native.file-present@0.2
     parameters:
       paths: [.github/dependabot.yml, .github/dependabot.yaml, renovate.json, renovate.json5, .renovaterc, .renovaterc.json]
       minimum_bytes: 1

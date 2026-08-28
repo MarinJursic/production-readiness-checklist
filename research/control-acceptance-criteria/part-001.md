@@ -41459,7 +41459,7 @@ Consider this rule inside the selected profile and the source section `Maintenan
 **What the program checks today**
 
 - Included in the complete report and partly represented by 1 catalog assertion(s). A passing narrow assertion produces `partially_verified`, not a complete Pass for this broad control. A failing narrow assertion can produce `confirmed_failure`:
-- `PRC-A-CORE-016` — A supported dependency-update automation configuration is present. Applies when `inventory.package_ecosystems.size() > 0`. Implementation: `prc.native.file-present@0.1`. Required evidence: repository-file (repository): A nonempty supported dependency-update configuration.
+- `PRC-A-CORE-016` — A supported dependency-update automation configuration containing non-whitespace UTF-8 text is present. Applies when `inventory.package_ecosystems.size() > 0`. Implementation: `prc.native.file-present@0.2`. Required evidence: repository-file (repository): A supported dependency-update configuration containing non-whitespace UTF-8 text.
 
 **Proposed future check: Repository or artifact check**
 

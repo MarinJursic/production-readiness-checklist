@@ -353,7 +353,7 @@ func dependencies(assertion model.Assertion, before, after model.Inventory) depe
 	}
 	workflows := append(append([]string{}, before.CI.WorkflowFiles...), after.CI.WorkflowFiles...)
 	switch assertion.ImplementationID {
-	case "prc.native.file-present@0.1":
+	case "prc.native.file-present@0.1", "prc.native.file-present@0.2":
 		if values, ok := assertion.Parameters["paths"].([]any); ok {
 			for _, value := range values {
 				if path, ok := value.(string); ok {

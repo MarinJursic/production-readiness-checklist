@@ -4,9 +4,48 @@
 
 [Back to the acceptance-criteria index](README.md).
 
-Controls in this file: **1,038** (`USEQ-13717FE0` through `USEQ-93A61AF7` in source order).
+Controls in this file: **1,038** (`USEQ-9115A638` through `USEQ-395FF585` in source order).
 
 ## `docs/engineering/06-application-services-and-apis.md`
+
+<!-- BEGIN CONTROL USEQ-9115A638 -->
+### USEQ-9115A638
+
+- Source: `docs/engineering/06-application-services-and-apis.md:45`
+- Section: `Application services and APIs > APIs, Web Services, Webhooks, and Integrations > Conditional interface checks`
+- Status/revision: `active` / `1`
+
+> Authorization changes and logout invalidate or constrain long-lived connections.
+
+**When it applies**
+
+Use this rule only when its stated trigger and the source section `Application services and APIs > APIs, Web Services, Webhooks, and Integrations > Conditional interface checks` apply. The scanner must record the trigger evidence. It may return Not Applicable only when the trigger is proven absent and a reason is saved.
+
+**Proposed acceptance criteria**
+
+- The exact assessment target and the complete applicable scope are recorded.
+- Current trustworthy evidence shows that this statement is true: “Authorization changes and logout invalidate or constrain long-lived connections.”
+- Each separate promise in the sentence is turned into its own atomic assertion, and every required assertion passes. One passing part cannot hide a failing part.
+- The evidence belongs to the exact source revision, artifact, configuration, environment, and time being assessed.
+- No equally strong or stronger evidence contradicts the result. If scope or proof is missing, stale, unsafe to collect, or conflicting, the result stays Blocked or Unknown.
+
+**What the program checks today**
+
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
+
+**Proposed future check: Mixed evidence**
+
+- First split the rule into one assertion per observable promise and bind each assertion to a versioned checker and an allowed evidence type.
+- Use separate repository, artifact, environment, and human assertions as needed. Keep the authority of each evidence source visible and require every applicable part.
+- Repository intent cannot prove deployed behavior, and a runtime snapshot cannot prove the source or review process by itself.
+
+**Review notes**
+
+- May bundle several promises; split it before machine evaluation.
+- Has a condition or sits in a conditional section; make the trigger explicit and testable.
+
+<!-- END CONTROL USEQ-9115A638 -->
 
 <!-- BEGIN CONTROL USEQ-13717FE0 -->
 ### USEQ-13717FE0
@@ -39608,41 +39647,3 @@ Consider this rule inside the selected profile and the source section `Data and 
 - No automatic wording warning was found. A control author still needs to approve its applicability, evidence, and atomic assertions before automation.
 
 <!-- END CONTROL USEQ-395FF585 -->
-
-<!-- BEGIN CONTROL USEQ-93A61AF7 -->
-### USEQ-93A61AF7
-
-- Source: `docs/engineering/07-data-and-information-lifecycle.md:931`
-- Section: `Data and information lifecycle > Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity > Processing, search, review, and production`
-- Status/revision: `active` / `1`
-
-> Train reviewers on scope, relevance, privilege, confidentiality, and escalation.
-
-**When it applies**
-
-Consider this rule inside the selected profile and the source section `Data and information lifecycle > Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity > Processing, search, review, and production`. Before checking it, the scanner must name the exact product part, release, environment, data, and people it covers. A broad heading does not make the rule apply to every project.
-
-**Proposed acceptance criteria**
-
-- The exact assessment target and the complete applicable scope are recorded.
-- Current trustworthy evidence shows that this statement is true: “Train reviewers on scope, relevance, privilege, confidentiality, and escalation.”
-- Each separate promise in the sentence is turned into its own atomic assertion, and every required assertion passes. One passing part cannot hide a failing part.
-- The evidence belongs to the exact source revision, artifact, configuration, environment, and time being assessed.
-- No equally strong or stronger evidence contradicts the result. If scope or proof is missing, stale, unsafe to collect, or conflicting, the result stays Blocked or Unknown.
-
-**What the program checks today**
-
-- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
-- With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
-
-**Proposed future check: Mixed evidence**
-
-- First split the rule into one assertion per observable promise and bind each assertion to a versioned checker and an allowed evidence type.
-- Use separate repository, artifact, environment, and human assertions as needed. Keep the authority of each evidence source visible and require every applicable part.
-- Repository intent cannot prove deployed behavior, and a runtime snapshot cannot prove the source or review process by itself.
-
-**Review notes**
-
-- May bundle several promises; split it before machine evaluation.
-
-<!-- END CONTROL USEQ-93A61AF7 -->

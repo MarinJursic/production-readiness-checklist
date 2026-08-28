@@ -4,9 +4,47 @@
 
 [Back to the acceptance-criteria index](README.md).
 
-Controls in this file: **1,043** (`USEQ-0B8FCCA8` through `USEQ-E630B3A9` in source order).
+Controls in this file: **1,043** (`USEQ-86610CCA` through `USEQ-2E6ADA23` in source order).
 
 ## `docs/engineering/09-privacy-and-data-protection.md`
+
+<!-- BEGIN CONTROL USEQ-86610CCA -->
+### USEQ-86610CCA
+
+- Source: `docs/engineering/09-privacy-and-data-protection.md:102`
+- Section: `Privacy and data protection > Data Rights, Retention, Deletion, and Portability > Category-specific universal rules`
+- Status/revision: `active` / `1`
+
+> Propagate deletion to caches, indexes, replicas, derived data, exports, test copies, and processors.
+
+**When it applies**
+
+Consider this rule inside the selected profile and the source section `Privacy and data protection > Data Rights, Retention, Deletion, and Portability > Category-specific universal rules`. Before checking it, the scanner must name the exact product part, release, environment, data, and people it covers. A broad heading does not make the rule apply to every project.
+
+**Proposed acceptance criteria**
+
+- The exact assessment target and the complete applicable scope are recorded.
+- Current trustworthy evidence shows that this statement is true: “Propagate deletion to caches, indexes, replicas, derived data, exports, test copies, and processors.”
+- Each separate promise in the sentence is turned into its own atomic assertion, and every required assertion passes. One passing part cannot hide a failing part.
+- The evidence belongs to the exact source revision, artifact, configuration, environment, and time being assessed.
+- No equally strong or stronger evidence contradicts the result. If scope or proof is missing, stale, unsafe to collect, or conflicting, the result stays Blocked or Unknown.
+
+**What the program checks today**
+
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
+
+**Proposed future check: Repository or artifact check**
+
+- First split the rule into one assertion per observable promise and bind each assertion to a versioned checker and an allowed evidence type.
+- Build an inventory from file contents, manifests, parsers, build graphs, and explicit project configuration. Common file or folder names may be discovery hints, but they must not be the only way to pass.
+- Run a bounded, read-only parser or analyzer. Save the exact files, artifact digests, checker version, limits, and observed result. Do not run the target project's scripts.
+
+**Review notes**
+
+- May bundle several promises; split it before machine evaluation.
+
+<!-- END CONTROL USEQ-86610CCA -->
 
 <!-- BEGIN CONTROL USEQ-0B8FCCA8 -->
 ### USEQ-0B8FCCA8
@@ -39705,40 +39743,3 @@ Consider this rule inside the selected profile and the source section `Developer
 - Contains project-dependent words: `critical`. Define them in the selected profile or project policy.
 
 <!-- END CONTROL USEQ-2E6ADA23 -->
-
-<!-- BEGIN CONTROL USEQ-E630B3A9 -->
-### USEQ-E630B3A9
-
-- Source: `docs/engineering/11-developer-experience-platform-and-delivery.md:463`
-- Section: `Developer experience, platform, and delivery > Developer Experience, Platform Engineering, and Engineering Economics Master Checklist > Expanded gap-closure controls > Scheduling, dependencies, and delivery forecasting`
-- Status/revision: `active` / `1`
-
-> Maintain a decision log explaining changes to committed scope and schedule.
-
-**When it applies**
-
-Consider this rule inside the selected profile and the source section `Developer experience, platform, and delivery > Developer Experience, Platform Engineering, and Engineering Economics Master Checklist > Expanded gap-closure controls > Scheduling, dependencies, and delivery forecasting`. Before checking it, the scanner must name the exact product part, release, environment, data, and people it covers. A broad heading does not make the rule apply to every project.
-
-**Proposed acceptance criteria**
-
-- The exact assessment target and the complete applicable scope are recorded.
-- Current trustworthy evidence shows that this statement is true: “Maintain a decision log explaining changes to committed scope and schedule.”
-- The evidence belongs to the exact source revision, artifact, configuration, environment, and time being assessed.
-- No equally strong or stronger evidence contradicts the result. If scope or proof is missing, stale, unsafe to collect, or conflicting, the result stays Blocked or Unknown.
-
-**What the program checks today**
-
-- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
-- With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
-
-**Proposed future check: Mixed evidence**
-
-- First split the rule into one assertion per observable promise and bind each assertion to a versioned checker and an allowed evidence type.
-- Use separate repository, artifact, environment, and human assertions as needed. Keep the authority of each evidence source visible and require every applicable part.
-- Repository intent cannot prove deployed behavior, and a runtime snapshot cannot prove the source or review process by itself.
-
-**Review notes**
-
-- No automatic wording warning was found. A control author still needs to approve its applicability, evidence, and atomic assertions before automation.
-
-<!-- END CONTROL USEQ-E630B3A9 -->

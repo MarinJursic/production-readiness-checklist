@@ -4,9 +4,47 @@
 
 [Back to the acceptance-criteria index](README.md).
 
-Controls in this file: **1,001** (`USEQ-75CA82FD` through `USEQ-EE822CDB` in source order).
+Controls in this file: **1,001** (`USEQ-38F7FBD9` through `USEQ-22BC5813` in source order).
 
 ## `docs/engineering/13-documentation-and-knowledge.md`
+
+<!-- BEGIN CONTROL USEQ-38F7FBD9 -->
+### USEQ-38F7FBD9
+
+- Source: `docs/engineering/13-documentation-and-knowledge.md:57`
+- Section: `Documentation and knowledge > Product, Requirements, and Decision Documentation > Category-specific universal rules`
+- Status/revision: `active` / `1`
+
+> Use diagrams, examples, scenarios, and state models where text alone is ambiguous.
+
+**When it applies**
+
+Consider this rule inside the selected profile and the source section `Documentation and knowledge > Product, Requirements, and Decision Documentation > Category-specific universal rules`. Before checking it, the scanner must name the exact product part, release, environment, data, and people it covers. A broad heading does not make the rule apply to every project.
+
+**Proposed acceptance criteria**
+
+- The exact assessment target and the complete applicable scope are recorded.
+- Current trustworthy evidence shows that this statement is true: “Use diagrams, examples, scenarios, and state models where text alone is ambiguous.”
+- Each separate promise in the sentence is turned into its own atomic assertion, and every required assertion passes. One passing part cannot hide a failing part.
+- The evidence belongs to the exact source revision, artifact, configuration, environment, and time being assessed.
+- No equally strong or stronger evidence contradicts the result. If scope or proof is missing, stale, unsafe to collect, or conflicting, the result stays Blocked or Unknown.
+
+**What the program checks today**
+
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
+
+**Proposed future check: Mixed evidence**
+
+- First split the rule into one assertion per observable promise and bind each assertion to a versioned checker and an allowed evidence type.
+- Use separate repository, artifact, environment, and human assertions as needed. Keep the authority of each evidence source visible and require every applicable part.
+- Repository intent cannot prove deployed behavior, and a runtime snapshot cannot prove the source or review process by itself.
+
+**Review notes**
+
+- May bundle several promises; split it before machine evaluation.
+
+<!-- END CONTROL USEQ-38F7FBD9 -->
 
 <!-- BEGIN CONTROL USEQ-75CA82FD -->
 ### USEQ-75CA82FD
@@ -38460,44 +38498,3 @@ Consider this rule inside the selected profile and the source section `AI, ML, a
 - May bundle several promises; split it before machine evaluation.
 
 <!-- END CONTROL USEQ-22BC5813 -->
-
-<!-- BEGIN CONTROL USEQ-EE822CDB -->
-### USEQ-EE822CDB
-
-- Source: `docs/engineering/15-ai-ml-and-ai-assisted-development.md:684`
-- Section: `AI, ML, and AI-assisted development > AI-Assisted Engineering, Agentic Development, and Content Provenance > Content provenance, authenticity, and C2PA-style credentials`
-- Status/revision: `active` / `1`
-
-> Record creation, editing, transformation, generation, source, ingredient, tool, organization, and timestamp information only when accurate and permitted.
-
-**When it applies**
-
-Use this rule only when its stated trigger and the source section `AI, ML, and AI-assisted development > AI-Assisted Engineering, Agentic Development, and Content Provenance > Content provenance, authenticity, and C2PA-style credentials` apply. The scanner must record the trigger evidence. It may return Not Applicable only when the trigger is proven absent and a reason is saved.
-
-**Proposed acceptance criteria**
-
-- The exact assessment target and the complete applicable scope are recorded.
-- Current trustworthy evidence shows that this statement is true: “Record creation, editing, transformation, generation, source, ingredient, tool, organization, and timestamp information only when accurate and permitted.”
-- Each separate promise in the sentence is turned into its own atomic assertion, and every required assertion passes. One passing part cannot hide a failing part.
-- Words such as all, every, never, or only require a complete inventory of the relevant items. A sample is not enough unless the rule itself defines sampling.
-- The evidence belongs to the exact source revision, artifact, configuration, environment, and time being assessed.
-- No equally strong or stronger evidence contradicts the result. If scope or proof is missing, stale, unsafe to collect, or conflicting, the result stays Blocked or Unknown.
-
-**What the program checks today**
-
-- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
-- With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
-
-**Proposed future check: Repository or artifact check**
-
-- First split the rule into one assertion per observable promise and bind each assertion to a versioned checker and an allowed evidence type.
-- Build an inventory from file contents, manifests, parsers, build graphs, and explicit project configuration. Common file or folder names may be discovery hints, but they must not be the only way to pass.
-- Run a bounded, read-only parser or analyzer. Save the exact files, artifact digests, checker version, limits, and observed result. Do not run the target project's scripts.
-
-**Review notes**
-
-- May bundle several promises; split it before machine evaluation.
-- Uses an absolute word; passing requires proof that the relevant inventory is complete.
-- Has a condition or sits in a conditional section; make the trigger explicit and testable.
-
-<!-- END CONTROL USEQ-EE822CDB -->
