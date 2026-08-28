@@ -206,7 +206,7 @@ def verify_result(value: dict[str, Any], label: str) -> None:
 
 
 def smoke(release: pathlib.Path, version: str, commit: str) -> None:
-    if not build_release.SEMVER.fullmatch(version) or not build_release.COMMIT.fullmatch(commit):
+    if not build_release.is_release_version(version) or not build_release.COMMIT.fullmatch(commit):
         raise ValueError("version or commit is invalid")
     goos, goarch, npm_os, npm_cpu = host()
     manifest_path = release / f"prc_{version}_release-manifest.json"

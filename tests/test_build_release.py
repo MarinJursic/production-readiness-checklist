@@ -29,10 +29,36 @@ class ReleaseBuilderTests(unittest.TestCase):
         self.assertEqual(len({digest for _name, _version, digest in records}), len(development))
 
     def test_release_version_uses_strict_semver_without_build_metadata(self) -> None:
-        for value in ("0.1.0", "1.2.3-rc.1", "10.0.0-alpha-beta"):
-            self.assertIsNotNone(build_release.SEMVER.fullmatch(value), value)
-        for value in ("v1.2.3", "01.2.3", "1.02.3", "1.2.3-01", "1.2.3-alpha.", "1.2.3+build"):
-            self.assertIsNone(build_release.SEMVER.fullmatch(value), value)
+        for value in (
+            "0.1.0",
+            "1.2.3-rc.1",
+            "10.0.0-alpha-beta",
+            "1.2.3-0.3.7",
+            "1.2.3-x.7.z.92",
+            "1.2.3-x-y-z.--",
+            "1.2.3-01alpha",
+        ):
+            self.assertTrue(build_release.is_release_version(value), value)
+        for value in (
+            "",
+            "v1.2.3",
+            "01.2.3",
+            "1.02.3",
+            "1.2.03",
+            "1.2",
+            "1.2.3.4",
+            "1.2.3-01",
+            "1.2.3-alpha.",
+            "1.2.3-",
+            "1.2.3+build",
+            "1.2.3-α",
+            "1.2.3-rc+build",
+            "1.2.3-rc_1",
+            "１.2.3",
+        ):
+            self.assertFalse(build_release.is_release_version(value), value)
+        self.assertFalse(build_release.is_release_version(None))
+        self.assertFalse(build_release.is_release_version("1.2.3-" + "a" * 129))
 
     def test_timestamp_is_timezone_required_and_normalized(self) -> None:
         normalized, epoch = build_release.parse_timestamp("2026-08-23T12:34:56+02:00")

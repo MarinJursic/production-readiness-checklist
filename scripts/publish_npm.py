@@ -286,7 +286,7 @@ def artifact_hashes(path: pathlib.Path) -> tuple[int, str, bytes]:
 
 
 def load_packages(release: pathlib.Path, manifest_path: pathlib.Path, version: str) -> list[Package]:
-    if not build_release.SEMVER.fullmatch(version):
+    if not build_release.is_release_version(version):
         raise ValueError("version must be an exact semantic version")
     if manifest_path.is_symlink() or not manifest_path.is_file() or manifest_path.stat().st_size > 16 * 1024 * 1024:
         raise ValueError("release manifest must be a bounded regular file")
