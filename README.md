@@ -91,6 +91,15 @@ prc
 
 That is the normal 40-check local scan. To scan a different folder without changing directories, run `prc /path/to/project`. Use `prc --help` only when you need the other commands or options. There is no `npx` prefix.
 
+The npm command installs one user-facing package. Like other native CLIs, it keeps the small `prc` launcher separate from the OS-specific binary so npm downloads only the binary for this computer. Update or remove the global tool with:
+
+```bash
+npm install -g @marinjursic/prc@latest
+npm uninstall -g @marinjursic/prc
+```
+
+Run `prc version` at any time to see the installed version. Installing, updating, removing, or running the global command does not add files to the project being scanned.
+
 The scan is read-only: it does **not** fix files, run project code, install project dependencies, or write the report into the project. It checks exact local facts, prints a clear score and Pass/Fail/Review summary, and creates a private HTML report in your user cache. Every report includes all **10,042 controls**; broad rules that cannot be proved from source stay visibly in review instead of being counted as passed.
 
 <div align="center">

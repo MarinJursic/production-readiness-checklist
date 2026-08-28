@@ -52,6 +52,29 @@ class SmokeReleaseTests(unittest.TestCase):
         self.assertEqual(run.call_args.kwargs["errors"], "strict")
         self.assertNotIn("text", run.call_args.kwargs)
 
+    def test_global_command_uses_npm_exposed_shim(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = pathlib.Path(temporary)
+            (root / "bin").mkdir()
+            posix = root / "bin" / "prc"
+            posix.write_text("#!/bin/sh\n", encoding="utf-8")
+            self.assertEqual(
+                smoke_release.global_prc_command(root, ["version"], windows=False),
+                [str(posix), "version"],
+            )
+            windows = root / "prc.cmd"
+            windows.write_text("@echo off\r\n", encoding="utf-8")
+            command = smoke_release.global_prc_command(
+                root, ["scan", "space path"], windows=True, command_processor="/Windows/System32/cmd.exe",
+            )
+            self.assertEqual(command[:4], ["/Windows/System32/cmd.exe", "/d", "/s", "/c"])
+            self.assertIn("space path", command[4])
+
+    def test_global_command_fails_when_npm_did_not_expose_it(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            with self.assertRaisesRegex(RuntimeError, "did not expose"):
+                smoke_release.global_prc_command(pathlib.Path(temporary), [], windows=False)
+
     def test_manifest_cannot_authorize_an_oversized_artifact(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = pathlib.Path(temporary)

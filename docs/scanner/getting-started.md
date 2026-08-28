@@ -53,6 +53,16 @@ under its global prefix and exposes `prc` on `PATH`; it does not add a
 `sudo` to work around a global-install permission error; install Node with a
 version manager instead.
 
+The package is one user-facing install. npm quietly chooses the one native
+binary that matches this computer instead of downloading all six builds. There
+is no `npx` prefix after installation. Check, update, or remove it with:
+
+```bash
+prc version
+npm install -g @marinjursic/prc@latest
+npm uninstall -g @marinjursic/prc
+```
+
 The startup screen prints the exact project path. If the inventory reaches its
 8 GiB safety limit, check that path first and run inside the intended project
 root, or use `prc /exact/project/path`. The error identifies the next file

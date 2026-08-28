@@ -44,11 +44,8 @@ jobs:
 
       - name: Install hash-bound npm registry client
         env:
-          # scanner-v0.1.9's verifier predates npm 12's singleton-array
-          # response for exact `npm view` field queries. Use the last
-          # hash-bound npm 10 client for this read-only finalization step.
-          PRC_NPM_VERSION: "10.9.4"
-          PRC_NPM_INTEGRITY: "sha512-OnUG836FwboQIbqtefDNlyR0gTHzIfwRfE3DuiNewBvnMnWEpB0VEXwBlFVgqpNzIgYo/MHh3d2Hel/pszapAA=="
+          PRC_NPM_VERSION: "12.0.2"
+          PRC_NPM_INTEGRITY: "sha512-uIXokLlBj6FpNUTQX1PmT5pz7BlIN9QlixX+zdaSNHsd0qUXsbDLr50xzY6Sw7cJVr0uzHKDOle0swmPW/p5Qw=="
         run: |
           set -euo pipefail
           actual_integrity="$(npm view "npm@${PRC_NPM_VERSION}" dist.integrity --json \

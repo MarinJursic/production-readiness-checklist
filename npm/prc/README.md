@@ -24,6 +24,12 @@ cd /path/to/project
 prc
 ```
 
+There is no `npx` prefix after this one-time install. Run `prc version` to see
+the installed version, `npm install -g @marinjursic/prc@latest` to update, or
+`npm uninstall -g @marinjursic/prc` to remove the global command. npm installs
+this one user-facing package and only the native package for the current
+operating system and CPU.
+
 The global install is outside the target project and does not add project
 `node_modules` or edit its package files. Website media and contributor-only
 documentation are excluded from the native npm package; all 10,042 controls,

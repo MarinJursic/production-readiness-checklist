@@ -132,6 +132,22 @@ def run_json(command: list[str], label: str, cwd: pathlib.Path | None = None) ->
     return value
 
 
+def global_prc_command(
+    prefix: pathlib.Path, arguments: list[str], *, windows: bool,
+    command_processor: str | None = None,
+) -> list[str]:
+    """Return the real command npm exposes for one isolated global prefix."""
+    shim = prefix / ("prc.cmd" if windows else "bin/prc")
+    if shim.is_symlink() or not shim.is_file():
+        raise RuntimeError("global npm install did not expose the prc command")
+    if not windows:
+        return [str(shim), *arguments]
+    if not command_processor or not pathlib.Path(command_processor).is_absolute():
+        raise RuntimeError("Windows command processor is unavailable for the global prc smoke test")
+    command_line = subprocess.list2cmdline([str(shim), *arguments])
+    return [command_processor, "/d", "/s", "/c", command_line]
+
+
 def record(records: Any, **wanted: str) -> dict[str, Any]:
     matches = [item for item in records if isinstance(item, dict) and all(item.get(key) == value for key, value in wanted.items())]
     if len(matches) != 1:
@@ -270,6 +286,48 @@ def smoke(release: pathlib.Path, version: str, commit: str) -> None:
             cwd=project,
         )
         verify_result(npm_result, "npm launcher")
+
+        global_prefix = root / "global"
+        global_install = subprocess.run(
+            [
+                npm_executable, "install", "--global", "--prefix", str(global_prefix),
+                "--ignore-scripts", "--offline", "--no-audit", "--no-fund",
+                "--package-lock=false", str(platform_package), str(launcher_package),
+            ],
+            cwd=root,
+            env=npm_environment,
+            check=False,
+            stdin=subprocess.DEVNULL,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            encoding="utf-8",
+            errors="strict",
+        )
+        if global_install.returncode != 0:
+            detail = (global_install.stderr or global_install.stdout)[:4_000]
+            raise RuntimeError(f"offline global npm install failed: {detail}")
+        command_processor = shutil.which("cmd.exe") if os.name == "nt" else None
+        global_version = run_json(
+            global_prc_command(
+                global_prefix, ["version", "--format", "json"],
+                windows=os.name == "nt", command_processor=command_processor,
+            ),
+            "global prc version check",
+        )
+        if global_version.get("version") != version or global_version.get("revision") != commit:
+            raise RuntimeError("global prc command reports the wrong release identity")
+        global_result = run_json(
+            global_prc_command(
+                global_prefix,
+                ["scan", str(project), "--format", "json", "--no-report", "--exit-policy", "never"],
+                windows=os.name == "nt", command_processor=command_processor,
+            ),
+            "global prc scan",
+            cwd=project,
+        )
+        verify_result(global_result, "global prc command")
+        if (project / "node_modules").exists():
+            raise RuntimeError("global prc install or scan wrote node_modules into the target project")
     print(f"release smoke test passed for {goos}/{goarch}")
 
 
