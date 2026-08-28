@@ -168,6 +168,29 @@ class PublishNpmTests(unittest.TestCase):
             publish_npm.publish(self.packages()[:1], run, self.trusted_environment())
         self.assertEqual(sleep.call_args_list, [mock.call(1), mock.call(2)])
 
+    def test_post_publish_verification_retries_transient_wrong_integrity(self) -> None:
+        calls = 0
+
+        def run(command: list[str]) -> subprocess.CompletedProcess[str]:
+            nonlocal calls
+            if command == ["node", "--version"]:
+                return completed(command, stdout="v24.19.0")
+            if command == ["npm", "--version"]:
+                return completed(command, stdout="12.0.2")
+            if command[:2] == ["npm", "publish"]:
+                return completed(command, stdout="published")
+            if command[:2] == ["npm", "view"]:
+                calls += 1
+                if calls == 1:
+                    return completed(command, 1, stderr=json.dumps({"error": {"code": "E404"}}))
+                integrity = "sha512-stale" if calls < 4 else "sha512-platform"
+                return completed(command, stdout=json.dumps(integrity))
+            raise AssertionError(command)
+
+        with mock.patch("scripts.publish_npm.time.sleep") as sleep:
+            publish_npm.publish(self.packages()[:1], run, self.trusted_environment())
+        self.assertEqual(sleep.call_args_list, [mock.call(1), mock.call(2)])
+
     def test_publish_rejects_local_or_wrong_workflow_identity(self) -> None:
         with self.assertRaisesRegex(RuntimeError, "exact trusted tagged release workflow"):
             publish_npm.publish(self.packages(), environment={})

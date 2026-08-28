@@ -34,6 +34,7 @@ MINIMUM_NODE = (22, 14, 0)
 MINIMUM_NPM = (12, 0, 2)
 MAXIMUM_NPM_PACKAGE_BYTES = 24 * 1024 * 1024
 MAXIMUM_EXPANDED_PACKAGE_BYTES = 64 * 1024 * 1024
+REGISTRY_VERIFICATION_DELAYS = (0, 1, 2, 4, 8, 16, 32, 64)
 VERSION_TEXT = re.compile(r"^v?(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(?:[-+].*)?$")
 Run = Callable[[list[str]], subprocess.CompletedProcess[str]]
 
@@ -377,14 +378,22 @@ def registry_integrity(run: Run, package: Package) -> str | None:
 
 
 def wait_for_registry_integrity(run: Run, package: Package) -> str | None:
-    """Allow bounded public-registry propagation after a successful publish."""
-    for delay in (0, 1, 2, 4, 8, 16):
+    """Wait for the exact uploaded bytes to propagate after a successful publish.
+
+    The public registry can briefly expose incomplete or stale version metadata
+    after accepting a publish. A package found before publication still fails
+    closed immediately in ``publish``; only the post-success consistency check
+    receives this bounded retry window.
+    """
+    last_seen: str | None = None
+    for delay in REGISTRY_VERIFICATION_DELAYS:
         if delay:
             time.sleep(delay)
         integrity = registry_integrity(run, package)
-        if integrity is not None:
+        if integrity == package.integrity:
             return integrity
-    return None
+        last_seen = integrity
+    return last_seen
 
 
 def verify_trusted_environment(packages: list[Package], environment: dict[str, str]) -> None:
@@ -443,7 +452,11 @@ def publish(
         command_output(run, command, f"npm publish {package.name}@{package.version}")
         published = wait_for_registry_integrity(run, package)
         if published != package.integrity:
-            raise RuntimeError(f"npm did not return the expected integrity for {package.name}@{package.version}")
+            observed = published or "not visible"
+            raise RuntimeError(
+                f"npm did not return the expected integrity for {package.name}@{package.version}; "
+                f"expected {package.integrity}, observed {observed}"
+            )
         print(f"published and verified {package.name}@{package.version} ({tag})")
 
 
