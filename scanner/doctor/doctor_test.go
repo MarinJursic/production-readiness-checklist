@@ -4,6 +4,7 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"strings"
 	"testing"
 	"time"
 )
@@ -124,5 +125,29 @@ func TestRunRejectsUnexpectedExecutableIdentity(t *testing.T) {
 	check := checkByID(t, report, "oci-runtime")
 	if report.Ready || check.Status != "fail" {
 		t.Fatalf("unexpected executable was accepted: %+v", report)
+	}
+}
+
+func TestRunAcceptsProviderCommandSymlinkToVersionedExecutable(t *testing.T) {
+	if runtime.GOOS == "windows" {
+		t.Skip("symbolic-link creation requires additional Windows privileges")
+	}
+	bin := t.TempDir()
+	versioned := filepath.Join(bin, "codex.js")
+	if err := os.WriteFile(versioned, []byte("#!/bin/sh\nexit 99\n"), 0o700); err != nil {
+		t.Fatal(err)
+	}
+	command := filepath.Join(bin, "codex")
+	if err := os.Symlink(versioned, command); err != nil {
+		t.Fatal(err)
+	}
+	report := Run(Options{
+		Target: t.TempDir(), CatalogRoot: catalogRoot(t), Providers: []string{command},
+	})
+	check := checkByID(t, report, "provider.codex")
+	if !report.Ready || check.Status != "pass" || len(check.Details) != 3 ||
+		!strings.HasSuffix(check.Details[0], "/codex.js") ||
+		!strings.HasSuffix(check.Details[2], "/codex") {
+		t.Fatalf("provider command symlink was rejected or recorded incorrectly: %+v", report)
 	}
 }

@@ -32,6 +32,7 @@ const (
 // control. Repository content is copied, screened, and embedded as untrusted
 // context; provider tools never receive the source workspace path.
 func Apply(ctx context.Context, run model.RunResult, options Options) (model.RunResult, Summary, error) {
+	started := time.Now()
 	if run.ControlCatalog == nil || len(run.ControlResults) == 0 {
 		return model.RunResult{}, Summary{}, fmt.Errorf("AI review requires a complete control-catalog scan")
 	}
@@ -64,8 +65,11 @@ func Apply(ctx context.Context, run model.RunResult, options Options) (model.Run
 	}
 	outputs := make([]Output, len(tasks))
 	reused := 0
+	totalControls := 0
+	reusedControls := 0
 	pending := make([]int, 0, len(tasks))
 	for index, task := range tasks {
+		totalControls += len(task.Controls)
 		cached, ok, cacheErr := loadCachedOutput(stateDirectory, task)
 		if cacheErr != nil {
 			return model.RunResult{}, Summary{}, cacheErr
@@ -73,11 +77,26 @@ func Apply(ctx context.Context, run model.RunResult, options Options) (model.Run
 		if ok {
 			outputs[index] = cached
 			reused++
+			reusedControls += len(task.Controls)
 		} else {
 			pending = append(pending, index)
 		}
 	}
-	if err := runPendingBatches(ctx, runner, tasks, pending, outputs, stateDirectory, options.Workers); err != nil {
+	baseProgress := Progress{
+		Phase: "prepared", Provider: options.Provider, Model: options.Model,
+		StateDirectory: stateDirectory, Workers: options.Workers,
+		TotalBatches: len(tasks), CompletedBatches: reused, ReusedBatches: reused,
+		TotalControls: totalControls, CompletedControls: reusedControls,
+		MaxCostUSD: options.MaxCostUSD, Elapsed: time.Since(started),
+	}
+	if options.Progress != nil {
+		options.Progress(baseProgress)
+	}
+	statistics, err := runPendingBatches(
+		ctx, runner, tasks, pending, outputs, stateDirectory, options.Workers,
+		options.Progress, baseProgress, started,
+	)
+	if err != nil {
 		return model.RunResult{}, Summary{}, err
 	}
 	reviews := map[string]Review{}
@@ -127,6 +146,9 @@ func Apply(ctx context.Context, run model.RunResult, options Options) (model.Run
 		Provider: options.Provider, Model: options.Model, ReviewedControls: len(reviews),
 		AdvisoryFailures: advisoryFailures, ReusedBatches: reused,
 		CompletedBatches: len(tasks), StateDirectory: stateDirectory, Focused: focused,
+		TokenUsage: statistics.TokenUsage, TokenUsageBatches: statistics.TokenUsageBatches,
+		EstimatedCostUSD: statistics.EstimatedCostUSD, EstimatedCostBatches: statistics.EstimatedCostBatches,
+		MaxCostUSD: options.MaxCostUSD, Duration: time.Since(started),
 	}, nil
 }
 
@@ -441,23 +463,33 @@ func uniqueSorted(values []string) []string {
 	return result
 }
 
+type batchRunStatistics struct {
+	CompletedBatches     int
+	CompletedControls    int
+	TokenUsage           TokenUsage
+	TokenUsageBatches    int
+	EstimatedCostUSD     float64
+	EstimatedCostBatches int
+}
+
 func runPendingBatches(
 	ctx context.Context, runner BatchRunner, tasks []Task, pending []int, outputs []Output,
-	stateDirectory string, workers int,
-) error {
+	stateDirectory string, workers int, progress func(Progress), base Progress, started time.Time,
+) (batchRunStatistics, error) {
 	workContext, cancel := context.WithCancel(ctx)
 	defer cancel()
 	jobs := make(chan int)
 	var wait sync.WaitGroup
 	var lock sync.Mutex
 	var firstErr error
+	statistics := batchRunStatistics{}
 	worker := func() {
 		defer wait.Done()
 		for index := range jobs {
 			if workContext.Err() != nil {
 				return
 			}
-			output, _, err := runner.Run(workContext, tasks[index])
+			output, execution, err := runner.Run(workContext, tasks[index])
 			if err == nil {
 				output = attachTaskLimitations(output, tasks[index])
 				err = validateOutput(output, tasks[index])
@@ -471,6 +503,36 @@ func runPendingBatches(
 				cancel()
 			} else if err == nil {
 				outputs[index] = output
+				statistics.CompletedBatches++
+				statistics.CompletedControls += len(tasks[index].Controls)
+				if execution.TokenUsageKnown {
+					if usageErr := addTokenUsage(&statistics.TokenUsage, execution.TokenUsage); usageErr != nil {
+						firstErr = usageErr
+						cancel()
+					} else {
+						statistics.TokenUsageBatches++
+					}
+				}
+				if firstErr == nil && execution.EstimatedCostKnown {
+					if costErr := addEstimatedCost(&statistics.EstimatedCostUSD, execution.EstimatedCostUSD); costErr != nil {
+						firstErr = costErr
+						cancel()
+					} else {
+						statistics.EstimatedCostBatches++
+					}
+				}
+				if firstErr == nil && progress != nil {
+					current := base
+					current.Phase = "batch_completed"
+					current.CompletedBatches += statistics.CompletedBatches
+					current.CompletedControls += statistics.CompletedControls
+					current.TokenUsage = statistics.TokenUsage
+					current.TokenUsageBatches = statistics.TokenUsageBatches
+					current.EstimatedCostUSD = statistics.EstimatedCostUSD
+					current.EstimatedCostBatches = statistics.EstimatedCostBatches
+					current.Elapsed = time.Since(started)
+					progress(current)
+				}
 			}
 			lock.Unlock()
 		}
@@ -493,9 +555,9 @@ enqueue:
 	close(jobs)
 	wait.Wait()
 	if firstErr != nil {
-		return firstErr
+		return statistics, firstErr
 	}
-	return ctx.Err()
+	return statistics, ctx.Err()
 }
 
 func loadCachedOutput(directory string, task Task) (Output, bool, error) {

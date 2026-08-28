@@ -19,6 +19,7 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/adapterfixture"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/benchmark"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/catalog"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/controlreview"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/engine"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/exception"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/invalidation"
@@ -76,6 +77,42 @@ func TestVersionCommand(t *testing.T) {
 	}
 	if code := run([]string{"version", "unexpected"}, &stdout, &stderr); code != exitConfiguration {
 		t.Fatalf("unexpected argument exit=%d", code)
+	}
+}
+
+func TestAIReviewProgressIsReadableAndThrottled(t *testing.T) {
+	var output bytes.Buffer
+	printProgress := aiReviewProgressPrinter(&output, newTerminalStyle("never", &output))
+	base := controlreview.Progress{
+		Phase: "prepared", Provider: "codex", StateDirectory: "/private/review-state",
+		Workers: 1, TotalBatches: 1256, TotalControls: 10042,
+	}
+	printProgress(base)
+	first := base
+	first.Phase, first.CompletedBatches, first.CompletedControls = "batch_completed", 1, 8
+	first.TokenUsageBatches = 1
+	first.TokenUsage = controlreview.TokenUsage{InputTokens: 100, CachedInputTokens: 40, OutputTokens: 20, ReasoningOutputTokens: 5}
+	first.Elapsed = 2 * time.Second
+	printProgress(first)
+	second := first
+	second.CompletedBatches, second.CompletedControls = 2, 16
+	printProgress(second)
+	complete := second
+	complete.CompletedBatches, complete.CompletedControls = 1256, 10042
+	complete.Elapsed = time.Hour
+	printProgress(complete)
+	text := output.String()
+	for _, expected := range []string{
+		"AI plan: 10042 controls in 1256 batches", "Resume data: /private/review-state",
+		"1/1256 batches", "tokens 100 input (40 cached), 20 output, 5 reasoning",
+		"100% · 1256/1256 batches · 10042/10042 controls",
+	} {
+		if !strings.Contains(text, expected) {
+			t.Fatalf("progress output omitted %q:\n%s", expected, text)
+		}
+	}
+	if strings.Contains(text, "2/1256 batches") {
+		t.Fatalf("large-run progress was not throttled:\n%s", text)
 	}
 }
 
@@ -254,7 +291,8 @@ exit 0
 			stdout.Reset()
 			stderr.Reset()
 			if code := run([]string{"auth", name}, &stdout, &stderr); code != 0 ||
-				!strings.Contains(stdout.String(), "Logged in for test") {
+				!strings.Contains(stdout.String(), "Logged in for test") ||
+				strings.Contains(stdout.String(), `\u000A`) {
 				t.Fatalf("auth exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
 			}
 
@@ -393,7 +431,7 @@ func TestBenchmarkRunCommand(t *testing.T) {
 	if err := json.Unmarshal(stdout.Bytes(), &report); err != nil {
 		t.Fatal(err)
 	}
-	if report.SchemaVersion != benchmark.ReportSchema || !report.Passed || report.Summary.Expectations != 10 {
+	if report.SchemaVersion != benchmark.ReportSchema || !report.Passed || report.Summary.Expectations != 11 {
 		t.Fatalf("benchmark report = %+v", report)
 	}
 

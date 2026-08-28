@@ -229,6 +229,12 @@ the AI understood it. `prc full` and `--ai` are also explicit permission to send
 those screened excerpts to the remote provider. Read [safe AI control review](ai-control-review.md) for
 one-control testing, cost warnings, result meanings, and stop conditions.
 
+The terminal shows the review plan before the first remote call, then bounded
+batch and control progress with elapsed time. New Codex batches show provider-
+reported token totals when available. New Claude batches show the provider's
+client-side cost estimate, plus any enforced per-batch limit you selected.
+Cached batches are clearly counted but their old usage is not guessed.
+
 ## Preserve evidence and history
 
 ```bash

@@ -313,12 +313,63 @@ func TestPlanDigestIsDeterministic(t *testing.T) {
 	}
 	filePresentUses := 0
 	for _, implementation := range first.Implementations {
-		if implementation.ID == "prc.native.file-present@0.1" {
+		if implementation.ID == "prc.native.file-present@0.2" {
 			filePresentUses = len(implementation.AssertionIDs)
 		}
 	}
 	if filePresentUses != 7 {
 		t.Fatalf("shared implementation registry entry was not deduplicated: %d", filePresentUses)
+	}
+}
+
+func TestWhitespaceOnlyOrInvalidFoundationTextCannotPass(t *testing.T) {
+	for _, test := range []struct {
+		name    string
+		content []byte
+	}{
+		{"ASCII whitespace", []byte(" \t\r\n")},
+		{"Unicode whitespace and BOM", []byte("\ufeff\u00a0\u2003\n")},
+		{"invalid UTF-8", []byte{0xff, 0xfe}},
+		{"NUL control", []byte{'o', 'k', 0}},
+	} {
+		t.Run(test.name, func(t *testing.T) {
+			root := healthyRepository(t)
+			if err := os.WriteFile(filepath.Join(root, "README.md"), test.content, 0o644); err != nil {
+				t.Fatal(err)
+			}
+			item, err := inventory.Build(root)
+			if err != nil {
+				t.Fatal(err)
+			}
+			run, err := scanner(t).Scan("prc/core-repository", item)
+			if err != nil {
+				t.Fatal(err)
+			}
+			result := findResult(t, run, "PRC-A-CORE-001")
+			if result.Execution != "completed" || result.Assessment != "fail" ||
+				!strings.Contains(result.Summary, "non-whitespace UTF-8 text") {
+				t.Fatalf("invalid foundation text passed: %+v", result)
+			}
+		})
+	}
+}
+
+func TestReadableFoundationTextIsLanguageNeutral(t *testing.T) {
+	root := healthyRepository(t)
+	if err := os.WriteFile(filepath.Join(root, "README.md"), []byte("\ufeffΈτοιμο για παραγωγή\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	item, err := inventory.Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	run, err := scanner(t).Scan("prc/core-repository", item)
+	if err != nil {
+		t.Fatal(err)
+	}
+	result := findResult(t, run, "PRC-A-CORE-001")
+	if result.Execution != "completed" || result.Assessment != "pass" {
+		t.Fatalf("readable non-English UTF-8 text did not pass: %+v", result)
 	}
 }
 

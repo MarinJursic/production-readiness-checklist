@@ -52,11 +52,13 @@ disjoint sibling of the target.
   --provider claude
 ```
 
-The OCI executable must resolve to `docker` or `podman`. Provider executables
-must resolve to `codex` or `claude`. A matching filename is not treated as trust:
-the report records the resolved path and SHA-256 digest so execution planning can
-bind the exact binary later. Doctor does not test authentication, make network
-requests, pull images, or prove that a daemon is running.
+The command you request must be named `docker` or `podman` for OCI, or `codex`
+or `claude` for a provider. Normal package-manager command links are supported:
+Doctor checks the requested command name, follows the link, and hashes the real
+versioned executable. The report records both paths when they differ. A matching
+filename is not treated as trust; execution planning can bind the exact digest
+later. Doctor does not test authentication, make network requests, pull images,
+or prove that a daemon is running.
 
 ## Automation output
 

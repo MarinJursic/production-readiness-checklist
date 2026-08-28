@@ -292,7 +292,7 @@ prc full claude
 
 `prc full` uses the same guarded path as `prc scan --ai`. Selecting the provider is also your explicit permission to send bounded, secret-screened source excerpts to that remote provider. The provider receives no target workspace path and gets no shell, file-reading, write, web, MCP, or install tools. Do not enable AI review for source that its provider is not allowed to process.
 
-The full run is intentionally large: controls are sent in sealed batches of at most eight, and the coordinator must create one separate subagent for every control. Completed batches are saved outside the target and reused when the same scan resumes. This can take a long time and use many tokens. AI results are always labeled advisory; they cannot create a verified Pass, a final Not Applicable decision, or modify the project.
+The full run is intentionally large: controls are sent in sealed batches of at most eight, and the coordinator must create one separate subagent for every control. Completed batches are saved outside the target and reused when the same scan resumes. The terminal shows the plan, bounded progress, elapsed time, cached work, and new Codex token totals or Claude cost estimates when the provider reports them. This can take a long time and use many tokens. AI results are always labeled advisory; they cannot create a verified Pass, a final Not Applicable decision, or modify the project.
 
 Advanced options such as reviewing one control, changing effort, or setting a Claude cost limit remain available in the [safe AI control review](docs/scanner/ai-control-review.md).
 
@@ -310,7 +310,7 @@ Continue with the [complete scanner quick start](docs/scanner/getting-started.md
 
 - More narrow, tested local checks. The catalog currently has 43 executable assertions linked to 26 broad controls; the normal profile runs 40 and the quick profile runs 18. Most broad controls still need evidence or review.
 - Expert review of the machine-readable acceptance contract for every control. All 10,042 current contracts are generated and clearly labeled unreviewed; they are routing hints, not 10,042 finished automatic tests.
-- Stronger checks behind some current presence-only results, such as making sure a README, license, security policy, ownership file, test setup, or lock file contains enough useful and valid information without forcing one file name or folder layout.
+- Deeper meaning checks beyond the new readable, non-whitespace text baseline for repository documents—for example, whether a security policy gives useful reporting steps—without forcing one language, file name, heading, or folder layout.
 - Larger real-project accuracy tests for Codex and Claude review, including cost, resume, false-positive, missed-finding, prompt-injection, and unusual-project-layout measurements.
 - Independent checks of the meaning of AI advice. The scanner can prove that an AI-cited file and line existed in the screened snapshot, but it cannot yet prove that the sentence the AI wrote about that line is correct.
 - Safer native installation choices for people without Node, such as signed standalone installers or package-manager formulas. These should download a fixed, verified scanner release—not hide the npm command inside a mutable shell script.

@@ -142,7 +142,7 @@ func printAuthenticationStatus(providerName string, output io.Writer) error {
 	if childOutput.exceeded {
 		return fmt.Errorf("%s authentication status exceeded its output limit", providerName)
 	}
-	message := strings.TrimSpace(terminalText(childOutput.String()))
+	message := terminalText(strings.TrimSpace(childOutput.String()))
 	if message == "" {
 		message = "status unavailable"
 	}

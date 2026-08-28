@@ -4,9 +4,50 @@
 
 [Back to the acceptance-criteria index](README.md).
 
-Controls in this file: **593** (`USEQ-E59769F2` through `USEQ-87B20C17` in source order).
+Controls in this file: **594** (`USEQ-EE822CDB` through `USEQ-87B20C17` in source order).
 
 ## `docs/engineering/15-ai-ml-and-ai-assisted-development.md`
+
+<!-- BEGIN CONTROL USEQ-EE822CDB -->
+### USEQ-EE822CDB
+
+- Source: `docs/engineering/15-ai-ml-and-ai-assisted-development.md:684`
+- Section: `AI, ML, and AI-assisted development > AI-Assisted Engineering, Agentic Development, and Content Provenance > Content provenance, authenticity, and C2PA-style credentials`
+- Status/revision: `active` / `1`
+
+> Record creation, editing, transformation, generation, source, ingredient, tool, organization, and timestamp information only when accurate and permitted.
+
+**When it applies**
+
+Use this rule only when its stated trigger and the source section `AI, ML, and AI-assisted development > AI-Assisted Engineering, Agentic Development, and Content Provenance > Content provenance, authenticity, and C2PA-style credentials` apply. The scanner must record the trigger evidence. It may return Not Applicable only when the trigger is proven absent and a reason is saved.
+
+**Proposed acceptance criteria**
+
+- The exact assessment target and the complete applicable scope are recorded.
+- Current trustworthy evidence shows that this statement is true: “Record creation, editing, transformation, generation, source, ingredient, tool, organization, and timestamp information only when accurate and permitted.”
+- Each separate promise in the sentence is turned into its own atomic assertion, and every required assertion passes. One passing part cannot hide a failing part.
+- Words such as all, every, never, or only require a complete inventory of the relevant items. A sample is not enough unless the rule itself defines sampling.
+- The evidence belongs to the exact source revision, artifact, configuration, environment, and time being assessed.
+- No equally strong or stronger evidence contradicts the result. If scope or proof is missing, stale, unsafe to collect, or conflicting, the result stays Blocked or Unknown.
+
+**What the program checks today**
+
+- Included in every complete `prc scan` report as `needs_review`, but not deterministically checked today. No missing implementation is turned into a Pass.
+- With an explicitly enabled Codex or Claude review, the sealed task requires the coordinator to assign this rule to one separate subagent plus bounded, secret-screened repository excerpts. Its candidate, evidence, advice, and limitations are advisory only; they cannot create a verified Pass or final Not Applicable result.
+
+**Proposed future check: Repository or artifact check**
+
+- First split the rule into one assertion per observable promise and bind each assertion to a versioned checker and an allowed evidence type.
+- Build an inventory from file contents, manifests, parsers, build graphs, and explicit project configuration. Common file or folder names may be discovery hints, but they must not be the only way to pass.
+- Run a bounded, read-only parser or analyzer. Save the exact files, artifact digests, checker version, limits, and observed result. Do not run the target project's scripts.
+
+**Review notes**
+
+- May bundle several promises; split it before machine evaluation.
+- Uses an absolute word; passing requires proof that the relevant inventory is complete.
+- Has a condition or sits in a conditional section; make the trigger explicit and testable.
+
+<!-- END CONTROL USEQ-EE822CDB -->
 
 <!-- BEGIN CONTROL USEQ-E59769F2 -->
 ### USEQ-E59769F2
@@ -7019,7 +7060,7 @@ Consider this rule inside the selected profile and the source section `Specializ
 **What the program checks today**
 
 - Included in the complete report and partly represented by 1 catalog assertion(s). A passing narrow assertion produces `partially_verified`, not a complete Pass for this broad control. A failing narrow assertion can produce `confirmed_failure`:
-- `PRC-A-CORE-002` — A nonempty license file exists at the repository root. Applies when `true`. Implementation: `prc.native.file-present@0.1`. Required evidence: repository-file (repository): A nonempty root license file from the scanned commit.
+- `PRC-A-CORE-002` — A license file containing non-whitespace UTF-8 text exists at the repository root. Applies when `true`. Implementation: `prc.native.file-present@0.2`. Required evidence: repository-file (repository): A root license file containing non-whitespace UTF-8 text from the scanned commit.
 
 **Proposed future check: Repository or artifact check**
 
@@ -7058,7 +7099,7 @@ Consider this rule inside the selected profile and the source section `Specializ
 **What the program checks today**
 
 - Included in the complete report and partly represented by 1 catalog assertion(s). A passing narrow assertion produces `partially_verified`, not a complete Pass for this broad control. A failing narrow assertion can produce `confirmed_failure`:
-- `PRC-A-CORE-005` — A nonempty code-of-conduct document exists at the repository root. Applies when `true`. Implementation: `prc.native.file-present@0.1`. Required evidence: repository-file (repository): A nonempty root code-of-conduct document from the scanned commit.
+- `PRC-A-CORE-005` — A code-of-conduct document containing non-whitespace UTF-8 text exists at the repository root. Applies when `true`. Implementation: `prc.native.file-present@0.2`. Required evidence: repository-file (repository): A root code-of-conduct document containing non-whitespace UTF-8 text from the scanned commit.
 
 **Proposed future check: Mixed evidence**
 
@@ -7097,7 +7138,7 @@ Consider this rule inside the selected profile and the source section `Specializ
 **What the program checks today**
 
 - Included in the complete report and partly represented by 1 catalog assertion(s). A passing narrow assertion produces `partially_verified`, not a complete Pass for this broad control. A failing narrow assertion can produce `confirmed_failure`:
-- `PRC-A-CORE-003` — A nonempty contribution guide exists at the repository root. Applies when `true`. Implementation: `prc.native.file-present@0.1`. Required evidence: repository-file (repository): A nonempty root contribution guide from the scanned commit.
+- `PRC-A-CORE-003` — A contribution guide containing non-whitespace UTF-8 text exists at the repository root. Applies when `true`. Implementation: `prc.native.file-present@0.2`. Required evidence: repository-file (repository): A root contribution guide containing non-whitespace UTF-8 text from the scanned commit.
 
 **Proposed future check: Mixed evidence**
 
@@ -13024,7 +13065,7 @@ Consider this rule inside the selected profile and the source section `Specializ
 **What the program checks today**
 
 - Included in the complete report and partly represented by 1 catalog assertion(s). A passing narrow assertion produces `partially_verified`, not a complete Pass for this broad control. A failing narrow assertion can produce `confirmed_failure`:
-- `PRC-A-CORE-004` — A nonempty security policy exists at the repository root. Applies when `true`. Implementation: `prc.native.file-present@0.1`. Required evidence: repository-file (repository): A nonempty root security policy from the scanned commit.
+- `PRC-A-CORE-004` — A security policy containing non-whitespace UTF-8 text exists at the repository root. Applies when `true`. Implementation: `prc.native.file-present@0.2`. Required evidence: repository-file (repository): A root security policy containing non-whitespace UTF-8 text from the scanned commit.
 
 **Proposed future check: Mixed evidence**
 

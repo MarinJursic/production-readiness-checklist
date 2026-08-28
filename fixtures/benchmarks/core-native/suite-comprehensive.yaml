@@ -1,5 +1,5 @@
 schema_version: prc.benchmark-suite/v0.2
-id: prc.benchmark.core-native@1.0
+id: prc.benchmark.core-native@1.1
 title: Comprehensive core native assertion benchmark
 profile_id: prc/core-repository
 cases:
@@ -76,6 +76,15 @@ cases:
       - {assertion_id: PRC-A-CORE-025, assessment: pass, execution: completed}
   - id: readme-missing
     target: targets/readme-missing
+    expectations:
+      - {assertion_id: PRC-A-CORE-001, assessment: fail, execution: completed}
+  - id: readme-whitespace
+    target: targets/baseline
+    setup:
+      - operation: replace_text
+        path: README.md
+        find: "# Benchmark baseline\n\nThis fixture exercises repository, inapplicable, manual, and blocked outcomes.\n"
+        replace: "\uFEFF\u00A0\u2003\n"
     expectations:
       - {assertion_id: PRC-A-CORE-001, assessment: fail, execution: completed}
   - id: test-declaration-valid

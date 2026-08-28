@@ -24,6 +24,7 @@ var implementationRegistry = func() map[string]implementationSpec {
 	registry := map[string]implementationSpec{}
 	for _, identifier := range []string{
 		"prc.native.file-present@0.1",
+		"prc.native.file-present@0.2",
 		"prc.native.dependency-lock@0.1",
 		"prc.native.github-action-pin@0.1",
 		"prc.native.ci-present@0.1",

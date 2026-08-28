@@ -1,5 +1,5 @@
 schema_version: prc.pack/v0.1
-id: prc.pack.core-native@1.0
+id: prc.pack.core-native@1.1
 title: Core native assertion pack
 description: Catalog-wide deterministic checks measured against the comprehensive core fixture corpus.
 publisher_id: prc-project
@@ -7,12 +7,12 @@ maintenance: active
 engine_apis: [prc.engine/v0.1]
 profile_ids: [prc/core-repository, prc/api, prc/kubernetes]
 assertions:
-  - {assertion_id: PRC-A-CORE-001, implementation_id: prc.native.file-present@0.1, validated_outcomes: [pass, fail]}
-  - {assertion_id: PRC-A-CORE-002, implementation_id: prc.native.file-present@0.1, validated_outcomes: [pass, fail]}
-  - {assertion_id: PRC-A-CORE-003, implementation_id: prc.native.file-present@0.1, validated_outcomes: [pass, fail]}
-  - {assertion_id: PRC-A-CORE-004, implementation_id: prc.native.file-present@0.1, validated_outcomes: [pass, fail]}
-  - {assertion_id: PRC-A-CORE-005, implementation_id: prc.native.file-present@0.1, validated_outcomes: [pass, fail]}
-  - {assertion_id: PRC-A-CORE-006, implementation_id: prc.native.file-present@0.1, validated_outcomes: [pass, fail]}
+  - {assertion_id: PRC-A-CORE-001, implementation_id: prc.native.file-present@0.2, validated_outcomes: [pass, fail]}
+  - {assertion_id: PRC-A-CORE-002, implementation_id: prc.native.file-present@0.2, validated_outcomes: [pass, fail]}
+  - {assertion_id: PRC-A-CORE-003, implementation_id: prc.native.file-present@0.2, validated_outcomes: [pass, fail]}
+  - {assertion_id: PRC-A-CORE-004, implementation_id: prc.native.file-present@0.2, validated_outcomes: [pass, fail]}
+  - {assertion_id: PRC-A-CORE-005, implementation_id: prc.native.file-present@0.2, validated_outcomes: [pass, fail]}
+  - {assertion_id: PRC-A-CORE-006, implementation_id: prc.native.file-present@0.2, validated_outcomes: [pass, fail]}
   - {assertion_id: PRC-A-CORE-007, implementation_id: prc.native.dependency-lock@0.1, validated_outcomes: [pass, fail, not_applicable]}
   - {assertion_id: PRC-A-CORE-008, implementation_id: prc.native.github-action-pin@0.1, validated_outcomes: [pass, fail, not_applicable]}
   - {assertion_id: PRC-A-CORE-009, implementation_id: prc.native.ci-present@0.1, validated_outcomes: [pass, fail]}
@@ -22,7 +22,7 @@ assertions:
   - {assertion_id: PRC-A-CORE-013, implementation_id: prc.native.analysis-evidence@0.1, validated_outcomes: [blocked]}
   - {assertion_id: PRC-A-CORE-014, implementation_id: prc.native.final-newline@0.1, validated_outcomes: [pass, fail]}
   - {assertion_id: PRC-A-CORE-015, implementation_id: prc.native.git-revision@0.1, validated_outcomes: [pass, fail]}
-  - {assertion_id: PRC-A-CORE-016, implementation_id: prc.native.file-present@0.1, validated_outcomes: [pass, fail, not_applicable]}
+  - {assertion_id: PRC-A-CORE-016, implementation_id: prc.native.file-present@0.2, validated_outcomes: [pass, fail, not_applicable]}
   - {assertion_id: PRC-A-CORE-017, implementation_id: prc.native.github-workflow-valid@0.1, validated_outcomes: [pass, not_applicable, error]}
   - {assertion_id: PRC-A-CORE-018, implementation_id: prc.native.github-workflow-jobs@0.1, validated_outcomes: [pass, fail, not_applicable, error]}
   - {assertion_id: PRC-A-CORE-019, implementation_id: prc.native.github-workflow-timeouts@0.1, validated_outcomes: [pass, fail, not_applicable, error]}
@@ -48,9 +48,9 @@ assertions:
   - {assertion_id: PRC-A-K8S-003, implementation_id: prc.native.kubernetes-capabilities@0.1, validated_outcomes: [pass, fail, not_applicable]}
   - {assertion_id: PRC-A-K8S-004, implementation_id: prc.native.kubernetes-seccomp@0.1, validated_outcomes: [pass, fail, not_applicable]}
 benchmark:
-  suite_id: prc.benchmark.core-native@1.0
+  suite_id: prc.benchmark.core-native@1.1
   suite_path: fixtures/benchmarks/core-native/suite-comprehensive.yaml
-  suite_sha256: 1035fef3034185344a18bbf3e308143418f1b0bbd7f1fdd0a71a8adc138c9968
+  suite_sha256: 532a5828a6e283d38ddcdbae71fdbbfd03159128067e5a8037dac3f6a36ac4b3
 limitations:
   - Manual-review and adapter-backed assertions are validated only in their fail-closed manual or blocked states.
   - OpenAPI operation checks cover direct path and webhook operations; referenced Path Items, callbacks, multi-document descriptions, and referenced responses require a future bounded resolver or adapter.

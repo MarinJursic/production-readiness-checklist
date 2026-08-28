@@ -79,12 +79,46 @@ type Output struct {
 }
 
 type Execution struct {
-	Provider         string
-	Model            string
-	ExecutableSHA256 string
-	StdoutSHA256     string
-	StderrSHA256     string
-	Duration         time.Duration
+	Provider           string
+	Model              string
+	ExecutableSHA256   string
+	StdoutSHA256       string
+	StderrSHA256       string
+	Duration           time.Duration
+	TokenUsage         TokenUsage
+	TokenUsageKnown    bool
+	EstimatedCostUSD   float64
+	EstimatedCostKnown bool
+}
+
+// TokenUsage is the provider-reported usage for completed, non-cached review
+// batches. It is accounting information, not evidence about a control.
+type TokenUsage struct {
+	InputTokens           int64
+	CachedInputTokens     int64
+	OutputTokens          int64
+	ReasoningOutputTokens int64
+}
+
+// Progress reports scanner-owned batch completion. Callers must treat the
+// counts as local orchestration state rather than proof of provider subagents.
+type Progress struct {
+	Phase                string
+	Provider             string
+	Model                string
+	StateDirectory       string
+	Workers              int
+	TotalBatches         int
+	CompletedBatches     int
+	ReusedBatches        int
+	TotalControls        int
+	CompletedControls    int
+	TokenUsage           TokenUsage
+	TokenUsageBatches    int
+	EstimatedCostUSD     float64
+	EstimatedCostBatches int
+	MaxCostUSD           float64
+	Elapsed              time.Duration
 }
 
 type BatchRunner interface {
@@ -105,15 +139,22 @@ type Options struct {
 	MaxCostUSD                  float64
 	ControlIDs                  []string
 	Runner                      BatchRunner
+	Progress                    func(Progress)
 }
 
 type Summary struct {
-	Provider         string
-	Model            string
-	ReviewedControls int
-	AdvisoryFailures int
-	ReusedBatches    int
-	CompletedBatches int
-	StateDirectory   string
-	Focused          bool
+	Provider             string
+	Model                string
+	ReviewedControls     int
+	AdvisoryFailures     int
+	ReusedBatches        int
+	CompletedBatches     int
+	StateDirectory       string
+	Focused              bool
+	TokenUsage           TokenUsage
+	TokenUsageBatches    int
+	EstimatedCostUSD     float64
+	EstimatedCostBatches int
+	MaxCostUSD           float64
+	Duration             time.Duration
 }

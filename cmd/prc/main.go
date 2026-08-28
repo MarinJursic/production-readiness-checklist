@@ -2128,9 +2128,11 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	}
 	var reviewSummary controlreview.Summary
 	if *reviewProvider != "none" {
+		var reviewProgress func(controlreview.Progress)
 		if *format == "human" {
 			fmt.Fprintln(stdout, progressStyle.paint(ansiBlue,
 				"      Running the locked-down "+authenticationProviderTitle(*reviewProvider)+" advisory review; this can take a while..."))
+			reviewProgress = aiReviewProgressPrinter(stdout, progressStyle)
 		}
 		reviewed, summary, reviewErr := controlreview.Apply(context.Background(), run, controlreview.Options{
 			Provider: *reviewProvider, Executable: *reviewExecutable, Model: *reviewModel,
@@ -2139,6 +2141,7 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 			AllowRemoteSourceProcessing: *allowRemoteReview, BatchSize: *reviewBatchSize,
 			Workers: *reviewWorkers, Timeout: *reviewTimeout, MaxCostUSD: *reviewMaxCost,
 			ControlIDs: append([]string{}, reviewControls...),
+			Progress:   reviewProgress,
 		})
 		if reviewErr != nil {
 			return exitInternal, exitError(exitExecution, reviewErr)
@@ -2180,6 +2183,23 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		style := newTerminalStyle(*colorMode, stdout)
 		if *reviewProvider != "none" {
 			fmt.Fprintf(stdout, "AI review: %d controls reviewed by %s; %d advisory failure candidates\n", reviewSummary.ReviewedControls, terminalText(reviewSummary.Provider), reviewSummary.AdvisoryFailures)
+			fmt.Fprintf(stdout, "AI batches: %d completed · %d reused · %s elapsed\n",
+				reviewSummary.CompletedBatches, reviewSummary.ReusedBatches, reviewSummary.Duration.Round(time.Millisecond))
+			if reviewSummary.TokenUsageBatches > 0 {
+				fmt.Fprintf(stdout, "AI token usage: %d input (%d cached) · %d output · %d reasoning · %d new batches reported usage\n",
+					reviewSummary.TokenUsage.InputTokens, reviewSummary.TokenUsage.CachedInputTokens,
+					reviewSummary.TokenUsage.OutputTokens, reviewSummary.TokenUsage.ReasoningOutputTokens,
+					reviewSummary.TokenUsageBatches)
+			} else if reviewSummary.Provider == "codex" && reviewSummary.CompletedBatches > reviewSummary.ReusedBatches {
+				fmt.Fprintln(stdout, "AI token usage: unavailable from the completed Codex batch events")
+			}
+			if reviewSummary.EstimatedCostBatches > 0 {
+				fmt.Fprintf(stdout, "AI estimated cost: $%.4f across %d new batches (provider estimate, not a bill)\n",
+					reviewSummary.EstimatedCostUSD, reviewSummary.EstimatedCostBatches)
+			}
+			if reviewSummary.MaxCostUSD > 0 {
+				fmt.Fprintf(stdout, "AI enforced limit: $%.4f per new Claude batch\n", reviewSummary.MaxCostUSD)
+			}
 			fmt.Fprintf(stdout, "AI review resume data: %s\n\n", terminalText(reviewSummary.StateDirectory))
 		}
 		printScanSummary(stdout, run, style, writtenReport)
@@ -2195,6 +2215,45 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		return exitSuccess, nil
 	}
 	panic("validated exit policy was not handled")
+}
+
+func aiReviewProgressPrinter(output io.Writer, style terminalStyle) func(controlreview.Progress) {
+	lastCompleted := -1
+	lastPercent := -1
+	return func(progress controlreview.Progress) {
+		if progress.Phase == "prepared" {
+			fmt.Fprintf(output, "      AI plan: %d controls in %d batches · %d cached · %d worker(s)\n",
+				progress.TotalControls, progress.TotalBatches, progress.ReusedBatches, progress.Workers)
+			if progress.MaxCostUSD > 0 {
+				fmt.Fprintf(output, "      Enforced limit: $%.4f per new Claude batch\n", progress.MaxCostUSD)
+			}
+			fmt.Fprintf(output, "      Resume data: %s\n", terminalText(progress.StateDirectory))
+			if progress.CompletedBatches == 0 {
+				return
+			}
+		}
+		if progress.TotalBatches == 0 || progress.CompletedBatches == lastCompleted {
+			return
+		}
+		percent := progress.CompletedBatches * 100 / progress.TotalBatches
+		if progress.Phase != "prepared" && progress.TotalBatches > 20 &&
+			progress.CompletedBatches != progress.TotalBatches && percent == lastPercent {
+			return
+		}
+		lastCompleted, lastPercent = progress.CompletedBatches, percent
+		line := fmt.Sprintf("      AI progress: %d%% · %d/%d batches · %d/%d controls · %s",
+			percent, progress.CompletedBatches, progress.TotalBatches,
+			progress.CompletedControls, progress.TotalControls, progress.Elapsed.Round(time.Second))
+		if progress.TokenUsageBatches > 0 {
+			line += fmt.Sprintf(" · tokens %d input (%d cached), %d output, %d reasoning",
+				progress.TokenUsage.InputTokens, progress.TokenUsage.CachedInputTokens,
+				progress.TokenUsage.OutputTokens, progress.TokenUsage.ReasoningOutputTokens)
+		}
+		if progress.EstimatedCostBatches > 0 {
+			line += fmt.Sprintf(" · est. cost $%.4f", progress.EstimatedCostUSD)
+		}
+		fmt.Fprintln(output, style.paint(ansiBlue, line))
+	}
 }
 
 func reorderInterspersedFlags(set *flag.FlagSet, args []string) []string {
