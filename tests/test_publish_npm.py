@@ -205,6 +205,31 @@ class PublishNpmTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, "different bytes"):
             publish_npm.verify_public(self.packages()[:1], run)
 
+    def test_registry_metadata_accepts_npm_twelve_singleton_arrays(self) -> None:
+        package = self.packages()[0]
+
+        def run(command: list[str]) -> subprocess.CompletedProcess[str]:
+            if command[3] == "dist.integrity":
+                return completed(command, stdout=json.dumps(["sha512-platform"]))
+            if command[3] == "dist.attestations":
+                return completed(command, stdout=json.dumps([{
+                    "url": (
+                        "https://registry.npmjs.org/-/npm/v1/attestations/"
+                        "%40marinjursic%2Fprc-linux-x64%401.2.3"
+                    ),
+                    "provenance": {"predicateType": "https://slsa.dev/provenance/v1"},
+                }]))
+            raise AssertionError(command)
+
+        self.assertEqual(publish_npm.registry_integrity(run, package), "sha512-platform")
+        self.assertTrue(publish_npm.registry_has_provenance(run, package))
+
+    def test_registry_metadata_rejects_ambiguous_arrays(self) -> None:
+        package = self.packages()[0]
+        multiple = lambda command: completed(command, stdout=json.dumps(["sha512-one", "sha512-two"]))
+        with self.assertRaisesRegex(RuntimeError, "no SHA-512 integrity"):
+            publish_npm.registry_integrity(multiple, package)
+
     def test_public_verification_rejects_unbound_provenance(self) -> None:
         def run(command: list[str]) -> subprocess.CompletedProcess[str]:
             if command[:2] == ["npm", "view"] and command[3] == "dist.integrity":

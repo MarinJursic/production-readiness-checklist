@@ -377,6 +377,12 @@ def registry_integrity(run: Run, package: Package) -> str | None:
         integrity = json.loads(completed.stdout)
     except json.JSONDecodeError as error:
         raise RuntimeError(f"npm registry returned invalid JSON for {package.name}") from error
+    # npm 12 wraps exact-package field queries in a one-item array, whereas
+    # npm 10 and 11 return the field value directly. Accept only those two
+    # exact shapes so a changed or ambiguous registry response still fails
+    # closed.
+    if isinstance(integrity, list) and len(integrity) == 1:
+        integrity = integrity[0]
     if not isinstance(integrity, str) or not integrity.startswith("sha512-"):
         raise RuntimeError(f"npm registry returned no SHA-512 integrity for {package.name}")
     return integrity
@@ -399,6 +405,8 @@ def registry_has_provenance(run: Run, package: Package) -> bool:
         attestations = json.loads(completed.stdout)
     except json.JSONDecodeError as error:
         raise RuntimeError(f"npm registry returned invalid provenance JSON for {package.name}") from error
+    if isinstance(attestations, list) and len(attestations) == 1:
+        attestations = attestations[0]
     if attestations is None or attestations == {}:
         return False
     if not isinstance(attestations, dict):
