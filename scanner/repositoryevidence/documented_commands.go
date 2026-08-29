@@ -21,6 +21,7 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/controlruntime"
 	workspaceinventory "github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/providercapability"
 )
 
 const (
@@ -154,7 +155,7 @@ var testInvocations = []string{
 // Binding returns the scanner-owned scope and the exact statement-derived
 // parameter set for the one collector implemented by this package.
 func Binding(item model.Inventory, template controlprogramcatalog.Template) (controlprogramcatalog.RuntimeBinding, bool) {
-	if item.Digest == "" || template.ControlID != documentedCommandsControlID ||
+	if item.Digest == "" || template.ControlID != documentedCommandsControlID || template.ClauseOrdinal != 1 ||
 		template.CollectorContract.CollectorID != DocumentedCommandsCollectorID {
 		return controlprogramcatalog.RuntimeBinding{}, false
 	}
@@ -184,16 +185,42 @@ func EvaluateSupported(ctx context.Context, catalog *controlprogramcatalog.Catal
 	if err != nil {
 		return nil, err
 	}
+	capabilities, err := providercapability.Load()
+	if err != nil {
+		return nil, err
+	}
+	declared := make(map[string]providercapability.Capability, len(capabilities))
+	for _, capability := range capabilities {
+		declared[capability.CollectorID] = capability
+		provider, ok := registry.Provider(capability.CollectorID)
+		if !ok || provider.Authority() != capability.Authority {
+			return nil, fmt.Errorf("shipped provider %s does not match its capability manifest", capability.CollectorID)
+		}
+	}
+	if len(registry.IDs()) != len(capabilities) {
+		return nil, fmt.Errorf("runtime provider registry does not match its capability manifest")
+	}
 	executions := []controlruntime.Execution{}
+	matched := map[string]bool{}
 	for _, template := range catalog.Templates() {
-		if _, supported := registry.Provider(template.CollectorContract.CollectorID); !supported {
+		capability, supported := declared[template.CollectorContract.CollectorID]
+		if !supported {
 			continue
+		}
+		if capability.ControlID != template.ControlID || capability.ClauseOrdinal != template.ClauseOrdinal ||
+			capability.Authority != template.RequiredAuthority || !template.RuntimeRequirements.ProviderClaimed ||
+			template.CollectorContract.ProviderStatus != "registered" {
+			return nil, fmt.Errorf("catalog template %s does not match its shipped provider", template.TemplateID)
 		}
 		binding, ok := Binding(item, template)
 		if !ok {
-			continue
+			return nil, fmt.Errorf("shipped provider %s has no scanner-owned binding", capability.CollectorID)
 		}
 		executions = append(executions, controlruntime.Evaluate(ctx, template, binding, registry, now))
+		matched[capability.CollectorID] = true
+	}
+	if len(matched) != len(capabilities) {
+		return nil, fmt.Errorf("provider capability manifest references a missing catalog template")
 	}
 	return executions, nil
 }

@@ -15,10 +15,10 @@
   "template_count": 765,
   "predicate_defined_count": 765,
   "implementation_missing_count": 0,
-  "provider_capability_missing_count": 765,
-  "end_to_end_runnable_template_count": 0,
-  "end_to_end_runnable_control_count": 0,
-  "blocked_control_count": 686,
+  "provider_capability_missing_count": 764,
+  "end_to_end_runnable_template_count": 1,
+  "end_to_end_runnable_control_count": 1,
+  "blocked_control_count": 685,
   "classification_error_count": 0,
   "predicate_shape_counts": {
     "all": 745,
@@ -23206,9 +23206,9 @@
       "required_authority": "repository",
       "implementation_id": "prc.check.structured-document@0.1",
       "implementation_contract_sha256": "cd05c2c2c6cd7981722127c94b9e93e967fa72df62a99398fb0aacd77ad2d354",
-      "review_status": "predicate_defined_provider_unregistered",
+      "review_status": "predicate_defined_provider_registered",
       "predicate_defined": true,
-      "end_to_end_runnable": false,
+      "end_to_end_runnable": true,
       "predicate_shape": "all",
       "review_reason": "For PRC-36-004 clause 1, the executable decision for 'Build and test commands are documented.' is: Every independently required key is present with a direct nonempty parsed value. It evaluates the raw fields documented_command_text with the exact operators all, map_keys_eq_set_parameter, string_map_all_nonempty. Scope and expected values are compiled from Exact required topic identities sealed from the control statement: build-command, test-command.; evidence collection cannot change them.",
       "counterexample_analysis": "A heading or key named test-command exists, but its content is empty; name presence alone cannot pass.",
@@ -23258,9 +23258,9 @@
         "normalization_contract": "For PRC-36-004 clause 1, emit only direct typed values for documented_command_text; do not emit a compliance result, score, or semantic shortcut.",
         "completeness_contract": "For PRC-36-004 clause 1, any omitted key or value, parse error, permission gap, unsupported subject, or source conflict affecting documented_command_text sets complete=false.",
         "freshness_contract": "For PRC-36-004 clause 1, bind every observation for documented_command_text to the program maximum evidence age and the exact assessed revision.",
-        "provider_status": "unregistered"
+        "provider_status": "registered"
       },
-      "provider_capability_status": "unregistered",
+      "provider_capability_status": "registered",
       "runtime_requirements": {
         "subject_id": "inject_at_runtime",
         "subjects": "inject_complete_bounded_inventory_at_runtime",
@@ -23272,11 +23272,11 @@
         "sealed_parameters_bound_by": "program_sha256",
         "evidence_provider_may_supply_parameters": false,
         "provider_registration": "required_before_evidence",
-        "provider_claimed": false,
-        "domain_evidence_collector": "not_shipped_or_registered",
+        "provider_claimed": true,
+        "domain_evidence_collector": "shipped_and_registered",
         "missing_capability_result": "blocked"
       },
-      "template_sha256": "3ab55f067ec1d9237c33f62a2cc9d1ada96c019cb3b7d61c1c2f4bda7c7b24f7"
+      "template_sha256": "21fad1683dfe67f08e6bb70bea686f37e643e88c6afbe82f66e7771b89328739"
     },
     {
       "template_id": "1e1439b0a95aa85dff30d5d3b9755b7acad96d8fc2f11a99ca83e526de0d120e",
@@ -108695,5 +108695,5 @@
       "template_sha256": "d7aa6ca694cc8de418a90465f26f07a07d92a26a2f29f4ed237f9cca8c964a3c"
     }
   ],
-  "catalog_sha256": "f29e05d021fdc047faff1d7efc0f35005855cd28bbfb8e88a886342c4dd8e38f"
+  "catalog_sha256": "5fafae9bd54642c51bbdf069d4fbbfc5c200fe6ff2ca71183e35498c84a74e68"
 }

@@ -28,10 +28,13 @@ class ControlCheckProgramTests(unittest.TestCase):
         self.assertEqual(document["template_count"], 765)
         self.assertEqual(document["predicate_defined_count"], 765)
         self.assertEqual(document["implementation_missing_count"], 0)
-        self.assertEqual(document["provider_capability_missing_count"], 765)
-        self.assertEqual(document["end_to_end_runnable_template_count"], 0)
-        self.assertEqual(document["end_to_end_runnable_control_count"], 0)
-        self.assertEqual(document["blocked_control_count"], 686)
+        capability_count = len(PROGRAMS.load_capabilities(
+            PROGRAMS.DEFAULT_CAPABILITIES, PROGRAMS.DEFAULT_CAPABILITY_SCHEMA,
+        ))
+        self.assertEqual(document["provider_capability_missing_count"], 765 - capability_count)
+        self.assertEqual(document["end_to_end_runnable_template_count"], capability_count)
+        self.assertEqual(document["end_to_end_runnable_control_count"], capability_count)
+        self.assertEqual(document["blocked_control_count"], 686 - capability_count)
         self.assertEqual(document["classification_error_count"], 0)
         self.assertEqual(
             document["binding_catalog_sha256"],
@@ -78,17 +81,40 @@ class ControlCheckProgramTests(unittest.TestCase):
         self.assertEqual(len(nondeterministic), 9356)
         self.assertTrue(program_controls.isdisjoint(nondeterministic))
 
-    def test_predicates_exist_but_unregistered_collectors_remain_blocked(self) -> None:
+    def test_provider_manifest_is_the_exact_source_of_runnable_claims(self) -> None:
+        capabilities = PROGRAMS.load_capabilities(
+            PROGRAMS.DEFAULT_CAPABILITIES, PROGRAMS.DEFAULT_CAPABILITY_SCHEMA,
+        )
+        runnable = set()
         for template in PROGRAMS.build_document()["templates"]:
-            self.assertEqual(template["review_status"], "predicate_defined_provider_unregistered")
             self.assertTrue(template["predicate_defined"])
-            self.assertFalse(template["end_to_end_runnable"])
-            self.assertEqual(template["provider_capability_status"], "unregistered")
-            self.assertEqual(template["collector_contract"]["provider_status"], "unregistered")
+            collector_id = template["collector_contract"]["collector_id"]
+            registered = collector_id in capabilities
+            if registered:
+                runnable.add(collector_id)
+            status = "registered" if registered else "unregistered"
+            self.assertEqual(template["review_status"], f"predicate_defined_provider_{status}")
+            self.assertEqual(template["end_to_end_runnable"], registered)
+            self.assertEqual(template["provider_capability_status"], status)
+            self.assertEqual(template["collector_contract"]["provider_status"], status)
             runtime = template["runtime_requirements"]
-            self.assertFalse(runtime["provider_claimed"])
+            self.assertEqual(runtime["provider_claimed"], registered)
+            self.assertEqual(
+                runtime["domain_evidence_collector"],
+                "shipped_and_registered" if registered else "not_shipped_or_registered",
+            )
             self.assertFalse(runtime["evidence_provider_may_supply_parameters"])
             self.assertEqual(runtime["missing_capability_result"], "blocked")
+        self.assertEqual(runnable, set(capabilities))
+
+    def test_rejects_capability_that_does_not_match_the_reviewed_template(self) -> None:
+        source = json.loads(PROGRAMS.DEFAULT_CAPABILITIES.read_text(encoding="utf-8"))
+        source["capabilities"][0]["control_id"] = "PRC-36-001"
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary) / "providers.json"
+            path.write_text(json.dumps(source), encoding="utf-8")
+            with self.assertRaisesRegex(PROGRAMS.ProgramBuildError, "does not match reviewed clause"):
+                PROGRAMS.build_document(capabilities_path=path)
 
     def test_definition_parts_are_reviewable_and_no_generic_oracle_remains(self) -> None:
         paths = PROGRAMS.default_definition_paths()

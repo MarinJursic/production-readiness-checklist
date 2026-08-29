@@ -1,1 +1,14 @@
+# Large, deterministic products remain reviewable through their generators,
+# schemas, provenance digests, and stale-output checks. Marking them generated
+# keeps ordinary pull-request diffs focused on human-authored logic.
 scanner/adapter/gitleaks-v8.30.0.toml.gz binary
+catalog/control-check-bindings.json linguist-generated=true
+catalog/control-check-programs.json linguist-generated=true
+catalog/control-contracts.json linguist-generated=true
+catalog/control-id-registry.json linguist-generated=true
+docs/control-classification/** linguist-generated=true
+research/control-classification/final/** linguist-generated=true
+research/control-classification/primary/** linguist-generated=true
+research/control-classification/program-specs/** linguist-generated=true
+research/control-classification/skeptic/** linguist-generated=true
+research/control-classification/strength/** linguist-generated=true
