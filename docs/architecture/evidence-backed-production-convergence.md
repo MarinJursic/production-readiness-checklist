@@ -24,7 +24,9 @@ checks. The exact runtime now authenticates collector registrations, seals
 scope parameters before collection, evaluates provider facts through the pure
 predicate engine, and aggregates clause results without accepting serialized
 or provider-chosen verdicts. One repository collector is connected end to end:
-it can prove `PRC-36-004` for a supported Node documentation layout. All other
+it can prove `PRC-36-004` for a supported Node documentation layout. One
+embedded capability manifest is the source of truth for both the generated
+catalog and runtime registration. All other
 missing, unsupported, incomplete, changed, or unclear evidence remains Blocked.
 The report separates exact programs attempted, passed, failed, Not Applicable,
 and deterministic controls still blocked. Valid exact evidence documents are

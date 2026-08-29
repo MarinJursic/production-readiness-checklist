@@ -240,6 +240,7 @@ func TestScanRunsSupportedExactRepositoryProgram(t *testing.T) {
 		result.ControlCatalog.DeterministicProgramPassCount != 1 || result.ControlCatalog.DeterministicProgramFailCount != 0 {
 		t.Fatalf("exact execution summary = %+v", result.ControlCatalog)
 	}
+	documentedCommands := false
 	for _, control := range result.ControlResults {
 		if control.ControlID != "PRC-36-004" {
 			continue
@@ -248,9 +249,12 @@ func TestScanRunsSupportedExactRepositoryProgram(t *testing.T) {
 			len(control.DeterministicClauseResults) != 1 || control.DeterministicClauseResults[0].Status != "passed" {
 			t.Fatalf("documented-command control = %+v", control)
 		}
-		return
+		documentedCommands = true
+		continue
 	}
-	t.Fatal("PRC-36-004 result is missing")
+	if !documentedCommands {
+		t.Fatal("PRC-36-004 result is missing")
+	}
 }
 
 func TestScanAliasesRejectAmbiguousProviderAndProfileOverrides(t *testing.T) {

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/provider-capabilities.schema.json",
+  "title": "Shipped deterministic evidence providers v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "capabilities"],
+  "properties": {
+    "schema_version": {"const": "prc.provider-capabilities/v0.1"},
+    "capabilities": {
+      "type": "array",
+      "maxItems": 765,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["collector_id", "control_id", "clause_ordinal", "authority"],
+        "properties": {
+          "collector_id": {"type": "string", "pattern": "^prc\\.collect\\.[a-z0-9.-]+@[0-9]+\\.[0-9]+$"},
+          "control_id": {"type": "string", "pattern": "^(PRC-[0-9]{2}-[0-9]{3}|USEQ-[A-F0-9]{8})$"},
+          "clause_ordinal": {"type": "integer", "minimum": 1, "maximum": 50},
+          "authority": {"enum": ["repository", "artifact", "executed", "environment", "external_registry", "structured_record"]}
+        }
+      }
+    }
+  }
+}

@@ -27,6 +27,8 @@ DEFAULT_BINDING_SCHEMA = ROOT / "schemas" / "control-check-bindings.schema.json"
 DEFAULT_PROGRAM_SCHEMA = ROOT / "schemas" / "control-check-program.schema.json"
 DEFAULT_CATALOG_SCHEMA = ROOT / "schemas" / "control-check-program-catalog.schema.json"
 DEFAULT_DEFINITION_SCHEMA = ROOT / "schemas" / "control-check-program-definitions.schema.json"
+DEFAULT_CAPABILITIES = ROOT / "scanner" / "providercapability" / "providers.json"
+DEFAULT_CAPABILITY_SCHEMA = ROOT / "schemas" / "provider-capabilities.schema.json"
 DEFAULT_DEFINITION_DIR = ROOT / "research" / "control-classification" / "program-specs"
 DEFAULT_OUTPUT = ROOT / "catalog" / "control-check-programs.json"
 
@@ -77,6 +79,12 @@ RUNTIME_REQUIREMENTS = {
     "provider_claimed": False,
     "domain_evidence_collector": "not_shipped_or_registered",
     "missing_capability_result": "blocked",
+}
+
+REGISTERED_RUNTIME_REQUIREMENTS = {
+    **RUNTIME_REQUIREMENTS,
+    "provider_claimed": True,
+    "domain_evidence_collector": "shipped_and_registered",
 }
 
 
@@ -179,6 +187,24 @@ def load_bindings(bindings_path: Path, schema_path: Path) -> tuple[dict[str, Any
     if count != EXPECTED_CLAUSE_COUNT:
         raise ProgramBuildError(f"deterministic clause count is not exactly {EXPECTED_CLAUSE_COUNT}")
     return document, data
+
+
+def load_capabilities(path: Path, schema_path: Path) -> dict[str, dict[str, Any]]:
+    document, _ = read_object(path, "provider capability manifest")
+    schema, _ = read_object(schema_path, "provider capability schema")
+    Draft202012Validator.check_schema(schema)
+    validate_schema(document, schema, "provider capability manifest")
+    capabilities = document["capabilities"]
+    identities = [
+        (item["control_id"], item["clause_ordinal"], item["collector_id"])
+        for item in capabilities
+    ]
+    if identities != sorted(identities) or len(identities) != len(set(identities)):
+        raise ProgramBuildError("provider capabilities must be ordered and unique")
+    by_collector = {item["collector_id"]: item for item in capabilities}
+    if len(by_collector) != len(capabilities):
+        raise ProgramBuildError("provider capabilities contain a duplicate collector")
+    return by_collector
 
 
 def expression_operations(expression: dict[str, Any]) -> list[str]:
@@ -350,8 +376,19 @@ def load_definitions(
 
 def template_for(
     binding: dict[str, Any], clause: dict[str, Any], definition: dict[str, Any], program_schema_sha256: str,
+    capability: dict[str, Any] | None,
 ) -> dict[str, Any]:
     control_id = binding["control_id"]
+    registered = capability is not None
+    if registered and (
+        capability["control_id"] != control_id
+        or capability["clause_ordinal"] != clause["ordinal"]
+        or capability["authority"] != clause["evidence_authority"]
+        or capability["collector_id"] != definition["collector_contract"]["collector_id"]
+    ):
+        raise ProgramBuildError(f"provider capability does not match reviewed clause {control_id}/{clause['ordinal']}")
+    collector_contract = dict(definition["collector_contract"])
+    collector_contract["provider_status"] = "registered" if registered else "unregistered"
     template = {
         "template_id": digest_value({"control_id": control_id, "control_revision": binding["revision"], "clause_id": clause["clause_id"]}),
         "program_schema_version": PROGRAM_SCHEMA_VERSION,
@@ -367,9 +404,9 @@ def template_for(
         "required_authority": clause["evidence_authority"],
         "implementation_id": clause["implementation_id"],
         "implementation_contract_sha256": clause["implementation_contract_sha256"],
-        "review_status": "predicate_defined_provider_unregistered",
+        "review_status": "predicate_defined_provider_registered" if registered else "predicate_defined_provider_unregistered",
         "predicate_defined": True,
-        "end_to_end_runnable": False,
+        "end_to_end_runnable": registered,
         "predicate_shape": definition["predicate"]["op"],
         "review_reason": definition["review_reason"],
         "counterexample_analysis": definition["counterexample_analysis"],
@@ -377,9 +414,9 @@ def template_for(
         "sealed_parameter_contracts": definition["sealed_parameter_contracts"],
         "predicate": definition["predicate"],
         "required_runtime_ops": definition["required_runtime_ops"],
-        "collector_contract": definition["collector_contract"],
-        "provider_capability_status": "unregistered",
-        "runtime_requirements": dict(RUNTIME_REQUIREMENTS),
+        "collector_contract": collector_contract,
+        "provider_capability_status": "registered" if registered else "unregistered",
+        "runtime_requirements": dict(REGISTERED_RUNTIME_REQUIREMENTS if registered else RUNTIME_REQUIREMENTS),
     }
     template["template_sha256"] = digest_value(template)
     return template
@@ -390,6 +427,8 @@ def build_document(
     binding_schema_path: Path = DEFAULT_BINDING_SCHEMA,
     program_schema_path: Path = DEFAULT_PROGRAM_SCHEMA,
     definition_schema_path: Path = DEFAULT_DEFINITION_SCHEMA,
+    capabilities_path: Path = DEFAULT_CAPABILITIES,
+    capability_schema_path: Path = DEFAULT_CAPABILITY_SCHEMA,
     definition_paths: Iterable[Path] | None = None,
 ) -> dict[str, Any]:
     bindings, binding_bytes = load_bindings(bindings_path, binding_schema_path)
@@ -398,6 +437,7 @@ def build_document(
         default_definition_paths() if definition_paths is None else definition_paths,
         definition_schema_path, bindings, binding_sha256,
     )
+    capabilities = load_capabilities(capabilities_path, capability_schema_path)
     program_schema, program_schema_bytes = read_object(program_schema_path, "control check program schema")
     Draft202012Validator.check_schema(program_schema)
     if program_schema.get("properties", {}).get("schema_version", {}).get("const") != PROGRAM_SCHEMA_VERSION:
@@ -407,11 +447,23 @@ def build_document(
     for binding in bindings["bindings"]:
         for clause in binding["clauses"]:
             identity = (binding["control_id"], clause["ordinal"], clause["clause_id"])
-            templates.append(template_for(binding, clause, definitions[identity], program_schema_sha256))
+            definition = definitions[identity]
+            collector_id = definition["collector_contract"]["collector_id"]
+            templates.append(template_for(
+                binding, clause, definition, program_schema_sha256, capabilities.get(collector_id),
+            ))
     identities = [(item["control_id"], item["clause_ordinal"], item["clause_id"]) for item in templates]
     if identities != sorted(identities) or len({item["template_id"] for item in templates}) != len(templates):
         raise ProgramBuildError("program templates must be ordered with unique clause identities")
     controls = {item["control_id"] for item in templates}
+    used_capabilities = {
+        item["collector_contract"]["collector_id"]
+        for item in templates if item["end_to_end_runnable"]
+    }
+    if used_capabilities != set(capabilities):
+        missing = sorted(set(capabilities) - used_capabilities)
+        raise ProgramBuildError(f"provider capability has no exact program template: {missing[:1]}")
+    runnable_controls = {item["control_id"] for item in templates if item["end_to_end_runnable"]}
     shapes = Counter(item["predicate_shape"] for item in templates)
     unsigned = {
         "schema_version": SCHEMA_VERSION,
@@ -430,10 +482,10 @@ def build_document(
         "template_count": len(templates),
         "predicate_defined_count": len(templates),
         "implementation_missing_count": 0,
-        "provider_capability_missing_count": len(templates),
-        "end_to_end_runnable_template_count": 0,
-        "end_to_end_runnable_control_count": 0,
-        "blocked_control_count": len(controls),
+        "provider_capability_missing_count": len(templates) - len(used_capabilities),
+        "end_to_end_runnable_template_count": len(used_capabilities),
+        "end_to_end_runnable_control_count": len(runnable_controls),
+        "blocked_control_count": len(controls - runnable_controls),
         "classification_error_count": 0,
         "predicate_shape_counts": dict(sorted(shapes.items())),
         "templates": templates,
@@ -441,11 +493,19 @@ def build_document(
     return {**unsigned, "catalog_sha256": digest_value(unsigned)}
 
 
-def validate_catalog(document: dict[str, Any], schema_path: Path = DEFAULT_CATALOG_SCHEMA) -> None:
+def validate_catalog(
+    document: dict[str, Any], schema_path: Path = DEFAULT_CATALOG_SCHEMA,
+    capabilities_path: Path = DEFAULT_CAPABILITIES,
+    capability_schema_path: Path = DEFAULT_CAPABILITY_SCHEMA,
+) -> None:
     schema, _ = read_object(schema_path, "program catalog schema")
     Draft202012Validator.check_schema(schema)
     validate_schema(document, schema, "program catalog")
     templates = document["templates"]
+    capabilities = load_capabilities(capabilities_path, capability_schema_path)
+    runnable = [item for item in templates if item["end_to_end_runnable"]]
+    runnable_controls = {item["control_id"] for item in runnable}
+    runnable_collectors = {item["collector_contract"]["collector_id"] for item in runnable}
     identities = [(item["control_id"], item["clause_ordinal"], item["clause_id"]) for item in templates]
     if identities != sorted(identities) or len({item["template_id"] for item in templates}) != len(templates):
         raise ProgramBuildError("program catalog templates are not ordered and unique")
@@ -454,13 +514,15 @@ def validate_catalog(document: dict[str, Any], schema_path: Path = DEFAULT_CATAL
         or document["template_count"] != EXPECTED_CLAUSE_COUNT
         or document["predicate_defined_count"] != EXPECTED_CLAUSE_COUNT
         or document["implementation_missing_count"] != 0
-        or document["provider_capability_missing_count"] != EXPECTED_CLAUSE_COUNT
-        or document["end_to_end_runnable_template_count"] != 0
-        or document["end_to_end_runnable_control_count"] != 0
-        or document["blocked_control_count"] != EXPECTED_CONTROL_COUNT
+        or document["provider_capability_missing_count"] != EXPECTED_CLAUSE_COUNT - len(runnable)
+        or document["end_to_end_runnable_template_count"] != len(runnable)
+        or document["end_to_end_runnable_control_count"] != len(runnable_controls)
+        or document["blocked_control_count"] != EXPECTED_CONTROL_COUNT - len(runnable_controls)
         or document["classification_error_count"] != 0
     ):
         raise ProgramBuildError("program capability counts are stale")
+    if runnable_collectors != set(capabilities) or len(runnable) != len(runnable_collectors):
+        raise ProgramBuildError("program capability claims do not match the provider manifest")
     if dict(sorted(Counter(item["predicate_shape"] for item in templates).items())) != document["predicate_shape_counts"]:
         raise ProgramBuildError("predicate shape counts are stale")
     for template in templates:
@@ -471,10 +533,20 @@ def validate_catalog(document: dict[str, Any], schema_path: Path = DEFAULT_CATAL
             raise ProgramBuildError(f"program schema binding mismatch for {template['template_id']}")
         if template["clause_statement_sha256"] != statement_sha256(template["clause_statement"]):
             raise ProgramBuildError(f"clause statement digest mismatch for {template['template_id']}")
-        if not template["predicate_defined"] or template["review_status"] != "predicate_defined_provider_unregistered" or template["end_to_end_runnable"]:
+        if not template["predicate_defined"]:
             raise ProgramBuildError(f"predicate/provider status is inconsistent for {template['template_id']}")
-        if template["provider_capability_status"] != "unregistered" or template["collector_contract"]["provider_status"] != "unregistered":
-            raise ProgramBuildError(f"unregistered collector was incorrectly claimed for {template['template_id']}")
+        registered = template["end_to_end_runnable"]
+        expected_status = "registered" if registered else "unregistered"
+        expected_review = f"predicate_defined_provider_{expected_status}"
+        expected_domain = "shipped_and_registered" if registered else "not_shipped_or_registered"
+        if (
+            template["review_status"] != expected_review
+            or template["provider_capability_status"] != expected_status
+            or template["collector_contract"]["provider_status"] != expected_status
+            or template["runtime_requirements"]["provider_claimed"] != registered
+            or template["runtime_requirements"]["domain_evidence_collector"] != expected_domain
+        ):
+            raise ProgramBuildError(f"provider status is inconsistent for {template['template_id']}")
         facts, parameters = expression_references(template["predicate"])
         if facts != {item["fact_id"] for item in template["raw_fact_contracts"]}:
             raise ProgramBuildError(f"catalog predicate fact contracts are stale for {template['template_id']}")
@@ -502,6 +574,8 @@ def main() -> int:
     parser.add_argument("--program-schema", type=Path, default=DEFAULT_PROGRAM_SCHEMA)
     parser.add_argument("--definition-schema", type=Path, default=DEFAULT_DEFINITION_SCHEMA)
     parser.add_argument("--catalog-schema", type=Path, default=DEFAULT_CATALOG_SCHEMA)
+    parser.add_argument("--capabilities", type=Path, default=DEFAULT_CAPABILITIES)
+    parser.add_argument("--capability-schema", type=Path, default=DEFAULT_CAPABILITY_SCHEMA)
     parser.add_argument("--definitions", type=Path, nargs="*")
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     args = parser.parse_args()
@@ -509,16 +583,22 @@ def main() -> int:
         document = build_document(
             bindings_path=args.bindings, binding_schema_path=args.binding_schema,
             program_schema_path=args.program_schema, definition_schema_path=args.definition_schema,
+            capabilities_path=args.capabilities, capability_schema_path=args.capability_schema,
             definition_paths=args.definitions,
         )
-        validate_catalog(document, args.catalog_schema)
+        validate_catalog(document, args.catalog_schema, args.capabilities, args.capability_schema)
         expected = serialize(document)
         if args.command == "generate":
             args.output.write_text(expected, encoding="utf-8")
-            print(f"generated {document['template_count']} exact clause programs; collectors remain fail-closed until registered")
+            provider_count = document["end_to_end_runnable_template_count"]
+            provider_label = "provider is" if provider_count == 1 else "providers are"
+            print(
+                f"generated {document['template_count']} exact clause programs; "
+                f"{provider_count} shipped {provider_label} registered"
+            )
         else:
             actual, _ = read_object(args.output, "generated program catalog")
-            validate_catalog(actual, args.catalog_schema)
+            validate_catalog(actual, args.catalog_schema, args.capabilities, args.capability_schema)
             if canonical_bytes(actual) != canonical_bytes(document) or args.output.read_text(encoding="utf-8") != expected:
                 raise ProgramBuildError("program catalog is stale or nondeterministic")
             print(f"verified {document['template_count']} exact clause programs")

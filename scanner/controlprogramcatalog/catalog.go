@@ -20,6 +20,7 @@ import (
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/controlbinding"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/controlprogram"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/providercapability"
 )
 
 const (
@@ -161,6 +162,7 @@ type Template struct {
 	RequiredAuthority                                     controlprogram.Authority
 	ImplementationID, ImplementationContractSHA256        string
 	PredicateShape, ReviewReason, CounterexampleAnalysis  string
+	EndToEndRunnable                                      bool
 	RawFactContracts                                      []FactContract
 	SealedParameterContracts                              []ParameterContract
 	Predicate                                             controlprogram.Expression
@@ -379,10 +381,19 @@ func decodeAndValidate(data []byte, schemaDigest string, bindings *controlbindin
 		bindings.BindingCount() != expectedControlCount || bindings.ClauseCount() != expectedTemplateCount {
 		return nil, fmt.Errorf("control check program catalog does not match its reviewed binding catalog")
 	}
+	capabilities, err := providercapability.Load()
+	if err != nil {
+		return nil, fmt.Errorf("load shipped provider capabilities: %w", err)
+	}
+	capabilityByCollector := make(map[string]providercapability.Capability, len(capabilities))
+	for _, capability := range capabilities {
+		capabilityByCollector[capability.CollectorID] = capability
+	}
+	expectedRunnableCount := len(capabilities)
 	if document.ControlCount != expectedControlCount || document.TemplateCount != expectedTemplateCount || len(document.Templates) != expectedTemplateCount ||
 		document.PredicateDefinedCount != expectedTemplateCount || document.ImplementationMissingCount != 0 ||
-		document.ProviderCapabilityMissingCount != expectedTemplateCount || document.EndToEndRunnableTemplateCount != 0 ||
-		document.EndToEndRunnableControlCount != 0 || document.BlockedControlCount != expectedControlCount || document.ClassificationErrorCount != 0 {
+		document.ProviderCapabilityMissingCount != expectedTemplateCount-expectedRunnableCount || document.EndToEndRunnableTemplateCount != expectedRunnableCount ||
+		document.EndToEndRunnableControlCount != expectedRunnableCount || document.BlockedControlCount != expectedControlCount-expectedRunnableCount || document.ClassificationErrorCount != 0 {
 		return nil, fmt.Errorf("control check program coverage or capability counts are invalid")
 	}
 	computedCatalogDigest, err := unsignedDigest(data, "catalog_sha256")
@@ -395,6 +406,7 @@ func decodeAndValidate(data []byte, schemaDigest string, bindings *controlbindin
 	seenIDs := map[string]bool{}
 	seenControls := map[string]bool{}
 	shapeCounts := map[string]int{}
+	matchedCapabilities := map[string]bool{}
 	previousControl := ""
 	previousOrdinal := 0
 	previousClause := ""
@@ -410,6 +422,14 @@ func decodeAndValidate(data []byte, schemaDigest string, bindings *controlbindin
 		template, err := validateTemplate(raw, candidate, document.ProgramSchemaSHA256, binding)
 		if err != nil {
 			return nil, err
+		}
+		capability, shipped := capabilityByCollector[template.CollectorContract.CollectorID]
+		if template.EndToEndRunnable != shipped || shipped &&
+			(capability.ControlID != template.ControlID || capability.ClauseOrdinal != template.ClauseOrdinal || capability.Authority != template.RequiredAuthority) {
+			return nil, fmt.Errorf("program template provider claim does not match the shipped capability manifest")
+		}
+		if shipped {
+			matchedCapabilities[capability.CollectorID] = true
 		}
 		if previousControl != "" && (template.ControlID < previousControl || (template.ControlID == previousControl && (template.ClauseOrdinal < previousOrdinal || (template.ClauseOrdinal == previousOrdinal && template.ClauseID <= previousClause)))) {
 			return nil, fmt.Errorf("program templates are not in strict control/ordinal/clause order")
@@ -428,7 +448,7 @@ func decodeAndValidate(data []byte, schemaDigest string, bindings *controlbindin
 		templates = append(templates, template)
 		previousControl, previousOrdinal, previousClause = template.ControlID, template.ClauseOrdinal, template.ClauseID
 	}
-	if len(seenControls) != expectedControlCount || !mapsEqualInt(shapeCounts, document.PredicateShapeCounts) {
+	if len(seenControls) != expectedControlCount || len(matchedCapabilities) != len(capabilities) || !mapsEqualInt(shapeCounts, document.PredicateShapeCounts) {
 		return nil, fmt.Errorf("program template control or predicate-shape coverage is incomplete")
 	}
 	for _, binding := range bindings.Definitions() {
@@ -496,12 +516,17 @@ func validateTemplate(raw []byte, candidate rawTemplate, schemaDigest string, bi
 	if err != nil {
 		return Template{}, err
 	}
+	registered := candidate.EndToEndRunnable != nil && *candidate.EndToEndRunnable
+	if (collector.ProviderStatus == "registered") != registered || runtime.ProviderClaimed != registered {
+		return Template{}, fmt.Errorf("program template provider declarations are inconsistent")
+	}
 	return Template{
 		TemplateID: candidate.TemplateID, ProgramSchemaVersion: candidate.ProgramSchemaVersion, ProgramSchemaSHA256: candidate.ProgramSchemaSHA256,
 		ControlID: candidate.ControlID, ControlRevision: candidate.ControlRevision, ControlSemanticSHA256: candidate.ControlSemanticSHA256,
 		ClauseOrdinal: candidate.ClauseOrdinal, ClauseID: candidate.ClauseID, ClauseStatement: candidate.ClauseStatement, ClauseStatementSHA256: candidate.ClauseStatementSHA256,
 		CheckerFamily: candidate.CheckerFamily, RequiredAuthority: authority, ImplementationID: candidate.ImplementationID, ImplementationContractSHA256: candidate.ImplementationContractSHA256,
 		PredicateShape: candidate.PredicateShape, ReviewReason: candidate.ReviewReason, CounterexampleAnalysis: candidate.CounterexampleAnalysis,
+		EndToEndRunnable: registered,
 		RawFactContracts: facts, SealedParameterContracts: parameters, Predicate: predicate, RequiredRuntimeOps: append([]controlprogram.Operation(nil), candidate.RequiredRuntimeOps...),
 		CollectorContract: collector, RuntimeRequirements: runtime, TemplateSHA256: candidate.TemplateSHA256,
 	}, nil
@@ -513,9 +538,18 @@ func validTemplateIdentity(value rawTemplate, schemaDigest string) bool {
 		value.ClauseOrdinal > 0 && value.ClauseOrdinal <= maximumClauseCount && isDigest(value.ClauseID) && strings.TrimSpace(value.ClauseStatement) != "" &&
 		utf8.RuneCountInString(value.ClauseStatement) <= maximumStatementRunes && isDigest(value.ClauseStatementSHA256) &&
 		implementationPattern.MatchString(value.ImplementationID) && isDigest(value.ImplementationContractSHA256) && isDigest(value.TemplateSHA256) &&
-		value.ReviewStatus == "predicate_defined_provider_unregistered" && value.PredicateDefined != nil && *value.PredicateDefined &&
-		value.EndToEndRunnable != nil && !*value.EndToEndRunnable && value.ProviderCapabilityStatus == "unregistered" &&
+		value.PredicateDefined != nil && *value.PredicateDefined && providerStatusValid(value) &&
 		strings.TrimSpace(value.ReviewReason) != "" && strings.TrimSpace(value.CounterexampleAnalysis) != ""
+}
+
+func providerStatusValid(value rawTemplate) bool {
+	if value.EndToEndRunnable == nil {
+		return false
+	}
+	if *value.EndToEndRunnable {
+		return value.ReviewStatus == "predicate_defined_provider_registered" && value.ProviderCapabilityStatus == "registered"
+	}
+	return value.ReviewStatus == "predicate_defined_provider_unregistered" && value.ProviderCapabilityStatus == "unregistered"
 }
 
 func validateFactContracts(raw []rawFactContract, authority controlprogram.Authority) ([]FactContract, error) {
@@ -560,9 +594,10 @@ func validateParameterContracts(raw []rawParameterContract) ([]ParameterContract
 }
 
 func validateCollector(raw rawCollectorContract) (CollectorContract, error) {
-	if !collectorPattern.MatchString(raw.CollectorID) || len(raw.RequiredSources) == 0 || len(raw.RequiredSources) > 20 || raw.ProviderStatus != "unregistered" ||
+	if !collectorPattern.MatchString(raw.CollectorID) || len(raw.RequiredSources) == 0 || len(raw.RequiredSources) > 20 ||
+		(raw.ProviderStatus != "registered" && raw.ProviderStatus != "unregistered") ||
 		strings.TrimSpace(raw.InventoryContract) == "" || strings.TrimSpace(raw.NormalizationContract) == "" || strings.TrimSpace(raw.CompletenessContract) == "" || strings.TrimSpace(raw.FreshnessContract) == "" {
-		return CollectorContract{}, fmt.Errorf("invalid unregistered collector contract")
+		return CollectorContract{}, fmt.Errorf("invalid collector contract")
 	}
 	seen := map[string]bool{}
 	for _, source := range raw.RequiredSources {
@@ -579,11 +614,12 @@ func validateRuntime(raw rawRuntimeRequirements) (RuntimeRequirements, error) {
 		raw.MaximumEvidenceAgeSeconds != "inject_approved_freshness_at_runtime" || raw.AllowNotApplicable != "inject_reviewed_applicability_at_runtime" ||
 		raw.ApplicabilityProofContractSHA256 != "inject_at_runtime" || raw.SealedParameters != "compile_from_declared_trusted_origin_before_requesting_evidence" ||
 		raw.SealedParametersBoundBy != "program_sha256" || raw.EvidenceProviderMaySupplyParameters == nil || *raw.EvidenceProviderMaySupplyParameters ||
-		raw.ProviderRegistration != "required_before_evidence" || raw.ProviderClaimed == nil || *raw.ProviderClaimed ||
-		raw.DomainEvidenceCollector != "not_shipped_or_registered" || raw.MissingCapabilityResult != "blocked" {
+		raw.ProviderRegistration != "required_before_evidence" || raw.ProviderClaimed == nil ||
+		((*raw.ProviderClaimed && raw.DomainEvidenceCollector != "shipped_and_registered") ||
+			(!*raw.ProviderClaimed && raw.DomainEvidenceCollector != "not_shipped_or_registered")) || raw.MissingCapabilityResult != "blocked" {
 		return RuntimeRequirements{}, fmt.Errorf("runtime requirements are not fail closed")
 	}
-	return RuntimeRequirements{raw.SubjectID, raw.Subjects, raw.InventorySHA256, raw.MaximumEvidenceAgeSeconds, raw.AllowNotApplicable, raw.ApplicabilityProofContractSHA256, raw.SealedParameters, raw.SealedParametersBoundBy, false, raw.ProviderRegistration, raw.DomainEvidenceCollector, raw.MissingCapabilityResult, false}, nil
+	return RuntimeRequirements{raw.SubjectID, raw.Subjects, raw.InventorySHA256, raw.MaximumEvidenceAgeSeconds, raw.AllowNotApplicable, raw.ApplicabilityProofContractSHA256, raw.SealedParameters, raw.SealedParametersBoundBy, false, raw.ProviderRegistration, raw.DomainEvidenceCollector, raw.MissingCapabilityResult, *raw.ProviderClaimed}, nil
 }
 
 func compilePredicate(candidate rawTemplate, authority controlprogram.Authority, contracts []ParameterContract) (controlprogram.Expression, error) {
