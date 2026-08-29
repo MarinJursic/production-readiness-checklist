@@ -1,0 +1,2656 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-01-governance-and-foundations-md-part-002-part-001",
+  "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 100,
+  "controls": [
+    {
+      "control_id": "USEQ-4246F390",
+      "revision": 1,
+      "semantic_sha256": "4246f390e8265ad6f5310245923e4583c77643f01520f2fc0c64a4f1b11ceb59",
+      "statement": "Record each provider's purpose, owner, data access, permissions, regions, subprocessors, and criticality.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 389
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Third-Party and Supplier Readiness",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record each provider's purpose, owner, data access, permissions, regions, subprocessors, and criticality.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FC267359",
+      "revision": 1,
+      "semantic_sha256": "fc267359228afb5d91b4538670ceedce9027ea064ab5664e5aff9ec03c4a6c39",
+      "statement": "Integration secrets are rotatable and revocable.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 393
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Third-Party and Supplier Readiness",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Integration secrets are rotatable and revocable.” is decidable by exact joins or comparisons across complete authoritative inventories, configurations, event times, artifact identities, and bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each subject to the configuration, event, artifact, review, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All policy-defined exact states, identifiers, timestamps, thresholds, or bounded outcomes required for those subjects satisfy the approved comparison.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5DA6E2FF",
+      "revision": 1,
+      "semantic_sha256": "5da6e2ffc7872e905c11a15799b4db2278728b900e44023d1f9e407a5b9e9827",
+      "statement": "Provider webhooks and callbacks are authenticated and replay-protected.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 396
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Third-Party and Supplier Readiness",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Provider webhooks and callbacks are authenticated and replay-protected.” is decidable by exact joins or comparisons across complete authoritative inventories, configurations, event times, artifact identities, and bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each subject to the configuration, event, artifact, review, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All policy-defined exact states, identifiers, timestamps, thresholds, or bounded outcomes required for those subjects satisfy the approved comparison.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FBBA350E",
+      "revision": 1,
+      "semantic_sha256": "fbba350ebfd4b6b798f9c249bec444d6b25f34d9e92b48fbef9f097afd5eea20",
+      "statement": "Breaking-change and incident notifications reach an accountable owner.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 397
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Third-Party and Supplier Readiness",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Breaking-change and incident notifications reach an accountable owner.” is decidable by exact joins or comparisons across complete authoritative inventories, configurations, event times, artifact identities, and bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each subject to the configuration, event, artifact, review, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All policy-defined exact states, identifiers, timestamps, thresholds, or bounded outcomes required for those subjects satisfy the approved comparison.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8FC152BB",
+      "revision": 1,
+      "semantic_sha256": "8fc152bb627e303232c29b7698333845b6fee00a84ca3d9fada705d8c64ce36f",
+      "statement": "Provider outages, delays, malformed responses, throttling, and partial failures are tested.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 398
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Third-Party and Supplier Readiness",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Provider outages, delays, malformed responses, throttling, and partial failures are tested.” names a closed evidence exercise whose declared scenarios and authenticated results can be verified without generalizing beyond the approved protocol.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution evidence covers every scenario explicitly required by the approved protocol and records the expected result for the exact assessed revision.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FC8F0D82",
+      "revision": 1,
+      "semantic_sha256": "fc8f0d82f509ff90e71a2934866ac2f1383dd53af1d921902e942d4747011a3d",
+      "statement": "Provider data-use and contract changes are monitored.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 399
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Third-Party and Supplier Readiness",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The control “Provider data-use and contract changes are monitored.” can be checked against a complete approved source inventory using current authenticated read-only observations and exact freshness or delivery rules.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every approved external source or provider has current authenticated read-only evidence satisfying the exact monitored event, delivery destination, or freshness rule.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DB18DC98",
+      "revision": 1,
+      "semantic_sha256": "db18dc988a9c3f21cf75bb53e01cb5a6b7a73b31c64671a46dea08b8e5c6b022",
+      "statement": "A replacement, exit, continuity, and data-export plan exists for critical providers.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 400
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Third-Party and Supplier Readiness",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “A replacement, exit, continuity, and data-export plan exists for critical providers.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-01D417C3",
+      "revision": 1,
+      "semantic_sha256": "01d417c3f5cb9e94b24688edd1ab5eda3a4c039fa5b440c50669d4e94391cd9f",
+      "statement": "The application can identify records and users affected by a provider incident.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 401
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Third-Party and Supplier Readiness",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “The application can identify records and users affected by a provider incident.” is decidable by exact joins or comparisons across complete authoritative inventories, configurations, event times, artifact identities, and bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each subject to the configuration, event, artifact, review, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All policy-defined exact states, identifiers, timestamps, thresholds, or bounded outcomes required for those subjects satisfy the approved comparison.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-615B275E",
+      "revision": 1,
+      "semantic_sha256": "615b275eae89ae697a2c84dbfbc280964671b299aa1dc0b16fb7d6a95e8bdac2",
+      "statement": "Provider status and escalation contacts are included in runbooks.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 402
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Third-Party and Supplier Readiness",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Provider status and escalation contacts are included in runbooks.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4C0378A1",
+      "revision": 1,
+      "semantic_sha256": "4c0378a18e5afe8f69b1d509eaaf361a76155562258fc80ce9190a921c62e9b8",
+      "statement": "Required contact, company, pricing, cancellation, complaint, and regulatory information is displayed.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 429
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Legal, Regulatory, and Contractual Applicability",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Required contact, company, pricing, cancellation, complaint, and regulatory information is displayed.” is decidable by exact joins or comparisons across complete authoritative inventories, configurations, event times, artifact identities, and bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each subject to the configuration, event, artifact, review, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All policy-defined exact states, identifiers, timestamps, thresholds, or bounded outcomes required for those subjects satisfy the approved comparison.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-96B1F594",
+      "revision": 1,
+      "semantic_sha256": "96b1f5945da53ad8d68fc070ac902c214288eaa5b3d618d14abd7a75da416ffc",
+      "statement": "Renewal, review, filing, audit, and reporting deadlines are tracked.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 430
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Legal, Regulatory, and Contractual Applicability",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Renewal, review, filing, audit, and reporting deadlines are tracked.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0897EF0F",
+      "revision": 1,
+      "semantic_sha256": "0897ef0f44597a5d66f2a92bfef80371871946e5422337d9c70a05f094dcd09e",
+      "statement": "Define the category scope, intended outcomes, boundaries, stakeholders, users, and affected systems.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 448
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Quality Management and Continual Improvement",
+        "Governance and lifecycle controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define the category scope, intended outcomes, boundaries, stakeholders, users, and affected systems.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F828BDE3",
+      "revision": 1,
+      "semantic_sha256": "f828bde3e893096c70ec9d61b2f6f06d6315814a6d28f4d54b8f14fc47c56680",
+      "statement": "Assign one accountable owner and identify all contributing and reviewing roles.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 449
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Quality Management and Continual Improvement",
+        "Governance and lifecycle controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Assign one accountable owner and identify all contributing and reviewing roles.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7FE46690",
+      "revision": 1,
+      "semantic_sha256": "7fe4669086285a5d5a5f6cbc10bf358c37edfcb7569e4f5681601b1bc1a0d759",
+      "statement": "Inventory the artifacts, interfaces, data, dependencies, suppliers, environments, and lifecycle stages in scope.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 450
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Quality Management and Continual Improvement",
+        "Governance and lifecycle controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Inventory the artifacts, interfaces, data, dependencies, suppliers, environments, and lifecycle stages in scope.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C7901DA7",
+      "revision": 1,
+      "semantic_sha256": "c7901da71daae5803500cdbbc8901f16097686d4846108e401e026e6fe9c0323",
+      "statement": "Maintain traceability from goals and risks through decisions, implementation, verification, deployment, and operational evidence.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 457
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Quality Management and Continual Improvement",
+        "Governance and lifecycle controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Maintain traceability from goals and risks through decisions, implementation, verification, deployment, and operational evidence.” is decidable by exact joins or comparisons across complete authoritative inventories, configurations, event times, artifact identities, and bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each subject to the configuration, event, artifact, review, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All policy-defined exact states, identifiers, timestamps, thresholds, or bounded outcomes required for those subjects satisfy the approved comparison.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EC2F36AC",
+      "revision": 1,
+      "semantic_sha256": "ec2f36ac6b5d33495d9f0f2a70183ec21deb850caddbea0028e1a5a37e2d803c",
+      "statement": "Document operating procedures, limitations, ownership, support paths, and lifecycle expectations.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 464
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Quality Management and Continual Improvement",
+        "Governance and lifecycle controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Document operating procedures, limitations, ownership, support paths, and lifecycle expectations.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C60E9C67",
+      "revision": 1,
+      "semantic_sha256": "c60e9c676ef740355117d5ddefe1494ae27bf35ed3f77467a587d02ce82279e9",
+      "statement": "Define deprecation, migration, retention, archival, and retirement behavior before those paths become urgent.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 465
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Quality Management and Continual Improvement",
+        "Governance and lifecycle controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define deprecation, migration, retention, archival, and retirement behavior before those paths become urgent.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-69216AAA",
+      "revision": 1,
+      "semantic_sha256": "69216aaab986980e601e4ca47299c4f655733df17a7b50e11494599d8323071e",
+      "statement": "Review the controls after material change, incident, audit finding, user harm, supplier change, or new evidence.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 466
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Quality Management and Continual Improvement",
+        "Governance and lifecycle controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Review the controls after material change, incident, audit finding, user harm, supplier change, or new evidence.” is decidable by exact joins or comparisons across complete authoritative inventories, configurations, event times, artifact identities, and bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each subject to the configuration, event, artifact, review, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All policy-defined exact states, identifiers, timestamps, thresholds, or bounded outcomes required for those subjects satisfy the approved comparison.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B73EE86B",
+      "revision": 1,
+      "semantic_sha256": "b73ee86b314ce0cfa966e619084a94b2c04ee62a4b986c9ffac7e68f323389ed",
+      "statement": "Define process owners, process inputs, expected outcomes, controls, records, and improvement mechanisms.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 474
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Quality Management and Continual Improvement",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define process owners, process inputs, expected outcomes, controls, records, and improvement mechanisms.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9A8916C2",
+      "revision": 1,
+      "semantic_sha256": "9a8916c2b7262503a78d173907b9aacfa66c460a9b2a11589d650833755f21ff",
+      "statement": "Integrate quality planning into discovery, requirements, architecture, implementation, verification, release, operation, and retirement.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 477
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Quality Management and Continual Improvement",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Integrate quality planning into discovery, requirements, architecture, implementation, verification, release, operation, and retirement.” is decidable by exact joins or comparisons across complete authoritative inventories, configurations, event times, artifact identities, and bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each subject to the configuration, event, artifact, review, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All policy-defined exact states, identifiers, timestamps, thresholds, or bounded outcomes required for those subjects satisfy the approved comparison.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-73C6FD52",
+      "revision": 1,
+      "semantic_sha256": "73c6fd52eea24da4fae20098d793fbd2f3f4185046e8d7cb8afe86dc43846e6b",
+      "statement": "Use independent assurance for high-impact claims and controls.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 478
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Quality Management and Continual Improvement",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Use independent assurance for high-impact claims and controls.” is decidable by exact joins or comparisons across complete authoritative inventories, configurations, event times, artifact identities, and bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each subject to the configuration, event, artifact, review, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All policy-defined exact states, identifiers, timestamps, thresholds, or bounded outcomes required for those subjects satisfy the approved comparison.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-496084CD",
+      "revision": 1,
+      "semantic_sha256": "496084cd718304aa5f9a529843a747ca10399db8112f7efafea3062bd27b9d36",
+      "statement": "Analyze escapes, rework, incidents, complaints, support demand, and near misses as quality-system signals.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 479
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Quality Management and Continual Improvement",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Analyze escapes, rework, incidents, complaints, support demand, and near misses as quality-system signals.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-587925A5",
+      "revision": 1,
+      "semantic_sha256": "587925a55c03f8da6cd15301e85683cb685f804e3ced3f0f0a81453ceccddd05",
+      "statement": "Maintain control of nonconforming work products and prevent accidental release or reuse.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 484
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Quality Management and Continual Improvement",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Maintain control of nonconforming work products and prevent accidental release or reuse.” is decidable by exact joins or comparisons across complete authoritative inventories, configurations, event times, artifact identities, and bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each subject to the configuration, event, artifact, review, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All policy-defined exact states, identifiers, timestamps, thresholds, or bounded outcomes required for those subjects satisfy the approved comparison.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2AFCA02A",
+      "revision": 1,
+      "semantic_sha256": "2afca02aa27f4572b5d4aee18457642a5a88fbbb281e317357fa1052473f229a",
+      "statement": "Review supplier quality and inherited controls as part of the same quality system.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 486
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Quality Management and Continual Improvement",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Review supplier quality and inherited controls as part of the same quality system.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-277CEB44",
+      "revision": 1,
+      "semantic_sha256": "277ceb442a35b62cf3caa6e51e99af4ae17a8e625937cbc8a54406db6abc24fb",
+      "statement": "Conduct periodic management review using evidence, trends, unresolved risk, customer feedback, and improvement results.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 487
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Quality Management and Continual Improvement",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Conduct periodic management review using evidence, trends, unresolved risk, customer feedback, and improvement results.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-928743A4",
+      "revision": 1,
+      "semantic_sha256": "928743a484515acf394d171ec441585c2dc8a4fc455c13d6b1206e113aafd633",
+      "statement": "Retain an approved scope and applicability record.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 492
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Quality Management and Continual Improvement",
+        "Required evidence"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Retain an approved scope and applicability record.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2CD5DD6D",
+      "revision": 1,
+      "semantic_sha256": "2cd5dd6d4ed746aeefee43f97cae5f391e24a7f99f8a4c1368fe7dd41a3ef2a7",
+      "statement": "Retain requirements and acceptance criteria linked to risks and intended outcomes.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 493
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Quality Management and Continual Improvement",
+        "Required evidence"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Retain requirements and acceptance criteria linked to risks and intended outcomes.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0BC431C9",
+      "revision": 1,
+      "semantic_sha256": "0bc431c91b87c6da77eebc9219ade1d987d4d7363f1be2a53dada122994a0f7b",
+      "statement": "Retain decision records and review approvals for material choices.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 494
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Quality Management and Continual Improvement",
+        "Required evidence"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Retain decision records and review approvals for material choices.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-45C1DDB5",
+      "revision": 1,
+      "semantic_sha256": "45c1ddb52c7453ee65747722fc6a0312cdfdd71d5b67464d21a241cf6c647952",
+      "statement": "Retain automated and manual verification results tied to the exact assessed revision.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 495
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Quality Management and Continual Improvement",
+        "Required evidence"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Retain automated and manual verification results tied to the exact assessed revision.” is decidable by exact joins or comparisons across complete authoritative inventories, configurations, event times, artifact identities, and bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each subject to the configuration, event, artifact, review, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All policy-defined exact states, identifiers, timestamps, thresholds, or bounded outcomes required for those subjects satisfy the approved comparison.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E1B67CDC",
+      "revision": 1,
+      "semantic_sha256": "e1b67cdc099ecf920bb51553ac330d533efea986cfb758e3dccdde0b24b6e89a",
+      "statement": "Retain current metrics, thresholds, trends, and the rationale for each threshold.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 497
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Quality Management and Continual Improvement",
+        "Required evidence"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Retain current metrics, thresholds, trends, and the rationale for each threshold.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-321D7565",
+      "revision": 1,
+      "semantic_sha256": "321d7565d75e46f5b6ed1ef6df4a64d7d4c3859e30e38c4c17b46aa5bdb7ea64",
+      "statement": "Retain an open-defect and residual-risk register with owners and target dates.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 498
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Quality Management and Continual Improvement",
+        "Required evidence"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Retain an open-defect and residual-risk register with owners and target dates.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3358CD08",
+      "revision": 1,
+      "semantic_sha256": "3358cd08649b90539602c25e7ca8d6fb69f5be9dcb3403fb152b8545cf76ea6a",
+      "statement": "Retain evidence that temporary exceptions and compensating controls are monitored and expire.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 499
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Quality Management and Continual Improvement",
+        "Required evidence"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Retain evidence that temporary exceptions and compensating controls are monitored and expire.” is decidable by exact joins or comparisons across complete authoritative inventories, configurations, event times, artifact identities, and bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each subject to the configuration, event, artifact, review, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All policy-defined exact states, identifiers, timestamps, thresholds, or bounded outcomes required for those subjects satisfy the approved comparison.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FB14A009",
+      "revision": 1,
+      "semantic_sha256": "fb14a009ecb3b6d1c0c6b476a3dd853ee53da77d33712db5574140a7aba873ff",
+      "statement": "Retain lessons and corrective actions from incidents, escapes, regressions, and near misses.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 501
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Quality Management and Continual Improvement",
+        "Required evidence"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Retain lessons and corrective actions from incidents, escapes, regressions, and near misses.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A1AD3791",
+      "revision": 1,
+      "semantic_sha256": "a1ad37916ff05642bdeca99d94e1f0abaa2f80fe887c89a978a25a95f60ba807",
+      "statement": "Do not approve the category when a critical requirement lacks objective evidence.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 505
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Quality Management and Continual Improvement",
+        "Category no-go conditions"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Do not approve the category when a critical requirement lacks objective evidence.” is decidable by exact joins or comparisons across complete authoritative inventories, configurations, event times, artifact identities, and bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each subject to the configuration, event, artifact, review, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All policy-defined exact states, identifiers, timestamps, thresholds, or bounded outcomes required for those subjects satisfy the approved comparison.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-41CEC06B",
+      "revision": 1,
+      "semantic_sha256": "41cec06b8efeb4f5d09feef3e2bdce21d50986bf68322c84bdddbb7dc7e9731e",
+      "statement": "Define which decisions are centralized, delegated, advisory, or prohibited.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 519
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Engineering Governance and Decision Rights",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define which decisions are centralized, delegated, advisory, or prohibited.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2048A133",
+      "revision": 1,
+      "semantic_sha256": "2048a133e5097f8e107fb742362c4cf5ae0b51a256d673fd20fc6b79bde6f657",
+      "statement": "Define mandatory engineering guardrails and the risk basis for each guardrail.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 522
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Engineering Governance and Decision Rights",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define mandatory engineering guardrails and the risk basis for each guardrail.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EA86F0CC",
+      "revision": 1,
+      "semantic_sha256": "ea86f0ccae5bc4f615a91dc02048ca14a82219004de77f8bce1ed238e0c57592",
+      "statement": "Publish escalation paths for conflicts between product, engineering, security, privacy, reliability, accessibility, legal, and commercial goals.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 523
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Engineering Governance and Decision Rights",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Publish escalation paths for conflicts between product, engineering, security, privacy, reliability, accessibility, legal, and commercial goals.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-573E2FC1",
+      "revision": 1,
+      "semantic_sha256": "573e2fc1b2f59e5f00e1681c1b2e1aa2cf796d8084bfc1a4fa45738211d1cc33",
+      "statement": "Require material decisions to state the problem, context, options, evidence, trade-offs, decision, owner, date, and review trigger.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 524
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Engineering Governance and Decision Rights",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Require material decisions to state the problem, context, options, evidence, trade-offs, decision, owner, date, and review trigger.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1C45E26D",
+      "revision": 1,
+      "semantic_sha256": "1c45e26d067e459518915f172076406c20564edb1e521307d27170e81e75b2c4",
+      "statement": "Ensure exceptions identify the exact control waived, duration, compensating controls, owner, and exit plan.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 528
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Engineering Governance and Decision Rights",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Ensure exceptions identify the exact control waived, duration, compensating controls, owner, and exit plan.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5657213E",
+      "revision": 1,
+      "semantic_sha256": "5657213e2be63b61e29b4d85e53d027d484399ba2f7f8811def469510cfbba9e",
+      "statement": "Ensure emergency decision paths preserve auditability and receive retrospective review.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 531
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Engineering Governance and Decision Rights",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Ensure emergency decision paths preserve auditability and receive retrospective review.” is decidable by exact joins or comparisons across complete authoritative inventories, configurations, event times, artifact identities, and bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each subject to the configuration, event, artifact, review, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All policy-defined exact states, identifiers, timestamps, thresholds, or bounded outcomes required for those subjects satisfy the approved comparison.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0B4B4DFD",
+      "revision": 1,
+      "semantic_sha256": "0b4b4dfdbf19d7e7d495435d83229221787524f04d09aaf4c800a4fca362fa0c",
+      "statement": "Connect every initiative to an explicit user, business, compliance, risk-reduction, or platform outcome.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 541
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Project, Program, and Portfolio Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Connect every initiative to an explicit user, business, compliance, risk-reduction, or platform outcome.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AA4F038D",
+      "revision": 1,
+      "semantic_sha256": "aa4f038d00697e5d90efbc2acbb923713f4fb8cdc66b1c859efb1707925491ce",
+      "statement": "Define scope, non-scope, assumptions, constraints, dependencies, milestones, acceptance criteria, and completion conditions.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 542
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Project, Program, and Portfolio Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define scope, non-scope, assumptions, constraints, dependencies, milestones, acceptance criteria, and completion conditions.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DF8B2B5D",
+      "revision": 1,
+      "semantic_sha256": "df8b2b5d978f7179f6e5495087e5f8d1cc3edc58a0dc810809a6f3096780c4d1",
+      "statement": "Maintain an integrated dependency map across products, teams, suppliers, data, infrastructure, and regulatory work.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 544
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Project, Program, and Portfolio Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Maintain an integrated dependency map across products, teams, suppliers, data, infrastructure, and regulatory work.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F2229F87",
+      "revision": 1,
+      "semantic_sha256": "f2229f878cb0e5e1cbaabcf20ae9304d16f94b182ef4a163fe2172cd111e1000",
+      "statement": "Represent uncertainty with ranges, scenarios, confidence, and explicit assumptions.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 546
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Project, Program, and Portfolio Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Represent uncertainty with ranges, scenarios, confidence, and explicit assumptions.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9BAB8E9B",
+      "revision": 1,
+      "semantic_sha256": "9bab8e9b7daef8256f5c28ff120f7534132b206e39389bc0277180fbb0c0304b",
+      "statement": "Reserve capacity for defects, security, reliability, maintenance, learning, and unplanned work.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 547
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Project, Program, and Portfolio Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Reserve capacity for defects, security, reliability, maintenance, learning, and unplanned work.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-049681CB",
+      "revision": 1,
+      "semantic_sha256": "049681cbd420bb946b5e6a618704131df2594fece06797adcaae3d419931cc41",
+      "statement": "Define benefit owners and measure whether expected benefits are realized after delivery.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 549
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Project, Program, and Portfolio Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Define benefit owners and measure whether expected benefits are realized after delivery.” is decidable by exact joins or comparisons across complete authoritative inventories, configurations, event times, artifact identities, and bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each subject to the configuration, event, artifact, review, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All policy-defined exact states, identifiers, timestamps, thresholds, or bounded outcomes required for those subjects satisfy the approved comparison.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BFDEE280",
+      "revision": 1,
+      "semantic_sha256": "bfdee280179dd7439e1a692edee201217e261f1331cb75f07fac6c39b9c6029c",
+      "statement": "Use transparent change control for material scope, schedule, cost, quality, or risk changes.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 552
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Project, Program, and Portfolio Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Use transparent change control for material scope, schedule, cost, quality, or risk changes.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9BF0B2DD",
+      "revision": 1,
+      "semantic_sha256": "9bf0b2dd566f25079f0306fe69b96328aa45109c58fe9f4d29ed002665b31e9f",
+      "statement": "Ensure project closure includes handover, operational acceptance, documentation, residual risk, and lessons learned.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 554
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Project, Program, and Portfolio Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Ensure project closure includes handover, operational acceptance, documentation, residual risk, and lessons learned.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DB947847",
+      "revision": 1,
+      "semantic_sha256": "db9478474d3fff30ad0af6e6a713abf0726490a212cd972507b163ae041fa59f",
+      "statement": "Begin with a decision or information need before selecting a metric.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 563
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Engineering Measurement and Metrics",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Begin with a decision or information need before selecting a metric.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DF84913E",
+      "revision": 1,
+      "semantic_sha256": "df84913e9c38aa2cdca533bbc97606dd44a0a93f164970cb80de7f56c815233c",
+      "statement": "Define each metric's construct, population, unit, method, source, frequency, owner, limitations, and intended decisions.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 564
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Engineering Measurement and Metrics",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define each metric's construct, population, unit, method, source, frequency, owner, limitations, and intended decisions.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-163BE262",
+      "revision": 1,
+      "semantic_sha256": "163be2628ccbbb3955fb03bceddc8992930d21583e839b7f0f023eecce0cc54a",
+      "statement": "Define confidence, uncertainty, sampling, missing-data, and measurement-error treatment.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 569
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Engineering Measurement and Metrics",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define confidence, uncertainty, sampling, missing-data, and measurement-error treatment.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-13A8CCE3",
+      "revision": 1,
+      "semantic_sha256": "13a8cce381131a7abea48538fef08c7f0b938e779681aa3885f246bfdc432a78",
+      "statement": "Review metric behavior after process or tooling changes that alter collection semantics.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 572
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Engineering Measurement and Metrics",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Review metric behavior after process or tooling changes that alter collection semantics.” is decidable by exact joins or comparisons across complete authoritative inventories, configurations, event times, artifact identities, and bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each subject to the configuration, event, artifact, review, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All policy-defined exact states, identifiers, timestamps, thresholds, or bounded outcomes required for those subjects satisfy the approved comparison.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9282AB20",
+      "revision": 1,
+      "semantic_sha256": "9282ab20e4d5a8e4b4c21f2e55d44147fe52c840bb179f11ff475aeb74a77fe0",
+      "statement": "Predefine success, guardrail, stop, and rollback thresholds for experiments and launches.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 574
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Engineering Measurement and Metrics",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Predefine success, guardrail, stop, and rollback thresholds for experiments and launches.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-82522805",
+      "revision": 1,
+      "semantic_sha256": "82522805f8fd7918588398e15d734887ab188028fb8fd176f296f06b542a00f4",
+      "statement": "Preserve raw evidence and transformation lineage sufficient to reproduce reported values.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 575
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Engineering Measurement and Metrics",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Preserve raw evidence and transformation lineage sufficient to reproduce reported values.” is decidable by exact joins or comparisons across complete authoritative inventories, configurations, event times, artifact identities, and bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each subject to the configuration, event, artifact, review, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All policy-defined exact states, identifiers, timestamps, thresholds, or bounded outcomes required for those subjects satisfy the approved comparison.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CC59B784",
+      "revision": 1,
+      "semantic_sha256": "cc59b784dc617844b439f859bc70fd2079f3d881a2d17ea5808a4e44bdb15098",
+      "statement": "Define competency expectations for each material engineering, product, design, security, privacy, data, quality, and operations role.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 585
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "People, Competence, Culture, and Sustainable Work",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define competency expectations for each material engineering, product, design, security, privacy, data, quality, and operations role.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-77B89A84",
+      "revision": 1,
+      "semantic_sha256": "77b89a8422360a55cd1e0e13ebfeb28e1668b58e8e7b7f3dd21e7d6e631b5d32",
+      "statement": "Provide training before assigning high-impact responsibilities.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 587
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "People, Competence, Culture, and Sustainable Work",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Provide training before assigning high-impact responsibilities.” is decidable by exact joins or comparisons across complete authoritative inventories, configurations, event times, artifact identities, and bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each subject to the configuration, event, artifact, review, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All policy-defined exact states, identifiers, timestamps, thresholds, or bounded outcomes required for those subjects satisfy the approved comparison.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6062519D",
+      "revision": 1,
+      "semantic_sha256": "6062519df3764d08a037c5d7951bd09959cf3d45b0c33a5c4bd26b78216e732d",
+      "statement": "Maintain succession and backup coverage for critical systems and responsibilities.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 590
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "People, Competence, Culture, and Sustainable Work",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Maintain succession and backup coverage for critical systems and responsibilities.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7584EFCD",
+      "revision": 1,
+      "semantic_sha256": "7584efcd52041117616132dc38423a7066080665203c2f1c59e3f877de0b1c8a",
+      "statement": "Review access promptly when people join, change roles, take leave, or depart.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 598
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "People, Competence, Culture, and Sustainable Work",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Review access promptly when people join, change roles, take leave, or depart.” is decidable by exact joins or comparisons across complete authoritative inventories, configurations, event times, artifact identities, and bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each subject to the configuration, event, artifact, review, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All policy-defined exact states, identifiers, timestamps, thresholds, or bounded outcomes required for those subjects satisfy the approved comparison.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-55927854",
+      "revision": 1,
+      "semantic_sha256": "559278543303803f8eb3c6ddaa07361a25424fb75ae50aeec0b4d3a571918236",
+      "statement": "Establish independent escalation for conflicts between commercial objectives and human welfare.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 618
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Ethics and Responsible Technology",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Establish independent escalation for conflicts between commercial objectives and human welfare.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A7CFBEC2",
+      "revision": 1,
+      "semantic_sha256": "a7cfbec2bbbd73d6b26bd0d8e03ebf622d11ce8ada1ad9cd973f0c975b1dab31",
+      "statement": "Reassess impact as usage, scale, context, data, models, and downstream integrations change.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 620
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Ethics and Responsible Technology",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Reassess impact as usage, scale, context, data, models, and downstream integrations change.” is decidable by exact joins or comparisons across complete authoritative inventories, configurations, event times, artifact identities, and bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each subject to the configuration, event, artifact, review, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All policy-defined exact states, identifiers, timestamps, thresholds, or bounded outcomes required for those subjects satisfy the approved comparison.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0A917506",
+      "revision": 1,
+      "semantic_sha256": "0a917506dc69f5ed9ff34c6777132bb61d8bcffbca5a8e349c5125667cada10f",
+      "statement": "Maintain one authoritative register of applicable laws, regulations, contracts, standards, licenses, policies, certifications, customer commitments, and internal obligations.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 629
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Compliance and obligations management"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Maintain one authoritative register of applicable laws, regulations, contracts, standards, licenses, policies, certifications, customer commitments, and internal obligations.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FC410330",
+      "revision": 1,
+      "semantic_sha256": "fc4103306d29b285622f2031321e65881074533078b616b864ac4dbd12d6f982",
+      "statement": "Record the jurisdiction, authority, scope, effective date, owner, interpretation, evidence, review date, and change source for every obligation.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 630
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Compliance and obligations management"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record the jurisdiction, authority, scope, effective date, owner, interpretation, evidence, review date, and change source for every obligation.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5826CC12",
+      "revision": 1,
+      "semantic_sha256": "5826cc12c2d775a6530bbf502045bdcb61c281a8dc5c7ef8194c06ef8d985af5",
+      "statement": "Resolve conflicts among legal, contractual, ethical, security, privacy, accessibility, safety, and product requirements through documented authorized decisions.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 633
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Compliance and obligations management"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Resolve conflicts among legal, contractual, ethical, security, privacy, accessibility, safety, and product requirements through documented authorized decisions.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0A75AF7B",
+      "revision": 1,
+      "semantic_sha256": "0a75af7b98d92836e18b71050782388b77f4fdbec20447cc654adb72c0cdb5b1",
+      "statement": "Monitor official sources for amendments, enforcement guidance, court decisions, regulator interpretations, and transition deadlines that can change applicability.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 634
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Compliance and obligations management"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The control “Monitor official sources for amendments, enforcement guidance, court decisions, regulator interpretations, and transition deadlines that can change applicability.” can be checked against a complete approved source inventory using current authenticated read-only observations and exact freshness or delivery rules.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every approved external source or provider has current authenticated read-only evidence satisfying the exact monitored event, delivery destination, or freshness rule.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4BD7C569",
+      "revision": 1,
+      "semantic_sha256": "4bd7c569dd324d2c08d9de3a9e2d07a7ff3c452a58e29d65832cbc3583090f37",
+      "statement": "Reassess obligations before entering a new market, serving a new user population, processing a new data type, changing a supplier, or materially changing functionality.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 635
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Compliance and obligations management"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Reassess obligations before entering a new market, serving a new user population, processing a new data type, changing a supplier, or materially changing functionality.” is decidable by exact joins or comparisons across complete authoritative inventories, configurations, event times, artifact identities, and bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each subject to the configuration, event, artifact, review, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All policy-defined exact states, identifiers, timestamps, thresholds, or bounded outcomes required for those subjects satisfy the approved comparison.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-33C53EA1",
+      "revision": 1,
+      "semantic_sha256": "33c53ea1cdab35cca1d4c0b9f08e53a545f4bff08cfa1e84115b1d4a4fd29dab",
+      "statement": "Link obligations to requirements, risks, controls, tests, operating procedures, records, owners, and release decisions.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 639
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Compliance and obligations management"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Link obligations to requirements, risks, controls, tests, operating procedures, records, owners, and release decisions.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-68C68A3D",
+      "revision": 1,
+      "semantic_sha256": "68c68a3d2bfd4e77d89c7fad480efb481f34fc14c6646dcb16a13f3a18cdd84f",
+      "statement": "Maintain evidence of compliance decisions and the factual basis used at the time.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 641
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Compliance and obligations management"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Maintain evidence of compliance decisions and the factual basis used at the time.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-61C0266E",
+      "revision": 1,
+      "semantic_sha256": "61c0266efa02c32a3b8377adde2b56df2e62a9544dca755bb9dd94b14cf3564c",
+      "statement": "Track nonconformities, corrective actions, due dates, owners, effectiveness checks, and recurrence.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 642
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Compliance and obligations management"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Track nonconformities, corrective actions, due dates, owners, effectiveness checks, and recurrence.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4F97A2C6",
+      "revision": 1,
+      "semantic_sha256": "4f97a2c601de4187857df1b8d25452a6fbe6a489e5dd74ee5a3a4aa8787ae039",
+      "statement": "Define which nonconformities block release, require customer notification, or trigger incident response.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 644
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Compliance and obligations management"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define which nonconformities block release, require customer notification, or trigger incident response.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E34BC22A",
+      "revision": 1,
+      "semantic_sha256": "e34bc22aaf67c2f3505b6217711cd7e231ef681a35b669069f45299491f2055e",
+      "statement": "Ensure temporary waivers expire automatically and cannot become permanent through inattention.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 646
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Compliance and obligations management"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Ensure temporary waivers expire automatically and cannot become permanent through inattention.” is decidable by exact joins or comparisons across complete authoritative inventories, configurations, event times, artifact identities, and bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each subject to the configuration, event, artifact, review, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All policy-defined exact states, identifiers, timestamps, thresholds, or bounded outcomes required for those subjects satisfy the approved comparison.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8BAFBF7E",
+      "revision": 1,
+      "semantic_sha256": "8bafbf7ecee68341c2b9c510b1b91c5699a023045a2cd06538de84d0859a65f5",
+      "statement": "State the exact product, service, location, version, period, and control scope covered by every assurance claim.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 649
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Compliance and obligations management"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “State the exact product, service, location, version, period, and control scope covered by every assurance claim.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DE933B4A",
+      "revision": 1,
+      "semantic_sha256": "de933b4a2630ff9e91e7b8c11b9f3f9c9af0ddc2a7b6393888fdbd4ad7d03ce5",
+      "statement": "Track certification and audit surveillance dates, evidence windows, exclusions, dependencies, and renewal actions.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 650
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Compliance and obligations management"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Track certification and audit surveillance dates, evidence windows, exclusions, dependencies, and renewal actions.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D673A4A5",
+      "revision": 1,
+      "semantic_sha256": "d673a4a5b528b3524c59423a59e108675b3c3d8f0afb95f61e0c95bf3bd0da28",
+      "statement": "Ensure changes cannot move the product outside a certified or contracted scope without review.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 651
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Compliance and obligations management"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Ensure changes cannot move the product outside a certified or contracted scope without review.” is decidable by exact joins or comparisons across complete authoritative inventories, configurations, event times, artifact identities, and bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each subject to the configuration, event, artifact, review, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All policy-defined exact states, identifiers, timestamps, thresholds, or bounded outcomes required for those subjects satisfy the approved comparison.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EDCF9DA1",
+      "revision": 1,
+      "semantic_sha256": "edcf9da1d18ee58d772ce9cc2545d72f789baf09419b1dee6d9fe3a7d39ef882",
+      "statement": "Maintain a controlled process for regulator, auditor, customer, and lawful-authority requests.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 652
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Compliance and obligations management"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Maintain a controlled process for regulator, auditor, customer, and lawful-authority requests.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1ECFF549",
+      "revision": 1,
+      "semantic_sha256": "1ecff5491d4e507ddd0087f2021f9bf17079b281f099a51fd9f01cbd9d115c28",
+      "statement": "Record why an obligation was judged Not Applicable and have the judgment reviewed by an authorized person.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 654
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Compliance and obligations management"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record why an obligation was judged Not Applicable and have the judgment reviewed by an authorized person.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5AFB222A",
+      "revision": 1,
+      "semantic_sha256": "5afb222afb1b6e0517c158d655b67465acd0a2f659a8f31e9308566a15f78eb9",
+      "statement": "Test compliance processes through sampling, walkthroughs, incident simulations, and independent review.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 657
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Compliance and obligations management"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test compliance processes through sampling, walkthroughs, incident simulations, and independent review.” names a closed evidence exercise whose declared scenarios and authenticated results can be verified without generalizing beyond the approved protocol.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution evidence covers every scenario explicitly required by the approved protocol and records the expected result for the exact assessed revision.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EF95F68C",
+      "revision": 1,
+      "semantic_sha256": "ef95f68c5753454b3a9b2bcd2e5ea44527c7fddde162b76168d8f9c5ba21ce01",
+      "statement": "Include compliance impacts in architecture decisions, backlog prioritization, procurement, release planning, and retirement.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 661
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Compliance and obligations management"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Include compliance impacts in architecture decisions, backlog prioritization, procurement, release planning, and retirement.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-648076DD",
+      "revision": 1,
+      "semantic_sha256": "648076dd60e4586d9b1bda076dc07a645b9fd34de824dbee495fd32c1e4303d1",
+      "statement": "Review the compliance management system after material incidents, enforcement actions, audit findings, or recurring customer complaints.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 663
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Compliance and obligations management"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Review the compliance management system after material incidents, enforcement actions, audit findings, or recurring customer complaints.” is decidable by exact joins or comparisons across complete authoritative inventories, configurations, event times, artifact identities, and bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each subject to the configuration, event, artifact, review, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All policy-defined exact states, identifiers, timestamps, thresholds, or bounded outcomes required for those subjects satisfy the approved comparison.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C097977F",
+      "revision": 1,
+      "semantic_sha256": "c097977fcfcf992b72779b7f7484622a8d1688c8ca3ca572c9ce887bf0c22a05",
+      "statement": "Define the business capability, outcomes, constraints, risks, data, interfaces, service levels, and acceptance criteria before selecting a supplier or product.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 667
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Acquisition, supply, outsourcing, and exit governance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define the business capability, outcomes, constraints, risks, data, interfaces, service levels, and acceptance criteria before selecting a supplier or product.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E8FAD9D8",
+      "revision": 1,
+      "semantic_sha256": "e8fad9d8693351621755d8807b5702c43ba68a0928bdeecac8c315fa2f7a8a1a",
+      "statement": "Compare build, buy, reuse, partner, and retire options using lifecycle value, risk, reversibility, opportunity cost, and organizational capability.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 668
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Acquisition, supply, outsourcing, and exit governance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Compare build, buy, reuse, partner, and retire options using lifecycle value, risk, reversibility, opportunity cost, and organizational capability.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AD81EAAC",
+      "revision": 1,
+      "semantic_sha256": "ad81eaac900164bdbee3e8c046dc73ff651b608d4cdeb5fd059d3d0cd351937c",
+      "statement": "Include migration, integration, operation, support, security, privacy, accessibility, continuity, and exit costs in acquisition decisions.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 669
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Acquisition, supply, outsourcing, and exit governance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Include migration, integration, operation, support, security, privacy, accessibility, continuity, and exit costs in acquisition decisions.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-76A225D3",
+      "revision": 1,
+      "semantic_sha256": "76a225d3c184d49ec6c24ff0fa01d21815b5240abf9045b278b59794e585f743",
+      "statement": "Define which party is responsible for defects, vulnerabilities, incidents, accessibility barriers, data errors, legal requests, and customer support.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 674
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Acquisition, supply, outsourcing, and exit governance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define which party is responsible for defects, vulnerabilities, incidents, accessibility barriers, data errors, legal requests, and customer support.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9DE72FA9",
+      "revision": 1,
+      "semantic_sha256": "9de72fa910c62d44e3c3c7529e94618803d993f7cbf4f401d7d34c7a2f666891",
+      "statement": "Require timely notice of material changes to ownership, subprocessors, locations, technology, security posture, data use, support, or end-of-life plans.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 677
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Acquisition, supply, outsourcing, and exit governance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Require timely notice of material changes to ownership, subprocessors, locations, technology, security posture, data use, support, or end-of-life plans.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7A7A29CE",
+      "revision": 1,
+      "semantic_sha256": "7a7a29ce287b73ab18532eac6f5279ca36b7de3c98ab4bb5f2ffb4ae02ab64e7",
+      "statement": "Define vulnerability disclosure, remediation targets, emergency coordination, and customer advisory responsibilities.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 680
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Acquisition, supply, outsourcing, and exit governance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define vulnerability disclosure, remediation targets, emergency coordination, and customer advisory responsibilities.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3C3DC5B8",
+      "revision": 1,
+      "semantic_sha256": "3c3dc5b856b26b2e03479284736642ed02dea113adaedcca866d8c2b44993fff",
+      "statement": "Define data return, export format, completeness, integrity, metadata, provenance, and deletion obligations at termination.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 681
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Acquisition, supply, outsourcing, and exit governance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define data return, export format, completeness, integrity, metadata, provenance, and deletion obligations at termination.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7A559BF6",
+      "revision": 1,
+      "semantic_sha256": "7a559bf69db110c8a58588e55b4ded31bc3fa1a6f5803a1d54b1bcf42901d0a1",
+      "statement": "Define portability for identities, permissions, configuration, workflows, schemas, integrations, keys, logs, and historical records.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 683
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Acquisition, supply, outsourcing, and exit governance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define portability for identities, permissions, configuration, workflows, schemas, integrations, keys, logs, and historical records.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7BC25239",
+      "revision": 1,
+      "semantic_sha256": "7bc252392462a1e8a098aae863b6635a39597035c27b5697c3ebec69478dc8e1",
+      "statement": "Identify proprietary extensions and document the consequence of losing them during migration.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 685
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Acquisition, supply, outsourcing, and exit governance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Identify proprietary extensions and document the consequence of losing them during migration.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AEBAE6E8",
+      "revision": 1,
+      "semantic_sha256": "aebae6e865d7a0599d9a966f21f9306fa37feabb502c2247852ee599f58206bc",
+      "statement": "Define transition assistance, knowledge transfer, overlap periods, support continuity, and key-person availability.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 689
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Acquisition, supply, outsourcing, and exit governance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define transition assistance, knowledge transfer, overlap periods, support continuity, and key-person availability.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-237A0006",
+      "revision": 1,
+      "semantic_sha256": "237a000661a0683c295ef9e4c90cca3f19969855b72c416c470a2bf943a7311a",
+      "statement": "Test exports, backups, migration tooling, and alternate-provider integration before an emergency forces their use.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 690
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Acquisition, supply, outsourcing, and exit governance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test exports, backups, migration tooling, and alternate-provider integration before an emergency forces their use.” names a closed evidence exercise whose declared scenarios and authenticated results can be verified without generalizing beyond the approved protocol.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution evidence covers every scenario explicitly required by the approved protocol and records the expected result for the exact assessed revision.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-83E0FB27",
+      "revision": 1,
+      "semantic_sha256": "83e0fb2737b257f0ad4e1013dc0371d7ffcd7e75ab9ea67061eea8911845f929",
+      "statement": "Maintain an exit plan for each critical supplier from the start of the relationship.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 691
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Acquisition, supply, outsourcing, and exit governance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Maintain an exit plan for each critical supplier from the start of the relationship.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6AB53D5A",
+      "revision": 1,
+      "semantic_sha256": "6ab53d5acb5c77645b473df492b15bb36c2ee4290f9ca72bcedbc3c18be149e3",
+      "statement": "Assign an exit owner and estimate time, cost, dependencies, data movement, customer impact, and residual obligations.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 692
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Acquisition, supply, outsourcing, and exit governance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Assign an exit owner and estimate time, cost, dependencies, data movement, customer impact, and residual obligations.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E6A9CCF0",
+      "revision": 1,
+      "semantic_sha256": "e6a9ccf08af55a02c32616c05015b41e4953970deaba96d0d9698f7f7c92f70b",
+      "statement": "Identify supplier-provided controls that would disappear during exit and replace them before cutover.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 693
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Acquisition, supply, outsourcing, and exit governance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Identify supplier-provided controls that would disappear during exit and replace them before cutover.” is decidable by exact joins or comparisons across complete authoritative inventories, configurations, event times, artifact identities, and bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each subject to the configuration, event, artifact, review, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All policy-defined exact states, identifiers, timestamps, thresholds, or bounded outcomes required for those subjects satisfy the approved comparison.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C8B933AD",
+      "revision": 1,
+      "semantic_sha256": "c8b933ad37227d738c11954962f8e7a350abf9e8e9702317dbea4e05278350f7",
+      "statement": "Prevent test or evaluation access from becoming unreviewed production dependency.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 694
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Acquisition, supply, outsourcing, and exit governance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Prevent test or evaluation access from becoming unreviewed production dependency.” is decidable by exact joins or comparisons across complete authoritative inventories, configurations, event times, artifact identities, and bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each subject to the configuration, event, artifact, review, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All policy-defined exact states, identifiers, timestamps, thresholds, or bounded outcomes required for those subjects satisfy the approved comparison.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-57E8F571",
+      "revision": 1,
+      "semantic_sha256": "57e8f5716bd2d27d2655203987d19157e08343898beb639a7cdab95ee3393887",
+      "statement": "Require formal acceptance against agreed criteria before treating acquired software or services as production ready.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 695
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Acquisition, supply, outsourcing, and exit governance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Require formal acceptance against agreed criteria before treating acquired software or services as production ready.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-02A1C0FF",
+      "revision": 1,
+      "semantic_sha256": "02a1c0ff26edb2e3955df440b74d498ae08872894dcf52eccc88cbc2a53fa642",
+      "statement": "Track notice periods, price changes, minimum commitments, automatic renewals, and termination windows.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 698
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Acquisition, supply, outsourcing, and exit governance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Track notice periods, price changes, minimum commitments, automatic renewals, and termination windows.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F0EB40C4",
+      "revision": 1,
+      "semantic_sha256": "f0eb40c41e119807b260a69698e3250583fc6f87ec99288a48b1fab89ff90bce",
+      "statement": "Define governance for supplier-requested emergency changes and exceptions.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 700
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Acquisition, supply, outsourcing, and exit governance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define governance for supplier-requested emergency changes and exceptions.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-14A323CB",
+      "revision": 1,
+      "semantic_sha256": "14a323cb3d82c9a16fed09ac4b210ad97e38114a37b180363cf1dd1ec6accf59",
+      "statement": "Escalate chronic supplier underperformance and maintain objective replacement triggers.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 702
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Acquisition, supply, outsourcing, and exit governance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Escalate chronic supplier underperformance and maintain objective replacement triggers.” is decidable by exact joins or comparisons across complete authoritative inventories, configurations, event times, artifact identities, and bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each subject to the configuration, event, artifact, review, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All policy-defined exact states, identifiers, timestamps, thresholds, or bounded outcomes required for those subjects satisfy the approved comparison.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C744DA1F",
+      "revision": 1,
+      "semantic_sha256": "c744da1f0ffd15326c3c625c1a2d8bb65a17396686789f96c5796ce032280d32",
+      "statement": "Remove supplier access, integrations, credentials, certificates, routes, accounts, and data when the relationship ends.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 704
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Acquisition, supply, outsourcing, and exit governance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Remove supplier access, integrations, credentials, certificates, routes, accounts, and data when the relationship ends.” is decidable by exact joins or comparisons across complete authoritative inventories, configurations, event times, artifact identities, and bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each subject to the configuration, event, artifact, review, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All policy-defined exact states, identifiers, timestamps, thresholds, or bounded outcomes required for those subjects satisfy the approved comparison.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B4C136B8",
+      "revision": 1,
+      "semantic_sha256": "b4c136b85fcc24a9b7c81441ccfb3d19790dd43352e3bb6db060bbeb1058e612",
+      "statement": "Reassess critical suppliers after acquisition, merger, restructuring, leadership change, breach, sanctions exposure, or material service degradation.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 706
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Acquisition, supply, outsourcing, and exit governance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Reassess critical suppliers after acquisition, merger, restructuring, leadership change, breach, sanctions exposure, or material service degradation.” is decidable by exact joins or comparisons across complete authoritative inventories, configurations, event times, artifact identities, and bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each subject to the configuration, event, artifact, review, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All policy-defined exact states, identifiers, timestamps, thresholds, or bounded outcomes required for those subjects satisfy the approved comparison.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-66028C4E",
+      "revision": 1,
+      "semantic_sha256": "66028c4e8f6760d24533503b406f581bcd2368b2674b0ee7e2ed2237a325888b",
+      "statement": "Document the residual risks accepted when a supplier cannot satisfy a required control.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 707
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Acquisition, supply, outsourcing, and exit governance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Document the residual risks accepted when a supplier cannot satisfy a required control.” defines a bounded governance record. With a complete authoritative scope, its named fields, roles, links, dates, review state, and subject binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, relationship, owner, date, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

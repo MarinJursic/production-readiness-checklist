@@ -1,0 +1,779 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-11-developer-experience-platform-and-delivery-md-part-001-part-002",
+  "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 30,
+  "controls": [
+    {
+      "control_id": "USEQ-52FBF8D0",
+      "revision": 1,
+      "semantic_sha256": "52fbf8d0cda62f310e9e9dccdcfc70a39fc9b1e499bb524ba17b228f8fd7b598",
+      "statement": "Test rollback using the same automation and permissions used in production.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 253
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Rollback, Roll-Forward, and Kill Switches",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Test rollback using the same automation and permissions used in production.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test rollback using the same automation and permissions used in production.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-66FE3634",
+      "revision": 1,
+      "semantic_sha256": "66fe3634782d44b8f8c8e8b1a4569dc9ca07aeb24b4b9a98743ecbfe1ac2b8fe",
+      "statement": "Make rollback authority and initiation paths available during an incident.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 257
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Rollback, Roll-Forward, and Kill Switches",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Make rollback authority and initiation paths available during an incident.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make rollback authority and initiation paths available during an incident.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3264C430",
+      "revision": 1,
+      "semantic_sha256": "3264c430dc0da2fa4456a3aa365caab7daea3a42bd93bdaeaf48869e319d4ba9",
+      "statement": "Ensure rollback does not repeat charges, notifications, jobs, exports, or other side effects.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 258
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Rollback, Roll-Forward, and Kill Switches",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Ensure rollback does not repeat charges, notifications, jobs, exports, or other side effects.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Ensure rollback does not repeat charges, notifications, jobs, exports, or other side effects.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EB2A1C1A",
+      "revision": 1,
+      "semantic_sha256": "eb2a1c1aa9e7de6108756d9c19c179246ffa6154b8c5a67cfa7333494ca53a5b",
+      "statement": "Reconcile data written by the failed version.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 259
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Rollback, Roll-Forward, and Kill Switches",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Reconcile data written by the failed version.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Reconcile data written by the failed version.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-36BF8E85",
+      "revision": 1,
+      "semantic_sha256": "36bf8e8589d23e26c443705489f0fb891d581e6997c5f41b2c333ff67ada7263",
+      "statement": "Use kill switches for isolated risky behavior and define safe failure when the flag system is unavailable.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 260
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Rollback, Roll-Forward, and Kill Switches",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Use kill switches for isolated risky behavior and define safe failure when the flag system is unavailable.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use kill switches for isolated risky behavior and define safe failure when the flag system is unavailable.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-24436BCA",
+      "revision": 1,
+      "semantic_sha256": "24436bca57f072149c8fd91a4636ec177aae58550e011b3a74c2ab384b4e4410",
+      "statement": "Restrict and audit kill-switch access.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 261
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Rollback, Roll-Forward, and Kill Switches",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Restrict and audit kill-switch access.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Restrict and audit kill-switch access.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CE7FB317",
+      "revision": 1,
+      "semantic_sha256": "ce7fb317c1c8f08f90657a81724a3a855177c7328da710a1494b976c2d5da81e",
+      "statement": "Test kill switches in production-like conditions and periodically in production-safe drills.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 262
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Rollback, Roll-Forward, and Kill Switches",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Test kill switches in production-like conditions and periodically in production-safe drills.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test kill switches in production-like conditions and periodically in production-safe drills.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F343F4EA",
+      "revision": 1,
+      "semantic_sha256": "f343f4ea22dc7b773616a574264503a8e37ad85b9471e83170f4b6d86510d058",
+      "statement": "Prevent stale clients, workers, and long-lived connections from continuing disabled behavior.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 263
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Rollback, Roll-Forward, and Kill Switches",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Prevent stale clients, workers, and long-lived connections from continuing disabled behavior.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Prevent stale clients, workers, and long-lived connections from continuing disabled behavior.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C708B71B",
+      "revision": 1,
+      "semantic_sha256": "c708b71b5e1cdb2edb741efd2cd668b08d90aee10d8bb7d7846a09a7a36a3418",
+      "statement": "Make configuration and feature state visible to responders.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 264
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Rollback, Roll-Forward, and Kill Switches",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Make configuration and feature state visible to responders.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make configuration and feature state visible to responders.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6C422A58",
+      "revision": 1,
+      "semantic_sha256": "6c422a58972d894d4ab0657f6b3a88c49243520590b38348aeba1d7dac171600",
+      "statement": "Define recovery from a bad configuration separately from bad code.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 265
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Rollback, Roll-Forward, and Kill Switches",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Define recovery from a bad configuration separately from bad code.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define recovery from a bad configuration separately from bad code.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-059BE10D",
+      "revision": 1,
+      "semantic_sha256": "059be10dfdf7b8896ff493462bc1dbabcdf65352324f4b72bfdc83ea393154ed",
+      "statement": "Verify user journeys and business invariants after containment.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 267
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Rollback, Roll-Forward, and Kill Switches",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Verify user journeys and business invariants after containment.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Verify user journeys and business invariants after containment.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-05EB12CC",
+      "revision": 1,
+      "semantic_sha256": "05eb12cc025de0a3c6a81ed185f9e18463735b586cd49aaccd005968c5a55b30",
+      "statement": "Remove temporary rollback compatibility and emergency flags after stability is established.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 269
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Rollback, Roll-Forward, and Kill Switches",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Remove temporary rollback compatibility and emergency flags after stability is established.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Remove temporary rollback compatibility and emergency flags after stability is established.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C8FCDEDB",
+      "revision": 1,
+      "semantic_sha256": "c8fcdedb5b68c15dfc331ecb71fcd0180ce36c31d0c9c5ecab846e76a7534cd9",
+      "statement": "Publish the engineering-system roadmap, service ownership, supported workflows, known limitations, and ways to request improvement.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 286
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Developer Experience, Platform Engineering, and Engineering Economics Master Checklist",
+        "Expanded gap-closure controls",
+        "Developer experience as an engineering-system outcome"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Publish the engineering-system roadmap, service ownership, supported workflows, known limitations, and ways to request improvement.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Publish the engineering-system roadmap, service ownership, supported workflows, known limitations, and ways to request improvement.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B09E273B",
+      "revision": 1,
+      "semantic_sha256": "b09e273b85e7703c279cb473b4b4f06eb687b3b17af271ec1320fee547bd73fc",
+      "statement": "Define target feedback times for editing, validation, formatting, compilation or analysis, focused tests, integration tests, review, build, deployment, and production verification.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 295
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Developer Experience, Platform Engineering, and Engineering Economics Master Checklist",
+        "Expanded gap-closure controls",
+        "Feedback loops and inner development cycle"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Define target feedback times for editing, validation, formatting, compilation or analysis, focused tests, integration tests, review, build, deployment, and production verification.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define target feedback times for editing, validation, formatting, compilation or analysis, focused tests, integration tests, review, build, deployment, and production verification.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C262BE4B",
+      "revision": 1,
+      "semantic_sha256": "c262be4b20bc56a44edce3d0395f8e1a64346c43b31435b16c45847aeb12c199",
+      "statement": "Measure end-to-end waiting time and queue time rather than only tool execution time.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 296
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Developer Experience, Platform Engineering, and Engineering Economics Master Checklist",
+        "Expanded gap-closure controls",
+        "Feedback loops and inner development cycle"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Measure end-to-end waiting time and queue time rather than only tool execution time.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Measure end-to-end waiting time and queue time rather than only tool execution time.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E29091F1",
+      "revision": 1,
+      "semantic_sha256": "e29091f146be8450ca16eb667cec3e72ee49c8afa4e10e719f7c48f1aad580aa",
+      "statement": "Surface failures with the exact failing step, actionable cause, relevant logs, ownership, and remediation guidance.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 300
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Developer Experience, Platform Engineering, and Engineering Economics Master Checklist",
+        "Expanded gap-closure controls",
+        "Feedback loops and inner development cycle"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Surface failures with the exact failing step, actionable cause, relevant logs, ownership, and remediation guidance.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Surface failures with the exact failing step, actionable cause, relevant logs, ownership, and remediation guidance.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-36CB4809",
+      "revision": 1,
+      "semantic_sha256": "36cb4809e168a32bed856fe339b2e1786cf81df8c23f2db95bd84467bf4abd33",
+      "statement": "Make code review assignment, status, required expertise, unresolved comments, and decision authority visible.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 304
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Developer Experience, Platform Engineering, and Engineering Economics Master Checklist",
+        "Expanded gap-closure controls",
+        "Feedback loops and inner development cycle"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Make code review assignment, status, required expertise, unresolved comments, and decision authority visible.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make code review assignment, status, required expertise, unresolved comments, and decision authority visible.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E8B11D40",
+      "revision": 1,
+      "semantic_sha256": "e8b11d402d97cca8f617f4f1bec37e2f846bfb814afb748d897addcaf1cc5812",
+      "statement": "Provide one discoverable authoritative entry point for services, ownership, documentation, environments, deployment, support, and operational status.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 313
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Developer Experience, Platform Engineering, and Engineering Economics Master Checklist",
+        "Expanded gap-closure controls",
+        "Cognitive load, flow, and work design"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Provide one discoverable authoritative entry point for services, ownership, documentation, environments, deployment, support, and operational status.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide one discoverable authoritative entry point for services, ownership, documentation, environments, deployment, support, and operational status.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C4A6187E",
+      "revision": 1,
+      "semantic_sha256": "c4a6187e225bd3cadecc6a3196e9d2e46eca9c727038deef444652652f3be524",
+      "statement": "Define the minimum supported path from account creation to a verified useful change and measure it with new or reset users.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 329
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Developer Experience, Platform Engineering, and Engineering Economics Master Checklist",
+        "Expanded gap-closure controls",
+        "Onboarding, environments, and daily usability"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Define the minimum supported path from account creation to a verified useful change and measure it with new or reset users.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define the minimum supported path from account creation to a verified useful change and measure it with new or reset users.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-262F3070",
+      "revision": 1,
+      "semantic_sha256": "262f3070c9c377ca66f6d3cbda173a6b90e7a7fd682e1aebb1cb324b0bf811f8",
+      "statement": "Automate account, repository, documentation, environment, test-data, secret, and deployment access according to role and least privilege.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 330
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Developer Experience, Platform Engineering, and Engineering Economics Master Checklist",
+        "Expanded gap-closure controls",
+        "Onboarding, environments, and daily usability"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Automate account, repository, documentation, environment, test-data, secret, and deployment access according to role and least privilege.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Automate account, repository, documentation, environment, test-data, secret, and deployment access according to role and least privilege.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-72AF77C1",
+      "revision": 1,
+      "semantic_sha256": "72af77c1bfd13343396712233d04d4407989c7166918ae90f40d9dd3b013f8d6",
+      "statement": "Provide a current architectural orientation, service map, glossary, development workflow, quality gates, support route, and first-task guide.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 332
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Developer Experience, Platform Engineering, and Engineering Economics Master Checklist",
+        "Expanded gap-closure controls",
+        "Onboarding, environments, and daily usability"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Provide a current architectural orientation, service map, glossary, development workflow, quality gates, support route, and first-task guide.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide a current architectural orientation, service map, glossary, development workflow, quality gates, support route, and first-task guide.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E3FF70A7",
+      "revision": 1,
+      "semantic_sha256": "e3ff70a76292dbae132bc503fa822422b357c4dfd5d4e8774af25037cc8e4da6",
+      "statement": "Keep development setup reproducible from documented declarations and validate it regularly from a clean state.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 333
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Developer Experience, Platform Engineering, and Engineering Economics Master Checklist",
+        "Expanded gap-closure controls",
+        "Onboarding, environments, and daily usability"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Keep development setup reproducible from documented declarations and validate it regularly from a clean state.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Keep development setup reproducible from documented declarations and validate it regularly from a clean state.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4A4087C7",
+      "revision": 1,
+      "semantic_sha256": "4a4087c790dafa0017c6e7ca191d3069a10fee2447446e2b2983fdd18025a1f7",
+      "statement": "Control environment drift and make differences from production explicit.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 337
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Developer Experience, Platform Engineering, and Engineering Economics Master Checklist",
+        "Expanded gap-closure controls",
+        "Onboarding, environments, and daily usability"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Control environment drift and make differences from production explicit.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Control environment drift and make differences from production explicit.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2C0ADD3B",
+      "revision": 1,
+      "semantic_sha256": "2c0add3b7d3865d178315e83d1dbb01e89bafda092baece63a95bf617f2d4468",
+      "statement": "Provide safe seed, reset, migration, and cleanup procedures for development and test state.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 339
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Developer Experience, Platform Engineering, and Engineering Economics Master Checklist",
+        "Expanded gap-closure controls",
+        "Onboarding, environments, and daily usability"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Provide safe seed, reset, migration, and cleanup procedures for development and test state.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide safe seed, reset, migration, and cleanup procedures for development and test state.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-598AC30F",
+      "revision": 1,
+      "semantic_sha256": "598ac30f0667145e4c1c4c7ad46c521682da8bb421ed52e089327478380a755e",
+      "statement": "Document offline, low-bandwidth, travel, and device-replacement recovery where work continuity requires it.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 341
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Developer Experience, Platform Engineering, and Engineering Economics Master Checklist",
+        "Expanded gap-closure controls",
+        "Onboarding, environments, and daily usability"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Document offline, low-bandwidth, travel, and device-replacement recovery where work continuity requires it.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document offline, low-bandwidth, travel, and device-replacement recovery where work continuity requires it.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-52F5768B",
+      "revision": 1,
+      "semantic_sha256": "52f5768b698c4b95ca951f284e3dfa84db35d00a7bdaebee475baf2e17e8a02d",
+      "statement": "Define platform personas, supported use cases, service levels, prerequisites, quotas, costs, responsibilities, and exit paths.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 352
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Developer Experience, Platform Engineering, and Engineering Economics Master Checklist",
+        "Expanded gap-closure controls",
+        "Platform engineering as a product"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Define platform personas, supported use cases, service levels, prerequisites, quotas, costs, responsibilities, and exit paths.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define platform personas, supported use cases, service levels, prerequisites, quotas, costs, responsibilities, and exit paths.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-57EB708C",
+      "revision": 1,
+      "semantic_sha256": "57eb708c7bc7445825dd2c9e8d372d36416bcc37b307cd2f3eea1f78f3ae47cf",
+      "statement": "Use stable, versioned platform interfaces and avoid forcing consumers to depend on internal implementation details.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 353
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Developer Experience, Platform Engineering, and Engineering Economics Master Checklist",
+        "Expanded gap-closure controls",
+        "Platform engineering as a product"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Use stable, versioned platform interfaces and avoid forcing consumers to depend on internal implementation details.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use stable, versioned platform interfaces and avoid forcing consumers to depend on internal implementation details.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-77692B0A",
+      "revision": 1,
+      "semantic_sha256": "77692b0acb2bffa4c669b31ca887d744446ae6db0adb2a27a1657f3be78f58da",
+      "statement": "Provide a service and software catalog with ownership, criticality, dependencies, runbooks, lifecycle, data classification, and operational health.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 354
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Developer Experience, Platform Engineering, and Engineering Economics Master Checklist",
+        "Expanded gap-closure controls",
+        "Platform engineering as a product"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Provide a service and software catalog with ownership, criticality, dependencies, runbooks, lifecycle, data classification, and operational health.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide a service and software catalog with ownership, criticality, dependencies, runbooks, lifecycle, data classification, and operational health.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8AF5B8F4",
+      "revision": 1,
+      "semantic_sha256": "8af5b8f48e525ccd12a6434dcd31160d5ec0495679ea7b07a458ea43cfb9091f",
+      "statement": "Make platform policies testable before deployment and explain violations in user terms.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 356
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Developer Experience, Platform Engineering, and Engineering Economics Master Checklist",
+        "Expanded gap-closure controls",
+        "Platform engineering as a product"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Make platform policies testable before deployment and explain violations in user terms.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make platform policies testable before deployment and explain violations in user terms.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E5D8E500",
+      "revision": 1,
+      "semantic_sha256": "e5d8e5001cc200102e8bf6d0fb782b772be90a0d7be11e8271193937b7153ffc",
+      "statement": "Minimize ticket-based provisioning for routine capabilities and measure ticket demand as evidence of missing self-service or unclear ownership.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 357
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Developer Experience, Platform Engineering, and Engineering Economics Master Checklist",
+        "Expanded gap-closure controls",
+        "Platform engineering as a product"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Minimize ticket-based provisioning for routine capabilities and measure ticket demand as evidence of missing self-service or unclear ownership.” is deterministic with a sealed repository, pipeline, artifact, environment, deployment, migration, rollback, or platform inventory and exact versioned acceptance evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Minimize ticket-based provisioning for routine capabilities and measure ticket demand as evidence of missing self-service or unclear ownership.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    }
+  ]
+}

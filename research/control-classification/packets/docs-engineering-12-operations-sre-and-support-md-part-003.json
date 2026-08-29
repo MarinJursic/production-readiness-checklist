@@ -1,0 +1,1226 @@
+{
+  "schema_version": "prc.control-classification-packet/v0.1",
+  "packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/engineering/12-operations-sre-and-support.md",
+  "control_count": 81,
+  "controls": [
+    {
+      "control_id": "USEQ-9730C439",
+      "revision": 1,
+      "semantic_sha256": "9730c4397fa4c7b21f757c9f69ce2fedf35cf2f440d3215ce4b368f4d89b09fd",
+      "statement": "Provide primary, secondary, management, specialist, supplier, and executive escalation coverage as needed.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 675
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "People, roles, competence, and staffing readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-20DF5585",
+      "revision": 1,
+      "semantic_sha256": "20df55852a5fe77cbcfc09c3fee3a73cf3c8e590657e3dd4dfa8ade7b614f371",
+      "statement": "Verify personnel have required access, equipment, credentials, training, authority, and contact information.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 676
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "People, roles, competence, and staffing readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-501984F9",
+      "revision": 1,
+      "semantic_sha256": "501984f9108a018f209783efeb4162940e6abd04eef3a51a96fd23e4159bc0cc",
+      "statement": "Assess demonstrated competence for high-impact tasks.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 677
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "People, roles, competence, and staffing readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-905419B1",
+      "revision": 1,
+      "semantic_sha256": "905419b195a7744055ff4a91391298b2a6a45d2426b68013207dfec4db830f33",
+      "statement": "Provide practical exercises for deployments, rollback, incidents, failover, restoration, data repair, and customer communication.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 678
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "People, roles, competence, and staffing readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-8E55BA3A",
+      "revision": 1,
+      "semantic_sha256": "8e55ba3a63d06543567d4fdcb284732bea6827fc9237f4410cd6236649c81948",
+      "statement": "Avoid reliance on one person, device, location, time zone, or undocumented skill.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 679
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "People, roles, competence, and staffing readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-2B75F633",
+      "revision": 1,
+      "semantic_sha256": "2b75f633418e53126019662a38322ac6e848e787711756ee379734402d1aed76",
+      "statement": "Define handover, leave, offboarding, role-change, and contractor-transition procedures.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 680
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "People, roles, competence, and staffing readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-3B38E750",
+      "revision": 1,
+      "semantic_sha256": "3b38e75072d4a70a0a58cbafc6893a9b4a404bfc568e81a6f3ec357560471861",
+      "statement": "Ensure working hours, on-call load, and alert volume are sustainable.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 681
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "People, roles, competence, and staffing readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-E46B4EE7",
+      "revision": 1,
+      "semantic_sha256": "e46b4ee75bc6bb2197394925b95fcad6744e2414d6b34a1a60f3e00922629200",
+      "statement": "Provide accessible accommodations and inclusive tools for operational personnel.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 682
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "People, roles, competence, and staffing readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-8814F7F9",
+      "revision": 1,
+      "semantic_sha256": "8814f7f98d22ec26d837730e87b87e44dc0ee534ebcc9ad6b89fa0f7d0408568",
+      "statement": "Confirm support teams understand new behavior, limitations, known issues, eligibility, pricing, and customer remedies.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 683
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "People, roles, competence, and staffing readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-A58F8861",
+      "revision": 1,
+      "semantic_sha256": "a58f886169fe8dc410d0cb09e52d22d8cd3538167666ab9327d268c7f1369daf",
+      "statement": "Confirm legal, privacy, security, safety, finance, and communications contacts can be reached during an event.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 684
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "People, roles, competence, and staffing readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-E04DCCED",
+      "revision": 1,
+      "semantic_sha256": "e04dcced2a5062535a060ed4c97a2dcf77ed69ea2d94bc59044b9233d5f5a3e6",
+      "statement": "Transfer architecture, dependencies, data flows, trust boundaries, operating assumptions, and failure modes.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 688
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Knowledge transfer and documentation acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-4B01668D",
+      "revision": 1,
+      "semantic_sha256": "4b01668d8e7c7efc6cb3f8f71b15bf799c9e118900bbc332b3ea582e7e2d0907",
+      "statement": "Transfer deployment, configuration, migration, rollback, failover, restoration, and decommissioning procedures.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 689
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Knowledge transfer and documentation acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-A7916E27",
+      "revision": 1,
+      "semantic_sha256": "a7916e277429dad5ede57564ac281c501f4bdf547dd2deeed35182a2d6a32f39",
+      "statement": "Transfer service objectives, dashboards, alerts, synthetic checks, logs, traces, and diagnostic queries.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 690
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Knowledge transfer and documentation acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-F42A3E39",
+      "revision": 1,
+      "semantic_sha256": "f42a3e39c9302ca16b017eb6d210bfead983542827e4a06a1c6342408fbf29d2",
+      "statement": "Transfer supplier contracts, support routes, quotas, escalation terms, and planned changes.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 691
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Knowledge transfer and documentation acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-B4F1C28A",
+      "revision": 1,
+      "semantic_sha256": "b4f1c28ad58bcab3897dc9b03b1e46eab0f7f482a2a1509aff129ace521ad082",
+      "statement": "Transfer open incidents, defects, risks, exceptions, workarounds, debt, and expiry dates.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 692
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Knowledge transfer and documentation acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-37F13993",
+      "revision": 1,
+      "semantic_sha256": "37f13993abfc7b102cc57f10c43cf4b960dff5ef8dca1f7c185d47f2f0fb9ff4",
+      "statement": "Transfer data classifications, retention, rights, legal holds, privacy obligations, and sensitive operations.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 693
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Knowledge transfer and documentation acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-A245042A",
+      "revision": 1,
+      "semantic_sha256": "a245042af5233312c2f75bde8fa9cb7522b9c71ffcbfa3e881719c0acef9b3a6",
+      "statement": "Transfer access-control models, privileged processes, break-glass methods, keys, certificates, and secret-recovery procedures.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 694
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Knowledge transfer and documentation acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-4DE727BA",
+      "revision": 1,
+      "semantic_sha256": "4de727baaaab70fccec29f646ca16de41dde9e2a9db66f4e8708b54df6310251",
+      "statement": "Provide customer-support scripts, troubleshooting guides, user communications, and accessibility support.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 695
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Knowledge transfer and documentation acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-0CA85D67",
+      "revision": 1,
+      "semantic_sha256": "0ca85d67c26f8becbc8151683dc3b79bc5f5f2b6f8a49c01318653dad3f4c69c",
+      "statement": "Identify authoritative documents and archive superseded material.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 696
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Knowledge transfer and documentation acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-B0CE4AC1",
+      "revision": 1,
+      "semantic_sha256": "b0ce4ac102e8c4231359c7d980a5ec8c325f8e69688a3c68d364e62e7dfb8d0f",
+      "statement": "Validate documentation through task execution by the receiving team.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 697
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Knowledge transfer and documentation acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-C35F42F2",
+      "revision": 1,
+      "semantic_sha256": "c35f42f2b4d589eab437672a0ed2382dde3322e4a74e5348ebd1a14b51dcf5b6",
+      "statement": "Record unanswered questions and close or accept them before transition completion.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 698
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Knowledge transfer and documentation acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-C7B53656",
+      "revision": 1,
+      "semantic_sha256": "c7b53656ae71b9c3f33b9db202cd211a67a23689ac34f89d719b454b2de444b7",
+      "statement": "Ensure knowledge remains available after project personnel or suppliers depart.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 699
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Knowledge transfer and documentation acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-CC3D9793",
+      "revision": 1,
+      "semantic_sha256": "cc3d9793edc74d91b6b762f1a95bd7b67ba4904ab6484e789d7496a0f1cb22c6",
+      "statement": "Verify production accounts, networks, domains, certificates, storage, compute, databases, queues, registries, and observability are provisioned correctly.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 703
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Environment, tool, and access readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-DF105206",
+      "revision": 1,
+      "semantic_sha256": "df1052066e92663c7930b6fbcb8bf295ddced6d37090d49dbf21e356faf32f2e",
+      "statement": "Verify production configuration and feature-flag control are versioned, reviewed, and recoverable.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 704
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Environment, tool, and access readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-C59CC418",
+      "revision": 1,
+      "semantic_sha256": "c59cc41878c356c3f55a6ec6ed1c477d30b7b08568fa8e172aa7728a995f3bb6",
+      "statement": "Verify least-privilege access for operations, support, responders, automation, and suppliers.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 705
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Environment, tool, and access readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-CCFEF50D",
+      "revision": 1,
+      "semantic_sha256": "ccfef50d354c5b7f849b840328f20c75ee3fdf7dd6769400d449119009fb7848",
+      "statement": "Test break-glass access and its audit trail.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 706
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Environment, tool, and access readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-FFCE14A7",
+      "revision": 1,
+      "semantic_sha256": "ffce14a7564ecb6f7dc05f3cd7e53f1bbfeb3cc732ff1311ffb32d72a4276105",
+      "statement": "Verify monitoring and paging work independently enough to detect failure of the primary service.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 707
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Environment, tool, and access readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-EB2AAD9A",
+      "revision": 1,
+      "semantic_sha256": "eb2aad9abcfc00a86d23d4f15c62d2ae657b08666e3827f8f23be289c0da8251",
+      "statement": "Verify service desk, case management, status communication, incident coordination, and evidence repositories are ready.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 708
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Environment, tool, and access readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-3D557FAC",
+      "revision": 1,
+      "semantic_sha256": "3d557facdbfd570c1b54c4a8ccb97a6dfdf5a6347b118da000e735545ab7d298",
+      "statement": "Verify backups, restore tooling, alternate regions, replacement equipment, and required licenses are available.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 709
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Environment, tool, and access readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-CFCD783F",
+      "revision": 1,
+      "semantic_sha256": "cfcd783f6a1653894b6fbe015b6927fcff21f14565201af7d3140262d2b86dc5",
+      "statement": "Confirm quotas, limits, support plans, spending controls, and provider contacts match launch demand.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 710
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Environment, tool, and access readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-6560F301",
+      "revision": 1,
+      "semantic_sha256": "6560f30154a876f25643bd06cd96cae51750ce093c2417c91a368f9f2aadc6a7",
+      "statement": "Detect non-production credentials, debug paths, test recipients, test payment routes, and synthetic data in production configuration.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 711
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Environment, tool, and access readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-1A30E6F1",
+      "revision": 1,
+      "semantic_sha256": "1a30e6f178116a2eb730315d2c3417d36a8a89ed90dd5f05d525c0e036f27cca",
+      "statement": "Confirm administrative tools are protected, observable, and recoverable.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 712
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Environment, tool, and access readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-5559DBAC",
+      "revision": 1,
+      "semantic_sha256": "5559dbac5d2b6deeb17718766cd626149665dd75b131aa8be8e98d0ceb75f632",
+      "statement": "Confirm every operational tool has an owner and support path.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 713
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Environment, tool, and access readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-BB017E08",
+      "revision": 1,
+      "semantic_sha256": "bb017e088b275f1ef1186d7564e4974ddc2d2f110d9d050ec87fa77368434fe6",
+      "statement": "Define the exact cutover sequence, dependencies, checkpoints, approvals, communications, and rollback points.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 717
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Cutover, migration, and early-life support"
+      ]
+    },
+    {
+      "control_id": "USEQ-A9709FE9",
+      "revision": 1,
+      "semantic_sha256": "a9709fe9d067731a6c28d749dcd11d9910f9828c62ff177d035e4cda371dc9fc",
+      "statement": "Rehearse cutover using representative data, volume, permissions, integrations, and timings.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 718
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Cutover, migration, and early-life support"
+      ]
+    },
+    {
+      "control_id": "USEQ-2E28DB48",
+      "revision": 1,
+      "semantic_sha256": "2e28db48fef700faaa8c227896db86a1058da6c0d31ed8df397a0edcc7213000",
+      "statement": "Establish a protected recovery point before irreversible change.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 719
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Cutover, migration, and early-life support"
+      ]
+    },
+    {
+      "control_id": "USEQ-FFD30078",
+      "revision": 1,
+      "semantic_sha256": "ffd30078b62e24dd0c6a5e3176ad7b3145b55fed3ad01ffee999693866e8c066",
+      "statement": "Prevent overlapping authoritative writers unless conflict behavior is explicitly designed.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 720
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Cutover, migration, and early-life support"
+      ]
+    },
+    {
+      "control_id": "USEQ-9D527478",
+      "revision": 1,
+      "semantic_sha256": "9d5274780ee1f8e5f30821290162c26dbe8983fdd8e73579dce09c29587f1ead",
+      "statement": "Reconcile data, configuration, permissions, jobs, queues, caches, indexes, integrations, and financial totals after cutover.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 721
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Cutover, migration, and early-life support"
+      ]
+    },
+    {
+      "control_id": "USEQ-D127155D",
+      "revision": 1,
+      "semantic_sha256": "d127155d4ee073375977270391d95d762647bfa268a5a25d4a0fe15067ce14e8",
+      "statement": "Validate critical user and operator journeys in production.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 722
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Cutover, migration, and early-life support"
+      ]
+    },
+    {
+      "control_id": "USEQ-A82DE51D",
+      "revision": 1,
+      "semantic_sha256": "a82de51d8aa3fc4e80b999f1158cd63a944fe972b20718a5d1fc478164aaed59",
+      "statement": "Use progressive adoption or cohort-based transition where it materially reduces risk.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 723
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Cutover, migration, and early-life support"
+      ]
+    },
+    {
+      "control_id": "USEQ-B6713B9D",
+      "revision": 1,
+      "semantic_sha256": "b6713b9d7b52d6d6c17add7b25339cfda1e5d8993192d5dcf0728b08ec4f2862",
+      "statement": "Maintain enhanced monitoring and staffing for a defined early-life period.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 724
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Cutover, migration, and early-life support"
+      ]
+    },
+    {
+      "control_id": "USEQ-D329E9E1",
+      "revision": 1,
+      "semantic_sha256": "d329e9e133404dabaa4226ae7939f5289699bd008f9df6829cf73fb2fbd14d3c",
+      "statement": "Define how incidents are attributed and owned during overlap.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 725
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Cutover, migration, and early-life support"
+      ]
+    },
+    {
+      "control_id": "USEQ-3EB7D7A3",
+      "revision": 1,
+      "semantic_sha256": "3eb7d7a3044245f85e1b5a6a27943986e6719811c044f271c20e010998198348",
+      "statement": "Track support volume, user failure, performance, error, data integrity, accessibility, abuse, and business outcomes.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 726
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Cutover, migration, and early-life support"
+      ]
+    },
+    {
+      "control_id": "USEQ-2E22A580",
+      "revision": 1,
+      "semantic_sha256": "2e22a5802266cc3fcf7a025035eb40f006e435bc4f39fa84360093253647a005",
+      "statement": "Pause expansion or roll back when predefined thresholds are crossed.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 727
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Cutover, migration, and early-life support"
+      ]
+    },
+    {
+      "control_id": "USEQ-5AB3637F",
+      "revision": 1,
+      "semantic_sha256": "5ab3637f8b72f2e99d164271a0213cfcb391fa2801abbca381105f1d96f7b60d",
+      "statement": "Avoid declaring transition complete before the observation and reconciliation period ends.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 728
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Cutover, migration, and early-life support"
+      ]
+    },
+    {
+      "control_id": "USEQ-8F0B7D76",
+      "revision": 1,
+      "semantic_sha256": "8f0b7d764b8b4d8dd5465b693dcd0b14b18d646331d05d8c9aaf9ad9f1bc64af",
+      "statement": "Record the final acceptance decision and residual obligations.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 729
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Cutover, migration, and early-life support"
+      ]
+    },
+    {
+      "control_id": "USEQ-CA4E11E2",
+      "revision": 1,
+      "semantic_sha256": "ca4e11e2f4a46f6236e828a270d16cbb00233f556f2af250eb781352a0779107",
+      "statement": "Define supported users, service hours, channels, languages, accessibility accommodations, and response expectations.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 733
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Support, service desk, and customer readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-7593DD19",
+      "revision": 1,
+      "semantic_sha256": "7593dd19356f09c48bd82ae1b6c5a309bc2197beaf25a9f5689cff960b0d7b8f",
+      "statement": "Provide a clear path for urgent security, privacy, safety, fraud, accessibility, and data-integrity issues.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 734
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Support, service desk, and customer readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-7839483B",
+      "revision": 1,
+      "semantic_sha256": "7839483b2ad20e94a1720e574b7e9d8d64cc404cbb5d90a0bc2ac26a4cbdcc17",
+      "statement": "Train support staff to authenticate requesters without unsafe data collection or social-engineering bypass.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 735
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Support, service desk, and customer readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-80257BB3",
+      "revision": 1,
+      "semantic_sha256": "80257bb3176957d1ded12c1f80757521759a69474052c4fabbe4506c63ac4dd5",
+      "statement": "Give support staff only the data and privileges needed for their role.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 736
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Support, service desk, and customer readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-1B3A2CEF",
+      "revision": 1,
+      "semantic_sha256": "1b3a2cefa11be43643d2d1c00d70ef8ac80aacfec5b6272c48ce73e5639b3d6d",
+      "statement": "Make support actions attributable and auditable.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 737
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Support, service desk, and customer readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-99F82FB7",
+      "revision": 1,
+      "semantic_sha256": "99f82fb764982ede4000e95715d0ce84d1f37711f882e0dc8b346270e5b24a32",
+      "statement": "Provide escalation paths that reach people able to diagnose and change the service.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 738
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Support, service desk, and customer readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-E27FB6F6",
+      "revision": 1,
+      "semantic_sha256": "e27fb6f6a41010681b8ec090c5dc0383dd50f1568247d3a4ee8222b384ab565c",
+      "statement": "Define incident linkage so related support cases contribute to impact assessment.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 739
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Support, service desk, and customer readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-744C959B",
+      "revision": 1,
+      "semantic_sha256": "744c959becbcf68558f42e28d3d65a72ffc5af0c2a2c654c1605ffa1f2ae0032",
+      "statement": "Prepare communications for maintenance, degradation, data issues, security events, delays, and rollback.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 740
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Support, service desk, and customer readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-F189D5B3",
+      "revision": 1,
+      "semantic_sha256": "f189d5b33fc008c95af48fc9d455439a977ddd63277972d0f06054ff3d350ec3",
+      "statement": "Ensure public status information is accurate and does not expose sensitive detail.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 741
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Support, service desk, and customer readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-CD98BD1C",
+      "revision": 1,
+      "semantic_sha256": "cd98bd1c0a578c16e164bb7c0e8e34e54c2036e6c1cac98ca88019cc941251ab",
+      "statement": "Provide user migration, onboarding, recovery, and rollback guidance.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 742
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Support, service desk, and customer readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-8BD86B01",
+      "revision": 1,
+      "semantic_sha256": "8bd86b014f86e473c8a80c6cb27e4ae5729f8a910ce954263eea8de4fad0d4f9",
+      "statement": "Preserve customer commitments, entitlements, preferences, accessibility needs, and case history during service transition.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 743
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Support, service desk, and customer readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-A86B1DF6",
+      "revision": 1,
+      "semantic_sha256": "a86b1df6dc6bbdde65d8c3e17c2252bc61018ed2eb0df2fc5e1d07d586cf1985",
+      "statement": "Measure resolution quality, recurrence, customer effort, accessibility, and escalation effectiveness rather than closure count alone.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 744
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Support, service desk, and customer readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-F5A6CAF3",
+      "revision": 1,
+      "semantic_sha256": "f5a6caf3e1cdfd4214964e31e153026fac3ddf45cd62ca59f7d044b09f9a56fa",
+      "statement": "Identify stakeholders whose responsibilities, incentives, workflows, skills, or authority will change.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 748
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Organizational adoption and change enablement"
+      ]
+    },
+    {
+      "control_id": "USEQ-C8079013",
+      "revision": 1,
+      "semantic_sha256": "c8079013f8dcb82740a42bf79439caa274c4e5e305d926431bc89fe00c866401",
+      "statement": "Assess readiness, resistance, constraints, and likely unintended consequences.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 749
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Organizational adoption and change enablement"
+      ]
+    },
+    {
+      "control_id": "USEQ-C14B308B",
+      "revision": 1,
+      "semantic_sha256": "c14b308b70c064f1535d436e551addfc91d7c528747a3fa4bc4e311b1bf4fba0",
+      "statement": "Explain the purpose, impact, timeline, support, and decision rights honestly.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 750
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Organizational adoption and change enablement"
+      ]
+    },
+    {
+      "control_id": "USEQ-AD2234A0",
+      "revision": 1,
+      "semantic_sha256": "ad2234a0e5e71a774fa7dbac3e01092fb62bf1b22ec1719a04529c6f49aa984c",
+      "statement": "Involve affected people in design, pilots, and transition decisions.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 751
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Organizational adoption and change enablement"
+      ]
+    },
+    {
+      "control_id": "USEQ-175BD173",
+      "revision": 1,
+      "semantic_sha256": "175bd173f17b733e1ea9d320dfe4830b66e392b3dcf13c630e68377c99d247d9",
+      "statement": "Avoid using training to compensate for a fundamentally unusable or unsafe design.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 752
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Organizational adoption and change enablement"
+      ]
+    },
+    {
+      "control_id": "USEQ-148C33A9",
+      "revision": 1,
+      "semantic_sha256": "148c33a9fdc1d67965c085f5265e325ce0afb3a5e619bcd9d7927d6f80ec4ce6",
+      "statement": "Update policies, procedures, performance measures, roles, and incentives to match the new operating model.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 753
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Organizational adoption and change enablement"
+      ]
+    },
+    {
+      "control_id": "USEQ-18C79536",
+      "revision": 1,
+      "semantic_sha256": "18c7953610598a539ca27201a2f9acac1a36c5d483b6140ca44ee34d061b77d4",
+      "statement": "Provide accessible training and support in the languages and formats needed.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 754
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Organizational adoption and change enablement"
+      ]
+    },
+    {
+      "control_id": "USEQ-4619C514",
+      "revision": 1,
+      "semantic_sha256": "4619c51481b4051c773ec1982c6a0635c64ff1ba5024210707cc32c9a501f4cd",
+      "statement": "Stage adoption so feedback can change the rollout.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 755
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Organizational adoption and change enablement"
+      ]
+    },
+    {
+      "control_id": "USEQ-38E54A2A",
+      "revision": 1,
+      "semantic_sha256": "38e54a2a859494c123551e01829d824e3f9595f06b0b2726f51368996e972647",
+      "statement": "Preserve a safe fallback for users who cannot transition immediately where obligations permit.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 756
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Organizational adoption and change enablement"
+      ]
+    },
+    {
+      "control_id": "USEQ-A809C9C6",
+      "revision": 1,
+      "semantic_sha256": "a809c9c69295cb99b0f8c65dfbee3c8f64cbd757f6967f898fb16aee226c14d4",
+      "statement": "Monitor workarounds, shadow systems, abandonment, error, burden, and inequitable impact.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 757
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Organizational adoption and change enablement"
+      ]
+    },
+    {
+      "control_id": "USEQ-2DD0C134",
+      "revision": 1,
+      "semantic_sha256": "2dd0c1344d51ad98d7cfbda8ef952b37c27b90cd56984ccf26db68b275203167",
+      "statement": "Verify promised benefits and identify displaced costs or harms.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 758
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Organizational adoption and change enablement"
+      ]
+    },
+    {
+      "control_id": "USEQ-627B9907",
+      "revision": 1,
+      "semantic_sha256": "627b9907556836f4ba61bbd3c5a3b4fb7e211a9de540253a8864d7d52d062a22",
+      "statement": "Stop or redesign adoption when evidence shows the change is not producing acceptable outcomes.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 759
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Organizational adoption and change enablement"
+      ]
+    },
+    {
+      "control_id": "USEQ-7CE19A5C",
+      "revision": 1,
+      "semantic_sha256": "7ce19a5c5d4447cbd9069696c4ee04e04a644b612b2f0b99c43233cf8f8e30a0",
+      "statement": "Conduct formal operational acceptance against agreed criteria and current evidence.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 763
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Acceptance, closure, and post-transition governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-02C84E3D",
+      "revision": 1,
+      "semantic_sha256": "02c84e3dec71c9ae3fb855bb0f74498572976391cc9ef54d4ee59c1990be7278",
+      "statement": "Have the receiving owner explicitly accept or reject responsibility.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 764
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Acceptance, closure, and post-transition governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-6808A5B2",
+      "revision": 1,
+      "semantic_sha256": "6808a5b23893a49c922cc4545db02ca8aa100a320844c13a240836e1cb27a10e",
+      "statement": "Record conditional acceptance with compensating controls, monitoring, owner, remediation date, and expiry.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 765
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Acceptance, closure, and post-transition governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-00F86BC0",
+      "revision": 1,
+      "semantic_sha256": "00f86bc09473fedcbcdc0c95d064acf7664509521e56c5bc41af6cf64bdec135",
+      "statement": "Do not treat project completion or budget exhaustion as operational acceptance.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 766
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Acceptance, closure, and post-transition governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-354C8516",
+      "revision": 1,
+      "semantic_sha256": "354c85168082c4cbc457cd8def2e949152aace6c9395e2057cbbf052ed646f9c",
+      "statement": "Confirm unresolved work has transferred to active owners and backlogs.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 767
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Acceptance, closure, and post-transition governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-E8D0E95A",
+      "revision": 1,
+      "semantic_sha256": "e8d0e95a72db4867620d626370169d433bbc58019293dab3bc461b86685f6ad0",
+      "statement": "Confirm temporary access, environments, flags, data copies, supplier accounts, and elevated support are removed or governed.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 768
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Acceptance, closure, and post-transition governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-A157B5DF",
+      "revision": 1,
+      "semantic_sha256": "a157b5df7503ccd13e0f8d59a0802cab24527ccc6b25337ae6c5720298a35966",
+      "statement": "Confirm old systems, routes, jobs, credentials, and communications are decommissioned or intentionally retained.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 769
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Acceptance, closure, and post-transition governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-B049F5B4",
+      "revision": 1,
+      "semantic_sha256": "b049f5b48186a4c84fbca858e9b27348b388226b24d29200295073a32210874d",
+      "statement": "Review benefits, incidents, support demand, reliability, costs, human workload, and customer outcomes after transition.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 770
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Acceptance, closure, and post-transition governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-3C44939B",
+      "revision": 1,
+      "semantic_sha256": "3c44939b485566d1471c9439fb5f5291a17589210c6019192e786413441444b1",
+      "statement": "Conduct a transition retrospective and verify corrective actions.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 771
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Acceptance, closure, and post-transition governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-E1759D28",
+      "revision": 1,
+      "semantic_sha256": "e1759d28a84589afe09405e060da88ca285abd896fa8cbaba0c48c78c3a0cf84",
+      "statement": "Reopen acceptance if material assumptions prove false or required controls cease to operate.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 772
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Acceptance, closure, and post-transition governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-66B7CDAC",
+      "revision": 1,
+      "semantic_sha256": "66b7cdacefa6fd469855e3a3d682e86e8c5ecb431e45fb1ecb22d526e6f9468e",
+      "statement": "Treat missing ownership, untested recovery, inadequate staffing, failed migration reconciliation, or unsupported operations as no-go conditions.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 773
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Acceptance, closure, and post-transition governance"
+      ]
+    }
+  ]
+}

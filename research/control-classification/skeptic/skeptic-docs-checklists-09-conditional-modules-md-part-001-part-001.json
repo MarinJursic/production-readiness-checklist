@@ -1,0 +1,654 @@
+{
+  "schema_version": "prc.control-classification-skeptic-review/v0.1",
+  "packet_id": "skeptic-docs-checklists-09-conditional-modules-md-part-001-part-001",
+  "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "controls": [
+    {
+      "control_id": "PRC-39-006",
+      "revision": 1,
+      "semantic_sha256": "2207dfdb0205f08be023ded55305fef380161160a3c2494854fa3944145585ea",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A replay suite over declared payment operations cannot prove the inventory includes every request, callback, retry channel, and effect.",
+      "counterexample_analysis": "A provider callback handled by a legacy endpoint is absent from the inventory and credits an account twice on replay. Every declared operation remains idempotent, so the proposed checker passes while the control is violated.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-007",
+      "revision": 1,
+      "semantic_sha256": "08c10c1a1595801277146d931e0b8b12ebd4cb72267d736417559f4dcbca45aa",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Declared-webhook fixtures do not establish a complete webhook ingress inventory or cover every deployed verification path.",
+      "counterexample_analysis": "A second provider posts to an undocumented callback that accepts unsigned old events. All inventoried webhooks reject the signature and replay fixtures, so the proposal passes despite an exploitable webhook.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-009",
+      "revision": 1,
+      "semantic_sha256": "625b4a9b004679e280bd73b9fa2e104f6c3814f1fbb403fba42bbe0d008f585b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The success-output map is self-declared and can omit user-visible channels or choose an incomplete authoritative-confirmation mapping.",
+      "counterexample_analysis": "A mobile push notification says payment complete before settlement, but only the web page is in the success-output map. All mapped transitions pass while the product still claims success early.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-010",
+      "revision": 1,
+      "semantic_sha256": "71c83139574091b28774cecbdb33ef790ee7ace5c4a1d7d06dea7e061e9a3aa2",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Fixed record fixtures and a comparison schema do not define the complete production record population or every reconciliation field that matters.",
+      "counterexample_analysis": "The reconciler excludes refunded transactions before comparison. Its supplied application and bank fixtures match every schema field, so the test passes while real refund records are never compared.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-016",
+      "revision": 1,
+      "semantic_sha256": "bd08d772c6787bc179fbab1994299af936189c1e86f4d330e8613f575b7489ad",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A declared output inventory can omit an export, report variant, storage copy, or delivery path, making the universal access-and-audit claim circular.",
+      "counterexample_analysis": "A support-only CSV endpoint is absent from the registry and allows broad download without audit. Every listed report enforces the matrix and logs access, so the proposal passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-020",
+      "revision": 1,
+      "semantic_sha256": "1b689432606abe2e788247b862645653621a102f6fd5193e56853421bd1a02f8",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposal cannot enumerate every support-mediated money-movement path, and whether an authorization is meaningfully controlled is not reduced to objective criteria.",
+      "counterexample_analysis": "A support worker changes a payout through a provider console omitted from the mutation inventory using a blanket shared approval. Declared paths log correctly, yet uncontrolled money movement remains.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-023",
+      "revision": 1,
+      "semantic_sha256": "83bc6d6c531fabe739514aa126972f6f80d03b3d79d13ae1b7d54fa4f5a7e67c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Cross-tenant fixtures cover only declared selectors and cannot prove absence of alternate identifiers, indirect references, cached keys, or new routes.",
+      "counterexample_analysis": "An unlisted bulk-download parameter accepts another tenant's object identifier. Every selector in the sealed test list denies cross-tenant values, so the proposal passes while isolation is broken.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-025",
+      "revision": 1,
+      "semantic_sha256": "951a379e4eba609a50e41e7c67eca4b3e8ce5dab9fc95213e6ee8b3b4fe4b314",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Finite load fixtures cannot prove that one tenant cannot exhaust every shared resource under all relevant concurrency, duration, dependency, and failure conditions.",
+      "counterexample_analysis": "The test enforces API and storage quotas, but a tenant creates high-cardinality metrics that exhaust a shared monitoring backend during a long burst. All declared resource fixtures pass.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-028",
+      "revision": 1,
+      "semantic_sha256": "bc03fae7a37b739ff022ffae9a9c7983cb64e9a751c8f4bed441d0b6bf4df438",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A role-operation matrix can omit administrative paths, inherited privileges, provider consoles, and indirect jobs, so it is not absence evidence for out-of-scope power.",
+      "counterexample_analysis": "A tenant administrator schedules an undocumented export job that reads a sibling organization. Every declared operation is denied across organizations, and the proposal still passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-029",
+      "revision": 1,
+      "semantic_sha256": "826bb08974ef6a7c552005a3f50a02c2c63730ff53ba7a72e9e419c98a25a7ff",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Declared support paths are not a complete access inventory, and nonempty purpose or visibility fields do not prove legitimate purpose or meaningful tenant visibility.",
+      "counterexample_analysis": "An operator uses an unlisted database console with purpose `support` and no tenant notice. Listed support tools require all fields, so their fixtures pass while the full rule is false.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-031",
+      "revision": 1,
+      "semantic_sha256": "1b760b95db34d95ddb232498a0cd67aa35f5467dc5dc58a272dd8f22b3bcb24f",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Passing an approved ownership-proof protocol shows policy conformance, not that the claimant is the real domain owner, and claim paths may be omitted.",
+      "counterexample_analysis": "A flawed DNS proof accepts a stale token controlled by the prior tenant, or a legacy claim endpoint skips proof. Contract fixtures pass while the wrong tenant claims the domain.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-033",
+      "revision": 1,
+      "semantic_sha256": "c2c2eb94f05c06ee3d2af374bc5fa2e761e4ee2e907fc7b73ca7feecb9c4dc56",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Owner, revision, and effective-status fields do not establish that the records actually define acceptable use and content policy rather than placeholders.",
+      "counterexample_analysis": "Two approved records contain only `TBD` and have current metadata. The structured-record check passes, but no usable acceptable-use or content policy is defined.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-034",
+      "revision": 1,
+      "semantic_sha256": "963902123568198a985095c1379149ab27cbc288b8e9fd3c9ca3b982847bdc0e",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A declared prohibited-content taxonomy can omit real harmful conduct, and one accepted fixture does not prove users have a usable reporting path.",
+      "counterexample_analysis": "Harassment through live audio is excluded from the taxonomy; every listed category has a form that accepts a test record. The checker passes although users cannot report that harmful conduct.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-036",
+      "revision": 1,
+      "semantic_sha256": "3191527056baabef59f1178605449e5760c00fb378502e9bfea7f1bef0137b0a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The moderation-queue registry is not independently proven complete, so real queues can evade owner and response-objective checks.",
+      "counterexample_analysis": "A regional child-safety queue exists in the moderation provider but is absent from the registry and has no owner. Every declared queue has both fields, so the proposal passes.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-037",
+      "revision": 1,
+      "semantic_sha256": "4f790f44a8c4cb6251aaa096fce1aca99a53e6f8092f244c9c1d557c3a79fc23",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A moderator-action inventory can omit provider-side, bulk, automated, or newly deployed actions, defeating the universal authorization and audit claim.",
+      "counterexample_analysis": "A hidden bulk-delete command is callable by a junior moderator and emits no audit event. Every declared action enforces its matrix and logs correctly, so the proposal passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-041",
+      "revision": 1,
+      "semantic_sha256": "6fc16246a2b50569451a0a5210ffd33c4de96160b8426a25b4a022f9005de2c2",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Record presence cannot establish legally adequate illegal-content, copyright, evidence-preservation, and lawful-request procedures across applicable jurisdictions.",
+      "counterexample_analysis": "Four current documents repeat generic text but omit a required counter-notice process and lawful evidence hold. Metadata passes while specialist legal obligations remain unmet.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-049",
+      "revision": 1,
+      "semantic_sha256": "f340bdf0bfbf84846ea635da62092043eacf2f4a80b2f5ada63614553e70b05d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A procedure-shaped record does not prove that its triggers, contacts, authority, and escalation path are suitable for real threats to life or safety.",
+      "counterexample_analysis": "The document names a departed employee and omits imminent self-harm reports from its triggers. All required fields are nonempty, so the record passes while the safety escalation process is not viable.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-052",
+      "revision": 1,
+      "semantic_sha256": "f66ac29198b64230e5957ef1e57cd50774e6afbe146a7c78a40df32468ae2c79",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Routing declared signal fixtures to destinations does not prove complete provider-signal coverage or that production signals are continuously observed and acted on.",
+      "counterexample_analysis": "A new complaint stream is not inventoried, and the configured reputation destination silently stopped ingesting after the fixture. Every declared test signal arrives, so the proposal passes while monitoring is absent.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-053",
+      "revision": 1,
+      "semantic_sha256": "b7bb1c02aaef8872d97ae240ce4136e4a7604fddf618c4f021730fd21450e7c5",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The subscription-send inventory cannot prove it contains every dispatch path, channel, recipient type, or consent race.",
+      "counterexample_analysis": "A legacy campaign worker caches consent before dispatch and sends after revocation, but it is absent from the send inventory. All declared sends read current consent and pass.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-058",
+      "revision": 1,
+      "semantic_sha256": "bb82b289ff136b5aa2636e936b39a6bc76bbadd73ac9afd83049eb0a43441a3a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Single-use fixtures for declared flows cannot prove every reset and verification token type, concurrent replay path, and legacy handler rejects reuse.",
+      "counterexample_analysis": "A mobile verification endpoint accepts the same token twice under concurrent requests but is omitted from the flow inventory. All declared sequential fixtures pass.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-062",
+      "revision": 1,
+      "semantic_sha256": "02a31c3ff038f84cd0cb6cc3c23881f9820ba4a0ff2793d00b64bfc644f6ae1c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Which notifications are nonessential is contextual, and the notification registry can omit a channel or event whose preference is not honored.",
+      "counterexample_analysis": "A promotional SMS is labelled essential and excluded, while every declared nonessential email obeys its toggle. The proposal passes although users cannot configure the nonessential SMS.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-065",
+      "revision": 1,
+      "semantic_sha256": "dc1430b562b33932d34c53033a415686209f4af9f2a91f52694d245c8c71235b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The delivery-event and approval maps cannot prove the absence of every implicit, alternate, or newly introduced authorization transition.",
+      "counterexample_analysis": "An unlisted phone-verification flow marks an action approved when an SMS provider reports delivered. All declared approval transitions resist delivery events, so the proposal passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-066",
+      "revision": 1,
+      "semantic_sha256": "74c45629a8c527bfc2413325e5c0bb376071bc2d45f1273f74b88c02ffba1d91",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Environment-list bindings do not enumerate manual uploads, provider address books, cached recipients, overrides, and all other dispatch sources.",
+      "counterexample_analysis": "Production sends through a manually uploaded test list that bypasses the bound-list loader. The configured production and test bindings pass while cross-environment recipients remain possible.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-067",
+      "revision": 1,
+      "semantic_sha256": "97d9692f0bee949ad7755f423220602492ace988d148898b0a67c0debb0de37b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The supported-locale registry controls its own scope and the proposal defines no independent trigger or completeness proof for locales actually offered.",
+      "counterexample_analysis": "The product serves Croatian from runtime configuration but omits it from the supported-locale registry. Every registered locale has documentation, so the checker passes vacuously for the missing locale.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-068",
+      "revision": 1,
+      "semantic_sha256": "9961ea59626f4e72169e1041c6fa702cbc8ff317f5482b7bde590e1feef6b466",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Key-set equality does not prove complete translation: required domains can be omitted and present values can be untranslated placeholders or wrong-language copies.",
+      "counterexample_analysis": "Every registered key exists, but Croatian values copy the English source and an email domain is absent from the required-domain registry. The mechanical join passes while translation remains incomplete.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-075",
+      "revision": 1,
+      "semantic_sha256": "c683077b31f235a0937ed6df7d6f3c248f258d6c691c71284790a6d011c7d8e7",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A finite transition-fixture set cannot prove correct time-zone and daylight-saving behavior across all supported zones, operations, database versions, and historical changes.",
+      "counterexample_analysis": "The fixtures cover display around current transitions, but recurring scheduling chooses the wrong occurrence during a past ambiguous hour. Every approved fixture passes while DST behavior is still incorrect.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-080",
+      "revision": 1,
+      "semantic_sha256": "dc538e068482378f3d0eff5022860b725742796e9af5e261bce03a28759c1829",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A declared machine-field inventory cannot enumerate every identifier, signature input, token, serialization path, and locale-sensitive transformation.",
+      "counterexample_analysis": "An unlisted CSV export localizes the decimal inside a signed machine identifier. All declared fields remain byte-identical across locales, so the proposal passes while machine data is altered.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-081",
+      "revision": 1,
+      "semantic_sha256": "56dd3df30e45f1b8043e6639d636798b5789552a92961ed4c68f8338ffefb324",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Coverage records do not prove that staff can actually support the language or that the promised language and time-period inventory is complete.",
+      "counterexample_analysis": "A current schedule assigns Croatian coverage to a person who cannot communicate in Croatian, while a weekend promise is omitted from the promise registry. All rows pass despite missing real coverage.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-082",
+      "revision": 1,
+      "semantic_sha256": "78fbd1f13e4e52fd51de7d033937cce4205356635e820b5c6d212c17e667109a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "An approved route policy can omit pages and can itself encode an incorrect public/private indexing choice, so conformance is not proof of correctness.",
+      "counterexample_analysis": "A private invoice preview is wrongly marked public and omitted from the private-route set; it emits the approved index directive. All route fixtures pass while private content is indexable.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-083",
+      "revision": 1,
+      "semantic_sha256": "756d0a7860e31f34c759c6261dfe50aea77c95806df962e28c39a069c9b9bf0a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A private-route inventory can omit alternate hosts, methods, files, caches, and dynamically generated paths, so deny fixtures are not universal absence evidence.",
+      "counterexample_analysis": "A legacy PDF URL exposes private invoices without authentication and is absent from the route registry. Every declared private route denies the crawler fixture, so the proposal passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-084",
+      "revision": 1,
+      "semantic_sha256": "a46f0c32a48afb41e032e21db50c6304012ba97a30545391ff9e84f1975a9457",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Route fixtures can omit public URL variants, and an approved contract does not by itself establish the semantically correct canonical resource.",
+      "counterexample_analysis": "A parameterized product page points to a different product's canonical URL, but that parameter variant is absent from fixtures. Every declared fixture matches its contract, so the proposal passes.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-086",
+      "revision": 1,
+      "semantic_sha256": "cd5c521f142416676eb550272e1d63efb334863ac9394c6ec87fb57943e08503",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The route-outcome contract can omit methods and states or encode a semantically wrong status, so matching it does not prove statuses are correct.",
+      "counterexample_analysis": "A validation failure returns 200 because the contract says 200, and an unlisted DELETE path returns 500. All declared fixtures match their approved statuses while the original control is false.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-088",
+      "revision": 1,
+      "semantic_sha256": "7276e2eaf949b36cc83716e2ab8a927b09e4a972bcbe72ac85b5d0d9ef1a67ac",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Set equality with approved URL registries is circular unless those registries independently and completely enumerate all indexable and private URLs.",
+      "counterexample_analysis": "A private report URL is absent from the private registry and appears in the sitemap; because it is also marked public, exact set equality passes while private data is exposed.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-096",
+      "revision": 1,
+      "semantic_sha256": "eff861dcf2135074e712c0a25a48013af1a9254e9ddd16f6636a2f91ff14d2df",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Declared registration parsing does not prove all dynamic, injected, legacy, or externally served service-worker registrations were discovered.",
+      "counterexample_analysis": "A script loaded from a feature flag registers a root-scoped worker but is absent from the static inventory. Every declared registration stays in its allowlist, so the proposal passes.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-102",
+      "revision": 1,
+      "semantic_sha256": "5edac9275bf42759f8a341a823f0fe7d3a85781a61cc97c4417b7dbd340dda21",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Replay fixtures cover only declared offline operations and effects, not every queued action, duplicate route, concurrency interleaving, or side effect.",
+      "counterexample_analysis": "An old offline comment upload is omitted and creates two notifications when replayed. Every inventoried operation produces one declared effect, so the proposal passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-106",
+      "revision": 1,
+      "semantic_sha256": "faea299ed8eace9a09ced5b6f7d84fb9db75b14a454a610cd317ab0f343a3c31",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Bounded runs cannot prove all background jobs stay within resource limits across device states, retries, duration, data volume, and scheduler behavior.",
+      "counterexample_analysis": "A sync job meets limits on the fixture but loops after a network flap on a low-memory device and drains the battery. Every approved run passes while resource use is not bounded in operation.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-107",
+      "revision": 1,
+      "semantic_sha256": "b5fb6a4209c95e0bec29363a83b11dfc2a68d56885ec66b37c9051d0c08ff876",
+      "verdict": "rejected_nondeterministic",
+      "reason": "An approved corrupt-state fixture set cannot exhaust the possible corruptions, partial writes, version combinations, and storage failures covered by the broad claim.",
+      "counterexample_analysis": "Recovery succeeds for each supplied fixture, but an interrupted migration leaves a valid-looking mixed-version state that cannot recover. The finite suite passes while recovery from corrupt state is not generally possible.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-110",
+      "revision": 1,
+      "semantic_sha256": "e83c31d6e57240df07751078ee1edcc789392733c9f8a7db85ece6132ff3794f",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Declared message and ingress inventories can omit alternate protocols, legacy types, internal relays, and dynamically registered handlers.",
+      "counterexample_analysis": "A legacy WebSocket handler processes an unlisted message type before validation. Every declared inbound message rejects invalid fixtures, so the proposal passes despite an unvalidated ingress.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-111",
+      "revision": 1,
+      "semantic_sha256": "e958009b0940ef9255c617460ae5985478b40498088c844f2d93ba8a7bbdc9cc",
+      "verdict": "rejected_nondeterministic",
+      "reason": "An ingress inventory can omit paths and enforcement layers, so configured numeric limits do not prove every message path is bounded.",
+      "counterexample_analysis": "An internal relay forwards oversized messages without rate limiting but is absent from the registry. Every declared ingress rejects over-limit fixtures, so the proposal passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-112",
+      "revision": 1,
+      "semantic_sha256": "f2441dab74bb790ff44b1e0d693fce17746e54515eb0a38036f321a6da844e9a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The stream and event registry is not independently complete, and a nonempty ordering value may omit a real ordering contract or event family.",
+      "counterexample_analysis": "A provider-managed event stream with ordering assumptions is absent from the registry. Every declared stream has `ordered` or `none`, so the record check passes while its guarantee is undocumented.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-118",
+      "revision": 1,
+      "semantic_sha256": "7365c6a811e89346d17ba122a292916c56fc0178bb2ef8fab454bc2363709148",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A permission-change matrix and stream inventory can omit a downgrade, long-lived transport, cached grant, or reconnect path.",
+      "counterexample_analysis": "A GraphQL subscription keeps delivering after group removal but is not in the stream registry. All declared downgrade fixtures terminate correctly, so the proposal passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-127",
+      "revision": 1,
+      "semantic_sha256": "27e389993be9ab67afb269a71a304d598fb050b7dcbbd6adffc0e8c3ee6947aa",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Declared bulk-operation inventories can omit provider tools, scripts, administrative APIs, and newly deployed actions.",
+      "counterexample_analysis": "A support script bulk-exports customer data without confirmation or audit but is absent from the inventory. Every declared bulk operation satisfies both checks, so the proposal passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-132",
+      "revision": 1,
+      "semantic_sha256": "4b789c6aafe20bdd8089d642425c687dd6fdcd70a3c0ab0a4bab0fcf7f48d633",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A linked review record can be created without substantive review, and the emergency-event source can omit manual or provider-side access.",
+      "counterexample_analysis": "A provider console emergency login is absent from the event feed; another event creates an empty auto-closed review row. The schema and deadline pass while emergency access does not meaningfully trigger review.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-139",
+      "revision": 1,
+      "semantic_sha256": "913d8f64578e6bde7954a763aaca7197df213500105a1ed065285338e45388a8",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The AI capability registry can omit real tasks, and categorizing broad or emergent model behavior into authorized and prohibited tasks requires contextual judgment.",
+      "counterexample_analysis": "A model can send email through an indirect tool chain omitted from the capability registry. Every listed capability has allow and deny entries, so the proposal passes while that task remains undefined.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-160",
+      "revision": 1,
+      "semantic_sha256": "8a8a08bedf286bf4d2c20164fd0a2a1596d55950faa5576ab43d5da942e1335b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "An AI-operation inventory can omit models, agent loops, provider consoles, or indirect tool calls, so its configured limits are not universal.",
+      "counterexample_analysis": "An unlisted background agent has no spending or tool-call cap, while every declared operation enforces all numeric fields. The proposal passes despite an unlimited AI path.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-162",
+      "revision": 1,
+      "semantic_sha256": "1d374109f1d9368ce64e7cf104b5830cd23eb096b8d5ca8609a15e439f986cbc",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The declared AI-action set and approved essential-health set can omit real actions and critical non-AI workflows, while `essential` requires accountable product context.",
+      "counterexample_analysis": "The switch blocks listed model calls but leaves an indirect AI tool active and breaks an omitted billing workflow. All approved checks pass while the full kill-switch promise is false.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-39-182",
+      "revision": 1,
+      "semantic_sha256": "f8f8db458e10e0a0dd339925d5c53bdce6512d92b2baf32c1b9843aefc23d7a1",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Procedure metadata does not establish usable, complete, or legally and safety-appropriate recall, disablement, and customer-notification procedures.",
+      "counterexample_analysis": "Three current documents contain generic placeholders, omit affected-customer identification, and conflict with a regulator's recall duty. Required fields pass while the safety-critical procedures do not truly exist in usable form.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    }
+  ]
+}

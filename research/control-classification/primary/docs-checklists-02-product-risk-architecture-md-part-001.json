@@ -1,0 +1,1705 @@
+{
+  "schema_version": "prc.control-classification-review/v0.1",
+  "packet_id": "docs-checklists-02-product-risk-architecture-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/checklists/02-product-risk-architecture.md",
+  "controls": [
+    {
+      "control_id": "PRC-04-001",
+      "revision": 1,
+      "semantic_sha256": "b97951cc4e322a6b84cd4cf82d5817a44a3491d4b0c9f8140a86de3cf81cef2f",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Deciding whether the documentation states the real problem and correctly identifies the intended users requires semantic product judgment, not just finding named sections.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-04-002",
+      "revision": 1,
+      "semantic_sha256": "aa5bbd7edd5a61fe0c00a60cc1fc2d000407f4e6299a1f7659cb6f2ee04df9f2",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Whether scope, non-goals, and deferrals are truly explicit and complete for this release depends on contextual interpretation of the product plan.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-04-003",
+      "revision": 1,
+      "semantic_sha256": "c05dfb19aeb02821e10286d61cece4c0eda718526648db70cb26632c4cc59e13",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A complete feature-to-criteria link can be checked, but whether each criterion is genuinely testable and sufficient for its feature requires semantic review.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every feature in the sealed release-scope inventory references at least one acceptance-criteria record.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-04-004",
+      "revision": 1,
+      "semantic_sha256": "baf7699c4312bd0378b5b74ebd922f5b269b1a136a92c30a2ca6289927785af0",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Ranking journeys by business and user impact is a value judgment; informed reviewers can assign different rankings from the same product evidence.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "human_accountability"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-04-005",
+      "revision": 1,
+      "semantic_sha256": "a161a8e04ee539ac376be30b6c7ea96d4d91281bc666e5fa423e444c62ed2013",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Which journeys are critical and which listed journey types are applicable depends on the product and its users, so a fixed checker cannot prove completeness.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-04-006",
+      "revision": 1,
+      "semantic_sha256": "8d96b07d6875c59326e425e32001e5a243c92ccf5fec14415b4d1eb88841acbf",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Links between inventoried dependencies and failure-behavior records are checkable, but adequacy across partial-failure modes and product expectations requires contextual review.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every inventoried critical dependency references a release-bound unavailable-or-partial-failure behavior record.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-04-007",
+      "revision": 1,
+      "semantic_sha256": "05c26bd6bbd2945193027a61887bc43204aeddde51c576e335a1a740202cceb1",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A condition matrix can be validated structurally, but deciding whether it covers every relevant malformed, incomplete, stale, or conflicting data case requires product judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "The release behavior record contains entries for empty, malformed, incomplete, stale, and conflicting data conditions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-04-008",
+      "revision": 1,
+      "semantic_sha256": "20df00deafb0775daf56df65d42ea1eafbf2dd09408757d508ce5dc125803f04",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Consistency requires interpreting all user-visible language across an open-ended interface and deciding when different terms are acceptable synonyms or real conflicts.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-04-009",
+      "revision": 1,
+      "semantic_sha256": "c76a38f668c44a499f5ed8835f6b99f8031ebbdfa500e49900665cec387583be",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Whether commercial and billing language is unambiguous to users requires semantic and often contractual interpretation; matching field values alone cannot prove clarity.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-04-010",
+      "revision": 1,
+      "semantic_sha256": "28a6abc34075c45b186723f79a8d4dac41ae55e4a6bb71e155c34a14bd55bb60",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Records can show that reversal-related behaviors are described, but applicability and the legal or product correctness of cancellation, refund, dispute, and undo behavior need specialist judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "The release policy contains version-bound behavior records for each reversal operation declared applicable.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "legal_or_specialist_authority",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-04-011",
+      "revision": 1,
+      "semantic_sha256": "39e7f33b681d1f462877981731d583746aecc7a5d45003aa7719de841acc9565",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The full set of customer-support obligations comes from commercial promises, contracts, policy, and operating context, so document presence cannot prove completeness.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-04-012",
+      "revision": 1,
+      "semantic_sha256": "1354e9f2323c27d14049d73eb388b627e63eb26734f22360fd7ed1b4c0dea037",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Alignment among service hours, maintenance, SLOs, SLAs, and contracts requires interpreting obligations and resolving semantic conflicts across authoritative sources.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-04-013",
+      "revision": 1,
+      "semantic_sha256": "f7fa1950f7dd8859d14de536d4a3043fedcc3d754bcff251ffea2e723cd6f77b",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A release-bound claim inventory and evidence links are checkable, but deciding whether evidence actually substantiates each public claim requires semantic and sometimes legal review.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every inventoried launch claim references current evidence bound to the released artifact or behavior version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "legal_or_specialist_authority",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-04-014",
+      "revision": 1,
+      "semantic_sha256": "a2746c283dd05cb1c22cd0d5e92fd8f4aea6cd87ab9523bbb8e7ea7288737c89",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Acceptance of final critical-journey behavior is an accountable product-management decision; a scanner may validate its record but cannot make the acceptance.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-04-015",
+      "revision": 1,
+      "semantic_sha256": "9c4a3d5daefb969bf3e5a543712dabda7d357fc305a7ecdf2bc68e100045c08b",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Metric, operator, threshold, and window fields can be validated, but choosing criteria that truly represent launch success is a contextual product decision.",
+      "deterministic_clauses": [
+        {
+          "statement": "Each recorded launch-success criterion names a metric, comparison operator, threshold, observation window, and release scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-04-016",
+      "revision": 1,
+      "semantic_sha256": "1c682e7e0e831515bb95156e21689e1d64a5a651e367592ca67652c3c622a3d6",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Failure thresholds and rollback trigger fields can be validated, but whether they are sufficient and appropriate for this launch requires accountable risk judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Each launch-failure or rollback criterion names a metric or event, trigger condition, observation window, and release scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "human_accountability",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-04-017",
+      "revision": 1,
+      "semantic_sha256": "758bea304a1ef19cb6425ec6b5c209b76d73ce4508eaddf660167550532af4dc",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Selecting adequate adoption, conversion, quality, reliability, support, and safety indicators depends on product scope and risk, not merely on field presence.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-04-018",
+      "revision": 1,
+      "semantic_sha256": "6b20b7a97bb258a91562d0916d9dcc428531bdf47f9fca8ece73ce7901a66d6d",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control asks for a defined observation period, which can be decided exactly from an authenticated release-bound record with finite start and end semantics.",
+      "deterministic_clauses": [
+        {
+          "statement": "The launch record defines a finite observation start and end, or a finite duration with an objective start event.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-04-019",
+      "revision": 1,
+      "semantic_sha256": "1bb48e06cac914b87c1da7d1392e99c38b6a32c4d73b74cbd9cd37cca89590b3",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Authority for the four listed launch actions is an exact record fact that can be validated against an authenticated release authority matrix.",
+      "deterministic_clauses": [
+        {
+          "statement": "An authenticated release authority record assigns authorized roles or identities for pause, continue, expand, and rollback actions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-04-020",
+      "revision": 1,
+      "semantic_sha256": "36c2860810a696965a36c91e5b5fc397be9c91e620dd2b73d48bdc126e350eba",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Establishing expected traffic and cohorts can be checked as a release-bound forecast record with bounded numeric traffic values and objective cohort selectors.",
+      "deterministic_clauses": [
+        {
+          "statement": "The release forecast records expected traffic using bounded numeric units and defines customer cohorts with objective selectors.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-04-021",
+      "revision": 1,
+      "semantic_sha256": "614379a7f628448876e7aa41d29fb900c088718425a41e1b3948ce01841a0b10",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The launch exposure type is an exact release configuration fact and can be validated from a version-bound record using the allowed launch-mode vocabulary.",
+      "deterministic_clauses": [
+        {
+          "statement": "The release record declares one or more launch modes from internal, private, regional, percentage-based, invitation-only, or public.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-04-022",
+      "revision": 1,
+      "semantic_sha256": "b6e518c21c60160e64c0f96672d39466103172673d89a47488220ad8711eac0b",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "With a complete inventory of the four named functions and authenticated release records, their release date and scope values can be compared exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "Marketing, sales, support, and operations each have an authenticated record for the same release identity.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "The release date and scope fields are identical across the four function records.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-04-023",
+      "revision": 1,
+      "semantic_sha256": "fefc2c0d3898dbc79e3c81d0697ec3268034d4bca9a1dcbdf47fb88fceba7ba1",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Release binding and artifact presence are checkable, but determining whether prose, screenshots, pricing, documentation, and legal text semantically match behavior requires human and legal review.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every inventoried launch-content artifact is bound to the assessed release version and has a current content digest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "legal_or_specialist_authority",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-04-024",
+      "revision": 1,
+      "semantic_sha256": "deb628bf58be805fdbd6275391fa77d535751a0046df711be89c6ee195249258",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Delivery records are objectively checkable, but deciding when notification is required depends on contracts, law, migration impact, and changed data-use interpretation.",
+      "deterministic_clauses": [
+        {
+          "statement": "For every approved notification requirement, an authenticated delivery record identifies the scoped customers, content version, channel, and send time.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-001",
+      "revision": 1,
+      "semantic_sha256": "133105c2cd2a3353d9f6cc73f542c4d75acb420b7ef9a405efc2a6ceb4811272",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "A complete production-service inventory can be joined exactly to authenticated ownership records to find any service lacking a named business owner.",
+      "deterministic_clauses": [
+        {
+          "statement": "The current environment evidence provides a complete inventory of production services in assessment scope.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Every inventoried production service maps to one active named business owner in the ownership registry.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-002",
+      "revision": 1,
+      "semantic_sha256": "43d4cd6335a5d38dd84ebe1ae8ba13435a0ea46944d28071b5e695743da87bce",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "A complete production-service inventory can be joined exactly to authenticated ownership records to find any service lacking a named engineering owner.",
+      "deterministic_clauses": [
+        {
+          "statement": "The current environment evidence provides a complete inventory of production services in assessment scope.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Every inventoried production service maps to one active named engineering owner in the ownership registry.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-003",
+      "revision": 1,
+      "semantic_sha256": "fdf4e4c59be6aa1ac1a47cd110462e14f24b02358f00f78bd1e81aaa18f957f0",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Given a complete scoped data-set inventory, the presence and current identity of an accountable data owner is an exact registry comparison.",
+      "deterministic_clauses": [
+        {
+          "statement": "The current data catalog provides a complete inventory of in-scope data sets.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Every inventoried data set maps to an active accountable data owner in the ownership registry.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-004",
+      "revision": 1,
+      "semantic_sha256": "502e8c10247ab4bee7822891589033131f3b369f5b8d95cb7b5e796bad75ae24",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Security sensitivity may be supplied by an approved classification record; every component so classified can then be checked exactly for an active security contact.",
+      "deterministic_clauses": [
+        {
+          "statement": "The component inventory includes an authoritative security-sensitivity classification for every in-scope component.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every component classified security-sensitive maps to an active security contact.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-005",
+      "revision": 1,
+      "semantic_sha256": "c1237a7444ca2bea9220c97e071688255476382fbda4dd5e4667daf51908a555",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "A complete integration inventory and authenticated ownership registry allow an exact anti-join for third-party integrations without an active owner.",
+      "deterministic_clauses": [
+        {
+          "statement": "The current release evidence provides a complete inventory of third-party integrations.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Every inventoried third-party integration maps to an active owner in the ownership registry.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-006",
+      "revision": 1,
+      "semantic_sha256": "2cffa0b68341b894bd9d13a3952eef40af2f139010a70c40f916591aec28d8a2",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Complete inventories of dashboards, alerts, and runbooks can be joined to authenticated ownership records with no semantic judgment in the final result.",
+      "deterministic_clauses": [
+        {
+          "statement": "Current monitoring and repository evidence inventories every in-scope dashboard, alert, and runbook.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Every inventoried dashboard, alert, and runbook maps to an active owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-007",
+      "revision": 1,
+      "semantic_sha256": "5e239980b917dfb3b94a58f63306ba0ee938eb9d778a04b22eb76d8414891e02",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "A complete scheduler and process inventory can be compared exactly with current ownership records for missing or inactive owners.",
+      "deterministic_clauses": [
+        {
+          "statement": "Current environment evidence inventories every scheduled job and background process in scope.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Every inventoried scheduled job and background process maps to an active owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-008",
+      "revision": 1,
+      "semantic_sha256": "09ce9333e7343eabfc10f50eb496406ec6b30960cfa865a1f0fb4d22d8734d3d",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The promise must remain valid across future leave, holidays, and personnel changes; current schedules cannot prove indefinite future coverage and validity.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "human_accountability"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-009",
+      "revision": 1,
+      "semantic_sha256": "e8b86f6d8f3d3a381bd08f7ecbcc245cad2ffc93f20fcddfc899cd54779a56da",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The statement names required escalation categories, so authenticated escalation records and provider applicability can be validated without inventing additional categories.",
+      "deterministic_clauses": [
+        {
+          "statement": "The escalation record contains active primary, secondary, management, security, and privacy or legal contacts.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every inventoried external provider has an active provider escalation contact when provider escalation is applicable.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-010",
+      "revision": 1,
+      "semantic_sha256": "8e66b758def75e4e06917464ef5338671cae9573b8f6ff28784484eba032a9ae",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Access-change timestamps are checkable, but the word promptly has no threshold in the rule and completeness depends on authoritative personnel and access inventories.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every inventoried offboarding or role-change event has corresponding access-change timestamps for each affected account.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "undefined_threshold",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-011",
+      "revision": 1,
+      "semantic_sha256": "0a0cd350d62f9714e13e0c7440bf99904def165bd1ac680700ae8ba9d54c5fa0",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Assigning confidentiality impact requires applying organizational risk appetite and consequence judgment; identical facts can support different accountable classifications.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-012",
+      "revision": 1,
+      "semantic_sha256": "62e739470250c45a3da33ab7aee420043b25299c9783cef4e09061ad8caa93f6",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Assigning integrity impact requires an accountable assessment of consequence and business importance rather than a mechanically discoverable repository fact.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-013",
+      "revision": 1,
+      "semantic_sha256": "5717b7fe0439e76c78bef2d02f78bf3babbefa9c6d1f6bab64619300c4f3743e",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Availability impact classification depends on business-critical journeys, tolerated disruption, and organizational risk criteria requiring accountable judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-014",
+      "revision": 1,
+      "semantic_sha256": "c45a9f7631df384d38047243355e5b198edbabff438a5889babdd0300444f080",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Privacy impact classification depends on data context, affected people, law, policy, and specialist interpretation that a deterministic checker cannot supply.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-015",
+      "revision": 1,
+      "semantic_sha256": "556a2a9874185c928395d0b9e227f7c1e6174754b9e601b28e1653da576a5ef5",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Financial and fraud impact depends on business exposure, attacker incentives, limits, and risk appetite, so the impact class is not mechanically determined.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "human_accountability"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-016",
+      "revision": 1,
+      "semantic_sha256": "90dd507c378d7ce7625c68a44b65e1bb77f26ab20ae4c18b1db8c0a2f2c85328",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Physical, psychological, societal, and user-safety impacts require domain expertise and ethical or safety judgment beyond bounded technical evidence.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-017",
+      "revision": 1,
+      "semantic_sha256": "3f92211145746990c88b814468cf924f957366e4fc1231bfdd4e50ff033dcb75",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Regulatory and contractual impact can only be classified after interpreting applicable law and agreements by an authorized specialist.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-018",
+      "revision": 1,
+      "semantic_sha256": "6aa2c5fc07c771e4505111e10fe9ef5673162b05013a0fb2d4d38e0acc14c257",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Reputational and customer-trust impact is inherently contextual and depends on stakeholder expectations that fixed evidence cannot authoritatively rank.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "human_accountability"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-019",
+      "revision": 1,
+      "semantic_sha256": "58d7bd4036d4f0756ff07ae4a4bbe30f33d4f2b8a7566ab5dd2ec31951367b12",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Determining which threat actors and accidental sources are likely requires threat intelligence and system-specific judgment; list presence cannot prove likelihood or completeness.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-020",
+      "revision": 1,
+      "semantic_sha256": "4926ce6cd6a073db24dc3812b9ffcbe72df39439b8f63fd7634b37954b422016",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Foreseeable misuse and abuse are open-ended and depend on adversarial imagination and context, so no bounded inventory can prove all foreseeable cases were identified.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-021",
+      "revision": 1,
+      "semantic_sha256": "1e4a6306fd4eb4bc3fe326c9882e132f9bf326fab1e69cf8ee48433302b0789c",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control asks for a release-specific risk register; an authenticated current register bound to the exact release identity is an objectively verifiable record fact.",
+      "deterministic_clauses": [
+        {
+          "statement": "An authenticated risk register exists and is bound to the assessed release identity, scope digest, and current revision.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-022",
+      "revision": 1,
+      "semantic_sha256": "d35e460a556ed8c44d885b197c4b7158d878c957d6ca40f4c261958c1f988089",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Given the complete release risk register, the seven named fields can be validated for every risk record without judging the chosen values.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every risk record has nonempty owner, likelihood, impact, treatment, evidence reference, and finite review-date fields.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-023",
+      "revision": 1,
+      "semantic_sha256": "3e17c81007580adda2c23bf0d682a76c36f58e4042f8cb009ac7937fd655ea23",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The control concerns recording an acceptance and authorized accepter, both of which can be validated against signed risk decisions and the authority registry.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every accepted residual-risk record identifies the risk, decision, timestamp, release scope, and accepting identity.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "The accepting identity held the required risk-acceptance authority at the recorded decision time.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-024",
+      "revision": 1,
+      "semantic_sha256": "7553d5fa90c5f69886198b51208db58c684eda57fe7fbce1af3b86928cf0ab2a",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The occurrence, scope, reviewer identity, subject-matter role, and independence of required reviews can be checked from assumption and organization records.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every assumption classified high-impact has a signed review record bound to the assumption and release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Each reviewer has the required subject-matter role and is independent under the approved organization policy.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-025",
+      "revision": 1,
+      "semantic_sha256": "5bf4b66df3c9b03b5d15aeb30fe59fc4e7e2158f48ea6c186371363f1ebb6e5d",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Whether launch scope remains inside organizational risk appetite is an accountable risk-acceptance determination, not a fact an automated evaluator may decide.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-026",
+      "revision": 1,
+      "semantic_sha256": "ac9af55ef86d5a15c388801cee2b580f34c2dc91922a1531a5168d6aa26367bb",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "An exception cannot remain open indefinitely when every open record has a finite enforced expiry and expired exceptions are objectively rejected.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every open risk exception has a finite expiry timestamp and a current accountable owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "No exception remains open after its recorded expiry timestamp.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-027",
+      "revision": 1,
+      "semantic_sha256": "281b6d7bf4f37a78177257fd450a59772716b1e4722b0693441b63678b88f9f2",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "A complete compensating-control register can be checked for current executed test evidence, which distinguishes an actual test from a written description.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every declared compensating control references a current executed test result bound to its implementation and release scope.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        },
+        {
+          "statement": "No compensating control relies only on descriptive repository or record evidence in place of an executed result.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-028",
+      "revision": 1,
+      "semantic_sha256": "cde95dfbd65133433acc75d7fd130d37d9c37eb75f2da17620bc0575e8f5b1bb",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Mapping identifiers is mechanical, but selecting applicable security controls and deciding whether a verification standard is recognized and suitable requires security judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every security control marked applicable in the approved scope record maps to a versioned control identifier in the selected standard.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "legal_or_specialist_authority",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-029",
+      "revision": 1,
+      "semantic_sha256": "9ada828197255f418b585d53a9507c7c7f20370192ba08c8e7a78640a4e45d36",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Determining applicable privacy controls and their correspondence to legal and organizational requirements requires authorized privacy and legal interpretation.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-030",
+      "revision": 1,
+      "semantic_sha256": "cd70835e33c6ba736b314afb996111937740a4f0d83f9cbf8513581181f9cac7",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Mapping identifiers to a selected WCAG version is checkable, but deciding applicable accessibility requirements and whether mappings are semantically correct requires specialist review.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every accessibility requirement approved as applicable maps to a criterion in the versioned selected WCAG conformance target.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-031",
+      "revision": 1,
+      "semantic_sha256": "4ae53236d33644feba9ae5b7a1b54cd5b2e2d8866c56dad80d08a16424b48e0b",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Recorded links to operational requirements are checkable, but whether the selected SLO, incident, continuity, and recovery requirements are complete and appropriate is contextual.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every approved operational control references versioned SLO, incident, continuity, or recovery requirement records.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-032",
+      "revision": 1,
+      "semantic_sha256": "48b9addd2f9291e9869a1cd95f4eb1b228e85361ed94ba3ca226b4bf28b1d32c",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Contractual applicability and correct mapping across customer, processor, provider, and partner agreements require interpretation by authorized contract or legal specialists.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-033",
+      "revision": 1,
+      "semantic_sha256": "9a29f986a05d4b701852209809f98266527dd5c20a7b564189e9fbded8735df4",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Finding conflicts across product, legal, and technical requirements requires semantic interpretation of an open-ended document set; absence of detected conflicts is not proof.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment",
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-034",
+      "revision": 1,
+      "semantic_sha256": "68f7731fa39d039be272fde720a2e2693df0f91d4af686566dd850a1bdc28a46",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Resolution and approval fields can be checked for known conflict records, but the full set of actual conflicts and adequacy of each resolution require contextual or legal judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every conflict in the approved conflict register has a resolution record, approving identity, authority evidence, and decision timestamp.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "legal_or_specialist_authority",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-035",
+      "revision": 1,
+      "semantic_sha256": "08aa2edc9b20e193a2e2f279b3c50fa0b446bb8a0e1c7e1626cccd8cdb08c8ac",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "With an approved definition of high-impact changes, complete change records, and identity data, actor separation can be evaluated exactly for every change and approval.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every change classified high-impact has authenticated implementer and approver identities.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "No prohibited identity or role overlap exists between implementation and approval under the versioned separation policy.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-036",
+      "revision": 1,
+      "semantic_sha256": "c4e1a305cdb66074b37dd51b50a242011198bf43496c2ab6fa2b93920372fb31",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Review cadence and signed review records are checkable, but deciding whether the selected control level still matches current application risk is an accountable judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Control-level review records occur within the cadence required by the approved review policy and are bound to the current risk record.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-001",
+      "revision": 1,
+      "semantic_sha256": "2aff42fc1c411cf60d00dcb8cf6533cbca170327b29164dec5a377c60b150118",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Existence and revision timing of a system-context artifact are checkable, but whether it is accurate, complete, and truly up to date requires semantic comparison with the system.",
+      "deterministic_clauses": [
+        {
+          "statement": "A system-context diagram artifact exists and its revision is not older than the latest recorded architecture change.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-002",
+      "revision": 1,
+      "semantic_sha256": "86c7eb7bec3873953ac00c0bf4165b83006860ef29a74ac98fb088c46dce1022",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Whether component and deployment diagrams are complete, accurate, and maintained cannot be established from file presence without interpreting actual topology.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-003",
+      "revision": 1,
+      "semantic_sha256": "29a5895f5a00db1d4dbfcc6b940cff35a999e6c393e805e9590d9b984e9acaed",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "End-to-end data-flow completeness requires discovering and interpreting every flow across code, infrastructure, operations, and external systems, an unbounded semantic claim.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-004",
+      "revision": 1,
+      "semantic_sha256": "09a172255b3f92e185b4f9104d040245101dedd7bc52441ba9619404ed658e36",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Trust boundaries depend on identity, control, tenancy, and authority context; two informed reviewers may draw different valid boundaries from identical diagrams.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-005",
+      "revision": 1,
+      "semantic_sha256": "f395ef9dc54f674464ef5ed93aa1a0a83b8391569ec3d0e54f364c9fbd0e0178",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Given authoritative reachable-interface inventory and a structured architecture model, every externally reachable interface can be compared exactly with its marker.",
+      "deterministic_clauses": [
+        {
+          "statement": "Current environment evidence provides a complete inventory of Internet-facing and externally reachable interfaces.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Every inventoried externally reachable interface is present and explicitly marked in the structured architecture record.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-006",
+      "revision": 1,
+      "semantic_sha256": "99e3d447e519e5bf51c69c6b3761fed812e6b50e9d882e2397c00c4b43780157",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Classifying an interface as administrative or support-facing depends on intended use and privilege context that is not reliably inferable from endpoints alone.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-007",
+      "revision": 1,
+      "semantic_sha256": "cc12fdb4adb23fc453666311f98d9e25cc775ea56cf90f8c20fc3ef3a4cfc374",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Authentication and authorization decisions may be distributed through code, policy, infrastructure, and providers; proving every decision location is marked is unbounded and semantic.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-008",
+      "revision": 1,
+      "semantic_sha256": "b66ade86c19e41985165b5b71e493623fd5dc38bdda92f4644fbc49ee63f363e",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Encryption and decryption boundaries span code, libraries, proxies, storage, clients, and providers, so complete marking cannot be proven from a bounded generic repository view.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-009",
+      "revision": 1,
+      "semantic_sha256": "a704b521d21be5e2c810085e1ae42be2eeadec807ca7466c89aa833cf61e5124",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Machine records can list known data operations, but sensitive-data classification and complete lifecycle-flow coverage require privacy expertise and semantic system understanding.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every sensitive-data operation in the approved data inventory has a lifecycle-stage marker in the structured data-flow record.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-010",
+      "revision": 1,
+      "semantic_sha256": "30b9301a7eed52ec5b181c9e7b14e6b9770fc321f1679493a363de4d4631a4b2",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Identifying all third-party data transfers requires complete runtime, contractual, and data-flow knowledge plus privacy interpretation; absence in a diagram is not proof.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-011",
+      "revision": 1,
+      "semantic_sha256": "7e474e789c2c340452dbf4c71922469dc8ddcd583acf1e228a6fdfdeb24e616d",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "State can exist in application memory, files, databases, caches, queues, clients, and providers, so generic evidence cannot prove every stateful component was identified.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-012",
+      "revision": 1,
+      "semantic_sha256": "d05e854860bedb0dc7197bc4bff7e7e1c88cf546aad5efbc495947859e77bcad",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Asynchronous boundaries include explicit queues and hidden provider or callback behavior, making a complete generic inventory unsafe to infer from repository patterns.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-013",
+      "revision": 1,
+      "semantic_sha256": "46dbdd3ac07b3df18bf119d9fd625043cb068a5d4ec7c9216f9f1ac4e91b0262",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Determining common dependencies and shared failure domains requires architecture and operational dependency reasoning beyond an exact graph-edge presence check.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-014",
+      "revision": 1,
+      "semantic_sha256": "a8d5bc3c124989f977a9137e5bbbb63fa1755c36de03cc3a1fcc630c8834c661",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "A single point of failure depends on failure modes, redundancy behavior, traffic, and recovery assumptions; no required analysis or test protocol is defined.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-015",
+      "revision": 1,
+      "semantic_sha256": "bd9cf1c7789375ad022d8f98043fbf271551a9f2c5c051db25df4e16ff3813d2",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Which control-plane dependencies are needed during varied incidents and recovery paths requires scenario-specific operational judgment and cannot be fully enumerated mechanically.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-016",
+      "revision": 1,
+      "semantic_sha256": "d6cfcff4a2cce8889f5394f453df6afa6dbfe451968f7e0c898bd69e2d65c07f",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Cycles in a sealed dependency graph are deterministic, but hidden chains and completeness of that graph require contextual discovery, so the whole control is not deterministic.",
+      "deterministic_clauses": [
+        {
+          "statement": "A bounded graph traversal reports every cycle in the sealed declared dependency graph.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-017",
+      "revision": 1,
+      "semantic_sha256": "5a7a9accfd02ae1167063af7a4b44b7326cc2121e5e162809479b0f859c22b0a",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Choosing required consistency, ordering, durability, and freshness properties and acceptable thresholds is an architecture decision based on product consequences.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-018",
+      "revision": 1,
+      "semantic_sha256": "1a6ad68eb16828020dbeaf7321a71784626d84468ff15fcc12d0dce50216c9af",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Determining which architectural invariants are necessary and whether the recorded set is complete requires expert design judgment rather than structural document validation.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-019",
+      "revision": 1,
+      "semantic_sha256": "68a5d7503a9e1393bb84936d935f154eb17261c681359d830c37d2780c95b9ce",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Dependency-to-failure-record coverage can be checked, but criticality, relevant failure modes, and adequacy of expected behavior remain contextual architecture judgments.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every dependency marked critical in the approved inventory references a release-bound failure-behavior record.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-020",
+      "revision": 1,
+      "semantic_sha256": "0592622a36512dae3b9cfd50fdfe0c5f7e82839025568febabf5390d1234e2d1",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Materiality and whether rejected alternatives are sufficiently recorded depend on design context; a decision-record file count cannot prove this control.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-021",
+      "revision": 1,
+      "semantic_sha256": "b933b40129e6cf8ad47247d58e4766c5d785ac19583a04489916f6cb63992c87",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Known classified architecture changes can be compared with diagram revisions, but deciding whether every release change affects data flow, trust, topology, or dependencies is semantic.",
+      "deterministic_clauses": [
+        {
+          "statement": "For every change already classified as affecting architecture, all required diagram revisions are newer than the change record.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-022",
+      "revision": 1,
+      "semantic_sha256": "f15e5a6ab24ad2eba1924b4be66540b029adeb95aecab91e897681adf4ea1081",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A structured component diff is possible, but verifying that documentation accurately represents all deployed architecture semantics requires a defined protocol and contextual interpretation.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every deployed component and connection in the authoritative environment snapshot has a corresponding identifier in the structured architecture record.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-023",
+      "revision": 1,
+      "semantic_sha256": "08cd3dd742da07ab9c26c3e1088075acd0e06e3ed177b411cb5c77ad31dee183",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A release-bound threat-model record can prove that a review occurred, but whether it is a real and adequate threat model for the actual scope requires expert judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "A threat-model record exists and is bound to the assessed release identity and scope digest.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-024",
+      "revision": 1,
+      "semantic_sha256": "db1f2f647a7282491323c0fd071312145a13a6955f7faa5ea6323f904fd09a7e",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Completeness across all trust boundaries, actors, entry points, data stores, and external systems depends on complete architecture discovery and expert threat-model review.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-025",
+      "revision": 1,
+      "semantic_sha256": "3255e068b44f46f8a994700f66731bfa2cd5b8f9fc9e28bc1b4380f9adad2bc6",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "A heading or scenario tagged spoofing does not prove identity attacks were meaningfully modeled; adequacy depends on system-specific threat analysis.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-026",
+      "revision": 1,
+      "semantic_sha256": "078c81ed55b417ad8903d644933352dcd3401a2f51808f00cc42baf6de19bdb0",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Determining whether unauthorized modification and integrity attacks were adequately modeled requires expert analysis of assets, boundaries, and plausible attack paths.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-027",
+      "revision": 1,
+      "semantic_sha256": "8fae0a52d7310842d1b890f6c919f0f7d029bbc23a800ee38a0d951891364aec",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Information-disclosure and privacy attack modeling depends on sensitive-data context, affected people, legal duties, and specialist threat analysis.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-028",
+      "revision": 1,
+      "semantic_sha256": "9330838eb2df4362cb3faf909920b241bcc99eca853fdae02ffb8faf20821b69",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Adequate denial-of-service and resource-exhaustion modeling depends on architecture, attacker capacity, quotas, and failure behavior rather than category-label presence.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-029",
+      "revision": 1,
+      "semantic_sha256": "738c5e8b9455814997635d45c9102c39faa50fbd9851610c07a8bfc8daa71bcb",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Privilege-escalation modeling requires interpreting trust transitions, identities, permissions, and attack paths; a deterministic keyword check would be partial.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-030",
+      "revision": 1,
+      "semantic_sha256": "b137b4ae711b96214ea0edcc0f33fae7b70e9848e962588a4d84e8937cb91eff",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Repudiation and accountability threats depend on business actions, evidence needs, and trust boundaries, so model adequacy requires contextual security judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-031",
+      "revision": 1,
+      "semantic_sha256": "498ffc9db8cf92d6a6743819810d682357ba0b85c8a45464d3793788b245eb86",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Business-logic abuse is product-specific and open to varied attacker strategies; scenario presence cannot prove the relevant abuse was adequately modeled.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-032",
+      "revision": 1,
+      "semantic_sha256": "01570426f4cbf0a85761d26202ca6b84291a4a15b5bb58e2a58ebed5cba7f2b8",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Insider and compromised-administrator threats depend on privileged workflows, organizational controls, and plausible misuse paths requiring expert interpretation.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-033",
+      "revision": 1,
+      "semantic_sha256": "80cb4707ca166684423122a59c3a114bd4926890a0f88d14124982fac0747ea6",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Dependency and build-system compromise modeling requires supply-chain context and expert selection of credible attack paths, not just tool or document presence.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-034",
+      "revision": 1,
+      "semantic_sha256": "9cee634e5c36da248441ed8799844f44fbc36c5e27a9aa6bb8f03d4e8157b511",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Tenant-escape and cross-customer attack applicability and adequacy depend on tenancy architecture, isolation boundaries, and specialist threat analysis.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-035",
+      "revision": 1,
+      "semantic_sha256": "968f347e6fd957abf5bd0269ff4ca8c1d275d37bbb9efa8852d386a1155c5ceb",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Automation, scraping, spam, fraud, and economic abuse form an open-ended adversarial space whose complete and adequate modeling cannot be mechanically established.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-036",
+      "revision": 1,
+      "semantic_sha256": "52fff9abdf10b46845fb5e11a1f7170516eb26d21bae6b3be515ef043e31149b",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Recovery-system and backup attacks depend on operational topology, credentials, retention, restore paths, and attacker models requiring contextual analysis.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-037",
+      "revision": 1,
+      "semantic_sha256": "fd67822d212328cd6eea50cc0ed880de5c4769d56e0a587784f36f9472940cd6",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Social-engineering threats in support and account recovery depend on human workflows, identity proofing, and attacker behavior that require expert review.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "human_accountability"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-038",
+      "revision": 1,
+      "semantic_sha256": "2d7f24452d383a2f221404641b17a1747fd1f4cfd41c02be685089b5c5276afb",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Threat-to-requirement and test links are checkable, but deciding whether each requirement and test actually addresses its threat requires semantic security review.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every identified threat record references at least one requirement and one test record that exist in the sealed evidence set.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-039",
+      "revision": 1,
+      "semantic_sha256": "7a0f6af37af42322c7413bc8beced04c68d26f6449a3c6fd6f2513f7f540450c",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Review timestamps for changes already labeled material are checkable, but deciding whether all design or scope changes are material requires contextual architecture judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every change recorded as material has a later threat-model review bound to the resulting release scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-040",
+      "revision": 1,
+      "semantic_sha256": "e61cfba8cf94957f718d71016cb5a6070caaca1634f875a232468ddd50f66100",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Applicability can come from the approved value or risk tier, while signed review and reviewer independence can be validated from current authoritative records.",
+      "deterministic_clauses": [
+        {
+          "statement": "The approved risk record objectively marks whether the system is high-value or high-risk under the versioned organizational policy.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every applicable system has a signed independent-review record bound to the release and an identity independent under the approved policy.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    }
+  ]
+}

@@ -1,0 +1,1186 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-checklists-09-conditional-modules-md-part-001-part-001",
+  "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 47,
+  "controls": [
+    {
+      "control_id": "PRC-39-006",
+      "revision": 1,
+      "semantic_sha256": "2207dfdb0205f08be023ded55305fef380161160a3c2494854fa3944145585ea",
+      "statement": "Payment requests and callbacks are idempotent.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 18
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.1 Payments, billing, subscriptions, and money movement"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With a sealed payment-operation inventory, idempotency contract, and replay fixtures, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared payment request and callback produces one contract-defined effect when its operation key is replayed.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-007",
+      "revision": 1,
+      "semantic_sha256": "08c10c1a1595801277146d931e0b8b12ebd4cb72267d736417559f4dcbca45aa",
+      "statement": "Payment webhooks are signed and replay-protected.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 19
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.1 Payments, billing, subscriptions, and money movement"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With a sealed webhook inventory, signature policy, replay window, and adversarial fixtures, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared payment webhook rejects invalid signatures and contract-defined replays.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-009",
+      "revision": 1,
+      "semantic_sha256": "625b4a9b004679e280bd73b9fa2e104f6c3814f1fbb403fba42bbe0d008f585b",
+      "statement": "The product does not claim success before authoritative confirmation.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 21
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.1 Payments, billing, subscriptions, and money movement"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With a versioned success-output map, authoritative confirmation states, and transition fixtures, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared product success output occurs only after its mapped authoritative confirmation state.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-010",
+      "revision": 1,
+      "semantic_sha256": "71c83139574091b28774cecbdb33ef790ee7ace5c4a1d7d06dea7e061e9a3aa2",
+      "statement": "Reconciliation compares application records with provider or bank records.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 22
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.1 Payments, billing, subscriptions, and money movement"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With fixed application and provider or bank records plus an exact comparison schema, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Reconciliation compares every contract-required field and records each match or discrepancy.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-016",
+      "revision": 1,
+      "semantic_sha256": "bd08d772c6787bc179fbab1994299af936189c1e86f4d330e8613f575b7489ad",
+      "statement": "Financial exports and reports are access-controlled and auditable.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 28
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.1 Payments, billing, subscriptions, and money movement"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With a sealed financial-output inventory, access matrix, and audit schema, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared financial export and report enforces its access matrix and emits required audit fields.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-020",
+      "revision": 1,
+      "semantic_sha256": "1b689432606abe2e788247b862645653621a102f6fd5193e56853421bd1a02f8",
+      "statement": "Customer support cannot alter money movement without controlled authorization and audit.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 32
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.1 Payments, billing, subscriptions, and money movement"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With a complete support mutation inventory and authorization and audit policy, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "No declared support role alters money movement without required authorization and an attributable audit record.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-023",
+      "revision": 1,
+      "semantic_sha256": "83bc6d6c531fabe739514aa126972f6f80d03b3d79d13ae1b7d54fa4f5a7e67c",
+      "statement": "Tenant-controlled identifiers cannot select another tenant.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 38
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.2 Multi-tenant SaaS"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With a sealed tenant-selector inventory and cross-tenant fixtures, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared tenant-controlled selector is denied when it references another tenant’s resource.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-025",
+      "revision": 1,
+      "semantic_sha256": "951a379e4eba609a50e41e7c67eca4b3e8ce5dab9fc95213e6ee8b3b4fe4b314",
+      "statement": "One tenant cannot exhaust shared resources beyond defined limits.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 40
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.2 Multi-tenant SaaS"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With numeric per-tenant limits for each shared resource and controlled load fixtures, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared shared resource enforces its approved numeric per-tenant limit.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-028",
+      "revision": 1,
+      "semantic_sha256": "bc03fae7a37b739ff022ffae9a9c7983cb64e9a751c8f4bed441d0b6bf4df438",
+      "statement": "Tenant administrators cannot exceed their organization scope.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 43
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.2 Multi-tenant SaaS"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With a tenant-role matrix, operation inventory, and cross-organization fixtures, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared tenant-administrator role is denied operations outside its organization scope.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-029",
+      "revision": 1,
+      "semantic_sha256": "826bb08974ef6a7c552005a3f50a02c2c63730ff53ba7a72e9e419c98a25a7ff",
+      "statement": "Support access to a tenant requires authorization, purpose, visibility, and audit.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 44
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.2 Multi-tenant SaaS"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With an exact support-access policy plus allow, deny, visibility, and audit fixtures, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared tenant support path requires authorization and purpose and emits required visibility and audit records.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-031",
+      "revision": 1,
+      "semantic_sha256": "1b760b95db34d95ddb232498a0cd67aa35f5467dc5dc58a272dd8f22b3bcb24f",
+      "statement": "Custom domains cannot be claimed by the wrong tenant.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 46
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.2 Multi-tenant SaaS"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With a sealed domain-claim inventory and ownership-proof protocol, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "A custom-domain claim is rejected when its tenant lacks approved ownership proof.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-033",
+      "revision": 1,
+      "semantic_sha256": "c2c2eb94f05c06ee3d2af374bc5fa2e761e4ee2e907fc7b73ca7feecb9c4dc56",
+      "statement": "Acceptable-use and content policies are defined.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 51
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.3 User-generated content, communities, and marketplaces"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "With current policy records with owner, revision, and effective-status fields, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Current approved acceptable-use and content-policy records exist with owner, revision, and effective status.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-034",
+      "revision": 1,
+      "semantic_sha256": "963902123568198a985095c1379149ab27cbc288b8e9fd3c9ca3b982847bdc0e",
+      "statement": "Users can report prohibited or harmful content and conduct.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 52
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.3 User-generated content, communities, and marketplaces"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With a prohibited-content taxonomy, reporting-surface inventory, and submission fixtures, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every prohibited content or conduct type has a declared user reporting path that accepts a report fixture.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-036",
+      "revision": 1,
+      "semantic_sha256": "3191527056baabef59f1178605449e5760c00fb378502e9bfea7f1bef0137b0a",
+      "statement": "Moderation queues have owners and response objectives.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 54
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.3 User-generated content, communities, and marketplaces"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "With a moderation-queue registry with exact owner and response-objective fields, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared moderation queue has a current owner and numeric response objective.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-037",
+      "revision": 1,
+      "semantic_sha256": "4f790f44a8c4cb6251aaa096fce1aca99a53e6f8092f244c9c1d557c3a79fc23",
+      "statement": "Moderator actions are authorized and audited.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 55
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.3 User-generated content, communities, and marketplaces"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With a moderator-role matrix, action inventory, and audit schema, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared moderator action enforces its role matrix and emits an attributable audit record.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-041",
+      "revision": 1,
+      "semantic_sha256": "6fc16246a2b50569451a0a5210ffd33c4de96160b8426a25b4a022f9005de2c2",
+      "statement": "Illegal-content, copyright, evidence-preservation, and lawful-request procedures are defined.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 59
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.3 User-generated content, communities, and marketplaces"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "With current records for each named procedure area, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Current approved procedures exist for illegal content, copyright, evidence preservation, and lawful requests.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-049",
+      "revision": 1,
+      "semantic_sha256": "f340bdf0bfbf84846ea635da62092043eacf2f4a80b2f5ada63614553e70b05d",
+      "statement": "Emergency threats to life or safety have an escalation process.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 67
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.3 User-generated content, communities, and marketplaces"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "With a current emergency procedure with trigger, owner, and contact fields, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "A current life-or-safety escalation procedure exists with triggers, owner, and contacts.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-052",
+      "revision": 1,
+      "semantic_sha256": "f66ac29198b64230e5957ef1e57cd50774e6afbe146a7c78a40df32468ae2c79",
+      "statement": "Bounce, complaint, suppression, and reputation signals are monitored.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 73
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.4 Email, SMS, push, and notifications"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With a provider-signal inventory and exact monitoring destinations, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared bounce, complaint, suppression, and reputation signal reaches its configured monitoring destination.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-053",
+      "revision": 1,
+      "semantic_sha256": "b7bb1c02aaef8872d97ae240ce4136e4a7604fddf618c4f021730fd21450e7c5",
+      "statement": "Subscription and consent status is checked at send time.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 74
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.4 Email, SMS, push, and notifications"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With a subscription-send inventory, exact consent states, and send-time fixtures, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared subscription send reads authoritative consent during dispatch and rejects revoked consent.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-058",
+      "revision": 1,
+      "semantic_sha256": "bb82b289ff136b5aa2636e936b39a6bc76bbadd73ac9afd83049eb0a43441a3a",
+      "statement": "Reset and verification messages cannot be reused.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 79
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.4 Email, SMS, push, and notifications"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With a reset and verification flow inventory and single-use token lifecycle, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared reset and verification token is rejected after its first successful use.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-062",
+      "revision": 1,
+      "semantic_sha256": "02a31c3ff038f84cd0cb6cc3c23881f9820ba4a0ff2793d00b64bfc644f6ae1c",
+      "statement": "Users can configure nonessential notifications.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 83
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.4 Email, SMS, push, and notifications"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With a nonessential-notification registry and preference fixtures, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared nonessential notification has a user setting, and disabling it prevents dispatch.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-065",
+      "revision": 1,
+      "semantic_sha256": "dc1430b562b33932d34c53033a415686209f4af9f2a91f52694d245c8c71235b",
+      "statement": "Delivery status is not treated as proof that the intended human received or approved an action.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 86
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.4 Email, SMS, push, and notifications"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With a delivery-event and authorization-decision map plus transition fixtures, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "No declared approval becomes approved solely from a delivery-status event.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-066",
+      "revision": 1,
+      "semantic_sha256": "74c45629a8c527bfc2413325e5c0bb376071bc2d45f1273f74b88c02ffba1d91",
+      "statement": "Production cannot accidentally use test recipient lists or vice versa.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 87
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.4 Email, SMS, push, and notifications"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With exact environment recipient-list bindings and cross-environment fixtures, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Production accepts only production recipient lists and test accepts only test lists.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-067",
+      "revision": 1,
+      "semantic_sha256": "97d9692f0bee949ad7755f423220602492ace988d148898b0a67c0debb0de37b",
+      "statement": "Every supported locale is documented.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 91
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.5 Localization and internationalization"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "With a finite supported-locale registry and current documentation records, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every locale in the supported-locale registry has a current documentation record.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-068",
+      "revision": 1,
+      "semantic_sha256": "9961ea59626f4e72169e1041c6fa702cbc8ff317f5482b7bde590e1feef6b466",
+      "statement": "Translation completeness is verified.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 92
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.5 Localization and internationalization"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With sealed locale, message-domain, and required-key registries, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every required message key exists in every supported locale for its message domain.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-075",
+      "revision": 1,
+      "semantic_sha256": "c683077b31f235a0937ed6df7d6f3c248f258d6c691c71284790a6d011c7d8e7",
+      "statement": "Time-zone and daylight-saving behavior is correct.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 99
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.5 Localization and internationalization"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With declared zones, a time-zone database version, and transition-boundary fixtures, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every daylight-saving fixture matches expected local time, offset, ambiguity, and skipped-time behavior.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-080",
+      "revision": 1,
+      "semantic_sha256": "dc538e068482378f3d0eff5022860b725742796e9af5e261bce03a28759c1829",
+      "statement": "Localization does not alter identifiers, signatures, tokens, or machine data.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 104
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.5 Localization and internationalization"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With a machine-field inventory and byte-for-byte locale fixtures, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared identifier, signature, token, and machine field remains byte-for-byte unchanged across locales.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-081",
+      "revision": 1,
+      "semantic_sha256": "56dd3df30e45f1b8043e6639d636798b5789552a92961ed4c68f8338ffefb324",
+      "statement": "Customer support coverage matches offered languages where promised.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 105
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.5 Localization and internationalization"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "With a promised-language registry and current support roster and schedule, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every promised support language has an active coverage record for each promised period.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-082",
+      "revision": 1,
+      "semantic_sha256": "78fbd1f13e4e52fd51de7d033937cce4205356635e820b5c6d212c17e667109a",
+      "statement": "Public and private pages have correct indexing rules.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 109
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.6 Public content, search engines, and SEO"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With a public/private route registry, indexing contract, and rendered fixtures, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared page emits the indexing directives in its approved route policy.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-083",
+      "revision": 1,
+      "semantic_sha256": "756d0a7860e31f34c759c6261dfe50aea77c95806df962e28c39a069c9b9bf0a",
+      "statement": "Authentication and authorization, not robots directives, protect private data.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 110
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.6 Public content, search engines, and SEO"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With a sealed private-route inventory and unauthorized crawler fixtures, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared private route denies unauthorized requests independently of robots metadata.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-084",
+      "revision": 1,
+      "semantic_sha256": "a46f0c32a48afb41e032e21db50c6304012ba97a30545391ff9e84f1975a9457",
+      "statement": "Canonical URLs are correct.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 111
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.6 Public content, search engines, and SEO"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With a public-route canonical contract and host and parameter fixtures, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared public-route fixture emits the canonical URL in its approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-086",
+      "revision": 1,
+      "semantic_sha256": "cd5c521f142416676eb550272e1d63efb334863ac9394c6ec87fb57943e08503",
+      "statement": "Status codes are correct.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 113
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.6 Public content, search engines, and SEO"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With a route-outcome contract and exact method and state fixtures, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared route fixture returns the HTTP status in its approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-088",
+      "revision": 1,
+      "semantic_sha256": "7276e2eaf949b36cc83716e2ab8a927b09e4a972bcbe72ac85b5d0d9ef1a67ac",
+      "statement": "Sitemaps are accurate and do not expose private URLs.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 115
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.6 Public content, search engines, and SEO"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With an indexable public-URL registry, private-route registry, and sitemap artifact, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The sitemap set exactly matches approved public URLs and contains no private URL.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-096",
+      "revision": 1,
+      "semantic_sha256": "eff861dcf2135074e712c0a25a48013af1a9254e9ddd16f6636a2f91ff14d2df",
+      "statement": "Service-worker scope is restricted.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 126
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.7 Progressive Web Apps and offline operation"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With a service-worker inventory and permitted scope allowlist, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared service-worker registration stays within its approved path scope.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-102",
+      "revision": 1,
+      "semantic_sha256": "5edac9275bf42759f8a341a823f0fe7d3a85781a61cc97c4417b7dbd340dda21",
+      "statement": "Replayed offline operations are idempotent.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 132
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.7 Progressive Web Apps and offline operation"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With an offline-operation inventory, replay identity contract, and repeat fixtures, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared offline operation produces one contract-defined effect when replayed.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-106",
+      "revision": 1,
+      "semantic_sha256": "faea299ed8eace9a09ced5b6f7d84fb9db75b14a454a610cd317ab0f343a3c31",
+      "statement": "Background synchronization has bounded resource use.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 136
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.7 Progressive Web Apps and offline operation"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With numeric CPU, network, storage, retry, and time limits for every background job, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared background-sync job has and stays within its numeric resource limits.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-107",
+      "revision": 1,
+      "semantic_sha256": "b5fb6a4209c95e0bec29363a83b11dfc2a68d56885ec66b37c9051d0c08ff876",
+      "statement": "Recovery from corrupt local state is possible.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 137
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.7 Progressive Web Apps and offline operation"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "With versioned corrupt-state fixtures and exact recovery oracles, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every approved corrupt local-state fixture reaches its contract-defined recovered state.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-110",
+      "revision": 1,
+      "semantic_sha256": "e83c31d6e57240df07751078ee1edcc789392733c9f8a7db85ece6132ff3794f",
+      "statement": "Messages are schema-validated.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 143
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.8 Real-time, streaming, collaborative, and event-driven features"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With a message-type and ingress inventory, schemas, and valid and invalid fixtures, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared inbound message is schema-validated before business processing.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-111",
+      "revision": 1,
+      "semantic_sha256": "e958009b0940ef9255c617460ae5985478b40498088c844f2d93ba8a7bbdc9cc",
+      "statement": "Message size and rate are bounded.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 144
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.8 Real-time, streaming, collaborative, and event-driven features"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With numeric message-size and rate limits for every ingress plus over-limit fixtures, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared message ingress enforces approved numeric size and rate limits.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-112",
+      "revision": 1,
+      "semantic_sha256": "f2441dab74bb790ff44b1e0d693fce17746e54515eb0a38036f321a6da844e9a",
+      "statement": "Ordering guarantees are documented.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 145
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.8 Real-time, streaming, collaborative, and event-driven features"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "With a stream and event registry with an explicit ordering field, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared stream and event type has a versioned ordering guarantee or explicit no-ordering value.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-118",
+      "revision": 1,
+      "semantic_sha256": "7365c6a811e89346d17ba122a292916c56fc0178bb2ef8fab454bc2363709148",
+      "statement": "Permission changes terminate or restrict active streams.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 151
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.8 Real-time, streaming, collaborative, and event-driven features"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With a permission-change matrix, stream inventory, and downgrade fixtures, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared permission downgrade restricts or terminates affected streams as contracted.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-127",
+      "revision": 1,
+      "semantic_sha256": "27e389993be9ab67afb269a71a304d598fb050b7dcbbd6adffc0e8c3ee6947aa",
+      "statement": "Bulk exports and changes require confirmation and audit.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 163
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.9 High-risk administrative and support tools"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With a bulk-operation inventory and exact confirmation and audit policies, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared bulk export or change requires confirmation and emits an attributable audit record.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-132",
+      "revision": 1,
+      "semantic_sha256": "4b789c6aafe20bdd8089d642425c687dd6fdcd70a3c0ab0a4bab0fcf7f48d633",
+      "statement": "Emergency access triggers review.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 168
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.9 High-risk administrative and support tools"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With an emergency-access event schema and numeric review deadline, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every emergency-access event creates a linked review record within the approved deadline.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-139",
+      "revision": 1,
+      "semantic_sha256": "913d8f64578e6bde7954a763aaca7197df213500105a1ed065285338e45388a8",
+      "statement": "Define tasks the AI is and is not authorized to perform.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 180
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "With an AI capability registry and explicit allowed and prohibited task policy, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared AI capability maps to explicit authorized and prohibited task entries.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-160",
+      "revision": 1,
+      "semantic_sha256": "8a8a08bedf286bf4d2c20164fd0a2a1596d55950faa5576ab43d5da942e1335b",
+      "statement": "Rate, token, context, tool, and spending limits are configured.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 201
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With an AI-operation inventory and numeric rate, token, context, tool, and spend limits, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared AI operation enforces all numeric limits in its approved policy.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-162",
+      "revision": 1,
+      "semantic_sha256": "1d374109f1d9368ce64e7cf104b5830cd23eb096b8d5ca8609a15e439f986cbc",
+      "statement": "A kill switch can disable AI actions without disabling essential non-AI operation.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 203
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "With a kill-switch fixture and approved essential non-AI health checks, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The AI kill switch blocks all declared AI actions while essential non-AI checks still pass.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-39-182",
+      "revision": 1,
+      "semantic_sha256": "f8f8db458e10e0a0dd339925d5c53bdce6512d92b2baf32c1b9843aefc23d7a1",
+      "statement": "Recall, disablement, and customer notification procedures exist.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 226
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.11 Safety-critical or physically consequential systems"
+      ],
+      "primary_packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "With current procedure records with trigger, owner, contact, and revision fields, the full rule has an exact bounded pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Current recall, disablement, and notification procedures exist with triggers, owners, contacts, and revision.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

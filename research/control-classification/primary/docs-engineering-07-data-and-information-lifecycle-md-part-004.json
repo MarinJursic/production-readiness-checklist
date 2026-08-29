@@ -1,0 +1,434 @@
+{
+  "schema_version": "prc.control-classification-review/v0.1",
+  "packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-004",
+  "source_path": "docs/engineering/07-data-and-information-lifecycle.md",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "controls": [
+    {
+      "control_id": "USEQ-490FD16A",
+      "revision": 1,
+      "semantic_sha256": "490fd16a551c5873615bccc4d64a65b06847b989c4e5cf9c59a10b3c1d99f712",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The rule \u201cProhibit secondary use of preserved or collected material unless separately authorized.\u201d is deterministic with a sealed matter and record inventory, versioned procedure, and exact authorization, custody, archive, or exercise evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Prohibit secondary use of preserved or collected material unless separately authorized.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2DCEA90A",
+      "revision": 1,
+      "semantic_sha256": "2dcea90ab9842fd2cfebfb685e6b2b126ac661bf1aa4ff418aadd42e45ed5645",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule \u201cDelete or return matter data when obligations and authorized purposes end.\u201d is not deterministic because its full meaning requires qualified legal, investigation, records, privacy, proportionality, or governance authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2EFD0053",
+      "revision": 1,
+      "semantic_sha256": "2efd0053bd9b82aae130b9322deb7ea8d7353fe6e6b349ab418cca44e6955cac",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule \u201cInclude suppliers and external counsel in privacy, security, breach, and deletion obligations.\u201d is not deterministic because its full meaning requires qualified legal, investigation, records, privacy, proportionality, or governance authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-69B301CD",
+      "revision": 1,
+      "semantic_sha256": "69b301cd0af7a8ce8bda149899e41d6c6383dcc30b6afd69f424796ad403c104",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The rule \u201cRecord proportionality, burden, risk, and alternative-method decisions.\u201d is deterministic with a sealed matter and record inventory, versioned procedure, and exact authorization, custody, archive, or exercise evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Record proportionality, burden, risk, and alternative-method decisions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FD46F2D9",
+      "revision": 1,
+      "semantic_sha256": "fd46f2d9675f2bdabff4b7bc9373b69af17dbf1bde21031cf0856dd0aa8bed70",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The rule \u201cDefine which information constitutes an authoritative record and which is a backup, archive, replica, cache, or transient copy.\u201d is deterministic with a sealed matter and record inventory, versioned procedure, and exact authorization, custody, archive, or exercise evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define which information constitutes an authoritative record and which is a backup, archive, replica, cache, or transient copy.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D3571578",
+      "revision": 1,
+      "semantic_sha256": "d3571578401ede5b7d3451dd37cfda39765190f64b2443b3ce353eebf4e054e4",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule \u201cDo not use backup retention as a substitute for records management.\u201d is not deterministic because its central distinction or adequacy decision requires contextual governance judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3191EF19",
+      "revision": 1,
+      "semantic_sha256": "3191ef19297fec93746af9083b4eab042b4fd32485c3cc824803c3bcbf4dcdf5",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule \u201cDo not assume ordinary backup systems provide searchable, complete, or legally defensible preservation.\u201d is not deterministic because its central distinction or adequacy decision requires contextual governance judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D1BB5019",
+      "revision": 1,
+      "semantic_sha256": "d1bb50193b251a534da4de933ebfbab480c1193ead88e8d526766186737592ec",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The rule \u201cDocument whether and how holds apply to immutable backups and rolling backup media.\u201d is deterministic with a sealed matter and record inventory, versioned procedure, and exact authorization, custody, archive, or exercise evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document whether and how holds apply to immutable backups and rolling backup media.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-50CFA71B",
+      "revision": 1,
+      "semantic_sha256": "50cfa71baa44fc431dafff0a5feb45970538a7a6490624814b125dec8b7a51a1",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule \u201cDefine when restoration from backup is required, proportionate, technically feasible, and authorized.\u201d is not deterministic because its full meaning requires qualified legal, investigation, records, privacy, proportionality, or governance authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2F26A1EC",
+      "revision": 1,
+      "semantic_sha256": "2f26a1ec6b69165339957442b8532fccb31bca21a1765cafd54f50c1e34c11a3",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The rule \u201cPrevent restored backups from silently reintroducing expired credentials, deleted data, or obsolete system state.\u201d is deterministic with a sealed matter and record inventory, versioned procedure, and exact authorization, custody, archive, or exercise evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Prevent restored backups from silently reintroducing expired credentials, deleted data, or obsolete system state.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-EF2DB422",
+      "revision": 1,
+      "semantic_sha256": "ef2db42287dac15464acaeb8c9598c8553a8daa0b53aa89fc8c39b900ebf8c7a",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The rule \u201cPreserve archive representation information needed to interpret records over time.\u201d is deterministic with a sealed matter and record inventory, versioned procedure, and exact authorization, custody, archive, or exercise evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Preserve archive representation information needed to interpret records over time.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CEAE5A5D",
+      "revision": 1,
+      "semantic_sha256": "ceae5a5d7cd4c04aedab0156b103955478ef4ebd1a7e121e7ee4301d22f45af3",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The rule \u201cValidate fixity, readability, and retrievability of held archival records periodically.\u201d is deterministic with a sealed matter and record inventory, versioned procedure, and exact authorization, custody, archive, or exercise evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Validate fixity, readability, and retrievability of held archival records periodically.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0552820A",
+      "revision": 1,
+      "semantic_sha256": "0552820adbe74a2a79739820dfe1e8d62ee949f5bf8f37560463987ebe93d414",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule \u201cEnsure decommissioning plans account for active holds, records obligations, and future discovery needs.\u201d is not deterministic because its full meaning requires qualified legal, investigation, records, privacy, proportionality, or governance authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FB12DE3D",
+      "revision": 1,
+      "semantic_sha256": "fb12de3d7d64ffd6046bb330ce08543a723d6bae4d0c14cd2b28927d734e935c",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The rule \u201cMaintain tools or migration paths for proprietary formats retained beyond product support.\u201d is deterministic with a sealed matter and record inventory, versioned procedure, and exact authorization, custody, archive, or exercise evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Maintain tools or migration paths for proprietary formats retained beyond product support.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-6456A239",
+      "revision": 1,
+      "semantic_sha256": "6456a239d93ebc3f4332a457aed774264a907ab837b2fbb6b50112a4ba24805a",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The rule \u201cDefine procedures for internal investigations, regulator requests, external audits, and lawfully authorized disclosures.\u201d is deterministic with a sealed matter and record inventory, versioned procedure, and exact authorization, custody, archive, or exercise evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define procedures for internal investigations, regulator requests, external audits, and lawfully authorized disclosures.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-014CFEB0",
+      "revision": 1,
+      "semantic_sha256": "014cfeb05f2870e6fd4f2e0cd4f5c2ed45f83a1cd2cc7fedb182afc280efa790",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The rule \u201cSeparate fact finding, legal advice, technical response, disciplinary decisions, and public communication responsibilities.\u201d is deterministic with a sealed matter and record inventory, versioned procedure, and exact authorization, custody, archive, or exercise evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Separate fact finding, legal advice, technical response, disciplinary decisions, and public communication responsibilities.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2B91F303",
+      "revision": 1,
+      "semantic_sha256": "2b91f3037f2613801bcf10b65f4bf7a1f0ce328bcc16e61a15108a694b122b02",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule \u201cPreserve investigation independence and protect against conflicts of interest.\u201d is not deterministic because its full meaning requires qualified legal, investigation, records, privacy, proportionality, or governance authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CE36DD64",
+      "revision": 1,
+      "semantic_sha256": "ce36dd64d04fc7009b5c45b20cb970a5287696da93bdd491a15f9b24a9b1b11c",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The rule \u201cPrevent subjects of an investigation from controlling relevant evidence or access decisions.\u201d is deterministic with a sealed matter and record inventory, versioned procedure, and exact authorization, custody, archive, or exercise evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Prevent subjects of an investigation from controlling relevant evidence or access decisions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FF473CF7",
+      "revision": 1,
+      "semantic_sha256": "ff473cf7771071886c3453d0e8d1065d726b908032a7319b2657c2abcbd6a485",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The rule \u201cEstablish secure case-management, communication, and evidence repositories.\u201d is deterministic with a sealed matter and record inventory, versioned procedure, and exact authorization, custody, archive, or exercise evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Establish secure case-management, communication, and evidence repositories.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-DC93FE5C",
+      "revision": 1,
+      "semantic_sha256": "dc93fe5c4a0ec44bdac80416bbba23c3213c28b8db06cdce3da470fa5e8d1043",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The rule \u201cRecord allegations, scope, authority, evidence, findings, limitations, decisions, and corrective actions.\u201d is deterministic with a sealed matter and record inventory, versioned procedure, and exact authorization, custody, archive, or exercise evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Record allegations, scope, authority, evidence, findings, limitations, decisions, and corrective actions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E888F262",
+      "revision": 1,
+      "semantic_sha256": "e888f26298a9d5995bff5718fc60c106776751a60ae770bcab4d1d488fd28eda",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule \u201cDistinguish verified facts, analysis, inference, allegation, and unresolved uncertainty.\u201d is not deterministic because its full meaning requires qualified legal, investigation, records, privacy, proportionality, or governance authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B26054AD",
+      "revision": 1,
+      "semantic_sha256": "b26054adf5337c70bc1dca9e303cd081dbb7297f58eb66218f3ba00eb0059c20",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule \u201cProvide fair review and response opportunities where required.\u201d is not deterministic because its full meaning requires qualified legal, investigation, records, privacy, proportionality, or governance authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-02B57300",
+      "revision": 1,
+      "semantic_sha256": "02b57300f2b0b54cc118524a49b7f0e5c26ce653476f5d432b66f3dca8851fd3",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule \u201cPreserve anonymity or confidentiality of reporters to the extent possible.\u201d is not deterministic because its full meaning requires qualified legal, investigation, records, privacy, proportionality, or governance authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-6A813913",
+      "revision": 1,
+      "semantic_sha256": "6a81391381666c848bf104d96fc1ff3df46d57724011f01217ae64f6716f5d6d",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule \u201cProtect against retaliation and monitor for it.\u201d is not deterministic because its full meaning requires qualified legal, investigation, records, privacy, proportionality, or governance authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D1208FCF",
+      "revision": 1,
+      "semantic_sha256": "d1208fcf1de2d1fccc99ef3148bc84fe5e5dae53e8155adb804b09d4f45b9687",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule \u201cCoordinate incident containment with evidence preservation so neither objective is ignored.\u201d is not deterministic because its full meaning requires qualified legal, investigation, records, privacy, proportionality, or governance authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7A78E7C0",
+      "revision": 1,
+      "semantic_sha256": "7a78e7c01732466a9fa3244a71a4e308e0ab2f60e7ef4d021638632436ad7e17",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The rule \u201cTest discovery and investigation readiness through exercises or representative retrieval drills.\u201d is deterministic with a sealed matter and record inventory, versioned procedure, and exact authorization, custody, archive, or exercise evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test discovery and investigation readiness through exercises or representative retrieval drills.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3F523D13",
+      "revision": 1,
+      "semantic_sha256": "3f523d13810ae79c839eddf15d49bc21d086fe7bc2f8c0d4b96db31f3649004b",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The rule \u201cTrack time to locate, preserve, collect, validate, and produce required information.\u201d is deterministic with a sealed matter and record inventory, versioned procedure, and exact authorization, custody, archive, or exercise evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Track time to locate, preserve, collect, validate, and produce required information.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-436EB79A",
+      "revision": 1,
+      "semantic_sha256": "436eb79a5f7e12650e81cbd90ee8ccc1144394f0941d460da0403f741ce3e6dc",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule \u201cTreat inability to preserve or retrieve material records as a production and governance risk.\u201d is not deterministic because its full meaning requires qualified legal, investigation, records, privacy, proportionality, or governance authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    }
+  ]
+}

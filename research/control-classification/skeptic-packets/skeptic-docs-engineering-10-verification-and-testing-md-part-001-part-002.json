@@ -1,0 +1,786 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-10-verification-and-testing-md-part-001-part-002",
+  "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 31,
+  "controls": [
+    {
+      "control_id": "USEQ-5827E80F",
+      "revision": 1,
+      "semantic_sha256": "5827e80fcc820758fa89c618a025d014c96b56c276818b6842de0cc1acf5fdf6",
+      "statement": "Track aging, recurrence, escape phase, detection source, and corrective-action effectiveness.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 292
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Defect Management and Root-Cause Improvement",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Track aging, recurrence, escape phase, detection source, and corrective-action effectiveness.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Track aging, recurrence, escape phase, detection source, and corrective-action effectiveness.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1E7A9936",
+      "revision": 1,
+      "semantic_sha256": "1e7a9936daadb5b8f2ff3e763d8fec2e3d59d13cdfa04ea48801a83b977b84db",
+      "statement": "Update requirements, design, tests, monitoring, documentation, training, and review guidance.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 294
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Defect Management and Root-Cause Improvement",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Update requirements, design, tests, monitoring, documentation, training, and review guidance.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Update requirements, design, tests, monitoring, documentation, training, and review guidance.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2B757A11",
+      "revision": 1,
+      "semantic_sha256": "2b757a11496a5b2bc09906a3c35eefbf3bb2117f5023a2f81a97fe72c53e85c3",
+      "statement": "Close defects only when completion criteria and evidence are satisfied.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 295
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Defect Management and Root-Cause Improvement",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Close defects only when completion criteria and evidence are satisfied.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Close defects only when completion criteria and evidence are satisfied.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AE77FE17",
+      "revision": 1,
+      "semantic_sha256": "ae77fe17af44d2c04e4639c05c5db52dd901d922c922af926a0e6162b17b8f47",
+      "statement": "Preserve incident and defect history for trend analysis.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 296
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Defect Management and Root-Cause Improvement",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Preserve incident and defect history for trend analysis.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Preserve incident and defect history for trend analysis.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CE5D5E0A",
+      "revision": 1,
+      "semantic_sha256": "ce5d5e0aebfae659e7b2d8fc6b2fba97b48596c0f151ab711dcdae3a0e6c9c33",
+      "statement": "Define an assurance strategy that connects product risks, quality attributes, requirements, architecture, implementation, deployment, operations, and evidence rather than treating testing as an isolated phase.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 305
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance strategy, scope, and independence"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Define an assurance strategy that connects product risks, quality attributes, requirements, architecture, implementation, deployment, operations, and evidence rather than treating testing as an isolated phase.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define an assurance strategy that connects product risks, quality attributes, requirements, architecture, implementation, deployment, operations, and evidence rather than treating testing as an isolated phase.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-27F0F898",
+      "revision": 1,
+      "semantic_sha256": "27f0f89819a2fede12623019caf4bf1b8f70f3bffb8c900103fdce51adc54a42",
+      "statement": "Identify every system boundary, user group, role, tenant, device, interface, dependency, environment, data class, operational mode, and failure mode included in the assurance scope.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 306
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance strategy, scope, and independence"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Identify every system boundary, user group, role, tenant, device, interface, dependency, environment, data class, operational mode, and failure mode included in the assurance scope.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Identify every system boundary, user group, role, tenant, device, interface, dependency, environment, data class, operational mode, and failure mode included in the assurance scope.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D148EDEA",
+      "revision": 1,
+      "semantic_sha256": "d148edeab36c35be5661d276d5d7a7415245773c3261559909cfc8414ba9eb0e",
+      "statement": "Identify material exclusions, assumptions, test limitations, unavailable environments, inaccessible supplier components, and residual uncertainty.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 307
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance strategy, scope, and independence"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Identify material exclusions, assumptions, test limitations, unavailable environments, inaccessible supplier components, and residual uncertainty.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Identify material exclusions, assumptions, test limitations, unavailable environments, inaccessible supplier components, and residual uncertainty.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3C8C8565",
+      "revision": 1,
+      "semantic_sha256": "3c8c8565aab8207a325e73ff5e2c62d64b85bdbdc178ae84f510f17b9b46c39c",
+      "statement": "Define the required evidence for each lifecycle stage and quality attribute before implementation begins.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 312
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance strategy, scope, and independence"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Define the required evidence for each lifecycle stage and quality attribute before implementation begins.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define the required evidence for each lifecycle stage and quality attribute before implementation begins.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2FBAD908",
+      "revision": 1,
+      "semantic_sha256": "2fbad9086952ce814bb3abd24f594e7996730b78675ea5b152b958b53c56d574",
+      "statement": "Specify which assurance activities are automated, manually performed, independently witnessed, formally verified, externally assessed, or continuously monitored.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 313
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance strategy, scope, and independence"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Specify which assurance activities are automated, manually performed, independently witnessed, formally verified, externally assessed, or continuously monitored.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Specify which assurance activities are automated, manually performed, independently witnessed, formally verified, externally assessed, or continuously monitored.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F76F8CFD",
+      "revision": 1,
+      "semantic_sha256": "f76f8cfdc9dc0fbfabeb02e530d7679433a36d393428d943786c8cc4959cb747",
+      "statement": "Review the assurance strategy after material changes in architecture, risk, regulation, suppliers, users, deployment model, incident history, or threat landscape.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 315
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance strategy, scope, and independence"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Review the assurance strategy after material changes in architecture, risk, regulation, suppliers, users, deployment model, incident history, or threat landscape.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Review the assurance strategy after material changes in architecture, risk, regulation, suppliers, users, deployment model, incident history, or threat landscape.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-70949753",
+      "revision": 1,
+      "semantic_sha256": "70949753c934b1fa95b1d1f3f3f3be3ce4a7abc3f9c75529a5d1ea007f38d809",
+      "statement": "Document the conditions under which production evidence may supplement preproduction testing and the controls that make such testing safe.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 319
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance strategy, scope, and independence"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Document the conditions under which production evidence may supplement preproduction testing and the controls that make such testing safe.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document the conditions under which production evidence may supplement preproduction testing and the controls that make such testing safe.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BCD4F01B",
+      "revision": 1,
+      "semantic_sha256": "bcd4f01bb9b4ce499318afb8d0cb2381c987986a75d70cff327b16927e42da01",
+      "statement": "Identify the authoritative test basis for every behavior, including requirements, user needs, contracts, standards, policies, architecture decisions, threat models, data rules, and operational objectives.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 323
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test basis, requirements traceability, and executable acceptance"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Identify the authoritative test basis for every behavior, including requirements, user needs, contracts, standards, policies, architecture decisions, threat models, data rules, and operational objectives.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Identify the authoritative test basis for every behavior, including requirements, user needs, contracts, standards, policies, architecture decisions, threat models, data rules, and operational objectives.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-22497A56",
+      "revision": 1,
+      "semantic_sha256": "22497a56bb49ac03f65d41a15e56069dfd9ea6469bc031378affc3e58502dad2",
+      "statement": "Express critical requirements with measurable acceptance criteria, observable outcomes, tolerances, preconditions, and failure behavior.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 325
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test basis, requirements traceability, and executable acceptance"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Express critical requirements with measurable acceptance criteria, observable outcomes, tolerances, preconditions, and failure behavior.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Express critical requirements with measurable acceptance criteria, observable outcomes, tolerances, preconditions, and failure behavior.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-506562A9",
+      "revision": 1,
+      "semantic_sha256": "506562a9871180cd927e72ed26bcbb76c2b7611ef64a5b8ca731032b2283cd20",
+      "statement": "Trace every critical requirement and risk to one or more verification activities and every verification result back to the requirement or risk it addresses.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 326
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test basis, requirements traceability, and executable acceptance"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Trace every critical requirement and risk to one or more verification activities and every verification result back to the requirement or risk it addresses.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Trace every critical requirement and risk to one or more verification activities and every verification result back to the requirement or risk it addresses.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BD7F03F5",
+      "revision": 1,
+      "semantic_sha256": "bd7f03f5be2769ee6bd298022e224ed6c3ac085c8f01289bea3c3189e39844b0",
+      "statement": "Trace tests to the exact product version, configuration, feature flags, schema, data state, dependency versions, and environment evaluated.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 327
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test basis, requirements traceability, and executable acceptance"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Trace tests to the exact product version, configuration, feature flags, schema, data state, dependency versions, and environment evaluated.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Trace tests to the exact product version, configuration, feature flags, schema, data state, dependency versions, and environment evaluated.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2460BD77",
+      "revision": 1,
+      "semantic_sha256": "2460bd772c8fc693700e40feb34121d274a71dd677e924bfd1593db62d86a9ee",
+      "statement": "Identify requirements that cannot be fully tested and define alternative analysis, review, proof, monitoring, or operational controls.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 328
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test basis, requirements traceability, and executable acceptance"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Identify requirements that cannot be fully tested and define alternative analysis, review, proof, monitoring, or operational controls.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Identify requirements that cannot be fully tested and define alternative analysis, review, proof, monitoring, or operational controls.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-87D05822",
+      "revision": 1,
+      "semantic_sha256": "87d05822130f9995c16450ec973fa39f18e6da0d43bfc99f6d8ac3dfbaac640b",
+      "statement": "Include negative requirements and prohibited states, not only desired behavior.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 329
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test basis, requirements traceability, and executable acceptance"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Include negative requirements and prohibited states, not only desired behavior.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Include negative requirements and prohibited states, not only desired behavior.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A6BEC6D1",
+      "revision": 1,
+      "semantic_sha256": "a6bec6d17650a7abc45c44ed3613946b467c1679adcd4f7922c2471368cd8fa7",
+      "statement": "Include invariants that must remain true across operations, concurrency, retries, recovery, migration, and partial failure.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 330
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test basis, requirements traceability, and executable acceptance"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Include invariants that must remain true across operations, concurrency, retries, recovery, migration, and partial failure.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Include invariants that must remain true across operations, concurrency, retries, recovery, migration, and partial failure.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-ADEFDCCF",
+      "revision": 1,
+      "semantic_sha256": "adefdccf28a5d02f6f4966aa3cfd80fbeed53a438dc78ed46ba7eafb52e602a0",
+      "statement": "Include quantitative tolerances for accuracy, latency, capacity, availability, reliability, numerical error, and data quality where relevant.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 331
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test basis, requirements traceability, and executable acceptance"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Include quantitative tolerances for accuracy, latency, capacity, availability, reliability, numerical error, and data quality where relevant.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Include quantitative tolerances for accuracy, latency, capacity, availability, reliability, numerical error, and data quality where relevant.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-38D4FA5F",
+      "revision": 1,
+      "semantic_sha256": "38d4fa5f73a1fbbda048386ea83fb25e868549c0d24c6296be43c6fe2fcbf22a",
+      "statement": "Include accessibility, privacy, security, interoperability, supportability, and recoverability in acceptance criteria rather than treating them as optional audits.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 332
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test basis, requirements traceability, and executable acceptance"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Include accessibility, privacy, security, interoperability, supportability, and recoverability in acceptance criteria rather than treating them as optional audits.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Include accessibility, privacy, security, interoperability, supportability, and recoverability in acceptance criteria rather than treating them as optional audits.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-94DBFEBA",
+      "revision": 1,
+      "semantic_sha256": "94dbfeba8fedf78d5e0b20f8aa07cd75ac07a4adf1a0f15a106d00674bf4127a",
+      "statement": "Keep acceptance criteria independent of one implementation when the requirement is intended to remain technology-neutral.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 333
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test basis, requirements traceability, and executable acceptance"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Keep acceptance criteria independent of one implementation when the requirement is intended to remain technology-neutral.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Keep acceptance criteria independent of one implementation when the requirement is intended to remain technology-neutral.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-ED0E5F15",
+      "revision": 1,
+      "semantic_sha256": "ed0e5f157eace402f738cb29018d3f415bccae9db47bc6372c285126b3bb2599",
+      "statement": "Version and review the test basis so that requirement changes invalidate affected test evidence.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 334
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test basis, requirements traceability, and executable acceptance"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Version and review the test basis so that requirement changes invalidate affected test evidence.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Version and review the test basis so that requirement changes invalidate affected test evidence.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FD79CE2B",
+      "revision": 1,
+      "semantic_sha256": "fd79ce2b4e2aa01363d2fba16c6b5937dd5b382b8befc27fe1110bc8c179496b",
+      "statement": "Ensure examples and mockups do not silently replace normative behavior unless explicitly approved.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 335
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test basis, requirements traceability, and executable acceptance"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Ensure examples and mockups do not silently replace normative behavior unless explicitly approved.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Ensure examples and mockups do not silently replace normative behavior unless explicitly approved.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C15B6052",
+      "revision": 1,
+      "semantic_sha256": "c15b6052136775c4aaceac0918bbf4451c284e05b4fa7e6087c41fb6584ed0ea",
+      "statement": "Record unresolved questions and assumptions with owners and deadlines.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 336
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test basis, requirements traceability, and executable acceptance"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Record unresolved questions and assumptions with owners and deadlines.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Record unresolved questions and assumptions with owners and deadlines.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9262DCB4",
+      "revision": 1,
+      "semantic_sha256": "9262dcb4f7bb65a786b48c78ac47586f15041cb89bdc353dfb2d1a0ddb88a2e8",
+      "statement": "Define how each test determines correctness rather than assuming that successful execution implies a correct result.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 341
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test-oracle design and correctness of expected results"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Define how each test determines correctness rather than assuming that successful execution implies a correct result.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define how each test determines correctness rather than assuming that successful execution implies a correct result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-43727413",
+      "revision": 1,
+      "semantic_sha256": "43727413cb83244b84aaa361c4abd986493dd8b1a0f3a6d45819b4d9d7f730e5",
+      "statement": "Use independent reference calculations, authoritative data, specifications, invariants, models, or alternative implementations for high-impact outcomes.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 342
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test-oracle design and correctness of expected results"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Use independent reference calculations, authoritative data, specifications, invariants, models, or alternative implementations for high-impact outcomes.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use independent reference calculations, authoritative data, specifications, invariants, models, or alternative implementations for high-impact outcomes.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0F70FDC0",
+      "revision": 1,
+      "semantic_sha256": "0f70fdc0316cb044af0415642b3d3a87390386a3e6115a387e8ce367c96e8159",
+      "statement": "Avoid generating expected results with the same logic or defect-prone implementation being tested.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 343
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test-oracle design and correctness of expected results"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Avoid generating expected results with the same logic or defect-prone implementation being tested.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Avoid generating expected results with the same logic or defect-prone implementation being tested.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-44FB8B29",
+      "revision": 1,
+      "semantic_sha256": "44fb8b29496573a2cc89a3fd6f69d6e76de50f02725a3f3bc8faaf1cd9178960",
+      "statement": "Validate test oracles themselves through review, known examples, cross-checks, and controlled faults.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 344
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test-oracle design and correctness of expected results"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Validate test oracles themselves through review, known examples, cross-checks, and controlled faults.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Validate test oracles themselves through review, known examples, cross-checks, and controlled faults.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E9D5AC04",
+      "revision": 1,
+      "semantic_sha256": "e9d5ac04ba7cd9dac8e685581c2af34068761cb5e20b17d7717f027887394e85",
+      "statement": "Distinguish exact expected values from acceptable ranges, statistical distributions, temporal bounds, eventual outcomes, and qualitative judgments.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 345
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test-oracle design and correctness of expected results"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Distinguish exact expected values from acceptable ranges, statistical distributions, temporal bounds, eventual outcomes, and qualitative judgments.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Distinguish exact expected values from acceptable ranges, statistical distributions, temporal bounds, eventual outcomes, and qualitative judgments.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C33A820B",
+      "revision": 1,
+      "semantic_sha256": "c33a820b6c47ec7f6b78b75f890c43817e1a15dd3a9d03f2adf832588ba86b1b",
+      "statement": "Define oracles for intermediate state, side effects, messages, logs, external calls, audit records, notifications, and resource changes, not only final user-visible output.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 346
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test-oracle design and correctness of expected results"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Define oracles for intermediate state, side effects, messages, logs, external calls, audit records, notifications, and resource changes, not only final user-visible output.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define oracles for intermediate state, side effects, messages, logs, external calls, audit records, notifications, and resource changes, not only final user-visible output.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-352EFEBC",
+      "revision": 1,
+      "semantic_sha256": "352efebcfdf6570b8d4ad92e0c13c89d51c70adcde39350cfdf7044c2f6466bb",
+      "statement": "Verify that expected error type, message class, retryability, status, and recovery behavior are correct.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 347
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test-oracle design and correctness of expected results"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Verify that expected error type, message class, retryability, status, and recovery behavior are correct.” is deterministic with a sealed assurance scope, versioned test basis, and exact fixture, threshold, artifact, traceability, environment, or oracle evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Verify that expected error type, message class, retryability, status, and recovery behavior are correct.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    }
+  ]
+}

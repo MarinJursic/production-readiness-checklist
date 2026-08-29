@@ -1,0 +1,3841 @@
+{
+  "schema_version": "prc.control-classification-packet/v0.1",
+  "packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/engineering/01-governance-and-foundations.md",
+  "control_count": 250,
+  "controls": [
+    {
+      "control_id": "USEQ-B14FDA8E",
+      "revision": 1,
+      "semantic_sha256": "b14fda8e4182da0bcf230947ddabdde57df33b90c4a1970c0c0e4cca48546b30",
+      "statement": "Every control is assessed as **Pass**, **Fail**, **Blocked**, or **Not Applicable**.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 15
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Applicability and evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-97B150FF",
+      "revision": 1,
+      "semantic_sha256": "97b150ffafcc02d62fb13c246ce4d843b754e83cef27a7804b3d3d5c92c9a332",
+      "statement": "Every Not Applicable result has a written, reviewed rationale tied to system context.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 16
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Applicability and evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-64B6A3A8",
+      "revision": 1,
+      "semantic_sha256": "64b6a3a8e5cb1469147c025702de5df14e354e11f88ad97b69b055f9ba647ad3",
+      "statement": "Every applicable control has one accountable owner and current, reproducible evidence.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 17
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Applicability and evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-72088469",
+      "revision": 1,
+      "semantic_sha256": "720884699caa4f3da7a06a3dcb60e1036c266e300518bec8150aa93905d259e4",
+      "statement": "Evidence identifies the exact product, source revision, artifact, configuration, environment, data state, and date assessed.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 18
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Applicability and evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-CD2F9D5E",
+      "revision": 1,
+      "semantic_sha256": "cd2f9d5e5538b52a00bc975fd7fd0b1759f46b24b7eb27a86b3b9b8d38c56e2a",
+      "statement": "Material changes invalidate affected evidence and trigger proportionate reassessment.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 19
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Applicability and evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-6E42CC84",
+      "revision": 1,
+      "semantic_sha256": "6e42cc84a083ff7f759e233942627f95cfefeb51fdc453c5e7ee8afdfbe2bca4",
+      "statement": "Exceptions are time-bounded, risk-owned, monitored, documented, and automatically expire.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 20
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Applicability and evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-2798897B",
+      "revision": 1,
+      "semantic_sha256": "2798897b20a88f6e538349653587620ad339769bb3c1f7a060f6b5d6ef300732",
+      "statement": "A control operated by a supplier or platform remains in scope; responsibility may be shared but accountability is not outsourced.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 21
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Applicability and evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-B9A1C5BC",
+      "revision": 1,
+      "semantic_sha256": "b9a1c5bc6bc2926d5b70f0801c662500fb0c1020c49a6119ae710f4015ad8f3a",
+      "statement": "A serious unresolved failure in this category can block release regardless of aggregate checklist completion.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 22
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Applicability and evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-E8F15536",
+      "revision": 1,
+      "semantic_sha256": "e8f155367719f87d0b5ff4e8388f24b042086575dcf5bb4d7dbab7c21a3abc51",
+      "statement": "Establish the product, service, system, organization, release, and lifecycle boundaries being assessed.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 26
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5657EBD9",
+      "revision": 1,
+      "semantic_sha256": "5657ebd99b7702c998f3922425c28ae9f4985908f84154590dc8f32a60581ebd",
+      "statement": "List every component, repository, artifact, environment, data store, interface, user class, role, supplier, location, and operational process in scope.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 27
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C8C131DB",
+      "revision": 1,
+      "semantic_sha256": "c8c131dbcf62dc143000d0c4fb5fa0e3bce8aefb18a5bca2ab9501df508aa737",
+      "statement": "Identify which conditional-domain modules are triggered by capabilities, users, data, jurisdiction, contract, or risk.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 28
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-75497572",
+      "revision": 1,
+      "semantic_sha256": "75497572d7701e3e371e2c068cc88b7d1238d3e4e6f1f913d4a67cdef33355fb",
+      "statement": "Assess every checklist item; omission is not a valid status.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 29
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3A8A5F50",
+      "revision": 1,
+      "semantic_sha256": "3a8a5f50dfc15ce2eb44f8872b2d43adef8d049161d84e8159d5faa78a078925",
+      "statement": "Use only Pass, Fail, Blocked, or Not Applicable as assessment statuses.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 30
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-683B6299",
+      "revision": 1,
+      "semantic_sha256": "683b6299a875f18c939371a03646543aa9de0c024e1ba3b9947f44b102b11568",
+      "statement": "Treat Blocked as a failure for final approval unless an authorized decision explicitly states otherwise.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 31
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-8137C823",
+      "revision": 1,
+      "semantic_sha256": "8137c82342160beb5374640d3ec126de1aa89ece51100b0daf96c926bb9da899",
+      "statement": "Require a specific rationale for every Not Applicable decision.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 32
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D7F6AF3B",
+      "revision": 1,
+      "semantic_sha256": "d7f6af3b5e2b283d10491fdb0f1947a26cafa6542b11b846087eae22958da8b5",
+      "statement": "Reject Not Applicable rationales based only on inconvenience, cost, ownership elsewhere, tool limitations, or lack of implementation.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 33
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F0272B02",
+      "revision": 1,
+      "semantic_sha256": "f0272b0209e5bcce52770de0d10d279f2515d9346c2ea06fe1a24af1f46c7286",
+      "statement": "Assign one accountable owner to every applicable control and every exception.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 34
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-7375F93B",
+      "revision": 1,
+      "semantic_sha256": "7375f93b6a1bf168bc107d1904224176ab036d1311fddce328aaf2af431dcdc9",
+      "statement": "Identify the qualified reviewer and preserve reviewer independence for material controls.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 35
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5FB50410",
+      "revision": 1,
+      "semantic_sha256": "5fb504101a29a10d66ed3b640b4dbc7ea0d3bd1ecb41273b1571d0e2cd66dcb7",
+      "statement": "Tie evidence to the exact source revision, artifact digest, configuration, schema, flags, environment, dependency versions, and data state.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 36
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4004F77F",
+      "revision": 1,
+      "semantic_sha256": "4004f77f7e931386136a3cf0740b563eccc46019c1c22042594ae202bf70da46",
+      "statement": "Reject evidence from a different release or environment unless equivalence is demonstrated.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 37
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-59870003",
+      "revision": 1,
+      "semantic_sha256": "598700030bfcbbf0794e37f91b8702fcd08ef73ca71039e71dbfe0844a46a3c5",
+      "statement": "Define evidence validity periods according to change rate, threat change, supplier change, and control volatility.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 38
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-569D2912",
+      "revision": 1,
+      "semantic_sha256": "569d291252a85cb4c272aa53c7a68fec0b3d5dda0711e5b83cd5afc5a691e7ba",
+      "statement": "Invalidate evidence after any material change that can affect the conclusion.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 39
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-DB6244DF",
+      "revision": 1,
+      "semantic_sha256": "db6244dfc77b0fb12fa984b6d986a55d069541d0e91810024ff341ce7a3a5220",
+      "statement": "Use sampling only with a documented population, method, coverage, confidence, limitations, and risk rationale.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 40
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-22F43D4B",
+      "revision": 1,
+      "semantic_sha256": "22f43d4b744e5e28bf721468771697679a080afce8f9185b1d6d28cd4a5ac125",
+      "statement": "Prefer direct evidence of operation over policy statements, plans, intentions, or screenshots without context.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 41
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-56521362",
+      "revision": 1,
+      "semantic_sha256": "56521362e5527a3174dd4d9bb2efaa744ad4efa3f95a5d5fe0ad780d02f62cef",
+      "statement": "Require evidence that compensating controls work under the conditions in which the primary control is absent.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 42
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-41204E99",
+      "revision": 1,
+      "semantic_sha256": "41204e990e8abdc827313fa614886a2999d4eb8c2700f093ae8eb9dd9d42e21e",
+      "statement": "Record residual risk after controls, not only inherent risk before controls.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 43
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-97E5A6C1",
+      "revision": 1,
+      "semantic_sha256": "97e5a6c1735a705cbb1e1df01469b909953868870be323ccee3a901433f319b4",
+      "statement": "Prohibit averaging or scoring that allows a critical failure to be offset by unrelated passes.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 44
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-08DC1879",
+      "revision": 1,
+      "semantic_sha256": "08dc187948a5e0c76e1d5b930a9a055379244b2b7c31b03645c833438bac4c93",
+      "statement": "Define release-blocking and nonblocking severity before assessment results are known.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 45
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-01B6090D",
+      "revision": 1,
+      "semantic_sha256": "01b6090dc8156b2c2a13844c7512618cde3e83b3d85cf6462467d0b28d6552db",
+      "statement": "Escalate conflicts between quality attributes to an authorized multidisciplinary decision owner.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 46
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-08130ED1",
+      "revision": 1,
+      "semantic_sha256": "08130ed1aded29a2367fafd9b6ed9ab8cf582aaf3a1efcfcbad5b6412fb3c723",
+      "statement": "Preserve evidence in a durable, access-controlled, searchable, and immutable or tamper-evident form proportionate to risk.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 47
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3AC76487",
+      "revision": 1,
+      "semantic_sha256": "3ac764873e52a44ca7d62b6dfd89e33132ef76a4d28a0aec9dce28e23967689c",
+      "statement": "Protect assessment evidence from exposing secrets, personal data, vulnerabilities, or customer information.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 48
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0DAF2834",
+      "revision": 1,
+      "semantic_sha256": "0daf2834a153d0b5c4ce26fc998d22d654c549bb40103bde6a030959d875ad0e",
+      "statement": "Review provider and inherited controls while preserving customer-side responsibilities.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 49
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-38E46EF2",
+      "revision": 1,
+      "semantic_sha256": "38e46ef29e84e773588f3a501d2775e308acdd3013465f6fe415e8189b2e73df",
+      "statement": "Repeat assessment after incidents, escaped defects, major findings, jurisdiction changes, supplier changes, and significant scale change.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 50
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-35B75024",
+      "revision": 1,
+      "semantic_sha256": "35b750247d952a48751cf38cb6a41ea98ce4f2a508d7ffd7b18e323bb672db76",
+      "statement": "Maintain historical assessments with historical releases and do not overwrite past conclusions.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 51
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-24057956",
+      "revision": 1,
+      "semantic_sha256": "24057956cd702e80e6c8a7950aa1ec0d0be01f62a76f12e9bd8abf847c4b4b06",
+      "statement": "Use the corpus as a baseline and add domain, organization, product, and jurisdiction controls without silently deleting universal controls.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 52
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D135E510",
+      "revision": 1,
+      "semantic_sha256": "d135e5100c6cf7fe53acf9576b3c525f30182bd7a6d8bc942b19ee27ec6beac8",
+      "statement": "Control identifier and complete control text.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 56
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Minimum evidence record"
+      ]
+    },
+    {
+      "control_id": "USEQ-ECC769B0",
+      "revision": 1,
+      "semantic_sha256": "ecc769b04cb4d0a2a6015787b017a724712b8845c10ca2f84ace0230bb82c4d5",
+      "statement": "Assessment status.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 57
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Minimum evidence record"
+      ]
+    },
+    {
+      "control_id": "USEQ-4A3D6129",
+      "revision": 1,
+      "semantic_sha256": "4a3d61295f3a6014cae99492118e88cdc76ca8eba0d18cb437d188a8044c670b",
+      "statement": "Applicability rationale.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 58
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Minimum evidence record"
+      ]
+    },
+    {
+      "control_id": "USEQ-6D3C345E",
+      "revision": 1,
+      "semantic_sha256": "6d3c345e9ee15a4c909a22570ce3e0f6c6bcee3b6229081222b368e2900e21f9",
+      "statement": "Accountable owner.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 59
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Minimum evidence record"
+      ]
+    },
+    {
+      "control_id": "USEQ-8D90ACE7",
+      "revision": 1,
+      "semantic_sha256": "8d90ace7d7e7c0f3a7091562d1ab66a53c3e0d64cd2417b26956a8e29874dd8d",
+      "statement": "Implementing owner or team.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 60
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Minimum evidence record"
+      ]
+    },
+    {
+      "control_id": "USEQ-1015BBD0",
+      "revision": 1,
+      "semantic_sha256": "1015bbd003dcac2cd5c0df160dea67f613d3022cf2d5ef41d27c12e61df53420",
+      "statement": "Qualified reviewer and approval.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 61
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Minimum evidence record"
+      ]
+    },
+    {
+      "control_id": "USEQ-9FE92874",
+      "revision": 1,
+      "semantic_sha256": "9fe92874cd09be4abf4e62daac38a88a6b0ec23f73ec5c778359fb9627d0e1a2",
+      "statement": "Evidence location and access classification.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 62
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Minimum evidence record"
+      ]
+    },
+    {
+      "control_id": "USEQ-5E2E1223",
+      "revision": 1,
+      "semantic_sha256": "5e2e12238a5859fcdff40a96d901b166d149f83deca4bd79eed4261be0ff6a30",
+      "statement": "Evidence date and expiry.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 63
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Minimum evidence record"
+      ]
+    },
+    {
+      "control_id": "USEQ-F1DF60DF",
+      "revision": 1,
+      "semantic_sha256": "f1df60df706680b398094c01e68b2489cd16ec1fe8deafec61a368fad13042a2",
+      "statement": "System, component, environment, source revision, artifact digest, configuration, schema, flags, and dependency context.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 64
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Minimum evidence record"
+      ]
+    },
+    {
+      "control_id": "USEQ-F5B88725",
+      "revision": 1,
+      "semantic_sha256": "f5b88725ba00d94b35714b01790d61f91eb8834320d4bf26fa83dac7e5e50175",
+      "statement": "Test method, data, tools, versions, assumptions, and limitations.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 65
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Minimum evidence record"
+      ]
+    },
+    {
+      "control_id": "USEQ-C8D18281",
+      "revision": 1,
+      "semantic_sha256": "c8d182814571731ed05d820ec0c7d926ce367975b7470a37cddaea02873cf2e4",
+      "statement": "Observed result and threshold.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 66
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Minimum evidence record"
+      ]
+    },
+    {
+      "control_id": "USEQ-2989132F",
+      "revision": 1,
+      "semantic_sha256": "2989132f2584ffb0103edc55cacdaad184076b425108fb64e4dfb8e157fa33c6",
+      "statement": "Linked defect, risk, exception, incident, or corrective action.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 67
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Minimum evidence record"
+      ]
+    },
+    {
+      "control_id": "USEQ-89722999",
+      "revision": 1,
+      "semantic_sha256": "897229996b4da956a00b7b4e550a9b1f295a67de32de135020c79e21e08ec96f",
+      "statement": "Reassessment trigger.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 68
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Minimum evidence record"
+      ]
+    },
+    {
+      "control_id": "USEQ-9EEBC544",
+      "revision": 1,
+      "semantic_sha256": "9eebc5445ccdb22a0c3ced96a1fbdca8b3ffbf1ee5552583cb420f88b23af582",
+      "statement": "Identify the exact unmet control and why remediation is not complete.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 72
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Exception and risk-acceptance rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-62B384A0",
+      "revision": 1,
+      "semantic_sha256": "62b384a0670f8d6c6bad4c12277d617632a7fc710c5bb5ce268e9a9ba61bc281",
+      "statement": "Describe affected users, systems, data, operations, and business outcomes.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 73
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Exception and risk-acceptance rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4F2BE7CE",
+      "revision": 1,
+      "semantic_sha256": "4f2be7cecb9575c49c1ea38db7beaed62f4d81cd0ff2af3a0cb895c38d7c9dfc",
+      "statement": "Assess likelihood, impact, exploitability, reach, detectability, recoverability, and duration.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 74
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Exception and risk-acceptance rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D947B87C",
+      "revision": 1,
+      "semantic_sha256": "d947b87c3778182138512b2491d604491ea414f266432c6393cf3a89e387777b",
+      "statement": "Document existing and proposed compensating controls.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 75
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Exception and risk-acceptance rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-EB9477C4",
+      "revision": 1,
+      "semantic_sha256": "eb9477c48ec6ee4f2bf6e9508a2302bc2e571c326a58424c093071bf6d2ff083",
+      "statement": "Demonstrate compensating controls with current evidence.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 76
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Exception and risk-acceptance rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0D775A08",
+      "revision": 1,
+      "semantic_sha256": "0d775a08fd0875cb3bb14079c46eb270f617eccf280be7597f018e87a08390ad",
+      "statement": "Define monitoring and alert thresholds specific to the accepted risk.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 77
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Exception and risk-acceptance rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C208D665",
+      "revision": 1,
+      "semantic_sha256": "c208d6650320cb3c8f36bde9499368b6fe56b19482ccf4ffecfa330ea089e725",
+      "statement": "Assign an authorized risk owner with authority over the consequences.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 78
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Exception and risk-acceptance rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-27A4BEB6",
+      "revision": 1,
+      "semantic_sha256": "27a4beb650a1049db5bf8cc7b59fe23a1b7a7477af7df2918475314776e8942d",
+      "statement": "Set a remediation owner, funded plan, target date, and automatic expiry.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 79
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Exception and risk-acceptance rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4E4FE3D7",
+      "revision": 1,
+      "semantic_sha256": "4e4fe3d75e0872e71e7bde75d5538da39a5e510a69907472b9409f6a21c6b88a",
+      "statement": "Define conditions that immediately revoke the exception.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 80
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Exception and risk-acceptance rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-238A650D",
+      "revision": 1,
+      "semantic_sha256": "238a650dd4c377f6786dc41ec322f2325557f2c3fe71d79eb9eb7cebaf8bcaa3",
+      "statement": "Prevent exceptions from silently renewing or becoming permanent architecture.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 81
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Exception and risk-acceptance rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-EB30F057",
+      "revision": 1,
+      "semantic_sha256": "eb30f0576c5060707bd1ca031e5aadef0db17b17ac28404de07e45c86b4b0126",
+      "statement": "Review cumulative risk from multiple individually accepted exceptions.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 82
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Exception and risk-acceptance rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-841F7705",
+      "revision": 1,
+      "semantic_sha256": "841f7705224eb388416998053536aeeeaabf166adddedbcdb314f83d0896e260",
+      "statement": "Communicate the exception to operators, support, security, privacy, product, and customers where appropriate.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 83
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Exception and risk-acceptance rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-DAE761C7",
+      "revision": 1,
+      "semantic_sha256": "dae761c7dfd0ab31fbc93be2aefea403bb745404417cf2b89d154d486acfa549",
+      "statement": "Close the exception only after remediation and independent verification.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 84
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Exception and risk-acceptance rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-DBA8DAE2",
+      "revision": 1,
+      "semantic_sha256": "dba8dae20def014f20f110d248e54240637fa3c1292e6976ef186b44737ce30b",
+      "statement": "Select and rank quality attributes according to users, context, criticality, law, contract, threat, failure cost, and product strategy.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 92
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Quality planning rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-706F2C82",
+      "revision": 1,
+      "semantic_sha256": "706f2c826ea62e9a29108600a5ca9357315636fafff30662058511e195957ec7",
+      "statement": "Define measurable scenarios and acceptance thresholds for every material quality attribute.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 93
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Quality planning rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-8CB19F4F",
+      "revision": 1,
+      "semantic_sha256": "8cb19f4fb9f4b8cb0febe12d8f22e64c88c23fcd1b0102c555b29cb132f06e78",
+      "statement": "State trade-offs explicitly and prevent one quality attribute from being optimized by silently harming another.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 94
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Quality planning rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-8D9F2BD3",
+      "revision": 1,
+      "semantic_sha256": "8d9f2bd38d274ff45c715c01099ee3ba9a4274b79b2b0190fc0517e1efe8862a",
+      "statement": "Use both product-quality evidence and real-world quality-in-use evidence.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 95
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Quality planning rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-03A9E0A8",
+      "revision": 1,
+      "semantic_sha256": "03a9e0a8173fc0b3beb1161ae77af8095d9b3e936c01e1fa827e3b0d504f10c8",
+      "statement": "Measure distributions, edge populations, and degraded conditions rather than averages alone.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 96
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Quality planning rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6DD9714D",
+      "revision": 1,
+      "semantic_sha256": "6dd9714d7742673b0c2edcc76ea42981788c2aa42932e02f1e17446a83bde88d",
+      "statement": "Define quality budgets and regression limits before implementation and launch.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 97
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Quality planning rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F30FF972",
+      "revision": 1,
+      "semantic_sha256": "f30ff97211f94d58deb4450dc6d71d7c7dd1dcf306e56a4042bca5e62d38819f",
+      "statement": "Assign ownership for each quality objective and each cross-attribute conflict.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 98
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Quality planning rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A5FC207A",
+      "revision": 1,
+      "semantic_sha256": "a5fc207a529be59a0c897ab7bc9987b59474cad3dc5c00263b3e21ee31ab5f04",
+      "statement": "Maintain traceability from quality objectives to architecture tactics, code, tests, monitoring, and operational decisions.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 99
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Quality planning rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4D15E15B",
+      "revision": 1,
+      "semantic_sha256": "4d15e15b8af82052de32e2c368358ac213e03d95cc0669840975bd15978414d1",
+      "statement": "Review quality objectives after material change, incident, scale increase, new user population, or new regulation.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 100
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Quality planning rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0EDC049D",
+      "revision": 1,
+      "semantic_sha256": "0edc049d8d55db4df25a0ae995952cb46de92b92c149be974f4d65ab4f1c999d",
+      "statement": "Do not declare overall quality from a single metric, tool score, certification, test level, or absence of reported defects.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 101
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Quality planning rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-086B1E7E",
+      "revision": 1,
+      "semantic_sha256": "086b1e7e557872538c71807388d54cfa2999aefb394c3aecbdc288e4faaed0d7",
+      "statement": "All required functions are present for the intended tasks and contexts.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 107
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Functional suitability"
+      ]
+    },
+    {
+      "control_id": "USEQ-96E895D9",
+      "revision": 1,
+      "semantic_sha256": "96e895d9fba964157d48dab525542ea76e74619fc7f35fb42c0e781298811fcb",
+      "statement": "Results, calculations, state transitions, permissions, and side effects are correct.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 108
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Functional suitability"
+      ]
+    },
+    {
+      "control_id": "USEQ-4386DEDD",
+      "revision": 1,
+      "semantic_sha256": "4386dedda68a4b0b6c20bbac30cd6a9541b4f40770de8021779eaded790b5392",
+      "statement": "Functions enable users to complete intended tasks without unnecessary or inappropriate behavior.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 109
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Functional suitability"
+      ]
+    },
+    {
+      "control_id": "USEQ-AF45F27F",
+      "revision": 1,
+      "semantic_sha256": "af45f27f17e44973fe130c9f66f697713aedcc426fbbd35ee7f6c340590f06c6",
+      "statement": "Exceptional, degraded, recovery, cancellation, and prohibited behavior is defined and verified.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 110
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Functional suitability"
+      ]
+    },
+    {
+      "control_id": "USEQ-83E0B216",
+      "revision": 1,
+      "semantic_sha256": "83e0b2166af8df276917e9c1ea9bf21ad7e463fc2f72f1ec28431c5d6e941cfa",
+      "statement": "Latency, throughput, responsiveness, and completion time meet defined objectives under specified conditions.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 114
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Performance efficiency"
+      ]
+    },
+    {
+      "control_id": "USEQ-F3FC8AD5",
+      "revision": 1,
+      "semantic_sha256": "f3fc8ad5157bffc8a3d6805231e9718a33f76d142e1ee9ad9814d04020697403",
+      "statement": "Compute, memory, storage, network, energy, and external-service use are proportionate to outcomes.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 115
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Performance efficiency"
+      ]
+    },
+    {
+      "control_id": "USEQ-31D05A91",
+      "revision": 1,
+      "semantic_sha256": "31d05a9195c64b96933b58393850c3a018db859fef0e7b740358aae72b523d6e",
+      "statement": "Capacity limits and safe overload behavior are known and tested.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 116
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Performance efficiency"
+      ]
+    },
+    {
+      "control_id": "USEQ-769066B0",
+      "revision": 1,
+      "semantic_sha256": "769066b0d089a6ea4a1dea4e50830aaec96cb1a5ca537f80595ab168638e8dfd",
+      "statement": "Performance remains acceptable across representative devices, networks, data volumes, tenants, and failure conditions.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 117
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Performance efficiency"
+      ]
+    },
+    {
+      "control_id": "USEQ-5104BA7F",
+      "revision": 1,
+      "semantic_sha256": "5104ba7f3dfb3a2f4255c7ffbcd26f7024e7afa6e83523a8e48736358f6959ff",
+      "statement": "The product coexists safely with other software, workloads, users, and tenants in shared environments.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 121
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Compatibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-09B7C249",
+      "revision": 1,
+      "semantic_sha256": "09b7c249140a46a3ea90d399a1177b4c7c6b96cb55ce74cd5c6c094bd3462594",
+      "statement": "Information exchange preserves syntax, semantics, precision, identity, ordering, privacy, and authorization.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 122
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Compatibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-2DF76BC4",
+      "revision": 1,
+      "semantic_sha256": "2df76bc4a1b49588a2de2cb6b45577137d024d1c2e3755e2c1ca24fef2e57ebe",
+      "statement": "Supported versions, formats, clients, protocols, and environments interoperate as promised.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 123
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Compatibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-BB1B1C78",
+      "revision": 1,
+      "semantic_sha256": "bb1b1c784a7e6f4425d1368159e3e27d4eab022db1fec561cfb43ab9aa30d689",
+      "statement": "Incompatible changes use controlled negotiation, migration, deprecation, and retirement.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 124
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Compatibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-311C0D5C",
+      "revision": 1,
+      "semantic_sha256": "311c0d5cbe6e6c6c0dc810d25db073c2344d2c24fd6e7afbbb21f5804d325e62",
+      "statement": "Users can recognize whether the product is appropriate to their goal.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 128
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Interaction capability"
+      ]
+    },
+    {
+      "control_id": "USEQ-2AAD63D5",
+      "revision": 1,
+      "semantic_sha256": "2aad63d586219ce4042bf1cb6cd45977c05ac87a4cb043e4e1e6f4f7d881ce30",
+      "statement": "Users can learn and operate the product effectively with reasonable effort.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 129
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Interaction capability"
+      ]
+    },
+    {
+      "control_id": "USEQ-DB083136",
+      "revision": 1,
+      "semantic_sha256": "db0831367f4b3b46e2567f55059d3d0d31a078bd331a18ef1c6aef73d2fec6be",
+      "statement": "The product prevents, identifies, explains, and supports recovery from user error.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 130
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Interaction capability"
+      ]
+    },
+    {
+      "control_id": "USEQ-E539A311",
+      "revision": 1,
+      "semantic_sha256": "e539a311395e43385cd1a8c064461a3cf6d2057f78a90f5cc303d234de52e04e",
+      "statement": "The experience is inclusive across relevant abilities, language, literacy, device, input, and context.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 131
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Interaction capability"
+      ]
+    },
+    {
+      "control_id": "USEQ-1865C898",
+      "revision": 1,
+      "semantic_sha256": "1865c898d679aba54beb7cfd772a85cdd29a9612ec7b0352b07eed0999965a9f",
+      "statement": "Help, feedback, status, and self-description make the system understandable.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 132
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Interaction capability"
+      ]
+    },
+    {
+      "control_id": "USEQ-4BD5F349",
+      "revision": 1,
+      "semantic_sha256": "4bd5f349cf423be2d62285ed990f7dbf40f1bf4e9e6f214b68898e82730b14ad",
+      "statement": "Engagement patterns preserve autonomy and do not manipulate users.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 133
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Interaction capability"
+      ]
+    },
+    {
+      "control_id": "USEQ-C3A94BE9",
+      "revision": 1,
+      "semantic_sha256": "c3a94be9cd69fabfbb7c0b2cebd4178bdabad79beaf1cd3b520dc65730a8eeb8",
+      "statement": "The product performs required functions without unacceptable faults under specified conditions.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 137
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Reliability"
+      ]
+    },
+    {
+      "control_id": "USEQ-427C1469",
+      "revision": 1,
+      "semantic_sha256": "427c14698444d48f6df8d6e17f4489a80a5e80704973e94871b798999af85206",
+      "statement": "The service is available according to user-centric objectives.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 138
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Reliability"
+      ]
+    },
+    {
+      "control_id": "USEQ-02155A34",
+      "revision": 1,
+      "semantic_sha256": "02155a345e284ae6045004cc3784646fd7fa7d5d156beedb9b67f56f306a55ee",
+      "statement": "Faults are contained and do not cascade unnecessarily.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 139
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Reliability"
+      ]
+    },
+    {
+      "control_id": "USEQ-1156B06C",
+      "revision": 1,
+      "semantic_sha256": "1156b06c5e170587cae36d98b356419ca7348ff96b6e3284e86cd9642b75fcac",
+      "statement": "State and service can recover within approved time, point, integrity, and continuity objectives.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 140
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Reliability"
+      ]
+    },
+    {
+      "control_id": "USEQ-6DAFFC83",
+      "revision": 1,
+      "semantic_sha256": "6daffc8326844ec5e7994a9df883eee38bb71a7e699df8f309c54d5f725c9579",
+      "statement": "Reliability remains valid during deployment, dependency failure, overload, maintenance, and disaster scenarios.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 141
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Reliability"
+      ]
+    },
+    {
+      "control_id": "USEQ-69A431A2",
+      "revision": 1,
+      "semantic_sha256": "69a431a2c6a8c031c800b8ae822ffdaf89f50e7bf6f7fcbddff74a3f9c19df57",
+      "statement": "Information and operations are confidential to unauthorized parties.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 145
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Security"
+      ]
+    },
+    {
+      "control_id": "USEQ-ED5F3FB0",
+      "revision": 1,
+      "semantic_sha256": "ed5f3fb08685c340eb3e305db91fa2484ba10e2f8882d6d72224a2bfb42cb66d",
+      "statement": "Data, code, configuration, identities, and actions retain integrity.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 146
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Security"
+      ]
+    },
+    {
+      "control_id": "USEQ-971B3218",
+      "revision": 1,
+      "semantic_sha256": "971b3218ca64e7692796de3f1037a72671324baaf81b7d489baf75a83f333da4",
+      "statement": "Material actions are attributable and appropriately auditable.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 147
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Security"
+      ]
+    },
+    {
+      "control_id": "USEQ-88D972E4",
+      "revision": 1,
+      "semantic_sha256": "88d972e497b5d128e67f73bad3ce9e3c07dd684c036509ac77b52853ea0d9bb4",
+      "statement": "Identities, services, devices, artifacts, and messages are authenticated at required assurance.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 148
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Security"
+      ]
+    },
+    {
+      "control_id": "USEQ-E3BBAE93",
+      "revision": 1,
+      "semantic_sha256": "e3bbae9309b7cc1dc1972f15d44746b6afd6359756633a639887128e376aded9",
+      "statement": "The product resists attack, abuse, control bypass, compromise, and unauthorized recovery.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 149
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Security"
+      ]
+    },
+    {
+      "control_id": "USEQ-CC0B63FE",
+      "revision": 1,
+      "semantic_sha256": "cc0b63fe147cceb6f0dba075bd28a5e932c61b36dae26f79b33e43656424b7d6",
+      "statement": "Security remains effective across development, supply chain, deployment, operation, and retirement.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 150
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Security"
+      ]
+    },
+    {
+      "control_id": "USEQ-72137EBC",
+      "revision": 1,
+      "semantic_sha256": "72137ebcaa2af94dadd415d1417a357d473c1fb93ad892bfa2b116828c5a4437",
+      "statement": "The system is modular enough to localize understanding, change, testing, and failure.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 154
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Maintainability"
+      ]
+    },
+    {
+      "control_id": "USEQ-72AA3B4E",
+      "revision": 1,
+      "semantic_sha256": "72aa3b4e28845920a8f6a0972006556fd0a762a9c2cdbf70a10be9cc0638f7c3",
+      "statement": "Useful assets can be reused without unsafe coupling or semantic mismatch.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 155
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Maintainability"
+      ]
+    },
+    {
+      "control_id": "USEQ-636F1705",
+      "revision": 1,
+      "semantic_sha256": "636f17059df3d2e5248ffb00eb0be85188fff849442ba5f4324e1554fa594dc4",
+      "statement": "Defects, behavior, dependencies, state, and performance can be analyzed efficiently.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 156
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Maintainability"
+      ]
+    },
+    {
+      "control_id": "USEQ-D5503076",
+      "revision": 1,
+      "semantic_sha256": "d5503076f7906a8bf9e0d95a8b63a51d87b529654f49eb2474b1dbb97b63d5ad",
+      "statement": "Changes can be implemented, reviewed, verified, deployed, and reversed safely.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 157
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Maintainability"
+      ]
+    },
+    {
+      "control_id": "USEQ-2A27E944",
+      "revision": 1,
+      "semantic_sha256": "2a27e944e0e81eb81d959094e31937633edff4b647ccbb13a339dad6142f6361",
+      "statement": "Ownership, documentation, tests, tooling, and environments support future maintainers.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 158
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Maintainability"
+      ]
+    },
+    {
+      "control_id": "USEQ-0BDD9349",
+      "revision": 1,
+      "semantic_sha256": "0bdd9349079bd1b21bbb345e263d0df9557f736a704c34c58002b43aaeed7b24",
+      "statement": "The product can adapt to required environments, users, workloads, and configuration without uncontrolled redesign.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 162
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Flexibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-B0202719",
+      "revision": 1,
+      "semantic_sha256": "b0202719038b45cef070a1e022bcc331b6467564211c46ebcaa41df00637afbe",
+      "statement": "The product scales to required demand while preserving quality and safe overload behavior.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 163
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Flexibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-2329A8C0",
+      "revision": 1,
+      "semantic_sha256": "2329a8c0651c27ba17bae6c494bee13e278156a944b8b79d77b1fa0dd0e28963",
+      "statement": "Installation, deployment, configuration, upgrade, and migration are reliable and supportable.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 164
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Flexibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-3F04BFB9",
+      "revision": 1,
+      "semantic_sha256": "3f04bfb942ea8b9524602605e807e99374453674b12b90bf3cf332ad0f69ca9e",
+      "statement": "Critical components and providers can be replaced where continuity or strategy requires it.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 165
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Flexibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-98F2CE0F",
+      "revision": 1,
+      "semantic_sha256": "98f2ce0f3909af500f01fd48ad10882bf0359dc36981a1821f76755f050011e4",
+      "statement": "The product is testable through controllable inputs, observable outputs, isolation, and reproducibility.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 166
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Flexibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-C5CB4E01",
+      "revision": 1,
+      "semantic_sha256": "c5cb4e011ceac9a4bb25d14188d87c976b48faacf69213832e2d1e18679d5857",
+      "statement": "Operational constraints prevent the system from entering unacceptable hazardous states.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 170
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Safety"
+      ]
+    },
+    {
+      "control_id": "USEQ-543A1786",
+      "revision": 1,
+      "semantic_sha256": "543a1786c37cb43389d593c3d95ad7596cd40eb9eca7831020bec762ba49d43e",
+      "statement": "Foreseeable hazards and affected people, property, business, software, and environment are identified.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 171
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Safety"
+      ]
+    },
+    {
+      "control_id": "USEQ-0737D264",
+      "revision": 1,
+      "semantic_sha256": "0737d264df8bcb73dbacb4b873861837e77c0f89617369b5554bb0e1fe2c911d",
+      "statement": "The product fails safe or limits harm when required assumptions or dependencies fail.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 172
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Safety"
+      ]
+    },
+    {
+      "control_id": "USEQ-1042DCD3",
+      "revision": 1,
+      "semantic_sha256": "1042dcd389c79bb02d53d8e13c5126b737ed32c58ae9e1ec8cd8285119df4414",
+      "statement": "Users and operators receive timely, perceptible, actionable warnings.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 173
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Safety"
+      ]
+    },
+    {
+      "control_id": "USEQ-8F9C2013",
+      "revision": 1,
+      "semantic_sha256": "8f9c2013972f4b591706ef200fd4a1ac7e49827bd0291b45ea7251c3bf01cca9",
+      "statement": "Integration with other systems does not invalidate safety controls.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 174
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Safety"
+      ]
+    },
+    {
+      "control_id": "USEQ-709154B4",
+      "revision": 1,
+      "semantic_sha256": "709154b4340a98cbe14b04b6418b62a0371dc0e39ead755a80a0f6c6ef26ed06",
+      "statement": "Residual safety risk is independently reviewed and accepted only by authorized leadership.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 175
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Safety"
+      ]
+    },
+    {
+      "control_id": "USEQ-B878B774",
+      "revision": 1,
+      "semantic_sha256": "b878b7742aa1458cd33746f9bc4a6b208e8f3f10a007c9e22224ed150c4740d4",
+      "statement": "Representative users achieve intended goals accurately and completely.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 179
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Quality in use"
+      ]
+    },
+    {
+      "control_id": "USEQ-0E7B4A58",
+      "revision": 1,
+      "semantic_sha256": "0e7b4a581516f5c067fef2a2b06280b8d6ad957898adea9c344dbdc9beac5eb4",
+      "statement": "Users achieve goals with acceptable time, effort, cognitive load, cost, and resource use.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 180
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Quality in use"
+      ]
+    },
+    {
+      "control_id": "USEQ-6997B2CE",
+      "revision": 1,
+      "semantic_sha256": "6997b2ceb9f107a7795ce5fd2245ab1259ca7e3119ad9c9b6bf71f56bad7810d",
+      "statement": "Users experience acceptable trust, comfort, usefulness, and satisfaction without manipulation.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 181
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Quality in use"
+      ]
+    },
+    {
+      "control_id": "USEQ-15BC2C00",
+      "revision": 1,
+      "semantic_sha256": "15bc2c002ceffe500dfe178f39ada8b37c7452624216ff158291d7b1866f10a6",
+      "statement": "Use avoids unacceptable economic, health, safety, privacy, security, social, and environmental risk.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 182
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Quality in use"
+      ]
+    },
+    {
+      "control_id": "USEQ-09CD9184",
+      "revision": 1,
+      "semantic_sha256": "09cd9184b418468fa079de85ae4868885574bd7ff7da8f1f58031422a1458f8b",
+      "statement": "Quality remains acceptable across the full range of intended and foreseeable contexts.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 183
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Quality in use"
+      ]
+    },
+    {
+      "control_id": "USEQ-3980950F",
+      "revision": 1,
+      "semantic_sha256": "3980950fb93c1d45e985d75f10afb718fb86227ba6d14ab4f9a7e5f4f1390049",
+      "statement": "The product supports users when context changes through interruption, disability, stress, low connectivity, device limitation, or emergency.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 184
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Quality in use"
+      ]
+    },
+    {
+      "control_id": "USEQ-3FCB5EB3",
+      "revision": 1,
+      "semantic_sha256": "3fcb5eb3058593e19b9f2017ccd3cb335e4528c09291108058e9db7921431f8f",
+      "statement": "Real-world outcomes are monitored and used to revise product-quality assumptions.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 185
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Quality in use"
+      ]
+    },
+    {
+      "control_id": "USEQ-E2576411",
+      "revision": 1,
+      "semantic_sha256": "e2576411f87f400f0d7747c70cb59c3e2557f804b14bc49e70e50b5e93e723b8",
+      "statement": "Treat this as a broad baseline catalog, not a claim that every listed reference applies to every product.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 193
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Standards and Frameworks Crosswalk",
+        "How to use this crosswalk"
+      ]
+    },
+    {
+      "control_id": "USEQ-429A53EC",
+      "revision": 1,
+      "semantic_sha256": "429a53ec2ec10cc058b088c2d15ea3f188656162d63aa3dc9f579d1a184bea61",
+      "statement": "Create an applicability register based on system type, users, data, jurisdictions, sector, contracts, safety impact, suppliers, and deployment model.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 194
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Standards and Frameworks Crosswalk",
+        "How to use this crosswalk"
+      ]
+    },
+    {
+      "control_id": "USEQ-42342CFA",
+      "revision": 1,
+      "semantic_sha256": "42342cfac9cb5442e03ccd5a12ceda4b3fd823e75eb93460aeaeed5fb28e1470",
+      "statement": "Verify the current published edition directly with the issuing body before audit, procurement, certification, or compliance claims.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 195
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Standards and Frameworks Crosswalk",
+        "How to use this crosswalk"
+      ]
+    },
+    {
+      "control_id": "USEQ-16C2ACD8",
+      "revision": 1,
+      "semantic_sha256": "16c2acd899e54714758fccdf78f1588218ad517e41313150c71196feac4bca12",
+      "statement": "Distinguish published standards from drafts, committee drafts, proposed revisions, guidance, and awareness lists.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 196
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Standards and Frameworks Crosswalk",
+        "How to use this crosswalk"
+      ]
+    },
+    {
+      "control_id": "USEQ-AC5D537E",
+      "revision": 1,
+      "semantic_sha256": "ac5d537e61997fac08ff5666ed1ec6196ba206637d690796329bc37316cd095c",
+      "statement": "Obtain and use the authoritative text when conformance is required; this corpus does not reproduce copyrighted requirements.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 197
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Standards and Frameworks Crosswalk",
+        "How to use this crosswalk"
+      ]
+    },
+    {
+      "control_id": "USEQ-1F1280E6",
+      "revision": 1,
+      "semantic_sha256": "1f1280e6ddfdd695c3b74ee7add598ade8ab3a0b1e0a38b1be3215a87798df0e",
+      "statement": "Add sector-specific standards for medical, automotive, aviation, rail, industrial, financial, government, telecommunications, energy, education, and other regulated domains.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 198
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Standards and Frameworks Crosswalk",
+        "How to use this crosswalk"
+      ]
+    },
+    {
+      "control_id": "USEQ-46BFC86D",
+      "revision": 1,
+      "semantic_sha256": "46bfc86d2f885585b2ca722d564fc5621208a1da1ee46de5bbd2ab93952f44d4",
+      "statement": "Record which clauses or outcomes map to local controls, owners, evidence, and exceptions.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 199
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Standards and Frameworks Crosswalk",
+        "How to use this crosswalk"
+      ]
+    },
+    {
+      "control_id": "USEQ-9E85DA5A",
+      "revision": 1,
+      "semantic_sha256": "9e85da5a014927c1cb31806bfa4bbc52d14e38f986846367d47fe906e855b292",
+      "statement": "Review the register at least annually and after new jurisdictions, products, data, incidents, contracts, or standards revisions.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 200
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Standards and Frameworks Crosswalk",
+        "How to use this crosswalk"
+      ]
+    },
+    {
+      "control_id": "USEQ-5BE34669",
+      "revision": 1,
+      "semantic_sha256": "5be346697beab8b948308e41a7a06234f7ac82d7b2f371fdc92b69282f8a5777",
+      "statement": "The user, business, regulatory, risk, or platform outcome is explicit.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 210
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Product and requirements"
+      ]
+    },
+    {
+      "control_id": "USEQ-CD293CE7",
+      "revision": 1,
+      "semantic_sha256": "cd293ce7bfa220a86ecca61f416a60e25f60f88733757b1863d5c7d7c1f83201",
+      "statement": "Scope, non-scope, assumptions, constraints, dependencies, and acceptance criteria are approved.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 211
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Product and requirements"
+      ]
+    },
+    {
+      "control_id": "USEQ-C7ED66D6",
+      "revision": 1,
+      "semantic_sha256": "c7ed66d6a1ed74d19951b9cef8dd005516e40dc6bc133887e856e15247f8665f",
+      "statement": "Functional and quality requirements are testable and traceable.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 212
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Product and requirements"
+      ]
+    },
+    {
+      "control_id": "USEQ-FAB421AD",
+      "revision": 1,
+      "semantic_sha256": "fab421ad61128d5dd313acbdd152b71bc11da499e48d956ffc5e52aaf215cea3",
+      "statement": "Relevant user research and stakeholder validation are complete.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 213
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Product and requirements"
+      ]
+    },
+    {
+      "control_id": "USEQ-4F358A61",
+      "revision": 1,
+      "semantic_sha256": "4f358a61c7d9df0780d4d904c9810e0068c6241b498c50df6ed2377f2e0adf70",
+      "statement": "Privacy, security, accessibility, reliability, data, support, and lifecycle requirements are included.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 214
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Product and requirements"
+      ]
+    },
+    {
+      "control_id": "USEQ-8016290C",
+      "revision": 1,
+      "semantic_sha256": "8016290c29da26c35f39576e8ec1a7dbe9939a222a8b1cf3722f913a011d03e5",
+      "statement": "The design satisfies requirements with justified trade-offs and no unnecessary complexity.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 218
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Design and architecture"
+      ]
+    },
+    {
+      "control_id": "USEQ-F40624A5",
+      "revision": 1,
+      "semantic_sha256": "f40624a546f904be254b83048d5f41dae916286f66c93173a3915c42922b81ee",
+      "statement": "System, data, identity, trust, state, failure, operational, and migration implications are understood.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 219
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Design and architecture"
+      ]
+    },
+    {
+      "control_id": "USEQ-FE5FCB37",
+      "revision": 1,
+      "semantic_sha256": "fe5fcb3767e5e58baa497ed57644beea3489c3631b4c0ecc83fa83cd4cfe4700",
+      "statement": "Material decisions and alternatives are recorded.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 220
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Design and architecture"
+      ]
+    },
+    {
+      "control_id": "USEQ-41DCA413",
+      "revision": 1,
+      "semantic_sha256": "41dca413b24350cc77eb04261e65971af74e4c788c20f41c0a7ec4c2281df38e",
+      "statement": "Threat, abuse, privacy, accessibility, and failure analysis is complete.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 221
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Design and architecture"
+      ]
+    },
+    {
+      "control_id": "USEQ-4E5214F8",
+      "revision": 1,
+      "semantic_sha256": "4e5214f86dcc66c75757157dc31ca6397e61a85f57195374d139b2e7a33b4374",
+      "statement": "Compatibility, rollout, rollback or roll-forward, and retirement are designed.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 222
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Design and architecture"
+      ]
+    },
+    {
+      "control_id": "USEQ-46552445",
+      "revision": 1,
+      "semantic_sha256": "465524451a86c5de8599fa4d4a70b994d40130b0b8caa9fee373a5a4ec2283b5",
+      "statement": "Code is correct, readable, cohesive, appropriately simple, and follows approved standards.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 226
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Implementation"
+      ]
+    },
+    {
+      "control_id": "USEQ-9FE5701E",
+      "revision": 1,
+      "semantic_sha256": "9fe5701e18a3be7f38c26ccaeba3684fd14f6019d00878e96e8f7c3cb9816bc9",
+      "statement": "SOLID, DRY, KISS, YAGNI, reuse, and abstraction principles are applied contextually rather than mechanically.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 227
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Implementation"
+      ]
+    },
+    {
+      "control_id": "USEQ-F83FD40A",
+      "revision": 1,
+      "semantic_sha256": "f83fd40ae4a605400a52d259295091fd3639be41764ed17cc5e5f3bd0a6814c9",
+      "statement": "Input, output, identity, authorization, errors, concurrency, resources, configuration, and secrets are handled safely.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 228
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Implementation"
+      ]
+    },
+    {
+      "control_id": "USEQ-2282B35E",
+      "revision": 1,
+      "semantic_sha256": "2282b35e9fdee8dde31dafe74c00030c5cf7c419d168d632254318ebdb7279c1",
+      "statement": "Dependencies are necessary, approved, supported, licensed, pinned, inventoried, and monitored.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 229
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Implementation"
+      ]
+    },
+    {
+      "control_id": "USEQ-00E007D5",
+      "revision": 1,
+      "semantic_sha256": "00e007d5328fe0ab8ba7321799ec14bd38704e31fe9ca4dfe1be3c7683d5d9da",
+      "statement": "Dead code, debug paths, temporary privileges, stale flags, and obsolete compatibility are removed or explicitly lifecycle-managed.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 230
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Implementation"
+      ]
+    },
+    {
+      "control_id": "USEQ-4F6B6D16",
+      "revision": 1,
+      "semantic_sha256": "4f6b6d16215f0c4859b3f424c5409731b6f0a5fcee62f4b163641d8c02f05757",
+      "statement": "Unit, component, integration, contract, system, acceptance, regression, and exploratory testing are complete as applicable.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 234
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Verification"
+      ]
+    },
+    {
+      "control_id": "USEQ-7173A5C6",
+      "revision": 1,
+      "semantic_sha256": "7173a5c6fdcc9e47905eadd2d48ecc93f0c85b1c8f1cd16a19f6c38b3b1b1811",
+      "statement": "Positive, negative, boundary, race, retry, failure, recovery, migration, and misuse cases are covered.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 235
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Verification"
+      ]
+    },
+    {
+      "control_id": "USEQ-C2EE6972",
+      "revision": 1,
+      "semantic_sha256": "c2ee6972808d197c314088c709ea37e055bad8498c00b058a5000b11e0b85bfb",
+      "statement": "Security, privacy, accessibility, performance, reliability, compatibility, and data quality objectives have evidence.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 236
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Verification"
+      ]
+    },
+    {
+      "control_id": "USEQ-F266538C",
+      "revision": 1,
+      "semantic_sha256": "f266538c4ae034f54eadd6aceb0eaa590663c55e07e95eb9323d6fced68f01bd",
+      "statement": "Tests can fail for the defects they claim to detect and are not silently flaky or skipped.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 237
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Verification"
+      ]
+    },
+    {
+      "control_id": "USEQ-21B6514F",
+      "revision": 1,
+      "semantic_sha256": "21b6514fd63e6baa271598d0c774d33418eb1ca91709fd2ce6b4361f5a5cc119",
+      "statement": "The exact releasable artifact and production-representative configuration are verified.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 238
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Verification"
+      ]
+    },
+    {
+      "control_id": "USEQ-AB3A2C88",
+      "revision": 1,
+      "semantic_sha256": "ab3a2c88c57616588abe847379fa1b09493dcbb81f3a3aa7a2617eb0b8b7e575",
+      "statement": "Build provenance, artifact digest, SBOM, signature or attestation, and approvals are available as required.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 242
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Delivery and operations"
+      ]
+    },
+    {
+      "control_id": "USEQ-5FF05D93",
+      "revision": 1,
+      "semantic_sha256": "5ff05d93ed4c70a48cfb4744d09552e88fe5572063b38879b36dcc6f095f6939",
+      "statement": "Configuration, migrations, feature flags, infrastructure, dependencies, and deployment order are versioned and reviewed.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 243
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Delivery and operations"
+      ]
+    },
+    {
+      "control_id": "USEQ-A8AA064C",
+      "revision": 1,
+      "semantic_sha256": "a8aa064c25a147d4d55f354f547373ddf07c1209cb5a98a32fd9e814a6c1074f",
+      "statement": "Monitoring, logs, metrics, traces, alerts, dashboards, SLOs, runbooks, capacity, and support are ready.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 244
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Delivery and operations"
+      ]
+    },
+    {
+      "control_id": "USEQ-1D2662B7",
+      "revision": 1,
+      "semantic_sha256": "1d2662b714b7477d90b8749f7505ade9bcab474247b69439450934692ad29e7a",
+      "statement": "Rollback, roll-forward, restoration, reconciliation, and incident response are tested.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 245
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Delivery and operations"
+      ]
+    },
+    {
+      "control_id": "USEQ-78BFB1B9",
+      "revision": 1,
+      "semantic_sha256": "78bfb1b90071f0d9f064492e6713a08f92d7910c87cdc7fd8bb4963f666185bd",
+      "statement": "Ownership, on-call, escalation, supplier support, and customer communication are ready.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 246
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Delivery and operations"
+      ]
+    },
+    {
+      "control_id": "USEQ-75AAF559",
+      "revision": 1,
+      "semantic_sha256": "75aaf559a48f186ba77f8793a2d06d2b4ef7c5b04808a5ea2906e46ef2903229",
+      "statement": "User, support, developer, API, data, architecture, test, security, privacy, and operational documentation is current as applicable.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 250
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Documentation and lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-F62D0973",
+      "revision": 1,
+      "semantic_sha256": "f62d0973917b5c3591104e23ff07b349f59a112bd97a36c498345296c30952bc",
+      "statement": "Known limitations, residual risks, exceptions, and deferred work are explicit.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 251
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Documentation and lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-12852D61",
+      "revision": 1,
+      "semantic_sha256": "12852d61bf2f8e74e6a6f4f9e67d52c6a11fbf179434a2097c62d07ebbb8000c",
+      "statement": "Release notes, migration, deprecation, and support information are prepared.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 252
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Documentation and lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-395CFEA4",
+      "revision": 1,
+      "semantic_sha256": "395cfea4be90f13f294cbbf94f98641565a7b45a245fe34b5bdd58e4c4c06ba3",
+      "statement": "Temporary controls have owners and expiry dates.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 253
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Documentation and lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-1ADFF5EF",
+      "revision": 1,
+      "semantic_sha256": "1adff5efcbcfcebc862d1808fdd90efef37c528d12c925379d81410b5471431a",
+      "statement": "Evidence and decisions are retained and linked to the exact change.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 254
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Documentation and lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-3B007012",
+      "revision": 1,
+      "semantic_sha256": "3b007012293668829814722748574945ec227f65c3047ff6f0dde520f25ce51d",
+      "statement": "All release blockers are resolved.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 258
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Final acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-8864F7C9",
+      "revision": 1,
+      "semantic_sha256": "8864f7c91227b380da2457ea61db1b6e84fe4a47a18576ea39a9bcefe5bed9d2",
+      "statement": "No known residual risk exceeds authorized tolerance.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 259
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Final acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-AE200A41",
+      "revision": 1,
+      "semantic_sha256": "ae200a418d6a48fde2019e57543b8f2ea7d3df1be77b3358ad3f5757d4e619ea",
+      "statement": "Required independent reviews and sign-offs are complete.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 260
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Final acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-6F9C0838",
+      "revision": 1,
+      "semantic_sha256": "6f9c0838427aeea9bc9618464bd1afb3d4bef00f58b6bdde6ea5a7266def749e",
+      "statement": "The change can be detected, contained, disabled, recovered, and communicated if it fails.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 261
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Final acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-FB98DCA5",
+      "revision": 1,
+      "semantic_sha256": "fb98dca53dd4929e582ad06b9bd77918ca709ffa7791df8f47e9bd51c01ed631",
+      "statement": "Post-deployment validation and observation criteria are defined.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 262
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Final acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-6E292740",
+      "revision": 1,
+      "semantic_sha256": "6e292740e1f651af510e30cbbc902b2d2df5cb38a0aab9b231f76930d8a5f505",
+      "statement": "A critical user, operator, administrator, recovery, cancellation, or deletion journey lacks successful end-to-end evidence.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 270
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-B366F417",
+      "revision": 1,
+      "semantic_sha256": "b366f417705aae33bcb91fd3a5092dee08a1cfcfe44293c5ded96bc4b9eda735",
+      "statement": "A material requirement or quality objective is undefined, unverified, or contradicted by observed behavior.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 271
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-770D5CDF",
+      "revision": 1,
+      "semantic_sha256": "770d5cdf69fe0dd608db4d906a5b28c8224671d690a5b3664d32d7c9f2506c02",
+      "statement": "Authentication, authorization, privileged access, account recovery, or tenant isolation lacks independent verification.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 272
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-AD254104",
+      "revision": 1,
+      "semantic_sha256": "ad2541044987d731b961c6b3b40b0ed56ca8123311687ee9fc926a541c740d38",
+      "statement": "Known critical or actively exploited exposure remains without demonstrated mitigation and authorized exception.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 273
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-C24545ED",
+      "revision": 1,
+      "semantic_sha256": "c24545ed71cbd29920948c34193693c8973481b665f6a89aad9c388ab2d72bc7",
+      "statement": "A secret, signing key, credential, token, personal record, or sensitive artifact was exposed and not revoked, rotated, contained, and investigated.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 274
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-0EB787DF",
+      "revision": 1,
+      "semantic_sha256": "0eb787dff759bec0738214c241d8b0b5ee0a2eba4a24fc4812b3f2fc141c735d",
+      "statement": "A destructive, irreversible, or high-volume data change was not rehearsed and cannot be verified or recovered safely.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 275
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-B85F89C0",
+      "revision": 1,
+      "semantic_sha256": "b85f89c0ea76be59fab2bd28c80cac0e0af7ae735f302a8ef824d5b1dc6530e7",
+      "statement": "Backup restoration, disaster recovery, rollback, or safe roll-forward cannot meet approved objectives.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 276
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-39949FBC",
+      "revision": 1,
+      "semantic_sha256": "39949fbce4e40ffb9e3cb86443d131778676ddc6eea52c81df75fa798eaf9769",
+      "statement": "Expected peak, burst, largest-tenant, abuse, or dependency-failure behavior is unknown.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 277
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-8124B601",
+      "revision": 1,
+      "semantic_sha256": "8124b60168f8f95b4784ca3ec7df26aa128768580f400b4f1e5c53bf92aa5c88",
+      "statement": "Critical user journeys cannot meet approved availability, latency, correctness, durability, freshness, accessibility, security, privacy, or safety objectives.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 278
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-26BF004F",
+      "revision": 1,
+      "semantic_sha256": "26bf004fe2e8b6a8dc914e5403229e8162667269f4ff6b5fb7ae2a4696dcd689",
+      "statement": "Monitoring cannot detect critical journey failure, material data corruption, control bypass, or loss of telemetry.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 279
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-AE082DBE",
+      "revision": 1,
+      "semantic_sha256": "ae082dbe2f867b9fb15c713a0ff389fb385038c65628c0d3e3a199d64d004efa",
+      "statement": "No qualified and authorized responder is available for launch and early operation.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 280
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-5958B1BD",
+      "revision": 1,
+      "semantic_sha256": "5958b1bdeb69a95ef4cf7d66c5a4ef3d48905c983b4565b2491823ef6428de30",
+      "statement": "Incident, escalation, customer communication, supplier escalation, or breach procedures required by risk do not exist.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 281
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-1F972B41",
+      "revision": 1,
+      "semantic_sha256": "1f972b41dd41a5aeb408c5544a3ad6d1fa68b87fc024c285230d69f8ac9968e4",
+      "statement": "A mandatory legal, regulatory, contractual, accessibility, privacy, payment, safety, or procurement obligation is unmet.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 282
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-9D2FAC3F",
+      "revision": 1,
+      "semantic_sha256": "9d2fac3f6a4358cc5b7709982ec0ae5a6c5ec86481e9a78b6bbe0b86dbb8b0c0",
+      "statement": "The production artifact cannot be traced to reviewed source, declared dependencies, trusted build, tests, provenance, and approval.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 283
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-9B701F53",
+      "revision": 1,
+      "semantic_sha256": "9b701f5321240409809d64c2bdb054353b2fdabc7e6a2fa73bd53313947ddb76",
+      "statement": "An unsupported or end-of-life critical component lacks a tested compensating control and funded replacement plan.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 284
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-502289C2",
+      "revision": 1,
+      "semantic_sha256": "502289c256282d3c206527eeea239feb63ac1eea6462beb1d54f9df7ee297ab1",
+      "statement": "Known cross-user or cross-tenant disclosure, data corruption, duplicate charging, irreversible financial effect, or unsafe act remains possible without a tested control.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 285
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-C4B996D3",
+      "revision": 1,
+      "semantic_sha256": "c4b996d3bc81b3890d36f7ca812535c337e0eb1c474ed7339cdd3076f9fd3722",
+      "statement": "A single person, credential, device, region, provider, undocumented procedure, or unavailable control plane is the only recovery path contrary to approved objectives.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 286
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-7AA7DE0D",
+      "revision": 1,
+      "semantic_sha256": "7aa7de0d79b38d3438badf80c0c085662832e6abb50a7734db0e9420ab55138e",
+      "statement": "Evidence predates material untested change or refers to another artifact or configuration.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 287
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-08296C2C",
+      "revision": 1,
+      "semantic_sha256": "08296c2c699451cda139d2700f8a8e32c73615d44970921e76c19b225d0c787a",
+      "statement": "A blocker was relabeled, suppressed, waived, or marked Not Applicable without authorized evidence-based risk acceptance.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 288
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-5BCE4800",
+      "revision": 1,
+      "semantic_sha256": "5bce48007223c987ab122a366b8b8399175c35010a44fd85133244cb3ba309b8",
+      "statement": "The team cannot state concrete hold, stop, rollback, roll-forward, incident, and communication thresholds before deployment.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 289
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-6D298FCF",
+      "revision": 1,
+      "semantic_sha256": "6d298fcf33515fb40e0a6dc0c293315d44c05bf345a0f9119967835b2cd7981b",
+      "statement": "A serious anomaly, test failure, data mismatch, or security signal remains unexplained.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 290
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-2094042A",
+      "revision": 1,
+      "semantic_sha256": "2094042aa54b733ca8420a4a5af297e38cb28ac5325d0b5eafbc6c7d40cdc21c",
+      "statement": "The only rationale for proceeding is deadline, revenue, sunk cost, executive pressure, or confidence without evidence.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 291
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-A2B2E114",
+      "revision": 1,
+      "semantic_sha256": "a2b2e11459ea0a06c196e3ef081b8ff3f865485480ebdabd6640c27ad0f28c9b",
+      "statement": "The product uses manipulative, discriminatory, inaccessible, unsafe, or unlawful behavior that has not been removed or explicitly and lawfully constrained.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 292
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-E72E7A13",
+      "revision": 1,
+      "semantic_sha256": "e72e7a1318d11e4ff148aa95233cc69e83908e849201b34ae138701a13f6ab1d",
+      "statement": "The system cannot preserve essential records, data integrity, or user rights through failure, migration, recovery, and retirement.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 293
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-4401E253",
+      "revision": 1,
+      "semantic_sha256": "4401e25363c5e6118bc1168f0d7aac75d347cebfa49ec41df76e28eb097a3805",
+      "statement": "The organization cannot identify the accountable owner of the product, service, data, security, privacy, operations, and residual risk.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 294
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-D4A97289",
+      "revision": 1,
+      "semantic_sha256": "d4a97289ca7ee7928772c8533a162fa999113d485181b540bc7c45edbfc19646",
+      "statement": "Release identifier, source commits, tags, artifact digests, configuration versions, migration versions, and feature-flag states.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 302
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-0015A567",
+      "revision": 1,
+      "semantic_sha256": "0015a567d83826e8cebcfd1b85ce5aec8f307ce0ba22554c6c2a68c4b97f9ee4",
+      "statement": "Final scope, asset inventory, architecture diagrams, deployment diagrams, and data-flow diagrams.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 303
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-E15E9EEE",
+      "revision": 1,
+      "semantic_sha256": "e15e9eee308ccffa8ee18194522e6665447967edff889d58a9ec04a37fd42fbe",
+      "statement": "Data inventory, classification, retention schedule, and privacy records.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 304
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-73265165",
+      "revision": 1,
+      "semantic_sha256": "73265165c02f00ace558c2d9c17f09e0173d41d93a69b7b4baaf5a470b0b94bf",
+      "statement": "Threat model, abuse-case assessment, risk register, and accepted exceptions.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 305
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-0820243E",
+      "revision": 1,
+      "semantic_sha256": "0820243e4bb7fb5ee83bc8bc42f474fcea6d2c65c59fce63710525a9be8094e4",
+      "statement": "Applicable legal, privacy, accessibility, security, regulatory, and contractual requirements.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 306
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-1777943C",
+      "revision": 1,
+      "semantic_sha256": "1777943cdf5d235d5db1ee34b67606a1aefe4fb9111caeb31a6e094625d6c9ac",
+      "statement": "Requirements-to-test and control-to-evidence traceability.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 307
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-153FAFE7",
+      "revision": 1,
+      "semantic_sha256": "153fafe7d31ffb25dd1ef4430ea9fbad30ef94a38fac04eea090b57d1e7d11c6",
+      "statement": "Functional, integration, contract, system, regression, and user-acceptance test results.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 308
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-BB6A3F92",
+      "revision": 1,
+      "semantic_sha256": "bb6a3f924ba4406ad0945ba2451c4d7a80c7d05a42e7169b55dd0201a88a5575",
+      "statement": "Browser, device, localization, usability, and accessibility results.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 309
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-E01943D2",
+      "revision": 1,
+      "semantic_sha256": "e01943d2296a81c08db18437996395e8c183f1a58fe00ec053ae03ab0c6939ff",
+      "statement": "Performance, load, stress, spike, endurance, and capacity results.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 310
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-5ECCFB7E",
+      "revision": 1,
+      "semantic_sha256": "5eccfb7efedb74c54573ea233ce100202183fed39e89c33f947578ad8b53a694",
+      "statement": "Resilience, dependency-failure, failover, rollback, roll-forward, and recovery results.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 311
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-AE5734B3",
+      "revision": 1,
+      "semantic_sha256": "ae5734b302346d59fe69abc669c83382d4c059695ca9645c14c0767dfa293c77",
+      "statement": "Security scan, code review, threat-validation, and penetration-test results.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 312
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-B39689E7",
+      "revision": 1,
+      "semantic_sha256": "b39689e7b42cf4658eaec1ca8cac1a77f80cb7018a3b27d2f953eea1cd604907",
+      "statement": "SBOM, license report, build provenance, artifact signatures, and attestation evidence.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 313
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-0C482ED0",
+      "revision": 1,
+      "semantic_sha256": "0c482ed0573bade1204dbaa570ef13fb42a50baf408c0eae4e989a2e2c2d6ad9",
+      "statement": "Infrastructure, network, DNS, certificate, secrets, and production-configuration review.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 314
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-C3A340EE",
+      "revision": 1,
+      "semantic_sha256": "c3a340ee92c9ae30adb981ec0bbdbc6a892929a90ea4e83b1d073588c3d56f1f",
+      "statement": "Backup, restoration, disaster-recovery, and continuity evidence.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 315
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-4A35B528",
+      "revision": 1,
+      "semantic_sha256": "4a35b528365d246dfaad91d63167cf9ee3b15e4197f0025ea8ba4bdb33fe8c90",
+      "statement": "Incident-response, on-call, alerting, runbook, and communications drill evidence.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 316
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-F475A3F9",
+      "revision": 1,
+      "semantic_sha256": "f475a3f9df03ce1d466b76d3f2019176196f9d0d047c2c76e56eff6676b331ea",
+      "statement": "Monitoring, dashboard, synthetic-check, logging, audit, and telemetry review.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 317
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-0DBF3D1F",
+      "revision": 1,
+      "semantic_sha256": "0dbf3d1fb31023035a9444f1110295987f22f0f74f7f200646d8e171d9d86a5f",
+      "statement": "Third-party risk, contract, subprocessor, and continuity review.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 318
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-41AB3A61",
+      "revision": 1,
+      "semantic_sha256": "41ab3a6185a1c287f7fd672e8950d898f4b75b7f0007e4e1569315e4769e65c6",
+      "statement": "Open defect, risk, and exception registers.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 319
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-8C3A67DF",
+      "revision": 1,
+      "semantic_sha256": "8c3a67dfa204da68f161b39f5655ca3e7ddb318d1d5e2f5dfbaa86b0600c50a8",
+      "statement": "Every exception's owner, impact, compensating control, monitoring, remediation plan, and expiry.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 320
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-68373154",
+      "revision": 1,
+      "semantic_sha256": "68373154e90db8e82cb2a12207fc0514664324ab19bbb47f5a4ac82a7d2120ca",
+      "statement": "Deployment, rollback or roll-forward, and post-deployment validation plans.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 321
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-291D1CF9",
+      "revision": 1,
+      "semantic_sha256": "291d1cf964a91c65a5b59b4b06b2c81309a55e7a80501e72add6affb486b219f",
+      "statement": "Required approvals, sign-offs, and final decision rationale.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 322
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-96C0CF6A",
+      "revision": 1,
+      "semantic_sha256": "96c0cf6ac3f0a1b6eee4aafa24ce8533921376bb0b4dce050b5246b62029278c",
+      "statement": "Assign a corpus owner and qualified maintainers across product, engineering, UX, security, privacy, data, quality, delivery, operations, and legal domains.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 330
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Corpus Maintenance and Versioning",
+        "Maintenance controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-8A990F83",
+      "revision": 1,
+      "semantic_sha256": "8a990f835caa9bdc8e6ed18f775383ce6e24739e98f180c699bb76b532f6c881",
+      "statement": "Review the corpus at least annually and after major standards revisions.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 331
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Corpus Maintenance and Versioning",
+        "Maintenance controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-8B838859",
+      "revision": 1,
+      "semantic_sha256": "8b838859bb023f95adf7cb12d33227e05632c3116d56de821ad41bd961b41028",
+      "statement": "Review it after every material incident, audit finding, penetration-test finding, accessibility failure, privacy harm, safety event, or near miss.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 332
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Corpus Maintenance and Versioning",
+        "Maintenance controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-E5AB0C75",
+      "revision": 1,
+      "semantic_sha256": "e5ab0c758df85ad37183a9027e49cef1d3df271d64028a2a72b4c9c2bf52cf91",
+      "statement": "Review it when entering a new jurisdiction, sector, user population, deployment model, or contractual regime.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 333
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Corpus Maintenance and Versioning",
+        "Maintenance controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-56E10E2D",
+      "revision": 1,
+      "semantic_sha256": "56e10e2d4a860bd13de3c43cd4ada90f9b676ae613239848459207ff1ae356f7",
+      "statement": "Review it after adding new sensitive data, identity, payment, AI, device, physical-control, or high-impact functionality.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 334
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Corpus Maintenance and Versioning",
+        "Maintenance controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-692CA8B7",
+      "revision": 1,
+      "semantic_sha256": "692ca8b77a10cf85a0dca307be0c90b16b7faf22aed1c66dd89960e497d12ccd",
+      "statement": "Track authoritative standards and mark published, amended, withdrawn, superseded, and draft status accurately.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 335
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Corpus Maintenance and Versioning",
+        "Maintenance controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-0A48A6ED",
+      "revision": 1,
+      "semantic_sha256": "0a48a6ed627d7160eba358ea8c3c902f7a3f71117edfaa3ed602e0938c3f630e",
+      "statement": "Do not replace current published baselines with drafts unless a documented transition decision requires early adoption.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 336
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Corpus Maintenance and Versioning",
+        "Maintenance controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-1CD7806F",
+      "revision": 1,
+      "semantic_sha256": "1cd7806f7e482f821bda5f463dec0f7625ac6349d9a5e83ee974aae5ee8e930d",
+      "statement": "Preserve historical corpus versions and the exact version used for each release or audit.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 337
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Corpus Maintenance and Versioning",
+        "Maintenance controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-6074CE61",
+      "revision": 1,
+      "semantic_sha256": "6074ce61ad66f483e8ba3ae301192389cb4a8deff0132c3d5705ce9fc9be4173",
+      "statement": "Record every added, changed, moved, or retired control with rationale and owner.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 338
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Corpus Maintenance and Versioning",
+        "Maintenance controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-9F4E9139",
+      "revision": 1,
+      "semantic_sha256": "9f4e9139b35d422699e1218c6a612b3576750c9fa04389d3f0a35d0cf816f616",
+      "statement": "Do not silently weaken controls during consolidation or reorganization.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 339
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Corpus Maintenance and Versioning",
+        "Maintenance controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-87104C15",
+      "revision": 1,
+      "semantic_sha256": "87104c15ea3d941023245c08f668c2d09ee3be5b800cb7d9c94939ec475dc737",
+      "statement": "Use incidents, defects, user research, support demand, threat intelligence, supplier change, and operational evidence to add or refine controls.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 340
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Corpus Maintenance and Versioning",
+        "Maintenance controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-96ACBB49",
+      "revision": 1,
+      "semantic_sha256": "96acbb49b5800b461297cb7ead2c606e5ef6cce37fec625311a258dbbf99a594",
+      "statement": "Review duplicate and overlapping controls while preserving standalone usability of category files.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 341
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Corpus Maintenance and Versioning",
+        "Maintenance controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-3726C504",
+      "revision": 1,
+      "semantic_sha256": "3726c50461ef057099fc687afc085f13cdb42ae2315f781712838cf591ea8807",
+      "statement": "Validate all Markdown links, headings, checklist syntax, front matter, encoding, and relative paths automatically.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 342
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Corpus Maintenance and Versioning",
+        "Maintenance controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-24066ACE",
+      "revision": 1,
+      "semantic_sha256": "24066acec973bd3e8f982a725807cd5f266bb33fce79a3d6f32fb428ffcfa4b6",
+      "statement": "Validate that every category file contains purpose, applicability, universal controls, evidence expectations, and interpretation boundaries.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 343
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Corpus Maintenance and Versioning",
+        "Maintenance controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-ACB1E213",
+      "revision": 1,
+      "semantic_sha256": "acb1e21366363ec69269f6b7254fae198231d6e4fb709ff9d8dce59ec4d6b063",
+      "statement": "Search for accidental secrets, personal data, internal URLs, and proprietary information before publication.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 344
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Corpus Maintenance and Versioning",
+        "Maintenance controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-D3AEAB87",
+      "revision": 1,
+      "semantic_sha256": "d3aeab87b48cbb9e3186662226e9cc62496356c85ed2edf67235112df66e2666",
+      "statement": "Review framework, vendor, language, and platform references and keep universal files technology-neutral.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 345
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Corpus Maintenance and Versioning",
+        "Maintenance controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-61E97483",
+      "revision": 1,
+      "semantic_sha256": "61e9748318363d95ed2218c91deecb8daa18501c55dcf6a07de9e9c4deb4d6e4",
+      "statement": "Place genuinely technology-specific controls only in clearly conditional modules.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 346
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Corpus Maintenance and Versioning",
+        "Maintenance controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-C6F40249",
+      "revision": 1,
+      "semantic_sha256": "c6f4024993a31ceaa721d0917747db206e263bfafb3f714a4dc1da2b9d655fcb",
+      "statement": "Measure corpus use, control ambiguity, Not Applicable patterns, exception recurrence, and escaped defects.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 347
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Corpus Maintenance and Versioning",
+        "Maintenance controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-8CB08DFC",
+      "revision": 1,
+      "semantic_sha256": "8cb08dfc00dbef40a7560ebdd83598f18dc91bdbed2bb09a32196f7046ff2617",
+      "statement": "Retire obsolete controls only after confirming the risk or requirement no longer exists.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 348
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Corpus Maintenance and Versioning",
+        "Maintenance controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-27EF115F",
+      "revision": 1,
+      "semantic_sha256": "27ef115f6a8e864594ec500c494d608fc1a9ef566f7833316afae0c6eb98e268",
+      "statement": "Publish release notes and a migration guide for material corpus changes.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 349
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Corpus Maintenance and Versioning",
+        "Maintenance controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-8C84BDA1",
+      "revision": 1,
+      "semantic_sha256": "8c84bda1ad3c69b792c56f6ac07df67ab511ad484f2b17ca9083191167a2d588",
+      "statement": "Every production service has named business and engineering owners.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 357
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Governance, Ownership, and Risk",
+        "Ownership"
+      ]
+    },
+    {
+      "control_id": "USEQ-C8627A8D",
+      "revision": 1,
+      "semantic_sha256": "c8627a8d19305dd388e72f68f68f389acbdb93bfc30a2b1e9820588b42e3a842",
+      "statement": "Every third-party integration, dashboard, alert, runbook, scheduled job, and background process has an owner.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 358
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Governance, Ownership, and Risk",
+        "Ownership"
+      ]
+    },
+    {
+      "control_id": "USEQ-2F823834",
+      "revision": 1,
+      "semantic_sha256": "2f823834c9ff3aaafe71b831996a9c45cd1507540dc1689215e343b282349786",
+      "statement": "Ownership remains valid during leave, holidays, and personnel changes.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 359
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Governance, Ownership, and Risk",
+        "Ownership"
+      ]
+    },
+    {
+      "control_id": "USEQ-8272E813",
+      "revision": 1,
+      "semantic_sha256": "8272e813100529b059b86ee88e6c9a737fc48cf1a57f5ebd7da5ca459697dd07",
+      "statement": "Escalation paths include primary, secondary, management, security, privacy/legal, and provider contacts.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 360
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Governance, Ownership, and Risk",
+        "Ownership"
+      ]
+    },
+    {
+      "control_id": "USEQ-170D2EA2",
+      "revision": 1,
+      "semantic_sha256": "170d2ea281f77caea5e275adaf230af4b9070d0513a43eb2581bfd349f17f6b6",
+      "statement": "Offboarding and role changes remove or adjust access promptly.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 361
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Governance, Ownership, and Risk",
+        "Ownership"
+      ]
+    },
+    {
+      "control_id": "USEQ-17D2A81C",
+      "revision": 1,
+      "semantic_sha256": "17d2a81c0476808ecc1c78a80fa927cd4a378f143c68adf3bb4de847507c9ed0",
+      "statement": "Ownership records are periodically reviewed.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 362
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Governance, Ownership, and Risk",
+        "Ownership"
+      ]
+    },
+    {
+      "control_id": "USEQ-6B39A8A1",
+      "revision": 1,
+      "semantic_sha256": "6b39a8a1abdaabd1e4450c6f06ae2744dd642e8891afdbe4267276e51f1d0880",
+      "statement": "Classify confidentiality, integrity, availability, privacy, financial, fraud, safety, regulatory, contractual, reputation, and customer-trust impact.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 366
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Governance, Ownership, and Risk",
+        "Risk assessment"
+      ]
+    },
+    {
+      "control_id": "USEQ-21A06C7A",
+      "revision": 1,
+      "semantic_sha256": "21a06c7a4e1765c87e9dbe05ffbb909e87b6f4c728964db63d7dc310228e1cd5",
+      "statement": "Identify external attackers, abusive users, insiders, compromised accounts, bots, automated agents, social engineering, and accidental failure sources.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 367
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Governance, Ownership, and Risk",
+        "Risk assessment"
+      ]
+    },
+    {
+      "control_id": "USEQ-ACE196FE",
+      "revision": 1,
+      "semantic_sha256": "ace196fe23a20ee8275c1b752d4f3b576bed2fbc2e6f8e9ab93be93fe9f4b08e",
+      "statement": "Identify foreseeable misuse and abuse, not only intended use.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 368
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Governance, Ownership, and Risk",
+        "Risk assessment"
+      ]
+    },
+    {
+      "control_id": "USEQ-4B9CB799",
+      "revision": 1,
+      "semantic_sha256": "4b9cb799873fd23601b76e27d2b0d54f2992ef39eca441b92b739fd24a95d3f3",
+      "statement": "Give every risk an owner, likelihood, impact, treatment, evidence, and review date.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 369
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Governance, Ownership, and Risk",
+        "Risk assessment"
+      ]
+    },
+    {
+      "control_id": "USEQ-0B8D7893",
+      "revision": 1,
+      "semantic_sha256": "0b8d7893706782fbb6d97e0d87bc4bcce125a13baf684e7abf9963d37f7c5e60",
+      "statement": "Record accepted residual risks and the authorized people who accept them.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 370
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Governance, Ownership, and Risk",
+        "Risk assessment"
+      ]
+    },
+    {
+      "control_id": "USEQ-786705B4",
+      "revision": 1,
+      "semantic_sha256": "786705b4ee6682358a084694d0d651de2173a46c56429e5d4525a65d540d7bf0",
+      "statement": "Verify that launch scope remains within the organization's approved risk appetite.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 371
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Governance, Ownership, and Risk",
+        "Risk assessment"
+      ]
+    },
+    {
+      "control_id": "USEQ-9843CD0A",
+      "revision": 1,
+      "semantic_sha256": "9843cd0a5a7f5e6ffe1e9a92a8a0a9d76a8a0246a850d9576cb275ebb0d87c76",
+      "statement": "Ensure exceptions expire and compensating controls are tested.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 372
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Governance, Ownership, and Risk",
+        "Risk assessment"
+      ]
+    },
+    {
+      "control_id": "USEQ-AFB0927D",
+      "revision": 1,
+      "semantic_sha256": "afb0927df2fe841cd4e786d066b6154060c1dd29a95e05b0a4d19e68db1f9cc2",
+      "statement": "Map security controls to a recognized verification standard.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 376
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Governance, Ownership, and Risk",
+        "Control framework"
+      ]
+    },
+    {
+      "control_id": "USEQ-02B7631F",
+      "revision": 1,
+      "semantic_sha256": "02b7631f411764c84dd13aa4fbfebc68c4b82145c68edb32c7a229762dc1fbcd",
+      "statement": "Map privacy controls to legal and organizational requirements.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 377
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Governance, Ownership, and Risk",
+        "Control framework"
+      ]
+    },
+    {
+      "control_id": "USEQ-0C8F7443",
+      "revision": 1,
+      "semantic_sha256": "0c8f7443355f347f918937e2601962bc7efb44bf156e18b8a621881797ffba60",
+      "statement": "Map accessibility controls to the selected conformance target.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 378
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Governance, Ownership, and Risk",
+        "Control framework"
+      ]
+    },
+    {
+      "control_id": "USEQ-D29A0C99",
+      "revision": 1,
+      "semantic_sha256": "d29a0c99a7e4bf5f8feb139e57dd0fd8003bc84ebe4a3664b1a52a2752fe5aee",
+      "statement": "Identify and resolve conflicts between product, legal, security, privacy, accessibility, and technical requirements.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 379
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Governance, Ownership, and Risk",
+        "Control framework"
+      ]
+    },
+    {
+      "control_id": "USEQ-2C632814",
+      "revision": 1,
+      "semantic_sha256": "2c632814f85b351e3676d76e523caf891608850797906cb285cddbd2d35c86dd",
+      "statement": "Document resolutions, tradeoffs, and approvals.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 380
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Governance, Ownership, and Risk",
+        "Control framework"
+      ]
+    }
+  ]
+}

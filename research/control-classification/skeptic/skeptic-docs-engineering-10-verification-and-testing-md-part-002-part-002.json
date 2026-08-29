@@ -1,0 +1,1170 @@
+{
+  "schema_version": "prc.control-classification-skeptic-review/v0.1",
+  "packet_id": "skeptic-docs-engineering-10-verification-and-testing-md-part-002-part-002",
+  "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-002",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "controls": [
+    {
+      "control_id": "USEQ-E29C86AA",
+      "revision": 1,
+      "semantic_sha256": "e29c86aa5ad7fa52ee7f4a8faa1f8f89b4f87b987004f8dd4e013a7ee491ef2a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Preventing all real-user, money, uncontrolled-data, and contractual effects requires complete integration, identity, route, provider, and legal scope under injected faults. Therefore the proposed structured-record composite does not prove the whole rule “Prevent fault injection from contacting real users, moving real money, corrupting uncontrolled data, or violating contractual commitments.”.",
+      "counterexample_analysis": "A sandboxed main path can pass while a fallback webhook charges a real account or contacts a user. The proposal can Pass while “Prevent fault injection from contacting real users, moving real money, corrupting uncontrolled data, or violating contractual commitments.” remains false.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-6A752B54",
+      "revision": 1,
+      "semantic_sha256": "6a752b5465e59b4cfc888b47361def1fc2c0e578ec1a8f3eec8675516739740f",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Observed alerts and responses in one experiment do not prove runbooks, communications, escalation, and on-call behavior across other failures or that they worked adequately. Therefore the proposed structured-record composite does not prove the whole rule “Observe whether alerts, runbooks, on-call response, communications, and escalation work during the experiment.”.",
+      "counterexample_analysis": "The alert can fire and a responder acknowledge it while the runbook action is wrong for the actual outage. The proposal can Pass while “Observe whether alerts, runbooks, on-call response, communications, and escalation work during the experiment.” remains false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C46CE499",
+      "revision": 1,
+      "semantic_sha256": "c46ce49966ef0361abc44c11319c9d8b3380fb258d98c9fdcc4ee5add87cb1e1",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Plausible compound failures depend on architecture and shared-dependency judgment, while the correlated failure set is open-ended. Therefore the proposed structured-record composite does not prove the whole rule “Inject compound and correlated failures where shared dependencies make them plausible.”.",
+      "counterexample_analysis": "A test can inject database plus cache loss while omitting a more plausible shared-DNS and identity failure. The proposal can Pass while “Inject compound and correlated failures where shared dependencies make them plausible.” remains false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1CEFFE2F",
+      "revision": 1,
+      "semantic_sha256": "1ceffe2f1295ee83048e0b8de965295313dba56594dac9e79cf0d0fe9a457f22",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Peak and degraded capacity require workload and resource thresholds, and sampled recovery runs cannot cover every saturation/failure state. Therefore the proposed structured-record composite does not prove the whole rule “Test recovery under peak or degraded capacity rather than only in idle environments.”.",
+      "counterexample_analysis": "Recovery can pass one peak fixture while failover collapses under a different queue composition. The proposal can Pass while “Test recovery under peak or degraded capacity rather than only in idle environments.” remains false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C05A5D50",
+      "revision": 1,
+      "semantic_sha256": "c05a5d5079feba5f6fbc6a36c4ea537a4515526ed3d7a58daaf78d1fef5fc79d",
+      "verdict": "confirmed_deterministic",
+      "reason": "For a sealed experiment run, hypothesis, scope, safeguard, telemetry, outcome, surprise, and corrective-action records form a finite archival schema. This proves the complete bounded meaning of “Retain experiment hypotheses, scope, safeguards, telemetry, outcomes, surprises, and corrective actions.”.",
+      "counterexample_analysis": "Any missing declared field, broken run link, or lost artifact deterministically fails the experiment manifest. Within the sealed workflow evidence, the rule cannot Pass while broken.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F6D37FEA",
+      "revision": 1,
+      "semantic_sha256": "f6d37fea155dd98f838e9f2a369078d72ea03fb40a41a078bb622a3772377e3b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Critical journeys, meaningful percentiles, error tolerances, workloads, tenants, and modes require product/SLO judgment and complete applicability scope. Therefore the proposed structured-record composite does not prove the whole rule “Define performance and capacity objectives per critical journey, interface, workload, tenant, and operational mode using meaningful percentiles and error tolerances.”.",
+      "counterexample_analysis": "Every declared journey can have numbers while a critical bulk workflow or meaningful tail percentile is omitted. The proposal can Pass while “Define performance and capacity objectives per critical journey, interface, workload, tenant, and operational mode using meaningful percentiles and error tolerances.” remains false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B48C8A09",
+      "revision": 1,
+      "semantic_sha256": "b48c8a090caf7750e900d1a18f8f487914ae3b830e438e3b5e58a98e6afdfb35",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Nine workload labels do not define their distributions, combinations, duration, timing, data, or complete expected-response oracles. Therefore the proposed structured-record composite does not prove the whole rule “Test normal, peak, burst, sustained, seasonal, launch, failure, recovery, and abusive workload profiles.”.",
+      "counterexample_analysis": "A peak and abusive fixture can pass while a seasonal launch burst with skewed tenants fails. The proposal can Pass while “Test normal, peak, burst, sustained, seasonal, launch, failure, recovery, and abusive workload profiles.” remains false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-968D920D",
+      "revision": 1,
+      "semantic_sha256": "968d920d7011a895cc9e5e3e36b2560af833af7ee43556d759323591ba467af2",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Metric values are exact, but complete instrumentation and meaningful user-perceived responsiveness/correlation across all resources are not proven. Therefore the proposed structured-record composite does not prove the whole rule “Measure latency, throughput, errors, saturation, queueing, resource consumption, contention, and user-perceived responsiveness together.”.",
+      "counterexample_analysis": "All listed metrics can exist while client rendering delay and an uninstrumented queue dominate user experience. The proposal can Pass while “Measure latency, throughput, errors, saturation, queueing, resource consumption, contention, and user-perceived responsiveness together.” remains false.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B12F69C6",
+      "revision": 1,
+      "semantic_sha256": "b12f69c6dbdf9850c4ca6e9eb727269b6b4c896e31e25c6d424bcafe0685d7df",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Listed lifecycle conditions have many sequences, data states, dependencies, capacities, and transition failures without exhaustive oracles. Therefore the proposed structured-record composite does not prove the whole rule “Test cold start, warm start, scale up, scale down, deployment, failover, cache miss, and degraded dependency conditions.”.",
+      "counterexample_analysis": "Each condition can pass alone while scale-down during deployment plus cache miss causes failure. The proposal can Pass while “Test cold start, warm start, scale up, scale down, deployment, failover, cache miss, and degraded dependency conditions.” remains false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8FCC3759",
+      "revision": 1,
+      "semantic_sha256": "8fcc37598a28979a8a8cd8156d725fd384170dfad571148472cc98f8aa330aaa",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Maximum safe capacity and safe failure require defined workloads, risk thresholds, downstream effects, and complete beyond-limit behavior. Therefore the proposed structured-record composite does not prove the whole rule “Identify maximum safe capacity and how the system fails beyond it.”.",
+      "counterexample_analysis": "A load test can find a throughput knee while data corruption begins earlier for one operation. The proposal can Pass while “Identify maximum safe capacity and how the system fails beyond it.” remains false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9C7D9575",
+      "revision": 1,
+      "semantic_sha256": "9c7d957514bef9fbf4e5e4d2441ae5fe39f063297d76aa8fad150bcd4003094b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Shedding, quotas, backpressure, prioritization, and isolation span workload combinations, identities, queues, failures, and fairness oracles. Therefore the proposed structured-record composite does not prove the whole rule “Test load shedding, rate limiting, quotas, backpressure, prioritization, and noisy-neighbor isolation.”.",
+      "counterexample_analysis": "Known noisy-neighbor tests can pass while one tenant starves others through an untested shared cache. The proposal can Pass while “Test load shedding, rate limiting, quotas, backpressure, prioritization, and noisy-neighbor isolation.” remains false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2F1099C0",
+      "revision": 1,
+      "semantic_sha256": "2f1099c02a38105d85e8fd7787dd2d0252cf1412b52196c505089740ce43e98d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "“Long enough” has no duration or sensitivity threshold and slow leaks, drift, compaction, backlog, and cache decay may exceed any sampled run. Therefore the proposed structured-record composite does not prove the whole rule “Run endurance tests long enough to reveal leaks, fragmentation, drift, compaction, backlog, cache decay, and gradual degradation.”.",
+      "counterexample_analysis": "A 24-hour endurance run can pass while a weekly compaction cycle causes gradual failure. The proposal can Pass while “Run endurance tests long enough to reveal leaks, fragmentation, drift, compaction, backlog, cache decay, and gradual degradation.” remains false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-BF863ED1",
+      "revision": 1,
+      "semantic_sha256": "bf863ed1e0011df4a40dade511854f040e3742671730c0f2c2cb73f83fd4f0ed",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Largest expected objects and histories depend on complete product limits, customer distributions, future growth, and supported-operation scope. Therefore the proposed structured-record composite does not prove the whole rule “Test the largest expected object, tenant, account, batch, file, report, query, and historical data range.”.",
+      "counterexample_analysis": "Declared maxima can pass while a supported tenant imported from legacy data is larger. The proposal can Pass while “Test the largest expected object, tenant, account, batch, file, report, query, and historical data range.” remains false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0D187CDB",
+      "revision": 1,
+      "semantic_sha256": "0d187cdb173273366c33aae2e998e1c709d70fe5c747c437e321638c523fd008",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Separate attribution requires complete third-party/first-party component and request inventories plus ownership classification. Therefore the proposed structured-record composite does not prove the whole rule “Measure third-party scripts, services, models, analytics, and tags separately from first-party behavior.”.",
+      "counterexample_analysis": "An embedded analytics library can be counted first-party or omitted while dominating latency. The proposal can Pass while “Measure third-party scripts, services, models, analytics, and tags separately from first-party behavior.” remains false.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D108E212",
+      "revision": 1,
+      "semantic_sha256": "d108e212ed954851ea073c2e75700a93e0b8bb3e8f7fae99f0318bda9ac2fff8",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Budgets and baseline comparison are exact, but stability and statistical meaningfulness depend on sampling, variance, workload, and analysis judgment. Therefore the proposed structured-record composite does not prove the whole rule “Set regression budgets and compare against a stable baseline using statistically meaningful methods.”.",
+      "counterexample_analysis": "A tiny sample can show a significant-looking pass against a drifting baseline. The proposal can Pass while “Set regression budgets and compare against a stable baseline using statistically meaningful methods.” remains false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-AED5CE75",
+      "revision": 1,
+      "semantic_sha256": "aed5ce75df7aac0d1d1128cd975f92118cf3cd9b62055c9f8c77131c52cbf937",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Generator/monitor non-distortion is a measurement-system claim across loads, bottlenecks, clocks, sampling, networks, and observers. Therefore the proposed structured-record composite does not prove the whole rule “Confirm that test generators and monitoring do not become the bottleneck or distort results.”.",
+      "counterexample_analysis": "A generator can look below CPU limits while saturating its network and under-reporting server capacity. The proposal can Pass while “Confirm that test generators and monitoring do not become the bottleneck or distort results.” remains false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8AE79A6F",
+      "revision": 1,
+      "semantic_sha256": "8ae79a6f6187745d4d2dab57a013d99076df65dc2df7d68a9f0f1516ecc1a26c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Cost, SLO, quota, autoscaling, and recovery correlations require complete models and interpretation of causal capacity limits. Therefore the proposed structured-record composite does not prove the whole rule “Correlate performance limits with cost, SLOs, provider quotas, autoscaling limits, and recovery capacity.”.",
+      "counterexample_analysis": "A chart can correlate current data while ignoring a provider burst quota that governs failover. The proposal can Pass while “Correlate performance limits with cost, SLOs, provider quotas, autoscaling limits, and recovery capacity.” remains false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1A70007C",
+      "revision": 1,
+      "semantic_sha256": "1a70007ce119d97755a53b3a79401a466036a984ab88de15800261da801d4473",
+      "verdict": "confirmed_deterministic",
+      "reason": "A sealed performance run has finite workload-model, generator, data, topology, configuration, version, raw-measurement, analysis, and confidence-limit artifacts. This proves the complete bounded meaning of “Retain workload model, generators, data, topology, configuration, versions, raw measurements, analysis, and confidence limits.”.",
+      "counterexample_analysis": "Missing artifacts, changed digests, or broken run references deterministically fail the retained evidence manifest. Within the sealed workflow evidence, the rule cannot Pass while broken.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-326F8926",
+      "revision": 1,
+      "semantic_sha256": "326f8926c368d27af38f8c9cbbb8692de11c798f86bcd7ae81a3d7fb30f3afec",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Standards categories require authoritative interpretation of normative text, profiles, extensions, and implementation-defined or prohibited behavior. Therefore the proposed structured-record composite does not prove the whole rule “Separate mandatory requirements, optional features, profiles, extensions, implementation-defined behavior, and prohibited behavior.”.",
+      "counterexample_analysis": "A conformance table can label a mandatory clause optional and still pass enum validation. The proposal can Pass while “Separate mandatory requirements, optional features, profiles, extensions, implementation-defined behavior, and prohibited behavior.” remains false.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-14C96036",
+      "revision": 1,
+      "semantic_sha256": "14c9603604b85c74dac54a5b1e9a85053ad217fce6b520f8658fee90085ff5ea",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Suite version and result fields are exact, but official status, applicability, scope adequacy, limitations, and expected-result truth require external authority. Therefore the proposed structured-record composite does not prove the whole rule “Use official conformance suites where available and validate their version, scope, limitations, and expected results.”.",
+      "counterexample_analysis": "An outdated official suite can pass while missing a later required profile and its limitations are understated. The proposal can Pass while “Use official conformance suites where available and validate their version, scope, limitations, and expected results.” remains false.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E6518281",
+      "revision": 1,
+      "semantic_sha256": "e6518281ce3e3a1f60e72f93cadcb66257a85dbe68131e12c66e50b01b373527",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Producer/consumer tests need complete interface, version, state, error, concurrency, and independent implementation inventories. Therefore the proposed structured-record composite does not prove the whole rule “Test both producer and consumer behavior at each interface.”.",
+      "counterexample_analysis": "Both sides can pass happy paths while producer retry semantics break a real consumer. The proposal can Pass while “Test both producer and consumer behavior at each interface.” remains false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9647D489",
+      "revision": 1,
+      "semantic_sha256": "9647d4895f134d6521cccb948f252ae37bbf22852ab16fc2b66b6f22537bf773",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The listed field/encoding cases each have combinatorial values, nesting, sizes, versions, and parser states without exhaustive oracles. Therefore the proposed structured-record composite does not prove the whole rule “Test unknown fields, optional fields, extension points, ordering differences, whitespace, encoding, canonicalization, size limits, and future-version data.”.",
+      "counterexample_analysis": "Sample Unicode and unknown fields can pass while duplicate canonical keys cause divergent parsing. The proposal can Pass while “Test unknown fields, optional fields, extension points, ordering differences, whitespace, encoding, canonicalization, size limits, and future-version data.” remains false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F3290C67",
+      "revision": 1,
+      "semantic_sha256": "f3290c679e78f666b151614866cb78d3d62daf4fb98dc06728d4f113853468b4",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Compatibility and lifecycle behavior require every supported version pair, stored state, transition order, and deprecation path. Therefore the proposed structured-record composite does not prove the whole rule “Test backward, forward, mixed-version, downgrade, upgrade, and deprecation behavior.”.",
+      "counterexample_analysis": "Adjacent versions can pass while oldest-newest mixed operation corrupts data. The proposal can Pass while “Test backward, forward, mixed-version, downgrade, upgrade, and deprecation behavior.” remains false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-94A0A73B",
+      "revision": 1,
+      "semantic_sha256": "94a0a73bf1024d7f33dad173507b9da842c28ccc1d4a51df2e7fc06fb223a5ad",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Multiple implementations provide evidence but do not prove independence, complete provider diversity, shared-assumption detection, or absence of lock-in. Therefore the proposed structured-record composite does not prove the whole rule “Test multiple independent implementations or providers to detect shared assumptions and vendor lock-in.”.",
+      "counterexample_analysis": "Two providers can pass while sharing the same parser bug or proprietary extension. The proposal can Pass while “Test multiple independent implementations or providers to detect shared assumptions and vendor lock-in.” remains false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-DDCB79E8",
+      "revision": 1,
+      "semantic_sha256": "ddcb79e8213ebf12b9b6ffa7aba0b3957a694c84460415e292c03f52d0c30d05",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Error/retry/idempotency/negotiation behavior spans payload, timing, state, headers, versions, and compound failure sequences. Therefore the proposed structured-record composite does not prove the whole rule “Test error semantics, retries, idempotency, timeouts, status codes, headers, content negotiation, and rate-limit behavior.”.",
+      "counterexample_analysis": "Declared error fixtures can pass while response loss plus retry duplicates a side effect. The proposal can Pass while “Test error semantics, retries, idempotency, timeouts, status codes, headers, content negotiation, and rate-limit behavior.” remains false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-DDC867E4",
+      "revision": 1,
+      "semantic_sha256": "ddc867e42a93b849fd013be334356b09d30c5cbe685085daae33137807ed18b7",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Malformed and ambiguous representation space is effectively unbounded across grammars, encodings, duplicate semantics, and parser differentials. Therefore the proposed structured-record composite does not prove the whole rule “Test malformed, ambiguous, duplicate, conflicting, and noncanonical representations.”.",
+      "counterexample_analysis": "A corpus can pass while a crafted duplicate key is interpreted differently by two layers. The proposal can Pass while “Test malformed, ambiguous, duplicate, conflicting, and noncanonical representations.” remains false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-21F2CD0E",
+      "revision": 1,
+      "semantic_sha256": "21f2cd0e4e41e2c8dcf53b97d56e414c0f975ec5d99b31557c6d508a569ecb7c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Locale, Unicode, time, numbers, identifiers, and serialization create enormous cross-platform value and transition spaces. Therefore the proposed structured-record composite does not prove the whole rule “Test locale, Unicode, time, number, identifier, and serialization interoperability.”.",
+      "counterexample_analysis": "Common locales can pass while a DST fold plus non-Latin identifier breaks round-trip. The proposal can Pass while “Test locale, Unicode, time, number, identifier, and serialization interoperability.” remains false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-062F69DE",
+      "revision": 1,
+      "semantic_sha256": "062f69deb27ddb44d96c00bff88a1cb7cb2add79136ef1d28cba41b4ee88c7e7",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Forward preservation depends on every unknown field shape, transformation, storage layer, version transition, and write path. Therefore the proposed structured-record composite does not prove the whole rule “Preserve unknown data where the contract requires forward compatibility.”.",
+      "counterexample_analysis": "Sample extension fields can round-trip while nested unknown data is dropped during edit. The proposal can Pass while “Preserve unknown data where the contract requires forward compatibility.” remains false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A0AEBC24",
+      "revision": 1,
+      "semantic_sha256": "a0aebc245f9a87442fb463054898f812ca70608803ab427134c37a318caba512",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Clear rejection and absence of insecure fallback are parser/protocol claims over unsupported versions, negotiation states, errors, and attacker inputs. Therefore the proposed structured-record composite does not prove the whole rule “Reject unsupported or unsafe versions clearly without insecure fallback.”.",
+      "counterexample_analysis": "Known bad versions can reject while a malformed version tag triggers legacy fallback. The proposal can Pass while “Reject unsupported or unsafe versions clearly without insecure fallback.” remains false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5132E054",
+      "revision": 1,
+      "semantic_sha256": "5132e054ae157665e73a647cb7972ff1927ad6e85569cc3cc3d6743ee6d745e3",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Record headings cannot prove all deviations, choices, extensions, and customer-visible limitations are known, accurate, and complete. Therefore the proposed structured-record composite does not prove the whole rule “Record deviations, implementation choices, extensions, and customer-visible limitations.”.",
+      "counterexample_analysis": "A limitation register can omit an extension that changes customer behavior. The proposal can Pass while “Record deviations, implementation choices, extensions, and customer-visible limitations.” remains false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B85CC7B0",
+      "revision": 1,
+      "semantic_sha256": "b85cc7b031783358cf240fdcc974b672e1ebac1df6f85c1ca9444125cca34f45",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Preventing every out-of-scope standards claim requires complete documentation, marketing, UI, API, and partner statement inventories plus authoritative scope meaning. Therefore the proposed structured-record composite does not prove the whole rule “Do not claim standards conformance outside the exact version, profile, scope, environment, and evidence tested.”.",
+      "counterexample_analysis": "A test report can be exact while a sales page claims broader conformance. The proposal can Pass while “Do not claim standards conformance outside the exact version, profile, scope, environment, and evidence tested.” remains false.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3F433ECC",
+      "revision": 1,
+      "semantic_sha256": "3f433eccbbe5c9115f2911b19580874b1996822f61d4d4cf84101185f900828f",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Re-running requires complete detection of relevant standard, parser, dependency, and protocol changes and judgment of affected scope. Therefore the proposed structured-record composite does not prove the whole rule “Repeat conformance testing after standard revisions, parser changes, dependency changes, and protocol upgrades.”.",
+      "counterexample_analysis": "A transitive parser change can alter conformance without triggering the recorded workflow. The proposal can Pass while “Repeat conformance testing after standard revisions, parser changes, dependency changes, and protocol upgrades.” remains false.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-70E9D5AA",
+      "revision": 1,
+      "semantic_sha256": "70e9d5aac0936d0dd88b8de67815d3152502815393bd9ae5ffddf7361df04d76",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Which analysis classes apply and whether their tools/rules cover the system require language, architecture, policy, and risk judgment. Therefore the proposed structured-record composite does not prove the whole rule “Run type, data-flow, control-flow, taint, dependency, configuration, infrastructure, secret, license, and policy analysis as applicable.”.",
+      "counterexample_analysis": "Many analyzers can run while generated infrastructure or a required taint path is excluded. The proposal can Pass while “Run type, data-flow, control-flow, taint, dependency, configuration, infrastructure, secret, license, and policy analysis as applicable.” remains false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-49154A5B",
+      "revision": 1,
+      "semantic_sha256": "49154a5b16a97834e5a2d560ef22e72eeeb1f3643aa3b4eef67bd135562ae462",
+      "verdict": "confirmed_deterministic",
+      "reason": "For a sealed analyzer configuration, explicit rule identities, severity thresholds, configuration version, and absence of inherited default values are exact schema facts. This proves the complete bounded meaning of “Configure rules and severity thresholds explicitly rather than relying on unreviewed defaults.”.",
+      "counterexample_analysis": "A missing threshold, unresolved rule, or unreviewed default binding deterministically fails the configuration. Within the sealed workflow evidence, the rule cannot Pass while broken.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D330E2E8",
+      "revision": 1,
+      "semantic_sha256": "d330e2e8f12985a4f0df8dd0881278d45dc4a9da28c23a06cc0f33fe6e6e7062",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Attribution and expiry are exact, but suppression truth, rationale adequacy, and review validity require accountable expert judgment. Therefore the proposed structured-record composite does not prove the whole rule “Treat suppressions as reviewed, attributable, time-bounded decisions with rationale.”.",
+      "counterexample_analysis": "A real defect can be suppressed with polished rationale and an authorized signature. The proposal can Pass while “Treat suppressions as reviewed, attributable, time-bounded decisions with rationale.” remains false.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-AE94E396",
+      "revision": 1,
+      "semantic_sha256": "ae94e39678688ad8714a4bbe2a39e359956526c041d1093fc539afa9a4544352",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Inclusion depends on complete generated/vendored/build/migration/infrastructure/query/config inventories and whether each can affect quality. Therefore the proposed structured-record composite does not prove the whole rule “Verify that generated code, vendored code, build scripts, migrations, infrastructure, queries, and configuration are included where they can affect quality.”.",
+      "counterexample_analysis": "The analyzer manifest can pass while a generated migration or runtime query is omitted. The proposal can Pass while “Verify that generated code, vendored code, build scripts, migrations, infrastructure, queries, and configuration are included where they can affect quality.” remains false.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F13CA22A",
+      "revision": 1,
+      "semantic_sha256": "f13ca22a4132afa5dfaa7f6b905313bf1184309065301aaf602a7ec997dbfb62",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Fields can be precise syntactically while assumptions, invariants, conditions, and constraints are semantically wrong or incomplete. Therefore the proposed structured-record composite does not prove the whole rule “State assumptions, invariants, preconditions, postconditions, liveness, safety, and environmental constraints precisely.”.",
+      "counterexample_analysis": "A formal model can specify exact but false environmental assumptions. The proposal can Pass while “State assumptions, invariants, preconditions, postconditions, liveness, safety, and environmental constraints precisely.” remains false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9EB4BECC",
+      "revision": 1,
+      "semantic_sha256": "9eb4beccbae6cbb0c3f767ca9e59479184c0133b5a93573410b540830b267a3d",
+      "verdict": "confirmed_deterministic",
+      "reason": "For a sealed analysis run, tool/rule/model versions, proof artifacts, assumptions, suppressions, and unresolved-finding records form a finite archival manifest. This proves the complete bounded meaning of “Retain tool versions, rules, models, proof artifacts, assumptions, suppressions, and unresolved findings.”.",
+      "counterexample_analysis": "Any missing artifact, broken reference, or changed digest deterministically fails evidence retention. Within the sealed workflow evidence, the rule cannot Pass while broken.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-80C8E969",
+      "revision": 1,
+      "semantic_sha256": "80c8e9691aaa2490efe3a8da1726977fed611eeaea2cdaae8ca789bdf33535d0",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Affected-analysis reruns require complete change detection and semantic impact mapping across source, compiler, dependency, configuration, model, and platform. Therefore the proposed structured-record composite does not prove the whole rule “Re-run affected analyses after source, compiler, dependency, configuration, model, or platform changes.”.",
+      "counterexample_analysis": "A provider or compiler behavior change can affect results without being linked to an analysis. The proposal can Pass while “Re-run affected analyses after source, compiler, dependency, configuration, model, or platform changes.” remains false.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C2DD853F",
+      "revision": 1,
+      "semantic_sha256": "c2dd853f5e1e40bdd797f43656305975d5eb90ea863259fd9b92857934cfd41b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Production-quality review, security, maintainability, reliability, and lifecycle treatment are engineering judgments, not asset presence. Therefore the proposed structured-record composite does not prove the whole rule “Treat test code, harnesses, fixtures, generators, simulators, mocks, and pipelines as production-quality engineering assets.”.",
+      "counterexample_analysis": "Versioned reviewed harness code can still leak secrets and be too fragile to maintain. The proposal can Pass while “Treat test code, harnesses, fixtures, generators, simulators, mocks, and pipelines as production-quality engineering assets.” remains false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "human_accountability"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8987771C",
+      "revision": 1,
+      "semantic_sha256": "8987771c88f0f7bf823097cb19b6cea56d50429f489c33a3bcd3b08ac4e6d798",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Owner and version-control fields are exact, but adequate review, docs, observability, support, and lifecycle plans require organizational judgment. Therefore the proposed structured-record composite does not prove the whole rule “Give test infrastructure owners, review requirements, version control, documentation, observability, support, and lifecycle plans.”.",
+      "counterexample_analysis": "A nominal owner and template plan can exist while nobody supports the test platform. The proposal can Pass while “Give test infrastructure owners, review requirements, version control, documentation, observability, support, and lifecycle plans.” remains false.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-96CDA61D",
+      "revision": 1,
+      "semantic_sha256": "96cda61d28f6b8977340fbc9309862ca262ff4f574bfa0cdef405a6646f05436",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Failure independence and absence of misleading cascades require all dependency relationships, schedules, and failure causes. Therefore the proposed structured-record composite does not prove the whole rule “Keep tests independent enough that one failure does not create misleading cascades.”.",
+      "counterexample_analysis": "Sample isolated failures can pass while a shared fixture outage causes hundreds of misleading failures. The proposal can Pass while “Keep tests independent enough that one failure does not create misleading cascades.” remains false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-BFA06C49",
+      "revision": 1,
+      "semantic_sha256": "bfa06c49dc65d615e5a7f6df06624172f0421b06ee17ec4202477acc2bcfdbf1",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Controlling time, entropy, network, identity, services, shared state, and parallel schedules is incomplete across every dependency and path. Therefore the proposed structured-record composite does not prove the whole rule “Control time, randomness, network, identity, external services, shared state, and parallel execution to improve reproducibility.”.",
+      "counterexample_analysis": "A fixed seed can pass while remote scheduling or shared identity state still changes outcomes. The proposal can Pass while “Control time, randomness, network, identity, external services, shared state, and parallel execution to improve reproducibility.” remains false.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CB1343BF",
+      "revision": 1,
+      "semantic_sha256": "cb1343bf0af6762e378c5ee696b6145174aad76d92ee276ba939f4e50aa7d556",
+      "verdict": "confirmed_deterministic",
+      "reason": "For each generated/randomized run, seed value, generator version, input identity, and failure record are exact finite metadata. This proves the complete bounded meaning of “Use deterministic seeds and retain them for generated and randomized failures.”.",
+      "counterexample_analysis": "A missing or changed seed, unbound generator version, or failure without its seed deterministically fails. Within the sealed workflow evidence, the rule cannot Pass while broken.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-DF29F97A",
+      "revision": 1,
+      "semantic_sha256": "df29f97a3c03e72fc7c88a9e2aace1651a330ce1d6f3c36e7cb0c433bf7fd7e6",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Static sleep detection misses wrappers/generated code and cannot prove synchronization conditions are correct, observable, and bounded for every async path. Therefore the proposed structured-record composite does not prove the whole rule “Avoid fixed sleeps; synchronize on observable conditions with bounded timeouts.”.",
+      "counterexample_analysis": "Fixed waiting can hide behind a helper, or a bounded condition can observe the wrong completion signal. The proposal can Pass while “Avoid fixed sleeps; synchronize on observable conditions with bounded timeouts.” remains false.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-123DA8C7",
+      "revision": 1,
+      "semantic_sha256": "123da8c78005d75c47bf758dd70be3097e469a83ab89e4a34854425e543675be",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Failure fields can exist while their wording and evidence do not actually explain the relevant requirement, state, or difference. Therefore the proposed structured-record composite does not prove the whole rule “Make failures explain which requirement, step, input, state, and observation differed.”.",
+      "counterexample_analysis": "A report can populate every field with generic IDs and expected true/actual false. The proposal can Pass while “Make failures explain which requirement, step, input, state, and observation differed.” remains false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A6EE8FB6",
+      "revision": 1,
+      "semantic_sha256": "a6ee8fb670b958a892392258f1c42834049c8bbfebd3fb969fd382d16ded1246",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Diagnostics can expose secrets/personal data through values, screenshots, traces, dumps, encodings, correlations, and third-party sinks; necessity is contextual. Therefore the proposed structured-record composite does not prove the whole rule “Capture diagnostics without exposing secrets or unnecessary personal data.”.",
+      "counterexample_analysis": "Pattern scans can pass while a session token or identifiable event sequence leaks. The proposal can Pass while “Capture diagnostics without exposing secrets or unnecessary personal data.” remains false.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4A334C27",
+      "revision": 1,
+      "semantic_sha256": "4a334c27f7fd994acacec3878a94b55f217250e1cb7a9a406dce845d470b2fd0",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Preventing every false pass from skipped assertions, swallowed exceptions, failed fixtures, or unavailable dependencies requires complete language/runtime instrumentation. Therefore the proposed structured-record composite does not prove the whole rule “Prevent tests from passing because assertions were skipped, exceptions swallowed, fixtures failed, or dependencies were unavailable.”.",
+      "counterexample_analysis": "The runner can check assertion counts while a helper catches the only meaningful exception. The proposal can Pass while “Prevent tests from passing because assertions were skipped, exceptions swallowed, fixtures failed, or dependencies were unavailable.” remains false.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9B3A9AA9",
+      "revision": 1,
+      "semantic_sha256": "9b3a9aa9dcdd8dccbef625de62a18e5b267582f33387edfdbae5f86ca917ae4d",
+      "verdict": "confirmed_deterministic",
+      "reason": "Given a sealed test protocol with enumerated required setup, data, instrumentation, and publication states, the final result transition can be required to fail closed. This proves the complete bounded meaning of “Fail closed when required test setup, data, instrumentation, or result publication is incomplete.”.",
+      "counterexample_analysis": "Any missing prerequisite or unpublished result blocks the pass state deterministically. Within the sealed workflow evidence, the rule cannot Pass while broken.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-95988B28",
+      "revision": 1,
+      "semantic_sha256": "95988b284b6f475f8738a24c0979e2e6bf3902f49ad94e7179db3985cd974aa1",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Selected real-contract comparisons cannot prove mocks/simulators match every endpoint, state, timing, failure, and future dependency behavior. Therefore the proposed structured-record composite does not prove the whole rule “Verify mocks and simulators against real contracts and periodically against real dependencies.”.",
+      "counterexample_analysis": "A simulator can match happy responses while modeling retry and throttling incorrectly. The proposal can Pass while “Verify mocks and simulators against real contracts and periodically against real dependencies.” remains false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-65CF6581",
+      "revision": 1,
+      "semantic_sha256": "65cf6581917b5b447f2b2370943d5bebb016e129fe133a26099ada0dcc69dd78",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Reliable cleanup and minimal shared state span every resource, failure, cancellation, timeout, async job, and provider behavior. Therefore the proposed structured-record composite does not prove the whole rule “Minimize shared mutable test data and clean resources reliably after success, failure, cancellation, and timeout.”.",
+      "counterexample_analysis": "Normal cleanup can pass while timeout leaves an untagged resource that later contaminates another run. The proposal can Pass while “Minimize shared mutable test data and clean resources reliably after success, failure, cancellation, and timeout.” remains false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-05E81260",
+      "revision": 1,
+      "semantic_sha256": "05e81260bac551cdd5590d8c288ac72201697de3d6f9c4757a0cb0ca74bc3b67",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Assumption records are exact, but verifying isolation and ordering for all schedules, failures, and shared dependencies is non-exhaustive. Therefore the proposed structured-record composite does not prove the whole rule “Run tests in parallel only when isolation and ordering assumptions are explicit and verified.”.",
+      "counterexample_analysis": "Parallel tests can pass repeated runs while a rare ordering race violates an unstated provider assumption. The proposal can Pass while “Run tests in parallel only when isolation and ordering assumptions are explicit and verified.” remains false.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F2F23289",
+      "revision": 1,
+      "semantic_sha256": "f2f232890e32b01a8d3c27855b19ba76d5dacebc58b43e7cda8135be409c691d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Most run metrics are numeric, but diagnostic quality, complete cost, and complete retry/infra/flakiness classification require judgment and full populations. Therefore the proposed structured-record composite does not prove the whole rule “Monitor test duration, queue time, retry rate, flakiness, infrastructure failures, cost, and diagnostic quality.”.",
+      "counterexample_analysis": "Dashboards can contain all metrics while missing provider cost and calling opaque failures diagnostically good. The proposal can Pass while “Monitor test duration, queue time, retry rate, flakiness, infrastructure failures, cost, and diagnostic quality.” remains false.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E0D501EC",
+      "revision": 1,
+      "semantic_sha256": "e0d501ec10f73d3a76e11c071dfe0d752284a148a27d85439d7c8e311451e469",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Security isolation from all untrusted code/data, production secrets, and resources is an adversarial claim across credentials, networks, caches, identities, and providers. Therefore the proposed structured-record composite does not prove the whole rule “Secure test systems so untrusted code and test data cannot access production secrets or damage production resources.”.",
+      "counterexample_analysis": "Containers can pass isolation checks while a metadata-service credential reaches production. The proposal can Pass while “Secure test systems so untrusted code and test data cannot access production secrets or damage production resources.” remains false.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B5965E6B",
+      "revision": 1,
+      "semantic_sha256": "b5965e6b9989c8ec1b43ae7171680ed599ca8567bce497a6c761cfa062d26386",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A characteristics table cannot prove complete production relevance or that differences are accurately classified as material limitations. Therefore the proposed structured-record composite does not prove the whole rule “Define which production characteristics each test environment must reproduce and which differences remain material limitations.”.",
+      "counterexample_analysis": "The table can omit production rate limiting or dismiss a topology difference as immaterial. The proposal can Pass while “Define which production characteristics each test environment must reproduce and which differences remain material limitations.” remains false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FEB0BCAC",
+      "revision": 1,
+      "semantic_sha256": "feb0bcac8960f1adf5b4d57a63b609d592aca95b8c33d78580f5a550489418ec",
+      "verdict": "confirmed_deterministic",
+      "reason": "A sealed test manifest can bind infrastructure, configuration, schema, dependency, flag, identity, and data version digests to one tested artifact digest. This proves the complete bounded meaning of “Version infrastructure, configuration, schema, dependencies, feature flags, identities, and test data with the tested artifact.”.",
+      "counterexample_analysis": "Any mutable/unversioned member or artifact mismatch deterministically fails the manifest. Within the sealed workflow evidence, the rule cannot Pass while broken.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-DDE86544",
+      "revision": 1,
+      "semantic_sha256": "dde865448734474520d6795e1c34d0e1e8324541b3e7f1137a57186d3500c77d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Whether data is specifically authorized and whether production copies are controlled requires legal/privacy authority and complete copy provenance. Therefore the proposed structured-record composite does not prove the whole rule “Use synthetic, generated, masked, or specifically authorized data rather than uncontrolled production copies.”.",
+      "counterexample_analysis": "A masked dataset can pass labels while containing an unauthorized recoverable production identifier. The proposal can Pass while “Use synthetic, generated, masked, or specifically authorized data rather than uncontrolled production copies.” remains false.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8FA110C8",
+      "revision": 1,
+      "semantic_sha256": "8fa110c83454757b85d14e8b6472ba95fc1621ca7bd8dde6fdb2a8e539b2cdd1",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Realism across distributions, relations, skew, encoding, history, and edges conflicts with privacy minimization and needs product/data judgment. Therefore the proposed structured-record composite does not prove the whole rule “Preserve realistic distributions, relationships, cardinality, sparsity, skew, encoding, history, and edge cases without retaining unnecessary personal data.”.",
+      "counterexample_analysis": "Synthetic data can match summary statistics while missing the rare relationship that triggers failure, or retain unnecessary identifiers. The proposal can Pass while “Preserve realistic distributions, relationships, cardinality, sparsity, skew, encoding, history, and edge cases without retaining unnecessary personal data.” remains false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C5C286DB",
+      "revision": 1,
+      "semantic_sha256": "c5c286db0770712257dec56b0e4eae9ae05b1c3bd0b561484db79969b8760c46",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The named record classes have unbounded values, combinations, lifecycle states, encodings, and context-specific maxima. Therefore the proposed structured-record composite does not prove the whole rule “Include malformed, incomplete, duplicated, conflicting, stale, future-dated, historical, deleted, archived, and maximum-size records.”.",
+      "counterexample_analysis": "One fixture per class can pass while a conflicting future-dated maximum-size record breaks parsing. The proposal can Pass while “Include malformed, incomplete, duplicated, conflicting, stale, future-dated, historical, deleted, archived, and maximum-size records.” remains false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-366D4955",
+      "revision": 1,
+      "semantic_sha256": "366d4955b6f1b20f676ffaa7079f18b18aa6f6f537f71c37e85b6dd984b05209",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Applicability and sufficient cross-product coverage of tenants, roles, plans, locales, currencies, zones, consent, lifecycle, and accessibility require product judgment. Therefore the proposed structured-record composite does not prove the whole rule “Include multiple tenants, roles, plans, locales, currencies, time zones, consent states, lifecycle states, and accessibility settings as applicable.”.",
+      "counterexample_analysis": "Each category can appear once while an important tenant-role-locale combination is absent. The proposal can Pass while “Include multiple tenants, roles, plans, locales, currencies, time zones, consent states, lifecycle states, and accessibility settings as applicable.” remains false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C58ED0EB",
+      "revision": 1,
+      "semantic_sha256": "c58ed0eb70b4f611292b59112d05cc6c82023deee9f8f2062b89a553cf6cd006",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Actual sensitivity and retention rules require privacy/legal classification, and protection/deletion must cover all test-data copies and providers. Therefore the proposed structured-record composite does not prove the whole rule “Protect test data according to its actual sensitivity and delete it according to retention rules.”.",
+      "counterexample_analysis": "The main database can delete on schedule while a snapshot retains sensitive production-derived data. The proposal can Pass while “Protect test data according to its actual sensitivity and delete it according to retention rules.” remains false.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-AE04D918",
+      "revision": 1,
+      "semantic_sha256": "ae04d918a5b0ecdf87e10b64c7d952d296beabf4d2dc552bf806638479f7c703",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Preventing all nonproduction effects requires complete routes, credentials, integrations, fallbacks, counterparties, and provider behaviors. Therefore the proposed structured-record composite does not prove the whole rule “Prevent nonproduction notifications, payments, webhooks, integrations, and automated actions from reaching real users or counterparties.”.",
+      "counterexample_analysis": "Sandbox payments can pass while a fallback email or live webhook contacts a real counterparty. The proposal can Pass while “Prevent nonproduction notifications, payments, webhooks, integrations, and automated actions from reaching real users or counterparties.” remains false.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A34619FA",
+      "revision": 1,
+      "semantic_sha256": "a34619fa4ab8a8d598ec6a87eccf787b44f224ed295f2bc9b93f323437c3877c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Reproducible reset and absence of residual/cross-test state require complete resource discovery and all failure/interleaving paths. Therefore the proposed structured-record composite does not prove the whole rule “Reset environments reproducibly and detect residual state or cross-test contamination.”.",
+      "counterexample_analysis": "Reset tests can pass while an untagged queue message survives and affects a later run. The proposal can Pass while “Reset environments reproducibly and detect residual state or cross-test contamination.” remains false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A6D5B399",
+      "revision": 1,
+      "semantic_sha256": "a6d5b399c88638ea1b04752cb762c1d0ebb6079026f2eb2e0459598f114f2cc0",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Production likeness and boundary equivalence require complete topology/security models and risk-specific fidelity judgments. Therefore the proposed structured-record composite does not prove the whole rule “Use production-like topology and security boundaries for migration, performance, resilience, and deployment tests.”.",
+      "counterexample_analysis": "Staging can mirror services while using a shared trust boundary that hides migration and failover defects. The proposal can Pass while “Use production-like topology and security boundaries for migration, performance, resilience, and deployment tests.” remains false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0691B9EF",
+      "revision": 1,
+      "semantic_sha256": "0691b9efd2768c5482174b2560adec1d3e2241389b1535ca5471992e67970884",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Periodic sandbox/production comparisons cannot cover every provider state, error, limit, timing, region, and undocumented change. Therefore the proposed structured-record composite does not prove the whole rule “Validate provider sandboxes and emulators against production behavior and document differences.”.",
+      "counterexample_analysis": "Happy-path parity can pass while sandbox retries differ from production. The proposal can Pass while “Validate provider sandboxes and emulators against production behavior and document differences.” remains false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3BCF09B5",
+      "revision": 1,
+      "semantic_sha256": "3bcf09b50d45731f2335a45ccc415935d9d318fe94c5ceb10d5842286d3c76dc",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Config diffs and evidence invalidation are exact once scope exists, but complete drift detection and materiality are not. Therefore the proposed structured-record composite does not prove the whole rule “Detect environment drift and invalidate evidence when material drift occurs.”.",
+      "counterexample_analysis": "Known manifests can match while a provider-only setting drifts or a material change is classified harmless. The proposal can Pass while “Detect environment drift and invalidate evidence when material drift occurs.” remains false.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2B7192B0",
+      "revision": 1,
+      "semantic_sha256": "2b7192b0dfa524ad045515e7ccf0e98e72cfb849b2c4a2c202cdbd0d63f68b10",
+      "verdict": "confirmed_deterministic",
+      "reason": "Environment manifests, generation-rule versions, masking-method versions, seeds, and deviation records are finite archival artifacts with exact digests and links. This proves the complete bounded meaning of “Retain environment manifests, data-generation rules, masking methods, seeds, and known deviations.”.",
+      "counterexample_analysis": "Any missing artifact, changed digest, dangling run reference, or lost declared seed deterministically fails. Within the sealed workflow evidence, the rule cannot Pass while broken.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B74D5F78",
+      "revision": 1,
+      "semantic_sha256": "b74d5f78d72bc8d7e5175ff05ded29bb078f6ce3bbf42315563a6f23cc5ed038",
+      "verdict": "confirmed_deterministic",
+      "reason": "A versioned test policy can exactly classify flaky status as a defect state and require owner, diagnosis, and remediation workflow fields rather than a normal-pass state. This proves the complete bounded meaning of “Define a flaky test as an engineering defect requiring ownership, diagnosis, and remediation rather than a normal condition.”.",
+      "counterexample_analysis": "If policy permits an unowned normal state or omits the required defect transition, schema validation fails. Within the sealed workflow evidence, the rule cannot Pass while broken.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-DFD85174",
+      "revision": 1,
+      "semantic_sha256": "dfd8517450efb64effeaa806adfa3bcc106dd61c94393ffd7a489deb58878238",
+      "verdict": "confirmed_deterministic",
+      "reason": "With a sealed test-run history and stable test/suite/environment/branch/dependency/signature identities, flakiness rates by each listed dimension are exact aggregations. This proves the complete bounded meaning of “Measure flakiness by test, suite, environment, branch, dependency, and failure signature.”.",
+      "counterexample_analysis": "A run cannot be omitted or placed in the wrong group without a manifest/reference mismatch. Within the sealed workflow evidence, the rule cannot Pass while broken.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7679C932",
+      "revision": 1,
+      "semantic_sha256": "7679c9325410896c71af27a4093d2ece2a85dd73f0bbd384de378e3173f3f0aa",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Failure-type fields do not prove causal classification among product, test, environment, dependency, and infrastructure causes. Therefore the proposed structured-record composite does not prove the whole rule “Differentiate product defects, test defects, environment failures, dependency failures, and infrastructure failures.”.",
+      "counterexample_analysis": "A product resource leak can be labeled infrastructure failure and pass enum checks. The proposal can Pass while “Differentiate product defects, test defects, environment failures, dependency failures, and infrastructure failures.” remains false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9CE7EDE5",
+      "revision": 1,
+      "semantic_sha256": "9ce7ede5175356229f0a98b26b59723aba868859f1f58f7d56ad7e86adf5dcdf",
+      "verdict": "confirmed_deterministic",
+      "reason": "A retry event log can require immutable preservation/publication of the first failure before any retry transition. This proves the complete bounded meaning of “Do not automatically retry failures without preserving and reporting the first failure.”.",
+      "counterexample_analysis": "Retrying without the first failure artifact or publishing only the later result deterministically fails. Within the sealed workflow evidence, the rule cannot Pass while broken.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-01EEF7ED",
+      "revision": 1,
+      "semantic_sha256": "01eef7ed6abb85377419f24500ced031eb6fcf623db53b39295a336f1cfc8d7e",
+      "verdict": "confirmed_deterministic",
+      "reason": "Retry-count limits and visible pass-after-retry status are exact state-machine and reporting properties for a sealed run. This proves the complete bounded meaning of “Limit retries and ensure a pass-after-retry remains visible.”.",
+      "counterexample_analysis": "Exceeding the limit or collapsing pass-after-retry into an ordinary pass deterministically fails. Within the sealed workflow evidence, the rule cannot Pass while broken.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-676775D7",
+      "revision": 1,
+      "semantic_sha256": "676775d7070a4f4a5ba1b4ca38972c32d8d3f9992f6d548249b667c3fefcfdd4",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Owner/date/expiry fields are exact, but reason truth, risk assessment, and compensating-coverage adequacy require accountable judgment. Therefore the proposed structured-record composite does not prove the whole rule “Require a quarantine owner, reason, date, risk assessment, compensating coverage, and expiry.”.",
+      "counterexample_analysis": "A critical test can be quarantined with boilerplate risk and ineffective compensating coverage. The proposal can Pass while “Require a quarantine owner, reason, date, risk assessment, compensating coverage, and expiry.” remains false.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-48996A09",
+      "revision": 1,
+      "semantic_sha256": "48996a09926acd2a36216f8da9b63c621eed3d6a5ca2c60e2d1862aad8927a58",
+      "verdict": "confirmed_deterministic",
+      "reason": "For a sealed suite/evidence manifest, every test marked critical and quarantined can be required to remain as an explicit non-pass evidence entry. This proves the complete bounded meaning of “Prevent quarantined critical tests from silently disappearing from release evidence.”.",
+      "counterexample_analysis": "Omitting, hiding, or converting that test into normal pass causes a deterministic manifest mismatch. Within the sealed workflow evidence, the rule cannot Pass while broken.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CF484D87",
+      "revision": 1,
+      "semantic_sha256": "cf484d87a8ff6473382afee2b8b6d6857281bb34c5f4d90cab4cf6f4e4322139",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Artifact categories are finite, but completeness and diagnostic relevance for an intermittent failure depend on unknown cause and platform behavior. Therefore the proposed structured-record composite does not prove the whole rule “Retain logs, traces, screenshots, dumps, seeds, schedules, environment state, and previous outcomes for intermittent failures.”.",
+      "counterexample_analysis": "All named artifact types can exist while the missing clock trace is the only evidence needed. The proposal can Pass while “Retain logs, traces, screenshots, dumps, seeds, schedules, environment state, and previous outcomes for intermittent failures.” remains false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-EA5C03BB",
+      "revision": 1,
+      "semantic_sha256": "ea5c03bb62d6432537988d395fc53dd68b064fdc7d2d2482a30ec63033b45c2a",
+      "verdict": "confirmed_deterministic",
+      "reason": "Quarantine start, expiry, current status, repair/removal event, and test identity are exact timing and state facts. This proves the complete bounded meaning of “Track quarantine age and remove or repair expired tests.”.",
+      "counterexample_analysis": "An expired test remaining quarantined without repair/removal deterministically fails. Within the sealed workflow evidence, the rule cannot Pass while broken.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0541BA5A",
+      "revision": 1,
+      "semantic_sha256": "0541ba5adbb2f7cb0096b5ca0255c4bbe0088d9ed2d77a3912dc346b24fd1bd9",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Critical property selection and the conclusion that preproduction cannot guarantee it require product, risk, and observability judgment. Therefore the proposed structured-record composite does not prove the whole rule “Define which critical properties must be verified continuously after deployment because preproduction testing cannot guarantee them.”.",
+      "counterexample_analysis": "A list can omit the most important financial invariant while documenting easier properties. The proposal can Pass while “Define which critical properties must be verified continuously after deployment because preproduction testing cannot guarantee them.” remains false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-624D5AC5",
+      "revision": 1,
+      "semantic_sha256": "624d5ac5c5f6dfac3e4c188d187cc5d05e60615277cfcb67d98491a071796de6",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Production safety and meaningful smoke/synthetic coverage need complete journey, identity, side-effect, dependency, and outcome oracles. Therefore the proposed structured-record composite does not prove the whole rule “Use production-safe smoke tests and synthetic journeys for authentication, authorization, critical transactions, dependencies, and user-visible outcomes.”.",
+      "counterexample_analysis": "A synthetic purchase can pass while bypassing real authorization or triggering a live downstream action. The proposal can Pass while “Use production-safe smoke tests and synthetic journeys for authentication, authorization, critical transactions, dependencies, and user-visible outcomes.” remains false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8F1C7642",
+      "revision": 1,
+      "semantic_sha256": "8f1c764231d5a1c368bc8c51024c50667c9583e789ed314ad407631ea3c144eb",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Artifact/config/schema identities are exact, but complete routes, migrations, certificates, flags, and security-control effectiveness are not proven. Therefore the proposed structured-record composite does not prove the whole rule “Verify the deployed artifact digest, configuration, feature flags, schema, migrations, certificates, routes, and security controls after deployment.”.",
+      "counterexample_analysis": "Digest checks can pass while an unverified route or ineffective authorization control remains deployed. The proposal can Pass while “Verify the deployed artifact digest, configuration, feature flags, schema, migrations, certificates, routes, and security controls after deployment.” remains false.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9FC91F6A",
+      "revision": 1,
+      "semantic_sha256": "9fc91f6accf0eef7c2b0009d7bb09709acd70840ecb5320b5584a7be0d948167",
+      "verdict": "confirmed_deterministic",
+      "reason": "Given sealed canary/control membership, predefined indicator definitions, measurement windows, units, and comparison functions, the cohort comparison is exact. This proves the complete bounded meaning of “Compare canary and control cohorts using predefined correctness, reliability, performance, business, security, and support indicators.”.",
+      "counterexample_analysis": "Changing cohorts, indicators, or windows, or computing the wrong comparison deterministically fails. Within the sealed workflow evidence, the rule cannot Pass while broken.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-53C69573",
+      "revision": 1,
+      "semantic_sha256": "53c695734968536dcc0debcd881aa3dda9c7aeb5f51f24726102f8c495694280",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Continuous validation of invariants, totals, freshness, lag, duplicates, and silent failures needs complete data/consumer inventories and correctness oracles. Therefore the proposed structured-record composite does not prove the whole rule “Validate invariants, reconciliation totals, data freshness, queue lag, duplicate effects, and silent failure indicators continuously.”.",
+      "counterexample_analysis": "All monitored totals can balance while an uninstrumented downstream copy silently diverges. The proposal can Pass while “Validate invariants, reconciliation totals, data freshness, queue lag, duplicate effects, and silent failure indicators continuously.” remains false.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-59BD56C3",
+      "revision": 1,
+      "semantic_sha256": "59bd56c3654ab1090e58bf38f7ce85e7fc34315a63ad7c4b78c8b684eea6bb1b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Properties that must never fail and safe failure behavior require accountable safety/domain judgment, while runtime enforcement coverage is open-ended. Therefore the proposed structured-record composite does not prove the whole rule “Use runtime assertions and policy enforcement for properties that must never be violated, with safe failure behavior.”.",
+      "counterexample_analysis": "An assertion can protect one code path but fail dangerously on another or encode the wrong invariant. The proposal can Pass while “Use runtime assertions and policy enforcement for properties that must never be violated, with safe failure behavior.” remains false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0A3F86F0",
+      "revision": 1,
+      "semantic_sha256": "0a3f86f0352fb545305e679c76a2b3743220a94754787d1115786c70c7d0c691",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Monitoring cannot prove absence of telemetry gaps, bias, disabled checks, stale baselines, and pipeline failures without an independent complete observation source. Therefore the proposed structured-record composite does not prove the whole rule “Monitor test and verification telemetry for gaps, sampling bias, disabled checks, stale baselines, and pipeline failure.”.",
+      "counterexample_analysis": "The monitor can report healthy while its own sampler excludes a failing region. The proposal can Pass while “Monitor test and verification telemetry for gaps, sampling bias, disabled checks, stale baselines, and pipeline failure.” remains false.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-09C1C843",
+      "revision": 1,
+      "semantic_sha256": "09c1c843f70f4ea0acb2dadf7dbf59af8b7ac60d10fc7dcf57b75b739b0a0652",
+      "verdict": "confirmed_deterministic",
+      "reason": "A rollout policy can bind automatic/human stop, rollback, kill-switch, and incident thresholds to a version and timestamp before rollout begins. This proves the complete bounded meaning of “Define automatic or human stop, rollback, kill-switch, and incident-declaration thresholds before rollout.”.",
+      "counterexample_analysis": "Missing thresholds, late definition, or unresolvable policy binding deterministically fails. Within the sealed workflow evidence, the rule cannot Pass while broken.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-50075879",
+      "revision": 1,
+      "semantic_sha256": "500758790e4a1a233555c30a65d541e46a94d7114485431b293815895a6d327f",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Correlating incidents to missing, ineffective, or bypassed assurance is causal analysis over incomplete defect, change, and assurance histories. Therefore the proposed structured-record composite does not prove the whole rule “Correlate escaped defects and incidents with missing, ineffective, or bypassed pre-release assurance.”.",
+      "counterexample_analysis": "An incident can be blamed on a missing test while the true cause was an invalid requirement. The proposal can Pass while “Correlate escaped defects and incidents with missing, ineffective, or bypassed pre-release assurance.” remains false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4382A92C",
+      "revision": 1,
+      "semantic_sha256": "4382a92c1cc20087b1085ca42da70fbcf49470456d36c4aa7bbcdc4770684a9c",
+      "verdict": "confirmed_deterministic",
+      "reason": "Production verification artifacts can bind exact release digest/identity and explicit observation start/end timestamps in a finite retention manifest. This proves the complete bounded meaning of “Retain production verification evidence with the exact release and observation period.”.",
+      "counterexample_analysis": "Evidence linked to another release, lacking its period, or altered/lost deterministically fails. Within the sealed workflow evidence, the rule cannot Pass while broken.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    }
+  ]
+}

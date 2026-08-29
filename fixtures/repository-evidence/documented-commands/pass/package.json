@@ -1,0 +1,8 @@
+{
+  "name": "prc-documented-commands-fixture",
+  "private": true,
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node --test"
+  }
+}

@@ -1,0 +1,1811 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003-part-001",
+  "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 72,
+  "controls": [
+    {
+      "control_id": "USEQ-15C830F0",
+      "revision": 1,
+      "semantic_sha256": "15c830f0ef6d34cb70b53808087d1190dfc17ca81a42c148c84a31d162dfff95",
+      "statement": "Bound runtime, token use, cost, network requests, file changes, command count, concurrency, recursion, retries, and spawned agents.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 612
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Agentic tools, autonomous execution, and capability containment"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Bound runtime, token use, cost, network requests, file changes, command count, concurrency, recursion, retries, and spawned agents.” is fully decidable from a fixed conjunction of versioned policy, sealed configuration, provenance, and release-gate evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Bound runtime, token use, cost, network requests, file changes, command count, concurrency, recursion, retries, and spawned agents.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-71EE868E",
+      "revision": 1,
+      "semantic_sha256": "71ee868e7f5aebaf6bf42f1dbc3127cceb816c82baf7049b37d948d3954aae5f",
+      "statement": "Restrict outbound network destinations and validate downloaded content and tools.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 613
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Agentic tools, autonomous execution, and capability containment"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Restrict outbound network destinations and validate downloaded content and tools.” is fully decidable from a fixed conjunction of versioned policy, sealed configuration, provenance, and release-gate evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Restrict outbound network destinations and validate downloaded content and tools.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-172D4874",
+      "revision": 1,
+      "semantic_sha256": "172d4874cf633db31c3f48dc4e12bfc590781ee95aa0157c8e7a9dbb0254b76e",
+      "statement": "Provide immediate pause, cancellation, credential revocation, and kill-switch capabilities.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 617
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Agentic tools, autonomous execution, and capability containment"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Provide immediate pause, cancellation, credential revocation, and kill-switch capabilities.” is fully decidable from a fixed conjunction of versioned policy, sealed configuration, provenance, and release-gate evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Provide immediate pause, cancellation, credential revocation, and kill-switch capabilities.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D31234E4",
+      "revision": 1,
+      "semantic_sha256": "d31234e465021bb9239b62de2e55150607e4f6db57f22de6e135476fd9c7eb5e",
+      "statement": "Test prompt injection, confused-deputy behavior, privilege escalation, hidden instructions, malicious tool output, and infinite-loop scenarios.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 619
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Agentic tools, autonomous execution, and capability containment"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Test prompt injection, confused-deputy behavior, privilege escalation, hidden instructions, malicious tool output, and infinite-loop scenarios.” is fully decidable from a bounded evaluation, cryptographic, recovery, transformation, or adversarial test with a fixed oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Test prompt injection, confused-deputy behavior, privilege escalation, hidden instructions, malicious tool output, and infinite-loop scenarios.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EDAB9D12",
+      "revision": 1,
+      "semantic_sha256": "edab9d1219da5cf2d0c6971dcf7bb0058dc9504965f8ebab5a81c971b5a23ad6",
+      "statement": "Inventory base models, fine-tunes, adapters, prompts, system instructions, safety policies, retrieval indexes, embeddings, data sets, evaluators, and external tools used in each AI-assisted workflow.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 624
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Model, prompt, adapter, and AI-component supply-chain assurance"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Inventory base models, fine-tunes, adapters, prompts, system instructions, safety policies, retrieval indexes, embeddings, data sets, evaluators, and external tools used in each AI-assisted workflow.” is fully decidable from exact inventory fields, links, versions, approvals, states, and lifecycle records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Inventory base models, fine-tunes, adapters, prompts, system instructions, safety policies, retrieval indexes, embeddings, data sets, evaluators, and external tools used in each AI-assisted workflow.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-68821BC1",
+      "revision": 1,
+      "semantic_sha256": "68821bc11eeb00d509e29afd2c68e130465f46bf4c6120dd81e73b41be5cc03b",
+      "statement": "Bind deployed AI configuration to a release record so behavior changes can be traced.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 626
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Model, prompt, adapter, and AI-component supply-chain assurance"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Bind deployed AI configuration to a release record so behavior changes can be traced.” is fully decidable from exact inventory fields, links, versions, approvals, states, and lifecycle records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Bind deployed AI configuration to a release record so behavior changes can be traced.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-21EAD928",
+      "revision": 1,
+      "semantic_sha256": "21ead9287bdade25d7bce271c8762ce7e4f74c91e10175823b0f179975ff5dff",
+      "statement": "Verify downloaded model and adapter integrity and retrieve them through authenticated trusted channels.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 627
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Model, prompt, adapter, and AI-component supply-chain assurance"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Verify downloaded model and adapter integrity and retrieve them through authenticated trusted channels.” is fully decidable from a fixed conjunction of versioned policy, sealed configuration, provenance, and release-gate evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Verify downloaded model and adapter integrity and retrieve them through authenticated trusted channels.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C41FAB76",
+      "revision": 1,
+      "semantic_sha256": "c41fab7634256eac0cdb752abb34601c2ec1187b90d2cb0ac2f8d91c8a8bb9dc",
+      "statement": "Review provider and community models for unsafe serialization, executable code, custom loaders, hidden tools, and excessive permissions.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 629
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Model, prompt, adapter, and AI-component supply-chain assurance"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Review provider and community models for unsafe serialization, executable code, custom loaders, hidden tools, and excessive permissions.” is fully decidable from exact inventory fields, links, versions, approvals, states, and lifecycle records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Review provider and community models for unsafe serialization, executable code, custom loaders, hidden tools, and excessive permissions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9F95E96A",
+      "revision": 1,
+      "semantic_sha256": "9f95e96a55fbcb1aaa5ca8942ae20cbfa5bec4d7bcd1f34e330fab439c8634a6",
+      "statement": "Do not execute untrusted model repositories, notebooks, setup scripts, or custom code with production credentials.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 630
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Model, prompt, adapter, and AI-component supply-chain assurance"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Do not execute untrusted model repositories, notebooks, setup scripts, or custom code with production credentials.” is fully decidable from a fixed conjunction of versioned policy, sealed configuration, provenance, and release-gate evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Do not execute untrusted model repositories, notebooks, setup scripts, or custom code with production credentials.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-23C5B858",
+      "revision": 1,
+      "semantic_sha256": "23c5b858375ff3425d23207127ec844bf2fe1ee07f7a3919ffa3e38274778a18",
+      "statement": "Separate evaluation, development, and production credentials and data.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 632
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Model, prompt, adapter, and AI-component supply-chain assurance"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Separate evaluation, development, and production credentials and data.” is fully decidable from a fixed conjunction of versioned policy, sealed configuration, provenance, and release-gate evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Separate evaluation, development, and production credentials and data.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C9B74797",
+      "revision": 1,
+      "semantic_sha256": "c9b7479788932fa622ea301aeeb027ab1e0766a9c1e32dea0dbc3ca0ad547db8",
+      "statement": "Control who may change prompts, retrieval sources, model routing, tool definitions, safety settings, and thresholds.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 633
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Model, prompt, adapter, and AI-component supply-chain assurance"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Control who may change prompts, retrieval sources, model routing, tool definitions, safety settings, and thresholds.” is fully decidable from a fixed conjunction of versioned policy, sealed configuration, provenance, and release-gate evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Control who may change prompts, retrieval sources, model routing, tool definitions, safety settings, and thresholds.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-886D57EB",
+      "revision": 1,
+      "semantic_sha256": "886d57eb100589249bac69bb6fe5d6ae6863002751a95862806c927b03feb875",
+      "statement": "Review and test changes even when the provider labels them as minor or safety-related.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 634
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Model, prompt, adapter, and AI-component supply-chain assurance"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Review and test changes even when the provider labels them as minor or safety-related.” is fully decidable from exact inventory fields, links, versions, approvals, states, and lifecycle records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Review and test changes even when the provider labels them as minor or safety-related.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6B2D33C4",
+      "revision": 1,
+      "semantic_sha256": "6b2d33c42e844af50db49d174822473a14a2ad52ba5b9a743fd303bac565b11f",
+      "statement": "Maintain a rollback path to a known evaluated model and configuration.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 635
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Model, prompt, adapter, and AI-component supply-chain assurance"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Maintain a rollback path to a known evaluated model and configuration.” is fully decidable from a bounded evaluation, cryptographic, recovery, transformation, or adversarial test with a fixed oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Maintain a rollback path to a known evaluated model and configuration.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-57129030",
+      "revision": 1,
+      "semantic_sha256": "57129030f9790f3cd8ff5321751a541764e9d4bcd65d88941039560010dab03a",
+      "statement": "Monitor provider outages, model withdrawals, silent updates, policy changes, and compromised distribution channels.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 636
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Model, prompt, adapter, and AI-component supply-chain assurance"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Rule “Monitor provider outages, model withdrawals, silent updates, policy changes, and compromised distribution channels.” is fully decidable from read-only queries over sealed provider, monitor, identity, and workflow state.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Monitor provider outages, model withdrawals, silent updates, policy changes, and compromised distribution channels.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B016EE0A",
+      "revision": 1,
+      "semantic_sha256": "b016ee0a39d5c4e90da9812bb1c2d473a746046b0a320ed6912e05879b433b12",
+      "statement": "Define retirement procedures for models, embeddings, prompts, credentials, retained data, and downstream derivatives.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 638
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Model, prompt, adapter, and AI-component supply-chain assurance"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Define retirement procedures for models, embeddings, prompts, credentials, retained data, and downstream derivatives.” is fully decidable from exact inventory fields, links, versions, approvals, states, and lifecycle records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Define retirement procedures for models, embeddings, prompts, credentials, retained data, and downstream derivatives.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F1783FEA",
+      "revision": 1,
+      "semantic_sha256": "f1783fea2fe7cd605296a19dcd19fc4c4d507e893990e07cafade15663b640ef",
+      "statement": "Define evaluations for the actual engineering tasks, repositories, languages, domains, users, tools, and risk conditions rather than relying only on general benchmarks.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 642
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Evaluation, red teaming, regression, and calibrated trust"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Define evaluations for the actual engineering tasks, repositories, languages, domains, users, tools, and risk conditions rather than relying only on general benchmarks.” is fully decidable from exact inventory fields, links, versions, approvals, states, and lifecycle records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Define evaluations for the actual engineering tasks, repositories, languages, domains, users, tools, and risk conditions rather than relying only on general benchmarks.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0C102A58",
+      "revision": 1,
+      "semantic_sha256": "0c102a58fdee84203bec0ae1266287f717b302a40e327881af2a2663569dd11a",
+      "statement": "Include incomplete context, conflicting requirements, obsolete documentation, malicious instructions, unusual code, large changes, and unfamiliar domains.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 644
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Evaluation, red teaming, regression, and calibrated trust"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Include incomplete context, conflicting requirements, obsolete documentation, malicious instructions, unusual code, large changes, and unfamiliar domains.” is fully decidable from exact inventory fields, links, versions, approvals, states, and lifecycle records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Include incomplete context, conflicting requirements, obsolete documentation, malicious instructions, unusual code, large changes, and unfamiliar domains.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8235AA68",
+      "revision": 1,
+      "semantic_sha256": "8235aa68e991f0263f346920817e745dcbae71f4e58b506bead6716b9c8af679",
+      "statement": "Evaluate refusal and escalation behavior when the tool lacks evidence, permission, capability, or confidence.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 645
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Evaluation, red teaming, regression, and calibrated trust"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Evaluate refusal and escalation behavior when the tool lacks evidence, permission, capability, or confidence.” is fully decidable from exact inventory fields, links, versions, approvals, states, and lifecycle records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Evaluate refusal and escalation behavior when the tool lacks evidence, permission, capability, or confidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0F3DD770",
+      "revision": 1,
+      "semantic_sha256": "0f3dd770f02adac660e1f82eb12f062bacc9714141acc738e72c2b079d338333",
+      "statement": "Evaluate whether the tool fabricates APIs, packages, citations, standards, test results, vulnerabilities, or completed actions.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 646
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Evaluation, red teaming, regression, and calibrated trust"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Evaluate whether the tool fabricates APIs, packages, citations, standards, test results, vulnerabilities, or completed actions.” is fully decidable from exact inventory fields, links, versions, approvals, states, and lifecycle records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Evaluate whether the tool fabricates APIs, packages, citations, standards, test results, vulnerabilities, or completed actions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D21E0A71",
+      "revision": 1,
+      "semantic_sha256": "d21e0a71ebe27656910463460a59247b6b16a3cb5862e954dba0c17ace541ef1",
+      "statement": "Test direct and indirect prompt injection, data exfiltration, tool abuse, confused deputy, secret discovery, sandbox escape, and policy bypass.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 647
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Evaluation, red teaming, regression, and calibrated trust"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Test direct and indirect prompt injection, data exfiltration, tool abuse, confused deputy, secret discovery, sandbox escape, and policy bypass.” is fully decidable from a bounded evaluation, cryptographic, recovery, transformation, or adversarial test with a fixed oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Test direct and indirect prompt injection, data exfiltration, tool abuse, confused deputy, secret discovery, sandbox escape, and policy bypass.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9994DB54",
+      "revision": 1,
+      "semantic_sha256": "9994db543c75a6dbe49c3cda6b462e5e8dc11eae4154f8e78d7f662dfb7468e0",
+      "statement": "Test output under model updates, prompt changes, retrieval changes, tool changes, provider routing changes, and degraded dependencies.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 648
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Evaluation, red teaming, regression, and calibrated trust"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Test output under model updates, prompt changes, retrieval changes, tool changes, provider routing changes, and degraded dependencies.” is fully decidable from a bounded evaluation, cryptographic, recovery, transformation, or adversarial test with a fixed oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Test output under model updates, prompt changes, retrieval changes, tool changes, provider routing changes, and degraded dependencies.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F4C1D548",
+      "revision": 1,
+      "semantic_sha256": "f4c1d54869be2db34de69769debc45d090dfff1cf659f2b031a8c15ce854409c",
+      "statement": "Use independently curated evaluation sets and protect them from contamination where scores are used for decisions.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 649
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Evaluation, red teaming, regression, and calibrated trust"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Use independently curated evaluation sets and protect them from contamination where scores are used for decisions.” is fully decidable from a fixed conjunction of versioned policy, sealed configuration, provenance, and release-gate evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Use independently curated evaluation sets and protect them from contamination where scores are used for decisions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-08934850",
+      "revision": 1,
+      "semantic_sha256": "08934850bc78c2faa81d3ebe4eb2e217f3555fac766fa6f0e4a2f4a4705007e9",
+      "statement": "Measure uncertainty and confidence calibration where the system exposes confidence or autonomous thresholds.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 652
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Evaluation, red teaming, regression, and calibrated trust"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Measure uncertainty and confidence calibration where the system exposes confidence or autonomous thresholds.” is fully decidable from a bounded evaluation, cryptographic, recovery, transformation, or adversarial test with a fixed oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Measure uncertainty and confidence calibration where the system exposes confidence or autonomous thresholds.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-53A8E42B",
+      "revision": 1,
+      "semantic_sha256": "53a8e42b93dd0f3e0ad271810bcccf16a1a1d16171aac612e49c1cfb24f7c933",
+      "statement": "Define acceptable performance by task and harm, not one aggregate score.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 653
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Evaluation, red teaming, regression, and calibrated trust"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Define acceptable performance by task and harm, not one aggregate score.” is fully decidable from exact inventory fields, links, versions, approvals, states, and lifecycle records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Define acceptable performance by task and harm, not one aggregate score.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-48A484CF",
+      "revision": 1,
+      "semantic_sha256": "48a484cfdf202a7f1816c3b1918a8233414905e563214bf0ac2f492b602a9522",
+      "statement": "Investigate subgroup, language, accessibility, repository, and domain differences rather than averaging them away.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 654
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Evaluation, red teaming, regression, and calibrated trust"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Investigate subgroup, language, accessibility, repository, and domain differences rather than averaging them away.” is fully decidable from exact inventory fields, links, versions, approvals, states, and lifecycle records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Investigate subgroup, language, accessibility, repository, and domain differences rather than averaging them away.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B0B7E4B2",
+      "revision": 1,
+      "semantic_sha256": "b0b7e4b2eb1da38645be2b19dc0690796488ac2fb90a5eab6d14e1c3ac58ea2e",
+      "statement": "Require evaluation before expanding permissions, autonomy, data access, user population, or production scope.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 655
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Evaluation, red teaming, regression, and calibrated trust"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Require evaluation before expanding permissions, autonomy, data access, user population, or production scope.” is fully decidable from a fixed conjunction of versioned policy, sealed configuration, provenance, and release-gate evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Require evaluation before expanding permissions, autonomy, data access, user population, or production scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EEB12085",
+      "revision": 1,
+      "semantic_sha256": "eeb120853885c1bb518bd2b52eddcb5e35a137277704030a481e75bba2b41429",
+      "statement": "Publish internal limitations and approved use boundaries alongside evaluation results.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 656
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Evaluation, red teaming, regression, and calibrated trust"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Publish internal limitations and approved use boundaries alongside evaluation results.” is fully decidable from exact inventory fields, links, versions, approvals, states, and lifecycle records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Publish internal limitations and approved use boundaries alongside evaluation results.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7B8E61BE",
+      "revision": 1,
+      "semantic_sha256": "7b8e61bef16b6ff25e5f929b0150bee49060da8a8e0d334e8b7ab54e53871b13",
+      "statement": "Review setup, migration, rollback, recovery, security, accessibility, and troubleshooting instructions through actual execution.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 665
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "AI-generated documentation, citations, and knowledge integrity"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Review setup, migration, rollback, recovery, security, accessibility, and troubleshooting instructions through actual execution.” is fully decidable from a bounded evaluation, cryptographic, recovery, transformation, or adversarial test with a fixed oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Review setup, migration, rollback, recovery, security, accessibility, and troubleshooting instructions through actual execution.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E547539A",
+      "revision": 1,
+      "semantic_sha256": "e547539a026f8447bdae893d08ed6b11e673f0a6fcab37f62b5daea56da4c433",
+      "statement": "Ensure search and knowledge systems surface the authoritative current source rather than an unreviewed generated duplicate.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 672
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "AI-generated documentation, citations, and knowledge integrity"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Ensure search and knowledge systems surface the authoritative current source rather than an unreviewed generated duplicate.” is fully decidable from a bounded evaluation, cryptographic, recovery, transformation, or adversarial test with a fixed oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Ensure search and knowledge systems surface the authoritative current source rather than an unreviewed generated duplicate.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-80D53A5E",
+      "revision": 1,
+      "semantic_sha256": "80d53a5e1e88dbea8ba51fb38ae5d8a14ff8ea7e4398cc2b9173a96231f607e5",
+      "statement": "Retain the reviewed final artifact rather than depending on transient conversation history.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 675
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "AI-generated documentation, citations, and knowledge integrity"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Retain the reviewed final artifact rather than depending on transient conversation history.” is fully decidable from exact inventory fields, links, versions, approvals, states, and lifecycle records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Retain the reviewed final artifact rather than depending on transient conversation history.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5D158B5E",
+      "revision": 1,
+      "semantic_sha256": "5d158b5ea764275c09125626353a4965759a8a63c1540cbdb766fea21d88835c",
+      "statement": "Define what provenance claims mean and avoid presenting them as proof that the content is true, harmless, complete, or unbiased.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 680
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Content provenance, authenticity, and C2PA-style credentials"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Define what provenance claims mean and avoid presenting them as proof that the content is true, harmless, complete, or unbiased.” is fully decidable from a fixed conjunction of versioned policy, sealed configuration, provenance, and release-gate evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Define what provenance claims mean and avoid presenting them as proof that the content is true, harmless, complete, or unbiased.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EDD07EC1",
+      "revision": 1,
+      "semantic_sha256": "edd07ec1b710cb6bb0d2a2f7b905f5ef7a54e18c2c8ca1e945e54b23e75537ae",
+      "statement": "Use a recognized provenance standard such as the current C2PA specification when interoperable content credentials are required.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 681
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Content provenance, authenticity, and C2PA-style credentials"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Use a recognized provenance standard such as the current C2PA specification when interoperable content credentials are required.” is fully decidable from a fixed conjunction of versioned policy, sealed configuration, provenance, and release-gate evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Use a recognized provenance standard such as the current C2PA specification when interoperable content credentials are required.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D9985041",
+      "revision": 1,
+      "semantic_sha256": "d9985041e27e986b213fd558cf567e55ff2b60f3e74518ae093d0d37802de1a8",
+      "statement": "Cryptographically bind provenance manifests to the exact asset or defined derivative relationship.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 682
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Content provenance, authenticity, and C2PA-style credentials"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Cryptographically bind provenance manifests to the exact asset or defined derivative relationship.” is fully decidable from a fixed conjunction of versioned policy, sealed configuration, provenance, and release-gate evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Cryptographically bind provenance manifests to the exact asset or defined derivative relationship.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-22BC5813",
+      "revision": 1,
+      "semantic_sha256": "22bc58139ff88d3699014f02d94214ec9cd8e523f9ac6d625972adae4991d803",
+      "statement": "Protect signing identities and keys and define who is authorized to make each assertion.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 683
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Content provenance, authenticity, and C2PA-style credentials"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Protect signing identities and keys and define who is authorized to make each assertion.” is fully decidable from a fixed conjunction of versioned policy, sealed configuration, provenance, and release-gate evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Protect signing identities and keys and define who is authorized to make each assertion.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-841334CB",
+      "revision": 1,
+      "semantic_sha256": "841334cb166726b521db2daad682d85b915fc7bbb8a06ba829be7b74bd08bfe6",
+      "statement": "Show missing, invalid, broken, revoked, or untrusted provenance without claiming the underlying content is necessarily false.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 687
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Content provenance, authenticity, and C2PA-style credentials"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Show missing, invalid, broken, revoked, or untrusted provenance without claiming the underlying content is necessarily false.” is fully decidable from a fixed conjunction of versioned policy, sealed configuration, provenance, and release-gate evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Show missing, invalid, broken, revoked, or untrusted provenance without claiming the underlying content is necessarily false.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2A380FCA",
+      "revision": 1,
+      "semantic_sha256": "2a380fca22dd3662c0ab96d801a89aae4ca9e5b2771cf37b1c8129d8f7e7c37b",
+      "statement": "Detect and disclose when a workflow strips or cannot preserve provenance.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 689
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Content provenance, authenticity, and C2PA-style credentials"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Detect and disclose when a workflow strips or cannot preserve provenance.” is fully decidable from a bounded evaluation, cryptographic, recovery, transformation, or adversarial test with a fixed oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Detect and disclose when a workflow strips or cannot preserve provenance.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5A50E71F",
+      "revision": 1,
+      "semantic_sha256": "5a50e71f93539b4798f9dbf56be6a5069c858aac0ae873a9680741cfd749ef37",
+      "statement": "Validate trust chains, certificates, timestamps, revocation, content bindings, and manifest structure.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 690
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Content provenance, authenticity, and C2PA-style credentials"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Validate trust chains, certificates, timestamps, revocation, content bindings, and manifest structure.” is fully decidable from a bounded evaluation, cryptographic, recovery, transformation, or adversarial test with a fixed oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Validate trust chains, certificates, timestamps, revocation, content bindings, and manifest structure.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-941EA8C0",
+      "revision": 1,
+      "semantic_sha256": "941ea8c0e9b54c76bd7936b3867653dde8fe5a7c22bc0bf0c30e76851eca30d3",
+      "statement": "Protect against manifest substitution, replay, downgrade, detached-asset confusion, and misleading partial histories.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 691
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Content provenance, authenticity, and C2PA-style credentials"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Protect against manifest substitution, replay, downgrade, detached-asset confusion, and misleading partial histories.” is fully decidable from a bounded evaluation, cryptographic, recovery, transformation, or adversarial test with a fixed oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Protect against manifest substitution, replay, downgrade, detached-asset confusion, and misleading partial histories.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0C275FAF",
+      "revision": 1,
+      "semantic_sha256": "0c275faffd6430752057e227ed5f008042538967d9b1ea8bb5b24774bf2f8479",
+      "statement": "Define how edited, combined, redacted, and derived content updates provenance.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 692
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Content provenance, authenticity, and C2PA-style credentials"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Define how edited, combined, redacted, and derived content updates provenance.” is fully decidable from exact inventory fields, links, versions, approvals, states, and lifecycle records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Define how edited, combined, redacted, and derived content updates provenance.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D078F7CC",
+      "revision": 1,
+      "semantic_sha256": "d078f7ccd6bf4c13f55cd6410296614d2131373a7e88535b3f557aed383ebc10",
+      "statement": "Test provenance handling across supported applications, platforms, media formats, and accessibility technologies.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 693
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Content provenance, authenticity, and C2PA-style credentials"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Test provenance handling across supported applications, platforms, media formats, and accessibility technologies.” is fully decidable from a bounded evaluation, cryptographic, recovery, transformation, or adversarial test with a fixed oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Test provenance handling across supported applications, platforms, media formats, and accessibility technologies.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-29786656",
+      "revision": 1,
+      "semantic_sha256": "297866566a25a539ea8363ce391104b2baf74802f7acd2d82948e308d3016c87",
+      "statement": "Maintain a recovery and key-rotation process that does not invalidate legitimate historical content without explanation.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 694
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Content provenance, authenticity, and C2PA-style credentials"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Maintain a recovery and key-rotation process that does not invalidate legitimate historical content without explanation.” is fully decidable from a bounded evaluation, cryptographic, recovery, transformation, or adversarial test with a fixed oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Maintain a recovery and key-rotation process that does not invalidate legitimate historical content without explanation.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EE4C0408",
+      "revision": 1,
+      "semantic_sha256": "ee4c04083a8ff8344f056c42fa85b276bd3c03e335a056cb847648a1436c785b",
+      "statement": "Define issuer, holder, verifier, subject, claims, purpose, audience, validity, revocation, status, and trust policy explicitly.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 699
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Verifiable claims, credentials, signatures, and evidence integrity"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Define issuer, holder, verifier, subject, claims, purpose, audience, validity, revocation, status, and trust policy explicitly.” is fully decidable from exact inventory fields, links, versions, approvals, states, and lifecycle records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Define issuer, holder, verifier, subject, claims, purpose, audience, validity, revocation, status, and trust policy explicitly.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F7C75D9C",
+      "revision": 1,
+      "semantic_sha256": "f7c75d9c8dd5b1940ca596f96fdfca904254b6a59e2d4cd9f17521d447243fcb",
+      "statement": "Use current interoperable standards such as the W3C Verifiable Credentials Data Model 2.0 family when applicable.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 700
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Verifiable claims, credentials, signatures, and evidence integrity"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Use current interoperable standards such as the W3C Verifiable Credentials Data Model 2.0 family when applicable.” is fully decidable from a fixed conjunction of versioned policy, sealed configuration, provenance, and release-gate evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Use current interoperable standards such as the W3C Verifiable Credentials Data Model 2.0 family when applicable.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5FE49B3A",
+      "revision": 1,
+      "semantic_sha256": "5fe49b3aa58a50a1bde530aa8345c3f494e34c38b37a4f6aba141d51f7b7da00",
+      "statement": "Verify issuer identity, key authorization, proof purpose, domain or challenge binding, validity period, status, schema, and audience before accepting a claim.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 701
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Verifiable claims, credentials, signatures, and evidence integrity"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Verify issuer identity, key authorization, proof purpose, domain or challenge binding, validity period, status, schema, and audience before accepting a claim.” is fully decidable from a bounded evaluation, cryptographic, recovery, transformation, or adversarial test with a fixed oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Verify issuer identity, key authorization, proof purpose, domain or challenge binding, validity period, status, schema, and audience before accepting a claim.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6BF7123C",
+      "revision": 1,
+      "semantic_sha256": "6bf7123cca5580e1c7d539d775f510441257cc0c1d56b47066d1a420d9901088",
+      "statement": "Do not treat a valid signature as proof that the claim is true, current, authorized for the present purpose, or ethically appropriate.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 702
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Verifiable claims, credentials, signatures, and evidence integrity"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Do not treat a valid signature as proof that the claim is true, current, authorized for the present purpose, or ethically appropriate.” is fully decidable from a fixed conjunction of versioned policy, sealed configuration, provenance, and release-gate evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Do not treat a valid signature as proof that the claim is true, current, authorized for the present purpose, or ethically appropriate.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AABF5B36",
+      "revision": 1,
+      "semantic_sha256": "aabf5b3692bc3e33a3e073978447a0cba5976895a03a4c75eb96c6bc26baaa80",
+      "statement": "Handle lost, compromised, expired, suspended, and superseded credentials.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 707
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Verifiable claims, credentials, signatures, and evidence integrity"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Handle lost, compromised, expired, suspended, and superseded credentials.” is fully decidable from exact inventory fields, links, versions, approvals, states, and lifecycle records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Handle lost, compromised, expired, suspended, and superseded credentials.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CBD654F9",
+      "revision": 1,
+      "semantic_sha256": "cbd654f9193a93786149d8db680b2097aa2a678f01a23971e99dae239520539e",
+      "statement": "Validate canonicalization, serialization, proof suites, cryptographic parameters, and implementation interoperability.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 708
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Verifiable claims, credentials, signatures, and evidence integrity"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Validate canonicalization, serialization, proof suites, cryptographic parameters, and implementation interoperability.” is fully decidable from a bounded evaluation, cryptographic, recovery, transformation, or adversarial test with a fixed oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Validate canonicalization, serialization, proof suites, cryptographic parameters, and implementation interoperability.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F2B1299D",
+      "revision": 1,
+      "semantic_sha256": "f2b1299da73d41443d8732ded6c84f8fa8f0cbcf3767e584a0ced5c04889bd12",
+      "statement": "Protect against replay, presentation substitution, confused-deputy, verifier impersonation, and malicious issuer metadata.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 709
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Verifiable claims, credentials, signatures, and evidence integrity"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Protect against replay, presentation substitution, confused-deputy, verifier impersonation, and malicious issuer metadata.” is fully decidable from a bounded evaluation, cryptographic, recovery, transformation, or adversarial test with a fixed oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Protect against replay, presentation substitution, confused-deputy, verifier impersonation, and malicious issuer metadata.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-00A91D07",
+      "revision": 1,
+      "semantic_sha256": "00a91d072fd8d4641eb2bf9b3ac62a9da71e0f67ce24e4de4ba2e3ac9fb8e29b",
+      "statement": "Test offline, degraded, revoked, clock-skewed, and trust-store-update scenarios.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 712
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Verifiable claims, credentials, signatures, and evidence integrity"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Test offline, degraded, revoked, clock-skewed, and trust-store-update scenarios.” is fully decidable from a bounded evaluation, cryptographic, recovery, transformation, or adversarial test with a fixed oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Test offline, degraded, revoked, clock-skewed, and trust-store-update scenarios.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6EBF4486",
+      "revision": 1,
+      "semantic_sha256": "6ebf4486d7afe02331631897d2734f73ac25dead919b91482970586c8eb49789",
+      "statement": "Plan crypto-agile and post-quantum migration for long-lived credentials and evidence.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 713
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Verifiable claims, credentials, signatures, and evidence integrity"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Plan crypto-agile and post-quantum migration for long-lived credentials and evidence.” is fully decidable from exact inventory fields, links, versions, approvals, states, and lifecycle records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Plan crypto-agile and post-quantum migration for long-lived credentials and evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FB59A946",
+      "revision": 1,
+      "semantic_sha256": "fb59a9467ae0c6f7e893bfbc964d29064c590548124a3f53589eecbae56c5bc5",
+      "statement": "Define when generated or materially altered content must be labeled, watermarked, credentialed, disclosed, or restricted.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 717
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Synthetic media, generated content, and public trust"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Define when generated or materially altered content must be labeled, watermarked, credentialed, disclosed, or restricted.” is fully decidable from exact inventory fields, links, versions, approvals, states, and lifecycle records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Define when generated or materially altered content must be labeled, watermarked, credentialed, disclosed, or restricted.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6D2ED17A",
+      "revision": 1,
+      "semantic_sha256": "6d2ed17aa728e5cbbc6c977f2018c64690e704fce88e46a7f28c4da3f14c5643",
+      "statement": "Avoid disclosures that disappear when content is downloaded, embedded, cropped, translated, printed, or shared.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 719
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Synthetic media, generated content, and public trust"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Avoid disclosures that disappear when content is downloaded, embedded, cropped, translated, printed, or shared.” is fully decidable from a bounded evaluation, cryptographic, recovery, transformation, or adversarial test with a fixed oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Avoid disclosures that disappear when content is downloaded, embedded, cropped, translated, printed, or shared.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8C754D48",
+      "revision": 1,
+      "semantic_sha256": "8c754d48048520433da37b892fb7991e0fb4b9b34d102eda1766f338eb78f79f",
+      "statement": "Do not present detection scores as definitive proof that content is or is not AI-generated.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 725
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Synthetic media, generated content, and public trust"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Do not present detection scores as definitive proof that content is or is not AI-generated.” is fully decidable from a fixed conjunction of versioned policy, sealed configuration, provenance, and release-gate evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Do not present detection scores as definitive proof that content is or is not AI-generated.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5710654C",
+      "revision": 1,
+      "semantic_sha256": "5710654c82cc6d7d9248f7d431bc4d8fd188812d514d1c7ecc70319d55b14756",
+      "statement": "Combine provenance, source verification, context, policy, and investigation rather than relying on one synthetic-content detector.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 726
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Synthetic media, generated content, and public trust"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Combine provenance, source verification, context, policy, and investigation rather than relying on one synthetic-content detector.” is fully decidable from a fixed conjunction of versioned policy, sealed configuration, provenance, and release-gate evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Combine provenance, source verification, context, policy, and investigation rather than relying on one synthetic-content detector.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C731071C",
+      "revision": 1,
+      "semantic_sha256": "c731071c054da8d76375ce2347654998ec136c8023cb23d102edf50b4d19bfbe",
+      "statement": "Provide correction, takedown, appeal, and incident-reporting routes.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 727
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Synthetic media, generated content, and public trust"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Provide correction, takedown, appeal, and incident-reporting routes.” is fully decidable from exact inventory fields, links, versions, approvals, states, and lifecycle records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Provide correction, takedown, appeal, and incident-reporting routes.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-02B7A344",
+      "revision": 1,
+      "semantic_sha256": "02b7a3440390d5aece47c16f2e08dfef44569fffd61637b588970f73136acae3",
+      "statement": "Record the approved final content, sources, model and tool versions, material transformations, reviewer, and publication channels.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 728
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Synthetic media, generated content, and public trust"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Record the approved final content, sources, model and tool versions, material transformations, reviewer, and publication channels.” is fully decidable from exact inventory fields, links, versions, approvals, states, and lifecycle records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Record the approved final content, sources, model and tool versions, material transformations, reviewer, and publication channels.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-10EDBDFD",
+      "revision": 1,
+      "semantic_sha256": "10edbdfd0ac8b7ed15764d0e7d09d094272fbc09770b6c67b650704cbd9deb35",
+      "statement": "Monitor for misuse of organizational names, marks, credentials, voices, and identities in synthetic media.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 729
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Synthetic media, generated content, and public trust"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Rule “Monitor for misuse of organizational names, marks, credentials, voices, and identities in synthetic media.” is fully decidable from read-only queries over sealed provider, monitor, identity, and workflow state.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Monitor for misuse of organizational names, marks, credentials, voices, and identities in synthetic media.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D3FD11E3",
+      "revision": 1,
+      "semantic_sha256": "d3fd11e3e2a696c72abf51fbf47a88652e30e2851463250aef02500ff23b89f6",
+      "statement": "Prepare response procedures for forged, misleading, compromised, or incorrectly credentialed content.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 730
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Synthetic media, generated content, and public trust"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Prepare response procedures for forged, misleading, compromised, or incorrectly credentialed content.” is fully decidable from exact inventory fields, links, versions, approvals, states, and lifecycle records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Prepare response procedures for forged, misleading, compromised, or incorrectly credentialed content.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E44BDA17",
+      "revision": 1,
+      "semantic_sha256": "e44bda17a352fb7e6f8d6e854c6e8d2381e15cfec6fea14f61480b550319fc53",
+      "statement": "Monitor model, provider, prompt, retrieval, permission, policy, and integration changes that can alter behavior.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 736
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Monitoring, incident response, rollback, and retirement"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Rule “Monitor model, provider, prompt, retrieval, permission, policy, and integration changes that can alter behavior.” is fully decidable from read-only queries over sealed provider, monitor, identity, and workflow state.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Monitor model, provider, prompt, retrieval, permission, policy, and integration changes that can alter behavior.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-91F85F40",
+      "revision": 1,
+      "semantic_sha256": "91f85f40e18f48342ad63eb3ac619504d56b2100bba77041df64ee0042f795f3",
+      "statement": "Detect whether agents perform actions outside the approved task, scope, identity, repository, environment, or time window.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 737
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Monitoring, incident response, rollback, and retirement"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Rule “Detect whether agents perform actions outside the approved task, scope, identity, repository, environment, or time window.” is fully decidable from read-only queries over sealed provider, monitor, identity, and workflow state.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Detect whether agents perform actions outside the approved task, scope, identity, repository, environment, or time window.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E0D7CFC5",
+      "revision": 1,
+      "semantic_sha256": "e0d7cfc5664b7f6b23648e69be88c3594f6bcd211b89f597d07df2787d1bee4c",
+      "statement": "Revoke associated credentials, webhooks, sessions, scheduled tasks, and network access when disabled.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 739
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Monitoring, incident response, rollback, and retirement"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Rule “Revoke associated credentials, webhooks, sessions, scheduled tasks, and network access when disabled.” is fully decidable from read-only queries over sealed provider, monitor, identity, and workflow state.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Revoke associated credentials, webhooks, sessions, scheduled tasks, and network access when disabled.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-39F46163",
+      "revision": 1,
+      "semantic_sha256": "39f461635bb8963a38539b7d3e0fc4ecfe0495f5690fd5727ea85c2e1e9b3410",
+      "statement": "Maintain fallback workflows that do not depend on the unavailable or compromised AI system for essential operation.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 740
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Monitoring, incident response, rollback, and retirement"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Maintain fallback workflows that do not depend on the unavailable or compromised AI system for essential operation.” is fully decidable from a fixed conjunction of versioned policy, sealed configuration, provenance, and release-gate evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Maintain fallback workflows that do not depend on the unavailable or compromised AI system for essential operation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A737503A",
+      "revision": 1,
+      "semantic_sha256": "a737503a4de1fff85f74b474755ccf43cdd59dc7df6436787697768c38de41b1",
+      "statement": "Define incident playbooks for confidential-data leakage, malicious action, unsafe code, poisoned context, provider compromise, model change, provenance-key compromise, and synthetic impersonation.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 741
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Monitoring, incident response, rollback, and retirement"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Define incident playbooks for confidential-data leakage, malicious action, unsafe code, poisoned context, provider compromise, model change, provenance-key compromise, and synthetic impersonation.” is fully decidable from exact inventory fields, links, versions, approvals, states, and lifecycle records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Define incident playbooks for confidential-data leakage, malicious action, unsafe code, poisoned context, provider compromise, model change, provenance-key compromise, and synthetic impersonation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4EE501B5",
+      "revision": 1,
+      "semantic_sha256": "4ee501b5e2c026b9a3e9bf16a7eca7f67267b434fdbd93ab8bb63e6b5dda50ef",
+      "statement": "Identify every repository, artifact, deployment, document, decision, and communication affected by a compromised or defective AI workflow.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 742
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Monitoring, incident response, rollback, and retirement"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Identify every repository, artifact, deployment, document, decision, and communication affected by a compromised or defective AI workflow.” is fully decidable from a fixed conjunction of versioned policy, sealed configuration, provenance, and release-gate evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Identify every repository, artifact, deployment, document, decision, and communication affected by a compromised or defective AI workflow.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3EEAD754",
+      "revision": 1,
+      "semantic_sha256": "3eead75482027dbacf9d335e25d4ced4de3ea00ce5be00e6650bcec3b611fa6a",
+      "statement": "Retire obsolete models, prompts, embeddings, agents, indexes, credentials, provider data, and generated artifacts according to lifecycle and retention requirements.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 748
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Monitoring, incident response, rollback, and retirement"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Retire obsolete models, prompts, embeddings, agents, indexes, credentials, provider data, and generated artifacts according to lifecycle and retention requirements.” is fully decidable from a fixed conjunction of versioned policy, sealed configuration, provenance, and release-gate evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Retire obsolete models, prompts, embeddings, agents, indexes, credentials, provider data, and generated artifacts according to lifecycle and retention requirements.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-86EF8E1F",
+      "revision": 1,
+      "semantic_sha256": "86ef8e1fb2628b49ae751425ce687ae46b5b2eb582419fbf7569940da071ecd7",
+      "statement": "Test disablement, rollback, provider replacement, data deletion, and evidence recovery periodically.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 749
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Monitoring, incident response, rollback, and retirement"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Test disablement, rollback, provider replacement, data deletion, and evidence recovery periodically.” is fully decidable from a bounded evaluation, cryptographic, recovery, transformation, or adversarial test with a fixed oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Test disablement, rollback, provider replacement, data deletion, and evidence recovery periodically.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3D7EFEF0",
+      "revision": 1,
+      "semantic_sha256": "3d7efef06f4169f1e95ab70dffc4e582203c0eba1602ebb3cff4cf3736085085",
+      "statement": "Block release when generated claims, citations, APIs, packages, standards, or compatibility assumptions have not been verified.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 754
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Release blockers and AI-assistance evidence package"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Block release when generated claims, citations, APIs, packages, standards, or compatibility assumptions have not been verified.” is fully decidable from a fixed conjunction of versioned policy, sealed configuration, provenance, and release-gate evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Block release when generated claims, citations, APIs, packages, standards, or compatibility assumptions have not been verified.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E5E6E4D2",
+      "revision": 1,
+      "semantic_sha256": "e5e6e4d22cade3de04f5998f564f13070fc6e3cbb997ac56fdf59339901c60e5",
+      "statement": "Block release when an agent executed high-impact actions outside the approved capability, identity, environment, or confirmation boundary.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 756
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Release blockers and AI-assistance evidence package"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Block release when an agent executed high-impact actions outside the approved capability, identity, environment, or confirmation boundary.” is fully decidable from a fixed conjunction of versioned policy, sealed configuration, provenance, and release-gate evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Block release when an agent executed high-impact actions outside the approved capability, identity, environment, or confirmation boundary.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C2B2D033",
+      "revision": 1,
+      "semantic_sha256": "c2b2d0339771d4d76888382cdd2bbb18028929480517e3fa83560808c21d0c3a",
+      "statement": "Block release when model, prompt, retrieval, tool, or provider changes invalidate prior assurance evidence.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 758
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Release blockers and AI-assistance evidence package"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Block release when model, prompt, retrieval, tool, or provider changes invalidate prior assurance evidence.” is fully decidable from a fixed conjunction of versioned policy, sealed configuration, provenance, and release-gate evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Block release when model, prompt, retrieval, tool, or provider changes invalidate prior assurance evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BA8ED02F",
+      "revision": 1,
+      "semantic_sha256": "ba8ed02f3b14653a51007cb6e94e1b5696c039f6e244ae0645316985d8c27979",
+      "statement": "Block release when generated dependencies, licenses, provenance, or supplier identities remain unresolved.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 759
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Release blockers and AI-assistance evidence package"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Block release when generated dependencies, licenses, provenance, or supplier identities remain unresolved.” is fully decidable from exact inventory fields, links, versions, approvals, states, and lifecycle records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Block release when generated dependencies, licenses, provenance, or supplier identities remain unresolved.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3CFE6905",
+      "revision": 1,
+      "semantic_sha256": "3cfe6905df753b39608292656649a9740f7f32d5b8b897f9410105400ef2c94b",
+      "statement": "Retain evaluation scope, data, adversarial cases, results, limitations, model changes, incidents, and accepted residual risk.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 762
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Release blockers and AI-assistance evidence package"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Retain evaluation scope, data, adversarial cases, results, limitations, model changes, incidents, and accepted residual risk.” is fully decidable from exact inventory fields, links, versions, approvals, states, and lifecycle records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Retain evaluation scope, data, adversarial cases, results, limitations, model changes, incidents, and accepted residual risk.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A3940500",
+      "revision": 1,
+      "semantic_sha256": "a3940500d6a6bdbc39a7abeafd1673651a2e5f1499827b0405b1b4f391cc4ae1",
+      "statement": "Record provenance and authenticity evidence for public content and signed claims where used.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 764
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Release blockers and AI-assistance evidence package"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Record provenance and authenticity evidence for public content and signed claims where used.” is fully decidable from exact inventory fields, links, versions, approvals, states, and lifecycle records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Record provenance and authenticity evidence for public content and signed claims where used.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

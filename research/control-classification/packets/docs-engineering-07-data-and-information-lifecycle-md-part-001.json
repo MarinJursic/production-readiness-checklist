@@ -1,0 +1,3856 @@
+{
+  "schema_version": "prc.control-classification-packet/v0.1",
+  "packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/engineering/07-data-and-information-lifecycle.md",
+  "control_count": 250,
+  "controls": [
+    {
+      "control_id": "USEQ-2C2F0415",
+      "revision": 1,
+      "semantic_sha256": "2c2f04151d135c7a1732cb7bf1e0716a2881331638de1e94ac113873c2f989e7",
+      "statement": "The data model enforces required fields, uniqueness, referential integrity, valid ranges, and business invariants.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 15
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Stores, Queues, Caches, Search, and Integrity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-EFAFB10D",
+      "revision": 1,
+      "semantic_sha256": "efafb10de310db29b024799199aab74d2a5e7a09dc78375fb90931c615b0a3b4",
+      "statement": "Transactions cover operations requiring atomicity.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 16
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Stores, Queues, Caches, Search, and Integrity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-36CAB126",
+      "revision": 1,
+      "semantic_sha256": "36cab1269773bc9773284e4fd53120ad8f2723ed69f44247af266c3ab4b54b79",
+      "statement": "Locking, concurrency, and conflict-resolution strategies are documented.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 17
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Stores, Queues, Caches, Search, and Integrity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-1B52ED82",
+      "revision": 1,
+      "semantic_sha256": "1b52ed826054d04ce64d17bf8bc0019eed65492817f5ff0f0d930b0d2edb4516",
+      "statement": "Consumers are idempotent where redelivery is possible.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 18
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Stores, Queues, Caches, Search, and Integrity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-25FC8C04",
+      "revision": 1,
+      "semantic_sha256": "25fc8c04fd5813da2ca33427af768987c3d0e0ab7035a4bad1f11002cc963e55",
+      "statement": "Dead-letter queues have monitoring, ownership, retention, inspection, and safe replay procedures.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 19
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Stores, Queues, Caches, Search, and Integrity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-7A4C279B",
+      "revision": 1,
+      "semantic_sha256": "7a4c279b62701afb2b0e7476660f34c5fb901537e3efa6c965e353e7dddf3032",
+      "statement": "Reconciliation detects dropped, duplicated, delayed, corrupted, and inconsistent records.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 20
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Stores, Queues, Caches, Search, and Integrity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-AA39F5AD",
+      "revision": 1,
+      "semantic_sha256": "aa39f5ad9fb59cd99edd4ec715bc1f424c8d9d54cf4f9e9f8815a9071b22fe57",
+      "statement": "Replication lag is measured and reflected in application behavior.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 21
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Stores, Queues, Caches, Search, and Integrity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-DDCCA31C",
+      "revision": 1,
+      "semantic_sha256": "ddcca31ce3f9fe91100892ef3e1847fd5d517151eb74398b0caab8689d9d3d08",
+      "statement": "Cache keys include every required identity, tenant, locale, permission, experiment, and content-variant dimension.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 22
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Stores, Queues, Caches, Search, and Integrity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-584B5CAF",
+      "revision": 1,
+      "semantic_sha256": "584b5caf8b13969ca1b1e082024d409e37054f3f3428b1fe6056e1dbf6b95c41",
+      "statement": "Cache invalidation is correct for security- and correctness-sensitive data.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 23
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Stores, Queues, Caches, Search, and Integrity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-335E7D4B",
+      "revision": 1,
+      "semantic_sha256": "335e7d4bd117cf2f8346b9c2e589639c4e13b82e5253ea51fb27d538f1bc1dd2",
+      "statement": "Cache failure cannot disclose data or violate invariants.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 24
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Stores, Queues, Caches, Search, and Integrity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-F6712574",
+      "revision": 1,
+      "semantic_sha256": "f67125748848652503f8e2808ee6cb2324f6f4bbcd216adec4285b3390cdc678",
+      "statement": "Search indexes enforce access control, deletion, retention, and tenant boundaries.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 25
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Stores, Queues, Caches, Search, and Integrity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-46D419C9",
+      "revision": 1,
+      "semantic_sha256": "46d419c914df73edee9e67000e810625d0c8cac37de0abbb0c018a84bc450625",
+      "statement": "Character encoding, collation, normalization, case behavior, sorting, and tokenization are intentional.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 26
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Stores, Queues, Caches, Search, and Integrity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-E79CE4F7",
+      "revision": 1,
+      "semantic_sha256": "e79ce4f7fd48ffb3fe283a6d6ff437cb9c792c0ed2daa36181862f84afa88aeb",
+      "statement": "Dates and times use an unambiguous storage representation.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 27
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Stores, Queues, Caches, Search, and Integrity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-4E1895B9",
+      "revision": 1,
+      "semantic_sha256": "4e1895b96a4bb26e37af7bdcdd8aea264357a2aa9201db0c387d1bebf6ef61a5",
+      "statement": "Data-quality indicators cover completeness, validity, consistency, timeliness, duplication, and lineage.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 28
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Stores, Queues, Caches, Search, and Integrity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-DCF9A997",
+      "revision": 1,
+      "semantic_sha256": "dcf9a997c596bcaa24608c8f483398b0577ee3faf04157b1ae68374f7bfec60c",
+      "statement": "Data-repair procedures are reviewed, reversible where possible, and audited.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 29
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Stores, Queues, Caches, Search, and Integrity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-689DD559",
+      "revision": 1,
+      "semantic_sha256": "689dd559371985ff2f5401a9bbeeb4f35d9054a54a3513e6b3e065e32dcd1d81",
+      "statement": "Manual production data changes require authorization, peer review where material, and an audit trail.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 30
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Stores, Queues, Caches, Search, and Integrity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-BC1488EE",
+      "revision": 1,
+      "semantic_sha256": "bc1488ee75f989812af60103befc3671518057b7a651e20cfa54cbf3d33d6ee7",
+      "statement": "Migration duration, locking, load, and resource consumption are measured.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 34
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Stores, Queues, Caches, Search, and Integrity",
+        "Schema changes and migrations"
+      ]
+    },
+    {
+      "control_id": "USEQ-6223E816",
+      "revision": 1,
+      "semantic_sha256": "6223e816d0dcae0f3fde44718a1768ecdaeacc088b0cf9be800a37cf7b90691d",
+      "statement": "Online migrations avoid unacceptable blocking and downtime.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 35
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Stores, Queues, Caches, Search, and Integrity",
+        "Schema changes and migrations"
+      ]
+    },
+    {
+      "control_id": "USEQ-1C5AB31F",
+      "revision": 1,
+      "semantic_sha256": "1c5ab31f25c24a116d2f54259f9d9116b86ba37f6589944f1e9bc2acf6b2698c",
+      "statement": "Application and schema changes remain backward- and forward-compatible during mixed-version deployment where required.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 36
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Stores, Queues, Caches, Search, and Integrity",
+        "Schema changes and migrations"
+      ]
+    },
+    {
+      "control_id": "USEQ-7255C1AD",
+      "revision": 1,
+      "semantic_sha256": "7255c1ada66d2579b59ff9a3a574a0005fe19f54dc95bb55989dceea91068144",
+      "statement": "Deprecated columns, data, indexes, and compatibility paths are removed only after all consumers have migrated.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 37
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Stores, Queues, Caches, Search, and Integrity",
+        "Schema changes and migrations"
+      ]
+    },
+    {
+      "control_id": "USEQ-C449239F",
+      "revision": 1,
+      "semantic_sha256": "c449239f7ebdb81bd925ba4652a928d052b37626f2daf90f8f0a8b3edfe76f5c",
+      "statement": "Migrations are rehearsed using the same automation used for production.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 38
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Stores, Queues, Caches, Search, and Integrity",
+        "Schema changes and migrations"
+      ]
+    },
+    {
+      "control_id": "USEQ-507DCCE5",
+      "revision": 1,
+      "semantic_sha256": "507dcce5ddbe02058308cbdcbc904babc54bd41a9ae7d2035f8e9339414165cc",
+      "statement": "Import formats, schemas, limits, encodings, and supported versions are explicit.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 46
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Imports, Exports, Bulk Operations, and Data Portability",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-29F90E73",
+      "revision": 1,
+      "semantic_sha256": "29f90e73ab07d5f839d79f628534c9bedaddebebeb623040ecca770f75d05378",
+      "statement": "Import files and records are validated and bounded.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 47
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Imports, Exports, Bulk Operations, and Data Portability",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-14DD5460",
+      "revision": 1,
+      "semantic_sha256": "14dd54608a7a374a31b92a9334cf213a4f4a1ad805f62cd67501abe32f3d0fb7",
+      "statement": "Imports are idempotent or use robust duplicate detection.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 48
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Imports, Exports, Bulk Operations, and Data Portability",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-C720565E",
+      "revision": 1,
+      "semantic_sha256": "c720565ed8f652a12a2aab07cc11f31dabc887592e9b37a0c280303f4f0f0577",
+      "statement": "Partial imports have clear rollback, retry, checkpoint, and reconciliation behavior.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 49
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Imports, Exports, Bulk Operations, and Data Portability",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-E58DE99C",
+      "revision": 1,
+      "semantic_sha256": "e58de99c1ee2af15cb8a231efe1203f5edd687b20bb086d2b33518fae7d7fd26",
+      "statement": "Import previews and validation reports are available for high-impact changes.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 50
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Imports, Exports, Bulk Operations, and Data Portability",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-4E113308",
+      "revision": 1,
+      "semantic_sha256": "4e1133081bfdd4c444aa3006e687396cbba6d6a68a6be3350410a9c32e08005d",
+      "statement": "Bulk operations enforce per-record authorization and tenant isolation.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 51
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Imports, Exports, Bulk Operations, and Data Portability",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-3A4139B8",
+      "revision": 1,
+      "semantic_sha256": "3a4139b8fe3b2de3cb42c36f4988b9da00c900b4e7ac00768d06d0e2ec786fe3",
+      "statement": "Bulk operations have rate, concurrency, memory, and downstream-resource limits.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 52
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Imports, Exports, Bulk Operations, and Data Portability",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-94620FDB",
+      "revision": 1,
+      "semantic_sha256": "94620fdb7ceb26a7095b98dda69ed471794ae774773098da7f4c9fd90866dc23",
+      "statement": "Destructive bulk operations require confirmation, scope preview, authorization, and audit.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 53
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Imports, Exports, Bulk Operations, and Data Portability",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-348958E2",
+      "revision": 1,
+      "semantic_sha256": "348958e28c17d709caf9e8bd045e3a5b4fa8fd59d4d6278a9fd386c7d471169b",
+      "statement": "Exports include only authorized data and respect filters, permissions, residency, retention, and legal holds.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 54
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Imports, Exports, Bulk Operations, and Data Portability",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-8830BDCC",
+      "revision": 1,
+      "semantic_sha256": "8830bdccd0fe81cd848097b22a077754361bf3019b42bbf93e888f6f8b2c56af",
+      "statement": "Export schemas are predictable and versioned.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 55
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Imports, Exports, Bulk Operations, and Data Portability",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-C40BA1BF",
+      "revision": 1,
+      "semantic_sha256": "c40ba1bf9eaedd9a3b193901247bd3f4c47943213b565f5ced69b15e4a4d6e1b",
+      "statement": "Exports escape active spreadsheet or document content.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 56
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Imports, Exports, Bulk Operations, and Data Portability",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-7FAD3DB9",
+      "revision": 1,
+      "semantic_sha256": "7fad3db97693b25d2a84da91cf0c97a0a5970e8654592ca5dca15b2a1b66876f",
+      "statement": "Export generation cannot exhaust shared resources.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 57
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Imports, Exports, Bulk Operations, and Data Portability",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-54E0A23C",
+      "revision": 1,
+      "semantic_sha256": "54e0a23c1d4e2ba5de28e1a9e69888712f45a293015da5c9205e9b09edbce89d",
+      "statement": "Export links and files are protected, expire appropriately, and are deleted according to policy.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 58
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Imports, Exports, Bulk Operations, and Data Portability",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-53208459",
+      "revision": 1,
+      "semantic_sha256": "532084595daa4bafb621d4a7e9cee650b3548e46952183b21c3104b3c1085749",
+      "statement": "Data-portability formats are documented and machine-readable where required.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 59
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Imports, Exports, Bulk Operations, and Data Portability",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-DDB8BB36",
+      "revision": 1,
+      "semantic_sha256": "ddb8bb36916c238c3798296584cc3845d52a65f7136a5f4925eed5e9f8db87e0",
+      "statement": "Assign a business owner and technical steward to every material data domain and data product.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 67
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Governance, Ownership, and Accountability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-04E6873D",
+      "revision": 1,
+      "semantic_sha256": "04e6873d2f306c8ddaaa908f6d661c1f71fae25c18d21f2dc2c442773ea366d9",
+      "statement": "Define authoritative sources, permitted uses, users, quality obligations, sensitivity, and lifecycle.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 68
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Governance, Ownership, and Accountability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-39926AB5",
+      "revision": 1,
+      "semantic_sha256": "39926ab52237b0ba3570f3c7df0b1e5252d52cebbaf33c64154322447f853ff0",
+      "statement": "Classify data by confidentiality, integrity, availability, privacy, safety, regulatory, and business impact.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 69
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Governance, Ownership, and Accountability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6BFA579E",
+      "revision": 1,
+      "semantic_sha256": "6bfa579e43beedc75560ce4e227e336975cbda9bf228840fbd37886080e9b71c",
+      "statement": "Maintain an inventory of stores, flows, copies, exports, derived data, models, backups, and third-party transfers.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 70
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Governance, Ownership, and Accountability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-47E3AA76",
+      "revision": 1,
+      "semantic_sha256": "47e3aa761012eaac5a334d4f49c476d104e9592d94b7018f69852c9559adad06",
+      "statement": "Define access according to least privilege, purpose, role, tenant, and environment.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 71
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Governance, Ownership, and Accountability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-87C9E971",
+      "revision": 1,
+      "semantic_sha256": "87c9e97169bfd20e74acf5d309bb97a16fec24cb9c01245a5b515da1b3d7e4a7",
+      "statement": "Require approval and audit for sensitive production data access and manual changes.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 72
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Governance, Ownership, and Accountability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-01F51D9B",
+      "revision": 1,
+      "semantic_sha256": "01f51d9b20d49ce6fc93234baa42bf2b8511ff445b5bc3e4af1d69cc51547543",
+      "statement": "Define quality contracts between producers and consumers.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 73
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Governance, Ownership, and Accountability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-FA08D468",
+      "revision": 1,
+      "semantic_sha256": "fa08d468fe4c46ef95293e73e07ece8cc37bb201ba70fb5eb570854090cf75cc",
+      "statement": "Make ownership of shared identifiers, definitions, metrics, and reference data explicit.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 74
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Governance, Ownership, and Accountability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6E790781",
+      "revision": 1,
+      "semantic_sha256": "6e7907819b60ed2d15ec1bbdb9458c0e0f6fefc62ab19405c000a44a3282d630",
+      "statement": "Prevent unauthorized secondary use, combination, enrichment, or retention.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 75
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Governance, Ownership, and Accountability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-303E3614",
+      "revision": 1,
+      "semantic_sha256": "303e3614ebc411078decb9821a09a682c8737bcfb05209f0ff20b468806fcfe6",
+      "statement": "Control data sharing through documented agreements and technical enforcement.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 76
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Governance, Ownership, and Accountability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BADAB0C6",
+      "revision": 1,
+      "semantic_sha256": "badab0c6c28291740ca669375e3d89af47018279729c673f2dbd72a4534e3380",
+      "statement": "Maintain lineage from source through transformations to decisions and reports.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 77
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Governance, Ownership, and Accountability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-94F759EB",
+      "revision": 1,
+      "semantic_sha256": "94f759eb58a60a03034bc0637fcc1c8a37c2d8d3f700663c11351e4c1bebb6e5",
+      "statement": "Define retention, deletion, archival, legal hold, and restoration behavior.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 78
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Governance, Ownership, and Accountability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-CBEB4AAF",
+      "revision": 1,
+      "semantic_sha256": "cbeb4aaff72612e72c13e1c70ecc6778a51f184ca89e38ff84ebdbf1251fa62d",
+      "statement": "Review data risk when introducing new sources, joins, inferences, models, or destinations.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 79
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Governance, Ownership, and Accountability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-084B2C8A",
+      "revision": 1,
+      "semantic_sha256": "084b2c8a2dd814ce1263dd7260ee0baef880682650f312e80913d6cb5a9af870",
+      "statement": "Make data incidents, quality failures, and rights requests routable to accountable owners.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 80
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Governance, Ownership, and Accountability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C5054653",
+      "revision": 1,
+      "semantic_sha256": "c5054653c43da9f6cac18d32533dcdd36d60851a600448c4f44f805f6542fd2a",
+      "statement": "Measure governance by risk and data outcomes rather than catalog completion alone.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 81
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Governance, Ownership, and Accountability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-7B62C473",
+      "revision": 1,
+      "semantic_sha256": "7b62c47334acc2e8b5419d15bb64c82ad0493e6738ebfd37800f7432948080d7",
+      "statement": "Resolve conflicting definitions through an authoritative governance process.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 82
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Governance, Ownership, and Accountability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4546BD78",
+      "revision": 1,
+      "semantic_sha256": "4546bd78ab8cf51294b6fc17a813e2e3c1586833ec003d183dd1d44800046f57",
+      "statement": "Ensure suppliers and processors meet equivalent data obligations.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 83
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Governance, Ownership, and Accountability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0775A316",
+      "revision": 1,
+      "semantic_sha256": "0775a31649fa78fe72a9c902398516e0e6c55193a4643b4ef35d52cb55a8a856",
+      "statement": "Remove orphaned stores, copies, exports, accounts, and pipelines.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 84
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Governance, Ownership, and Accountability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-33F0D22A",
+      "revision": 1,
+      "semantic_sha256": "33f0d22a47e521357aeb50381c6c8d9dfc7edfbac89c3d8cd274c5252706a099",
+      "statement": "Preserve evidence of data decisions and changes.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 85
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Governance, Ownership, and Accountability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A8D04A5A",
+      "revision": 1,
+      "semantic_sha256": "a8d04a5af595fa03e22b6485924793d79b6e58edb436ea1a2fb8042e5a3d1d2d",
+      "statement": "Review governance as products, jurisdictions, users, and purposes evolve.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 86
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Governance, Ownership, and Accountability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5EC68102",
+      "revision": 1,
+      "semantic_sha256": "5ec681024c21d80ca03f281daf470e5a11d9220f184d1baf8950d41805c08458",
+      "statement": "Model domain concepts and relationships independently of a specific storage technology before physical optimization.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 94
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Architecture and Modeling",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4907F297",
+      "revision": 1,
+      "semantic_sha256": "4907f297918516e20450388b71bace3ee6152704e8a5dda0e0ce98c4f30e6754",
+      "statement": "Use a shared vocabulary and define every material entity, attribute, identifier, status, unit, and relationship.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 95
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Architecture and Modeling",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-847FF844",
+      "revision": 1,
+      "semantic_sha256": "847ff8449554a399351714efc3e8fa32a5a01c7d50c8f96977350258b0f8c93a",
+      "statement": "Distinguish natural, surrogate, external, display, tenant, and correlation identifiers.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 96
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Architecture and Modeling",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-1264F0CD",
+      "revision": 1,
+      "semantic_sha256": "1264f0cdc15181ce18d32d0c81f5ff6ff551f5e89994674b5d1c3c800ee6eb1d",
+      "statement": "Define null, absent, unknown, not-applicable, zero, empty, and deleted semantics explicitly.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 97
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Architecture and Modeling",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-790E6BAC",
+      "revision": 1,
+      "semantic_sha256": "790e6bace01d27b8815e97f1c648397f7cb62ad3d1ca5ded8969729f305eaa7b",
+      "statement": "Encode invariants through schema and constraints where enforcement is reliable.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 98
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Architecture and Modeling",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F3F98125",
+      "revision": 1,
+      "semantic_sha256": "f3f981251798a067683903be09efcfa0797eb5cbc707da97bbbede2b76a932d5",
+      "statement": "Normalize authoritative data enough to avoid contradictory facts, and denormalize only with ownership and reconciliation.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 99
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Architecture and Modeling",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0EB7A9E0",
+      "revision": 1,
+      "semantic_sha256": "0eb7a9e05bbe3a7661af40b688b3d4029fe26776784d6b58ef0d4b4907b02062",
+      "statement": "Define cardinality, optionality, uniqueness, referential, temporal, and lifecycle constraints.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 100
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Architecture and Modeling",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BA72D75D",
+      "revision": 1,
+      "semantic_sha256": "ba72d75dbe63da3a036798f17d742e4c27887cff7f5b6ae35652ca402b615a4f",
+      "statement": "Choose precision, scale, encoding, collation, normalization, time zone, and unit deliberately.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 101
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Architecture and Modeling",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F86428E5",
+      "revision": 1,
+      "semantic_sha256": "f86428e504ba8f3690f0e2b5470c66c84d33ebeaf4d499510ec4f6e66c5a4290",
+      "statement": "Represent history and effective time where past truth or auditability matters.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 102
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Architecture and Modeling",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-ED589523",
+      "revision": 1,
+      "semantic_sha256": "ed589523f1a3b47ffee6c6b7323b830779de0e2271216d002a7e62509a5223ed",
+      "statement": "Separate immutable facts from mutable projections and current-state summaries.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 103
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Architecture and Modeling",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-485A3BAD",
+      "revision": 1,
+      "semantic_sha256": "485a3badb73ba04af5adcd8aeb0a6da2e6c2adcbaca7a184c213ef460b73c560",
+      "statement": "Align partitions, tenancy, residency, and encryption boundaries with governance requirements.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 104
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Architecture and Modeling",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BFEC9150",
+      "revision": 1,
+      "semantic_sha256": "bfec9150a93ee3065b95b3c4a2014298be3f7538f48bdf2f28350d96d1ef274f",
+      "statement": "Model access patterns without making one query pattern corrupt the domain model.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 105
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Architecture and Modeling",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-35CA3885",
+      "revision": 1,
+      "semantic_sha256": "35ca3885ce8a7bf844d194da510276a4601edd150a7d98ed014741aeeded5780",
+      "statement": "Avoid polymorphic or untyped structures that hide incompatible meanings without governance.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 106
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Architecture and Modeling",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5AC48987",
+      "revision": 1,
+      "semantic_sha256": "5ac489870a337e4bfe3ce43cbd1437ad0decb314f73d1e3e128f36524d4409d7",
+      "statement": "Version schemas and define compatibility for producers and consumers.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 107
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Architecture and Modeling",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5E48A4D4",
+      "revision": 1,
+      "semantic_sha256": "5e48a4d4e9bae6fc86b1d6b279917c52114a2db75e86b3218b36a63915c5c578",
+      "statement": "Document ownership and source of truth for every duplicated field.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 108
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Architecture and Modeling",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-FAA9F327",
+      "revision": 1,
+      "semantic_sha256": "faa9f327c28d7230f9025f8d65d94c62c2c37e2b5ac1c77bda123e4506596e11",
+      "statement": "Design deletion and legal hold into relationships rather than relying on ad hoc cleanup.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 109
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Architecture and Modeling",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-2D08184E",
+      "revision": 1,
+      "semantic_sha256": "2d08184e7b55df2708e48f3b30041063a818837a088827b87c2e158b95093ec3",
+      "statement": "Make bulk import, export, correction, and migration semantics explicit.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 110
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Architecture and Modeling",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E76EC4E9",
+      "revision": 1,
+      "semantic_sha256": "e76ec4e954352819b8bba84451b5f90708f6b30e69dd460a56f5b430f09c4bcc",
+      "statement": "Validate models with representative data volumes, edge cases, and users.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 111
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Architecture and Modeling",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-AD2A2D72",
+      "revision": 1,
+      "semantic_sha256": "ad2a2d72b324824b343050f2a5481953729fa10b5f503e2cbbaf5a9721920455",
+      "statement": "Prevent internal storage layout from becoming an unnecessary public contract.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 112
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Architecture and Modeling",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-87C063CE",
+      "revision": 1,
+      "semantic_sha256": "87c063ce8285a113f1de526105d9bd8d334728a45a83b3ae8dd05330f47213a0",
+      "statement": "Review the model when workarounds and repeated joins show a mismatch with the domain.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 113
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Architecture and Modeling",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-96E785D6",
+      "revision": 1,
+      "semantic_sha256": "96e785d631fc44de2bb43e59b8269f83c0c8b01378d23c3eb20182e8a852e485",
+      "statement": "Define quality dimensions and thresholds according to each intended use and consequence of error.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 121
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0EB8C058",
+      "revision": 1,
+      "semantic_sha256": "0eb8c05850f4c91abbed3423ad34a9f8c778fc4d4817f3029310a95cde03e1f7",
+      "statement": "Identify critical data elements and the business rules they must satisfy.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 122
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-31AFDEB2",
+      "revision": 1,
+      "semantic_sha256": "31afdeb270b342e43b3b24b16b4f63e9b8cf4ef60792bb9177c8a20330ab5664",
+      "statement": "Validate at collection and ingestion while preserving raw evidence needed for investigation.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 123
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-EB05E76F",
+      "revision": 1,
+      "semantic_sha256": "eb05e76fd371d42a694ab08e027195e90cb27bdd97c69bff194bfad10441cd55",
+      "statement": "Distinguish invalid, missing, late, duplicated, contradictory, stale, inferred, and uncertain data.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 124
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-15440CF2",
+      "revision": 1,
+      "semantic_sha256": "15440cf24a5fbd86bb40d1010010bea25c574e2fb89d6fee26481ed6552185bf",
+      "statement": "Record provenance, collection time, effective time, processing time, and quality status where material.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 125
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-008E403E",
+      "revision": 1,
+      "semantic_sha256": "008e403e9ceb1f73be46128bfb3733415993e384fe17a10201953d332a28a446",
+      "statement": "Use referential, domain, uniqueness, range, format, temporal, and cross-field checks.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 126
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-26DF5DCE",
+      "revision": 1,
+      "semantic_sha256": "26df5dce98608b8aac85ee7c6787c2e6e54900ec6667d33fd4a90a25a6543607",
+      "statement": "Reconcile counts, totals, balances, checksums, and invariants across boundaries.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 127
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-483E3476",
+      "revision": 1,
+      "semantic_sha256": "483e3476cb4db7de4cd9b1d008985b506cd7bc01743057c9a1b51f772d52a3c8",
+      "statement": "Monitor drift, schema change, source change, late arrival, and silent truncation.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 128
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-AC86E38E",
+      "revision": 1,
+      "semantic_sha256": "ac86e38e8df2d2f15826d9c6cd757cf1ec0a3048ea6a0bce6f07b90e784f59a9",
+      "statement": "Segment quality by source, cohort, region, tenant, device, and time when aggregate metrics hide problems.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 129
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-188396D5",
+      "revision": 1,
+      "semantic_sha256": "188396d51228d813f5c0254bdc8112adc6f8f3317ef4396f1417026a5bb20207",
+      "statement": "Prevent downstream systems from treating unknown or low-confidence values as authoritative.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 130
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A4DEB1F3",
+      "revision": 1,
+      "semantic_sha256": "a4deb1f359f0cc85cb3ef5d569ccd4390a15202b9078482853e392878aeae98a",
+      "statement": "Provide quarantine, correction, replay, and backfill procedures.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 131
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D2553028",
+      "revision": 1,
+      "semantic_sha256": "d25530284192a5f75d6feac8d8d934d86363dfdb776ea18ca42697b4966784fc",
+      "statement": "Preserve audit history for material corrections.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 132
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-219C5F63",
+      "revision": 1,
+      "semantic_sha256": "219c5f63ad736a8f991244b15b7fca618860bfbd7abe80f245791470eb46149c",
+      "statement": "Assign owners and response objectives to failed quality rules.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 133
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5D148E5D",
+      "revision": 1,
+      "semantic_sha256": "5d148e5d1f68fd31965f0ba7f6e132115741413869cabb441db39d758105dfa2",
+      "statement": "Test pipelines with malformed, boundary, duplicate, reordered, late, and partial data.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 134
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-544292A2",
+      "revision": 1,
+      "semantic_sha256": "544292a267c2193bed3342c74d068a0a4f66b4afd99270fd6d7d60b3492ffd7b",
+      "statement": "Measure false positives and false negatives in automated quality checks.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 135
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-2B4C5C56",
+      "revision": 1,
+      "semantic_sha256": "2b4c5c5636fa52ede7e7b3ec0e687e20353cac0880b95379008f60a0432a921c",
+      "statement": "Communicate freshness, completeness, and limitations to consumers.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 136
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-AF818D57",
+      "revision": 1,
+      "semantic_sha256": "af818d5744591b65106a61e57d572eb64440a24e143e86d8ed51b8b3cc6f50fc",
+      "statement": "Prevent remediation from destroying evidence or creating inconsistent copies.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 137
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-59968AE7",
+      "revision": 1,
+      "semantic_sha256": "59968ae706c07c5078adf34349160e51a6cbfa3cb9ea5b5a7413641155a02e16",
+      "statement": "Verify that derived metrics remain semantically valid after source or transformation changes.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 138
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-041F521D",
+      "revision": 1,
+      "semantic_sha256": "041f521d5aed0ca5bc938286aa799a56bb44c8c21fc1b5faef7d53a192195296",
+      "statement": "Use user and operator reports as quality signals.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 139
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6A36C3D2",
+      "revision": 1,
+      "semantic_sha256": "6a36c3d22bb8c290ac3bea4f6dfccf74ae3e63bb642e6b3c497252eb265613e9",
+      "statement": "Retire quality rules that no longer correspond to a real information need, and add rules from incidents and escaped defects.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 140
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-FF3D5CCB",
+      "revision": 1,
+      "semantic_sha256": "ff3d5ccb98202e9f8b26a5fae0da3e74e204296ce67d79061ea73b4a73a912a8",
+      "statement": "Catalog material data sets, streams, schemas, metrics, reports, models, features, and exports.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 148
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Metadata, Lineage, Provenance, and Catalogs",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E18F00AC",
+      "revision": 1,
+      "semantic_sha256": "e18f00acb507af180d4ecf677752146344b07992843a8cd0febde50825a73301",
+      "statement": "Record owner, steward, purpose, source, consumers, sensitivity, residency, retention, quality, and support status.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 149
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Metadata, Lineage, Provenance, and Catalogs",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-9443D242",
+      "revision": 1,
+      "semantic_sha256": "9443d242cc40cb1a9ebfccc20bb3369b3906cd9c7042439c28059902a048ffbd",
+      "statement": "Maintain business definitions and technical schemas together with clear authority.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 150
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Metadata, Lineage, Provenance, and Catalogs",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A58054A8",
+      "revision": 1,
+      "semantic_sha256": "a58054a85aa7cb2e2a22923604730c8c9e6e55d85ade1fb894eaf375fddc0dd2",
+      "statement": "Capture lineage across ingestion, transformation, aggregation, model use, export, and deletion.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 151
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Metadata, Lineage, Provenance, and Catalogs",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-96D946D3",
+      "revision": 1,
+      "semantic_sha256": "96d946d31afa23aae7df06c6a0d7c3bfe6d8a79fb2d7090c38a4bcd866f13cc9",
+      "statement": "Version metadata and retain historical meaning for past reports and incidents.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 152
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Metadata, Lineage, Provenance, and Catalogs",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-EB438196",
+      "revision": 1,
+      "semantic_sha256": "eb438196f6dc1f6a8fedd09ed53c5cb66f21ee6c8496de64b84f69e8c3f67a1e",
+      "statement": "Make lineage granular enough to assess impact without exposing unnecessary sensitive values.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 153
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Metadata, Lineage, Provenance, and Catalogs",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0C9F0B2B",
+      "revision": 1,
+      "semantic_sha256": "0c9f0b2bbd2c01891cdb2fed2ccb14ac47b4b3657cbb6f00f539776e67dc5519",
+      "statement": "Connect code, configuration, jobs, schemas, tests, dashboards, and incidents to data assets.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 154
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Metadata, Lineage, Provenance, and Catalogs",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C4B33E7A",
+      "revision": 1,
+      "semantic_sha256": "c4b33e7ab3877c89cf1367e2454bc70a1cf7508b40283193867818e11458b5d8",
+      "statement": "Detect undocumented stores, fields, pipelines, and transfers.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 155
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Metadata, Lineage, Provenance, and Catalogs",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D7D1C856",
+      "revision": 1,
+      "semantic_sha256": "d7d1c856c689514f23e3697666e59337ad6ee97a8e0852677b832b3e40b45dac",
+      "statement": "Mark deprecated, experimental, untrusted, sampled, synthetic, and derived assets clearly.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 156
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Metadata, Lineage, Provenance, and Catalogs",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-22AEFF86",
+      "revision": 1,
+      "semantic_sha256": "22aeff86e59269d623bc6f75a3c43dd1d4b8351c38645efa203f5bd1f7523efe",
+      "statement": "Expose freshness, quality, completeness, and known limitations to consumers.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 157
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Metadata, Lineage, Provenance, and Catalogs",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4A84E28E",
+      "revision": 1,
+      "semantic_sha256": "4a84e28ed905d40bd08f9f960f4c4744a7c3c8c4aa4ea58419dec34af6feb2d1",
+      "statement": "Control access to sensitive metadata that could reveal identities, vulnerabilities, or business secrets.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 158
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Metadata, Lineage, Provenance, and Catalogs",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-820C8588",
+      "revision": 1,
+      "semantic_sha256": "820c8588e5a65e67c22d94a60273c14ab929a0cf1bb5e7549baca76e83f7b9ec",
+      "statement": "Use automated discovery as assistance, not a substitute for accountable validation.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 159
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Metadata, Lineage, Provenance, and Catalogs",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-CD20611C",
+      "revision": 1,
+      "semantic_sha256": "cd20611c9e6ad4383c5238241bf8b53cb4d23c4187152962db8497026e29d073",
+      "statement": "Review lineage after schema, source, transformation, supplier, or model changes.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 160
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Metadata, Lineage, Provenance, and Catalogs",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-65EE7446",
+      "revision": 1,
+      "semantic_sha256": "65ee7446d7ed989da863f658939e8d09c37a4784a44d4435aef46c5129a45572",
+      "statement": "Ensure deletion, consent, and legal-hold propagation can be traced.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 161
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Metadata, Lineage, Provenance, and Catalogs",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-129479F9",
+      "revision": 1,
+      "semantic_sha256": "129479f99022bcfbd73ad2d086a2c85f43178a80ee9fe6ac5ef0cad6700800cf",
+      "statement": "Support impact analysis before breaking or retiring an asset.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 162
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Metadata, Lineage, Provenance, and Catalogs",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B50D752D",
+      "revision": 1,
+      "semantic_sha256": "b50d752d7e267599770a77d196bf9dcebf750e9997ac85beb1a7e0c68c2507bf",
+      "statement": "Prevent multiple conflicting definitions of critical business measures.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 163
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Metadata, Lineage, Provenance, and Catalogs",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-10B8922B",
+      "revision": 1,
+      "semantic_sha256": "10b8922b2a278b6146612861112135888cc27d562a2f17e30244039517674ccb",
+      "statement": "Make catalog search and terminology understandable to non-specialist users.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 164
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Metadata, Lineage, Provenance, and Catalogs",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0A167C3B",
+      "revision": 1,
+      "semantic_sha256": "0a167c3b108c74bfd3bf1dc3e6bb5fc4f3f32df1e09416eed84555cc31b945e0",
+      "statement": "Define metadata retention and retirement.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 165
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Metadata, Lineage, Provenance, and Catalogs",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-37837369",
+      "revision": 1,
+      "semantic_sha256": "37837369615e304e1aaf4c7af8c95ca358f61356b88fcbcfd7ee194af7e38982",
+      "statement": "Measure catalog accuracy, coverage, use, stale ownership, and unresolved quality issues.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 166
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Metadata, Lineage, Provenance, and Catalogs",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C478C8F8",
+      "revision": 1,
+      "semantic_sha256": "c478c8f87f9ae783df56326cb24681ff0e77eedfdabe1669e8fbf4e34b135890",
+      "statement": "Verify metadata against deployed reality periodically.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 167
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Metadata, Lineage, Provenance, and Catalogs",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-509E348F",
+      "revision": 1,
+      "semantic_sha256": "509e348f0f24da2ec148ab28b6dc21dd00725b8d86d35fb07f854d229c207ab1",
+      "statement": "Classify each change as additive, compatible, breaking, destructive, reparative, or behavioral.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 175
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Schema Evolution, Migrations, and Data Repair",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-43AD1E0F",
+      "revision": 1,
+      "semantic_sha256": "43ad1e0f172bacd71bfc20f8895ac5c37964cd9be3bed0302e6afd14927a2723",
+      "statement": "Analyze every producer, consumer, query, export, cache, index, report, backup, and integration affected.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 176
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Schema Evolution, Migrations, and Data Repair",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C8E2FD24",
+      "revision": 1,
+      "semantic_sha256": "c8e2fd2445e97a2ab2b31260c3b654cafe9c4f8f3ef56e468d1e62e9dc56dbf2",
+      "statement": "Use expand-migrate-contract or an equivalent staged approach when versions coexist.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 177
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Schema Evolution, Migrations, and Data Repair",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-DB25A2EB",
+      "revision": 1,
+      "semantic_sha256": "db25a2eb0dd8eeaaa34cdab5fd1e9eb23fb9b7081d1788e5839a9cd3e92135a2",
+      "statement": "Deploy readers tolerant of the new and old representation before writers require the new representation.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 178
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Schema Evolution, Migrations, and Data Repair",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A3949A80",
+      "revision": 1,
+      "semantic_sha256": "a3949a80c99128fd0a86490a0d0516f3ab26a195e8bb60b48a6d63c102e802b1",
+      "statement": "Make migrations resumable, idempotent, observable, and bounded.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 179
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Schema Evolution, Migrations, and Data Repair",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-DD77C289",
+      "revision": 1,
+      "semantic_sha256": "dd77c289fa3e02fbff31e17b87728fae3e1804fe23723187272b537a7184807c",
+      "statement": "Test against representative volume, skew, malformed legacy records, and production-like contention.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 180
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Schema Evolution, Migrations, and Data Repair",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5FDAB7FB",
+      "revision": 1,
+      "semantic_sha256": "5fdab7fbf91a1d034c95537860ca9c718a511c59acc4a0b04164f942ed6c8284",
+      "statement": "Estimate duration, lock impact, log growth, replication lag, storage, and failure recovery.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 181
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Schema Evolution, Migrations, and Data Repair",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D9C07812",
+      "revision": 1,
+      "semantic_sha256": "d9c0781217bc0877a9126f476ba1937ea099d4a986ab236b3b33c363633f1369",
+      "statement": "Create a verified recovery point before destructive change.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 182
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Schema Evolution, Migrations, and Data Repair",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-AB1CDFE8",
+      "revision": 1,
+      "semantic_sha256": "ab1cdfe86674de6b064ae23a0398d358c11fc2b7649cc5c01bcc81782df50e20",
+      "statement": "Define whether rollback is safe; when it is not, provide a tested roll-forward plan.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 183
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Schema Evolution, Migrations, and Data Repair",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-AC3EF432",
+      "revision": 1,
+      "semantic_sha256": "ac3ef432ee92b69b7145d9cc650b49ae95074ee28bf5763e14f3d305c70f2181",
+      "statement": "Validate preconditions and stop rather than applying a migration to an unexpected state.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 184
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Schema Evolution, Migrations, and Data Repair",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F2F92B55",
+      "revision": 1,
+      "semantic_sha256": "f2f92b55fc18ccb4521fb14316d5d3fca7b679e182dea1fac734b9aae9ec6ef8",
+      "statement": "Verify counts, checksums, constraints, totals, samples, and business invariants afterward.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 185
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Schema Evolution, Migrations, and Data Repair",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-47CBE497",
+      "revision": 1,
+      "semantic_sha256": "47cbe49706c74b18ef9cd732e51412f5c2b38fbbc801a6689101f4519f9dbaa6",
+      "statement": "Keep old fields and code until all consumers have migrated and rollback windows close.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 186
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Schema Evolution, Migrations, and Data Repair",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-702C04BB",
+      "revision": 1,
+      "semantic_sha256": "702c04bb787207adbe0c946e0f1149b8cc1abb973679ff49387375f625296a31",
+      "statement": "Prevent dual-write divergence through transactional patterns or reconciliation.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 187
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Schema Evolution, Migrations, and Data Repair",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-7D7F2085",
+      "revision": 1,
+      "semantic_sha256": "7d7f2085b4db48a9069646962e25b2b82503b6cc9e814f937cbdeca03aea288d",
+      "statement": "Record every repair's scope, reason, approver, code, affected records, and before/after evidence.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 188
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Schema Evolution, Migrations, and Data Repair",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-71D3AA4E",
+      "revision": 1,
+      "semantic_sha256": "71d3aa4ecef3e098e06fec367b4f22dedb5c8a044dc1c94a4b2b69ec52a37a35",
+      "statement": "Use dry runs and impact previews for bulk repair.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 189
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Schema Evolution, Migrations, and Data Repair",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D9B1C1E4",
+      "revision": 1,
+      "semantic_sha256": "d9b1c1e4a50df259a822340711d635434f310ead73d0d1f0e90995130de3de57",
+      "statement": "Protect privacy, retention, and legal-hold semantics during backfill and copy.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 190
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Schema Evolution, Migrations, and Data Repair",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6E24DDDE",
+      "revision": 1,
+      "semantic_sha256": "6e24ddde1f806c03dc83228d9390434495be31ffbcf6242e170f62984fa1d95d",
+      "statement": "Throttle work to preserve service objectives and downstream capacity.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 191
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Schema Evolution, Migrations, and Data Repair",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-EF110B0C",
+      "revision": 1,
+      "semantic_sha256": "ef110b0c441fad764f3540011726c0b13feb650a581f74a17383c1fad854893f",
+      "statement": "Monitor errors, lag, locks, saturation, and quality during execution.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 192
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Schema Evolution, Migrations, and Data Repair",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-13513246",
+      "revision": 1,
+      "semantic_sha256": "13513246266249a324e56a7f412d63f3af6e1608ae200c6c1c4bca6d67435d1b",
+      "statement": "Avoid irreversible manual production edits without review and reproducible scripts.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 193
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Schema Evolution, Migrations, and Data Repair",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D7F7DCBE",
+      "revision": 1,
+      "semantic_sha256": "d7f7dcbe428e6267be5524b2d59992b1b7bf000899eb7cb7739ee66bfaa7da8f",
+      "statement": "Retire temporary migration infrastructure, permissions, and compatibility paths after verification.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 194
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Schema Evolution, Migrations, and Data Repair",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E1AC670A",
+      "revision": 1,
+      "semantic_sha256": "e1ac670a621b9b5d39d66abe2d875cde6cb66879a2f0e5ddbae1b9aef472b384",
+      "statement": "Define every decision metric with purpose, formula, population, inclusion, exclusion, time basis, unit, owner, and source.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 202
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Analytics, Business Intelligence, and Decision Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C1D6F926",
+      "revision": 1,
+      "semantic_sha256": "c1d6f926e68a42803a2d6aa9d7dc753c792094822e00e1c15b89174e51169bd2",
+      "statement": "Use governed semantic definitions across dashboards and reports.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 203
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Analytics, Business Intelligence, and Decision Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-37D5ABE7",
+      "revision": 1,
+      "semantic_sha256": "37d5abe7fffda62bbc9c18430f9ed7016a6a8eef3da9399c952e09d4f623b519",
+      "statement": "Preserve lineage from source events through transformations to reported values.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 204
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Analytics, Business Intelligence, and Decision Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-661381D2",
+      "revision": 1,
+      "semantic_sha256": "661381d219af88b10b1a33f37a6a05f0002b212b97b9866421bdcb15b7cbebb5",
+      "statement": "Validate event generation, deduplication, identity stitching, bot filtering, late data, and backfill behavior.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 205
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Analytics, Business Intelligence, and Decision Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BE717543",
+      "revision": 1,
+      "semantic_sha256": "be717543821b59c242ba3821d223ea5f8c661f981b8142ed5d74c731372a9b1c",
+      "statement": "Distinguish operational, financial, experimental, forecast, and exploratory data.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 206
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Analytics, Business Intelligence, and Decision Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3EDB9D35",
+      "revision": 1,
+      "semantic_sha256": "3edb9d350080df424205a70d74da58ed81f450a262b4256caf39c24a0b679acb",
+      "statement": "Label provisional, sampled, modeled, incomplete, delayed, and corrected values.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 207
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Analytics, Business Intelligence, and Decision Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-93C92CBA",
+      "revision": 1,
+      "semantic_sha256": "93c92cbac989990259d3c5d724fb9cd43d77dac8ed690eba29ff82cd96889502",
+      "statement": "Use appropriate statistical methods and communicate uncertainty, confidence, and practical significance.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 208
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Analytics, Business Intelligence, and Decision Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4DB89BD6",
+      "revision": 1,
+      "semantic_sha256": "4db89bd6779d53731d6162cbef346cc1cd59013ff13501aaf4dcc2b47f82428e",
+      "statement": "Prevent dashboards from encouraging decisions outside the metric's valid scope.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 209
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Analytics, Business Intelligence, and Decision Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A3F2C18E",
+      "revision": 1,
+      "semantic_sha256": "a3f2c18ebf75b50ec7b7cf167164a9ab7e02f69398963ff0f750cbf3cb37f6ef",
+      "statement": "Segment results where aggregate values can conceal failures or harmed groups.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 210
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Analytics, Business Intelligence, and Decision Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BB25C45C",
+      "revision": 1,
+      "semantic_sha256": "bb25c45ca3d13a6ead76cd865ce42c50af52dafa9f567849eed3a44c6daf0259",
+      "statement": "Protect personal, sensitive, and commercially confidential information through minimization and access control.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 211
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Analytics, Business Intelligence, and Decision Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-13C8956B",
+      "revision": 1,
+      "semantic_sha256": "13c8956b7c2083b99c4f69227d9e156bfeb773c0b0151db0e71098d81287f191",
+      "statement": "Avoid unnecessary individual-level tracking when aggregate evidence is sufficient.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 212
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Analytics, Business Intelligence, and Decision Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-39EDC90D",
+      "revision": 1,
+      "semantic_sha256": "39edc90d8c4c27cd49557d2ff3024b99ea7f65897d90d4bb3a9b002cb6359a0d",
+      "statement": "Reconcile critical financial and operational metrics with authoritative systems.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 213
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Analytics, Business Intelligence, and Decision Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4989F7C1",
+      "revision": 1,
+      "semantic_sha256": "4989f7c186694d32dac450b538f5dbd468952498fd35a1510aabbe231949f20f",
+      "statement": "Version transformations and reports so past decisions can be reproduced.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 214
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Analytics, Business Intelligence, and Decision Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-380BC207",
+      "revision": 1,
+      "semantic_sha256": "380bc207b08b67984881f5a6cb55205c4eb76509f3f2d0a459e1452f206428ee",
+      "statement": "Test metric changes and obtain stakeholder approval before replacing established definitions.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 215
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Analytics, Business Intelligence, and Decision Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-2EB60C43",
+      "revision": 1,
+      "semantic_sha256": "2eb60c438a45c34ad7b7478b9ad6c3956879b211d8bb6ac76a62fa3d4143fc18",
+      "statement": "Monitor freshness, completeness, pipeline failure, schema drift, and unexpected distribution changes.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 216
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Analytics, Business Intelligence, and Decision Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4B85F9C2",
+      "revision": 1,
+      "semantic_sha256": "4b85f9c227b53d830e9c2ba5791fe13e526fe16bbc13802dece00f3a65551b2d",
+      "statement": "Define retention and deletion for raw, transformed, exported, and cached analytical data.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 217
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Analytics, Business Intelligence, and Decision Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-1ED5CCAF",
+      "revision": 1,
+      "semantic_sha256": "1ed5ccaf49753d56dbab3834dc5d7e04624c86a81ebb46664f8f9673d9e6f5b1",
+      "statement": "Audit sensitive exports and broad query access.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 218
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Analytics, Business Intelligence, and Decision Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E039CC8E",
+      "revision": 1,
+      "semantic_sha256": "e039cc8e79fbfa7d4d4008171681168fb9a81af4abdfa8a62ab5160fcb702bc9",
+      "statement": "Provide a correction and communication process for materially wrong reports.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 219
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Analytics, Business Intelligence, and Decision Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-FB1819A1",
+      "revision": 1,
+      "semantic_sha256": "fb1819a11a421d7136af97dc84cc555699e704e88178a493ccc8d08312dcf68e",
+      "statement": "Retire unused dashboards and contradictory measures.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 220
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Analytics, Business Intelligence, and Decision Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B55432F8",
+      "revision": 1,
+      "semantic_sha256": "b55432f83967f843f99f3f86698e4ad37305a98506b67e009869546f5944d38c",
+      "statement": "Pair dashboards with context, narrative, and responsible interpretation.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 221
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Analytics, Business Intelligence, and Decision Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C547E075",
+      "revision": 1,
+      "semantic_sha256": "c547e0751915715e5a899c8a3287a6b9623e80e93f2bd75dd09cb2bd984d141f",
+      "statement": "Treat every material dataset, event stream, metric, feature, model input, report, archive, record collection, and derived product as an owned product with defined consumers and consequences.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 231
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data governance and product accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-CDE52000",
+      "revision": 1,
+      "semantic_sha256": "cde5200099fc5e732d541d1d33791cdb88ca323ac16c634bb9e175f3f69b37ab",
+      "statement": "Assign accountable data owner, steward, technical custodian, security owner, privacy owner, records owner, quality owner, and operational contact where applicable.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 232
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data governance and product accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-D46B4888",
+      "revision": 1,
+      "semantic_sha256": "d46b48884267e6d9e91a73fe7e6e09c807b15c6f548a4dba79a6d09e8892afb1",
+      "statement": "Maintain an inventory of authoritative sources, replicas, transformations, interfaces, consumers, classifications, locations, jurisdictions, retention classes, and criticality.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 233
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data governance and product accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-D1AAA044",
+      "revision": 1,
+      "semantic_sha256": "d1aaa044b8422cb8f0b6ed3d9e6efa863d7b21b184e1b10536bfb4c208b34d5e",
+      "statement": "Define the business purpose, permitted uses, prohibited uses, affected parties, decision dependence, expected quality, and retirement criteria for each data product.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 234
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data governance and product accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-9B0AB803",
+      "revision": 1,
+      "semantic_sha256": "9b0ab8031158450a83b0852752e76de2e3b8affb686dcf8e581d225b12e6a1d4",
+      "statement": "Map legal, regulatory, contractual, privacy, intellectual-property, security, records, sovereignty, localization, archival, and sector obligations.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 235
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data governance and product accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-2E6C4E1E",
+      "revision": 1,
+      "semantic_sha256": "2e6c4e1eae92bbe73430b08edbc111dc04ecc39cdf1bfd9646b2d7cac7c11a88",
+      "statement": "Establish decision rights for schema, semantics, quality thresholds, access, sharing, correction, retention, deletion, publication, and deprecation.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 236
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data governance and product accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-1A7102F9",
+      "revision": 1,
+      "semantic_sha256": "1a7102f927b14295c997ea6f7ba58aff5790552b3ae321cdd0599dea4c3a7b37",
+      "statement": "Separate data ownership from unrestricted access; ownership creates accountability, not personal possession.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 237
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data governance and product accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-2AD17106",
+      "revision": 1,
+      "semantic_sha256": "2ad171067e9087a178c830839143bbaa27d6f6aec6c9b5aefcfadcef7c5eb52f",
+      "statement": "Define authoritative systems of record and prevent multiple sources from claiming incompatible authority without reconciliation rules.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 238
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data governance and product accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-7D1A2726",
+      "revision": 1,
+      "semantic_sha256": "7d1a272697a8f4ee099ebc3d16a4540817d8329370a2a6892dbdd3d2332d49c0",
+      "statement": "Classify data by confidentiality, integrity, availability, privacy, safety, financial, legal, evidentiary, and business impact.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 239
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data governance and product accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-8A244596",
+      "revision": 1,
+      "semantic_sha256": "8a2445960c53636c06687029ffe36cc1b6c15d62dad984f6579add73d4a29b5b",
+      "statement": "Document critical data elements and the business rules whose violation would create material harm.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 240
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data governance and product accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-73BC563D",
+      "revision": 1,
+      "semantic_sha256": "73bc563d6b12dce87ea60442994701cc9c83afe65ef69e4eb03caac6a77304ae",
+      "statement": "Require data impact analysis for new collection, new fields, changed semantics, new consumers, cross-border movement, new inference, and retirement.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 241
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data governance and product accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-1FB06B55",
+      "revision": 1,
+      "semantic_sha256": "1fb06b5517f457f63e990de278427236540f41229d5b8c8f0b723ffaa5986e6f",
+      "statement": "Establish a data issue, exception, waiver, and escalation process with accountable risk acceptance.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 242
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data governance and product accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-AD3273DB",
+      "revision": 1,
+      "semantic_sha256": "ad3273dba8ef6fe123122e4938e5a48318172c3d7b988b202554ac3d86915b59",
+      "statement": "Review data governance when organizational ownership, product purpose, jurisdiction, architecture, or supplier changes.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 243
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data governance and product accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-0197FA6A",
+      "revision": 1,
+      "semantic_sha256": "0197fa6a84772430f0ca5f52e6581a1d30bb3ed734dce59f61ecac362369ed6b",
+      "statement": "Fund stewardship, metadata, quality, lineage, migration, retention, and preservation work as product capabilities rather than incidental cleanup.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 244
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data governance and product accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-D8A791A2",
+      "revision": 1,
+      "semantic_sha256": "d8a791a24159e31d499c24ba940b74f81cd65abb5923c4fa857e1680d68def06",
+      "statement": "Use a versioned data contract for material datasets, events, files, APIs, features, reports, and shared tables whose changes can affect independent consumers.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 248
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data contracts and producer-consumer agreements"
+      ]
+    },
+    {
+      "control_id": "USEQ-C9C31A30",
+      "revision": 1,
+      "semantic_sha256": "c9c31a309728432e0323927ec633b04a5e9d51e299c4af369b04850fad0f86bc",
+      "statement": "Identify producer, owner, steward, approved consumers, support contact, lifecycle state, and change authority in the contract.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 249
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data contracts and producer-consumer agreements"
+      ]
+    },
+    {
+      "control_id": "USEQ-18AD2497",
+      "revision": 1,
+      "semantic_sha256": "18ad249763bd76d124aa8247dc60ecaf82b84e8f4aa46f13b11bc16a3483f0de",
+      "statement": "Define field names, meanings, types, cardinality, nullability, required status, default behavior, constraints, identifiers, units, formats, precision, encoding, and examples.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 250
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data contracts and producer-consumer agreements"
+      ]
+    },
+    {
+      "control_id": "USEQ-A553302B",
+      "revision": 1,
+      "semantic_sha256": "a553302b93d5339d8b045dcaddd84e79b27341c87ec8e724570c1026229e77dc",
+      "statement": "Define record, event, collection, partition, ordering, deduplication, update, deletion, correction, and late-arrival semantics.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 251
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data contracts and producer-consumer agreements"
+      ]
+    },
+    {
+      "control_id": "USEQ-B5A21EC4",
+      "revision": 1,
+      "semantic_sha256": "b5a21ec4c9be2a942f81a8b259a8a5935ec9d26ccadffaa141ed38cfbc179680",
+      "statement": "Define event time, processing time, effective time, observation time, time zone, clock basis, validity interval, and timestamp precision where relevant.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 252
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data contracts and producer-consumer agreements"
+      ]
+    },
+    {
+      "control_id": "USEQ-31C5E44E",
+      "revision": 1,
+      "semantic_sha256": "31c5e44e2dcbffe8dff91ee1d5a37a405bad88d0a94179a89560df5cd6d11252",
+      "statement": "Define quality objectives for completeness, validity, uniqueness, consistency, accuracy, timeliness, freshness, reconciliation, and acceptable loss.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 253
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data contracts and producer-consumer agreements"
+      ]
+    },
+    {
+      "control_id": "USEQ-3B112125",
+      "revision": 1,
+      "semantic_sha256": "3b11212553aef126bbaf6fc9c917f33a8f101e398fe75814de72ed7a7099b28a",
+      "statement": "Define delivery objectives for latency, availability, durability, throughput, retention, replay, backfill, recovery, and support.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 254
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data contracts and producer-consumer agreements"
+      ]
+    },
+    {
+      "control_id": "USEQ-93060CD4",
+      "revision": 1,
+      "semantic_sha256": "93060cd41bb64b609e0f0de7476784fbe73fdb11d83e19cdb337acd5675266d2",
+      "statement": "Define confidentiality, privacy, purpose, region, access, encryption, masking, logging, retention, and deletion requirements.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 255
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data contracts and producer-consumer agreements"
+      ]
+    },
+    {
+      "control_id": "USEQ-E729AA07",
+      "revision": 1,
+      "semantic_sha256": "e729aa0727dcc426d629c30520a44f9bb72aa77a83d68d6d46fff58644e5736a",
+      "statement": "Define provenance, lineage, source authority, transformation, aggregation, and derivation expectations.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 256
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data contracts and producer-consumer agreements"
+      ]
+    },
+    {
+      "control_id": "USEQ-8E555230",
+      "revision": 1,
+      "semantic_sha256": "8e5552306441db8452b0d66912eee8ed133d46a38bb6df39e4c1d81c875dd203",
+      "statement": "Define error, quarantine, dead-letter, rejection, partial acceptance, retry, duplicate, and reconciliation behavior.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 257
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data contracts and producer-consumer agreements"
+      ]
+    },
+    {
+      "control_id": "USEQ-29044E1F",
+      "revision": 1,
+      "semantic_sha256": "29044e1fff033737757bdf3104e1289990a6f549792ed0a168fec2ceb8c930b8",
+      "statement": "Define compatibility promises, supported versions, deprecation period, migration assistance, and termination conditions.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 258
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data contracts and producer-consumer agreements"
+      ]
+    },
+    {
+      "control_id": "USEQ-01525D88",
+      "revision": 1,
+      "semantic_sha256": "01525d883d69fb4cf1da369991125a77385360127a4aad46af9b8ab6a0649c8c",
+      "statement": "Define cost, quota, fair-use, capacity, and high-volume consumer expectations where material.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 259
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data contracts and producer-consumer agreements"
+      ]
+    },
+    {
+      "control_id": "USEQ-4E491D18",
+      "revision": 1,
+      "semantic_sha256": "4e491d180b02dc403a8439b37a45e2c9b9b58129c04a4aa5907a5a76adf4970a",
+      "statement": "Represent contracts in machine-readable form where it improves validation without replacing human-readable semantics.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 260
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data contracts and producer-consumer agreements"
+      ]
+    },
+    {
+      "control_id": "USEQ-AD01F86C",
+      "revision": 1,
+      "semantic_sha256": "ad01f86cac92cdb56ebbc3476018c7fef401bbba24062446cab971df9f7071b5",
+      "statement": "Store contracts with version control, review, ownership, release history, and immutable identifiers.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 261
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data contracts and producer-consumer agreements"
+      ]
+    },
+    {
+      "control_id": "USEQ-70D26B9C",
+      "revision": 1,
+      "semantic_sha256": "70d26b9c7e2bd0ac8d3dac0bb9d2508f705b1c5145ff45977b034d659a16536b",
+      "statement": "Validate produced data against the contract at the earliest trustworthy boundary.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 262
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data contracts and producer-consumer agreements"
+      ]
+    },
+    {
+      "control_id": "USEQ-BB5C83FD",
+      "revision": 1,
+      "semantic_sha256": "bb5c83fd81fce4cc2b1ca63a89aee58a851c7789546156d038ab418ee6831252",
+      "statement": "Validate consumer assumptions explicitly rather than relying only on producer-side schema checks.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 263
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data contracts and producer-consumer agreements"
+      ]
+    },
+    {
+      "control_id": "USEQ-0132ADA9",
+      "revision": 1,
+      "semantic_sha256": "0132ada91217a9c8f49c4e9a4bd8fd8c89c4a3e63360082233f31c947a0f3eff",
+      "statement": "Run contract tests in CI and against representative deployed interfaces.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 264
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data contracts and producer-consumer agreements"
+      ]
+    },
+    {
+      "control_id": "USEQ-63B27806",
+      "revision": 1,
+      "semantic_sha256": "63b278065f84912086dc677b966332ad35f9f36aef8cdf1fd6a2a1e3166f9dc7",
+      "statement": "Reject, quarantine, or visibly flag contract violations rather than silently coercing values into misleading success.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 265
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data contracts and producer-consumer agreements"
+      ]
+    },
+    {
+      "control_id": "USEQ-CE3470D3",
+      "revision": 1,
+      "semantic_sha256": "ce3470d37b495578e8a44e71c2f75b2139d9fe7f13822999b459ce45a6b710b9",
+      "statement": "Prevent one consumer's undocumented dependency from silently becoming a permanent public contract; discover and resolve such dependencies.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 266
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data contracts and producer-consumer agreements"
+      ]
+    },
+    {
+      "control_id": "USEQ-231C09BC",
+      "revision": 1,
+      "semantic_sha256": "231c09bc8fdcf9d47b2a5345b631de29663da323f646ca1021d408f93c40b58a",
+      "statement": "Require a contract change proposal to identify affected consumers, migration path, evidence, rollout, rollback, and observation plan.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 267
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data contracts and producer-consumer agreements"
+      ]
+    },
+    {
+      "control_id": "USEQ-1C751A87",
+      "revision": 1,
+      "semantic_sha256": "1c751a875918fc461fccaeb5cae1f1dda150643e62cb27749a0988e55dd55f0a",
+      "statement": "Distinguish additive structural compatibility from semantic compatibility; a field can remain structurally present while its meaning changes incompatibly.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 268
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data contracts and producer-consumer agreements"
+      ]
+    },
+    {
+      "control_id": "USEQ-0F7847A2",
+      "revision": 1,
+      "semantic_sha256": "0f7847a24dd9eb8cde5fb653aa33935607b1141d58ddf8fdfbae147f6ef720af",
+      "statement": "Treat changes to units, timezone, category definitions, enumerations, default values, precision, ordering, frequency, population, methodology, and source as potentially breaking.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 269
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data contracts and producer-consumer agreements"
+      ]
+    },
+    {
+      "control_id": "USEQ-8156074E",
+      "revision": 1,
+      "semantic_sha256": "8156074e1d0c06c01c62cb50be280ff65177560d16589d851b99dba8142d7d5c",
+      "statement": "Support dual publication, adapters, versioned views, or coordinated migration when consumers cannot change atomically.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 270
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data contracts and producer-consumer agreements"
+      ]
+    },
+    {
+      "control_id": "USEQ-BFA2B85F",
+      "revision": 1,
+      "semantic_sha256": "bfa2b85f1f5040adaa2403e578745221f9be79fb2d1c5ab292b312a14691b8bb",
+      "statement": "Monitor consumer adoption and retire old contract versions only after evidence that required consumers have migrated.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 271
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data contracts and producer-consumer agreements"
+      ]
+    },
+    {
+      "control_id": "USEQ-A20E36B7",
+      "revision": 1,
+      "semantic_sha256": "a20e36b706b98500c9049c20fb9250fcd3e42666efd03f87a3352e2381d7346e",
+      "statement": "Provide a clear process for emergency corrections when continuing bad data is more harmful than preserving compatibility.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 272
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data contracts and producer-consumer agreements"
+      ]
+    },
+    {
+      "control_id": "USEQ-AA8B7EF7",
+      "revision": 1,
+      "semantic_sha256": "aa8b7ef7887864d1b101c3654f62eabdbcbc8887c9e5ea934ea44a7ddf72567e",
+      "statement": "Define each domain concept independently from its current storage, API, interface, or organizational representation.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 276
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Semantic modeling and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-BFA7B27F",
+      "revision": 1,
+      "semantic_sha256": "bfa7b27f3fd3115b8e62c617321bec87ba97755c975ced2b990eaed245f94e43",
+      "statement": "Use a controlled vocabulary, glossary, ontology, taxonomy, code set, or semantic model where multiple teams or systems must share meaning.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 277
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Semantic modeling and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-7A78C028",
+      "revision": 1,
+      "semantic_sha256": "7a78c028ae9d1971805249b7643ae86db875abb42907ad7b48f0d23beed313c7",
+      "statement": "Assign identifiers that are stable, unique in their namespace, non-recycled, and independent of mutable display attributes.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 278
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Semantic modeling and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-F730C612",
+      "revision": 1,
+      "semantic_sha256": "f730c612311f5e64dc33abd8b54822dd1101310e97f894c6d03faa177f3f38d2",
+      "statement": "Document identifier scope, issuer, format, lifecycle, merge, split, alias, supersession, and retirement behavior.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 279
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Semantic modeling and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-8EF33366",
+      "revision": 1,
+      "semantic_sha256": "8ef33366d0ee8464456768984db0c77dc3f62dc5355753beaabdec16d01c51eb",
+      "statement": "Distinguish entity identity from account identity, tenancy, location, version, state, and presentation.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 280
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Semantic modeling and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-EAFEDDAC",
+      "revision": 1,
+      "semantic_sha256": "eafeddac8681fb827a6060a94aa5e7bbe4c73855ccdc81f30f3d765426f6914e",
+      "statement": "Define units using an accepted system and include unit metadata whenever ambiguity is possible.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 281
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Semantic modeling and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-ED2A5112",
+      "revision": 1,
+      "semantic_sha256": "ed2a51125ddc5c881a736719822544b01f8fd3b3ad8370e9ef4690ff2395c5bb",
+      "statement": "Define currency, exchange-rate source, effective time, precision, rounding, and minor-unit behavior for monetary data.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 282
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Semantic modeling and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-2FBAE1B8",
+      "revision": 1,
+      "semantic_sha256": "2fbae1b801a35ffd501c6b3f1624966e65f2fa22edf0c7d8896180ca5c227a4d",
+      "statement": "Define date, time, duration, interval, recurrence, calendar, locale, and daylight-saving semantics explicitly.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 283
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Semantic modeling and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-5D81ECC6",
+      "revision": 1,
+      "semantic_sha256": "5d81ecc64555c3367977546de9427b20016e2172ff2f5dbce02c7e2651f110c0",
+      "statement": "Use unambiguous machine representations for dates and times and preserve original source timezone or offset when needed for meaning or evidence.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 284
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Semantic modeling and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-336A10C7",
+      "revision": 1,
+      "semantic_sha256": "336a10c731456e8e79d37d1e437a4560869c86037634a5cd806edfb856d54e5e",
+      "statement": "Define whether missing, unknown, not applicable, withheld, redacted, zero, empty, false, and not yet observed are distinct states.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 285
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Semantic modeling and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-1EB23A6A",
+      "revision": 1,
+      "semantic_sha256": "1eb23a6a37c1733fababfed64b8ce3236a76fa68a2cb8648a67bab22498b0ec8",
+      "statement": "Avoid overloaded sentinel values and magic codes.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 286
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Semantic modeling and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-17062C73",
+      "revision": 1,
+      "semantic_sha256": "17062c73baea5da793d3e04f7cee679cd626afc57e7286fbaa8f664c4c20da39",
+      "statement": "Define code-set owner, version, hierarchy, mappings, deprecations, unknown values, and localization.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 287
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Semantic modeling and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-87876B70",
+      "revision": 1,
+      "semantic_sha256": "87876b70b95197ad94e187729da152ecf71aae319c85c5e23d9a2a2fd4eafd93",
+      "statement": "Preserve source values when normalization or mapping could lose evidence or require later reinterpretation.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 288
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Semantic modeling and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-509B2FD6",
+      "revision": 1,
+      "semantic_sha256": "509b2fd650067d4128aa744c5fe244bdb8ed2f2d1047190234de69c47feab97a",
+      "statement": "Record semantic mappings and transformation rules between systems and test for information loss.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 289
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Semantic modeling and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-72D57CC1",
+      "revision": 1,
+      "semantic_sha256": "72d57cc1dcd55b0d2fc119ab062cda3125ea8487e27679dd8d10bd5ff33bacc4",
+      "statement": "Use open, documented, stable formats and vocabularies when interoperability and longevity outweigh proprietary optimization.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 290
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Semantic modeling and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-3F9D0214",
+      "revision": 1,
+      "semantic_sha256": "3f9d0214ef0c05b1cc244d5303c50b7382d55b0cd1ce0819efa7e4b8ac6228e3",
+      "statement": "Define character encoding, normalization, collation, language, script, direction, case, transliteration, and comparison behavior.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 291
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Semantic modeling and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-5A23AF38",
+      "revision": 1,
+      "semantic_sha256": "5a23af383d9de4563d37bf206b91b47d32816eeac13ce5f8e4951f2d9f7c417a",
+      "statement": "Support names, addresses, identifiers, and cultural concepts without assuming one country's format.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 292
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Semantic modeling and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-5504E2F7",
+      "revision": 1,
+      "semantic_sha256": "5504e2f7b1a85909d3283abc6d8e32e0e71ccfe0368fb737861069a76a0f567d",
+      "statement": "Document aggregation grain, population, denominator, inclusion, exclusion, weighting, and suppression rules for metrics.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 293
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Semantic modeling and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-F72D313D",
+      "revision": 1,
+      "semantic_sha256": "f72d313dd556e140a78efeebd9d3177342daa249dbb2f9b5b19fef255bd663d3",
+      "statement": "Prevent one metric name from referring to different formulas or populations across products without qualification.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 294
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Semantic modeling and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-C349FEF7",
+      "revision": 1,
+      "semantic_sha256": "c349fef7f59ae82fcf387d4cbd46ee4eb2f8fc7c0b36c0d2f87b39292e34f4d0",
+      "statement": "Distinguish measured, reported, inferred, estimated, imputed, predicted, and manually corrected values.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 295
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Semantic modeling and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-D1D271BC",
+      "revision": 1,
+      "semantic_sha256": "d1d271bc2d534e7f4d406e073cd847d3f315c95ef0ebb9709a718a67a7d3d9c9",
+      "statement": "Attach uncertainty, confidence, error bounds, method, and provenance where values are not exact.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 296
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Semantic modeling and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-FF236B14",
+      "revision": 1,
+      "semantic_sha256": "ff236b145f1be4b4f536d32ca60327e062091f4642d59fcf69931dd4b8ea0c1e",
+      "statement": "Version semantic definitions independently when meaning can change without a physical schema change.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 297
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Semantic modeling and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-553684CD",
+      "revision": 1,
+      "semantic_sha256": "553684cdb68e0e4e31cce363ec66c7b34935e8ec5e6cfd7f6a0f06f584dcdb0d",
+      "statement": "Use a compatibility and mapping strategy when adopting a new vocabulary or standard.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 298
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Semantic modeling and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-061DB99D",
+      "revision": 1,
+      "semantic_sha256": "061db99dd50eab51906f01fbf292da561b4670b72a4f43327cfe39afe5986d54",
+      "statement": "Create metadata sufficient for authorized users to find, understand, assess, access, use, cite, and retire each material data asset.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 302
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Metadata, cataloging, discovery, and FAIR data"
+      ]
+    },
+    {
+      "control_id": "USEQ-62C19DBD",
+      "revision": 1,
+      "semantic_sha256": "62c19dbd13d08a83d206d44d4ead2df69cad331beef9e962749bfc430a532b04",
+      "statement": "Include title, description, owner, contact, purpose, source, scope, population, grain, schema, semantics, format, quality, classification, license, rights, location, freshness, retention, lineage, and lifecycle state as applicable.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 303
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Metadata, cataloging, discovery, and FAIR data"
+      ]
+    },
+    {
+      "control_id": "USEQ-EDEF1598",
+      "revision": 1,
+      "semantic_sha256": "edef1598084b5bad4912b1ce8a094d49a4c15aadbef84041b82095323fd4bfa9",
+      "statement": "Use globally unique and persistent identifiers for durable published data assets where appropriate.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 304
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Metadata, cataloging, discovery, and FAIR data"
+      ]
+    },
+    {
+      "control_id": "USEQ-8605BA17",
+      "revision": 1,
+      "semantic_sha256": "8605ba170753cfb51872cda0562d88a1781df576fa81c9d67cf4e62def009a85",
+      "statement": "Make metadata searchable through a catalog or equivalent discovery mechanism.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 305
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Metadata, cataloging, discovery, and FAIR data"
+      ]
+    },
+    {
+      "control_id": "USEQ-4DE4A813",
+      "revision": 1,
+      "semantic_sha256": "4de4a813c0c93a6beb7aeb85d9f3dd65becf86676658b05d2fcbeb393cd318ec",
+      "statement": "Keep metadata available even when the data is restricted, while preventing sensitive metadata leakage.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 306
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Metadata, cataloging, discovery, and FAIR data"
+      ]
+    },
+    {
+      "control_id": "USEQ-6B30EA7B",
+      "revision": 1,
+      "semantic_sha256": "6b30ea7b06cda6c688bf5ec85ba9a31b4493f955e1fed95d716fa479f6a45aee",
+      "statement": "Use interoperable metadata vocabularies and machine-readable formats where exchange or automation is intended.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 307
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Metadata, cataloging, discovery, and FAIR data"
+      ]
+    },
+    {
+      "control_id": "USEQ-E4039352",
+      "revision": 1,
+      "semantic_sha256": "e403935208379c23f513a52296537696ea46b7da20c16058781d0c6777b00bb9",
+      "statement": "Publish access methods, authentication, authorization, protocol, distribution format, and service-level expectations.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 308
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Metadata, cataloging, discovery, and FAIR data"
+      ]
+    },
+    {
+      "control_id": "USEQ-1D593FAE",
+      "revision": 1,
+      "semantic_sha256": "1d593faeb0e158598d09a8a24d66077237806a67482b21f121a23fce222dd1d7",
+      "statement": "Describe data license, permitted use, attribution, redistribution, derivative work, and ethical constraints.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 309
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Metadata, cataloging, discovery, and FAIR data"
+      ]
+    },
+    {
+      "control_id": "USEQ-C50F0C7E",
+      "revision": 1,
+      "semantic_sha256": "c50f0c7ef24b2803a48578f0f9dd794f38216538b6b30bdf99889a94a15c5ca3",
+      "statement": "Record spatial, temporal, language, jurisdictional, and subject coverage.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 310
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Metadata, cataloging, discovery, and FAIR data"
+      ]
+    },
+    {
+      "control_id": "USEQ-8BC37E42",
+      "revision": 1,
+      "semantic_sha256": "8bc37e424c7917fe3ff97c13bcbc8c111eb9fc964389ffc2728f59f1f054dbdc",
+      "statement": "Document quality measurements and known limitations rather than labeling data simply high quality.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 311
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Metadata, cataloging, discovery, and FAIR data"
+      ]
+    },
+    {
+      "control_id": "USEQ-A970B216",
+      "revision": 1,
+      "semantic_sha256": "a970b2164982ea083a8c83976c149d572ff90295ce03620de117f6ca235ce7fa",
+      "statement": "Indicate whether data is authoritative, derived, experimental, deprecated, archived, synthetic, anonymized, or sample data.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 312
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Metadata, cataloging, discovery, and FAIR data"
+      ]
+    },
+    {
+      "control_id": "USEQ-D64CE299",
+      "revision": 1,
+      "semantic_sha256": "d64ce2994511444f1fee2f74e8f90edf890461427f55f900f83d62afd6f1a9c5",
+      "statement": "Maintain metadata through schema, ownership, location, purpose, quality, and lifecycle changes.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 313
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Metadata, cataloging, discovery, and FAIR data"
+      ]
+    },
+    {
+      "control_id": "USEQ-460A0879",
+      "revision": 1,
+      "semantic_sha256": "460a0879e5ba71919c54e717b50adfc98644794f0ebff015767332bdbf5e2081",
+      "statement": "Prevent stale catalog entries from pointing to missing, unauthorized, or semantically changed assets.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 314
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Metadata, cataloging, discovery, and FAIR data"
+      ]
+    },
+    {
+      "control_id": "USEQ-A89FAE90",
+      "revision": 1,
+      "semantic_sha256": "a89fae90ec2250465aa83fc0ef79181558049d43fd5504b21f6b4f590ba77123",
+      "statement": "Link related versions, distributions, schemas, code sets, documentation, provenance, policies, and successor assets.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 315
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Metadata, cataloging, discovery, and FAIR data"
+      ]
+    },
+    {
+      "control_id": "USEQ-ACC6ADA4",
+      "revision": 1,
+      "semantic_sha256": "acc6ada417222118a870727f47f9ea5e9b9aa0e7d3b354fdedc56016236dc123",
+      "statement": "Support citation using persistent identifiers, version, publication date, publisher, and access date where appropriate.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 316
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Metadata, cataloging, discovery, and FAIR data"
+      ]
+    },
+    {
+      "control_id": "USEQ-46AAFE3F",
+      "revision": 1,
+      "semantic_sha256": "46aafe3f5b29cbfcea313ca1062b235d8fe683769c74c9c65b6cf0540624d985",
+      "statement": "Use discoverable, accessible, interoperable, and reusable principles in balance with privacy, security, ethics, contracts, and legitimate access controls.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 317
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Metadata, cataloging, discovery, and FAIR data"
+      ]
+    },
+    {
+      "control_id": "USEQ-F4E4BDBF",
+      "revision": 1,
+      "semantic_sha256": "f4e4bdbf70224d131c9ae5384acfd8dc95b8ada422172d5fcfb770fef5e629ab",
+      "statement": "Do not make protected data publicly accessible merely to satisfy discoverability or openness goals.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 318
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Metadata, cataloging, discovery, and FAIR data"
+      ]
+    },
+    {
+      "control_id": "USEQ-343A79D3",
+      "revision": 1,
+      "semantic_sha256": "343a79d312aca205c144ed05daf0494eaa96001af6a22c23b07a653155deba14",
+      "statement": "Measure catalog coverage, metadata completeness, search success, ownership freshness, and unresolved consumer questions.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 319
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Metadata, cataloging, discovery, and FAIR data"
+      ]
+    },
+    {
+      "control_id": "USEQ-DF1A54E5",
+      "revision": 1,
+      "semantic_sha256": "df1a54e50956e27f56ef3e0f12c790e267ad87579f3284888cb33f04550d0533",
+      "statement": "Record where data originated, who or what generated it, when it was collected, under what authority, and through which transformations it passed.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 323
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Provenance, lineage, and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-C16864A9",
+      "revision": 1,
+      "semantic_sha256": "c16864a90f2e9fb83d2e12266ab9f5d38453ebeb06b31ff4748efa9fb0d49a0e",
+      "statement": "Distinguish source provenance, custody provenance, computational lineage, business lineage, and decision lineage.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 324
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Provenance, lineage, and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-41917408",
+      "revision": 1,
+      "semantic_sha256": "41917408cbcb5fcff7eb0d22de6f66f5f03d64f4481834cd25c64a3629fc1c4c",
+      "statement": "Capture lineage across files, streams, databases, APIs, manual changes, spreadsheets, reports, models, caches, indexes, and exports according to risk.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 325
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Provenance, lineage, and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-48D5EED4",
+      "revision": 1,
+      "semantic_sha256": "48d5eed49c8c11d7dad212bac92bf6321ce965f45bae10235fbd4085c6a5e431",
+      "statement": "Record transformation code, query, configuration, parameters, environment, input versions, output version, and execution identity for material derivations.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 326
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Provenance, lineage, and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-269F8617",
+      "revision": 1,
+      "semantic_sha256": "269f8617b3619b05508276178971610f655564d00db203afd7232cad54d48b72",
+      "statement": "Make lineage granular enough to identify affected outputs when a source, field, transformation, or quality rule fails.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 327
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Provenance, lineage, and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-D84F4D47",
+      "revision": 1,
+      "semantic_sha256": "d84f4d47c0ceb9f812fe12b46b50f06fba10533ea9d08b555bf3136816f0bf80",
+      "statement": "Preserve links among raw observation, corrected value, derived value, aggregate, report, and decision where accountability requires them.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 328
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Provenance, lineage, and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-3943C39A",
+      "revision": 1,
+      "semantic_sha256": "3943c39ab5911ad856989c77f454dfcca6fc83159c2a1a7c09276f313324e9f7",
+      "statement": "Track manual overrides and repairs with actor, reason, evidence, before value, after value, scope, and approval.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 329
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Provenance, lineage, and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-4844D6D4",
+      "revision": 1,
+      "semantic_sha256": "4844d6d4f7ea7a7a656c094097317ab837c95be254ec68ce3e710a50071a3fed",
+      "statement": "Prevent lineage metadata from being editable by the same unrestricted path as the data it attests to when tamper resistance is required.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 330
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Provenance, lineage, and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-62D8609C",
+      "revision": 1,
+      "semantic_sha256": "62d8609c6fdaac726c27f71d1a52bf7495a59a557ef1f3b26065cfffd3d83953",
+      "statement": "Use integrity protection and immutable or append-only records for high-assurance provenance.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 331
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Provenance, lineage, and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-767577C4",
+      "revision": 1,
+      "semantic_sha256": "767577c4f6cbe141c97104026639cff50d98627ac4dd0a6c6e2deb85ff7a249f",
+      "statement": "Record deletion, redaction, masking, anonymization, aggregation, and access-controlled transitions in lineage without retaining prohibited content.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 332
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Provenance, lineage, and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-0BDC155E",
+      "revision": 1,
+      "semantic_sha256": "0bdc155e75554afe70b58b877b29cd8ceb3414c56c88626e9b67ae45f64848ad",
+      "statement": "Represent agents, activities, entities, roles, timestamps, generation, derivation, attribution, and invalidation consistently.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 333
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Provenance, lineage, and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-3E1BB875",
+      "revision": 1,
+      "semantic_sha256": "3e1bb8753e129cd044c12234a615efb80c84347bc052ff3b42648a3c2935b53c",
+      "statement": "Validate that lineage itself is complete, current, authorized, and understandable.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 334
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Provenance, lineage, and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-957B905F",
+      "revision": 1,
+      "semantic_sha256": "957b905f49778c97229ac4454f71bfbf04406ab037b7060340458f85fff2dd59",
+      "statement": "Test impact analysis by tracing a known source change to downstream assets and consumers.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 335
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Provenance, lineage, and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-442BB18D",
+      "revision": 1,
+      "semantic_sha256": "442bb18d6ac6d444163782f71c137cc179709fa202cf4c5ab47b150be7c64f9c",
+      "statement": "Make reproducible data products rebuildable from declared source versions, code, configuration, and environment within documented tolerances.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 336
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Provenance, lineage, and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-08E68045",
+      "revision": 1,
+      "semantic_sha256": "08e680458dbda187951fce8f928c2230904b96c782d4b54591dbacf354dea85b",
+      "statement": "Retain source snapshots or immutable references when future reconstruction is required and legally permitted.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 337
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Provenance, lineage, and reproducibility"
+      ]
+    }
+  ]
+}

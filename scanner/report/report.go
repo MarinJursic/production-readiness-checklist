@@ -12,6 +12,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/MarinJursic/production-readiness-checklist/scanner/controlprogram"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 )
 
@@ -159,6 +160,8 @@ type controlCategorySummary struct {
 	Name               string
 	Total              int
 	ConfirmedFailures  int
+	VerifiedPasses     int
+	NotApplicable      int
 	Blocked            int
 	NeedsReview        int
 	PartiallyVerified  int
@@ -190,6 +193,10 @@ func summarizeControlCategories(run model.RunResult) []controlCategorySummary {
 		switch result.Disposition {
 		case "confirmed_failure":
 			category.ConfirmedFailures++
+		case "verified_pass":
+			category.VerifiedPasses++
+		case "not_applicable":
+			category.NotApplicable++
 		case "blocked":
 			category.Blocked++
 		case "needs_review":
@@ -366,7 +373,7 @@ func humanizeWords(value string) string {
 
 func statusClass(value string) string {
 	switch value {
-	case "pass":
+	case "pass", "verified_pass":
 		return "pass"
 	case "fail", "confirmed_failure":
 		return "fail"
@@ -389,7 +396,7 @@ func statusClass(value string) string {
 
 func statusSymbol(value string) string {
 	switch value {
-	case "great", "good", "pass":
+	case "great", "good", "pass", "verified_pass":
 		return "✓"
 	case "bad", "fail", "confirmed_failure":
 		return "×"
@@ -406,6 +413,8 @@ func prettyStatus(value string) string {
 	switch value {
 	case "confirmed_failure":
 		return "Confirmed failure"
+	case "verified_pass":
+		return "Verified pass"
 	case "needs_review":
 		return "Needs evidence"
 	case "partially_verified":
@@ -477,6 +486,30 @@ func sortedAttentionResults(results []model.AssertionResult) []model.AssertionRe
 		return attention[left].AssertionID < attention[right].AssertionID
 	})
 	return attention
+}
+
+func sortedAIRecommendations(results []model.ControlResult) ([]model.ControlResult, int) {
+	priorities := make([]model.ControlResult, 0)
+	for _, result := range results {
+		if result.AIReview != nil && result.AIReview.Priority != "none" {
+			priorities = append(priorities, result)
+		}
+	}
+	sort.SliceStable(priorities, func(left, right int) bool {
+		leftReview, rightReview := priorities[left].AIReview, priorities[right].AIReview
+		if leftRank, rightRank := severityRank(leftReview.Priority), severityRank(rightReview.Priority); leftRank != rightRank {
+			return leftRank < rightRank
+		}
+		if leftReview.AssessmentCandidate != rightReview.AssessmentCandidate {
+			return leftReview.AssessmentCandidate == "advisory_fail_candidate"
+		}
+		return priorities[left].ControlID < priorities[right].ControlID
+	})
+	total := len(priorities)
+	if len(priorities) > 50 {
+		priorities = priorities[:50]
+	}
+	return priorities, total
 }
 
 func assessmentAttentionRank(result model.AssertionResult) int {
@@ -606,6 +639,24 @@ func writeMarkdown(output io.Writer, run model.RunResult) error {
 			run.ControlCatalog.ActiveControlCount, run.ControlCatalog.ProfileTerminalState); err != nil {
 			return err
 		}
+		if run.ControlCatalog.ReviewedDeterministicCount+run.ControlCatalog.ReviewedNondeterministicCount > 0 {
+			if _, err := fmt.Fprintf(output,
+				"- Reviewed deterministic controls: **%d**\n- Reviewed nondeterministic controls: **%d**\n- Deterministic bindings: **%d**\n- Exact program templates: **%d**\n- Exact programs attempted: **%d** (**%d** passed, **%d** failed, **%d** proven Not Applicable)\n- Retained replayable exact evidence documents: **%d**\n- Deterministic controls still blocked: **%d**\n- Classification corpus digest: `%s`\n- Deterministic binding artifact digest: `%s`\n\n",
+				run.ControlCatalog.ReviewedDeterministicCount,
+				run.ControlCatalog.ReviewedNondeterministicCount,
+				run.ControlCatalog.DeterministicBindingCount,
+				run.ControlCatalog.DeterministicProgramTemplateCount,
+				run.ControlCatalog.DeterministicProgramExecutedCount,
+				run.ControlCatalog.DeterministicProgramPassCount,
+				run.ControlCatalog.DeterministicProgramFailCount,
+				run.ControlCatalog.DeterministicProgramNACount,
+				len(run.DeterministicEvidence),
+				run.ControlCatalog.DeterministicProgramBlockedCount,
+				run.ControlCatalog.ClassificationCorpusSHA256,
+				run.ControlCatalog.ControlCheckBindingsSHA256); err != nil {
+				return err
+			}
+		}
 		if run.ControlCatalog.AIReviewProvider != "" {
 			if _, err := fmt.Fprintf(output,
 				"- Advisory AI review: **%s** (model `%s`)\n- AI review state: **%s**\n- AI-reviewed controls: **%d**\n- Advisory failure candidates: **%d**\n- AI advice cannot create a verified Pass or final Not Applicable result.\n\n",
@@ -623,20 +674,28 @@ func writeMarkdown(output io.Writer, run model.RunResult) error {
 				return err
 			}
 		}
-		if _, err := fmt.Fprintln(output, "\n### Every registered control\n\n| Disposition | Control | Coverage | Authority | Statement | Source | Assertions | AI candidate | AI reason and advice | AI citation locations | AI verification | AI limitations |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |"); err != nil {
+		if _, err := fmt.Fprintln(output, "\n### Every registered control\n\n| Disposition | Control | Classification | Route / decision | Binding | Coverage | Authority | Statement | Source | Assertions | AI candidate | AI reason and advice | AI citation locations | AI verification | AI limitations |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |"); err != nil {
 			return err
 		}
 		for _, result := range run.ControlResults {
 			aiCandidate, aiReason, aiEvidence, aiVerification, aiLimitations := "—", "—", "—", "—", "—"
 			if result.AIReview != nil {
 				aiCandidate = result.AIReview.AssessmentCandidate + " / " + result.AIReview.ApplicabilityCandidate + " / " + result.AIReview.Confidence
-				aiReason = result.AIReview.Reason + " " + result.AIReview.Advice
+				aiReason = result.AIReview.Reason + " Risk if ignored: " + result.AIReview.RiskIfIgnored +
+					" Suggested work: " + strings.Join(result.AIReview.RemediationSteps, "; ") +
+					" Verify with: " + strings.Join(result.AIReview.VerificationSteps, "; ")
 				aiEvidence = advisoryLocationText(result.AIReview.Evidence)
 				aiVerification = advisoryVerificationText(result.AIReview)
 				aiLimitations = strings.Join(result.AIReview.Limitations, "; ")
 			}
-			if _, err := fmt.Fprintf(output, "| %s | `%s` | %s | %s | %s | `%s:%d` | %s | %s | %s | %s | %s | %s |\n",
-				result.Disposition, result.ControlID, result.Coverage, result.Authority,
+			binding := "—"
+			if result.DeterministicBindingID != "" {
+				binding = result.DeterministicBindingID + " / " + result.DeterministicBindingSHA256
+			}
+			if _, err := fmt.Fprintf(output, "| %s | `%s` | %s | %s / %s | %s | %s | %s | %s | `%s:%d` | %s | %s | %s | %s | %s | %s |\n",
+				result.Disposition, result.ControlID, result.Classification,
+				result.ClassificationRoute, result.ClassificationDecisionBasis, markdownCell(binding),
+				result.Coverage, result.Authority,
 				markdownCell(result.Statement), result.Source.Path, result.Source.Line,
 				markdownCell(strings.Join(result.ExecutedAssertionIDs, ", ")), markdownCell(aiCandidate),
 				markdownCell(aiReason), markdownCell(aiEvidence), markdownCell(aiVerification), markdownCell(aiLimitations)); err != nil {
@@ -1083,7 +1142,7 @@ const htmlReport = `<!doctype html>
     </div>
   </header>
   <nav class="report-nav" aria-label="Report sections"><div class="nav-inner">
-    <a href="#top">Overview</a>{{if .Run.ControlCatalog}}<a href="#categories">Categories</a>{{end}}<a href="#findings">Fix first</a><a href="#local-checks">Details</a>
+    <a href="#top">Overview</a>{{if .Run.ControlCatalog}}<a href="#categories">Categories</a>{{end}}{{if .AIRecommendationCount}}<a href="#ai-priorities">AI priorities</a>{{end}}<a href="#findings">Fix first</a><a href="#local-checks">Details</a>
   </div></nav>
   <main id="main-content">
     {{if .Run.ControlCatalog}}<section class="section" id="categories">
@@ -1101,6 +1160,28 @@ const htmlReport = `<!doctype html>
         </span>
       </a>{{end}}</div>
       {{if .UnscoredCategories}}<details class="unscored-group"><summary>Not scored in this scan <span>{{len .UnscoredCategories}} categories without an applicable linked local check</span></summary><div class="unscored-grid">{{range .UnscoredCategories}}<a class="unscored-link" href="#control-explorer" data-category-link="{{.Key}}"><span class="unscored-mark" aria-hidden="true">—</span><span><span class="unscored-name">{{.Name}}</span><span class="unscored-meta">{{.Total}} controls · {{.NeedsReview}} need evidence{{if .LocalNotApplicable}} · {{.LocalNotApplicable}} did not apply{{end}}</span></span></a>{{end}}</div></details>{{end}}
+    </section>{{end}}
+
+    {{if .AIRecommendationCount}}<section class="section" id="ai-priorities">
+      <h2>AI review priorities</h2>
+      <p class="section-intro">These are the highest-priority suggestions from the optional AI review, sorted by its risk estimate. They are a work plan, not verified findings. Confirm the evidence and run the listed checks before accepting a change.</p>
+      <p class="notice"><strong>{{.AIRecommendationCount}} controls received a non-empty AI priority.</strong> The first {{len .AIRecommendations}} are shown here; every review remains searchable in the complete control catalog.</p>
+      {{range .AIRecommendations}}<details class="finding-card severity-{{severityClass .AIReview.Priority}}">
+        <summary><span class="pill severity-pill severity-{{severityClass .AIReview.Priority}}">{{prettyStatus .AIReview.Priority}}</span><span class="finding-summary-copy"><span class="finding-title">{{.ControlID}} — {{brief .Statement}}</span><span class="finding-preview">{{brief .AIReview.Advice}}</span></span></summary>
+        <div class="finding-body">
+          <p class="primary-detail"><strong>Why it was flagged:</strong> {{.AIReview.Reason}}</p>
+          <p class="primary-detail"><strong>Risk if ignored:</strong> {{.AIReview.RiskIfIgnored}}</p>
+          <p class="primary-detail"><strong>Suggested work:</strong></p><ol>{{range .AIReview.RemediationSteps}}<li>{{.}}</li>{{end}}</ol>
+          <p class="primary-detail"><strong>How to verify:</strong></p><ol>{{range .AIReview.VerificationSteps}}<li>{{.}}</li>{{end}}</ol>
+          <details class="finding-details"><summary>Evidence, challenge, and limits</summary><div class="detail-body"><dl>
+            <dt>Evidence still needed</dt><dd><ul>{{range .AIReview.EvidenceNeeded}}<li>{{.}}</li>{{end}}</ul></dd>
+            <dt>Skeptical challenge</dt><dd>{{.AIReview.Challenge}}</dd>
+            <dt>Candidate result</dt><dd>{{prettyStatus .AIReview.AssessmentCandidate}} / {{prettyStatus .AIReview.ApplicabilityCandidate}} / confidence {{prettyStatus .AIReview.Confidence}}</dd>
+            <dt>Cited lines</dt><dd>{{if .AIReview.Evidence}}<ul>{{range .AIReview.Evidence}}<li><code>{{location .}}</code></li>{{end}}</ul>{{else}}No repository line was cited.{{end}}</dd>
+            <dt>Limits</dt><dd><ul>{{range .AIReview.Limitations}}<li>{{.}}</li>{{end}}</ul></dd>
+          </dl></div></details>
+        </div>
+      </details>{{end}}
     </section>{{end}}
 
     <section class="section" id="findings">
@@ -1147,24 +1228,29 @@ const htmlReport = `<!doctype html>
       <div class="filter-panel" aria-label="Control filters">
         <label>Search<input id="control-search" type="search" placeholder="Try: backups, authentication, PRC-02-003" autocomplete="off"></label>
         <label>Category<select id="control-category"><option value="">All categories</option>{{range .Categories}}<option value="{{.Key}}">{{.Name}}</option>{{end}}</select></label>
-        <label>Evidence state<select id="control-disposition"><option value="">All states</option><option value="confirmed_failure">Confirmed failure</option><option value="blocked">Blocked</option><option value="needs_review">Needs evidence</option><option value="partially_verified">Partial evidence</option><option value="retired">Retired</option></select></label>
+        <label>Evidence state<select id="control-disposition"><option value="">All states</option><option value="confirmed_failure">Confirmed failure</option><option value="verified_pass">Verified pass</option><option value="not_applicable">Not applicable</option><option value="blocked">Blocked</option><option value="needs_review">Needs evidence</option><option value="partially_verified">Partial evidence</option><option value="retired">Retired</option></select></label>
         <button id="clear-control-filters" type="button">Clear</button>
       </div>
       <p class="filter-count" id="control-filter-count" role="status" aria-live="polite"></p>
-      <section id="control-results">{{range .Run.ControlResults}}<details class="control-row result-{{statusClass .Disposition}}" data-disposition="{{.Disposition}}" data-category="{{categoryKey .Source.Path}}">
+      <section id="control-results">{{range .Run.ControlResults}}<details class="control-row result-{{statusClass .Disposition}}" data-disposition="{{.Disposition}}" data-classification="{{.Classification}}" data-category="{{categoryKey .Source.Path}}">
         <summary><span class="pill pill-{{statusClass .Disposition}}"><span aria-hidden="true">{{controlSymbol .Disposition}}</span> {{prettyStatus .Disposition}}</span><span class="row-summary"><code>{{.ControlID}}</code> — {{brief .Statement}}</span></summary>
         <div class="detail-body">
           <p class="primary-detail"><strong>What this control asks:</strong> {{.Statement}}</p>
           <p class="primary-detail"><strong>Current result:</strong> {{.Summary}}</p>
-          {{if .AIReview}}<div class="advice"><strong>Advisory AI suggestion</strong><p>{{.AIReview.Reason}} {{.AIReview.Advice}}</p><span class="meta">This is advice only and cannot create a verified pass.</span></div>{{end}}
+          {{if .AIReview}}<div class="advice"><strong>Advisory AI suggestion · {{prettyStatus .AIReview.Priority}} priority</strong><p>{{.AIReview.Reason}}</p><p><strong>Suggested work:</strong> {{.AIReview.Advice}}</p><ol>{{range .AIReview.RemediationSteps}}<li>{{.}}</li>{{end}}</ol><details class="raw-list"><summary>How to verify and what evidence is missing</summary><div><p><strong>Verification:</strong></p><ol>{{range .AIReview.VerificationSteps}}<li>{{.}}</li>{{end}}</ol><p><strong>Evidence needed:</strong></p><ul>{{range .AIReview.EvidenceNeeded}}<li>{{.}}</li>{{end}}</ul><p><strong>Skeptical challenge:</strong> {{.AIReview.Challenge}}</p></div></details><span class="meta">This is advice only and cannot create a verified pass.</span></div>{{end}}
           <details class="raw-details"><summary>Technical evidence and IDs</summary><div class="detail-body"><dl>
           <dt>Category</dt><dd>{{categoryName .Source.Path}}</dd>
           <dt>Evidence state</dt><dd>{{prettyStatus .Disposition}} — {{.Summary}}</dd>
+          <dt>Reviewed classification</dt><dd>{{prettyStatus .Classification}} — {{prettyStatus .ClassificationRoute}} / {{prettyStatus .ClassificationDecisionBasis}}</dd>
+          <dt>Classification row digest</dt><dd>{{if .ClassificationRowSHA256}}<code>{{.ClassificationRowSHA256}}</code>{{else}}Legacy record.{{end}}</dd>
+          <dt>Deterministic binding</dt><dd>{{if .DeterministicBindingID}}<code>{{.DeterministicBindingID}}</code> / <code>{{.DeterministicBindingSHA256}}</code>{{else}}No deterministic binding; review remains contextual or accountable.{{end}}</dd>
           <dt>Coverage / authority</dt><dd>{{prettyStatus .Coverage}} / {{prettyStatus .Authority}}</dd>
           <dt>Source</dt><dd><code>{{.Source.Path}}:{{.Source.Line}}</code></dd>
           <dt>All known assertions</dt><dd>{{if .AssertionIDs}}<code>{{join .AssertionIDs}}</code>{{else}}None yet.{{end}}</dd>
           <dt>Assertions run in this profile</dt><dd>{{if .ExecutedAssertionIDs}}<code>{{join .ExecutedAssertionIDs}}</code>{{else}}None.{{end}}</dd>
-          {{if .AIReview}}<dt>Advisory AI review</dt><dd><strong>{{.AIReview.Provider}}{{if .AIReview.Model}} / {{.AIReview.Model}}{{end}}</strong>: {{.AIReview.AssessmentCandidate}} / {{.AIReview.ApplicabilityCandidate}} / confidence {{.AIReview.Confidence}}.</dd>
+          {{if .DeterministicClauseResults}}<dt>Exact deterministic programs</dt><dd><details class="raw-list"><summary>Show {{len .DeterministicClauseResults}} clause result(s)</summary><ul>{{range .DeterministicClauseResults}}<li><code>{{.ImplementationID}}</code> · {{prettyStatus .Status}} · authority <code>{{.RequiredAuthority}}</code>{{if .ReasonCode}} · reason <code>{{.ReasonCode}}</code>{{end}}{{if .EvidenceSHA256}} · evidence <code>{{.EvidenceSHA256}}</code>{{end}}</li>{{end}}</ul></details></dd>{{end}}
+          {{if .AIReview}}<dt>Advisory AI review</dt><dd><strong>{{.AIReview.Provider}}{{if .AIReview.Model}} / {{.AIReview.Model}}{{end}}</strong>: {{.AIReview.ReviewDepth}} depth / {{.AIReview.AssessmentCandidate}} / {{.AIReview.ApplicabilityCandidate}} / confidence {{.AIReview.Confidence}} / priority {{.AIReview.Priority}}.</dd>
+          <dt>AI risk if ignored</dt><dd>{{.AIReview.RiskIfIgnored}}</dd>
           <dt>AI citation locations</dt><dd>{{if .AIReview.Evidence}}<ul>{{range .AIReview.Evidence}}<li><code>{{location .}}</code></li>{{end}}</ul>{{else}}No repository line was cited.{{end}}</dd>
           <dt>AI verification state</dt><dd><code>{{verification .AIReview}}</code>. A valid snapshot location proves only that the cited line existed in the screened input. It does not prove that the line supports the AI claim; claim text remains advisory and unverified.</dd>
           <dt>AI review limits</dt><dd><ul>{{range .AIReview.Limitations}}<li>{{.}}</li>{{end}}</ul></dd>{{end}}
@@ -1187,12 +1273,21 @@ const htmlReport = `<!doctype html>
         <dt>Local profile result</dt><dd>{{.ProfileState}}</dd><dt>Full catalog coverage result</dt><dd>{{.Run.TerminalState}}</dd>
         {{if .Run.Inventory.GitCommit}}<dt>Git HEAD</dt><dd><code>{{.Run.Inventory.GitCommit}}</code> ({{.GitState}} worktree)</dd>{{end}}
         <dt>Hashed inventory bytes</dt><dd>{{.InventoryBytes}}</dd><dt>Reported automatic exclusions</dt><dd>{{.ExclusionCount}}</dd>
-        {{if .Run.ControlCatalog}}<dt>Registry version / digest</dt><dd><code>{{.Run.ControlCatalog.RegistryVersion}}</code> / <code>{{.Run.ControlCatalog.RegistrySHA256}}</code></dd><dt>Catalog source digest</dt><dd><code>{{.Run.ControlCatalog.SourceSHA256}}</code></dd><dt>Controls</dt><dd>{{.Run.ControlCatalog.ControlCount}} registered / {{.Run.ControlCatalog.ActiveControlCount}} active</dd>{{end}}
+        {{if .Run.ControlCatalog}}<dt>Registry version / digest</dt><dd><code>{{.Run.ControlCatalog.RegistryVersion}}</code> / <code>{{.Run.ControlCatalog.RegistrySHA256}}</code></dd><dt>Catalog source digest</dt><dd><code>{{.Run.ControlCatalog.SourceSHA256}}</code></dd><dt>Controls</dt><dd>{{.Run.ControlCatalog.ControlCount}} registered / {{.Run.ControlCatalog.ActiveControlCount}} active</dd>{{if .Run.ControlCatalog.ClassificationCorpusSHA256}}<dt>Reviewed classifications</dt><dd>{{.Run.ControlCatalog.ReviewedDeterministicCount}} deterministic / {{.Run.ControlCatalog.ReviewedNondeterministicCount}} nondeterministic</dd><dt>Classification corpus digest</dt><dd><code>{{.Run.ControlCatalog.ClassificationCorpusSHA256}}</code></dd><dt>Deterministic bindings</dt><dd>{{.Run.ControlCatalog.DeterministicBindingCount}} / <code>{{.Run.ControlCatalog.ControlCheckBindingsSHA256}}</code></dd><dt>Exact deterministic execution</dt><dd>{{.Run.ControlCatalog.DeterministicProgramExecutedCount}} of {{.Run.ControlCatalog.DeterministicProgramTemplateCount}} programs attempted · {{.Run.ControlCatalog.DeterministicProgramPassCount}} passed · {{.Run.ControlCatalog.DeterministicProgramFailCount}} failed · {{.Run.ControlCatalog.DeterministicProgramNACount}} proven Not Applicable · {{.Run.ControlCatalog.DeterministicProgramBlockedCount}} controls still blocked · {{len .Run.DeterministicEvidence}} replayable evidence documents retained</dd>{{end}}{{end}}
       </dl></div></details>
       {{if .Run.AdapterExecutions}}<details class="technical"><summary>Adapter executions</summary><div class="detail-body"><table>
         <caption>Adapter executions</caption><thead><tr><th scope="col">Adapter</th><th scope="col">Manifest</th><th scope="col">Authorization</th><th scope="col">Trust</th><th scope="col">Registry</th><th scope="col">Status</th><th scope="col">Execution</th></tr></thead>
         <tbody>{{range .Run.AdapterExecutions}}<tr><td><code>{{.AdapterID}}</code></td><td><code>{{.ManifestSHA256}}</code></td><td>{{.Resolution.Source}}</td><td>{{.Resolution.Trust}}</td><td><code>{{.Resolution.RegistryID}}</code></td><td>{{.Transcript.Summary.Status}}</td><td><code>{{.ExecutionID}}</code></td></tr>{{end}}</tbody>
       </table></div></details>{{end}}
+      {{if .Run.DeterministicEvidence}}<details class="technical"><summary>Replayable exact evidence</summary><div class="detail-body">
+        {{range .Run.DeterministicEvidence}}<details class="raw-list"><summary><code>{{.ControlID}}</code> · clause <code>{{.ClauseID}}</code> · {{.Applicability}}</summary><div><dl>
+          <dt>Evidence digest</dt><dd><code>{{exactEvidenceSHA .}}</code></dd>
+          <dt>Evidence / program IDs</dt><dd><code>{{.EvidenceID}}</code> / <code>{{.ProgramSHA256}}</code></dd>
+          <dt>Authority / observed</dt><dd>{{.Authority}} / {{.ObservedAt}}</dd>
+          <dt>Inventory / subject</dt><dd><code>{{.InventorySHA256}}</code> / <code>{{.SubjectID}}</code></dd>
+          <dt>Normalized facts</dt><dd><ul>{{range $key, $fact := .Facts}}<li><code>{{$key}}</code>: <code>{{factJSON $fact}}</code></li>{{end}}</ul></dd>
+        </dl></div></details>{{end}}
+      </div></details>{{end}}
       <p class="footer-note">This report is scoped to the named profile, target inventory, and evidence set. It is not an unqualified production-readiness or compliance claim.</p>
       </div>
     </details>
@@ -1276,6 +1371,7 @@ const htmlReport = `<!doctype html>
 
 func writeHTML(output io.Writer, run model.RunResult) error {
 	categories := summarizeControlCategories(run)
+	aiRecommendations, aiRecommendationCount := sortedAIRecommendations(run.ControlResults)
 	scoredCategories := make([]controlCategorySummary, 0, len(categories))
 	unscoredCategories := make([]controlCategorySummary, 0, len(categories))
 	for _, category := range categories {
@@ -1286,20 +1382,23 @@ func writeHTML(output io.Writer, run model.RunResult) error {
 		}
 	}
 	view := struct {
-		Run                model.RunResult
-		Findings           []model.Finding
-		AttentionResults   []model.AssertionResult
-		Meaning            resultMeaning
-		Local              LocalCheckSummary
-		Categories         []controlCategorySummary
-		ScoredCategories   []controlCategorySummary
-		UnscoredCategories []controlCategorySummary
-		ProfileState       string
-		GitState           string
-		InventoryBytes     string
-		ExclusionCount     int
+		Run                   model.RunResult
+		Findings              []model.Finding
+		AttentionResults      []model.AssertionResult
+		AIRecommendations     []model.ControlResult
+		AIRecommendationCount int
+		Meaning               resultMeaning
+		Local                 LocalCheckSummary
+		Categories            []controlCategorySummary
+		ScoredCategories      []controlCategorySummary
+		UnscoredCategories    []controlCategorySummary
+		ProfileState          string
+		GitState              string
+		InventoryBytes        string
+		ExclusionCount        int
 	}{
 		Run: run, Findings: sortedFindings(run.Findings), AttentionResults: sortedAttentionResults(run.Results),
+		AIRecommendations: aiRecommendations, AIRecommendationCount: aiRecommendationCount,
 		Meaning: summarizeMeaning(run), Local: SummarizeLocalChecks(run),
 		Categories: categories, ScoredCategories: scoredCategories, UnscoredCategories: unscoredCategories,
 		ProfileState:   profileTerminalState(run),
@@ -1313,6 +1412,13 @@ func writeHTML(output io.Writer, run model.RunResult) error {
 		"verification": advisoryVerificationText,
 		"prettyStatus": prettyStatus,
 		"statusClass":  statusClass,
+		"exactEvidenceSHA": func(evidence controlprogram.Evidence) string {
+			return controlprogram.EvidenceSHA256(evidence)
+		},
+		"factJSON": func(fact controlprogram.Fact) string {
+			data, _ := json.Marshal(fact)
+			return string(data)
+		},
 		"severityClass": func(value string) string {
 			switch strings.ToLower(value) {
 			case "critical", "high", "medium", "low", "info":

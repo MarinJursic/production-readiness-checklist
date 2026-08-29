@@ -1,0 +1,2592 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-07-data-and-information-lifecycle-md-part-002-part-001",
+  "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 100,
+  "controls": [
+    {
+      "control_id": "USEQ-37CC1E72",
+      "revision": 1,
+      "semantic_sha256": "37cc1e7232b7e67b4c0e0ab221e0e7be875909c9279f6d5ff66c7954fb1edc0c",
+      "statement": "Document when external or mutable sources prevent exact reproduction.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 338
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Provenance, lineage, and reproducibility"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Document when external or mutable sources prevent exact reproduction.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document when external or mutable sources prevent exact reproduction.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A419AD6A",
+      "revision": 1,
+      "semantic_sha256": "a419ad6a6455fbf69615df9dacecc9a11993df451829c4a72a245f901afa62da",
+      "statement": "Set measurable expectations for accuracy, completeness, consistency, credibility, currentness, accessibility, compliance, confidentiality, efficiency, precision, traceability, understandability, availability, portability, and recoverability as applicable.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 344
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data quality and observability"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Set measurable expectations for accuracy, completeness, consistency, credibility, currentness, accessibility, compliance, confidentiality, efficiency, precision, traceability, understandability, availability, portability, and recoverability as applicable.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Set measurable expectations for accuracy, completeness, consistency, credibility, currentness, accessibility, compliance, confidentiality, efficiency, precision, traceability, understandability, availability, portability, and recoverability as applicable.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8889705F",
+      "revision": 1,
+      "semantic_sha256": "8889705fea9f7d9b98d5877c631656bbd6b8f375a190f8f003a012af046bcbce",
+      "statement": "Define critical fields, records, populations, relationships, and aggregates that receive stricter controls.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 345
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data quality and observability"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define critical fields, records, populations, relationships, and aggregates that receive stricter controls.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define critical fields, records, populations, relationships, and aggregates that receive stricter controls.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-95BE25A6",
+      "revision": 1,
+      "semantic_sha256": "95be25a650f52b87449cd625dde16fe4e8bd8ba6f1c08a4329d0529fc69b1f4b",
+      "statement": "Validate type, format, domain, range, length, pattern, uniqueness, referential integrity, conditional rules, and cross-field invariants.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 346
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data quality and observability"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Validate type, format, domain, range, length, pattern, uniqueness, referential integrity, conditional rules, and cross-field invariants.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Validate type, format, domain, range, length, pattern, uniqueness, referential integrity, conditional rules, and cross-field invariants.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2834E5D4",
+      "revision": 1,
+      "semantic_sha256": "2834e5d4625f692f9f83c10cff9e780f61bb868938a6181a9ee5cbdaab22ce49",
+      "statement": "Measure freshness, latency, lateness, missing partitions, volume, distribution, cardinality, duplication, nulls, and schema change.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 348
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data quality and observability"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Measure freshness, latency, lateness, missing partitions, volume, distribution, cardinality, duplication, nulls, and schema change.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Measure freshness, latency, lateness, missing partitions, volume, distribution, cardinality, duplication, nulls, and schema change.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7C6AFFC6",
+      "revision": 1,
+      "semantic_sha256": "7c6affc664f12127512b7c5d99c05573653e637f7ad1dbd6c617049b9fc4e92b",
+      "statement": "Monitor cross-system reconciliation, balances, counts, totals, checksums, and business invariants.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 349
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data quality and observability"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Monitor cross-system reconciliation, balances, counts, totals, checksums, and business invariants.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Monitor cross-system reconciliation, balances, counts, totals, checksums, and business invariants.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-479F352A",
+      "revision": 1,
+      "semantic_sha256": "479f352a2946051c1a4929b13b9101b81487b0c41decfea2aa4db45f2a5b95cd",
+      "statement": "Define whether consumers should fail closed, use stale data, use partial data, fall back, or continue with warnings for each quality failure.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 353
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data quality and observability"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define whether consumers should fail closed, use stale data, use partial data, fall back, or continue with warnings for each quality failure.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define whether consumers should fail closed, use stale data, use partial data, fall back, or continue with warnings for each quality failure.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FCC555F6",
+      "revision": 1,
+      "semantic_sha256": "fcc555f66b1ef2bd64103b0b9c0d145b5e8c924142a59db95ad7e91da2bf65a2",
+      "statement": "Record quality incidents with affected assets, consumers, decisions, time range, severity, containment, correction, and prevention.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 356
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data quality and observability"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Record quality incidents with affected assets, consumers, decisions, time range, severity, containment, correction, and prevention.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Record quality incidents with affected assets, consumers, decisions, time range, severity, containment, correction, and prevention.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5D5CFB00",
+      "revision": 1,
+      "semantic_sha256": "5d5cfb00de4d5f649cf510d5cc88e5c2d26cf86e2050a3e8869e130e91e854dd",
+      "statement": "Create ownership and response objectives for data alerts and avoid unowned noisy checks.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 358
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data quality and observability"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Create ownership and response objectives for data alerts and avoid unowned noisy checks.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Create ownership and response objectives for data alerts and avoid unowned noisy checks.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2937AC0D",
+      "revision": 1,
+      "semantic_sha256": "2937ac0db05594017b6128e17a78c89362914d5d072d93d08b5319b003318d82",
+      "statement": "Test alerting, quarantine, backfill, correction, and reconciliation procedures.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 359
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data quality and observability"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Test alerting, quarantine, backfill, correction, and reconciliation procedures.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test alerting, quarantine, backfill, correction, and reconciliation procedures.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D3926FEF",
+      "revision": 1,
+      "semantic_sha256": "d3926fef93ceafc089b2742b3aabfde2b8c148d50d9f23e210ee0b7b0d054e43",
+      "statement": "Measure issue recurrence, time to detection, time to containment, time to correction, consumer impact, and prevention completion.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 360
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data quality and observability"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Measure issue recurrence, time to detection, time to containment, time to correction, consumer impact, and prevention completion.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Measure issue recurrence, time to detection, time to containment, time to correction, consumer impact, and prevention completion.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3A5EF905",
+      "revision": 1,
+      "semantic_sha256": "3a5ef90550a5b510d060093e5637b14f1c7269bd0581392351ed8033caade77b",
+      "statement": "Make pipeline operations idempotent or provide explicit duplicate-detection and reconciliation.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 366
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Pipelines, transformations, and reproducible processing"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Make pipeline operations idempotent or provide explicit duplicate-detection and reconciliation.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make pipeline operations idempotent or provide explicit duplicate-detection and reconciliation.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EF1C1BE8",
+      "revision": 1,
+      "semantic_sha256": "ef1c1be8b51eda9b826baea71f5094545e5f44b4e91680a731a63800ea3cd0b8",
+      "statement": "Define event ordering, partitioning, watermark, late-arrival, correction, retraction, replay, and backfill semantics.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 367
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Pipelines, transformations, and reproducible processing"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define event ordering, partitioning, watermark, late-arrival, correction, retraction, replay, and backfill semantics.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define event ordering, partitioning, watermark, late-arrival, correction, retraction, replay, and backfill semantics.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5EDE4039",
+      "revision": 1,
+      "semantic_sha256": "5ede4039a1c3e5c1acc4ee46ef9997bd5030e34e1eefa60450e97b659eff3134",
+      "statement": "Prevent backfills and replays from duplicating charges, messages, side effects, metrics, or downstream events.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 368
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Pipelines, transformations, and reproducible processing"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Prevent backfills and replays from duplicating charges, messages, side effects, metrics, or downstream events.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Prevent backfills and replays from duplicating charges, messages, side effects, metrics, or downstream events.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4CC06BF6",
+      "revision": 1,
+      "semantic_sha256": "4cc06bf620681afc3b0c341aee03c73dace7e916d772a203f61e7e3ca0710115",
+      "statement": "Use atomic publication, versioned snapshots, transactional boundaries, or equivalent mechanisms so consumers do not observe half-written products.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 369
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Pipelines, transformations, and reproducible processing"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Use atomic publication, versioned snapshots, transactional boundaries, or equivalent mechanisms so consumers do not observe half-written products.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use atomic publication, versioned snapshots, transactional boundaries, or equivalent mechanisms so consumers do not observe half-written products.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-40982F28",
+      "revision": 1,
+      "semantic_sha256": "40982f288122bae95f21cc2b4b3237702b4331fba2a39b17c0a28a3676d2cb9a",
+      "statement": "Record input and output manifests, counts, checksums, partitions, schema versions, and quality results.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 370
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Pipelines, transformations, and reproducible processing"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Record input and output manifests, counts, checksums, partitions, schema versions, and quality results.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Record input and output manifests, counts, checksums, partitions, schema versions, and quality results.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A1E6753E",
+      "revision": 1,
+      "semantic_sha256": "a1e6753e6da3330966c707fc87fb33ff80b605f0021c59ce4100e764931daf62",
+      "statement": "Bound concurrency, memory, storage, network, compute, file, and cost use.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 371
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Pipelines, transformations, and reproducible processing"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Bound concurrency, memory, storage, network, compute, file, and cost use.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Bound concurrency, memory, storage, network, compute, file, and cost use.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F11A318F",
+      "revision": 1,
+      "semantic_sha256": "f11a318fb71ce89ecb711bdd4cb5515e3b6d0912e04e3300d3a9e279b3da2db4",
+      "statement": "Use checkpoints and resumability for long-running processes without accepting inconsistent partial state.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 372
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Pipelines, transformations, and reproducible processing"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Use checkpoints and resumability for long-running processes without accepting inconsistent partial state.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use checkpoints and resumability for long-running processes without accepting inconsistent partial state.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5E9DEA31",
+      "revision": 1,
+      "semantic_sha256": "5e9dea31da64946cd1df71819d905a8cbfa1e476004719b680027a5257a7bba3",
+      "statement": "Prevent a failed task from marking a larger workflow successful.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 373
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Pipelines, transformations, and reproducible processing"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Prevent a failed task from marking a larger workflow successful.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Prevent a failed task from marking a larger workflow successful.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3ACA21DD",
+      "revision": 1,
+      "semantic_sha256": "3aca21dd10a4bb29308cf92236e9de3f8e14ab984a4f2ea46c2931299f9a02b8",
+      "statement": "Make retries bounded and safe and distinguish transient from permanent failures.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 374
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Pipelines, transformations, and reproducible processing"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Make retries bounded and safe and distinguish transient from permanent failures.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make retries bounded and safe and distinguish transient from permanent failures.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AA48781B",
+      "revision": 1,
+      "semantic_sha256": "aa48781b0b865dbb796cd1ab55ca8a043661dc7acd1c6c4e35afe11051b55487",
+      "statement": "Use dead-letter and quarantine mechanisms with ownership, retention, privacy, inspection, correction, and safe replay.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 375
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Pipelines, transformations, and reproducible processing"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Use dead-letter and quarantine mechanisms with ownership, retention, privacy, inspection, correction, and safe replay.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use dead-letter and quarantine mechanisms with ownership, retention, privacy, inspection, correction, and safe replay.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E4B21F0D",
+      "revision": 1,
+      "semantic_sha256": "e4b21f0dd01e63a70abe8b922d033ad2c6b117d4d24cac4eb6d172f7d9902b4d",
+      "statement": "Test pipeline behavior under malformed input, missing data, duplicate data, delayed data, schema change, dependency failure, quota, and partial outage.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 378
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Pipelines, transformations, and reproducible processing"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Test pipeline behavior under malformed input, missing data, duplicate data, delayed data, schema change, dependency failure, quota, and partial outage.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test pipeline behavior under malformed input, missing data, duplicate data, delayed data, schema change, dependency failure, quota, and partial outage.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FDD640C1",
+      "revision": 1,
+      "semantic_sha256": "fdd640c1c365c6a602d2cef6100eda78869f0d163e1141c772e13808b406e12d",
+      "statement": "Test historical replay against the exact transformation and semantic versions appropriate to each period.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 379
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Pipelines, transformations, and reproducible processing"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Test historical replay against the exact transformation and semantic versions appropriate to each period.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test historical replay against the exact transformation and semantic versions appropriate to each period.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E967BBE3",
+      "revision": 1,
+      "semantic_sha256": "e967bbe32104f395e23fff4141c0d55e35b36b11708d3f4ae9013466da40ea8a",
+      "statement": "Separate correction of source truth from compensating transformation patches and document both.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 380
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Pipelines, transformations, and reproducible processing"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Separate correction of source truth from compensating transformation patches and document both.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Separate correction of source truth from compensating transformation patches and document both.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6FE5FEFF",
+      "revision": 1,
+      "semantic_sha256": "6fe5feff1e6c1c729b3e52461f624a583fd8bd735d3853c5adad92a72d9ebd43",
+      "statement": "Verify that optimization, parallelization, caching, approximate computation, and incremental processing preserve required semantics.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 381
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Pipelines, transformations, and reproducible processing"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Verify that optimization, parallelization, caching, approximate computation, and incremental processing preserve required semantics.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Verify that optimization, parallelization, caching, approximate computation, and incremental processing preserve required semantics.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-88DC1597",
+      "revision": 1,
+      "semantic_sha256": "88dc1597196406cc2de7898907cfc818b26783352168abd35bc295b926aaa176",
+      "statement": "Maintain rollback or roll-forward procedures for pipeline code, schemas, and published data.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 382
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Pipelines, transformations, and reproducible processing"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Maintain rollback or roll-forward procedures for pipeline code, schemas, and published data.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Maintain rollback or roll-forward procedures for pipeline code, schemas, and published data.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FE0920E1",
+      "revision": 1,
+      "semantic_sha256": "fe0920e1390c544ab89b4efa480d48ec132ac2df39b4045847b3c6683ea0e818",
+      "statement": "Assign an authoritative owner and stewardship process for each master entity and reference code set.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 387
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Master, reference, and shared data"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Assign an authoritative owner and stewardship process for each master entity and reference code set.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Assign an authoritative owner and stewardship process for each master entity and reference code set.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-85EC6FC9",
+      "revision": 1,
+      "semantic_sha256": "85ec6fc9aa94934b044e3e5d147bc0f4951f1f6c1937cfc5c7c3d9e6ffc76687",
+      "statement": "Define creation, matching, deduplication, merge, split, survivorship, correction, versioning, and retirement rules.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 388
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Master, reference, and shared data"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define creation, matching, deduplication, merge, split, survivorship, correction, versioning, and retirement rules.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define creation, matching, deduplication, merge, split, survivorship, correction, versioning, and retirement rules.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9E40D1CF",
+      "revision": 1,
+      "semantic_sha256": "9e40d1cf77d7599bc1311c3d7eb1636396477f82bb26bc389c80f3b8a45e5632",
+      "statement": "Preserve source identifiers and merge history so erroneous consolidation can be reversed.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 390
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Master, reference, and shared data"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Preserve source identifiers and merge history so erroneous consolidation can be reversed.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Preserve source identifiers and merge history so erroneous consolidation can be reversed.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-16F85DA9",
+      "revision": 1,
+      "semantic_sha256": "16f85da9b96b1e1f5f84f005a671e12cfbddaef5defb59d6dde40c6d8b21fb40",
+      "statement": "Define hierarchy and relationship effective dates and prevent current-state queries from rewriting historical truth.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 391
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Master, reference, and shared data"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Define hierarchy and relationship effective dates and prevent current-state queries from rewriting historical truth.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define hierarchy and relationship effective dates and prevent current-state queries from rewriting historical truth.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0500410F",
+      "revision": 1,
+      "semantic_sha256": "0500410f73cb5efc50ebbb3e5d8b93236b93de5be36c35a0ce5cce1eb704c527",
+      "statement": "Version reference data and make consumers aware of compatible and retired versions.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 392
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Master, reference, and shared data"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Version reference data and make consumers aware of compatible and retired versions.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Version reference data and make consumers aware of compatible and retired versions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4F9A4886",
+      "revision": 1,
+      "semantic_sha256": "4f9a488607185e5e9c8141b1ad8bf7696031c4cd3acfedfa2ba5d8305df15a14",
+      "statement": "Handle unknown, pending, other, deprecated, and unmapped values explicitly.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 393
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Master, reference, and shared data"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Handle unknown, pending, other, deprecated, and unmapped values explicitly.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Handle unknown, pending, other, deprecated, and unmapped values explicitly.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2913F1EE",
+      "revision": 1,
+      "semantic_sha256": "2913f1eefaeae98262f9df81d64b7420fe16e5c6b4d73d3f54e25698c29a5ab8",
+      "statement": "Reconcile replicated master data and monitor propagation delay.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 394
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Master, reference, and shared data"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Reconcile replicated master data and monitor propagation delay.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Reconcile replicated master data and monitor propagation delay.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-30E0E329",
+      "revision": 1,
+      "semantic_sha256": "30e0e329ffe5c8444e1aca1e7df71a23130f9fee01162cc2a49bc9db180bb243",
+      "statement": "Prevent one tenant, region, business unit, or supplier from modifying globally shared reference data without authorized governance.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 395
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Master, reference, and shared data"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Prevent one tenant, region, business unit, or supplier from modifying globally shared reference data without authorized governance.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Prevent one tenant, region, business unit, or supplier from modifying globally shared reference data without authorized governance.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-242D0174",
+      "revision": 1,
+      "semantic_sha256": "242d0174b834d2ab6a90ebdf5ecbecb18fda7eaeffce58d5431653a8e520c13b",
+      "statement": "Provide bulk correction and migration tooling with preview, approval, audit, rate limits, rollback, and reconciliation.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 396
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Master, reference, and shared data"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Provide bulk correction and migration tooling with preview, approval, audit, rate limits, rollback, and reconciliation.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide bulk correction and migration tooling with preview, approval, audit, rate limits, rollback, and reconciliation.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5DCED033",
+      "revision": 1,
+      "semantic_sha256": "5dced0334e1c79882591ce59acc8d4756d291459e63396779d559687c39253bf",
+      "statement": "Log and review sensitive reads, bulk exports, privilege changes, overrides, and unusual queries.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 408
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Access, privacy, security, and ethical data use"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Log and review sensitive reads, bulk exports, privilege changes, overrides, and unusual queries.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Log and review sensitive reads, bulk exports, privilege changes, overrides, and unusual queries.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-781B65B7",
+      "revision": 1,
+      "semantic_sha256": "781b65b77013054ecaec82e542040fcc2aafea1e3890069353eeef5e9585c4e9",
+      "statement": "Capture creator, authority, date, business process, classification, version, relationships, and disposition metadata.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 422
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Records management and evidentiary integrity"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Capture creator, authority, date, business process, classification, version, relationships, and disposition metadata.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Capture creator, authority, date, business process, classification, version, relationships, and disposition metadata.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5DEED201",
+      "revision": 1,
+      "semantic_sha256": "5deed2010c0fcb900ac41963375e00ff6173c804c9f2d8537e9b45cdc11418dc",
+      "statement": "Prevent ordinary editing from silently rewriting an authoritative record; preserve supersession and correction history.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 423
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Records management and evidentiary integrity"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Prevent ordinary editing from silently rewriting an authoritative record; preserve supersession and correction history.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Prevent ordinary editing from silently rewriting an authoritative record; preserve supersession and correction history.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0BA61237",
+      "revision": 1,
+      "semantic_sha256": "0ba612374b3467c85b17518b797fd409240ffed92bcdab2ae2d6d9a536d50b74",
+      "statement": "Define file plan, classification, naming, aggregation, access, retention trigger, retention period, disposition authority, and final action.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 426
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Records management and evidentiary integrity"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define file plan, classification, naming, aggregation, access, retention trigger, retention period, disposition authority, and final action.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define file plan, classification, naming, aggregation, access, retention trigger, retention period, disposition authority, and final action.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AD5F5267",
+      "revision": 1,
+      "semantic_sha256": "ad5f52678b62a49a14c3e840e390a77174d079ca3d0901b6bf95c27f4d3564f5",
+      "statement": "Suspend normal disposition promptly when a legal hold, investigation, audit, incident, or preservation order applies.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 428
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Records management and evidentiary integrity"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Suspend normal disposition promptly when a legal hold, investigation, audit, incident, or preservation order applies.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Suspend normal disposition promptly when a legal hold, investigation, audit, incident, or preservation order applies.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2092A320",
+      "revision": 1,
+      "semantic_sha256": "2092a320c0d090036d5b047aab9f48c52ceaf255c3264d402cd193041ab8d145",
+      "statement": "Document hold scope, authority, custodians, systems, dates, preservation actions, release, and conflicts with deletion duties.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 429
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Records management and evidentiary integrity"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Document hold scope, authority, custodians, systems, dates, preservation actions, release, and conflicts with deletion duties.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document hold scope, authority, custodians, systems, dates, preservation actions, release, and conflicts with deletion duties.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-284AE7F4",
+      "revision": 1,
+      "semantic_sha256": "284ae7f4c905cc3f1d4a136a1828e74a517fc984c0d02951eaaa0ffa2b53344f",
+      "statement": "Prevent backup rotation, lifecycle automation, user deletion, migration, or decommissioning from destroying held records.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 430
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Records management and evidentiary integrity"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Prevent backup rotation, lifecycle automation, user deletion, migration, or decommissioning from destroying held records.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Prevent backup rotation, lifecycle automation, user deletion, migration, or decommissioning from destroying held records.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E7DC518F",
+      "revision": 1,
+      "semantic_sha256": "e7dc518fb54eda99221d172dd83403dcd5e795059225d4aa623f5f8e7ba30426",
+      "statement": "Distinguish correction from deletion and preserve the appropriate audit relationship.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 432
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Records management and evidentiary integrity"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Distinguish correction from deletion and preserve the appropriate audit relationship.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Distinguish correction from deletion and preserve the appropriate audit relationship.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D00A49D8",
+      "revision": 1,
+      "semantic_sha256": "d00a49d82f6cf4e92a9eace80d5a34e21c352b550266fb562ef666b9ff5fd3b6",
+      "statement": "Test retrieval by representative request, date range, actor, transaction, and legal matter.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 434
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Records management and evidentiary integrity"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Test retrieval by representative request, date range, actor, transaction, and legal matter.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test retrieval by representative request, date range, actor, transaction, and legal matter.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9E095079",
+      "revision": 1,
+      "semantic_sha256": "9e0950793d1fcd8ad2225ffdf018a21d2c01242a194136ff327c0b89f0a08b24",
+      "statement": "Control exports so metadata, ordering, attachments, relationships, signatures, and context remain intact.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 435
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Records management and evidentiary integrity"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Control exports so metadata, ordering, attachments, relationships, signatures, and context remain intact.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Control exports so metadata, ordering, attachments, relationships, signatures, and context remain intact.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-01C4B98F",
+      "revision": 1,
+      "semantic_sha256": "01c4b98f3ff85c8afbf8a2e822daf1329130e66078ef4cf9c62c725ee494cb5a",
+      "statement": "Document custody transfer and chain of custody for evidence and high-assurance records.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 436
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Records management and evidentiary integrity"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Document custody transfer and chain of custody for evidence and high-assurance records.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document custody transfer and chain of custody for evidence and high-assurance records.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-17F1226D",
+      "revision": 1,
+      "semantic_sha256": "17f1226df62c94a24451a4e89f1e2c5f50885ae549a86c640a493e13faf66b5b",
+      "statement": "Preserve content together with representation information, provenance, context, fixity, rights, identifiers, and packaging information.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 443
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Digital preservation and long-term access"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Preserve content together with representation information, provenance, context, fixity, rights, identifiers, and packaging information.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Preserve content together with representation information, provenance, context, fixity, rights, identifiers, and packaging information.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7EB59709",
+      "revision": 1,
+      "semantic_sha256": "7eb597091ece73bc70a49c192a7963205bf016bd7496fada25b8ce0f8c85c262",
+      "statement": "Use checksums or stronger integrity evidence at ingest, storage, replication, transfer, audit, and access.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 445
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Digital preservation and long-term access"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Use checksums or stronger integrity evidence at ingest, storage, replication, transfer, audit, and access.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use checksums or stronger integrity evidence at ingest, storage, replication, transfer, audit, and access.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-94877209",
+      "revision": 1,
+      "semantic_sha256": "94877209346087cdb273dcb4682ad1683244c92828b21d62a43cd3ca9574c3ac",
+      "statement": "Store independent copies across failure domains and periodically verify every copy rather than assuming replication equals integrity.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 446
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Digital preservation and long-term access"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Store independent copies across failure domains and periodically verify every copy rather than assuming replication equals integrity.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Store independent copies across failure domains and periodically verify every copy rather than assuming replication equals integrity.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AA74E24D",
+      "revision": 1,
+      "semantic_sha256": "aa74e24de2eb48609b74dea4cd0a309e00a4c22a7b4f582fcc7a516f2418da4c",
+      "statement": "Monitor media age, error rates, format obsolescence, software support, hardware availability, vendor viability, cryptographic strength, and access dependencies.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 447
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Digital preservation and long-term access"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Monitor media age, error rates, format obsolescence, software support, hardware availability, vendor viability, cryptographic strength, and access dependencies.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Monitor media age, error rates, format obsolescence, software support, hardware availability, vendor viability, cryptographic strength, and access dependencies.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-719E4479",
+      "revision": 1,
+      "semantic_sha256": "719e4479e5b1fcf7675cc8b6b2f651fae8f1aa61779528fc2e3e58658b2788e6",
+      "statement": "Plan and test media refresh, replication, format migration, normalization, emulation, encapsulation, or documentation strategies.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 448
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Digital preservation and long-term access"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Plan and test media refresh, replication, format migration, normalization, emulation, encapsulation, or documentation strategies.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Plan and test media refresh, replication, format migration, normalization, emulation, encapsulation, or documentation strategies.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8D51D59D",
+      "revision": 1,
+      "semantic_sha256": "8d51d59dd6a86c7766b2e08457f1e1ea498489f5c7bd54a178135494cef2f1fe",
+      "statement": "Validate that migration preserves significant properties, metadata, relationships, timestamps, signatures, accessibility, and usability.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 449
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Digital preservation and long-term access"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Validate that migration preserves significant properties, metadata, relationships, timestamps, signatures, accessibility, and usability.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Validate that migration preserves significant properties, metadata, relationships, timestamps, signatures, accessibility, and usability.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F8D49065",
+      "revision": 1,
+      "semantic_sha256": "f8d49065a5a8d88f77cc521aac768633f1cba6a72c1e2bc9162a01943bb7aa3f",
+      "statement": "Record every preservation action and maintain lineage among originals, derivatives, migrations, and access copies.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 451
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Digital preservation and long-term access"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Record every preservation action and maintain lineage among originals, derivatives, migrations, and access copies.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Record every preservation action and maintain lineage among originals, derivatives, migrations, and access copies.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CF5DB4C0",
+      "revision": 1,
+      "semantic_sha256": "cf5db4c00617dde62183265368506daaafb96540c34f13fd7731edde667c354d",
+      "statement": "Preserve software, configuration, schemas, code sets, fonts, codecs, keys, licenses, documentation, and execution environment when required to interpret or reproduce content.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 452
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Digital preservation and long-term access"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Preserve software, configuration, schemas, code sets, fonts, codecs, keys, licenses, documentation, and execution environment when required to interpret or reproduce content.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Preserve software, configuration, schemas, code sets, fonts, codecs, keys, licenses, documentation, and execution environment when required to interpret or reproduce content.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3C15ABE7",
+      "revision": 1,
+      "semantic_sha256": "3c15abe733370116105119853c79c9137606b1a1bb6a902a80a7572b8ec71bee",
+      "statement": "Use archival information packages and transfer manifests appropriate to the repository and risk.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 454
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Digital preservation and long-term access"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Use archival information packages and transfer manifests appropriate to the repository and risk.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use archival information packages and transfer manifests appropriate to the repository and risk.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FBA075B3",
+      "revision": 1,
+      "semantic_sha256": "fba075b3a3f8512ed035d732a54a6b39ad1bde4987b3bc91f4e26bf08d5d05c8",
+      "statement": "Validate ingest completeness and reject or quarantine unsupported, corrupt, encrypted-without-key, or unidentified content.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 455
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Digital preservation and long-term access"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Validate ingest completeness and reject or quarantine unsupported, corrupt, encrypted-without-key, or unidentified content.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Validate ingest completeness and reject or quarantine unsupported, corrupt, encrypted-without-key, or unidentified content.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DA245FBE",
+      "revision": 1,
+      "semantic_sha256": "da245fbefe33074ff7fc10df392c3832660a6c71be697d3312e4c8d319533de3",
+      "statement": "Define access controls, privacy restrictions, embargoes, redactions, and lawful disclosure for the preservation period.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 456
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Digital preservation and long-term access"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define access controls, privacy restrictions, embargoes, redactions, and lawful disclosure for the preservation period.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define access controls, privacy restrictions, embargoes, redactions, and lawful disclosure for the preservation period.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3A0E99D4",
+      "revision": 1,
+      "semantic_sha256": "3a0e99d458d31db0d3d95030a92f4787102357324c15be4bce48db1e9a9d15e6",
+      "statement": "Test recovery and intelligibility using people and systems not involved in original creation.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 458
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Digital preservation and long-term access"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Test recovery and intelligibility using people and systems not involved in original creation.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test recovery and intelligibility using people and systems not involved in original creation.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-808E256B",
+      "revision": 1,
+      "semantic_sha256": "808e256b238aa561b1f4103209162626198049f9f17f3f375933904d406c1234",
+      "statement": "Define separately the purposes of operational backup, disaster recovery, high availability, cache, analytical replica, legal record, business archive, and long-term preservation.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 464
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Backup, archive, cache, and record distinctions"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define separately the purposes of operational backup, disaster recovery, high availability, cache, analytical replica, legal record, business archive, and long-term preservation.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define separately the purposes of operational backup, disaster recovery, high availability, cache, analytical replica, legal record, business archive, and long-term preservation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8E523AC4",
+      "revision": 1,
+      "semantic_sha256": "8e523ac44cbdac5b5feb3bba3b6c9f7b4780c17800a077d5a0c87ef3a18a4f3e",
+      "statement": "Ensure retention, deletion, legal hold, access, encryption, restoration, and verification rules match each copy's purpose.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 468
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Backup, archive, cache, and record distinctions"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Ensure retention, deletion, legal hold, access, encryption, restoration, and verification rules match each copy's purpose.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Ensure retention, deletion, legal hold, access, encryption, restoration, and verification rules match each copy's purpose.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-ACA98CFF",
+      "revision": 1,
+      "semantic_sha256": "aca98cff96eacc4983a4d04bb10141797e130c7848b9ca75614ea3bc28dca11f",
+      "statement": "Track where data can persist after deletion from the primary system and document the permitted expiration path.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 469
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Backup, archive, cache, and record distinctions"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Track where data can persist after deletion from the primary system and document the permitted expiration path.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Track where data can persist after deletion from the primary system and document the permitted expiration path.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C6373244",
+      "revision": 1,
+      "semantic_sha256": "c6373244ace579aac767b67b38b407e4bd2f490e7fea84eef39a1d8a0ca9486e",
+      "statement": "Prevent disaster recovery from reintroducing revoked credentials, deleted records, invalid reference data, obsolete schemas, or superseded policies without detection.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 470
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Backup, archive, cache, and record distinctions"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Prevent disaster recovery from reintroducing revoked credentials, deleted records, invalid reference data, obsolete schemas, or superseded policies without detection.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Prevent disaster recovery from reintroducing revoked credentials, deleted records, invalid reference data, obsolete schemas, or superseded policies without detection.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-87DCD770",
+      "revision": 1,
+      "semantic_sha256": "87dcd770b48a954658aec1027575fd982ce0a3a0d534d818af4ea0c6b173b538",
+      "statement": "Test restoration at data-product and business-process level, not only storage-volume level.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 471
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Backup, archive, cache, and record distinctions"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Test restoration at data-product and business-process level, not only storage-volume level.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test restoration at data-product and business-process level, not only storage-volume level.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4D3582CB",
+      "revision": 1,
+      "semantic_sha256": "4d3582cb9c4ead92e44831ff92621db7935334f1039124f6f49cb4bb52efd11c",
+      "statement": "Reconcile restored data with external systems, later transactions, and irreversible side effects.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 472
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Backup, archive, cache, and record distinctions"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Reconcile restored data with external systems, later transactions, and irreversible side effects.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Reconcile restored data with external systems, later transactions, and irreversible side effects.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6CDDC958",
+      "revision": 1,
+      "semantic_sha256": "6cddc958ee4b7e795e06f52d55489da0da0993c3f20f5d27b0d384fc836f4d90",
+      "statement": "Provide documented, stable, accessible, and secure export formats appropriate to the user's and consumer's legitimate purpose.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 476
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Export, portability, publication, and interchange"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Provide documented, stable, accessible, and secure export formats appropriate to the user's and consumer's legitimate purpose.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide documented, stable, accessible, and secure export formats appropriate to the user's and consumer's legitimate purpose.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A1BBEC55",
+      "revision": 1,
+      "semantic_sha256": "a1bbec551709a3c7db6f7d1541ed2bbf2c9c10c16e12f6502f0a14ee0c578c95",
+      "statement": "Include schema, semantics, units, timezone, encoding, identifiers, provenance, version, and quality information needed to interpret an export.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 478
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Export, portability, publication, and interchange"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Include schema, semantics, units, timezone, encoding, identifiers, provenance, version, and quality information needed to interpret an export.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Include schema, semantics, units, timezone, encoding, identifiers, provenance, version, and quality information needed to interpret an export.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-75A76A46",
+      "revision": 1,
+      "semantic_sha256": "75a76a46507ffe18b89716043257026c28c4bc9a906e98a3023d76e2098ed35b",
+      "statement": "Validate export completeness, authorization, tenant isolation, privacy, formula injection, active content, size, and resumability.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 480
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Export, portability, publication, and interchange"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Validate export completeness, authorization, tenant isolation, privacy, formula injection, active content, size, and resumability.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Validate export completeness, authorization, tenant isolation, privacy, formula injection, active content, size, and resumability.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-15993798",
+      "revision": 1,
+      "semantic_sha256": "15993798ebc745b2a8e7e3bbb562319d1ad60a979299b1ba3c4b831046949897",
+      "statement": "Use deterministic ordering or manifests and checksums where recipients must verify completeness.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 481
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Export, portability, publication, and interchange"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Use deterministic ordering or manifests and checksums where recipients must verify completeness.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use deterministic ordering or manifests and checksums where recipients must verify completeness.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D766C812",
+      "revision": 1,
+      "semantic_sha256": "d766c81200eaa72e074d054f4e14c751e3994f457f9d4ff1f49c3b10253c2a0e",
+      "statement": "Define incremental, full, point-in-time, and corrected export semantics.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 482
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Export, portability, publication, and interchange"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define incremental, full, point-in-time, and corrected export semantics.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define incremental, full, point-in-time, and corrected export semantics.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6C4053B9",
+      "revision": 1,
+      "semantic_sha256": "6c4053b90e70e55ded1d365ba8ea4e65b508cbf7693b6f7e9d9d996387abe16b",
+      "statement": "Support large exports asynchronously with progress, expiry, revocation, audit, and safe retry.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 483
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Export, portability, publication, and interchange"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Support large exports asynchronously with progress, expiry, revocation, audit, and safe retry.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Support large exports asynchronously with progress, expiry, revocation, audit, and safe retry.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A1908B5F",
+      "revision": 1,
+      "semantic_sha256": "a1908b5fc1c57002977d982721dd9bfb4e6efe13d78027d04bd2c4e36de34a4b",
+      "statement": "Prevent export links and files from remaining accessible beyond their authorized purpose.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 484
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Export, portability, publication, and interchange"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Prevent export links and files from remaining accessible beyond their authorized purpose.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Prevent export links and files from remaining accessible beyond their authorized purpose.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F471F071",
+      "revision": 1,
+      "semantic_sha256": "f471f0711a0329a6bc6712ed8f659655f4a775f79b8cb3ad4770bb19c92acb3f",
+      "statement": "Test import of exported data or provide a documented independent validation path when portability is claimed.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 486
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Export, portability, publication, and interchange"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Test import of exported data or provide a documented independent validation path when portability is claimed.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test import of exported data or provide a documented independent validation path when portability is claimed.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0A2C8A1D",
+      "revision": 1,
+      "semantic_sha256": "0a2c8a1dfeb4837a1444aafc5c296152aa87035b2bfb2311363a76abc644c990",
+      "statement": "Version published data and preserve access to cited versions or clearly record withdrawal.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 488
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Export, portability, publication, and interchange"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Version published data and preserve access to cited versions or clearly record withdrawal.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Version published data and preserve access to cited versions or clearly record withdrawal.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-551FD6F6",
+      "revision": 1,
+      "semantic_sha256": "551fd6f628eb10bda30af3af0b96169668594eac6e2a11a0cab7acf0b6f42e5b",
+      "statement": "Define creation, active use, sharing, replication, archival, retention, preservation, disposition, and retirement states.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 493
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data lifecycle, deprecation, and retirement"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define creation, active use, sharing, replication, archival, retention, preservation, disposition, and retirement states.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define creation, active use, sharing, replication, archival, retention, preservation, disposition, and retirement states.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D6334B23",
+      "revision": 1,
+      "semantic_sha256": "d6334b23715f0a77d324da264cb8bfd190c1ea5a3b0489148acd0cc3dd188f4e",
+      "statement": "Provide deprecation notice, migration guidance, compatibility period, and owner support proportionate to consumer dependence.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 496
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data lifecycle, deprecation, and retirement"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Provide deprecation notice, migration guidance, compatibility period, and owner support proportionate to consumer dependence.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide deprecation notice, migration guidance, compatibility period, and owner support proportionate to consumer dependence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DB720526",
+      "revision": 1,
+      "semantic_sha256": "db720526e25bcf75c46a352c025a56e3ea85ad9f6477f4f8161f0c9826d9fcc2",
+      "statement": "Prevent new consumers from adopting a deprecated asset without an approved exception.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 497
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data lifecycle, deprecation, and retirement"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Prevent new consumers from adopting a deprecated asset without an approved exception.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Prevent new consumers from adopting a deprecated asset without an approved exception.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5A31A9D2",
+      "revision": 1,
+      "semantic_sha256": "5a31a9d202294a9ab47628036b91416183d7fde98fa581ff3108e854e2d55c93",
+      "statement": "Verify deletion across primary stores, replicas, caches, indexes, queues, temporary files, analytics, providers, and access credentials.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 500
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data lifecycle, deprecation, and retirement"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Verify deletion across primary stores, replicas, caches, indexes, queues, temporary files, analytics, providers, and access credentials.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Verify deletion across primary stores, replicas, caches, indexes, queues, temporary files, analytics, providers, and access credentials.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0C7088E7",
+      "revision": 1,
+      "semantic_sha256": "0c7088e760a02e6a7891809d26b6df17d01d08e1872bd8474e910e8a93bf4a2e",
+      "statement": "Record residual presence in immutable backups and the controls preventing ordinary use until expiry.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 501
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data lifecycle, deprecation, and retirement"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Record residual presence in immutable backups and the controls preventing ordinary use until expiry.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Record residual presence in immutable backups and the controls preventing ordinary use until expiry.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7B1C10E9",
+      "revision": 1,
+      "semantic_sha256": "7b1c10e9484102a38a15e0a2c92c42db5f0432f707ef466b84b045c05001b977",
+      "statement": "Revoke service accounts, keys, shares, catalog entries, schedules, webhooks, and automation associated with retired data.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 502
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data lifecycle, deprecation, and retirement"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Revoke service accounts, keys, shares, catalog entries, schedules, webhooks, and automation associated with retired data.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Revoke service accounts, keys, shares, catalog entries, schedules, webhooks, and automation associated with retired data.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2740E000",
+      "revision": 1,
+      "semantic_sha256": "2740e000f9cb40f1784c9b15a77dfada3e7a03433db0d38ccc7510c3a5a15e35",
+      "statement": "Monitor for continued reads or writes after retirement and investigate undeclared consumers.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 503
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data lifecycle, deprecation, and retirement"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Monitor for continued reads or writes after retirement and investigate undeclared consumers.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Monitor for continued reads or writes after retirement and investigate undeclared consumers.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A9B7A92F",
+      "revision": 1,
+      "semantic_sha256": "a9b7a92ffff01de795e98b872955a6008711088f2d8b77a6e13a4f2bc0b00d49",
+      "statement": "Preserve lineage from retired assets to successors and document semantic differences.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 504
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Semantics, Records, and Digital Preservation Master Checklist",
+        "Expanded gap-closure controls",
+        "Data lifecycle, deprecation, and retirement"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Preserve lineage from retired assets to successors and document semantic differences.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Preserve lineage from retired assets to successors and document semantic differences.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-95DD179A",
+      "revision": 1,
+      "semantic_sha256": "95dd179aae054b16e609e1f0ec1a5a7480e6db6c1212a4318b9dc1c5fe13175d",
+      "statement": "Inventory structured, semi-structured, unstructured, operational, analytical, event, document, media, model, log, and archival information assets.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 526
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Information Governance, Records, and Digital Preservation",
+        "Data and information governance"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Inventory structured, semi-structured, unstructured, operational, analytical, event, document, media, model, log, and archival information assets.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Inventory structured, semi-structured, unstructured, operational, analytical, event, document, media, model, log, and archival information assets.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-167FE265",
+      "revision": 1,
+      "semantic_sha256": "167fe2652ed807ff839a40664f713c787969907c1ef36dfaf48633fd9378bb0d",
+      "statement": "Assign an accountable business or mission owner and an operational steward to every material data domain or information collection.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 527
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Information Governance, Records, and Digital Preservation",
+        "Data and information governance"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Assign an accountable business or mission owner and an operational steward to every material data domain or information collection.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Assign an accountable business or mission owner and an operational steward to every material data domain or information collection.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-02ABB799",
+      "revision": 1,
+      "semantic_sha256": "02abb7998a8d9a703d1bc261632ad3b7bf2816f2156cdbd9cd29197488843252",
+      "statement": "Define decision rights for creation, access, definition, quality, sharing, correction, retention, legal hold, archival, and disposal.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 528
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Information Governance, Records, and Digital Preservation",
+        "Data and information governance"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define decision rights for creation, access, definition, quality, sharing, correction, retention, legal hold, archival, and disposal.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define decision rights for creation, access, definition, quality, sharing, correction, retention, legal hold, archival, and disposal.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-08751C45",
+      "revision": 1,
+      "semantic_sha256": "08751c45d824ebad3a6538330f8cdbe95bcffb55b9894aadc47ef87c668f29a0",
+      "statement": "Classify data by confidentiality, integrity, availability, privacy, safety, regulatory, contractual, and evidentiary impact.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 529
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Information Governance, Records, and Digital Preservation",
+        "Data and information governance"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Classify data by confidentiality, integrity, availability, privacy, safety, regulatory, contractual, and evidentiary impact.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Classify data by confidentiality, integrity, availability, privacy, safety, regulatory, contractual, and evidentiary impact.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9C040A43",
+      "revision": 1,
+      "semantic_sha256": "9c040a43809b5173b4450cdb6ace865bdf7c44fabf89f2f9ada2a37908032168",
+      "statement": "Document authorized purposes and prohibited uses.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 530
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Information Governance, Records, and Digital Preservation",
+        "Data and information governance"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Document authorized purposes and prohibited uses.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document authorized purposes and prohibited uses.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-92923736",
+      "revision": 1,
+      "semantic_sha256": "929237364c4c618cf886c139b50479623e2cc7cc8e4956ddf8964bb3bb565bba",
+      "statement": "Distinguish source records, authoritative master data, derived data, cached data, replicas, indexes, reports, and convenience copies.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 531
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Information Governance, Records, and Digital Preservation",
+        "Data and information governance"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Distinguish source records, authoritative master data, derived data, cached data, replicas, indexes, reports, and convenience copies.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Distinguish source records, authoritative master data, derived data, cached data, replicas, indexes, reports, and convenience copies.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-874AE34A",
+      "revision": 1,
+      "semantic_sha256": "874ae34a2873c63c8d35201dd7291b2f78d708578ff80a4a975d64a06f1b89ea",
+      "statement": "Define the system of record and source of truth for each material concept and state.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 532
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Information Governance, Records, and Digital Preservation",
+        "Data and information governance"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define the system of record and source of truth for each material concept and state.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define the system of record and source of truth for each material concept and state.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CBF98788",
+      "revision": 1,
+      "semantic_sha256": "cbf98788df62d61ef468d07ee77b4b89515cdbdcd44e57b742535f0537b453bb",
+      "statement": "Identify all processors, recipients, consumers, regions, storage locations, and transfer mechanisms.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 533
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Information Governance, Records, and Digital Preservation",
+        "Data and information governance"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Identify all processors, recipients, consumers, regions, storage locations, and transfer mechanisms.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Identify all processors, recipients, consumers, regions, storage locations, and transfer mechanisms.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C12D6B1F",
+      "revision": 1,
+      "semantic_sha256": "c12d6b1fd70e0586636cc567bc5d3d1e380952133592fb83f07b7b3b975a2df2",
+      "statement": "Maintain a glossary of business terms with owner, definition, scope, examples, exclusions, and relationships.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 534
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Information Governance, Records, and Digital Preservation",
+        "Data and information governance"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Maintain a glossary of business terms with owner, definition, scope, examples, exclusions, and relationships.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Maintain a glossary of business terms with owner, definition, scope, examples, exclusions, and relationships.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-51A0D545",
+      "revision": 1,
+      "semantic_sha256": "51a0d545e3c71d213abb74b34d640456b5746f9cdbd0a1724adb3d6209458941",
+      "statement": "Define an explicit contract for every material data product, event stream, file exchange, analytical table, report feed, or shared schema.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 543
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Information Governance, Records, and Digital Preservation",
+        "Data contracts and producer-consumer agreements"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define an explicit contract for every material data product, event stream, file exchange, analytical table, report feed, or shared schema.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define an explicit contract for every material data product, event stream, file exchange, analytical table, report feed, or shared schema.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-12270F27",
+      "revision": 1,
+      "semantic_sha256": "12270f27c000ea022d264e83300841ee8a9823574aebc716972033bfcb57f773",
+      "statement": "Identify producer, owner, consumers, intended purposes, prohibited uses, support channel, and lifecycle state.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 544
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Information Governance, Records, and Digital Preservation",
+        "Data contracts and producer-consumer agreements"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Identify producer, owner, consumers, intended purposes, prohibited uses, support channel, and lifecycle state.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Identify producer, owner, consumers, intended purposes, prohibited uses, support channel, and lifecycle state.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A05CA791",
+      "revision": 1,
+      "semantic_sha256": "a05ca791d2c1376c3f4c53f9cb8b3768e480e3b08bbdc8ecbec766a0ad3987a2",
+      "statement": "Define schema, field meaning, type, units, encoding, nullability, identifiers, enumerations, constraints, and relationships.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 545
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Information Governance, Records, and Digital Preservation",
+        "Data contracts and producer-consumer agreements"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define schema, field meaning, type, units, encoding, nullability, identifiers, enumerations, constraints, and relationships.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define schema, field meaning, type, units, encoding, nullability, identifiers, enumerations, constraints, and relationships.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E850D3BC",
+      "revision": 1,
+      "semantic_sha256": "e850d3bcdb71e41a2519336f3bc73f283913522373202b61fad92b8eca238a14",
+      "statement": "Define event semantics, trigger, ordering, delivery, duplication, correction, replay, and deletion behavior.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 546
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Information Governance, Records, and Digital Preservation",
+        "Data contracts and producer-consumer agreements"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define event semantics, trigger, ordering, delivery, duplication, correction, replay, and deletion behavior.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define event semantics, trigger, ordering, delivery, duplication, correction, replay, and deletion behavior.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B94AD2D5",
+      "revision": 1,
+      "semantic_sha256": "b94ad2d5f6cfb6fe657072c25ea13eae9adc4cab0128b9317e6f6b88d07ceb40",
+      "statement": "Define freshness, completeness, accuracy, consistency, uniqueness, latency, availability, retention, and volume expectations where relevant.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 547
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Information Governance, Records, and Digital Preservation",
+        "Data contracts and producer-consumer agreements"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define freshness, completeness, accuracy, consistency, uniqueness, latency, availability, retention, and volume expectations where relevant.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define freshness, completeness, accuracy, consistency, uniqueness, latency, availability, retention, and volume expectations where relevant.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-043E2F00",
+      "revision": 1,
+      "semantic_sha256": "043e2f0090f290cbc5c164a3d38d253f508e07f054e6651596ae28224bd447ec",
+      "statement": "Define privacy classification, access model, geographic restrictions, aggregation rules, and approved downstream uses.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 548
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Information Governance, Records, and Digital Preservation",
+        "Data contracts and producer-consumer agreements"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define privacy classification, access model, geographic restrictions, aggregation rules, and approved downstream uses.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define privacy classification, access model, geographic restrictions, aggregation rules, and approved downstream uses.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9342B12A",
+      "revision": 1,
+      "semantic_sha256": "9342b12a1f60909ec8e4730a00348e1c457e240624641405c25f7b8589734e87",
+      "statement": "Define compatibility rules for adding, changing, deprecating, renaming, or removing fields and values.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 549
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Information Governance, Records, and Digital Preservation",
+        "Data contracts and producer-consumer agreements"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define compatibility rules for adding, changing, deprecating, renaming, or removing fields and values.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define compatibility rules for adding, changing, deprecating, renaming, or removing fields and values.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-354DB2A1",
+      "revision": 1,
+      "semantic_sha256": "354db2a1c2e790feb985a9ca53a4fcad1f7481efb1cb2df9f991357af9b7b286",
+      "statement": "Define how unknown fields, unknown enumeration values, duplicates, malformed records, and late data are handled.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 550
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Information Governance, Records, and Digital Preservation",
+        "Data contracts and producer-consumer agreements"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define how unknown fields, unknown enumeration values, duplicates, malformed records, and late data are handled.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define how unknown fields, unknown enumeration values, duplicates, malformed records, and late data are handled.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-32210956",
+      "revision": 1,
+      "semantic_sha256": "32210956f772373ea8108b76f36b8f962b42a92b63becaf8cac83ea45e0dab49",
+      "statement": "Define effective dates and temporal semantics for slowly changing or correction-prone data.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 551
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Information Governance, Records, and Digital Preservation",
+        "Data contracts and producer-consumer agreements"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define effective dates and temporal semantics for slowly changing or correction-prone data.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define effective dates and temporal semantics for slowly changing or correction-prone data.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-805AD65B",
+      "revision": 1,
+      "semantic_sha256": "805ad65be550088ae62a01c3b69ce9bf89575a589300acfd1328a7c86cd441f0",
+      "statement": "Provide representative valid, invalid, boundary, and evolution examples.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 552
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Data Contracts, Information Governance, Records, and Digital Preservation",
+        "Data contracts and producer-consumer agreements"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Provide representative valid, invalid, boundary, and evolution examples.” is deterministic when a sealed data-asset inventory and versioned rule-specific contract define exact fields, lifecycle states, thresholds, manifests, or fixture outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide representative valid, invalid, boundary, and evolution examples.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

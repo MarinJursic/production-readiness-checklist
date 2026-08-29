@@ -1,0 +1,261 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-16-specialized-domains-and-release-assurance-md-part-003-part-001",
+  "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-003",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 10,
+  "controls": [
+    {
+      "control_id": "USEQ-E8034D11",
+      "revision": 1,
+      "semantic_sha256": "e8034d1133b9795ae21cbd44f32141f1e50ff8c1c826b6af245266878e00020a",
+      "statement": "Verify exported or printed representations do not misstate signature validity.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 715
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Electronic signatures, seals, timestamps, and trust services"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Export and print renderers can be exercised with known valid, invalid, expired, revoked, and unverifiable signature fixtures.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every exported and printed representation displays the same signature-validity state as the authoritative verifier for approved status fixtures.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-271DE6C6",
+      "revision": 1,
+      "semantic_sha256": "271de6c660fb738c510515e655a12084563a0de949a048a4e93235f93b5c2e39",
+      "statement": "Prevent automated decisions from treating inability to present one credential format as evidence of ineligibility when alternatives are required.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 727
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Privacy, unlinkability, accessibility, and inclusion"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Decision logic can be tested so absence of one format never produces ineligibility when an alternative-required flag applies.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For every alternative-required case, inability to present one credential format does not produce an automated ineligibility result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FD3F890D",
+      "revision": 1,
+      "semantic_sha256": "fd3f890d9206fdcef870fe6a52c1302cba121d7a25aefbe737e0f8d78e9f396d",
+      "statement": "Define migration before an algorithm, format, provider, registry, or issuer becomes obsolete.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 733
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Cryptographic agility, continuity, and assurance"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Deprecation and obsolescence dates can be compared with preexisting migration plans for each named dependency class.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every algorithm, format, provider, registry, or issuer with an obsolescence date has an approved migration plan dated earlier.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5E18FC51",
+      "revision": 1,
+      "semantic_sha256": "5e18fc51514c08d6f7f820e699f7bb71dc2ce821f7f754ce5420a594cfc59023",
+      "statement": "Test compromise, revocation, offline verification, registry outage, wallet loss, and issuer retirement.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 735
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Cryptographic agility, continuity, and assurance"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A finite resilience suite can exercise all six explicitly named credential and trust-service failure scenarios.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Current tests cover compromise, revocation, offline verification, registry outage, wallet loss, and issuer retirement.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BEB1A131",
+      "revision": 1,
+      "semantic_sha256": "beb1a13110a7aebf8dde4b835054492878ace578e1ef37780447771c931bd4ae",
+      "statement": "Preserve evidence needed to validate long-lived credentials and signatures after ordinary services change.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 736
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Cryptographic agility, continuity, and assurance"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Archived evidence can be verified after replacing ordinary online dependencies in a controlled long-term-validation exercise.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Long-lived credential and signature fixtures remain verifiable using retained evidence after ordinary service-change and outage scenarios.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-942AB317",
+      "revision": 1,
+      "semantic_sha256": "942ab317c010be2f45302ff68c43297ed89b08b58d375dce6be15631fa5c757f",
+      "statement": "Prevent downgrade to weaker proof or status behavior.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 737
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Cryptographic agility, continuity, and assurance"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Protocol negotiation tests can attempt weaker proofs and status methods and verify rejection below the approved profile.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every downgrade attempt below the declared proof and status profile is rejected.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1B9B5CDF",
+      "revision": 1,
+      "semantic_sha256": "1b9b5cdf8b6b0fbbfc0ba0894fedb819b7eeeaa21ba46aae77794ea96d275a4f",
+      "statement": "Verify independent implementations interoperate against the declared profile.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 738
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Cryptographic agility, continuity, and assurance"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Independent implementations can exchange declared-profile fixtures and compare verification outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "At least two independent implementations pass bidirectional issuance, presentation, and verification tests against the declared profile.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-137674FC",
+      "revision": 1,
+      "semantic_sha256": "137674fc913d0fdf4c84af77ba20319b210f4c39915cb153de8b321198a52de7",
+      "statement": "Perform security, privacy, accessibility, usability, conformance, and abuse testing.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 739
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Cryptographic agility, continuity, and assurance"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The test evidence registry can be checked for completed results in all six explicitly required assurance categories.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Current evidence records completed security, privacy, accessibility, usability, conformance, and abuse tests.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-48D94432",
+      "revision": 1,
+      "semantic_sha256": "48d944328d0dad86cef3524f279f996d9f93ced1cd7131f1c7adc502591c93b2",
+      "statement": "Monitor issuance anomalies, verification failures, replay, fraud, mass correlation, and support burden.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 740
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Cryptographic agility, continuity, and assurance"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-003",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Operational monitoring can be queried for each of the six explicitly named credential ecosystem indicators.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Monitoring tracks issuance anomalies, verification failures, replay, fraud, mass correlation, and support burden.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-07A28D8C",
+      "revision": 1,
+      "semantic_sha256": "07a28d8c2fff69fd6f98641eda276530d27d66233f1330b634c1e98536920b73",
+      "statement": "Maintain incident coordination among issuers, wallets, verifiers, trust services, and governance authorities.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 741
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Cryptographic agility, continuity, and assurance"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Incident coordination records can be checked for roles, contacts, escalation, and exercises spanning all five named participants.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The incident plan coordinates issuers, wallets, verifiers, trust services, and governance authorities with current contacts and exercise evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

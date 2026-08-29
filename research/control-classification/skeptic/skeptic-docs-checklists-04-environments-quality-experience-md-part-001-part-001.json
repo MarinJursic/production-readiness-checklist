@@ -1,0 +1,813 @@
+{
+  "schema_version": "prc.control-classification-skeptic-review/v0.1",
+  "packet_id": "skeptic-docs-checklists-04-environments-quality-experience-md-part-001-part-001",
+  "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "controls": [
+    {
+      "control_id": "PRC-10-002",
+      "revision": 1,
+      "semantic_sha256": "856ccb73a7cf99893803fca6e8d464e2e7dca6097f39f551679197438f1d3df8",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposal assumes that approved inventories include every credential and non-production authentication boundary, but it provides no authoritative evidence that those universal inventories are complete.",
+      "counterexample_analysis": "A forgotten production API key can still authenticate to a legacy staging endpoint omitted from both inventories. Every tested matrix entry is rejected and both clauses pass, while a production credential still works in non-production.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-003",
+      "revision": 1,
+      "semantic_sha256": "8bfbe1c72d3a9f36b92383676fda4b08b7871a2120c7a2f43b454d15d0a7ad9b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The claimed complete principal and control-plane inventories are not independently bounded, so denial results for listed pairs cannot prove that no non-production identity reaches production.",
+      "counterexample_analysis": "A contractor group omitted from the identity inventory can retain access to an old production cluster omitted from the target list. Every inventoried authorization test denies access, yet the original boundary is still violated.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-007",
+      "revision": 1,
+      "semantic_sha256": "64f19b9f2f577ae505dde43acaa32300058a0b530ebf7f3dc3cba9d1720e11e8",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Listed integrations and bounded delivery tests cannot prove the universal claim that no dynamic, fallback, or unlisted path can accidentally reach a real user.",
+      "counterexample_analysis": "All tested email and webhook paths can use test sinks while a retry worker falls back to a production SMS provider for malformed addresses. The fixed tests pass, but a real user can still be contacted.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-008",
+      "revision": 1,
+      "semantic_sha256": "a248d40d12235924bc671850682e4d4597891d50c68013110c0814ffbea90998",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposal checks only documented boundaries and does not define a complete boundary inventory or what isolation behavior a successful test must cover.",
+      "counterexample_analysis": "Network and identity boundaries in the record can have passing tests while an undocumented shared data store lets staging read production records. Both clauses pass because the missing data boundary never enters the test set.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-009",
+      "revision": 1,
+      "semantic_sha256": "c068c200af6f565d36d9731fa5e940d712f45e132dfd9201f7dd502a1e410523",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Audit logs cannot prove the absence of unlogged access paths, and periodic review requires accountable judgment about what was reviewed and whether exceptions were acceptable.",
+      "counterexample_analysis": "The approved identity system can log and review all of its events while direct database access through a break-glass account produces no event in that system. The records pass even though production access is not fully logged or reviewed.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "human_accountability",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-010",
+      "revision": 1,
+      "semantic_sha256": "88c12c23054b0d6c7dfe013fc033ea5bfb10fd1d207711e46a505a61b5cbc7ab",
+      "verdict": "rejected_nondeterministic",
+      "reason": "No authoritative complete inventory of production configuration items is defined, so immutable history for listed items cannot prove that all configuration is version-controlled or auditable.",
+      "counterexample_analysis": "Repository configuration can have perfect history while an operator-managed load-balancer rule or environment variable is omitted and leaves no audit trail. The proposed clause passes for the partial inventory while the control remains broken.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-011",
+      "revision": 1,
+      "semantic_sha256": "8aca668b583977d2d8a72d465ebc07685a70c72d8ee723690bc56323f0b06d12",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposal assumes complete capture of effective changes and treats approval records as proof of valid accountable review, neither of which is established by the workflow fields alone.",
+      "counterexample_analysis": "A direct console change can bypass the authenticated workflow, or an unauthorized account can populate the reviewer and approver fields. Recorded changes satisfy policy while an effective configuration change still lacks valid review and approval.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-012",
+      "revision": 1,
+      "semantic_sha256": "7479777fa3092494c85113666145e1f21e14fbb779a3da5b38c5071c52f2af6c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Validation against schemas is objective for supplied files, but the proposal does not bind an authoritative complete inventory of configuration instances and schemas.",
+      "counterexample_analysis": "Two declared YAML files can validate while an unlisted runtime JSON configuration has no schema or type check at all. Every inventoried instance passes, but configuration as a whole does not have the claimed validation.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-015",
+      "revision": 1,
+      "semantic_sha256": "02df9cd6d9d0a6303881c50cce435b0c0e6ad4cbc3653c63d20b52703f1dc755",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Whether a value is environment-specific is a semantic applicability decision, and an approved schema can simply fail to mark a field whose meaning changes by environment.",
+      "counterexample_analysis": "A shared schema can omit the environment-specific marker on a payment endpoint, letting staging inherit the production URL. Every marked field is explicit and the checker passes, although an environment-specific value remains implicit.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-016",
+      "revision": 1,
+      "semantic_sha256": "c1f8baf6e36c152cf4d6ecf91381058f7875e0e072807a904339d6eaacd6790a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Exact comparison detects differences only for inventoried and correctly normalized values; the proposal does not prove complete desired and observed configuration coverage.",
+      "counterexample_analysis": "The desired snapshot and cloud query can match while a manually managed DNS rule is omitted, or a normalizer drops a meaningful ordering field. All reported comparisons pass while real production drift remains undetected.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-017",
+      "revision": 1,
+      "semantic_sha256": "b1f484b10bb4cb979f7d61cafd759f2e98f3a88074466ad4375fb712c103a086",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A matching digest proves equality with the approved snapshot, but not that the snapshot contains every production configuration input or that isolated reconstruction yields an operable production configuration.",
+      "counterexample_analysis": "The recipe can recreate all files in an incomplete snapshot while missing an external secret binding or provider-side setting required in production. Digests match exactly, yet production configuration cannot actually be reconstructed.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-018",
+      "revision": 1,
+      "semantic_sha256": "c9f49045898dda4e9278d5aa187d3c8fbc524c39d8415a4a2437493a0068bdce",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposal calls the expected configuration and service state complete without defining a rollback protocol, fault set, or full oracle for service recovery.",
+      "counterexample_analysis": "A rollback test can restore configuration digests and one health endpoint while leaving queued work incompatible or a background worker broken. The execution record passes its limited oracle although configuration rollback was not adequately demonstrated.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-021",
+      "revision": 1,
+      "semantic_sha256": "3d9b0a42ffaeb2209e7a98a5c9a26c008010312787880904bccf66d08cf0a7bd",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Current skew results for an approved host list cannot prove monitoring coverage for dynamic or omitted workloads, and the proposal confuses being within threshold with monitoring completeness.",
+      "counterexample_analysis": "All listed hosts can report healthy clock skew while an autoscaled worker pool is missing from the inventory and has no time monitor. The clause passes even though time synchronization is not monitored everywhere required.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-022",
+      "revision": 1,
+      "semantic_sha256": "c0b6c6053e83e5aba330f709752a27c203fd74d9ee1524f8245a9a721a9117bc",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The policy can define fields for known component classes, but applicability and the complete set of required timeout and resource controls remain context-dependent and incomplete.",
+      "counterexample_analysis": "An HTTP service can have CPU, memory, and request timeouts that satisfy policy while its database client has no connection timeout because that field was omitted from its class policy. All declared requirements pass, but an applicable timeout is absent.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-024",
+      "revision": 1,
+      "semantic_sha256": "376207272c9a18fc370eebacb8743b124e5eb7afb6390dd6b9fa7d2bb5e83920",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Field presence does not establish that an identity is an accountable owner or that a non-expiring classification is justified, and the configuration inventory can be incomplete.",
+      "counterexample_analysis": "A stale service account can be entered as owner and a temporary configuration marked approved non-expiring while all dates and identities are syntactically valid. The record passes without real ownership or a justified expiration decision.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-025",
+      "revision": 1,
+      "semantic_sha256": "d02116b2612db18f52abd3dc520d25f96c01f0d8301a4d4ce4c75a9403f7f916",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposal cannot prove that every emergency change entered the ledger, and determining that a later record is a valid independent review requires accountable human authority.",
+      "counterexample_analysis": "An operator can make an emergency console change outside the ledger, while all recorded emergencies receive timely checkbox reviews from an unqualified reviewer. Both clauses pass although an emergency change was neither captured nor validly reviewed.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-026",
+      "revision": 1,
+      "semantic_sha256": "09e99487ad177869fdb34f6ec5d2c138830f588f68d476168dc42a565eee3441",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The declared flag-service scope may omit other flag mechanisms, and an active identity field does not prove that the named person has accepted accountable ownership.",
+      "counterexample_analysis": "Every flag returned by one provider can name a current user while a code-based flag is omitted and another flag names an inactive nominal owner. The proposed checks pass without proving every real flag has an owner.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-027",
+      "revision": 1,
+      "semantic_sha256": "be6e342e9c71281667ef39ac2fd2a32eae888c2ef25ffac718189fc5b0892f99",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A nonempty purpose field can contain meaningless text and the supplied flag inventory may be incomplete, so record shape does not prove that every flag has a documented purpose.",
+      "counterexample_analysis": "All listed flags can use the purpose value TBD, which is nonempty and versioned, while an unlisted environment flag has no record. The clause passes although the purposes are not meaningfully documented for every flag.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-029",
+      "revision": 1,
+      "semantic_sha256": "af9c1e5e7ec8c87d3072a2939b13828a1b935191fd15dd885f5ce50762d7fca1",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposal leaves material state changes to judgment and assumes a complete incident and flag inventory, so matching snapshot digests can cover only selected events.",
+      "counterexample_analysis": "A flag that changed during an incident can be judged non-material and omitted, or an incident can be missing from the record set. Every required record references a matching snapshot while the actual incident history lacks flag state.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-030",
+      "revision": 1,
+      "semantic_sha256": "232a8a3640327cd5d9ae153aa012b4b7a0c9d4aba35306cc0eddcae2e4415c38",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Selecting high-impact flags and authorized principals is an accountable policy decision, while current IAM and audit data cannot prove that omitted flags or bypass paths are restricted and logged.",
+      "counterexample_analysis": "A release-controlling flag can be left out of the high-impact list and changed through an older admin endpoint without an audit event. Every policy-listed flag passes IAM and logging checks while a genuinely high-impact flag remains unrestricted.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "undefined_scope",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-034",
+      "revision": 1,
+      "semantic_sha256": "1179805e850866edce2bc12e79de8e151f33ae75e9805e1dffb064af6c1f538f",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The check trusts the temporary classification and flag inventory, so a temporary flag can evade the date rule merely by being mislabeled permanent or omitted.",
+      "counterexample_analysis": "A rollout flag can be marked permanent and therefore have no removal date, while every flag labeled temporary has a valid date and owner. The schema passes although a real temporary flag lacks its removal date.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-036",
+      "revision": 1,
+      "semantic_sha256": "93671be0b8735fe176aef491a6bae0ffd70cc5cfde5d705c7963229065c93862",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A declared credential scope cannot prove the absence of unknown secrets stored in source, files, CI variables, or other unapproved locations.",
+      "counterexample_analysis": "All inventoried production secrets can reside in an approved vault while a forgotten database password remains in a deployment script outside the inventory. Both clauses pass, but not every secret is stored in an approved system.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-038",
+      "revision": 1,
+      "semantic_sha256": "7eaf037769aa9b47ef542c1ca0c085933adbaa65ba34c69fbcf48911ceee4009",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Fingerprint comparison is exact only for values returned by approved managers; it cannot prove uniqueness for credentials stored in an omitted manager or unmanaged location.",
+      "counterexample_analysis": "Every returned fingerprint can be unique while the same password is reused in a legacy staging file and production appliance outside the scoped managers. The comparison passes even though a secret value is shared across environments.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-039",
+      "revision": 1,
+      "semantic_sha256": "24e5ed4b189c55a4dbc6f188b4d8013128ce627d53a4619bf2520411457c8d52",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete workload and credential inventories are assumed rather than proven, and the meaning of sufficiently scoped identity depends on the operation and authorization policy.",
+      "counterexample_analysis": "Listed workloads can each map to a different identity while two omitted cron jobs share a broad administrator credential, or a unique identity still has global rights. Inventory checks pass although the original isolation goal is unmet.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-042",
+      "revision": 1,
+      "semantic_sha256": "b1e9bec7200dfbd0fa7943b0b2a3441db057809825418fc6b0b906ac6f94254d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Secret-manager retrieval logs do not observe every subsequent use, and the phrase supported use event narrows the original universal auditing claim without an authoritative coverage contract.",
+      "counterexample_analysis": "A workload can retrieve a secret through a logged call and then use it against a database repeatedly with no use audit. Every supported event has a record, yet secret use as required by the control is not audited.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-043",
+      "revision": 1,
+      "semantic_sha256": "2829746df8d6225ff83c0367cd4e47a29bbb8b08c179122d028e2bd7bd852882",
+      "verdict": "rejected_nondeterministic",
+      "reason": "One successful rotation per credential class does not define the failure, propagation, concurrency, and workload-behavior protocol needed to demonstrate rotation safely.",
+      "counterexample_analysis": "A test credential can rotate and keep one workload healthy while a real clustered workload caches the old value and fails during propagation. The approved class test passes, but secret rotation has not been demonstrated for the actual failure mode.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-044",
+      "revision": 1,
+      "semantic_sha256": "acf91cff73293135034a0a8140fa93dae6f99776057590bd2aa116b69032f789",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A bounded test credential and selected continuity outcomes do not define a complete emergency scenario, propagation scope, or oracle for real revocation behavior.",
+      "counterexample_analysis": "The test can show denial at the identity provider and one service staying healthy while a replicated gateway accepts the credential for ten more minutes or a critical worker stops. The record passes without proving emergency revocation works end to end.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-045",
+      "revision": 1,
+      "semantic_sha256": "c172e10c825b0abe4c897db0fed6d26cf32bb2bfcd9dcb1d9db049b85209f2c0",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Configured monitors and policy-shaped fields do not prove that expiry and rotation failures are detected and delivered, and credential-class coverage can omit individual paths.",
+      "counterexample_analysis": "A monitor can be enabled with the right threshold and destination while its query is broken or the notification route silently drops alerts. The clause passes configuration checks although real expiry and rotation failures are not monitored effectively.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-046",
+      "revision": 1,
+      "semantic_sha256": "c470b2e70c98eba087ece9884f15bef074c0a169e1bf67769a9af1fe6bd6a0e8",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Current rejection at a queried identity boundary does not prove that an old credential is invalid at every replica, cache, protocol, and target where it was usable.",
+      "counterexample_analysis": "The predecessor can be disabled centrally and fail the tested login while an offline token verifier or legacy replica continues accepting it. The clause passes its current state check, yet the old credential is not fully invalidated.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-049",
+      "revision": 1,
+      "semantic_sha256": "ee1c9f023a113f18333e76baab20d15e681f9ae56bace63be5d8a373f3894460",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The negative claim depends on complete deployed-product and vendor-default catalogs, but neither inventory can prove coverage for undocumented, version-specific, or locally supplied defaults.",
+      "counterexample_analysis": "All cataloged defaults can be rejected while an appliance image retains an undocumented support credential or a product omitted from deployment inventory keeps admin/admin. Both clauses pass despite a vendor-supplied credential remaining.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-10-050",
+      "revision": 1,
+      "semantic_sha256": "529c55b86dde52addb3bdf4695d61038bc611dc1f180a47ed27d88befd970449",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The checker only covers recorded suspicions and cannot prove that every known or suspected historical exposure was entered with all affected credential versions.",
+      "counterexample_analysis": "One exposure record can show correct rotation while another suspected leak is deliberately never recorded and its token remains valid. Every listed exposure satisfies both clauses, but historical exposure was not fully addressed by rotation.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-11-001",
+      "revision": 1,
+      "semantic_sha256": "3f7727e84a5e83a20dff7c78fd32fa31b82aca13c4368a2bd8fbbe2d7e6b02f1",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Stable links prove record connectivity, not that the linked activity actually verifies the requirement; deciding semantic verification relevance requires contextual judgment.",
+      "counterexample_analysis": "A requirement for tenant isolation can link to a spelling test named verify-tenant. Every requirement has an activity identity and the schema passes, but the linked activity does not verify the requirement.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-11-010",
+      "revision": 1,
+      "semantic_sha256": "f2da0c8c906c912a4f5c5818f3e750c0cfd91a6e3f70795687daa1f5e206ca0d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A finite state model and selected ordering tests do not define all input, role, tenant, retry, and concurrency contexts in which an invalid ordering must be rejected.",
+      "counterexample_analysis": "The service can reject cancel-before-create for the fixture user while accepting the same invalid transition through an admin endpoint or during a race. Every modeled ordering test passes, yet an invalid ordering remains accepted.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-11-011",
+      "revision": 1,
+      "semantic_sha256": "4915c28bd4066c617528ab1a3b089ee3a5be88a3390ab72651c9b6bfc22f15e7",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The observable effect model and bounded repeat protocol may omit side effects and execution contexts, so selected repeated calls cannot prove an operation is generally idempotent.",
+      "counterexample_analysis": "Two sequential retries can create one database row while concurrent retries send two emails, an effect omitted from the approved model. The proposed execution passes even though the operation is not demonstrably idempotent.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-11-013",
+      "revision": 1,
+      "semantic_sha256": "a8e01e85d003ca6c20495b42ef8bc074bd882bb5c2ca2cf9be5f475ccf9339af",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Approved invariants and selected fault or concurrency tests cannot exhaust the relevant interruption points and interleavings unless a complete protocol is explicitly bounded.",
+      "counterexample_analysis": "A transfer can pass normal rollback and one injected fault while a crash after debit but before durable credit violates atomicity. All approved cases pass, yet a required transaction is not atomic under another relevant interruption.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-11-014",
+      "revision": 1,
+      "semantic_sha256": "f7a7a215185fcb666ffb68f0c9e478cea154eaa80a812c2cd93bf92978f923da",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The state contract does not by itself define exhaustive timing, retry, failure, and observation cases, so current tests can miss incorrect exposed states.",
+      "counterexample_analysis": "A job can show valid pending and completion states in the happy path while exposing completed before durable storage during a retry race. Every approved test reaches its terminal state, but users can still see an incorrect state.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-11-015",
+      "revision": 1,
+      "semantic_sha256": "d3445257884a37599bb69266536bad78ed728e14cf163b5009c922cc22fa40b2",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Detection of seeded fixtures proves only those examples; the proposal does not establish an exhaustive generator or oracle for all missing, duplicated, and mismatched record forms.",
+      "counterexample_analysis": "Reconciliation can detect the three simple seeded rows while missing a duplicate split across pages or a mismatch after normalization. Every fixture passes, yet a real duplicated or mismatched record remains undetected.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-11-016",
+      "revision": 1,
+      "semantic_sha256": "698ee40e1fbb354ece9101a412af9e1591c79280a75f9e31044008ab6ce964a3",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Boundary and property tests are not necessarily exhaustive over every numeric input and execution path, so passing them cannot prove that rounding is always correct.",
+      "counterexample_analysis": "A tax calculation can pass listed decimal boundaries while one untested negative value or large magnitude uses binary floating point and rounds incorrectly. Every inventoried test passes, but numeric precision is still wrong.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-11-020",
+      "revision": 1,
+      "semantic_sha256": "8d5eb455f927c7d179426cb743dd3b17a51e7926b2fd340a9d3399a98bf3335f",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Requests at and beyond listed thresholds do not prove server-side enforcement across all endpoints, identities, races, and distributed reset behavior.",
+      "counterexample_analysis": "The main endpoint can enforce quota 100 in direct tests while an alias endpoint or concurrent requests across two nodes exceed the same quota. Every approved request case passes, yet the limit is not fully enforced server-side.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-11-026",
+      "revision": 1,
+      "semantic_sha256": "81f986d88a7cfa13330e551e38f24a05438fac23b59abfebb734e33e5bbb60a1",
+      "verdict": "rejected_nondeterministic",
+      "reason": "One bounded example of each scenario class does not define the timing, retry count, partial-effect, and scheduler-state space required to prove each job handles those conditions.",
+      "counterexample_analysis": "A job can pass the four fixtures while two overlapping workers at a particular commit point duplicate charges. All required scenario classes have passing evidence, yet overlapping execution is not safely handled.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-11-027",
+      "revision": 1,
+      "semantic_sha256": "5c90624fbafa87ba8effc7d1eb69f555c945b5e43d0aa0fa3f02708efe345179",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Selected enqueue and retry tests do not exhaust every job type and branch, and the contract may omit context fields whose preservation is semantically required.",
+      "counterexample_analysis": "The tested success path can preserve tenant ID while the dead-letter retry loses the authorization scope or an omitted job drops the user ID. Every inventoried case passes while background context is not preserved end to end.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-11-029",
+      "revision": 1,
+      "semantic_sha256": "c0ae4616280e9eebcb59551ce2b11a9ad2d22e1e59646b4f574846a94a6844e2",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Catalog tests establish declared effects for chosen fixtures, but not correct behavior across authorization, failure, partial-state, and audit-delivery paths for every administrative action.",
+      "counterexample_analysis": "A delete-user action can produce the expected state and audit event in the fixture while a failed partial deletion changes data without an audit record. All catalog cases pass, yet an administrative action can produce the wrong effect or trail.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-12-009",
+      "revision": 1,
+      "semantic_sha256": "958ba41f97381833e98c37ee139b15c74fbbbe62c606fc62ba3694ece3d37bb3",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Required evidence fields do not establish that the evidence justifies dismissal or that the approver has accountable authority, and relabeled failures can evade the disposition history.",
+      "counterexample_analysis": "A failing security test can be dismissed with an irrelevant log and an unauthorized approver identity while satisfying every required field. The structured records pass even though the failure was dismissed without meaningful evidence.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-12-011",
+      "revision": 1,
+      "semantic_sha256": "6cab14ddf979ef9eede438bc3f0b6b0d2c7da3587df9059e8a2061dd5ecf9ce9",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Interface links and successful test records do not prove that contract tests meaningfully cover each interface's behavior, and the approved inventory can omit real interfaces.",
+      "counterexample_analysis": "Each listed API can have a passing test that checks only HTTP 200 while an undocumented webhook is absent. Both clauses pass, but internal and external interface contracts are not actually covered.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-12-012",
+      "revision": 1,
+      "semantic_sha256": "479d49ab187feb15377074d1cb001c566a090e4b045803cd8a61a62cab6b540b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A result record for each support-matrix entry does not define what compatibility behavior must be exercised or require a complete success oracle.",
+      "counterexample_analysis": "Every supported client version can have a test result from simply opening a connection while core operations fail on one client. The matrix is covered by records, but compatibility was not meaningfully tested.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-12-013",
+      "revision": 1,
+      "semantic_sha256": "07366106329540126e5c011a9cc917449e4002226ab1b08d4c1483be9080e410",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Applicability of transition scenarios and the adequacy of each execution protocol remain contextual, while mere existence of a result does not prove meaningful testing.",
+      "counterexample_analysis": "A policy can mark mixed-version and downgrade not applicable without justification, and the rollback result can cover only an empty database. Every declared scenario has evidence while relevant transition behavior remains untested.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-12-014",
+      "revision": 1,
+      "semantic_sha256": "acb4fedf039b3ab33dfee8d14a72c73f164958e34413cb06a13a8210f7eee466",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Chosen profiles and a production-like label require contextual adequacy judgment, and finite executions cannot establish coverage of all important load, stress, spike, endurance, and capacity behavior.",
+      "counterexample_analysis": "A five-minute endurance case and a small single-region environment can satisfy the approved plan while missing a day-long leak and distributed bottleneck. All five classes have results, but performance coverage is inadequate.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-12-017",
+      "revision": 1,
+      "semantic_sha256": "1a6ffbdf7ddc9b6faafbddf96e77bd295b70e8f9deae23ce5fc1d3240bee9ad0",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The existence of three records does not prove that manual keyboard and assistive-technology checks were adequate or correctly judged; those outcomes require accessibility specialist evidence.",
+      "counterexample_analysis": "A record can name one trivial journey and one assistive-technology combination while critical checkout controls remain unusable by keyboard. All three modes are present, yet the required accessibility testing has not meaningfully covered the interface.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-12-021",
+      "revision": 1,
+      "semantic_sha256": "fd7e8b9e91ddc43ef2d4dfdb54d71a53ed7881eea7dd73bfc20bd27ac02896a6",
+      "verdict": "confirmed_deterministic",
+      "reason": "The intended production artifact and every required test result are bound by immutable digests, so exact digest equality proves the artifact identity fact stated by this control.",
+      "counterexample_analysis": "Testing a different build, a modified artifact, or a record without an artifact digest cannot pass the equality check. Test adequacy is governed by other controls; this rule asks only whether tests used the actual intended artifact.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-12-022",
+      "revision": 1,
+      "semantic_sha256": "c9cd7b6b94196135be62c13e60fa8e3caaed7abecb8ba428ed4874025ca9eab1",
+      "verdict": "confirmed_deterministic",
+      "reason": "The complete requirement is that evidence identifies five explicit facts, each of which is a typed record field with an objective release or artifact binding.",
+      "counterexample_analysis": "A record missing or malformed in any required field fails or blocks, while identical sealed records always yield the same result. The control does not ask the checker to judge whether the test itself was adequate.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-12-023",
+      "revision": 1,
+      "semantic_sha256": "a1c9a44674017a2008f2c56773fc466aca2d7bb2e45f0a0a7efca20d5474642e",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Mechanical links and a later passing result do not prove that the linked change actually fixed the cause or that a flaky retest is meaningful.",
+      "counterexample_analysis": "A failure can link to an unrelated documentation change followed by a lucky successful rerun of a flaky test. Both proposed clauses pass, yet the failed test was not genuinely linked to a fix and reliable retest.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-13-001",
+      "revision": 1,
+      "semantic_sha256": "6a073ff5a22efd4c7c880047922f987099ffbef22bbde5ea0fbba2eef9cf1e9c",
+      "verdict": "confirmed_deterministic",
+      "reason": "The control asks for documentation of an intended support policy, and an authenticated versioned matrix with explicit browser and device entries completely proves that record exists.",
+      "counterexample_analysis": "Missing matrix entries, malformed versions, or an absent policy status fail the schema. Whether the chosen support set is a good market decision is outside this documentation-only control.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-13-030",
+      "revision": 1,
+      "semantic_sha256": "938ccd754bc3d060b61f9b3a06756cf33d429b42e7e0744e899c06de224a63a7",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Equality on an approved finite case list does not prove consistent outcomes for the larger input domain unless exhaustive generation and a complete outcome oracle are defined.",
+      "counterexample_analysis": "Client and server can agree on every listed valid email while disagreeing on an unlisted Unicode address or boundary length. All inventoried cases pass although validation outcomes remain inconsistent.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-14-001",
+      "revision": 1,
+      "semantic_sha256": "a12fb3f060eec13649d598fb6eaaddf146022f935fab16787f13779ea05abb4f",
+      "verdict": "confirmed_deterministic",
+      "reason": "The control is limited to documenting two recognized policy values, so an authenticated product-scoped record provides complete authoritative evidence of the WCAG version and level.",
+      "counterexample_analysis": "An absent, unrecognized, conflicting, or unbound WCAG value fails or blocks. Determining actual conformance is a separate specialist control and is not inferred from this documentation record.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-14-002",
+      "revision": 1,
+      "semantic_sha256": "ff9cd46e78285d4a7728c064ee7ece39c68e6c4607b3acb9253eff8bcbfd6fad",
+      "verdict": "confirmed_deterministic",
+      "reason": "The rule concerns a pinned automated scan against an accepted policy threshold, making tool identity, scope, freshness, normalized findings, and numeric comparison fully bounded.",
+      "counterexample_analysis": "A stale result, wrong tool version, incomplete bound scope, or finding count above threshold cannot pass. Manual accessibility quality is not claimed by this automated-scan threshold control.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-14-037",
+      "revision": 1,
+      "semantic_sha256": "e2cd7cd454bc1d8220d357463d022e24162ef9666d9b24cfc297c46561fac73b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A page that names the product and a non-submitting reachability probe do not prove a meaningful accessibility statement or a working issue-reporting path.",
+      "counterexample_analysis": "The linked form can return HTTP 200 but fail every submission, and the statement can contain only the product name with no accessibility information. Both clauses pass while the required public resources do not function as intended.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-14-039",
+      "revision": 1,
+      "semantic_sha256": "03ae0b35081102be25c9d4116e348275639a8c8d2040fe5544d230873dd2e8a3",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Current CI configuration and an unspecified latest result do not prove that accessibility testing actually ran after launch changes or that applicable triggers cover the relevant changes.",
+      "counterexample_analysis": "A workflow added after launch can retain a pre-launch result, or the approved trigger list can omit frontend changes. Both clauses pass while post-launch regressions receive no accessibility test.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    }
+  ]
+}

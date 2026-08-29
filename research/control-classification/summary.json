@@ -1,0 +1,417 @@
+{
+  "schema_version": "prc.control-classification-summary/v0.1",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 10042,
+  "deterministic": 686,
+  "nondeterministic": 9356,
+  "decision_counts": {
+    "primary_nondeterministic": 5800,
+    "skeptically_rejected": 3538,
+    "strength_audit_confirmed": 686,
+    "strength_audit_reclassified": 18
+  },
+  "route_counts": {
+    "accountable_human_decision": 629,
+    "artifact_verification": 93,
+    "bounded_execution": 100,
+    "contextual_judgment": 2247,
+    "contract_incomplete": 368,
+    "deterministic_composite": 98,
+    "empirical_protocol_undefined": 925,
+    "external_readonly_query": 49,
+    "local_static": 17,
+    "mixed": 2890,
+    "specialist_or_legal_judgment": 1077,
+    "structured_record_validation": 329,
+    "unbounded_claim": 1220
+  },
+  "packets": [
+    {
+      "packet_id": "docs-checklists-01-release-foundations-md-part-001",
+      "source_path": "docs/checklists/01-release-foundations.md",
+      "control_count": 42,
+      "deterministic": 2,
+      "nondeterministic": 40
+    },
+    {
+      "packet_id": "docs-checklists-02-product-risk-architecture-md-part-001",
+      "source_path": "docs/checklists/02-product-risk-architecture.md",
+      "control_count": 100,
+      "deterministic": 1,
+      "nondeterministic": 99
+    },
+    {
+      "packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "source_path": "docs/checklists/03-source-build-supply-chain.md",
+      "control_count": 73,
+      "deterministic": 23,
+      "nondeterministic": 50
+    },
+    {
+      "packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "source_path": "docs/checklists/04-environments-quality-experience.md",
+      "control_count": 181,
+      "deterministic": 5,
+      "nondeterministic": 176
+    },
+    {
+      "packet_id": "docs-checklists-05-application-security-md-part-001",
+      "source_path": "docs/checklists/05-application-security.md",
+      "control_count": 250,
+      "deterministic": 23,
+      "nondeterministic": 227
+    },
+    {
+      "packet_id": "docs-checklists-05-application-security-md-part-002",
+      "source_path": "docs/checklists/05-application-security.md",
+      "control_count": 17,
+      "deterministic": 1,
+      "nondeterministic": 16
+    },
+    {
+      "packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "source_path": "docs/checklists/06-data-privacy-performance.md",
+      "control_count": 134,
+      "deterministic": 8,
+      "nondeterministic": 126
+    },
+    {
+      "packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "source_path": "docs/checklists/07-reliability-operations.md",
+      "control_count": 250,
+      "deterministic": 74,
+      "nondeterministic": 176
+    },
+    {
+      "packet_id": "docs-checklists-07-reliability-operations-md-part-002",
+      "source_path": "docs/checklists/07-reliability-operations.md",
+      "control_count": 45,
+      "deterministic": 8,
+      "nondeterministic": 37
+    },
+    {
+      "packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+      "source_path": "docs/checklists/08-maintenance-vendors-compliance.md",
+      "control_count": 87,
+      "deterministic": 14,
+      "nondeterministic": 73
+    },
+    {
+      "packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+      "source_path": "docs/checklists/09-conditional-modules.md",
+      "control_count": 183,
+      "deterministic": 0,
+      "nondeterministic": 183
+    },
+    {
+      "packet_id": "docs-checklists-10-evidence-and-decision-md-part-001",
+      "source_path": "docs/checklists/10-evidence-and-decision.md",
+      "control_count": 59,
+      "deterministic": 12,
+      "nondeterministic": 47
+    },
+    {
+      "packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "source_path": "docs/engineering/01-governance-and-foundations.md",
+      "control_count": 250,
+      "deterministic": 32,
+      "nondeterministic": 218
+    },
+    {
+      "packet_id": "docs-engineering-01-governance-and-foundations-md-part-002",
+      "source_path": "docs/engineering/01-governance-and-foundations.md",
+      "control_count": 250,
+      "deterministic": 0,
+      "nondeterministic": 250
+    },
+    {
+      "packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "source_path": "docs/engineering/01-governance-and-foundations.md",
+      "control_count": 138,
+      "deterministic": 0,
+      "nondeterministic": 138
+    },
+    {
+      "packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "source_path": "docs/engineering/02-product-and-requirements.md",
+      "control_count": 105,
+      "deterministic": 12,
+      "nondeterministic": 93
+    },
+    {
+      "packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "source_path": "docs/engineering/03-user-experience-web-and-content.md",
+      "control_count": 250,
+      "deterministic": 16,
+      "nondeterministic": 234
+    },
+    {
+      "packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "source_path": "docs/engineering/03-user-experience-web-and-content.md",
+      "control_count": 250,
+      "deterministic": 3,
+      "nondeterministic": 247
+    },
+    {
+      "packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "source_path": "docs/engineering/03-user-experience-web-and-content.md",
+      "control_count": 250,
+      "deterministic": 10,
+      "nondeterministic": 240
+    },
+    {
+      "packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "source_path": "docs/engineering/03-user-experience-web-and-content.md",
+      "control_count": 250,
+      "deterministic": 0,
+      "nondeterministic": 250
+    },
+    {
+      "packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-005",
+      "source_path": "docs/engineering/03-user-experience-web-and-content.md",
+      "control_count": 37,
+      "deterministic": 4,
+      "nondeterministic": 33
+    },
+    {
+      "packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "source_path": "docs/engineering/04-architecture-and-design.md",
+      "control_count": 241,
+      "deterministic": 9,
+      "nondeterministic": 232
+    },
+    {
+      "packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "source_path": "docs/engineering/05-code-quality-and-implementation.md",
+      "control_count": 250,
+      "deterministic": 3,
+      "nondeterministic": 247
+    },
+    {
+      "packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-002",
+      "source_path": "docs/engineering/05-code-quality-and-implementation.md",
+      "control_count": 250,
+      "deterministic": 15,
+      "nondeterministic": 235
+    },
+    {
+      "packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "source_path": "docs/engineering/05-code-quality-and-implementation.md",
+      "control_count": 250,
+      "deterministic": 12,
+      "nondeterministic": 238
+    },
+    {
+      "packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "source_path": "docs/engineering/05-code-quality-and-implementation.md",
+      "control_count": 89,
+      "deterministic": 3,
+      "nondeterministic": 86
+    },
+    {
+      "packet_id": "docs-engineering-06-application-services-and-apis-md-part-001",
+      "source_path": "docs/engineering/06-application-services-and-apis.md",
+      "control_count": 250,
+      "deterministic": 28,
+      "nondeterministic": 222
+    },
+    {
+      "packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "source_path": "docs/engineering/06-application-services-and-apis.md",
+      "control_count": 82,
+      "deterministic": 16,
+      "nondeterministic": 66
+    },
+    {
+      "packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-001",
+      "source_path": "docs/engineering/07-data-and-information-lifecycle.md",
+      "control_count": 250,
+      "deterministic": 0,
+      "nondeterministic": 250
+    },
+    {
+      "packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-002",
+      "source_path": "docs/engineering/07-data-and-information-lifecycle.md",
+      "control_count": 250,
+      "deterministic": 46,
+      "nondeterministic": 204
+    },
+    {
+      "packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "source_path": "docs/engineering/07-data-and-information-lifecycle.md",
+      "control_count": 250,
+      "deterministic": 17,
+      "nondeterministic": 233
+    },
+    {
+      "packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-004",
+      "source_path": "docs/engineering/07-data-and-information-lifecycle.md",
+      "control_count": 28,
+      "deterministic": 4,
+      "nondeterministic": 24
+    },
+    {
+      "packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "source_path": "docs/engineering/08-security-and-cryptography.md",
+      "control_count": 250,
+      "deterministic": 7,
+      "nondeterministic": 243
+    },
+    {
+      "packet_id": "docs-engineering-08-security-and-cryptography-md-part-002",
+      "source_path": "docs/engineering/08-security-and-cryptography.md",
+      "control_count": 250,
+      "deterministic": 26,
+      "nondeterministic": 224
+    },
+    {
+      "packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "source_path": "docs/engineering/08-security-and-cryptography.md",
+      "control_count": 250,
+      "deterministic": 11,
+      "nondeterministic": 239
+    },
+    {
+      "packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "source_path": "docs/engineering/08-security-and-cryptography.md",
+      "control_count": 166,
+      "deterministic": 0,
+      "nondeterministic": 166
+    },
+    {
+      "packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "source_path": "docs/engineering/09-privacy-and-data-protection.md",
+      "control_count": 136,
+      "deterministic": 0,
+      "nondeterministic": 136
+    },
+    {
+      "packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+      "source_path": "docs/engineering/10-verification-and-testing.md",
+      "control_count": 250,
+      "deterministic": 24,
+      "nondeterministic": 226
+    },
+    {
+      "packet_id": "docs-engineering-10-verification-and-testing-md-part-002",
+      "source_path": "docs/engineering/10-verification-and-testing.md",
+      "control_count": 250,
+      "deterministic": 32,
+      "nondeterministic": 218
+    },
+    {
+      "packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "source_path": "docs/engineering/10-verification-and-testing.md",
+      "control_count": 136,
+      "deterministic": 37,
+      "nondeterministic": 99
+    },
+    {
+      "packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-001",
+      "source_path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+      "control_count": 250,
+      "deterministic": 28,
+      "nondeterministic": 222
+    },
+    {
+      "packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "source_path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+      "control_count": 250,
+      "deterministic": 35,
+      "nondeterministic": 215
+    },
+    {
+      "packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-003",
+      "source_path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+      "control_count": 250,
+      "deterministic": 0,
+      "nondeterministic": 250
+    },
+    {
+      "packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-004",
+      "source_path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+      "control_count": 2,
+      "deterministic": 0,
+      "nondeterministic": 2
+    },
+    {
+      "packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "source_path": "docs/engineering/12-operations-sre-and-support.md",
+      "control_count": 250,
+      "deterministic": 37,
+      "nondeterministic": 213
+    },
+    {
+      "packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "source_path": "docs/engineering/12-operations-sre-and-support.md",
+      "control_count": 250,
+      "deterministic": 1,
+      "nondeterministic": 249
+    },
+    {
+      "packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+      "source_path": "docs/engineering/12-operations-sre-and-support.md",
+      "control_count": 81,
+      "deterministic": 0,
+      "nondeterministic": 81
+    },
+    {
+      "packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "source_path": "docs/engineering/13-documentation-and-knowledge.md",
+      "control_count": 241,
+      "deterministic": 14,
+      "nondeterministic": 227
+    },
+    {
+      "packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "source_path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+      "control_count": 235,
+      "deterministic": 1,
+      "nondeterministic": 234
+    },
+    {
+      "packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-001",
+      "source_path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+      "control_count": 250,
+      "deterministic": 1,
+      "nondeterministic": 249
+    },
+    {
+      "packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "source_path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+      "control_count": 250,
+      "deterministic": 0,
+      "nondeterministic": 250
+    },
+    {
+      "packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+      "source_path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+      "control_count": 132,
+      "deterministic": 18,
+      "nondeterministic": 114
+    },
+    {
+      "packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "source_path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+      "control_count": 250,
+      "deterministic": 12,
+      "nondeterministic": 238
+    },
+    {
+      "packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "source_path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+      "control_count": 250,
+      "deterministic": 1,
+      "nondeterministic": 249
+    },
+    {
+      "packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-003",
+      "source_path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+      "control_count": 22,
+      "deterministic": 0,
+      "nondeterministic": 22
+    }
+  ]
+}

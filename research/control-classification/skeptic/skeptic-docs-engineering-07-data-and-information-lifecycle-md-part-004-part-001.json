@@ -1,0 +1,199 @@
+{
+  "schema_version": "prc.control-classification-skeptic-review/v0.1",
+  "packet_id": "skeptic-docs-engineering-07-data-and-information-lifecycle-md-part-004-part-001",
+  "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-004",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "controls": [
+    {
+      "control_id": "USEQ-490FD16A",
+      "revision": 1,
+      "semantic_sha256": "490fd16a551c5873615bccc4d64a65b06847b989c4e5cf9c59a10b3c1d99f712",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Secondary-use purpose and separate authorization require complete use-path inventories plus privacy and legal authority, not only authorization records.",
+      "counterexample_analysis": "A preserved dataset is reused through an unlisted analytics job for an unlawful purpose; registered secondary uses have approvals. The proposal passes.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-69B301CD",
+      "revision": 1,
+      "semantic_sha256": "69b301cd0af7a8ce8bda149899e41d6c6383dcc30b6afd69f424796ad403c104",
+      "verdict": "confirmed_deterministic",
+      "reason": "The statement is a recording requirement for four named decision dimensions, which an authenticated matter decision record can satisfy exactly.",
+      "counterexample_analysis": "I tried omitting burden, linking risk from another matter, and a decision without authority; field, matter, and signer checks reject each. Decision wisdom is not asserted.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FD46F2D9",
+      "revision": 1,
+      "semantic_sha256": "fd46f2d9675f2bdabff4b7bc9373b69af17dbf1bde21031cf0856dd0aa8bed70",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A record inventory cannot independently prove every copy is captured or correctly classified as authoritative record, backup, archive, replica, cache, or transient.",
+      "counterexample_analysis": "An unregistered analytical copy acts as authoritative source while listed assets have category values. The proposal passes despite an undefined copy.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D1BB5019",
+      "revision": 1,
+      "semantic_sha256": "d1bb50193b251a534da4de933ebfbab480c1193ead88e8d526766186737592ec",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Whether and how legal holds apply to immutable and rolling backups is a legal-preservation decision, not a fact established by two nonempty procedure fields.",
+      "counterexample_analysis": "A policy excludes rolling media contrary to a valid preservation duty. Both backup sections exist, so the proposal passes.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2F26A1EC",
+      "revision": 1,
+      "semantic_sha256": "2f26a1ec6b69165339957442b8532fccb31bca21a1765cafd54f50c1e34c11a3",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Restore fixtures cannot exhaust backup ages, credential histories, deletions, schemas, policies, and obsolete states or every restore path.",
+      "counterexample_analysis": "Approved snapshots detect three stale classes, but an older regional backup silently revives a revoked service account. The proposal passes.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-EF2DB422",
+      "revision": 1,
+      "semantic_sha256": "ef2db42287dac15464acaeb8c9598c8553a8daa0b53aa89fc8c39b900ebf8c7a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Which representation information is needed for interpretation over time requires preservation expertise and complete dependency discovery.",
+      "counterexample_analysis": "A proprietary font and code set are omitted as unnecessary, making the archived record unreadable later while listed metadata remains preserved.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CEAE5A5D",
+      "revision": 1,
+      "semantic_sha256": "ceae5a5d7cd4c04aedab0156b103955478ef4ebd1a7e121e7ee4301d22f45af3",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Fixity is bounded, but readability and retrievability across future systems and users require contextual oracles and a complete held-record inventory.",
+      "counterexample_analysis": "Checksums pass and a sample opens, while an untested held format is unreadable with available tools. The periodic fixture still passes.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FB12DE3D",
+      "revision": 1,
+      "semantic_sha256": "fb12de3d7d64ffd6046bb330ce08543a723d6bae4d0c14cd2b28927d734e935c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Proprietary-format inventories can omit formats, and tool or migration-path records do not prove future functionality after product and license support ends.",
+      "counterexample_analysis": "An unregistered legacy codec has no reader; all listed proprietary formats have downloadable tools. The proposal passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-6456A239",
+      "revision": 1,
+      "semantic_sha256": "6456a239d93ebc3f4332a457aed774264a907ab837b2fbb6b50112a4ba24805a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Procedures for regulator requests, audits, and lawful disclosures require jurisdiction-specific legal authority and cannot be validated by section presence.",
+      "counterexample_analysis": "Four documents exist but direct disclosures contrary to privilege law. The structured proposal passes despite legally inadequate procedures.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-014CFEB0",
+      "revision": 1,
+      "semantic_sha256": "014cfeb05f2870e6fd4f2e0cd4f5c2ed45f83a1cd2cc7fedb182afc280efa790",
+      "verdict": "confirmed_deterministic",
+      "reason": "Five named investigation responsibilities can map to distinct authorized roles in a current segregation-of-duties matrix.",
+      "counterexample_analysis": "I tried one person owning fact finding and disciplinary decision, no public-communication owner, and expired authority; separation and freshness checks reject each.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CE36DD64",
+      "revision": 1,
+      "semantic_sha256": "ce36dd64d04fc7009b5c45b20cb970a5287696da93bdd491a15f9b24a9b1b11c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Investigation-subject and evidence inventories can omit indirect control, delegated access, providers, backups, and administrative paths.",
+      "counterexample_analysis": "A subject controls evidence through a team-owned storage account omitted from the matrix; declared repositories deny direct access. The proposal passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FF473CF7",
+      "revision": 1,
+      "semantic_sha256": "ff473cf7771071886c3453d0e8d1065d726b908032a7319b2657c2abcbd6a485",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Repository existence and configuration do not establish that case management, communication, and evidence storage are substantively secure across all threats.",
+      "counterexample_analysis": "All three systems use encryption but share an administrator who is an investigation subject. Configuration fields pass while security fails.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-DC93FE5C",
+      "revision": 1,
+      "semantic_sha256": "dc93fe5c4a0ec44bdac80416bbba23c3213c28b8db06cdce3da470fa5e8d1043",
+      "verdict": "confirmed_deterministic",
+      "reason": "Eight explicitly named investigation fields can be required in an authenticated case record bound to one matter and revision.",
+      "counterexample_analysis": "I tried omitting limitations, evidence from another case, and corrective action without decision identity; schema and case joins reject each. Finding correctness is separate.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7A78E7C0",
+      "revision": 1,
+      "semantic_sha256": "7a78e7c01732466a9fa3244a71a4e308e0ab2f60e7ef4d021638632436ad7e17",
+      "verdict": "confirmed_deterministic",
+      "reason": "The rule requires that discovery and investigation readiness be exercised; an authenticated scoped exercise with retrieval actions proves test occurrence.",
+      "counterexample_analysis": "I tried a tabletop unrelated to retrieval, a drill without execution evidence, and evidence from another procedure revision; scope and binding checks reject each.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3F523D13",
+      "revision": 1,
+      "semantic_sha256": "3f523d13810ae79c839eddf15d49bc21d086fe7bc2f8c0d4b96db31f3649004b",
+      "verdict": "confirmed_deterministic",
+      "reason": "Five ordered investigation stages can each record exact start and completion timestamps, allowing bounded elapsed-time tracking.",
+      "counterexample_analysis": "I tried missing validation time, timestamps in the wrong matter, and production before collection completion; stage, scope, and ordering checks reject each.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    }
+  ]
+}

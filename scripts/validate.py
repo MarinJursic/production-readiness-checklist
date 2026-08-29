@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
-"""Validate checklist integrity and local Markdown links without dependencies."""
+"""Validate checklist, reviewed classifications, bindings, and local links."""
 
 from __future__ import annotations
 
+import hashlib
+import json
 import re
+import subprocess
 import sys
 import unicodedata
 from collections import Counter, defaultdict
@@ -68,6 +71,116 @@ IMPLEMENTATION_SPECIFIC = re.compile(
     r"Anthropic|Claude)\b",
     re.IGNORECASE,
 )
+BENCHMARK_CASE = re.compile(r"^  - id: ", re.MULTILINE)
+BENCHMARK_EXPECTATION = re.compile(r"^      - \{assertion_id: ", re.MULTILINE)
+
+
+def load_json_object(path: Path, label: str, errors: list[str]) -> dict | None:
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as error:
+        errors.append(f"Cannot read {label} {path.relative_to(ROOT)}: {error}")
+        return None
+    if not isinstance(value, dict):
+        errors.append(f"{label} {path.relative_to(ROOT)} is not a JSON object")
+        return None
+    return value
+
+
+def validate_classification_documents(errors: list[str]) -> int:
+    initial_error_count = len(errors)
+    methodology_path = ROOT / "docs" / "architecture" / "control-classification.md"
+    registry_path = ROOT / "catalog" / "control-id-registry.json"
+    summary_path = ROOT / "research" / "control-classification" / "summary.json"
+    bindings_path = ROOT / "catalog" / "control-check-bindings.json"
+    for path, label in (
+        (methodology_path, "classification methodology"),
+        (registry_path, "control registry"),
+        (summary_path, "classification summary"),
+        (bindings_path, "control-check bindings"),
+    ):
+        if not path.is_file():
+            errors.append(f"Missing {label}: {path.relative_to(ROOT)}")
+    if len(errors) != initial_error_count:
+        return 0
+    summary = load_json_object(summary_path, "classification summary", errors)
+    registry = load_json_object(registry_path, "control registry", errors)
+    binding_document = load_json_object(bindings_path, "control-check bindings", errors)
+    if summary is None or registry is None or binding_document is None:
+        return 0
+    methodology_sha256 = hashlib.sha256(methodology_path.read_bytes()).hexdigest()
+    registry_sha256 = hashlib.sha256(registry_path.read_bytes()).hexdigest()
+    if summary.get("schema_version") != "prc.control-classification-summary/v0.1":
+        errors.append("Classification summary uses an unsupported schema")
+    if summary.get("methodology_sha256") != methodology_sha256:
+        errors.append("Classification summary is stale relative to the methodology document")
+    if summary.get("registry_sha256") != registry_sha256:
+        errors.append("Classification summary is stale relative to the control registry")
+    if summary.get("registry_version") != registry.get("registry_version"):
+        errors.append("Classification summary registry version does not match the registry")
+    deterministic = summary.get("deterministic")
+    nondeterministic = summary.get("nondeterministic")
+    control_count = summary.get("control_count")
+    if not all(isinstance(value, int) and value >= 0 for value in (deterministic, nondeterministic, control_count)):
+        errors.append("Classification summary counts are invalid")
+        return 0
+    if deterministic + nondeterministic != control_count or control_count != registry.get("entry_count"):
+        errors.append("Classification summary does not cover the complete registry")
+    if binding_document.get("schema_version") != "prc.control-check-bindings/v0.1":
+        errors.append("Control-check bindings use an unsupported schema")
+    if binding_document.get("methodology_sha256") != methodology_sha256:
+        errors.append("Control-check bindings are stale relative to the methodology document")
+    if binding_document.get("registry_sha256") != registry_sha256:
+        errors.append("Control-check bindings are stale relative to the registry")
+    bindings = binding_document.get("bindings")
+    if not isinstance(bindings, list) or binding_document.get("binding_count") != len(bindings):
+        errors.append("Control-check binding count does not match its records")
+        return 0
+    binding_ids = [item.get("control_id") for item in bindings if isinstance(item, dict)]
+    if len(binding_ids) != len(bindings) or len(binding_ids) != len(set(binding_ids)):
+        errors.append("Control-check bindings contain invalid or duplicate control IDs")
+    if len(bindings) != deterministic:
+        errors.append("Control-check bindings do not cover exactly the confirmed deterministic controls")
+    return len(bindings)
+
+
+def run_generated_validator(arguments: list[str], label: str, errors: list[str]) -> None:
+    try:
+        completed = subprocess.run(
+            [sys.executable, *arguments], cwd=ROOT, check=False,
+            stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True,
+        )
+    except OSError as error:
+        errors.append(f"Cannot run {label}: {error}")
+        return
+    if completed.returncode != 0:
+        detail = completed.stdout.strip() or f"exit status {completed.returncode}"
+        errors.append(f"{label} failed: {detail}")
+
+
+def validate_generated_classification(errors: list[str]) -> int:
+    binding_count = validate_classification_documents(errors)
+    run_generated_validator(
+        ["scripts/control_classification_review.py", "validate-final"],
+        "Final classification validation", errors,
+    )
+    run_generated_validator(
+        ["scripts/build_control_check_bindings.py", "validate"],
+        "Control-check binding freshness validation", errors,
+    )
+    run_generated_validator(
+        ["scripts/build_control_classification_docs.py", "check"],
+        "Rule-by-rule classification reference freshness validation", errors,
+    )
+    run_generated_validator(
+        ["scripts/build_control_check_programs.py", "check"],
+        "Deterministic checker program freshness validation", errors,
+    )
+    run_generated_validator(
+        ["scripts/control_contracts.py", "check"],
+        "Reviewed control-contract freshness validation", errors,
+    )
+    return binding_count
 
 
 def markdown_files() -> list[Path]:
@@ -243,6 +356,29 @@ def validate_links(errors: list[str]) -> int:
     return checked
 
 
+def validate_benchmark_documentation(errors: list[str]) -> tuple[int, int]:
+    suite_path = ROOT / "fixtures" / "benchmarks" / "core-native" / "suite-comprehensive.yaml"
+    documentation_path = ROOT / "docs" / "scanner" / "benchmarks.md"
+    try:
+        suite = suite_path.read_text(encoding="utf-8")
+        documentation = documentation_path.read_text(encoding="utf-8")
+    except OSError as error:
+        errors.append(f"Cannot read comprehensive benchmark contract: {error}")
+        return 0, 0
+    cases = len(BENCHMARK_CASE.findall(suite))
+    expectations = len(BENCHMARK_EXPECTATION.findall(suite))
+    if cases < 1 or expectations < cases:
+        errors.append("Comprehensive benchmark suite has invalid case or expectation counts")
+        return cases, expectations
+    declared = f"{cases}-case, {expectations}-expectation fixture corpus"
+    if declared not in documentation:
+        errors.append(
+            "Benchmark documentation is stale: expected the measured phrase "
+            f"{declared!r}"
+        )
+    return cases, expectations
+
+
 def main() -> int:
     errors: list[str] = []
     ids, numbers, production_controls = validate_pages(errors)
@@ -253,6 +389,8 @@ def main() -> int:
             f"Lifecycle controls duplicate {len(cross_layer_duplicates)} production controls"
         )
     link_count = validate_links(errors)
+    binding_count = validate_generated_classification(errors)
+    benchmark_cases, benchmark_expectations = validate_benchmark_documentation(errors)
 
     if errors:
         print("Validation failed:")
@@ -264,7 +402,9 @@ def main() -> int:
     print(
         f"Validated {len(ids) + len(engineering_ids)} unique controls "
         f"({len(engineering_ids)} lifecycle and {len(ids)} production-readiness) "
-        f"across {sections} numbered production sections and {link_count} local Markdown links."
+        f"across {sections} numbered production sections and {link_count} local Markdown links; "
+        f"validated {binding_count} reviewed deterministic bindings and "
+        f"{benchmark_cases} benchmark cases with {benchmark_expectations} expectations."
     )
     return 0
 

@@ -1,0 +1,61 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-12-operations-sre-and-support-md-part-002-part-002",
+  "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 2,
+  "controls": [
+    {
+      "control_id": "USEQ-BFBBB220",
+      "revision": 1,
+      "semantic_sha256": "bfbbb220705bcdacd74073caef8c8382fb9db00faeb4bae87883620c15cc5b71",
+      "statement": "Ensure customer-facing status and support information can be updated during control-plane failure.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 668
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Service design for operability and supportability"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A control-plane failure can be simulated while independently exercising public status and support-information updates.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "During a simulated control-plane failure, authorized staff can update customer status and support information through an independent path.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0BFDE64A",
+      "revision": 1,
+      "semantic_sha256": "0bfde64ac70c4c35200d9a13074b5823d6bd1450717aafd4a85e5724788d30c4",
+      "statement": "Confirm every required operational and support role is staffed for the intended service hours and risk.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 674
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "People, roles, competence, and staffing readiness"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Required roles, service hours, and approved coverage needs can be joined to staffing rosters and schedules.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every required operational and support role has named staffing coverage for all approved service hours and risk-driven coverage periods.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

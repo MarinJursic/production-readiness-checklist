@@ -1,0 +1,302 @@
+{
+  "schema_version": "prc.control-classification-skeptic-review/v0.1",
+  "packet_id": "skeptic-docs-checklists-02-product-risk-architecture-md-part-001-part-001",
+  "primary_packet_id": "docs-checklists-02-product-risk-architecture-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "controls": [
+    {
+      "control_id": "PRC-04-018",
+      "revision": 1,
+      "semantic_sha256": "6b20b7a97bb258a91562d0916d9dcc428531bdf47f9fca8ece73ce7901a66d6d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed clause verifies a finite period but not that it was defined before launch completion or that completion cannot occur before the required observation semantics are satisfied.",
+      "counterexample_analysis": "A team declares the launch complete at 10:00, then creates a record at 11:00 with a finite 09:00–09:30 observation period. The clause passes although the period was not defined before completion.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-04-019",
+      "revision": 1,
+      "semantic_sha256": "1bb48e06cac914b87c1da7d1392e99c38b6a32c4d73b74cbd9cd37cca89590b3",
+      "verdict": "rejected_nondeterministic",
+      "reason": "An authority assignment alone does not bind the matrix to this release, prove freshness, or establish that the named identities still hold authority when an action occurs.",
+      "counterexample_analysis": "A prior-release matrix names an employee whose authority was revoked yesterday. It remains authenticated and assigns all four actions, so the clause passes while the current launch has no valid rollback authority.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-04-020",
+      "revision": 1,
+      "semantic_sha256": "36c2860810a696965a36c91e5b5fc397be9c91e620dd2b73d48bdc126e350eba",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Numeric traffic and cohort selectors do not prove that the forecast is current, release-bound, complete across traffic dimensions, or meaningfully represents expected demand.",
+      "counterexample_analysis": "A stale forecast for the previous release records 100 requests per day and a country selector. It satisfies the clause while the new launch expects 100,000 requests per second from invitation cohorts.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-04-021",
+      "revision": 1,
+      "semantic_sha256": "614379a7f628448876e7aa41d29fb900c088718425a41e1b3948ce01841a0b10",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposal validates a declared vocabulary value but never compares that declaration with the actual exposure configuration, so it proves documentation rather than whether the launch really has that mode.",
+      "counterexample_analysis": "The release record says internal while a CDN route makes the release public. The allowed vocabulary check passes although the actual launch is not internal.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-04-022",
+      "revision": 1,
+      "semantic_sha256": "b6e518c21c60160e64c0f96672d39466103172673d89a47488220ad8711eac0b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Four matching canonical records do not prove that every artifact and person in marketing, sales, support, and operations actually uses those values.",
+      "counterexample_analysis": "The four official records say 1 September and EU-only, but a sales deck and support script still announce 25 August worldwide. The comparison passes while the functions use conflicting dates and scope.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-001",
+      "revision": 1,
+      "semantic_sha256": "133105c2cd2a3353d9f6cc73f542c4d75acb420b7ef9a405efc2a6ceb4811272",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposal assumes a complete production-service inventory without defining an authoritative boundary or proving that shadow and unmanaged production services cannot be omitted.",
+      "counterexample_analysis": "A manually deployed production worker is absent from the queried catalog and has no business owner. Every inventoried service maps to an owner, so the anti-join passes while the original every-service claim is false.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-002",
+      "revision": 1,
+      "semantic_sha256": "43d4cd6335a5d38dd84ebe1ae8ba13435a0ea46944d28071b5e695743da87bce",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed join cannot prove the universal statement until production-service scope and completeness across all control planes are objectively bounded.",
+      "counterexample_analysis": "A production cron service in a separate account is missing from the inventory and has no engineering owner. All catalogued services have owners, so the proposal passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-003",
+      "revision": 1,
+      "semantic_sha256": "fdf4e4c59be6aa1ac1a47cd110462e14f24b02358f00f78bd1e81aaa18f957f0",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A data catalog is not automatically authoritative for every data set, and the proposal gives no discovery boundary for exports, spreadsheets, replicas, or shadow stores.",
+      "counterexample_analysis": "A customer export copied into an analyst spreadsheet is absent from the catalog and has no accountable owner. Every catalog row is owned, so the checker passes while an in-scope data set violates the rule.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-004",
+      "revision": 1,
+      "semantic_sha256": "502e8c10247ab4bee7822891589033131f3b369f5b8d95cb7b5e796bad75ae24",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The check relies on the inventory’s security-sensitivity label, but deciding sensitivity is itself a risk judgment and omitted or misclassified components evade the owner check.",
+      "counterexample_analysis": "A token-handling component is classified non-sensitive by mistake and has no security contact. The second clause skips it, so both clauses pass despite the real violation.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-005",
+      "revision": 1,
+      "semantic_sha256": "c1237a7444ca2bea9220c97e071688255476382fbda4dd5e4667daf51908a555",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Release evidence is not a complete authority for every third-party integration and the proposal does not bound browser tags, manual transfers, webhooks, or shadow SaaS use.",
+      "counterexample_analysis": "A marketing pixel sends production data to a third party but is absent from release evidence and has no owner. Every listed integration is owned, so the proposal passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-006",
+      "revision": 1,
+      "semantic_sha256": "2cffa0b68341b894bd9d13a3952eef40af2f139010a70c40f916591aec28d8a2",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Monitoring and repository sources do not necessarily enumerate dashboards, alerts, and runbooks in SaaS tools, personal spaces, or alternate accounts; completeness is asserted rather than proven.",
+      "counterexample_analysis": "An active pager alert created directly in a provider console has no owner and is missing from the collected inventory. All inventoried items are owned, so the checker passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-007",
+      "revision": 1,
+      "semantic_sha256": "5e239980b917dfb3b94a58f63306ba0ee938eb9d778a04b22eb76d8414891e02",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A scheduler snapshot cannot establish every background process without a sealed definition and inventory across queues, platforms, databases, clients, and external automation.",
+      "counterexample_analysis": "A database-scheduled cleanup task is not exposed by the queried scheduler and has no owner. Every discovered job maps to an owner, so the proposal passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-009",
+      "revision": 1,
+      "semantic_sha256": "e8b86f6d8f3d3a381bd08f7ecbcc245cad2ffc93f20fcddfc899cd54779a56da",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Provider applicability and the complete provider inventory are not defined, so the checker can omit a required escalation contact while satisfying the fixed contact fields.",
+      "counterexample_analysis": "The service depends on a payment provider but that provider is absent from the applicability record. Primary, secondary, management, security, and legal contacts exist, so the clauses pass without payment-provider escalation.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-021",
+      "revision": 1,
+      "semantic_sha256": "1e4a6306fd4eb4bc3fe326c9882e132f9bf326fab1e69cf8ee48433302b0789c",
+      "verdict": "confirmed_deterministic",
+      "reason": "The original control requires the existence of a maintained release-specific register, and the proposed authenticated record is bound to the exact release, scope digest, and current revision.",
+      "counterexample_analysis": "I tried an empty, stale, or prior-release register: emptiness does not violate this existence-only control, while stale or wrong-release records fail the explicit binding and current-revision checks. No broader risk-quality promise is smuggled into the statement.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-022",
+      "revision": 1,
+      "semantic_sha256": "d35e460a556ed8c44d885b197c4b7158d878c957d6ca40f4c261958c1f988089",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Checking fields on existing rows does not establish a complete risk inventory; an empty or selectively incomplete register passes the universal each-risk wording.",
+      "counterexample_analysis": "The register omits a known supplier-collapse risk but every remaining row has all six required fields. The clause passes although that omitted risk has no owner, likelihood, impact, treatment, evidence, or review date.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-023",
+      "revision": 1,
+      "semantic_sha256": "3e17c81007580adda2c23bf0d682a76c36f58e4042f8cb009ac7937fd655ea23",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposal quantifies only over recorded acceptances and has no authoritative inventory of all accepted residual risks, so omitted decisions disappear from evaluation.",
+      "counterexample_analysis": "Leadership accepts a launch risk in meeting notes but it is never added to the risk register. The recorded-acceptance set is empty, so both clauses pass while the accepted risk and accepter were not recorded.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-024",
+      "revision": 1,
+      "semantic_sha256": "7553d5fa90c5f69886198b51208db58c684eda57fe7fbce1af3b86928cf0ab2a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "High-impact applicability, subject-matter expertise, and meaningful independence depend on accountable policy and organizational judgment, while omitted assumptions evade the proposed records.",
+      "counterexample_analysis": "A critical tax assumption is labeled medium-impact and reviewed by a nominally independent generalist. The policy fields and signed record pass even though no independent tax expert reviewed the truly high-impact assumption.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "human_accountability",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-026",
+      "revision": 1,
+      "semantic_sha256": "ac9af55ef86d5a15c388801cee2b580f34c2dc91922a1531a5168d6aa26367bb",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A merely finite expiry does not define the maximum acceptable exception duration, so an exception can remain effectively indefinite while passing both clauses.",
+      "counterexample_analysis": "An exception receives an expiry in the year 2126 and an active owner. It is finite and not expired today, so the proposal passes despite leaving the exception open for a century.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_threshold"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-027",
+      "revision": 1,
+      "semantic_sha256": "281b6d7bf4f37a78177257fd450a59772716b1e4722b0693441b63678b88f9f2",
+      "verdict": "rejected_nondeterministic",
+      "reason": "An executed result does not prove that the compensating control itself was meaningfully tested unless scope, fault model, oracle, thresholds, and evidence freshness are fixed.",
+      "counterexample_analysis": "A compensating rate limiter links to a passing test that only checks the configuration file exists and never sends excess traffic. It is an executed result, so the clauses pass although effectiveness was not tested.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-05-035",
+      "revision": 1,
+      "semantic_sha256": "08aa2edc9b20e193a2e2f279b3c50fa0b446bb8a0e1c7e1626cccd8cdb08c8ac",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposal lacks a complete change inventory and makes high-impact classification an upstream authority decision; omitted or downgraded changes evade identity separation.",
+      "counterexample_analysis": "An administrator implements and self-approves a production data migration but labels it ordinary. Every record classified high-impact has different identities, so the clauses pass while a real high-impact change lacks separation.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "human_accountability",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-005",
+      "revision": 1,
+      "semantic_sha256": "f395ef9dc54f674464ef5ed93aa1a0a83b8391569ec3d0e54f364c9fbd0e0178",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposal does not define authoritative network boundaries or prove a complete reachable-interface inventory across accounts, proxies, tunnels, and third parties.",
+      "counterexample_analysis": "A debug endpoint exposed through a forgotten load balancer is missing from environment evidence and unmarked in the architecture. Every discovered endpoint is marked, so the checker passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-06-040",
+      "revision": 1,
+      "semantic_sha256": "e61cfba8cf94957f718d71016cb5a6070caaca1634f875a232468ddd50f66100",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The check has no complete system inventory and depends on accountable high-value or high-risk classification; omitted or downgraded systems avoid review entirely.",
+      "counterexample_analysis": "A payment system is classified medium-risk and omitted from the applicable-system set, so it has no independent review. Every system marked high-risk has a signed review, and the proposal passes.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "human_accountability",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    }
+  ]
+}

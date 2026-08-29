@@ -1,0 +1,2501 @@
+{
+  "schema_version": "prc.control-classification-packet/v0.1",
+  "packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/engineering/08-security-and-cryptography.md",
+  "control_count": 166,
+  "controls": [
+    {
+      "control_id": "USEQ-8244F133",
+      "revision": 1,
+      "semantic_sha256": "8244f1334cd040a132fdb0b3964d4cd7ad0a5353f3e7dd3ab08005851936c0dd",
+      "statement": "Communicate affected scope, uncertainty, mitigations, customer actions, and update cadence honestly.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 977
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security incident containment, recovery, and product correction"
+      ]
+    },
+    {
+      "control_id": "USEQ-851F7EBC",
+      "revision": 1,
+      "semantic_sha256": "851f7ebc7337308dddc362d78ba833531e48d4afd782e4d36df7970031332bf2",
+      "statement": "Coordinate notification obligations across jurisdictions, contracts, insurers, regulators, partners, and customers.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 978
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security incident containment, recovery, and product correction"
+      ]
+    },
+    {
+      "control_id": "USEQ-3AEAEB73",
+      "revision": 1,
+      "semantic_sha256": "3aeaeb7368495f410a7b97058bcd041dd1f76741e7b07b34ac9e482c31ee77c9",
+      "statement": "Verify restoration from backups or clean artifacts and prevent reintroduction of the compromise.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 979
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security incident containment, recovery, and product correction"
+      ]
+    },
+    {
+      "control_id": "USEQ-5E438DCC",
+      "revision": 1,
+      "semantic_sha256": "5e438dcccef6ba970f5b4a92bb3ea88ea29940e29ec81cbda31cfa85b05ebcfb",
+      "statement": "Confirm identity, authorization, data integrity, update channels, monitoring, and customer trust after recovery.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 980
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security incident containment, recovery, and product correction"
+      ]
+    },
+    {
+      "control_id": "USEQ-D33CA867",
+      "revision": 1,
+      "semantic_sha256": "d33ca867b7951b259cb8ec133c9e6bd2bf5cd59ce28d02224206514747a4e738",
+      "statement": "Search for persistence, related access, lateral movement, stolen credentials, altered code, poisoned data, and malicious automation before closure.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 981
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security incident containment, recovery, and product correction"
+      ]
+    },
+    {
+      "control_id": "USEQ-1F82956C",
+      "revision": 1,
+      "semantic_sha256": "1f82956c8345718d1575329f78064dc73abe38bea5714c2c8265d0ad9a6d553b",
+      "statement": "Perform a root-cause and systemic-control review rather than treating the incident as an isolated operator mistake.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 982
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security incident containment, recovery, and product correction"
+      ]
+    },
+    {
+      "control_id": "USEQ-C4C582B1",
+      "revision": 1,
+      "semantic_sha256": "c4c582b192b80c6af1cbb010cc995e4a44e57cb1aff42616e63ebf447edcaa46",
+      "statement": "Convert lessons into architecture, code, tests, build controls, monitoring, staffing, supplier requirements, and roadmap changes.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 983
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security incident containment, recovery, and product correction"
+      ]
+    },
+    {
+      "control_id": "USEQ-A2C1B883",
+      "revision": 1,
+      "semantic_sha256": "a2c1b883da2455347099ee2726c6fb87fe64a28f0f5a674aa209f8cfe22fbeee",
+      "statement": "Track corrective actions to completion and verify that recurrence risk has materially decreased.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 984
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security incident containment, recovery, and product correction"
+      ]
+    },
+    {
+      "control_id": "USEQ-A91B9524",
+      "revision": 1,
+      "semantic_sha256": "a91b9524b3f3ed8a3d52ebf6dd482dbf5f5ba17b51aa1d2205e1552627a2a480",
+      "statement": "Exercise severe security scenarios through tabletop and technical drills at a cadence proportionate to risk.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 985
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security incident containment, recovery, and product correction"
+      ]
+    },
+    {
+      "control_id": "USEQ-0A55F5FD",
+      "revision": 1,
+      "semantic_sha256": "0a55f5fd29ef498bcfc7afab87011513f371c4a95b88caba80f6bbb9d2371ccf",
+      "statement": "Block release when the product exposes a known critical or actively exploited vulnerability without a verified mitigation and authorized exceptional decision.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 989
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security release blockers and required assurance evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-54F7F6C6",
+      "revision": 1,
+      "semantic_sha256": "54f7f6c63586aa9ab88f9565796e3cb2b8872de400c3cfcef6bd22c4cdce14cd",
+      "statement": "Block release when authentication, authorization, tenant isolation, update integrity, signing, secret handling, or privileged access has not been independently verified.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 990
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security release blockers and required assurance evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-B58C6EC4",
+      "revision": 1,
+      "semantic_sha256": "b58c6ec4137bfd563a6cfdb076c2fc59ffa8281f1c723eed0604a07b0e6f32a8",
+      "statement": "Block release when an unsupported critical dependency, runtime, platform, algorithm, certificate, or build component is required without an approved containment and migration plan.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 991
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security release blockers and required assurance evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-150EFE9C",
+      "revision": 1,
+      "semantic_sha256": "150efe9c5b32d7bf6718893c20172a92f3a3adde8fc696c180c5b87164fc412b",
+      "statement": "Block release when production artifacts cannot be traced to reviewed source, trusted build inputs, provenance, SBOM, signatures or attestations, tests, and approval.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 992
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security release blockers and required assurance evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-3A5EA809",
+      "revision": 1,
+      "semantic_sha256": "3a5ea809bae365db9c89672b62bce605fbe3da61142e328421cc40c13815ac82",
+      "statement": "Block release when production secrets or signing material have been exposed and not fully rotated and invalidated.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 993
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security release blockers and required assurance evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-1D0E03A9",
+      "revision": 1,
+      "semantic_sha256": "1d0e03a9d11d18fad29b38c24b99e5b8c8183d07d6daa1da062d3847620c7ddb",
+      "statement": "Block release when material high-risk parser, memory-safety, cryptographic, supply-chain, or remote-management findings remain unexplained.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 994
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security release blockers and required assurance evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-F7098ED2",
+      "revision": 1,
+      "semantic_sha256": "f7098ed28d1a2b4788e8d51ad7e28d37b467148221112e626959cc121f610a38",
+      "statement": "Block release when the vulnerability-reporting, incident-response, emergency-update, rollback, or revocation process is unavailable for a high-impact product.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 995
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security release blockers and required assurance evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-70A39DA4",
+      "revision": 1,
+      "semantic_sha256": "70a39da49a0cb451023f797094b147d911ec41e584138b095af3aec5f429e930",
+      "statement": "Block release when security controls operate only in test environments or have not been verified against the exact production configuration and artifact.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 996
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security release blockers and required assurance evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-62CD6B54",
+      "revision": 1,
+      "semantic_sha256": "62cd6b54d4f82b88fee6036587fa7e5dcbe4464de3a1f013150070e7ec9776ca",
+      "statement": "Block release when a required security control has been disabled for convenience without a reviewed exception and compensating control.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 997
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security release blockers and required assurance evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-5564D5C2",
+      "revision": 1,
+      "semantic_sha256": "5564d5c2e49b91c24a938d6351957cd4436ed613fa821afdeda18c8de3bf6369",
+      "statement": "Retain the threat model, security requirements, design reviews, code and configuration analysis, penetration results, dependency findings, SBOM, provenance, attestations, VEX, advisory decisions, exceptions, and retest evidence with the release.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 998
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security release blockers and required assurance evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-F5B1ADD7",
+      "revision": 1,
+      "semantic_sha256": "f5b1add764a22169101deb70e5d41d5f08d1f21bf0ffda326046e1d6473f72ca",
+      "statement": "Record the exact tools, versions, rules, configurations, environments, test identities, test data, coverage limitations, false-positive decisions, and assessment dates.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 999
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security release blockers and required assurance evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-14ADA59E",
+      "revision": 1,
+      "semantic_sha256": "14ada59ec91e79597d4dc3a24b00561c98992f1afb3f53a8c2137b0c4fd41dfe",
+      "statement": "Require independent review of evidence for material security claims and release exceptions.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1000
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security release blockers and required assurance evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-E95CE966",
+      "revision": 1,
+      "semantic_sha256": "e95ce966c7567a8e639104ffb7a1ca50ed52dd8174717f1bbef5a542bee5a7ed",
+      "statement": "Verify that security findings have owners, severity rationale, affected versions, remediation targets, customer impact, and completed retests.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1001
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security release blockers and required assurance evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-EC6C9A6D",
+      "revision": 1,
+      "semantic_sha256": "ec6c9a6d3b59cddd45ff501a8b15046fd2b5404da60223586a919bcce6620a2c",
+      "statement": "Confirm that ongoing monitoring can detect newly disclosed vulnerabilities, unexpected attack-surface changes, credential misuse, control degradation, and unsupported components after release.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1002
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security release blockers and required assurance evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-E51018A3",
+      "revision": 1,
+      "semantic_sha256": "e51018a3a783460e209de2e7dd0afe8e51599d36670d17920d9ac929f68a0cf4",
+      "statement": "Make the final security sign-off state the known residual risks and limitations rather than claiming that the product is completely secure.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1003
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security release blockers and required assurance evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-6B45EAD6",
+      "revision": 1,
+      "semantic_sha256": "6b45ead6065627b2210c7e45659e5d7db1db2c4753b27414321d588607c99114",
+      "statement": "Identify facilities, rooms, cabinets, work areas, homes, vehicles, devices, media, and suppliers that can affect system confidentiality, integrity, availability, privacy, or safety.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1011
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical and environmental security governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-4C535779",
+      "revision": 1,
+      "semantic_sha256": "4c535779b8f00c561e43f17611973ca2185c29019df69a9a29612b3499ca590b",
+      "statement": "Classify physical locations and assets according to the consequence of unauthorized access, damage, loss, or interruption.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1012
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical and environmental security governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-436929D1",
+      "revision": 1,
+      "semantic_sha256": "436929d1536dca83aa3e11f02b4d06afd71f3dcad1296bb6f877408f4d82caaf",
+      "statement": "Assign accountable ownership for physical safeguards, environmental resilience, endpoint protection, and media handling.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1013
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical and environmental security governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-393F35E8",
+      "revision": 1,
+      "semantic_sha256": "393f35e8821942bdb1418b30924a787007a439ec82ad19864663ca8fd02b0d53",
+      "statement": "Integrate physical risks into security, privacy, continuity, safety, insurance, and supplier risk assessments.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1014
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical and environmental security governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-1ECA2092",
+      "revision": 1,
+      "semantic_sha256": "1eca20926e00643ad1b92076233cccea7347344dd4ea2c205ea6368c9b60794b",
+      "statement": "Consider theft, tampering, espionage, coercion, vandalism, fire, water, temperature, humidity, dust, vibration, electromagnetic effects, power loss, utility failure, and natural hazards.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1015
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical and environmental security governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-8F7DDB17",
+      "revision": 1,
+      "semantic_sha256": "8f7ddb1791fa70f974dfb074f3817a1ea5b3ee50066e56b16a05a278f3133a5b",
+      "statement": "Consider local crime, civil disturbance, geopolitical, environmental, and climate-related risks relevant to each site.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1016
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical and environmental security governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-B58755E9",
+      "revision": 1,
+      "semantic_sha256": "b58755e966cde98a7b062b989334884bd25db8a6f53fdfdae1d270fcd4e4641a",
+      "statement": "Define minimum safeguards for offices, data facilities, laboratories, warehouses, support centers, remote workplaces, and temporary locations.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1017
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical and environmental security governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-AB7E0C3F",
+      "revision": 1,
+      "semantic_sha256": "ab7e0c3fec1aaf709791af81179bd5bbe97273d22945afbc2c3aef42bcfbafb9",
+      "statement": "Apply layered safeguards proportionate to criticality rather than relying on one barrier.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1018
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical and environmental security governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-DF8CEAC4",
+      "revision": 1,
+      "semantic_sha256": "df8ceac41e4a7a3a1556349a9829eaa42513b2ef072a68eb3362258e10f46a35",
+      "statement": "Ensure physical controls do not create unacceptable accessibility, emergency-egress, or worker-safety barriers.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1019
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical and environmental security governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-578C785C",
+      "revision": 1,
+      "semantic_sha256": "578c785c190d29653dca3ad52b8c127f7161460e550ed926b88634c8b120df11",
+      "statement": "Review physical and environmental safeguards after incidents, relocations, construction, supplier changes, and material threat changes.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1020
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical and environmental security governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-A6B0DBB3",
+      "revision": 1,
+      "semantic_sha256": "a6b0dbb39e74748de53e8fa8e595b87c011adf01c8bb7be5a41502e8ee05fca8",
+      "statement": "Preserve design, inspection, maintenance, access, incident, and exception records.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1021
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical and environmental security governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-B7E93635",
+      "revision": 1,
+      "semantic_sha256": "b7e936354802a0f92f5c389b4ad4bf6e31f35b1753979a9099b0c7572feee7e6",
+      "statement": "Define physical security boundaries and zones with clear authorized purposes.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1025
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Site boundaries, zones, and secure areas"
+      ]
+    },
+    {
+      "control_id": "USEQ-8C305E02",
+      "revision": 1,
+      "semantic_sha256": "8c305e02c7a0ab5d658b59c787ed6a2e0092153d3993f9cac1098b7decb9a943",
+      "statement": "Place critical equipment and sensitive work away from publicly accessible or easily observed areas where practical.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1026
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Site boundaries, zones, and secure areas"
+      ]
+    },
+    {
+      "control_id": "USEQ-313A1B22",
+      "revision": 1,
+      "semantic_sha256": "313a1b22b0adc0410f0d18d26d38bf36fc18259b791f82fade7605f7401c8d9d",
+      "statement": "Restrict secure areas to people with a current business need.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1027
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Site boundaries, zones, and secure areas"
+      ]
+    },
+    {
+      "control_id": "USEQ-F50785B4",
+      "revision": 1,
+      "semantic_sha256": "f50785b41d8f108ddce8699e1b23e7231ebf7d53a197c0c863ca26dd6de008c4",
+      "statement": "Use individual, attributable access credentials rather than shared physical tokens where feasible.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1028
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Site boundaries, zones, and secure areas"
+      ]
+    },
+    {
+      "control_id": "USEQ-753F645D",
+      "revision": 1,
+      "semantic_sha256": "753f645d4bac44d6a2947e49177301217f5407f8c5cd7dec19bfaf5e2f7b2333",
+      "statement": "Apply stronger authentication or dual access to especially sensitive areas where risk warrants it.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1029
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Site boundaries, zones, and secure areas"
+      ]
+    },
+    {
+      "control_id": "USEQ-EAFCC235",
+      "revision": 1,
+      "semantic_sha256": "eafcc235d19570e82fbf5ca23a4f7155ddeda42ad9a26a768b403f9714cdc779",
+      "statement": "Review physical access rights periodically and after role, employment, or supplier changes.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1030
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Site boundaries, zones, and secure areas"
+      ]
+    },
+    {
+      "control_id": "USEQ-6A8A85FE",
+      "revision": 1,
+      "semantic_sha256": "6a8a85fe616c4894e907179cc0bdaedb51ef6736525fce0afc9c65f90f2ff4ae",
+      "statement": "Revoke badges, keys, biometric permissions, parking access, and facility credentials promptly during offboarding.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1031
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Site boundaries, zones, and secure areas"
+      ]
+    },
+    {
+      "control_id": "USEQ-6A73C44A",
+      "revision": 1,
+      "semantic_sha256": "6a73c44a0f94443f2241ac7223903273718daa1b8111cd79b065f060ab468dce",
+      "statement": "Maintain controlled issuance, return, replacement, and loss reporting for badges and keys.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1032
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Site boundaries, zones, and secure areas"
+      ]
+    },
+    {
+      "control_id": "USEQ-925C996D",
+      "revision": 1,
+      "semantic_sha256": "925c996d4e5f51aa2ae01917ae90dd0d3c66fcf61cd8b83b59515988b9feaf70",
+      "statement": "Protect access-control administration systems from unauthorized change.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1033
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Site boundaries, zones, and secure areas"
+      ]
+    },
+    {
+      "control_id": "USEQ-66575F6A",
+      "revision": 1,
+      "semantic_sha256": "66575f6a4e0ee852852ff7ffc4cead6b8ae7d39fb6aba599bf0daa951cc50add",
+      "statement": "Prevent tailgating, piggybacking, propped doors, and uncontrolled delivery access.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1034
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Site boundaries, zones, and secure areas"
+      ]
+    },
+    {
+      "control_id": "USEQ-EAF46DA2",
+      "revision": 1,
+      "semantic_sha256": "eaf46da2ec9ae2cf945930a65c7048b1f10fcc7551cfd8a1a6e5c7b30f95bd33",
+      "statement": "Provide safe reception, identity verification, and escort procedures for visitors.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1035
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Site boundaries, zones, and secure areas"
+      ]
+    },
+    {
+      "control_id": "USEQ-325FBA9F",
+      "revision": 1,
+      "semantic_sha256": "325fba9fc699423e892e86de4a42e173437aaa7b153d7da93f5a3e377b12a808",
+      "statement": "Record visitor identity, sponsor, purpose, areas accessed, time, and credential return where appropriate.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1036
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Site boundaries, zones, and secure areas"
+      ]
+    },
+    {
+      "control_id": "USEQ-D2C44CD6",
+      "revision": 1,
+      "semantic_sha256": "d2c44cd67ca682860b12ba606d73a178bb028e20a4def97a63f0fb5fcfa810ca",
+      "statement": "Restrict photography, recording, wireless devices, and removable media in sensitive areas where justified.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1037
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Site boundaries, zones, and secure areas"
+      ]
+    },
+    {
+      "control_id": "USEQ-F69ADDFE",
+      "revision": 1,
+      "semantic_sha256": "f69addfe525018c65aee985a593e61e80ba8f4109c0efbebdafe2c6725fbeeda",
+      "statement": "Prevent windows, walls, ceilings, floors, ducts, and shared service spaces from bypassing required boundaries.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1038
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Site boundaries, zones, and secure areas"
+      ]
+    },
+    {
+      "control_id": "USEQ-E97ABF98",
+      "revision": 1,
+      "semantic_sha256": "e97abf9887da1cc3ac6341187d3c772d8107cc8761cfc1b12cd1e8d9d6772ae1",
+      "statement": "Secure racks, cabinets, consoles, network ports, and removable components within controlled areas.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1039
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Site boundaries, zones, and secure areas"
+      ]
+    },
+    {
+      "control_id": "USEQ-AEFC981A",
+      "revision": 1,
+      "semantic_sha256": "aefc981affbb9f8a92d0dfa9369bab6229be137e6de571d878d28134832af4b4",
+      "statement": "Monitor forced entry, door faults, and abnormal access patterns.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1040
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Site boundaries, zones, and secure areas"
+      ]
+    },
+    {
+      "control_id": "USEQ-DEC494C6",
+      "revision": 1,
+      "semantic_sha256": "dec494c63101e1605dad149600f6936a2b5059c6086f14285db49c27c910ae35",
+      "statement": "Retain access records for a period aligned with incident, legal, and privacy requirements.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1041
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Site boundaries, zones, and secure areas"
+      ]
+    },
+    {
+      "control_id": "USEQ-DD6F57F6",
+      "revision": 1,
+      "semantic_sha256": "dd6f57f67d8ac38b90727cfe2e001f626881422a5935ae697c5acca2d8c196d7",
+      "statement": "Test emergency access and evacuation without normal credentials.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1042
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Site boundaries, zones, and secure areas"
+      ]
+    },
+    {
+      "control_id": "USEQ-B7236391",
+      "revision": 1,
+      "semantic_sha256": "b72363914fbcf1d46ef9a061e0734ae0b8959b32df7d8d0c19bf1e3123b03814",
+      "statement": "Ensure emergency responders can act safely without creating uncontrolled ongoing access.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1043
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Site boundaries, zones, and secure areas"
+      ]
+    },
+    {
+      "control_id": "USEQ-C5FF67DE",
+      "revision": 1,
+      "semantic_sha256": "c5ff67de05e75c0f325518910ee1a7279cdc64e3620a3646852c4254d7107f88",
+      "statement": "Use surveillance only for a defined, lawful, proportionate purpose.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1047
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Surveillance and physical monitoring"
+      ]
+    },
+    {
+      "control_id": "USEQ-2842A9CA",
+      "revision": 1,
+      "semantic_sha256": "2842a9cac9b4a270db4de948bff03729bcacd76d5299827a6a70bde936cb2200",
+      "statement": "Conduct privacy and worker-impact review before introducing or expanding surveillance.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1048
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Surveillance and physical monitoring"
+      ]
+    },
+    {
+      "control_id": "USEQ-D63CB9AB",
+      "revision": 1,
+      "semantic_sha256": "d63cb9abf2cf7ed25334c322f90a63e77972354521be5c8655730df8b97dfbe2",
+      "statement": "Place cameras, sensors, and access logs to address defined risks without monitoring private activity unnecessarily.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1049
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Surveillance and physical monitoring"
+      ]
+    },
+    {
+      "control_id": "USEQ-B9A171A5",
+      "revision": 1,
+      "semantic_sha256": "b9a171a5129d4dd2c29da63bf49469d00cfdedf7299fd31513e8ef8920a68a23",
+      "statement": "Provide required notice and consultation regarding monitoring.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1050
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Surveillance and physical monitoring"
+      ]
+    },
+    {
+      "control_id": "USEQ-A49EFB4B",
+      "revision": 1,
+      "semantic_sha256": "a49efb4bbdd49d6f6f2bdfd79ab1d1d4958f68f0af1678c10f24b0b50611b09e",
+      "statement": "Restrict live and recorded surveillance access to authorized roles.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1051
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Surveillance and physical monitoring"
+      ]
+    },
+    {
+      "control_id": "USEQ-45C9E3AB",
+      "revision": 1,
+      "semantic_sha256": "45c9e3abe981680c7b15be8ee9feb1a418e4b195dc3f50d81ac278fa64d6236e",
+      "statement": "Protect recordings and physical access logs from alteration, unauthorized disclosure, and excessive retention.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1052
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Surveillance and physical monitoring"
+      ]
+    },
+    {
+      "control_id": "USEQ-3F5821DB",
+      "revision": 1,
+      "semantic_sha256": "3f5821dba42fab6cd9f3f1b9f26a81a258f667ce7d8d1c9d05bdd3d1b19d65c7",
+      "statement": "Synchronize monitoring timestamps sufficiently for incident correlation.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1053
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Surveillance and physical monitoring"
+      ]
+    },
+    {
+      "control_id": "USEQ-E9BE9155",
+      "revision": 1,
+      "semantic_sha256": "e9be91554e36a6adf3393a36eb86597cc470e0ec9405d907dc21ec1d164388f3",
+      "statement": "Monitor loss of camera, sensor, alarm, or access-control coverage.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1054
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Surveillance and physical monitoring"
+      ]
+    },
+    {
+      "control_id": "USEQ-4DE99E21",
+      "revision": 1,
+      "semantic_sha256": "4de99e21f3c93fc2c853249a13ba34de203be5862ae87a9438a6840d22c7e461",
+      "statement": "Test whether monitored events reach a responder who can act.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1055
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Surveillance and physical monitoring"
+      ]
+    },
+    {
+      "control_id": "USEQ-9327313F",
+      "revision": 1,
+      "semantic_sha256": "9327313f9f34919d1c187d3d802dcbedb56732536d5910cc330be37d91b342d2",
+      "statement": "Avoid treating surveillance as a substitute for prevention, staffing, or secure design.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1056
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Surveillance and physical monitoring"
+      ]
+    },
+    {
+      "control_id": "USEQ-AFFBEDAB",
+      "revision": 1,
+      "semantic_sha256": "affbedab519eff90a3e91b4d229c59d63ea039c75bccdb2582d31f7bd7856174",
+      "statement": "Define lawful disclosure and evidence-preservation procedures for recordings.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1057
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Surveillance and physical monitoring"
+      ]
+    },
+    {
+      "control_id": "USEQ-944A64E9",
+      "revision": 1,
+      "semantic_sha256": "944a64e9009de8cf64a8566292e9b92724383579ae97dd536d77a9a553105580",
+      "statement": "Delete surveillance data when its authorized retention period ends.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1058
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Surveillance and physical monitoring"
+      ]
+    },
+    {
+      "control_id": "USEQ-786A384B",
+      "revision": 1,
+      "semantic_sha256": "786a384b90658eb471c8ebfccc1d6118c5ab9b150ec45b9d7c619a58ae701388",
+      "statement": "Identify environmental operating ranges and failure thresholds for critical equipment.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1062
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Environmental resilience and utilities"
+      ]
+    },
+    {
+      "control_id": "USEQ-76AD7976",
+      "revision": 1,
+      "semantic_sha256": "76ad7976bdf211653a1c1d074171db31d88cfb7a9c57adaaaf93957d12f4cfa4",
+      "statement": "Monitor temperature, humidity, water, smoke, air quality, and other relevant conditions.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1063
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Environmental resilience and utilities"
+      ]
+    },
+    {
+      "control_id": "USEQ-7C7FE6FF",
+      "revision": 1,
+      "semantic_sha256": "7c7fe6ff661df2d6183dbbfdeb4679474feeb7ce13550e4bfb0cf5db15ad162b",
+      "statement": "Protect equipment from leaks, flooding, fire, contamination, dust, vibration, and accidental impact.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1064
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Environmental resilience and utilities"
+      ]
+    },
+    {
+      "control_id": "USEQ-65DD220D",
+      "revision": 1,
+      "semantic_sha256": "65dd220dd396ffff8b15e2ae82713eaa815735c1f9fc29f25e6ece7c9b004993",
+      "statement": "Use fire detection and suppression appropriate to people, equipment, and local requirements.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1065
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Environmental resilience and utilities"
+      ]
+    },
+    {
+      "control_id": "USEQ-340A635A",
+      "revision": 1,
+      "semantic_sha256": "340a635a8ae2cd61721444e3f4c6ab34916d309f5802b37213d8ba9761c3beab",
+      "statement": "Separate critical equipment from water sources and known hazard zones where practical.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1066
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Environmental resilience and utilities"
+      ]
+    },
+    {
+      "control_id": "USEQ-8F32827B",
+      "revision": 1,
+      "semantic_sha256": "8f32827ba565f8e56b0ad1a8d1039cdbfe2f3ccbb58c2383d51fa3b40a30f6b9",
+      "statement": "Provide power conditioning, surge protection, grounding, and backup power proportionate to recovery objectives.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1067
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Environmental resilience and utilities"
+      ]
+    },
+    {
+      "control_id": "USEQ-48599E91",
+      "revision": 1,
+      "semantic_sha256": "48599e918f9aef40660a7f53e190b6172a5bb3d1cd02af1b994ecc9a4eb00a7f",
+      "statement": "Test uninterruptible and generator capacity under realistic load.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1068
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Environmental resilience and utilities"
+      ]
+    },
+    {
+      "control_id": "USEQ-CB3996AE",
+      "revision": 1,
+      "semantic_sha256": "cb3996aeb1d269d0999dd58e85aeae08ce10989141dcb557d55f00ca7a28fc29",
+      "statement": "Monitor fuel, battery health, transfer switching, and backup-power maintenance.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1069
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Environmental resilience and utilities"
+      ]
+    },
+    {
+      "control_id": "USEQ-591FF776",
+      "revision": 1,
+      "semantic_sha256": "591ff77688498ca0d52f801d04e6f69d9b013812530b63641db6f6435d6d77b0",
+      "statement": "Ensure safe shutdown when backup duration will be exceeded.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1070
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Environmental resilience and utilities"
+      ]
+    },
+    {
+      "control_id": "USEQ-BD927C04",
+      "revision": 1,
+      "semantic_sha256": "bd927c04a63365e82beecf249bc5d50a93155102452445ed53990337e0ff0f48",
+      "statement": "Identify dependencies on electricity, cooling, water, telecommunications, fuel, building access, and facility staff.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1071
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Environmental resilience and utilities"
+      ]
+    },
+    {
+      "control_id": "USEQ-79CA52A1",
+      "revision": 1,
+      "semantic_sha256": "79ca52a15f90422f3df9cb73bec1c3df3d4369c9c4035aaf0422a0452323ec13",
+      "statement": "Evaluate common-mode failure where redundant systems share the same utility, room, conduit, riser, or supplier.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1072
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Environmental resilience and utilities"
+      ]
+    },
+    {
+      "control_id": "USEQ-71A69A8A",
+      "revision": 1,
+      "semantic_sha256": "71a69a8adde6662da8b035ac0c5bec7f6a7fdcf983669cb907dccbcd88d89de3",
+      "statement": "Protect critical network and power cabling from accidental damage, tapping, and unauthorized rerouting.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1073
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Environmental resilience and utilities"
+      ]
+    },
+    {
+      "control_id": "USEQ-904AE47F",
+      "revision": 1,
+      "semantic_sha256": "904ae47ffe9cd3ab4e3644db0105a49e9f0bd2e965df0987db0de7b92d2f2422",
+      "statement": "Maintain diagrams and labels sufficient for safe response without exposing sensitive details publicly.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1074
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Environmental resilience and utilities"
+      ]
+    },
+    {
+      "control_id": "USEQ-4E6F02EA",
+      "revision": 1,
+      "semantic_sha256": "4e6f02ea0a308de99a5293b9239837615c5abef669e672250227c202e0e46453",
+      "statement": "Test response to utility and environmental failures.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1075
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Environmental resilience and utilities"
+      ]
+    },
+    {
+      "control_id": "USEQ-B25E1F62",
+      "revision": 1,
+      "semantic_sha256": "b25e1f6247b474bfe84f0862486d2857e4b122de29b15afa72436dfc3e1db4ce",
+      "statement": "Align facility recovery plans with application and data recovery objectives.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1076
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Environmental resilience and utilities"
+      ]
+    },
+    {
+      "control_id": "USEQ-EA3A25E2",
+      "revision": 1,
+      "semantic_sha256": "ea3a25e225e0b830998a813766c0a18ac0693732cfb6a7b3bd86860c8378eea5",
+      "statement": "Account for building closure or inaccessible sites in continuity planning.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1077
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Environmental resilience and utilities"
+      ]
+    },
+    {
+      "control_id": "USEQ-CB9B9EF2",
+      "revision": 1,
+      "semantic_sha256": "cb9b9ef2b803e2980b51adf07a1b1b1b39d98460eea9e21b2ed051b79870f297",
+      "statement": "Inventory critical physical equipment and assign an owner and location.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1081
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Equipment siting, protection, and maintenance"
+      ]
+    },
+    {
+      "control_id": "USEQ-C293DC97",
+      "revision": 1,
+      "semantic_sha256": "c293dc9793e24abe3d4421416faa7bf396575ba0511575197b7b7b7145b78920",
+      "statement": "Record make, model, serial or asset identifier, support status, configuration, custody, and lifecycle state.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1082
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Equipment siting, protection, and maintenance"
+      ]
+    },
+    {
+      "control_id": "USEQ-6E3E9AD7",
+      "revision": 1,
+      "semantic_sha256": "6e3e9ad78ddd81c006e21f05cf22469634386c4abb46cf3ef48202ad62e513f0",
+      "statement": "Site equipment to reduce unauthorized observation, access, damage, and environmental exposure.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1083
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Equipment siting, protection, and maintenance"
+      ]
+    },
+    {
+      "control_id": "USEQ-40DD0C68",
+      "revision": 1,
+      "semantic_sha256": "40dd0c684ae240def51c2a74b358f5c6249851c01d41dfe5e547c2931940a4df",
+      "statement": "Secure portable and high-value equipment when unattended.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1084
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Equipment siting, protection, and maintenance"
+      ]
+    },
+    {
+      "control_id": "USEQ-969E5E8E",
+      "revision": 1,
+      "semantic_sha256": "969e5e8ead31b807bdc245a636e15b159ab671b673fcd45d6319fac998af1c51",
+      "statement": "Prevent unauthorized connection to exposed ports, consoles, and maintenance interfaces.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1085
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Equipment siting, protection, and maintenance"
+      ]
+    },
+    {
+      "control_id": "USEQ-3215CF9A",
+      "revision": 1,
+      "semantic_sha256": "3215cf9afe2af9614c97e2742847ca5e1a71d3d9570fe8160c5aed9a238b27c7",
+      "statement": "Disable or protect unused physical interfaces.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1086
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Equipment siting, protection, and maintenance"
+      ]
+    },
+    {
+      "control_id": "USEQ-1B37B4F0",
+      "revision": 1,
+      "semantic_sha256": "1b37b4f0ff08e398d2d15c73d28ff48edbb4442f3876744b035dcdb981ba81b8",
+      "statement": "Require authorized and logged maintenance for critical equipment.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1087
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Equipment siting, protection, and maintenance"
+      ]
+    },
+    {
+      "control_id": "USEQ-6EF563C9",
+      "revision": 1,
+      "semantic_sha256": "6ef563c9898a7e9772f5030632551566157f3d8d405f0bcb1a68f87d9b036c63",
+      "statement": "Verify maintenance personnel and escort them where appropriate.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1088
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Equipment siting, protection, and maintenance"
+      ]
+    },
+    {
+      "control_id": "USEQ-CDCF08FF",
+      "revision": 1,
+      "semantic_sha256": "cdcf08ffdffaf5cf42663e91fa057614dd6677e71ee313fa1afc1c7d0e2b9754",
+      "statement": "Remove or protect data before equipment leaves controlled custody for repair.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1089
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Equipment siting, protection, and maintenance"
+      ]
+    },
+    {
+      "control_id": "USEQ-85A9C802",
+      "revision": 1,
+      "semantic_sha256": "85a9c802ca1d233446a561d4598553a409e738be6aa3b32098f6cf6171038ec9",
+      "statement": "Validate equipment after maintenance, component replacement, or return from a supplier.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1090
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Equipment siting, protection, and maintenance"
+      ]
+    },
+    {
+      "control_id": "USEQ-B31AF0AB",
+      "revision": 1,
+      "semantic_sha256": "b31af0ab2bdb1ea2be4eeed2beacebb77acfa73296d48ca4a9d197136960bd95",
+      "statement": "Track counterfeit, substituted, reused, or untrusted components where supply-chain risk warrants it.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1091
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Equipment siting, protection, and maintenance"
+      ]
+    },
+    {
+      "control_id": "USEQ-301C9C12",
+      "revision": 1,
+      "semantic_sha256": "301c9c12b5b33dbbc121912fe32fad0cb44bb2fc7c6a08b94d9cbd4638e47740",
+      "statement": "Maintain spare parts and replacement capability consistent with recovery objectives.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1092
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Equipment siting, protection, and maintenance"
+      ]
+    },
+    {
+      "control_id": "USEQ-1BDCE2BA",
+      "revision": 1,
+      "semantic_sha256": "1bdce2ba2947a4fc63016e48c8fca6942b90d932ddfc480310f2ef65aec06352",
+      "statement": "Monitor warranty, support, calibration, certification, and end-of-life dates.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1093
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Equipment siting, protection, and maintenance"
+      ]
+    },
+    {
+      "control_id": "USEQ-63B28A66",
+      "revision": 1,
+      "semantic_sha256": "63b28a661b3363d409e6df819d14dace82459a5ae1f2b132fea0027e4fa59efd",
+      "statement": "Prevent maintenance tools and diagnostic ports from bypassing logical security controls.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1094
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Equipment siting, protection, and maintenance"
+      ]
+    },
+    {
+      "control_id": "USEQ-AA906913",
+      "revision": 1,
+      "semantic_sha256": "aa9069135e937279323be9b56675d20cc0c79c518e849202077910d02191e0fe",
+      "statement": "Securely wipe or destroy storage before reassignment, return, resale, recycling, or disposal.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1095
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Equipment siting, protection, and maintenance"
+      ]
+    },
+    {
+      "control_id": "USEQ-8B90B653",
+      "revision": 1,
+      "semantic_sha256": "8b90b653365766afa09274c17db46679cf4ed29a48ed8ddf10adf57a34ce00f8",
+      "statement": "Inventory removable and portable media permitted to store or transfer organizational information.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1099
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Storage media and removable devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-E10D2249",
+      "revision": 1,
+      "semantic_sha256": "e10d2249ef083d79b24f4ded38e94e43c81148584f3ce72e55d60ade1927553e",
+      "statement": "Prohibit unapproved media where it creates unacceptable risk.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1100
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Storage media and removable devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-6233E629",
+      "revision": 1,
+      "semantic_sha256": "6233e6295bf19955662a55f85b995341f941cfd26e7965a271d99a865c509734",
+      "statement": "Encrypt sensitive information on removable media using managed keys.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1101
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Storage media and removable devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-4CA29494",
+      "revision": 1,
+      "semantic_sha256": "4ca29494758c4589a5c8744cee69de319bb9da3552e716226ba35a28cb1514bf",
+      "statement": "Control issuance, custody, transfer, return, reuse, and disposal.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1102
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Storage media and removable devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-C0E77FD9",
+      "revision": 1,
+      "semantic_sha256": "c0e77fd93802694032553b147c5422ca7d975a8a5aca02a8187cc863e2637540",
+      "statement": "Scan untrusted media in an isolated environment before use.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1103
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Storage media and removable devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-B3A3E0F3",
+      "revision": 1,
+      "semantic_sha256": "b3a3e0f3c616b64aff3f629502aa2824b693d190b92d873a4ed93541c3a1a120",
+      "statement": "Prevent automatic execution of media content.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1104
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Storage media and removable devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-44286908",
+      "revision": 1,
+      "semantic_sha256": "44286908ee5efc4df36b2929f88e676fcab21f5dc35fc815920cdbf72c396cf0",
+      "statement": "Apply write protection when media should be read only.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1105
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Storage media and removable devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-E8A26864",
+      "revision": 1,
+      "semantic_sha256": "e8a26864d64560dfce0f48c3b84109af28a1f2d25bdf1edb2a3f7b9c7a27c973",
+      "statement": "Record transfers of high-impact data and verify the intended recipient.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1106
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Storage media and removable devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-80292B59",
+      "revision": 1,
+      "semantic_sha256": "80292b5994d00b1a253ba2ace9662fc79be7072320bbedd645d73a353e13f6b6",
+      "statement": "Use tamper-evident packaging and trusted couriers where physical shipment is necessary.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1107
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Storage media and removable devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-D900ABFB",
+      "revision": 1,
+      "semantic_sha256": "d900abfb42df330298a9b3a8f339a13f24e9c15e7033eb94c85107c6d59eb78c",
+      "statement": "Maintain chain of custody for evidentiary or highly sensitive media.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1108
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Storage media and removable devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-1B5D8BB0",
+      "revision": 1,
+      "semantic_sha256": "1b5d8bb03c06b0580da6513147107d90b260a53cbfa19e84184ce9a263b616bf",
+      "statement": "Verify copied data integrity before deleting the source.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1109
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Storage media and removable devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-CB006BCD",
+      "revision": 1,
+      "semantic_sha256": "cb006bcdde7c10a2ab64f35e098af2ac2f33dada843cabcc35bab9961822ea3d",
+      "statement": "Apply retention, legal hold, and deletion requirements to removable media.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1110
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Storage media and removable devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-D3F98A02",
+      "revision": 1,
+      "semantic_sha256": "d3f98a0212547075af9f331a35da094da280853d3a42898a15354976aee1fa46",
+      "statement": "Use destruction methods appropriate to media type, data sensitivity, and threat.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1111
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Storage media and removable devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-DB465D09",
+      "revision": 1,
+      "semantic_sha256": "db465d098cdeab8138ca8e9773e4b22f65ffb69af899e1e2c89bb378e729aaec",
+      "statement": "Obtain and validate destruction evidence when performed by a supplier.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1112
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Storage media and removable devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-14431DEE",
+      "revision": 1,
+      "semantic_sha256": "14431dee020dfc14fb32f4262c94e1594fd38e648696baee1d4d2ac583ab1ba0",
+      "statement": "Ensure backup media receive protections equivalent to the information they contain.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1113
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Storage media and removable devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-CFDCEDCE",
+      "revision": 1,
+      "semantic_sha256": "cfdcedce619c62e0b5b81e37c2e0ef66f6f418c0df2b97a754763b8b33ab7e03",
+      "statement": "Define which organization-managed, personally owned, shared, kiosk, contractor, and temporary devices may access each data and service class.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1117
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Endpoints and user-controlled devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-78B6A417",
+      "revision": 1,
+      "semantic_sha256": "78b6a4177dd87ce5446ede16ea788d90a8a0663897a33000a4385645837b44d7",
+      "statement": "Require device security posture appropriate to the sensitivity and privilege of access.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1118
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Endpoints and user-controlled devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-D360DB0F",
+      "revision": 1,
+      "semantic_sha256": "d360db0febab920c7a3e64f49b34b99a00ee7cedde93eca34eb42b1fb2776080",
+      "statement": "Maintain device inventory, ownership, user assignment, support status, and last-seen information.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1119
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Endpoints and user-controlled devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-71B71708",
+      "revision": 1,
+      "semantic_sha256": "71b71708c4c256db635d96f661e1fe6077705577bd623222b9e5347deb67b655",
+      "statement": "Use secure configuration baselines and detect material drift.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1120
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Endpoints and user-controlled devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-08800872",
+      "revision": 1,
+      "semantic_sha256": "0880087281cdbbd286b983470cbf42b9b43dc630e761084ae04b6ed7d0e0ddac",
+      "statement": "Patch operating systems, firmware, browsers, applications, and security agents according to risk.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1121
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Endpoints and user-controlled devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-878D4C97",
+      "revision": 1,
+      "semantic_sha256": "878d4c97c8e55724803dbbb445590f9a49115b8696af7cfc005c0546be005b82",
+      "statement": "Encrypt local storage and protect recovery keys.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1122
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Endpoints and user-controlled devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-06F85D38",
+      "revision": 1,
+      "semantic_sha256": "06f85d386e9e2510764c1ebbcbed52330a7ea3c270a4f2dba9ad5af36c29b32b",
+      "statement": "Require screen locking and reauthentication after inactivity.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1123
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Endpoints and user-controlled devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-DE7CFCCF",
+      "revision": 1,
+      "semantic_sha256": "de7cfccf6fb5232abe61ca18845a470535f522a75c0492f1ec6f03141b0e4113",
+      "statement": "Restrict local administrative privilege.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1124
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Endpoints and user-controlled devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-B09B8D6F",
+      "revision": 1,
+      "semantic_sha256": "b09b8d6fd686af48dd8a90388142e0d31fa1fcaa08f195e4a0d4d60729132046",
+      "statement": "Control application installation, scripting, removable media, and peripheral access according to risk.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1125
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Endpoints and user-controlled devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-9EA8D94B",
+      "revision": 1,
+      "semantic_sha256": "9ea8d94b0d8823437eb40aefc6a949afac0226eda455536845ec9ed0407782b5",
+      "statement": "Protect device credentials, hardware-backed keys, tokens, and certificates from extraction.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1126
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Endpoints and user-controlled devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-76AF49DC",
+      "revision": 1,
+      "semantic_sha256": "76af49dc9576f3962d1e2baeddf36c2e0582de847b36450a72755d03a1c5de1d",
+      "statement": "Detect and respond to malware, tampering, jailbreak, root compromise, or disabled controls.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1127
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Endpoints and user-controlled devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-99C41F56",
+      "revision": 1,
+      "semantic_sha256": "99c41f565c33616daa5bec694fb9047d6f3b1bb902ebf4af35262a921bb23e76",
+      "statement": "Separate organizational data from personal data on mixed-use devices where practical.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1128
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Endpoints and user-controlled devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-FF430B68",
+      "revision": 1,
+      "semantic_sha256": "ff430b68a4440098da016107efb79b156e977350a38ac6b59048c6555ae0cde2",
+      "statement": "Prevent sensitive data from entering unmanaged backups, clipboard histories, screenshots, notification previews, or consumer sync services.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1129
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Endpoints and user-controlled devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-7BAA8F5C",
+      "revision": 1,
+      "semantic_sha256": "7baa8f5c8e0f71574048a1f363efc5906637f2cd90b2aab744329f340f9f3772",
+      "statement": "Support remote lock, credential revocation, and managed data removal for lost or stolen devices.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1130
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Endpoints and user-controlled devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-B2756368",
+      "revision": 1,
+      "semantic_sha256": "b2756368e82345c30725dc9a477a9b0a7b45356c2ebe1d9cf899cf158eb0ae1e",
+      "statement": "Avoid destructive remote actions that erase personal data without authorization and clear policy.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1131
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Endpoints and user-controlled devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-0211E131",
+      "revision": 1,
+      "semantic_sha256": "0211e131cdae8d9ef54db3791513b3316a233a3dba087cc6c882f590fffc6431",
+      "statement": "Report loss, theft, suspected tampering, and border seizure promptly.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1132
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Endpoints and user-controlled devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-40EA284E",
+      "revision": 1,
+      "semantic_sha256": "40ea284e3a3851029c08953a973cb8f2c367bbd045c681437cba87b78818c156",
+      "statement": "Reassess trust after a device leaves custody or crosses a high-risk environment.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1133
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Endpoints and user-controlled devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-8FBD8807",
+      "revision": 1,
+      "semantic_sha256": "8fbd8807902c7f307f10e523d49b1611d4830f449489c6749e21743ec1443381",
+      "statement": "Remove access, keys, profiles, certificates, applications, and data during reassignment or offboarding.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1134
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Endpoints and user-controlled devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-E4B2121A",
+      "revision": 1,
+      "semantic_sha256": "e4b2121abae71e288f08c5b9222a71758e269540fa4868c430fdaca0bd84aeb6",
+      "statement": "Verify secure erasure before device reuse or disposal.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1135
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Endpoints and user-controlled devices"
+      ]
+    },
+    {
+      "control_id": "USEQ-CC395625",
+      "revision": 1,
+      "semantic_sha256": "cc395625479070b950cf20568b7fe713feb396666d1ccb1cd321caccb89cddfd",
+      "statement": "Define minimum physical, privacy, network, and device safeguards for remote work.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1139
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Remote and home working"
+      ]
+    },
+    {
+      "control_id": "USEQ-7742756A",
+      "revision": 1,
+      "semantic_sha256": "7742756aca79b0916bb1e25f630053cd23fc6c7d9155c89ed967d72153fce5eb",
+      "statement": "Provide alternatives when a worker cannot achieve the required privacy or safety at home.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1140
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Remote and home working"
+      ]
+    },
+    {
+      "control_id": "USEQ-5E21B2A7",
+      "revision": 1,
+      "semantic_sha256": "5e21b2a7932677b3ce975702ed00027ae74f9d94d806608666eb110dd1ed6f8f",
+      "statement": "Prevent unauthorized household members or visitors from viewing or using organizational systems.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1141
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Remote and home working"
+      ]
+    },
+    {
+      "control_id": "USEQ-BAE5F74E",
+      "revision": 1,
+      "semantic_sha256": "bae5f74eb7fbde2fbd4e1b06a1dbb067bf9a7761715cf600d1caba65208c29e7",
+      "statement": "Use privacy screens, headsets, secure storage, and appropriate workspace positioning where needed.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1142
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Remote and home working"
+      ]
+    },
+    {
+      "control_id": "USEQ-E2E697DA",
+      "revision": 1,
+      "semantic_sha256": "e2e697daf9f4f0d998e322905958b8b1a2fe20d65d018f803a1ce7212ffeee7f",
+      "statement": "Prohibit sensitive conversations or displays in public or uncontrolled locations when confidentiality cannot be maintained.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1143
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Remote and home working"
+      ]
+    },
+    {
+      "control_id": "USEQ-4075475F",
+      "revision": 1,
+      "semantic_sha256": "4075475f7df439e64f315e10db9e21d1f4300438702344136e2a8ab81fdb23f9",
+      "statement": "Protect printed information and ensure secure disposal.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1144
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Remote and home working"
+      ]
+    },
+    {
+      "control_id": "USEQ-D51C6264",
+      "revision": 1,
+      "semantic_sha256": "d51c626499003ddc7382c2bdeeec17355fc3065cb1ce6815d25eeee3e947ed95",
+      "statement": "Avoid requiring employees to store sensitive equipment or documents without suitable facilities.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1145
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Remote and home working"
+      ]
+    },
+    {
+      "control_id": "USEQ-A9B1CEB1",
+      "revision": 1,
+      "semantic_sha256": "a9b1ceb181bee4c06fed3f9fce3b205b4a648cf140d97520b7861f3bb07f9ed3",
+      "statement": "Secure home network and administrative interfaces proportionate to risk.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1146
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Remote and home working"
+      ]
+    },
+    {
+      "control_id": "USEQ-E2F3B532",
+      "revision": 1,
+      "semantic_sha256": "e2f3b5322f878f6e38792753f2285a2be2c09dcc4ef0141da91b3f750c9c3cc6",
+      "statement": "Use trusted connectivity and authenticated encrypted access for organizational systems.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1147
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Remote and home working"
+      ]
+    },
+    {
+      "control_id": "USEQ-E3AC41A5",
+      "revision": 1,
+      "semantic_sha256": "e3ac41a5b40e18b3cb7814912dc83fa11069c87a8843124b028cb07e03160f91",
+      "statement": "Define travel and border-crossing safeguards for high-risk devices, accounts, and data.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1148
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Remote and home working"
+      ]
+    },
+    {
+      "control_id": "USEQ-551C80BB",
+      "revision": 1,
+      "semantic_sha256": "551c80bbd9d506627db0ce32f6ae730b3fdb414b80c9cb0af8ebf838a40a42b7",
+      "statement": "Provide clean or loan devices when travel risk warrants it.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1149
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Remote and home working"
+      ]
+    },
+    {
+      "control_id": "USEQ-465CC386",
+      "revision": 1,
+      "semantic_sha256": "465cc38686f13f76a568a4813157f944fd0afa00256417d3e81c1b7103e73770",
+      "statement": "Establish emergency contact and equipment-recovery procedures.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1150
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Remote and home working"
+      ]
+    },
+    {
+      "control_id": "USEQ-4FA1B81C",
+      "revision": 1,
+      "semantic_sha256": "4fa1b81c727d0410adad7e768a9dbc99bc8f663c6beb8a861a3724479e94cda3",
+      "statement": "Address ergonomics, accessibility, lone-working, and occupational safety.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1151
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Remote and home working"
+      ]
+    },
+    {
+      "control_id": "USEQ-8D929AFB",
+      "revision": 1,
+      "semantic_sha256": "8d929afb1e2e9d16768c2b05ab1b7839c9b66d1cf8f7f6b98b60f603ce0c8506",
+      "statement": "Apply monitoring proportionately and transparently without unnecessary intrusion into the home.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1152
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Remote and home working"
+      ]
+    },
+    {
+      "control_id": "USEQ-2F41B502",
+      "revision": 1,
+      "semantic_sha256": "2f41b502fb5fdd6633c1196a223c87cde1ad42e6f447486640eb422546759239",
+      "statement": "Verify the identity and authority of parties receiving equipment, media, credentials, or sensitive documents.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1156
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical supply chain, transport, and custody"
+      ]
+    },
+    {
+      "control_id": "USEQ-42EAC9F9",
+      "revision": 1,
+      "semantic_sha256": "42eac9f95951c5b13962d846795bdee66c58696f2ffb501c45f38209e7f06150",
+      "statement": "Use tracked and protected transport proportionate to asset criticality.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1157
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical supply chain, transport, and custody"
+      ]
+    },
+    {
+      "control_id": "USEQ-5E194B00",
+      "revision": 1,
+      "semantic_sha256": "5e194b000bc533da61361c2c75f5edadc2c887a99782e52fabc7fbc4495ac6f6",
+      "statement": "Inspect packaging and equipment for tampering on receipt.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1158
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical supply chain, transport, and custody"
+      ]
+    },
+    {
+      "control_id": "USEQ-AD748413",
+      "revision": 1,
+      "semantic_sha256": "ad748413cac77ac8691323a924f40e4eb69ed898d69ad220d7525a3595e29169",
+      "statement": "Reconcile shipped and received quantities, serials, seals, and custody records.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1159
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical supply chain, transport, and custody"
+      ]
+    },
+    {
+      "control_id": "USEQ-7AE6A642",
+      "revision": 1,
+      "semantic_sha256": "7ae6a642cbb4a7e390ebbd523331c645ec9c185de1333586e9afd6173f158e23",
+      "statement": "Protect assets in storage, staging, loading, and reverse-logistics locations.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1160
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical supply chain, transport, and custody"
+      ]
+    },
+    {
+      "control_id": "USEQ-9A0EFE8F",
+      "revision": 1,
+      "semantic_sha256": "9a0efe8fecf1398a39e41fde34114c02aae9eda3a1f9c2d80e2a376f2420ed66",
+      "statement": "Restrict supplier and courier access to the minimum necessary area and time.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1161
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical supply chain, transport, and custody"
+      ]
+    },
+    {
+      "control_id": "USEQ-1F63DE21",
+      "revision": 1,
+      "semantic_sha256": "1f63de211aed98e608dfc8c6a465b4aa2a86b6e427812d87f9b7a037ed48fbbf",
+      "statement": "Define responsibility for loss, theft, tampering, delay, and incident notification in contracts.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1162
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical supply chain, transport, and custody"
+      ]
+    },
+    {
+      "control_id": "USEQ-7F0A1980",
+      "revision": 1,
+      "semantic_sha256": "7f0a1980c9a0e83a6856fa4558fa5654917823902ac7c4321c36241ce24ef60a",
+      "statement": "Validate supplier disposal and recycling chains.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1163
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical supply chain, transport, and custody"
+      ]
+    },
+    {
+      "control_id": "USEQ-E596016D",
+      "revision": 1,
+      "semantic_sha256": "e596016dff6145d6cf7f434d08feb2383f54f94c7c7350987d7fc9cec2ab5f30",
+      "statement": "Prevent discarded labels, documents, packaging, and components from disclosing sensitive information.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1164
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical supply chain, transport, and custody"
+      ]
+    },
+    {
+      "control_id": "USEQ-AA8B1772",
+      "revision": 1,
+      "semantic_sha256": "aa8b1772a5445f14276a3896f973b2ef7e6c0487f4ef4fce2758dea62d58dc45",
+      "statement": "Maintain alternate logistics routes for critical replacement equipment where continuity requires it.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1165
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical supply chain, transport, and custody"
+      ]
+    },
+    {
+      "control_id": "USEQ-42525193",
+      "revision": 1,
+      "semantic_sha256": "4252519333c01ff9907dca3fa855fc6119e45af9bf5e54f8ff8738b8c26c5f1f",
+      "statement": "Define reporting and response procedures for unauthorized entry, theft, loss, tampering, environmental failure, and suspicious surveillance.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1169
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical-security incidents and assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-CADE4A64",
+      "revision": 1,
+      "semantic_sha256": "cade4a6472ebb911e04051ca7440b433c31a2025984a78f8215af549194aad4c",
+      "statement": "Integrate physical incidents with cybersecurity, privacy, safety, legal, insurance, and continuity response.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1170
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical-security incidents and assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-D9D46C41",
+      "revision": 1,
+      "semantic_sha256": "d9d46c41919c8e4b1897a5366f13089c7959312c13ef88d7bcce97e037ba4c70",
+      "statement": "Preserve access logs, video, device state, custody records, and other evidence.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1171
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical-security incidents and assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-A637E97D",
+      "revision": 1,
+      "semantic_sha256": "a637e97d61d5c69571a6537028bb71263002043e2a0b58a3691ab937878dc087",
+      "statement": "Revoke affected physical and logical credentials promptly.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1172
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical-security incidents and assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-B06158CF",
+      "revision": 1,
+      "semantic_sha256": "b06158cf1949961ced19e56ed8ebe1ee7dd95b030cc4f6d48f325ade183237bc",
+      "statement": "Assess whether stolen or accessed equipment contained data, keys, tokens, configurations, or trusted components.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1173
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical-security incidents and assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-A9A00744",
+      "revision": 1,
+      "semantic_sha256": "a9a0074493664b763a7c47ab4da6a84f99d64424474fe77d3e6f5d1c118db3ce",
+      "statement": "Inspect affected areas and assets before returning them to trusted operation.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1174
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical-security incidents and assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-F717D036",
+      "revision": 1,
+      "semantic_sha256": "f717d0360b5f1471810ee124daa598b915648b9da06a10a20f83a8660e14332d",
+      "statement": "Exercise site loss, device theft, utility outage, and inaccessible-facility scenarios.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1175
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical-security incidents and assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-D4F126CC",
+      "revision": 1,
+      "semantic_sha256": "d4f126cc6849c1e633fcaf9ec7294531ec8437be7995973ae8e9003c6bebe33f",
+      "statement": "Test physical access controls, alarms, backup power, environmental sensors, and emergency procedures periodically.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1176
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical-security incidents and assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-10A036AF",
+      "revision": 1,
+      "semantic_sha256": "10a036af8d9e1d2ef3d793cb615ce3f2c661f99dffa26f53adf9d5d9dacf49e1",
+      "statement": "Use independent inspection for high-impact facilities and supplier sites where warranted.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1177
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical-security incidents and assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-CFD5C8F4",
+      "revision": 1,
+      "semantic_sha256": "cfd5c8f49fa49eed98acbb46b45d41df8ef0fe9ba345361fe1f420534c138bf3",
+      "statement": "Track defects, exceptions, compensating controls, owners, and remediation dates.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1178
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical-security incidents and assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-5AE30A6C",
+      "revision": 1,
+      "semantic_sha256": "5ae30a6cd13696011e3a4f42c9c7ba9240fbcfb14286bb9a882aea57eeb99ddb",
+      "statement": "Treat unprotected critical equipment, unrevoked lost credentials, untested environmental resilience, or inability to recover from site loss as release or operation blockers when applicable.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1179
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical-security incidents and assurance"
+      ]
+    }
+  ]
+}

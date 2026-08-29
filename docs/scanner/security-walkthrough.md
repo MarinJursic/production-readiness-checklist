@@ -181,7 +181,22 @@ hooks, and MCP servers are not loaded. `--ai` is also explicit permission to
 send bounded, screened source excerpts to the chosen provider. Supported
 temporary API-key environment variables and the longer
 `--review-provider`/`--allow-remote-source-processing` form remain available.
-`prc full codex` is the short spelling of `prc scan --ai codex`.
+`prc full codex` uses the same guarded engine as `prc scan --ai codex`, but the
+full command deliberately selects deep review, four workers, and Codex `xhigh`
+reasoning. The advanced command keeps standard depth, one worker, and high
+reasoning unless you override those options.
+
+`full` reviews the 9,356 controls whose reviewed classification is
+nondeterministic. Every rule gets its own primary subagent. Deep mode adds one
+independent skeptical subagent per batch to look for unsupported claims, missed
+risk, false Not Applicable decisions, generic advice, and contradictions. The
+coordinator must return the strongest challenge together with priority, risk,
+ordered remediation, independent verification, and evidence still needed.
+These are advisory fields only. They never turn a control into a verified Pass.
+
+The 686 reviewed deterministic controls are not sent to AI for a verdict. They
+stay Blocked until their exact checker programs have the complete authority and
+evidence required by their reviewed contracts.
 
 Before the provider starts, the scanner makes a private snapshot of bounded text
 excerpts. It skips sensitive names and known key or token shapes, gives the
@@ -194,8 +209,9 @@ Missing, omitted, runtime, legal, company, or human evidence stays a limitation.
 Prompt injection is still possible whenever untrusted text reaches a model.
 The provider gets no general shell, source-reading, write, browser, web, or MCP
 tool. Codex gets only subagent coordination for full review; Claude gets only
-its Agent tool. The coordinator is required to create one separate subagent per
-rule. The scanner checks the final schema, task ID, order, paths, lines, sizes,
+its Agent tool. The coordinator is required to create one separate primary
+subagent per rule and, in deep mode, one independent skeptical subagent per
+batch. The scanner checks the final schema, task ID, order, paths, lines, sizes,
 and completeness, but current provider output does not give it trustworthy
 proof that the provider really made every requested internal subagent call. A
 provider that ignores the task can therefore produce only rejected or untrusted

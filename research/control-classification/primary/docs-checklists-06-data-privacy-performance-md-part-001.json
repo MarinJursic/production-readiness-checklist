@@ -1,0 +1,2515 @@
+{
+  "schema_version": "prc.control-classification-review/v0.1",
+  "packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/checklists/06-data-privacy-performance.md",
+  "controls": [
+    {
+      "control_id": "PRC-23-001",
+      "revision": 1,
+      "semantic_sha256": "85e4d065b6efec29a722c5ba981e104322165c45235f6d13ae96602540868d66",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Given an authoritative inventory, ownership and classification are exact required fields whose presence and allowed values can be checked for every listed data set.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative data-set inventory enumerates every in-scope data set by stable identifier.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every inventoried data set has a nonempty owner identifier and a classification value allowed by the versioned classification policy.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-002",
+      "revision": 1,
+      "semantic_sha256": "11f7db03aad016b43d6633c323a19bf7e116d1ac0d904c8e61222c16e3b2e626",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Declared required constraints can be compared with schema enforcement, but deciding which constraints the domain requires is a model-design judgment that repository inspection cannot make.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every constraint declared in the approved data-model contract is present in the authoritative schema or an identified deterministic enforcement layer.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-003",
+      "revision": 1,
+      "semantic_sha256": "e7e3b80f8810440f8b9b40d51c9e4db1998b8baadd56e3a03ef6852f6bfe90ae",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Schema and boundary tests can reject absence for fields already declared required, but determining the complete required-field set and proving no ingestion path silently drops values remain contextual and unbounded.",
+      "deterministic_clauses": [
+        {
+          "statement": "For each field marked required in the approved model, the schema and bounded boundary tests reject missing or null values.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-004",
+      "revision": 1,
+      "semantic_sha256": "073d0d8f1ca03028f117c10bcada35a9b15f316e536855aee59d862defc2edd7",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The correct consistency boundary depends on domain invariants, race costs, and deployment topology; uniqueness declarations alone cannot decide whether enforcement is placed correctly.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-005",
+      "revision": 1,
+      "semantic_sha256": "a90f6cc9498b6604cfbc95e6f74aab63d28e772bbfb6ceb3f0f914a9f1b14018",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "With a complete relationship inventory and an approved check cadence, each relationship can be matched exactly to a database constraint or authenticated continuous-check evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative relationship inventory enumerates every in-scope referential relationship and its allowed integrity mechanism.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Each inventoried relationship has either a matching enforced constraint or a current integrity-check job meeting the approved cadence.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-006",
+      "revision": 1,
+      "semantic_sha256": "d50c53a60dc434ce1a35c9bd0f48abcaa8eba38c95dd022d0738594f9a7f5e71",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Transaction boundaries can be extracted and compared with declared atomic operations, but deciding every operation that requires atomicity depends on business invariants and failure semantics.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every operation declared atomic in the approved invariant registry is enclosed by a matching transaction or equivalent atomic primitive.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-007",
+      "revision": 1,
+      "semantic_sha256": "9a1e6f49556fe1cc710a7b37094cf467534ae6fbbd8bbd8488e61d0dda362355",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "A document can be found mechanically, but whether it covers the relevant locking and concurrency strategies requires understanding the system's real shared-state and race surfaces.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-008",
+      "revision": 1,
+      "semantic_sha256": "ac42dad6319e5a5737d49d11e0f350d0c208dc090b0a48b44beacf49b2fec364",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Preventing all lost updates and write races is a universal behavioral claim over concurrent schedules; bounded tests or static patterns cannot prove it for arbitrary project logic.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-009",
+      "revision": 1,
+      "semantic_sha256": "d0b99ea99d6325f01a7039df4faa50bbca5e8800fcf2e2dbfbf874cc1f646e72",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Duplicate handling can be observed for named cases, but the word safely depends on domain side effects, compensation rules, and acceptable outcomes for each message.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-010",
+      "revision": 1,
+      "semantic_sha256": "00ef6e6823973e8d64de33727a50a40fe7d29cfbfcb152f138f0024a4777e593",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Whether delivery semantics are understood is a human knowledge and review claim, not a machine-observable property of queue configuration or documentation alone.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-011",
+      "revision": 1,
+      "semantic_sha256": "6ddd2713bc4bbc388edfafe2129df6f46d9f59be4cf10b0d9e204232a37188bd",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A bounded redelivery test can verify declared idempotency cases, but completeness of the redeliverable-consumer set and idempotence across all payloads and side effects cannot be guaranteed generically.",
+      "deterministic_clauses": [
+        {
+          "statement": "Each consumer declared redeliverable has a versioned duplicate-delivery test whose recorded expected effects equal the single-delivery effects.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-012",
+      "revision": 1,
+      "semantic_sha256": "9ce78d7a4d2715dc930dd9d919864d1b650e93812f253858e6bb4d64d76dc80c",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Registered ordering assumptions and their test runs are exact evidence, but discovering every implicit ordering dependency in arbitrary application behavior requires contextual review.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every ordering assumption in the approved registry links to a passing bounded test transcript for the stated ordering scenario.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-013",
+      "revision": 1,
+      "semantic_sha256": "e0c8e9b4d2b5a34faf50c8503f40eb357a67a088dfdd73c826f03c3122336a17",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Complete queue configuration plus a bounded poison-message exercise can establish finite retry or isolation behavior without interpreting business quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every queue has an authoritative finite retry, quarantine, dead-letter, or discard policy that prevents one message from remaining the active head indefinitely.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "A bounded poison-message exercise shows later eligible messages continue or the poison message is isolated within the approved limit.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-014",
+      "revision": 1,
+      "semantic_sha256": "a9404ecd78abe6415edb0dcfd254efee827ee7c901d3a87835b130bf578a684e",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Monitoring, ownership, and replay-document presence are exact, but whether replay is safe depends on message effects, ordering, idempotency, and domain recovery choices.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every dead-letter queue has an active monitor, a resolvable owner, and a versioned replay procedure.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-015",
+      "revision": 1,
+      "semantic_sha256": "9e5729fca17783acfdba82879eb48ede7dcfed6ad698dc54572078cc209d15be",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Checkpoint and resume behavior needs workload-specific failure injection, expected state, and safety invariants; none of those bounded test protocols are defined by the rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-016",
+      "revision": 1,
+      "semantic_sha256": "a8078dc4962d46be17479773422c90fe6fd1ba1f0b1cdf14eff164e023e84176",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A fixed mutation corpus can prove detection of named dropped, duplicate, and inconsistent records, but it cannot establish coverage of every domain inconsistency.",
+      "deterministic_clauses": [
+        {
+          "statement": "The reconciliation job detects every anomaly in a versioned bounded corpus containing declared drop, duplication, and inconsistency cases.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-017",
+      "revision": 1,
+      "semantic_sha256": "db4a9d07affdcca19ac47250c940134ab55ff72daff162fde605dfc42632b234",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The phrase where corruption risk warrants them requires a risk and impact decision about each data path before checksum presence could be treated as required.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-018",
+      "revision": 1,
+      "semantic_sha256": "687f72d0d4fc4b834400d3c45920bdcdac91fbbc11341a5233844260002d532d",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Replication-lag metrics and thresholds can be compared exactly, but deciding whether every read path adequately accounts for lag requires journey and consistency judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every declared replica exposes current lag measurements and an approved alert threshold through authoritative monitoring evidence.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-019",
+      "revision": 1,
+      "semantic_sha256": "947841cb7606005de49a3329efa5737a1846e1c3c3af447f05f18283167acfac",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "User expectations are product and journey-specific; storage consistency settings and tests cannot determine those expectations without an accountable product decision.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "human_accountability"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-020",
+      "revision": 1,
+      "semantic_sha256": "e7162720ad4e6d020c742918d18007de1d247d194cd8eb6bc7e15386134b60cd",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Absence of split-brain or conflicting writes across failover schedules is a broad distributed-systems property requiring a defined model or exhaustive failure protocol not supplied here.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-021",
+      "revision": 1,
+      "semantic_sha256": "2ab8a444ec2c725dc05704f47f9e7313f56045d6f425d41dfe7b2bb9483892df",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Known cache-key dimensions can be compared against an approved contract, but discovering every identity, tenant, locale, permission, and variant dimension required by semantics is contextual.",
+      "deterministic_clauses": [
+        {
+          "statement": "For every cache declared in the approved cache contract, the implemented key contains each dimension explicitly listed for that cache.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-022",
+      "revision": 1,
+      "semantic_sha256": "fbdd76bcdeed20b0103ee4cb2f201ea639f5452a0fbe9c727d8519f63181aefe",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Correct invalidation depends on each datum's security and business invariants, update paths, staleness tolerance, and race behavior, which generic evidence cannot fully decide.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-023",
+      "revision": 1,
+      "semantic_sha256": "69f8b0c855607134a8eb59c036680c121bfbadacd2e64176b4ffef3f0f41939f",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Proving that no cache failure can ever disclose data or violate any invariant quantifies over unspecified failure modes and invariants beyond bounded mechanical evidence.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-024",
+      "revision": 1,
+      "semantic_sha256": "3e578d66e919adb85f1409e47c4f18685622cef6646593ae7809c9e56425fb30",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Negative access and deletion tests can check declared index policies, but complete authorization semantics and all deletion propagation paths require contextual system coverage.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every inventoried search index has passing bounded tests for its declared access-control matrix and deletion propagation contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-025",
+      "revision": 1,
+      "semantic_sha256": "11648ae9b4ff7ca8d08448b6628955ac900452a80676faa20566ec9925405ade",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "For a complete search-index inventory, freshness and reconciliation monitor bindings, enabled state, and current signal health can be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative search-index inventory lists every in-scope index and its approved freshness and reconciliation signals.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Each inventoried index has active authoritative monitors for both approved signal types with current data.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-026",
+      "revision": 1,
+      "semantic_sha256": "0bee5ebc5b1497b3201c059c56e1ac7845f7c227ce9ce5f83a958f7c735c598c",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Intentional encoding, collation, case, normalization, and sorting require a domain and locale design decision; configured values alone do not prove intentional suitability.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-027",
+      "revision": 1,
+      "semantic_sha256": "fc92575ee07384fc2faa016b028c7e27083c191f22f62bfcdfd0fcf199426410",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "An approved time-storage contract can define unambiguous representations, after which every inventoried date and time field can be compared exactly with that allowlist.",
+      "deterministic_clauses": [
+        {
+          "statement": "A versioned time-storage contract defines allowed representations including timezone, precision, and normalization requirements.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every date or time field in the authoritative schema inventory uses an allowed representation from that contract.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-028",
+      "revision": 1,
+      "semantic_sha256": "c52ffd1e8e854a7ec77204bc1dab5cb8074d9709a196dea92688f1968ec3809d",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The five named data-quality dimensions are a closed set, so an authoritative indicator registry can be checked for at least one owned indicator mapped to each dimension.",
+      "deterministic_clauses": [
+        {
+          "statement": "The data-quality indicator registry contains owned indicators mapped to completeness, validity, consistency, timeliness, and duplication.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-029",
+      "revision": 1,
+      "semantic_sha256": "b971c3732f88b7e8b63001d233a566a468afbebf2fd92ce1ce6731db859f2855",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Given a complete relationship inventory, an authenticated orphan-detection query or job and its current result can be verified for every relationship.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every relationship in the authoritative inventory links to an exact orphan-detection query or job definition.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Each linked detector has current authenticated execution evidence and reports its orphan count explicitly.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-030",
+      "revision": 1,
+      "semantic_sha256": "85687c78c6a6c580599ca17239cbb269ab8c5e3c949e5feb7fee0fd74b6e8e87",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Review records and audit fields are checkable, but reversibility where possible and repair quality depend on damage, data semantics, and recovery tradeoffs.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every registered data-repair procedure has an approval record, audit-output definition, and an explicit reversible or irreversible designation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "human_accountability",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-031",
+      "revision": 1,
+      "semantic_sha256": "06da45aa5e8a37eb3072f0218a09fbb9b46b96ded5ffeec620274126bd54beb4",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "With a complete production change-event source, each manual data change can be matched exactly to prior authorization and an immutable audit event.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authoritative production audit evidence identifies every manual data-change event by actor, target, and time.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Every identified event references a valid prior authorization and an immutable audit record of the resulting change.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-032",
+      "revision": 1,
+      "semantic_sha256": "77c1797dba0877a5bad0804388f2ae16b68970351c49959aecbbb4b85188bfaa",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "A complete migration inventory can be joined exactly to versioned plans and authenticated review decisions for each migration.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every migration in the authoritative migration inventory links to a nonempty plan and a completed review record identifying reviewer and revision.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-033",
+      "revision": 1,
+      "semantic_sha256": "9b66fc42201ea9e59116a6ad2a9e1c7297ebb8dd851f613f6cb0ca32b014014e",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Representative volume and shape depend on production distributions and forecast judgment, while the rule supplies no exact corpus or coverage threshold for migration testing.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_threshold",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-034",
+      "revision": 1,
+      "semantic_sha256": "10ac628adbaabff08749e78d873244fae6eaabb721e6814f034d9f5380ca82d6",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "Authenticated migration test evidence can report elapsed time and resource metrics as exact measurements without deciding whether the values are acceptable.",
+      "deterministic_clauses": [
+        {
+          "statement": "The latest representative migration test transcript records elapsed duration and the approved CPU, memory, storage, lock, and I/O resource metrics.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-035",
+      "revision": 1,
+      "semantic_sha256": "0ca8e457fa20682b3979e3a76d06dd6bac5a6851c398ec703b1878b3097db2c0",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Lock duration and downtime can be measured, but unacceptable has no project-independent threshold and online-migration adequacy depends on service objectives and traffic.",
+      "deterministic_clauses": [
+        {
+          "statement": "A bounded migration rehearsal records lock duration and service downtime using authenticated execution evidence.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "undefined_threshold",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-036",
+      "revision": 1,
+      "semantic_sha256": "615bd376d2572c2f018308a0c01e14c1eb0f3fc8589997c0ce2a9cc9899e0897",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A declared mixed-version compatibility matrix can be executed mechanically, but deciding where compatibility is required and whether the matrix covers the rollout is contextual.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every pair in the approved mixed-version compatibility matrix has a passing bounded compatibility test transcript.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-037",
+      "revision": 1,
+      "semantic_sha256": "3ada1cc5d8c95d1e25731cc49f65f7632762c0560b578e01924069b281741517",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Safe coexistence requires rollout-specific invariants, traffic mixes, and failure cases; a generic version-pair test cannot define or prove all of those conditions.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-038",
+      "revision": 1,
+      "semantic_sha256": "a471a819385d1011dded1cc88a60bc039bef0687ea4498b5834d8e5c0a1a139f",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Destructive migrations and recovery points have authoritative timestamps, so every destructive change can be checked for a usable preceding backup or recovery-point record.",
+      "deterministic_clauses": [
+        {
+          "statement": "The migration inventory marks every destructive change and records its execution time.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Each destructive change has authenticated evidence of an approved recovery point created and verified before execution.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-039",
+      "revision": 1,
+      "semantic_sha256": "05bfea898a339605815865a65357611bc8e7fbc46b7083f46cc5803c69960d86",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Execution evidence can prove that declared preconditions ran and passed, but deciding the complete set of safe migration preconditions requires schema and domain judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every precondition declared by a migration plan has a recorded passing result before that migration executes.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-040",
+      "revision": 1,
+      "semantic_sha256": "7896748dd5d51c0b9a466f5396b7853ff11c05709c2ac8059efb58b1b6d6b258",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "For each inventoried migration, required progress and failure signals can be matched to telemetry definitions and verified by a bounded success-and-failure exercise.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every migration defines progress and failure telemetry with stable signal identifiers.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "A bounded exercise produces both the declared progress signal and the declared failure signal in authoritative monitoring evidence.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-041",
+      "revision": 1,
+      "semantic_sha256": "258df63cd5f76076a5a9abbf8f4b0adeffc1564827e60bcf272d5afc1a11c35f",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Safe resume or recovery depends on migration-specific checkpoints, partial states, and invariants, while the rule defines no bounded interruption corpus or expected states.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-042",
+      "revision": 1,
+      "semantic_sha256": "5760c95e9075d6e6cab42c0d0dfa032b196408c6ef0924f3dfbb9b77e3dea2cb",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Counts, totals, constraints, and checksums can be compared exactly when declared, but selecting complete business invariants and acceptable values requires domain judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every post-migration verification declared in the approved migration plan has an authenticated result matching its exact expected value or predicate.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-043",
+      "revision": 1,
+      "semantic_sha256": "b69a541bba262a95930e5a73d423cb2497b0e5cd57bfeb342be0e69f72c5c1ae",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Whether rollback feasibility is documented honestly is an accountable human truthfulness and risk judgment that file presence or wording analysis cannot establish.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-044",
+      "revision": 1,
+      "semantic_sha256": "9d6e7c9671ab4812c08daffe0c0ffd565a2425defbe89ea2ce1b602b04598e2f",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A roll-forward test transcript is objective, but deciding rollback is unsafe and judging the recovery adequate require migration-specific accountable review.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every migration marked rollback-unsafe links to a passing bounded roll-forward recovery test transcript.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "human_accountability",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-045",
+      "revision": 1,
+      "semantic_sha256": "73800dbfda2882fc8b9ce9c08092edef3624acdbd0947bf7e3a061018c8ff7de",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "With a complete consumer registry and immutable migration events, removal time can be compared exactly with every consumer's recorded migration completion time.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative registry enumerates every consumer of each deprecated column, datum, and index.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "No removal event precedes the authenticated migration-complete event for any registered consumer.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-23-046",
+      "revision": 1,
+      "semantic_sha256": "c3d014421490e144b6f6415e8e3c91901e5239128d497c05bcf2de681c57a193",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Authenticated rehearsal and production provenance can be compared by immutable automation artifact digest, making use of the same automation objectively decidable.",
+      "deterministic_clauses": [
+        {
+          "statement": "The rehearsal record identifies the executed migration automation by immutable artifact digest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        },
+        {
+          "statement": "The production execution record identifies the same immutable artifact digest as the rehearsal record.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-001",
+      "revision": 1,
+      "semantic_sha256": "b614b61d4c87569c8f8ee9fa9850d6dd80a881030760d87b1e496efe68c381ec",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Known inventory records can be validated, but identifying every personal or sensitive datum and assigning the right sensitivity class requires legal, contextual, and data-flow judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every category already approved as personal or sensitive has a unique entry in the authoritative data inventory.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-002",
+      "revision": 1,
+      "semantic_sha256": "ce90596a5d63a735e6ed6d0313c8454d8fcc20398cbc255f4d68951dd3ce967d",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "For every category in the authoritative privacy inventory, the nine named metadata fields or governed alternatives can be checked for required values and resolvable references.",
+      "deterministic_clauses": [
+        {
+          "statement": "Each inventoried personal-data category records source, purpose, lawful-basis or authorization reference, recipients, location, retention, and deletion method.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-003",
+      "revision": 1,
+      "semantic_sha256": "9c902a62cbee4340832d8ddc20c44a4c50210c2730d5a86058e0ab8a00e03891",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Necessity for a documented purpose is a privacy-minimization and legal proportionality decision; field use and purpose labels alone cannot decide whether less data would suffice.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-004",
+      "revision": 1,
+      "semantic_sha256": "2c2ff50670191c66badd893eca195b11d48c791f397196463e80b737e7cc89b8",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "What counts as privacy-protective depends on processing context, user expectations, legal duties, and product tradeoffs rather than a universal configuration allowlist.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-005",
+      "revision": 1,
+      "semantic_sha256": "83be3ac7074b781a4caa7864b3e7389b6adfa9594616af920fc934415a338925",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Matching product behavior to a privacy notice requires semantic and legal interpretation of both actual data flows and published claims, not text equality.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-006",
+      "revision": 1,
+      "semantic_sha256": "b6b1da6c96529730d4346e24a0d0f8f2ab2ca7a4b0c5e19694f3f4c60078d3ab",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Once new data uses are authoritatively registered, each can be matched exactly to a completed privacy-review decision for the same revision before activation.",
+      "deterministic_clauses": [
+        {
+          "statement": "The change registry identifies every newly introduced data use and its activation time.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Each registered use references a completed privacy-review decision for the same revision dated before activation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-007",
+      "revision": 1,
+      "semantic_sha256": "282d4be076de5d82cafeb44d1ce254867202b97b85af0a8a6a11b78863773e42",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Whether consent is the appropriate lawful mechanism depends on jurisdiction, relationship, purpose, and alternatives and therefore requires privacy or legal authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-008",
+      "revision": 1,
+      "semantic_sha256": "130abb444833ace3be5eb06f79f13abd4b5ba540bf48a264421791bf710c8d60",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Consent records and a withdrawal path are mechanically testable, but specific, informed, and granular adequacy requires legal and user-interface interpretation.",
+      "deterministic_clauses": [
+        {
+          "statement": "Each recorded consent event contains subject, purpose identifier, notice revision, choice, and time.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "A bounded test confirms an active consent can be withdrawn and the new state is recorded.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-009",
+      "revision": 1,
+      "semantic_sha256": "ebb37e523509916f56f1b61ecf5d4fe2aa184926d8c3423ddcadf79a2ce33e37",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Whether refusing consent improperly blocks service depends on which processing is essential, contractual, or legally permitted and cannot be inferred from UI paths alone.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-010",
+      "revision": 1,
+      "semantic_sha256": "906a87fcd99332ae7cec44747e4ea4d8d71235585413b07037d35586db1b93a3",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A browser exercise can verify pre-permission blocking for approved trackers, but where permission is legally required varies by jurisdiction, tracker purpose, and user context.",
+      "deterministic_clauses": [
+        {
+          "statement": "For every tracker marked permission-required by the approved privacy policy, a bounded fresh-session test records no network operation before valid permission.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-011",
+      "revision": 1,
+      "semantic_sha256": "5d04e6a704fe51f607dc7b11d0dde7868d7c82b47781d138407544f1c9b746d0",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Observed tracker traffic can be reconciled to an inventory, but finite observation cannot prove all production paths and states or discover trackers that did not activate.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every tracker observed in the versioned production-traffic sample has a matching identifier in the authoritative tracker inventory.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-012",
+      "revision": 1,
+      "semantic_sha256": "94dc394d53de028b3e8fa8106fd17f52f9d918afc175f190e5c32955075e5b07",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Approved data schemas and sampled egress can be compared exactly, but proving that every runtime transmission to every tool contains only approved data is an unbounded flow claim.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every captured transmission in the bounded tool-egress test contains only fields allowed by that tool's approved data schema.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-013",
+      "revision": 1,
+      "semantic_sha256": "850ac30a49dbc9870cd4e88ade893bae1f7b40811730affbb0168b6cf14b337d",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Pinned scanners and redaction tests can find recognized sensitive values in known sinks, but universal absence across all logs, tools, recordings, and value forms cannot be guaranteed.",
+      "deterministic_clauses": [
+        {
+          "statement": "A bounded seeded-value test finds no unredacted seeded sensitive values in each inventoried telemetry and support sink.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-014",
+      "revision": 1,
+      "semantic_sha256": "36b5e2dfd66e21e674642bf5bd5e18f516a174335e00fbd37704c82080cc0ba6",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Workflow presence can be checked for rights declared applicable by legal policy, but applicability and substantive adequacy of each right require jurisdiction-specific legal judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every right marked applicable in the approved jurisdiction policy has an owned, versioned workflow and a tested initiation path.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-015",
+      "revision": 1,
+      "semantic_sha256": "2537daef01a7e85fcc4c3a3eb72e754ebe1765fac34beaf0145a0ef44d90088f",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Declared downstream mappings can be validated, but determining the complete processor and system set and whether each workflow substantively satisfies the right needs contextual and legal review.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every system and processor in the approved downstream inventory is mapped to each applicable rights-request workflow.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-016",
+      "revision": 1,
+      "semantic_sha256": "3b8c4293a52cda32f8cb40e8f263adcf6795766f1e339b8f69361de5de533be2",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Proportionate identity verification and excessive collection are risk-based privacy decisions that vary with request type, harm, data sensitivity, and jurisdiction.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-017",
+      "revision": 1,
+      "semantic_sha256": "f83cb7d8d8b20e74f2e8d10ad0f87e23bf07ab9aa0edb077afffa35712d104e4",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Given approved deadline rules and complete request records, due dates, current status, and overdue tracking can be computed exactly for every request.",
+      "deterministic_clauses": [
+        {
+          "statement": "The approved policy maps each applicable request type and jurisdiction to an exact deadline calculation rule.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every rights request has authenticated received, due, completed, and status timestamps sufficient to identify overdue work.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-018",
+      "revision": 1,
+      "semantic_sha256": "70808493441c48a277324f60fdfc455fe0bbb1a79a2435877f3702f770dd8923",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Retention periods are explicit when each authoritative data category has a machine-readable duration or event-based rule rather than an empty or indefinite placeholder.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every category in the authoritative data inventory has a nonempty, machine-readable retention duration or event-based retention rule.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-019",
+      "revision": 1,
+      "semantic_sha256": "1bcb4b5207b24ba32104aca1e3ff17c65939c71db8df446eab14136c045fa203",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A seeded deletion exercise can check inventoried stores, but proving deletion for all primary, cache, index, derived, and downstream copies requires a complete dynamic data-flow inventory.",
+      "deterministic_clauses": [
+        {
+          "statement": "A bounded seeded-subject deletion exercise verifies absence from every store in the approved deletion-scope inventory.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-020",
+      "revision": 1,
+      "semantic_sha256": "fdc3bf3dd96c93c9c7767ad71aabc12c9dc481a109b89deac0dae7169e154ecc",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Documentation presence is mechanical, but legal acceptability of backup deletion behavior depends on applicable law, restoration controls, retention duties, and counsel judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "A versioned document records backup retention, restoration-time deletion behavior, and eventual purge rules.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-021",
+      "revision": 1,
+      "semantic_sha256": "64acea189c5aea42cc07fc28dc61475c07f6985c5ed9dce8687d2c03b11fd634",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Legal-hold authorization and audit records can be checked, but determining when a hold lawfully overrides deletion requires legal authority and case context.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every legal-hold override event references an authorized hold record and has immutable actor, scope, start, and release audit fields.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "human_accountability",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-022",
+      "revision": 1,
+      "semantic_sha256": "c267a5666c850b8ccf99e610e9aac0d470bd3eca3e47664e1405c51a339dd67d",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Validity of pseudonymization or anonymization claims depends on attack models, auxiliary data, evolving reidentification methods, and acceptable risk thresholds.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_protocol",
+        "undefined_threshold"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-023",
+      "revision": 1,
+      "semantic_sha256": "8faaa91a27fe8e000852d77cc724e4778d905c028171f95aa0b2a252ff66c334",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Reidentification risk assessment requires a privacy threat model, external data assumptions, likelihood and harm judgment, and specialist acceptance criteria.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "undefined_threshold"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-024",
+      "revision": 1,
+      "semantic_sha256": "8c85b6300b16fb188481c9e019fed66e593290347bc85a00ee867fe2940e44b3",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Tenant-isolation export tests can check named cross-user cases, but proving no export path or data shape can expose another subject is a broad security property.",
+      "deterministic_clauses": [
+        {
+          "statement": "A bounded negative test corpus confirms declared export endpoints reject cross-user and cross-tenant identifiers and omit seeded foreign records.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-025",
+      "revision": 1,
+      "semantic_sha256": "046c9a5050b6884c03700a5803dac70cb8f6fe3a6101abd3ee7538193e1f6f7f",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "High-risk classification and whether a privacy-impact assessment is appropriate are legal and risk-governance decisions that vary with processing context.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-026",
+      "revision": 1,
+      "semantic_sha256": "21c41f731e16aeb5fe50d9a08f5ab118124144b0dfa724f750ae6befb2f48acd",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Review records can be matched to data already classified sensitive, but identifying every sensitive use and deciding what enhanced review is sufficient require legal and specialist judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every data use classified in an approved sensitive category links to a completed enhanced-review record before activation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-027",
+      "revision": 1,
+      "semantic_sha256": "47e2175bc41ce809937c16a3e9ff288c9cc532ae3e96b88b5ace91efd22dba2a",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Cross-border transfer scope, residency commitments, and adequate documentation require legal interpretation of data flows, entities, contracts, and jurisdictional rules.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-028",
+      "revision": 1,
+      "semantic_sha256": "d3ef1205954d0249057c65f5b94a8a12883d1b5b4fab5c896ed976496947c2ac",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Whether processor contracts substantively cover permitted use, security, deletion, assistance, and breach notice is a contract and legal interpretation task.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-029",
+      "revision": 1,
+      "semantic_sha256": "0186789c6350137c7f1ff430484d58611f16b63c3381577a0579d6d0f405a659",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The existence of privacy contacts and escalation paths is exactly checkable through resolvable owner identifiers, current contact routes, and a defined escalation sequence.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative privacy-contact record names a primary contact, backup or escalation owner, reachable route, and ordered escalation path.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-030",
+      "revision": 1,
+      "semantic_sha256": "9bacfc5a5bf6047276c7064a28452f36a21a37bfe8cc4b42e54df11caa6cfdb9",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Exercise records and clocks can be checked, but determining personal-data incident scope and applicable notification deadlines requires forensic and legal judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "A bounded privacy-incident exercise records detection, scoping, escalation, and reporting timestamps against the approved scenario deadline.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-031",
+      "revision": 1,
+      "semantic_sha256": "2806497d7dd6ed630b6598ae92cd64021b6b9d7e6122035f478af7437ee4bc77",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Production support access events can be audited exactly, but whether granted access is minimized depends on task necessity, role design, and case context.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every production support access event has authenticated actor, purpose, target, approval, start, end, and action audit fields.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "human_accountability",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-032",
+      "revision": 1,
+      "semantic_sha256": "9b47fc9911b548e5b8b3b5677466b2cc090b22c82deeac5e99451bf14be43df7",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Known production identifiers can be scanned in inventoried non-production stores, but proving all data is synthetic or adequately masked requires complete discovery and privacy validation.",
+      "deterministic_clauses": [
+        {
+          "statement": "A bounded seeded-identifier scan finds no seeded production values in each non-production store in the approved inventory.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "legal_or_specialist_authority",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-033",
+      "revision": 1,
+      "semantic_sha256": "0bcc908be0a7a7253e9c93a6c18589a5af55f95cd2e17977377ba7ed82cfa6bb",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "With complete downstream account mappings and an approved finite lifetime, account age and deletion status can be evaluated exactly against the policy.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative downstream inventory maps test accounts and deleted-user identities to every receiving tool.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "No mapped test account or deleted-user record exceeds the approved maximum retention age without an authorized hold.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-24-034",
+      "revision": 1,
+      "semantic_sha256": "7c690bc32e88015b5d7bbfc60816e4c4730fc1c794da60095d757d83d8a542b9",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Manipulation in consent, cancellation, or privacy interfaces is a human-factors and regulatory judgment involving wording, hierarchy, friction, and user understanding.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-25-001",
+      "revision": 1,
+      "semantic_sha256": "575d41c086d7ea1f52cdc4c570c9ef1edecea56e91b86852d00a3209e8908267",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Objective records can be matched to journeys already designated critical, but selecting the complete set of critical user journeys is a product and risk judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every journey in the approved critical-journey registry has at least one machine-readable performance objective and owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-25-002",
+      "revision": 1,
+      "semantic_sha256": "ff664b4038c6aa64536ab4bc9f2df33f6f1d76ffb0be4ed39c1bb7b622eff850",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A metric definition can be checked for percentile use, but which percentiles are relevant depends on traffic shape, harm, objectives, and the journey's tail behavior.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every approved latency objective records at least one percentile metric and is not defined only as an arithmetic average.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-25-003",
+      "revision": 1,
+      "semantic_sha256": "b93b7363c883edb5024a82919ee27ffc2def27f614b6321e192bc1451f82be3d",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Frontend and backend budgets are documented when the authoritative performance policy contains explicit owned threshold records for both applicable layers.",
+      "deterministic_clauses": [
+        {
+          "statement": "The performance policy contains nonempty frontend and backend budget records with metric, threshold, unit, scope, and owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-25-004",
+      "revision": 1,
+      "semantic_sha256": "3d52538edf434086ff89a3b728cc308fd46d872d3f9cf18df72d991ccc159c48",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "A launch baseline is an exact timestamped record, so its existence and pre-launch ordering can be verified without judging whether the measured value is good.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every launch record references authenticated baseline measurements captured before the launch timestamp for the approved performance metrics.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-25-005",
+      "revision": 1,
+      "semantic_sha256": "2b9cc7307fa2b98ae65665c429d06b1d5b04b8469e24b482504a131f79552ae5",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Lab and real-user evidence can be checked when required, but where each method applies and whether its sampling is adequate depend on product surface and traffic context.",
+      "deterministic_clauses": [
+        {
+          "statement": "For each surface marked dual-measurement in the approved policy, current laboratory and real-user measurement records both exist.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-25-006",
+      "revision": 1,
+      "semantic_sha256": "ba328e34a3a741ed80986a95c442a9d01fe8780c2162fe17e7d651dc967a3a4f",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "A complete public-page inventory, approved numeric targets, and authenticated measurements allow loading, interaction, and visual-stability results to be compared exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every public page in the authoritative inventory has approved numeric loading, interaction, and visual-stability targets.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Current authenticated measurements for every inventoried page satisfy each target using the approved measurement protocol.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-25-007",
+      "revision": 1,
+      "semantic_sha256": "4141620a22ed5d9b3b3d26ff3b0e7266a100551b4666fcbf158dfe3d1648f8ce",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "For a complete endpoint and journey inventory, the presence of a scoped numeric latency target and percentile can be checked exactly for every entry.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every endpoint or journey in the authoritative performance inventory has a machine-readable latency target with percentile, threshold, unit, and scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-25-008",
+      "revision": 1,
+      "semantic_sha256": "99b884076ef6ec3000e9f6f55bfe87665394678dfac76000836760455e703e27",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "For an authoritative database inventory, active query-latency and query-volume measurements can be verified by stable metric identifiers and current telemetry samples.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every production database has declared query-latency and query-volume metric identifiers.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Authoritative monitoring contains current samples for both declared metrics for every database.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-25-009",
+      "revision": 1,
+      "semantic_sha256": "3c739b96f3d9857ce054ad7a5f8d3e6e890bbc59a5300da3df014b7a7fe1d62d",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A pinned query analyzer can report repeated fetches and configured thresholds, but excessive depends on data shape, caching, latency, consistency, and workload tradeoffs.",
+      "deterministic_clauses": [
+        {
+          "statement": "A pinned query analyzer reports all detected repeated-fetch and per-operation query-count findings against the approved numeric thresholds.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-25-010",
+      "revision": 1,
+      "semantic_sha256": "f1a6a9f50bcfe2a6cee2fca916a346134dd5c345422ef4a938f993a49b7efc30",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Approved payload-size limits can be joined to every inventoried interface and compared with schema limits or bounded maximum-size execution evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every payload-producing interface in the authoritative inventory has an approved numeric size limit.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Schema enforcement or bounded execution evidence proves each inventoried interface rejects or constrains payloads at its approved limit.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-25-011",
+      "revision": 1,
+      "semantic_sha256": "35c9350d70a5192d5cd3f5a708977d5f4fc6fda5f201f4bb941377ebc707c514",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Compression configuration and response headers are exact, but appropriate algorithms, content types, size cutoffs, and CPU tradeoffs vary by delivery context.",
+      "deterministic_clauses": [
+        {
+          "statement": "A bounded response sample records compression configuration and actual content-encoding for each declared compressible content type.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-25-012",
+      "revision": 1,
+      "semantic_sha256": "13cd88fec194c8c8ba4e4a6c099ba997d40c3fae2096e974ec321dd8812b8f7e",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Efficient delivery of images, fonts, scripts, and styles depends on visual needs, device mix, caching, formats, build architecture, and approved budgets rather than one generic pattern.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-25-013",
+      "revision": 1,
+      "semantic_sha256": "f5bb8bf339046c4e4feffe1f71f11e52feb62be2652bd5d790cfbe43872d443a",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Which resources are critical and whether their priority is correct depends on page behavior, render dependencies, user journeys, and network conditions.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-25-014",
+      "revision": 1,
+      "semantic_sha256": "56502cc9b6bc2ab903800f186a554ec8bce0faf778c633f95921a8a2d3f80a48",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Deferral and accessibility test results can be collected, but classifying work as noncritical and proving no correctness or accessibility harm require semantic review.",
+      "deterministic_clauses": [
+        {
+          "statement": "A bounded test records deferred-resource timing and the approved automated accessibility assertions for each declared deferrable resource.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-25-015",
+      "revision": 1,
+      "semantic_sha256": "28ff979adcf85b0fd25fbd47b11201c734994bb1e045943629ee2adbf01ffbba",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Validation of cache and CDN behavior needs explicit routes, cache states, invalidation events, regions, headers, and expected outcomes, none of which the rule fixes.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-25-016",
+      "revision": 1,
+      "semantic_sha256": "1b0e4b4ea56b084ab6a2fb198d637b8651810927c09d927a63da299cceda31ce",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "With an approved cold-start scenario, numeric acceptance threshold, and authenticated test evidence, cold-start performance is an exact threshold comparison.",
+      "deterministic_clauses": [
+        {
+          "statement": "The performance policy defines the cold-start state, workload, metric, percentile, and numeric acceptance threshold.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Authenticated execution evidence from that exact protocol meets the approved cold-start threshold.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-25-017",
+      "revision": 1,
+      "semantic_sha256": "2d1238143dd034b0727d0cfea48def1f4faffbe158b993c2c4f8ec7a40acbff6",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Pool limits and monitoring bindings are exact, but deciding whether a pool is correctly sized requires workload forecasts, queueing behavior, dependency limits, and failure tradeoffs.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every inventoried connection or thread pool has explicit minimum and maximum settings plus current utilization and exhaustion metrics.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-25-018",
+      "revision": 1,
+      "semantic_sha256": "fde82dae254440226bbcce9132cde8bbe61c5ed97ff1705d7083e5f18cd2175f",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Investigation records and bounded leak tests are verifiable, but their duration, workload, detection threshold, and completeness across resource types need project-specific judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Each named resource type has a timestamped investigation record and the results of its declared bounded leak test.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_threshold",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-25-019",
+      "revision": 1,
+      "semantic_sha256": "065a3556edfe7197d20e3f99d1b92a19a04b7cea7d7e7f4364ead0f5f0a48029",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Configured time and resource limits can be extracted for declared requests, but identifying every long-running or resource-intensive request and selecting safe limits is contextual.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every request class listed in the approved intensive-request registry has an explicit enforced time or resource limit.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-25-020",
+      "revision": 1,
+      "semantic_sha256": "cf69c11bd12560fc69dd27082e3a17b96759473ad8710ba232178ac2035ab78b",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Realistic authentication, authorization, data volume, and cache state depend on production distributions, identities, journeys, and forecast conditions not defined by the rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-25-021",
+      "revision": 1,
+      "semantic_sha256": "a24e66996db7b3504218ba214b4f9e19fafb368e2c9b1927248a05d251b7ee79",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Representative mobile devices and slower networks, and when they are relevant, depend on the actual audience, regional traffic, support policy, and product surface.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-25-022",
+      "revision": 1,
+      "semantic_sha256": "9dbf9629df8933a557cb794853664bee673e96029a6ba6dc4e399eba09c040b4",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "For a complete third-party inventory and an approved measurement protocol, enabled-versus-disabled impact measurements can be checked for every service exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every third-party script or service in the authoritative inventory has an approved impact-measurement protocol and metric set.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Authenticated measurement evidence records the impact result for every inventoried third party.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-25-023",
+      "revision": 1,
+      "semantic_sha256": "db458bd0a56ac092626763346f30714293e8054abab547be86f8f56f8749fe91",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Named dependency-failure scenarios and measurements can be compared to approved limits, but scenario completeness and what performance is acceptable during degradation require risk judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every failure scenario in the approved dependency test matrix has current measured results compared with its numeric degradation threshold.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-25-024",
+      "revision": 1,
+      "semantic_sha256": "37e95f6c6f01dc2828423501c76979da42e2bc05fc67e4717eaf53b8ac73fe15",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Release-gate definitions can be inspected for exact numeric performance thresholds and authenticated CI evidence can show the gate blocks a deliberately failing fixture.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative release pipeline defines automated numeric thresholds for every approved regression metric.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "A bounded gate test proves an over-threshold fixture causes the release gate to fail.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-25-025",
+      "revision": 1,
+      "semantic_sha256": "5177ad764396b7e777be637bf3c80b9ef0620865513c4c09e338b595678bc663",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Telemetry overhead can be measured against declared budgets, but material harm and representative client conditions require product-specific thresholds and sampling judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "A bounded telemetry-on versus telemetry-off test records the approved client performance metrics and computed deltas.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-25-026",
+      "revision": 1,
+      "semantic_sha256": "29c5730c2ed190eb976e96cc26d45fbc3c81625e2ec2ea36b93bec6ef635fe2f",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "A meaningful connection between performance metrics and user or business outcomes requires causal or product interpretation; linked labels or correlations alone do not establish it.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-26-001",
+      "revision": 1,
+      "semantic_sha256": "642505b6148729138d3fee43a7dfbe18c85cea8d3137efb3ec8303ea2b0cdfde",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The six named traffic conditions form a closed documentation requirement, so forecast records can be checked for numeric values, units, horizons, and owners for each condition.",
+      "deterministic_clauses": [
+        {
+          "statement": "The capacity forecast records normal, peak, burst, launch, seasonal, and abuse traffic with value, unit, time horizon, source, and owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-26-002",
+      "revision": 1,
+      "semantic_sha256": "5f42c9ac839c44127975fa0dcf7d9a6c61ff157981bac26a34fefe870d54e2f0",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The seven named growth dimensions can be checked exactly for nonempty numeric forecasts, units, horizons, assumptions, and owners.",
+      "deterministic_clauses": [
+        {
+          "statement": "The capacity forecast records data, file, index, queue, log, and backup growth with value, unit, time horizon, assumption, and owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-26-003",
+      "revision": 1,
+      "semantic_sha256": "cf9008962c112f014a916db9c5632ca4aa10e3393fbdca9952adc07457507cea",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Maximum safe capacity depends on safety invariants, workload mix, dependency states, and an approved destructive-testing boundary that the rule does not define.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_threshold",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-26-004",
+      "revision": 1,
+      "semantic_sha256": "77bfa2e8de02ceee45347e8236841c4af6a66b5759dac8f5783868ee598c7cd3",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Whether load-test request mixes and data distributions are realistic requires comparison with current and forecast production behavior and accountable workload judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-26-005",
+      "revision": 1,
+      "semantic_sha256": "748865a0e7fa8ad6f8fb506ecdcca41f56633311835988d18e5254bf2beb331e",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "Authentication and authorization overhead is included when the versioned load-test scenario executes real approved identity and permission paths and records their enabled state.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authenticated load-test transcript shows the approved authentication and authorization paths enabled for every scenario that requires them.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-26-006",
+      "revision": 1,
+      "semantic_sha256": "4fe1b2dacf83c6d5dfcd250f0aa046308ea7fad1c3bc0873df5b2b8e72eb9f18",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "External dependency behavior is included when every dependency in the scenario contract has a versioned real or simulated behavior profile referenced by the executed load test.",
+      "deterministic_clauses": [
+        {
+          "statement": "The load-test transcript references an exact behavior profile for every external dependency listed in the approved scenario contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-26-007",
+      "revision": 1,
+      "semantic_sha256": "bbfb533cdc6c7450ab6ae953258d2b5376ae5abed7bc60ceb0fa0904d966e070",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "A versioned stress test can objectively show operation beyond the approved capacity boundary and record the resulting failure mode and first breached invariant.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated stress-test evidence exceeds the approved capacity boundary and records throughput, saturation point, failure mode, and first breached safety or service threshold.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-26-008",
+      "revision": 1,
+      "semantic_sha256": "b185a6352e6fe9731e55055457e7b4765b99f69b3e808542059df0e302700766",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Executed spike profiles are observable, but defining the relevant sudden surges, amplitudes, durations, and recovery expectations requires workload and risk judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every spike profile in the approved scenario registry has an authenticated execution transcript and recorded recovery result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-26-009",
+      "revision": 1,
+      "semantic_sha256": "61aa3302c6133a5fcf1165bfdb1efa08b238202bab449cc80519485058535fdc",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Finding leaks and gradual degradation depends on workload, duration, warm-up, sampling, and detection thresholds; the rule provides no complete endurance protocol.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_threshold"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-26-010",
+      "revision": 1,
+      "semantic_sha256": "278c09f4393c2c1be7bd01272a4c5b70195153c62b9b5da283424485be436350",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "An authoritative largest-tenant forecast and the executed test fixture can be compared by exact size and shape fields to prove the scenario was included.",
+      "deterministic_clauses": [
+        {
+          "statement": "The approved capacity forecast identifies the largest expected tenant or customer profile with machine-readable size dimensions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Authenticated capacity-test evidence uses a fixture meeting or exceeding every declared profile dimension.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-26-011",
+      "revision": 1,
+      "semantic_sha256": "3bd2a4e74544dfccc3b863b550b592f197a3bfed9b5a1a1edff5ac083ddff248",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "For a complete provider-resource inventory, current quota values and account limits can be joined exactly to dated review records and resolvable owners.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every provider resource in the authoritative inventory records its quota and account-limit identifiers.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Current authoritative quota values exist and each resource links to a completed, dated review record.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-26-012",
+      "revision": 1,
+      "semantic_sha256": "fad3657b35d359cb663b6401427670ee697b11b2d9a9ed3873330c55b67d2762",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Approved numeric headroom policies and current authoritative utilization metrics make headroom for each named database resource an exact calculation.",
+      "deterministic_clauses": [
+        {
+          "statement": "The database capacity policy defines numeric required headroom for connections, locks, storage, replicas, and I/O.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Current authenticated capacity evidence shows each required database resource meets its approved headroom threshold.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-26-013",
+      "revision": 1,
+      "semantic_sha256": "252794821d9f8b455524c3c6350c19e5daf68d11b5c817ff84e3a126fbcac57a",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Approved numeric headroom policies and current metrics make sufficiency for queue, cache, load-balancer, network, and worker capacity exactly decidable.",
+      "deterministic_clauses": [
+        {
+          "statement": "The platform capacity policy defines numeric required headroom for queues, caches, load balancers, networks, and workers.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Current authenticated capacity evidence shows each required platform resource meets its approved headroom threshold.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-26-014",
+      "revision": 1,
+      "semantic_sha256": "319a3983f5a71e06d3c198dade77cbcf8b5a331a28a7000e6a30593d61d2ebe7",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Autoscaling configuration fields can be extracted and a bounded scale-up and scale-down protocol can validate the declared triggers, cooldowns, limits, and behavior.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every autoscaler has explicit minimum, maximum, trigger, cooldown, and scale-down settings in authoritative configuration.",
+          "checker_family": "container_iac",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Authenticated bounded tests confirm scale-up and scale-down occur at the declared triggers without exceeding configured limits or cooldown rules.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-26-015",
+      "revision": 1,
+      "semantic_sha256": "8ed9379f1005be550dae5e596272b598491306bad557b9738b6acb0c4d285669",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Within an approved scaling envelope, complete dependency limits plus an authenticated scale test allow peak observed load to be compared exactly against every limit.",
+      "deterministic_clauses": [
+        {
+          "statement": "The scaling contract records the approved scaling envelope and numeric overload limits for every database and dependency it can pressure.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Authenticated scale-test evidence covers the envelope and remains within every declared database and dependency limit.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-26-016",
+      "revision": 1,
+      "semantic_sha256": "d6deaa269d5621b0e8502e45fea4802a6dfb43a4767725c93e7ae21096ed1861",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The design supplies the failure scenario and required capacity thresholds, so authenticated zone, node, or region failure evidence can be compared to them exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The approved resilience design defines applicable zone, node, or region loss scenarios and numeric capacity requirements for each.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Authenticated failure-test or environment evidence shows remaining capacity satisfies every declared scenario requirement.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-26-017",
+      "revision": 1,
+      "semantic_sha256": "0a998b8351534c110f2b4d38e05677fbdbd70d7bad1d12282bf6e97b11c4ba5e",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rate-limit configuration and isolation tests are exact, but fairness depends on product priorities, user classes, tenant contracts, and acceptable allocation tradeoffs.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every shared-capacity interface in the approved registry has an enforced rate limit and a bounded multi-client isolation test.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-26-018",
+      "revision": 1,
+      "semantic_sha256": "0a70f7371be51edb14c362dc0860ae39da310dc6b3dcad294b7721db0911c88b",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Quota values and noisy-neighbor tests can be verified, but proving prevention of failure for all workloads and choosing fair per-user or tenant limits are contextual.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every shared user or tenant resource in the approved registry has an enforced quota and a bounded over-quota isolation test.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-26-019",
+      "revision": 1,
+      "semantic_sha256": "ef5fedb8d874d7537914c144672cf15fad0fc4a146bcc0a52f8a44c5e56cce08",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Safe propagation of backpressure depends on queueing topology, timeouts, cancellation, priority, and business invariants, with no bounded failure protocol defined here.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-26-020",
+      "revision": 1,
+      "semantic_sha256": "96fa6e752a40a337509fce591eee6aebd5bd45866858fa894bfe48004def3039",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "For a complete queue inventory, each queue can be checked for a numeric bound or an explicit machine-readable overload action and exercised at that boundary.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every queue in the authoritative inventory has either a numeric capacity bound or an explicit overload behavior.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "A bounded execution test confirms the declared overload behavior activates at the configured boundary.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-26-021",
+      "revision": 1,
+      "semantic_sha256": "43e7baa783b01877310edae321f9918b1580f1f09aa43b78f3c06e879c11ce8a",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "An approved operation-priority registry and load-shedding test are checkable, but deciding which operations are most important and whether preservation is adequate requires accountable product judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "A bounded overload test shows operations marked highest priority in the approved registry remain available after lower-priority shedding activates.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "human_accountability",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-26-022",
+      "revision": 1,
+      "semantic_sha256": "2dc289ac440600b824b40392fb433d04d7c8f15c778380090efe5dad319df1f7",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Retry policies and bounded overload tests can reduce known amplification, but proving retry storms are prevented across arbitrary clients, failures, and dependency feedback loops is unbounded.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-26-023",
+      "revision": 1,
+      "semantic_sha256": "17f0ba1535cc1bd905961d9945cd46e7fd09ddfae22cfabd9eba6d5d90df3dda",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Which functionality is optional and whether its degraded or disabled behavior is safe depend on user harm, invariants, contractual duties, and journey semantics.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-26-024",
+      "revision": 1,
+      "semantic_sha256": "619784c2b92ebe9a97a41d2044b6ff4044058bc7f517b34c9cae4ecf679681f9",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "For an authoritative edge and provider inventory, DDoS scenario records and completed protection-review decisions can be matched exactly to each exposed surface.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every exposed service in the authoritative edge inventory links to at least one versioned DDoS scenario and its provider-protection configuration.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Each linked scenario and protection configuration has a completed, dated review record with a resolvable owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-26-025",
+      "revision": 1,
+      "semantic_sha256": "3ae15f229dedf2e9849f18506bd801f94f5a9cfd5747c7f621e41e424b5eb0e7",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Alert thresholds and measured response lead times can be compared, but deciding how much time is enough depends on on-call capability, growth rate, remediation options, and risk.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every capacity alert has an explicit threshold and a computed lead-time estimate from the approved growth model.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-26-026",
+      "revision": 1,
+      "semantic_sha256": "d2a4d8ff8a78322d1195f727475cd0c942acbec6f8c3875d27c921a98722c694",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Expected and peak operating cost models are exact required records whose inputs, horizon, currency, outputs, owner, and revision can be validated.",
+      "deterministic_clauses": [
+        {
+          "statement": "The capacity cost model records expected and peak scenarios with input assumptions, time horizon, currency, computed cost, owner, and review date.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-26-027",
+      "revision": 1,
+      "semantic_sha256": "3a2ddaa97cf96eed81e51dd27f623e6a9e3698f0c45067602dfb79957dc3c73c",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "For every essential operation declared by policy, cost-enforcement configuration and a bounded over-limit test can prove the operation is not silently terminated.",
+      "deterministic_clauses": [
+        {
+          "statement": "The approved service policy identifies every essential operation and its permitted behavior when cost limits are reached.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "A bounded over-limit test confirms each essential operation follows its declared behavior and emits a visible signal rather than silently terminating.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-26-028",
+      "revision": 1,
+      "semantic_sha256": "0f2f6e70b44b24af85f3369507d8cb84a37626646c4e2b87e6cbc49f02393998",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Owner identifiers and review dates are exact fields, so every capacity assumption in an authoritative registry can be checked for both values and date validity.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every capacity assumption has a resolvable owner and a valid next-review date in the authoritative capacity registry.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    }
+  ]
+}

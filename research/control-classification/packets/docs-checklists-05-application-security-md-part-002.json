@@ -1,0 +1,249 @@
+{
+  "schema_version": "prc.control-classification-packet/v0.1",
+  "packet_id": "docs-checklists-05-application-security-md-part-002",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/checklists/05-application-security.md",
+  "control_count": 17,
+  "controls": [
+    {
+      "control_id": "PRC-22-007",
+      "revision": 1,
+      "semantic_sha256": "bd42d718f9f7b298964cea704024790be5befb165af4f2ab7b68f7dea3980f99",
+      "statement": "Keys are absent from source code, logs, artifacts, frontend code, and ordinary configuration files.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 302
+      },
+      "heading_trail": [
+        "Application security",
+        "22. Cryptography and key management"
+      ]
+    },
+    {
+      "control_id": "PRC-22-008",
+      "revision": 1,
+      "semantic_sha256": "bb287179a08ad3e13937110e74628bfbb48eedbeeb3010d63251237298bf3be6",
+      "statement": "Key access follows least privilege.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 303
+      },
+      "heading_trail": [
+        "Application security",
+        "22. Cryptography and key management"
+      ]
+    },
+    {
+      "control_id": "PRC-22-009",
+      "revision": 1,
+      "semantic_sha256": "3ca71dc0f27fdcbf4cb10b0232bfb0d8efe2d56c7f1016627bcb2ed1d65d6c76",
+      "statement": "Production and non-production use separate keys.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 304
+      },
+      "heading_trail": [
+        "Application security",
+        "22. Cryptography and key management"
+      ]
+    },
+    {
+      "control_id": "PRC-22-010",
+      "revision": 1,
+      "semantic_sha256": "bc798a66c5274469435d45b8e1d187a61a3bde831d556aa08bb8cc53a8132303",
+      "statement": "Different purposes use separate keys where appropriate.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 305
+      },
+      "heading_trail": [
+        "Application security",
+        "22. Cryptography and key management"
+      ]
+    },
+    {
+      "control_id": "PRC-22-011",
+      "revision": 1,
+      "semantic_sha256": "0af770adf7930d062dd8769e26e93084e93c131691cc3ddf19742094021d9228",
+      "statement": "Key generation uses approved secure randomness.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 306
+      },
+      "heading_trail": [
+        "Application security",
+        "22. Cryptography and key management"
+      ]
+    },
+    {
+      "control_id": "PRC-22-012",
+      "revision": 1,
+      "semantic_sha256": "7bdc6c70c7c9e7ce52830f30172d732b2f48ec38b8ca281146e894b189b386fe",
+      "statement": "Nonces and initialization values meet uniqueness and unpredictability requirements.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 307
+      },
+      "heading_trail": [
+        "Application security",
+        "22. Cryptography and key management"
+      ]
+    },
+    {
+      "control_id": "PRC-22-013",
+      "revision": 1,
+      "semantic_sha256": "dc30b9ec27d8948792535afa21b9f9e65c25d6ffe8711729ab4d35ea9caf6d4d",
+      "statement": "Key rotation and versioning are supported.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 308
+      },
+      "heading_trail": [
+        "Application security",
+        "22. Cryptography and key management"
+      ]
+    },
+    {
+      "control_id": "PRC-22-014",
+      "revision": 1,
+      "semantic_sha256": "3e2f99957eed332b9685ec5d5b045f7db61d22502c5d6ddd140524f934b36b01",
+      "statement": "Rotation does not make existing required data unrecoverable.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 309
+      },
+      "heading_trail": [
+        "Application security",
+        "22. Cryptography and key management"
+      ]
+    },
+    {
+      "control_id": "PRC-22-015",
+      "revision": 1,
+      "semantic_sha256": "1e0db69ff874a12aebac64f481591513734c6e043054e63424b0d80cdf3c0e7d",
+      "statement": "Compromised keys can be revoked promptly.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 310
+      },
+      "heading_trail": [
+        "Application security",
+        "22. Cryptography and key management"
+      ]
+    },
+    {
+      "control_id": "PRC-22-016",
+      "revision": 1,
+      "semantic_sha256": "3b405ac6477bb2fddbd30180e9fb1787efa52626844b1dae3cc9fcb555560d27",
+      "statement": "Key compromise has a tested response playbook.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 311
+      },
+      "heading_trail": [
+        "Application security",
+        "22. Cryptography and key management"
+      ]
+    },
+    {
+      "control_id": "PRC-22-017",
+      "revision": 1,
+      "semantic_sha256": "a2c99981743107372efd0e41a9072f25e8f2f042f15a4b09882dca0b71d6ae38",
+      "statement": "Required keys are included securely in continuity and recovery planning.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 312
+      },
+      "heading_trail": [
+        "Application security",
+        "22. Cryptography and key management"
+      ]
+    },
+    {
+      "control_id": "PRC-22-018",
+      "revision": 1,
+      "semantic_sha256": "5f99ca65f6ad749e9fd72211a42a6af358131641cf3547211179af2b72f74aca",
+      "statement": "Key deletion and cryptographic erasure behavior are defined.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 313
+      },
+      "heading_trail": [
+        "Application security",
+        "22. Cryptography and key management"
+      ]
+    },
+    {
+      "control_id": "PRC-22-019",
+      "revision": 1,
+      "semantic_sha256": "b62427846e56eeb2fc026dc7487320351c2601ca35e9961b81bd42fed0cf7896",
+      "statement": "Certificates, signing keys, token keys, encryption keys, and webhook keys each have lifecycle owners.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 314
+      },
+      "heading_trail": [
+        "Application security",
+        "22. Cryptography and key management"
+      ]
+    },
+    {
+      "control_id": "PRC-22-020",
+      "revision": 1,
+      "semantic_sha256": "fd8fc042c1d886e3f191ab8390af862e9aa2fa55593c0192a1720b2a93593374",
+      "statement": "Signature verification rejects inappropriate algorithms, keys, or malformed input.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 315
+      },
+      "heading_trail": [
+        "Application security",
+        "22. Cryptography and key management"
+      ]
+    },
+    {
+      "control_id": "PRC-22-021",
+      "revision": 1,
+      "semantic_sha256": "46617ddb600b3c1c7e3c94fe73cbf8f45e9f43f938b9e2feab8770f117384f92",
+      "statement": "Random identifiers and security tokens use cryptographically secure generation.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 316
+      },
+      "heading_trail": [
+        "Application security",
+        "22. Cryptography and key management"
+      ]
+    },
+    {
+      "control_id": "PRC-22-022",
+      "revision": 1,
+      "semantic_sha256": "2c69f43fb908fc065b96af16f3490220aad816d671d25377f779891de42b939d",
+      "statement": "Cryptographic dependencies are inventoried for future algorithm migration.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 317
+      },
+      "heading_trail": [
+        "Application security",
+        "22. Cryptography and key management"
+      ]
+    },
+    {
+      "control_id": "PRC-22-023",
+      "revision": 1,
+      "semantic_sha256": "fe0b82841781ddc7af14a7dfa796de4bc865ecf9ea6be4cba08e2ab69d214395",
+      "statement": "Sensitive plaintext is not copied into analytics, logs, caches, search indexes, or backups unnecessarily.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 318
+      },
+      "heading_trail": [
+        "Application security",
+        "22. Cryptography and key management"
+      ]
+    }
+  ]
+}

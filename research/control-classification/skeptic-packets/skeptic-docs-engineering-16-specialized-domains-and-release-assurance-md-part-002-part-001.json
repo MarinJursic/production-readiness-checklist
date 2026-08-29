@@ -1,0 +1,2566 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-16-specialized-domains-and-release-assurance-md-part-002-part-001",
+  "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 100,
+  "controls": [
+    {
+      "control_id": "USEQ-5DB27264",
+      "revision": 1,
+      "semantic_sha256": "5db27264f08fb9aa73d7b447c6e7b3a96afd8c8bf7714218f2d9d0aa35e842a9",
+      "statement": "Define supported languages, runtimes, platforms, package managers, shells, architectures, and versions.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 378
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Libraries, SDKs, CLIs, and Developer Tools",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define supported languages, runtimes, platforms, package managers, shells, architectures, and versions.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6F66FA4B",
+      "revision": 1,
+      "semantic_sha256": "6f66fa4bcf4cea72dfa5efce7e50296685451a73e8b319cbfaa93ae6e8dc9e88",
+      "statement": "Separate machine-readable output from human-readable diagnostics.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 381
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Libraries, SDKs, CLIs, and Developer Tools",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Separate machine-readable output from human-readable diagnostics.” requires a finite interface, install, game-state, rollout, recovery, reconstruction, credential, replay, signing, or cryptographic test whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the exact inputs, versions, identities, expected transitions, negative cases, outputs, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BB61ED88",
+      "revision": 1,
+      "semantic_sha256": "bb61ed884307856694074b416be39410167c767379e3a91adf5b207ef56fbc2e",
+      "statement": "Version contracts and publish compatibility and deprecation policy.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 388
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Libraries, SDKs, CLIs, and Developer Tools",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Version contracts and publish compatibility and deprecation policy.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C6981D19",
+      "revision": 1,
+      "semantic_sha256": "c6981d190a64a2de8a8addf370060c56c5cb22faec64ee799050c7615cf5b06c",
+      "statement": "Generate signed or attested packages with provenance, SBOM, and checksums.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 390
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Libraries, SDKs, CLIs, and Developer Tools",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The control “Generate signed or attested packages with provenance, SBOM, and checksums.” requires bounded release, data, analysis, provenance, log, publication, or signature artifacts whose immutable identities and required bindings can be verified exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Verify every declared artifact exists in the authorized evidence set, has immutable identity and provenance, and contains or links each required digest, version, environment, source, correction, or validation binding.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-09B1BA8F",
+      "revision": 1,
+      "semantic_sha256": "09b1ba8f4f7e6268f26f0bc699eff8255d9344c062857123c22d0eb6d9dd270b",
+      "statement": "Keep examples executable and documentation synchronized.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 391
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Libraries, SDKs, CLIs, and Developer Tools",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "local_static",
+      "primary_reason": "The control “Keep examples executable and documentation synchronized.” defines an exact documentation, artifact-selection, predeployment, rollout, or pipeline gate whose fail-closed behavior can be checked from versioned policy and fixtures.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Inspect the versioned workflow policy and run fixtures proving missing, stale, malformed, incompatible, unapproved, or threshold-breaching evidence cannot advance.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-933B0296",
+      "revision": 1,
+      "semantic_sha256": "933b029649efc409eb5574e4f87f9ff99a6f9de708871f8a1c826476f399ca44",
+      "statement": "Test fresh install, upgrade, downgrade where supported, offline, proxy, permission, and restricted-network behavior.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 395
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Libraries, SDKs, CLIs, and Developer Tools",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test fresh install, upgrade, downgrade where supported, offline, proxy, permission, and restricted-network behavior.” requires a finite interface, install, game-state, rollout, recovery, reconstruction, credential, replay, signing, or cryptographic test whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the exact inputs, versions, identities, expected transitions, negative cases, outputs, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AC6AC548",
+      "revision": 1,
+      "semantic_sha256": "ac6ac548a863a7b34be80bcff8784f38fa9ab760ca1468f80f2049d2cc0d611d",
+      "statement": "Provide security reporting and supported-version information.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 396
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Libraries, SDKs, CLIs, and Developer Tools",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Provide security reporting and supported-version information.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-77183203",
+      "revision": 1,
+      "semantic_sha256": "771832038a8585080b20827dea298a786e00756cf34eb3f3ebdc565ca8552af2",
+      "statement": "Define supported devices, controls, displays, performance modes, network conditions, and accessibility options.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 405
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Games, Immersive, and High-Engagement Products",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define supported devices, controls, displays, performance modes, network conditions, and accessibility options.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3DEFD074",
+      "revision": 1,
+      "semantic_sha256": "3defd0740a0309797b7c1000e2cdf5b89aface3e17a4765379d63330fafdfe60",
+      "statement": "Provide controls for harassment, blocking, reporting, moderation, voice, chat, and user-generated content.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 411
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Games, Immersive, and High-Engagement Products",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Provide controls for harassment, blocking, reporting, moderation, voice, chat, and user-generated content.” requires a finite interface, install, game-state, rollout, recovery, reconstruction, credential, replay, signing, or cryptographic test whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the exact inputs, versions, identities, expected transitions, negative cases, outputs, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F84463E8",
+      "revision": 1,
+      "semantic_sha256": "f84463e805280c5b1f29cff62a6e40d552147781ab3f8e9b5b7ff8001a9716d3",
+      "statement": "Preserve progress across crash, disconnect, patch, device change, and account recovery.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 414
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Games, Immersive, and High-Engagement Products",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Preserve progress across crash, disconnect, patch, device change, and account recovery.” requires a finite interface, install, game-state, rollout, recovery, reconstruction, credential, replay, signing, or cryptographic test whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the exact inputs, versions, identities, expected transitions, negative cases, outputs, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7083EEB1",
+      "revision": 1,
+      "semantic_sha256": "7083eeb1c137934bcfff3626e4ec2435facfef0827c6ec0bcb7cab64a419b40d",
+      "statement": "Test latency, synchronization, prediction, rollback, reconnect, and regional capacity.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 415
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Games, Immersive, and High-Engagement Products",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test latency, synchronization, prediction, rollback, reconnect, and regional capacity.” requires a finite interface, install, game-state, rollout, recovery, reconstruction, credential, replay, signing, or cryptographic test whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the exact inputs, versions, identities, expected transitions, negative cases, outputs, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7FABC8C3",
+      "revision": 1,
+      "semantic_sha256": "7fabc8c30e942964cdac5fa822fba8d2105cba3d6912623a20e8a55116974edf",
+      "statement": "Provide appeal and recovery for enforcement actions.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 418
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Games, Immersive, and High-Engagement Products",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Provide appeal and recovery for enforcement actions.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2A00C28A",
+      "revision": 1,
+      "semantic_sha256": "2a00c28ad201a0fa2427fca0dd819616552404cec6713a1e3e68113816c0a2dc",
+      "statement": "Monitor toxic behavior, fraud, economy inflation, crash, performance, and player safety.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 419
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Games, Immersive, and High-Engagement Products",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The control “Monitor toxic behavior, fraud, economy inflation, crash, performance, and player safety.” names concrete game, rollout, health, support, fraud, abuse, or infrastructure signals whose configured monitoring state can be read from an authorized environment.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Read the authorized monitoring system and verify current observations exist for every named signal with bound release, service, owner, threshold definition, and immutable query timestamp.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D2EEA3DA",
+      "revision": 1,
+      "semantic_sha256": "d2eea3dac65d98fd5bf79a5f32f1e6914a01175e2f5daeabd2cd43917173f292",
+      "statement": "Plan seasonal content, live operations, event rollback, and end-of-service continuity.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 423
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Games, Immersive, and High-Engagement Products",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Plan seasonal content, live operations, event rollback, and end-of-service continuity.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7EFB51F6",
+      "revision": 1,
+      "semantic_sha256": "7efb51f60dab903cc0647a0d2d42d23714d7847f2944ee17fe54657621903bb1",
+      "statement": "Record exact source commits and release tags.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 432
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Release Control Record",
+        "Release identity"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record exact source commits and release tags.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8C855A06",
+      "revision": 1,
+      "semantic_sha256": "8c855a06a73803dd7a4e80c489a0510b0b44f69128f42e03715fd9f396022401",
+      "statement": "Record immutable digests for every deployable service, worker, job, frontend bundle, and infrastructure artifact.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 433
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Release Control Record",
+        "Release identity"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The control “Record immutable digests for every deployable service, worker, job, frontend bundle, and infrastructure artifact.” requires bounded release, data, analysis, provenance, log, publication, or signature artifacts whose immutable identities and required bindings can be verified exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Verify every declared artifact exists in the authorized evidence set, has immutable identity and provenance, and contains or links each required digest, version, environment, source, correction, or validation binding.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-18DBA736",
+      "revision": 1,
+      "semantic_sha256": "18dba7362c6b91ee1a1bbc55b58a10f8134916b6ca2a843a21a0eeecff96d842",
+      "statement": "Record production configuration versions and feature-flag states.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 434
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Release Control Record",
+        "Release identity"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record production configuration versions and feature-flag states.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E03B5E82",
+      "revision": 1,
+      "semantic_sha256": "e03b5e822593102958b5911aa26b9f6b03278e933d6289d37b19a315494fae40",
+      "statement": "Record target regions, accounts, projects, environments, clusters, and domains.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 435
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Release Control Record",
+        "Release identity"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record target regions, accounts, projects, environments, clusters, and domains.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EDFA793D",
+      "revision": 1,
+      "semantic_sha256": "edfa793dcadb2db214684dc7488144d5b0722d14578a98d9257f3a927ccd1fb3",
+      "statement": "Record the deployment date and change window.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 436
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Release Control Record",
+        "Release identity"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record the deployment date and change window.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A68072E7",
+      "revision": 1,
+      "semantic_sha256": "a68072e7c1612d1700bd324596cb885e4e4a54daabe6a3a1b0fbe80c2d38f903",
+      "statement": "Record the previous known-good artifact and configuration.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 437
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Release Control Record",
+        "Release identity"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record the previous known-good artifact and configuration.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B1A0C473",
+      "revision": 1,
+      "semantic_sha256": "b1a0c473bfaf362fe133944f22d78a1b0c15316e2baef9f10a2b9c8966a1f966",
+      "statement": "Record the rollback artifact or tested roll-forward plan.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 438
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Release Control Record",
+        "Release identity"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record the rollback artifact or tested roll-forward plan.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D1D57EA1",
+      "revision": 1,
+      "semantic_sha256": "d1d57ea1396371d6ed18d9f9f82dce4a2aa8bbd1c669cc883ccc0525ba664c0b",
+      "statement": "Confirm source, artifacts, configuration, migrations, tests, and approvals all refer to the same release.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 439
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Release Control Record",
+        "Release identity"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Confirm source, artifacts, configuration, migrations, tests, and approvals all refer to the same release.” joins bounded release, approval, configuration, research, issuance, credential, or authorization records with immutable artifact evidence that can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, approval, research, issuance, or credential record contains every explicitly required state, signer, scope, owner, and evidence reference.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare immutable source, artifact, configuration, evidence-package, key-domain, or credential identities and fail closed on missing or mismatched bindings.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CEECE86D",
+      "revision": 1,
+      "semantic_sha256": "ceece86d903e162f3a7a33692a936fa1db5afd872a4c67ae6d21a475b0f5d543",
+      "statement": "List accessibility conformance targets.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 449
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Release Control Record",
+        "Scope inventory"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “List accessibility conformance targets.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-282C5B2F",
+      "revision": 1,
+      "semantic_sha256": "282c5b2f305e034bd23f99f2bdb8b2ad77cce196bc0aa849add32877479dd399",
+      "statement": "List excluded components and explain why they are outside the assessment.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 451
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Release Control Record",
+        "Scope inventory"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “List excluded components and explain why they are outside the assessment.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8CF2C791",
+      "revision": 1,
+      "semantic_sha256": "8cf2c791222d4d4f372aed02a27dae21954fb4f1762d0d24bdd74ddbb860e18a",
+      "statement": "The deployment plan identifies exact artifacts, target environments, migrations, configuration changes, infrastructure changes, feature flags, and external dependencies.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 460
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Deployment and Release Engineering",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “The deployment plan identifies exact artifacts, target environments, migrations, configuration changes, infrastructure changes, feature flags, and external dependencies.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-34987B94",
+      "revision": 1,
+      "semantic_sha256": "34987b945b05bf59dd093fe3770a8aefac3651ad3ed323926f2b012c3fcb66f7",
+      "statement": "The deployer cannot silently substitute an unapproved artifact.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 461
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Deployment and Release Engineering",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "local_static",
+      "primary_reason": "The control “The deployer cannot silently substitute an unapproved artifact.” defines an exact documentation, artifact-selection, predeployment, rollout, or pipeline gate whose fail-closed behavior can be checked from versioned policy and fixtures.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Inspect the versioned workflow policy and run fixtures proving missing, stale, malformed, incompatible, unapproved, or threshold-breaching evidence cannot advance.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2222C9D0",
+      "revision": 1,
+      "semantic_sha256": "2222c9d0c9438c987d544d8f45350a0f8fb605a7dbc4ce13221fd3b818dfe7e1",
+      "statement": "Predeployment checks validate environment health, data state, provider health, quotas, and available capacity.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 462
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Deployment and Release Engineering",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "local_static",
+      "primary_reason": "The control “Predeployment checks validate environment health, data state, provider health, quotas, and available capacity.” defines an exact documentation, artifact-selection, predeployment, rollout, or pipeline gate whose fail-closed behavior can be checked from versioned policy and fixtures.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Inspect the versioned workflow policy and run fixtures proving missing, stale, malformed, incompatible, unapproved, or threshold-breaching evidence cannot advance.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CF32EB78",
+      "revision": 1,
+      "semantic_sha256": "cf32eb784b5a057eb7e22095e95a50f0da337bc466671d8d526078f005c23346",
+      "statement": "Migration steps and ordering are explicit.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 463
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Deployment and Release Engineering",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Migration steps and ordering are explicit.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DC6E1BDA",
+      "revision": 1,
+      "semantic_sha256": "dc6e1bda11180015493aa2980bae130f397649e4c546294039b261063ca04403",
+      "statement": "Health gates examine user-facing success, latency, errors, saturation, data integrity, security, abuse, and business outcomes.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 466
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Deployment and Release Engineering",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Health gates examine user-facing success, latency, errors, saturation, data integrity, security, abuse, and business outcomes.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-58678F75",
+      "revision": 1,
+      "semantic_sha256": "58678f75ce81ac2904910002d8c926ed6c7989139563a5a0552799fe94b746bd",
+      "statement": "Rollout pauses automatically or operationally on predefined signals.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 467
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Deployment and Release Engineering",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "local_static",
+      "primary_reason": "The control “Rollout pauses automatically or operationally on predefined signals.” defines an exact documentation, artifact-selection, predeployment, rollout, or pipeline gate whose fail-closed behavior can be checked from versioned policy and fixtures.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Inspect the versioned workflow policy and run fixtures proving missing, stale, malformed, incompatible, unapproved, or threshold-breaching evidence cannot advance.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BBD42F35",
+      "revision": 1,
+      "semantic_sha256": "bbd42f353a9c9c022134b20406607112ea8896a5bf4c67fefe9e934dc1e0a8a2",
+      "statement": "Stop, rollback, roll-forward, and incident-declaration criteria are documented before launch.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 468
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Deployment and Release Engineering",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Stop, rollback, roll-forward, and incident-declaration criteria are documented before launch.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3E2AD22B",
+      "revision": 1,
+      "semantic_sha256": "3e2ad22b9a86611dd2f8507f3e1a1159124fcd1be83226d09b2e9a0af3f40db4",
+      "statement": "Traffic shifting, load-balancer behavior, cache invalidation, CDN invalidation, DNS changes, and certificate changes are planned and tested.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 472
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Deployment and Release Engineering",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Traffic shifting, load-balancer behavior, cache invalidation, CDN invalidation, DNS changes, and certificate changes are planned and tested.” combines an exact plan or state record with a bounded deployment, integration, traffic, rollback, or support verification that can be executed and reconciled.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized rollout or support record contains every named change, target, owner, expected state, and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Run the registered bounded verification and compare deployed identities, transitions, telemetry, documentation, and observed results with the approved record.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CA947752",
+      "revision": 1,
+      "semantic_sha256": "ca94775226663bfac5760587e384e0ddf6a34700a5c6ff756e7c069dfd704f44",
+      "statement": "Verify the deployed artifact digest, configuration, feature-flag state, schema version, and migration completion.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 485
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Post-Deployment Verification",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Verify the deployed artifact digest, configuration, feature-flag state, schema version, and migration completion.” combines an exact plan or state record with a bounded deployment, integration, traffic, rollback, or support verification that can be executed and reconciled.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized rollout or support record contains every named change, target, owner, expected state, and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Run the registered bounded verification and compare deployed identities, transitions, telemetry, documentation, and observed results with the approved record.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5E936430",
+      "revision": 1,
+      "semantic_sha256": "5e936430ab46f11fd657c6f33fa5394d367f3c1f80072b7e44e08aaf5c428cd7",
+      "statement": "Test login, logout, account recovery, and privileged authentication.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 486
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Post-Deployment Verification",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test login, logout, account recovery, and privileged authentication.” requires a finite interface, install, game-state, rollout, recovery, reconstruction, credential, replay, signing, or cryptographic test whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the exact inputs, versions, identities, expected transitions, negative cases, outputs, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A5477858",
+      "revision": 1,
+      "semantic_sha256": "a54778582a460fbb0f277f6cd80fd9d9f9c7db2283e6b0c5ab7f93d624125376",
+      "statement": "Verify public, authenticated, administrative, API, worker, scheduled-job, and batch paths.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 488
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Post-Deployment Verification",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Verify public, authenticated, administrative, API, worker, scheduled-job, and batch paths.” requires a finite interface, install, game-state, rollout, recovery, reconstruction, credential, replay, signing, or cryptographic test whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the exact inputs, versions, identities, expected transitions, negative cases, outputs, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CA491689",
+      "revision": 1,
+      "semantic_sha256": "ca491689a45efc2fe9ed0a7c438c8b8074de0200fa69fd9f9495b42ea3ccf825",
+      "statement": "Verify transport security, certificates, redirects, cross-origin behavior, cache controls, and security headers.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 490
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Post-Deployment Verification",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Verify transport security, certificates, redirects, cross-origin behavior, cache controls, and security headers.” requires a finite interface, install, game-state, rollout, recovery, reconstruction, credential, replay, signing, or cryptographic test whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the exact inputs, versions, identities, expected transitions, negative cases, outputs, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CCE6C371",
+      "revision": 1,
+      "semantic_sha256": "cce6c3712444c6b022c2b4cd2b4862f72b8f19380d8d0345453e876194da1ccf",
+      "statement": "Verify CDN and application-cache behavior.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 491
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Post-Deployment Verification",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Verify CDN and application-cache behavior.” requires a finite interface, install, game-state, rollout, recovery, reconstruction, credential, replay, signing, or cryptographic test whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the exact inputs, versions, identities, expected transitions, negative cases, outputs, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3904EEC5",
+      "revision": 1,
+      "semantic_sha256": "3904eec5956e60c5a285646076b2a037b41d7c261dddc289ce204a9ae3b71b1c",
+      "statement": "Review errors, latency, traffic, saturation, queues, database health, replication, and dependency metrics.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 492
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Post-Deployment Verification",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The control “Review errors, latency, traffic, saturation, queues, database health, replication, and dependency metrics.” names concrete game, rollout, health, support, fraud, abuse, or infrastructure signals whose configured monitoring state can be read from an authorized environment.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Read the authorized monitoring system and verify current observations exist for every named signal with bound release, service, owner, threshold definition, and immutable query timestamp.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8780BABB",
+      "revision": 1,
+      "semantic_sha256": "8780babba8ea6fff0da0b589fe27a0a4bf693d9e53e0a1f6766c1a406eb8f407",
+      "statement": "Verify alerts, synthetic monitoring, dashboards, and paging.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 494
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Post-Deployment Verification",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Verify alerts, synthetic monitoring, dashboards, and paging.” requires a finite interface, install, game-state, rollout, recovery, reconstruction, credential, replay, signing, or cryptographic test whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the exact inputs, versions, identities, expected transitions, negative cases, outputs, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6FAC2881",
+      "revision": 1,
+      "semantic_sha256": "6fac28816571b5d54b92e97d90abb91aeb6b15d9398282416ef74c39f97d2bb3",
+      "statement": "Confirm support receives expected telemetry and current documentation.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 495
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Post-Deployment Verification",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Confirm support receives expected telemetry and current documentation.” combines an exact plan or state record with a bounded deployment, integration, traffic, rollback, or support verification that can be executed and reconciled.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized rollout or support record contains every named change, target, owner, expected state, and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Run the registered bounded verification and compare deployed identities, transitions, telemetry, documentation, and observed results with the approved record.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-23CEBF4F",
+      "revision": 1,
+      "semantic_sha256": "23cebf4f14ca306f7f19926ed2556d04daed43aa996c36622b2df40272b913cd",
+      "statement": "Record the final go, hold, rollback, roll-forward, or incident decision.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 498
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Post-Deployment Verification",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record the final go, hold, rollback, roll-forward, or incident decision.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-603F2296",
+      "revision": 1,
+      "semantic_sha256": "603f22963065989b0f8b01e8fb017c84d7b24a9474aa7ff01a40256031ab694f",
+      "statement": "Product owner signs off on scope, behavior, acceptance criteria, launch objectives, and customer impact.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 506
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Required Sign-Offs",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Product owner signs off on scope, behavior, acceptance criteria, launch objectives, and customer impact.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DFE5DFDB",
+      "revision": 1,
+      "semantic_sha256": "dfe5dfdbb6c7e8f5998686f9f516361f2f3653536e873e1bafb033a37d3b612b",
+      "statement": "Engineering owner signs off on architecture, implementation, tests, migrations, maintainability, and technical risk.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 507
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Required Sign-Offs",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Engineering owner signs off on architecture, implementation, tests, migrations, maintainability, and technical risk.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9A317D5C",
+      "revision": 1,
+      "semantic_sha256": "9a317d5c7338f6b20d69a694d746df387b7cb005ef796f69e57b5a6f0e6ddf9c",
+      "statement": "Quality owner signs off on test completeness, evidence, defects, and regression status.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 508
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Required Sign-Offs",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Quality owner signs off on test completeness, evidence, defects, and regression status.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4A5E2EB1",
+      "revision": 1,
+      "semantic_sha256": "4a5e2eb188294f164dd4bdfd5cd9fbade6e6ed7f9b1ae1e2c59cc51f91a85939",
+      "statement": "Security owner signs off on threat modeling, application-security verification, findings, supply chain, and residual security risk.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 509
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Required Sign-Offs",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Security owner signs off on threat modeling, application-security verification, findings, supply chain, and residual security risk.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3077E62C",
+      "revision": 1,
+      "semantic_sha256": "3077e62c4ba5c07faf4e4c660b64082f8b1521f2414f628fee6e69618ddad42e",
+      "statement": "Reliability or operations owner signs off on SLOs, capacity, observability, on-call, rollout, rollback, and recovery.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 510
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Required Sign-Offs",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Reliability or operations owner signs off on SLOs, capacity, observability, on-call, rollout, rollback, and recovery.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F81F6CE4",
+      "revision": 1,
+      "semantic_sha256": "f81f6ce45a5d83710c0db8cd2483ed203a859b7eb3787a60e3e336cd2c8000ac",
+      "statement": "Data owner signs off on integrity, migration, retention, reconciliation, and restoration.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 511
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Required Sign-Offs",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Data owner signs off on integrity, migration, retention, reconciliation, and restoration.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-17F410B4",
+      "revision": 1,
+      "semantic_sha256": "17f410b4c29a0d5f6b1cb52e112cf7d833b7ce8eecb63f04ddd59003584a47a1",
+      "statement": "Privacy owner signs off on data inventory, purpose, rights, notices, transfers, and privacy risk.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 512
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Required Sign-Offs",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Privacy owner signs off on data inventory, purpose, rights, notices, transfers, and privacy risk.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1C6662C7",
+      "revision": 1,
+      "semantic_sha256": "1c6662c7181c2afc39097ba1d216331643ee608f91401e3dade18c8e02f6cca2",
+      "statement": "Accessibility owner or qualified reviewer signs off on target conformance and unresolved barriers.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 513
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Required Sign-Offs",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Accessibility owner or qualified reviewer signs off on target conformance and unresolved barriers.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-92006B53",
+      "revision": 1,
+      "semantic_sha256": "92006b53d6ebbd7ad1fd6a56dffbc00bb67e7acf2b57976f0b9ce270d5794e34",
+      "statement": "Legal or compliance owner signs off on applicable obligations, terms, contracts, regulatory risk, and required notices.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 514
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Required Sign-Offs",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Legal or compliance owner signs off on applicable obligations, terms, contracts, regulatory risk, and required notices.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-615F9CB7",
+      "revision": 1,
+      "semantic_sha256": "615f9cb7a962561fc3adfbdfe7ae87728736ac7816f5af33431e34dfc4288c90",
+      "statement": "Support owner signs off on support readiness, escalation, documentation, and customer communications.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 515
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Required Sign-Offs",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Support owner signs off on support readiness, escalation, documentation, and customer communications.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2A0C5DBF",
+      "revision": 1,
+      "semantic_sha256": "2a0c5dbf8e87088df5382233175133d6f674bbecb2c1d29a17be8f6d02f2e810",
+      "statement": "Business risk owner explicitly accepts remaining material risk.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 516
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Required Sign-Offs",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Business risk owner explicitly accepts remaining material risk.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3437198D",
+      "revision": 1,
+      "semantic_sha256": "3437198d08c64bb7853bdfe06df28343b157965840201de2297eed9552f6c133",
+      "statement": "Executive or designated release authority makes the final decision for high-impact launches.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 517
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Required Sign-Offs",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Executive or designated release authority makes the final decision for high-impact launches.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9A466E24",
+      "revision": 1,
+      "semantic_sha256": "9a466e24fd7524e227c28e2d2bbdaef69bae8da7c1c4c4edb53c037dc6038ce8",
+      "statement": "No person signs an area for which evidence is absent or for which they are not qualified or authorized.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 518
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Required Sign-Offs",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “No person signs an area for which evidence is absent or for which they are not qualified or authorized.” joins bounded release, approval, configuration, research, issuance, credential, or authorization records with immutable artifact evidence that can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, approval, research, issuance, or credential record contains every explicitly required state, signer, scope, owner, and evidence reference.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare immutable source, artifact, configuration, evidence-package, key-domain, or credential identities and fail closed on missing or mismatched bindings.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A4723C18",
+      "revision": 1,
+      "semantic_sha256": "a4723c184a78f417539f3ac6fe5f615f1a2f2ed1ca6cc579a67fa99323f20c6b",
+      "statement": "Every critical requirement has current evidence tied to the exact production artifact and configuration.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 526
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Go, Conditional-Go, and No-Go Decision Rule",
+        "GO"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Every critical requirement has current evidence tied to the exact production artifact and configuration.” joins bounded release, approval, configuration, research, issuance, credential, or authorization records with immutable artifact evidence that can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, approval, research, issuance, or credential record contains every explicitly required state, signer, scope, owner, and evidence reference.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare immutable source, artifact, configuration, evidence-package, key-domain, or credential identities and fail closed on missing or mismatched bindings.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A8D674CC",
+      "revision": 1,
+      "semantic_sha256": "a8d674ccc544806f6c2953999e25d32b00a9dffd8180cb673543f6f67505ecd9",
+      "statement": "Every accepted risk has an accountable owner, compensating control, monitoring, remediation plan, and expiry.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 529
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Go, Conditional-Go, and No-Go Decision Rule",
+        "GO"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Every accepted risk has an accountable owner, compensating control, monitoring, remediation plan, and expiry.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-88CFEFEC",
+      "revision": 1,
+      "semantic_sha256": "88cfefec1cd0dbaa48d0b1c7f210b66749e618b84dbe7dfa59d42e288ce453df",
+      "statement": "Evidence is missing, stale, contradictory, or tied to a different artifact.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 540
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Go, Conditional-Go, and No-Go Decision Rule",
+        "NO-GO"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Evidence is missing, stale, contradictory, or tied to a different artifact.” joins bounded release, approval, configuration, research, issuance, credential, or authorization records with immutable artifact evidence that can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, approval, research, issuance, or credential record contains every explicitly required state, signer, scope, owner, and evidence reference.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare immutable source, artifact, configuration, evidence-package, key-domain, or credential identities and fail closed on missing or mismatched bindings.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F38CE10F",
+      "revision": 1,
+      "semantic_sha256": "f38ce10f5ed2e8e93ce7d890726f5f5ba3f6949cf54cb1cc5a806b502b53a4ef",
+      "statement": "Required legal, regulatory, contractual, privacy, accessibility, safety, or security approval is absent.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 542
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Go, Conditional-Go, and No-Go Decision Rule",
+        "NO-GO"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Required legal, regulatory, contractual, privacy, accessibility, safety, or security approval is absent.” joins bounded release, approval, configuration, research, issuance, credential, or authorization records with immutable artifact evidence that can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, approval, research, issuance, or credential record contains every explicitly required state, signer, scope, owner, and evidence reference.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare immutable source, artifact, configuration, evidence-package, key-domain, or credential identities and fail closed on missing or mismatched bindings.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6E882462",
+      "revision": 1,
+      "semantic_sha256": "6e8824620a35631bfca95c6e1185dd99de5bb7ef1245960ee607eeb767f5dd0c",
+      "statement": "The team relies on \"we will monitor it\" without a concrete, tested detection and mitigation path.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 543
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Go, Conditional-Go, and No-Go Decision Rule",
+        "NO-GO"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “The team relies on \"we will monitor it\" without a concrete, tested detection and mitigation path.” joins bounded release, approval, configuration, research, issuance, credential, or authorization records with immutable artifact evidence that can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, approval, research, issuance, or credential record contains every explicitly required state, signer, scope, owner, and evidence reference.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare immutable source, artifact, configuration, evidence-package, key-domain, or credential identities and fail closed on missing or mismatched bindings.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CC2A5D3C",
+      "revision": 1,
+      "semantic_sha256": "cc2a5d3cbaccad77ed29557ec01b66db32295c151c9caeaa4a644414653d1704",
+      "statement": "Document which sections apply, the intended assurance level, legal context, relying parties, and consequences of error.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 553
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Applicability of this specialized module"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Document which sections apply, the intended assurance level, legal context, relying parties, and consequences of error.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-22EC4A27",
+      "revision": 1,
+      "semantic_sha256": "22ec4a270bd18d46841fdecd88ad12c8ec188cd037d1f3fc421804e9cf583f27",
+      "statement": "Define the research question, hypothesis, intended use, decision context, stakeholders, and prohibited interpretations before analysis.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 558
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Research and computational governance"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define the research question, hypothesis, intended use, decision context, stakeholders, and prohibited interpretations before analysis.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-03CB3B9C",
+      "revision": 1,
+      "semantic_sha256": "03cb3b9cfee7603df5ec7b2b1b720ec0df2497ed1168b93c5d0250a5ca0c1aa9",
+      "statement": "Distinguish exploratory, confirmatory, operational, and regulatory analysis.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 559
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Research and computational governance"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Distinguish exploratory, confirmatory, operational, and regulatory analysis.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B67B4198",
+      "revision": 1,
+      "semantic_sha256": "b67b4198575b57811dfbb3b2f9c763c187a6496c043fcb5196f1f904c83b3d2d",
+      "statement": "Define authorship, contribution, review, data stewardship, and correction responsibilities.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 564
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Research and computational governance"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define authorship, contribution, review, data stewardship, and correction responsibilities.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E736C3A5",
+      "revision": 1,
+      "semantic_sha256": "e736c3a5cd8f4dd50c020c1ac681815babfd3c5eb631ffabb884d6b784926d8b",
+      "statement": "Preserve decisions and deviations from the original plan with rationale.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 567
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Research and computational governance"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Preserve decisions and deviations from the original plan with rationale.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-859AA9C7",
+      "revision": 1,
+      "semantic_sha256": "859aa9c72991b5cb05fdecb0faf27ca7629496d0b570a1ffd8553c56f575239d",
+      "statement": "Define correction, retraction, and downstream-notification procedures.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 568
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Research and computational governance"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define correction, retraction, and downstream-notification procedures.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C0B40BD6",
+      "revision": 1,
+      "semantic_sha256": "c0b40bd6e6130a18f9e58b38bb441cace8323b78e543fad4abb61c72071bdfd2",
+      "statement": "Record the origin, collection method, time, population, sampling, consent, rights, instruments, and custodianship of input data.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 572
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Data provenance and research integrity"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record the origin, collection method, time, population, sampling, consent, rights, instruments, and custodianship of input data.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3AFF5D69",
+      "revision": 1,
+      "semantic_sha256": "3aff5d69156dace8f57aafa348807321649a5d5d9cc2bcdafef10e274669c94f",
+      "statement": "Separate source data from cleaned, transformed, imputed, labeled, and derived data.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 574
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Data provenance and research integrity"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Separate source data from cleaned, transformed, imputed, labeled, and derived data.” joins bounded release, approval, configuration, research, issuance, credential, or authorization records with immutable artifact evidence that can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, approval, research, issuance, or credential record contains every explicitly required state, signer, scope, owner, and evidence reference.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare immutable source, artifact, configuration, evidence-package, key-domain, or credential identities and fail closed on missing or mismatched bindings.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1B66E032",
+      "revision": 1,
+      "semantic_sha256": "1b66e032fb56c4d1031b84411e73effd245252f1115a5f340df3995226880c98",
+      "statement": "Version data sets and assign immutable identifiers or digests.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 575
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Data provenance and research integrity"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The control “Version data sets and assign immutable identifiers or digests.” requires bounded release, data, analysis, provenance, log, publication, or signature artifacts whose immutable identities and required bindings can be verified exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Verify every declared artifact exists in the authorized evidence set, has immutable identity and provenance, and contains or links each required digest, version, environment, source, correction, or validation binding.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0AEEC3E1",
+      "revision": 1,
+      "semantic_sha256": "0aeec3e1a44685ba0e606eae7b4b34cc84d251036558a0e9e949568bb7a66521",
+      "statement": "Record access, export, sharing, retention, legal hold, and deletion decisions.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 581
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Data provenance and research integrity"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record access, export, sharing, retention, legal hold, and deletion decisions.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B736D113",
+      "revision": 1,
+      "semantic_sha256": "b736d1137231cd7723413ac7ff615d84c0c5582c94a25d318382a09a20110ec8",
+      "statement": "Version all source code, scripts, notebooks, queries, models, prompts, configuration, workflow definitions, and analysis documents.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 587
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Code, model, workflow, and environment reproducibility"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The control “Version all source code, scripts, notebooks, queries, models, prompts, configuration, workflow definitions, and analysis documents.” requires bounded release, data, analysis, provenance, log, publication, or signature artifacts whose immutable identities and required bindings can be verified exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Verify every declared artifact exists in the authorized evidence set, has immutable identity and provenance, and contains or links each required digest, version, environment, source, correction, or validation binding.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-99DC8215",
+      "revision": 1,
+      "semantic_sha256": "99dc8215d8e85d059da854e99e469f001e6b2e156aeb4800bb5fc31f9581f496",
+      "statement": "Record exact dependencies, operating environment, hardware-relevant behavior, random seeds, locale, time zone, and numerical settings.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 588
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Code, model, workflow, and environment reproducibility"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record exact dependencies, operating environment, hardware-relevant behavior, random seeds, locale, time zone, and numerical settings.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DF7C3CCE",
+      "revision": 1,
+      "semantic_sha256": "df7c3ccef5ac81759c4a8d8a54a3ef9ae72680ef31ff72a493ee7c3957edfd0f",
+      "statement": "Record external services, data versions, model endpoints, and provider behavior relied upon.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 592
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Code, model, workflow, and environment reproducibility"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record external services, data versions, model endpoints, and provider behavior relied upon.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A5E603FC",
+      "revision": 1,
+      "semantic_sha256": "a5e603fcc960cbe09fa3dcce3ff727f29d91fe173f35aec66d674fe1cb06d590",
+      "statement": "Make pipelines fail visibly on missing, stale, malformed, or incompatible inputs.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 594
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Code, model, workflow, and environment reproducibility"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "local_static",
+      "primary_reason": "The control “Make pipelines fail visibly on missing, stale, malformed, or incompatible inputs.” defines an exact documentation, artifact-selection, predeployment, rollout, or pipeline gate whose fail-closed behavior can be checked from versioned policy and fixtures.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Inspect the versioned workflow policy and run fixtures proving missing, stale, malformed, incompatible, unapproved, or threshold-breaching evidence cannot advance.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8B7B27AC",
+      "revision": 1,
+      "semantic_sha256": "8b7b27ac4c9f0060759e821526f58a6213168113fff7111bfb370728a358bde8",
+      "statement": "Preserve build and execution logs with timestamps and artifact identifiers.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 597
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Code, model, workflow, and environment reproducibility"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The control “Preserve build and execution logs with timestamps and artifact identifiers.” requires bounded release, data, analysis, provenance, log, publication, or signature artifacts whose immutable identities and required bindings can be verified exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Verify every declared artifact exists in the authorized evidence set, has immutable identity and provenance, and contains or links each required digest, version, environment, source, correction, or validation binding.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A075D067",
+      "revision": 1,
+      "semantic_sha256": "a075d067e1f8ede320a6e2e6585ca058d22b241e7c0155e59526474976cf4adf",
+      "statement": "Test reconstruction from a clean environment.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 598
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Code, model, workflow, and environment reproducibility"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test reconstruction from a clean environment.” requires a finite interface, install, game-state, rollout, recovery, reconstruction, credential, replay, signing, or cryptographic test whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the exact inputs, versions, identities, expected transitions, negative cases, outputs, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4F2985C0",
+      "revision": 1,
+      "semantic_sha256": "4f2985c02aeda81f7ef4657c102f56d89b362a261dd9d4fd048947f0edb159d5",
+      "statement": "Maintain migration plans for obsolete formats, dependencies, hardware, and services.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 599
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Code, model, workflow, and environment reproducibility"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Maintain migration plans for obsolete formats, dependencies, hardware, and services.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-937EF1C5",
+      "revision": 1,
+      "semantic_sha256": "937ef1c5497eeea4636978c350d5a835d1b8e9dab698bc64996770ae0269845c",
+      "statement": "Distinguish association, prediction, causal effect, and mechanism.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 605
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Statistical and analytical validity"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Distinguish association, prediction, causal effect, and mechanism.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2152BD91",
+      "revision": 1,
+      "semantic_sha256": "2152bd91c166a4f2a6bd48dc697fbecb4273360fbb5c71924443ce6b6d031ac4",
+      "statement": "Define the population to which results may generalize.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 607
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Statistical and analytical validity"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define the population to which results may generalize.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-43A3105F",
+      "revision": 1,
+      "semantic_sha256": "43a3105f3a3fc9d3d60ec76cad0a32294a8179973217abf28cf1280406bcbdf5",
+      "statement": "Report effect sizes and uncertainty, not significance labels alone.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 610
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Statistical and analytical validity"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Report effect sizes and uncertainty, not significance labels alone.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A8BAA9E5",
+      "revision": 1,
+      "semantic_sha256": "a8baa9e55e89a649f3818bede2917f3a8b2a303e5fd77e73ba1a88641eef3ade",
+      "statement": "Distinguish prespecified from post hoc analyses.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 612
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Statistical and analytical validity"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Distinguish prespecified from post hoc analyses.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-27E7E9A7",
+      "revision": 1,
+      "semantic_sha256": "27e7e9a714741a597a1195086ef3c0f8fbbe880b67f9dbb1b58814f5fa0c6867",
+      "statement": "Report missing data, exclusions, failures, and sensitivity analyses.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 617
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Statistical and analytical validity"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Report missing data, exclusions, failures, and sensitivity analyses.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2A24761B",
+      "revision": 1,
+      "semantic_sha256": "2a24761b976d8732faa5984c573ab59b302d375326c2bb1d4fceaed492086522",
+      "statement": "Have material calculations independently reviewed or reproduced.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 620
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Statistical and analytical validity"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Have material calculations independently reviewed or reproduced.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3D4A2C29",
+      "revision": 1,
+      "semantic_sha256": "3d4a2c297b315a390ad8f2963a6eab1e4242dc191d8f84b9b76093b7a6a63aa0",
+      "statement": "Use durable repositories, persistent identifiers, licenses, and citation information.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 626
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Replication, artifacts, and publication"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The control “Use durable repositories, persistent identifiers, licenses, and citation information.” requires bounded release, data, analysis, provenance, log, publication, or signature artifacts whose immutable identities and required bindings can be verified exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Verify every declared artifact exists in the authorized evidence set, has immutable identity and provenance, and contains or links each required digest, version, environment, source, correction, or validation binding.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FF062A21",
+      "revision": 1,
+      "semantic_sha256": "ff062a219ad733402056380b38bf4c659b25192a5d73e66a17c58c6d81454826",
+      "statement": "Validate shared artifacts from a clean environment before publication.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 628
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Replication, artifacts, and publication"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Validate shared artifacts from a clean environment before publication.” requires a finite interface, install, game-state, rollout, recovery, reconstruction, credential, replay, signing, or cryptographic test whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the exact inputs, versions, identities, expected transitions, negative cases, outputs, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A9A1F3FE",
+      "revision": 1,
+      "semantic_sha256": "a9a1f3fe5ee2e0231d494a56dfb4a98e5a1d108c297a1fa26e8c22b5093cd921",
+      "statement": "Include machine-readable metadata and provenance.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 629
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Replication, artifacts, and publication"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The control “Include machine-readable metadata and provenance.” requires bounded release, data, analysis, provenance, log, publication, or signature artifacts whose immutable identities and required bindings can be verified exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Verify every declared artifact exists in the authorized evidence set, has immutable identity and provenance, and contains or links each required digest, version, environment, source, correction, or validation binding.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-ED92B2E3",
+      "revision": 1,
+      "semantic_sha256": "ed92b2e301af08df7d5acd0cb384fc4b7f1780043ebd1a362e52399570db5fa1",
+      "statement": "Link publications and decisions to exact artifact and data versions.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 632
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Replication, artifacts, and publication"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The control “Link publications and decisions to exact artifact and data versions.” requires bounded release, data, analysis, provenance, log, publication, or signature artifacts whose immutable identities and required bindings can be verified exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Verify every declared artifact exists in the authorized evidence set, has immutable identity and provenance, and contains or links each required digest, version, environment, source, correction, or validation binding.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-01B4FBC4",
+      "revision": 1,
+      "semantic_sha256": "01b4fbc4713357e0791177743d00b0c771784f4bcdede8528fb5d8f378cdfd0c",
+      "statement": "Define issuers, holders, subjects, verifiers, relying parties, registries, wallets, trust frameworks, and governance authorities.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 639
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Digital credential ecosystem governance"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define issuers, holders, subjects, verifiers, relying parties, registries, wallets, trust frameworks, and governance authorities.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BC76C6E3",
+      "revision": 1,
+      "semantic_sha256": "bc76c6e36d9720d5cd77c0aa63d3afa823ad5344a33b0126299a23d61fa06c50",
+      "statement": "Specify who is authorized to issue, suspend, revoke, renew, update, and verify credentials.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 641
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Digital credential ecosystem governance"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Specify who is authorized to issue, suspend, revoke, renew, update, and verify credentials.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-146AF17B",
+      "revision": 1,
+      "semantic_sha256": "146af17b360fe0662a0f5add438155b15b96228dc290a14c12c3134dae7c309c",
+      "statement": "Define assurance requirements for identity proofing, source evidence, authentication, authorization, and issuance.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 642
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Digital credential ecosystem governance"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define assurance requirements for identity proofing, source evidence, authentication, authorization, and issuance.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-698D6079",
+      "revision": 1,
+      "semantic_sha256": "698d6079b3bb1fb402908638df3dd4c1916f2fb7bb0b3000ac10f86719bd2f4b",
+      "statement": "Establish governance for schemas, namespaces, identifiers, trust lists, status methods, and dispute resolution.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 644
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Digital credential ecosystem governance"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Establish governance for schemas, namespaces, identifiers, trust lists, status methods, and dispute resolution.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-92C1B996",
+      "revision": 1,
+      "semantic_sha256": "92c1b9968a3d027526fcff539892df2b347bc3451ece9455565837e047c43ac2",
+      "statement": "Include issuer, validity, status, version, and intended-use information.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 656
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Credential issuance and lifecycle"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Include issuer, validity, status, version, and intended-use information.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BB83CC0C",
+      "revision": 1,
+      "semantic_sha256": "bb83cc0c0bfb85533ebafc25c6be7702ec716d07372083ff267166aaca8ec893",
+      "statement": "Separate test and production issuers, keys, identifiers, and trust lists.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 658
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Credential issuance and lifecycle"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Separate test and production issuers, keys, identifiers, and trust lists.” joins bounded release, approval, configuration, research, issuance, credential, or authorization records with immutable artifact evidence that can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, approval, research, issuance, or credential record contains every explicitly required state, signer, scope, owner, and evidence reference.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare immutable source, artifact, configuration, evidence-package, key-domain, or credential identities and fail closed on missing or mismatched bindings.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0F08A687",
+      "revision": 1,
+      "semantic_sha256": "0f08a68747e7ee5ffcd8f8de61c500db25a1904cf2fd775883c3db7805175a8d",
+      "statement": "Define behavior after issuer merger, compromise, insolvency, renaming, or retirement.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 662
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Credential issuance and lifecycle"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define behavior after issuer merger, compromise, insolvency, renaming, or retirement.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AD6C7346",
+      "revision": 1,
+      "semantic_sha256": "ad6c7346bdf7edeaeadb2cb4be9d25d0bccce9adbcc45260d58c3493bca5dd3d",
+      "statement": "Explain which claims will be presented, to whom, for what purpose, and with what linkability.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 671
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Wallets, holders, and credential storage"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Explain which claims will be presented, to whom, for what purpose, and with what linkability.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-83FE6385",
+      "revision": 1,
+      "semantic_sha256": "83fe6385cc51bc53a03d616d48c0542e8ed0cc796ea14f8188464c7414bd4520",
+      "statement": "Distinguish locally stored, cloud-synchronized, custodial, and noncustodial key arrangements.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 680
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Wallets, holders, and credential storage"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Distinguish locally stored, cloud-synchronized, custodial, and noncustodial key arrangements.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-11A087E3",
+      "revision": 1,
+      "semantic_sha256": "11a087e3c9a208831ea88342ac0e743417c20a6f6cc5eb099a479b8bf0f5a02c",
+      "statement": "Validate credential structure, issuer, proof, algorithm, key, status, validity, audience, schema, and required claims.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 687
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Presentation, verification, and relying-party decisions"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Validate credential structure, issuer, proof, algorithm, key, status, validity, audience, schema, and required claims.” requires a finite interface, install, game-state, rollout, recovery, reconstruction, credential, replay, signing, or cryptographic test whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the exact inputs, versions, identities, expected transitions, negative cases, outputs, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D9F22BC7",
+      "revision": 1,
+      "semantic_sha256": "d9f22bc79722b73d1bda7ed8a71ad6c0e6bca11be670deeab1173a64a3a7df7f",
+      "statement": "Reject unsupported algorithms, ambiguous encodings, malformed proofs, and invalid status information.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 688
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Presentation, verification, and relying-party decisions"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Reject unsupported algorithms, ambiguous encodings, malformed proofs, and invalid status information.” requires a finite interface, install, game-state, rollout, recovery, reconstruction, credential, replay, signing, or cryptographic test whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the exact inputs, versions, identities, expected transitions, negative cases, outputs, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C2412308",
+      "revision": 1,
+      "semantic_sha256": "c24123088cf3cb52a7977efcbc0c01da43153edcffbe20c72e850d23cfc40f33",
+      "statement": "Prevent presentation replay and cross-context reuse.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 690
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Presentation, verification, and relying-party decisions"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Prevent presentation replay and cross-context reuse.” requires a finite interface, install, game-state, rollout, recovery, reconstruction, credential, replay, signing, or cryptographic test whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the exact inputs, versions, identities, expected transitions, negative cases, outputs, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BBE4D4DE",
+      "revision": 1,
+      "semantic_sha256": "bbe4d4de3f1115bbd14c13b23c70c2251441079d45bb63825828f1e7fbb02af3",
+      "statement": "Verify the holder binding when the credential requires proof of possession or subject control.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 691
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Presentation, verification, and relying-party decisions"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Verify the holder binding when the credential requires proof of possession or subject control.” requires a finite interface, install, game-state, rollout, recovery, reconstruction, credential, replay, signing, or cryptographic test whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the exact inputs, versions, identities, expected transitions, negative cases, outputs, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-95D3A5B4",
+      "revision": 1,
+      "semantic_sha256": "95d3a5b42f30d917f2476642b7d1536569267bccfa36f68f2eab43e0bfe814d1",
+      "statement": "Distinguish cryptographic validity from truth, current eligibility, legal effect, and business authorization.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 692
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Presentation, verification, and relying-party decisions"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Distinguish cryptographic validity from truth, current eligibility, legal effect, and business authorization.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

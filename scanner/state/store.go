@@ -19,6 +19,7 @@ import (
 	"time"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/adapter"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/controlprogram"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/engine"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/finding"
 	workspaceinventory "github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
@@ -670,26 +671,62 @@ func validateRun(run model.RunResult) error {
 
 func validateControlResults(run model.RunResult, assertionResults map[string]bool) error {
 	if run.ControlCatalog == nil {
-		if len(run.ControlResults) != 0 {
+		if len(run.ControlResults) != 0 || len(run.DeterministicEvidence) != 0 {
 			return fmt.Errorf("run has complete-control results without a control catalog binding")
 		}
 		return nil
 	}
 	summary := run.ControlCatalog
+	legacyContracts := summary.ContractSchemaVersion == "prc.control-contracts/v0.1"
+	reviewedContracts := summary.ContractSchemaVersion == "prc.control-contracts/v0.2"
 	if summary.SchemaVersion != "prc.control-catalog-summary/v0.1" || !digest(summary.RegistrySHA256) ||
-		!digest(summary.SourceSHA256) || summary.ContractSchemaVersion != "prc.control-contracts/v0.1" ||
+		!digest(summary.SourceSHA256) || (!legacyContracts && !reviewedContracts) ||
 		!digest(summary.ContractSHA256) || summary.ControlCount < 1 || summary.ControlCount != len(run.ControlResults) ||
 		summary.ContractCount != summary.ControlCount || summary.GeneratedContractCount < 0 ||
-		summary.ExpertReviewedContractCount < 0 || summary.GeneratedContractCount+summary.ExpertReviewedContractCount != summary.ContractCount ||
+		summary.AgentReviewedContractCount < 0 || summary.GeneratedContractCount+summary.AgentReviewedContractCount != summary.ContractCount ||
 		summary.ActiveControlCount < 0 || summary.ActiveControlCount > summary.ControlCount {
 		return fmt.Errorf("run has an invalid complete control catalog binding")
 	}
+	if legacyContracts {
+		if summary.ContractGeneratorID != "" || summary.ClassificationMethodologySHA256 != "" ||
+			summary.ClassificationSummarySHA256 != "" || summary.ClassificationCorpusSHA256 != "" ||
+			summary.ControlCheckBindingsSchemaVersion != "" || summary.ControlCheckBindingsSHA256 != "" ||
+			summary.ControlCheckProgramsSchemaVersion != "" || summary.ControlCheckProgramsSHA256 != "" ||
+			summary.ControlCheckProgramsCatalogSHA256 != "" || summary.ControlCheckDefinitionSchemaSHA256 != "" ||
+			summary.ControlCheckDefinitionCorpusSHA256 != "" ||
+			summary.ReviewedDeterministicCount != 0 || summary.ReviewedNondeterministicCount != 0 ||
+			summary.DeterministicBindingCount != 0 || summary.DeterministicProgramTemplateCount != 0 ||
+			summary.DeterministicProgramBlockedCount != 0 || summary.DeterministicProgramExecutedCount != 0 ||
+			summary.DeterministicProgramPassCount != 0 || summary.DeterministicProgramFailCount != 0 ||
+			summary.DeterministicProgramNACount != 0 {
+			return fmt.Errorf("legacy complete control catalog contains unsupported reviewed-classification fields")
+		}
+	} else if summary.ContractGeneratorID != "prc.control-contracts@0.2" ||
+		!digest(summary.ClassificationMethodologySHA256) || !digest(summary.ClassificationSummarySHA256) ||
+		!digest(summary.ClassificationCorpusSHA256) ||
+		summary.ControlCheckBindingsSchemaVersion != "prc.control-check-bindings/v0.1" ||
+		!digest(summary.ControlCheckBindingsSHA256) || summary.GeneratedContractCount != 0 ||
+		summary.ControlCheckProgramsSchemaVersion != "prc.control-check-program-catalog/v0.4" ||
+		!digest(summary.ControlCheckProgramsSHA256) || !digest(summary.ControlCheckProgramsCatalogSHA256) ||
+		!digest(summary.ControlCheckDefinitionSchemaSHA256) || !digest(summary.ControlCheckDefinitionCorpusSHA256) ||
+		summary.AgentReviewedContractCount != summary.ContractCount ||
+		summary.ReviewedDeterministicCount < 1 || summary.ReviewedNondeterministicCount < 1 ||
+		summary.ReviewedDeterministicCount+summary.ReviewedNondeterministicCount != summary.ContractCount ||
+		summary.DeterministicBindingCount != summary.ReviewedDeterministicCount ||
+		summary.DeterministicProgramTemplateCount < summary.DeterministicBindingCount ||
+		summary.DeterministicProgramBlockedCount < 0 || summary.DeterministicProgramBlockedCount > summary.DeterministicBindingCount ||
+		summary.DeterministicProgramExecutedCount < 0 || summary.DeterministicProgramPassCount < 0 ||
+		summary.DeterministicProgramFailCount < 0 || summary.DeterministicProgramNACount < 0 {
+		return fmt.Errorf("run has stale or incomplete reviewed control classification bindings")
+	}
 	validDisposition := map[string]bool{
-		"confirmed_failure": true, "blocked": true, "partially_verified": true,
-		"needs_review": true, "retired": true,
+		"confirmed_failure": true, "verified_pass": true, "not_applicable": true,
+		"blocked": true, "partially_verified": true, "needs_review": true, "retired": true,
 	}
 	validCoverage := map[string]bool{
-		"unmapped": true, "not_in_selected_profile": true, "partial_assertions": true, "retired": true,
+		"unmapped": true, "not_in_selected_profile": true, "partial_assertions": true,
+		"deterministic_program_provider_unregistered": true, "deterministic_program_partial": true,
+		"deterministic_program_complete": true, "nondeterministic_advisory": true, "retired": true,
 	}
 	validContractStatus := map[string]bool{"generated_unreviewed": true, "reviewed": true, "retired": true}
 	validEvaluation := map[string]bool{"repository": true, "environment": true, "human_external": true, "mixed": true, "unclassified": true}
@@ -697,12 +734,36 @@ func validateControlResults(run model.RunResult, assertionResults map[string]boo
 		"deterministic_candidate": true, "ai_advisory_candidate": true, "environment_evidence_required": true,
 		"human_or_external_required": true, "mixed_evidence_required": true,
 	}
-	validEvidenceAuthority := map[string]bool{"declared": true, "repository": true, "artifact": true, "environment": true, "human": true}
+	validEvidenceAuthority := map[string]bool{
+		"declared": true, "repository": true, "artifact": true, "executed": true,
+		"environment": true, "external_registry": true, "structured_record": true, "human": true,
+	}
 	active := 0
 	generatedContracts := 0
-	expertReviewedContracts := 0
+	agentReviewedContracts := 0
+	reviewedDeterministic := 0
+	reviewedNondeterministic := 0
+	programTemplates := 0
+	blockedDeterministic := 0
+	executedPrograms := 0
+	passedPrograms := 0
+	failedPrograms := 0
+	notApplicablePrograms := 0
 	aiReviews := 0
 	aiAdvisoryFailures := 0
+	exactEvidence := make(map[string]controlprogram.Evidence, len(run.DeterministicEvidence))
+	for _, evidence := range run.DeterministicEvidence {
+		identity := controlprogram.EvidenceSHA256(evidence)
+		if err := controlprogram.ValidateEvidence(evidence); err != nil || !digest(identity) ||
+			evidence.InventorySHA256 != run.Inventory.Digest {
+			return fmt.Errorf("run contains invalid deterministic evidence")
+		}
+		if _, duplicate := exactEvidence[identity]; duplicate {
+			return fmt.Errorf("run contains duplicate deterministic evidence")
+		}
+		exactEvidence[identity] = evidence
+	}
+	usedExactEvidence := map[string]bool{}
 	seen := map[string]bool{}
 	for index, control := range run.ControlResults {
 		if control.ControlID == "" || seen[control.ControlID] || control.Revision < 1 ||
@@ -717,9 +778,81 @@ func validateControlResults(run model.RunResult, assertionResults map[string]boo
 			len(control.EvidenceAuthorities) == 0 || strings.TrimSpace(control.NotApplicableProof) == "" ||
 			len(control.NotApplicableProof) > 1000 ||
 			!validDisposition[control.Disposition] || !validCoverage[control.Coverage] ||
-			(control.Authority != "none" && control.Authority != "deterministic_partial") ||
+			(control.Authority != "none" && control.Authority != "deterministic_partial" && control.Authority != "deterministic_exact") ||
 			strings.TrimSpace(control.Summary) == "" {
 			return fmt.Errorf("run contains invalid complete-control result %s", control.ControlID)
+		}
+		if legacyContracts {
+			if control.Classification != "" || control.ClassificationRoute != "" ||
+				control.ClassificationDecisionBasis != "" || control.ClassificationRowSHA256 != "" ||
+				control.DeterministicBindingID != "" || control.DeterministicBindingSHA256 != "" ||
+				control.DeterministicProgramTemplateCount != 0 || control.DeterministicProgramStatus != "" {
+				return fmt.Errorf("legacy control %s contains unsupported reviewed-classification fields", control.ControlID)
+			}
+		} else {
+			if control.ContractStatus != "reviewed" || control.CanonicalControlID != control.ControlID ||
+				!digest(control.ClassificationRowSHA256) {
+				return fmt.Errorf("reviewed control %s has a stale classification binding", control.ControlID)
+			}
+			switch control.Classification {
+			case "deterministic":
+				reviewedDeterministic++
+				programTemplates += control.DeterministicProgramTemplateCount
+				if !validDeterministicRoute(control.ClassificationRoute) ||
+					control.ClassificationDecisionBasis != "strength_audit_confirmed" ||
+					control.DeterministicBindingID != fmt.Sprintf("%s@%d", control.ControlID, control.Revision) ||
+					!digest(control.DeterministicBindingSHA256) ||
+					control.DeterministicProgramTemplateCount < 1 || control.DeterministicProgramTemplateCount > 50 ||
+					!validDeterministicControlExecution(control) {
+					return fmt.Errorf("deterministic control %s has an invalid exact execution state", control.ControlID)
+				}
+				if control.Disposition == "blocked" {
+					blockedDeterministic++
+				}
+				for _, clause := range control.DeterministicClauseResults {
+					if !validDeterministicClauseResult(clause) {
+						return fmt.Errorf("deterministic control %s contains an invalid clause execution", control.ControlID)
+					}
+					if clause.EvidenceSHA256 != "" {
+						evidence, exists := exactEvidence[clause.EvidenceSHA256]
+						if !exists || usedExactEvidence[clause.EvidenceSHA256] ||
+							evidence.ProgramSHA256 != clause.ProgramSHA256 || evidence.ControlID != control.ControlID ||
+							evidence.ControlRevision != control.Revision || evidence.ClauseID != clause.ClauseID ||
+							evidence.ImplementationContractSHA256 != clause.ImplementationContractSHA256 ||
+							string(evidence.Authority) != clause.RequiredAuthority {
+							return fmt.Errorf("deterministic control %s has missing or mismatched replay evidence", control.ControlID)
+						}
+						usedExactEvidence[clause.EvidenceSHA256] = true
+					}
+					switch clause.Status {
+					case "passed":
+						executedPrograms++
+						passedPrograms++
+					case "failed":
+						executedPrograms++
+						failedPrograms++
+					case "not_applicable":
+						executedPrograms++
+						notApplicablePrograms++
+					case "blocked_evidence":
+						executedPrograms++
+					}
+				}
+			case "nondeterministic":
+				reviewedNondeterministic++
+				if !validNondeterministicRoute(control.ClassificationRoute) ||
+					(control.ClassificationDecisionBasis != "primary_nondeterministic" &&
+						control.ClassificationDecisionBasis != "skeptically_rejected" &&
+						control.ClassificationDecisionBasis != "strength_audit_reclassified") ||
+					control.DeterministicBindingID != "" || control.DeterministicBindingSHA256 != "" ||
+					control.DeterministicProgramTemplateCount != 0 || control.DeterministicProgramStatus != "" ||
+					control.Disposition != "needs_review" || control.Coverage != "nondeterministic_advisory" ||
+					control.Authority != "none" {
+					return fmt.Errorf("nondeterministic control %s has an unsafe automated disposition", control.ControlID)
+				}
+			default:
+				return fmt.Errorf("control %s lacks a reviewed classification", control.ControlID)
+			}
 		}
 		seen[control.ControlID] = true
 		if index > 0 && run.ControlResults[index-1].ControlID >= control.ControlID {
@@ -729,7 +862,7 @@ func validateControlResults(run model.RunResult, assertionResults map[string]boo
 			active++
 		}
 		if control.ContractStatus == "reviewed" {
-			expertReviewedContracts++
+			agentReviewedContracts++
 		} else {
 			generatedContracts++
 		}
@@ -759,10 +892,18 @@ func validateControlResults(run model.RunResult, assertionResults map[string]boo
 		}
 		if review := control.AIReview; review != nil {
 			if (review.Provider != "codex" && review.Provider != "claude") || !digest(review.TaskID) ||
-				control.Disposition == "retired" || strings.TrimSpace(review.Reason) == "" || len(review.Reason) > 16*1024 || len(review.Advice) > 16*1024 ||
+				(review.ReviewDepth != "standard" && review.ReviewDepth != "deep") ||
+				control.Disposition == "retired" || strings.TrimSpace(review.Reason) == "" ||
+				strings.TrimSpace(review.Challenge) == "" || strings.TrimSpace(review.RiskIfIgnored) == "" ||
+				strings.TrimSpace(review.Advice) == "" || len(review.Reason) > 16*1024 ||
+				len(review.Challenge) > 16*1024 || len(review.RiskIfIgnored) > 16*1024 || len(review.Advice) > 16*1024 ||
 				(review.AssessmentCandidate != "advisory_pass_candidate" && review.AssessmentCandidate != "advisory_fail_candidate" && review.AssessmentCandidate != "needs_evidence" && review.AssessmentCandidate != "not_applicable_candidate") ||
 				(review.Confidence != "low" && review.Confidence != "medium" && review.Confidence != "high") ||
+				(review.Priority != "critical" && review.Priority != "high" && review.Priority != "medium" && review.Priority != "low" && review.Priority != "none") ||
 				(review.ApplicabilityCandidate != "applicable" && review.ApplicabilityCandidate != "not_applicable" && review.ApplicabilityCandidate != "undetermined") ||
+				!validAdvisoryStringList(review.RemediationSteps, 1, 12) ||
+				!validAdvisoryStringList(review.VerificationSteps, 1, 12) ||
+				!validAdvisoryStringList(review.EvidenceNeeded, 1, 12) ||
 				len(review.Evidence) > 256 || len(review.Limitations) < 1 || len(review.Limitations) > 256 ||
 				review.Confidence == "high" && len(review.Evidence) == 0 {
 				return fmt.Errorf("control %s contains an invalid advisory AI review", control.ControlID)
@@ -797,7 +938,8 @@ func validateControlResults(run model.RunResult, assertionResults map[string]boo
 			if review.AssessmentCandidate == "advisory_fail_candidate" {
 				aiAdvisoryFailures++
 			}
-			if summary.AIReviewProvider != review.Provider || summary.AIReviewModel != review.Model {
+			if summary.AIReviewProvider != review.Provider || summary.AIReviewModel != review.Model ||
+				summary.AIReviewDepth != review.ReviewDepth {
 				return fmt.Errorf("control %s advisory review does not match the catalog summary", control.ControlID)
 			}
 		}
@@ -805,8 +947,23 @@ func validateControlResults(run model.RunResult, assertionResults map[string]boo
 	if active != summary.ActiveControlCount {
 		return fmt.Errorf("complete-control active count does not match its results")
 	}
-	if generatedContracts != summary.GeneratedContractCount || expertReviewedContracts != summary.ExpertReviewedContractCount {
+	if generatedContracts != summary.GeneratedContractCount || agentReviewedContracts != summary.AgentReviewedContractCount {
 		return fmt.Errorf("complete-control contract review counts do not match their results")
+	}
+	if reviewedContracts && (reviewedDeterministic != summary.ReviewedDeterministicCount ||
+		reviewedNondeterministic != summary.ReviewedNondeterministicCount ||
+		programTemplates != summary.DeterministicProgramTemplateCount) {
+		return fmt.Errorf("reviewed control classification counts do not match their results")
+	}
+	if reviewedContracts && (blockedDeterministic != summary.DeterministicProgramBlockedCount ||
+		executedPrograms != summary.DeterministicProgramExecutedCount ||
+		passedPrograms != summary.DeterministicProgramPassCount ||
+		failedPrograms != summary.DeterministicProgramFailCount ||
+		notApplicablePrograms != summary.DeterministicProgramNACount) {
+		return fmt.Errorf("exact deterministic execution counts do not match their results")
+	}
+	if len(usedExactEvidence) != len(exactEvidence) {
+		return fmt.Errorf("run contains unreferenced deterministic evidence")
 	}
 	for _, control := range run.ControlResults {
 		canonical, ok := controlByID(run.ControlResults, control.CanonicalControlID)
@@ -818,18 +975,132 @@ func validateControlResults(run model.RunResult, assertionResults map[string]boo
 		return fmt.Errorf("complete-control run cannot hide remaining review behind a satisfied narrow profile")
 	}
 	if summary.AIReviewProvider == "" {
-		if summary.AIReviewModel != "" || summary.AIReviewState != "" || summary.AIReviewedCount != 0 ||
+		if summary.AIReviewModel != "" || summary.AIReviewDepth != "" || summary.AIReviewState != "" || summary.AIReviewedCount != 0 ||
 			summary.AIAdvisoryFailCount != 0 || aiReviews != 0 {
 			return fmt.Errorf("complete-control run has advisory review data without a provider binding")
 		}
 	} else if (summary.AIReviewProvider != "codex" && summary.AIReviewProvider != "claude") ||
-		(summary.AIReviewState != "complete" && summary.AIReviewState != "focused") ||
+		(summary.AIReviewDepth != "standard" && summary.AIReviewDepth != "deep") ||
+		(summary.AIReviewState != "complete" && summary.AIReviewState != "focused" && summary.AIReviewState != "partial") ||
 		summary.AIReviewedCount != aiReviews || summary.AIAdvisoryFailCount != aiAdvisoryFailures ||
-		(summary.AIReviewState == "complete" && aiReviews != summary.ActiveControlCount) ||
-		(summary.AIReviewState == "focused" && (aiReviews < 1 || aiReviews >= summary.ActiveControlCount)) {
+		(summary.AIReviewState == "complete" && aiReviews != summary.ReviewedNondeterministicCount) ||
+		(summary.AIReviewState == "focused" && (aiReviews < 1 || aiReviews > summary.ReviewedNondeterministicCount)) ||
+		(summary.AIReviewState == "partial" && aiReviews >= summary.ReviewedNondeterministicCount) {
 		return fmt.Errorf("complete-control run has an invalid advisory AI review summary")
 	}
 	return nil
+}
+
+func validDeterministicControlExecution(control model.ControlResult) bool {
+	clauses := control.DeterministicClauseResults
+	if len(clauses) > control.DeterministicProgramTemplateCount {
+		return false
+	}
+	seenTemplates := map[string]bool{}
+	previousOrdinal := 0
+	passed, failed, notApplicable := 0, 0, 0
+	for _, clause := range clauses {
+		if seenTemplates[clause.TemplateID] || clause.ClauseOrdinal <= previousOrdinal {
+			return false
+		}
+		seenTemplates[clause.TemplateID] = true
+		previousOrdinal = clause.ClauseOrdinal
+		switch clause.Status {
+		case "passed":
+			passed++
+		case "failed":
+			failed++
+		case "not_applicable":
+			notApplicable++
+		}
+	}
+	complete := len(clauses) == control.DeterministicProgramTemplateCount
+	switch control.DeterministicProgramStatus {
+	case "blocked_provider_unregistered":
+		return len(clauses) == 0 && control.Disposition == "blocked" &&
+			control.Coverage == "deterministic_program_provider_unregistered" &&
+			(control.Authority == "none" || control.Authority == "deterministic_partial")
+	case "blocked_program_incomplete":
+		return len(clauses) > 0 && !complete && control.Disposition == "blocked" &&
+			control.Coverage == "deterministic_program_partial" && control.Authority == "deterministic_exact"
+	case "blocked_evidence":
+		return complete && control.Disposition == "blocked" &&
+			control.Coverage == "deterministic_program_complete" && control.Authority == "deterministic_exact"
+	case "executed_fail":
+		return len(clauses) > 0 && failed > 0 && control.Disposition == "confirmed_failure" &&
+			(control.Coverage == "deterministic_program_partial" && !complete ||
+				control.Coverage == "deterministic_program_complete" && complete) &&
+			control.Authority == "deterministic_exact"
+	case "executed_pass":
+		return complete && failed == 0 && passed > 0 && passed+notApplicable == len(clauses) &&
+			control.Disposition == "verified_pass" && control.Coverage == "deterministic_program_complete" &&
+			control.Authority == "deterministic_exact"
+	case "executed_not_applicable":
+		return complete && notApplicable == len(clauses) && control.Disposition == "not_applicable" &&
+			control.Coverage == "deterministic_program_complete" && control.Authority == "deterministic_exact"
+	default:
+		return false
+	}
+}
+
+func validDeterministicClauseResult(clause model.DeterministicClauseResult) bool {
+	if !digest(clause.TemplateID) || !digest(clause.ClauseID) || clause.ClauseOrdinal < 1 || clause.ClauseOrdinal > 50 ||
+		!strings.HasPrefix(clause.CollectorID, "prc.collect.") || !strings.Contains(clause.CollectorID, "@") ||
+		!strings.HasPrefix(clause.ImplementationID, "prc.check.") || !strings.Contains(clause.ImplementationID, "@") ||
+		!digest(clause.ImplementationContractSHA256) || clause.EvaluatedAt.IsZero() ||
+		(clause.ProgramSHA256 != "" && !digest(clause.ProgramSHA256)) ||
+		(clause.EvidenceSHA256 != "" && !digest(clause.EvidenceSHA256)) ||
+		len(clause.ProviderID) > 4096 || len(clause.ReasonCode) > 128 {
+		return false
+	}
+	validAuthority := map[string]bool{
+		"repository": true, "artifact": true, "executed": true, "environment": true,
+		"external_registry": true, "structured_record": true,
+	}
+	if !validAuthority[clause.RequiredAuthority] {
+		return false
+	}
+	switch clause.Status {
+	case "passed":
+		return clause.ProviderID != "" && clause.ProgramSHA256 != "" && clause.EvidenceSHA256 != "" &&
+			clause.Outcome == "pass" && clause.ReasonCode == "passed"
+	case "failed":
+		return clause.ProviderID != "" && clause.ProgramSHA256 != "" && clause.EvidenceSHA256 != "" &&
+			clause.Outcome == "fail" && clause.ReasonCode == "predicate_false"
+	case "not_applicable":
+		return clause.ProviderID != "" && clause.ProgramSHA256 != "" && clause.EvidenceSHA256 != "" &&
+			clause.Outcome == "not_applicable" && clause.ReasonCode == "not_applicable"
+	case "blocked_evidence":
+		return clause.ProviderID != "" && clause.ProgramSHA256 != "" && clause.EvidenceSHA256 != "" &&
+			clause.Outcome == "blocked" && clause.ReasonCode != ""
+	case "blocked_provider_unregistered":
+		return clause.ProviderID == "" && clause.ProgramSHA256 != "" && clause.EvidenceSHA256 == "" &&
+			clause.Outcome == "" && clause.ReasonCode == ""
+	case "blocked_binding":
+		return clause.ProviderID == "" && clause.ProgramSHA256 == "" && clause.EvidenceSHA256 == "" &&
+			clause.Outcome == "" && clause.ReasonCode == ""
+	case "blocked_provider_authority", "blocked_collection":
+		return clause.ProviderID != "" && clause.ProgramSHA256 != "" && clause.EvidenceSHA256 == "" &&
+			clause.Outcome == "" && clause.ReasonCode == ""
+	case "blocked_canceled":
+		return clause.EvidenceSHA256 == "" && clause.Outcome == "" && clause.ReasonCode == ""
+	default:
+		return false
+	}
+}
+
+func validAdvisoryStringList(values []string, minimum, maximum int) bool {
+	if len(values) < minimum || len(values) > maximum {
+		return false
+	}
+	seen := map[string]bool{}
+	for _, value := range values {
+		if strings.TrimSpace(value) == "" || len(value) > 16*1024 || seen[value] {
+			return false
+		}
+		seen[value] = true
+	}
+	return true
 }
 
 func controlByID(controls []model.ControlResult, id string) (model.ControlResult, bool) {
@@ -842,6 +1113,26 @@ func controlByID(controls []model.ControlResult, id string) (model.ControlResult
 
 func normalizeControlStatement(value string) string {
 	return strings.TrimSuffix(strings.Join(strings.Fields(strings.ToLower(value)), " "), ".")
+}
+
+func validDeterministicRoute(value string) bool {
+	switch value {
+	case "local_static", "artifact_verification", "bounded_execution", "external_readonly_query",
+		"structured_record_validation", "deterministic_composite":
+		return true
+	default:
+		return false
+	}
+}
+
+func validNondeterministicRoute(value string) bool {
+	switch value {
+	case "contextual_judgment", "accountable_human_decision", "specialist_or_legal_judgment",
+		"empirical_protocol_undefined", "contract_incomplete", "mixed", "unbounded_claim":
+		return true
+	default:
+		return false
+	}
 }
 
 func runIdentity(run model.RunResult) string {

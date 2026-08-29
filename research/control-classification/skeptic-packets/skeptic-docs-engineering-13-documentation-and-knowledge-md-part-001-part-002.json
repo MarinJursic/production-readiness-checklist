@@ -1,0 +1,611 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-13-documentation-and-knowledge-md-part-001-part-002",
+  "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 24,
+  "controls": [
+    {
+      "control_id": "USEQ-DE657E35",
+      "revision": 1,
+      "semantic_sha256": "de657e35b1e5b572fca900e298072871a377c71e91785fc024c1d27cfadea334",
+      "statement": "Conduct structured knowledge transfer before planned departures.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 264
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Onboarding, role changes, and offboarding"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Conduct structured knowledge transfer before planned departures.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Conduct structured knowledge transfer before planned departures.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7508DA74",
+      "revision": 1,
+      "semantic_sha256": "7508da74491158b873c11dc25dc537789528841656beaac0e3c892dc97b7f6be",
+      "statement": "Capture unresolved work, decisions, risks, contacts, credentials custody, and supplier context.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 265
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Onboarding, role changes, and offboarding"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Capture unresolved work, decisions, risks, contacts, credentials custody, and supplier context.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Capture unresolved work, decisions, risks, contacts, credentials custody, and supplier context.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4EDCE1DB",
+      "revision": 1,
+      "semantic_sha256": "4edce1dbe78bc6bfd0284da1aa167ab25d0157f39a0344b8d83b5bdefb736d5c",
+      "statement": "Recover organizational assets and revoke access during offboarding.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 266
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Onboarding, role changes, and offboarding"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Recover organizational assets and revoke access during offboarding.” is fully decidable from a fixed conjunction of sealed records, artifacts, configurations, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Recover organizational assets and revoke access during offboarding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6077092C",
+      "revision": 1,
+      "semantic_sha256": "6077092cf64b4e175e193c1438875d3b29f78fb1a55df93a0846488a58085211",
+      "statement": "Give communities clear purpose, sponsorship, decision boundaries, and time to operate.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 273
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Mentoring, communities, and shared practice"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Give communities clear purpose, sponsorship, decision boundaries, and time to operate.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Give communities clear purpose, sponsorship, decision boundaries, and time to operate.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-25BCCC4A",
+      "revision": 1,
+      "semantic_sha256": "25bccc4a6629ff2a87db4eb73d241db83ba266472ec15b23e16dc3e2766f854b",
+      "statement": "Create feedback loops from production, support, testing, audits, user research, and business outcomes into engineering knowledge.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 285
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Learning from work, incidents, and evidence"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Create feedback loops from production, support, testing, audits, user research, and business outcomes into engineering knowledge.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Create feedback loops from production, support, testing, audits, user research, and business outcomes into engineering knowledge.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0EAA2DD8",
+      "revision": 1,
+      "semantic_sha256": "0eaa2dd8d2310657615ec4f194d00a30b8fc0a2bcc156b36dec7df874c184d9f",
+      "statement": "Analyze near misses, recovered errors, rejected changes, and successful prevention as well as incidents.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 286
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Learning from work, incidents, and evidence"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Analyze near misses, recovered errors, rejected changes, and successful prevention as well as incidents.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Analyze near misses, recovered errors, rejected changes, and successful prevention as well as incidents.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D4161A24",
+      "revision": 1,
+      "semantic_sha256": "d4161a24864df76d3406dfffe7ab6b1a8f5db9ad0f2ea52db2059657f411aaec",
+      "statement": "Preserve incident chronology, decisions, evidence, and uncertainty for future learning.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 292
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Learning from work, incidents, and evidence"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Preserve incident chronology, decisions, evidence, and uncertainty for future learning.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Preserve incident chronology, decisions, evidence, and uncertainty for future learning.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-918085CF",
+      "revision": 1,
+      "semantic_sha256": "918085cfe7d6d853dd40e7613085738fee184bbd8de138338d30a7339c54d792",
+      "statement": "Measure whether known problems recur after declared remediation.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 294
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Learning from work, incidents, and evidence"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Rule “Measure whether known problems recur after declared remediation.” is fully decidable from read-only queries over a sealed inventory and versioned policy predicates.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Measure whether known problems recur after declared remediation.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-89EC9701",
+      "revision": 1,
+      "semantic_sha256": "89ec97014ee502d2f365eaf148ca743662fe71080b14091b4acf1ee7acee3281",
+      "statement": "Cross-train personnel through real supervised work, not documentation alone.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 300
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Succession, resilience, and bus-factor reduction"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Cross-train personnel through real supervised work, not documentation alone.” is fully decidable from a bounded repeatable test with declared inputs, oracle, and captured output.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Cross-train personnel through real supervised work, not documentation alone.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A988FCED",
+      "revision": 1,
+      "semantic_sha256": "52e820a8579e833c480e6acf4b674f408f583d485d92835f72685497851d0a44",
+      "statement": "Ensure emergency access and recovery do not depend on one person’s device, memory, or availability.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 302
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Succession, resilience, and bus-factor reduction"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Ensure emergency access and recovery do not depend on one person’s device, memory, or availability.” is fully decidable from a bounded repeatable test with declared inputs, oracle, and captured output.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Ensure emergency access and recovery do not depend on one person’s device, memory, or availability.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5BA62E06",
+      "revision": 1,
+      "semantic_sha256": "5ba62e0699e93e7522ee3211a80e2657a9430d5b24c13aba8bae32cd92059f72",
+      "statement": "Maintain supplier and external-expert alternatives where internal capability is intentionally limited.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 303
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Succession, resilience, and bus-factor reduction"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Maintain supplier and external-expert alternatives where internal capability is intentionally limited.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Maintain supplier and external-expert alternatives where internal capability is intentionally limited.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8ED5CE14",
+      "revision": 1,
+      "semantic_sha256": "8ed5ce1465d27dc00a8ac1a0fc3e57a805f580987f5f961c8b9f142228501930",
+      "statement": "Preserve build, deployment, recovery, and signing knowledge independent of one tool administrator.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 304
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Succession, resilience, and bus-factor reduction"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Preserve build, deployment, recovery, and signing knowledge independent of one tool administrator.” is fully decidable from a bounded repeatable test with declared inputs, oracle, and captured output.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Preserve build, deployment, recovery, and signing knowledge independent of one tool administrator.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-623582AC",
+      "revision": 1,
+      "semantic_sha256": "623582ac580e1864bb70b3d4458c56b7612fa6b95dfd63b15738790319e5636c",
+      "statement": "Test continuity during leave, simulated unavailability, and organizational change.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 305
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Succession, resilience, and bus-factor reduction"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Test continuity during leave, simulated unavailability, and organizational change.” is fully decidable from a bounded repeatable test with declared inputs, oracle, and captured output.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Test continuity during leave, simulated unavailability, and organizational change.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-40F8A533",
+      "revision": 1,
+      "semantic_sha256": "40f8a533af8494125c07ce759600dd2a631233c57d6dd1b19b4ba0d23fdcd65d",
+      "statement": "Apply access control and handling rules according to knowledge sensitivity.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 311
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge security and trustworthy use"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Apply access control and handling rules according to knowledge sensitivity.” is fully decidable from a fixed conjunction of sealed records, artifacts, configurations, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Apply access control and handling rules according to knowledge sensitivity.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6213693F",
+      "revision": 1,
+      "semantic_sha256": "6213693f94bb86545d10b9a0f3053cab51a6e7913edd9a2ad6127fb1ce437005",
+      "statement": "Monitor unauthorized bulk export or unusual access to high-value knowledge repositories.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 315
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge security and trustworthy use"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Rule “Monitor unauthorized bulk export or unusual access to high-value knowledge repositories.” is fully decidable from read-only queries over a sealed inventory and versioned policy predicates.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Monitor unauthorized bulk export or unusual access to high-value knowledge repositories.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4544D84B",
+      "revision": 1,
+      "semantic_sha256": "4544d84b3fe81be9a627e0559781069d7033e27f0cab2a5ea8c6f1048a96b5d9",
+      "statement": "Preserve citations and provenance for imported guidance.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 317
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge security and trustworthy use"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Preserve citations and provenance for imported guidance.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Preserve citations and provenance for imported guidance.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C12331DF",
+      "revision": 1,
+      "semantic_sha256": "c12331dfd68e5cfd1c048810ae0c457facb6062140604699e9a5e3f11fe863d1",
+      "statement": "Provide a correction and withdrawal process for dangerous guidance.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 319
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge security and trustworthy use"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Provide a correction and withdrawal process for dangerous guidance.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Provide a correction and withdrawal process for dangerous guidance.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A275C64A",
+      "revision": 1,
+      "semantic_sha256": "a275c64a3b23d75fe7d070437870bd0d1924276aa8cef5770700f42db1021e6d",
+      "statement": "Back up and test recovery of critical knowledge repositories.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 320
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge security and trustworthy use"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Back up and test recovery of critical knowledge repositories.” is fully decidable from a fixed conjunction of sealed records, artifacts, configurations, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Back up and test recovery of critical knowledge repositories.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1BA3A22D",
+      "revision": 1,
+      "semantic_sha256": "1ba3a22d3384e151e617746044c2a45e1dd6e355ad17dff2637964aa061ede80",
+      "statement": "Maintain alternate access when the normal knowledge platform is unavailable.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 321
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge security and trustworthy use"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Maintain alternate access when the normal knowledge platform is unavailable.” is fully decidable from a bounded repeatable test with declared inputs, oracle, and captured output.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Maintain alternate access when the normal knowledge platform is unavailable.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0DFA37A5",
+      "revision": 1,
+      "semantic_sha256": "0dfa37a54b6529c81b8e818f3305b44d9cc8a67e68b18d0307a3f051d1629864",
+      "statement": "Define indicators for findability, freshness, coverage, use, comprehension, competence, concentration risk, and recovery.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 325
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge-management assurance"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Define indicators for findability, freshness, coverage, use, comprehension, competence, concentration risk, and recovery.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Define indicators for findability, freshness, coverage, use, comprehension, competence, concentration risk, and recovery.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B2E6E3E9",
+      "revision": 1,
+      "semantic_sha256": "b2e6e3e90f430b7320020020d142ef86ef34e81d868fdbc3f3ea27c4cc77a45c",
+      "statement": "Sample whether intended users can locate and correctly execute critical guidance.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 326
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge-management assurance"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Sample whether intended users can locate and correctly execute critical guidance.” is fully decidable from a bounded repeatable test with declared inputs, oracle, and captured output.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Sample whether intended users can locate and correctly execute critical guidance.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A28F8DFF",
+      "revision": 1,
+      "semantic_sha256": "a28f8dff3f7266433d0b29005434cb02ce0599a5075976e50daea495f702c670",
+      "statement": "Audit authoritative-source ownership, review status, access, and retirement.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 327
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge-management assurance"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Audit authoritative-source ownership, review status, access, and retirement.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Audit authoritative-source ownership, review status, access, and retirement.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D7B09D2D",
+      "revision": 1,
+      "semantic_sha256": "d7b09d2d1070a3cae3aae462cc5088a35ce24d9de39a74a49b8bb0858062ab53",
+      "statement": "Exercise knowledge continuity during incidents, staff absence, supplier loss, and platform outage.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 328
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge-management assurance"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Exercise knowledge continuity during incidents, staff absence, supplier loss, and platform outage.” is fully decidable from a bounded repeatable test with declared inputs, oracle, and captured output.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Exercise knowledge continuity during incidents, staff absence, supplier loss, and platform outage.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-001E1D5A",
+      "revision": 1,
+      "semantic_sha256": "001e1d5a5083bef7b1201a6200b7400f7269d045ac0ad9020acd4dd7ae9ba8c8",
+      "statement": "Include knowledge and competence gaps in release, transition, continuity, and risk decisions.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 329
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge-management assurance"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Include knowledge and competence gaps in release, transition, continuity, and risk decisions.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Include knowledge and competence gaps in release, transition, continuity, and risk decisions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

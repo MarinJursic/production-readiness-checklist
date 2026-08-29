@@ -150,6 +150,14 @@ func TestPrivateKeyArmorCheckIsBoundedAndRedacted(t *testing.T) {
 		}
 	})
 
+	t.Run("large generated catalog remains fully inspected", func(t *testing.T) {
+		root := healthyRepository(t)
+		writeFixture(t, root, "catalog/generated.json", strings.Repeat("x", 9*1024*1024))
+		if got := scanFixture(t, root)["PRC-A-CORE-031"]; got != "pass" {
+			t.Fatalf("large generated catalog private-key assertion = %s", got)
+		}
+	})
+
 	t.Run("private material fails without disclosure", func(t *testing.T) {
 		root := healthyRepository(t)
 		secret := strings.Repeat("U", 64)

@@ -1,0 +1,1489 @@
+{
+  "schema_version": "prc.control-classification-packet/v0.1",
+  "packet_id": "docs-checklists-02-product-risk-architecture-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/checklists/02-product-risk-architecture.md",
+  "control_count": 100,
+  "controls": [
+    {
+      "control_id": "PRC-04-001",
+      "revision": 1,
+      "semantic_sha256": "b97951cc4e322a6b84cd4cf82d5817a44a3491d4b0c9f8140a86de3cf81cef2f",
+      "statement": "The problem being solved and intended users are documented.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 11
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "4. Product and business readiness",
+        "4.1 Product definition"
+      ]
+    },
+    {
+      "control_id": "PRC-04-002",
+      "revision": 1,
+      "semantic_sha256": "aa5bbd7edd5a61fe0c00a60cc1fc2d000407f4e6299a1f7659cb6f2ee04df9f2",
+      "statement": "Release scope, non-goals, and deferred features are explicit.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 12
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "4. Product and business readiness",
+        "4.1 Product definition"
+      ]
+    },
+    {
+      "control_id": "PRC-04-003",
+      "revision": 1,
+      "semantic_sha256": "c05dfb19aeb02821e10286d61cece4c0eda718526648db70cb26632c4cc59e13",
+      "statement": "Every feature has testable acceptance criteria.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 13
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "4. Product and business readiness",
+        "4.1 Product definition"
+      ]
+    },
+    {
+      "control_id": "PRC-04-004",
+      "revision": 1,
+      "semantic_sha256": "baf7699c4312bd0378b5b74ebd922f5b269b1a136a92c30a2ca6289927785af0",
+      "statement": "Critical user journeys are ranked by business and user impact.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 14
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "4. Product and business readiness",
+        "4.1 Product definition"
+      ]
+    },
+    {
+      "control_id": "PRC-04-005",
+      "revision": 1,
+      "semantic_sha256": "a161a8e04ee539ac376be30b6c7ea96d4d91281bc666e5fa423e444c62ed2013",
+      "statement": "Critical journeys include onboarding, normal use, error recovery, account recovery, cancellation, and deletion where applicable.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 15
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "4. Product and business readiness",
+        "4.1 Product definition"
+      ]
+    },
+    {
+      "control_id": "PRC-04-006",
+      "revision": 1,
+      "semantic_sha256": "8d96b07d6875c59326e425e32001e5a243c92ccf5fec14415b4d1eb88841acbf",
+      "statement": "Product behavior for unavailable dependencies and partial failure is specified.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 16
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "4. Product and business readiness",
+        "4.1 Product definition"
+      ]
+    },
+    {
+      "control_id": "PRC-04-007",
+      "revision": 1,
+      "semantic_sha256": "05c26bd6bbd2945193027a61887bc43204aeddde51c576e335a1a740202cceb1",
+      "statement": "Product behavior for empty, malformed, incomplete, stale, or conflicting data is specified.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 17
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "4. Product and business readiness",
+        "4.1 Product definition"
+      ]
+    },
+    {
+      "control_id": "PRC-04-008",
+      "revision": 1,
+      "semantic_sha256": "20df00deafb0775daf56df65d42ea1eafbf2dd09408757d508ce5dc125803f04",
+      "statement": "User-visible terminology is consistent.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 18
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "4. Product and business readiness",
+        "4.1 Product definition"
+      ]
+    },
+    {
+      "control_id": "PRC-04-009",
+      "revision": 1,
+      "semantic_sha256": "c76a38f668c44a499f5ed8835f6b99f8031ebbdfa500e49900665cec387583be",
+      "statement": "Pricing, entitlements, quotas, billing rules, and plan limits are unambiguous.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 19
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "4. Product and business readiness",
+        "4.1 Product definition"
+      ]
+    },
+    {
+      "control_id": "PRC-04-010",
+      "revision": 1,
+      "semantic_sha256": "28a6abc34075c45b186723f79a8d4dac41ae55e4a6bb71e155c34a14bd55bb60",
+      "statement": "Cancellation, refund, reversal, dispute, and undo behavior is defined.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 20
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "4. Product and business readiness",
+        "4.1 Product definition"
+      ]
+    },
+    {
+      "control_id": "PRC-04-011",
+      "revision": 1,
+      "semantic_sha256": "39e7f33b681d1f462877981731d583746aecc7a5d45003aa7719de841acc9565",
+      "statement": "Expected customer support obligations are documented.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 21
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "4. Product and business readiness",
+        "4.1 Product definition"
+      ]
+    },
+    {
+      "control_id": "PRC-04-012",
+      "revision": 1,
+      "semantic_sha256": "1354e9f2323c27d14049d73eb388b627e63eb26734f22360fd7ed1b4c0dea037",
+      "statement": "Service hours, maintenance expectations, SLOs, SLAs, and contractual commitments are aligned.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 22
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "4. Product and business readiness",
+        "4.1 Product definition"
+      ]
+    },
+    {
+      "control_id": "PRC-04-013",
+      "revision": 1,
+      "semantic_sha256": "f7fa1950f7dd8859d14de536d4a3043fedcc3d754bcff251ffea2e723cd6f77b",
+      "statement": "The launch does not make claims that the implemented product cannot substantiate.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 23
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "4. Product and business readiness",
+        "4.1 Product definition"
+      ]
+    },
+    {
+      "control_id": "PRC-04-014",
+      "revision": 1,
+      "semantic_sha256": "a2746c283dd05cb1c22cd0d5e92fd8f4aea6cd87ab9523bbb8e7ea7288737c89",
+      "statement": "Product management has accepted the final behavior of critical journeys.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 24
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "4. Product and business readiness",
+        "4.1 Product definition"
+      ]
+    },
+    {
+      "control_id": "PRC-04-015",
+      "revision": 1,
+      "semantic_sha256": "9c4a3d5daefb969bf3e5a543712dabda7d357fc305a7ecdf2bc68e100045c08b",
+      "statement": "Define measurable launch success criteria.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 28
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "4. Product and business readiness",
+        "4.2 Launch objectives"
+      ]
+    },
+    {
+      "control_id": "PRC-04-016",
+      "revision": 1,
+      "semantic_sha256": "1c682e7e0e831515bb95156e21689e1d64a5a651e367592ca67652c3c622a3d6",
+      "statement": "Define measurable launch failure and rollback criteria.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 29
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "4. Product and business readiness",
+        "4.2 Launch objectives"
+      ]
+    },
+    {
+      "control_id": "PRC-04-017",
+      "revision": 1,
+      "semantic_sha256": "758bea304a1ef19cb6425ec6b5c209b76d73ce4508eaddf660167550532af4dc",
+      "statement": "Define adoption, conversion, quality, reliability, support, and safety indicators.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 30
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "4. Product and business readiness",
+        "4.2 Launch objectives"
+      ]
+    },
+    {
+      "control_id": "PRC-04-018",
+      "revision": 1,
+      "semantic_sha256": "6b20b7a97bb258a91562d0916d9dcc428531bdf47f9fca8ece73ce7901a66d6d",
+      "statement": "Define the observation period before declaring the launch complete.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 31
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "4. Product and business readiness",
+        "4.2 Launch objectives"
+      ]
+    },
+    {
+      "control_id": "PRC-04-019",
+      "revision": 1,
+      "semantic_sha256": "1bb48e06cac914b87c1da7d1392e99c38b6a32c4d73b74cbd9cd37cca89590b3",
+      "statement": "Define who has authority to pause, continue, expand, or roll back the launch.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 32
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "4. Product and business readiness",
+        "4.2 Launch objectives"
+      ]
+    },
+    {
+      "control_id": "PRC-04-020",
+      "revision": 1,
+      "semantic_sha256": "36c2860810a696965a36c91e5b5fc397be9c91e620dd2b73d48bdc126e350eba",
+      "statement": "Establish expected traffic and customer cohorts.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 33
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "4. Product and business readiness",
+        "4.2 Launch objectives"
+      ]
+    },
+    {
+      "control_id": "PRC-04-021",
+      "revision": 1,
+      "semantic_sha256": "614379a7f628448876e7aa41d29fb900c088718425a41e1b3948ce01841a0b10",
+      "statement": "Establish whether the launch is internal, private, regional, percentage-based, invitation-only, or public.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 34
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "4. Product and business readiness",
+        "4.2 Launch objectives"
+      ]
+    },
+    {
+      "control_id": "PRC-04-022",
+      "revision": 1,
+      "semantic_sha256": "b6e518c21c60160e64c0f96672d39466103172673d89a47488220ad8711eac0b",
+      "statement": "Ensure marketing, sales, support, and operations use the same release date and scope.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 35
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "4. Product and business readiness",
+        "4.2 Launch objectives"
+      ]
+    },
+    {
+      "control_id": "PRC-04-023",
+      "revision": 1,
+      "semantic_sha256": "fefc2c0d3898dbc79e3c81d0697ec3268034d4bca9a1dcbdf47fb88fceba7ba1",
+      "statement": "Ensure help content, screenshots, pricing pages, documentation, and legal text match the released behavior.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 36
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "4. Product and business readiness",
+        "4.2 Launch objectives"
+      ]
+    },
+    {
+      "control_id": "PRC-04-024",
+      "revision": 1,
+      "semantic_sha256": "deb628bf58be805fdbd6275391fa77d535751a0046df711be89c6ee195249258",
+      "statement": "Ensure customers are notified of breaking changes, downtime, migrations, or changed data use where required.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 37
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "4. Product and business readiness",
+        "4.2 Launch objectives"
+      ]
+    },
+    {
+      "control_id": "PRC-05-001",
+      "revision": 1,
+      "semantic_sha256": "133105c2cd2a3353d9f6cc73f542c4d75acb420b7ef9a405efc2a6ceb4811272",
+      "statement": "Every production service has a named business owner.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 45
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.1 Ownership"
+      ]
+    },
+    {
+      "control_id": "PRC-05-002",
+      "revision": 1,
+      "semantic_sha256": "43d4cd6335a5d38dd84ebe1ae8ba13435a0ea46944d28071b5e695743da87bce",
+      "statement": "Every production service has a named engineering owner.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 46
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.1 Ownership"
+      ]
+    },
+    {
+      "control_id": "PRC-05-003",
+      "revision": 1,
+      "semantic_sha256": "fdf4e4c59be6aa1ac1a47cd110462e14f24b02358f00f78bd1e81aaa18f957f0",
+      "statement": "Every data set has an accountable data owner.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 47
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.1 Ownership"
+      ]
+    },
+    {
+      "control_id": "PRC-05-004",
+      "revision": 1,
+      "semantic_sha256": "502e8c10247ab4bee7822891589033131f3b369f5b8d95cb7b5e796bad75ae24",
+      "statement": "Every security-sensitive component has a security contact.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 48
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.1 Ownership"
+      ]
+    },
+    {
+      "control_id": "PRC-05-005",
+      "revision": 1,
+      "semantic_sha256": "c1237a7444ca2bea9220c97e071688255476382fbda4dd5e4667daf51908a555",
+      "statement": "Every third-party integration has an owner.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 49
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.1 Ownership"
+      ]
+    },
+    {
+      "control_id": "PRC-05-006",
+      "revision": 1,
+      "semantic_sha256": "2cffa0b68341b894bd9d13a3952eef40af2f139010a70c40f916591aec28d8a2",
+      "statement": "Every operational dashboard, alert, and runbook has an owner.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 50
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.1 Ownership"
+      ]
+    },
+    {
+      "control_id": "PRC-05-007",
+      "revision": 1,
+      "semantic_sha256": "5e239980b917dfb3b94a58f63306ba0ee938eb9d778a04b22eb76d8414891e02",
+      "statement": "Every scheduled job and background process has an owner.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 51
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.1 Ownership"
+      ]
+    },
+    {
+      "control_id": "PRC-05-008",
+      "revision": 1,
+      "semantic_sha256": "09ce9333e7343eabfc10f50eb496406ec6b30960cfa865a1f0fb4d22d8734d3d",
+      "statement": "Ownership remains valid during holidays, leave, and personnel changes.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 52
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.1 Ownership"
+      ]
+    },
+    {
+      "control_id": "PRC-05-009",
+      "revision": 1,
+      "semantic_sha256": "e8b86f6d8f3d3a381bd08f7ecbcc245cad2ffc93f20fcddfc899cd54779a56da",
+      "statement": "Escalation paths include primary, secondary, management, security, privacy/legal, and provider escalation contacts.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 53
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.1 Ownership"
+      ]
+    },
+    {
+      "control_id": "PRC-05-010",
+      "revision": 1,
+      "semantic_sha256": "8e66b758def75e4e06917464ef5338671cae9573b8f6ff28784484eba032a9ae",
+      "statement": "Offboarding and role-change processes remove or adjust access promptly.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 54
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.1 Ownership"
+      ]
+    },
+    {
+      "control_id": "PRC-05-011",
+      "revision": 1,
+      "semantic_sha256": "0a0cd350d62f9714e13e0c7440bf99904def165bd1ac680700ae8ba9d54c5fa0",
+      "statement": "Classify confidentiality impact.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 58
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.2 Risk assessment"
+      ]
+    },
+    {
+      "control_id": "PRC-05-012",
+      "revision": 1,
+      "semantic_sha256": "62e739470250c45a3da33ab7aee420043b25299c9783cef4e09061ad8caa93f6",
+      "statement": "Classify integrity impact.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 59
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.2 Risk assessment"
+      ]
+    },
+    {
+      "control_id": "PRC-05-013",
+      "revision": 1,
+      "semantic_sha256": "5717b7fe0439e76c78bef2d02f78bf3babbefa9c6d1f6bab64619300c4f3743e",
+      "statement": "Classify availability impact.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 60
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.2 Risk assessment"
+      ]
+    },
+    {
+      "control_id": "PRC-05-014",
+      "revision": 1,
+      "semantic_sha256": "c45a9f7631df384d38047243355e5b198edbabff438a5889babdd0300444f080",
+      "statement": "Classify privacy impact.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 61
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.2 Risk assessment"
+      ]
+    },
+    {
+      "control_id": "PRC-05-015",
+      "revision": 1,
+      "semantic_sha256": "556a2a9874185c928395d0b9e227f7c1e6174754b9e601b28e1653da576a5ef5",
+      "statement": "Classify financial and fraud impact.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 62
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.2 Risk assessment"
+      ]
+    },
+    {
+      "control_id": "PRC-05-016",
+      "revision": 1,
+      "semantic_sha256": "90dd507c378d7ce7625c68a44b65e1bb77f26ab20ae4c18b1db8c0a2f2c85328",
+      "statement": "Classify physical, psychological, societal, and user-safety impact.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 63
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.2 Risk assessment"
+      ]
+    },
+    {
+      "control_id": "PRC-05-017",
+      "revision": 1,
+      "semantic_sha256": "3f92211145746990c88b814468cf924f957366e4fc1231bfdd4e50ff033dcb75",
+      "statement": "Classify regulatory and contractual impact.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 64
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.2 Risk assessment"
+      ]
+    },
+    {
+      "control_id": "PRC-05-018",
+      "revision": 1,
+      "semantic_sha256": "6aa2c5fc07c771e4505111e10fe9ef5673162b05013a0fb2d4d38e0acc14c257",
+      "statement": "Classify reputational and customer-trust impact.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 65
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.2 Risk assessment"
+      ]
+    },
+    {
+      "control_id": "PRC-05-019",
+      "revision": 1,
+      "semantic_sha256": "58d7bd4036d4f0756ff07ae4a4bbe30f33d4f2b8a7566ab5dd2ec31951367b12",
+      "statement": "Identify likely attackers, abusive users, insiders, compromised accounts, automated agents, and accidental failure sources.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 66
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.2 Risk assessment"
+      ]
+    },
+    {
+      "control_id": "PRC-05-020",
+      "revision": 1,
+      "semantic_sha256": "4926ce6cd6a073db24dc3812b9ffcbe72df39439b8f63fd7634b37954b422016",
+      "statement": "Identify foreseeable misuse and abuse cases, not only intended use.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 67
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.2 Risk assessment"
+      ]
+    },
+    {
+      "control_id": "PRC-05-021",
+      "revision": 1,
+      "semantic_sha256": "1e4a6306fd4eb4bc3fe326c9882e132f9bf326fab1e69cf8ee48433302b0789c",
+      "statement": "Maintain a release-specific risk register.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 68
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.2 Risk assessment"
+      ]
+    },
+    {
+      "control_id": "PRC-05-022",
+      "revision": 1,
+      "semantic_sha256": "d35e460a556ed8c44d885b197c4b7158d878c957d6ca40f4c261958c1f988089",
+      "statement": "Give each risk an owner, likelihood, impact, treatment, evidence, and review date.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 69
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.2 Risk assessment"
+      ]
+    },
+    {
+      "control_id": "PRC-05-023",
+      "revision": 1,
+      "semantic_sha256": "3e17c81007580adda2c23bf0d682a76c36f58e4042f8cb009ac7937fd655ea23",
+      "statement": "Record accepted residual risk and the person authorized to accept it.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 70
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.2 Risk assessment"
+      ]
+    },
+    {
+      "control_id": "PRC-05-024",
+      "revision": 1,
+      "semantic_sha256": "7553d5fa90c5f69886198b51208db58c684eda57fe7fbce1af3b86928cf0ab2a",
+      "statement": "Review high-impact assumptions with independent subject-matter experts.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 71
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.2 Risk assessment"
+      ]
+    },
+    {
+      "control_id": "PRC-05-025",
+      "revision": 1,
+      "semantic_sha256": "5bf4b66df3c9b03b5d15aeb30fe59fc4e7e2158f48ea6c186371363f1ebb6e5d",
+      "statement": "Verify that launch scope remains inside the organization’s risk appetite.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 72
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.2 Risk assessment"
+      ]
+    },
+    {
+      "control_id": "PRC-05-026",
+      "revision": 1,
+      "semantic_sha256": "ac9af55ef86d5a15c388801cee2b580f34c2dc91922a1531a5168d6aa26367bb",
+      "statement": "Ensure risk exceptions cannot remain open indefinitely.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 73
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.2 Risk assessment"
+      ]
+    },
+    {
+      "control_id": "PRC-05-027",
+      "revision": 1,
+      "semantic_sha256": "281b6d7bf4f37a78177257fd450a59772716b1e4722b0693441b63678b88f9f2",
+      "statement": "Ensure compensating controls are tested rather than merely described.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 74
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.2 Risk assessment"
+      ]
+    },
+    {
+      "control_id": "PRC-05-028",
+      "revision": 1,
+      "semantic_sha256": "cde95dfbd65133433acc75d7fd130d37d9c37eb75f2da17620bc0575e8f5b1bb",
+      "statement": "Map applicable security controls to a recognized verification standard.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 78
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.3 Control framework"
+      ]
+    },
+    {
+      "control_id": "PRC-05-029",
+      "revision": 1,
+      "semantic_sha256": "9ada828197255f418b585d53a9507c7c7f20370192ba08c8e7a78640a4e45d36",
+      "statement": "Map applicable privacy controls to legal and organizational requirements.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 79
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.3 Control framework"
+      ]
+    },
+    {
+      "control_id": "PRC-05-030",
+      "revision": 1,
+      "semantic_sha256": "cd70835e33c6ba736b314afb996111937740a4f0d83f9cbf8513581181f9cac7",
+      "statement": "Map accessibility requirements to the selected WCAG conformance target.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 80
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.3 Control framework"
+      ]
+    },
+    {
+      "control_id": "PRC-05-031",
+      "revision": 1,
+      "semantic_sha256": "4ae53236d33644feba9ae5b7a1b54cd5b2e2d8866c56dad80d08a16424b48e0b",
+      "statement": "Map operational controls to SLO, incident, continuity, and recovery requirements.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 81
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.3 Control framework"
+      ]
+    },
+    {
+      "control_id": "PRC-05-032",
+      "revision": 1,
+      "semantic_sha256": "48b9addd2f9291e9869a1cd95f4eb1b228e85361ed94ba3ca226b4bf28b1d32c",
+      "statement": "Map contractual controls to customer, processor, provider, and partner agreements.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 82
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.3 Control framework"
+      ]
+    },
+    {
+      "control_id": "PRC-05-033",
+      "revision": 1,
+      "semantic_sha256": "9a29f986a05d4b701852209809f98266527dd5c20a7b564189e9fbded8735df4",
+      "statement": "Identify conflicts between product requirements, legal requirements, and technical controls.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 83
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.3 Control framework"
+      ]
+    },
+    {
+      "control_id": "PRC-05-034",
+      "revision": 1,
+      "semantic_sha256": "68f7731fa39d039be272fde720a2e2693df0f91d4af686566dd850a1bdc28a46",
+      "statement": "Document how conflicts were resolved and who approved the resolution.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 84
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.3 Control framework"
+      ]
+    },
+    {
+      "control_id": "PRC-05-035",
+      "revision": 1,
+      "semantic_sha256": "08aa2edc9b20e193a2e2f279b3c50fa0b446bb8a0e1c7e1626cccd8cdb08c8ac",
+      "statement": "Apply separation of duties to high-impact changes and approvals.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 85
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.3 Control framework"
+      ]
+    },
+    {
+      "control_id": "PRC-05-036",
+      "revision": 1,
+      "semantic_sha256": "c4e1a305cdb66074b37dd51b50a242011198bf43496c2ab6fa2b93920372fb31",
+      "statement": "Periodically review whether the selected control level still matches the app’s risk.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 86
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.3 Control framework"
+      ]
+    },
+    {
+      "control_id": "PRC-06-001",
+      "revision": 1,
+      "semantic_sha256": "2aff42fc1c411cf60d00dcb8cf6533cbca170327b29164dec5a377c60b150118",
+      "statement": "Maintain an up-to-date system-context diagram.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 92
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding"
+      ]
+    },
+    {
+      "control_id": "PRC-06-002",
+      "revision": 1,
+      "semantic_sha256": "86c7eb7bec3873953ac00c0bf4165b83006860ef29a74ac98fb088c46dce1022",
+      "statement": "Maintain component and deployment diagrams.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 93
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding"
+      ]
+    },
+    {
+      "control_id": "PRC-06-003",
+      "revision": 1,
+      "semantic_sha256": "29a5895f5a00db1d4dbfcc6b940cff35a999e6c393e805e9590d9b984e9acaed",
+      "statement": "Maintain end-to-end data-flow diagrams.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 94
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding"
+      ]
+    },
+    {
+      "control_id": "PRC-06-004",
+      "revision": 1,
+      "semantic_sha256": "09a172255b3f92e185b4f9104d040245101dedd7bc52441ba9619404ed658e36",
+      "statement": "Mark trust boundaries explicitly.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 95
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding"
+      ]
+    },
+    {
+      "control_id": "PRC-06-005",
+      "revision": 1,
+      "semantic_sha256": "f395ef9dc54f674464ef5ed93aa1a0a83b8391569ec3d0e54f364c9fbd0e0178",
+      "statement": "Mark Internet-facing and externally reachable interfaces.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 96
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding"
+      ]
+    },
+    {
+      "control_id": "PRC-06-006",
+      "revision": 1,
+      "semantic_sha256": "99e3d447e519e5bf51c69c6b3761fed812e6b50e9d882e2397c00c4b43780157",
+      "statement": "Mark administrative and support interfaces.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 97
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding"
+      ]
+    },
+    {
+      "control_id": "PRC-06-007",
+      "revision": 1,
+      "semantic_sha256": "cc12fdb4adb23fc453666311f98d9e25cc775ea56cf90f8c20fc3ef3a4cfc374",
+      "statement": "Mark where authentication and authorization decisions occur.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 98
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding"
+      ]
+    },
+    {
+      "control_id": "PRC-06-008",
+      "revision": 1,
+      "semantic_sha256": "b66ade86c19e41985165b5b71e493623fd5dc38bdda92f4644fbc49ee63f363e",
+      "statement": "Mark encryption and decryption boundaries.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 99
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding"
+      ]
+    },
+    {
+      "control_id": "PRC-06-009",
+      "revision": 1,
+      "semantic_sha256": "a704b521d21be5e2c810085e1ae42be2eeadec807ca7466c89aa833cf61e5124",
+      "statement": "Mark where sensitive data is collected, transformed, stored, cached, logged, exported, backed up, and deleted.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 100
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding"
+      ]
+    },
+    {
+      "control_id": "PRC-06-010",
+      "revision": 1,
+      "semantic_sha256": "30b9301a7eed52ec5b181c9e7b14e6b9770fc321f1679493a363de4d4631a4b2",
+      "statement": "Mark all third-party data transfers.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 101
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding"
+      ]
+    },
+    {
+      "control_id": "PRC-06-011",
+      "revision": 1,
+      "semantic_sha256": "7e474e789c2c340452dbf4c71922469dc8ddcd583acf1e228a6fdfdeb24e616d",
+      "statement": "Identify every stateful component.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 102
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding"
+      ]
+    },
+    {
+      "control_id": "PRC-06-012",
+      "revision": 1,
+      "semantic_sha256": "d05e854860bedb0dc7197bc4bff7e7e1c88cf546aad5efbc495947859e77bcad",
+      "statement": "Identify every asynchronous boundary and queue.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 103
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding"
+      ]
+    },
+    {
+      "control_id": "PRC-06-013",
+      "revision": 1,
+      "semantic_sha256": "46dbdd3ac07b3df18bf119d9fd625043cb068a5d4ec7c9216f9f1ac4e91b0262",
+      "statement": "Identify common dependencies and shared failure domains.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 104
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding"
+      ]
+    },
+    {
+      "control_id": "PRC-06-014",
+      "revision": 1,
+      "semantic_sha256": "a8d5bc3c124989f977a9137e5bbbb63fa1755c36de03cc3a1fcc630c8834c661",
+      "statement": "Identify single points of failure.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 105
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding"
+      ]
+    },
+    {
+      "control_id": "PRC-06-015",
+      "revision": 1,
+      "semantic_sha256": "bd9cf1c7789375ad022d8f98043fbf271551a9f2c5c051db25df4e16ff3813d2",
+      "statement": "Identify control-plane dependencies needed during incidents or recovery.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 106
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding"
+      ]
+    },
+    {
+      "control_id": "PRC-06-016",
+      "revision": 1,
+      "semantic_sha256": "d6cfcff4a2cce8889f5394f453df6afa6dbfe451968f7e0c898bd69e2d65c07f",
+      "statement": "Identify circular and hidden dependency chains.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 107
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding"
+      ]
+    },
+    {
+      "control_id": "PRC-06-017",
+      "revision": 1,
+      "semantic_sha256": "5a7a9accfd02ae1167063af7a4b44b7326cc2121e5e162809479b0f859c22b0a",
+      "statement": "Document required consistency, ordering, durability, and freshness properties.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 108
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding"
+      ]
+    },
+    {
+      "control_id": "PRC-06-018",
+      "revision": 1,
+      "semantic_sha256": "1a6ad68eb16828020dbeaf7321a71784626d84468ff15fcc12d0dce50216c9af",
+      "statement": "Document architectural invariants that must never be violated.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 109
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding"
+      ]
+    },
+    {
+      "control_id": "PRC-06-019",
+      "revision": 1,
+      "semantic_sha256": "68a5d7503a9e1393bb84936d935f154eb17261c681359d830c37d2780c95b9ce",
+      "statement": "Document expected failure behavior for every critical dependency.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 110
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding"
+      ]
+    },
+    {
+      "control_id": "PRC-06-020",
+      "revision": 1,
+      "semantic_sha256": "0592622a36512dae3b9cfd50fdfe0c5f7e82839025568febabf5390d1234e2d1",
+      "statement": "Record material architecture decisions and rejected alternatives.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 111
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding"
+      ]
+    },
+    {
+      "control_id": "PRC-06-021",
+      "revision": 1,
+      "semantic_sha256": "b933b40129e6cf8ad47247d58e4766c5d785ac19583a04489916f6cb63992c87",
+      "statement": "Update diagrams whenever the release changes data flow, trust, topology, or dependencies.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 112
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding"
+      ]
+    },
+    {
+      "control_id": "PRC-06-022",
+      "revision": 1,
+      "semantic_sha256": "f15e5a6ab24ad2eba1924b4be66540b029adeb95aecab91e897681adf4ea1081",
+      "statement": "Verify the documented architecture against the deployed environment rather than assuming documentation is accurate.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 113
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding"
+      ]
+    },
+    {
+      "control_id": "PRC-06-023",
+      "revision": 1,
+      "semantic_sha256": "08cd3dd742da07ab9c26c3e1088075acd0e06e3ed177b411cb5c77ad31dee183",
+      "statement": "Perform a threat model for the actual release scope.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 117
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding",
+        "6.1 Threat and abuse modeling"
+      ]
+    },
+    {
+      "control_id": "PRC-06-024",
+      "revision": 1,
+      "semantic_sha256": "db1f2f647a7282491323c0fd071312145a13a6955f7faa5ea6323f904fd09a7e",
+      "statement": "Include all trust boundaries, actors, entry points, data stores, and external systems.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 118
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding",
+        "6.1 Threat and abuse modeling"
+      ]
+    },
+    {
+      "control_id": "PRC-06-025",
+      "revision": 1,
+      "semantic_sha256": "3255e068b44f46f8a994700f66731bfa2cd5b8f9fc9e28bc1b4380f9adad2bc6",
+      "statement": "Model spoofing and identity attacks.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 119
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding",
+        "6.1 Threat and abuse modeling"
+      ]
+    },
+    {
+      "control_id": "PRC-06-026",
+      "revision": 1,
+      "semantic_sha256": "078c81ed55b417ad8903d644933352dcd3401a2f51808f00cc42baf6de19bdb0",
+      "statement": "Model unauthorized modification and integrity attacks.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 120
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding",
+        "6.1 Threat and abuse modeling"
+      ]
+    },
+    {
+      "control_id": "PRC-06-027",
+      "revision": 1,
+      "semantic_sha256": "8fae0a52d7310842d1b890f6c919f0f7d029bbc23a800ee38a0d951891364aec",
+      "statement": "Model information disclosure and privacy attacks.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 121
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding",
+        "6.1 Threat and abuse modeling"
+      ]
+    },
+    {
+      "control_id": "PRC-06-028",
+      "revision": 1,
+      "semantic_sha256": "9330838eb2df4362cb3faf909920b241bcc99eca853fdae02ffb8faf20821b69",
+      "statement": "Model denial of service and resource exhaustion.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 122
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding",
+        "6.1 Threat and abuse modeling"
+      ]
+    },
+    {
+      "control_id": "PRC-06-029",
+      "revision": 1,
+      "semantic_sha256": "738c5e8b9455814997635d45c9102c39faa50fbd9851610c07a8bfc8daa71bcb",
+      "statement": "Model privilege escalation.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 123
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding",
+        "6.1 Threat and abuse modeling"
+      ]
+    },
+    {
+      "control_id": "PRC-06-030",
+      "revision": 1,
+      "semantic_sha256": "b137b4ae711b96214ea0edcc0f33fae7b70e9848e962588a4d84e8937cb91eff",
+      "statement": "Model repudiation and inadequate accountability.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 124
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding",
+        "6.1 Threat and abuse modeling"
+      ]
+    },
+    {
+      "control_id": "PRC-06-031",
+      "revision": 1,
+      "semantic_sha256": "498ffc9db8cf92d6a6743819810d682357ba0b85c8a45464d3793788b245eb86",
+      "statement": "Model business-logic abuse.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 125
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding",
+        "6.1 Threat and abuse modeling"
+      ]
+    },
+    {
+      "control_id": "PRC-06-032",
+      "revision": 1,
+      "semantic_sha256": "01570426f4cbf0a85761d26202ca6b84291a4a15b5bb58e2a58ebed5cba7f2b8",
+      "statement": "Model insider and compromised-administrator threats.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 126
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding",
+        "6.1 Threat and abuse modeling"
+      ]
+    },
+    {
+      "control_id": "PRC-06-033",
+      "revision": 1,
+      "semantic_sha256": "80cb4707ca166684423122a59c3a114bd4926890a0f88d14124982fac0747ea6",
+      "statement": "Model dependency and build-system compromise.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 127
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding",
+        "6.1 Threat and abuse modeling"
+      ]
+    },
+    {
+      "control_id": "PRC-06-034",
+      "revision": 1,
+      "semantic_sha256": "9cee634e5c36da248441ed8799844f44fbc36c5e27a9aa6bb8f03d4e8157b511",
+      "statement": "Model tenant-escape and cross-customer attacks.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 128
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding",
+        "6.1 Threat and abuse modeling"
+      ]
+    },
+    {
+      "control_id": "PRC-06-035",
+      "revision": 1,
+      "semantic_sha256": "968f347e6fd957abf5bd0269ff4ca8c1d275d37bbb9efa8852d386a1155c5ceb",
+      "statement": "Model automation, scraping, spam, fraud, and economic abuse.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 129
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding",
+        "6.1 Threat and abuse modeling"
+      ]
+    },
+    {
+      "control_id": "PRC-06-036",
+      "revision": 1,
+      "semantic_sha256": "52fff9abdf10b46845fb5e11a1f7170516eb26d21bae6b3be515ef043e31149b",
+      "statement": "Model recovery-system and backup attacks.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 130
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding",
+        "6.1 Threat and abuse modeling"
+      ]
+    },
+    {
+      "control_id": "PRC-06-037",
+      "revision": 1,
+      "semantic_sha256": "fd67822d212328cd6eea50cc0ed880de5c4769d56e0a587784f36f9472940cd6",
+      "statement": "Model support-channel and account-recovery social engineering.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 131
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding",
+        "6.1 Threat and abuse modeling"
+      ]
+    },
+    {
+      "control_id": "PRC-06-038",
+      "revision": 1,
+      "semantic_sha256": "2d7f24452d383a2f221404641b17a1747fd1f4cfd41c02be685089b5c5276afb",
+      "statement": "Convert identified threats into requirements and tests.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 132
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding",
+        "6.1 Threat and abuse modeling"
+      ]
+    },
+    {
+      "control_id": "PRC-06-039",
+      "revision": 1,
+      "semantic_sha256": "7a0f6af37af42322c7413bc8beced04c68d26f6449a3c6fd6f2513f7f540450c",
+      "statement": "Revisit the threat model after material design or scope changes.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 133
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding",
+        "6.1 Threat and abuse modeling"
+      ]
+    },
+    {
+      "control_id": "PRC-06-040",
+      "revision": 1,
+      "semantic_sha256": "e61cfba8cf94957f718d71016cb5a6070caaca1634f875a232468ddd50f66100",
+      "statement": "Obtain independent review for high-value or high-risk systems.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 134
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding",
+        "6.1 Threat and abuse modeling"
+      ]
+    }
+  ]
+}

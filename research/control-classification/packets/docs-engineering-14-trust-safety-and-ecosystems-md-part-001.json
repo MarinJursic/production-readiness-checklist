@@ -1,0 +1,3727 @@
+{
+  "schema_version": "prc.control-classification-packet/v0.1",
+  "packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+  "control_count": 235,
+  "controls": [
+    {
+      "control_id": "USEQ-560779CA",
+      "revision": 1,
+      "semantic_sha256": "560779caa027c5b98915030c9ccc4797d453bf42b9a6780db6a3747cc8af83d3",
+      "statement": "Acceptable-use, content, conduct, and enforcement policies are defined.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 15
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "User-Generated Content, Social Features, and Marketplaces",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-A7D75987",
+      "revision": 1,
+      "semantic_sha256": "a7d75987749b1391db686fa14ebfd22fa1fc673bf7c91d8ecf19c81d19b5dcd0",
+      "statement": "Users can report prohibited content, harmful conduct, impersonation, fraud, and safety threats.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 16
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "User-Generated Content, Social Features, and Marketplaces",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-94462871",
+      "revision": 1,
+      "semantic_sha256": "944628719c405e5a6eaa6d0105aa766358e8490f53f531cfff83191e9a197b52",
+      "statement": "Blocking, muting, audience, privacy, and safety controls work reliably.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 17
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "User-Generated Content, Social Features, and Marketplaces",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-6F4DE347",
+      "revision": 1,
+      "semantic_sha256": "6f4de347d88e24293b0c1335a098ff3243a16674212f60d9ac3a7bc2997afccb",
+      "statement": "Moderation queues have owners, severity rules, response objectives, and escalation paths.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 18
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "User-Generated Content, Social Features, and Marketplaces",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-9EFA79C0",
+      "revision": 1,
+      "semantic_sha256": "9efa79c043b86294f2ef93550879388010a9b5653b04ccb59c20a338bbab2939",
+      "statement": "Moderator actions are authorized, attributable, reviewable, and audited.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 19
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "User-Generated Content, Social Features, and Marketplaces",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-84EE02EE",
+      "revision": 1,
+      "semantic_sha256": "84ee02ee75197153c6eae2edd4b44c7003247a8b22279a6bd8d259be10ff4750",
+      "statement": "Appeals and correction procedures exist where appropriate.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 20
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "User-Generated Content, Social Features, and Marketplaces",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-925A28B6",
+      "revision": 1,
+      "semantic_sha256": "925a28b645ddf203735c3a0699d1103e0374c8e76d2e3952db8abd58634ca5a1",
+      "statement": "Spam, bots, scraping, harassment, stalking, impersonation, brigading, and coordinated abuse are addressed.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 21
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "User-Generated Content, Social Features, and Marketplaces",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-F0DC21E4",
+      "revision": 1,
+      "semantic_sha256": "f0dc21e4fb217f8af87dd4157479ed9b09e570708e6525a8392df4ae1851eb00",
+      "statement": "Uploaded and linked content is scanned and isolated appropriately.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 22
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "User-Generated Content, Social Features, and Marketplaces",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-6BE6FEE6",
+      "revision": 1,
+      "semantic_sha256": "6be6fee6c8b9f0d19a94cb5054a846c62f21f0d916f5b3ab613f00a71816dc17",
+      "statement": "Illegal-content, copyright, evidence-preservation, lawful-request, and emergency-disclosure procedures are defined.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 23
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "User-Generated Content, Social Features, and Marketplaces",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-AF8BAAB3",
+      "revision": 1,
+      "semantic_sha256": "af8baab3eee288626b980da87bb3868e7196e962a57b103486d662432b5b19d4",
+      "statement": "Public, private, group, follower, direct-message, and restricted audience controls are clear and enforced server-side.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 24
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "User-Generated Content, Social Features, and Marketplaces",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-E0664353",
+      "revision": 1,
+      "semantic_sha256": "e0664353bb8eb95cd771bcdea4ed03197c95e6ce0b985988117686c6e9625af4",
+      "statement": "Deleted or private content does not remain publicly cached, searchable, recommended, or indexed.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 25
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "User-Generated Content, Social Features, and Marketplaces",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-5AF9805B",
+      "revision": 1,
+      "semantic_sha256": "5af9805b4c47bb13e22e8b5d63236f65ff551266eb513e93312f6f2f9355d1ef",
+      "statement": "Search, ranking, notifications, recommendations, and previews do not expose restricted content.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 26
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "User-Generated Content, Social Features, and Marketplaces",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-0A61FF1D",
+      "revision": 1,
+      "semantic_sha256": "0a61ff1dc951c3c2c632a75ccf228b4b4e554f309cd12a627c467a46b0d197ca",
+      "statement": "Seller, buyer, provider, creator, or organizer verification is applied where risk requires it.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 27
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "User-Generated Content, Social Features, and Marketplaces",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-320189B8",
+      "revision": 1,
+      "semantic_sha256": "320189b854c5b24d5b8138587f54aff47f391ccf035e948a4c6f7bc19bf006ef",
+      "statement": "Fraud, dispute, refund, reputation, review, and trust-and-safety workflows are integrated.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 28
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "User-Generated Content, Social Features, and Marketplaces",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-E7BF7973",
+      "revision": 1,
+      "semantic_sha256": "e7bf79733886349d7038408f856aa319c8efe246950356a836000dbc6ec68034",
+      "statement": "Moderation personnel have suitable wellbeing safeguards and restricted data access.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 29
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "User-Generated Content, Social Features, and Marketplaces",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-BC1EE838",
+      "revision": 1,
+      "semantic_sha256": "bc1ee8388f7a744e79a8b072f6eff86ab00a787bda79c6d5d25d6abbe5514f5d",
+      "statement": "Threats to life or safety have an emergency escalation process.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 30
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "User-Generated Content, Social Features, and Marketplaces",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-DABCEC8A",
+      "revision": 1,
+      "semantic_sha256": "dabcec8aab9fd971eabf262320454523552b3b0c424f8ecca6b86e97b2dddf0d",
+      "statement": "Content-retention and account-deletion behavior is consistent with legal, safety, and privacy requirements.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 31
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "User-Generated Content, Social Features, and Marketplaces",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-C773D0E2",
+      "revision": 1,
+      "semantic_sha256": "c773d0e20a52b7e01266538b1d8742babdc90a4c812626b61d4e5a59d1d07f12",
+      "statement": "Sender domains, identities, certificates, and provider accounts are controlled.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 39
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Email, SMS, Push, and Notifications",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-BE8B8B0B",
+      "revision": 1,
+      "semantic_sha256": "be8b8b0b46963228ad5af577145837f555fc95e81d55fe67d4949b2e1212b3e6",
+      "statement": "Email authentication uses current domain-authentication practices.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 40
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Email, SMS, Push, and Notifications",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-9B4FADDD",
+      "revision": 1,
+      "semantic_sha256": "9b4fadddf9d4edb6b11a413c076d1cda85452c3db6f3fe52591b6517339c0338",
+      "statement": "Bounce, complaint, rejection, suppression, reputation, and delivery-delay signals are monitored.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 41
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Email, SMS, Push, and Notifications",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-C259ED15",
+      "revision": 1,
+      "semantic_sha256": "c259ed15dbb36588f6dba8b006dc5d73f70d7bd2543fcea9138356b9656983e5",
+      "statement": "Unsubscribe and preference changes work promptly and are not deceptive.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 42
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Email, SMS, Push, and Notifications",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-E68ADD70",
+      "revision": 1,
+      "semantic_sha256": "e68add70a5f9613b402754e175a1d0c1c6d11bc39595f760a07c5a6921eebc36",
+      "statement": "Transactional, security, operational, and marketing messages are classified correctly.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 43
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Email, SMS, Push, and Notifications",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-9041D400",
+      "revision": 1,
+      "semantic_sha256": "9041d400e138ff855df26979440adf10995c3f2abb51ed399c20b030da0fd365",
+      "statement": "Sensitive information is not exposed unnecessarily in lock-screen content, email previews, SMS, subject lines, or push payloads.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 44
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Email, SMS, Push, and Notifications",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-AF1D0C8C",
+      "revision": 1,
+      "semantic_sha256": "af1d0c8cb8de3127723175413fcc8e349134044064c75a60e22563e1beb1ce51",
+      "statement": "Reset, verification, invitation, and approval messages cannot be reused or redirected improperly.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 45
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Email, SMS, Push, and Notifications",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-30B95EF0",
+      "revision": 1,
+      "semantic_sha256": "30b95ef02f522f8c17a1041a5438ba22fc422f17c8726e55f67ebbe6514dea7f",
+      "statement": "Retries do not create duplicates, message storms, harassment, or spam.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 46
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Email, SMS, Push, and Notifications",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-D7B8731A",
+      "revision": 1,
+      "semantic_sha256": "d7b8731a393ce904e09c40acb68fb5f2ffd71650624b7fd15df9f4e28895dd63",
+      "statement": "Templates handle localization, escaping, long content, rendering differences, dark mode, plain text, and accessible structure.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 47
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Email, SMS, Push, and Notifications",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-AFA6B800",
+      "revision": 1,
+      "semantic_sha256": "afa6b8001ac5694578efe8d187132b5c1bd63a6654e29b575f08152638de2f34",
+      "statement": "Provider outage, delay, duplicate delivery, and out-of-order delivery are handled.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 48
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Email, SMS, Push, and Notifications",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-BF028AE2",
+      "revision": 1,
+      "semantic_sha256": "bf028ae23aecc83bfc5a9ac0007495be1283954bed90ea582edf99ee1a53dfda",
+      "statement": "Frequency and quiet-hour controls prevent harassment and abuse where appropriate.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 49
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Email, SMS, Push, and Notifications",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-9B51BA8F",
+      "revision": 1,
+      "semantic_sha256": "9b51ba8f1458e2e595dc2cf1e99baef0a0582e284dbeafa97583c3cdac8f7b96",
+      "statement": "Phone-number and email-address reassignment risk is considered.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 50
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Email, SMS, Push, and Notifications",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-ADF8072F",
+      "revision": 1,
+      "semantic_sha256": "adf8072f2519b69f25b810848c01974e8cc247a5ce453c57beaf36f7cd2e2703",
+      "statement": "Production cannot accidentally use test recipients, and testing cannot accidentally use production recipients.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 51
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Email, SMS, Push, and Notifications",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-F56AD22C",
+      "revision": 1,
+      "semantic_sha256": "f56ad22c6765d2e97f059d3bb63ab6a997d8a582b2f98239c009bdea7dc103e8",
+      "statement": "Security notifications are resistant to spoofing and tell users how to verify legitimacy safely.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 52
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Email, SMS, Push, and Notifications",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-07F09D35",
+      "revision": 1,
+      "semantic_sha256": "07f09d3512491073d9022e2fb72d36fc788c952e2e597ac271e13d843de2938c",
+      "statement": "Search and recommendation inputs, indexes, models, and ranking rules are inventoried.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 60
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Search, Ranking, Recommendations, and Personalization",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-6D5C3152",
+      "revision": 1,
+      "semantic_sha256": "6d5c3152f17f0ab1dc2ce4893d51f4764abac08aae2f42a85157e4ab5e043271",
+      "statement": "Access control is enforced before indexing, retrieval, ranking, preview, and recommendation.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 61
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Search, Ranking, Recommendations, and Personalization",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-65B2307E",
+      "revision": 1,
+      "semantic_sha256": "65b2307effb7c96cb75170883ef106b0e1d30b0f43020bf94024d7f5e9ddb04b",
+      "statement": "Deleted, private, blocked, restricted, or expired content is removed or suppressed promptly.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 62
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Search, Ranking, Recommendations, and Personalization",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-64BF1EA1",
+      "revision": 1,
+      "semantic_sha256": "64bf1ea1436db3c74d57f3514b93fd03bf1577492f0ffc83b4a10a11394cc438",
+      "statement": "Query expansion, autocomplete, spelling correction, snippets, and facets do not leak restricted information.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 63
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Search, Ranking, Recommendations, and Personalization",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-34F34DA1",
+      "revision": 1,
+      "semantic_sha256": "34f34da1d2dc2ec4be2455e8945ffcc9c9012b6beb9bb7512c0ded0c78d44dbd",
+      "statement": "Ranking cannot be manipulated trivially through spam, poisoning, coordinated behavior, or hidden metadata.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 64
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Search, Ranking, Recommendations, and Personalization",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-B3D62C45",
+      "revision": 1,
+      "semantic_sha256": "b3d62c45038c1ed85c088a6ebacb73db16fb44a6218abf99883e0a061e1adbab",
+      "statement": "Personalization uses only authorized and disclosed data.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 65
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Search, Ranking, Recommendations, and Personalization",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-0ED5176E",
+      "revision": 1,
+      "semantic_sha256": "0ed5176e1d8b204205cbf4c48967edec23823de936c288eda4c8772557c94ed5",
+      "statement": "Users can understand or control personalization where required.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 66
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Search, Ranking, Recommendations, and Personalization",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-897DFBBC",
+      "revision": 1,
+      "semantic_sha256": "897dfbbcced18bdd1f248ecb64852b07bf2fe92d5fbe67360807dc08402957a4",
+      "statement": "Sensitive traits are not inferred or used without proper review and authorization.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 67
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Search, Ranking, Recommendations, and Personalization",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-A51E620A",
+      "revision": 1,
+      "semantic_sha256": "a51e620aa8e5e76310fd8decaf90039f49466a17472ff9a9ff52fb74dcd567e7",
+      "statement": "Fairness, discrimination, safety, diversity, and filter-bubble risks are assessed where material.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 68
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Search, Ranking, Recommendations, and Personalization",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-387B93A0",
+      "revision": 1,
+      "semantic_sha256": "387b93a0c4fc216c7e765020ee2d7b76f1d6d6efb568b387243f7f2c72d0fe53",
+      "statement": "Search and recommendation quality is evaluated across languages, user groups, cold starts, sparse data, and adversarial inputs.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 69
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Search, Ranking, Recommendations, and Personalization",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-EF56A225",
+      "revision": 1,
+      "semantic_sha256": "ef56a225cfa2e2b9ab7d0c7e3b90e13edfb8c63eeb47b6658ad3a4fc5d3fdd03",
+      "statement": "Caching preserves user, tenant, audience, and permission boundaries.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 70
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Search, Ranking, Recommendations, and Personalization",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-BD559A2D",
+      "revision": 1,
+      "semantic_sha256": "bd559a2d164f9e39c42cecacd411977aa5157520f257e632a627b18e90560ff6",
+      "statement": "Index lag, model drift, and ranking changes are monitored.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 71
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Search, Ranking, Recommendations, and Personalization",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-33AC50F2",
+      "revision": 1,
+      "semantic_sha256": "33ac50f262a9be575d69226b75281117184837765075c10914360740efcd5936",
+      "statement": "A kill switch or rollback exists for harmful ranking or recommendation changes.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 72
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Search, Ranking, Recommendations, and Personalization",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-BD9BA43E",
+      "revision": 1,
+      "semantic_sha256": "bd9ba43e517ab34aee94b72b4b826420f384530fa866b2c18f2891d682a9ca08",
+      "statement": "Apply this checklist whenever users can communicate, publish, transact, discover other users, distribute content, install extensions, delegate capabilities, or materially affect one another.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 82
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Safety-by-design governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-AEDA607A",
+      "revision": 1,
+      "semantic_sha256": "aeda607ad4739fae8b1ad4c3c3b3508bf8b883a0cd116c8fe12de4c83b021b09",
+      "statement": "Make user safety a product and governance responsibility rather than assigning it solely to moderation or support after harm occurs.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 83
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Safety-by-design governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-AFD36B1D",
+      "revision": 1,
+      "semantic_sha256": "afd36b1df580f22f861ed8ff8d8bddf140b4bfc17c5ee6006e34e733abf2900e",
+      "statement": "Assign executive, product, engineering, policy, operations, legal, privacy, security, accessibility, and regional ownership for material safety risks.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 84
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Safety-by-design governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-596F4B00",
+      "revision": 1,
+      "semantic_sha256": "596f4b00cd911e5ae4a6aa751235ed1839ada3a674820dc3f00caeb65e8ae97d",
+      "statement": "Define the rights, dignity, autonomy, privacy, expression, access, and safety outcomes the product is intended to preserve.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 85
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Safety-by-design governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-9121E475",
+      "revision": 1,
+      "semantic_sha256": "9121e475de67c89b649a8db05de398b46947d53d83692bd67c8feaf8be3d0dac",
+      "statement": "Create a harm taxonomy covering physical, psychological, financial, reputational, privacy, discrimination, exploitation, harassment, fraud, coercion, self-harm, child safety, and societal risks as applicable.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 86
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Safety-by-design governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-71D94266",
+      "revision": 1,
+      "semantic_sha256": "71d9426673ad07a09a98441a3a30eac72465ee975f7da8e40d2d3d54b01e37aa",
+      "statement": "Identify higher-risk users and contexts, including children, survivors, marginalized groups, public figures, workers, sellers, creators, and users under coercion.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 87
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Safety-by-design governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-E211C089",
+      "revision": 1,
+      "semantic_sha256": "e211c089fe1a093894b01dea31dd0d2625798fc7ef4aeaf847834125f60b01d2",
+      "statement": "Model how product incentives, growth loops, ranking, virality, defaults, anonymity, payments, and friction can increase or reduce harm.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 88
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Safety-by-design governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-B12D033E",
+      "revision": 1,
+      "semantic_sha256": "b12d033ed44015ddc21a1a0d124bc98f39aac94e89186b40f62560f1c3582b63",
+      "statement": "Include misuse, abuse, coordinated behavior, insider action, compromised accounts, synthetic identities, automation, and cross-platform migration in threat and safety models.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 89
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Safety-by-design governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-76490994",
+      "revision": 1,
+      "semantic_sha256": "76490994a4890a78da6c0824de4de3c7428d019fe9d659a047bc324525c0e209",
+      "statement": "Define risk appetite, release blockers, escalation thresholds, emergency actions, and authority to slow or stop growth.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 90
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Safety-by-design governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-9FB97874",
+      "revision": 1,
+      "semantic_sha256": "9fb97874bf1c92d394009ee9dbb2b6a4c46bad656e4c00c20c8c0257509094c7",
+      "statement": "Fund safety, moderation, investigation, appeals, law-enforcement response where lawful, and victim support proportionately to product reach and risk.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 91
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Safety-by-design governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-4BE942F0",
+      "revision": 1,
+      "semantic_sha256": "4be942f03eb3df7222c0b69d557247c19d29b81323b7f1564fbea3ac8a5c8f5c",
+      "statement": "Review safety impact before launches, market expansion, new messaging capabilities, recommendation changes, monetization changes, privacy changes, and reduced friction.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 92
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Safety-by-design governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-C624557C",
+      "revision": 1,
+      "semantic_sha256": "c624557c65bf5d550e46ed1ed31fac5af245d87af746246dddfb684ffd7a5ac9",
+      "statement": "Use staged rollout and heightened monitoring for features that change reach, contactability, discoverability, monetization, or user power.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 93
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Safety-by-design governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-95CED227",
+      "revision": 1,
+      "semantic_sha256": "95ced2276f90f71f2e91ba44baba546d1630495ebdd92410d9e68e41a877576e",
+      "statement": "Document safety assumptions and test them with affected users, civil-society expertise, domain specialists, and adversarial research where impact warrants it.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 94
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Safety-by-design governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-D5D07405",
+      "revision": 1,
+      "semantic_sha256": "d5d074056a6d84825c971ed4281f9da1e434155a1f6e6d0805a18dd99d1ca512",
+      "statement": "Publish internal safety objectives and hold leaders accountable for outcome trends, not only content-removal volume.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 95
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Safety-by-design governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-95E87C5D",
+      "revision": 1,
+      "semantic_sha256": "95e87c5dce565a902013fcb86b384d513dfee51388f094c61eb7ba916179ddff",
+      "statement": "Publish clear, accessible, localized rules for permitted and prohibited content, conduct, commerce, automation, impersonation, and extension behavior.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 99
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Policies, notice, and user expectations"
+      ]
+    },
+    {
+      "control_id": "USEQ-2A90DDC8",
+      "revision": 1,
+      "semantic_sha256": "2a90ddc8485e67496f348a9d595e2fb0ea540e5885e8301bc3050798d9f268cd",
+      "statement": "Make policies specific enough that users, moderators, developers, and reviewers can apply them consistently.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 100
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Policies, notice, and user expectations"
+      ]
+    },
+    {
+      "control_id": "USEQ-82358F79",
+      "revision": 1,
+      "semantic_sha256": "82358f7977247ff0c4d7397867606117948992879d589e5eee481f93947831b2",
+      "statement": "Explain the scope of private, public, encrypted, ephemeral, moderated, and externally visible spaces without making false confidentiality promises.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 101
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Policies, notice, and user expectations"
+      ]
+    },
+    {
+      "control_id": "USEQ-9ED88D70",
+      "revision": 1,
+      "semantic_sha256": "9ed88d7095534a88ffee87e4f4658a7891baf5d39dcba31dc947d9fd038a766a",
+      "statement": "Explain what automated systems, human reviewers, trusted flaggers, merchants, developers, or partners may review and why.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 102
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Policies, notice, and user expectations"
+      ]
+    },
+    {
+      "control_id": "USEQ-F6F7B3BA",
+      "revision": 1,
+      "semantic_sha256": "f6f7b3ba086cb1f088f92d63c1751889748cdab8d8c0b912fcbc691edbf729e6",
+      "statement": "Provide age, geographic, and product-specific rules where risks and obligations differ.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 103
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Policies, notice, and user expectations"
+      ]
+    },
+    {
+      "control_id": "USEQ-698F9E31",
+      "revision": 1,
+      "semantic_sha256": "698f9e31876ce37969071be61833e8a36ebfcdeec364ea62611877584bde856b",
+      "statement": "Notify users of material policy changes before enforcement where feasible and preserve prior versions.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 104
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Policies, notice, and user expectations"
+      ]
+    },
+    {
+      "control_id": "USEQ-59123933",
+      "revision": 1,
+      "semantic_sha256": "591239331e321e2b7139cc10f57faea0e7e876da2913ff44cf938b14a8c580dc",
+      "statement": "Separate safety rules from promotional language and avoid hiding consequential terms in inaccessible or excessive text.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 105
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Policies, notice, and user expectations"
+      ]
+    },
+    {
+      "control_id": "USEQ-07E9A6B6",
+      "revision": 1,
+      "semantic_sha256": "07e9a6b6df2fcd946804f521f487b055838276553195247126ec5fc8a25dd5e1",
+      "statement": "Give developers and extension publishers explicit technical, privacy, permission, review, update, and enforcement requirements.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 106
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Policies, notice, and user expectations"
+      ]
+    },
+    {
+      "control_id": "USEQ-1EEF3A16",
+      "revision": 1,
+      "semantic_sha256": "1eef3a163a19402bebec86eabca4ac2eda92685cb62f8692fbc46f6b3b3dfa4e",
+      "statement": "State consequences, enforcement ranges, appeal paths, evidence retention, and restoration possibilities.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 107
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Policies, notice, and user expectations"
+      ]
+    },
+    {
+      "control_id": "USEQ-69D30DCF",
+      "revision": 1,
+      "semantic_sha256": "69d30dcf4a02e9a7b4bb25e0607b84abe07aea56c052f4412493ee40e4f51fc6",
+      "statement": "Avoid retroactive punishment for conduct that was permitted unless urgent safety or legal necessity justifies it and the rationale is documented.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 108
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Policies, notice, and user expectations"
+      ]
+    },
+    {
+      "control_id": "USEQ-6CE2FA9B",
+      "revision": 1,
+      "semantic_sha256": "6ce2fa9b841c0e3c59b7f8c823da56cd00afb2c2d0bb28cc3b4fce74517acf75",
+      "statement": "Provide policy examples without creating an exhaustive evasion manual.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 109
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Policies, notice, and user expectations"
+      ]
+    },
+    {
+      "control_id": "USEQ-5DD0664C",
+      "revision": 1,
+      "semantic_sha256": "5dd0664c5ffd5aad52259b18ab8882704a64877ed3715faa9c361b87e8d564f1",
+      "statement": "Ensure policy and product behavior agree; do not promise controls, review, confidentiality, or response times that the system cannot provide.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 110
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Policies, notice, and user expectations"
+      ]
+    },
+    {
+      "control_id": "USEQ-AD777CE0",
+      "revision": 1,
+      "semantic_sha256": "ad777ce0bfdc82f034e42e43a0722d175234cad0615bfea3940c04e2fbee5314",
+      "statement": "Provide understandable privacy, audience, contact, discovery, tagging, messaging, location, recommendation, and data-sharing controls.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 114
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "User empowerment, consent, and protective controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-A780B514",
+      "revision": 1,
+      "semantic_sha256": "a780b514f3086c8ecfdad9de2350d3c3a06c447157e5816d9e198d12dfb20edf",
+      "statement": "Use protective defaults proportionate to age, vulnerability, sensitivity, and expected context.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 115
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "User empowerment, consent, and protective controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-22F0FF7A",
+      "revision": 1,
+      "semantic_sha256": "22f0ff7a925a8af3406bc6aafb48b586d2d396af7e7a2fe97a7eab6b5d114ba7",
+      "statement": "Allow users to block, mute, restrict, unfollow, leave, remove followers, limit replies, filter keywords, and control contact where relevant.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 116
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "User empowerment, consent, and protective controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-9D270EFD",
+      "revision": 1,
+      "semantic_sha256": "9d270efd11ac9f021ca02dc97820af59e88aeabefb984c336e875c956f5a80f5",
+      "statement": "Make safety controls available before, during, and after an interaction rather than only after harm.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 117
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "User empowerment, consent, and protective controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-A7EF66C3",
+      "revision": 1,
+      "semantic_sha256": "a7ef66c30d9b3b0259fb611fde3dfe07c5be1b6a93077c5f328782fee1b20446",
+      "statement": "Ensure blocking applies consistently across profiles, messages, search, recommendations, notifications, groups, shared content, and alternate identifiers as intended.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 118
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "User empowerment, consent, and protective controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-486EFD38",
+      "revision": 1,
+      "semantic_sha256": "486efd38b160cf5c963d00f3641f548f892f51021089a994064a8c8a1a17c723",
+      "statement": "Prevent a blocked or restricted actor from learning unnecessary information through errors, presence, read receipts, recommendations, or indirect notifications.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 119
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "User empowerment, consent, and protective controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-B65E9725",
+      "revision": 1,
+      "semantic_sha256": "b65e9725611a1e33c9a79693757dcf5fe35d04a5edf67a409f04c8396edf65d6",
+      "statement": "Allow users to review and revoke connected applications, sessions, devices, delegates, payment mandates, and extension permissions.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 120
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "User empowerment, consent, and protective controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-2417A7C7",
+      "revision": 1,
+      "semantic_sha256": "2417a7c703d50095b1dab4a913160966ff46fb54d70126e39107293678fa932e",
+      "statement": "Request dangerous permissions at the time of meaningful use and explain the purpose in user language.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 121
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "User empowerment, consent, and protective controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-D6445268",
+      "revision": 1,
+      "semantic_sha256": "d6445268315abc59c49f46a4881b7fb408c4568f8a5180b5666c3b4596be8ecb",
+      "statement": "Make optional permissions and data collection revocable without forcing account deletion when the core service can continue.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 122
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "User empowerment, consent, and protective controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-77B28528",
+      "revision": 1,
+      "semantic_sha256": "77b285282e4c2444df9f69d21c9050ca23ba5b3c568b2fd4288323f053e2626a",
+      "statement": "Provide friction, previews, warnings, cooldowns, confirmation, and undo for actions with high abuse or irreversible impact.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 123
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "User empowerment, consent, and protective controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-29E4B82E",
+      "revision": 1,
+      "semantic_sha256": "29e4b82e41cf03fdab842b70f287dff3da21858efbafcf66c11bec03ff2049c2",
+      "statement": "Allow users to preserve evidence safely before blocking, deleting, or leaving where needed.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 124
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "User empowerment, consent, and protective controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-7C0C7DE6",
+      "revision": 1,
+      "semantic_sha256": "7c0c7de6a4713d69a67341a8525bd6215fc9977eae75ec12db516be3ea197110",
+      "statement": "Provide discreet safety exits and account-protection options for users under surveillance or coercion.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 125
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "User empowerment, consent, and protective controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-ABDF7D26",
+      "revision": 1,
+      "semantic_sha256": "abdf7d261473591cd8f3ba16c972f7b198c370d5144e630438d93c65c35dc3dc",
+      "statement": "Do not expose safety choices publicly when doing so could increase retaliation or stigma.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 126
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "User empowerment, consent, and protective controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-0CB908CD",
+      "revision": 1,
+      "semantic_sha256": "0cb908cd0ed5f3d740d147fba8f87cfe2eada12a87924a21f3dd32937bd7adf4",
+      "statement": "Provide accessible controls and alternatives for users with disabilities, limited literacy, low bandwidth, or constrained devices.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 127
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "User empowerment, consent, and protective controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-6092D596",
+      "revision": 1,
+      "semantic_sha256": "6092d5964714a6b733064939ebdaf69ede98d19c9a79a9c0f48622c9b742777a",
+      "statement": "Provide accessible reporting from the content, account, transaction, message, extension, or behavior being reported.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 131
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Reporting, moderation, and case handling"
+      ]
+    },
+    {
+      "control_id": "USEQ-41AFAEC3",
+      "revision": 1,
+      "semantic_sha256": "41afaec3c2bd57d1a59f2c830aeca3333ccc53e6cdd068475688ed7b8bb69678",
+      "statement": "Allow reporting without requiring the reporter to maintain contact with the reported party.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 132
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Reporting, moderation, and case handling"
+      ]
+    },
+    {
+      "control_id": "USEQ-2EB40D3B",
+      "revision": 1,
+      "semantic_sha256": "2eb40d3bdb2d7371d6fb08ff047747aa67a6aa7feed3c8ec8c1048d673e42d9c",
+      "statement": "Offer report categories that support triage while allowing free-text context and urgent-safety signals.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 133
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Reporting, moderation, and case handling"
+      ]
+    },
+    {
+      "control_id": "USEQ-BD179B81",
+      "revision": 1,
+      "semantic_sha256": "bd179b81607ebebc33a690925baa16e7a5fd6cfae6b35a72af6b65c372cafa4b",
+      "statement": "Acknowledge reports and provide a case reference without exposing protected investigation details.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 134
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Reporting, moderation, and case handling"
+      ]
+    },
+    {
+      "control_id": "USEQ-8A7710F9",
+      "revision": 1,
+      "semantic_sha256": "8a7710f958ee24e25fa44e61282071fff8433e0d60e0617b85cddc09ec14a5c2",
+      "statement": "Prioritize cases using severity, imminence, vulnerability, scale, recurrence, virality, illegality, and evidence-loss risk.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 135
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Reporting, moderation, and case handling"
+      ]
+    },
+    {
+      "control_id": "USEQ-FF6C3B4B",
+      "revision": 1,
+      "semantic_sha256": "ff6c3b4b03b0ebfd9007c9c6ccb7b58f1f9d626b8100fba6b73cca59f9f5a1e9",
+      "statement": "Define service objectives for acknowledgment, triage, emergency escalation, decision, appeal, and restoration by severity.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 136
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Reporting, moderation, and case handling"
+      ]
+    },
+    {
+      "control_id": "USEQ-9BE743D4",
+      "revision": 1,
+      "semantic_sha256": "9be743d4f190f050bcd98e9b5c2ce368b5ab621d483f347f61a60a8df8bcc9db",
+      "statement": "Route credible imminent threats, child-safety risk, self-harm emergencies, financial theft, account compromise, and coordinated abuse to specialized procedures.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 137
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Reporting, moderation, and case handling"
+      ]
+    },
+    {
+      "control_id": "USEQ-36EBFCB9",
+      "revision": 1,
+      "semantic_sha256": "36ebfcb940b1ed082357f91744e53bf397115f27d0077127e4a8bfd07d46ee94",
+      "statement": "Preserve relevant content, metadata, decisions, and chain of custody according to law, policy, privacy, and retention requirements.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 138
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Reporting, moderation, and case handling"
+      ]
+    },
+    {
+      "control_id": "USEQ-5D0E8382",
+      "revision": 1,
+      "semantic_sha256": "5d0e83824085f1d8db2c3516080b8730b6bc81cf71202ff146ecd25e060a5168",
+      "statement": "Protect reporters, moderators, witnesses, and victims from retaliation, doxxing, and unnecessary disclosure.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 139
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Reporting, moderation, and case handling"
+      ]
+    },
+    {
+      "control_id": "USEQ-0750C577",
+      "revision": 1,
+      "semantic_sha256": "0750c577a80541a5b8a5d3df61954de3cc715d86b1943809871a927bb737fed5",
+      "statement": "Use trained reviewers and provide specialized regional, linguistic, cultural, accessibility, legal, and subject-matter support.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 140
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Reporting, moderation, and case handling"
+      ]
+    },
+    {
+      "control_id": "USEQ-FC571D84",
+      "revision": 1,
+      "semantic_sha256": "fc571d844d651c52366eaf4acbfc17af15f8bf22e4414067789b028ad1bb5bc0",
+      "statement": "Provide moderators with sufficient context while minimizing unnecessary exposure to personal or traumatic material.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 141
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Reporting, moderation, and case handling"
+      ]
+    },
+    {
+      "control_id": "USEQ-8D51224C",
+      "revision": 1,
+      "semantic_sha256": "8d51224c4b57663d85e3d05ccd40bfe39e7d5d8869b6a2111660cccd71b39006",
+      "statement": "Use rotation, wellness protections, clinical support, access controls, and workload limits for personnel exposed to harmful content.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 142
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Reporting, moderation, and case handling"
+      ]
+    },
+    {
+      "control_id": "USEQ-4A26124E",
+      "revision": 1,
+      "semantic_sha256": "4a26124edf3d18267bf976e4bb23cc08e24e74fdd36b64b4a50a151ffa889a37",
+      "statement": "Require consistent decision records including policy basis, evidence, confidence, action, duration, scope, reviewer, and escalation.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 143
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Reporting, moderation, and case handling"
+      ]
+    },
+    {
+      "control_id": "USEQ-1E2471A3",
+      "revision": 1,
+      "semantic_sha256": "1e2471a39104d6f4e59bc4fdd334e5c149c0916d2bf315577cd6653c5e6f4319",
+      "statement": "Use quality assurance, calibration, double review, sampling, and disagreement analysis for consequential decisions.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 144
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Reporting, moderation, and case handling"
+      ]
+    },
+    {
+      "control_id": "USEQ-E9E9307A",
+      "revision": 1,
+      "semantic_sha256": "e9e9307a8479285cf6410e0fbaf1bd5025cf50428c608febb03078252c5f56e4",
+      "statement": "Prevent automated tools from making irreversible high-impact enforcement decisions without the required confidence, safeguards, and human review.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 145
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Reporting, moderation, and case handling"
+      ]
+    },
+    {
+      "control_id": "USEQ-C08DB232",
+      "revision": 1,
+      "semantic_sha256": "c08db2322d47fa87bacbd25c2d013e05ce50e8be669e95f0b295b6af0b02ef53",
+      "statement": "Provide proportionate actions such as warning, friction, reduced distribution, feature restriction, temporary suspension, removal, preservation, and permanent exclusion.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 146
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Reporting, moderation, and case handling"
+      ]
+    },
+    {
+      "control_id": "USEQ-623ABC6E",
+      "revision": 1,
+      "semantic_sha256": "623abc6ef4deed81641ed352958094b485220db0cc220bd9262576e7d028b3a3",
+      "statement": "Apply actions across linked accounts or devices only under a documented, privacy-reviewed, error-tolerant policy.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 147
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Reporting, moderation, and case handling"
+      ]
+    },
+    {
+      "control_id": "USEQ-C934C5F6",
+      "revision": 1,
+      "semantic_sha256": "c934c5f6e8e5ad86a82bfdd527e9e7e207f4f5824b0d25120646a1987690fa40",
+      "statement": "Notify affected users with the rule, content or behavior, action, duration, consequences, and appeal route unless doing so would create material risk.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 148
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Reporting, moderation, and case handling"
+      ]
+    },
+    {
+      "control_id": "USEQ-75B5AC01",
+      "revision": 1,
+      "semantic_sha256": "75b5ac01fe0ca1660dde06f0fd5f7b0b2e3542f24bd36a43eb9ef1d1f84ff9f9",
+      "statement": "Provide accessible, independent, timely appeals with review by someone not solely repeating the original automated decision.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 149
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Reporting, moderation, and case handling"
+      ]
+    },
+    {
+      "control_id": "USEQ-FC548DD3",
+      "revision": 1,
+      "semantic_sha256": "fc548dd30e80a5d76fe8a8e939da55fa790542b64247231813e84c1288f25c8d",
+      "statement": "Restore content, access, reputation, reach, funds, and associated state when an enforcement error is reversed.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 150
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Reporting, moderation, and case handling"
+      ]
+    },
+    {
+      "control_id": "USEQ-C11B8851",
+      "revision": 1,
+      "semantic_sha256": "c11b88515fea6ae9abfd2a54d7b768fd6bfc1b131b1454ae454a0a5a28a4d039",
+      "statement": "Track false positives, false negatives, inconsistent decisions, appeal reversals, recurrence, and unresolved backlog.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 151
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Reporting, moderation, and case handling"
+      ]
+    },
+    {
+      "control_id": "USEQ-613FA405",
+      "revision": 1,
+      "semantic_sha256": "613fa405addbace789c7ddc5cf9e8b3b3aaa7da465a6ee6e7c26ef5d35fbe0c1",
+      "statement": "Treat ranking, recommendation, trending, autocomplete, notifications, resharing, and search as distribution systems with safety responsibilities.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 155
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Recommendation, amplification, and virality controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-8CB830F6",
+      "revision": 1,
+      "semantic_sha256": "8cb830f650aea67c0534ad8bc5b083090086078567c510c0aa251da5857b4def",
+      "statement": "Define which safety, quality, provenance, age, sensitivity, and policy signals affect eligibility, ranking, and reach.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 156
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Recommendation, amplification, and virality controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-AE03B731",
+      "revision": 1,
+      "semantic_sha256": "ae03b731a9664ed7b36050d1dd74994b09a8715fd1a3e7afedd762ce21d1080d",
+      "statement": "Prevent prohibited or restricted content from re-entering recommendation through copies, edits, alternate encodings, or related accounts.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 157
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Recommendation, amplification, and virality controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-34281A6E",
+      "revision": 1,
+      "semantic_sha256": "34281a6edee1f9e60201d6e7b705e7cc4a108977795f9ef4aef5af6aa1cf2b3e",
+      "statement": "Test whether optimization objectives create incentives for outrage, harassment, misinformation, addiction, exploitation, fraud, or unsafe challenges.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 158
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Recommendation, amplification, and virality controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-1077D020",
+      "revision": 1,
+      "semantic_sha256": "1077d020f9f36de20b0d7209497f3309650f4659977ee79899e337d17f2ff8f4",
+      "statement": "Use counter-metrics for harmful exposure, regret, complaints, blocks, hides, rapid exits, appeals, and vulnerable-user impact.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 159
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Recommendation, amplification, and virality controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-DA6EBB44",
+      "revision": 1,
+      "semantic_sha256": "da6ebb44893822a6cc5847eb8e40ffd5d15b81e14ecc6057552117f23b31fa46",
+      "statement": "Limit rapid mass distribution for new, untrusted, sensitive, or unusually fast-growing content until risk signals are evaluated where appropriate.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 160
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Recommendation, amplification, and virality controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-F6C33ECE",
+      "revision": 1,
+      "semantic_sha256": "f6c33ece8bf8817ef465447e7d632ed36768bfc951be473d397d3e577eb9f26b",
+      "statement": "Provide users meaningful control over recommendation topics, sources, personalization, sensitive content, and chronological alternatives where relevant.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 161
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Recommendation, amplification, and virality controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-435FB22F",
+      "revision": 1,
+      "semantic_sha256": "435fb22f1551e54690e3c2c842e2e94f6bb365d08398f903fdfba9ab63cc03f7",
+      "statement": "Do not infer or exploit highly sensitive traits for distribution without a lawful, necessary, and user-respecting basis.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 162
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Recommendation, amplification, and virality controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-F981278F",
+      "revision": 1,
+      "semantic_sha256": "f981278f8760c3e619d4d46d577bc2bf253ba6748516f5e74ce74d2e151cd8ad",
+      "statement": "Evaluate disparate exposure, suppression, monetization, and error rates across relevant groups and languages.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 163
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Recommendation, amplification, and virality controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-4676585B",
+      "revision": 1,
+      "semantic_sha256": "4676585b76098483c42eb9d3a516c53396340ef50f465bc89903a9443346d40d",
+      "statement": "Ensure downranking and reduced distribution have policy, governance, testing, monitoring, and appeal appropriate to their impact.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 164
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Recommendation, amplification, and virality controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-075A14AD",
+      "revision": 1,
+      "semantic_sha256": "075a14ad4d989128aea48f8ec28661bde055e9c0ba54b99367c366105f60fb5d",
+      "statement": "Prevent coordinated manipulation through engagement rings, fake accounts, purchased interactions, adversarial metadata, and automated activity.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 165
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Recommendation, amplification, and virality controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-06F3E324",
+      "revision": 1,
+      "semantic_sha256": "06f3e32457a2d00f79af123bfff3d2aa924a242fe61f8c53cd461d83a46de0a8",
+      "statement": "Review recommendation changes through offline evaluation, adversarial testing, limited rollout, causal analysis, and post-launch monitoring.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 166
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Recommendation, amplification, and virality controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-C776200D",
+      "revision": 1,
+      "semantic_sha256": "c776200dfdcfed3c78e8e5c62e4440acabadb24e5fe3ee2d022383b439b20912",
+      "statement": "Provide researchers and auditors appropriate transparency and privacy-preserving access when required or beneficial to safety assurance.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 167
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Recommendation, amplification, and virality controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-0C858E3A",
+      "revision": 1,
+      "semantic_sha256": "0c858e3a2086306e501f41d1757c90aa78be02587712e16f09d2cb05b04b9c27",
+      "statement": "Define when real identity, pseudonymity, anonymity, organization verification, age assurance, or role verification is necessary and proportionate.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 171
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Identity, impersonation, authenticity, and account integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-7F8BF05A",
+      "revision": 1,
+      "semantic_sha256": "7f8bf05a3b1297d2bb52e8e03f11c6c0a224373c1d1229d3c80d09298a84bcf4",
+      "statement": "Avoid collecting stronger identity evidence than the risk requires.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 172
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Identity, impersonation, authenticity, and account integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-2AEAE9F2",
+      "revision": 1,
+      "semantic_sha256": "2aeae9f23c8bc131ed9aed59b63c4259da3ae8531f122e273a35ad53a082a6ad",
+      "statement": "Distinguish verified control of an account or organization from endorsement, expertise, factual accuracy, or general trustworthiness.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 173
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Identity, impersonation, authenticity, and account integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-2BBFCDF2",
+      "revision": 1,
+      "semantic_sha256": "2bbfcdf2c5a32234ed15f1769980b4973bdf5e42481646d3a7de2f42852304a2",
+      "statement": "Prevent deceptive impersonation of people, organizations, support agents, merchants, public authorities, and automated systems.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 174
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Identity, impersonation, authenticity, and account integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-33DC094C",
+      "revision": 1,
+      "semantic_sha256": "33dc094ce2e9b97707e0ba6e67293d63111853380077da19a8d38ee8f49e59fd",
+      "statement": "Provide clear disclosure for bots, synthetic personas, delegated operators, and materially automated accounts where users could be misled.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 175
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Identity, impersonation, authenticity, and account integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-F6D77BAF",
+      "revision": 1,
+      "semantic_sha256": "f6d77bafc126cff583e3c2615880ed0883e259fca8e4f4988da3c2bc8b0b0631",
+      "statement": "Protect usernames, organization names, custom domains, badges, and profile identifiers from confusing or abusive collision.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 176
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Identity, impersonation, authenticity, and account integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-F009B337",
+      "revision": 1,
+      "semantic_sha256": "f009b337907798ece611556814191656cec8ee5c9c4a0f74f62be2ac500596ba",
+      "statement": "Detect account takeover, credential stuffing, session theft, recovery abuse, SIM or email reassignment, and support-channel social engineering.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 177
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Identity, impersonation, authenticity, and account integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-D805F610",
+      "revision": 1,
+      "semantic_sha256": "d805f610a3f645072a0445b0fdbcd5bec578a20d19fb479b0b800e12e946e603",
+      "statement": "Use step-up verification and cooling periods for changes to identity, recovery, payout, advertising, administrative, or high-reach settings.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 178
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Identity, impersonation, authenticity, and account integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-BC52C708",
+      "revision": 1,
+      "semantic_sha256": "bc52c7087ab951475cc9e252b3c1d242b2d9c8e70df64bc9c2083831230dfafe",
+      "statement": "Notify users of material identity and security changes through independent channels where appropriate.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 179
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Identity, impersonation, authenticity, and account integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-31D2242A",
+      "revision": 1,
+      "semantic_sha256": "31d2242ad9a46233f69888a0f2deb31335121e358cd33dda6525f280e34c1f62",
+      "statement": "Provide recovery paths for compromised accounts without giving attackers an easier route than normal authentication.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 180
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Identity, impersonation, authenticity, and account integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-C1AD085C",
+      "revision": 1,
+      "semantic_sha256": "c1ad085c7d5046cceefd6b7421e28c5bd6c3cf27e8def9ffd7872428bc728a1a",
+      "statement": "Preserve evidence and limit further harm during account-takeover investigation.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 181
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Identity, impersonation, authenticity, and account integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-361A211A",
+      "revision": 1,
+      "semantic_sha256": "361a211aac44366c464f5cfe17af583ae92fbe0ba22486cb6f8afc5f1c7b6b8a",
+      "statement": "Allow users to report impersonation even when they do not have an account.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 182
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Identity, impersonation, authenticity, and account integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-BD3A717B",
+      "revision": 1,
+      "semantic_sha256": "bd3a717ba513a8f2d15b4e1516eefa08c986f58bc51556ab74b43f9dd44bea2e",
+      "statement": "Define memorialization, succession, organization transfer, employee departure, and abandoned-account behavior.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 183
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Identity, impersonation, authenticity, and account integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-8DE587F8",
+      "revision": 1,
+      "semantic_sha256": "8de587f85419d6f9ef331af84635ae9e88b72de530334a95ecd9eb378ba9985a",
+      "statement": "Model economic incentives, attacker return, victim loss, platform subsidy, and externalized cost for each abuse class.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 187
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Fraud, spam, bots, and coordinated abuse"
+      ]
+    },
+    {
+      "control_id": "USEQ-41719BE8",
+      "revision": 1,
+      "semantic_sha256": "41719be8b1042627eaa3f6f93b0298203849562fae13e2ba91323aa0640391c2",
+      "statement": "Use layered controls across enrollment, authentication, device, network, behavior, content, transaction, reputation, payout, and recovery.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 188
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Fraud, spam, bots, and coordinated abuse"
+      ]
+    },
+    {
+      "control_id": "USEQ-F2E3DC32",
+      "revision": 1,
+      "semantic_sha256": "f2e3dc32d4b83abd281ca4d7f76c1fd478658b64ccac94a330692a0142482665",
+      "statement": "Bound actions per account, identity, tenant, device, network, payment instrument, destination, and time window using risk-aware limits.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 189
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Fraud, spam, bots, and coordinated abuse"
+      ]
+    },
+    {
+      "control_id": "USEQ-3E29C386",
+      "revision": 1,
+      "semantic_sha256": "3e29c386b89ed7e92d15e1aef39667403178e6f3867d7d1def16b71aaf00b0c2",
+      "statement": "Detect burst, fan-out, graph, velocity, replay, template, shared-infrastructure, and collusion patterns.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 190
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Fraud, spam, bots, and coordinated abuse"
+      ]
+    },
+    {
+      "control_id": "USEQ-5DEEFFE1",
+      "revision": 1,
+      "semantic_sha256": "5deeffe1dfbeb05698397faca41c440288655207cfdf2cce9342de638eadbbbe",
+      "statement": "Prevent rate-limit evasion through alternate endpoints, encodings, identities, tenants, or protocol layers.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 191
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Fraud, spam, bots, and coordinated abuse"
+      ]
+    },
+    {
+      "control_id": "USEQ-EDC9A641",
+      "revision": 1,
+      "semantic_sha256": "edc9a641008d44007d54cf2bca9ac7a1f95e6cf4343a69b3bc472f58f2108750",
+      "statement": "Use challenges and friction that are accessible, privacy-preserving, and proportionate rather than relying on one CAPTCHA.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 192
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Fraud, spam, bots, and coordinated abuse"
+      ]
+    },
+    {
+      "control_id": "USEQ-19CE9D99",
+      "revision": 1,
+      "semantic_sha256": "19ce9d99a860095107b12a5dc81f59e56663a5e1e6eb8c1bae668967d316dd73",
+      "statement": "Separate suspicious activity from proven abuse and avoid irreversible action based on one weak signal.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 193
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Fraud, spam, bots, and coordinated abuse"
+      ]
+    },
+    {
+      "control_id": "USEQ-0D9379C8",
+      "revision": 1,
+      "semantic_sha256": "0d9379c8ab73eb37dafc5f963b40983bd5828977d17c67d9307d1051e696a034",
+      "statement": "Keep fraud models and rules observable, versioned, tested, monitored for drift, and protected from unauthorized manipulation.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 194
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Fraud, spam, bots, and coordinated abuse"
+      ]
+    },
+    {
+      "control_id": "USEQ-0CC5A940",
+      "revision": 1,
+      "semantic_sha256": "0cc5a9402debf96e37e4c91a484732f976c37fb3e50a40651d428a81394ebed4",
+      "statement": "Protect high-risk state changes, payouts, refunds, transfers, promotions, invitations, reviews, and messaging from automation abuse.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 195
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Fraud, spam, bots, and coordinated abuse"
+      ]
+    },
+    {
+      "control_id": "USEQ-15AABFBA",
+      "revision": 1,
+      "semantic_sha256": "15aabfba13e33bbbe988e5d4c0441d8524087008f6cce1930e0eaed2e3c8a16a",
+      "statement": "Delay or reserve irreversible value transfer until authoritative risk and settlement signals are available where appropriate.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 196
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Fraud, spam, bots, and coordinated abuse"
+      ]
+    },
+    {
+      "control_id": "USEQ-649D5697",
+      "revision": 1,
+      "semantic_sha256": "649d5697e0782e7f1260e172412837bad6d2d6d0fdbcadf250ee317e204941a1",
+      "statement": "Reconcile platform records with payment, fulfillment, identity, and provider records to detect hidden losses.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 197
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Fraud, spam, bots, and coordinated abuse"
+      ]
+    },
+    {
+      "control_id": "USEQ-B1FBD274",
+      "revision": 1,
+      "semantic_sha256": "b1fbd27427a33052c7fe06e98672979b7bb79fd0304624b945cfbf94803d0b13",
+      "statement": "Share abuse intelligence internally and with trusted partners under privacy, legal, accuracy, and purpose controls.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 198
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Fraud, spam, bots, and coordinated abuse"
+      ]
+    },
+    {
+      "control_id": "USEQ-6D72C114",
+      "revision": 1,
+      "semantic_sha256": "6d72c114d7d42efcacc79d992ae021880efb9921fc9afad83e5821a1e51743d5",
+      "statement": "Design containment so blocking one attack does not create widespread denial of service for legitimate users.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 199
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Fraud, spam, bots, and coordinated abuse"
+      ]
+    },
+    {
+      "control_id": "USEQ-1BA3C45A",
+      "revision": 1,
+      "semantic_sha256": "1ba3c45acecff8879382233231d39e4b8ec45f796ce8cdc3b1dca491ea8691ff",
+      "statement": "Measure attacker adaptation and rotate controls without relying on secrecy as the primary defense.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 200
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Fraud, spam, bots, and coordinated abuse"
+      ]
+    },
+    {
+      "control_id": "USEQ-53975D3E",
+      "revision": 1,
+      "semantic_sha256": "53975d3ede4594e7e95064ebca77f0470313230a0746387b59feba6589241c0c",
+      "statement": "Determine whether children are likely users even when the service is not explicitly directed to them.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 204
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Children, vulnerable users, and high-risk interactions"
+      ]
+    },
+    {
+      "control_id": "USEQ-0BBF963F",
+      "revision": 1,
+      "semantic_sha256": "0bbf963f453534444c9499b3c669fa320886367e37517bc6099e03c64e3838dc",
+      "statement": "Use age-appropriate defaults for discoverability, contact, location, profiling, advertising, spending, sharing, and public posting.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 205
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Children, vulnerable users, and high-risk interactions"
+      ]
+    },
+    {
+      "control_id": "USEQ-95346626",
+      "revision": 1,
+      "semantic_sha256": "95346626e5dd3bcc90c461ebf78417b0f6fef0bb107cfad58783eb39c98e03b3",
+      "statement": "Avoid dark patterns that pressure minors or vulnerable users to disclose data, spend money, maintain streaks, or engage continuously.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 206
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Children, vulnerable users, and high-risk interactions"
+      ]
+    },
+    {
+      "control_id": "USEQ-BC356E9B",
+      "revision": 1,
+      "semantic_sha256": "bc356e9b24d427da033a28d5cb547f3f75b84898aa4d842e9ed68a67547e5a4f",
+      "statement": "Limit adult-to-minor contact, grooming patterns, coercive requests, sexualization, and migration to less protected channels where applicable.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 207
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Children, vulnerable users, and high-risk interactions"
+      ]
+    },
+    {
+      "control_id": "USEQ-FB8D5668",
+      "revision": 1,
+      "semantic_sha256": "fb8d5668ab8ea08a6571a1ee470cb47fa53ea6ce2e8bb6b05a911393d579e719",
+      "statement": "Provide guardian controls only when lawful and designed not to endanger children in abusive households.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 208
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Children, vulnerable users, and high-risk interactions"
+      ]
+    },
+    {
+      "control_id": "USEQ-3FC789B0",
+      "revision": 1,
+      "semantic_sha256": "3fc789b0a7b3997f1e482503488fdb167d9022783c24a2216c331309b16f708e",
+      "statement": "Use age assurance proportionate to risk and evaluate privacy, accessibility, bias, circumvention, and exclusion.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 209
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Children, vulnerable users, and high-risk interactions"
+      ]
+    },
+    {
+      "control_id": "USEQ-4194C938",
+      "revision": 1,
+      "semantic_sha256": "4194c938678cb169837464258074891e27d5d38debfe78594e91b2e367041ef2",
+      "statement": "Provide child-understandable explanations, reporting, blocking, and help.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 210
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Children, vulnerable users, and high-risk interactions"
+      ]
+    },
+    {
+      "control_id": "USEQ-FCB00C8A",
+      "revision": 1,
+      "semantic_sha256": "fcb00c8a43f41f217ffc700265d76a2031dd2c05a0783f2e65f1616b0cadabc3",
+      "statement": "Route child-safety incidents to trained teams with strict access, evidence, reporting, and wellness controls.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 211
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Children, vulnerable users, and high-risk interactions"
+      ]
+    },
+    {
+      "control_id": "USEQ-B0F21CF7",
+      "revision": 1,
+      "semantic_sha256": "b0f21cf7d0bc8b61b1a3d8c33b87e1a6e5f09ed9d0d98c9e4ce0608e54a003c5",
+      "statement": "Protect users seeking help for self-harm, abuse, addiction, financial distress, or violence from exploitation and harmful recommendation loops.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 212
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Children, vulnerable users, and high-risk interactions"
+      ]
+    },
+    {
+      "control_id": "USEQ-7B563568",
+      "revision": 1,
+      "semantic_sha256": "7b563568281889e49849378e3f87ce190dac4b3d91dc74b635d2278c18430229",
+      "statement": "Test safety controls with representative youth and vulnerable-user expertise.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 213
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Children, vulnerable users, and high-risk interactions"
+      ]
+    },
+    {
+      "control_id": "USEQ-315C17BD",
+      "revision": 1,
+      "semantic_sha256": "315c17bd37205bf11a28a918d8e0e100c51c2791dca4c25150067d2dc61adea7",
+      "statement": "Avoid public indicators that reveal a user's protected status or safety settings.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 214
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Children, vulnerable users, and high-risk interactions"
+      ]
+    },
+    {
+      "control_id": "USEQ-197A27D2",
+      "revision": 1,
+      "semantic_sha256": "197a27d2ae2fc163d2ebce0630086a88d160a24669c70b6ee05a9d0dea2f8adb",
+      "statement": "Define criteria and authority for emergency feature restriction, account freeze, content preservation, distribution reduction, payment hold, or service shutdown.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 218
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Crisis, emergency, and severe-harm response"
+      ]
+    },
+    {
+      "control_id": "USEQ-DC481166",
+      "revision": 1,
+      "semantic_sha256": "dc4811661358d406bf64ca1eba32be299f8a427c06b7e589ecd04ce610befdbc",
+      "statement": "Maintain current contacts and procedures for emergency services, child-protection channels, payment providers, hosting providers, legal counsel, and trusted experts where applicable.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 219
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Crisis, emergency, and severe-harm response"
+      ]
+    },
+    {
+      "control_id": "USEQ-7545CE12",
+      "revision": 1,
+      "semantic_sha256": "7545ce127ae07a1238f4f94fe9eb964bd986490c20f96ce9737affbb69272c7b",
+      "statement": "Verify jurisdiction, legal basis, identity, scope, urgency, and preservation requirements for emergency requests.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 220
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Crisis, emergency, and severe-harm response"
+      ]
+    },
+    {
+      "control_id": "USEQ-28ED6E96",
+      "revision": 1,
+      "semantic_sha256": "28ed6e96d4e8d87ace6676ae9a52d45b7f1208b3bdebf015493065dd5d4afca1",
+      "statement": "Minimize disclosure and record every emergency access or data release.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 221
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Crisis, emergency, and severe-harm response"
+      ]
+    },
+    {
+      "control_id": "USEQ-2C2015DC",
+      "revision": 1,
+      "semantic_sha256": "2c2015dc84c67485e21758fad1671fee60ea1f89a5d2f21b46cf8d8fc80a01ef",
+      "statement": "Provide an out-of-band response path when the normal support, identity, or platform systems are compromised.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 222
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Crisis, emergency, and severe-harm response"
+      ]
+    },
+    {
+      "control_id": "USEQ-251F513E",
+      "revision": 1,
+      "semantic_sha256": "251f513e5c6697f5f2ab3058ad359550b36a1fda429f5fdec8739d7a0358a62d",
+      "statement": "Exercise scenarios involving credible threats, coordinated violence, mass fraud, viral harmful content, child exploitation, doxxing, extortion, and insider abuse as relevant.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 223
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Crisis, emergency, and severe-harm response"
+      ]
+    },
+    {
+      "control_id": "USEQ-FEB8AB8C",
+      "revision": 1,
+      "semantic_sha256": "feb8ab8c29ec41875158987ad202ac7a64b6e2657f2e93974269a929889e1f2b",
+      "statement": "Coordinate public communication without amplifying harmful material, exposing victims, or prejudicing investigation.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 224
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Crisis, emergency, and severe-harm response"
+      ]
+    },
+    {
+      "control_id": "USEQ-324E1782",
+      "revision": 1,
+      "semantic_sha256": "324e1782a9d17f13afd4e851342c0181a43f2672a89eff66e374267fda8ef1a4",
+      "statement": "Define when and how affected users are notified after emergency actions.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 225
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Crisis, emergency, and severe-harm response"
+      ]
+    },
+    {
+      "control_id": "USEQ-B38FDE82",
+      "revision": 1,
+      "semantic_sha256": "b38fde82ccd6f62bcd8b05f2792c65fd25b43cfed7444e4270e1ed0359bedbda",
+      "statement": "Review emergency actions promptly and reverse overbroad restrictions when safe.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 226
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Crisis, emergency, and severe-harm response"
+      ]
+    },
+    {
+      "control_id": "USEQ-0AE9EFF0",
+      "revision": 1,
+      "semantic_sha256": "0ae9eff0e8ef037f615b5b2b4fbc6e4d3c611843eae9d9426e67e7b340f08585",
+      "statement": "Conduct post-incident analysis that addresses product incentives, detection gaps, staffing, process, tooling, and governance.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 227
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Crisis, emergency, and severe-harm response"
+      ]
+    },
+    {
+      "control_id": "USEQ-C6361B6A",
+      "revision": 1,
+      "semantic_sha256": "c6361b6aea14dbf33698c51e9c93415a72223954097c61bbc206a9f7c381735b",
+      "statement": "Define which content types and workflows require provenance, origin, edit history, capture context, signer identity, or synthetic-content disclosure.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 231
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Content provenance, synthetic media, and authenticity signals"
+      ]
+    },
+    {
+      "control_id": "USEQ-A3D6E17A",
+      "revision": 1,
+      "semantic_sha256": "a3d6e17a2bc54eb259fed69893581000ebc67333f828a92f5e7e55958cf8589d",
+      "statement": "Use cryptographically bound provenance standards such as C2PA where they meaningfully improve authenticity and ecosystem interoperability.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 232
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Content provenance, synthetic media, and authenticity signals"
+      ]
+    },
+    {
+      "control_id": "USEQ-12397117",
+      "revision": 1,
+      "semantic_sha256": "12397117d9ef367f945dde366069ca8a0c6da38a83641863a25d132acbeae9f5",
+      "statement": "Treat provenance as evidence about claims and history, not proof that content is true, safe, unbiased, or authorized.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 233
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Content provenance, synthetic media, and authenticity signals"
+      ]
+    },
+    {
+      "control_id": "USEQ-87AC1895",
+      "revision": 1,
+      "semantic_sha256": "87ac1895bd3db5df0c2132561e674d027ace0f3a83cbe7e883051459ad87b9b1",
+      "statement": "Verify signatures, certificate chains, trust lists, timestamps, asset binding, manifest integrity, revocation, and supported algorithms.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 234
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Content provenance, synthetic media, and authenticity signals"
+      ]
+    },
+    {
+      "control_id": "USEQ-E9A1411C",
+      "revision": 1,
+      "semantic_sha256": "e9a1411cdc161ea8e3b022eff4b261220a596da44990a6db389c61c18fa17b61",
+      "statement": "Preserve provenance through transcoding, resizing, editing, composition, export, syndication, and archival where technically and legally feasible.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 235
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Content provenance, synthetic media, and authenticity signals"
+      ]
+    },
+    {
+      "control_id": "USEQ-279B0168",
+      "revision": 1,
+      "semantic_sha256": "279b0168c3f1997ec482a2078ae7909ab2094bd3243d5270ed4e3b5b7390c0a9",
+      "statement": "Make provenance loss, invalidity, redaction, and unsupported claims visible rather than presenting a false trusted state.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 236
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Content provenance, synthetic media, and authenticity signals"
+      ]
+    },
+    {
+      "control_id": "USEQ-466DE378",
+      "revision": 1,
+      "semantic_sha256": "466de378ad974363f06e7392b151f620b0f3e2de3455c1a2f1f027d276796cd3",
+      "statement": "Protect signing keys, capture credentials, author identities, and provenance services as high-value security assets.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 237
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Content provenance, synthetic media, and authenticity signals"
+      ]
+    },
+    {
+      "control_id": "USEQ-B70CAE6C",
+      "revision": 1,
+      "semantic_sha256": "b70cae6c3233208ce0bbec10182864378ea72e39ef2c626c152ea81ab4e8bdbd",
+      "statement": "Allow privacy-preserving redaction and selective disclosure without silently rewriting history.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 238
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Content provenance, synthetic media, and authenticity signals"
+      ]
+    },
+    {
+      "control_id": "USEQ-E8CBABAC",
+      "revision": 1,
+      "semantic_sha256": "e8cbabac5cdd263e7c2b6109facc4881cbc0b94b713a6cbdcc8d8867d174bbdd",
+      "statement": "Provide accessible human-readable explanations of provenance and avoid binary trusted/untrusted labels that overstate confidence.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 239
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Content provenance, synthetic media, and authenticity signals"
+      ]
+    },
+    {
+      "control_id": "USEQ-A48CB2BE",
+      "revision": 1,
+      "semantic_sha256": "a48cb2be130ca3cf59f3e6b4f77734ff9aba9ba06e6438b8c5559b13392669de",
+      "statement": "Record automated generation, material editing, model or tool identity, source assets, and responsible publisher when required by policy or risk.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 240
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Content provenance, synthetic media, and authenticity signals"
+      ]
+    },
+    {
+      "control_id": "USEQ-175ACA22",
+      "revision": 1,
+      "semantic_sha256": "175aca22770e094b924272b39c5ef5d54bd11ff2d6abbbf20ccf6709e24d9a0b",
+      "statement": "Use visible labels, watermarks, metadata, detection, and user education as complementary controls; do not rely on one mechanism as perfect detection.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 241
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Content provenance, synthetic media, and authenticity signals"
+      ]
+    },
+    {
+      "control_id": "USEQ-59C5F9CA",
+      "revision": 1,
+      "semantic_sha256": "59c5f9ca52a66f1d3a6cc82e5260266341277c85e2bb5d998b455d1e69723703",
+      "statement": "Evaluate provenance spoofing, stripping, laundering, replay, key compromise, trust-list abuse, and misleading authentic-but-harmful content.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 242
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Content provenance, synthetic media, and authenticity signals"
+      ]
+    },
+    {
+      "control_id": "USEQ-9C34ECD6",
+      "revision": 1,
+      "semantic_sha256": "9c34ecd68afaa56facdee223d8c5e3c284af99e341a16d19a37dc83b09b67ac6",
+      "statement": "Monitor ecosystem support and maintain graceful behavior when receiving unknown or newer provenance formats.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 243
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Content provenance, synthetic media, and authenticity signals"
+      ]
+    },
+    {
+      "control_id": "USEQ-BF82CD25",
+      "revision": 1,
+      "semantic_sha256": "bf82cd257b00371004ed066c82dc62bfdf49a1dee7239bc79f9507a2ce454072",
+      "statement": "Apply a formal intake, review, publication, update, monitoring, enforcement, and retirement lifecycle to third-party extensions and integrations.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 247
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Extension, plugin, app, and integration ecosystems"
+      ]
+    },
+    {
+      "control_id": "USEQ-0B382DF6",
+      "revision": 1,
+      "semantic_sha256": "0b382df62fc1de640aefb209e0832446f36be45b79f760d9de7fc4d4ac4e8624",
+      "statement": "Require an accurate description of functionality, data access, remote services, permissions, monetization, ownership, support, and security practices.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 248
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Extension, plugin, app, and integration ecosystems"
+      ]
+    },
+    {
+      "control_id": "USEQ-ABE691EB",
+      "revision": 1,
+      "semantic_sha256": "abe691ebc2b8f90593fe13293732511883db4260469aa8364463ff5ad9c80339",
+      "statement": "Require only the minimum permissions and allow optional permissions to be requested at meaningful use time where supported.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 249
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Extension, plugin, app, and integration ecosystems"
+      ]
+    },
+    {
+      "control_id": "USEQ-2900DB5A",
+      "revision": 1,
+      "semantic_sha256": "2900db5a167166a3079b7ced179e2977ad5e6d36334c0617905c3808640d25cc",
+      "statement": "Make permission prompts specific, understandable, attributable, and revisitable.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 250
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Extension, plugin, app, and integration ecosystems"
+      ]
+    },
+    {
+      "control_id": "USEQ-E6B9618B",
+      "revision": 1,
+      "semantic_sha256": "e6b9618b25439e2d25cd46ba9f421fe31a960a5683a77db17a590cb15edfda41",
+      "statement": "Prevent extensions from loading unreviewed remote executable code or silently changing behavior outside the approved update channel.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 251
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Extension, plugin, app, and integration ecosystems"
+      ]
+    },
+    {
+      "control_id": "USEQ-9EF29D9E",
+      "revision": 1,
+      "semantic_sha256": "9ef29d9e8c570035c882405d409ac383fef15a40a8971c9f32d476fab1632685",
+      "statement": "Require reviewable source or reproducible correspondence between submitted source and distributed artifact for high-risk ecosystems.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 252
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Extension, plugin, app, and integration ecosystems"
+      ]
+    },
+    {
+      "control_id": "USEQ-EC3D9D3D",
+      "revision": 1,
+      "semantic_sha256": "ec3d9d3d2047191d62916e3b9d3e28345902a2ab771f268487c29c9de6e366a1",
+      "statement": "Scan dependencies, secrets, malware, obfuscation, suspicious behavior, policy violations, and known vulnerabilities.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 253
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Extension, plugin, app, and integration ecosystems"
+      ]
+    },
+    {
+      "control_id": "USEQ-5CC601B2",
+      "revision": 1,
+      "semantic_sha256": "5cc601b2b76a9724e980352ec4110df37cf14332d22fc524e6ad3a88132cc62a",
+      "statement": "Restrict dynamic evaluation, native execution, privileged APIs, cross-origin access, filesystem access, identity access, and payment access according to risk.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 254
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Extension, plugin, app, and integration ecosystems"
+      ]
+    },
+    {
+      "control_id": "USEQ-D2594826",
+      "revision": 1,
+      "semantic_sha256": "d2594826cc5a1c6d58db5915c549603786756a7f232d2fbfed1d7c6f30a60704",
+      "statement": "Sandbox extension execution and isolate storage, network, UI, processes, credentials, and tenant context where practical.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 255
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Extension, plugin, app, and integration ecosystems"
+      ]
+    },
+    {
+      "control_id": "USEQ-9BBB4EEA",
+      "revision": 1,
+      "semantic_sha256": "9bbb4eeac2d963e256c3017beda5cfb8107ea0ffe14be5440801b0d802e3e26a",
+      "statement": "Prevent an extension from weakening host security headers, transport security, authentication, authorization, privacy, accessibility, or audit controls.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 256
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Extension, plugin, app, and integration ecosystems"
+      ]
+    },
+    {
+      "control_id": "USEQ-632E8E55",
+      "revision": 1,
+      "semantic_sha256": "632e8e55267e742a576e8c0ce84ce3748f40902110c456a0f0a04ebbbd0e82e1",
+      "statement": "Require encrypted transport and authenticated endpoints for extension data exchange.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 257
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Extension, plugin, app, and integration ecosystems"
+      ]
+    },
+    {
+      "control_id": "USEQ-5EDDE5B2",
+      "revision": 1,
+      "semantic_sha256": "5edde5b2dd72b1635b6b676ece305ff1267c18408a75afefd41cc6f8dab31373",
+      "statement": "Require transparent data collection, purpose, retention, sharing, sale, consent, and deletion behavior.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 258
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Extension, plugin, app, and integration ecosystems"
+      ]
+    },
+    {
+      "control_id": "USEQ-48EB755B",
+      "revision": 1,
+      "semantic_sha256": "48eb755b9eefa1b1468267122873c05b1fb68aad11cf41e1be2a68f9d866dc67",
+      "statement": "Test extension performance, memory, battery, startup, stability, offline behavior, accessibility, localization, and failure containment.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 259
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Extension, plugin, app, and integration ecosystems"
+      ]
+    },
+    {
+      "control_id": "USEQ-3452812F",
+      "revision": 1,
+      "semantic_sha256": "3452812f98f21149b56b7902c83b643b1c36f75ec9b6ac65735ef25dfe599293",
+      "statement": "Prevent one faulty or malicious extension from crashing, blocking, corrupting, or exfiltrating the host or other extensions.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 260
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Extension, plugin, app, and integration ecosystems"
+      ]
+    },
+    {
+      "control_id": "USEQ-7A7CA22D",
+      "revision": 1,
+      "semantic_sha256": "7a7ca22d1773bf0a02edf337d856c63927fbebbf94f30b4fd5489c150c99b375",
+      "statement": "Use signed packages and a secure update framework resistant to rollback, freeze, mix-and-match, repository compromise, and signing-key compromise.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 261
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Extension, plugin, app, and integration ecosystems"
+      ]
+    },
+    {
+      "control_id": "USEQ-245DA35C",
+      "revision": 1,
+      "semantic_sha256": "245da35c79f8c6782f3972294de4ee29f0293880839268577854f30c2f64e08b",
+      "statement": "Support staged rollout, compatibility checks, rollback or disablement, revocation, and emergency blocklisting.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 262
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Extension, plugin, app, and integration ecosystems"
+      ]
+    },
+    {
+      "control_id": "USEQ-96481324",
+      "revision": 1,
+      "semantic_sha256": "964813249c9086a96e70b0d43a8f118240f2cf0b8e714354f7fe8d2eacebb82d",
+      "statement": "Make extension identity, publisher changes, ownership transfers, and signing-key changes reviewable and visible.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 263
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Extension, plugin, app, and integration ecosystems"
+      ]
+    },
+    {
+      "control_id": "USEQ-9DB20BBB",
+      "revision": 1,
+      "semantic_sha256": "9db20bbb01ce12491fc6723211cca3c3c8849387258436f2ed2f4ebf5baedb1f",
+      "statement": "Require updates that add permissions, data use, remote services, or materially different behavior to receive renewed review and user notice.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 264
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Extension, plugin, app, and integration ecosystems"
+      ]
+    },
+    {
+      "control_id": "USEQ-724B59B6",
+      "revision": 1,
+      "semantic_sha256": "724b59b61476178ea6ba7ad7c2e9a6a7944505b3db540b8ca4b82143cdecf102",
+      "statement": "Monitor abuse reports, crash rates, permission use, network destinations, update anomalies, dormant takeover, and publisher compromise.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 265
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Extension, plugin, app, and integration ecosystems"
+      ]
+    },
+    {
+      "control_id": "USEQ-55B8A0A8",
+      "revision": 1,
+      "semantic_sha256": "55b8a0a8b960b230f910d02e4292010fc07e66ef539c27dcc9cbaaa2ce298060",
+      "statement": "Provide users a clear inventory, enable/disable control, permission review, update history, and removal path.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 266
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Extension, plugin, app, and integration ecosystems"
+      ]
+    },
+    {
+      "control_id": "USEQ-374B203B",
+      "revision": 1,
+      "semantic_sha256": "374b203b0463ecc90f4fba6a8b2406973be3f7af8799a3e802cb6e2f88552505",
+      "statement": "Remove credentials, data access, webhooks, tokens, stored data, background jobs, and delegated rights when an integration is removed.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 267
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Extension, plugin, app, and integration ecosystems"
+      ]
+    },
+    {
+      "control_id": "USEQ-575DA746",
+      "revision": 1,
+      "semantic_sha256": "575da7465022daca5bf862541daae99e2e1e61db4b3b5b08f75f67a43eddfc10",
+      "statement": "Define compatibility and deprecation policy for host APIs without forcing insecure legacy support indefinitely.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 268
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Extension, plugin, app, and integration ecosystems"
+      ]
+    },
+    {
+      "control_id": "USEQ-130FF33D",
+      "revision": 1,
+      "semantic_sha256": "130ff33d70c7e2a8abc67305640576bf9e0819bf46fd79eb26c3efa20bfa3837",
+      "statement": "Provide an appeal process for developers while prioritizing user safety during credible compromise.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 269
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Extension, plugin, app, and integration ecosystems"
+      ]
+    },
+    {
+      "control_id": "USEQ-A9C693F2",
+      "revision": 1,
+      "semantic_sha256": "a9c693f28d5fac7b0b3a1a76c151528221fd1a98f93199c6e2f57afce8d02c1d",
+      "statement": "Verify merchants, developers, advertisers, creators, and high-reach accounts proportionately to their ability to cause harm.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 273
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Ecosystem and marketplace governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-3F7F7E38",
+      "revision": 1,
+      "semantic_sha256": "3f7f7e3801c5780d20b29002b1e441d61ab63400e8c284604531573a83b19aab",
+      "statement": "Separate platform endorsement, verification, popularity, ranking, and paid placement visually and semantically.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 274
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Ecosystem and marketplace governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-5242F580",
+      "revision": 1,
+      "semantic_sha256": "5242f580d8442c74d5a2fece6649036be474ebd6a3a6537172d3078dae6ca519",
+      "statement": "Disclose commissions, fees, sponsorship, ranking influence, and platform conflicts that materially affect user choice.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 275
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Ecosystem and marketplace governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-9F589E1F",
+      "revision": 1,
+      "semantic_sha256": "9f589e1f14559dcda81fd7a40fdbeba57439651abd86361b3e73d175513dce10",
+      "statement": "Prevent review manipulation, fake testimonials, retaliatory reviews, review gating, and undisclosed incentives.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 276
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Ecosystem and marketplace governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-7750BA91",
+      "revision": 1,
+      "semantic_sha256": "7750ba91d82c56e3dc5067a4e3628bc58a724528174402789c3dd49b25bfaf12",
+      "statement": "Protect sellers, creators, and developers from arbitrary enforcement through published rules, notice, evidence, appeal, and restoration.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 277
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Ecosystem and marketplace governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-1AA1AED9",
+      "revision": 1,
+      "semantic_sha256": "1aa1aed94c1bbf9b2b0febc0829309239d615b6e232d446b18e8c3e4f90067b9",
+      "statement": "Prevent marketplace design from pushing risk, support, refunds, tax, safety, or legal obligations onto users without clarity.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 278
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Ecosystem and marketplace governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-941BFF73",
+      "revision": 1,
+      "semantic_sha256": "941bff7337e9f06325bb159f07c596aa3d76211aeca72e7b60e5615ed53a3402",
+      "statement": "Define responsibility for product safety, prohibited goods, intellectual property, counterfeit claims, fulfillment, refunds, and disputes.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 279
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Ecosystem and marketplace governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-6CD3ED9A",
+      "revision": 1,
+      "semantic_sha256": "6cd3ed9afbd9cdd218fb43618fb26739ed1e155e787f6f44d21224e28f5c6bea",
+      "statement": "Monitor dormant account or package takeover, ownership transfers, sudden behavior changes, and supply-chain compromise.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 280
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Ecosystem and marketplace governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-DF8621BD",
+      "revision": 1,
+      "semantic_sha256": "df8621bd3646e362fa70fcb4a47f0a7923ab4c0d909b23810ea678c147efac40",
+      "statement": "Apply progressive trust and limits rather than granting full reach, payouts, or permissions immediately to unproven participants.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 281
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Ecosystem and marketplace governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-A847268E",
+      "revision": 1,
+      "semantic_sha256": "a847268edd04109e67ab7dbb6e069f2c905f7d617597a5e39bbfc3117e89b49f",
+      "statement": "Provide transparent complaint and dispute resolution with evidence and deadlines.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 282
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Ecosystem and marketplace governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-7ADC4406",
+      "revision": 1,
+      "semantic_sha256": "7adc4406f8d588e1304b1798a2f98f2510302ba67ba37cd3ef36e79231f698cd",
+      "statement": "Measure ecosystem health using user harm, fraud loss, quality, diversity, concentration, developer sustainability, false enforcement, and support—not gross volume alone.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 283
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Ecosystem and marketplace governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-0164140D",
+      "revision": 1,
+      "semantic_sha256": "0164140d75679b098af56ee57c59a52a0ea67a63ea81e02406629ef500e7a052",
+      "statement": "Publish meaningful aggregate information about policies, reports, enforcement, appeals, automation, severe harms, and response performance where appropriate.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 287
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Transparency, audit, and continuous improvement"
+      ]
+    },
+    {
+      "control_id": "USEQ-8C2EE771",
+      "revision": 1,
+      "semantic_sha256": "8c2ee7710ccdebe3fcc62244b633a6ec05b3f821f795fd8871617934cd092244",
+      "statement": "Explain material recommendation, verification, provenance, and enforcement systems at a level users and oversight bodies can understand.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 288
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Transparency, audit, and continuous improvement"
+      ]
+    },
+    {
+      "control_id": "USEQ-99F86F23",
+      "revision": 1,
+      "semantic_sha256": "99f86f236f6400ad2d8fbc6e0ef1dbf628095bffbf427ed278b2bdfb3ed60661",
+      "statement": "Disclose the limits and known error modes of automated moderation, age assurance, identity, fraud, and provenance systems.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 289
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Transparency, audit, and continuous improvement"
+      ]
+    },
+    {
+      "control_id": "USEQ-DF46D365",
+      "revision": 1,
+      "semantic_sha256": "df46d365a059846fc37743b4487da65ff4a0e2af1248968daacae0a535ab182d",
+      "statement": "Protect transparency reports against privacy leakage, reidentification, security evasion, and misleading aggregation.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 290
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Transparency, audit, and continuous improvement"
+      ]
+    },
+    {
+      "control_id": "USEQ-EB1EF776",
+      "revision": 1,
+      "semantic_sha256": "eb1ef7762d70742d01afe640fcae6f549231e54c6ebdbee9c0eec51c505cd67b",
+      "statement": "Provide independent audit, researcher access, regulator access, or trusted oversight where risk or obligation warrants it.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 291
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Transparency, audit, and continuous improvement"
+      ]
+    },
+    {
+      "control_id": "USEQ-AA903343",
+      "revision": 1,
+      "semantic_sha256": "aa90334369921951db40d8833d6831ead6607a5ca40c4a70ba8cbfbd65512495",
+      "statement": "Retain model, rule, policy, reviewer, evidence, and version information needed to reconstruct consequential decisions.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 292
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Transparency, audit, and continuous improvement"
+      ]
+    },
+    {
+      "control_id": "USEQ-2140FACB",
+      "revision": 1,
+      "semantic_sha256": "2140facb62c8936cdc56b050a1563723bd47ce7cb9b08b97e3f61d8099e689f3",
+      "statement": "Track harm prevalence and exposure, not only the number of items removed.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 293
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Transparency, audit, and continuous improvement"
+      ]
+    },
+    {
+      "control_id": "USEQ-FB9F9E37",
+      "revision": 1,
+      "semantic_sha256": "fb9f9e377107b17c2e3312454b5d2ba3f9c4f497468a59f14d2520e2ccf80fc2",
+      "statement": "Measure time to detection, interruption, victim support, recovery, appeal, and recurrence prevention.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 294
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Transparency, audit, and continuous improvement"
+      ]
+    },
+    {
+      "control_id": "USEQ-CCCAA8A8",
+      "revision": 1,
+      "semantic_sha256": "cccaa8a8d4d75150130f31c5a3d7282899bef47e2fb936263a2abe7f74d10631",
+      "statement": "Review false-positive and false-negative impacts across languages, regions, disabilities, ages, and affected groups.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 295
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Transparency, audit, and continuous improvement"
+      ]
+    },
+    {
+      "control_id": "USEQ-DF0CB7C2",
+      "revision": 1,
+      "semantic_sha256": "df0cb7c266d958aa20dccfc088e8019a2ffbaaab3cba1819a92390da2fb07e3c",
+      "statement": "Use red-team, tabletop, abuse simulation, user research, and incident learning to discover controls that ordinary testing misses.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 296
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Transparency, audit, and continuous improvement"
+      ]
+    },
+    {
+      "control_id": "USEQ-E3F9DBC4",
+      "revision": 1,
+      "semantic_sha256": "e3f9dbc492acf30fe4949da4a555e9fb135eb0078a39847b52c66f9ecaf9552d",
+      "statement": "Convert recurring abuse into safer defaults, reduced capability, stronger boundaries, better education, and redesigned incentives.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 297
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Transparency, audit, and continuous improvement"
+      ]
+    },
+    {
+      "control_id": "USEQ-4C29738F",
+      "revision": 1,
+      "semantic_sha256": "4c29738f7eb28107bb35936a6e89f9c045576f7cdc2242e0e08f3417c53db122",
+      "statement": "Review this checklist after major incidents, market expansion, policy changes, new content formats, new extension capabilities, or attacker adaptation.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 298
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Transparency, audit, and continuous improvement"
+      ]
+    },
+    {
+      "control_id": "USEQ-9B250F50",
+      "revision": 1,
+      "semantic_sha256": "9b250f50ed58d4d5879a27e4561b93d82152c6449fd5f8534826456a5ffabeb4",
+      "statement": "Do not launch a high-risk interaction surface without reporting, blocking, escalation, evidence, enforcement, and appeal paths.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 302
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Trust-and-safety release blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-69245CE0",
+      "revision": 1,
+      "semantic_sha256": "69245ce01ad4fa2667eb931ac271fc5797381721654f2a78b21768c840063a45",
+      "statement": "Do not launch when severe-harm reports cannot reach a qualified responder within the required objective.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 303
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Trust-and-safety release blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-97EA05F5",
+      "revision": 1,
+      "semantic_sha256": "97ea05f52ba79f69bcbb051dbcc21d958c64e79e3b3e521a3b675d846dabe849",
+      "statement": "Do not launch a recommendation or virality change when harmful-exposure and abuse effects are unmeasured and uncontrolled.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 304
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Trust-and-safety release blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-FE34F2BA",
+      "revision": 1,
+      "semantic_sha256": "fe34f2ba36916a430c1b75ceb49f6ed82b4ba6e26990968cce66086c558272c4",
+      "statement": "Do not grant broad extension permissions, remote code execution, or privileged host access without review, containment, transparency, and revocation.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 305
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Trust-and-safety release blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-3FF9D040",
+      "revision": 1,
+      "semantic_sha256": "3ff9d0404cff3bb078ac6740dcdc05e2c4064621c3b8c8156c69df9aa64c0de7",
+      "statement": "Do not distribute updates whose source, signer, version, and authorized update path cannot be verified.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 306
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Trust-and-safety release blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-0D13B7DC",
+      "revision": 1,
+      "semantic_sha256": "0d13b7dc18c85fad9d7f89a583c9c808124b09955cf4892cc4e2c8d44037870b",
+      "statement": "Do not present provenance, verification, or identity badges in a way that falsely implies truth, endorsement, expertise, or safety.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 307
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Trust-and-safety release blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-307DFDE0",
+      "revision": 1,
+      "semantic_sha256": "307dfde08a7f6444c441fb2b8e8abf05f56878d935361920ddd02797c733c0c9",
+      "statement": "Do not collect identity or age evidence beyond demonstrated necessity and protection capability.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 308
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Trust-and-safety release blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-04AA676C",
+      "revision": 1,
+      "semantic_sha256": "04aa676c558e939dba96ce82582b6f298dbfccd48e5265f852381f86bc288450",
+      "statement": "Do not make irreversible enforcement or financial decisions from one opaque automated signal without required review and recovery.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 309
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Trust-and-safety release blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-01689474",
+      "revision": 1,
+      "semantic_sha256": "01689474a168dc43be906ae00cd4dbbf6311815947eb1ce04baaecbec49daa92",
+      "statement": "Do not suppress known severe-harm trends to protect growth, engagement, reputation, or revenue metrics.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 310
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Trust-and-safety release blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-9F34570B",
+      "revision": 1,
+      "semantic_sha256": "9f34570b9f238be92b98a80398f975d1952a8896629dc3302b74ce89c69496d5",
+      "statement": "Do not accept a safety exception without an explicit harm analysis, protective alternative, monitoring, owner, remediation date, and expiry.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 311
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Trust-and-safety release blockers"
+      ]
+    }
+  ]
+}

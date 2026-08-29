@@ -1,0 +1,1236 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-11-developer-experience-platform-and-delivery-md-part-002-part-002",
+  "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 49,
+  "controls": [
+    {
+      "control_id": "USEQ-C2F428A8",
+      "revision": 1,
+      "semantic_sha256": "c2f428a844a733f71ea7a4b6d8172abf8b82ad511e52eb93d7db5c2f26db698f",
+      "statement": "Provide progress, failure, rollback, and recovery information for long-running operations.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 588
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Self-service and workflow automation"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Provide progress, failure, rollback, and recovery information for long-running operations.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide progress, failure, rollback, and recovery information for long-running operations.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3B63475F",
+      "revision": 1,
+      "semantic_sha256": "3b63475fa414edbfb8c1b47dfd256f697ed4e8f9299fef404560405dd9d9f89d",
+      "statement": "Do not hide partial failure or leave ambiguous resource ownership.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 589
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Self-service and workflow automation"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Do not hide partial failure or leave ambiguous resource ownership.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Do not hide partial failure or leave ambiguous resource ownership.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5B6344BA",
+      "revision": 1,
+      "semantic_sha256": "5b6344ba811bbda03e1b1a4c4c510f1fad780c47c2097130388fd147ee9f0e61",
+      "statement": "Use scoped identities and least privilege for automation.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 590
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Self-service and workflow automation"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Use scoped identities and least privilege for automation.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use scoped identities and least privilege for automation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B737F580",
+      "revision": 1,
+      "semantic_sha256": "b737f580cf01504c16aa8e6d73fdfade7fb0b6405e8f00912e129e675f068df0",
+      "statement": "Record actor, request, policy decision, artifact, configuration, outcome, and affected resources for auditable actions.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 591
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Self-service and workflow automation"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Record actor, request, policy decision, artifact, configuration, outcome, and affected resources for auditable actions.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Record actor, request, policy decision, artifact, configuration, outcome, and affected resources for auditable actions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6325634F",
+      "revision": 1,
+      "semantic_sha256": "6325634f666dfc3406fb66d0b4f2cec6a789609f7bfdbf7d756c253bc9846e55",
+      "statement": "Apply quotas, rate limits, budgets, and guardrails to prevent accidental or malicious resource exhaustion.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 592
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Self-service and workflow automation"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Apply quotas, rate limits, budgets, and guardrails to prevent accidental or malicious resource exhaustion.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Apply quotas, rate limits, budgets, and guardrails to prevent accidental or malicious resource exhaustion.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4B82601E",
+      "revision": 1,
+      "semantic_sha256": "4b82601e8a020d665c72f370baff87e3b37df109edfbd7bb5265e7afa979c2fc",
+      "statement": "Prevent users from provisioning unsupported versions or bypassing required lifecycle controls.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 593
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Self-service and workflow automation"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Prevent users from provisioning unsupported versions or bypassing required lifecycle controls.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Prevent users from provisioning unsupported versions or bypassing required lifecycle controls.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DBFE6DD8",
+      "revision": 1,
+      "semantic_sha256": "dbfe6dd88d5f41ca8a32a8f2a28f41c4ad6358d54c437973482425760ed76f3d",
+      "statement": "Provide an escalation path when automation cannot satisfy a valid request.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 594
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Self-service and workflow automation"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Provide an escalation path when automation cannot satisfy a valid request.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide an escalation path when automation cannot satisfy a valid request.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A3EF0CB5",
+      "revision": 1,
+      "semantic_sha256": "a3ef0cb5748463274a6b6013c0b77b63835595a9c2e0a31c3377da85fd7efc98",
+      "statement": "Test automation against duplicate requests, cancellation, dependency failure, and platform outages.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 596
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Self-service and workflow automation"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Test automation against duplicate requests, cancellation, dependency failure, and platform outages.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test automation against duplicate requests, cancellation, dependency failure, and platform outages.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-587143E3",
+      "revision": 1,
+      "semantic_sha256": "587143e3a5054013ca286f658f498991651ceb55f7e044ae89f825c94722ffbe",
+      "statement": "Provide a documented, testable path from a new authorized workstation or workspace to a functioning development environment.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 600
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Environment creation, onboarding, and reproducibility"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Provide a documented, testable path from a new authorized workstation or workspace to a functioning development environment.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide a documented, testable path from a new authorized workstation or workspace to a functioning development environment.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0B335E6B",
+      "revision": 1,
+      "semantic_sha256": "0b335e6bade50ab3ea5e1005050da940c6e53804da98242b03f43c8bcbe4af33",
+      "statement": "Pin or verify toolchain, runtime, dependency, and generator versions sufficiently for reproducibility.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 602
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Environment creation, onboarding, and reproducibility"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Pin or verify toolchain, runtime, dependency, and generator versions sufficiently for reproducibility.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Pin or verify toolchain, runtime, dependency, and generator versions sufficiently for reproducibility.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AB6CABAF",
+      "revision": 1,
+      "semantic_sha256": "ab6cabafca09d6547149528d50bccdcd636066a4adbe023ffb6453507acdd314",
+      "statement": "Keep setup scripts idempotent and safe to rerun.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 603
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Environment creation, onboarding, and reproducibility"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Keep setup scripts idempotent and safe to rerun.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Keep setup scripts idempotent and safe to rerun.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1629715E",
+      "revision": 1,
+      "semantic_sha256": "1629715e074188f813babddbc98406fd4129724a5481db9fdf80e5944a6e55c0",
+      "statement": "Validate prerequisites early and produce actionable errors.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 604
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Environment creation, onboarding, and reproducibility"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Validate prerequisites early and produce actionable errors.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Validate prerequisites early and produce actionable errors.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1AAC867A",
+      "revision": 1,
+      "semantic_sha256": "1aac867a2beb9928864e8efe9b44d2ae4344f95f08781f205535f496a318f0b1",
+      "statement": "Provide sanitized representative test data and avoid copying production data by default.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 605
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Environment creation, onboarding, and reproducibility"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Provide sanitized representative test data and avoid copying production data by default.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide sanitized representative test data and avoid copying production data by default.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-53AE4D3E",
+      "revision": 1,
+      "semantic_sha256": "53ae4d3eabb3112403bd1baa5d6f7dd5952a3a591f06853eca693f7925020d94",
+      "statement": "Use separate identities, credentials, data, endpoints, and side-effect controls for non-production environments.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 606
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Environment creation, onboarding, and reproducibility"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Use separate identities, credentials, data, endpoints, and side-effect controls for non-production environments.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use separate identities, credentials, data, endpoints, and side-effect controls for non-production environments.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D5E12F9F",
+      "revision": 1,
+      "semantic_sha256": "d5e12f9fa1f97c172e3d3a9d9d6b715ed7dc4e2fdce3db4982e44d7a93082085",
+      "statement": "Make environment reset and cleanup reliable.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 607
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Environment creation, onboarding, and reproducibility"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Make environment reset and cleanup reliable.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make environment reset and cleanup reliable.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1B1561EC",
+      "revision": 1,
+      "semantic_sha256": "1b1561ec74748d3794c8ce7764170868c6282713b2fd9a2a826464a3f18ca79d",
+      "statement": "Document meaningful differences between local, test, staging, and production behavior.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 610
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Environment creation, onboarding, and reproducibility"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Document meaningful differences between local, test, staging, and production behavior.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document meaningful differences between local, test, staging, and production behavior.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-697FCFA9",
+      "revision": 1,
+      "semantic_sha256": "697fcfa9aced3979fb9e287b57049fe8d4f618cd8a124c0a07f43a9197277a8b",
+      "statement": "Remove obsolete setup paths and prevent conflicting documentation from remaining discoverable.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 613
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Environment creation, onboarding, and reproducibility"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Remove obsolete setup paths and prevent conflicting documentation from remaining discoverable.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Remove obsolete setup paths and prevent conflicting documentation from remaining discoverable.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9450BC5E",
+      "revision": 1,
+      "semantic_sha256": "9450bc5e5c2418b2ffb7ff55ef4abc3bfc3d9c05383f6206a868ec46d6d7a6f6",
+      "statement": "Define target feedback times for formatting, compilation, static analysis, unit tests, integration tests, review, builds, and deployments.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 618
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Feedback loops, builds, tests, and review latency"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Define target feedback times for formatting, compilation, static analysis, unit tests, integration tests, review, builds, and deployments.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define target feedback times for formatting, compilation, static analysis, unit tests, integration tests, review, builds, and deployments.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-03172925",
+      "revision": 1,
+      "semantic_sha256": "031729255b69ed6e73ccba856641b1c7f338d29882c6fa79a201d30c2a7dcc1f",
+      "statement": "Monitor feedback latency percentiles and queue time rather than averages alone.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 619
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Feedback loops, builds, tests, and review latency"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Monitor feedback latency percentiles and queue time rather than averages alone.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Monitor feedback latency percentiles and queue time rather than averages alone.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-62AAA93F",
+      "revision": 1,
+      "semantic_sha256": "62aaa93fc1ef28ec788ea5de7e32c8ccc806e46dbb89ab277bddd267cbb0ca4f",
+      "statement": "Fail early on configuration, dependency, schema, and policy errors that would invalidate later work.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 621
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Feedback loops, builds, tests, and review latency"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Fail early on configuration, dependency, schema, and policy errors that would invalidate later work.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Fail early on configuration, dependency, schema, and policy errors that would invalidate later work.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F9B57D3D",
+      "revision": 1,
+      "semantic_sha256": "f9b57d3d2fa853854cdfb28a1e9e783266d24448281603cc5b58ece9d59d5e89",
+      "statement": "Parallelize independent checks without introducing nondeterminism or excessive resource cost.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 622
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Feedback loops, builds, tests, and review latency"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Parallelize independent checks without introducing nondeterminism or excessive resource cost.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Parallelize independent checks without introducing nondeterminism or excessive resource cost.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FEDEFC91",
+      "revision": 1,
+      "semantic_sha256": "fedefc916a2d5b76391c717cba66b97edef26bdb4ae30b9cb52562aa75641e34",
+      "statement": "Use caching only when cache keys, invalidation, isolation, provenance, and poisoning risks are controlled.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 623
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Feedback loops, builds, tests, and review latency"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Use caching only when cache keys, invalidation, isolation, provenance, and poisoning risks are controlled.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use caching only when cache keys, invalidation, isolation, provenance, and poisoning risks are controlled.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0F71EDF0",
+      "revision": 1,
+      "semantic_sha256": "0f71edf0b83daab11c1d367d97e079cad77c1c49dfceb2d805a84d39eaaedf6d",
+      "statement": "Make it easy to reproduce a CI failure locally or in an isolated diagnostic environment.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 624
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Feedback loops, builds, tests, and review latency"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Make it easy to reproduce a CI failure locally or in an isolated diagnostic environment.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make it easy to reproduce a CI failure locally or in an isolated diagnostic environment.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-31021B4A",
+      "revision": 1,
+      "semantic_sha256": "31021b4aa1478a438afe0923b6ed02b632c79fde0ae49c49f6e3a006f0a7a133",
+      "statement": "Provide logs and artifacts sufficient to diagnose failures without broad privileged access.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 625
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Feedback loops, builds, tests, and review latency"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Provide logs and artifacts sufficient to diagnose failures without broad privileged access.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide logs and artifacts sufficient to diagnose failures without broad privileged access.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6E3F668E",
+      "revision": 1,
+      "semantic_sha256": "6e3f668e068eff1e332658ff345b4d9b8097a7dc050bad8ca3784dbd990c39f5",
+      "statement": "Track flaky tests, intermittent infrastructure failures, canceled jobs, and reruns separately from product defects.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 626
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Feedback loops, builds, tests, and review latency"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Track flaky tests, intermittent infrastructure failures, canceled jobs, and reruns separately from product defects.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Track flaky tests, intermittent infrastructure failures, canceled jobs, and reruns separately from product defects.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E454B7C4",
+      "revision": 1,
+      "semantic_sha256": "e454b7c487968e56c179cc1814b9bc0e0d33436688c3d23e8e4240fee75bc03b",
+      "statement": "Keep code-review queues visible and balance reviewer load and expertise.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 628
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Feedback loops, builds, tests, and review latency"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Keep code-review queues visible and balance reviewer load and expertise.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Keep code-review queues visible and balance reviewer load and expertise.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-90D7EA9F",
+      "revision": 1,
+      "semantic_sha256": "90d7ea9f30118e2abdc169e26730667525fd6eafc5f49af98d75dad0d83bea29",
+      "statement": "Treat platform interfaces as supported products with explicit contracts, versioning, ownership, and compatibility policies.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 634
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Internal APIs, contracts, and integration experience"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Treat platform interfaces as supported products with explicit contracts, versioning, ownership, and compatibility policies.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Treat platform interfaces as supported products with explicit contracts, versioning, ownership, and compatibility policies.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A87EE218",
+      "revision": 1,
+      "semantic_sha256": "a87ee2185ad61a6e678da84ccb60169b959d949f4d7d507106ed8d36335729d7",
+      "statement": "Publish schemas, examples, error semantics, rate limits, quotas, authentication, authorization, idempotency, and lifecycle states.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 635
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Internal APIs, contracts, and integration experience"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Publish schemas, examples, error semantics, rate limits, quotas, authentication, authorization, idempotency, and lifecycle states.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Publish schemas, examples, error semantics, rate limits, quotas, authentication, authorization, idempotency, and lifecycle states.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C38502CA",
+      "revision": 1,
+      "semantic_sha256": "c38502caade213926124b76471803cabe7b275488a71e224226844bbe31b4a93",
+      "statement": "Provide machine-readable interfaces where automation is expected and human-readable interfaces where judgment is required.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 636
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Internal APIs, contracts, and integration experience"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Provide machine-readable interfaces where automation is expected and human-readable interfaces where judgment is required.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide machine-readable interfaces where automation is expected and human-readable interfaces where judgment is required.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CDE257DC",
+      "revision": 1,
+      "semantic_sha256": "cde257dc231c96a6f7e9ee2f828260dfcd3ad2a5c1c452a44b10db4a22044e0a",
+      "statement": "Keep command-line, user-interface, API, and configuration behavior semantically consistent.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 637
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Internal APIs, contracts, and integration experience"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Keep command-line, user-interface, API, and configuration behavior semantically consistent.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Keep command-line, user-interface, API, and configuration behavior semantically consistent.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-15FDD113",
+      "revision": 1,
+      "semantic_sha256": "15fdd11384ac65145fbe871e822239cbf44ad01ac7c6fe52c072950bb08e57bc",
+      "statement": "Use stable identifiers and avoid exposing volatile internal implementation details.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 638
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Internal APIs, contracts, and integration experience"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Use stable identifiers and avoid exposing volatile internal implementation details.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use stable identifiers and avoid exposing volatile internal implementation details.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B0E23E13",
+      "revision": 1,
+      "semantic_sha256": "b0e23e13836549eeb611faaa55a0fc46be89d2666e4bf0a951f7f0d3ada0a05a",
+      "statement": "Validate inputs before creating partial resources.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 639
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Internal APIs, contracts, and integration experience"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Validate inputs before creating partial resources.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Validate inputs before creating partial resources.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1D76E3B6",
+      "revision": 1,
+      "semantic_sha256": "1d76e3b6f59b973e5b972de3a23a6ab63e4806a1b81f7768c34c990ec16247ab",
+      "statement": "Define asynchronous operation status, cancellation, retry, timeout, and reconciliation behavior.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 641
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Internal APIs, contracts, and integration experience"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Define asynchronous operation status, cancellation, retry, timeout, and reconciliation behavior.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define asynchronous operation status, cancellation, retry, timeout, and reconciliation behavior.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2702E53D",
+      "revision": 1,
+      "semantic_sha256": "2702e53d815714974b82c57b5e0b945687af06f081870e5aabdec4e4ac5fd1bd",
+      "statement": "Provide contract tests or conformance suites for clients and providers.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 642
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Internal APIs, contracts, and integration experience"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Provide contract tests or conformance suites for clients and providers.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide contract tests or conformance suites for clients and providers.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-74089988",
+      "revision": 1,
+      "semantic_sha256": "74089988d2d11d80b7a4357077c06252bd5d62f4a4372f805d85cb37ed81c276",
+      "statement": "Use deprecation notices that reach actual consumers and include migration guidance and deadlines.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 643
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Internal APIs, contracts, and integration experience"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Use deprecation notices that reach actual consumers and include migration guidance and deadlines.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use deprecation notices that reach actual consumers and include migration guidance and deadlines.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6DDF8C21",
+      "revision": 1,
+      "semantic_sha256": "6ddf8c2135938f35ed6549cfa8e145da132bcd765bd20efd54ee526c21a530fe",
+      "statement": "Monitor use of deprecated interfaces and identify unknown consumers before removal.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 644
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Internal APIs, contracts, and integration experience"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Monitor use of deprecated interfaces and identify unknown consumers before removal.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Monitor use of deprecated interfaces and identify unknown consumers before removal.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-48758704",
+      "revision": 1,
+      "semantic_sha256": "48758704f59712ef1d1e32d87699c7dfa130f708bfc4e93034b14e7881c6974b",
+      "statement": "Encode repeatable mandatory controls in versioned, reviewed, tested policy where practical.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 651
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Guardrails, policy as code, and secure defaults"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Encode repeatable mandatory controls in versioned, reviewed, tested policy where practical.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Encode repeatable mandatory controls in versioned, reviewed, tested policy where practical.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A3C4E315",
+      "revision": 1,
+      "semantic_sha256": "a3c4e315b0f1038762916758d6f66cab017b82f517c36029ded2766900f66673",
+      "statement": "Keep policy source, rationale, owner, scope, severity, remediation guidance, and exception process visible.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 652
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Guardrails, policy as code, and secure defaults"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Keep policy source, rationale, owner, scope, severity, remediation guidance, and exception process visible.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Keep policy source, rationale, owner, scope, severity, remediation guidance, and exception process visible.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-91D01B47",
+      "revision": 1,
+      "semantic_sha256": "91d01b4749e6741c152f75d9ae319439bb8ab586831ce7a36925c4c81d64f0d9",
+      "statement": "Test policy rules against allowed and prohibited examples before enforcement.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 653
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Guardrails, policy as code, and secure defaults"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Test policy rules against allowed and prohibited examples before enforcement.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test policy rules against allowed and prohibited examples before enforcement.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CFDE8E86",
+      "revision": 1,
+      "semantic_sha256": "cfde8e86edb5c86956d8f67ea48ff0d412be2f7b56914db0713b8c436fcf8d03",
+      "statement": "Roll out high-impact policy changes progressively and measure false positives and operational impact.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 654
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Guardrails, policy as code, and secure defaults"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Roll out high-impact policy changes progressively and measure false positives and operational impact.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Roll out high-impact policy changes progressively and measure false positives and operational impact.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DA1E0181",
+      "revision": 1,
+      "semantic_sha256": "da1e0181672308430b7bc7045cb832be6621e581a956e1bdc53fe648de15756b",
+      "statement": "Fail closed for critical security and authorization controls unless a documented safety analysis requires another behavior.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 655
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Guardrails, policy as code, and secure defaults"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Fail closed for critical security and authorization controls unless a documented safety analysis requires another behavior.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Fail closed for critical security and authorization controls unless a documented safety analysis requires another behavior.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C663C195",
+      "revision": 1,
+      "semantic_sha256": "c663c19574ebdad44d3f8bf0229c138de8f874e012c8e80aae3836d5b7666a67",
+      "statement": "Use warning or advisory modes only when the residual risk is explicitly accepted and monitored.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 656
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Guardrails, policy as code, and secure defaults"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Use warning or advisory modes only when the residual risk is explicitly accepted and monitored.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use warning or advisory modes only when the residual risk is explicitly accepted and monitored.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A04912A7",
+      "revision": 1,
+      "semantic_sha256": "a04912a7d3919936119fc0681eda4cb5d6413da2bac650cd0f6990d5acdd7d88",
+      "statement": "Provide safe defaults for identity, network access, encryption, logging, backups, resource limits, and exposure.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 657
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Guardrails, policy as code, and secure defaults"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Provide safe defaults for identity, network access, encryption, logging, backups, resource limits, and exposure.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide safe defaults for identity, network access, encryption, logging, backups, resource limits, and exposure.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7B592261",
+      "revision": 1,
+      "semantic_sha256": "7b592261d3913f3742cba1d76ccaa7416ef6605c9c89e636d2fee49638b4a08f",
+      "statement": "Allow scoped time-bounded exceptions with owner, evidence, compensating controls, and automatic expiry.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 659
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Guardrails, policy as code, and secure defaults"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Allow scoped time-bounded exceptions with owner, evidence, compensating controls, and automatic expiry.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Allow scoped time-bounded exceptions with owner, evidence, compensating controls, and automatic expiry.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C6CEA1DC",
+      "revision": 1,
+      "semantic_sha256": "c6cea1dc8ecd78da4db12e2274ec480f1d5b05f70a51326e547b57c7ccef0dea",
+      "statement": "Prevent policy bypass through alternate tools, direct provider access, unmanaged accounts, or emergency paths.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 660
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Guardrails, policy as code, and secure defaults"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Prevent policy bypass through alternate tools, direct provider access, unmanaged accounts, or emergency paths.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Prevent policy bypass through alternate tools, direct provider access, unmanaged accounts, or emergency paths.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4F850A3C",
+      "revision": 1,
+      "semantic_sha256": "4f850a3c836599c601ca49c40a8b46d67842375210341efa2f25ad6c312ceb44",
+      "statement": "Log and review break-glass and exception use.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 661
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Guardrails, policy as code, and secure defaults"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Log and review break-glass and exception use.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Log and review break-glass and exception use.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B8027624",
+      "revision": 1,
+      "semantic_sha256": "b802762434e1fa84d6aab5c71afa0de46f3238b880260821668e4b09dfaf4e6a",
+      "statement": "Keep policy evaluation available and performant enough not to create pressure for bypass.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 662
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Guardrails, policy as code, and secure defaults"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Keep policy evaluation available and performant enough not to create pressure for bypass.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Keep policy evaluation available and performant enough not to create pressure for bypass.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BBB80D01",
+      "revision": 1,
+      "semantic_sha256": "bbb80d01a4c7323c4c88494b389862c5dc1d2e02b445496525bc8b578ff8cff0",
+      "statement": "Provide automated remediation where it is safe and transparent.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 663
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Guardrails, policy as code, and secure defaults"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Provide automated remediation where it is safe and transparent.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide automated remediation where it is safe and transparent.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BA808893",
+      "revision": 1,
+      "semantic_sha256": "ba8088931c38e2b47725e81758bfc9d1b26bdfcf72ee871dd91cd506727d9ab5",
+      "statement": "Define user-centered SLIs and SLOs for critical platform journeys such as build, test, provision, deploy, retrieve secrets, and diagnose incidents.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 668
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Platform reliability, SLOs, observability, and support"
+      ],
+      "primary_packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Define user-centered SLIs and SLOs for critical platform journeys such as build, test, provision, deploy, retrieve secrets, and diagnose incidents.” is deterministic with a sealed platform-consumer inventory, versioned service or policy contract, and exact catalog, identity, SLO, audit, workflow, schema, setup, or test evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define user-centered SLIs and SLOs for critical platform journeys such as build, test, provision, deploy, retrieve secrets, and diagnose incidents.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

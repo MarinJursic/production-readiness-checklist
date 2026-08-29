@@ -1,0 +1,2511 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-13-documentation-and-knowledge-md-part-001-part-001",
+  "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 100,
+  "controls": [
+    {
+      "control_id": "USEQ-482D2055",
+      "revision": 1,
+      "semantic_sha256": "482d2055012b74e50582cf8ac9ec1171a49c9dbbbc9f6b51c51ae85eaeac1b51",
+      "statement": "Define required information products by audience, decision, task, risk, and lifecycle stage.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 15
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Documentation Governance",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Define required information products by audience, decision, task, risk, and lifecycle stage.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Define required information products by audience, decision, task, risk, and lifecycle stage.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-987B8A80",
+      "revision": 1,
+      "semantic_sha256": "987b8a80e72a97c94be6c5af2846c3d3921007ef7047654861c692917244e681",
+      "statement": "Link documentation to the product, service, release, interface, data set, control, or process it describes.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 19
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Documentation Governance",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Link documentation to the product, service, release, interface, data set, control, or process it describes.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Link documentation to the product, service, release, interface, data set, control, or process it describes.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-ED3A1441",
+      "revision": 1,
+      "semantic_sha256": "ed3a1441097727618a00d101d4368409c61173b0d821c83ce9165d33f65d5080",
+      "statement": "Separate normative requirements from guidance, examples, history, and opinion.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 20
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Documentation Governance",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Separate normative requirements from guidance, examples, history, and opinion.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Separate normative requirements from guidance, examples, history, and opinion.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FCEFDDB5",
+      "revision": 1,
+      "semantic_sha256": "fcefddb5c0b4d318bdd0625697aa8a5f0d869e5243739052f7d12d94b52711a5",
+      "statement": "Review documentation as part of the same change that alters behavior.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 25
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Documentation Governance",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Review documentation as part of the same change that alters behavior.” is fully decidable from a fixed conjunction of sealed records, artifacts, configurations, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Review documentation as part of the same change that alters behavior.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EA8D292A",
+      "revision": 1,
+      "semantic_sha256": "ea8d292a8286767740dd089da2bf998c3f34178ac2e084a21ca1d3655e4080f6",
+      "statement": "Detect and label stale, draft, experimental, deprecated, superseded, and archived information.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 26
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Documentation Governance",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Detect and label stale, draft, experimental, deprecated, superseded, and archived information.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Detect and label stale, draft, experimental, deprecated, superseded, and archived information.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1F28B445",
+      "revision": 1,
+      "semantic_sha256": "1f28b445efab81ce04eb6276baff82fd94de3d2cf6431275bb57242de19dcb7b",
+      "statement": "Provide feedback and correction channels.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 27
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Documentation Governance",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Provide feedback and correction channels.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Provide feedback and correction channels.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D2AFE23D",
+      "revision": 1,
+      "semantic_sha256": "d2afe23dbc6f94fc994e06cd7a0fb7668862f992e5e30fcd0f9e286afb7fab4b",
+      "statement": "Measure findability, task success, freshness, support deflection, errors, and user feedback.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 32
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Documentation Governance",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Measure findability, task success, freshness, support deflection, errors, and user feedback.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Measure findability, task success, freshness, support deflection, errors, and user feedback.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EDE4A090",
+      "revision": 1,
+      "semantic_sha256": "ede4a09023090ccd17d6e2c1200274d749acd93e869f6d4f6ebf7f83cd01a95a",
+      "statement": "Document product purpose, target users, affected parties, outcomes, non-goals, constraints, and assumptions.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 42
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Document product purpose, target users, affected parties, outcomes, non-goals, constraints, and assumptions.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Document product purpose, target users, affected parties, outcomes, non-goals, constraints, and assumptions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A9393FF5",
+      "revision": 1,
+      "semantic_sha256": "a9393ff58eb638cbbae745c687cba2868807d487362280317cb03c907cf61e35",
+      "statement": "Preserve research methods, participant context, findings, limitations, and consent handling.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 43
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Preserve research methods, participant context, findings, limitations, and consent handling.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Preserve research methods, participant context, findings, limitations, and consent handling.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FDD0B29E",
+      "revision": 1,
+      "semantic_sha256": "fdd0b29e663d4fc73c8e271b0d4dd6b3f00cdbb0e96990e7645abf47fd18d454",
+      "statement": "Record requirements with identifiers, source, priority, rationale, acceptance criteria, status, and traceability.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 44
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Record requirements with identifiers, source, priority, rationale, acceptance criteria, status, and traceability.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Record requirements with identifiers, source, priority, rationale, acceptance criteria, status, and traceability.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A8E8FB02",
+      "revision": 1,
+      "semantic_sha256": "a8e8fb0276bded05a669ffe39e2b92ca8579926ae1221e117cd0652f4ba2386f",
+      "statement": "Separate user need, requirement, design choice, implementation task, and test evidence.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 45
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Separate user need, requirement, design choice, implementation task, and test evidence.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Separate user need, requirement, design choice, implementation task, and test evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8B2B337A",
+      "revision": 1,
+      "semantic_sha256": "8b2b337aea1ce5ae6b80cd278014b84618c115dc38c0efea8e693e62307cc0fb",
+      "statement": "Document conflicting requirements and the authority and rationale for resolution.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 46
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Document conflicting requirements and the authority and rationale for resolution.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Document conflicting requirements and the authority and rationale for resolution.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F6971DAB",
+      "revision": 1,
+      "semantic_sha256": "f6971dab06171ce7d7a2d53f8a24565453e68df6ccedfdf350e7544f238e7712",
+      "statement": "Record roadmap confidence, dependencies, commitments, options, and change history.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 47
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Record roadmap confidence, dependencies, commitments, options, and change history.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Record roadmap confidence, dependencies, commitments, options, and change history.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CCDB14AF",
+      "revision": 1,
+      "semantic_sha256": "ccdb14af4544d8db98631db3c0cb13232fb7b238fa5d049c4eb7280158e9e330",
+      "statement": "Document experiment hypothesis, population, metrics, guardrails, duration, analysis, limitations, and decision.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 48
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Document experiment hypothesis, population, metrics, guardrails, duration, analysis, limitations, and decision.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Document experiment hypothesis, population, metrics, guardrails, duration, analysis, limitations, and decision.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7AC80095",
+      "revision": 1,
+      "semantic_sha256": "7ac800955b27b7032b66e2effedab1d4ca87ce58bcf19c5065d4c3f3d59aaaa8",
+      "statement": "Preserve product decisions with alternatives, evidence, trade-offs, consequences, owner, and review trigger.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 49
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Preserve product decisions with alternatives, evidence, trade-offs, consequences, owner, and review trigger.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Preserve product decisions with alternatives, evidence, trade-offs, consequences, owner, and review trigger.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D5861A2B",
+      "revision": 1,
+      "semantic_sha256": "d5861a2b74cd87952afa92328b9145d6ffd83fcae107d7cdf475862fc78acb9b",
+      "statement": "Keep pricing, entitlement, cancellation, retention, and support behavior documented consistently.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 51
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Keep pricing, entitlement, cancellation, retention, and support behavior documented consistently.” is fully decidable from a fixed conjunction of sealed records, artifacts, configurations, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Keep pricing, entitlement, cancellation, retention, and support behavior documented consistently.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B0A0C709",
+      "revision": 1,
+      "semantic_sha256": "b0a0c709b4d48cea3398ef4966311ea64b1616db9888eaaa8747bc0bb0b409a2",
+      "statement": "Link acceptance evidence to the exact release and requirement.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 52
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Link acceptance evidence to the exact release and requirement.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Link acceptance evidence to the exact release and requirement.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-27C3E4F4",
+      "revision": 1,
+      "semantic_sha256": "27c3e4f4692d6eb56701da7a76035d15afd8a8360e9e9a5a0a7fec13b65293c9",
+      "statement": "Update product and support documentation when behavior changes.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 54
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Update product and support documentation when behavior changes.” is fully decidable from a fixed conjunction of sealed records, artifacts, configurations, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Update product and support documentation when behavior changes.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6065823A",
+      "revision": 1,
+      "semantic_sha256": "6065823a0ad3a873d18f235a3479bf4b675f76bc03ad0092bff917f13837f387",
+      "statement": "Make sensitive research and commercial strategy access-controlled.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 56
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Rule “Make sensitive research and commercial strategy access-controlled.” is fully decidable from read-only queries over a sealed inventory and versioned policy predicates.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Make sensitive research and commercial strategy access-controlled.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-53A776EA",
+      "revision": 1,
+      "semantic_sha256": "53a776ead2ffd40bb8c33bfbe9a0e221daa47b0c7269f821515435ec20ba9dbb",
+      "statement": "Do not treat backlog items as complete requirements documentation by default.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 59
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Do not treat backlog items as complete requirements documentation by default.” is fully decidable from a fixed conjunction of sealed records, artifacts, configurations, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Do not treat backlog items as complete requirements documentation by default.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-80892063",
+      "revision": 1,
+      "semantic_sha256": "808920635bcff1c8b2af3b83a9024c28679bd9cecf2670b16be476ab948bc086",
+      "statement": "Archive superseded plans while retaining effective history.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 60
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Archive superseded plans while retaining effective history.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Archive superseded plans while retaining effective history.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9F4859B3",
+      "revision": 1,
+      "semantic_sha256": "9f4859b32524cb7d78cabde2bf57b540a4a1ce5721b0eedf3e127e473dca941e",
+      "statement": "Identify the system of interest, environment, stakeholders, concerns, and scope of each architecture description.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 69
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Identify the system of interest, environment, stakeholders, concerns, and scope of each architecture description.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Identify the system of interest, environment, stakeholders, concerns, and scope of each architecture description.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1294BBC5",
+      "revision": 1,
+      "semantic_sha256": "1294bbc543f8e8f5ddf42f70af90faacb686ec0d64a94ac855e3f0a58b5f031a",
+      "statement": "Document interfaces, dependencies, protocols, ownership, service objectives, and failure assumptions.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 71
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Document interfaces, dependencies, protocols, ownership, service objectives, and failure assumptions.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Document interfaces, dependencies, protocols, ownership, service objectives, and failure assumptions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8CB4B293",
+      "revision": 1,
+      "semantic_sha256": "8cb4b2930a128abd0f17bb1158dc8413179c4ebc985c6edaa25ec6b6d0389727",
+      "statement": "Mark authoritative data, stateful components, consistency boundaries, and recovery paths.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 72
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Mark authoritative data, stateful components, consistency boundaries, and recovery paths.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Mark authoritative data, stateful components, consistency boundaries, and recovery paths.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-25A500F5",
+      "revision": 1,
+      "semantic_sha256": "25a500f51a2821f2dc245af60e2358474203c8bd928cc953e3c6a1af82c8d97f",
+      "statement": "Show identity, authorization, encryption, secret, privacy, and tenant boundaries.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 73
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Show identity, authorization, encryption, secret, privacy, and tenant boundaries.” is fully decidable from a fixed conjunction of sealed records, artifacts, configurations, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Show identity, authorization, encryption, secret, privacy, and tenant boundaries.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-58746DC8",
+      "revision": 1,
+      "semantic_sha256": "58746dc8c097dac96c4d8ea2e5303de2aa77f92289d64047d46688d5aac426ec",
+      "statement": "Show queues, asynchronous workflows, scheduled work, caches, search, analytics, and third-party transfers.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 74
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Show queues, asynchronous workflows, scheduled work, caches, search, analytics, and third-party transfers.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Show queues, asynchronous workflows, scheduled work, caches, search, analytics, and third-party transfers.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-38FEC5D8",
+      "revision": 1,
+      "semantic_sha256": "38fec5d802ae6836b91e8b4097601da928b3573f4ca89555826a8df24632b508",
+      "statement": "Document quality-attribute scenarios and architectural tactics.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 75
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Document quality-attribute scenarios and architectural tactics.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Document quality-attribute scenarios and architectural tactics.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6C132BDE",
+      "revision": 1,
+      "semantic_sha256": "6c132bde0f4ab8c2ac5f8348cceb665b70ba8ae61b1d95ba9804f327f8f0a932",
+      "statement": "Record architecture decisions with context, options, forces, evidence, decision, consequences, owner, status, and revisit trigger.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 76
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Record architecture decisions with context, options, forces, evidence, decision, consequences, owner, status, and revisit trigger.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Record architecture decisions with context, options, forces, evidence, decision, consequences, owner, status, and revisit trigger.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F7ACB1C5",
+      "revision": 1,
+      "semantic_sha256": "f7acb1c52535dfa6eb2585efc7f3bc2c43a76d0f2587a9dd5245d0a0580253aa",
+      "statement": "Link decisions to requirements, threats, experiments, benchmarks, migrations, and incidents.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 77
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Link decisions to requirements, threats, experiments, benchmarks, migrations, and incidents.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Link decisions to requirements, threats, experiments, benchmarks, migrations, and incidents.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-78AF3880",
+      "revision": 1,
+      "semantic_sha256": "78af3880f6067a01088da7e32288eef410e8847d2ce097bb045be3a00933d08e",
+      "statement": "Separate current, target, transitional, and historical architecture.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 80
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Separate current, target, transitional, and historical architecture.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Separate current, target, transitional, and historical architecture.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-906B5632",
+      "revision": 1,
+      "semantic_sha256": "906b5632edb2b47c4627997976dbba6f94115c354ba0e277536e12b8cef61f5a",
+      "statement": "Document intentional constraint violations and remediation plans.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 81
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Document intentional constraint violations and remediation plans.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Document intentional constraint violations and remediation plans.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A8C8399B",
+      "revision": 1,
+      "semantic_sha256": "a8c8399b23ea6a6c7e5d7f14faa33f7194703ab5d29a7c7eb652f1f2ad7b7eee",
+      "statement": "Include operational and recovery dependencies that are often omitted from functional diagrams.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 82
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Include operational and recovery dependencies that are often omitted from functional diagrams.” is fully decidable from a fixed conjunction of sealed records, artifacts, configurations, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Include operational and recovery dependencies that are often omitted from functional diagrams.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3520DA55",
+      "revision": 1,
+      "semantic_sha256": "3520da558390e84e32cb6f51de028133754579bad49d7fdc3de303aebd7341eb",
+      "statement": "Retire superseded decisions without deleting rationale.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 86
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Retire superseded decisions without deleting rationale.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Retire superseded decisions without deleting rationale.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D4D4DA52",
+      "revision": 1,
+      "semantic_sha256": "d4d4da52087356e476d86f57fbe41bd0ae10cf6eb1f9eb03c1f9d8db24de7fa1",
+      "statement": "Provide a reliable entry point explaining purpose, ownership, prerequisites, setup, build, test, run, and support.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 96
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Provide a reliable entry point explaining purpose, ownership, prerequisites, setup, build, test, run, and support.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Provide a reliable entry point explaining purpose, ownership, prerequisites, setup, build, test, run, and support.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6D750AA3",
+      "revision": 1,
+      "semantic_sha256": "6d750aa339114d8d13a7e7063381b1f13f8028b5cedde335c8decf87a35339ef",
+      "statement": "State inputs, outputs, units, formats, errors, side effects, authorization, idempotency, ordering, and resource behavior.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 98
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “State inputs, outputs, units, formats, errors, side effects, authorization, idempotency, ordering, and resource behavior.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: State inputs, outputs, units, formats, errors, side effects, authorization, idempotency, ordering, and resource behavior.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2CFFD683",
+      "revision": 1,
+      "semantic_sha256": "2cffd683062bcd28fd80e960731975cacd388c97bdc0c42f80e1de867bc1673c",
+      "statement": "Document API authentication, schemas, pagination, filtering, rate, quota, versioning, deprecation, and examples.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 99
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Document API authentication, schemas, pagination, filtering, rate, quota, versioning, deprecation, and examples.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Document API authentication, schemas, pagination, filtering, rate, quota, versioning, deprecation, and examples.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9EA30976",
+      "revision": 1,
+      "semantic_sha256": "9ea309767f8258103f6dc1c8b7381472849dc41b33da799385f4ab8158e39e91",
+      "statement": "Keep examples executable or automatically validated.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 101
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Keep examples executable or automatically validated.” is fully decidable from a bounded repeatable test with declared inputs, oracle, and captured output.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Keep examples executable or automatically validated.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DD2CC11E",
+      "revision": 1,
+      "semantic_sha256": "dd2cc11e57d51615ae5fa710d59f3838f8331768a1302b037dc2fe84d7edc555",
+      "statement": "Document data entities, fields, identifiers, null semantics, units, quality, source, lineage, retention, and ownership.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 103
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Document data entities, fields, identifiers, null semantics, units, quality, source, lineage, retention, and ownership.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Document data entities, fields, identifiers, null semantics, units, quality, source, lineage, retention, and ownership.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F4E837FE",
+      "revision": 1,
+      "semantic_sha256": "f4e837fe7cb937467bf118491b91ff15cd920a59c0674ccb8b7359b174886214",
+      "statement": "Document migrations, backward compatibility, mixed-version behavior, and consumer actions.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 104
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Document migrations, backward compatibility, mixed-version behavior, and consumer actions.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Document migrations, backward compatibility, mixed-version behavior, and consumer actions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B2599C93",
+      "revision": 1,
+      "semantic_sha256": "b2599c93c61c6f3ea0bf32b0eebd8ce7bae17e42a636e31447843f3ce668f8ba",
+      "statement": "Document extension and contribution rules for reusable components.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 108
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Document extension and contribution rules for reusable components.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Document extension and contribution rules for reusable components.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-71737F7A",
+      "revision": 1,
+      "semantic_sha256": "71737f7ae6fdf66cb4057bdec7af930998ab6ff9becd716d0e906eab40df2924",
+      "statement": "Label experimental, internal, unstable, deprecated, and unsupported interfaces clearly.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 109
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Label experimental, internal, unstable, deprecated, and unsupported interfaces clearly.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Label experimental, internal, unstable, deprecated, and unsupported interfaces clearly.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-319F5870",
+      "revision": 1,
+      "semantic_sha256": "319f58701a0ac1abed7891518d9000016b66323dedfcaa4f052038e1f10f798a",
+      "statement": "Test documentation from a clean consumer environment.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 112
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Test documentation from a clean consumer environment.” is fully decidable from a bounded repeatable test with declared inputs, oracle, and captured output.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Test documentation from a clean consumer environment.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4989E2A5",
+      "revision": 1,
+      "semantic_sha256": "4989e2a5e85c18d30363667819e65162d73d229cdf20b6bb943ff4d630b0b04e",
+      "statement": "Record supported toolchain and platform versions.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 113
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Record supported toolchain and platform versions.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Record supported toolchain and platform versions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D6EFE595",
+      "revision": 1,
+      "semantic_sha256": "d6efe595445807702c84de5c1b727da39598573d979b00bb3eacf7511e0b7229",
+      "statement": "Provide a security contact and vulnerability-reporting path for public packages or APIs.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 114
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Provide a security contact and vulnerability-reporting path for public packages or APIs.” is fully decidable from a fixed conjunction of sealed records, artifacts, configurations, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Provide a security contact and vulnerability-reporting path for public packages or APIs.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9FC49F3D",
+      "revision": 1,
+      "semantic_sha256": "9fc49f3d0c08dfc44044c86a2e0745abb1458a5bf7a1807bdc7be1c3b081ba66",
+      "statement": "Review documentation during code and release review.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 115
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Review documentation during code and release review.” is fully decidable from a fixed conjunction of sealed records, artifacts, configurations, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Review documentation during code and release review.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-280A2D3E",
+      "revision": 1,
+      "semantic_sha256": "280a2d3ef21b838cd9944ad6b9413447484d75eec444a30aa13a6860b3f09675",
+      "statement": "Explain prerequisites, permissions, cost, privacy, consequences, and expected outcomes.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 125
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "User Help, Training, and Support Content",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Explain prerequisites, permissions, cost, privacy, consequences, and expected outcomes.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Explain prerequisites, permissions, cost, privacy, consequences, and expected outcomes.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-20D1BA9B",
+      "revision": 1,
+      "semantic_sha256": "20d1ba9b9943f89e7a1f16dba2009c9f0411b768b4d5aa2e7753b02106c539a9",
+      "statement": "Cover normal use, errors, recovery, cancellation, deletion, accessibility, security, and support escalation.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 127
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "User Help, Training, and Support Content",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Cover normal use, errors, recovery, cancellation, deletion, accessibility, security, and support escalation.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Cover normal use, errors, recovery, cancellation, deletion, accessibility, security, and support escalation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D5C35624",
+      "revision": 1,
+      "semantic_sha256": "d5c35624625815530e3bfef3f59dfc9bc9d143faf4ca09bd151e560833f83294",
+      "statement": "Provide text alternatives, captions, transcripts, headings, landmarks, and accessible document formats.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 129
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "User Help, Training, and Support Content",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Provide text alternatives, captions, transcripts, headings, landmarks, and accessible document formats.” is fully decidable from a fixed conjunction of sealed records, artifacts, configurations, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Provide text alternatives, captions, transcripts, headings, landmarks, and accessible document formats.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BFA3670F",
+      "revision": 1,
+      "semantic_sha256": "bfa3670fd706d82360bff2e00bf3fd7daa1cdb9601e57c8a9dd14f53ed6046df",
+      "statement": "Distinguish user-actionable issues from incidents that require support or operator intervention.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 132
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "User Help, Training, and Support Content",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Distinguish user-actionable issues from incidents that require support or operator intervention.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Distinguish user-actionable issues from incidents that require support or operator intervention.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7A1E53B9",
+      "revision": 1,
+      "semantic_sha256": "7a1e53b9557b5800a9fa1ee7c413123b8dc77847d71d3ad4cfd9fefbfb1609ac",
+      "statement": "Warn before destructive, irreversible, or security-sensitive actions.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 133
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "User Help, Training, and Support Content",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Warn before destructive, irreversible, or security-sensitive actions.” is fully decidable from a fixed conjunction of sealed records, artifacts, configurations, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Warn before destructive, irreversible, or security-sensitive actions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6056DDE7",
+      "revision": 1,
+      "semantic_sha256": "6056dde784f6d2e8df21c4c4db39ee4471765252af3d915d8545ef184fecbff2",
+      "statement": "Define content version, product version, locale, owner, and review date.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 135
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "User Help, Training, and Support Content",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Define content version, product version, locale, owner, and review date.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Define content version, product version, locale, owner, and review date.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EC281E9C",
+      "revision": 1,
+      "semantic_sha256": "ec281e9cc8f34ee04bf7daed81d80fb519a1a85ed0a53782d494a07de15e4750",
+      "statement": "Track failed searches, abandonment, support contacts, and feedback to improve content.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 137
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "User Help, Training, and Support Content",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Track failed searches, abandonment, support contacts, and feedback to improve content.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Track failed searches, abandonment, support contacts, and feedback to improve content.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-11BCC1E3",
+      "revision": 1,
+      "semantic_sha256": "11bcc1e382b7410ac3d57b30ee044ca4e86d4234095f8451c17fcb741c2ddb77",
+      "statement": "Archive obsolete content and remove it from search recommendations.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 140
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "User Help, Training, and Support Content",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Archive obsolete content and remove it from search recommendations.” is fully decidable from a fixed conjunction of sealed records, artifacts, configurations, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Archive obsolete content and remove it from search recommendations.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-69C45485",
+      "revision": 1,
+      "semantic_sha256": "69c454856e99f1b4a22638a82569d9fcff70f58196b76851456abaa85236e6cf",
+      "statement": "Provide runbooks for every paging alert, critical dependency, common failure, recovery operation, and high-risk manual task.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 150
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Provide runbooks for every paging alert, critical dependency, common failure, recovery operation, and high-risk manual task.” is fully decidable from a fixed conjunction of sealed records, artifacts, configurations, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Provide runbooks for every paging alert, critical dependency, common failure, recovery operation, and high-risk manual task.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-02EBD336",
+      "revision": 1,
+      "semantic_sha256": "02ebd33665f4bd0e47cf814e51b1c15d7d6abe5df3a3ffb1ed6bcb971495f6f6",
+      "statement": "State purpose, trigger, prerequisites, access, safety warnings, expected evidence, and escalation.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 151
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “State purpose, trigger, prerequisites, access, safety warnings, expected evidence, and escalation.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: State purpose, trigger, prerequisites, access, safety warnings, expected evidence, and escalation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BA28ABA4",
+      "revision": 1,
+      "semantic_sha256": "ba28aba4237a881b55a867867996c9741c7617816626e65f516b66614b3cc397",
+      "statement": "Include diagnosis, containment, mitigation, rollback, roll-forward, recovery, validation, and communication.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 153
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Include diagnosis, containment, mitigation, rollback, roll-forward, recovery, validation, and communication.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Include diagnosis, containment, mitigation, rollback, roll-forward, recovery, validation, and communication.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6AF3EC1F",
+      "revision": 1,
+      "semantic_sha256": "6af3ec1f62743570d0e617111f6179e209a98043ee02ac1e586e42e8c1b804d9",
+      "statement": "Define stop conditions and when to declare or escalate an incident.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 154
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Define stop conditions and when to declare or escalate an incident.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Define stop conditions and when to declare or escalate an incident.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-95A45226",
+      "revision": 1,
+      "semantic_sha256": "95a452262de93834fb7906cd2340ba7b1aa7d5b9cc0d5699b5e599ec82b369ab",
+      "statement": "Keep contact, supplier, status, and alternate communication information current.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 155
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Rule “Keep contact, supplier, status, and alternate communication information current.” is fully decidable from read-only queries over a sealed inventory and versioned policy predicates.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Keep contact, supplier, status, and alternate communication information current.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6CDA3BBC",
+      "revision": 1,
+      "semantic_sha256": "6cda3bbc7df05ca55aa182b52e2e0b6a8fd02f10b2df13d09ca26b48db4f433b",
+      "statement": "Document deployment artifacts, configuration, migrations, flags, health gates, rollback, and post-deployment verification.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 156
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Document deployment artifacts, configuration, migrations, flags, health gates, rollback, and post-deployment verification.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Document deployment artifacts, configuration, migrations, flags, health gates, rollback, and post-deployment verification.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-642AD6F8",
+      "revision": 1,
+      "semantic_sha256": "642ad6f8b9b92781ef9746633a68406ce56d1db4052a81843892aa7f05c53876",
+      "statement": "Record releases with source, digest, approvals, changes, known issues, risk, and support impact.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 157
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Record releases with source, digest, approvals, changes, known issues, risk, and support impact.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Record releases with source, digest, approvals, changes, known issues, risk, and support impact.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E1D5C77F",
+      "revision": 1,
+      "semantic_sha256": "e1d5c77f06cb856e4d9ce0d265e6781691e14117d8addea4be6a854e86513673",
+      "statement": "Maintain incident timelines, hypotheses, decisions, actions, impact, evidence, communications, and recovery verification.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 158
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Maintain incident timelines, hypotheses, decisions, actions, impact, evidence, communications, and recovery verification.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Maintain incident timelines, hypotheses, decisions, actions, impact, evidence, communications, and recovery verification.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2BDDA007",
+      "revision": 1,
+      "semantic_sha256": "2bdda007bdd3735f4850644773fb159326ba54cf9726383a1e328a9a89708ab2",
+      "statement": "Separate real-time incident notes from the later reviewed postmortem.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 159
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Separate real-time incident notes from the later reviewed postmortem.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Separate real-time incident notes from the later reviewed postmortem.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-29CFDA1F",
+      "revision": 1,
+      "semantic_sha256": "29cfda1fa0468e35880f374ee7e2569f16e82aedf9a8a29ae82464e42e806a93",
+      "statement": "Test runbooks through drills and actual use and capture corrections.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 161
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Test runbooks through drills and actual use and capture corrections.” is fully decidable from a bounded repeatable test with declared inputs, oracle, and captured output.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Test runbooks through drills and actual use and capture corrections.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9444CDD3",
+      "revision": 1,
+      "semantic_sha256": "9444cdd3f91de6a02b089428d3829d9fd9829b596b53aa5c744d5a5881e5363a",
+      "statement": "Avoid requiring unavailable systems, identities, or networks during disaster recovery.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 162
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Avoid requiring unavailable systems, identities, or networks during disaster recovery.” is fully decidable from a bounded repeatable test with declared inputs, oracle, and captured output.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Avoid requiring unavailable systems, identities, or networks during disaster recovery.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D97EB15E",
+      "revision": 1,
+      "semantic_sha256": "d97eb15e3120f32d2adbbc77ee09feb33fd74cf58a3b18ed08ee48c5e4d610c3",
+      "statement": "Document backup restoration, failover, failback, and clean-environment recovery.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 165
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Document backup restoration, failover, failback, and clean-environment recovery.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Document backup restoration, failover, failback, and clean-environment recovery.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-44B2EFFA",
+      "revision": 1,
+      "semantic_sha256": "44b2effa962982d7afda3e0c349ab4c40012fe9e9f4cf4da1c24306e3d6f21c9",
+      "statement": "Record temporary incident changes and ensure cleanup.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 167
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Record temporary incident changes and ensure cleanup.” is fully decidable from a fixed conjunction of sealed records, artifacts, configurations, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Record temporary incident changes and ensure cleanup.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BCD83655",
+      "revision": 1,
+      "semantic_sha256": "bcd83655186ae1774e440c6ba81fe566e93ac29a32bf9a39c6fbc0940bf02295",
+      "statement": "Track corrective actions to verified completion.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 168
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Track corrective actions to verified completion.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Track corrective actions to verified completion.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-02E3B3DC",
+      "revision": 1,
+      "semantic_sha256": "02e3b3dc85922749dd3b8399cf32e0e130b7d145efec30c7e667a77199839dd4",
+      "statement": "Retire obsolete runbooks and redirect users to the effective procedure.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 169
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Retire obsolete runbooks and redirect users to the effective procedure.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Retire obsolete runbooks and redirect users to the effective procedure.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-70E7772F",
+      "revision": 1,
+      "semantic_sha256": "70e7772f3f79d8e0cc4c164e766b2a869f959f47ac1d892d211017493d02e23a",
+      "statement": "Assign accountable owners for knowledge domains and authoritative sources.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 178
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge-management governance"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Assign accountable owners for knowledge domains and authoritative sources.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Assign accountable owners for knowledge domains and authoritative sources.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C14D3998",
+      "revision": 1,
+      "semantic_sha256": "c14d39988f82f82e7e07a375d8269706a519a77d16c5e334ea9d71b84bb8edd7",
+      "statement": "Establish objectives for knowledge creation, capture, validation, sharing, reuse, protection, retention, and retirement.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 179
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge-management governance"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Establish objectives for knowledge creation, capture, validation, sharing, reuse, protection, retention, and retirement.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Establish objectives for knowledge creation, capture, validation, sharing, reuse, protection, retention, and retirement.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FC217284",
+      "revision": 1,
+      "semantic_sha256": "fc217284ac73ee83d3eebfe6a34dba8e660ee4c883a93a092239a3bcffb2a789",
+      "statement": "Distinguish public, internal, confidential, restricted, personal, customer-owned, legally privileged, and export-controlled knowledge.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 182
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge-management governance"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Distinguish public, internal, confidential, restricted, personal, customer-owned, legally privileged, and export-controlled knowledge.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Distinguish public, internal, confidential, restricted, personal, customer-owned, legally privileged, and export-controlled knowledge.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D40AFC25",
+      "revision": 1,
+      "semantic_sha256": "d40afc252e9f888cf3c0ee19deef125be89c1ece6c8fb6a3f5e9b359142e69cb",
+      "statement": "Review the knowledge-management system after incidents, reorganizations, acquisitions, supplier changes, and key-person departures.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 186
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge-management governance"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Review the knowledge-management system after incidents, reorganizations, acquisitions, supplier changes, and key-person departures.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Review the knowledge-management system after incidents, reorganizations, acquisitions, supplier changes, and key-person departures.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2A3A7103",
+      "revision": 1,
+      "semantic_sha256": "2a3a7103ad3654bd0103265f79b536f28449a40cfc00af5e8bc14e7d16ef0420",
+      "statement": "Include architecture rationale, domain rules, data semantics, security assumptions, operational procedures, supplier knowledge, and historical constraints.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 191
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Critical-knowledge inventory and risk"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Include architecture rationale, domain rules, data semantics, security assumptions, operational procedures, supplier knowledge, and historical constraints.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Include architecture rationale, domain rules, data semantics, security assumptions, operational procedures, supplier knowledge, and historical constraints.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-27857C7E",
+      "revision": 1,
+      "semantic_sha256": "27857c7e4f6ad8e502a16ca934b81f6084b6f5e64bdbf0d1f2387db47ae384a8",
+      "statement": "Identify knowledge dependent on one vendor, proprietary tool, unsupported format, inaccessible repository, or expiring credential.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 193
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Critical-knowledge inventory and risk"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Identify knowledge dependent on one vendor, proprietary tool, unsupported format, inaccessible repository, or expiring credential.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Identify knowledge dependent on one vendor, proprietary tool, unsupported format, inaccessible repository, or expiring credential.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D2F9BDB2",
+      "revision": 1,
+      "semantic_sha256": "d2f9bdb2365487e30a992182c161dff88077147de3814ab6a05262facbb46d21",
+      "statement": "Record the owner, audience, source, validation method, location, sensitivity, dependencies, and review cycle.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 195
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Critical-knowledge inventory and risk"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Record the owner, audience, source, validation method, location, sensitivity, dependencies, and review cycle.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Record the owner, audience, source, validation method, location, sensitivity, dependencies, and review cycle.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EF4FC8D9",
+      "revision": 1,
+      "semantic_sha256": "ef4fc8d94465cf8ad3374eef64ba6bbdc26517fe7d473814a24f0aed01e66984",
+      "statement": "Track key-person and key-supplier risk explicitly.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 197
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Critical-knowledge inventory and risk"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Track key-person and key-supplier risk explicitly.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Track key-person and key-supplier risk explicitly.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-126AA834",
+      "revision": 1,
+      "semantic_sha256": "126aa83447d7f942f404808115ad25c525a70154fc348d543c56aa199b12a7f1",
+      "statement": "Reassess critical knowledge when systems, markets, obligations, or organizational structures change.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 198
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Critical-knowledge inventory and risk"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Reassess critical knowledge when systems, markets, obligations, or organizational structures change.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Reassess critical knowledge when systems, markets, obligations, or organizational structures change.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-43FCA7C7",
+      "revision": 1,
+      "semantic_sha256": "43fca7c7efb1cbfdd8d7574025deaa71c167dc54ae17c35aa4c10f6da517e5d2",
+      "statement": "Capture decisions, rationale, alternatives, assumptions, and consequences at the time they are made.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 202
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Creation, capture, and validation"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Capture decisions, rationale, alternatives, assumptions, and consequences at the time they are made.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Capture decisions, rationale, alternatives, assumptions, and consequences at the time they are made.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2A391824",
+      "revision": 1,
+      "semantic_sha256": "2a391824d656528a8020427880daa50b38676d76e13db3580c79dd821ef161fd",
+      "statement": "Distinguish fact, decision, opinion, hypothesis, draft, obsolete guidance, and unresolved question.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 207
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Creation, capture, and validation"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Distinguish fact, decision, opinion, hypothesis, draft, obsolete guidance, and unresolved question.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Distinguish fact, decision, opinion, hypothesis, draft, obsolete guidance, and unresolved question.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9E8B3204",
+      "revision": 1,
+      "semantic_sha256": "9e8b32049ca3a0fd59315e0495be05dddae10f7ff766eff5b3846c4234cb7661",
+      "statement": "Validate critical knowledge through peer review, execution, testing, or independent confirmation.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 208
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Creation, capture, and validation"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Validate critical knowledge through peer review, execution, testing, or independent confirmation.” is fully decidable from a fixed conjunction of sealed records, artifacts, configurations, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Validate critical knowledge through peer review, execution, testing, or independent confirmation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D49EE764",
+      "revision": 1,
+      "semantic_sha256": "d49ee764fff43190979c4c7ae8305eff064dbea2de0c5bc349cc1f6a4b6d5d90",
+      "statement": "Include authorship, ownership, version, date, scope, status, and review date.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 209
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Creation, capture, and validation"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Include authorship, ownership, version, date, scope, status, and review date.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Include authorship, ownership, version, date, scope, status, and review date.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-916C3F57",
+      "revision": 1,
+      "semantic_sha256": "916c3f5776e6aa43cd9ff482f1a1dbb8ae66984478407c20a74bc871b91e1a2f",
+      "statement": "Preserve links to source requirements, systems, incidents, changes, and evidence.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 210
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Creation, capture, and validation"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Preserve links to source requirements, systems, incidents, changes, and evidence.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Preserve links to source requirements, systems, incidents, changes, and evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-25471447",
+      "revision": 1,
+      "semantic_sha256": "254714474e703188664c4930b529af3d7a3ee5d8886db0e6161ebab2ab45341e",
+      "statement": "Provide one discoverable entry point or catalog for authoritative engineering and operational knowledge.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 215
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Findability, access, and usability"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Provide one discoverable entry point or catalog for authoritative engineering and operational knowledge.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Provide one discoverable entry point or catalog for authoritative engineering and operational knowledge.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5EB04CC7",
+      "revision": 1,
+      "semantic_sha256": "5eb04cc72e88f90273bc9082b84bdea7f6574230ad1d39740647d1d004e12298",
+      "statement": "Use consistent titles, terminology, taxonomy, tags, identifiers, and ownership metadata.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 216
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Findability, access, and usability"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Use consistent titles, terminology, taxonomy, tags, identifiers, and ownership metadata.” is fully decidable from a fixed conjunction of sealed records, artifacts, configurations, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Use consistent titles, terminology, taxonomy, tags, identifiers, and ownership metadata.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F92EB50C",
+      "revision": 1,
+      "semantic_sha256": "f92eb50c43d70336630502871e42396bae14c34624469e666d4a732628c99ded",
+      "statement": "Make search return authoritative and current material before duplicates and obsolete copies.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 217
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Findability, access, and usability"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Make search return authoritative and current material before duplicates and obsolete copies.” is fully decidable from a bounded repeatable test with declared inputs, oracle, and captured output.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Make search return authoritative and current material before duplicates and obsolete copies.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7786CD26",
+      "revision": 1,
+      "semantic_sha256": "7786cd267e609f7d8c8b5503d16611a9344f068803f7256e1b65bc9d74c6d191",
+      "statement": "Clearly mark superseded, draft, experimental, and archived content.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 218
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Findability, access, and usability"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Clearly mark superseded, draft, experimental, and archived content.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Clearly mark superseded, draft, experimental, and archived content.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CEA15543",
+      "revision": 1,
+      "semantic_sha256": "cea155436339982d48fc8ed9d69aa3044ed053edd406b6736906cdd2cd2e3c65",
+      "statement": "Ensure critical procedures remain available during network, identity, collaboration-tool, or provider failure.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 221
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Findability, access, and usability"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Ensure critical procedures remain available during network, identity, collaboration-tool, or provider failure.” is fully decidable from a bounded repeatable test with declared inputs, oracle, and captured output.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Ensure critical procedures remain available during network, identity, collaboration-tool, or provider failure.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-331D2821",
+      "revision": 1,
+      "semantic_sha256": "331d2821cdd7d100b45a42465c919d6152671fa6cea2e5a321569a97377a06a4",
+      "statement": "Assign review intervals based on criticality and rate of change.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 231
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Maintenance, freshness, and retirement"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Assign review intervals based on criticality and rate of change.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Assign review intervals based on criticality and rate of change.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2210FD4E",
+      "revision": 1,
+      "semantic_sha256": "2210fd4ecdf963253e1aa02e0974a7d1bf95d05d82a0ea0c2217ca2460840ca7",
+      "statement": "Make documentation change part of the same workflow as the product or process change.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 234
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Maintenance, freshness, and retirement"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Make documentation change part of the same workflow as the product or process change.” is fully decidable from a fixed conjunction of sealed records, artifacts, configurations, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Make documentation change part of the same workflow as the product or process change.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0FA18749",
+      "revision": 1,
+      "semantic_sha256": "0fa18749947a5258082541ed8729e1c178490bd4804dc6efff32ac954cede566",
+      "statement": "Test critical runbooks and instructions rather than relying on editorial review alone.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 235
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Maintenance, freshness, and retirement"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Test critical runbooks and instructions rather than relying on editorial review alone.” is fully decidable from a bounded repeatable test with declared inputs, oracle, and captured output.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Test critical runbooks and instructions rather than relying on editorial review alone.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D0AA1A12",
+      "revision": 1,
+      "semantic_sha256": "d0aa1a122a3467a52c673143922ca9ee31ef51483b0cb66c40095bdb4993e475",
+      "statement": "Ensure redirects, references, training, and automation are updated when authoritative knowledge moves.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 239
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Maintenance, freshness, and retirement"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Ensure redirects, references, training, and automation are updated when authoritative knowledge moves.” is fully decidable from a fixed conjunction of sealed records, artifacts, configurations, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Ensure redirects, references, training, and automation are updated when authoritative knowledge moves.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2C8DAAB6",
+      "revision": 1,
+      "semantic_sha256": "2c8daab617697b60253f88976861825f6f8672c10242e689d0218a8567c63f7c",
+      "statement": "Prevent generated or imported knowledge from bypassing review and ownership.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 240
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Maintenance, freshness, and retirement"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Prevent generated or imported knowledge from bypassing review and ownership.” is fully decidable from a fixed conjunction of sealed records, artifacts, configurations, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Prevent generated or imported knowledge from bypassing review and ownership.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7BE1905F",
+      "revision": 1,
+      "semantic_sha256": "7be1905f86f19ab80f5b06b81c41c49cc51003c9439b5120a22e87d17d1208c4",
+      "statement": "Define required knowledge, skills, judgment, authorization, and experience for each material role.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 244
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Competence models and role readiness"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Define required knowledge, skills, judgment, authorization, and experience for each material role.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Define required knowledge, skills, judgment, authorization, and experience for each material role.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BD044858",
+      "revision": 1,
+      "semantic_sha256": "bd044858ecfa44548fb814bf1d5c762fa562f3aaab405e9c0eed3880f4824746",
+      "statement": "Distinguish awareness, working competence, specialist competence, and authority to approve or act.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 245
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Competence models and role readiness"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Distinguish awareness, working competence, specialist competence, and authority to approve or act.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Distinguish awareness, working competence, specialist competence, and authority to approve or act.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2E8AFDED",
+      "revision": 1,
+      "semantic_sha256": "2e8afdedc66e24b21e231423dd075491d3829a5da9590f83ace8a28ebb0a4768",
+      "statement": "Reassess competence after long absence, role change, major system change, or serious error.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 250
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Competence models and role readiness"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Reassess competence after long absence, role change, major system change, or serious error.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Reassess competence after long absence, role change, major system change, or serious error.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C0F7014C",
+      "revision": 1,
+      "semantic_sha256": "c0f7014c87a9c8a1960227a103ba73b5e541516b74064d6dbb7d1d3339ee4854",
+      "statement": "Restrict high-impact actions to people with current competence and authority.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 251
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Competence models and role readiness"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Restrict high-impact actions to people with current competence and authority.” is fully decidable from a fixed conjunction of sealed records, artifacts, configurations, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Restrict high-impact actions to people with current competence and authority.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4BC23A67",
+      "revision": 1,
+      "semantic_sha256": "4bc23a67c0b9e66660617fa996781b232ac752cb73d6a6a1a5b5e5f6f1fe72af",
+      "statement": "Track competence expiry where skills degrade or external credentials lapse.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 254
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Competence models and role readiness"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Track competence expiry where skills degrade or external credentials lapse.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Track competence expiry where skills degrade or external credentials lapse.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-27B4D8D1",
+      "revision": 1,
+      "semantic_sha256": "27b4d8d1e20504df994625df5a98fc77dd1be6779860b811d3fe7612d9e267df",
+      "statement": "Include suppliers and contractors in competence requirements.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 255
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Competence models and role readiness"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Include suppliers and contractors in competence requirements.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Include suppliers and contractors in competence requirements.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8B67E945",
+      "revision": 1,
+      "semantic_sha256": "8b67e945e07f9bf9a38aeca4318b06d2d5ece1f593010f553947f3505b472af8",
+      "statement": "Provide role-specific onboarding that covers purpose, users, architecture, data, security, privacy, quality, operations, and support.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 259
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Onboarding, role changes, and offboarding"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Provide role-specific onboarding that covers purpose, users, architecture, data, security, privacy, quality, operations, and support.” is fully decidable from exact fields, links, versions, dates, and states in sealed authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Provide role-specific onboarding that covers purpose, users, architecture, data, security, privacy, quality, operations, and support.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C8406B27",
+      "revision": 1,
+      "semantic_sha256": "c8406b27047b7d43f1d7d8970d7d039541aebb0780d643a27241c41243311b31",
+      "statement": "Update access, training, responsibilities, and knowledge when roles change.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 263
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Onboarding, role changes, and offboarding"
+      ],
+      "primary_packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Update access, training, responsibilities, and knowledge when roles change.” is fully decidable from a fixed conjunction of sealed records, artifacts, configurations, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Update access, training, responsibilities, and knowledge when roles change.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

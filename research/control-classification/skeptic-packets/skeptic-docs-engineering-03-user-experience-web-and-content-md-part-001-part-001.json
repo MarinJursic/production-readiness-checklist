@@ -1,0 +1,2196 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-03-user-experience-web-and-content-md-part-001-part-001",
+  "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 81,
+  "controls": [
+    {
+      "control_id": "USEQ-3F288998",
+      "revision": 1,
+      "semantic_sha256": "3f288998c4bed74088b227114f531750c279643ee07f42b55e2992299e34e91b",
+      "statement": "The required accessibility standard, version, and conformance level are documented.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 15
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “The required accessibility standard, version, and conformance level are documented.” is a bounded documentation, matrix, ownership, state-model, or budget requirement whose explicit fields can be validated against an authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains complete in-scope entries with every explicit standard, matrix dimension, owner, state, field, budget, version, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-898B0514",
+      "revision": 1,
+      "semantic_sha256": "898b0514775a1746e24148092fcfd64fb606f899ca16fcb4e3f6c01d62dca717",
+      "statement": "Automated accessibility scans pass within the approved threshold.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 16
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Automated accessibility scans pass within the approved threshold.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4C2290A7",
+      "revision": 1,
+      "semantic_sha256": "4c2290a78c5a1fe94370d916b148825e4dc4765220887cfb8877a0da1a409af0",
+      "statement": "Text and meaningful visual elements meet applicable contrast requirements.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 22
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Text and meaningful visual elements meet applicable contrast requirements.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0D6B7B8D",
+      "revision": 1,
+      "semantic_sha256": "0d6b7b8dd3d9b6a05ea1df27a8147705bd98f5e32e433788d066029fc34c9316",
+      "statement": "Page language and text direction are declared correctly.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 31
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Page language and text direction are declared correctly.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A9BB5F5C",
+      "revision": 1,
+      "semantic_sha256": "a9bb5f5cc30f5f5c8165bb6877d11587a340cacdad6a4c326fff709301f1fffe",
+      "statement": "Accessibility defects have owners, severity, remediation dates, and regression coverage.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 35
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Accessibility defects have owners, severity, remediation dates, and regression coverage.” is a bounded documentation, matrix, ownership, state-model, or budget requirement whose explicit fields can be validated against an authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains complete in-scope entries with every explicit standard, matrix dimension, owner, state, field, budget, version, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E25EAE4D",
+      "revision": 1,
+      "semantic_sha256": "e25eae4d20be049fa980d767ea052054d3b81c9fcc1f9802c7ead9479328dfc6",
+      "statement": "Every supported locale, language, script, time zone, currency, and region is documented.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 43
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Localization and Internationalization",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Every supported locale, language, script, time zone, currency, and region is documented.” is a bounded documentation, matrix, ownership, state-model, or budget requirement whose explicit fields can be validated against an authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains complete in-scope entries with every explicit standard, matrix dimension, owner, state, field, budget, version, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7AD07D0F",
+      "revision": 1,
+      "semantic_sha256": "7ad07d0f5efd4322c1a3f1b9a7d52a3d5256c9a01fba0eba156a8e8e6c79487c",
+      "statement": "Right-to-left and mixed-direction content are tested.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 45
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Localization and Internationalization",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Right-to-left and mixed-direction content are tested.” names a closed browser, locale, device, journey, input, or failure scenario set whose authenticated execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every scenario in the approved test matrix for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A44F53C5",
+      "revision": 1,
+      "semantic_sha256": "a44f53c5f77d5e6f2525e4a4d2fff5b04ec8531b0a1345850ee68181652bf306",
+      "statement": "Date, time, number, decimal, currency, percentage, unit, and plural formatting are correct.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 48
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Localization and Internationalization",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Date, time, number, decimal, currency, percentage, unit, and plural formatting are correct.” names a closed browser, locale, device, journey, input, or failure scenario set whose authenticated execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every scenario in the approved test matrix for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-993E9BCA",
+      "revision": 1,
+      "semantic_sha256": "993e9bcad37ecd7c51ac5264cb7f15fb4fb28b2ad076ebad51dac09476601726",
+      "statement": "Locale-specific sorting, collation, search, tokenization, and case behavior are correct.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 49
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Localization and Internationalization",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Locale-specific sorting, collation, search, tokenization, and case behavior are correct.” names a closed browser, locale, device, journey, input, or failure scenario set whose authenticated execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every scenario in the approved test matrix for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1DCEC7EE",
+      "revision": 1,
+      "semantic_sha256": "1dcec7ee7c997de33cf2fe65efec878deccc0269546716ede801ec82a7433f1e",
+      "statement": "Localization does not alter identifiers, signatures, tokens, URLs, machine data, or security-sensitive canonical forms.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 52
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Localization and Internationalization",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Localization does not alter identifiers, signatures, tokens, URLs, machine data, or security-sensitive canonical forms.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-84BBB844",
+      "revision": 1,
+      "semantic_sha256": "84bbb8448bc6e15dcfc058f46ef7d77624da036351ed2abda614cc8e20d1c74c",
+      "statement": "Support coverage matches languages promised to users.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 53
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Localization and Internationalization",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Support coverage matches languages promised to users.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1D3938D7",
+      "revision": 1,
+      "semantic_sha256": "1d3938d79a17a47f68fd367881c3f5a435678415dc58e72cd21cbb528f14fc07",
+      "statement": "Define usability and quality-in-use goals before selecting interface solutions.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 65
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Human-Centred Design and User Research",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define usability and quality-in-use goals before selecting interface solutions.” is a bounded documentation, matrix, ownership, state-model, or budget requirement whose explicit fields can be validated against an authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains complete in-scope entries with every explicit standard, matrix dimension, owner, state, field, budget, version, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-735FCF5F",
+      "revision": 1,
+      "semantic_sha256": "735fcf5f3bef4c51823840a32b875ab7da2819711a8c847d63f87a2ecbcbeddc",
+      "statement": "Record participant characteristics, tasks, methods, limitations, and evidence.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 70
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Human-Centred Design and User Research",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record participant characteristics, tasks, methods, limitations, and evidence.” is a bounded documentation, matrix, ownership, state-model, or budget requirement whose explicit fields can be validated against an authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains complete in-scope entries with every explicit standard, matrix dimension, owner, state, field, budget, version, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-44B1D1DA",
+      "revision": 1,
+      "semantic_sha256": "44b1d1dafd7dcca260e51b774f1bfb0fce00674d1a43f19c09e7ae34e39e3d05",
+      "statement": "Verify fixes with users rather than assuming design review is sufficient.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 72
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Human-Centred Design and User Research",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Verify fixes with users rather than assuming design review is sufficient.” names a closed browser, locale, device, journey, input, or failure scenario set whose authenticated execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every scenario in the approved test matrix for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BDCFA5BA",
+      "revision": 1,
+      "semantic_sha256": "bdcfa5ba3b20ed47a6eb0e3634bc19d5defea489b2b9877ea9045a0bd6deaf5a",
+      "statement": "Maintain a research repository with provenance, access control, and expiry rules.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 75
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Human-Centred Design and User Research",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Maintain a research repository with provenance, access control, and expiry rules.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-107041D9",
+      "revision": 1,
+      "semantic_sha256": "107041d9ce5f77d4236125c60e6791d34576304fd419d935a348bedc579f5a6e",
+      "statement": "Define content hierarchy, navigation paths, relationships, metadata, and search behavior.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 86
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Information Architecture and Content Design",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define content hierarchy, navigation paths, relationships, metadata, and search behavior.” is a bounded documentation, matrix, ownership, state-model, or budget requirement whose explicit fields can be validated against an authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains complete in-scope entries with every explicit standard, matrix dimension, owner, state, field, budget, version, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-48449C3C",
+      "revision": 1,
+      "semantic_sha256": "48449c3cb88ae7f0f3b3e2a3909e676ec3e2264026dbd38ce102f980db186309",
+      "statement": "Define content ownership, review cadence, effective dates, localization status, and retirement.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 96
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Information Architecture and Content Design",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define content ownership, review cadence, effective dates, localization status, and retirement.” is a bounded documentation, matrix, ownership, state-model, or budget requirement whose explicit fields can be validated against an authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains complete in-scope entries with every explicit standard, matrix dimension, owner, state, field, budget, version, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3AF57456",
+      "revision": 1,
+      "semantic_sha256": "3af57456cda1f863cf9e2a5c5795907894bd20dca27c98d55f9aeb719929fc68",
+      "statement": "Distinguish available, selected, focused, disabled, pending, destructive, and completed states.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 109
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Interaction and Visual Design",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Distinguish available, selected, focused, disabled, pending, destructive, and completed states.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-24C6FA97",
+      "revision": 1,
+      "semantic_sha256": "24c6fa972b453ff84429d7a2b0af995c08fc382d4d8724bd0959a74d862ac889",
+      "statement": "Design all normal, empty, loading, partial, stale, offline, error, and recovery states.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 116
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Interaction and Visual Design",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Design all normal, empty, loading, partial, stale, offline, error, and recovery states.” is a bounded documentation, matrix, ownership, state-model, or budget requirement whose explicit fields can be validated against an authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains complete in-scope entries with every explicit standard, matrix dimension, owner, state, field, budget, version, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-938B15E0",
+      "revision": 1,
+      "semantic_sha256": "938b15e0e59bbffec21607fda6e6934bab4ee61ad73476959d77dc1d2e0bf5d1",
+      "statement": "Define representative tasks, users, contexts, success criteria, and severity thresholds.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 128
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Usability and Task Success",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define representative tasks, users, contexts, success criteria, and severity thresholds.” is a bounded documentation, matrix, ownership, state-model, or budget requirement whose explicit fields can be validated against an authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains complete in-scope entries with every explicit standard, matrix dimension, owner, state, field, budget, version, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-03C4A44D",
+      "revision": 1,
+      "semantic_sha256": "03c4a44d8e2006c135c3a31fd49243a00d5de54f9d65a94d24a1434275e6db57",
+      "statement": "Test first-use learnability and repeated-use efficiency separately.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 130
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Usability and Task Success",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test first-use learnability and repeated-use efficiency separately.” names a closed browser, locale, device, journey, input, or failure scenario set whose authenticated execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every scenario in the approved test matrix for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AD024376",
+      "revision": 1,
+      "semantic_sha256": "ad0243766104857e0046be9461c46ba8305ae8d6e4c4dde557a17815b4b43433",
+      "statement": "Test infrequent, stressful, high-stakes, and interruption-prone tasks.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 131
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Usability and Task Success",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test infrequent, stressful, high-stakes, and interruption-prone tasks.” names a closed browser, locale, device, journey, input, or failure scenario set whose authenticated execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every scenario in the approved test matrix for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8A50C66F",
+      "revision": 1,
+      "semantic_sha256": "8a50c66fe6e3f07d7626a4d24101d12d84e245739384899b25628f60238325f6",
+      "statement": "Include assistive-technology and low-connectivity contexts in usability evidence.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 139
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Usability and Task Success",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Include assistive-technology and low-connectivity contexts in usability evidence.” names a closed browser, locale, device, journey, input, or failure scenario set whose authenticated execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every scenario in the approved test matrix for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-339013AF",
+      "revision": 1,
+      "semantic_sha256": "339013afb688e5dadb2d45b637367141646738a8006df0c6d72abe54f45bb357",
+      "statement": "Test end-to-end journeys that cross devices, channels, teams, and external services.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 140
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Usability and Task Success",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test end-to-end journeys that cross devices, channels, teams, and external services.” names a closed browser, locale, device, journey, input, or failure scenario set whose authenticated execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every scenario in the approved test matrix for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1CA9F46F",
+      "revision": 1,
+      "semantic_sha256": "1ca9f46f92240642b7428e9dd509da97f08f5fe876f843913eddf1766a3c845d",
+      "statement": "Compare observed outcomes with defined quality-in-use objectives.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 141
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Usability and Task Success",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Compare observed outcomes with defined quality-in-use objectives.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0F00C6D6",
+      "revision": 1,
+      "semantic_sha256": "0f00c6d6189f6ef22925cdde82a0fd2e2a16eab812494905957409ab81f409a9",
+      "statement": "Define the design system's scope, consumers, ownership, contribution model, and support policy.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 150
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Design Systems and Interface Reuse",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define the design system's scope, consumers, ownership, contribution model, and support policy.” is a bounded documentation, matrix, ownership, state-model, or budget requirement whose explicit fields can be validated against an authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains complete in-scope entries with every explicit standard, matrix dimension, owner, state, field, budget, version, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1AE96CDB",
+      "revision": 1,
+      "semantic_sha256": "1ae96cdb594b7a3942159b129155c8ddef221adab781817a1716e170ac625f94",
+      "statement": "Document usage, non-usage, states, examples, accessibility behavior, and migration guidance.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 155
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Design Systems and Interface Reuse",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Document usage, non-usage, states, examples, accessibility behavior, and migration guidance.” is a bounded documentation, matrix, ownership, state-model, or budget requirement whose explicit fields can be validated against an authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains complete in-scope entries with every explicit standard, matrix dimension, owner, state, field, budget, version, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1D542805",
+      "revision": 1,
+      "semantic_sha256": "1d542805d5ac7727c2d4a8666bfef54fba072b3a3401180be2cc4d27e3c13481",
+      "statement": "Test visual, semantic, behavioral, keyboard, screen-reader, localization, and responsive behavior.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 156
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Design Systems and Interface Reuse",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test visual, semantic, behavioral, keyboard, screen-reader, localization, and responsive behavior.” names a closed browser, locale, device, journey, input, or failure scenario set whose authenticated execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every scenario in the approved test matrix for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A83EFAA8",
+      "revision": 1,
+      "semantic_sha256": "a83efaa858fdc92199730407559f591683e859a891e25614e27ad4d49586076d",
+      "statement": "Version releases and communicate breaking changes before adoption.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 157
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Design Systems and Interface Reuse",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Version releases and communicate breaking changes before adoption.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DDE326BC",
+      "revision": 1,
+      "semantic_sha256": "dde326bc9325e1fd64519b24e764545010151c6f401caf1a9fce27a6630fad0d",
+      "statement": "Provide codemods, migration tools, or clear upgrade paths for material changes.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 158
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Design Systems and Interface Reuse",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Provide codemods, migration tools, or clear upgrade paths for material changes.” is a bounded documentation, matrix, ownership, state-model, or budget requirement whose explicit fields can be validated against an authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains complete in-scope entries with every explicit standard, matrix dimension, owner, state, field, budget, version, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-215174DB",
+      "revision": 1,
+      "semantic_sha256": "215174db89e0876c693c42d57604f6040e5c6812bfbb38dc37ff1a95a8e71ca0",
+      "statement": "Measure adoption, divergence, defects, accessibility issues, maintenance cost, and user consistency.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 159
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Design Systems and Interface Reuse",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Measure adoption, divergence, defects, accessibility issues, maintenance cost, and user consistency.” is a bounded documentation, matrix, ownership, state-model, or budget requirement whose explicit fields can be validated against an authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains complete in-scope entries with every explicit standard, matrix dimension, owner, state, field, budget, version, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EFAC915C",
+      "revision": 1,
+      "semantic_sha256": "efac915ce7cfc0eba0b498e98f2e7061d5b7a1984e704a818fa7f76652030a9d",
+      "statement": "Deprecate duplicated and unsafe components with a controlled migration plan.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 163
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Design Systems and Interface Reuse",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Deprecate duplicated and unsafe components with a controlled migration plan.” is a bounded documentation, matrix, ownership, state-model, or budget requirement whose explicit fields can be validated against an authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains complete in-scope entries with every explicit standard, matrix dimension, owner, state, field, budget, version, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-04C474D7",
+      "revision": 1,
+      "semantic_sha256": "04c474d785c68c71c5bb45633b5665331cadf90d960237493877e3c86c1fef2b",
+      "statement": "Ensure component reuse does not replace journey-level usability and accessibility testing.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 164
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Design Systems and Interface Reuse",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Ensure component reuse does not replace journey-level usability and accessibility testing.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8E136E1B",
+      "revision": 1,
+      "semantic_sha256": "8e136e1b694ab29cab3a8d1c9ac037e122b39f7c3d1ebe70c3f4963825544325",
+      "statement": "Define supported device, viewport, browser, operating environment, input, and assistive-technology combinations.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 172
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Responsive, Cross-Device, and Adaptive Design",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define supported device, viewport, browser, operating environment, input, and assistive-technology combinations.” is a bounded documentation, matrix, ownership, state-model, or budget requirement whose explicit fields can be validated against an authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains complete in-scope entries with every explicit standard, matrix dimension, owner, state, field, budget, version, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B87C9294",
+      "revision": 1,
+      "semantic_sha256": "b87c92948ed98c07920d0202015b8c2581c44b1d08ec9abe2fed0cf822f960bb",
+      "statement": "Support zoom, reflow, text spacing, orientation, and user font preferences.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 176
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Responsive, Cross-Device, and Adaptive Design",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Support zoom, reflow, text spacing, orientation, and user font preferences.” names a closed browser, locale, device, journey, input, or failure scenario set whose authenticated execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every scenario in the approved test matrix for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F22716E4",
+      "revision": 1,
+      "semantic_sha256": "f22716e46215bb229212efc05da307d4471fc35c5e6a4f524dda82206b42f02f",
+      "statement": "Avoid hover-only, precision-only, gesture-only, or device-motion-only functionality without alternatives.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 178
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Responsive, Cross-Device, and Adaptive Design",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Avoid hover-only, precision-only, gesture-only, or device-motion-only functionality without alternatives.” names a closed browser, locale, device, journey, input, or failure scenario set whose authenticated execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every scenario in the approved test matrix for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4D92636C",
+      "revision": 1,
+      "semantic_sha256": "4d92636c6b79b97704dc8167697a386fdb0e9d9cbfcb1e2fba5cd61c11b2153e",
+      "statement": "Test low-memory, low-power, slow-network, high-latency, and intermittent-connectivity conditions.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 180
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Responsive, Cross-Device, and Adaptive Design",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test low-memory, low-power, slow-network, high-latency, and intermittent-connectivity conditions.” names a closed browser, locale, device, journey, input, or failure scenario set whose authenticated execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every scenario in the approved test matrix for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5DD9239E",
+      "revision": 1,
+      "semantic_sha256": "5dd9239e4e0d09af320884e4f5a5442ca76b7bba20b5f23fbe676616e62c54b0",
+      "statement": "Use device capabilities only after permission, feature detection, and graceful fallback.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 181
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Responsive, Cross-Device, and Adaptive Design",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Use device capabilities only after permission, feature detection, and graceful fallback.” names a closed browser, locale, device, journey, input, or failure scenario set whose authenticated execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every scenario in the approved test matrix for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-24784FD3",
+      "revision": 1,
+      "semantic_sha256": "24784fd36649c8275c0dbe0009f316b56601c1ebe7ffa6011341878836991301",
+      "statement": "Maintain session, state, and task continuity across orientation and viewport changes.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 183
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Responsive, Cross-Device, and Adaptive Design",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Maintain session, state, and task continuity across orientation and viewport changes.” names a closed browser, locale, device, journey, input, or failure scenario set whose authenticated execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every scenario in the approved test matrix for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CC9F5F44",
+      "revision": 1,
+      "semantic_sha256": "cc9f5f444838cb4eb5a89ba1d5c305c9af1aa3aafed4756003dbd4c6b13a0ef7",
+      "statement": "Verify media, tables, diagrams, charts, dialogs, and long forms at constrained sizes.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 184
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Responsive, Cross-Device, and Adaptive Design",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Verify media, tables, diagrams, charts, dialogs, and long forms at constrained sizes.” names a closed browser, locale, device, journey, input, or failure scenario set whose authenticated execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every scenario in the approved test matrix for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-250AC804",
+      "revision": 1,
+      "semantic_sha256": "250ac80449f21afdd2cde9a3fddda6e3db4e0b9d8f9da53509af4a15dd293de5",
+      "statement": "Log and review complaints, reversals, accidental purchases, consent withdrawal, and cancellation failure as design-quality signals.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 205
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Ethical Design and Dark-Pattern Prevention",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Log and review complaints, reversals, accidental purchases, consent withdrawal, and cancellation failure as design-quality signals.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-92CBFB7D",
+      "revision": 1,
+      "semantic_sha256": "92cbfb7de736c0ecb8a636f02328594ca109a1d683ce4f5fa4f2399cc150bf35",
+      "statement": "Require independent review for monetization or growth experiments that alter user autonomy.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 206
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Ethical Design and Dark-Pattern Prevention",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Require independent review for monetization or growth experiments that alter user autonomy.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-448A4605",
+      "revision": 1,
+      "semantic_sha256": "448a4605f06a9f839cbd99c190907b2665edf8ff9f2f9ccf2313ee00314f9009",
+      "statement": "A supported browser, device, operating-system, and viewport matrix is documented.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 216
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Browser, Client, and Usability Behavior",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “A supported browser, device, operating-system, and viewport matrix is documented.” is a bounded documentation, matrix, ownership, state-model, or budget requirement whose explicit fields can be validated against an authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains complete in-scope entries with every explicit standard, matrix dimension, owner, state, field, budget, version, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-01713736",
+      "revision": 1,
+      "semantic_sha256": "0171373662b22c10ee345f23b2d62ac1726d645ae3bacb19d985306d5a31ea24",
+      "statement": "Critical journeys work on every supported browser and device class.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 217
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Browser, Client, and Usability Behavior",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Critical journeys work on every supported browser and device class.” names a closed browser, locale, device, journey, input, or failure scenario set whose authenticated execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every scenario in the approved test matrix for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-852BA49B",
+      "revision": 1,
+      "semantic_sha256": "852ba49b1ef245fbcffa2d1b7ff1e2a9a55debd0a8016fc913619130da3bb825",
+      "statement": "Loading, empty, success, warning, error, partial, timeout, and offline states are designed and tested.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 221
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Browser, Client, and Usability Behavior",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Loading, empty, success, warning, error, partial, timeout, and offline states are designed and tested.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1FE2D09F",
+      "revision": 1,
+      "semantic_sha256": "1fe2d09f58e641332ca60af55b2b425625abdfbbd46b97b747f85d6151123a3d",
+      "statement": "Back, forward, refresh, bookmarks, history, and deep links behave correctly.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 223
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Browser, Client, and Usability Behavior",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Back, forward, refresh, bookmarks, history, and deep links behave correctly.” names a closed browser, locale, device, journey, input, or failure scenario set whose authenticated execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every scenario in the approved test matrix for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-00520E0D",
+      "revision": 1,
+      "semantic_sha256": "00520e0dcdeee16d6364c096305069ffec6624edea4bf3be4700f6c9b11dd795",
+      "statement": "No unhandled exceptions or material console errors remain in critical paths.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 226
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Browser, Client, and Usability Behavior",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “No unhandled exceptions or material console errors remain in critical paths.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5C64BD44",
+      "revision": 1,
+      "semantic_sha256": "5c64bd44e8599b0ec3e7fa5fc68a750d4fca967b301d3a3e5c8119f4199b77c6",
+      "statement": "Download, print, clipboard, file selection, and upload behavior work where supported.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 229
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Browser, Client, and Usability Behavior",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Download, print, clipboard, file selection, and upload behavior work where supported.” names a closed browser, locale, device, journey, input, or failure scenario set whose authenticated execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every scenario in the approved test matrix for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B5E1906E",
+      "revision": 1,
+      "semantic_sha256": "b5e1906e46318677101c1527def66da9ecedf662f83b09eed4c2ca081e339590",
+      "statement": "Public and private pages have correct indexing and crawler rules.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 244
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Public Content, Search Engines, Metadata, and Indexing",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Public and private pages have correct indexing and crawler rules.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9A31C0F5",
+      "revision": 1,
+      "semantic_sha256": "9a31c0f589d950ca50abf2e36e63f98e659c1383c30806d114e0b3d049a2b606",
+      "statement": "Authentication and authorization, not crawler directives, protect private data.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 245
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Public Content, Search Engines, Metadata, and Indexing",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Authentication and authorization, not crawler directives, protect private data.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0D005E7B",
+      "revision": 1,
+      "semantic_sha256": "0d005e7ba0be09dfd4b1df69d26f48194f2713c1ab18e34f54cc9c9d53b3d404",
+      "statement": "Status codes are correct; soft-error behavior is avoided.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 247
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Public Content, Search Engines, Metadata, and Indexing",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Status codes are correct; soft-error behavior is avoided.” names a closed browser, locale, device, journey, input, or failure scenario set whose authenticated execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every scenario in the approved test matrix for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A608556D",
+      "revision": 1,
+      "semantic_sha256": "a608556dda21def0321f6bca52c26034dd8c8fb265f2f5ad93cf8bcbaa4fa508",
+      "statement": "Sitemaps are accurate and do not expose private, preview, or temporary URLs.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 248
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Public Content, Search Engines, Metadata, and Indexing",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Sitemaps are accurate and do not expose private, preview, or temporary URLs.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D8DD5868",
+      "revision": 1,
+      "semantic_sha256": "d8dd5868780de9c6c641db6ef83bf1261c3a79898f7a7dccd6c2ae9d3ba3e8bb",
+      "statement": "Deleted, private, expired, or restricted content is removed from caches and indexing workflows.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 251
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Public Content, Search Engines, Metadata, and Indexing",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Deleted, private, expired, or restricted content is removed from caches and indexing workflows.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F9D17ABE",
+      "revision": 1,
+      "semantic_sha256": "f9d17abed296555f787a7f57cdb9f44f581c29b7f5cf5dc501e37da4e87bc0e8",
+      "statement": "Staging, preview, test, and administrative environments are not unintentionally indexed.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 252
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Public Content, Search Engines, Metadata, and Indexing",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Staging, preview, test, and administrative environments are not unintentionally indexed.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F12635E9",
+      "revision": 1,
+      "semantic_sha256": "f12635e9dcda7da835d0179d0c29b3a2310ae99fe0344c8b01bf9f4e7ddc8e59",
+      "statement": "Search-result caching and public snapshots respect deletion, privacy, and access-control changes.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 255
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Public Content, Search Engines, Metadata, and Indexing",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Search-result caching and public snapshots respect deletion, privacy, and access-control changes.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4C15FCB3",
+      "revision": 1,
+      "semantic_sha256": "4c15fcb3cc01698892a812e325a523a57d3d0f9385db966dd8272c30b8b22359",
+      "statement": "Offline changes have clear conflict, ordering, merge, retry, and synchronization behavior.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 266
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Offline and Progressive Web Capabilities",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Offline changes have clear conflict, ordering, merge, retry, and synchronization behavior.” is a bounded documentation, matrix, ownership, state-model, or budget requirement whose explicit fields can be validated against an authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains complete in-scope entries with every explicit standard, matrix dimension, owner, state, field, budget, version, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C2A76E22",
+      "revision": 1,
+      "semantic_sha256": "c2a76e22d1121bf2ec8a90f81056a9a0294146c589307e17ab878393da454345",
+      "statement": "Background synchronization has bounded network, battery, storage, and compute use.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 269
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Offline and Progressive Web Capabilities",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Background synchronization has bounded network, battery, storage, and compute use.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B2DF5A8F",
+      "revision": 1,
+      "semantic_sha256": "b2df5a8f68265209d59be12c1fe67b655c500df0fa155ed513ce807be1e82adb",
+      "statement": "Model loading, empty, stale, partial, error, offline, permission, and completed states explicitly.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 289
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Frontend Architecture, Components, and State",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Model loading, empty, stale, partial, error, offline, permission, and completed states explicitly.” is a bounded documentation, matrix, ownership, state-model, or budget requirement whose explicit fields can be validated against an authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains complete in-scope entries with every explicit standard, matrix dimension, owner, state, field, budget, version, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-60F112DD",
+      "revision": 1,
+      "semantic_sha256": "60f112dd56147d766b923b5cbbceea7f50ab293128710106c903d11eb2de15f2",
+      "statement": "Define hydration, cache, persistence, version migration, logout, and reset behavior.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 293
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Frontend Architecture, Components, and State",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define hydration, cache, persistence, version migration, logout, and reset behavior.” is a bounded documentation, matrix, ownership, state-model, or budget requirement whose explicit fields can be validated against an authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains complete in-scope entries with every explicit standard, matrix dimension, owner, state, field, budget, version, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-84E85608",
+      "revision": 1,
+      "semantic_sha256": "84e85608e8348d2014e411b4999ac151ee40e2d88b6212eb62cd63c2e86fd336",
+      "statement": "Use error boundaries or equivalent containment so one component failure does not destroy unrelated work.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 295
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Frontend Architecture, Components, and State",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Use error boundaries or equivalent containment so one component failure does not destroy unrelated work.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9F675947",
+      "revision": 1,
+      "semantic_sha256": "9f675947f7b05406d5c7663596c206073db8b4bb541abb1ec058ede75b7cc8a1",
+      "statement": "Test components in isolation and complete journeys in representative browsers.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 297
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Frontend Architecture, Components, and State",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test components in isolation and complete journeys in representative browsers.” names a closed browser, locale, device, journey, input, or failure scenario set whose authenticated execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every scenario in the approved test matrix for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-82B9D9C4",
+      "revision": 1,
+      "semantic_sha256": "82b9d9c4dfd89533d3c7ead7dc27b9b627f7919e3eb45369bd8abef4205d3b5f",
+      "statement": "Prevent client-side checks from becoming trusted authorization or validation boundaries.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 298
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Frontend Architecture, Components, and State",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Prevent client-side checks from becoming trusted authorization or validation boundaries.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D2FDC656",
+      "revision": 1,
+      "semantic_sha256": "d2fdc656460fa8eea8b05a82acc15b27b8f12ff109e291496193855dd7445189",
+      "statement": "Provide visible programmatically associated labels and instructions.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 307
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Forms, User Input, and Client Validation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Provide visible programmatically associated labels and instructions.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-10E68DD7",
+      "revision": 1,
+      "semantic_sha256": "10e68dd742c3ed7cb56c4cddea899c5d8c725bb70ceddd93264a9dfdb25a8ea2",
+      "statement": "Validate on the server as the authority and use client validation for timely assistance.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 311
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Forms, User Input, and Client Validation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Validate on the server as the authority and use client validation for timely assistance.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D4865C00",
+      "revision": 1,
+      "semantic_sha256": "d4865c001fea22eae068bdcbccf6352b3b4b4d3700f5fd6a716464e689905ddc",
+      "statement": "Show errors near the field and in an accessible summary for multi-field failure.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 313
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Forms, User Input, and Client Validation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Show errors near the field and in an accessible summary for multi-field failure.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-339AADF6",
+      "revision": 1,
+      "semantic_sha256": "339aadf67201208daffeae6306762e95ddc8d712c89e824b277715b02cec3ff9",
+      "statement": "Preserve valid input after recoverable failure.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 314
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Forms, User Input, and Client Validation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Preserve valid input after recoverable failure.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E598349A",
+      "revision": 1,
+      "semantic_sha256": "e598349a9408f91f05e3f18074fb69bbe4fcd7954411a845e6a932ed09fc715d",
+      "statement": "Distinguish validation, conflict, authorization, timeout, dependency, and submission errors.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 316
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Forms, User Input, and Client Validation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Distinguish validation, conflict, authorization, timeout, dependency, and submission errors.” is a bounded documentation, matrix, ownership, state-model, or budget requirement whose explicit fields can be validated against an authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains complete in-scope entries with every explicit standard, matrix dimension, owner, state, field, budget, version, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F6E4CD10",
+      "revision": 1,
+      "semantic_sha256": "f6e4cd10f0bc639f9b8bd24a29b862d831e08a04989335398092480067860449",
+      "statement": "Test autofill, browser navigation, refresh, multi-tab, slow network, offline, and server-side error behavior.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 324
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Forms, User Input, and Client Validation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test autofill, browser navigation, refresh, multi-tab, slow network, offline, and server-side error behavior.” names a closed browser, locale, device, journey, input, or failure scenario set whose authenticated execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every scenario in the approved test matrix for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-378CA6B2",
+      "revision": 1,
+      "semantic_sha256": "378ca6b22dea6d9f25d7bd8d955f4ef1b3e10baa60d3f60a0ee516faa0b9fabe",
+      "statement": "Define user-centric budgets for loading, interaction, visual stability, memory, payload, and energy on representative devices and networks.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 333
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Frontend Performance and Runtime Efficiency",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define user-centric budgets for loading, interaction, visual stability, memory, payload, and energy on representative devices and networks.” is a bounded documentation, matrix, ownership, state-model, or budget requirement whose explicit fields can be validated against an authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains complete in-scope entries with every explicit standard, matrix dimension, owner, state, field, budget, version, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AF52281A",
+      "revision": 1,
+      "semantic_sha256": "af52281a471fba546b5485073a3820f801d7c97c4267785da1e98447b34b2e59",
+      "statement": "Avoid long main-thread tasks and excessive layout, paint, hydration, or rendering work.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 339
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Frontend Performance and Runtime Efficiency",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Avoid long main-thread tasks and excessive layout, paint, hydration, or rendering work.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E8BDEA08",
+      "revision": 1,
+      "semantic_sha256": "e8bdea087b7ed3ef5e4257db71ad1dca151d3899dc08f7d88f181402d2aa6031",
+      "statement": "Measure and constrain third-party script CPU, network, privacy, failure, and availability impact.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 345
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Frontend Performance and Runtime Efficiency",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Measure and constrain third-party script CPU, network, privacy, failure, and availability impact.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5218074C",
+      "revision": 1,
+      "semantic_sha256": "5218074ceca5f4d2d4d3ed2cf27f26fbaafc39f97385005960436f0f08f39d70",
+      "statement": "Test cold, warm, empty-cache, returning-user, low-memory, slow-network, and degraded-service states.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 347
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Frontend Performance and Runtime Efficiency",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test cold, warm, empty-cache, returning-user, low-memory, slow-network, and degraded-service states.” names a closed browser, locale, device, journey, input, or failure scenario set whose authenticated execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every scenario in the approved test matrix for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4ACFF818",
+      "revision": 1,
+      "semantic_sha256": "4acff818fc7cac3dbbf345a95d1c543ca52972a065c11873d7424618a9588beb",
+      "statement": "Set automated regression budgets and investigate statistically meaningful deterioration.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 349
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Frontend Performance and Runtime Efficiency",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Set automated regression budgets and investigate statistically meaningful deterioration.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-ED992502",
+      "revision": 1,
+      "semantic_sha256": "ed9925021791b53e4a5ad5441deb40334bfa1a094095495b11c0d210cf153641",
+      "statement": "Profile before optimizing and verify end-to-end benefit after change.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 350
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Frontend Performance and Runtime Efficiency",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Profile before optimizing and verify end-to-end benefit after change.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-981ACAE8",
+      "revision": 1,
+      "semantic_sha256": "981acae8a826b743fb2936a742ecb3d23e9cdc0c99cd3232450a1233ff4e6f0e",
+      "statement": "Keep telemetry overhead bounded.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 351
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Frontend Performance and Runtime Efficiency",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Keep telemetry overhead bounded.” can be decided by exact joins or comparisons across approved scope records, source or browser evidence, numeric standards, event times, and bound artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope page, journey, component, locale, asset, route, or runtime subject required by this control.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Bound source, artifact, browser, or operational evidence satisfies every exact state, value, timing, isolation, or threshold condition in the approved contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1D37E90B",
+      "revision": 1,
+      "semantic_sha256": "1d37e90b3f9da485b317d76929fbc36ae0f97b810b32bc5f71c0e5c41dda7094",
+      "statement": "Cover component states, variants, boundaries, permissions, locales, themes, and responsive sizes.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 361
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Frontend Testing",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Cover component states, variants, boundaries, permissions, locales, themes, and responsive sizes.” names a closed browser, locale, device, journey, input, or failure scenario set whose authenticated execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every scenario in the approved test matrix for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-ED0206BA",
+      "revision": 1,
+      "semantic_sha256": "ed0206ba3649bec8ef821e9a15ca9fbab0f3249c1e1aa3557eae3a70402c3c9a",
+      "statement": "Test routing, refresh, deep links, back, forward, multiple tabs, and session changes.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 363
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Frontend Testing",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test routing, refresh, deep links, back, forward, multiple tabs, and session changes.” names a closed browser, locale, device, journey, input, or failure scenario set whose authenticated execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every scenario in the approved test matrix for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6B3537D2",
+      "revision": 1,
+      "semantic_sha256": "6b3537d28ade072e7374a09c27ed632f490497c442a172723183a507ac0efdd1",
+      "statement": "Simulate slow, failed, duplicated, reordered, stale, and canceled network responses.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 364
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Frontend Testing",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Simulate slow, failed, duplicated, reordered, stale, and canceled network responses.” names a closed browser, locale, device, journey, input, or failure scenario set whose authenticated execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every scenario in the approved test matrix for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C27619F9",
+      "revision": 1,
+      "semantic_sha256": "c27619f9bf8a2511412d67ab34aedbb2970c40e79773a37d1d0465c12955c284",
+      "statement": "Test optimistic updates, conflict, rollback, retry, and cache invalidation.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 365
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Frontend Testing",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test optimistic updates, conflict, rollback, retry, and cache invalidation.” names a closed browser, locale, device, journey, input, or failure scenario set whose authenticated execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every scenario in the approved test matrix for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9D6AF433",
+      "revision": 1,
+      "semantic_sha256": "9d6af4331e1596a6a698ac1ad11177b37096cb9b29568edb6dbd0e004375cd85",
+      "statement": "Verify forms with valid, invalid, partial, international, long, pasted, autofilled, and server-rejected input.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 366
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Frontend Testing",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Verify forms with valid, invalid, partial, international, long, pasted, autofilled, and server-rejected input.” names a closed browser, locale, device, journey, input, or failure scenario set whose authenticated execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every scenario in the approved test matrix for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1F409E8C",
+      "revision": 1,
+      "semantic_sha256": "1f409e8c44a8ca0a49e865474ee4a389d8b55313fb30ddcab63fbf1efa4c93f6",
+      "statement": "Avoid fixed sleeps; wait for observable state or controlled time.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 369
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Frontend Testing",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-001",
+      "primary_route": "local_static",
+      "primary_reason": "The control “Avoid fixed sleeps; wait for observable state or controlled time.” is an exact source-level test-policy prohibition that a complete syntax-aware test inventory can check without running untrusted project code.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "A syntax-aware scan of the complete sealed test-source inventory reports no fixed sleep calls outside explicitly approved deterministic time controls.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    }
+  ]
+}

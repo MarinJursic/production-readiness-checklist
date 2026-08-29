@@ -1,0 +1,1272 @@
+{
+  "schema_version": "prc.control-classification-review/v0.1",
+  "packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+  "source_path": "docs/checklists/08-maintenance-vendors-compliance.md",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "controls": [
+    {
+      "control_id": "PRC-36-001",
+      "revision": 1,
+      "semantic_sha256": "0bbfc554c8306c390eb20711b691a4c35feb2106be9f7d80ccee3bae4224c764",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "File presence and freshness metadata are checkable, but whether an equivalent entry point is current and operationally useful requires semantic review; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-002",
+      "revision": 1,
+      "semantic_sha256": "20019981fe6295a2a22c00d806b44ec8b4cba30c86bece7604a373e714835ab1",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The five named documentation subjects can be required as explicit sections or linked versioned records; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Architecture, data flow, dependencies, deployment, and recovery are documented.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-003",
+      "revision": 1,
+      "semantic_sha256": "0c160985ec1702168ee40668300f8804e0bd826338d377d415bb3de48bde3bd3",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "A sealed clean development environment and declared setup procedure produce observable reproducibility outcomes; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Local or isolated development setup is reproducible.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-004",
+      "revision": 1,
+      "semantic_sha256": "75e424d872b029dbf5fb29f870c665ab106f6d751a117c7528ee4bcd395cf231",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Build and test command documentation has exact presence and nonempty command predicates; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Build and test commands are documented.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-005",
+      "revision": 1,
+      "semantic_sha256": "3167b39ef583515650422605009268ca19cdf4b0c8536d692178a1358443b6d1",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The four named convention areas can be required in versioned project documentation; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Coding, review, testing, and release conventions are documented.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-006",
+      "revision": 1,
+      "semantic_sha256": "9a37ec41e87dfce35f819d599b703fd9c2c8f0a48ad195b77dba4e2058fff63c",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Critical code selection and appropriate maintainer expertise require engineering and risk judgment; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-007",
+      "revision": 1,
+      "semantic_sha256": "0ed9dfc82f3535e58a1f93dcbfe852424014270e2150a6fb8eb6a717ab66da0c",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Review records are observable, but complexity, tight coupling, scope, and review adequacy require semantic judgment; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-008",
+      "revision": 1,
+      "semantic_sha256": "aa005a48599fe7c99d7c7cda5341c3330de9ec98e0809dde41a73809db2d258d",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Dynamic references and product semantics prevent exhaustive proof that all dead code and obsolete paths were removed; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-009",
+      "revision": 1,
+      "semantic_sha256": "59d1d91e59c8f107ce44c1001ce4f6b44a3a8b23a59df456c17c5dc86bbbdd7f",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Test understandability and maintainability permit informed reviewers to disagree on identical evidence; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-010",
+      "revision": 1,
+      "semantic_sha256": "996638c0d07f1083fb8a374670902bc62d71a1f4b22a83455d977c743ea83f18",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Critical behavior and brittle testing require domain risk and test-design judgment; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-011",
+      "revision": 1,
+      "semantic_sha256": "93b6558176b2c7defb603c30df466f55c130f7f0d953ef0452cbe8b2450a204b",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "A dependency-update policy can be checked for current owner and explicit cadence fields; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Dependency-update ownership and cadence exist.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-012",
+      "revision": 1,
+      "semantic_sha256": "0ce4a0f99b469d52a380f64d9f31bdb33dbc8793cd55d760f6d94adff324c15b",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Complete runtime and platform version inventory can be joined to authoritative end-of-support dates; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Runtime and platform end-of-support dates are tracked.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-013",
+      "revision": 1,
+      "semantic_sha256": "da7ff86b2a66c9654cf543890ab5d5b52777adbbba6c4309c4914da6cda90a88",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Recorded debt is checkable, but deciding which debt affects reliability or security requires expert interpretation; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-014",
+      "revision": 1,
+      "semantic_sha256": "0ffee804686cf724a063ad451c68e9ed41e9ccabd32968c253623c8fbefd7c96",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Every declared temporary workaround can be joined to an authenticated owner and expiry date; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Temporary workarounds have owners and expiry dates.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-015",
+      "revision": 1,
+      "semantic_sha256": "8df3b9e80af5e4040dbf9e4ba79e27cdc990eab2091c53686aa7f73cdaf7e205",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Every inventoried feature flag and compatibility shim can be joined to a versioned removal plan; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Feature flags and compatibility shims have removal plans.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-016",
+      "revision": 1,
+      "semantic_sha256": "ade2d5f9127b20d163eb28426cd1f95eca225f18eda6de107fbf993ca7200bfa",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "API and data deprecation policy records have exact presence and version predicates; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "API and data deprecation policies exist.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-017",
+      "revision": 1,
+      "semantic_sha256": "f26bcffad91bf9e575a6bff609fb7c13da66972404eb8292bf3ec985c5ece270",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Toil metrics and trends are observable, but toil classification and sufficient reduction require operational judgment; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-018",
+      "revision": 1,
+      "semantic_sha256": "2cc8d16c2d478b5ad48b51cb9295ad232b8f1bf6f976736c1995ded0e5872f35",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Broad production privilege and routine maintenance needs depend on operational duties and access design; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-019",
+      "revision": 1,
+      "semantic_sha256": "d276ca303771c366a0cf3ba858b95ff43bb413e6ed7d2bc8505e9964c873f1a0",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Release bindings and freshness are checkable, but documentation correctness and troubleshooting usefulness are semantic; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-020",
+      "revision": 1,
+      "semantic_sha256": "511d443fb549a71f1446f6dbbc334e841519b14c7fa9545c948a33115e0b9f8e",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Training completion and competence on released behavior require accountable human assessment; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-021",
+      "revision": 1,
+      "semantic_sha256": "ee8311a5f5d8e17701f9e77b73ed3fadeb4f77774fcf483c5a33e8e4034f91d9",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Effective support access can be compared with the approved customer-data policy and every access joined to an audit event; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Support access to customer data is restricted and audited.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-022",
+      "revision": 1,
+      "semantic_sha256": "ee0a6a7457b27f83d7bf136f422155fd3b5e0a9b5f134f12a6ef36ec5a6939ab",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Accuracy and sufficiency of known-issue communication require semantic comparison with product behavior; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-023",
+      "revision": 1,
+      "semantic_sha256": "5c9f26ea110c20c9220c1656e41a6ec64b9a327043b097a981d34206ed22ff9a",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Whether release notes describe all user-relevant changes requires product and user judgment; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-024",
+      "revision": 1,
+      "semantic_sha256": "af7b84abf3b6f9d6041dfc56b2c2393a8a19b31a2abc232b8111c7e0dcd882f7",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Maintenance windows and status communication rules can be required as explicit policy fields; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Maintenance windows and status communications are defined.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-025",
+      "revision": 1,
+      "semantic_sha256": "924aa17c3af1bb4234ea2f77f3695cafa99512f725b287bb703d0d8ebcfe482e",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Sufficient staffing and knowledge redundancy depend on workload, skills, absence scenarios, and service expectations; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-026",
+      "revision": 1,
+      "semantic_sha256": "17471d896f906ae0db614c2f648c7c541ece77382d05dfa4056bd4cac99299b1",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Human knowledge, authority, tacit skills, and emergency access cannot be exhaustively proven not to depend on one person; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-027",
+      "revision": 1,
+      "semantic_sha256": "894a3a34f2b40d53d9c9e6c897f36ebe7a53b743c8e071edc413ada2c386143e",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The four named decommissioning and data lifecycle topics can be required in a versioned plan; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Decommissioning, data export, retention, and secure deletion have a documented lifecycle plan.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-001",
+      "revision": 1,
+      "semantic_sha256": "e27dd2fdc6b1414d295e76141d24eef7a9219b9531be46cf0a3af69fa58180c1",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Shadow services, indirect subprocessors, embedded providers, and informal delivery dependencies prevent proof of a complete third-party inventory; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-002",
+      "revision": 1,
+      "semantic_sha256": "4884d1405cd8e3cc4d980d85d65437cbe99fcc4c39e746318ff73a52e0554f57",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Every provider in the authoritative inventory can be checked for the six explicitly named record fields; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Record each provider’s purpose, owner, data access, permissions, regions, and criticality.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-003",
+      "revision": 1,
+      "semantic_sha256": "d7a2549c53687f572bf44de215388c6b42dc78d11ae9138cc8707b8e73e3cddd",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Proportionate security and privacy due diligence requires risk and privacy specialist judgment; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-004",
+      "revision": 1,
+      "semantic_sha256": "03b7297af1232137465c8e35286807c7774a0eef61b2721378b0f65278a47626",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Whether contracts adequately cover service, security, data, breach, deletion, portability, and termination terms requires legal review; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-005",
+      "revision": 1,
+      "semantic_sha256": "a77a9e4cb4af223f4699b65c013cd326f1336cbbf6fd33f9db4d9c0ddb94e336",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Legal applicability and complete knowledge of indirect subprocessors cannot be established by bounded repository evidence; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-006",
+      "revision": 1,
+      "semantic_sha256": "5c87c852ba448deb52b98aae0bc6fbab89324b57841035ec9c6fce1f824a779d",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Least provider credential scope depends on the integration's intended operations and emergency needs; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-007",
+      "revision": 1,
+      "semantic_sha256": "615fc9f0627ace1f99a75287de60c846f2fce6563ac17928f26319333ffe24f8",
+      "classification": "deterministic",
+      "route": "external_readonly_query",
+      "reason": "Authoritative provider account identifiers and environment bindings can prove sandbox and production separation; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Sandbox and production accounts are separated.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-008",
+      "revision": 1,
+      "semantic_sha256": "b13d450ce1d9d1ef21f96c199ff955991f06a4e53fa096cb3ded65750d7bb0fc",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "An isolated rotation exercise can replace an integration secret and verify old-secret rejection and continued operation; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Integration secrets are rotatable.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-009",
+      "revision": 1,
+      "semantic_sha256": "4302882b14035babedc2e62ff5511c2084ee0c63c08794cd7eddf68f7df6f901",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Understood quotas, rate limits, and concurrency behavior is a reviewer conclusion, not a fixed result; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-010",
+      "revision": 1,
+      "semantic_sha256": "12a72e868dc6e07e9f71d8ef31bf9c103c29703f2fd752e7896fd75d5bfde919",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Numeric commitments are comparable, but alignment with product objectives depends on business and architecture judgment; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-011",
+      "revision": 1,
+      "semantic_sha256": "f295b9466e99841fe0cf087a6fd6467c7deb922d0063738542bb5f12dbe21167",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Timeout and retry configuration is exact, but adequate fallback and reconciliation behavior is domain-specific; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-012",
+      "revision": 1,
+      "semantic_sha256": "42b0394159ad28e97720df98a7a056fa0b8509b5805c1c1dae50c21cf76c63af",
+      "classification": "deterministic",
+      "route": "local_static",
+      "reason": "Supported provider-response data flows can be checked for validation at the declared untrusted boundary; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Provider responses are treated as untrusted input.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-013",
+      "revision": 1,
+      "semantic_sha256": "99bad2a81a346d5abc4d17f0484f97d26536397cf0b3942f3c06f530fa227e8e",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "Provider callback inventory permits exact authentication, signature, and replay-rejection tests; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Webhooks and callbacks are authenticated and replay-protected.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-014",
+      "revision": 1,
+      "semantic_sha256": "fff23e3bcbfee937a6bfe5a578d34ce47b443cc5d67c62ac4b05047c24d4add5",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Provider version inventory can be joined to authoritative deprecation sources and active monitoring records; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Provider API versions and deprecation dates are monitored.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-015",
+      "revision": 1,
+      "semantic_sha256": "c7c525245f1f3b17a7c29406d10d6d56d7796ed322e117776ead6ac4e33caabd",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "A signed provider breaking-change event can objectively verify delivery to the authenticated owner; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Breaking-change notifications reach an accountable owner.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-016",
+      "revision": 1,
+      "semantic_sha256": "076f42bfd2d8c0c1d88a709a72e92d61d3d1a24e13e4cd8a9679ec92525fecc5",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Provider outage and malformed-response tests lack provider inventory, scenarios, and expected application outcomes; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-017",
+      "revision": 1,
+      "semantic_sha256": "9408c4b94f6d58500cf664d884dfa7c6a349bf1a9cda3c700c34951c60f88e54",
+      "classification": "deterministic",
+      "route": "external_readonly_query",
+      "reason": "Approved provider policy sources can be checked for current subscriptions and ingested data-use change events; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Provider data-use changes are monitored.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-018",
+      "revision": 1,
+      "semantic_sha256": "42155e6dc6f2f69c4d432c97a8b43b43b689ab562bc66b8b1b2c46e4a7a00dab",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "A bounded kill-switch exercise can disable the named integration and verify calls and data flow stop; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "A kill switch can disable a compromised or harmful integration.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-019",
+      "revision": 1,
+      "semantic_sha256": "0e4068561436cecd8f62d9d4aaffd649af19e6bfa3cbae45c53d93c4fbb4a3f8",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Every provider declared critical can be checked for a versioned replacement, exit, or data-export plan; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "A replacement, exit, or data-export plan exists for critical providers.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-020",
+      "revision": 1,
+      "semantic_sha256": "847db25206538b159fa7d53d5f495a22fd33df5cf60c5d0817c813a07394938f",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "A known provider incident identifier can be traced through retained lineage to an exact affected-record set; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "The app can identify records affected by a provider incident.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-021",
+      "revision": 1,
+      "semantic_sha256": "ac07e507a4f6fccb27b35437985f43acfb9e336998e5459258aed7010f459d31",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Every provider can be joined to status and escalation contact entries in the incident runbook; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Provider status and escalation contacts are included in incident runbooks.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-022",
+      "revision": 1,
+      "semantic_sha256": "b7f22c3f5d153baa208c7691d7e274a27b5d7d8e556336c27fa15420183b9304",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Provider termination status can be joined to effective credential and data-access queries to prove revocation; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Terminated providers lose credentials and data access.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-023",
+      "revision": 1,
+      "semantic_sha256": "dd6fd894321a783150df78ca0b07d257c1361dfae492dddc876e4fad3f07009a",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Evidence record presence is exact, but whether evidence substantiates a compliance claim requires specialist interpretation; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-024",
+      "revision": 1,
+      "semantic_sha256": "2709e2527bfa688a73d5f812189a8b609e7ed356a3c0e2c3a7a47420e2cd3949",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "A provider can change indirect collection and processing outside the application's bounded observations, and approved behavior is semantic; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-001",
+      "revision": 1,
+      "semantic_sha256": "a4695756e90cbd6f42ad5ed8006ccfc3badcdb2856f97081ffb17536c16a1a4e",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Jurisdiction scope depends on legal tests for offering, operation, marketing, and user monitoring across changing facts; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-002",
+      "revision": 1,
+      "semantic_sha256": "8e736052aad11191b566be57453eb73cd8508f685b3d4967d0d5c730ed981a15",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Applicable privacy and data-protection law identification requires jurisdictional legal analysis; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-003",
+      "revision": 1,
+      "semantic_sha256": "68fa8d73526ddc10d50465fbf1f9a07cecf6008b7580e30082c64babe27bec75",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Accessibility laws and procurement requirements require legal and procurement specialist interpretation; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-004",
+      "revision": 1,
+      "semantic_sha256": "83c2dc7450855cadf28bde8097473d4d9a88f1218b43b359e2279ce52e832993",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Consumer-protection and unfair-practice applicability requires legal interpretation of product and market facts; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-005",
+      "revision": 1,
+      "semantic_sha256": "5e71ce61743fa6649583e3c473800b5c3f4f60080a50f98f8abf5f9abfb75026",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Subscription, renewal, cancellation, refund, and pricing duties vary by jurisdiction and offering; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-006",
+      "revision": 1,
+      "semantic_sha256": "c59f79bbece8caeb53d6c2ab1f5b91bc02ef4ae5ff92d72705c04470c90acec9",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Marketing and communications consent obligations require legal analysis of channels, audiences, and locations; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-007",
+      "revision": 1,
+      "semantic_sha256": "4bc6f1b392c07efbe80a8e9dcc17bb0dad201d97dc67d46bdb2a710febaf6bf9",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Payments and regulated financial-service requirements require licensed legal or compliance analysis; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-008",
+      "revision": 1,
+      "semantic_sha256": "279c71118280cb546331ce62335d0102876dcd923de07340578c7783a1f6e66c",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Sector requirements depend on product use, customer type, jurisdiction, contracts, and regulated activity; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-009",
+      "revision": 1,
+      "semantic_sha256": "a5acb9f0f5e539777620a2b39a1444ec1ba293de51258842771b1f313ed740f0",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Children's and age-appropriate-design applicability requires legal and factual audience analysis; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-010",
+      "revision": 1,
+      "semantic_sha256": "261f382112234b66c3433419900a2b8708c54c0cee3057a944bb1543f3fa286f",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Identity, fraud, and anti-money-laundering obligations require regulated-activity and jurisdiction analysis; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-011",
+      "revision": 1,
+      "semantic_sha256": "54cfbf97ff07452b44acb57fe7ba7ab03915fa19bf29800ac38d265f47dd8570",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Record-retention and legal-hold duties require legal reconciliation across data, disputes, and jurisdictions; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-012",
+      "revision": 1,
+      "semantic_sha256": "f4a589b8e3233c9a385eaa7b03d637408990999323cea680208379649a2a1bf3",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Tax, invoice, currency, and marketplace obligations require transaction and jurisdiction-specific tax analysis; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-013",
+      "revision": 1,
+      "semantic_sha256": "554bd5222279d625c3932403303a49aa191f2c78b3bf835877b5275eb739684f",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Export, sanctions, and restricted-country requirements require legal classification of parties, technology, and geography; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-014",
+      "revision": 1,
+      "semantic_sha256": "c381765e3e8ec5b56b9c8443547be0ebe1958e98026001386a574c63d87f7f16",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Localization and international-transfer duties require legal analysis of data, entities, and transfer mechanisms; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-015",
+      "revision": 1,
+      "semantic_sha256": "03d9388a3a287d712640423b1223ddc526371563f62a927e151ca04382d79bfc",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Content, intellectual-property, moderation, and intermediary obligations require legal and policy interpretation; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-016",
+      "revision": 1,
+      "semantic_sha256": "4622eca9b884e176e8a21df5efb76d4bbdcfd4834c90211a31c2fb662359cd90",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Cybersecurity and notification obligations vary by incident, data, sector, contracts, and jurisdiction; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-017",
+      "revision": 1,
+      "semantic_sha256": "b6fbb67c30da7fecaa8c8d7d5a70328fe22838aa6943ffcb9c75df05de6465aa",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Algorithmic and AI obligations depend on use, risk, affected people, and jurisdictional law; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-018",
+      "revision": 1,
+      "semantic_sha256": "1e76c416ad224cfbb009da591ff35a77e6cce5dd78f05557b17ff80755b8c93d",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Contractual and customer-specific security requirements require authoritative contract interpretation; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-019",
+      "revision": 1,
+      "semantic_sha256": "ca538a91e82a03acb19538f48bc978b0d490ce6ff3ac88eaadfcbc164328ce73",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Matching legal terms with all actual product behavior requires legal and semantic analysis; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-020",
+      "revision": 1,
+      "semantic_sha256": "e27b14d1a09a261fca703b402d3bafc92ef148b1c5ba76ce1adcd4d0881385e9",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Privacy notices must be compared with legally classified data behavior across an open-ended processing inventory; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-021",
+      "revision": 1,
+      "semantic_sha256": "16aeec4c9e62012added421686e76be7038f07303fe31482f4089308df2b0217",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Publication is checkable, but policy enforceability, sufficiency, and communication require legal and product judgment; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-022",
+      "revision": 1,
+      "semantic_sha256": "0e5a7f9d3d3ace5d063d14ec3eb983df17dd77319dced3a15a8c59a680c90f55",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Agreement and disclosure currency depends on legal scope, current processing, and contract interpretation; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-023",
+      "revision": 1,
+      "semantic_sha256": "f3c2bacfce15630616600389dd05648d879464771c3fc46fddb5b9e0c1096440",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Determining and fulfilling open-source license obligations requires legal interpretation of components and distribution; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-024",
+      "revision": 1,
+      "semantic_sha256": "ef56c8f637834d1fc4591f936f73366c53c9b85d6cb663ae1a6829a652176a65",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Appropriate rights for trademarks, media, data, fonts, and content require ownership and license analysis; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-025",
+      "revision": 1,
+      "semantic_sha256": "5c62d256404d7a8bd143e6b0b21a57ac3f2b5b01a7e1876779e5a7f6d913dd59",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Accuracy and supportability of security and compliance claims require specialist evidence assessment; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-026",
+      "revision": 1,
+      "semantic_sha256": "74e6e41b789d5d35bca94dfacb1b7b0725e9edf9c0d0b7dc5969fa23dc50c603",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Comparing certification claims with actual scope requires authoritative certification and legal interpretation; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-027",
+      "revision": 1,
+      "semantic_sha256": "8c57e2c09da13eedf19ce43760b90099a87c55eee9fb35b6c4d54400934d5ede",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Whether evidence supports an accessibility claim requires accessibility specialist judgment; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-028",
+      "revision": 1,
+      "semantic_sha256": "85dccd33a276fddfbf7fb540682920743428d04f6d5ca7bf07703c2376757478",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Display can be tested, but deciding which company, pricing, cancellation, contact, and complaint information is legally required cannot; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-029",
+      "revision": 1,
+      "semantic_sha256": "16ee35886f4c843f4889d54b54454c1c75cc6b5cd7e0abab1347139cebac035c",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Contract promise meaning and demonstrated capacity require contract and performance interpretation; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-030",
+      "revision": 1,
+      "semantic_sha256": "9ba900d6ad5f19ecc806480f5caf23085c6e7410bc4bedccab51c27d38d02d79",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Understanding insurance duties and procedures requires accountable insurance and legal review; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-031",
+      "revision": 1,
+      "semantic_sha256": "ea9c775989bb0c4bf50fb7cae34c0d820e4e796ad2f74f9ac2cfa917cad18b3d",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Legal approval and materiality of launch changes are authoritative human decisions; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-032",
+      "revision": 1,
+      "semantic_sha256": "a45e1c3da592afaa209bb0856d01c592da6e5c99f3a77d11e1abfa2630dc1a74",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Approved renewal, review, and filing obligations can be joined to tracked deadlines and current status; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Renewal, review, and filing deadlines are tracked after launch.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-033",
+      "revision": 1,
+      "semantic_sha256": "387e340fae871a438115db18fc1369992f91523bb8548ec249d24b9e3ab7e8da",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "PCI applicability, current requirement interpretation, actual cardholder environment, and suitable scope minimization require specialist authority; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-034",
+      "revision": 1,
+      "semantic_sha256": "f8c7f41b5aff13979fdfcc3a8d1d1dd95566904900ad911b1628307c4c7fead4",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "HIPAA or other health regime applicability and safeguard obligations require legal and security specialist analysis; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-035",
+      "revision": 1,
+      "semantic_sha256": "919afc8cf14723079e22e4e98cb7959b1386d2d00cf5bb1deded7ab3568db4d9",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Child-directed status, actual knowledge, consent, advertising, safety, and deletion duties require legal analysis; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-036",
+      "revision": 1,
+      "semantic_sha256": "2593c72aa06e1b0f3e64d11d645ed801871bc3b0925a3ac25173cb1e43775e64",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "European Accessibility Act and national-law applicability require jurisdictional accessibility legal analysis; therefore the complete rule cannot receive a judgment-free deterministic Pass.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    }
+  ]
+}

@@ -6,7 +6,7 @@
   "additionalProperties": false,
   "required": ["schema_version", "task_id", "reviews"],
   "properties": {
-    "schema_version": {"const": "prc.control-review-output/v0.1"},
+    "schema_version": {"const": "prc.control-review-output/v0.2"},
     "task_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "reviews": {
       "type": "array",
@@ -15,14 +15,29 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["control_id", "assessment_candidate", "applicability_candidate", "confidence", "reason", "advice", "evidence", "limitations"],
+        "required": ["control_id", "assessment_candidate", "applicability_candidate", "confidence", "priority", "reason", "challenge", "risk_if_ignored", "advice", "remediation_steps", "verification_steps", "evidence_needed", "evidence", "limitations"],
         "properties": {
           "control_id": {"type": "string", "pattern": "^(PRC-[0-9]{2}-[0-9]{3}|USEQ-[A-F0-9]{8})$"},
           "assessment_candidate": {"enum": ["advisory_pass_candidate", "advisory_fail_candidate", "needs_evidence", "not_applicable_candidate"]},
           "applicability_candidate": {"enum": ["applicable", "not_applicable", "undetermined"]},
           "confidence": {"enum": ["low", "medium", "high"]},
+          "priority": {"enum": ["critical", "high", "medium", "low", "none"]},
           "reason": {"type": "string", "minLength": 1, "maxLength": 16384},
-          "advice": {"type": "string", "maxLength": 16384},
+          "challenge": {"type": "string", "minLength": 1, "maxLength": 16384},
+          "risk_if_ignored": {"type": "string", "minLength": 1, "maxLength": 16384},
+          "advice": {"type": "string", "minLength": 1, "maxLength": 16384},
+          "remediation_steps": {
+            "type": "array", "minItems": 1, "maxItems": 12, "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1, "maxLength": 16384}
+          },
+          "verification_steps": {
+            "type": "array", "minItems": 1, "maxItems": 12, "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1, "maxLength": 16384}
+          },
+          "evidence_needed": {
+            "type": "array", "minItems": 1, "maxItems": 12, "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1, "maxLength": 16384}
+          },
           "evidence": {
             "type": "array",
             "maxItems": 256,

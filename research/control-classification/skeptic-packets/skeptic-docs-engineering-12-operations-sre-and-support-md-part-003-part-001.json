@@ -1,0 +1,706 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-12-operations-sre-and-support-md-part-003-part-001",
+  "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 27,
+  "controls": [
+    {
+      "control_id": "USEQ-2B75F633",
+      "revision": 1,
+      "semantic_sha256": "2b75f633418e53126019662a38322ac6e848e787711756ee379734402d1aed76",
+      "statement": "Define handover, leave, offboarding, role-change, and contractor-transition procedures.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 680
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "People, roles, competence, and staffing readiness"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define handover, leave, offboarding, role-change, and contractor-transition procedures.” defines explicit transition, support, ownership, procedure, acceptance, metric, escalation, or obligation fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized operations or transition record contains every named field, role, state, procedure, metric, acceptance decision, or evidence link and binds to the declared service and transition.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E04DCCED",
+      "revision": 1,
+      "semantic_sha256": "e04dcced2a5062535a060ed4c97a2dcf77ed69ea2d94bc59044b9233d5f5a3e6",
+      "statement": "Transfer architecture, dependencies, data flows, trust boundaries, operating assumptions, and failure modes.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 688
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Knowledge transfer and documentation acceptance"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Transfer architecture, dependencies, data flows, trust boundaries, operating assumptions, and failure modes.” defines explicit transition, support, ownership, procedure, acceptance, metric, escalation, or obligation fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized operations or transition record contains every named field, role, state, procedure, metric, acceptance decision, or evidence link and binds to the declared service and transition.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4B01668D",
+      "revision": 1,
+      "semantic_sha256": "4b01668d8e7c7efc6cb3f8f71b15bf799c9e118900bbc332b3ea582e7e2d0907",
+      "statement": "Transfer deployment, configuration, migration, rollback, failover, restoration, and decommissioning procedures.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 689
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Knowledge transfer and documentation acceptance"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Transfer deployment, configuration, migration, rollback, failover, restoration, and decommissioning procedures.” defines explicit transition, support, ownership, procedure, acceptance, metric, escalation, or obligation fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized operations or transition record contains every named field, role, state, procedure, metric, acceptance decision, or evidence link and binds to the declared service and transition.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A7916E27",
+      "revision": 1,
+      "semantic_sha256": "a7916e277429dad5ede57564ac281c501f4bdf547dd2deeed35182a2d6a32f39",
+      "statement": "Transfer service objectives, dashboards, alerts, synthetic checks, logs, traces, and diagnostic queries.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 690
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Knowledge transfer and documentation acceptance"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Transfer service objectives, dashboards, alerts, synthetic checks, logs, traces, and diagnostic queries.” defines explicit transition, support, ownership, procedure, acceptance, metric, escalation, or obligation fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized operations or transition record contains every named field, role, state, procedure, metric, acceptance decision, or evidence link and binds to the declared service and transition.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B4F1C28A",
+      "revision": 1,
+      "semantic_sha256": "b4f1c28ad58bcab3897dc9b03b1e46eab0f7f482a2a1509aff129ace521ad082",
+      "statement": "Transfer open incidents, defects, risks, exceptions, workarounds, debt, and expiry dates.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 692
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Knowledge transfer and documentation acceptance"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Transfer open incidents, defects, risks, exceptions, workarounds, debt, and expiry dates.” defines explicit transition, support, ownership, procedure, acceptance, metric, escalation, or obligation fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized operations or transition record contains every named field, role, state, procedure, metric, acceptance decision, or evidence link and binds to the declared service and transition.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A245042A",
+      "revision": 1,
+      "semantic_sha256": "a245042af5233312c2f75bde8fa9cb7522b9c71ffcbfa3e881719c0acef9b3a6",
+      "statement": "Transfer access-control models, privileged processes, break-glass methods, keys, certificates, and secret-recovery procedures.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 694
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Knowledge transfer and documentation acceptance"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Transfer access-control models, privileged processes, break-glass methods, keys, certificates, and secret-recovery procedures.” defines explicit transition, support, ownership, procedure, acceptance, metric, escalation, or obligation fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized operations or transition record contains every named field, role, state, procedure, metric, acceptance decision, or evidence link and binds to the declared service and transition.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B0CE4AC1",
+      "revision": 1,
+      "semantic_sha256": "b0ce4ac102e8c4231359c7d980a5ec8c325f8e69688a3c68d364e62e7dfb8d0f",
+      "statement": "Validate documentation through task execution by the receiving team.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 697
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Knowledge transfer and documentation acceptance"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Validate documentation through task execution by the receiving team.” requires a finite receiving-team or break-glass exercise whose declared task, identities, audit events, and result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded exercise and verify authenticated evidence records the declared participants, task or access path, expected events, audit trail, and successful completion.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C35F42F2",
+      "revision": 1,
+      "semantic_sha256": "c35f42f2b4d589eab437672a0ed2382dde3322e4a74e5348ebd1a14b51dcf5b6",
+      "statement": "Record unanswered questions and close or accept them before transition completion.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 698
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Knowledge transfer and documentation acceptance"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record unanswered questions and close or accept them before transition completion.” defines explicit transition, support, ownership, procedure, acceptance, metric, escalation, or obligation fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized operations or transition record contains every named field, role, state, procedure, metric, acceptance decision, or evidence link and binds to the declared service and transition.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DF105206",
+      "revision": 1,
+      "semantic_sha256": "df1052066e92663c7930b6fbcb8bf295ddced6d37090d49dbf21e356faf32f2e",
+      "statement": "Verify production configuration and feature-flag control are versioned, reviewed, and recoverable.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 704
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Environment, tool, and access readiness"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Verify production configuration and feature-flag control are versioned, reviewed, and recoverable.” joins bounded artifact, identity, log, backlog, inventory, or deployed-state authorities whose required bindings and lifecycle state can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized operations, support, ownership, or retirement record contains every explicitly required state, owner, action, and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Run the registered recovery protocol for the exact versioned production configuration and feature-flag state, then verify the restored identities and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CCFEF50D",
+      "revision": 1,
+      "semantic_sha256": "ccfef50d354c5b7f849b840328f20c75ee3fdf7dd6769400d449119009fb7848",
+      "statement": "Test break-glass access and its audit trail.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 706
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Environment, tool, and access readiness"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test break-glass access and its audit trail.” requires a finite receiving-team or break-glass exercise whose declared task, identities, audit events, and result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded exercise and verify authenticated evidence records the declared participants, task or access path, expected events, audit trail, and successful completion.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BB017E08",
+      "revision": 1,
+      "semantic_sha256": "bb017e088b275f1ef1186d7564e4974ddc2d2f110d9d050ec87fa77368434fe6",
+      "statement": "Define the exact cutover sequence, dependencies, checkpoints, approvals, communications, and rollback points.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 717
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Cutover, migration, and early-life support"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define the exact cutover sequence, dependencies, checkpoints, approvals, communications, and rollback points.” defines explicit transition, support, ownership, procedure, acceptance, metric, escalation, or obligation fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized operations or transition record contains every named field, role, state, procedure, metric, acceptance decision, or evidence link and binds to the declared service and transition.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2E28DB48",
+      "revision": 1,
+      "semantic_sha256": "2e28db48fef700faaa8c227896db86a1058da6c0d31ed8df397a0edcc7213000",
+      "statement": "Establish a protected recovery point before irreversible change.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 719
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Cutover, migration, and early-life support"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The control “Establish a protected recovery point before irreversible change.” requires a specific protected recovery artifact whose existence, creation time, immutable identity, integrity metadata, and verification binding can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Verify the recovery-point artifact exists, predates the irreversible change, has immutable identity and integrity metadata, and links to successful verification evidence.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D329E9E1",
+      "revision": 1,
+      "semantic_sha256": "d329e9e133404dabaa4226ae7939f5289699bd008f9df6829cf73fb2fbd14d3c",
+      "statement": "Define how incidents are attributed and owned during overlap.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 725
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Cutover, migration, and early-life support"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define how incidents are attributed and owned during overlap.” defines explicit transition, support, ownership, procedure, acceptance, metric, escalation, or obligation fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized operations or transition record contains every named field, role, state, procedure, metric, acceptance decision, or evidence link and binds to the declared service and transition.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3EB7D7A3",
+      "revision": 1,
+      "semantic_sha256": "3eb7d7a3044245f85e1b5a6a27943986e6719811c044f271c20e010998198348",
+      "statement": "Track support volume, user failure, performance, error, data integrity, accessibility, abuse, and business outcomes.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 726
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Cutover, migration, and early-life support"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The control “Track support volume, user failure, performance, error, data integrity, accessibility, abuse, and business outcomes.” names concrete support, transition, reliability, accessibility, abuse, integrity, and business signals whose configured observations can be read from an authorized monitoring system.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Read the authorized monitoring configuration and verify current observations exist for every signal named by this control with a bound service, owner, and immutable query timestamp.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2E22A580",
+      "revision": 1,
+      "semantic_sha256": "2e22a5802266cc3fcf7a025035eb40f006e435bc4f39fa84360093253647a005",
+      "statement": "Pause expansion or roll back when predefined thresholds are crossed.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 727
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Cutover, migration, and early-life support"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+      "primary_route": "local_static",
+      "primary_reason": "The control “Pause expansion or roll back when predefined thresholds are crossed.” defines an exact threshold or transition-completion gate whose fail-closed workflow behavior can be verified from versioned policy and bounded fixtures.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Inspect the versioned rollout policy and run fixtures proving expansion pauses or rolls back at declared thresholds and completion cannot occur before the configured periods end.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5AB3637F",
+      "revision": 1,
+      "semantic_sha256": "5ab3637f8b72f2e99d164271a0213cfcb391fa2801abbca381105f1d96f7b60d",
+      "statement": "Avoid declaring transition complete before the observation and reconciliation period ends.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 728
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Cutover, migration, and early-life support"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+      "primary_route": "local_static",
+      "primary_reason": "The control “Avoid declaring transition complete before the observation and reconciliation period ends.” defines an exact threshold or transition-completion gate whose fail-closed workflow behavior can be verified from versioned policy and bounded fixtures.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Inspect the versioned rollout policy and run fixtures proving expansion pauses or rolls back at declared thresholds and completion cannot occur before the configured periods end.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8F0B7D76",
+      "revision": 1,
+      "semantic_sha256": "8f0b7d764b8b4d8dd5465b693dcd0b14b18d646331d05d8c9aaf9ad9f1bc64af",
+      "statement": "Record the final acceptance decision and residual obligations.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 729
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Cutover, migration, and early-life support"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record the final acceptance decision and residual obligations.” defines explicit transition, support, ownership, procedure, acceptance, metric, escalation, or obligation fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized operations or transition record contains every named field, role, state, procedure, metric, acceptance decision, or evidence link and binds to the declared service and transition.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CA4E11E2",
+      "revision": 1,
+      "semantic_sha256": "ca4e11e2f4a46f6236e828a270d16cbb00233f556f2af250eb781352a0779107",
+      "statement": "Define supported users, service hours, channels, languages, accessibility accommodations, and response expectations.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 733
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Support, service desk, and customer readiness"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define supported users, service hours, channels, languages, accessibility accommodations, and response expectations.” defines explicit transition, support, ownership, procedure, acceptance, metric, escalation, or obligation fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized operations or transition record contains every named field, role, state, procedure, metric, acceptance decision, or evidence link and binds to the declared service and transition.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1B3A2CEF",
+      "revision": 1,
+      "semantic_sha256": "1b3a2cefa11be43643d2d1c00d70ef8ac80aacfec5b6272c48ce73e5639b3d6d",
+      "statement": "Make support actions attributable and auditable.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 737
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Support, service desk, and customer readiness"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Make support actions attributable and auditable.” joins bounded artifact, identity, log, backlog, inventory, or deployed-state authorities whose required bindings and lifecycle state can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized operations, support, ownership, or retirement record contains every explicitly required state, owner, action, and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked immutable artifact, audit stream, backlog, inventory, or deployed environment and fail closed on missing or mismatched evidence.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E27FB6F6",
+      "revision": 1,
+      "semantic_sha256": "e27fb6f6a41010681b8ec090c5dc0383dd50f1568247d3a4ee8222b384ab565c",
+      "statement": "Define incident linkage so related support cases contribute to impact assessment.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 739
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Support, service desk, and customer readiness"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define incident linkage so related support cases contribute to impact assessment.” defines explicit transition, support, ownership, procedure, acceptance, metric, escalation, or obligation fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized operations or transition record contains every named field, role, state, procedure, metric, acceptance decision, or evidence link and binds to the declared service and transition.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-744C959B",
+      "revision": 1,
+      "semantic_sha256": "744c959becbcf68558f42e28d3d65a72ffc5af0c2a2c654c1605ffa1f2ae0032",
+      "statement": "Prepare communications for maintenance, degradation, data issues, security events, delays, and rollback.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 740
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Support, service desk, and customer readiness"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Prepare communications for maintenance, degradation, data issues, security events, delays, and rollback.” defines explicit transition, support, ownership, procedure, acceptance, metric, escalation, or obligation fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized operations or transition record contains every named field, role, state, procedure, metric, acceptance decision, or evidence link and binds to the declared service and transition.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CD98BD1C",
+      "revision": 1,
+      "semantic_sha256": "cd98bd1c0a578c16e164bb7c0e8e34e54c2036e6c1cac98ca88019cc941251ab",
+      "statement": "Provide user migration, onboarding, recovery, and rollback guidance.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 742
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Support, service desk, and customer readiness"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Provide user migration, onboarding, recovery, and rollback guidance.” defines explicit transition, support, ownership, procedure, acceptance, metric, escalation, or obligation fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized operations or transition record contains every named field, role, state, procedure, metric, acceptance decision, or evidence link and binds to the declared service and transition.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A86B1DF6",
+      "revision": 1,
+      "semantic_sha256": "a86b1df6dc6bbdde65d8c3e17c2252bc61018ed2eb0df2fc5e1d07d586cf1985",
+      "statement": "Measure resolution quality, recurrence, customer effort, accessibility, and escalation effectiveness rather than closure count alone.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 744
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Support, service desk, and customer readiness"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Measure resolution quality, recurrence, customer effort, accessibility, and escalation effectiveness rather than closure count alone.” defines explicit transition, support, ownership, procedure, acceptance, metric, escalation, or obligation fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized operations or transition record contains every named field, role, state, procedure, metric, acceptance decision, or evidence link and binds to the declared service and transition.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-02C84E3D",
+      "revision": 1,
+      "semantic_sha256": "02c84e3dec71c9ae3fb855bb0f74498572976391cc9ef54d4ee59c1990be7278",
+      "statement": "Have the receiving owner explicitly accept or reject responsibility.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 764
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Acceptance, closure, and post-transition governance"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Have the receiving owner explicitly accept or reject responsibility.” defines explicit transition, support, ownership, procedure, acceptance, metric, escalation, or obligation fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized operations or transition record contains every named field, role, state, procedure, metric, acceptance decision, or evidence link and binds to the declared service and transition.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6808A5B2",
+      "revision": 1,
+      "semantic_sha256": "6808a5b23893a49c922cc4545db02ca8aa100a320844c13a240836e1cb27a10e",
+      "statement": "Record conditional acceptance with compensating controls, monitoring, owner, remediation date, and expiry.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 765
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Acceptance, closure, and post-transition governance"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record conditional acceptance with compensating controls, monitoring, owner, remediation date, and expiry.” defines explicit transition, support, ownership, procedure, acceptance, metric, escalation, or obligation fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized operations or transition record contains every named field, role, state, procedure, metric, acceptance decision, or evidence link and binds to the declared service and transition.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-354C8516",
+      "revision": 1,
+      "semantic_sha256": "354c85168082c4cbc457cd8def2e949152aace6c9395e2057cbbf052ed646f9c",
+      "statement": "Confirm unresolved work has transferred to active owners and backlogs.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 767
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Acceptance, closure, and post-transition governance"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Confirm unresolved work has transferred to active owners and backlogs.” joins bounded artifact, identity, log, backlog, inventory, or deployed-state authorities whose required bindings and lifecycle state can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized operations, support, ownership, or retirement record contains every explicitly required state, owner, action, and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked immutable artifact, audit stream, backlog, inventory, or deployed environment and fail closed on missing or mismatched evidence.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A157B5DF",
+      "revision": 1,
+      "semantic_sha256": "a157b5df7503ccd13e0f8d59a0802cab24527ccc6b25337ae6c5720298a35966",
+      "statement": "Confirm old systems, routes, jobs, credentials, and communications are decommissioned or intentionally retained.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 769
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Acceptance, closure, and post-transition governance"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Confirm old systems, routes, jobs, credentials, and communications are decommissioned or intentionally retained.” joins bounded artifact, identity, log, backlog, inventory, or deployed-state authorities whose required bindings and lifecycle state can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized operations, support, ownership, or retirement record contains every explicitly required state, owner, action, and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked immutable artifact, audit stream, backlog, inventory, or deployed environment and fail closed on missing or mismatched evidence.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    }
+  ]
+}

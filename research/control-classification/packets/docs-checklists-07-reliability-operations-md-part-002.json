@@ -1,0 +1,641 @@
+{
+  "schema_version": "prc.control-classification-packet/v0.1",
+  "packet_id": "docs-checklists-07-reliability-operations-md-part-002",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/checklists/07-reliability-operations.md",
+  "control_count": 45,
+  "controls": [
+    {
+      "control_id": "PRC-34-016",
+      "revision": 1,
+      "semantic_sha256": "bec9d95f07c9f7b3cbdab97920c0aaebb2b3159ab1b1978081704c795e255214",
+      "statement": "Stop and rollback criteria are documented before launch.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 304
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ]
+    },
+    {
+      "control_id": "PRC-34-017",
+      "revision": 1,
+      "semantic_sha256": "e652eae604f82cbd3bb9169f1c153b5bd6526c1e69cce882445021ba578b6c3b",
+      "statement": "Rollback can be initiated quickly.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 305
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ]
+    },
+    {
+      "control_id": "PRC-34-018",
+      "revision": 1,
+      "semantic_sha256": "2b0376f52601825975472c4d34d858111d80dafb568122aa6274cd496fd66c42",
+      "statement": "Rollback has been rehearsed.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 306
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ]
+    },
+    {
+      "control_id": "PRC-34-019",
+      "revision": 1,
+      "semantic_sha256": "2e7a89ffa5f96fe659ea0230286023268ae6ccde8f6240eb94249cbd5e5cf386",
+      "statement": "Rollback is compatible with database and event changes.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 307
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ]
+    },
+    {
+      "control_id": "PRC-34-020",
+      "revision": 1,
+      "semantic_sha256": "4b72d08da7b0cab3b23130cb4dace9ecd7ae737ac17735476b8303575084bf18",
+      "statement": "When rollback is unsafe, roll-forward recovery is rehearsed.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 308
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ]
+    },
+    {
+      "control_id": "PRC-34-021",
+      "revision": 1,
+      "semantic_sha256": "c05390801cda953cc4cb92d077adc072db52873221a8a099a1d83d7b59c724a9",
+      "statement": "The previous artifact and configuration remain available.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 309
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ]
+    },
+    {
+      "control_id": "PRC-34-022",
+      "revision": 1,
+      "semantic_sha256": "155f220ff5ff675a5420eeac891ad4cb49c5ae32b55d1faed0629a0e633ae443",
+      "statement": "Feature flags provide an independent way to disable risky behavior where appropriate.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 310
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ]
+    },
+    {
+      "control_id": "PRC-34-023",
+      "revision": 1,
+      "semantic_sha256": "e9b93d8b8c2c806cd3aebb4951b54f20f1d033853c492fd5bdbb541cfb6fce2b",
+      "statement": "Traffic shifting and load-balancer behavior are tested.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 311
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ]
+    },
+    {
+      "control_id": "PRC-34-024",
+      "revision": 1,
+      "semantic_sha256": "dbf7cf1fccc2520ab28531540dfa4bbcf82226e4009d764e134d24c33248d4bb",
+      "statement": "Cache and CDN invalidation are planned.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 312
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ]
+    },
+    {
+      "control_id": "PRC-34-025",
+      "revision": 1,
+      "semantic_sha256": "409b129f2a488225dc5b7db7383440045795dd28b1cb5344f036e840c658d585",
+      "statement": "DNS changes and TTL timing are planned.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 313
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ]
+    },
+    {
+      "control_id": "PRC-34-026",
+      "revision": 1,
+      "semantic_sha256": "91f2ee61779c25abb683bb6bfe6adaf3f1e2261ec078efbd4a02f5d949dc38cf",
+      "statement": "Certificate changes are planned and monitored.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 314
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ]
+    },
+    {
+      "control_id": "PRC-34-027",
+      "revision": 1,
+      "semantic_sha256": "bcc0fa222fb54d8ccfe3dcf300b3eafaf9477d8df8041d24777b244a00bbb270",
+      "statement": "External providers are ready for the expected change.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 315
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ]
+    },
+    {
+      "control_id": "PRC-34-028",
+      "revision": 1,
+      "semantic_sha256": "9415699ef9014dd24e3bac52ef46bfd5d47e67d147dbec1593bc45310e0d02c2",
+      "statement": "Rate limits and quotas are increased where needed.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 316
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ]
+    },
+    {
+      "control_id": "PRC-34-029",
+      "revision": 1,
+      "semantic_sha256": "eb7873e9368a6280fbe30fc912d49ebd416f2154f66f8ff54c4a8df52d4fb859",
+      "statement": "Scheduled jobs and workers are deployed in a safe order.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 317
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ]
+    },
+    {
+      "control_id": "PRC-34-030",
+      "revision": 1,
+      "semantic_sha256": "2aca064b1dc9945cf7679a8f3f46826dbadb88e4eb97d9be09882bb3e9e9df20",
+      "statement": "No critical deployment step exists only in someone’s memory.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 318
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ]
+    },
+    {
+      "control_id": "PRC-34-031",
+      "revision": 1,
+      "semantic_sha256": "d8b38a8b39673493cc7d9a04535b523c9cb69f7f3a38481b2f60e12902eb2fb2",
+      "statement": "Manual steps are minimized, scripted where practical, and peer-checked.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 319
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ]
+    },
+    {
+      "control_id": "PRC-34-032",
+      "revision": 1,
+      "semantic_sha256": "1d9f8e699f18e42421eebb07c56b88e12c06189653742a86bd79aafd5e570a11",
+      "statement": "The complete procedure has been rehearsed in a production-like environment.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 320
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ]
+    },
+    {
+      "control_id": "PRC-34-033",
+      "revision": 1,
+      "semantic_sha256": "68c90f922781e1a7390e8f6969c760149566be2324ca1dc0ea9a73abe310c724",
+      "statement": "On-call engineering, operations, security, data, and provider contacts are available as needed.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 321
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ]
+    },
+    {
+      "control_id": "PRC-34-034",
+      "revision": 1,
+      "semantic_sha256": "224d52960ee17bc62b05771a76ee95e6762ba3fe3456eda0fa3cfcc5b9c9d47c",
+      "statement": "Customer support and communications are ready.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 322
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ]
+    },
+    {
+      "control_id": "PRC-34-035",
+      "revision": 1,
+      "semantic_sha256": "cf1da6e3e9ff246a08b9eca109e3aeeacd108104de561f98ee1ac19874cdfdb4",
+      "statement": "The change window leaves adequate observation and rollback time.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 323
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ]
+    },
+    {
+      "control_id": "PRC-34-036",
+      "revision": 1,
+      "semantic_sha256": "0f1ea5574595ceab363ce78e25e019ed6359ed69a2529c97e0a095dd31470975",
+      "statement": "Every deployment action is auditable.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 324
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ]
+    },
+    {
+      "control_id": "PRC-35-001",
+      "revision": 1,
+      "semantic_sha256": "752d225071bc69874df27dcb0f190f47d5a5fcfc8727095207af965e2f4e79be",
+      "statement": "Verify the deployed artifact digest.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 330
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ]
+    },
+    {
+      "control_id": "PRC-35-002",
+      "revision": 1,
+      "semantic_sha256": "08b2f903c2fd3ab1fe8635eb186d1faa489e6e2eb8c6ed13acaf82b961470fe1",
+      "statement": "Verify the deployed configuration and feature-flag state.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 331
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ]
+    },
+    {
+      "control_id": "PRC-35-003",
+      "revision": 1,
+      "semantic_sha256": "0fa97e8dcf7507c670a4341ea2602d8bfb1a1f2c05838cd33b96ef9196d21dc5",
+      "statement": "Verify database schema and migration completion.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 332
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ]
+    },
+    {
+      "control_id": "PRC-35-004",
+      "revision": 1,
+      "semantic_sha256": "6e63b6962689376c36dd290f7e3882c74d9f7a0fc24629f94a423975bf754801",
+      "statement": "Verify migration row counts, totals, constraints, checksums, and business invariants.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 333
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ]
+    },
+    {
+      "control_id": "PRC-35-005",
+      "revision": 1,
+      "semantic_sha256": "0328a12180f666fb5bc906071c95ca32d8fcf082dc9b78e7ac06ac58246a5d35",
+      "statement": "Run production-safe smoke tests for every critical journey.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 334
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ]
+    },
+    {
+      "control_id": "PRC-35-006",
+      "revision": 1,
+      "semantic_sha256": "8f75e42be0356bfc860fb48e9d4ad674de829fb7e693a76f4c3c94d10e5c6e71",
+      "statement": "Test login, logout, recovery, and privileged authentication.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 335
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ]
+    },
+    {
+      "control_id": "PRC-35-007",
+      "revision": 1,
+      "semantic_sha256": "2fa6d1e9187f0747811678572191f3e936ca960c90b1c7578a654a77e270741b",
+      "statement": "Test authorization using multiple roles and tenants.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 336
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ]
+    },
+    {
+      "control_id": "PRC-35-008",
+      "revision": 1,
+      "semantic_sha256": "f4f48dd7a68579a5e81106c560fd40be227c9c737bef6d0f73a167802a1c59c3",
+      "statement": "Verify public, authenticated, administrative, API, worker, and scheduled-job paths.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 337
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ]
+    },
+    {
+      "control_id": "PRC-35-009",
+      "revision": 1,
+      "semantic_sha256": "ebb1b07e40475cec9db6331d281867ac539e3cd150341398fa2a4c031af4b3ea",
+      "statement": "Verify third-party payments, webhooks, email, SMS, identity, storage, and other critical integrations.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 338
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ]
+    },
+    {
+      "control_id": "PRC-35-010",
+      "revision": 1,
+      "semantic_sha256": "d4f07466e063e68e318eeffdb05c1edc4de7c864c46125011e5a5e2f2ac1b37f",
+      "statement": "Verify TLS, certificates, redirects, CORS, cache controls, and security headers.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 339
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ]
+    },
+    {
+      "control_id": "PRC-35-011",
+      "revision": 1,
+      "semantic_sha256": "3036f0c2de2ea68a56ead23e8bc48177af5f80a6bcf8d0c16df5133c10d6e663",
+      "statement": "Verify CDN and cache behavior.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 340
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ]
+    },
+    {
+      "control_id": "PRC-35-012",
+      "revision": 1,
+      "semantic_sha256": "5847cf15ab8fca5f0b951f303ba8c484d0f5dccb0fd64a3a15deb9e29a5ad1f4",
+      "statement": "Review errors, latency, traffic, saturation, queues, database health, and dependency metrics.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 341
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ]
+    },
+    {
+      "control_id": "PRC-35-013",
+      "revision": 1,
+      "semantic_sha256": "1017f40d300aff33cbf89ae4f5ee7fbd068a22dc14bd194e4255412b3d2608d4",
+      "statement": "Review logs and traces for unexpected exceptions or data leakage.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 342
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ]
+    },
+    {
+      "control_id": "PRC-35-014",
+      "revision": 1,
+      "semantic_sha256": "f19c7ad6a36d591aca7bf62e2734452d2bee72ee528f576139bec712f34ad72c",
+      "statement": "Verify alerts and synthetic monitoring.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 343
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ]
+    },
+    {
+      "control_id": "PRC-35-015",
+      "revision": 1,
+      "semantic_sha256": "07212c5381f28dcb2777e5a32f1684fd04141ece1aa2f15a0a01efc14cad7b00",
+      "statement": "Compare canary and control outcomes.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 344
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ]
+    },
+    {
+      "control_id": "PRC-35-016",
+      "revision": 1,
+      "semantic_sha256": "27b01941d67aabeb9f5ed1e2fdaaeb890419ba2a877f14eae153f1d905fb0704",
+      "statement": "Verify analytics and business indicators.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 345
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ]
+    },
+    {
+      "control_id": "PRC-35-017",
+      "revision": 1,
+      "semantic_sha256": "14f807ef81c630a211ebe3d92f522f337be5c2b066cb730220163f1d672ef8ce",
+      "statement": "Perform an accessibility spot check on changed critical journeys.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 346
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ]
+    },
+    {
+      "control_id": "PRC-35-018",
+      "revision": 1,
+      "semantic_sha256": "248f20af5b208b13c148352e960ce751ffd5f62ea16fc189c083ea46bdace026",
+      "statement": "Confirm customer support receives expected telemetry and documentation.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 347
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ]
+    },
+    {
+      "control_id": "PRC-35-019",
+      "revision": 1,
+      "semantic_sha256": "82c48318c83f261a2775a04a41f09ef3ed2753bed7f94f3bddf6be562c3bbbca",
+      "statement": "Confirm no unexpected increase in abuse, fraud, failed payments, duplicate operations, or support volume.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 348
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ]
+    },
+    {
+      "control_id": "PRC-35-020",
+      "revision": 1,
+      "semantic_sha256": "890cbd2adf1714e3ac6024ae053f4e4884a046abdce25f0eda6ffa5f04198dfe",
+      "statement": "Maintain heightened monitoring for the agreed observation period.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 349
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ]
+    },
+    {
+      "control_id": "PRC-35-021",
+      "revision": 1,
+      "semantic_sha256": "e0cacd3e27eaba9ca44d5d3e66cd0ac18bf079190331567dd5833c8236e7713a",
+      "statement": "Stop expansion when predefined thresholds are crossed.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 350
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ]
+    },
+    {
+      "control_id": "PRC-35-022",
+      "revision": 1,
+      "semantic_sha256": "d5901812c49c62a5b1def8cb448904a0b8b979b56bbab7eefeaffb52a6e8007c",
+      "statement": "Roll back or declare an incident rather than rationalizing unexplained anomalies.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 351
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ]
+    },
+    {
+      "control_id": "PRC-35-023",
+      "revision": 1,
+      "semantic_sha256": "07d64e3243db85b669227bebefa086f82185eaef505e734cbb400117b82d06f5",
+      "statement": "Record the final go, hold, rollback, or incident decision.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 352
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ]
+    },
+    {
+      "control_id": "PRC-35-024",
+      "revision": 1,
+      "semantic_sha256": "8315f3a63c6e96863dbc67d4ea0d003972b5ea2b280bc4aaaa463e5cb80285d6",
+      "statement": "Schedule follow-up review for deferred observations and temporary controls.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 353
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ]
+    }
+  ]
+}

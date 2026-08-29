@@ -1,0 +1,1316 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-05-code-quality-and-implementation-md-part-004-part-001",
+  "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 48,
+  "controls": [
+    {
+      "control_id": "USEQ-70F9FF8F",
+      "revision": 1,
+      "semantic_sha256": "70f9ff8f0c85cd849bd13e2c97308b463484161a05fccd25f9dc84886db209d8",
+      "statement": "Use structured logs, metrics, traces, and audit events with stable schemas and correlation identifiers.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 975
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Testability, observability, and diagnosability"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Use structured logs, metrics, traces, and audit events with stable schemas and correlation identifiers.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BB92033C",
+      "revision": 1,
+      "semantic_sha256": "bb92033c1ac897ea09cd695b6df5ddb95d8112f8374bf074f38db9d33e3af5af",
+      "statement": "Create health signals that distinguish process liveness, readiness, dependency health, correctness, and user journey success.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 980
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Testability, observability, and diagnosability"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Create health signals that distinguish process liveness, readiness, dependency health, correctness, and user journey success.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-40C08B37",
+      "revision": 1,
+      "semantic_sha256": "40c08b377e77130bd706d3c3fcbf81e2fe5b241f95c2255ece7e7050d98f6ace",
+      "statement": "Make feature flags, configuration versions, migrations, and deployment versions visible in diagnostics.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 981
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Testability, observability, and diagnosability"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Make feature flags, configuration versions, migrations, and deployment versions visible in diagnostics.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2C8854E2",
+      "revision": 1,
+      "semantic_sha256": "2c8854e21928c3b44d1e09f9c14e2ea3d09fe3ccc6b67ae3512b3be5e25a0299",
+      "statement": "Provide deterministic fixtures and builders for complex domain objects.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 982
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Testability, observability, and diagnosability"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Provide deterministic fixtures and builders for complex domain objects.” names a closed fixture, configuration, or defect-regression protocol whose authenticated before-and-after outcomes can be verified exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution evidence covers every approved fixture, configuration combination, or pre-fix and post-fix case for the exact revision.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D1828585",
+      "revision": 1,
+      "semantic_sha256": "d18285859ff69d050fd7981d78fdb0656edbf8104133af70d1866035dac8b308",
+      "statement": "Use fault injection points for critical dependencies and recovery logic.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 984
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Testability, observability, and diagnosability"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Use fault injection points for critical dependencies and recovery logic.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-802A6876",
+      "revision": 1,
+      "semantic_sha256": "802a68762234bce81e46903e5067a2fe9017237ddee6ed8f694684a7194a7d6e",
+      "statement": "Validate that diagnostic code and instrumentation do not create unacceptable overhead or behavior changes.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 985
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Testability, observability, and diagnosability"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Validate that diagnostic code and instrumentation do not create unacceptable overhead or behavior changes.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-56DBBE9E",
+      "revision": 1,
+      "semantic_sha256": "56dbbe9ebd64d435f08e0434159c265050b2252214f4c8dcf6f6b47acaeedbb9",
+      "statement": "Assess maintenance activity, ownership, support horizon, security history, license, transitive dependencies, size, portability, and replacement cost.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 990
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Dependencies, configuration, feature flags, and generated artifacts"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Assess maintenance activity, ownership, support horizon, security history, license, transitive dependencies, size, portability, and replacement cost.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3A6BB91D",
+      "revision": 1,
+      "semantic_sha256": "3a6bb91dc63dd7d51880add3ee7bf26eb34366820f67295fd9a1b8e5b194f1df",
+      "statement": "Use one authoritative configuration schema with types, constraints, defaults, documentation, and secret classification.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 993
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Dependencies, configuration, feature flags, and generated artifacts"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Use one authoritative configuration schema with types, constraints, defaults, documentation, and secret classification.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A60E84DD",
+      "revision": 1,
+      "semantic_sha256": "a60e84dd880dac327c20c66dfa1ca8ac8e4e28dfc6a4b301f2bfcbe758bbfcd3",
+      "statement": "Keep production configuration reviewable, auditable, reproducible, and separated from secrets.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 995
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Dependencies, configuration, feature flags, and generated artifacts"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Keep production configuration reviewable, auditable, reproducible, and separated from secrets.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0E91A950",
+      "revision": 1,
+      "semantic_sha256": "0e91a950fd3e820396e0c9981c858e2b8ab7a668f4a7198c14a1960e9ccad5b6",
+      "statement": "Test supported configuration and feature-flag combinations, including failure of the flag service.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 997
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Dependencies, configuration, feature flags, and generated artifacts"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test supported configuration and feature-flag combinations, including failure of the flag service.” names a closed fixture, configuration, or defect-regression protocol whose authenticated before-and-after outcomes can be verified exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution evidence covers every approved fixture, configuration combination, or pre-fix and post-fix case for the exact revision.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5260DD86",
+      "revision": 1,
+      "semantic_sha256": "5260dd86da5218efb1126081b3aa23834b3dccdb7b032d2c9bb0a39b4c78d2d4",
+      "statement": "Make generated code and artifacts reproducible from a reviewed source and trusted generator.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1000
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Dependencies, configuration, feature flags, and generated artifacts"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The control “Make generated code and artifacts reproducible from a reviewed source and trusted generator.” is objectively decidable from immutable generator, schema, template, toolchain, provenance, source, and artifact digests.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The generated or final artifact digest, source digest, generator identity, schema, template, toolchain, provenance, and reviewed artifact binding satisfy the approved immutable manifest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EC8D2059",
+      "revision": 1,
+      "semantic_sha256": "ec8d20592de04f221d8a0551bfea639e1e6b7004747bf91cb9e6fbd57bb7f92f",
+      "statement": "Pin and verify generators, schemas, templates, and toolchains.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1001
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Dependencies, configuration, feature flags, and generated artifacts"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The control “Pin and verify generators, schemas, templates, and toolchains.” is objectively decidable from immutable generator, schema, template, toolchain, provenance, source, and artifact digests.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The generated or final artifact digest, source digest, generator identity, schema, template, toolchain, provenance, and reviewed artifact binding satisfy the approved immutable manifest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B433EC66",
+      "revision": 1,
+      "semantic_sha256": "b433ec6698b44653d45080e31ffd6e4cdcc6ac7b944bb2a6cce9c36e2757718d",
+      "statement": "Do not manually edit generated output unless the source-of-truth and regeneration rules explicitly permit it.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1002
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Dependencies, configuration, feature flags, and generated artifacts"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The control “Do not manually edit generated output unless the source-of-truth and regeneration rules explicitly permit it.” is objectively decidable from immutable generator, schema, template, toolchain, provenance, source, and artifact digests.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The generated or final artifact digest, source digest, generator identity, schema, template, toolchain, provenance, and reviewed artifact binding satisfy the approved immutable manifest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0147BEB3",
+      "revision": 1,
+      "semantic_sha256": "0147beb382683abce7a44b8ea59cecec0b03e7b57d455362e11cd4278dcfcaf9",
+      "statement": "Scan generated and vendored code with the same relevant security and quality controls as handwritten code.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1003
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Dependencies, configuration, feature flags, and generated artifacts"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Scan generated and vendored code with the same relevant security and quality controls as handwritten code.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2563896F",
+      "revision": 1,
+      "semantic_sha256": "2563896f8dc857a6fd628d7622d8dd3c9f05dd9176bab1757281673bf23a4e07",
+      "statement": "Preserve provenance from input schema or model through generator to output artifact.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1004
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Dependencies, configuration, feature flags, and generated artifacts"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The control “Preserve provenance from input schema or model through generator to output artifact.” is objectively decidable from immutable generator, schema, template, toolchain, provenance, source, and artifact digests.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The generated or final artifact digest, source digest, generator identity, schema, template, toolchain, provenance, and reviewed artifact binding satisfy the approved immutable manifest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4F610242",
+      "revision": 1,
+      "semantic_sha256": "4f610242b7eb93103ade28a2cf437958fbcfe4f661b8b75d66a12365b712c093",
+      "statement": "Require review by someone other than the author for material production changes.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1008
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Review, static analysis, metrics, and quality gates"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Require review by someone other than the author for material production changes.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-876EAEF6",
+      "revision": 1,
+      "semantic_sha256": "876eaef6bd3e04dbccd6b442369bc4468e42b73d64acaf01acc1cf0bdf663291",
+      "statement": "Review behavior, failure modes, contracts, data effects, observability, tests, rollback, and migration—not only style.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1010
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Review, static analysis, metrics, and quality gates"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Review behavior, failure modes, contracts, data effects, observability, tests, rollback, and migration—not only style.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-43674C7E",
+      "revision": 1,
+      "semantic_sha256": "43674c7e89de1222472b55e50e4e9bb58ff4fee551d61a053bb822a5d7813fa4",
+      "statement": "Treat new warnings and high-confidence findings as failures unless a reviewed suppression explains why the finding is not applicable.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1013
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Review, static analysis, metrics, and quality gates"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Treat new warnings and high-confidence findings as failures unless a reviewed suppression explains why the finding is not applicable.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FE2D4DFC",
+      "revision": 1,
+      "semantic_sha256": "fe2d4dfcc6c012273563fc49afe7aa2ea3300d9601af78c052e0a8d6d0b03563",
+      "statement": "Scope suppressions narrowly, record ownership and expiry, and prevent global disabling for convenience.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1014
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Review, static analysis, metrics, and quality gates"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Scope suppressions narrowly, record ownership and expiry, and prevent global disabling for convenience.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CC5B174C",
+      "revision": 1,
+      "semantic_sha256": "cc5b174c40b49ae5bb537ab7d0efcd8648a24140a775c2d9d488efd263db93d2",
+      "statement": "Track trends in complexity, duplication, dependency cycles, warnings, churn, defect density, flaky tests, coverage gaps, and technical debt.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1016
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Review, static analysis, metrics, and quality gates"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Track trends in complexity, duplication, dependency cycles, warnings, churn, defect density, flaky tests, coverage gaps, and technical debt.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A1F8C6E6",
+      "revision": 1,
+      "semantic_sha256": "a1f8c6e652fa8dd74278a960ab0875eb8f3decbc41f35767d75c8a97028542d2",
+      "statement": "Define local limits based on component criticality and change cost rather than enforcing arbitrary organization-wide numbers.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1017
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Review, static analysis, metrics, and quality gates"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define local limits based on component criticality and change cost rather than enforcing arbitrary organization-wide numbers.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-060292B5",
+      "revision": 1,
+      "semantic_sha256": "060292b5545039818940b68cec273264f3a3806170a6dd546462605de9b74be9",
+      "statement": "Require evidence that tests fail before the fix and pass after it for material defects.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1020
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Review, static analysis, metrics, and quality gates"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Require evidence that tests fail before the fix and pass after it for material defects.” names a closed fixture, configuration, or defect-regression protocol whose authenticated before-and-after outcomes can be verified exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution evidence covers every approved fixture, configuration combination, or pre-fix and post-fix case for the exact revision.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-920D4B56",
+      "revision": 1,
+      "semantic_sha256": "920d4b569d0953332f37fb9fb20a530ee42d148b39ea5c239ee8d8f882e8937e",
+      "statement": "Protect review and quality-gate configuration from unauthorized bypass.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1021
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Review, static analysis, metrics, and quality gates"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Protect review and quality-gate configuration from unauthorized bypass.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FBD94500",
+      "revision": 1,
+      "semantic_sha256": "fbd945009c87588f79b7038d52c101385e1217a92d21b427ae5b491add2ae7f2",
+      "statement": "Audit emergency bypasses and complete retrospective review promptly.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1022
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Review, static analysis, metrics, and quality gates"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Audit emergency bypasses and complete retrospective review promptly.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-40CDE58A",
+      "revision": 1,
+      "semantic_sha256": "40cde58a8737fce98ceeab6e848d1669f3c762596435ef0984aa194042345739",
+      "statement": "Ensure the final artifact—not merely source—passes applicable checks.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1023
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Review, static analysis, metrics, and quality gates"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The control “Ensure the final artifact—not merely source—passes applicable checks.” is objectively decidable from immutable generator, schema, template, toolchain, provenance, source, and artifact digests.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The generated or final artifact digest, source digest, generator identity, schema, template, toolchain, provenance, and reviewed artifact binding satisfy the approved immutable manifest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7D1AAF08",
+      "revision": 1,
+      "semantic_sha256": "7d1aaf0840f0dc15ddbf758e0e4e9f332a890cbd30620d29f048a37b431e9215",
+      "statement": "Document technical debt with principal, ongoing interest, affected outcomes, owner, trigger, and proposed treatment.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1031
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Refactoring, technical debt, legacy code, and deletion"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Document technical debt with principal, ongoing interest, affected outcomes, owner, trigger, and proposed treatment.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2CB162C9",
+      "revision": 1,
+      "semantic_sha256": "2cb162c9f33e0dde058d515c8ceeb8e21071b505776ee956204674c593c414ca",
+      "statement": "Use telemetry, repository search, contracts, and consumer confirmation to support deprecation decisions.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1036
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Refactoring, technical debt, legacy code, and deletion"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Use telemetry, repository search, contracts, and consumer confirmation to support deprecation decisions.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A4F02E4C",
+      "revision": 1,
+      "semantic_sha256": "a4f02e4cde7972723ca88cbaddbcd09a59c26cb7c46205df93937e7c41efeb1d",
+      "statement": "Decommission secrets, jobs, queues, storage, dashboards, alerts, and documentation associated with deleted code.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1039
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Refactoring, technical debt, legacy code, and deletion"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Decommission secrets, jobs, queues, storage, dashboards, alerts, and documentation associated with deleted code.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9D06A061",
+      "revision": 1,
+      "semantic_sha256": "9d06a061968460ffd644c9628b61112e7269e63028424bf8da8096927512a6b5",
+      "statement": "Measure whether refactoring improved the intended quality outcome.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1041
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Refactoring, technical debt, legacy code, and deletion"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Measure whether refactoring improved the intended quality outcome.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FB8113ED",
+      "revision": 1,
+      "semantic_sha256": "fb8113ed384886cc78dadb711aea802deae31d7c3b312e8210b3c1e86551b911",
+      "statement": "Capture recurring causes in standards, tooling, architecture, and training.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1042
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Refactoring, technical debt, legacy code, and deletion"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Capture recurring causes in standards, tooling, architecture, and training.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F0F5ACE7",
+      "revision": 1,
+      "semantic_sha256": "f0f5ace710d0bd25fe20b2ba00338cf3213cc5ff48e5f8ed8f3750085983c136",
+      "statement": "Treat generated or suggested code as untrusted input requiring the same ownership, review, testing, security, licensing, and provenance as handwritten code.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1046
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "AI-generated, synthesized, copied, and externally sourced code"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Treat generated or suggested code as untrusted input requiring the same ownership, review, testing, security, licensing, and provenance as handwritten code.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A036EF8F",
+      "revision": 1,
+      "semantic_sha256": "a036ef8f571fbe09d0de11a44e1eb273bce2ed31652f2a69b51b3684f6375a16",
+      "statement": "Use independent reviewers or tools for high-risk generated code rather than relying on the same model to validate itself.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1053
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "AI-generated, synthesized, copied, and externally sourced code"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Use independent reviewers or tools for high-risk generated code rather than relying on the same model to validate itself.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F1392D49",
+      "revision": 1,
+      "semantic_sha256": "f1392d49b124fda00e16dd87358d2e76951903654c210e776904abd7a0d0b5f3",
+      "statement": "Retain sufficient provenance to identify tool, model, version, context, author, reviewer, and affected code where policy requires it.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1055
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "AI-generated, synthesized, copied, and externally sourced code"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Retain sufficient provenance to identify tool, model, version, context, author, reviewer, and affected code where policy requires it.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-183D2712",
+      "revision": 1,
+      "semantic_sha256": "183d271209a6d3b517ede37c302913ea362b8dcaff44c585c04121704b4a7206",
+      "statement": "Prevent autonomous agents from merging, deploying, changing permissions, rotating secrets, or modifying production without enforced authorization and gates.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1056
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "AI-generated, synthesized, copied, and externally sourced code"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Prevent autonomous agents from merging, deploying, changing permissions, rotating secrets, or modifying production without enforced authorization and gates.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EA441182",
+      "revision": 1,
+      "semantic_sha256": "ea441182183c2da87a903b07c75ce90324af295339fbf7ab4db7d9d105309def",
+      "statement": "Sandbox code execution and restrict network, filesystem, credentials, and tool permissions.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1057
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "AI-generated, synthesized, copied, and externally sourced code"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Sandbox code execution and restrict network, filesystem, credentials, and tool permissions.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-090DA6D3",
+      "revision": 1,
+      "semantic_sha256": "090da6d3890a9a128fec3e0ff98f138d6fab233241dec4f94ed6fff2eaa34091",
+      "statement": "Monitor whether AI assistance increases change size, rework, vulnerabilities, incidents, review burden, or dependency growth.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1058
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "AI-generated, synthesized, copied, and externally sourced code"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Monitor whether AI assistance increases change size, rework, vulnerabilities, incidents, review burden, or dependency growth.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FFBABB8B",
+      "revision": 1,
+      "semantic_sha256": "ffbabb8b9e6737ab52c7b40f424d85882e1c81929d12eacc15c552f86a79b4a0",
+      "statement": "Keep human accountability with the person and organization approving the change.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1060
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "AI-generated, synthesized, copied, and externally sourced code"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Keep human accountability with the person and organization approving the change.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-97DE9743",
+      "revision": 1,
+      "semantic_sha256": "97de9743645494eab4fd2973575e8961597213ae76b5e7d400ab9ad925f1a710",
+      "statement": "Reevaluate generated code after model, prompt, plugin, or policy changes that can alter output risk.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1061
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "AI-generated, synthesized, copied, and externally sourced code"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Reevaluate generated code after model, prompt, plugin, or policy changes that can alter output risk.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B1D30269",
+      "revision": 1,
+      "semantic_sha256": "b1d30269c773968052f6e6883f4003736b7a79450a116fadcebbfc6e069cf2ac",
+      "statement": "Block release when critical behavior lacks a testable contract or acceptance criterion.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1065
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Code-quality release blockers and final evidence"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Block release when critical behavior lacks a testable contract or acceptance criterion.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-59868E58",
+      "revision": 1,
+      "semantic_sha256": "59868e58a6a9547d6396a8c101d69c30647789f18c2289fba89e8bd1d01c0ce0",
+      "statement": "Block release when the implementation relies on unsupported runtime behavior or an unreviewed high-risk dependency.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1067
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Code-quality release blockers and final evidence"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Block release when the implementation relies on unsupported runtime behavior or an unreviewed high-risk dependency.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-447C9B3C",
+      "revision": 1,
+      "semantic_sha256": "447c9b3ccdede80a96f1b63cfc7350171c75fc40e2c4e97ac175426420ca45cb",
+      "statement": "Block release when critical warnings, analyzer findings, failed tests, or suppressions lack evidence-based disposition.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1068
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Code-quality release blockers and final evidence"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Block release when critical warnings, analyzer findings, failed tests, or suppressions lack evidence-based disposition.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-27CDEDEA",
+      "revision": 1,
+      "semantic_sha256": "27cdedeaaf3e106d3c541c441783f417acf2f402e5f7c24b9de3829d20abe35a",
+      "statement": "Block release when resource bounds, timeout, retry, cancellation, or failure behavior is unknown for a critical path.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1069
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Code-quality release blockers and final evidence"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Block release when resource bounds, timeout, retry, cancellation, or failure behavior is unknown for a critical path.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-243EC747",
+      "revision": 1,
+      "semantic_sha256": "243ec747ab5f02ddd9fb62f46544dd641b269928c8aa218b65c2edba9f7fa4c0",
+      "statement": "Block release when a migration or state transition can leave irreversible ambiguous state without a tested recovery.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1070
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Code-quality release blockers and final evidence"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Block release when a migration or state transition can leave irreversible ambiguous state without a tested recovery.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8D4964EC",
+      "revision": 1,
+      "semantic_sha256": "8d4964ec6e7f59d5e78c866582f7353b5f697fa7bdb9ce117d8e290217320d6b",
+      "statement": "Block release when production diagnostics cannot distinguish success, expected failure, dependency failure, and invariant violation.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1072
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Code-quality release blockers and final evidence"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Block release when production diagnostics cannot distinguish success, expected failure, dependency failure, and invariant violation.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B642E26A",
+      "revision": 1,
+      "semantic_sha256": "b642e26a290ea395c518ff97d78ec0bf44784d0f225858be59cd9bad48e20183",
+      "statement": "Attach source revision, build provenance, dependency lock, configuration schema, analysis reports, review approvals, test results, benchmark results, and known-risk register to the release evidence.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1073
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Code-quality release blockers and final evidence"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Attach source revision, build provenance, dependency lock, configuration schema, analysis reports, review approvals, test results, benchmark results, and known-risk register to the release evidence.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C70D0E0F",
+      "revision": 1,
+      "semantic_sha256": "c70d0e0f92760b1a44a5ff47c747e7973ba1ea7a502549e59969b43cae69910f",
+      "statement": "Record which code-quality controls were automated, manually reviewed, formally verified, sampled, or not applicable.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1074
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Code-quality release blockers and final evidence"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record which code-quality controls were automated, manually reviewed, formally verified, sampled, or not applicable.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-64378ECF",
+      "revision": 1,
+      "semantic_sha256": "64378ecfc55ee0a0087b611af139e64ee4793f359d2637065b3839873aea0227",
+      "statement": "Record residual limitations and the conditions under which evidence becomes stale.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1075
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Code-quality release blockers and final evidence"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record residual limitations and the conditions under which evidence becomes stale.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4C2E2D56",
+      "revision": 1,
+      "semantic_sha256": "4c2e2d56a5ed78c45533a56b615c34907daa3b1767617c2edb35e9ae10708035",
+      "statement": "Confirm that the deployed artifact matches the reviewed and tested artifact.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 1076
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Code-quality release blockers and final evidence"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The control “Confirm that the deployed artifact matches the reviewed and tested artifact.” is objectively decidable from immutable generator, schema, template, toolchain, provenance, source, and artifact digests.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The generated or final artifact digest, source digest, generator identity, schema, template, toolchain, provenance, and reviewed artifact binding satisfy the approved immutable manifest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    }
+  ]
+}

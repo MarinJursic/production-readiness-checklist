@@ -1,0 +1,2584 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-01-governance-and-foundations-md-part-001-part-001",
+  "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 100,
+  "controls": [
+    {
+      "control_id": "USEQ-B14FDA8E",
+      "revision": 1,
+      "semantic_sha256": "b14fda8e4182da0bcf230947ddabdde57df33b90c4a1970c0c0e4cca48546b30",
+      "statement": "Every control is assessed as **Pass**, **Fail**, **Blocked**, or **Not Applicable**.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 15
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Applicability and evidence"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The assessment status is a closed four-value field, so every control row can be checked against the allowed enumeration.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every control in the assessment registry has exactly one status equal to Pass, Fail, Blocked, or Not Applicable.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-64B6A3A8",
+      "revision": 1,
+      "semantic_sha256": "64b6a3a8e5cb1469147c025702de5df14e354e11f88ad97b69b055f9ba647ad3",
+      "statement": "Every applicable control has one accountable owner and current, reproducible evidence.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 17
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Applicability and evidence"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A bounded applicable-control registry, owner field, evidence validity policy, and rerun recipe make ownership, currency, and reproducibility decidable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every applicable control has exactly one accountable owner and evidence within its versioned validity period.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every evidence reproduction recipe completes with the same declared result against the bound assessment inputs.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-72088469",
+      "revision": 1,
+      "semantic_sha256": "720884699caa4f3da7a06a3dcb60e1036c266e300518bec8150aa93905d259e4",
+      "statement": "Evidence identifies the exact product, source revision, artifact, configuration, environment, data state, and date assessed.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 18
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Applicability and evidence"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "All named evidence bindings are exact identifiers or timestamps whose presence and referential integrity can be validated mechanically.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every evidence record identifies product, source revision, artifact digest, configuration version, environment, data-state identifier, and assessment date.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6E42CC84",
+      "revision": 1,
+      "semantic_sha256": "6e42cc84a083ff7f759e233942627f95cfefeb51fdc453c5e7ee8afdfbe2bca4",
+      "statement": "Exceptions are time-bounded, risk-owned, monitored, documented, and automatically expire.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 20
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Applicability and evidence"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A structured exception schema and expiry enforcement make bounded duration, ownership, monitoring, documentation, and automatic expiration objectively testable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every exception has risk owner, start and end times, monitoring references, and documented scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Expired exceptions are automatically inactive and cannot authorize a current Pass or release decision.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2798897B",
+      "revision": 1,
+      "semantic_sha256": "2798897b20a88f6e538349653587620ad339769bb3c1f7a060f6b5d6ef300732",
+      "statement": "A control operated by a supplier or platform remains in scope; responsibility may be shared but accountability is not outsourced.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 21
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Applicability and evidence"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Supplier attribution is a structured property, so the registry can require the control to remain assessed and retain an internal accountable owner.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every supplier-operated control remains in the assessment registry and has one internal accountable owner even when implementing responsibility is shared.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-75497572",
+      "revision": 1,
+      "semantic_sha256": "75497572d7701e3e371e2c068cc88b7d1238d3e4e6f1f913d4a67cdef33355fb",
+      "statement": "Assess every checklist item; omission is not a valid status.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 29
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The corpus and assessment registry are finite, so control identifiers can be compared exactly and omissions detected.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every control identifier in the bound corpus version appears exactly once in the assessment registry with a status.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3A8A5F50",
+      "revision": 1,
+      "semantic_sha256": "3a8a5f50dfc15ce2eb44f8872b2d43adef8d049161d84e8159d5faa78a078925",
+      "statement": "Use only Pass, Fail, Blocked, or Not Applicable as assessment statuses.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 30
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The permitted assessment statuses form an exact enumeration with no subjective threshold or external scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every assessment status is exactly Pass, Fail, Blocked, or Not Applicable.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-683B6299",
+      "revision": 1,
+      "semantic_sha256": "683b6299a875f18c939371a03646543aa9de0c024e1ba3b9947f44b102b11568",
+      "statement": "Treat Blocked as a failure for final approval unless an authorized decision explicitly states otherwise.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 31
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A fixed approval rule can treat Blocked as failure unless the same record contains an authenticated authorized override.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Final approval fails for every Blocked control unless that control links to an authenticated authorized decision explicitly overriding the default.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F0272B02",
+      "revision": 1,
+      "semantic_sha256": "f0272b0209e5bcce52770de0d10d279f2515d9346c2ea06fe1a24af1f46c7286",
+      "statement": "Assign one accountable owner to every applicable control and every exception.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 34
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Applicable controls and exceptions are finite registries, so exact-one accountable-owner cardinality is mechanically decidable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every applicable control and every exception has exactly one active accountable-owner identifier.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5FB50410",
+      "revision": 1,
+      "semantic_sha256": "5fb504101a29a10d66ed3b640b4dbc7ea0d3bd1ecb41273b1571d0e2cd66dcb7",
+      "statement": "Tie evidence to the exact source revision, artifact digest, configuration, schema, flags, environment, dependency versions, and data state.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 36
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The required evidence context consists of exact version and environment bindings whose presence and referential integrity are decidable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Each evidence item is bound to source revision, artifact digest, configuration, schema, flags, environment, dependency versions, and data-state identifier.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DB6244DF",
+      "revision": 1,
+      "semantic_sha256": "db6244dfc77b0fb12fa984b6d986a55d069541d0e91810024ff341ce7a3a5220",
+      "statement": "Use sampling only with a documented population, method, coverage, confidence, limitations, and risk rationale.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 40
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The sampling requirement names a finite set of required fields that can be checked in each sampling record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every sampled assessment records population, method, coverage, confidence, limitations, and risk rationale.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-56521362",
+      "revision": 1,
+      "semantic_sha256": "56521362e5527a3174dd4d9bb2efaa744ad4efa3f95a5d5fe0ad780d02f62cef",
+      "statement": "Require evidence that compensating controls work under the conditions in which the primary control is absent.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 42
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Given declared primary-control absence conditions and compensating-control expectations, bounded tests can directly prove operation under those conditions.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every compensating control has a current successful test executed under each declared condition in which the primary control is absent.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-41204E99",
+      "revision": 1,
+      "semantic_sha256": "41204e990e8abdc827313fa614886a2999d4eb8c2700f093ae8eb9dd9d42e21e",
+      "statement": "Record residual risk after controls, not only inherent risk before controls.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 43
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Inherent and residual risk are distinct structured record fields whose post-control ordering and presence can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every assessed risk records residual risk after linked controls as well as inherent risk before those controls.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-97E5A6C1",
+      "revision": 1,
+      "semantic_sha256": "97e5a6c1735a705cbb1e1df01469b909953868870be323ccee3a901433f319b4",
+      "statement": "Prohibit averaging or scoring that allows a critical failure to be offset by unrelated passes.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 44
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "local_static",
+      "primary_reason": "A scoring and release-gate policy is bounded code or configuration that can be inspected for forbidden offsetting of critical failures.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Any critical failure forces the configured aggregate decision to fail regardless of scores from unrelated controls.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-08DC1879",
+      "revision": 1,
+      "semantic_sha256": "08dc187948a5e0c76e1d5b930a9a055379244b2b7c31b03645c833438bac4c93",
+      "statement": "Define release-blocking and nonblocking severity before assessment results are known.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 45
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Severity definitions and their publication time can be compared with assessment-result timestamps to prove they were fixed in advance.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The versioned severity policy defines blocking and nonblocking levels and predates every assessment result evaluated under it.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-35B75024",
+      "revision": 1,
+      "semantic_sha256": "35b750247d952a48751cf38cb6a41ea98ce4f2a508d7ffd7b18e323bb672db76",
+      "statement": "Maintain historical assessments with historical releases and do not overwrite past conclusions.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 51
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Universal applicability rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "Immutable version identifiers and append-only storage can prove that historical assessments remain linked to historical releases and were not overwritten.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every historical release references an immutable historical assessment version, and no later assessment mutation replaces that version.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D135E510",
+      "revision": 1,
+      "semantic_sha256": "d135e5100c6cf7fe53acf9576b3c525f30182bd7a6d8bc942b19ee27ec6beac8",
+      "statement": "Control identifier and complete control text.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 56
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Minimum evidence record"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Control identifier and full control text are exact required evidence-record fields with a direct corpus comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every evidence record contains the control identifier and text exactly matching the bound corpus revision.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-ECC769B0",
+      "revision": 1,
+      "semantic_sha256": "ecc769b04cb4d0a2a6015787b017a724712b8845c10ca2f84ace0230bb82c4d5",
+      "statement": "Assessment status.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 57
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Minimum evidence record"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Assessment status is a required structured field whose presence and allowed value can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every minimum evidence record contains one allowed assessment status.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4A3D6129",
+      "revision": 1,
+      "semantic_sha256": "4a3d61295f3a6014cae99492118e88cdc76ca8eba0d18cb437d188a8044c670b",
+      "statement": "Applicability rationale.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 58
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Minimum evidence record"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Applicability rationale is an explicit required evidence-record field whose nonempty presence can be checked.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every minimum evidence record contains a nonempty applicability-rationale field.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6D3C345E",
+      "revision": 1,
+      "semantic_sha256": "6d3c345e9ee15a4c909a22570ce3e0f6c6bcee3b6229081222b368e2900e21f9",
+      "statement": "Accountable owner.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 59
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Minimum evidence record"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Accountable owner is an exact required identity field whose presence and referential validity are mechanically decidable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every minimum evidence record contains one resolvable accountable-owner identifier.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8D90ACE7",
+      "revision": 1,
+      "semantic_sha256": "8d90ace7d7e7c0f3a7091562d1ab66a53c3e0d64cd2417b26956a8e29874dd8d",
+      "statement": "Implementing owner or team.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 60
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Minimum evidence record"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Implementing owner or team is an exact required identity field whose presence can be validated against the organization directory.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every minimum evidence record contains a resolvable implementing-owner or team identifier.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1015BBD0",
+      "revision": 1,
+      "semantic_sha256": "1015bbd003dcac2cd5c0df160dea67f613d3022cf2d5ef41d27c12e61df53420",
+      "statement": "Qualified reviewer and approval.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 61
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Minimum evidence record"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Reviewer identity and approval are explicit record fields whose signatures and presence can be validated.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every minimum evidence record contains a reviewer identifier and authenticated approval.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9FE92874",
+      "revision": 1,
+      "semantic_sha256": "9fe92874cd09be4abf4e62daac38a88a6b0ec23f73ec5c778359fb9627d0e1a2",
+      "statement": "Evidence location and access classification.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 62
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Minimum evidence record"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Evidence location and access classification are exact required fields with resolvable references and enumerated values.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every minimum evidence record contains a resolvable evidence location and an allowed access-classification value.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5E2E1223",
+      "revision": 1,
+      "semantic_sha256": "5e2e12238a5859fcdff40a96d901b166d149f83deca4bd79eed4261be0ff6a30",
+      "statement": "Evidence date and expiry.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 63
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Minimum evidence record"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Evidence date and expiry are exact timestamps whose presence and ordering can be checked mechanically.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every minimum evidence record contains an evidence date and a later expiry timestamp.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F1DF60DF",
+      "revision": 1,
+      "semantic_sha256": "f1df60df706680b398094c01e68b2489cd16ec1fe8deafec61a368fad13042a2",
+      "statement": "System, component, environment, source revision, artifact digest, configuration, schema, flags, and dependency context.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 64
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Minimum evidence record"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The named system and version context values are exact required fields whose bindings can be validated.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every minimum evidence record identifies system, component, environment, source revision, artifact digest, configuration, schema, flags, and dependency context.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F5B88725",
+      "revision": 1,
+      "semantic_sha256": "f5b88725ba00d94b35714b01790d61f91eb8834320d4bf26fa83dac7e5e50175",
+      "statement": "Test method, data, tools, versions, assumptions, and limitations.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 65
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Minimum evidence record"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The test metadata categories are explicit required record fields and can be checked for presence and version bindings.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every minimum evidence record contains method, data, tools, tool versions, assumptions, and limitations.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C8D18281",
+      "revision": 1,
+      "semantic_sha256": "c8d182814571731ed05d820ec0c7d926ce367975b7470a37cddaea02873cf2e4",
+      "statement": "Observed result and threshold.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 66
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Minimum evidence record"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Observed result and threshold are exact required fields that can be checked for presence and compatible typed values.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every minimum evidence record contains an observed result and the threshold used to evaluate it.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2989132F",
+      "revision": 1,
+      "semantic_sha256": "2989132f2584ffb0103edc55cacdaad184076b425108fb64e4dfb8e157fa33c6",
+      "statement": "Linked defect, risk, exception, incident, or corrective action.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 67
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Minimum evidence record"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The linked issue categories are resolvable reference fields whose presence or explicit empty state can be validated.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every minimum evidence record contains resolvable defect, risk, exception, incident, or corrective-action links, or an explicit none value.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-89722999",
+      "revision": 1,
+      "semantic_sha256": "897229996b4da956a00b7b4e550a9b1f295a67de32de135020c79e21e08ec96f",
+      "statement": "Reassessment trigger.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 68
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Minimum evidence record"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Reassessment trigger is an explicit required field that can be checked against the allowed trigger schema.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every minimum evidence record contains a versioned reassessment-trigger definition.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9EEBC544",
+      "revision": 1,
+      "semantic_sha256": "9eebc5445ccdb22a0c3ced96a1fbdca8b3ffbf1ee5552583cb420f88b23af582",
+      "statement": "Identify the exact unmet control and why remediation is not complete.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 72
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Exception and risk-acceptance rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "An exception can be matched to one control and required to contain an explicit incomplete-remediation explanation.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every exception identifies exactly one unmet control and contains a nonempty reason remediation is incomplete.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D947B87C",
+      "revision": 1,
+      "semantic_sha256": "d947b87c3778182138512b2491d604491ea414f266432c6393cf3a89e387777b",
+      "statement": "Document existing and proposed compensating controls.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 75
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Exception and risk-acceptance rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Existing and proposed compensating controls are two explicit exception-record collections whose presence and identifiers are decidable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every exception documents its existing and proposed compensating controls with resolvable control identifiers.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EB9477C4",
+      "revision": 1,
+      "semantic_sha256": "eb9477c48ec6ee4f2bf6e9508a2302bc2e571c326a58424c093071bf6d2ff083",
+      "statement": "Demonstrate compensating controls with current evidence.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 76
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Exception and risk-acceptance rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Versioned compensating-control expectations and current authenticated results can mechanically demonstrate operation for the accepted-risk conditions.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every compensating control linked to an exception has current successful execution evidence under the exception's declared conditions.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0D775A08",
+      "revision": 1,
+      "semantic_sha256": "0d775a08fd0875cb3bb14079c46eb270f617eccf280be7597f018e87a08390ad",
+      "statement": "Define monitoring and alert thresholds specific to the accepted risk.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 77
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Exception and risk-acceptance rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Risk-specific monitor definitions and alert thresholds are exact structured values that can be required in each exception.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every accepted-risk record defines monitoring queries, alert thresholds, comparison operators, windows, and notification routes.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-27A4BEB6",
+      "revision": 1,
+      "semantic_sha256": "27a4beb650a1049db5bf8cc7b59fe23a1b7a7477af7df2918475314776e8942d",
+      "statement": "Set a remediation owner, funded plan, target date, and automatic expiry.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 79
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Exception and risk-acceptance rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Owner, funding, target date, and automatic-expiry configuration are exact exception fields and state transitions.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every exception has a remediation owner, funded-plan reference, target date, and automatic expiry timestamp.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4E4FE3D7",
+      "revision": 1,
+      "semantic_sha256": "4e4fe3d75e0872e71e7bde75d5538da39a5e510a69907472b9409f6a21c6b88a",
+      "statement": "Define conditions that immediately revoke the exception.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 80
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Exception and risk-acceptance rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Immediate revocation conditions are a required structured set whose presence and evaluable predicates can be checked.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every exception defines at least one machine-readable immediate-revocation condition.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-238A650D",
+      "revision": 1,
+      "semantic_sha256": "238a650dd4c377f6786dc41ec322f2325557f2c3fe71d79eb9eb7cebaf8bcaa3",
+      "statement": "Prevent exceptions from silently renewing or becoming permanent architecture.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 81
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Applicability, Evidence, Exceptions, and Audit Rules",
+        "Exception and risk-acceptance rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Expiry and renewal histories can prove that exceptions deactivate automatically and never renew without a new authorized decision.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every exception becomes inactive at its expiry timestamp unless a separate newly approved exception exists.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Exception history contains no silent extension or reuse as an unbounded permanent architecture authorization.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6DD9714D",
+      "revision": 1,
+      "semantic_sha256": "6dd9714d7742673b0c2edcc76ea42981788c2aa42932e02f1e17446a83bde88d",
+      "statement": "Define quality budgets and regression limits before implementation and launch.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 97
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Quality planning rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Quality budgets, regression limits, and publication timestamps can be compared with implementation and launch timestamps.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every material quality objective has a versioned budget and regression limit effective before implementation and launch.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F30FF972",
+      "revision": 1,
+      "semantic_sha256": "f30ff97211f94d58deb4450dc6d71d7c7dd1dcf306e56a4042bca5e62d38819f",
+      "statement": "Assign ownership for each quality objective and each cross-attribute conflict.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 98
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Quality planning rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Quality objectives and recorded conflicts are finite registries, allowing exact-one ownership checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every quality objective and every registered cross-attribute conflict has exactly one accountable owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A5FC207A",
+      "revision": 1,
+      "semantic_sha256": "a5fc207a529be59a0c897ab7bc9987b59474cad3dc5c00263b3e21ee31ab5f04",
+      "statement": "Maintain traceability from quality objectives to architecture tactics, code, tests, monitoring, and operational decisions.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 99
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Quality planning rules"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A versioned traceability graph can require resolvable links from each objective to all named implementation and operational artifact classes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every quality objective links to architecture tactics, code, tests, monitoring, and operational-decision records.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-83E0B216",
+      "revision": 1,
+      "semantic_sha256": "83e0b2166af8df276917e9c1ea9bf21ad7e463fc2f72f1ec28431c5d6e941cfa",
+      "statement": "Latency, throughput, responsiveness, and completion time meet defined objectives under specified conditions.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 114
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Performance efficiency"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Defined performance objectives and specified test conditions provide fixed metrics, thresholds, and bounded executions for exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every applicable latency, throughput, responsiveness, and completion-time objective defines a metric, condition, and threshold.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Current authenticated measurements under each specified condition satisfy every defined threshold.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-31D05A91",
+      "revision": 1,
+      "semantic_sha256": "31d05a9195c64b96933b58393850c3a018db859fef0e7b740358aae72b523d6e",
+      "statement": "Capacity limits and safe overload behavior are known and tested.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 116
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Performance efficiency"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Versioned capacity limits and expected overload responses provide finite boundary and overload tests with exact outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared capacity boundary and safe-overload behavior has a current successful bounded test result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-09B7C249",
+      "revision": 1,
+      "semantic_sha256": "09b7c249140a46a3ea90d399a1177b4c7c6b96cb55ce74cd5c6c094bd3462594",
+      "statement": "Information exchange preserves syntax, semantics, precision, identity, ordering, privacy, and authorization.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 122
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Compatibility"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A complete interface contract can define exact syntax, semantics, precision, identity, ordering, privacy, and authorization invariants for bounded exchange tests.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every supported information exchange has a versioned contract for syntax, semantics, precision, identity, ordering, privacy, and authorization.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bounded contract tests for every supported exchange satisfy all declared invariants.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2DF76BC4",
+      "revision": 1,
+      "semantic_sha256": "2df76bc4a1b49588a2de2cb6b45577137d024d1c2e3755e2c1ca24fef2e57ebe",
+      "statement": "Supported versions, formats, clients, protocols, and environments interoperate as promised.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 123
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Compatibility"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A declared support matrix and promised behavior contracts create a finite cross-product of versions, formats, clients, protocols, and environments to test.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every cell in the promised support matrix has a current successful interoperability test result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-427C1469",
+      "revision": 1,
+      "semantic_sha256": "427c14698444d48f6df8d6e17f4489a80a5e80704973e94871b798999af85206",
+      "statement": "The service is available according to user-centric objectives.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 138
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Reliability"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "User-centric availability objectives supply exact indicators, windows, and thresholds that authenticated service telemetry can evaluate.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated availability measurements meet every versioned user-centric objective for its declared window.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1156B06C",
+      "revision": 1,
+      "semantic_sha256": "1156b06c5e170587cae36d98b356419ca7348ff96b6e3284e86cd9642b75fcac",
+      "statement": "State and service can recover within approved time, point, integrity, and continuity objectives.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 140
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Software and Product Quality Attribute Model",
+        "Product-quality characteristics",
+        "Reliability"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Approved recovery time, recovery point, integrity, and continuity objectives give exact acceptance limits for bounded recovery exercises.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared recovery scenario has a current exercise result meeting its approved time, point, integrity, and continuity thresholds.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E2576411",
+      "revision": 1,
+      "semantic_sha256": "e2576411f87f400f0d7747c70cb59c3e2557f804b14bc49e70e50b5e93e723b8",
+      "statement": "Treat this as a broad baseline catalog, not a claim that every listed reference applies to every product.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 193
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Standards and Frameworks Crosswalk",
+        "How to use this crosswalk"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "local_static",
+      "primary_reason": "The crosswalk's intended status can be enforced through an explicit baseline disclaimer and prohibition on universal applicability claims.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The crosswalk documentation states that it is a broad baseline and does not claim every reference applies to every product.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-42342CFA",
+      "revision": 1,
+      "semantic_sha256": "42342cfac9cb5442e03ccd5a12ceda4b3fd823e75eb93460aeaeed5fb28e1470",
+      "statement": "Verify the current published edition directly with the issuing body before audit, procurement, certification, or compliance claims.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 195
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Standards and Frameworks Crosswalk",
+        "How to use this crosswalk"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Issuing-body publication metadata is authoritative and can be queried and timestamped before each audit, procurement, certification, or compliance claim.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every standards claim references an issuing-body record showing the current published edition at a verification time preceding the claim.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-16C2ACD8",
+      "revision": 1,
+      "semantic_sha256": "16c2acd899e54714758fccdf78f1588218ad517e41313150c71196feac4bca12",
+      "statement": "Distinguish published standards from drafts, committee drafts, proposed revisions, guidance, and awareness lists.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 196
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Standards and Frameworks Crosswalk",
+        "How to use this crosswalk"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Authoritative publication statuses can be mapped to an exact enumeration and compared with each crosswalk entry.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every referenced document's status matches the issuing body's current published, draft, committee-draft, proposed, guidance, or awareness classification.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AC5D537E",
+      "revision": 1,
+      "semantic_sha256": "ac5d537e61997fac08ff5666ed1ec6196ba206637d690796329bc37316cd095c",
+      "statement": "Obtain and use the authoritative text when conformance is required; this corpus does not reproduce copyrighted requirements.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 197
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Standards and Frameworks Crosswalk",
+        "How to use this crosswalk"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "Required conformance records can cite a licensed authoritative edition with an integrity digest rather than relying on reproduced corpus text.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every conformance assessment references an authorized authoritative text edition and verified digest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-46BFC86D",
+      "revision": 1,
+      "semantic_sha256": "46bfc86d2f885585b2ca722d564fc5621208a1da1ee46de5bbd2ab93952f44d4",
+      "statement": "Record which clauses or outcomes map to local controls, owners, evidence, and exceptions.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 199
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Standards and Frameworks Crosswalk",
+        "How to use this crosswalk"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Clause-to-control mappings are finite structured relationships with required owner, evidence, and exception references.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every applicable standards clause or outcome maps to local control identifiers, owners, evidence, and any exception identifiers.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9E85DA5A",
+      "revision": 1,
+      "semantic_sha256": "9e85da5a014927c1cb31806bfa4bbc52d14e38f986846367d47fe906e855b292",
+      "statement": "Review the register at least annually and after new jurisdictions, products, data, incidents, contracts, or standards revisions.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 200
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Standards and Frameworks Crosswalk",
+        "How to use this crosswalk"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A one-year interval and enumerated change events allow register review timestamps to be checked against a finite trigger ledger.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The standards register has an authenticated review no more than one year old.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Each recorded jurisdiction, product, data, incident, contract, or standards-revision event links to a later register review.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C2EE6972",
+      "revision": 1,
+      "semantic_sha256": "c2ee6972808d197c314088c709ea37e055bad8498c00b058a5000b11e0b85bfb",
+      "statement": "Security, privacy, accessibility, performance, reliability, compatibility, and data quality objectives have evidence.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 236
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Verification"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule asks for evidence, so a finite objective registry can require a current bound evidence link for each named quality domain.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Each applicable security, privacy, accessibility, performance, reliability, compatibility, and data-quality objective has current evidence bound to the work item.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-21B6514F",
+      "revision": 1,
+      "semantic_sha256": "21b6514fd63e6baa271598d0c774d33418eb1ca91709fd2ce6b4361f5a5cc119",
+      "statement": "The exact releasable artifact and production-representative configuration are verified.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 238
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Verification"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Exact artifact digests and versioned representative configuration allow integrity comparison and bounded verification against the releasable pair.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The work item identifies the exact releasable artifact digest and production-representative configuration version.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        },
+        {
+          "statement": "Current verification results are bound to that exact artifact and configuration pair.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AB3A2C88",
+      "revision": 1,
+      "semantic_sha256": "ab3a2c88c57616588abe847379fa1b09493dcbb81f3a3aa7a2617eb0b8b7e575",
+      "statement": "Build provenance, artifact digest, SBOM, signature or attestation, and approvals are available as required.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 242
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Delivery and operations"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "Required supply-chain artifacts have exact digests, signatures, attestations, and approval references whose availability and integrity are decidable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The build provenance, artifact digest, SBOM, required signature or attestation, and required approvals are present and bound to the releasable artifact.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5FF05D93",
+      "revision": 1,
+      "semantic_sha256": "5ff05d93ed4c70a48cfb4744d09552e88fe5572063b38879b36dcc6f095f6939",
+      "statement": "Configuration, migrations, feature flags, infrastructure, dependencies, and deployment order are versioned and reviewed.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 243
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Delivery and operations"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Configuration and delivery inputs are finite versioned records whose review approvals and deployment ordering can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Configuration, migrations, feature flags, infrastructure, dependencies, and deployment order each have version identifiers and authenticated review records.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1D2662B7",
+      "revision": 1,
+      "semantic_sha256": "1d2662b714b7477d90b8749f7505ade9bcab474247b69439450934692ad29e7a",
+      "statement": "Rollback, roll-forward, restoration, reconciliation, and incident response are tested.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 245
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Delivery and operations"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A finite release recovery plan can enumerate rollback, roll-forward, restoration, reconciliation, and incident scenarios with exact expected outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every applicable recovery and incident scenario in the release plan has a current successful bounded test result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F62D0973",
+      "revision": 1,
+      "semantic_sha256": "f62d0973917b5c3591104e23ff07b349f59a112bd97a36c498345296c30952bc",
+      "statement": "Known limitations, residual risks, exceptions, and deferred work are explicit.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 251
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Documentation and lifecycle"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Known limitation, risk, exception, and deferred-work registers can be required as explicit release-record collections.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The work item contains explicit linked registers for known limitations, residual risks, exceptions, and deferred work.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-12852D61",
+      "revision": 1,
+      "semantic_sha256": "12852d61bf2f8e74e6a6f4f9e67d52c6a11fbf179434a2097c62d07ebbb8000c",
+      "statement": "Release notes, migration, deprecation, and support information are prepared.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 252
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Documentation and lifecycle"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Prepared release, migration, deprecation, and support documents are finite versioned artifacts whose presence and bindings can be checked.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Each applicable release-note, migration, deprecation, and support-information artifact exists and is bound to the work item version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-395CFEA4",
+      "revision": 1,
+      "semantic_sha256": "395cfea4be90f13f294cbbf94f98641565a7b45a245fe34b5bdd58e4c4c06ba3",
+      "statement": "Temporary controls have owners and expiry dates.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 253
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Documentation and lifecycle"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Temporary-control ownership and expiry are exact required record fields.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every temporary control has exactly one accountable owner and a future expiry timestamp.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1ADFF5EF",
+      "revision": 1,
+      "semantic_sha256": "1adff5efcbcfcebc862d1808fdd90efef37c528d12c925379d81410b5471431a",
+      "statement": "Evidence and decisions are retained and linked to the exact change.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 254
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Documentation and lifecycle"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Change identifiers and immutable evidence or decision references make exact linkage and retention objectively decidable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every retained evidence and decision record links to the exact change identifier and immutable version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3B007012",
+      "revision": 1,
+      "semantic_sha256": "3b007012293668829814722748574945ec227f65c3047ff6f0dde520f25ce51d",
+      "statement": "All release blockers are resolved.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 258
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Final acceptance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A finite blocker register and allowed terminal states can prove whether every blocker is resolved before acceptance.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every release blocker in the bound register has a resolved state or authenticated authorized exception before final acceptance.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AE200A41",
+      "revision": 1,
+      "semantic_sha256": "ae200a418d6a48fde2019e57543b8f2ea7d3df1be77b3358ad3f5757d4e619ea",
+      "statement": "Required independent reviews and sign-offs are complete.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 260
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Final acceptance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Required review roles and sign-offs are a finite approval matrix with identities, independence metadata, and signatures.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every review and sign-off required by the approval matrix has a valid authenticated completion record.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FB98DCA5",
+      "revision": 1,
+      "semantic_sha256": "fb98dca53dd4929e582ad06b9bd77918ca709ffa7791df8f47e9bd51c01ed631",
+      "statement": "Post-deployment validation and observation criteria are defined.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 262
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Universal Definition of Done",
+        "A work item is not done until every applicable condition passes",
+        "Final acceptance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Post-deployment validation and observation criteria are explicit release-plan fields with fixed metrics, thresholds, and windows.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The release plan defines validation checks and observation metrics, thresholds, start times, and end times.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6E292740",
+      "revision": 1,
+      "semantic_sha256": "6e292740e1f651af510e30cbbc902b2d2df5cb38a0aab9b231f76930d8a5f505",
+      "statement": "A critical user, operator, administrator, recovery, cancellation, or deletion journey lacks successful end-to-end evidence.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 270
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "An approved critical-journey inventory and bound end-to-end result registry make missing successful evidence mechanically decidable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The release record enumerates applicable critical user, operator, administrator, recovery, cancellation, and deletion journeys.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every inventoried critical journey has current successful end-to-end evidence bound to the releasable artifact.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-770D5CDF",
+      "revision": 1,
+      "semantic_sha256": "770d5cdf69fe0dd608db4d906a5b28c8224671d690a5b3664d32d7c9f2506c02",
+      "statement": "Authentication, authorization, privileged access, account recovery, or tenant isolation lacks independent verification.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 272
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Applicable identity-control areas and required independent reviews form a finite matrix whose evidence and reviewer separation can be checked.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Each applicable authentication, authorization, privileged-access, recovery, and tenant-isolation area has current verification by a reviewer independent under the approved policy.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C24545ED",
+      "revision": 1,
+      "semantic_sha256": "c24545ed71cbd29920948c34193693c8973481b665f6a89aad9c388ab2d72bc7",
+      "statement": "A secret, signing key, credential, token, personal record, or sensitive artifact was exposed and not revoked, rotated, contained, and investigated.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 274
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "For each recorded exposure, incident actions have exact item bindings and terminal states, allowing revocation, rotation, containment, and investigation completion to be checked.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every exposed secret, key, credential, token, personal record, or sensitive artifact has a unique incident item record.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Each incident item records completed revocation or invalidation, rotation where applicable, containment, and investigation before release approval.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B85F89C0",
+      "revision": 1,
+      "semantic_sha256": "b85f89c0ea76be59fab2bd28c80cac0e0af7ae735f302a8ef824d5b1dc6530e7",
+      "statement": "Backup restoration, disaster recovery, rollback, or safe roll-forward cannot meet approved objectives.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 276
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Approved restoration, disaster-recovery, rollback, and roll-forward objectives provide exact time, point, integrity, and continuity limits for exercises.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every applicable recovery path has a current successful exercise result meeting all approved objectives.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8124B601",
+      "revision": 1,
+      "semantic_sha256": "8124b60168f8f95b4784ca3ec7df26aa128768580f400b4f1e5c53bf92aa5c88",
+      "statement": "Critical user journeys cannot meet approved availability, latency, correctness, durability, freshness, accessibility, security, privacy, or safety objectives.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 278
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Approved critical journeys and versioned quality objectives create a finite matrix whose current measurements can be compared with exact thresholds.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every critical journey maps to applicable availability, latency, correctness, durability, freshness, accessibility, security, privacy, and safety objectives.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Current bound evidence for every mapped objective satisfies its approved threshold.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9D2FAC3F",
+      "revision": 1,
+      "semantic_sha256": "9d2fac3f6a4358cc5b7709982ec0ae5a6c5ec86481e9a78b6bbe0b86dbb8b0c0",
+      "statement": "The production artifact cannot be traced to reviewed source, declared dependencies, trusted build, tests, provenance, and approval.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 283
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "A signed provenance graph can deterministically trace the production digest through build inputs, reviewed source, dependencies, tests, and approvals.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The production artifact digest has an unbroken verified provenance chain to reviewed source, declared dependencies, trusted build identity, test results, and approval.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-08296C2C",
+      "revision": 1,
+      "semantic_sha256": "08296c2c699451cda139d2700f8a8e32c73615d44970921e76c19b225d0c787a",
+      "statement": "A blocker was relabeled, suppressed, waived, or marked Not Applicable without authorized evidence-based risk acceptance.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 288
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Append-only status history and exception references can reveal blocker relabeling or suppression and verify that every waiver has authorized evidence-based acceptance.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every blocker status transition is preserved, and any suppression, waiver, or Not Applicable transition links to a valid authorized risk-acceptance record.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5BCE4800",
+      "revision": 1,
+      "semantic_sha256": "5bce48007223c987ab122a366b8b8399175c35010a44fd85133244cb3ba309b8",
+      "statement": "The team cannot state concrete hold, stop, rollback, roll-forward, incident, and communication thresholds before deployment.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 289
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Concrete hold, stop, rollback, roll-forward, incident, and communication thresholds are exact required predeployment fields.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Before deployment, the release plan defines measurable thresholds and actions for hold, stop, rollback, roll-forward, incident, and communication.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4401E253",
+      "revision": 1,
+      "semantic_sha256": "4401e25363c5e6118bc1168f0d7aac75d347cebfa49ec41df76e28eb097a3805",
+      "statement": "The organization cannot identify the accountable owner of the product, service, data, security, privacy, operations, and residual risk.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 294
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Master No-Go Gates",
+        "Absolute release and approval blockers"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The named accountability domains form a finite owner matrix whose identity references and exact-one cardinality can be validated.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The organization register identifies one accountable owner for product, service, data, security, privacy, operations, and residual risk.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D4A97289",
+      "revision": 1,
+      "semantic_sha256": "d4a97289ca7ee7928772c8533a162fa999113d485181b540bc7c45edbfc19646",
+      "statement": "Release identifier, source commits, tags, artifact digests, configuration versions, migration versions, and feature-flag states.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 302
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The final package fields are exact immutable identifiers and version values whose presence and integrity references can be checked.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The final evidence package contains release identifier, source commits, tags, artifact digests, configuration versions, migration versions, and feature-flag states.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0015A567",
+      "revision": 1,
+      "semantic_sha256": "0015a567d83826e8cebcfd1b85ce5aec8f307ce0ba22554c6c2a68c4b97f9ee4",
+      "statement": "Final scope, asset inventory, architecture diagrams, deployment diagrams, and data-flow diagrams.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 303
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The required final scope, inventory, and diagram artifacts are a finite package manifest whose presence and version bindings are decidable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The final evidence package contains final scope, asset inventory, architecture diagrams, deployment diagrams, and data-flow diagrams bound to the release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E15E9EEE",
+      "revision": 1,
+      "semantic_sha256": "e15e9eee308ccffa8ee18194522e6665447967edff889d58a9ec04a37fd42fbe",
+      "statement": "Data inventory, classification, retention schedule, and privacy records.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 304
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The named data-governance artifacts are finite required package entries with exact versions and integrity references.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The final evidence package contains a data inventory, classification, retention schedule, and privacy records bound to the release context.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-73265165",
+      "revision": 1,
+      "semantic_sha256": "73265165c02f00ace558c2d9c17f09e0173d41d93a69b7b4baaf5a470b0b94bf",
+      "statement": "Threat model, abuse-case assessment, risk register, and accepted exceptions.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 305
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Threat, abuse, risk, and exception artifacts are explicit required package entries whose presence and release binding can be validated.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The final evidence package contains the threat model, abuse-case assessment, risk register, and accepted-exception register.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0820243E",
+      "revision": 1,
+      "semantic_sha256": "0820243e4bb7fb5ee83bc8bc42f474fcea6d2c65c59fce63710525a9be8094e4",
+      "statement": "Applicable legal, privacy, accessibility, security, regulatory, and contractual requirements.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 306
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The package can require a versioned applicability register containing each named requirement domain and authoritative source reference.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The final evidence package contains applicable legal, privacy, accessibility, security, regulatory, and contractual requirements with source versions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1777943C",
+      "revision": 1,
+      "semantic_sha256": "1777943cdf5d235d5db1ee34b67606a1aefe4fb9111caeb31a6e094625d6c9ac",
+      "statement": "Requirements-to-test and control-to-evidence traceability.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 307
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A traceability graph has resolvable relationships whose required coverage and referential integrity are mechanically decidable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The final evidence package maps every requirement to tests and every control to evidence with valid identifiers.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-153FAFE7",
+      "revision": 1,
+      "semantic_sha256": "153fafe7d31ffb25dd1ef4430ea9fbad30ef94a38fac04eea090b57d1e7d11c6",
+      "statement": "Functional, integration, contract, system, regression, and user-acceptance test results.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 308
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Each named test-result class is a finite required package entry with artifact, configuration, and execution bindings.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The final evidence package contains current functional, integration, contract, system, regression, and user-acceptance results for all applicable test classes.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BB6A3F92",
+      "revision": 1,
+      "semantic_sha256": "bb6a3f924ba4406ad0945ba2451c4d7a80c7d05a42e7169b55dd0201a88a5575",
+      "statement": "Browser, device, localization, usability, and accessibility results.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 309
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Browser, device, localization, usability, and accessibility result artifacts can be enumerated and checked against the declared applicability matrix.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The final evidence package contains release-bound results for each applicable browser, device, localization, usability, and accessibility test class.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E01943D2",
+      "revision": 1,
+      "semantic_sha256": "e01943d2296a81c08db18437996395e8c183f1a58fe00ec053ae03ab0c6939ff",
+      "statement": "Performance, load, stress, spike, endurance, and capacity results.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 310
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Performance result types are explicit package entries whose existence and binding to declared conditions can be checked.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The final evidence package contains release-bound performance, load, stress, spike, endurance, and capacity results for every applicable type.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5ECCFB7E",
+      "revision": 1,
+      "semantic_sha256": "5eccfb7efedb74c54573ea233ce100202183fed39e89c33f947578ad8b53a694",
+      "statement": "Resilience, dependency-failure, failover, rollback, roll-forward, and recovery results.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 311
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The resilience and recovery result classes form a finite manifest with exact release and scenario bindings.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The final evidence package contains resilience, dependency-failure, failover, rollback, roll-forward, and recovery results for every applicable class.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AE5734B3",
+      "revision": 1,
+      "semantic_sha256": "ae5734b302346d59fe69abc669c83382d4c059695ca9645c14c0767dfa293c77",
+      "statement": "Security scan, code review, threat-validation, and penetration-test results.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 312
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Security scan, review, threat-validation, and penetration-test results are explicit package artifacts with tool, scope, date, and release bindings.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The final evidence package contains current security-scan, code-review, threat-validation, and penetration-test results for each applicable class.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B39689E7",
+      "revision": 1,
+      "semantic_sha256": "b39689e7b42cf4658eaec1ca8cac1a77f80cb7018a3b27d2f953eea1cd604907",
+      "statement": "SBOM, license report, build provenance, artifact signatures, and attestation evidence.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 313
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "SBOM, license report, provenance, signatures, and attestations have exact digests and cryptographic or referential integrity checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The final evidence package contains a verified SBOM, license report, build provenance, artifact signatures, and attestation evidence bound to the artifact digest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0C482ED0",
+      "revision": 1,
+      "semantic_sha256": "0c482ed0573bade1204dbaa570ef13fb42a50baf408c0eae4e989a2e2c2d6ad9",
+      "statement": "Infrastructure, network, DNS, certificate, secrets, and production-configuration review.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 314
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The six named review areas are explicit required package records with environment and configuration bindings.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The final evidence package contains current infrastructure, network, DNS, certificate, secrets, and production-configuration review records.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C3A340EE",
+      "revision": 1,
+      "semantic_sha256": "c3a340ee92c9ae30adb981ec0bbdbc6a892929a90ea4e83b1d073588c3d56f1f",
+      "statement": "Backup, restoration, disaster-recovery, and continuity evidence.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 315
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Backup, restoration, disaster-recovery, and continuity evidence are finite package entries whose scenario and execution bindings can be validated.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The final evidence package contains current backup, restoration, disaster-recovery, and continuity evidence for every applicable plan.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4A35B528",
+      "revision": 1,
+      "semantic_sha256": "4a35b528365d246dfaad91d63167cf9ee3b15e4197f0025ea8ba4bdb33fe8c90",
+      "statement": "Incident-response, on-call, alerting, runbook, and communications drill evidence.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 316
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The named operational drill evidence classes are finite required package entries with dates, participants, and release-context references.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The final evidence package contains incident-response, on-call, alerting, runbook, and communications drill evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F475A3F9",
+      "revision": 1,
+      "semantic_sha256": "f475a3f9df03ce1d466b76d3f2019176196f9d0d047c2c76e56eff6676b331ea",
+      "statement": "Monitoring, dashboard, synthetic-check, logging, audit, and telemetry review.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 317
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Monitoring and telemetry review types are explicit package entries whose source and review bindings can be checked.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The final evidence package contains monitoring, dashboard, synthetic-check, logging, audit, and telemetry review records.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0DBF3D1F",
+      "revision": 1,
+      "semantic_sha256": "0dbf3d1fb31023035a9444f1110295987f22f0f74f7f200646d8e171d9d86a5f",
+      "statement": "Third-party risk, contract, subprocessor, and continuity review.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 318
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Third-party risk, contract, subprocessor, and continuity review records are finite package artifacts tied to the supplier inventory.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The final evidence package contains current third-party risk, contract, subprocessor, and continuity review records for every applicable supplier.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-41AB3A61",
+      "revision": 1,
+      "semantic_sha256": "41ab3a6185a1c287f7fd672e8950d898f4b75b7f0007e4e1569315e4769e65c6",
+      "statement": "Open defect, risk, and exception registers.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 319
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Open defect, risk, and exception registers are explicit package artifacts with immutable versions.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The final evidence package contains current open-defect, risk, and exception registers.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8C3A67DF",
+      "revision": 1,
+      "semantic_sha256": "8c3a67dfa204da68f161b39f5655ca3e7ddb318d1d5e2f5dfbaa86b0600c50a8",
+      "statement": "Every exception's owner, impact, compensating control, monitoring, remediation plan, and expiry.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 320
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Exception identifiers can be joined to a fixed required field set, making omissions mechanically decidable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every exception in the final package records owner, impact, compensating control, monitoring, remediation plan, and expiry.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-68373154",
+      "revision": 1,
+      "semantic_sha256": "68373154e90db8e82cb2a12207fc0514664324ab19bbb47f5a4ac82a7d2120ca",
+      "statement": "Deployment, rollback or roll-forward, and post-deployment validation plans.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 321
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Deployment, recovery-path, and post-deployment validation plans are explicit release-bound package artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The final evidence package contains deployment, rollback or roll-forward, and post-deployment validation plans bound to the release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-291D1CF9",
+      "revision": 1,
+      "semantic_sha256": "291d1cf964a91c65a5b59b4b06b2c81309a55e7a80501e72add6affb486b219f",
+      "statement": "Required approvals, sign-offs, and final decision rationale.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 322
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Evidence Package",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "An approval matrix and signed decision record allow required approvals, sign-offs, and rationale presence to be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The final evidence package contains every required authenticated approval and sign-off plus the final decision rationale.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8A990F83",
+      "revision": 1,
+      "semantic_sha256": "8a990f835caa9bdc8e6ed18f775383ce6e24739e98f180c699bb76b532f6c881",
+      "statement": "Review the corpus at least annually and after major standards revisions.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 331
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Corpus Maintenance and Versioning",
+        "Maintenance controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The annual maximum interval and authoritative major-standards revision events allow exact review-deadline checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The corpus has an authenticated review no more than one year old.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every recorded major revision of a tracked standard links to a later corpus review.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E5AB0C75",
+      "revision": 1,
+      "semantic_sha256": "e5ab0c758df85ad37183a9027e49cef1d3df271d64028a2a72b4c9c2bf52cf91",
+      "statement": "Review it when entering a new jurisdiction, sector, user population, deployment model, or contractual regime.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 333
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Corpus Maintenance and Versioning",
+        "Maintenance controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Entry events for jurisdictions, sectors, user populations, deployment models, and contractual regimes can be matched to later corpus review records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every recorded entry into a new jurisdiction, sector, user population, deployment model, or contractual regime links to a later corpus review.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-692CA8B7",
+      "revision": 1,
+      "semantic_sha256": "692ca8b77a10cf85a0dca307be0c90b16b7faf22aed1c66dd89960e497d12ccd",
+      "statement": "Track authoritative standards and mark published, amended, withdrawn, superseded, and draft status accurately.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 335
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Corpus Maintenance and Versioning",
+        "Maintenance controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Issuing-body registries provide authoritative status values that can be compared with every tracked standards record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every tracked standard's published, amended, withdrawn, superseded, or draft status matches its issuing body's current record.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0A48A6ED",
+      "revision": 1,
+      "semantic_sha256": "0a48a6ed627d7160eba358ea8c3c902f7a3f71117edfaa3ed602e0938c3f630e",
+      "statement": "Do not replace current published baselines with drafts unless a documented transition decision requires early adoption.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 336
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Corpus Maintenance and Versioning",
+        "Maintenance controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Baseline and draft statuses plus transition-decision records make unauthorized draft replacement mechanically detectable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "No current published baseline is replaced by a draft unless a prior authenticated transition decision explicitly authorizes early adoption.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1CD7806F",
+      "revision": 1,
+      "semantic_sha256": "1cd7806f7e482f821bda5f463dec0f7625ac6349d9a5e83ee974aae5ee8e930d",
+      "statement": "Preserve historical corpus versions and the exact version used for each release or audit.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 337
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Corpus Maintenance and Versioning",
+        "Maintenance controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "Immutable corpus versions and release or audit references can prove historical preservation and exact-version binding.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every historical corpus version remains retrievable by digest, and every release or audit references exactly one such version.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6074CE61",
+      "revision": 1,
+      "semantic_sha256": "6074ce61ad66f483e8ba3ae301192389cb4a8deff0132c3d5705ce9fc9be4173",
+      "statement": "Record every added, changed, moved, or retired control with rationale and owner.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 338
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Corpus Maintenance and Versioning",
+        "Maintenance controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Corpus diffs enumerate added, changed, moved, and retired controls, allowing exact changelog coverage and required fields.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every control change detected between corpus versions has a changelog entry with action, rationale, and owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3726C504",
+      "revision": 1,
+      "semantic_sha256": "3726c50461ef057099fc687afc085f13cdb42ae2315f781712838cf591ea8807",
+      "statement": "Validate all Markdown links, headings, checklist syntax, front matter, encoding, and relative paths automatically.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 342
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Corpus Maintenance and Versioning",
+        "Maintenance controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "local_static",
+      "primary_reason": "Markdown links, headings, checklist tokens, front matter, encoding, and relative paths have exact parsers and bounded repository targets.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every corpus Markdown file passes the versioned link, heading, checklist-syntax, front-matter, encoding, and relative-path validators.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "schema_version": "prc.control-classification-skeptic-review/v0.1",
+  "packet_id": "skeptic-docs-checklists-05-application-security-md-part-002-part-001",
+  "primary_packet_id": "docs-checklists-05-application-security-md-part-002",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "controls": [
+    {
+      "control_id": "PRC-22-009",
+      "revision": 1,
+      "semantic_sha256": "3ca71dc0f27fdcbf4cb10b0232bfb0d8efe2d56c7f1016627bcb2ed1d65d6c76",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The key sets are only complete if every runtime, embedded, derived, imported, certificate, and externally managed key is discovered; environment key-management evidence is not automatically authoritative for that universe.",
+      "counterexample_analysis": "Production and staging share an AES key embedded in application configuration, but it is absent from the queried KMS inventory. The inventoried KMS identifiers are disjoint, so both clauses pass while production and non-production still share a key.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-22-011",
+      "revision": 1,
+      "semantic_sha256": "0af770adf7930d062dd8769e26e93084e93c131691cc3ddf19742094021d9228",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Provider, algorithm, and version provenance proves an approved interface was named, not that the implementation obtained unpredictable entropy or avoided fixed seeds, broken wrappers, or compromised generators.",
+      "counterexample_analysis": "A wrapper calls an approved provider and records its approved version but always supplies a fixed seed, producing predictable keys. Provenance matches the allowlist, so the proposal passes although secure randomness was not used.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-22-013",
+      "revision": 1,
+      "semantic_sha256": "dc30b9ec27d8948792535afa21b9f9e65c25d6ffe8711729ab4d35ea9caf6d4d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The capability test covers key-manager state transitions but does not define the complete consumer inventory or prove that applications, data formats, caches, rollback, and old-key reads support rotation and versioning.",
+      "counterexample_analysis": "The KMS test creates and activates version two successfully, but the production application hard-codes version one and cannot decrypt data after rotation. The proposed test passes while the assessed system does not support rotation.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-22-016",
+      "revision": 1,
+      "semantic_sha256": "3b405ac6477bb2fddbd30180e9fb1787efa52626844b1dae3cc9fcb555560d27",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A transcript containing required records does not establish that the exercise passed, used a representative compromise, or successfully completed revocation, replacement, recovery, communication, and verification outcomes.",
+      "counterexample_analysis": "The exercise follows the playbook but fails to revoke the compromised signing key; the transcript still contains every required outcome record, including the failed revocation. Both clauses pass even though the response playbook failed its test.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-22-018",
+      "revision": 1,
+      "semantic_sha256": "5f99ca65f6ad749e9fd72211a42a6af358131641cf3547211179af2b72f74aca",
+      "verdict": "confirmed_deterministic",
+      "reason": "The original statement requires defined lifecycle behavior, not proof that erasure is effective or safe, and the clause exactly requires triggers, scope, expected effects, and recovery limitations in a versioned policy.",
+      "counterexample_analysis": "I tried a policy with undesirable deletion timing: it may be poor policy, but that is outside this definition-only statement. A missing trigger, missing data scope, missing erasure semantics, or stale policy fails the bounded record check.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-22-019",
+      "revision": 1,
+      "semantic_sha256": "b62427846e56eeb2fc026dc7487320351c2601ca35e9961b81bd42fed0cf7896",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed ownership join assumes an exhaustive lifecycle-object inventory without bounding discovery across repositories, binaries, devices, external providers, manually imported certificates, and derived or embedded keys.",
+      "counterexample_analysis": "A webhook signing key stored directly in a deployment secret is omitted from the lifecycle inventory and has no owner. Every inventoried object has an active owner, so the checker passes while the universal statement is false.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    }
+  ]
+}

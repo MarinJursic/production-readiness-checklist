@@ -1,0 +1,2756 @@
+{
+  "schema_version": "prc.control-classification-packet/v0.1",
+  "packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/checklists/09-conditional-modules.md",
+  "control_count": 183,
+  "controls": [
+    {
+      "control_id": "PRC-39-001",
+      "revision": 1,
+      "semantic_sha256": "7dd475911a31b02a69dded7131e63453d63844300a51126344475870387757ba",
+      "statement": "Minimize possession and processing of raw payment credentials.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 13
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.1 Payments, billing, subscriptions, and money movement"
+      ]
+    },
+    {
+      "control_id": "PRC-39-002",
+      "revision": 1,
+      "semantic_sha256": "4eacc039ce696bad617f5cc6c03306774c38d489ba8968bf7ef3dd6fa34f8185",
+      "statement": "Define the exact payment-compliance scope.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 14
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.1 Payments, billing, subscriptions, and money movement"
+      ]
+    },
+    {
+      "control_id": "PRC-39-003",
+      "revision": 1,
+      "semantic_sha256": "15973198480d5be09d80be1515d1c59b84dc7da068184a76a80a9e4f5e50a595",
+      "statement": "Payment credentials never enter logs, analytics, support tools, or ordinary databases.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 15
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.1 Payments, billing, subscriptions, and money movement"
+      ]
+    },
+    {
+      "control_id": "PRC-39-004",
+      "revision": 1,
+      "semantic_sha256": "9397d2def3317bf70197d8c744d2dc5d51bd04081611b75cde56c9d46ef48bff",
+      "statement": "Amount, currency, tax, discount, exchange-rate, and rounding behavior is correct.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 16
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.1 Payments, billing, subscriptions, and money movement"
+      ]
+    },
+    {
+      "control_id": "PRC-39-005",
+      "revision": 1,
+      "semantic_sha256": "87617c217a99497947cd1b91ac3af39c1540290f036bc9db0189f9801ff0b052",
+      "statement": "Duplicate charge protection is implemented.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 17
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.1 Payments, billing, subscriptions, and money movement"
+      ]
+    },
+    {
+      "control_id": "PRC-39-006",
+      "revision": 1,
+      "semantic_sha256": "2207dfdb0205f08be023ded55305fef380161160a3c2494854fa3944145585ea",
+      "statement": "Payment requests and callbacks are idempotent.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 18
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.1 Payments, billing, subscriptions, and money movement"
+      ]
+    },
+    {
+      "control_id": "PRC-39-007",
+      "revision": 1,
+      "semantic_sha256": "08c10c1a1595801277146d931e0b8b12ebd4cb72267d736417559f4dcbca45aa",
+      "statement": "Payment webhooks are signed and replay-protected.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 19
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.1 Payments, billing, subscriptions, and money movement"
+      ]
+    },
+    {
+      "control_id": "PRC-39-008",
+      "revision": 1,
+      "semantic_sha256": "c5e59a0732e2e870e44477bc66f8b0ca9769f7a2501f21fb792398d3ffedfb59",
+      "statement": "Pending, authorized, captured, settled, failed, refunded, disputed, and reversed states are modeled correctly.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 20
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.1 Payments, billing, subscriptions, and money movement"
+      ]
+    },
+    {
+      "control_id": "PRC-39-009",
+      "revision": 1,
+      "semantic_sha256": "625b4a9b004679e280bd73b9fa2e104f6c3814f1fbb403fba42bbe0d008f585b",
+      "statement": "The product does not claim success before authoritative confirmation.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 21
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.1 Payments, billing, subscriptions, and money movement"
+      ]
+    },
+    {
+      "control_id": "PRC-39-010",
+      "revision": 1,
+      "semantic_sha256": "71c83139574091b28774cecbdb33ef790ee7ace5c4a1d7d06dea7e061e9a3aa2",
+      "statement": "Reconciliation compares application records with provider or bank records.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 22
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.1 Payments, billing, subscriptions, and money movement"
+      ]
+    },
+    {
+      "control_id": "PRC-39-011",
+      "revision": 1,
+      "semantic_sha256": "b73b95327cdf83085337c3a0a935fc0469e710e318d68d8bc622cb706173e189",
+      "statement": "Refund, partial refund, chargeback, and dispute workflows are tested.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 23
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.1 Payments, billing, subscriptions, and money movement"
+      ]
+    },
+    {
+      "control_id": "PRC-39-012",
+      "revision": 1,
+      "semantic_sha256": "baa97d68b6bba19ce2bdcf0955ff6bed2aa3e200183e36366d55d5e3b9589856",
+      "statement": "Failed payment and retry behavior avoids accidental multiple charges.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 24
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.1 Payments, billing, subscriptions, and money movement"
+      ]
+    },
+    {
+      "control_id": "PRC-39-013",
+      "revision": 1,
+      "semantic_sha256": "f944dea9a1a7a51294624e197aa69a6a907a6f59917615488d63e698eb565f36",
+      "statement": "Strong-customer-authentication or equivalent regional requirements are applied where relevant.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 25
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.1 Payments, billing, subscriptions, and money movement"
+      ]
+    },
+    {
+      "control_id": "PRC-39-014",
+      "revision": 1,
+      "semantic_sha256": "98d00b450c6105fd9f9511f5d60f89df51cc2d66ea68f420fa7ce55604cc22bb",
+      "statement": "Fraud controls are monitored and do not create unacceptable discriminatory or accessibility outcomes.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 26
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.1 Payments, billing, subscriptions, and money movement"
+      ]
+    },
+    {
+      "control_id": "PRC-39-015",
+      "revision": 1,
+      "semantic_sha256": "4aa456e195347df3b8674bc33cf26060045101d73d12886879ad7422a2872a79",
+      "statement": "Payout destination changes receive enhanced verification.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 27
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.1 Payments, billing, subscriptions, and money movement"
+      ]
+    },
+    {
+      "control_id": "PRC-39-016",
+      "revision": 1,
+      "semantic_sha256": "bd08d772c6787bc179fbab1994299af936189c1e86f4d330e8613f575b7489ad",
+      "statement": "Financial exports and reports are access-controlled and auditable.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 28
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.1 Payments, billing, subscriptions, and money movement"
+      ]
+    },
+    {
+      "control_id": "PRC-39-017",
+      "revision": 1,
+      "semantic_sha256": "d6a837f816a1442047813e32c6d7e4399f98947e9c8b4839435dce6b31199e87",
+      "statement": "Provider outage and delayed-event behavior are tested.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 29
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.1 Payments, billing, subscriptions, and money movement"
+      ]
+    },
+    {
+      "control_id": "PRC-39-018",
+      "revision": 1,
+      "semantic_sha256": "7acf79ee5dcc70c2f16c483271c78c641cef2e11e8d867b2b7e0aaa352438bf0",
+      "statement": "Invoice and receipt content is legally correct.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 30
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.1 Payments, billing, subscriptions, and money movement"
+      ]
+    },
+    {
+      "control_id": "PRC-39-019",
+      "revision": 1,
+      "semantic_sha256": "0979f4143f979090b57786a9234d125c3817a426bc69d2f85380e9b6abbe6ddc",
+      "statement": "Subscription renewal, trial conversion, cancellation, and proration are tested.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 31
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.1 Payments, billing, subscriptions, and money movement"
+      ]
+    },
+    {
+      "control_id": "PRC-39-020",
+      "revision": 1,
+      "semantic_sha256": "1b689432606abe2e788247b862645653621a102f6fd5193e56853421bd1a02f8",
+      "statement": "Customer support cannot alter money movement without controlled authorization and audit.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 32
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.1 Payments, billing, subscriptions, and money movement"
+      ]
+    },
+    {
+      "control_id": "PRC-39-021",
+      "revision": 1,
+      "semantic_sha256": "e1e91479df35cd8fffd81941b3ee6874b96c57f15fe97d13ca896b94805f92ec",
+      "statement": "Tenant context is mandatory at every data and processing boundary.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 36
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.2 Multi-tenant SaaS"
+      ]
+    },
+    {
+      "control_id": "PRC-39-022",
+      "revision": 1,
+      "semantic_sha256": "82a63bb41b7b4c435a2f265fd0823557384bd18dbc52dc2b4e7e1138b42c31f5",
+      "statement": "Tenant isolation is tested in database, cache, search, queue, file, log, analytics, backup, and administrative systems.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 37
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.2 Multi-tenant SaaS"
+      ]
+    },
+    {
+      "control_id": "PRC-39-023",
+      "revision": 1,
+      "semantic_sha256": "83bc6d6c531fabe739514aa126972f6f80d03b3d79d13ae1b7d54fa4f5a7e67c",
+      "statement": "Tenant-controlled identifiers cannot select another tenant.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 38
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.2 Multi-tenant SaaS"
+      ]
+    },
+    {
+      "control_id": "PRC-39-024",
+      "revision": 1,
+      "semantic_sha256": "8167ee1d7751c78376271a66533631aef3dae3efc7fea6af39ac7b47f0b647f2",
+      "statement": "Tenant configuration cannot affect other tenants.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 39
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.2 Multi-tenant SaaS"
+      ]
+    },
+    {
+      "control_id": "PRC-39-025",
+      "revision": 1,
+      "semantic_sha256": "951a379e4eba609a50e41e7c67eca4b3e8ce5dab9fc95213e6ee8b3b4fe4b314",
+      "statement": "One tenant cannot exhaust shared resources beyond defined limits.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 40
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.2 Multi-tenant SaaS"
+      ]
+    },
+    {
+      "control_id": "PRC-39-026",
+      "revision": 1,
+      "semantic_sha256": "a27931d2a0419bd0a30bc568d77a01197cca735ed00d35b4d2f23f44a7870b8e",
+      "statement": "Cross-tenant timing and existence side channels are minimized.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 41
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.2 Multi-tenant SaaS"
+      ]
+    },
+    {
+      "control_id": "PRC-39-027",
+      "revision": 1,
+      "semantic_sha256": "c165ae1041a27e0b8b88964f30c34dd0ac728aad89e695429acc19b92fc7de78",
+      "statement": "Tenant-specific encryption and key requirements are satisfied.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 42
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.2 Multi-tenant SaaS"
+      ]
+    },
+    {
+      "control_id": "PRC-39-028",
+      "revision": 1,
+      "semantic_sha256": "bc03fae7a37b739ff022ffae9a9c7983cb64e9a751c8f4bed441d0b6bf4df438",
+      "statement": "Tenant administrators cannot exceed their organization scope.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 43
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.2 Multi-tenant SaaS"
+      ]
+    },
+    {
+      "control_id": "PRC-39-029",
+      "revision": 1,
+      "semantic_sha256": "826bb08974ef6a7c552005a3f50a02c2c63730ff53ba7a72e9e419c98a25a7ff",
+      "statement": "Support access to a tenant requires authorization, purpose, visibility, and audit.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 44
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.2 Multi-tenant SaaS"
+      ]
+    },
+    {
+      "control_id": "PRC-39-030",
+      "revision": 1,
+      "semantic_sha256": "94eff3ba820ce177646b58c2f76435913a4b94d400b51e985a0af3bdac2e8833",
+      "statement": "Tenant export and deletion include all relevant systems.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 45
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.2 Multi-tenant SaaS"
+      ]
+    },
+    {
+      "control_id": "PRC-39-031",
+      "revision": 1,
+      "semantic_sha256": "1b760b95db34d95ddb232498a0cd67aa35f5467dc5dc58a272dd8f22b3bcb24f",
+      "statement": "Custom domains cannot be claimed by the wrong tenant.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 46
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.2 Multi-tenant SaaS"
+      ]
+    },
+    {
+      "control_id": "PRC-39-032",
+      "revision": 1,
+      "semantic_sha256": "4376f8ca1bd0ab3fcdb00eac2311aba84443b7d7fce0c710aaf7b5b3a3e15344",
+      "statement": "Tenant migration and merge operations preserve isolation and auditability.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 47
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.2 Multi-tenant SaaS"
+      ]
+    },
+    {
+      "control_id": "PRC-39-033",
+      "revision": 1,
+      "semantic_sha256": "c2c2eb94f05c06ee3d2af374bc5fa2e761e4ee2e907fc7b73ca7feecb9c4dc56",
+      "statement": "Acceptable-use and content policies are defined.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 51
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.3 User-generated content, communities, and marketplaces"
+      ]
+    },
+    {
+      "control_id": "PRC-39-034",
+      "revision": 1,
+      "semantic_sha256": "963902123568198a985095c1379149ab27cbc288b8e9fd3c9ca3b982847bdc0e",
+      "statement": "Users can report prohibited or harmful content and conduct.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 52
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.3 User-generated content, communities, and marketplaces"
+      ]
+    },
+    {
+      "control_id": "PRC-39-035",
+      "revision": 1,
+      "semantic_sha256": "6942d51afd158f31466a74946372bcd9ac3eb34eb4ea2e9407e24e3a6e448b92",
+      "statement": "Blocking, muting, privacy, and safety controls work.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 53
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.3 User-generated content, communities, and marketplaces"
+      ]
+    },
+    {
+      "control_id": "PRC-39-036",
+      "revision": 1,
+      "semantic_sha256": "3191527056baabef59f1178605449e5760c00fb378502e9bfea7f1bef0137b0a",
+      "statement": "Moderation queues have owners and response objectives.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 54
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.3 User-generated content, communities, and marketplaces"
+      ]
+    },
+    {
+      "control_id": "PRC-39-037",
+      "revision": 1,
+      "semantic_sha256": "4f790f44a8c4cb6251aaa096fce1aca99a53e6f8092f244c9c1d557c3a79fc23",
+      "statement": "Moderator actions are authorized and audited.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 55
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.3 User-generated content, communities, and marketplaces"
+      ]
+    },
+    {
+      "control_id": "PRC-39-038",
+      "revision": 1,
+      "semantic_sha256": "fb409de4b66c6785510f70597072e064b9a52c220a4bbc921a4839a6b15afdb1",
+      "statement": "Appeals and error-correction procedures exist where appropriate.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 56
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.3 User-generated content, communities, and marketplaces"
+      ]
+    },
+    {
+      "control_id": "PRC-39-039",
+      "revision": 1,
+      "semantic_sha256": "2e675b37a0881198d0b35263010efe7b501f0aa14dc8f3630aab900c033ca224",
+      "statement": "Spam, bots, scraping, harassment, impersonation, and coordinated abuse are addressed.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 57
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.3 User-generated content, communities, and marketplaces"
+      ]
+    },
+    {
+      "control_id": "PRC-39-040",
+      "revision": 1,
+      "semantic_sha256": "39c541f1bd5cace7f35b22f50b69881c93f86a9dbcceb87cf73f58f10cae5067",
+      "statement": "Uploaded content is scanned and isolated appropriately.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 58
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.3 User-generated content, communities, and marketplaces"
+      ]
+    },
+    {
+      "control_id": "PRC-39-041",
+      "revision": 1,
+      "semantic_sha256": "6fc16246a2b50569451a0a5210ffd33c4de96160b8426a25b4a022f9005de2c2",
+      "statement": "Illegal-content, copyright, evidence-preservation, and lawful-request procedures are defined.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 59
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.3 User-generated content, communities, and marketplaces"
+      ]
+    },
+    {
+      "control_id": "PRC-39-042",
+      "revision": 1,
+      "semantic_sha256": "d6e83b3dfe948be92da3f9ced8ba9921e7f37a804d4392e657f2852dd2bbc9b1",
+      "statement": "Public and private audience controls are clear.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 60
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.3 User-generated content, communities, and marketplaces"
+      ]
+    },
+    {
+      "control_id": "PRC-39-043",
+      "revision": 1,
+      "semantic_sha256": "c2e712255306df02b48c793f5c4e59790b91b1649daee64c6eabb1e451378ae9",
+      "statement": "Deleted or private content does not remain publicly cached or indexed.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 61
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.3 User-generated content, communities, and marketplaces"
+      ]
+    },
+    {
+      "control_id": "PRC-39-044",
+      "revision": 1,
+      "semantic_sha256": "740484eb6e134755b7b319bdf05a2f85ea43f9ab7579c051c935e03a2f42cdae",
+      "statement": "Search and recommendation do not expose restricted content.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 62
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.3 User-generated content, communities, and marketplaces"
+      ]
+    },
+    {
+      "control_id": "PRC-39-045",
+      "revision": 1,
+      "semantic_sha256": "d4554a90e2b4e5ba037e76fcd5a8e03ed766d71a373fecff8295d18abf3b1cc5",
+      "statement": "Seller, buyer, provider, or creator verification is applied where risk requires it.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 63
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.3 User-generated content, communities, and marketplaces"
+      ]
+    },
+    {
+      "control_id": "PRC-39-046",
+      "revision": 1,
+      "semantic_sha256": "693b047d005b1c6ce6e4205b9a6ae9b6df8d964418dbc59385f522ba82ad2206",
+      "statement": "Fraud, disputes, refunds, and trust-and-safety escalation are integrated.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 64
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.3 User-generated content, communities, and marketplaces"
+      ]
+    },
+    {
+      "control_id": "PRC-39-047",
+      "revision": 1,
+      "semantic_sha256": "6b0b489b812f0228e3545b88a8589e6f0c773a51376c15d27268c85fd83cbc6a",
+      "statement": "Age-sensitive content and interactions are controlled.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 65
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.3 User-generated content, communities, and marketplaces"
+      ]
+    },
+    {
+      "control_id": "PRC-39-048",
+      "revision": 1,
+      "semantic_sha256": "4f99ea697a80b28c9f73e3772721fed36751d2083eac7f0b5dba9c30fb2851f7",
+      "statement": "Moderation personnel have suitable safeguards and access restrictions.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 66
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.3 User-generated content, communities, and marketplaces"
+      ]
+    },
+    {
+      "control_id": "PRC-39-049",
+      "revision": 1,
+      "semantic_sha256": "f340bdf0bfbf84846ea635da62092043eacf2f4a80b2f5ada63614553e70b05d",
+      "statement": "Emergency threats to life or safety have an escalation process.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 67
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.3 User-generated content, communities, and marketplaces"
+      ]
+    },
+    {
+      "control_id": "PRC-39-050",
+      "revision": 1,
+      "semantic_sha256": "daa11f40dee356620514e08568a329472c79f081bd56abd5dd78dc0dc5b409f7",
+      "statement": "Sender domains and identities are controlled.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 71
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.4 Email, SMS, push, and notifications"
+      ]
+    },
+    {
+      "control_id": "PRC-39-051",
+      "revision": 1,
+      "semantic_sha256": "50c0dbe5cd38fccda2e1420fa04761c34b4de6be9e4d3b0582798ef8a7fb42d7",
+      "statement": "Email authentication uses current SPF, DKIM, and DMARC practices.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 72
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.4 Email, SMS, push, and notifications"
+      ]
+    },
+    {
+      "control_id": "PRC-39-052",
+      "revision": 1,
+      "semantic_sha256": "f66ac29198b64230e5957ef1e57cd50774e6afbe146a7c78a40df32468ae2c79",
+      "statement": "Bounce, complaint, suppression, and reputation signals are monitored.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 73
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.4 Email, SMS, push, and notifications"
+      ]
+    },
+    {
+      "control_id": "PRC-39-053",
+      "revision": 1,
+      "semantic_sha256": "b7bb1c02aaef8872d97ae240ce4136e4a7604fddf618c4f021730fd21450e7c5",
+      "statement": "Subscription and consent status is checked at send time.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 74
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.4 Email, SMS, push, and notifications"
+      ]
+    },
+    {
+      "control_id": "PRC-39-054",
+      "revision": 1,
+      "semantic_sha256": "562fd13b40b51a1e64251b2dbad87648307b5444eee706a897a80755f9b9489c",
+      "statement": "Unsubscribe works promptly and is not deceptive.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 75
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.4 Email, SMS, push, and notifications"
+      ]
+    },
+    {
+      "control_id": "PRC-39-055",
+      "revision": 1,
+      "semantic_sha256": "f8faa81d4183ab6beff09c71235954318c2aae8ad2505d35d3c712a843ab3ef2",
+      "statement": "Transactional and marketing messages are classified correctly.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 76
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.4 Email, SMS, push, and notifications"
+      ]
+    },
+    {
+      "control_id": "PRC-39-056",
+      "revision": 1,
+      "semantic_sha256": "8b6cc616d77943523e0110206b937a476e9c282781b7e6e66fccbb2a72ac0b4d",
+      "statement": "Notification links are authenticated or safely tokenized.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 77
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.4 Email, SMS, push, and notifications"
+      ]
+    },
+    {
+      "control_id": "PRC-39-057",
+      "revision": 1,
+      "semantic_sha256": "cb9723e12c746c9177c75f09bb5a89eed43cfd2fbb1b3e76c8fe300cfd2844a9",
+      "statement": "Sensitive information is not exposed in lock-screen, email-preview, or SMS content.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 78
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.4 Email, SMS, push, and notifications"
+      ]
+    },
+    {
+      "control_id": "PRC-39-058",
+      "revision": 1,
+      "semantic_sha256": "bb82b289ff136b5aa2636e936b39a6bc76bbadd73ac9afd83049eb0a43441a3a",
+      "statement": "Reset and verification messages cannot be reused.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 79
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.4 Email, SMS, push, and notifications"
+      ]
+    },
+    {
+      "control_id": "PRC-39-059",
+      "revision": 1,
+      "semantic_sha256": "1afbd08004300d6d05ccdbf8785e92869f599484bda81219744af5f55d2a88f5",
+      "statement": "Notification retries do not create duplicates or spam.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 80
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.4 Email, SMS, push, and notifications"
+      ]
+    },
+    {
+      "control_id": "PRC-39-060",
+      "revision": 1,
+      "semantic_sha256": "1ef2c12e5a3b25ed26b3cea7854bc3f7389ab5f7fad758916f0facda18d43870",
+      "statement": "Templates handle localization, escaping, long content, and accessible structure.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 81
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.4 Email, SMS, push, and notifications"
+      ]
+    },
+    {
+      "control_id": "PRC-39-061",
+      "revision": 1,
+      "semantic_sha256": "e790d22ab5b1098fe2ca519458666a602a15b841db8ef182e3a5d85b51655ba1",
+      "statement": "Provider outage and delayed delivery are handled.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 82
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.4 Email, SMS, push, and notifications"
+      ]
+    },
+    {
+      "control_id": "PRC-39-062",
+      "revision": 1,
+      "semantic_sha256": "02a31c3ff038f84cd0cb6cc3c23881f9820ba4a0ff2793d00b64bfc644f6ae1c",
+      "statement": "Users can configure nonessential notifications.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 83
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.4 Email, SMS, push, and notifications"
+      ]
+    },
+    {
+      "control_id": "PRC-39-063",
+      "revision": 1,
+      "semantic_sha256": "fa21165cf735cc8ac774425c57c4066062ebf7e24cbf596ee6a3984204a83ee2",
+      "statement": "Frequency limits prevent harassment and abuse.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 84
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.4 Email, SMS, push, and notifications"
+      ]
+    },
+    {
+      "control_id": "PRC-39-064",
+      "revision": 1,
+      "semantic_sha256": "69ccd4a76319b242954ebfa1310337fde240b4965d2f7f7403c196a81628d467",
+      "statement": "Phone-number or email reassignment risk is considered.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 85
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.4 Email, SMS, push, and notifications"
+      ]
+    },
+    {
+      "control_id": "PRC-39-065",
+      "revision": 1,
+      "semantic_sha256": "dc1430b562b33932d34c53033a415686209f4af9f2a91f52694d245c8c71235b",
+      "statement": "Delivery status is not treated as proof that the intended human received or approved an action.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 86
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.4 Email, SMS, push, and notifications"
+      ]
+    },
+    {
+      "control_id": "PRC-39-066",
+      "revision": 1,
+      "semantic_sha256": "74c45629a8c527bfc2413325e5c0bb376071bc2d45f1273f74b88c02ffba1d91",
+      "statement": "Production cannot accidentally use test recipient lists or vice versa.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 87
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.4 Email, SMS, push, and notifications"
+      ]
+    },
+    {
+      "control_id": "PRC-39-067",
+      "revision": 1,
+      "semantic_sha256": "97d9692f0bee949ad7755f423220602492ace988d148898b0a67c0debb0de37b",
+      "statement": "Every supported locale is documented.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 91
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.5 Localization and internationalization"
+      ]
+    },
+    {
+      "control_id": "PRC-39-068",
+      "revision": 1,
+      "semantic_sha256": "9961ea59626f4e72169e1041c6fa702cbc8ff317f5482b7bde590e1feef6b466",
+      "statement": "Translation completeness is verified.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 92
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.5 Localization and internationalization"
+      ]
+    },
+    {
+      "control_id": "PRC-39-069",
+      "revision": 1,
+      "semantic_sha256": "1362d29d8bec804669d994552b7f31f211aba3202bb5f8b54599a11c47967675",
+      "statement": "Missing translations fail visibly and safely.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 93
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.5 Localization and internationalization"
+      ]
+    },
+    {
+      "control_id": "PRC-39-070",
+      "revision": 1,
+      "semantic_sha256": "aea58cb19e843a02a01306ce03fc5dbb1e4a9a1c68c0e354dfade113c1faa166",
+      "statement": "Text expansion does not break layout.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 94
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.5 Localization and internationalization"
+      ]
+    },
+    {
+      "control_id": "PRC-39-071",
+      "revision": 1,
+      "semantic_sha256": "206493da531815d475af16c6637b71c3f3604f27fce80e78df2af3c26652c4c1",
+      "statement": "Right-to-left layout and mixed-direction text are tested.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 95
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.5 Localization and internationalization"
+      ]
+    },
+    {
+      "control_id": "PRC-39-072",
+      "revision": 1,
+      "semantic_sha256": "f07ad13f0df0172e7d517e35c0b06165d2921624fb85c161225381a8fff19dab",
+      "statement": "Unicode normalization and confusable characters are handled.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 96
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.5 Localization and internationalization"
+      ]
+    },
+    {
+      "control_id": "PRC-39-073",
+      "revision": 1,
+      "semantic_sha256": "1c998bd70b8b122da45b9d7b31a205624c4aa009f8ba334f2be01922d943901c",
+      "statement": "Names and addresses are not constrained to one cultural format without need.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 97
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.5 Localization and internationalization"
+      ]
+    },
+    {
+      "control_id": "PRC-39-074",
+      "revision": 1,
+      "semantic_sha256": "8abf4b5a1fd02d57b83b72a50b2341a92059b041af616fc08c1b9df731ae488b",
+      "statement": "Date, time, number, decimal, currency, and unit formats are correct.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 98
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.5 Localization and internationalization"
+      ]
+    },
+    {
+      "control_id": "PRC-39-075",
+      "revision": 1,
+      "semantic_sha256": "c683077b31f235a0937ed6df7d6f3c248f258d6c691c71284790a6d011c7d8e7",
+      "statement": "Time-zone and daylight-saving behavior is correct.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 99
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.5 Localization and internationalization"
+      ]
+    },
+    {
+      "control_id": "PRC-39-076",
+      "revision": 1,
+      "semantic_sha256": "29138b586e49f2a924c63f9e8751cb2679b8b24100256cba99c42c6f7eaeea88",
+      "statement": "Pluralization and grammatical variation are correct.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 100
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.5 Localization and internationalization"
+      ]
+    },
+    {
+      "control_id": "PRC-39-077",
+      "revision": 1,
+      "semantic_sha256": "d6e317631e890cc0ff101ec4c6995383bd87ed50cc355fec70e315732b588c7b",
+      "statement": "Sorting and search behavior match locale requirements.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 101
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.5 Localization and internationalization"
+      ]
+    },
+    {
+      "control_id": "PRC-39-078",
+      "revision": 1,
+      "semantic_sha256": "9bdfa55f45fbc33cbf5e79a7f81a96fbb23e602fd892d7060333e26e6c74ed2e",
+      "statement": "Legal and consent text is correct for each applicable locale.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 102
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.5 Localization and internationalization"
+      ]
+    },
+    {
+      "control_id": "PRC-39-079",
+      "revision": 1,
+      "semantic_sha256": "2c6115e768bce4d9f106931b555ed8767b15d42dcdbff49991111c9dfd4b68f9",
+      "statement": "Translated error, safety, and support content is understandable.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 103
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.5 Localization and internationalization"
+      ]
+    },
+    {
+      "control_id": "PRC-39-080",
+      "revision": 1,
+      "semantic_sha256": "dc538e068482378f3d0eff5022860b725742796e9af5e261bce03a28759c1829",
+      "statement": "Localization does not alter identifiers, signatures, tokens, or machine data.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 104
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.5 Localization and internationalization"
+      ]
+    },
+    {
+      "control_id": "PRC-39-081",
+      "revision": 1,
+      "semantic_sha256": "56dd3df30e45f1b8043e6639d636798b5789552a92961ed4c68f8338ffefb324",
+      "statement": "Customer support coverage matches offered languages where promised.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 105
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.5 Localization and internationalization"
+      ]
+    },
+    {
+      "control_id": "PRC-39-082",
+      "revision": 1,
+      "semantic_sha256": "78fbd1f13e4e52fd51de7d033937cce4205356635e820b5c6d212c17e667109a",
+      "statement": "Public and private pages have correct indexing rules.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 109
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.6 Public content, search engines, and SEO"
+      ]
+    },
+    {
+      "control_id": "PRC-39-083",
+      "revision": 1,
+      "semantic_sha256": "756d0a7860e31f34c759c6261dfe50aea77c95806df962e28c39a069c9b9bf0a",
+      "statement": "Authentication and authorization, not robots directives, protect private data.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 110
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.6 Public content, search engines, and SEO"
+      ]
+    },
+    {
+      "control_id": "PRC-39-084",
+      "revision": 1,
+      "semantic_sha256": "a46f0c32a48afb41e032e21db50c6304012ba97a30545391ff9e84f1975a9457",
+      "statement": "Canonical URLs are correct.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 111
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.6 Public content, search engines, and SEO"
+      ]
+    },
+    {
+      "control_id": "PRC-39-085",
+      "revision": 1,
+      "semantic_sha256": "9df36cf7372aeba35f663d9adb2cd31f44d1cae3bcca3e507dcdbdab5ec44a5c",
+      "statement": "Redirects preserve intended security and search behavior.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 112
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.6 Public content, search engines, and SEO"
+      ]
+    },
+    {
+      "control_id": "PRC-39-086",
+      "revision": 1,
+      "semantic_sha256": "cd5c521f142416676eb550272e1d63efb334863ac9394c6ec87fb57943e08503",
+      "statement": "Status codes are correct.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 113
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.6 Public content, search engines, and SEO"
+      ]
+    },
+    {
+      "control_id": "PRC-39-087",
+      "revision": 1,
+      "semantic_sha256": "0d0976e95ee64574bb9b26cd9c42b3e8c1415cbfe6e7cd552f873a4f15117056",
+      "statement": "Error and soft-error pages are handled properly.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 114
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.6 Public content, search engines, and SEO"
+      ]
+    },
+    {
+      "control_id": "PRC-39-088",
+      "revision": 1,
+      "semantic_sha256": "7276e2eaf949b36cc83716e2ab8a927b09e4a972bcbe72ac85b5d0d9ef1a67ac",
+      "statement": "Sitemaps are accurate and do not expose private URLs.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 115
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.6 Public content, search engines, and SEO"
+      ]
+    },
+    {
+      "control_id": "PRC-39-089",
+      "revision": 1,
+      "semantic_sha256": "f6203d959e00635156895e4b88a1fd59b79e8faf6b5e0b8378273dbed37696dc",
+      "statement": "Metadata and social previews contain no sensitive information.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 116
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.6 Public content, search engines, and SEO"
+      ]
+    },
+    {
+      "control_id": "PRC-39-090",
+      "revision": 1,
+      "semantic_sha256": "05baef1d32341c3494589b7d5440b70a9af11b134a4d19b9de0c0b01e4daa16f",
+      "statement": "Structured data matches visible content.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 117
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.6 Public content, search engines, and SEO"
+      ]
+    },
+    {
+      "control_id": "PRC-39-091",
+      "revision": 1,
+      "semantic_sha256": "ab92ca6749cb38dae38675465098f1344227f9bbbda22d801414423269c2ed2e",
+      "statement": "Deleted or private content is removed from caches and indexing workflows.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 118
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.6 Public content, search engines, and SEO"
+      ]
+    },
+    {
+      "control_id": "PRC-39-092",
+      "revision": 1,
+      "semantic_sha256": "e453ce0446baf196dacc78f7bbeadc358c477cfd8570e79506be6c3a84235368",
+      "statement": "Staging and preview environments are not unintentionally indexed.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 119
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.6 Public content, search engines, and SEO"
+      ]
+    },
+    {
+      "control_id": "PRC-39-093",
+      "revision": 1,
+      "semantic_sha256": "5b66a1b484c2fe7fb495349b938fbceb6b4056109c88d4536b13fb6362aab2bb",
+      "statement": "Crawl load cannot overwhelm the application.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 120
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.6 Public content, search engines, and SEO"
+      ]
+    },
+    {
+      "control_id": "PRC-39-094",
+      "revision": 1,
+      "semantic_sha256": "5c15fbb0622e071e052632040ddbb087194536b4353a0240f6545ffa491c6578",
+      "statement": "URL generation avoids unbounded duplicate spaces.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 121
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.6 Public content, search engines, and SEO"
+      ]
+    },
+    {
+      "control_id": "PRC-39-095",
+      "revision": 1,
+      "semantic_sha256": "51c0ddac6881eaa50847501092cc4805829db4dea98fe05577498af9ec017282",
+      "statement": "User-generated content cannot manipulate site-wide metadata or redirects.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 122
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.6 Public content, search engines, and SEO"
+      ]
+    },
+    {
+      "control_id": "PRC-39-096",
+      "revision": 1,
+      "semantic_sha256": "eff861dcf2135074e712c0a25a48013af1a9254e9ddd16f6636a2f91ff14d2df",
+      "statement": "Service-worker scope is restricted.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 126
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.7 Progressive Web Apps and offline operation"
+      ]
+    },
+    {
+      "control_id": "PRC-39-097",
+      "revision": 1,
+      "semantic_sha256": "054e777d09012d0a816ab26d2acfc91c8059f6cc9c3e9e716d5b3ed55a9ba00c",
+      "statement": "Cache versioning and invalidation are reliable.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 127
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.7 Progressive Web Apps and offline operation"
+      ]
+    },
+    {
+      "control_id": "PRC-39-098",
+      "revision": 1,
+      "semantic_sha256": "fa6b45dec9d0d7b54812620d14b4c3cb3094a400a1501fd41f87d9cce1bd9afe",
+      "statement": "Sensitive responses are not cached improperly.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 128
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.7 Progressive Web Apps and offline operation"
+      ]
+    },
+    {
+      "control_id": "PRC-39-099",
+      "revision": 1,
+      "semantic_sha256": "fedb4b22670a1622180838832841520632d8fbfa120ca68761511eea2c9813a5",
+      "statement": "Updates do not leave clients permanently on vulnerable versions.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 129
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.7 Progressive Web Apps and offline operation"
+      ]
+    },
+    {
+      "control_id": "PRC-39-100",
+      "revision": 1,
+      "semantic_sha256": "ac070005d4d873b94040d1372e9ec419862957fe54f2d4a296d9ef203a02ef66",
+      "statement": "Old and new client versions remain compatible during rollout.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 130
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.7 Progressive Web Apps and offline operation"
+      ]
+    },
+    {
+      "control_id": "PRC-39-101",
+      "revision": 1,
+      "semantic_sha256": "91787ac1998b573897d87f7742b262a579cb2eaa32ca8b86959d57a998889d22",
+      "statement": "Offline changes have clear conflict and synchronization behavior.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 131
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.7 Progressive Web Apps and offline operation"
+      ]
+    },
+    {
+      "control_id": "PRC-39-102",
+      "revision": 1,
+      "semantic_sha256": "5edac9275bf42759f8a341a823f0fe7d3a85781a61cc97c4417b7dbd340dda21",
+      "statement": "Replayed offline operations are idempotent.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 132
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.7 Progressive Web Apps and offline operation"
+      ]
+    },
+    {
+      "control_id": "PRC-39-103",
+      "revision": 1,
+      "semantic_sha256": "989ad1ac3af892447c683c7ee95ceef677721c13b12a8ccdf983b1c8e2673a35",
+      "statement": "Logout and account deletion clear relevant offline data.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 133
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.7 Progressive Web Apps and offline operation"
+      ]
+    },
+    {
+      "control_id": "PRC-39-104",
+      "revision": 1,
+      "semantic_sha256": "cb2ada44e742d1fc52668d637687434cca51e6d81f953f8ec5ee972e5c10c3a4",
+      "statement": "Shared-device risks are addressed.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 134
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.7 Progressive Web Apps and offline operation"
+      ]
+    },
+    {
+      "control_id": "PRC-39-105",
+      "revision": 1,
+      "semantic_sha256": "251f2b06c5017819f55f2a48e39fbefdf1d8d7fc3de8e9aa4e6e9bafc2027a25",
+      "statement": "Push permissions are requested contextually and can be revoked.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 135
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.7 Progressive Web Apps and offline operation"
+      ]
+    },
+    {
+      "control_id": "PRC-39-106",
+      "revision": 1,
+      "semantic_sha256": "faea299ed8eace9a09ced5b6f7d84fb9db75b14a454a610cd317ab0f343a3c31",
+      "statement": "Background synchronization has bounded resource use.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 136
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.7 Progressive Web Apps and offline operation"
+      ]
+    },
+    {
+      "control_id": "PRC-39-107",
+      "revision": 1,
+      "semantic_sha256": "b5fb6a4209c95e0bec29363a83b11dfc2a68d56885ec66b37c9051d0c08ff876",
+      "statement": "Recovery from corrupt local state is possible.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 137
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.7 Progressive Web Apps and offline operation"
+      ]
+    },
+    {
+      "control_id": "PRC-39-108",
+      "revision": 1,
+      "semantic_sha256": "1919666e54dc6536ba455744f79539c771e7ed81cc512ca806abdf460c370a8e",
+      "statement": "Connection authentication and authorization are continuously valid.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 141
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.8 Real-time, streaming, collaborative, and event-driven features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-109",
+      "revision": 1,
+      "semantic_sha256": "ba3c6d1ec8958179c8a433bbf63184f26b37e5ea698bc5e873f69e41584c47fc",
+      "statement": "Origin and cross-site connection risks are addressed.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 142
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.8 Real-time, streaming, collaborative, and event-driven features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-110",
+      "revision": 1,
+      "semantic_sha256": "e83c31d6e57240df07751078ee1edcc789392733c9f8a7db85ece6132ff3794f",
+      "statement": "Messages are schema-validated.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 143
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.8 Real-time, streaming, collaborative, and event-driven features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-111",
+      "revision": 1,
+      "semantic_sha256": "e958009b0940ef9255c617460ae5985478b40498088c844f2d93ba8a7bbdc9cc",
+      "statement": "Message size and rate are bounded.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 144
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.8 Real-time, streaming, collaborative, and event-driven features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-112",
+      "revision": 1,
+      "semantic_sha256": "f2441dab74bb790ff44b1e0d693fce17746e54515eb0a38036f321a6da844e9a",
+      "statement": "Ordering guarantees are documented.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 145
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.8 Real-time, streaming, collaborative, and event-driven features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-113",
+      "revision": 1,
+      "semantic_sha256": "0cfe3df3f8b1919f0c228cc36def979af6e0b4e8d2aa04c75fb26e0b7a7bbe52",
+      "statement": "Duplicate and lost message behavior is handled.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 146
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.8 Real-time, streaming, collaborative, and event-driven features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-114",
+      "revision": 1,
+      "semantic_sha256": "5a6e644c28e595ef77d02e1ce505d2e3e537618d7a51b1510a52137cfdff86a2",
+      "statement": "Reconnection does not replay unsafe actions.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 147
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.8 Real-time, streaming, collaborative, and event-driven features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-115",
+      "revision": 1,
+      "semantic_sha256": "32b3b57ee1d6990651fc592ee154d8f2683832c63936df4593ea2190fbe1b583",
+      "statement": "Backpressure prevents memory and queue exhaustion.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 148
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.8 Real-time, streaming, collaborative, and event-driven features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-116",
+      "revision": 1,
+      "semantic_sha256": "cff865fb2a6d5e28e82b93bbfc4f06f4e0b2f3dd3673184739c1972665f11afb",
+      "statement": "Slow consumers cannot degrade all users.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 149
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.8 Real-time, streaming, collaborative, and event-driven features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-117",
+      "revision": 1,
+      "semantic_sha256": "29c29c85c32725130988858a208b2a52e42c2516864f14f564d3c4c803f745b2",
+      "statement": "Presence, typing, cursor, and collaboration data do not leak across users or tenants.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 150
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.8 Real-time, streaming, collaborative, and event-driven features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-118",
+      "revision": 1,
+      "semantic_sha256": "7365c6a811e89346d17ba122a292916c56fc0178bb2ef8fab454bc2363709148",
+      "statement": "Permission changes terminate or restrict active streams.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 151
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.8 Real-time, streaming, collaborative, and event-driven features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-119",
+      "revision": 1,
+      "semantic_sha256": "1e204096be04b10143052a947a2b0a9d37de18eaafec69970b36a36ed56dca64",
+      "statement": "Fan-out capacity is load-tested.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 152
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.8 Real-time, streaming, collaborative, and event-driven features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-120",
+      "revision": 1,
+      "semantic_sha256": "21c471431a28e14f8790a60c2cf55dd9c265712f3396e299f46a1f5ceba16261",
+      "statement": "Regional and network partition behavior is tested.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 153
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.8 Real-time, streaming, collaborative, and event-driven features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-121",
+      "revision": 1,
+      "semantic_sha256": "277445d7835345d4439fa4de213025f96adb3ca87e108dc169654bd479cbf2af",
+      "statement": "Event history and replay preserve authorization.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 154
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.8 Real-time, streaming, collaborative, and event-driven features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-122",
+      "revision": 1,
+      "semantic_sha256": "8a66afe5a53273a5ee09ad7971a5226ff099b9c085e2b0c2524d406340bc0aeb",
+      "statement": "Administrative interfaces are separately inventoried and threat-modeled.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 158
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.9 High-risk administrative and support tools"
+      ]
+    },
+    {
+      "control_id": "PRC-39-123",
+      "revision": 1,
+      "semantic_sha256": "426d4008f28bad413cb8cd32e320b9cf8c9891a50bb79812810c9ffae7a978c4",
+      "statement": "Strong authentication is mandatory.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 159
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.9 High-risk administrative and support tools"
+      ]
+    },
+    {
+      "control_id": "PRC-39-124",
+      "revision": 1,
+      "semantic_sha256": "c5873075e7268fe3bf70bd848724e462651ff85ceb3edb6c7d33d71469883cee",
+      "statement": "Privileges are granular.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 160
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.9 High-risk administrative and support tools"
+      ]
+    },
+    {
+      "control_id": "PRC-39-125",
+      "revision": 1,
+      "semantic_sha256": "0ba5d7092af5b2f0764b009d186c68be5a3173ae11adb050bbda061bfbbdddba",
+      "statement": "Access is time-bounded where practical.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 161
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.9 High-risk administrative and support tools"
+      ]
+    },
+    {
+      "control_id": "PRC-39-126",
+      "revision": 1,
+      "semantic_sha256": "e03a96fd2e207e16e2547fbd12ff4edb98c5f994475da359cb4d8a8c66afad3b",
+      "statement": "High-impact actions require reauthentication or additional approval.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 162
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.9 High-risk administrative and support tools"
+      ]
+    },
+    {
+      "control_id": "PRC-39-127",
+      "revision": 1,
+      "semantic_sha256": "27e389993be9ab67afb269a71a304d598fb050b7dcbbd6adffc0e8c3ee6947aa",
+      "statement": "Bulk exports and changes require confirmation and audit.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 163
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.9 High-risk administrative and support tools"
+      ]
+    },
+    {
+      "control_id": "PRC-39-128",
+      "revision": 1,
+      "semantic_sha256": "ef1fb2088061313b2c5cbb39f6521876bcc61d052c08088f93847f5e1e5f14e0",
+      "statement": "Destructive commands include scope previews and safe limits.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 164
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.9 High-risk administrative and support tools"
+      ]
+    },
+    {
+      "control_id": "PRC-39-129",
+      "revision": 1,
+      "semantic_sha256": "b0dda65be2fa4cbb64fa8261d44412da04942ad0ec31a7af75718154050fbbb2",
+      "statement": "Impersonation is visible, justified, and logged.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 165
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.9 High-risk administrative and support tools"
+      ]
+    },
+    {
+      "control_id": "PRC-39-130",
+      "revision": 1,
+      "semantic_sha256": "db0c58b63be644fb3e0d094f70238681ebedbc14c1dc9cc7baec4aeda394f92b",
+      "statement": "Sensitive values are masked.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 166
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.9 High-risk administrative and support tools"
+      ]
+    },
+    {
+      "control_id": "PRC-39-131",
+      "revision": 1,
+      "semantic_sha256": "60616d02e434a85b730fbca4a636d86a703a12fa28f671ddcd0ad2e6ee70b302",
+      "statement": "Production data access is purpose-limited.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 167
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.9 High-risk administrative and support tools"
+      ]
+    },
+    {
+      "control_id": "PRC-39-132",
+      "revision": 1,
+      "semantic_sha256": "4b789c6aafe20bdd8089d642425c687dd6fdcd70a3c0ab0a4bab0fcf7f48d633",
+      "statement": "Emergency access triggers review.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 168
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.9 High-risk administrative and support tools"
+      ]
+    },
+    {
+      "control_id": "PRC-39-133",
+      "revision": 1,
+      "semantic_sha256": "c8fab03394fc4ecf48415870874c5ff5a7c4f76e7cf09231cf188e0173b71e1d",
+      "statement": "Administrative APIs receive the same testing as user-facing APIs.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 169
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.9 High-risk administrative and support tools"
+      ]
+    },
+    {
+      "control_id": "PRC-39-134",
+      "revision": 1,
+      "semantic_sha256": "f7f342785ea618b2b2f43f2e5a02487db30a0b099988d1a0742d3641e2da4faf",
+      "statement": "Support tooling cannot bypass tenant boundaries.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 170
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.9 High-risk administrative and support tools"
+      ]
+    },
+    {
+      "control_id": "PRC-39-135",
+      "revision": 1,
+      "semantic_sha256": "8cc0743832d4a3ac196429eeebdb3561b3347d5955fe3a43135c33d1b8f1ee63",
+      "statement": "Sessions terminate promptly after role removal.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 171
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.9 High-risk administrative and support tools"
+      ]
+    },
+    {
+      "control_id": "PRC-39-136",
+      "revision": 1,
+      "semantic_sha256": "bdbe1b18b497c172e64761f561ffe28ad481f971f1cc99ef80785a1f8d4b3618",
+      "statement": "Every action is attributable to an individual.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 172
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.9 High-risk administrative and support tools"
+      ]
+    },
+    {
+      "control_id": "PRC-39-137",
+      "revision": 1,
+      "semantic_sha256": "d9f7ed4d9d93d3f9eb7caa8ee511a938c6136bfb06a3e9cc78d3d5106ffeb5dd",
+      "statement": "Inventory every model, model version, provider, prompt, tool, data source, embedding store, and safety component.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 178
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-138",
+      "revision": 1,
+      "semantic_sha256": "d8edc33f827bb589b2b600cbbe16f8d31df7434c11214c46e6b69bc79f7bffea",
+      "statement": "Classify the consequences of incorrect, biased, unsafe, or manipulated output.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 179
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-139",
+      "revision": 1,
+      "semantic_sha256": "913d8f64578e6bde7954a763aaca7197df213500105a1ed065285338e45388a8",
+      "statement": "Define tasks the AI is and is not authorized to perform.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 180
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-140",
+      "revision": 1,
+      "semantic_sha256": "d7d44227c693f8f24b861f875b07ccf31007c05e42f0a04f59b626f1b24a8459",
+      "statement": "Treat user prompts, retrieved content, tool output, model output, and model metadata as untrusted.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 181
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-141",
+      "revision": 1,
+      "semantic_sha256": "36e83c9e256644326fd381a4b47e22e7e20ca05716d10985b08751607468a1d7",
+      "statement": "Test direct and indirect prompt injection.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 182
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-142",
+      "revision": 1,
+      "semantic_sha256": "ee9a2eec3dc8b99bf2baf01360f215e262b6800a30018bd03bd718d7a89f6e98",
+      "statement": "Prevent model instructions from overriding authorization and business rules.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 183
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-143",
+      "revision": 1,
+      "semantic_sha256": "98018fa10d801e8ee8dea50195886de2e1f55df798100ccff4824e511e238e79",
+      "statement": "Tool calls use independently enforced least privilege.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 184
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-144",
+      "revision": 1,
+      "semantic_sha256": "4d9e3c5cc223bfb69826f868f8afa18e3b9461a06591f8709d3541bd1e9eeb82",
+      "statement": "The model cannot select credentials, tenants, resources, or permissions beyond the user’s authorization.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 185
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-145",
+      "revision": 1,
+      "semantic_sha256": "abf6048f67630b4758101ab17d517e225c25a40ec1137a8f7064e6f730757526",
+      "statement": "Destructive or consequential actions require deterministic validation and human confirmation where appropriate.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 186
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-146",
+      "revision": 1,
+      "semantic_sha256": "b29391313fdd8b739ca1e891e7223e424240f4d6a523c076a58b5a2e454a7330",
+      "statement": "Model output is validated before use in code, queries, commands, templates, transactions, or security decisions.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 187
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-147",
+      "revision": 1,
+      "semantic_sha256": "6dd267cfdc4d7b805622a5ac9fcb370692d1505480d43b09d1e09edbe3e00650",
+      "statement": "Sensitive data is excluded from prompts and training unless specifically approved.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 188
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-148",
+      "revision": 1,
+      "semantic_sha256": "e5171f593febefb24254cd7478c8ed59204f06961830306130b82822f4fcd861",
+      "statement": "Provider data retention and model-training terms are understood.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 189
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-149",
+      "revision": 1,
+      "semantic_sha256": "7a14a2393161f100276a6164f61f64d140cee385fc2a98415c76b0f8ae1c02af",
+      "statement": "Retrieval systems enforce user and tenant authorization before supplying content.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 190
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-150",
+      "revision": 1,
+      "semantic_sha256": "501e48d508985264a7d6e23f8c8612280b413fb6e2ca15be63b98bb530753bd9",
+      "statement": "Vector stores and embeddings preserve deletion and tenant boundaries.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 191
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-151",
+      "revision": 1,
+      "semantic_sha256": "748d8caaf4d9fb41dff60021ee835b60a24f4b10f52d4b9e9e8d96f7c19a8dc1",
+      "statement": "Retrieval poisoning and malicious documents are addressed.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 192
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-152",
+      "revision": 1,
+      "semantic_sha256": "6524f718537c2b78875164c138b788e95f76c643aa27302313c0f39842ed38d2",
+      "statement": "Training, fine-tuning, and evaluation data have provenance and governance.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 193
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-153",
+      "revision": 1,
+      "semantic_sha256": "6f50b72be07632f18fe8c4fd72264fa71c0403ed03e28ae46ef1882fe7f00aa4",
+      "statement": "Model, prompt, and safety-configuration changes use versioning and approval.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 194
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-154",
+      "revision": 1,
+      "semantic_sha256": "b84c1411283ce85cb609ae6a837f2d0d051faf7d74038f8b9abd09e5ced06fa3",
+      "statement": "Evaluation sets cover accuracy, security, safety, privacy, bias, refusal, and adversarial behavior.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 195
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-155",
+      "revision": 1,
+      "semantic_sha256": "2d2994b4621429fcbef31d92d6c347885b6b7e592ad9abae18e2cbc9471dccb4",
+      "statement": "Evaluations represent production languages, user groups, and edge cases.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 196
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-156",
+      "revision": 1,
+      "semantic_sha256": "f1413665d246c1e7078b3c6239100a9902199776eb9d7e4f4a203214e34aef0f",
+      "statement": "Hallucination and uncertainty are communicated appropriately.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 197
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-157",
+      "revision": 1,
+      "semantic_sha256": "53cd8bb01c94ade37fb2878f387ee90e8eaea4a8bf619a6bd911632659b37d6e",
+      "statement": "High-impact decisions have suitable human review, appeal, and correction.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 198
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-158",
+      "revision": 1,
+      "semantic_sha256": "9e691073689799cd8648ae6de219cfe64b175ee19a6024d97ffb100f9bfca52e",
+      "statement": "Output moderation and abuse detection match the product’s risks.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 199
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-159",
+      "revision": 1,
+      "semantic_sha256": "85b5789269405d11f3672f9cad1415f5ae3ea26c7d912f17c39119df83cc380d",
+      "statement": "Model denial-of-service and cost-amplification attacks are bounded.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 200
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-160",
+      "revision": 1,
+      "semantic_sha256": "8a8a08bedf286bf4d2c20164fd0a2a1596d55950faa5576ab43d5da942e1335b",
+      "statement": "Rate, token, context, tool, and spending limits are configured.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 201
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-161",
+      "revision": 1,
+      "semantic_sha256": "d5c0d88df7c1948dc94171fe389c9fece67f0bace459e31c21071aee16755adc",
+      "statement": "Model and provider outages have fallback behavior.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 202
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-162",
+      "revision": 1,
+      "semantic_sha256": "1d374109f1d9368ce64e7cf104b5830cd23eb096b8d5ca8609a15e439f986cbc",
+      "statement": "A kill switch can disable AI actions without disabling essential non-AI operation.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 203
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-163",
+      "revision": 1,
+      "semantic_sha256": "20f16ceb6959b180c41e9a6ab747df8e9ecbf25a634f81afff408f0aecb6fb63",
+      "statement": "Model drift and quality regression are monitored.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 204
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-164",
+      "revision": 1,
+      "semantic_sha256": "b9296ef631e5637543797ac0fdfaea313bf1f47623c81415bdc3035183c5ba4a",
+      "statement": "Safety and security telemetry protects user privacy.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 205
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-165",
+      "revision": 1,
+      "semantic_sha256": "30e43806532b4dc42775483ea4f1fe3dc2532ec1d025a3092092a739446b9aa4",
+      "statement": "Logs record model and prompt versions without unnecessarily recording sensitive prompts.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 206
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-166",
+      "revision": 1,
+      "semantic_sha256": "5daf26809e2087b487b16660170b6b61d33aa885a03ad7df3dada573a0405716",
+      "statement": "Users know when they are interacting with or affected by AI where required.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 207
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-167",
+      "revision": 1,
+      "semantic_sha256": "ee4b517ad5a5c7a85424c68c967d96556d3cbb710afd3fdee696d163d2544514",
+      "statement": "Applicable AI transparency, documentation, assessment, and human-oversight rules are mapped.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 208
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-168",
+      "revision": 1,
+      "semantic_sha256": "815a4fabafdd3b7eb604293164a2af422815db7c26d6dbb55eca7ad49d27dfee",
+      "statement": "Retirement removes obsolete models, credentials, indexes, and retained data safely.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 209
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.10 AI, machine learning, and LLM features"
+      ]
+    },
+    {
+      "control_id": "PRC-39-169",
+      "revision": 1,
+      "semantic_sha256": "1cd9abe30f736c82e7c68688d8fa96f255a6cbf51aa5d2552e9c4236d940ad38",
+      "statement": "Perform formal hazard analysis.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 213
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.11 Safety-critical or physically consequential systems"
+      ]
+    },
+    {
+      "control_id": "PRC-39-170",
+      "revision": 1,
+      "semantic_sha256": "8e3cc3681e51aeaf831b96201eb4e9aa3dcf71a4f61002e700c9f905d86bbb17",
+      "statement": "Define unacceptable hazardous states.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 214
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.11 Safety-critical or physically consequential systems"
+      ]
+    },
+    {
+      "control_id": "PRC-39-171",
+      "revision": 1,
+      "semantic_sha256": "22b46d25699596ccf13270ce4fd0fcd23b3de45e76fee88d7dcf61985f2213cf",
+      "statement": "Establish fail-safe behavior.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 215
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.11 Safety-critical or physically consequential systems"
+      ]
+    },
+    {
+      "control_id": "PRC-39-172",
+      "revision": 1,
+      "semantic_sha256": "9439b629bcb630b123b8e3a9fbdd996aa3bc6f670b93ea126c6e4ab869a673d0",
+      "statement": "Safety controls are independent from ordinary feature logic where warranted.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 216
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.11 Safety-critical or physically consequential systems"
+      ]
+    },
+    {
+      "control_id": "PRC-39-173",
+      "revision": 1,
+      "semantic_sha256": "1cd2542209c8b9237c7334a682fca1f5435935eb31ab1d9f37779d67aa60792f",
+      "statement": "Human override and emergency stop are available where appropriate.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 217
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.11 Safety-critical or physically consequential systems"
+      ]
+    },
+    {
+      "control_id": "PRC-39-174",
+      "revision": 1,
+      "semantic_sha256": "1ed47eea8b12b115660bbaf76be43289a4e6a2cc61f397df18b501e2f6f719ac",
+      "statement": "Alerts are perceptible, timely, and actionable.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 218
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.11 Safety-critical or physically consequential systems"
+      ]
+    },
+    {
+      "control_id": "PRC-39-175",
+      "revision": 1,
+      "semantic_sha256": "22ef8df394177cd469cb480960dba8ca30b6249e020658c347e100c049d0c48d",
+      "statement": "Safety thresholds are conservative and validated.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 219
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.11 Safety-critical or physically consequential systems"
+      ]
+    },
+    {
+      "control_id": "PRC-39-176",
+      "revision": 1,
+      "semantic_sha256": "bdbf9cd1ac1460145193dbccece1769b192b197af5ccfa77efe8569603dbfa50",
+      "statement": "Sensor, input, model, communication, and actuator failure modes are tested.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 220
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.11 Safety-critical or physically consequential systems"
+      ]
+    },
+    {
+      "control_id": "PRC-39-177",
+      "revision": 1,
+      "semantic_sha256": "2e77709541bb6a2f8170367c6e8890bcf39e3c857aa4a320c226d25672835cb7",
+      "statement": "No single software defect can create unacceptable harm where architecture can prevent it.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 221
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.11 Safety-critical or physically consequential systems"
+      ]
+    },
+    {
+      "control_id": "PRC-39-178",
+      "revision": 1,
+      "semantic_sha256": "08ed423a2dc27fa36df6f3036ef80be7678cd3bdc6077f673ccb8f1bc76228eb",
+      "statement": "Independent verification and validation are completed.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 222
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.11 Safety-critical or physically consequential systems"
+      ]
+    },
+    {
+      "control_id": "PRC-39-179",
+      "revision": 1,
+      "semantic_sha256": "700753bff7db581841dd970afb4cba502a3b6bfd5ac9d62cf3c7d56994690ccc",
+      "statement": "Safety evidence forms a reviewable safety case.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 223
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.11 Safety-critical or physically consequential systems"
+      ]
+    },
+    {
+      "control_id": "PRC-39-180",
+      "revision": 1,
+      "semantic_sha256": "20ca87997d27b88f467b1472cdd2025a12c93124396e9a1095e888c48bb9c83f",
+      "statement": "Relevant certification and regulatory requirements are satisfied.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 224
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.11 Safety-critical or physically consequential systems"
+      ]
+    },
+    {
+      "control_id": "PRC-39-181",
+      "revision": 1,
+      "semantic_sha256": "9dd4c118d0cca9cfe2eb67bc1d527001e636ff14447165905a0bb2a204598bef",
+      "statement": "Field monitoring detects dangerous drift or failure.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 225
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.11 Safety-critical or physically consequential systems"
+      ]
+    },
+    {
+      "control_id": "PRC-39-182",
+      "revision": 1,
+      "semantic_sha256": "f8f8db458e10e0a0dd339925d5c53bdce6512d92b2baf32c1b9843aefc23d7a1",
+      "statement": "Recall, disablement, and customer notification procedures exist.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 226
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.11 Safety-critical or physically consequential systems"
+      ]
+    },
+    {
+      "control_id": "PRC-39-183",
+      "revision": 1,
+      "semantic_sha256": "b174f49db465901e8e65d5ddd47940e28b0b74eb2c74ee6b27e6e090486b69e5",
+      "statement": "Residual safety risk is accepted only by authorized leadership.",
+      "source": {
+        "path": "docs/checklists/09-conditional-modules.md",
+        "line": 227
+      },
+      "heading_trail": [
+        "Conditional feature modules",
+        "39. Conditional feature modules",
+        "39.11 Safety-critical or physically consequential systems"
+      ]
+    }
+  ]
+}

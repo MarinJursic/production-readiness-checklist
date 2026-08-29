@@ -216,6 +216,43 @@ func TestQuickScanUsesBoundedProfileAndStillReportsCompleteCatalog(t *testing.T)
 	}
 }
 
+func TestScanRunsSupportedExactRepositoryProgram(t *testing.T) {
+	target := t.TempDir()
+	if err := os.WriteFile(filepath.Join(target, "package.json"), []byte(`{"scripts":{"build":"node build.mjs","test":"node --test"}}`), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(target, "README.md"), []byte("# Commands\n\n```bash\nnpm run build\nnpm test\n```\n"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	var stdout, stderr bytes.Buffer
+	code := run([]string{
+		"scan", target, "--catalog-root", filepath.Join("..", ".."),
+		"--format", "json", "--no-report", "--exit-policy", "never",
+	}, &stdout, &stderr)
+	if code != exitSuccess {
+		t.Fatalf("scan exit=%d stderr=%s", code, stderr.String())
+	}
+	var result model.RunResult
+	if err := json.Unmarshal(stdout.Bytes(), &result); err != nil {
+		t.Fatal(err)
+	}
+	if result.ControlCatalog == nil || result.ControlCatalog.DeterministicProgramExecutedCount != 1 ||
+		result.ControlCatalog.DeterministicProgramPassCount != 1 || result.ControlCatalog.DeterministicProgramFailCount != 0 {
+		t.Fatalf("exact execution summary = %+v", result.ControlCatalog)
+	}
+	for _, control := range result.ControlResults {
+		if control.ControlID != "PRC-36-004" {
+			continue
+		}
+		if control.Disposition != "verified_pass" || control.DeterministicProgramStatus != "executed_pass" ||
+			len(control.DeterministicClauseResults) != 1 || control.DeterministicClauseResults[0].Status != "passed" {
+			t.Fatalf("documented-command control = %+v", control)
+		}
+		return
+	}
+	t.Fatal("PRC-36-004 result is missing")
+}
+
 func TestScanAliasesRejectAmbiguousProviderAndProfileOverrides(t *testing.T) {
 	for _, test := range []struct {
 		args    []string
@@ -1006,15 +1043,21 @@ start = prompt.index("<scanner-control-review-task>\n") + len("<scanner-control-
 end = prompt.rindex("\n</scanner-control-review-task>")
 task = json.loads(prompt[start:end])
 output = {
-    "schema_version": "prc.control-review-output/v0.1",
+    "schema_version": "prc.control-review-output/v0.2",
     "task_id": task["task_id"],
     "reviews": [{
         "control_id": task["controls"][0]["control_id"],
         "assessment_candidate": "needs_evidence",
         "applicability_candidate": "undetermined",
         "confidence": "low",
+        "priority": "medium",
         "reason": "Repository text alone cannot prove the production result.",
+        "challenge": "The repository text may be incomplete or stale.",
+        "risk_if_ignored": "A production-only failure could remain undiscovered.",
         "advice": "Verify this in the real target environment.",
+        "remediation_steps": ["Collect the missing environment evidence."],
+        "verification_steps": ["Run the bound check in the target environment."],
+        "evidence_needed": ["Current authenticated target-environment evidence."],
         "evidence": [],
         "limitations": ["Only scanner-provided repository excerpts were available."]
     }]
@@ -1028,8 +1071,8 @@ print('{"type":"turn.completed"}')
 	}
 	stateDirectory := t.TempDir()
 	arguments := []string{
-		"scan", target, "--catalog-root", repository, "--format", "json", "--no-report", "--exit-policy", "never",
-		"--ai", "codex", "--review-executable", executable,
+		"full", "codex", target, "--catalog-root", repository, "--format", "json", "--no-report", "--exit-policy", "never",
+		"--review-executable", executable,
 		"--review-state-dir", stateDirectory, "--review-control", "PRC-02-001",
 	}
 	var stdout, stderr bytes.Buffer
@@ -1042,13 +1085,15 @@ print('{"type":"turn.completed"}')
 	}
 	if scanned.ControlCatalog == nil || scanned.ControlCatalog.ControlCount != 10_042 ||
 		scanned.ControlCatalog.AIReviewProvider != "codex" || scanned.ControlCatalog.AIReviewState != "focused" ||
+		scanned.ControlCatalog.AIReviewDepth != "deep" ||
 		scanned.ControlCatalog.AIReviewedCount != 1 || len(scanned.ControlResults) != 10_042 {
 		t.Fatalf("AI-reviewed complete scan summary=%+v results=%d", scanned.ControlCatalog, len(scanned.ControlResults))
 	}
 	found := false
 	for _, control := range scanned.ControlResults {
 		if control.ControlID == "PRC-02-001" {
-			found = control.AIReview != nil && control.AIReview.AssessmentCandidate == "needs_evidence"
+			found = control.AIReview != nil && control.AIReview.AssessmentCandidate == "needs_evidence" &&
+				control.AIReview.ReviewDepth == "deep"
 		}
 	}
 	if !found {

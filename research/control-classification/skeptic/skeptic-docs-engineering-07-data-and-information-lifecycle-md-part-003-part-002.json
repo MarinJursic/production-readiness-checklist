@@ -1,0 +1,536 @@
+{
+  "schema_version": "prc.control-classification-skeptic-review/v0.1",
+  "packet_id": "skeptic-docs-engineering-07-data-and-information-lifecycle-md-part-003-part-002",
+  "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "controls": [
+    {
+      "control_id": "USEQ-EF106894",
+      "revision": 1,
+      "semantic_sha256": "ef106894d5fe67cb984ef79fbfbb07234765ebc99e613d07bebfcf17ce68a2a3",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A role table cannot prove that its named actors have real legal and organizational authority over holds. Therefore the proposed deterministic composite does not prove the whole rule “Define who can issue, approve, modify, release, and audit a legal or investigative hold.”.",
+      "counterexample_analysis": "All five actions can be assigned to an administrator who lacks litigation authority. The proposal can Pass while “Define who can issue, approve, modify, release, and audit a legal or investigative hold.” remains false.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "human_accountability"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-501834EB",
+      "revision": 1,
+      "semantic_sha256": "501834eb6458bc6778665f53aa05b7ead9188af415c9c9fd6f5fda91f50ed9ba",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Matter scope depends on legal duty and a complete real-world inventory of custodians, sources, and subjects. Therefore the proposed deterministic composite does not prove the whole rule “Define the matter scope, custodians, data sources, subjects, date ranges, preservation method, and responsible owners.”.",
+      "counterexample_analysis": "Every field can be populated while a former employee, supplier mailbox, or derived store is omitted. The proposal can Pass while “Define the matter scope, custodians, data sources, subjects, date ranges, preservation method, and responsible owners.” remains false.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B6755AD2",
+      "revision": 1,
+      "semantic_sha256": "b6755ad24c6dc1ca0f511ded603ae06eeef2ff2d18a3ae8356eba5321eb315b8",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Suspension is a runtime claim over every destructive process, not a bounded property of a hold record. Therefore the proposed deterministic composite does not prove the whole rule “Suspend conflicting deletion, overwrite, rotation, compaction, archival expiry, and account-closure processes.”.",
+      "counterexample_analysis": "Listed jobs can be disabled while an unregistered compactor or provider expiry still deletes held data. The proposal can Pass while “Suspend conflicting deletion, overwrite, rotation, compaction, archival expiry, and account-closure processes.” remains false.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1E1EFD59",
+      "revision": 1,
+      "semantic_sha256": "1e1efd59f31d1bb6d22246988f314f6a105dd86c2190ab00c01777476e96ea7a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Complete tracking requires an authoritative population of every coverage, collection, change, exception, and release event. Therefore the proposed deterministic composite does not prove the whole rule “Track hold coverage, acknowledgment, collection, changes, exceptions, and release.”.",
+      "counterexample_analysis": "Known rows can pass while a newly added repository has no coverage or exception event. The proposal can Pass while “Track hold coverage, acknowledgment, collection, changes, exceptions, and release.” remains false.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-666E4FF9",
+      "revision": 1,
+      "semantic_sha256": "666e4ff9872329c6732914c1ac661a5ee2e85631b6202866dbfcc774e4f88801",
+      "verdict": "rejected_nondeterministic",
+      "reason": "No exhaustive destructive-action protocol or complete repository inventory proves that every disposition path is stopped. Therefore the proposed deterministic composite does not prove the whole rule “Validate that technical holds actually stop disposition in each relevant repository.”.",
+      "counterexample_analysis": "Test deletion can be blocked while scheduled compaction or provider-side expiry still removes held data. The proposal can Pass while “Validate that technical holds actually stop disposition in each relevant repository.” remains false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-6A030672",
+      "revision": 1,
+      "semantic_sha256": "6a030672d8ef5501bb084f1653f89babae2f9400a90f7c3cc1a86472dbd77939",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Migration events are recordable, but complete monitoring and continuing hold effectiveness require unbounded inventory and runtime proof. Therefore the proposed deterministic composite does not prove the whole rule “Monitor repository migrations and account offboarding so holds remain effective.”.",
+      "counterexample_analysis": "Registered systems can pass while an offboarded archive moves to an unregistered tenant without a hold. The proposal can Pass while “Monitor repository migrations and account offboarding so holds remain effective.” remains false.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D4BAC821",
+      "revision": 1,
+      "semantic_sha256": "d4bac821dba2a59e0372973844867cd649e4c622a7c84667c6a25d0999169d75",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Whether preservation duty ended and whether the releaser is authorized are legal and accountable human decisions. Therefore the proposed deterministic composite does not prove the whole rule “Release holds through an authorized documented process when preservation duty ends.”.",
+      "counterexample_analysis": "A signed release can pass its schema while an appeal keeps the preservation duty active. The proposal can Pass while “Release holds through an authorized documented process when preservation duty ends.” remains false.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "human_accountability"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1EFE79A1",
+      "revision": 1,
+      "semantic_sha256": "1efe79a1a9cf33161c557192acf338acb435701381dec397090410aa4a4d726a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Safe resumption needs legal release plus a complete view of all overlapping holds. Therefore the proposed deterministic composite does not prove the whole rule “Resume ordinary retention and defensible disposition after release without deleting information still subject to another hold.”.",
+      "counterexample_analysis": "Deletion can resume after one matter closes while an omitted second hold still covers the records. The proposal can Pass while “Resume ordinary retention and defensible disposition after release without deleting information still subject to another hold.” remains false.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7DE623E7",
+      "revision": 1,
+      "semantic_sha256": "7de623e7335c52ff876a19b32ecd6099b63e7095ef973dfc3b8dbf12b56b8568",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Hold operation and validation span ongoing events, so document presence cannot prove all material evidence was preserved. Therefore the proposed deterministic composite does not prove the whole rule “Preserve evidence of hold issuance, operation, validation, and release.”.",
+      "counterexample_analysis": "Issuance and release records can exist while repository validation logs from the middle are lost. The proposal can Pass while “Preserve evidence of hold issuance, operation, validation, and release.” remains false.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8C9A995F",
+      "revision": 1,
+      "semantic_sha256": "8c9a995f893a0941506e1e175cf21ec93222c3a902380b625e49c29240de0829",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Procedure validity needs a complete source, tool, error oracle, and domain-appropriate validation protocol. Therefore the proposed deterministic composite does not prove the whole rule “Use repeatable, documented, and validated collection procedures.”.",
+      "counterexample_analysis": "A repeatable fixture can pass while real collection silently omits deleted items and attachments. The proposal can Pass while “Use repeatable, documented, and validated collection procedures.” remains false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-14580CAC",
+      "revision": 1,
+      "semantic_sha256": "14580cac1b2902fca580f22b856f9d705b96ef97b454b752e3c1d31358e60293",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The named fields are exact, but field presence cannot prove truthful scope or valid collection authority. Therefore the proposed deterministic composite does not prove the whole rule “Record who collected what, when, where, how, under whose authority, and using which tools and versions.”.",
+      "counterexample_analysis": "All fields can resolve while the collector lacked authority or an undeclared source was collected. The proposal can Pass while “Record who collected what, when, where, how, under whose authority, and using which tools and versions.” remains false.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-65B40E66",
+      "revision": 1,
+      "semantic_sha256": "65b40e668ca74972170578e6987ae8428e3738c2189210c984e0d9f7c72f8c0f",
+      "verdict": "rejected_nondeterministic",
+      "reason": "“Equivalent fixity evidence” and “where appropriate” leave applicability, algorithm, coverage, and retention thresholds undefined. Therefore the proposed deterministic composite does not prove the whole rule “Calculate and retain integrity hashes or equivalent fixity evidence where appropriate.”.",
+      "counterexample_analysis": "A weak informal checksum can be called equivalent so the most important evidence receives no meaningful fixity check. The proposal can Pass while “Calculate and retain integrity hashes or equivalent fixity evidence where appropriate.” remains false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E6E5A19C",
+      "revision": 1,
+      "semantic_sha256": "e6e5a19c3ebd592edbc95d0271304a8968a7380cdafbb5294b16371e0f4a1f2d",
+      "verdict": "confirmed_deterministic",
+      "reason": "Source time-zone and clock metadata are exact typed values within a sealed item manifest. This proves the complete bounded meaning of “Preserve source time-zone and clock information.”.",
+      "counterexample_analysis": "A missing, changed, or unresolvable source value necessarily fails canonical comparison. Within the sealed evidence scope, the rule cannot Pass while broken.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2F2046BA",
+      "revision": 1,
+      "semantic_sha256": "2f2046ba96b6faa4252224d08bb2735ff5f02a2daa8f6eaaf55cc2b8f6d857e2",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Logs are inspectable, but unavoidability and complete disclosure of all transformations and loss require judgment and full process scope. Therefore the proposed deterministic composite does not prove the whole rule “Document unavoidable transformations, normalization, filtering, or loss.”.",
+      "counterexample_analysis": "One conversion can be logged while lossy normalization is omitted or avoidable loss is mislabeled unavoidable. The proposal can Pass while “Document unavoidable transformations, normalization, filtering, or loss.” remains false.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5DD374B2",
+      "revision": 1,
+      "semantic_sha256": "5dd374b2914b0135346857f57d75e098760d17e87b10d953e1deec2766924bbb",
+      "verdict": "confirmed_deterministic",
+      "reason": "Messages, attachments, comments, revisions, and source records form a finite reference graph in a sealed manifest. This proves the complete bounded meaning of “Preserve references between messages, attachments, comments, revisions, and source records.”.",
+      "counterexample_analysis": "Any orphan, dangling edge, wrong source identifier, or missing required relationship fails graph comparison. Within the sealed evidence scope, the rule cannot Pass while broken.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7006D883",
+      "revision": 1,
+      "semantic_sha256": "7006d883ba34778d181893ed47d21a8780dd4bc37b231077326b4b9979d12419",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The alternatives provide no exhaustive completeness oracle, sample confidence, source baseline, or discrepancy threshold. Therefore the proposed deterministic composite does not prove the whole rule “Validate collection completeness through counts, samples, queries, reconciliation, or independent review.”.",
+      "counterexample_analysis": "Counts and samples can match while a hidden folder is absent from both collection and comparison scope. The proposal can Pass while “Validate collection completeness through counts, samples, queries, reconciliation, or independent review.” remains false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F5E05710",
+      "revision": 1,
+      "semantic_sha256": "f5e0571016b3bf2df1edf24ea238fa29108d089f7299899f44b62411e417810c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Complete logs require proof that every collection attempt, error, exclusion, retry, and gap was captured. Therefore the proposed deterministic composite does not prove the whole rule “Retain collection logs, errors, exclusions, retry history, and unresolved gaps.”.",
+      "counterexample_analysis": "A failed worker can emit no job or error, leaving inventoried logs complete while the failure disappears. The proposal can Pass while “Retain collection logs, errors, exclusions, retry history, and unresolved gaps.” remains false.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2AA81182",
+      "revision": 1,
+      "semantic_sha256": "2aa81182b4aadb84d8ef1501bb8403c6a5158316e439146edef6a854d0a2e554",
+      "verdict": "confirmed_deterministic",
+      "reason": "Identifier presence and uniqueness are exact finite-set properties for a sealed evidence manifest. This proves the complete bounded meaning of “Assign a unique identifier to each collected evidence set and material item.”.",
+      "counterexample_analysis": "Any missing identifier or collision across evidence sets and items deterministically fails. Within the sealed evidence scope, the rule cannot Pass while broken.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-052AE940",
+      "revision": 1,
+      "semantic_sha256": "052ae9400e949c5f570c6656c8709a460eb9a9b18c0affd61234cb229e5f0c36",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Continuity inside a ledger cannot prove that no possession, access, copy, or transformation happened off ledger. Therefore the proposed deterministic composite does not prove the whole rule “Maintain an unbroken record of possession, transfer, access, copying, transformation, and disposition.”.",
+      "counterexample_analysis": "A perfectly continuous recorded chain can omit an operator's unlogged copy between two transfers. The proposal can Pass while “Maintain an unbroken record of possession, transfer, access, copying, transformation, and disposition.” remains false.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-143D9842",
+      "revision": 1,
+      "semantic_sha256": "143d9842e4c0c4814b31e132a285f6b41827c2d1b56e94c3bfb9800a787877f8",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Authorization and valid purpose depend on current matter authority and accountable approval, not merely role-token syntax. Therefore the proposed deterministic composite does not prove the whole rule “Restrict evidence access to authorized individuals with a documented purpose.”.",
+      "counterexample_analysis": "A valid role and boilerplate purpose can pass while the person lacks permission for this matter. The proposal can Pass while “Restrict evidence access to authorized individuals with a documented purpose.” remains false.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-39C82E33",
+      "revision": 1,
+      "semantic_sha256": "39c82e332f6bb1f0ea96782ab40cc8bfd4bc5d74fa47eb44e6fc89c99a0d69f5",
+      "verdict": "confirmed_deterministic",
+      "reason": "Before-and-after cryptographic digests and object identities provide exact fixity for each event in a sealed custody ledger. This proves the complete bounded meaning of “Verify integrity before and after transfer, processing, restoration, and production.”.",
+      "counterexample_analysis": "Any changed object, missing endpoint digest, mismatched identity, or unverifiable algorithm fails. Within the sealed evidence scope, the rule cannot Pass while broken.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2C35861F",
+      "revision": 1,
+      "semantic_sha256": "2c35861f23fd9af5df1ab20ae8334f74feb40996226bab2e30d82cacb380676e",
+      "verdict": "confirmed_deterministic",
+      "reason": "Immutable original identities and separate working-copy identities make aliasing or overwrite objectively detectable. This proves the complete bounded meaning of “Preserve original evidence separately from working copies.”.",
+      "counterexample_analysis": "If a working copy aliases, replaces, or changes the original, its identity or digest fails. Within the sealed evidence scope, the rule cannot Pass while broken.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A993560C",
+      "revision": 1,
+      "semantic_sha256": "a993560c6ae4a515f005e7d3e2a68702479a3d5c9c36bd891847eba10749d81c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Record fields are exact, but “material processing” has no objective applicability rule or complete execution inventory. Therefore the proposed deterministic composite does not prove the whole rule “Record tool versions, configuration, time, environment, and operator for material processing.”.",
+      "counterexample_analysis": "A changing normalization step can be omitted as immaterial while all declared job records pass. The proposal can Pass while “Record tool versions, configuration, time, environment, and operator for material processing.” remains false.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B63156A8",
+      "revision": 1,
+      "semantic_sha256": "b63156a8064ff26bd46ee36d49de0868eb38e0b86a413bfbab29524dfd5ab988",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Document presence cannot establish the complete set of known limitations or the truth of their described impact. Therefore the proposed deterministic composite does not prove the whole rule “Document known tool limitations and parsing failures.”.",
+      "counterexample_analysis": "One benign limitation can be listed while a known nested-attachment parsing failure is omitted. The proposal can Pass while “Document known tool limitations and parsing failures.” remains false.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1292500D",
+      "revision": 1,
+      "semantic_sha256": "1292500dd5a8cfac205b1bbdebcfedea1676c614ebe3e14546e14a103138467c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The protection claim spans all identities, administrators, storage layers, and modification or deletion paths. Therefore the proposed deterministic composite does not prove the whole rule “Protect audit and custody records from unauthorized modification or deletion.”.",
+      "counterexample_analysis": "Append-only settings can pass while a storage administrator deletes the backing bucket or alters a replica. The proposal can Pass while “Protect audit and custody records from unauthorized modification or deletion.” remains false.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1111C3BC",
+      "revision": 1,
+      "semantic_sha256": "1111c3bcddbf40ef72305b649b6e542275ab41f3057ea3bee57ec28ff960af14",
+      "verdict": "rejected_nondeterministic",
+      "reason": "“Secure” lacks a threat threshold and recipient verification depends on authoritative identity and accountable approval. Therefore the proposed deterministic composite does not prove the whole rule “Use secure, authenticated transfer channels and recipient verification.”.",
+      "counterexample_analysis": "TLS checks can pass while delivery goes to an authenticated account controlled by the wrong recipient. The proposal can Pass while “Use secure, authenticated transfer channels and recipient verification.” remains false.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_threshold",
+        "human_accountability"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CC7E87FB",
+      "revision": 1,
+      "semantic_sha256": "cc7e87fbbc1cb5c5a6b2af2b78283d14013eeba31900ecbadef689408737ce1c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "“Controlled evidence storage” does not define required custody, isolation, access, integrity, or availability properties. Therefore the proposed deterministic composite does not prove the whole rule “Maintain controlled evidence storage during provider or platform migration.”.",
+      "counterexample_analysis": "Visible objects can reconcile while temporary provider exports remain broadly accessible and unmanaged. The proposal can Pass while “Maintain controlled evidence storage during provider or platform migration.” remains false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-AA4171CE",
+      "revision": 1,
+      "semantic_sha256": "aa4171cea81eb00c9f01a08c6513730302bfec01d5beae3afabd1f7ca35683a7",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Who may destroy evidence and when it is no longer required depend on overlapping legal duties and accountable authority. Therefore the proposed deterministic composite does not prove the whole rule “Define authorized destruction and retain proof of disposition when evidence is no longer required.”.",
+      "counterexample_analysis": "A signed certificate can pass while an undisclosed appeal keeps the evidence under preservation duty. The proposal can Pass while “Define authorized destruction and retain proof of disposition when evidence is no longer required.” remains false.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "human_accountability"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-18028100",
+      "revision": 1,
+      "semantic_sha256": "18028100476b39c34a4df4b4b944e2239a176b54411544b966e151ce4d6602b2",
+      "verdict": "confirmed_deterministic",
+      "reason": "The seven named processing-plan elements are finite fields, and plan time plus execution references prove the version existed before use. This proves the complete bounded meaning of “Define processing rules, search methods, filters, deduplication, threading, date handling, and exclusions before use.”.",
+      "counterexample_analysis": "A missing field, unresolvable plan version, or execution preceding approval deterministically fails. Within the sealed evidence scope, the rule cannot Pass while broken.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F91F42B5",
+      "revision": 1,
+      "semantic_sha256": "f91f42b548cdd7ae3611f3366e55caed77047922db67f904087cf97ed4b72a51",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Metadata is structured, but whether decision rationale is meaningful and complete requires semantic human judgment. Therefore the proposed deterministic composite does not prove the whole rule “Document search terms, versions, iterations, reviewers, and decision rationale.”.",
+      "counterexample_analysis": "Every field can exist while the rationale says only “looks right” and omits why terms were excluded. The proposal can Pass while “Document search terms, versions, iterations, reviewers, and decision rationale.” remains false.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-DCAE9F4C",
+      "revision": 1,
+      "semantic_sha256": "dcae9f4cde48b90002d068cab64d28af59fec01453b16c998d1aedbf9aa9eb1c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Reproducibility needs complete inputs, versions, environment, nondeterminism controls, and an exact result oracle. Therefore the proposed deterministic composite does not prove the whole rule “Preserve the ability to reproduce the processed population and result set.”.",
+      "counterexample_analysis": "A fixture can rerun while an expired source snapshot makes the real production population unreproducible. The proposal can Pass while “Preserve the ability to reproduce the processed population and result set.” remains false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-25FE2994",
+      "revision": 1,
+      "semantic_sha256": "25fe2994c77323b54389239d24add1a91dbcceef80278b745a421b44770bc96c",
+      "verdict": "confirmed_deterministic",
+      "reason": "Original and normalized objects have finite immutable identifiers, making their links exact graph properties. This proves the complete bounded meaning of “Keep original and normalized representations linked.”.",
+      "counterexample_analysis": "A missing source, wrong pair, or dangling identifier deterministically fails referential-integrity checks. Within the sealed evidence scope, the rule cannot Pass while broken.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E0A87576",
+      "revision": 1,
+      "semantic_sha256": "e0a87576f3af4e1d93c6e7c087563a8fea52360196a55f853f19747787d34bce",
+      "verdict": "confirmed_deterministic",
+      "reason": "A distinct derived redaction plus before-and-after source identity and digest make alteration exact. This proves the complete bounded meaning of “Apply redaction without altering unredacted source evidence.”.",
+      "counterexample_analysis": "Writing into, replacing, or changing the source changes identity or digest and fails. Within the sealed evidence scope, the rule cannot Pass while broken.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-EF45812D",
+      "revision": 1,
+      "semantic_sha256": "ef45812d8510389004e94495ec8a402d0e7da89157861f357475a9197940865e",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Irreversibility is universal across formats and attacks, but no exhaustive representation inventory, extractor set, or oracle is defined. Therefore the proposed deterministic composite does not prove the whole rule “Validate redactions cannot be reversed through layers, metadata, hidden text, or alternate representations.”.",
+      "counterexample_analysis": "Visible text checks can pass while words remain in an embedded object, revision stream, thumbnail, or export. The proposal can Pass while “Validate redactions cannot be reversed through layers, metadata, hidden text, or alternate representations.” remains false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C589DC56",
+      "revision": 1,
+      "semantic_sha256": "c589dc5664e56c48ff21b28e46c995d0786f67702a42bdefc14c4ea2cf32cb3e",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The production is decidable only against every authoritative agreement, amendment, and exception, whose completeness is not proven. Therefore the proposed deterministic composite does not prove the whole rule “Verify productions include agreed fields, metadata, numbering, formats, load files, and relationships.”.",
+      "counterexample_analysis": "A fixture can match an old specification while a later amendment requires another field and numbering scheme. The proposal can Pass while “Verify productions include agreed fields, metadata, numbering, formats, load files, and relationships.” remains false.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "undefined_threshold"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-75CD5DEE",
+      "revision": 1,
+      "semantic_sha256": "75cd5dee6c7157018a6868233023db2490f1b92e4f444f781a8503def0fcb094",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Known encryption settings do not cover every production copy, temporary file, retry payload, backup, and provider path. Therefore the proposed deterministic composite does not prove the whole rule “Encrypt and authenticate productions in transit and at rest.”.",
+      "counterexample_analysis": "The main archive can be encrypted while a plaintext staging copy remains on a worker disk. The proposal can Pass while “Encrypt and authenticate productions in transit and at rest.” remains false.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-094254BF",
+      "revision": 1,
+      "semantic_sha256": "094254bf84ab9b67be315f3bbeaecc5be3ce82b87b966568c253788116957def",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Several fields are exact, but valid disclosure authority and a complete production-event inventory are not proven. Therefore the proposed deterministic composite does not prove the whole rule “Record what was produced, to whom, when, under what authority, and with which integrity evidence.”.",
+      "counterexample_analysis": "A hashed record can cite an authority that forbids disclosure, while an off-ledger production is omitted. The proposal can Pass while “Record what was produced, to whom, when, under what authority, and with which integrity evidence.” remains false.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-338A4A7F",
+      "revision": 1,
+      "semantic_sha256": "338a4a7fc00d6663a03970da12ad62bf08297fe3acbdb665db4c0399280bc565",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Retention of referenced records cannot prove that every validation and exception was captured initially. Therefore the proposed deterministic composite does not prove the whole rule “Retain production validation and exception records.”.",
+      "counterexample_analysis": "A failed export can be removed from the job register with its exception while declared reports all remain. The proposal can Pass while “Retain production validation and exception records.” remains false.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4040EE6C",
+      "revision": 1,
+      "semantic_sha256": "4040ee6ceb40375485ad200bd577798ba18608b0c3c187b0fd0c3d039d841f06",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Isolation is partly measurable, but complete data-flow scope and purpose classification require contextual judgment. Therefore the proposed deterministic composite does not prove the whole rule “Keep investigative and litigation data separate from ordinary analytics and product use.”.",
+      "counterexample_analysis": "Tagged stores can be isolated while an untagged derived feature from the matter feeds product analytics. The proposal can Pass while “Keep investigative and litigation data separate from ordinary analytics and product use.” remains false.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    }
+  ]
+}

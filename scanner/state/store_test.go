@@ -11,8 +11,10 @@ import (
 	"runtime"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/catalog"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/controlprogram"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/engine"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/evidence"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
@@ -469,5 +471,191 @@ func TestStoreRejectsFutureSchemaVersion(t *testing.T) {
 	}
 	if _, err := Open(ctx, root); err == nil || !strings.Contains(err.Error(), "newer") {
 		t.Fatalf("unexpected error: %v", err)
+	}
+}
+
+func reviewedControlRun() model.RunResult {
+	digestValue := strings.Repeat("a", 64)
+	proof := "The trigger is affirmatively absent for the recorded scope and the reason is evidence-bound."
+	return model.RunResult{
+		ControlCatalog: &model.ControlCatalogSummary{
+			SchemaVersion: "prc.control-catalog-summary/v0.1", RegistryVersion: "0.1.0",
+			RegistrySHA256: digestValue, SourceSHA256: digestValue,
+			ContractSchemaVersion: "prc.control-contracts/v0.2", ContractGeneratorID: "prc.control-contracts@0.2",
+			ContractSHA256: digestValue, ClassificationMethodologySHA256: digestValue,
+			ClassificationSummarySHA256: digestValue, ClassificationCorpusSHA256: digestValue,
+			ControlCheckBindingsSchemaVersion: "prc.control-check-bindings/v0.1",
+			ControlCheckBindingsSHA256:        digestValue,
+			ControlCheckProgramsSchemaVersion: "prc.control-check-program-catalog/v0.4",
+			ControlCheckProgramsSHA256:        digestValue, ControlCheckProgramsCatalogSHA256: digestValue,
+			ControlCheckDefinitionSchemaSHA256: digestValue, ControlCheckDefinitionCorpusSHA256: digestValue,
+			ControlCount: 2, ActiveControlCount: 2,
+			ContractCount: 2, AgentReviewedContractCount: 2, ReviewedDeterministicCount: 1,
+			ReviewedNondeterministicCount: 1, DeterministicBindingCount: 1,
+			DeterministicProgramTemplateCount: 1, DeterministicProgramBlockedCount: 1,
+			ProfileTerminalState: "profile_satisfied",
+		},
+		ControlResults: []model.ControlResult{
+			{
+				ControlID: "PRC-03-003", Revision: 1, Statement: "Artifact bytes match the approved digest.",
+				Source:         model.Source{Path: "docs/checklists/01-release-foundations.md", Line: 1},
+				ContractSHA256: digestValue, ContractStatus: "reviewed", Classification: "deterministic",
+				ClassificationRoute: "artifact_verification", ClassificationDecisionBasis: "strength_audit_confirmed",
+				ClassificationRowSHA256: digestValue, DeterministicBindingID: "PRC-03-003@1",
+				DeterministicBindingSHA256: digestValue, CanonicalControlID: "PRC-03-003",
+				EvaluationClass: "repository", AutomationClass: "deterministic_candidate",
+				ApplicabilityClass: "scope_required", Atomicity: "apparently_atomic",
+				EvidenceAuthorities: []string{"artifact"}, NotApplicableProof: proof,
+				DeterministicProgramTemplateCount: 1, DeterministicProgramStatus: "blocked_provider_unregistered",
+				Disposition: "blocked", Coverage: "deterministic_program_provider_unregistered", Authority: "none",
+				AssertionIDs: []string{}, ExecutedAssertionIDs: []string{},
+				Summary: "The complete reviewed deterministic binding was not executed.",
+			},
+			{
+				ControlID: "USEQ-AAAAAAAA", Revision: 1, Statement: "A contextual decision is justified.",
+				Source:         model.Source{Path: "docs/engineering/01-governance-and-foundations.md", Line: 1},
+				ContractSHA256: digestValue, ContractStatus: "reviewed", Classification: "nondeterministic",
+				ClassificationRoute: "contextual_judgment", ClassificationDecisionBasis: "primary_nondeterministic",
+				ClassificationRowSHA256: digestValue, CanonicalControlID: "USEQ-AAAAAAAA",
+				EvaluationClass: "human_external", AutomationClass: "human_or_external_required",
+				ApplicabilityClass: "scope_required", Atomicity: "apparently_atomic",
+				EvidenceAuthorities: []string{"human"}, NotApplicableProof: proof,
+				Disposition: "needs_review", Coverage: "nondeterministic_advisory", Authority: "none",
+				AssertionIDs: []string{}, ExecutedAssertionIDs: []string{},
+				Summary: "This control still needs contextual review.",
+			},
+		},
+		TerminalState: "assessment_incomplete",
+	}
+}
+
+func TestReviewedControlStateValidationFailsClosed(t *testing.T) {
+	tests := []struct {
+		name   string
+		change func(*model.RunResult)
+	}{
+		{name: "valid", change: func(*model.RunResult) {}},
+		{name: "deterministic pass without execution", change: func(run *model.RunResult) {
+			run.ControlResults[0].Disposition = "partially_verified"
+		}},
+		{name: "nondeterministic binding", change: func(run *model.RunResult) {
+			run.ControlResults[1].DeterministicBindingID = "USEQ-AAAAAAAA@1"
+			run.ControlResults[1].DeterministicBindingSHA256 = strings.Repeat("b", 64)
+		}},
+		{name: "classification count mismatch", change: func(run *model.RunResult) {
+			run.ControlCatalog.ReviewedDeterministicCount = 2
+			run.ControlCatalog.ReviewedNondeterministicCount = 0
+			run.ControlCatalog.DeterministicBindingCount = 2
+		}},
+		{name: "binding digest missing", change: func(run *model.RunResult) {
+			run.ControlResults[0].DeterministicBindingSHA256 = ""
+		}},
+	}
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			run := reviewedControlRun()
+			test.change(&run)
+			err := validateControlResults(run, map[string]bool{})
+			if test.name == "valid" && err != nil {
+				t.Fatalf("valid reviewed controls failed: %v", err)
+			}
+			if test.name != "valid" && err == nil {
+				t.Fatal("stale or overstated reviewed control state was accepted")
+			}
+		})
+	}
+}
+
+func TestReviewedExactControlExecutionValidationFailsClosed(t *testing.T) {
+	exactRun := func() model.RunResult {
+		run := reviewedControlRun()
+		run.Inventory.Digest = strings.Repeat("9", 64)
+		run.ControlCatalog.DeterministicProgramBlockedCount = 0
+		run.ControlCatalog.DeterministicProgramExecutedCount = 1
+		run.ControlCatalog.DeterministicProgramPassCount = 1
+		control := &run.ControlResults[0]
+		control.Disposition = "verified_pass"
+		control.Coverage = "deterministic_program_complete"
+		control.Authority = "deterministic_exact"
+		control.DeterministicProgramStatus = "executed_pass"
+		evidence := controlprogram.Evidence{
+			SchemaVersion: controlprogram.EvidenceSchemaVersion, EvidenceID: "exact-fixture",
+			ProgramSHA256: strings.Repeat("4", 64), ControlID: control.ControlID, ControlRevision: control.Revision,
+			ControlSemanticSHA256: strings.Repeat("6", 64), ClauseID: strings.Repeat("2", 64),
+			ClauseSHA256: strings.Repeat("7", 64), ImplementationContractSHA256: strings.Repeat("3", 64),
+			SubjectID: "fixture", ObservedSubjects: []string{"fixture"}, InventorySHA256: run.Inventory.Digest,
+			Authority: controlprogram.AuthorityArtifact, ObservedAt: time.Date(2026, 8, 29, 12, 0, 0, 0, time.UTC),
+			Complete: true, Applicability: controlprogram.ApplicabilityApplicable,
+			ApplicabilityProofContractSHA256: strings.Repeat("8", 64), Facts: map[string]controlprogram.Fact{},
+		}
+		evidenceSHA256 := controlprogram.EvidenceSHA256(evidence)
+		run.DeterministicEvidence = []controlprogram.Evidence{evidence}
+		control.DeterministicClauseResults = []model.DeterministicClauseResult{{
+			TemplateID: strings.Repeat("1", 64), CollectorID: "prc.collect.fixture@0.1",
+			ClauseID: strings.Repeat("2", 64), ClauseOrdinal: 1,
+			ImplementationID: "prc.check.fixture@0.1", ImplementationContractSHA256: strings.Repeat("3", 64),
+			RequiredAuthority: "artifact", ProviderID: "prc.collect.fixture@0.1",
+			ProgramSHA256: strings.Repeat("4", 64), EvidenceSHA256: evidenceSHA256,
+			Status: "passed", Outcome: "pass", ReasonCode: "passed",
+			EvaluatedAt: time.Date(2026, 8, 29, 12, 0, 0, 0, time.UTC),
+		}}
+		return run
+	}
+	tests := []struct {
+		name   string
+		change func(*model.RunResult)
+	}{
+		{name: "valid", change: func(*model.RunResult) {}},
+		{name: "forged pass outcome", change: func(run *model.RunResult) {
+			run.ControlResults[0].DeterministicClauseResults[0].Outcome = "fail"
+		}},
+		{name: "summary count mismatch", change: func(run *model.RunResult) {
+			run.ControlCatalog.DeterministicProgramPassCount = 0
+		}},
+		{name: "missing evidence digest", change: func(run *model.RunResult) {
+			run.ControlResults[0].DeterministicClauseResults[0].EvidenceSHA256 = ""
+		}},
+		{name: "incomplete exact pass", change: func(run *model.RunResult) {
+			run.ControlResults[0].DeterministicProgramTemplateCount = 2
+			run.ControlCatalog.DeterministicProgramTemplateCount = 2
+		}},
+	}
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			run := exactRun()
+			test.change(&run)
+			err := validateControlResults(run, map[string]bool{})
+			if test.name == "valid" && err != nil {
+				t.Fatalf("valid exact execution failed: %v", err)
+			}
+			if test.name != "valid" && err == nil {
+				t.Fatal("invalid exact execution was accepted")
+			}
+		})
+	}
+}
+
+func TestLegacyV012ControlStateRemainsReadable(t *testing.T) {
+	run := reviewedControlRun()
+	run.ControlCatalog = &model.ControlCatalogSummary{
+		SchemaVersion: "prc.control-catalog-summary/v0.1", RegistryVersion: "0.1.0",
+		RegistrySHA256: strings.Repeat("a", 64), SourceSHA256: strings.Repeat("a", 64),
+		ContractSchemaVersion: "prc.control-contracts/v0.1", ContractSHA256: strings.Repeat("a", 64),
+		ControlCount: 1, ActiveControlCount: 1, ContractCount: 1, GeneratedContractCount: 1,
+		ProfileTerminalState: "profile_satisfied",
+	}
+	run.ControlResults = []model.ControlResult{{
+		ControlID: "USEQ-AAAAAAAA", Revision: 1, Statement: "A broad legacy control.",
+		Source:         model.Source{Path: "docs/engineering/01-governance-and-foundations.md", Line: 1},
+		ContractSHA256: strings.Repeat("a", 64), ContractStatus: "generated_unreviewed",
+		CanonicalControlID: "USEQ-AAAAAAAA", EvaluationClass: "unclassified",
+		AutomationClass: "ai_advisory_candidate", ApplicabilityClass: "scope_required",
+		Atomicity: "apparently_atomic", EvidenceAuthorities: []string{"human"},
+		NotApplicableProof: "A recorded scope proves the trigger is absent.", Disposition: "needs_review",
+		Coverage: "unmapped", Authority: "none", AssertionIDs: []string{}, ExecutedAssertionIDs: []string{},
+		Summary: "Legacy control still needs review.",
+	}}
+	if err := validateControlResults(run, map[string]bool{}); err != nil {
+		t.Fatalf("legacy v0.12 control state no longer validates: %v", err)
 	}
 }

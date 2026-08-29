@@ -76,7 +76,7 @@ prc pack validate \
 
 The smaller `core-foundation` pack contains three assertions and remains a
 fast contract test. The `core-native` pack binds all 40 assertions in the core
-profile to a 31-case, 139-expectation fixture corpus:
+profile to a 36-case, 144-expectation fixture corpus:
 
 ```bash
 prc benchmark run \

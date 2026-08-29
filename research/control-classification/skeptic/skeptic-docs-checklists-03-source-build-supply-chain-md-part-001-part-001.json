@@ -1,0 +1,521 @@
+{
+  "schema_version": "prc.control-classification-skeptic-review/v0.1",
+  "packet_id": "skeptic-docs-checklists-03-source-build-supply-chain-md-part-001-part-001",
+  "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "controls": [
+    {
+      "control_id": "PRC-07-001",
+      "revision": 1,
+      "semantic_sha256": "51f3eb627b33ff010188b0e0fe63b93f76fc512f1dc5c3976994c1a31fc640d4",
+      "verdict": "confirmed_deterministic",
+      "reason": "The authenticated project record is authoritative for the exact fact the rule asks for: whether one source repository is identified.",
+      "counterexample_analysis": "I tried a project with multiple mirrors and forks. The proposal still passes only if the scoped record designates exactly one authoritative repository; mirrors do not contradict that identification, while zero or two designated authorities fail.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-07-005",
+      "revision": 1,
+      "semantic_sha256": "7ffd677a9bf43364caed3830ef5f13460b385da3ad6a70bf17fed0347aaf6471",
+      "verdict": "confirmed_deterministic",
+      "reason": "Complete protected-branch rules and bypass settings objectively decide whether an unreviewed direct change can land.",
+      "counterexample_analysis": "I tried an administrator push, service-account push, force push, and merge without approval. With every protected branch and principal/bypass path queried under fixed platform semantics, each unreviewed landing path fails the clauses; an unprotected branch is outside this rule's explicit subject.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-07-008",
+      "revision": 1,
+      "semantic_sha256": "052c0ba9aac2e66836a60ecbdf9a6c4d5faf1d3e3e9671601d88940220894ab2",
+      "verdict": "confirmed_deterministic",
+      "reason": "The proposal covers both attributable immutable bypass events and administrator ability to suppress those events, matching the rule's silent-bypass property.",
+      "counterexample_analysis": "I tried an administrator temporarily disabling review, using a bypass role, and deleting audit evidence. Each successful bypass must still create an immutable attributable event, and any admin ability to disable or erase recording fails the second clause, so I found no pass-while-silent case within the assessed control plane.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-07-009",
+      "revision": 1,
+      "semantic_sha256": "32e7b292379a932144859e1a55cb2090235d0b6dff5adc8c6a78c1ac98b8da0c",
+      "verdict": "confirmed_deterministic",
+      "reason": "A versioned required-check policy plus complete in-scope branch configuration gives objective applicability and exact equality.",
+      "counterexample_analysis": "I tried omitting a security check on a secondary release branch and renaming a required job. Exact policy identifiers must be mandatory on every in-scope target branch, so both cases fail rather than pass.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-07-012",
+      "revision": 1,
+      "semantic_sha256": "24a5c64dcf4131481543ba784349a5009b8ead08489a2f9cd8a30802ee42ca05",
+      "verdict": "confirmed_deterministic",
+      "reason": "Given the stated complete change inventory, immutable identifiers can mechanically prove every required traceability link in both directions.",
+      "counterexample_analysis": "I tried a reviewed commit with no issue, an artifact without build provenance, and a deployment with an orphan digest. Each breaks one required join; a complete inventory prevents the checker from quietly omitting the orphan record.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-07-013",
+      "revision": 1,
+      "semantic_sha256": "9f9174de567fa5c29901da39d4eaa657c17d08099120706a83fd3727de9350e1",
+      "verdict": "confirmed_deterministic",
+      "reason": "Authoritative ref rules and a complete authorized-principal policy objectively determine rewriting protection for branches and release tags.",
+      "counterexample_analysis": "I tried force-pushing a protected branch, deleting and recreating a release tag, and using an unlisted automation identity. Each rewrite is rejected unless the principal is explicitly authorized by the versioned policy, so the clauses expose the violation.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-07-014",
+      "revision": 1,
+      "semantic_sha256": "98c9a85654674b37ce42b1482edfea63dd962afde1c791ab3ba6283f6c812280",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Successful scanner executions do not prove full repository-content and history coverage when scanner format, ref, submodule, and large-file boundaries are unspecified.",
+      "counterexample_analysis": "A secret can remain in a Git LFS object, unreachable-but-retained ref, submodule commit, generated archive, or binary format the scanner silently skips. The scanner reports successful current and reachable-history runs, so both clauses pass while secret scanning does not cover the repository history meant by the rule.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-07-019",
+      "revision": 1,
+      "semantic_sha256": "f6a638a73d0c4b6cb2d80e950764dbcc45acb1eb24a1d4b41c6aa02310c4739a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The clauses check directly mapped repository principals but do not bound indirect groups, shared credentials, inherited organization roles, or transitive automation access.",
+      "counterexample_analysis": "A departed employee can retain access through an organization team or shared bot credential that is not mapped to that person in the repository-principal inventory. All directly mapped departed principals and identities marked obsolete show no access, so the proposal passes while the person still has effective access.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-001",
+      "revision": 1,
+      "semantic_sha256": "fd052fbe66d134d62feb72e7e4697d981a3811a922c44cba4daffa6049a34e4f",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Review of one recorded source revision does not prove that every source input used by the build was reviewed.",
+      "counterexample_analysis": "A reviewed main-repository commit can invoke an unreviewed mutable submodule, remotely downloaded build script, generated source bundle, or pipeline definition. Provenance identifies the reviewed main revision and the review clause passes while the build still runs from unreviewed source.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-002",
+      "revision": 1,
+      "semantic_sha256": "6d06dcc047fa775b412d9180303e07625a361d7d70c8faa825b757e41c496562",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Automated execution is objective, but repeatability cannot be proved from declared inputs unless completeness and a universal repetition protocol are defined.",
+      "counterexample_analysis": "A CI build declares only the commit and lockfile but reads current time, mutable network content, or host state. Two sampled builds happen to match under a permissive equivalence policy, so both clauses pass even though later builds from the same declared inputs are not repeatable.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-003",
+      "revision": 1,
+      "semantic_sha256": "e43d672c3a433f3537b9ed16f66f238281a02e0f8deba71196883e87f4afcf3e",
+      "verdict": "rejected_nondeterministic",
+      "reason": "One sealed repeated-build experiment cannot establish the general clean-build property without a protocol covering hidden inputs, repetitions, and equivalence thresholds.",
+      "counterexample_analysis": "A build embeds the current date but two repetitions run on the same day and satisfy the approved byte-normalizing equivalence predicate; the next day's clean build differs. The bounded experiment passes while the stated same-input clean-build behavior is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_threshold"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-005",
+      "revision": 1,
+      "semantic_sha256": "9345733e0e39d915f84618a3a535c58c4139b50edfbdd0777312f67cd6bd76f2",
+      "verdict": "confirmed_deterministic",
+      "reason": "The complete required-verification inventory and explicit missing, error, and unavailable outcomes define both pass and fail behavior.",
+      "counterexample_analysis": "I tried a missing job, runner outage, tool crash, and skipped required verification. Each maps to a non-passing build outcome; only verifications excluded by the selected policy fall outside applicability.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-006",
+      "revision": 1,
+      "semantic_sha256": "223ad841c7447d2d6c38d17c7feadd8a7bd8d94f6b03927f6297da14c5c189b9",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Equal deployment digests and absence of rebuild provenance do not prove that no environment independently rebuilt the artifact.",
+      "counterexample_analysis": "An environment startup script rebuilds the same deterministic bytes from source, deploys the identical digest, and emits no build provenance. The queried deployment records show one release provenance and the same digest everywhere, so the clauses pass by treating missing rebuild evidence as absence while the rule is violated.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-007",
+      "revision": 1,
+      "semantic_sha256": "803be60cd2ef66ce3a38dce79978b786fe8d41b87bb016ab4496c15a851e3b14",
+      "verdict": "confirmed_deterministic",
+      "reason": "Digest addressing plus a registry mutation check objectively establishes that published artifact content cannot change at its deployable identity.",
+      "counterexample_analysis": "I tried overwriting bytes under the same digest, repointing a mutable human tag, and deleting then republishing content. Same-digest replacement must be rejected; mutable tags do not alter the digest-addressed deployable artifact, and a missing artifact cannot pass availability and mutation checks.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-008",
+      "revision": 1,
+      "semantic_sha256": "cb3db715ee8b2695414ff1d5dad92aa88a6a05d2cb562e03b8bba7f9d12f4f55",
+      "verdict": "confirmed_deterministic",
+      "reason": "With a complete in-scope artifact inventory, digest syntax and exact-byte matching are fully mechanical facts.",
+      "counterexample_analysis": "I tried an artifact with no digest, a malformed digest, and a digest calculated over different bytes. Each fails directly; there is no quality or applicability judgment once the artifact inventory is sealed.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-009",
+      "revision": 1,
+      "semantic_sha256": "b60d4ed82d8313f6492192f2356208d40053ca3d384c37bc152ea90a912f8612",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A provenance document cannot prove its declared input list is complete without authoritative execution tracing of all actual inputs.",
+      "counterexample_analysis": "A build reads an undeclared mutable network file while provenance lists source, builder, the declared subset of inputs, workflow, time, and the correct output digest. Every proposed field and digest check passes although the rule's build inputs are not fully recorded.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-010",
+      "revision": 1,
+      "semantic_sha256": "0ddadff15ebc9b078c8ae50c853b4a8ddb9c97342d761a088e825c8aea00aba1",
+      "verdict": "confirmed_deterministic",
+      "reason": "Cryptographic trust-policy verification and deployment event ordering are bounded and objectively cover the whole statement.",
+      "counterexample_analysis": "I tried an invalid signature, an untrusted signer, verification after deployment, and attestation for different bytes. Each either fails the selected trust policy or the required event ordering, leaving no passing violation under the sealed artifact and deployment records.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-012",
+      "revision": 1,
+      "semantic_sha256": "8048a09692c91a7623647ecd0d565d1798ea36924f568bee1e5cce69b6d86c71",
+      "verdict": "rejected_nondeterministic",
+      "reason": "An authoritative inventory of known keys plus scanning cannot prove absence of unknown, encoded, split, or dynamically reconstructed key material.",
+      "counterexample_analysis": "A second signing key omitted from the key inventory is split across generated output chunks and reconstructed at runtime. Inventoried keys are correctly stored externally and their literal material is absent, so both clauses pass while a build/signing key remains in output.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-014",
+      "revision": 1,
+      "semantic_sha256": "865c067c58d269c5da02d792ad34b9f4ce9df994ee96843a9e8054734cb61aff",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Direct secret bindings and one bounded execution do not cover transitive credential exchange, conditional paths, or all adversarial contributions.",
+      "counterexample_analysis": "An untrusted workflow has no production-secret binding but can mint a cloud token through OIDC and retrieve a production secret only when a crafted path and event condition coincide. The sampled execution does not trigger it, so both clauses pass while production-secret access remains possible.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-015",
+      "revision": 1,
+      "semantic_sha256": "a02abdfed1f2cb55a79971d18b622eb8603a32dbefa8433edd02053e3f054c3b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Direct registry permissions and one overwrite attempt do not prove every pull-request build path lacks transitive overwrite authority.",
+      "counterexample_analysis": "A pull-request workflow exchanges its identity for a cloud role through an untested OIDC claim path and uses that role to overwrite a trusted registry tag. The direct PR identity lacks overwrite permission and the single bounded attempt uses the normal path, so both clauses pass.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-017",
+      "revision": 1,
+      "semantic_sha256": "41fcbe717d0af089c8fe24d4dc5c982ed627417b43c97003166ee7b6cfb30e32",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Repository path rules omit pipeline definitions stored in CI control planes, generated configuration, included remote templates, or other repositories.",
+      "counterexample_analysis": "Application code and the checked-in pipeline path both require two reviews, but the effective deployment pipeline is also editable through an unreviewed CI dashboard variable or remote included template. The path comparison passes while pipeline definitions lack the same protection.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-018",
+      "revision": 1,
+      "semantic_sha256": "011dc0aed20f7fd36d9ea9b49ec04ac70cd29f625c65a08494d2ee075963e014",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Gate status and bypass audit records do not detect a required check whose internal steps are conditionally skipped while the job reports success.",
+      "counterexample_analysis": "A security job contains a branch-dependent condition that skips the scanner and exits zero. The required job appears at the gate, reports passed, and creates no bypass event, so both clauses pass while a required security check was silently skipped.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-019",
+      "revision": 1,
+      "semantic_sha256": "5374f4e9fe797f91dadb67b39d0ffad5f0792251a0bc6b2876f15c293be554ad",
+      "verdict": "confirmed_deterministic",
+      "reason": "For the stated status-misrepresentation property, a fixed matrix of required job terminal states and aggregate outcomes is complete and objective.",
+      "counterexample_analysis": "I tried failed, canceled, timed-out, missing, and successful required jobs. The first four cannot yield a passed aggregate status under the tested mapping; a job that falsely reports its internal test as passing is a different control from misrepresenting the check's recorded terminal state.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-020",
+      "revision": 1,
+      "semantic_sha256": "5ab8d31bbff232c97eecc0b09d5ccf79864ffacb60e74f023a05281946f23970",
+      "verdict": "confirmed_deterministic",
+      "reason": "A sealed registry inventory and versioned operation-by-role, immutability, and retention policies allow exact conformance queries.",
+      "counterexample_analysis": "I tried anonymous prohibited access, unauthorized publication, digest replacement, and early deletion. Each conflicts with one configured policy and fails its query; allowed public reads or policy-authorized deletion are not counterexamples because applicability is fixed by the selected policy.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-021",
+      "revision": 1,
+      "semantic_sha256": "789ed32938b3a2184c7ad25efec4b9b34d9ccd6ae4f44a07f58adfd81de5b871",
+      "verdict": "confirmed_deterministic",
+      "reason": "The rule's exact fact is availability of the artifact designated previous known-good by an authenticated release record.",
+      "counterexample_analysis": "I tried a record with no digest, an artifact available only by mutable tag, a digest that resolves to different bytes, and a deleted digest. Each fails identification, integrity, or retrievability; whether humans selected the best artifact is outside this availability statement.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-023",
+      "revision": 1,
+      "semantic_sha256": "793f79b91db4658b5cd18c0ee8c1d3040f384f86355bf6fec3b1f4bdcc438570",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Metadata checks and one adversarial attempt do not prove rejection across every cache key, restore endpoint, race, and trust transition.",
+      "counterexample_analysis": "The normal cache-read path verifies trust-zone metadata, but a secondary restore path accepts a colliding cache key without zone validation. The inventory shows verified metadata on normal inputs and the bounded substitution test exercises only that normal path, so both clauses pass while cross-trust substitution is possible.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-024",
+      "revision": 1,
+      "semantic_sha256": "7c05f34f30b1bb604762d6a51c95007598b63bc22e7f00850986c345b0baaf38",
+      "verdict": "confirmed_deterministic",
+      "reason": "Complete tag, artifact, provenance, and deployment inventories can be joined by immutable revision and digest equality without interpretation.",
+      "counterexample_analysis": "I tried a tag pointing to a different revision, provenance naming different bytes, an orphan deployment digest, and an extra release artifact. With all four inventories included, each creates a missing or unequal join and fails rather than passing.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-001",
+      "revision": 1,
+      "semantic_sha256": "3816b61e4f3b5fb76f55d2e33f31b2a9fb15dd678d060449abb50f4d92b08f16",
+      "verdict": "confirmed_deterministic",
+      "reason": "A complete released-application-artifact inventory and digest-bound SBOM records fully determine the generation requirement.",
+      "counterexample_analysis": "I tried an omitted platform artifact, an SBOM bound to a tag instead of bytes, duplicate SBOMs, and a stale digest. The exact-one digest join fails in each case; nonapplication artifacts are objectively outside the stated scope.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-002",
+      "revision": 1,
+      "semantic_sha256": "f4fac65520816624cc190010739e9ef17f62c2f7bee7048b5cb72298fe151f75",
+      "verdict": "confirmed_deterministic",
+      "reason": "Given authoritative complete dependency and final-artifact graphs, direct and transitive membership comparison is mechanical.",
+      "counterexample_analysis": "I tried a lockfile transitive component omitted from the SBOM and an embedded component present only in the final artifact inventory. Each appears in one authoritative input graph and therefore makes the SBOM comparison fail.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-003",
+      "revision": 1,
+      "semantic_sha256": "598ffdb5b2c743e758a70ee303e6d61d1bf6c76c0a6b906a53a3b0f277c2f1d8",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The artifact-only clause lacks authoritative deployment evidence for applicable host operating systems, services, client assets, and runtime components.",
+      "counterexample_analysis": "A container SBOM completely matches packaged bytes but deployment runs it on a virtual-machine operating system and loads a platform plugin recorded only in deployment configuration. The artifact checker derives neither as applicable and passes while required applicable classes are absent.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-004",
+      "revision": 1,
+      "semantic_sha256": "32496def6af1eef434376cbf7304a9dbd5e37821503e2a16279cc68476a50dca",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A mandatory single non-overlapping scope does not faithfully model dependencies that legitimately occupy multiple listed scopes or context-dependent roles.",
+      "counterexample_analysis": "A library is optional in one feature, required at runtime in another, and also used by build tooling. Labeling it an arbitrary supported 'other' scope satisfies the proposed exclusive classification while failing to distinguish its build, optional, and runtime relationships as the statement requires.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-005",
+      "revision": 1,
+      "semantic_sha256": "51ebb3e76e27a5a7c6e8b67977e19f1485a415e44b610ef85a06faa72be81cfa",
+      "verdict": "confirmed_deterministic",
+      "reason": "Exact component fields and graph relationships are machine-verifiable against sealed package and artifact metadata.",
+      "counterexample_analysis": "I tried a missing version, reused package identifier, wrong source, hash for different bytes, and omitted relationship edge. Each produces a direct field or graph mismatch; malformed or unavailable authoritative metadata must block rather than pass.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-007",
+      "revision": 1,
+      "semantic_sha256": "fbf6b416502e4a2ca3582b654ad9de6cc01289c6dee276d7f5b23df8cd699b52",
+      "verdict": "confirmed_deterministic",
+      "reason": "Cryptographic digest equality between the SBOM subject and exact released bytes is a complete bounded predicate.",
+      "counterexample_analysis": "I tried binding the SBOM to a mutable tag, a source archive, a previous artifact, and a digest with the wrong algorithm value. None equals the exact released-artifact digest, so all fail.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-008",
+      "revision": 1,
+      "semantic_sha256": "eb7d51fa154ebd9e502ddc0d224c22f55c81d19cf5d080968fc3d8f50d31cb35",
+      "verdict": "confirmed_deterministic",
+      "reason": "The proposal binds verification to the final package and requires unsupported formats to return Blocked rather than silently pass.",
+      "counterexample_analysis": "I tried a source-only SBOM, a missing packaged component, a supported nested archive, and an unsupported package format. Mismatches fail, supported nested content must enter the complete extracted inventory, and unsupported parsing blocks the result.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-009",
+      "revision": 1,
+      "semantic_sha256": "42582eb9db53f5effd85521b8e4aabc04bb1c8cb65eda79a6f1f2d9046028438",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Unexpectedness and complete component discovery are not defined by merely diffing whatever a supported parser happens to extract.",
+      "counterexample_analysis": "A statically linked or obfuscated component is embedded in a supported binary format but the parser does not recognize its boundary, while every extracted component is declared. The inventory difference is empty and passes although an unexpected undeclared component is present; alternatively an expected generated component can be undeclared without violating 'unexpected.'",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-011",
+      "revision": 1,
+      "semantic_sha256": "ca23bea74dce7ac99480134519826ad22f9b1ada744b397c902dce43d5b25768",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Publisher lifecycle status alone is not authoritative for organizational support, maintained forks, or the contextual meaning of unsupported.",
+      "counterexample_analysis": "An upstream package version is marked end-of-life, but the organization maintains a patched supported fork under the same lineage; conversely a publisher leaves a release nominally supported while the project lacks any viable support path. The registry join gives a definite result that can be wrong in either direction for the full rule.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-012",
+      "revision": 1,
+      "semantic_sha256": "571cea4a2c6c75eb7fe2700514a5e52e9e2c9c23fd3fb8713814054f06dc7586",
+      "verdict": "confirmed_deterministic",
+      "reason": "The rule explicitly asks whether origins match intended publishers and registries, which a versioned allow policy and authoritative registry identity decide.",
+      "counterexample_analysis": "I tried dependency confusion from a public registry, a namesake package from a different publisher, and a lockfile redirect. Registry allowlisting and publisher identity comparison fail each exact mismatch; intent is supplied by the approved project policy.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-015",
+      "revision": 1,
+      "semantic_sha256": "7ebe711e6e85d021559b561fbbb4ff13ecbddc92378748c373a7ee8ddf1f7c97",
+      "verdict": "rejected_nondeterministic",
+      "reason": "One approved advisory source per ecosystem plus a successful ingestion record does not prove monitoring of all relevant upstream advisories.",
+      "counterexample_analysis": "A project monitors a generic ecosystem feed that omits a maintainer's repository security advisory or vendor bulletin for one dependency. The ecosystem has an approved source and current successful ingestion, so both clauses pass while an upstream advisory is not monitored.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-016",
+      "revision": 1,
+      "semantic_sha256": "ed332d73536af8e4960c9ad0b5b7a2baa3b573b9492e5a1e1ba30081915487bd",
+      "verdict": "confirmed_deterministic",
+      "reason": "A complete supported-release inventory, authenticated monitoring registration, and approved maximum cadence make continuous coverage a bounded policy fact.",
+      "counterexample_analysis": "I tried unregistering an old supported release, delaying a new advisory beyond the cadence, and a failed scheduled scan. Each breaks registration or the maximum-cadence execution record; retired releases can be objectively excluded by the supported-release policy.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-022",
+      "revision": 1,
+      "semantic_sha256": "10fcbad9a16daf8df1027f3c8a4edcf2fe2ac2602fe749b2f20d6e55d51df8b6",
+      "verdict": "confirmed_deterministic",
+      "reason": "The exact requirement is a current authenticated owner record for each component in three objectively inventoried categories.",
+      "counterexample_analysis": "I tried an internally patched library hidden under a new filename, a stale owner, and a team name not present in the authority directory. Complete component classification finds the first, and record freshness/authentication rejects the latter two.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-027",
+      "revision": 1,
+      "semantic_sha256": "323c5a4d7de6d1dc643cd772a4e793762577c748e5fe3c443a69247178d17921",
+      "verdict": "confirmed_deterministic",
+      "reason": "Versioned release, incident, and retention inventories provide objective scope and retrievability periods for digest-bound SBOMs.",
+      "counterexample_analysis": "I tried deleting an old but retained SBOM, keeping only an unbound SBOM, shortening retention during an open incident, and omitting one historical release. Each fails an exact inventory, digest, availability, or date comparison.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    }
+  ]
+}

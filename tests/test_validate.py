@@ -87,5 +87,50 @@ class MarkdownAnchorTests(unittest.TestCase):
             self.assertIn("missing Markdown anchor", errors[0])
 
 
+class ClassificationArtifactTests(unittest.TestCase):
+    def test_current_classification_and_binding_documents_are_consistent(self) -> None:
+        errors: list[str] = []
+        count = validate.validate_classification_documents(errors)
+        self.assertEqual(errors, [])
+        self.assertEqual(count, 686)
+
+    def test_generated_validator_failure_is_reported_fail_closed(self) -> None:
+        errors: list[str] = []
+        completed = validate.subprocess.CompletedProcess(
+            args=["validator"], returncode=1, stdout="stale binding artifact\n"
+        )
+        with patch.object(validate.subprocess, "run", return_value=completed):
+            validate.run_generated_validator(["validator"], "Binding validation", errors)
+        self.assertEqual(errors, ["Binding validation failed: stale binding artifact"])
+
+
+class BenchmarkDocumentationTests(unittest.TestCase):
+    def test_current_benchmark_counts_are_measured_and_documented(self) -> None:
+        errors: list[str] = []
+        self.assertEqual(validate.validate_benchmark_documentation(errors), (36, 144))
+        self.assertEqual(errors, [])
+
+    def test_stale_benchmark_count_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            suite = root / "fixtures" / "benchmarks" / "core-native"
+            docs = root / "docs" / "scanner"
+            suite.mkdir(parents=True)
+            docs.mkdir(parents=True)
+            (suite / "suite-comprehensive.yaml").write_text(
+                "cases:\n  - id: one\n    expectations:\n      - {assertion_id: A}\n",
+                encoding="utf-8",
+            )
+            (docs / "benchmarks.md").write_text(
+                "The suite has a 2-case, 2-expectation fixture corpus.\n",
+                encoding="utf-8",
+            )
+            errors: list[str] = []
+            with patch.object(validate, "ROOT", root):
+                self.assertEqual(validate.validate_benchmark_documentation(errors), (1, 1))
+            self.assertEqual(len(errors), 1)
+            self.assertIn("stale", errors[0])
+
+
 if __name__ == "__main__":
     unittest.main()

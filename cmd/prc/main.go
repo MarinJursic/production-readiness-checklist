@@ -22,6 +22,7 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/benchmark"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/catalog"
 	projectconfig "github.com/MarinJursic/production-readiness-checklist/scanner/config"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/controlprogramcatalog"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/controlreview"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/doctor"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/engine"
@@ -36,6 +37,7 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/provider"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/remediation"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/report"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/repositoryevidence"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/state"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/trust"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/verifier"
@@ -270,7 +272,7 @@ func usage(output io.Writer) {
 	fmt.Fprintln(output, "  prc /path/to/project     Scan another project")
 	fmt.Fprintln(output, "  prc quick                Run a small local risk screen")
 	fmt.Fprintln(output, "  prc login codex          Sign in for an optional Codex review")
-	fmt.Fprintln(output, "  prc full codex           Review all controls with safe, advisory Codex AI")
+	fmt.Fprintln(output, "  prc full codex           Deep AI advice for all nondeterministic controls")
 	fmt.Fprintln(output, "  prc doctor               Check whether scanning tools are ready")
 	fmt.Fprintln(output, "  prc scan --help          Show advanced scan options")
 	fmt.Fprintln(output)
@@ -287,7 +289,8 @@ func runScanAlias(name string, args []string, stdout, stderr io.Writer) (int, er
 			fmt.Fprintln(stdout, "Use prc scan --help for the shared report and output options.")
 		case "full":
 			fmt.Fprintln(stdout, "Usage: prc full <codex|claude> [project path] [scan options]")
-			fmt.Fprintln(stdout, "Runs the 40-check core scan and advisory AI review of every active control.")
+			fmt.Fprintln(stdout, "Runs the 40-check core scan and deep advisory AI review of all 9,356 nondeterministic controls.")
+			fmt.Fprintln(stdout, "Uses four parallel provider batches, one primary subagent per rule, and one skeptical subagent per batch.")
 			fmt.Fprintln(stdout, "The provider name explicitly allows bounded, screened remote source processing.")
 			fmt.Fprintln(stdout, "Use prc scan --help for advanced review, report, and output options.")
 		}
@@ -317,10 +320,30 @@ func runScanAlias(name string, args []string, stdout, stderr io.Writer) (int, er
 				return exitInternal, exitError(exitConfiguration, errors.New("prc full already selects the AI provider"))
 			}
 		}
-		return runScan(append([]string{"--ai", args[0]}, args[1:]...), stdout, stderr)
+		forwarded := []string{"--ai", args[0]}
+		if !containsFlag(args[1:], "review-depth") {
+			forwarded = append(forwarded, "--review-depth", "deep")
+		}
+		if !containsFlag(args[1:], "review-workers") {
+			forwarded = append(forwarded, "--review-workers", "4")
+		}
+		if args[0] == "codex" && !containsFlag(args[1:], "review-effort") {
+			forwarded = append(forwarded, "--review-effort", "xhigh")
+		}
+		return runScan(append(forwarded, args[1:]...), stdout, stderr)
 	default:
 		panic("unknown scan alias")
 	}
+}
+
+func containsFlag(args []string, name string) bool {
+	prefix := "--" + name
+	for _, argument := range args {
+		if argument == prefix || strings.HasPrefix(argument, prefix+"=") {
+			return true
+		}
+	}
+	return false
 }
 
 func runMCP(args []string, stdin io.Reader, stdout, stderr io.Writer) error {
@@ -1942,6 +1965,7 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	reviewExecutable := set.String("review-executable", "", "optional exact Codex or Claude executable")
 	reviewModel := set.String("review-model", "", "optional model override for advisory review")
 	reviewEffort := set.String("review-effort", "high", "advisory reasoning effort: high, or xhigh for Codex")
+	reviewDepth := set.String("review-depth", "standard", "advisory review depth: standard or deep")
 	reviewStateDirectory := set.String("review-state-dir", "", "private resumable AI review state outside the target")
 	allowRemoteReview := set.Bool("allow-remote-source-processing", false, "allow screened source excerpts to be sent to the selected remote AI provider")
 	reviewBatchSize := set.Int("review-batch-size", 8, "controls per provider call, from 1 to 8; each still gets one subagent")
@@ -2005,7 +2029,7 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	if *reviewProvider != "none" && *reviewProvider != "codex" && *reviewProvider != "claude" {
 		return exitInternal, exitError(exitConfiguration, fmt.Errorf("unsupported review provider %q", *reviewProvider))
 	}
-	reviewFlags := []string{"review-executable", "review-model", "review-effort", "review-state-dir", "allow-remote-source-processing", "review-batch-size", "review-workers", "review-timeout", "review-max-cost-usd", "review-control"}
+	reviewFlags := []string{"review-executable", "review-model", "review-effort", "review-depth", "review-state-dir", "allow-remote-source-processing", "review-batch-size", "review-workers", "review-timeout", "review-max-cost-usd", "review-control"}
 	if *reviewProvider == "none" {
 		for _, name := range reviewFlags {
 			if flagWasSet(set, name) {
@@ -2117,7 +2141,25 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	if err != nil {
 		return exitInternal, exitError(exitExecution, err)
 	}
-	completeRun, attachErr := fullscan.Attach(*catalogRoot, scanner.Catalog, run)
+	profileRun := run
+	programCatalog, programErr := controlprogramcatalog.Load(*catalogRoot)
+	var completeRun model.RunResult
+	var attachErr error
+	if programErr == nil {
+		exactExecutions, executionErr := repositoryevidence.EvaluateSupported(
+			context.Background(), programCatalog, item, profileRun.CompletedAt,
+		)
+		if executionErr != nil {
+			return exitInternal, exitError(exitExecution, fmt.Errorf("collect exact repository evidence: %w", executionErr))
+		}
+		completeRun, attachErr = fullscan.AttachProgramExecutions(*catalogRoot, scanner.Catalog, profileRun, exactExecutions)
+	} else {
+		// Deliberately minimal custom catalogs used for focused local scans do
+		// not contain the complete registry or exact-program corpus. Attach
+		// decides whether that absence is the supported minimal case or a
+		// broken released bundle.
+		completeRun, attachErr = fullscan.Attach(*catalogRoot, scanner.Catalog, profileRun)
+	}
 	if attachErr == nil {
 		run = completeRun
 	} else if !errors.Is(attachErr, fullscan.ErrRegistryUnavailable) {
@@ -2127,6 +2169,7 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		fmt.Fprintln(stdout, progressStyle.paint(ansiBlue, "[3/4] Classifying complete-catalog coverage without guessing..."))
 	}
 	var reviewSummary controlreview.Summary
+	var reviewFailure error
 	if *reviewProvider != "none" {
 		var reviewProgress func(controlreview.Progress)
 		if *format == "human" {
@@ -2136,17 +2179,26 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		}
 		reviewed, summary, reviewErr := controlreview.Apply(context.Background(), run, controlreview.Options{
 			Provider: *reviewProvider, Executable: *reviewExecutable, Model: *reviewModel,
-			ReasoningEffort: *reviewEffort, StateDirectory: *reviewStateDirectory,
+			ReasoningEffort: *reviewEffort, ReviewDepth: *reviewDepth, StateDirectory: *reviewStateDirectory,
 			SchemaPath:                  filepath.Join(*catalogRoot, "schemas", "control-review-output.schema.json"),
 			AllowRemoteSourceProcessing: *allowRemoteReview, BatchSize: *reviewBatchSize,
 			Workers: *reviewWorkers, Timeout: *reviewTimeout, MaxCostUSD: *reviewMaxCost,
 			ControlIDs: append([]string{}, reviewControls...),
 			Progress:   reviewProgress,
 		})
-		if reviewErr != nil {
-			return exitInternal, exitError(exitExecution, reviewErr)
+		if reviewed.ControlCatalog != nil {
+			run, reviewSummary = reviewed, summary
 		}
-		run, reviewSummary = reviewed, summary
+		if reviewErr != nil {
+			reviewFailure = reviewErr
+			if *format == "human" {
+				message := "      AI review stopped before a valid batch completed. The local scan report will still be written."
+				if summary.CompletedBatches > 0 {
+					message = "      AI review stopped early. Completed batches will be saved in a partial report and reused on resume."
+				}
+				fmt.Fprintln(stdout, progressStyle.paint(ansiYellow, message))
+			}
+		}
 	}
 	var stateStore *state.Store
 	if *stateDirectory != "" {
@@ -2181,8 +2233,8 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		}
 	} else if *format == "human" {
 		style := newTerminalStyle(*colorMode, stdout)
-		if *reviewProvider != "none" {
-			fmt.Fprintf(stdout, "AI review: %d controls reviewed by %s; %d advisory failure candidates\n", reviewSummary.ReviewedControls, terminalText(reviewSummary.Provider), reviewSummary.AdvisoryFailures)
+		if reviewSummary.Provider != "" {
+			fmt.Fprintf(stdout, "AI review: %d controls reviewed by %s in %s mode; %d advisory failure candidates\n", reviewSummary.ReviewedControls, terminalText(reviewSummary.Provider), terminalText(reviewSummary.ReviewDepth), reviewSummary.AdvisoryFailures)
 			fmt.Fprintf(stdout, "AI batches: %d completed · %d reused · %s elapsed\n",
 				reviewSummary.CompletedBatches, reviewSummary.ReusedBatches, reviewSummary.Duration.Round(time.Millisecond))
 			if reviewSummary.TokenUsageBatches > 0 {
@@ -2206,6 +2258,9 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	} else if err := report.Write(*format, stdout, run); err != nil {
 		return exitInternal, exitError(exitInternal, err)
 	}
+	if reviewFailure != nil {
+		return exitInternal, exitError(exitExecution, reviewFailure)
+	}
 	switch *exitPolicy {
 	case "profile":
 		return scanTerminalExitCode(profileTerminalState(run)), nil
@@ -2222,8 +2277,8 @@ func aiReviewProgressPrinter(output io.Writer, style terminalStyle) func(control
 	lastPercent := -1
 	return func(progress controlreview.Progress) {
 		if progress.Phase == "prepared" {
-			fmt.Fprintf(output, "      AI plan: %d controls in %d batches · %d cached · %d worker(s)\n",
-				progress.TotalControls, progress.TotalBatches, progress.ReusedBatches, progress.Workers)
+			fmt.Fprintf(output, "      AI plan: %d controls in %d batches · %s mode · %d cached · %d worker(s)\n",
+				progress.TotalControls, progress.TotalBatches, terminalText(progress.ReviewDepth), progress.ReusedBatches, progress.Workers)
 			if progress.MaxCostUSD > 0 {
 				fmt.Fprintf(output, "      Enforced limit: $%.4f per new Claude batch\n", progress.MaxCostUSD)
 			}

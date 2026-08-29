@@ -1,0 +1,611 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-06-application-services-and-apis-md-part-001-part-002",
+  "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 24,
+  "controls": [
+    {
+      "control_id": "USEQ-E34272AF",
+      "revision": 1,
+      "semantic_sha256": "e34272af48b64567f6133cd693aaa6a5d63ee660756c1ae1f8d4655109036341",
+      "statement": "Define rate, volume, size, concurrency, and resource limits.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 319
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Interface contracts and compatibility"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define rate, volume, size, concurrency, and resource limits.” is deterministic when its endpoint, interface, state, or transition scope is sealed and a versioned rule-specific contract supplies exact fields and outcome oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define rate, volume, size, concurrency, and resource limits.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B9F6FE85",
+      "revision": 1,
+      "semantic_sha256": "b9f6fe85578c8158615b9e313b69aa2705490f79d5ce9ff635897b6abf1392af",
+      "statement": "Provide machine-verifiable schemas where practical.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 320
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Interface contracts and compatibility"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Provide machine-verifiable schemas where practical.” is deterministic when its endpoint, interface, state, or transition scope is sealed and a versioned rule-specific contract supplies exact fields and outcome oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide machine-verifiable schemas where practical.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D23737D3",
+      "revision": 1,
+      "semantic_sha256": "d23737d38b8a5de75dcc923a668d0d817357d7a034f7fcc4dfcc04709e95b027",
+      "statement": "Maintain consumer-driven or equivalent compatibility tests for material interfaces.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 321
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Interface contracts and compatibility"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Maintain consumer-driven or equivalent compatibility tests for material interfaces.” is deterministic when its endpoint, interface, state, or transition scope is sealed and a versioned rule-specific contract supplies exact fields and outcome oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Maintain consumer-driven or equivalent compatibility tests for material interfaces.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B5F4AD4D",
+      "revision": 1,
+      "semantic_sha256": "b5f4ad4d7d53df60fb5fe5f2a6d6dafc233fca1916dc2d70eb04ab0e2af15329",
+      "statement": "Publish deprecation, migration, support, and retirement timelines early enough for consumers to act.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 323
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Interface contracts and compatibility"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Publish deprecation, migration, support, and retirement timelines early enough for consumers to act.” is deterministic when its endpoint, interface, state, or transition scope is sealed and a versioned rule-specific contract supplies exact fields and outcome oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Publish deprecation, migration, support, and retirement timelines early enough for consumers to act.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-07313A1F",
+      "revision": 1,
+      "semantic_sha256": "07313a1f235679e9a1f8eed553f30f01d8938465b67ba159871a418c71a31b7d",
+      "statement": "Prevent integration testing from using production credentials or uncontrolled production data.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 329
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Integration environments and test assets"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Prevent integration testing from using production credentials or uncontrolled production data.” is deterministic when its endpoint, interface, state, or transition scope is sealed and a versioned rule-specific contract supplies exact fields and outcome oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Prevent integration testing from using production credentials or uncontrolled production data.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-97974ECD",
+      "revision": 1,
+      "semantic_sha256": "97974ecda271130cd316144f55b593e34ae61113c0f288b05bd1721405686b2b",
+      "statement": "Make simulators and stubs explicit about which behavior they do and do not reproduce.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 330
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Integration environments and test assets"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Make simulators and stubs explicit about which behavior they do and do not reproduce.” is deterministic when its endpoint, interface, state, or transition scope is sealed and a versioned rule-specific contract supplies exact fields and outcome oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make simulators and stubs explicit about which behavior they do and do not reproduce.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F009D6F1",
+      "revision": 1,
+      "semantic_sha256": "f009d6f130583b850c64bf7287ae669d2edf36383168bb82bbd8302c00de6dde",
+      "statement": "Version test fixtures, schemas, protocol captures, simulators, and reference data.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 332
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Integration environments and test assets"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Version test fixtures, schemas, protocol captures, simulators, and reference data.” is deterministic when its endpoint, interface, state, or transition scope is sealed and a versioned rule-specific contract supplies exact fields and outcome oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Version test fixtures, schemas, protocol captures, simulators, and reference data.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0291C731",
+      "revision": 1,
+      "semantic_sha256": "0291c731a63dd7a2ce8500df5cb45b4f0c4dc568cbe3d3c8bb131ecb1b85bf62",
+      "statement": "Test maximum supported message, file, batch, record, and concurrency sizes.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 336
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Integration environments and test assets"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Test maximum supported message, file, batch, record, and concurrency sizes.” is deterministic when its endpoint, interface, state, or transition scope is sealed and a versioned rule-specific contract supplies exact fields and outcome oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test maximum supported message, file, batch, record, and concurrency sizes.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B6D483DD",
+      "revision": 1,
+      "semantic_sha256": "b6d483dd291c495e6db908d13640b526117d27badfd4cb89f7ff531100fd3166",
+      "statement": "Ensure integration tests can distinguish provider failure, consumer failure, network failure, contract mismatch, and test-environment defect.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 337
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Integration environments and test assets"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Ensure integration tests can distinguish provider failure, consumer failure, network failure, contract mismatch, and test-environment defect.” is deterministic when its endpoint, interface, state, or transition scope is sealed and a versioned rule-specific contract supplies exact fields and outcome oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Ensure integration tests can distinguish provider failure, consumer failure, network failure, contract mismatch, and test-environment defect.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-037484B6",
+      "revision": 1,
+      "semantic_sha256": "037484b6ff48c9d88a742538a3b37dc9fdac55a76ac46bb83c8940b259508d73",
+      "statement": "Preserve traceable evidence linking integration results to exact component versions and configurations.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 338
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Integration environments and test assets"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Preserve traceable evidence linking integration results to exact component versions and configurations.” is deterministic when its endpoint, interface, state, or transition scope is sealed and a versioned rule-specific contract supplies exact fields and outcome oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Preserve traceable evidence linking integration results to exact component versions and configurations.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1C5D3DE4",
+      "revision": 1,
+      "semantic_sha256": "1c5d3de4a22b4bde637ceda7b2b854cf0a7d1417851d5c79648021147827ceed",
+      "statement": "Detect drift between integration environments and production.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 339
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Integration environments and test assets"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Detect drift between integration environments and production.” is deterministic when its endpoint, interface, state, or transition scope is sealed and a versioned rule-specific contract supplies exact fields and outcome oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Detect drift between integration environments and production.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7FE0C223",
+      "revision": 1,
+      "semantic_sha256": "7fe0c223daf4a7bd756ed31cdeaacc10b523973f22a400725d46909ae040ed43",
+      "statement": "Provide deterministic reset or reconstruction of shared integration state.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 341
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Integration environments and test assets"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Provide deterministic reset or reconstruction of shared integration state.” is deterministic when its endpoint, interface, state, or transition scope is sealed and a versioned rule-specific contract supplies exact fields and outcome oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide deterministic reset or reconstruction of shared integration state.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D1AA1BD0",
+      "revision": 1,
+      "semantic_sha256": "d1aa1bd0db0918bf2cc6333cb7e607725e3e8b04bfde03f575b8e06b9e87058d",
+      "statement": "Retain representative failing cases as regression tests.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 342
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Integration environments and test assets"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Retain representative failing cases as regression tests.” is deterministic when its endpoint, interface, state, or transition scope is sealed and a versioned rule-specific contract supplies exact fields and outcome oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Retain representative failing cases as regression tests.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-73D4CAD4",
+      "revision": 1,
+      "semantic_sha256": "73d4cad4547e6f65506ba2da2faeb1c70591667e565708e61f73c377c918aeb5",
+      "statement": "Inventory all data, state, history, permissions, identities, configuration, keys, and metadata that must transition.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 346
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Data and state transition"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Inventory all data, state, history, permissions, identities, configuration, keys, and metadata that must transition.” is deterministic when its endpoint, interface, state, or transition scope is sealed and a versioned rule-specific contract supplies exact fields and outcome oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Inventory all data, state, history, permissions, identities, configuration, keys, and metadata that must transition.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1F9780C3",
+      "revision": 1,
+      "semantic_sha256": "1f9780c3539506ac1005e4e671f91f3267a084cf7d0ed6004d3c0a9a45bd1c7e",
+      "statement": "Define the authoritative source and target for every data class during each transition phase.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 347
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Data and state transition"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define the authoritative source and target for every data class during each transition phase.” is deterministic when its endpoint, interface, state, or transition scope is sealed and a versioned rule-specific contract supplies exact fields and outcome oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define the authoritative source and target for every data class during each transition phase.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-49876297",
+      "revision": 1,
+      "semantic_sha256": "49876297e336e7bf0802d50a2baf66c81ba38af3bec284172d85fed5d7cf94fe",
+      "statement": "Define mapping rules, transformations, defaults, rejected records, and reconciliation criteria.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 348
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Data and state transition"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define mapping rules, transformations, defaults, rejected records, and reconciliation criteria.” is deterministic when its endpoint, interface, state, or transition scope is sealed and a versioned rule-specific contract supplies exact fields and outcome oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define mapping rules, transformations, defaults, rejected records, and reconciliation criteria.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C6B4C15C",
+      "revision": 1,
+      "semantic_sha256": "c6b4c15c7d6ff5385a85b4e4412a4513c82795bdefc3f10b7b02df1aabeca0ee",
+      "statement": "Preserve identifiers and referential relationships or document intentional replacements.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 349
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Data and state transition"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Preserve identifiers and referential relationships or document intentional replacements.” is deterministic when its endpoint, interface, state, or transition scope is sealed and a versioned rule-specific contract supplies exact fields and outcome oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Preserve identifiers and referential relationships or document intentional replacements.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-070B16F1",
+      "revision": 1,
+      "semantic_sha256": "070b16f10e865a7ce47325ad8033c9a2230c9b25dbb18148a866802ffb8c954c",
+      "statement": "Preserve provenance, timestamps, authorship, consent, retention, legal holds, and audit history.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 350
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Data and state transition"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Preserve provenance, timestamps, authorship, consent, retention, legal holds, and audit history.” is deterministic when its endpoint, interface, state, or transition scope is sealed and a versioned rule-specific contract supplies exact fields and outcome oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Preserve provenance, timestamps, authorship, consent, retention, legal holds, and audit history.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-ED85CA12",
+      "revision": 1,
+      "semantic_sha256": "ed85ca12c9f046490c7c30dc3e71889cfe41f1edb7a571147c341e1f14225443",
+      "statement": "Validate units, precision, time zones, calendars, encodings, normalization, and code sets.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 351
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Data and state transition"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Validate units, precision, time zones, calendars, encodings, normalization, and code sets.” is deterministic when its endpoint, interface, state, or transition scope is sealed and a versioned rule-specific contract supplies exact fields and outcome oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Validate units, precision, time zones, calendars, encodings, normalization, and code sets.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AE457351",
+      "revision": 1,
+      "semantic_sha256": "ae45735193494ce66a590a9ea17d4191671c9280ca9eb0943031879c5d4c0095",
+      "statement": "Prevent silent truncation, coercion, rounding, or loss of unsupported fields.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 352
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Data and state transition"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Prevent silent truncation, coercion, rounding, or loss of unsupported fields.” is deterministic when its endpoint, interface, state, or transition scope is sealed and a versioned rule-specific contract supplies exact fields and outcome oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Prevent silent truncation, coercion, rounding, or loss of unsupported fields.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-35DD45BD",
+      "revision": 1,
+      "semantic_sha256": "35dd45bdd964ef1809646a9033ed78e30eec4467c8f747b3ad521adafc9c024e",
+      "statement": "Define treatment of invalid, duplicate, orphaned, stale, and conflicting records.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 353
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Data and state transition"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define treatment of invalid, duplicate, orphaned, stale, and conflicting records.” is deterministic when its endpoint, interface, state, or transition scope is sealed and a versioned rule-specific contract supplies exact fields and outcome oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define treatment of invalid, duplicate, orphaned, stale, and conflicting records.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F47424F8",
+      "revision": 1,
+      "semantic_sha256": "f47424f86570b9261c6d520202aeb5bcff5e1904ec92c7cac16ef1c3b7ccef5e",
+      "statement": "Test transition using representative volume, skew, age, and edge-case distributions.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 354
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Data and state transition"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Test transition using representative volume, skew, age, and edge-case distributions.” is deterministic when its endpoint, interface, state, or transition scope is sealed and a versioned rule-specific contract supplies exact fields and outcome oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test transition using representative volume, skew, age, and edge-case distributions.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D2F05431",
+      "revision": 1,
+      "semantic_sha256": "d2f05431f28c6fe42a3729d6220d258c0e9826f6da053abaff73f68c7f1310c1",
+      "statement": "Measure duration, resource use, locking, service impact, and recovery time.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 355
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Data and state transition"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Measure duration, resource use, locking, service impact, and recovery time.” is deterministic when its endpoint, interface, state, or transition scope is sealed and a versioned rule-specific contract supplies exact fields and outcome oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Measure duration, resource use, locking, service impact, and recovery time.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4507A42E",
+      "revision": 1,
+      "semantic_sha256": "4507a42e73296f965f1d1eaf97e0b3a01e8151bbf22b619f2da3b1a690e12a5b",
+      "statement": "Use checkpoints and resumable processing for long transitions.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 356
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Data and state transition"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Use checkpoints and resumable processing for long transitions.” is deterministic when its endpoint, interface, state, or transition scope is sealed and a versioned rule-specific contract supplies exact fields and outcome oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use checkpoints and resumable processing for long transitions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

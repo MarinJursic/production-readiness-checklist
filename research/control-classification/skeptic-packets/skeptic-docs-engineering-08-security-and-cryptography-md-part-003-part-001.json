@@ -1,0 +1,2511 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-08-security-and-cryptography-md-part-003-part-001",
+  "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 100,
+  "controls": [
+    {
+      "control_id": "USEQ-F8717B01",
+      "revision": 1,
+      "semantic_sha256": "f8717b01e7da377e75bd1b19f8f66a1a9ec7e62e2194030f0cc6cc0db709b720",
+      "statement": "Assign an accountable product-security owner for every released product, service, component, integration, and supported version.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 687
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Secure-by-design governance and product outcomes"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Assign an accountable product-security owner for every released product, service, component, integration, and supported version.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Assign an accountable product-security owner for every released product, service, component, integration, and supported version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EDED6D52",
+      "revision": 1,
+      "semantic_sha256": "eded6d52cab841aba2b879d8bb1b5d6a05c473f2ade39b2b53bac652bf3955f1",
+      "statement": "Document the product security model, trust assumptions, threat actors, abuse cases, security boundaries, privileged operations, and expected customer responsibilities.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 688
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Secure-by-design governance and product outcomes"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Document the product security model, trust assumptions, threat actors, abuse cases, security boundaries, privileged operations, and expected customer responsibilities.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document the product security model, trust assumptions, threat actors, abuse cases, security boundaries, privileged operations, and expected customer responsibilities.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-60C42502",
+      "revision": 1,
+      "semantic_sha256": "60c42502356a7e92abded66ecfe7838218796c379a1860d984161588a57f6c3a",
+      "statement": "Measure and report the recurrence of vulnerability classes, time to remediation, exploitability, customer exposure, affected supported versions, and effectiveness of preventive controls.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 693
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Secure-by-design governance and product outcomes"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Measure and report the recurrence of vulnerability classes, time to remediation, exploitability, customer exposure, affected supported versions, and effectiveness of preventive controls.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Measure and report the recurrence of vulnerability classes, time to remediation, exploitability, customer exposure, affected supported versions, and effectiveness of preventive controls.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AAA56E97",
+      "revision": 1,
+      "semantic_sha256": "aaa56e97e6b345106dfb87ae911ceb9aad7b53e73462de4f6152625c2cc01f0e",
+      "statement": "Require explicit, time-bounded risk acceptance by an authorized owner when a material security requirement cannot be met.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 695
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Secure-by-design governance and product outcomes"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Require explicit, time-bounded risk acceptance by an authorized owner when a material security requirement cannot be met.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Require explicit, time-bounded risk acceptance by an authorized owner when a material security requirement cannot be met.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D508B428",
+      "revision": 1,
+      "semantic_sha256": "d508b428ce34ca2ddd30011ede98dcdab59b362ec210bb0b34e478ec9876a672",
+      "statement": "Publish realistic support periods, security-update commitments, end-of-life dates, and customer migration guidance before purchase or adoption decisions depend on them.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 696
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Secure-by-design governance and product outcomes"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Publish realistic support periods, security-update commitments, end-of-life dates, and customer migration guidance before purchase or adoption decisions depend on them.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Publish realistic support periods, security-update commitments, end-of-life dates, and customer migration guidance before purchase or adoption decisions depend on them.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-42B1D2E9",
+      "revision": 1,
+      "semantic_sha256": "42b1d2e92735b8dde401dd149910eea6a5e707f6517345c665bf5c193a34e6fe",
+      "statement": "Inventory every externally reachable interface, protocol, port, domain, subdomain, API, webhook, administrative surface, remote-management feature, update channel, file format, parser, plugin point, and embedded third-party component.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 704
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Attack-surface reduction, secure defaults, and fail-safe behavior"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Inventory every externally reachable interface, protocol, port, domain, subdomain, API, webhook, administrative surface, remote-management feature, update channel, file format, parser, plugin point, and embedded third-party component.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Inventory every externally reachable interface, protocol, port, domain, subdomain, API, webhook, administrative surface, remote-management feature, update channel, file format, parser, plugin point, and embedded third-party component.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-19FE22C4",
+      "revision": 1,
+      "semantic_sha256": "19fe22c4dbbeab04d6655eb5c5d0c656395e07e19140a3eb761665bcc8384675",
+      "statement": "Require deliberate, informed action to enable high-risk capabilities rather than enabling them by default.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 707
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Attack-surface reduction, secure defaults, and fail-safe behavior"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Require deliberate, informed action to enable high-risk capabilities rather than enabling them by default.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Require deliberate, informed action to enable high-risk capabilities rather than enabling them by default.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BD19B7E0",
+      "revision": 1,
+      "semantic_sha256": "bd19b7e05afc0493895b3f731cecc461511e79fef018125bcb6a1f57d46d4918",
+      "statement": "Use deny-by-default authorization, network, execution, data-sharing, and integration policies.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 708
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Attack-surface reduction, secure defaults, and fail-safe behavior"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Use deny-by-default authorization, network, execution, data-sharing, and integration policies.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use deny-by-default authorization, network, execution, data-sharing, and integration policies.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D2318271",
+      "revision": 1,
+      "semantic_sha256": "d23182710ce7f8876da7d04828dd698c7729ece67e44294cfb87817fca09e28d",
+      "statement": "Fail closed when identity, authorization, policy, signature, certificate, secret, configuration, or security-service verification cannot complete, unless a documented safety analysis requires a different fail-safe state.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 709
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Attack-surface reduction, secure defaults, and fail-safe behavior"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Fail closed when identity, authorization, policy, signature, certificate, secret, configuration, or security-service verification cannot complete, unless a documented safety analysis requires a different fail-safe state.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Fail closed when identity, authorization, policy, signature, certificate, secret, configuration, or security-service verification cannot complete, unless a documented safety analysis requires a different fail-safe state.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9E96F4CB",
+      "revision": 1,
+      "semantic_sha256": "9e96f4cbb11458cf6fffe1503d3c6a0984bef6028416d5ebc680df4eef05e181",
+      "statement": "Eliminate default, shared, hard-coded, predictable, or non-expiring credentials.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 712
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Attack-surface reduction, secure defaults, and fail-safe behavior"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Eliminate default, shared, hard-coded, predictable, or non-expiring credentials.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Eliminate default, shared, hard-coded, predictable, or non-expiring credentials.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8C682826",
+      "revision": 1,
+      "semantic_sha256": "8c6828268fb7f337e85817e2354fa5db3f2d0220a8a13027a17098045c4aa9ae",
+      "statement": "Bound input size, nesting, recursion, expansion, execution time, resource use, concurrency, retries, and fan-out at every untrusted boundary.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 716
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Attack-surface reduction, secure defaults, and fail-safe behavior"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Bound input size, nesting, recursion, expansion, execution time, resource use, concurrency, retries, and fan-out at every untrusted boundary.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Bound input size, nesting, recursion, expansion, execution time, resource use, concurrency, retries, and fan-out at every untrusted boundary.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-31C682FC",
+      "revision": 1,
+      "semantic_sha256": "31c682fc7294c0f9a114079e27aaec47c091acb4a3d11dcb6637d03863e80281",
+      "statement": "Use explicit timeouts and cancellation for network, storage, cryptographic, and external-service operations.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 717
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Attack-surface reduction, secure defaults, and fail-safe behavior"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Use explicit timeouts and cancellation for network, storage, cryptographic, and external-service operations.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use explicit timeouts and cancellation for network, storage, cryptographic, and external-service operations.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B120E734",
+      "revision": 1,
+      "semantic_sha256": "b120e7341677fd651009c2bc03b95b6869ac0498295f543369a1be307151d5ec",
+      "statement": "Continuously compare the deployed attack surface with the approved inventory and alert on unexpected exposure.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 720
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Attack-surface reduction, secure defaults, and fail-safe behavior"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Continuously compare the deployed attack surface with the approved inventory and alert on unexpected exposure.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Continuously compare the deployed attack surface with the approved inventory and alert on unexpected exposure.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-869D6032",
+      "revision": 1,
+      "semantic_sha256": "869d6032302e11deafe89c8d5cc95440bac7641c2f77f52ee71dc12301c46b11",
+      "statement": "Use individual, attributable identities for human and machine access; prohibit shared privileged accounts except controlled break-glass mechanisms.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 724
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Identity, authorization, tenant, and privileged-control defaults"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Use individual, attributable identities for human and machine access; prohibit shared privileged accounts except controlled break-glass mechanisms.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use individual, attributable identities for human and machine access; prohibit shared privileged accounts except controlled break-glass mechanisms.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1AF71ED7",
+      "revision": 1,
+      "semantic_sha256": "1af71ed70c1308e8d519a583245968ed5b144de3c2d265a30296cc7235dff250",
+      "statement": "Make privileged access time-bounded, just-in-time, purpose-bound, logged, and reviewed.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 729
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Identity, authorization, tenant, and privileged-control defaults"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Make privileged access time-bounded, just-in-time, purpose-bound, logged, and reviewed.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make privileged access time-bounded, just-in-time, purpose-bound, logged, and reviewed.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D6921613",
+      "revision": 1,
+      "semantic_sha256": "d69216138a60180618fa42b478b6fe084c194f4f9fa01484f1f20848c379306d",
+      "statement": "Continuously review dormant identities, stale permissions, unused service accounts, long-lived tokens, inactive keys, and excessive administrative roles.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 735
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Identity, authorization, tenant, and privileged-control defaults"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Continuously review dormant identities, stale permissions, unused service accounts, long-lived tokens, inactive keys, and excessive administrative roles.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Continuously review dormant identities, stale permissions, unused service accounts, long-lived tokens, inactive keys, and excessive administrative roles.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A4635395",
+      "revision": 1,
+      "semantic_sha256": "a46353953c2dd0e98d756f84ceab935615d6ee3aa7d0a46fe82cc81210018109",
+      "statement": "Publish clear security contact information and a machine-readable vulnerability-reporting route compatible with RFC 9116 where a public reporting surface exists.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 742
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security transparency, customer controls, and support lifecycle"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Publish clear security contact information and a machine-readable vulnerability-reporting route compatible with RFC 9116 where a public reporting surface exists.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Publish clear security contact information and a machine-readable vulnerability-reporting route compatible with RFC 9116 where a public reporting surface exists.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E0B0E04F",
+      "revision": 1,
+      "semantic_sha256": "e0b0e04f45fecb129b90e835b4514c8dc81ed3bd73b09c6f69e40a9ee1e298d8",
+      "statement": "Publish a vulnerability disclosure policy describing scope, safe-harbor expectations, report content, supported communication channels, acknowledgment, coordination, and disclosure practices.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 743
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security transparency, customer controls, and support lifecycle"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Publish a vulnerability disclosure policy describing scope, safe-harbor expectations, report content, supported communication channels, acknowledgment, coordination, and disclosure practices.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Publish a vulnerability disclosure policy describing scope, safe-harbor expectations, report content, supported communication channels, acknowledgment, coordination, and disclosure practices.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1DBAD873",
+      "revision": 1,
+      "semantic_sha256": "1dbad8731098230cde496b45f4919c93989b2d86900979313dffc7a3c8bea52b",
+      "statement": "Provide customers with security advisories that identify affected products and versions, impact, severity context, exploit status, remediation, workarounds, and required actions.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 744
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security transparency, customer controls, and support lifecycle"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Provide customers with security advisories that identify affected products and versions, impact, severity context, exploit status, remediation, workarounds, and required actions.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide customers with security advisories that identify affected products and versions, impact, severity context, exploit status, remediation, workarounds, and required actions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-60AC40CD",
+      "revision": 1,
+      "semantic_sha256": "60ac40cda48f3b50995f121ee80251b8835e749d1d1d3f64991631e3de67ae81",
+      "statement": "Use machine-readable advisory formats where practical so customers can automate impact assessment and remediation.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 745
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security transparency, customer controls, and support lifecycle"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Use machine-readable advisory formats where practical so customers can automate impact assessment and remediation.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use machine-readable advisory formats where practical so customers can automate impact assessment and remediation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F5829ECB",
+      "revision": 1,
+      "semantic_sha256": "f5829ecb6eb4ce621a9c307b6de26424ccc2c889df9b422f78742da50b8d0a1f",
+      "statement": "Publish supported-version and end-of-life information in a durable, discoverable location.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 746
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security transparency, customer controls, and support lifecycle"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Publish supported-version and end-of-life information in a durable, discoverable location.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Publish supported-version and end-of-life information in a durable, discoverable location.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1C422270",
+      "revision": 1,
+      "semantic_sha256": "1c422270d359c556f192e8485e9b4341b6a754a41f864338f393b3819e826650",
+      "statement": "Notify customers sufficiently before support, compatibility, protocol, algorithm, or security-update commitments change.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 747
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security transparency, customer controls, and support lifecycle"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Notify customers sufficiently before support, compatibility, protocol, algorithm, or security-update commitments change.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Notify customers sufficiently before support, compatibility, protocol, algorithm, or security-update commitments change.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6F25E01F",
+      "revision": 1,
+      "semantic_sha256": "6f25e01fe5efed81054f91fd4975dc602501c316819acbf60db9843e287ae355",
+      "statement": "Provide secure update, migration, backup, rollback, and recovery guidance appropriate to customer skill levels.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 748
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security transparency, customer controls, and support lifecycle"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Provide secure update, migration, backup, rollback, and recovery guidance appropriate to customer skill levels.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide secure update, migration, backup, rollback, and recovery guidance appropriate to customer skill levels.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-67789AFB",
+      "revision": 1,
+      "semantic_sha256": "67789afb8ae59986f44eb7104b69ef7a25d3045bf55158a2e77d68310971d5e7",
+      "statement": "Expose security-relevant configuration and events through documented interfaces without requiring unsafe access or excessive data collection.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 749
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security transparency, customer controls, and support lifecycle"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Expose security-relevant configuration and events through documented interfaces without requiring unsafe access or excessive data collection.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Expose security-relevant configuration and events through documented interfaces without requiring unsafe access or excessive data collection.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-09354DE6",
+      "revision": 1,
+      "semantic_sha256": "09354de6b9de05f71e498ee34ebf23ab666435aadd1ddf60db9db21c3440c331",
+      "statement": "Give customers meaningful control over administrators, sessions, credentials, integrations, data sharing, retention, logging, and notifications where the product model permits it.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 750
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security transparency, customer controls, and support lifecycle"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Give customers meaningful control over administrators, sessions, credentials, integrations, data sharing, retention, logging, and notifications where the product model permits it.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Give customers meaningful control over administrators, sessions, credentials, integrations, data sharing, retention, logging, and notifications where the product model permits it.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D2858271",
+      "revision": 1,
+      "semantic_sha256": "d2858271660547ee883b59d5c459463eb656be53858e8c47e5385e070a034e58",
+      "statement": "Provide secure defaults and baseline protections to all customers rather than reserving essential controls solely for premium tiers.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 751
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security transparency, customer controls, and support lifecycle"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Provide secure defaults and baseline protections to all customers rather than reserving essential controls solely for premium tiers.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide secure defaults and baseline protections to all customers rather than reserving essential controls solely for premium tiers.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0C9AC888",
+      "revision": 1,
+      "semantic_sha256": "0c9ac888fa448c961dc5f5ee96e7da0fe3f86b2001fd18d525338dfe193d1c75",
+      "statement": "Maintain a product security incident response team or equivalent function with authority, staffing, and escalation access.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 753
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security transparency, customer controls, and support lifecycle"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Maintain a product security incident response team or equivalent function with authority, staffing, and escalation access.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Maintain a product security incident response team or equivalent function with authority, staffing, and escalation access.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9C6A95C5",
+      "revision": 1,
+      "semantic_sha256": "9c6a95c518bf75cd23374e663550caa34faff91a099098c2fbe0447c63fa12ce",
+      "statement": "Coordinate vulnerability handling across product, cloud service, installed software, firmware, documentation, dependencies, partners, and resellers.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 754
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security transparency, customer controls, and support lifecycle"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Coordinate vulnerability handling across product, cloud service, installed software, firmware, documentation, dependencies, partners, and resellers.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Coordinate vulnerability handling across product, cloud service, installed software, firmware, documentation, dependencies, partners, and resellers.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D5D62E85",
+      "revision": 1,
+      "semantic_sha256": "d5d62e85a7e843cca2570b43d693fe32878b98d17fe4a79fdbb03d7cd28ba8cc",
+      "statement": "Retain advisory, vulnerability, patch, affected-version, and customer-notification records for audit and future incident analysis.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 755
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security transparency, customer controls, and support lifecycle"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Retain advisory, vulnerability, patch, affected-version, and customer-notification records for audit and future incident analysis.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Retain advisory, vulnerability, patch, affected-version, and customer-notification records for audit and future incident analysis.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-60A24074",
+      "revision": 1,
+      "semantic_sha256": "60a24074d27e828537044c62912204b5a64384784296e47565a7372a6c0467a8",
+      "statement": "Inventory components that use memory-unsafe languages, unsafe runtime features, native extensions, foreign-function interfaces, kernel interfaces, device drivers, embedded code, or untrusted binary parsers.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 760
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Memory safety and unsafe-code reduction"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Inventory components that use memory-unsafe languages, unsafe runtime features, native extensions, foreign-function interfaces, kernel interfaces, device drivers, embedded code, or untrusted binary parsers.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Inventory components that use memory-unsafe languages, unsafe runtime features, native extensions, foreign-function interfaces, kernel interfaces, device drivers, embedded code, or untrusted binary parsers.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BAB7EE53",
+      "revision": 1,
+      "semantic_sha256": "bab7ee53021e473f55f065b7931e17c1bf62c492905d3de149502829dd0d834d",
+      "statement": "Classify each memory-unsafe component by Internet exposure, privilege, data sensitivity, parsing complexity, updateability, exploit history, and blast radius.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 761
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Memory safety and unsafe-code reduction"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Classify each memory-unsafe component by Internet exposure, privilege, data sensitivity, parsing complexity, updateability, exploit history, and blast radius.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Classify each memory-unsafe component by Internet exposure, privilege, data sensitivity, parsing complexity, updateability, exploit history, and blast radius.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-27FF2C05",
+      "revision": 1,
+      "semantic_sha256": "27ff2c054c26caeaeabdf97714b41ab32130f38bb58826d21cb6cf52c0153f4f",
+      "statement": "Maintain a published or internally governed memory-safety roadmap for priority components where memory corruption could create material risk.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 762
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Memory safety and unsafe-code reduction"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Maintain a published or internally governed memory-safety roadmap for priority components where memory corruption could create material risk.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Maintain a published or internally governed memory-safety roadmap for priority components where memory corruption could create material risk.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D99FAB43",
+      "revision": 1,
+      "semantic_sha256": "d99fab439569a8b8182297733b1401377dcfec02e9e97ec7b88fb9b2bcca9b23",
+      "statement": "Require explicit architectural approval for introducing new memory-unsafe code into high-risk components.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 764
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Memory safety and unsafe-code reduction"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Require explicit architectural approval for introducing new memory-unsafe code into high-risk components.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Require explicit architectural approval for introducing new memory-unsafe code into high-risk components.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1DE82CD8",
+      "revision": 1,
+      "semantic_sha256": "1de82cd8ee0e279f1afe44ee6c30e936f741c588455b6676ea8cf647ce5f62aa",
+      "statement": "Document the invariants that make each unavoidable unsafe operation valid and verify them through review and testing.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 766
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Memory safety and unsafe-code reduction"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Document the invariants that make each unavoidable unsafe operation valid and verify them through review and testing.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document the invariants that make each unavoidable unsafe operation valid and verify them through review and testing.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-37CF961F",
+      "revision": 1,
+      "semantic_sha256": "37cf961f08414f884218f8ed93793849dbdee238c2a9b2c88877d88fc17c7819",
+      "statement": "Track the percentage and risk concentration of memory-unsafe code and verify progress against the roadmap.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 773
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Memory safety and unsafe-code reduction"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Track the percentage and risk concentration of memory-unsafe code and verify progress against the roadmap.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Track the percentage and risk concentration of memory-unsafe code and verify progress against the roadmap.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EAFABF89",
+      "revision": 1,
+      "semantic_sha256": "eafabf89edf7aabaae273b1ad10a4c776ca652ed4e72914e085a319ac3dc8ef5",
+      "statement": "Maintain an authoritative inventory of source repositories, build systems, runners, package registries, artifact registries, signing services, deployment systems, dependencies, plugins, compilers, generators, base images, firmware, models, and hosted services that can affect released software.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 780
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Software supply-chain inventory and dependency trust"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Maintain an authoritative inventory of source repositories, build systems, runners, package registries, artifact registries, signing services, deployment systems, dependencies, plugins, compilers, generators, base images, firmware, models, and hosted services that can affect released software.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Maintain an authoritative inventory of source repositories, build systems, runners, package registries, artifact registries, signing services, deployment systems, dependencies, plugins, compilers, generators, base images, firmware, models, and hosted services that can affect released software.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-87566C3E",
+      "revision": 1,
+      "semantic_sha256": "87566c3ebd4274c0a6219afdbbf80c6ff8e61993bb9ce461c410e662670e2111",
+      "statement": "Generate an SBOM for every released artifact at a level that includes direct, transitive, embedded, operating-system, client, server, model, and runtime components as applicable.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 781
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Software supply-chain inventory and dependency trust"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Generate an SBOM for every released artifact at a level that includes direct, transitive, embedded, operating-system, client, server, model, and runtime components as applicable.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Generate an SBOM for every released artifact at a level that includes direct, transitive, embedded, operating-system, client, server, model, and runtime components as applicable.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AFDC30DC",
+      "revision": 1,
+      "semantic_sha256": "afdc30dcdc2628701385d3c5f0aaf5ad763bb102e8dda0d89b7ab69eb58363b1",
+      "statement": "Bind each SBOM to the exact immutable artifact digest and retain it for the supported lifetime of the release.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 782
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Software supply-chain inventory and dependency trust"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Bind each SBOM to the exact immutable artifact digest and retain it for the supported lifetime of the release.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Bind each SBOM to the exact immutable artifact digest and retain it for the supported lifetime of the release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E3CB6ADE",
+      "revision": 1,
+      "semantic_sha256": "e3cb6ade8d8929cabfdf889f3084ee63fa5c11996bd94eda24c13d53e4fcf2a1",
+      "statement": "Verify the SBOM against the final packaged artifact rather than relying solely on declared dependency files.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 783
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Software supply-chain inventory and dependency trust"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Verify the SBOM against the final packaged artifact rather than relying solely on declared dependency files.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Verify the SBOM against the final packaged artifact rather than relying solely on declared dependency files.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-17E77EF2",
+      "revision": 1,
+      "semantic_sha256": "17e77ef2721e79e6c3dcd52638b58fbbbc49ed930027b15ea1fa06925e20725a",
+      "statement": "Record package identity, version, source, supplier, license, relationships, hashes, build and runtime role, and known modifications.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 784
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Software supply-chain inventory and dependency trust"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Record package identity, version, source, supplier, license, relationships, hashes, build and runtime role, and known modifications.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Record package identity, version, source, supplier, license, relationships, hashes, build and runtime role, and known modifications.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2C859395",
+      "revision": 1,
+      "semantic_sha256": "2c859395b6cb6f2f128c7e6e862bef6f4fe88ca736d9bfd76673434e6ae21f56",
+      "statement": "Identify undeclared, bundled, dynamically downloaded, generated, optional, vendored, forked, and externally hosted components.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 785
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Software supply-chain inventory and dependency trust"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Identify undeclared, bundled, dynamically downloaded, generated, optional, vendored, forked, and externally hosted components.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Identify undeclared, bundled, dynamically downloaded, generated, optional, vendored, forked, and externally hosted components.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B1550D2E",
+      "revision": 1,
+      "semantic_sha256": "b1550d2e099dd797890ad00fd4d145d5d7d8c0abfb1a0e64a28825398b894673",
+      "statement": "Use approved repositories and authenticated, integrity-protected channels for source and dependency retrieval.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 786
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Software supply-chain inventory and dependency trust"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Use approved repositories and authenticated, integrity-protected channels for source and dependency retrieval.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use approved repositories and authenticated, integrity-protected channels for source and dependency retrieval.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-109C4B2C",
+      "revision": 1,
+      "semantic_sha256": "109c4b2ce6a6932df8d69f0af46573afbd0f877828b409de26f50346115eda11",
+      "statement": "Pin or constrain dependencies sufficiently to prevent unexpected substitution while preserving a controlled update process.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 787
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Software supply-chain inventory and dependency trust"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Pin or constrain dependencies sufficiently to prevent unexpected substitution while preserving a controlled update process.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Pin or constrain dependencies sufficiently to prevent unexpected substitution while preserving a controlled update process.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FA681075",
+      "revision": 1,
+      "semantic_sha256": "fa68107566226287f4b3c856053c399bd74221674a0b819ac3f3f2cc27501a21",
+      "statement": "Assign an owner and update strategy to every critical dependency and toolchain component.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 791
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Software supply-chain inventory and dependency trust"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Assign an owner and update strategy to every critical dependency and toolchain component.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Assign an owner and update strategy to every critical dependency and toolchain component.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2097630C",
+      "revision": 1,
+      "semantic_sha256": "2097630c346dc893f4be1bec48ebb369b9ee1a45b7300366b2ce2209184de9cc",
+      "statement": "Monitor upstream advisories, releases, ownership changes, deprecations, and compromise reports throughout the supported product lifetime.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 792
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Software supply-chain inventory and dependency trust"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Monitor upstream advisories, releases, ownership changes, deprecations, and compromise reports throughout the supported product lifetime.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Monitor upstream advisories, releases, ownership changes, deprecations, and compromise reports throughout the supported product lifetime.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-77F6382E",
+      "revision": 1,
+      "semantic_sha256": "77f6382e96283c763edca82f0224e1f319d030ea5dca59bf94effaeb6af7060a",
+      "statement": "Preserve the source and licenses necessary to rebuild or maintain critical components when supplier availability is uncertain.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 793
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Software supply-chain inventory and dependency trust"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Preserve the source and licenses necessary to rebuild or maintain critical components when supplier availability is uncertain.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Preserve the source and licenses necessary to rebuild or maintain critical components when supplier availability is uncertain.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-941ADF38",
+      "revision": 1,
+      "semantic_sha256": "941adf388d6a4c009c017e684a91a3e602f046fb88dce12a96f7e798749e172c",
+      "statement": "Test emergency replacement, pinning, revocation, or isolation of a compromised dependency.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 794
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Software supply-chain inventory and dependency trust"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Test emergency replacement, pinning, revocation, or isolation of a compromised dependency.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test emergency replacement, pinning, revocation, or isolation of a compromised dependency.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2A74C4D1",
+      "revision": 1,
+      "semantic_sha256": "2a74c4d16b2c025f9ea94df99cffbae46a8d9dc26270aa6eafd07eb9b54886de",
+      "statement": "Build production artifacts from reviewed, version-controlled source using controlled and auditable workflows.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 800
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Build production artifacts from reviewed, version-controlled source using controlled and auditable workflows.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Build production artifacts from reviewed, version-controlled source using controlled and auditable workflows.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FF79519F",
+      "revision": 1,
+      "semantic_sha256": "ff79519f7cd4a72fa2231d92d8b00e880baaba4e74650ee9ccf2158acba1928e",
+      "statement": "Protect build and release definitions with the same review and access controls as application source.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 801
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Protect build and release definitions with the same review and access controls as application source.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Protect build and release definitions with the same review and access controls as application source.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-50AF0727",
+      "revision": 1,
+      "semantic_sha256": "50af0727e7655ac91dab42644dcb1908e395f8b615a4ef54a47c1ac5f02b94ae",
+      "statement": "Isolate trusted release builds from untrusted pull requests, forks, user-controlled inputs, and development credentials.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 802
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Isolate trusted release builds from untrusted pull requests, forks, user-controlled inputs, and development credentials.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Isolate trusted release builds from untrusted pull requests, forks, user-controlled inputs, and development credentials.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8981070B",
+      "revision": 1,
+      "semantic_sha256": "8981070b2a35b3891614ca31b6389aed609a756bbe92c77107069b5f5816b393",
+      "statement": "Use dedicated, least-privilege identities for build, test, packaging, signing, publication, and deployment stages.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 803
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Use dedicated, least-privilege identities for build, test, packaging, signing, publication, and deployment stages.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use dedicated, least-privilege identities for build, test, packaging, signing, publication, and deployment stages.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-54DBE3CB",
+      "revision": 1,
+      "semantic_sha256": "54dbe3cbd8a9153b8c9cc73010cd69ba556d44b0235c07ac001eba34bbda4331",
+      "statement": "Prevent untrusted build steps from accessing production secrets, signing keys, release registries, or deployment credentials.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 804
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Prevent untrusted build steps from accessing production secrets, signing keys, release registries, or deployment credentials.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Prevent untrusted build steps from accessing production secrets, signing keys, release registries, or deployment credentials.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5F40CD90",
+      "revision": 1,
+      "semantic_sha256": "5f40cd90fecc58d7c8d690f83234794657cd72084a5e6b379c2c98af6672d6ff",
+      "statement": "Record verifiable provenance linking source revision, declared inputs, builder identity, workflow, environment, dependencies, time, and output digest.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 805
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Record verifiable provenance linking source revision, declared inputs, builder identity, workflow, environment, dependencies, time, and output digest.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Record verifiable provenance linking source revision, declared inputs, builder identity, workflow, environment, dependencies, time, and output digest.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A059F67E",
+      "revision": 1,
+      "semantic_sha256": "a059f67ef1d268b15e9b3f095d1abf903e1a38639aad57340dd1523cf518d369",
+      "statement": "Make deployable artifacts immutable and promote the same artifact through environments rather than rebuilding independently.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 806
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Make deployable artifacts immutable and promote the same artifact through environments rather than rebuilding independently.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make deployable artifacts immutable and promote the same artifact through environments rather than rebuilding independently.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E8367B76",
+      "revision": 1,
+      "semantic_sha256": "e8367b760892aad892947224dd3ecbf0fd521d7c44ce4eb4fa932168f0309066",
+      "statement": "Sign or attest release artifacts and verify signatures or attestations before deployment or distribution.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 807
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Sign or attest release artifacts and verify signatures or attestations before deployment or distribution.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Sign or attest release artifacts and verify signatures or attestations before deployment or distribution.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5F2C2F68",
+      "revision": 1,
+      "semantic_sha256": "5f2c2f68902d291a8fd77db6131c7fb3efd2f898159d45a9167b65af21218f34",
+      "statement": "Protect signing keys in dedicated, access-controlled systems and require auditable authorization for signing operations.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 808
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Protect signing keys in dedicated, access-controlled systems and require auditable authorization for signing operations.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Protect signing keys in dedicated, access-controlled systems and require auditable authorization for signing operations.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A7EB4CF4",
+      "revision": 1,
+      "semantic_sha256": "a7eb4cf4b7935d2d53193607cf6b71ca4fd04d6cdcf1b1cac9995de727ee653b",
+      "statement": "Support rapid revocation, replacement, resigning, and customer notification after key or build-system compromise.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 809
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Support rapid revocation, replacement, resigning, and customer notification after key or build-system compromise.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Support rapid revocation, replacement, resigning, and customer notification after key or build-system compromise.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D4761BFF",
+      "revision": 1,
+      "semantic_sha256": "d4761bff3a9c0ff02f9a1ae841b9a2c102267023da381163d8ad45bd75fe46f7",
+      "statement": "Identify and control nondeterministic build inputs such as time, network access, unpinned tools, random generation, locale, environment variables, and mutable caches.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 811
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Identify and control nondeterministic build inputs such as time, network access, unpinned tools, random generation, locale, environment variables, and mutable caches.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Identify and control nondeterministic build inputs such as time, network access, unpinned tools, random generation, locale, environment variables, and mutable caches.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-35AC3905",
+      "revision": 1,
+      "semantic_sha256": "35ac39056faf172fb60e256212258282fc4e179fa7a403cead06a6ffa103f62f",
+      "statement": "Prevent build caches and intermediate artifacts from crossing trust boundaries without integrity verification.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 812
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Prevent build caches and intermediate artifacts from crossing trust boundaries without integrity verification.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Prevent build caches and intermediate artifacts from crossing trust boundaries without integrity verification.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7DD38794",
+      "revision": 1,
+      "semantic_sha256": "7dd38794218fac3245c75ad19038912a6680f51d4d26ba54f901e55680745f02",
+      "statement": "Verify that release tags, source revisions, provenance, SBOMs, signatures, registry records, and deployed digests agree.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 813
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Verify that release tags, source revisions, provenance, SBOMs, signatures, registry records, and deployed digests agree.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Verify that release tags, source revisions, provenance, SBOMs, signatures, registry records, and deployed digests agree.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D3EF3836",
+      "revision": 1,
+      "semantic_sha256": "d3ef3836be7a311eed122c5132506f9602d69c7ba8abb285ee04e7e338f2cf62",
+      "statement": "Retain previous known-good artifacts and the evidence required to restore or rebuild them.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 814
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Retain previous known-good artifacts and the evidence required to restore or rebuild them.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Retain previous known-good artifacts and the evidence required to restore or rebuild them.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6DF1A806",
+      "revision": 1,
+      "semantic_sha256": "6df1a80656f52ebaf4b43eaf2b497c5f20f6ae651eaf2cd1952ed6b40606848d",
+      "statement": "Choose and document an appropriate SLSA or equivalent assurance target for critical release pipelines and record unmet requirements.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 816
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Choose and document an appropriate SLSA or equivalent assurance target for critical release pipelines and record unmet requirements.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Choose and document an appropriate SLSA or equivalent assurance target for critical release pipelines and record unmet requirements.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-00201CAD",
+      "revision": 1,
+      "semantic_sha256": "00201cade77982a7517fc66b97b0e66356fef8c1911d5c3424876a5939cdab28",
+      "statement": "Continuously scan supported released artifacts and deployed environments for newly disclosed vulnerabilities and affected components.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 820
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability intelligence, VEX, advisories, and prioritization"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Continuously scan supported released artifacts and deployed environments for newly disclosed vulnerabilities and affected components.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Continuously scan supported released artifacts and deployed environments for newly disclosed vulnerabilities and affected components.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9BF68C7E",
+      "revision": 1,
+      "semantic_sha256": "9bf68c7e71c8830033f07a08a3a24ac0a256b03147a989b43338b4e2c1718d2b",
+      "statement": "Correlate findings with the exact artifact, component, version, configuration, reachability, deployment exposure, and customer population.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 821
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability intelligence, VEX, advisories, and prioritization"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Correlate findings with the exact artifact, component, version, configuration, reachability, deployment exposure, and customer population.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Correlate findings with the exact artifact, component, version, configuration, reachability, deployment exposure, and customer population.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4AA0FB22",
+      "revision": 1,
+      "semantic_sha256": "4aa0fb22780a24981f240b7328e6ddb2884712cad42229f56c73481ba055b916",
+      "statement": "Create VEX or equivalent status statements only after documented technical analysis and approval.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 825
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability intelligence, VEX, advisories, and prioritization"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Create VEX or equivalent status statements only after documented technical analysis and approval.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Create VEX or equivalent status statements only after documented technical analysis and approval.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9FA938B0",
+      "revision": 1,
+      "semantic_sha256": "9fa938b06dc293340e6af6e36e00a79229e66c1ac20dc576d3b854f3b188f5cd",
+      "statement": "Use precise affected and fixed version ranges, product identifiers, component identifiers, and justification in machine-readable vulnerability statements.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 826
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability intelligence, VEX, advisories, and prioritization"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Use precise affected and fixed version ranges, product identifiers, component identifiers, and justification in machine-readable vulnerability statements.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use precise affected and fixed version ranges, product identifiers, component identifiers, and justification in machine-readable vulnerability statements.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-169B8B85",
+      "revision": 1,
+      "semantic_sha256": "169b8b853d4b58041afe3f95a753cff4761321e0f2792eca0c9da85d1e3e355c",
+      "statement": "Expire or reassess VEX statements after product, dependency, configuration, exposure, threat, or exploit information changes.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 827
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability intelligence, VEX, advisories, and prioritization"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Expire or reassess VEX statements after product, dependency, configuration, exposure, threat, or exploit information changes.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Expire or reassess VEX statements after product, dependency, configuration, exposure, threat, or exploit information changes.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E902DB28",
+      "revision": 1,
+      "semantic_sha256": "e902db28a40302a380c0906da782e768539ac630576968993990e368127e7123",
+      "statement": "Publish coordinated advisories using interoperable formats such as CSAF where customers or ecosystems can consume them.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 828
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability intelligence, VEX, advisories, and prioritization"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Publish coordinated advisories using interoperable formats such as CSAF where customers or ecosystems can consume them.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Publish coordinated advisories using interoperable formats such as CSAF where customers or ecosystems can consume them.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-53AE526C",
+      "revision": 1,
+      "semantic_sha256": "53ae526c3954150a43b69ce344f7329800411c0dcce2bdd96eb86774e1f3516e",
+      "statement": "Define risk-based remediation objectives and escalation triggers for supported products.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 830
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability intelligence, VEX, advisories, and prioritization"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Define risk-based remediation objectives and escalation triggers for supported products.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define risk-based remediation objectives and escalation triggers for supported products.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B7AFF0ED",
+      "revision": 1,
+      "semantic_sha256": "b7aff0edbee972907dc588c59fc3ad519b7064b31bcd4e82de41ea5bb8e351b2",
+      "statement": "Provide temporary mitigations only when their effectiveness, limitations, operational impact, and removal plan are documented and tested.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 831
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability intelligence, VEX, advisories, and prioritization"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Provide temporary mitigations only when their effectiveness, limitations, operational impact, and removal plan are documented and tested.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide temporary mitigations only when their effectiveness, limitations, operational impact, and removal plan are documented and tested.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-99B63234",
+      "revision": 1,
+      "semantic_sha256": "99b63234a32a50badae3754691893e2723c6d664ca253913aeb34efc8b21d447",
+      "statement": "Retest fixes and confirm that they do not introduce regressions, incomplete variant fixes, or new vulnerable paths.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 832
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability intelligence, VEX, advisories, and prioritization"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Retest fixes and confirm that they do not introduce regressions, incomplete variant fixes, or new vulnerable paths.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Retest fixes and confirm that they do not introduce regressions, incomplete variant fixes, or new vulnerable paths.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-46CF4758",
+      "revision": 1,
+      "semantic_sha256": "46cf4758943d3657c993a865d55f8104ee1d4f4e0201fa6957aa38b81ecb16a4",
+      "statement": "Measure recurrence, aging, exposure time, fix adoption, failed remediation, and unsupported affected versions.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 834
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability intelligence, VEX, advisories, and prioritization"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Measure recurrence, aging, exposure time, fix adoption, failed remediation, and unsupported affected versions.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Measure recurrence, aging, exposure time, fix adoption, failed remediation, and unsupported affected versions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-88E8A0C0",
+      "revision": 1,
+      "semantic_sha256": "88e8a0c01e1e064a28f76d53889c088c7be241227c55ff1e866d3bb05fef1f63",
+      "statement": "Retain vulnerability analysis, VEX, advisory, remediation, notification, and exception evidence for the supported lifetime and required audit period.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 835
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability intelligence, VEX, advisories, and prioritization"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Retain vulnerability analysis, VEX, advisory, remediation, notification, and exception evidence for the supported lifetime and required audit period.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Retain vulnerability analysis, VEX, advisory, remediation, notification, and exception evidence for the supported lifetime and required audit period.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-30C8A670",
+      "revision": 1,
+      "semantic_sha256": "30c8a6707f9d51b8ec11ec470e3fa358c2fa75b3b79de128ca202c939ac734ca",
+      "statement": "Apply a maturity-appropriate baseline such as the OpenSSF OSPS Baseline to public projects and packages.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 839
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Open-source project and public package security"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Apply a maturity-appropriate baseline such as the OpenSSF OSPS Baseline to public projects and packages.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Apply a maturity-appropriate baseline such as the OpenSSF OSPS Baseline to public projects and packages.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2FFFF689",
+      "revision": 1,
+      "semantic_sha256": "2ffff68911a9ce92de87c58dc6cd7db4b9697e19e150d360ab82d81eb590e8b2",
+      "statement": "Document project governance, maintainers, decision rights, release authority, supported branches, security contacts, and succession plans.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 840
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Open-source project and public package security"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Document project governance, maintainers, decision rights, release authority, supported branches, security contacts, and succession plans.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document project governance, maintainers, decision rights, release authority, supported branches, security contacts, and succession plans.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1D716FC4",
+      "revision": 1,
+      "semantic_sha256": "1d716fc440aa8f7372f6d76f10b8f2011d00d74070c05dcac8c55dbd7de79732",
+      "statement": "Require strong authentication and least privilege for repository, package, build, release, domain, and organization administration.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 841
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Open-source project and public package security"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Require strong authentication and least privilege for repository, package, build, release, domain, and organization administration.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Require strong authentication and least privilege for repository, package, build, release, domain, and organization administration.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-56BA1580",
+      "revision": 1,
+      "semantic_sha256": "56ba1580139f37db5441c88001ed5b1a942d07e9d6ebb051af96c932e681162b",
+      "statement": "Protect default and release branches from unreviewed direct changes and unauthorized history rewriting.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 842
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Open-source project and public package security"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Protect default and release branches from unreviewed direct changes and unauthorized history rewriting.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Protect default and release branches from unreviewed direct changes and unauthorized history rewriting.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8898FB30",
+      "revision": 1,
+      "semantic_sha256": "8898fb30c29a43ee9570bec6c8f52c957b4130d5e96a1bcaae5137bd3d5e9bb4",
+      "statement": "Require independent review and automated checks for security-sensitive and release-affecting changes.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 843
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Open-source project and public package security"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Require independent review and automated checks for security-sensitive and release-affecting changes.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Require independent review and automated checks for security-sensitive and release-affecting changes.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2D097AF7",
+      "revision": 1,
+      "semantic_sha256": "2d097af77a652bc4ec153ff24034076ea598ec779c8cb7eac9ba5417f0e5b0a2",
+      "statement": "Restrict publication tokens and use short-lived or trusted-publishing identities where the ecosystem supports them.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 844
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Open-source project and public package security"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Restrict publication tokens and use short-lived or trusted-publishing identities where the ecosystem supports them.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Restrict publication tokens and use short-lived or trusted-publishing identities where the ecosystem supports them.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9D7169D2",
+      "revision": 1,
+      "semantic_sha256": "9d7169d2a4c5e3958603cb00cc9abe33fafd67e3df5206234e4fa9017d37b8aa",
+      "statement": "Sign releases or publish verifiable provenance and checksums through authenticated channels.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 845
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Open-source project and public package security"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Sign releases or publish verifiable provenance and checksums through authenticated channels.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Sign releases or publish verifiable provenance and checksums through authenticated channels.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7BA9B43B",
+      "revision": 1,
+      "semantic_sha256": "7ba9b43b5fe2699d5916db56b0d5e15254ea9941b74ba6868e0434f0efb0cc74",
+      "statement": "Publish supported versions, security policy, contribution policy, code of conduct, license, and vulnerability-reporting instructions.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 846
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Open-source project and public package security"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Publish supported versions, security policy, contribution policy, code of conduct, license, and vulnerability-reporting instructions.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Publish supported versions, security policy, contribution policy, code of conduct, license, and vulnerability-reporting instructions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7A520F83",
+      "revision": 1,
+      "semantic_sha256": "7a520f83603075adb4044927019aba0735078c26e8a7d4cbb67ac923365a7bed",
+      "statement": "Automate dependency, secret, workflow, and vulnerability monitoring without granting unnecessary permissions.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 847
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Open-source project and public package security"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Automate dependency, secret, workflow, and vulnerability monitoring without granting unnecessary permissions.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Automate dependency, secret, workflow, and vulnerability monitoring without granting unnecessary permissions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A66FBA30",
+      "revision": 1,
+      "semantic_sha256": "a66fba307cf52ba98d3aef62563f1d25dd479a045c8f682197a41deb01b0af90",
+      "statement": "Review external contributors, bots, apps, webhooks, workflow triggers, and generated changes according to their trust level.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 848
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Open-source project and public package security"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Review external contributors, bots, apps, webhooks, workflow triggers, and generated changes according to their trust level.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Review external contributors, bots, apps, webhooks, workflow triggers, and generated changes according to their trust level.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DA8EF2DF",
+      "revision": 1,
+      "semantic_sha256": "da8ef2df0c6eecd39c616dd0e42d889d1ab376293761cd31d51588eb13800a4a",
+      "statement": "Prevent pull-request or issue content from executing with maintainer or release privileges.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 849
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Open-source project and public package security"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Prevent pull-request or issue content from executing with maintainer or release privileges.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Prevent pull-request or issue content from executing with maintainer or release privileges.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-778AEC86",
+      "revision": 1,
+      "semantic_sha256": "778aec86509cfff1c5b4a4478409fe1d4cac964c5e65b719e98d786b2fe4b609",
+      "statement": "Maintain at least two trusted maintainers or a documented succession and emergency-release process for critical projects.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 850
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Open-source project and public package security"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Maintain at least two trusted maintainers or a documented succession and emergency-release process for critical projects.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Maintain at least two trusted maintainers or a documented succession and emergency-release process for critical projects.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3336FD27",
+      "revision": 1,
+      "semantic_sha256": "3336fd27ce088448ff3b1067bce0fb4a631c61994fb6a7ea5254251113ee89d9",
+      "statement": "Archive or transfer abandoned projects safely, revoke release credentials, mark unsupported versions, and prevent namespace hijacking.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 851
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Open-source project and public package security"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Archive or transfer abandoned projects safely, revoke release credentials, mark unsupported versions, and prevent namespace hijacking.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Archive or transfer abandoned projects safely, revoke release credentials, mark unsupported versions, and prevent namespace hijacking.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6DE36A56",
+      "revision": 1,
+      "semantic_sha256": "6de36a56cebc0f604e6e449ff120cb088d7485e669c3005074d47784bd4646dc",
+      "statement": "Maintain a cryptographic inventory covering algorithms, protocols, modes, parameters, libraries, certificates, keys, secrets, hardware, services, data formats, dependencies, and externally imposed cryptography.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 858
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Maintain a cryptographic inventory covering algorithms, protocols, modes, parameters, libraries, certificates, keys, secrets, hardware, services, data formats, dependencies, and externally imposed cryptography.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Maintain a cryptographic inventory covering algorithms, protocols, modes, parameters, libraries, certificates, keys, secrets, hardware, services, data formats, dependencies, and externally imposed cryptography.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F7CB4B6E",
+      "revision": 1,
+      "semantic_sha256": "f7cb4b6e170242231453dff53e3a63ffb889d8873c3da7ccbc0df941864a030a",
+      "statement": "Record where each cryptographic mechanism is created, configured, negotiated, used, stored, transmitted, rotated, verified, and retired.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 859
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Record where each cryptographic mechanism is created, configured, negotiated, used, stored, transmitted, rotated, verified, and retired.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Record where each cryptographic mechanism is created, configured, negotiated, used, stored, transmitted, rotated, verified, and retired.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FE4F5183",
+      "revision": 1,
+      "semantic_sha256": "fe4f51837e08a2e6b04e2002e692d3e8d46f95cd3f93f17ed8969d6cfe0ee0f3",
+      "statement": "Classify cryptographic uses by purpose, protected data, retention period, exposure, interoperability constraints, regulatory requirements, and migration difficulty.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 860
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Classify cryptographic uses by purpose, protected data, retention period, exposure, interoperability constraints, regulatory requirements, and migration difficulty.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Classify cryptographic uses by purpose, protected data, retention period, exposure, interoperability constraints, regulatory requirements, and migration difficulty.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CC1D5CF8",
+      "revision": 1,
+      "semantic_sha256": "cc1d5cf823fa67be7313d3f837836841caf3bb540c753478a972c544b8ce644a",
+      "statement": "Use approved, maintained cryptographic implementations and protocols; prohibit custom algorithms and ad hoc protocol designs.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 861
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Use approved, maintained cryptographic implementations and protocols; prohibit custom algorithms and ad hoc protocol designs.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use approved, maintained cryptographic implementations and protocols; prohibit custom algorithms and ad hoc protocol designs.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9EFCF878",
+      "revision": 1,
+      "semantic_sha256": "9efcf87886131edac065035f05c0794db3b7e363a921fb53935c079c7c518b36",
+      "statement": "Separate cryptographic policy from application logic sufficiently to permit controlled algorithm and parameter changes.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 862
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Separate cryptographic policy from application logic sufficiently to permit controlled algorithm and parameter changes.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Separate cryptographic policy from application logic sufficiently to permit controlled algorithm and parameter changes.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BE9D7D45",
+      "revision": 1,
+      "semantic_sha256": "be9d7d45997e442afe7c24f4bb1b9e7dd8bec4bc6e168c337cc747b15a7bd583",
+      "statement": "Avoid hard-coding algorithms, key sizes, certificate assumptions, provider names, serialization choices, or negotiation behavior across the codebase.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 863
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Avoid hard-coding algorithms, key sizes, certificate assumptions, provider names, serialization choices, or negotiation behavior across the codebase.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Avoid hard-coding algorithms, key sizes, certificate assumptions, provider names, serialization choices, or negotiation behavior across the codebase.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B0413466",
+      "revision": 1,
+      "semantic_sha256": "b04134660a7942a680d5081346301b6bb072f8e94dedd76daf45606cad57241d",
+      "statement": "Support versioned keys, certificates, signatures, ciphertext formats, protocol parameters, and trust stores.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 864
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Support versioned keys, certificates, signatures, ciphertext formats, protocol parameters, and trust stores.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Support versioned keys, certificates, signatures, ciphertext formats, protocol parameters, and trust stores.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-90DB5A74",
+      "revision": 1,
+      "semantic_sha256": "90db5a749c1c089379567e409be3022dfef10e48f1f7793d193dc87086ea6419",
+      "statement": "Ensure readers can distinguish old and new formats during migration and reject ambiguous or downgradeable representations.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 865
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Ensure readers can distinguish old and new formats during migration and reject ambiguous or downgradeable representations.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Ensure readers can distinguish old and new formats during migration and reject ambiguous or downgradeable representations.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F9C1ACEE",
+      "revision": 1,
+      "semantic_sha256": "f9c1acee2ebe0ee61712c4ee12f90a818f811de157304f238709aca8a7f8e876",
+      "statement": "Test algorithm negotiation and fallback to prevent downgrade to disallowed or weaker mechanisms.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 866
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Test algorithm negotiation and fallback to prevent downgrade to disallowed or weaker mechanisms.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test algorithm negotiation and fallback to prevent downgrade to disallowed or weaker mechanisms.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-52C1EED6",
+      "revision": 1,
+      "semantic_sha256": "52c1eed64936803720a4a502f99215de6c8bf111db2a713b54fc8298ddf2fd90",
+      "statement": "Design dual-read, dual-write, re-encryption, re-signing, certificate replacement, and staged migration procedures where required.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 867
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Design dual-read, dual-write, re-encryption, re-signing, certificate replacement, and staged migration procedures where required.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Design dual-read, dual-write, re-encryption, re-signing, certificate replacement, and staged migration procedures where required.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FCFC129E",
+      "revision": 1,
+      "semantic_sha256": "fcfc129ec94a3eef75b62d7aa9b9d9a660dc46748b8ad24d250a9268787410ea",
+      "statement": "Monitor certificate, key, trust-anchor, algorithm, library, provider, and policy expiry or deprecation.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 868
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Monitor certificate, key, trust-anchor, algorithm, library, provider, and policy expiry or deprecation.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Monitor certificate, key, trust-anchor, algorithm, library, provider, and policy expiry or deprecation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E3AF6525",
+      "revision": 1,
+      "semantic_sha256": "e3af6525bd571f1c636638d58aea36cef3fe56e75e65924df6375d8bb1f41302",
+      "statement": "Test emergency revocation and replacement without losing required data or making recovery impossible.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 869
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Test emergency revocation and replacement without losing required data or making recovery impossible.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test emergency revocation and replacement without losing required data or making recovery impossible.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2FD454BD",
+      "revision": 1,
+      "semantic_sha256": "2fd454bd5d78387dc396499491988c017d78bba8dfc12b7c5aa28687c29e54ce",
+      "statement": "Include cryptographic components in SBOMs and consider maintaining a cryptographic bill of materials for high-risk systems.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 871
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Include cryptographic components in SBOMs and consider maintaining a cryptographic bill of materials for high-risk systems.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Include cryptographic components in SBOMs and consider maintaining a cryptographic bill of materials for high-risk systems.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-078D8DD9",
+      "revision": 1,
+      "semantic_sha256": "078d8dd97ef8529b1fdfdbdb061c479b49222d88d2bb693b6051ce0b793d87f4",
+      "statement": "Review the inventory after acquisitions, provider changes, protocol upgrades, dependency changes, new data-retention commitments, and regulatory changes.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 872
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Review the inventory after acquisitions, provider changes, protocol upgrades, dependency changes, new data-retention commitments, and regulatory changes.” is deterministic with a sealed product-security inventory, versioned policy, and exact configuration, artifact, identity, key, parser, telemetry, or incident evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Review the inventory after acquisitions, provider changes, protocol upgrades, dependency changes, new data-retention commitments, and regulatory changes.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

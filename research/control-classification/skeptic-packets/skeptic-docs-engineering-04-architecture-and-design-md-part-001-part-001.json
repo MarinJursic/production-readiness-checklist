@@ -1,0 +1,1686 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-04-architecture-and-design-md-part-001-part-001",
+  "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 67,
+  "controls": [
+    {
+      "control_id": "USEQ-6BDC92D9",
+      "revision": 1,
+      "semantic_sha256": "6bdc92d910cf546a419665e442d816eba4a43dea5a02ddafd898d7ca175d14e4",
+      "statement": "Record material architecture decisions, rejected alternatives, and tradeoffs.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 20
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "System Understanding and Threat Modeling",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Record material architecture decisions, rejected alternatives, and tradeoffs.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Record material architecture decisions, rejected alternatives, and tradeoffs.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-266638A7",
+      "revision": 1,
+      "semantic_sha256": "266638a7e5241434d83c912cc7a19dbc05aa2038b7df98f4dec3b5b5b5c48bd9",
+      "statement": "Performance objectives are defined for every critical journey.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 38
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Performance and User-Experience Efficiency",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Performance objectives are defined for every critical journey.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Performance objectives are defined for every critical journey.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-50B6A12E",
+      "revision": 1,
+      "semantic_sha256": "50b6a12ececc45b2c880edba14d25a51266bcbb14bee38561dc53b0eb4999504",
+      "statement": "Objectives use meaningful percentiles rather than averages alone.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 39
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Performance and User-Experience Efficiency",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Objectives use meaningful percentiles rather than averages alone.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Objectives use meaningful percentiles rather than averages alone.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C8C2C6FB",
+      "revision": 1,
+      "semantic_sha256": "c8c2c6fb8d70c4b0a81772c2eafb5f8691c005e17852af3a68505b3227805c7c",
+      "statement": "Frontend and backend performance budgets are documented.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 40
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Performance and User-Experience Efficiency",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Frontend and backend performance budgets are documented.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Frontend and backend performance budgets are documented.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FE0DF97B",
+      "revision": 1,
+      "semantic_sha256": "fe0df97b8a661e2460cec544cb8c237268d5289aeca773f1afad96b6079c97ef",
+      "statement": "Public pages meet approved loading, interaction, visual-stability, rendering, and responsiveness targets.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 41
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Performance and User-Experience Efficiency",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Public pages meet approved loading, interaction, visual-stability, rendering, and responsiveness targets.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Public pages meet approved loading, interaction, visual-stability, rendering, and responsiveness targets.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5EFABA0A",
+      "revision": 1,
+      "semantic_sha256": "5efaba0a23306bdd3ba68f6a90442e90e09ef1884afc85b3cc5d1e26a227796e",
+      "statement": "API latency targets are defined by endpoint or journey.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 42
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Performance and User-Experience Efficiency",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “API latency targets are defined by endpoint or journey.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: API latency targets are defined by endpoint or journey.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-29D46E0C",
+      "revision": 1,
+      "semantic_sha256": "29d46e0cf6096e433b732e77a9f1db03b155d10f57d90e07376bb47f3da05807",
+      "statement": "Database-query latency, count, and volume are measured.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 43
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Performance and User-Experience Efficiency",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Database-query latency, count, and volume are measured.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Database-query latency, count, and volume are measured.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C79EF036",
+      "revision": 1,
+      "semantic_sha256": "c79ef036cf2732bed603ba0cc95a29ac0e5e9cdc403d3dd63e737090e9175a05",
+      "statement": "Connection, thread, worker, and resource pools are sized and monitored.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 49
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Performance and User-Experience Efficiency",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Connection, thread, worker, and resource pools are sized and monitored.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Connection, thread, worker, and resource pools are sized and monitored.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7ECBBCC3",
+      "revision": 1,
+      "semantic_sha256": "7ecbbcc38f43c1c30b2246333b08996c773a3c88e3953e26cc4ae0f6adfb6564",
+      "statement": "Long-running and resource-intensive requests have limits.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 51
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Performance and User-Experience Efficiency",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Long-running and resource-intensive requests have limits.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Long-running and resource-intensive requests have limits.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C3395046",
+      "revision": 1,
+      "semantic_sha256": "c339504648c45a402fce1346b5027041a46444b7c9b93f4eedcb45b3a0ea38b7",
+      "statement": "Provider quotas, account limits, concurrency limits, and regional limits are reviewed.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 65
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Capacity, Scalability, and Overload Control",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Provider quotas, account limits, concurrency limits, and regional limits are reviewed.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provider quotas, account limits, concurrency limits, and regional limits are reviewed.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FC5F896F",
+      "revision": 1,
+      "semantic_sha256": "fc5f896f2c99166ac16dc8696e33f283ad4d7175195a2f18904ca723f241a559",
+      "statement": "Expected and peak operational cost are modeled.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 74
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Capacity, Scalability, and Overload Control",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Expected and peak operational cost are modeled.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Expected and peak operational cost are modeled.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7ED2ED65",
+      "revision": 1,
+      "semantic_sha256": "7ed2ed65b5042e9d36bdb3cb59aa5aaae527c3124ce4d5bebfb8c23953a4011f",
+      "statement": "SLOs cover important availability, latency, correctness, durability, freshness, and quality outcomes.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 83
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Reliability, Resilience, and Failure Engineering",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “SLOs cover important availability, latency, correctness, durability, freshness, and quality outcomes.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: SLOs cover important availability, latency, correctness, durability, freshness, and quality outcomes.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-37A811EC",
+      "revision": 1,
+      "semantic_sha256": "37a811ec4a4c3cd60aa748a247e13b78d1f9fcf16f385abc8cb60803f69247b7",
+      "statement": "Instances stop receiving new work before shutdown.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 89
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Reliability, Resilience, and Failure Engineering",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Instances stop receiving new work before shutdown.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Instances stop receiving new work before shutdown.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DD1DC2AE",
+      "revision": 1,
+      "semantic_sha256": "dd1dc2ae1584acc02e870a64728f5bb5902e3e48227a546be42c10ad34e82dc2",
+      "statement": "Scheduled jobs handle overlapping and missed execution.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 97
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Reliability, Resilience, and Failure Engineering",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Scheduled jobs handle overlapping and missed execution.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Scheduled jobs handle overlapping and missed execution.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-90967BDC",
+      "revision": 1,
+      "semantic_sha256": "90967bdc7b07f96b0fcbb696a47029a687cead7a1ede44e500c7f7b3323736c5",
+      "statement": "Recovery time from tested failures meets approved objectives.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 99
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Reliability, Resilience, and Failure Engineering",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Recovery time from tested failures meets approved objectives.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Recovery time from tested failures meets approved objectives.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1A22CF85",
+      "revision": 1,
+      "semantic_sha256": "1a22cf85fbe2bdbacace7fed80674a5cd6e3cbd084b0cac63bc18784ecfb1664",
+      "statement": "Identify the system of interest, environment, stakeholders, concerns, boundaries, assumptions, and lifecycle stage.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 107
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Architecture Governance and Decision Records",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Identify the system of interest, environment, stakeholders, concerns, boundaries, assumptions, and lifecycle stage.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Identify the system of interest, environment, stakeholders, concerns, boundaries, assumptions, and lifecycle stage.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B5A29AFF",
+      "revision": 1,
+      "semantic_sha256": "b5a29aff052bea311a45b70ffaf152e3da5b1e10ca5e307c49cca721f10f3cca",
+      "statement": "Record material decisions with context, options, forces, evidence, trade-offs, consequences, owner, status, and revisit triggers.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 111
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Architecture Governance and Decision Records",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Record material decisions with context, options, forces, evidence, trade-offs, consequences, owner, status, and revisit triggers.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Record material decisions with context, options, forces, evidence, trade-offs, consequences, owner, status, and revisit triggers.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A0F4735A",
+      "revision": 1,
+      "semantic_sha256": "a0f4735a789db8afce68245cabf80bf962fcd514430ab82a311e970576592679",
+      "statement": "Document intentional violations and migration plans.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 118
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Architecture Governance and Decision Records",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Document intentional violations and migration plans.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document intentional violations and migration plans.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-82F9AE01",
+      "revision": 1,
+      "semantic_sha256": "82f9ae0103aa6e621ae53a6eb0ecfe43cdb040095637f6b839d516bd93dd4b2b",
+      "statement": "Retire superseded decisions while preserving history and rationale.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 119
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Architecture Governance and Decision Records",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Retire superseded decisions while preserving history and rationale.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Retire superseded decisions while preserving history and rationale.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-23D2EB3B",
+      "revision": 1,
+      "semantic_sha256": "23d2eb3b0b4d8680954efa898db3011ecebb0857813a6c2728c361ae34bd2908",
+      "statement": "Give each module a clear purpose, owner, public contract, and prohibited dependencies.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 130
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Modularity, Cohesion, Coupling, and Boundaries",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Give each module a clear purpose, owner, public contract, and prohibited dependencies.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Give each module a clear purpose, owner, public contract, and prohibited dependencies.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-41BCD681",
+      "revision": 1,
+      "semantic_sha256": "41bcd681e114b915a2c91f2a525524cf6b6f8845d6b7fceafb9b4ce739f80362",
+      "statement": "Ensure replacements preserve all required preconditions, postconditions, invariants, side effects, error semantics, timing, and security properties.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 155
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "SOLID Design Principles",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Ensure replacements preserve all required preconditions, postconditions, invariants, side effects, error semantics, timing, and security properties.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Ensure replacements preserve all required preconditions, postconditions, invariants, side effects, error semantics, timing, and security properties.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-09BDE112",
+      "revision": 1,
+      "semantic_sha256": "09bde112ac00f35363d91c6247eb2905cb8f341db79c2f472001d92d24c4276e",
+      "statement": "Do not strengthen accepted inputs or weaken promised outputs in substitutes.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 156
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "SOLID Design Principles",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Do not strengthen accepted inputs or weaken promised outputs in substitutes.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Do not strengthen accepted inputs or weaken promised outputs in substitutes.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-589E6801",
+      "revision": 1,
+      "semantic_sha256": "589e68016f8d86eef867c6479e22d2abe6863b771eea66a07afce76b6463252c",
+      "statement": "Make ownership and lifetime of injected dependencies explicit.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 161
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "SOLID Design Principles",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Make ownership and lifetime of injected dependencies explicit.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make ownership and lifetime of injected dependencies explicit.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6F19C350",
+      "revision": 1,
+      "semantic_sha256": "6f19c3502aa2744b350ce07191901795820aeddbac20139a2ae3bce15fd57c21",
+      "statement": "Test contract conformance across implementations and substitutes.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 162
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "SOLID Design Principles",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Test contract conformance across implementations and substitutes.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test contract conformance across implementations and substitutes.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8C36A70B",
+      "revision": 1,
+      "semantic_sha256": "8c36a70bad41c284aaec29dc2291b1a8bbd9f3a555503ffd22ba982da281eb87",
+      "statement": "Document intentional duplication or complexity where trade-offs make it safer.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 186
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "DRY, KISS, YAGNI, and Simplicity",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Document intentional duplication or complexity where trade-offs make it safer.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document intentional duplication or complexity where trade-offs make it safer.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0B6B90C2",
+      "revision": 1,
+      "semantic_sha256": "0b6b90c25ba8f06d92f4f3e3045263c664d2d7bfaded68f8b1f9d6de6ea4063d",
+      "statement": "Define the reusable asset's scope, supported contexts, assumptions, constraints, ownership, and service level.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 196
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Reusability and Software Product Lines",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define the reusable asset's scope, supported contexts, assumptions, constraints, ownership, and service level.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define the reusable asset's scope, supported contexts, assumptions, constraints, ownership, and service level.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4A789DEC",
+      "revision": 1,
+      "semantic_sha256": "4a789dece88cfeb6ef53aff988ca66535198c4ec4bbec082831fefac11e46807",
+      "statement": "Avoid configuration that permits invalid or untested combinations.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 198
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Reusability and Software Product Lines",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Avoid configuration that permits invalid or untested combinations.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Avoid configuration that permits invalid or untested combinations.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-18804590",
+      "revision": 1,
+      "semantic_sha256": "1880459092f454d6fee15be52f37631766f44a3fbca6930d64527cdcbcbcfcdd",
+      "statement": "Version reusable assets and publish compatibility, deprecation, and migration policy.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 200
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Reusability and Software Product Lines",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Version reusable assets and publish compatibility, deprecation, and migration policy.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Version reusable assets and publish compatibility, deprecation, and migration policy.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-07414832",
+      "revision": 1,
+      "semantic_sha256": "07414832cacc4336ec6abd91cbdcb4c1af49dbcdf9f183ad4722456d8bfbd9d1",
+      "statement": "Provide reference examples, integration tests, and failure semantics.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 202
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Reusability and Software Product Lines",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Provide reference examples, integration tests, and failure semantics.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide reference examples, integration tests, and failure semantics.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5CFEC70E",
+      "revision": 1,
+      "semantic_sha256": "5cfec70eb84cf7a907a85e8726fa10293189f4579ad59ad04d0649b14b150a8e",
+      "statement": "Track consumers so security fixes and breaking changes can be coordinated.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 203
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Reusability and Software Product Lines",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Track consumers so security fixes and breaking changes can be coordinated.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Track consumers so security fixes and breaking changes can be coordinated.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DEC303C0",
+      "revision": 1,
+      "semantic_sha256": "dec303c0495add9d49e8031b377dd8572607a6c5c177bcbd0c1c6bd7d66f3258",
+      "statement": "Allow teams to leave a shared asset through documented interfaces and data portability.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 207
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Reusability and Software Product Lines",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Allow teams to leave a shared asset through documented interfaces and data portability.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Allow teams to leave a shared asset through documented interfaces and data portability.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B98CE1BB",
+      "revision": 1,
+      "semantic_sha256": "b98ce1bbefd6cbc16ce77eb8fdaa4dd759ed9d775243fab073c7b2c7ae796cab",
+      "statement": "Distinguish domain state, session state, presentation state, configuration, cache, derived state, and transient workflow state.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 218
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "State Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Distinguish domain state, session state, presentation state, configuration, cache, derived state, and transient workflow state.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Distinguish domain state, session state, presentation state, configuration, cache, derived state, and transient workflow state.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-75AA9FEC",
+      "revision": 1,
+      "semantic_sha256": "75aa9fecd8e67495a504bf1f9a650213687c1478a1e952cbfcca56746d568b63",
+      "statement": "Define state schema, invariants, legal transitions, initiating actors, guards, side effects, and terminal states.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 219
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "State Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define state schema, invariants, legal transitions, initiating actors, guards, side effects, and terminal states.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define state schema, invariants, legal transitions, initiating actors, guards, side effects, and terminal states.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AE50A4B1",
+      "revision": 1,
+      "semantic_sha256": "ae50a4b1e059cf6ad1ef3cff2002733ec87b01ec89f6bb9c499056ccdc34d050",
+      "statement": "Maintain one authoritative source for each fact and make replicas or projections explicitly derived.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 220
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "State Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Maintain one authoritative source for each fact and make replicas or projections explicitly derived.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Maintain one authoritative source for each fact and make replicas or projections explicitly derived.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A8E226BC",
+      "revision": 1,
+      "semantic_sha256": "a8e226bc9106496343dbb0f4056159ffb0ff99d34e08077219ab8ce713f1f03b",
+      "statement": "Define consistency, durability, freshness, ordering, and conflict-resolution requirements per state.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 222
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "State Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define consistency, durability, freshness, ordering, and conflict-resolution requirements per state.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define consistency, durability, freshness, ordering, and conflict-resolution requirements per state.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C58A7755",
+      "revision": 1,
+      "semantic_sha256": "c58a7755ba5954cee1ec520723aba4eb17e3a5fad907126dc99e6b0072ba5f5e",
+      "statement": "Define initialization, hydration, synchronization, invalidation, expiry, persistence, migration, and reset behavior.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 225
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "State Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define initialization, hydration, synchronization, invalidation, expiry, persistence, migration, and reset behavior.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define initialization, hydration, synchronization, invalidation, expiry, persistence, migration, and reset behavior.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7AA2FAF0",
+      "revision": 1,
+      "semantic_sha256": "7aa2faf0ca61a6d5596e0ff8e1f7828c0e6b8737b08fb6de212dfd83a7c3b015",
+      "statement": "State the required consistency and isolation semantics rather than relying on platform defaults.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 240
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Concurrency, Consistency, and Transactions",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “State the required consistency and isolation semantics rather than relying on platform defaults.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: State the required consistency and isolation semantics rather than relying on platform defaults.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EEE5F2CD",
+      "revision": 1,
+      "semantic_sha256": "eee5f2cd61450adfda9d8e2e45d06a807480ef58c6fa72fee33e9b3c69ecbd6f",
+      "statement": "Make retried operations idempotent or detect duplicate execution.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 245
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Concurrency, Consistency, and Transactions",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Make retried operations idempotent or detect duplicate execution.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make retried operations idempotent or detect duplicate execution.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C5529D7D",
+      "revision": 1,
+      "semantic_sha256": "c5529d7de45ee9f9b746bc4c64ed7d2b9d737abda370c2b966ed1dcee1e086e0",
+      "statement": "Define ordering and conflict-resolution behavior for asynchronous and replicated updates.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 246
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Concurrency, Consistency, and Transactions",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define ordering and conflict-resolution behavior for asynchronous and replicated updates.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define ordering and conflict-resolution behavior for asynchronous and replicated updates.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EB0270A6",
+      "revision": 1,
+      "semantic_sha256": "eb0270a6d1ca2ed000edca7718287c224f1807c8daa76bc125c905b433388f80",
+      "statement": "Bound queues, locks, semaphores, pools, and parallelism.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 250
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Concurrency, Consistency, and Transactions",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Bound queues, locks, semaphores, pools, and parallelism.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Bound queues, locks, semaphores, pools, and parallelism.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-55723B56",
+      "revision": 1,
+      "semantic_sha256": "55723b569753606d2918e9612a6c6fed5b084a91e4f8f8b52b05d3b0993647dd",
+      "statement": "Propagate cancellation, deadlines, and backpressure across concurrent work.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 251
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Concurrency, Consistency, and Transactions",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Propagate cancellation, deadlines, and backpressure across concurrent work.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Propagate cancellation, deadlines, and backpressure across concurrent work.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FFA324F3",
+      "revision": 1,
+      "semantic_sha256": "ffa324f30c06a55965963e50259738e9bb1102b818e0e6aedefcb55670fc24ad",
+      "statement": "Define timeouts, deadlines, retry eligibility, backoff, jitter, circuit breaking, and fallback per dependency.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 262
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Distributed and Event-Driven Systems",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define timeouts, deadlines, retry eligibility, backoff, jitter, circuit breaking, and fallback per dependency.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define timeouts, deadlines, retry eligibility, backoff, jitter, circuit breaking, and fallback per dependency.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3D388A4E",
+      "revision": 1,
+      "semantic_sha256": "3d388a4ee7efd1915ca78da7f0cac6774edd808e11184582b13c42a169df8eed",
+      "statement": "Define message delivery, ordering, partitioning, retention, replay, and deduplication semantics.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 264
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Distributed and Event-Driven Systems",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define message delivery, ordering, partitioning, retention, replay, and deduplication semantics.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define message delivery, ordering, partitioning, retention, replay, and deduplication semantics.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-69C4BB2C",
+      "revision": 1,
+      "semantic_sha256": "69c4bb2c1a17c42b3348b9502b7aaaa5ae0d896c3b0e33ae594b1ce0fc671cb3",
+      "statement": "Make consumers idempotent when duplicate delivery is possible.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 265
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Distributed and Event-Driven Systems",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Make consumers idempotent when duplicate delivery is possible.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make consumers idempotent when duplicate delivery is possible.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A06A1E8F",
+      "revision": 1,
+      "semantic_sha256": "a06a1e8f5f873deb9356a06573ba735b99febaffcd8e658df26a580268f294c5",
+      "statement": "Use immutable event facts and version schemas compatibly.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 266
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Distributed and Event-Driven Systems",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Use immutable event facts and version schemas compatibly.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use immutable event facts and version schemas compatibly.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8B7F37FF",
+      "revision": 1,
+      "semantic_sha256": "8b7f37ffb00d36bd9fc1977196887ace4cfd19d8b4d74343a053e8d142d76c83",
+      "statement": "Bound queues and define overload, dead-letter, poison-message, and replay behavior.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 269
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Distributed and Event-Driven Systems",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Bound queues and define overload, dead-letter, poison-message, and replay behavior.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Bound queues and define overload, dead-letter, poison-message, and replay behavior.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4CE2BAE8",
+      "revision": 1,
+      "semantic_sha256": "4ce2bae8877d1276dcbd6fce659e9d7aa2f0818514aa34afcaa37f1655e70ac8",
+      "statement": "Make causality and correlation observable without assuming a single global clock.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 271
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Distributed and Event-Driven Systems",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Make causality and correlation observable without assuming a single global clock.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make causality and correlation observable without assuming a single global clock.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8A67B399",
+      "revision": 1,
+      "semantic_sha256": "8a67b399c4b04c95f328b515a4e5293b63ee01c0dfb1a3824d6b70c8003116cc",
+      "statement": "Define ownership, intended consumers, trust level, availability, latency, consistency, and support expectations.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 284
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "API and Integration Architecture",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define ownership, intended consumers, trust level, availability, latency, consistency, and support expectations.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define ownership, intended consumers, trust level, availability, latency, consistency, and support expectations.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7414620B",
+      "revision": 1,
+      "semantic_sha256": "7414620ba573a3b54bebadbfbc75303fa065f0e458cd8fc5d7b44313cb050470",
+      "statement": "Use explicit schemas for requests, responses, events, errors, and compatibility rules.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 285
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "API and Integration Architecture",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Use explicit schemas for requests, responses, events, errors, and compatibility rules.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use explicit schemas for requests, responses, events, errors, and compatibility rules.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1D682327",
+      "revision": 1,
+      "semantic_sha256": "1d68232781feba10f6a7bd4883e5345bebf1914504a0cad1fe80df9e4bececd6",
+      "statement": "Make authentication, authorization, tenant, privacy, and data-classification requirements part of the contract.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 288
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "API and Integration Architecture",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Make authentication, authorization, tenant, privacy, and data-classification requirements part of the contract.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make authentication, authorization, tenant, privacy, and data-classification requirements part of the contract.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3A484AC5",
+      "revision": 1,
+      "semantic_sha256": "3a484ac52e76b610786f7b3791bf7c073ce0e8d1f5e10c3aa54615591319aa67",
+      "statement": "Define pagination, filtering, sorting, concurrency, idempotency, rate, quota, and bulk semantics.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 290
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "API and Integration Architecture",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define pagination, filtering, sorting, concurrency, idempotency, rate, quota, and bulk semantics.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define pagination, filtering, sorting, concurrency, idempotency, rate, quota, and bulk semantics.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FF5EBA4B",
+      "revision": 1,
+      "semantic_sha256": "ff5eba4b2fef70f3425dff0cbdd811b01bbf57252dcf6959eda6dfa346b0f22a",
+      "statement": "Use consistent error taxonomy and distinguish retryable, terminal, conflict, validation, authorization, and dependency failures.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 291
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "API and Integration Architecture",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Use consistent error taxonomy and distinguish retryable, terminal, conflict, validation, authorization, and dependency failures.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use consistent error taxonomy and distinguish retryable, terminal, conflict, validation, authorization, and dependency failures.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D5680902",
+      "revision": 1,
+      "semantic_sha256": "d5680902229b55d488c003ddc8f92dddfd16ef465712db5bb6e5768e0f49721e",
+      "statement": "Define deprecation, discovery, change notification, migration, and retirement.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 294
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "API and Integration Architecture",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define deprecation, discovery, change notification, migration, and retirement.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define deprecation, discovery, change notification, migration, and retirement.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1B7657B0",
+      "revision": 1,
+      "semantic_sha256": "1b7657b0a3b8b08f4f5ac1e755680be854fb36fa7d9b5690bbced34d043c2b70",
+      "statement": "Make external calls observable and attributable to user and business journeys.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 295
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "API and Integration Architecture",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Make external calls observable and attributable to user and business journeys.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make external calls observable and attributable to user and business journeys.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-44AED881",
+      "revision": 1,
+      "semantic_sha256": "44aed88114f20cc6204e7dd781ebadb874758d0f5fb72d6a137577924346ad96",
+      "statement": "Track technical debt as a specific obligation with cause, consequence, interest, owner, and remediation trigger.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 309
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Evolvability, Technical Debt, and Changeability",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Track technical debt as a specific obligation with cause, consequence, interest, owner, and remediation trigger.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Track technical debt as a specific obligation with cause, consequence, interest, owner, and remediation trigger.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-12D1C014",
+      "revision": 1,
+      "semantic_sha256": "12d1c014ac0356145838d763bffacca7061b0772b6dc50c7ca71b2814a6ea075",
+      "statement": "Measure change lead time, regression rate, dependency impact, coordination cost, and operational burden.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 312
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Evolvability, Technical Debt, and Changeability",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Measure change lead time, regression rate, dependency impact, coordination cost, and operational burden.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Measure change lead time, regression rate, dependency impact, coordination cost, and operational burden.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F8A23259",
+      "revision": 1,
+      "semantic_sha256": "f8a232598bf3958a2c76fd3ab9ea2b4bbd3e081ce0ed72c4dbf8f135aaa8c8ca",
+      "statement": "Use automated architecture and compatibility checks for critical invariants.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 313
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Evolvability, Technical Debt, and Changeability",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Use automated architecture and compatibility checks for critical invariants.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use automated architecture and compatibility checks for critical invariants.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F8700B34",
+      "revision": 1,
+      "semantic_sha256": "f8700b3464781bb191de7f25e468ab1766448fca3466a100a89729272f6ba34c",
+      "statement": "Remove compatibility layers after consumers migrate.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 315
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Evolvability, Technical Debt, and Changeability",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Remove compatibility layers after consumers migrate.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Remove compatibility layers after consumers migrate.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-49148D13",
+      "revision": 1,
+      "semantic_sha256": "49148d13282618f12ab158707bf2e7d34619e47faee736edf0aad55979feb164",
+      "statement": "Use strangler, parallel run, shadowing, dual read/write, or other migration patterns only with reconciliation and exit criteria.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 318
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Evolvability, Technical Debt, and Changeability",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Use strangler, parallel run, shadowing, dual read/write, or other migration patterns only with reconciliation and exit criteria.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use strangler, parallel run, shadowing, dual read/write, or other migration patterns only with reconciliation and exit criteria.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EA5D38F6",
+      "revision": 1,
+      "semantic_sha256": "ea5d38f68913eb6e181ef4284410574e12e7affec2b6d22895a7b81b85fa3439",
+      "statement": "Define supported environments, clients, protocols, formats, versions, locales, and integration partners.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 327
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Interoperability, Portability, and Compatibility",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define supported environments, clients, protocols, formats, versions, locales, and integration partners.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define supported environments, clients, protocols, formats, versions, locales, and integration partners.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F91ACE3D",
+      "revision": 1,
+      "semantic_sha256": "f91ace3de7cd3f4d89e1ad4dd4654a653e82c54a21ddc38555d0ca1a940d9fcd",
+      "statement": "Document intentional proprietary dependencies and the value that justifies them.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 329
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Interoperability, Portability, and Compatibility",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Document intentional proprietary dependencies and the value that justifies them.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document intentional proprietary dependencies and the value that justifies them.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F46E5E03",
+      "revision": 1,
+      "semantic_sha256": "f46e5e0323d08eed0c6948baed8939a30cedd43f666c7989283fb802c645df91",
+      "statement": "Define backward, forward, source, binary, schema, behavioral, and operational compatibility as applicable.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 332
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Interoperability, Portability, and Compatibility",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define backward, forward, source, binary, schema, behavioral, and operational compatibility as applicable.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define backward, forward, source, binary, schema, behavioral, and operational compatibility as applicable.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F1600F03",
+      "revision": 1,
+      "semantic_sha256": "f1600f03a0aea1683be6a2e7ac188496ddc72c9d608416ef6fb8510ef39d62b2",
+      "statement": "Test mixed-version operation and rolling upgrades where versions coexist.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 333
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Interoperability, Portability, and Compatibility",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Test mixed-version operation and rolling upgrades where versions coexist.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test mixed-version operation and rolling upgrades where versions coexist.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-796DD1B7",
+      "revision": 1,
+      "semantic_sha256": "796dd1b76394dd204f0dc0b35857e4e3fee0423e544ee8c24d722bef88a42f97",
+      "statement": "Make migration tooling resumable, observable, reversible or safely roll-forward, and reconcilable.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 337
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Interoperability, Portability, and Compatibility",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Make migration tooling resumable, observable, reversible or safely roll-forward, and reconcilable.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make migration tooling resumable, observable, reversible or safely roll-forward, and reconcilable.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4207A34E",
+      "revision": 1,
+      "semantic_sha256": "4207a34e7e8959b995457a229202de1bcadec18060842dd98ed4539f1c23545e",
+      "statement": "Track end-of-support dates for platforms and protocols.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 339
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Interoperability, Portability, and Compatibility",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Track end-of-support dates for platforms and protocols.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Track end-of-support dates for platforms and protocols.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CAB0969B",
+      "revision": 1,
+      "semantic_sha256": "cab0969b87a2d8d5859b897b84d5deade76da809fae92a5286aaa0884a6668fc",
+      "statement": "Use a transparent measurement boundary, time period, allocation method, data source, and uncertainty statement.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 351
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Sustainable Software and Resource Efficiency",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Use a transparent measurement boundary, time period, allocation method, data source, and uncertainty statement.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use a transparent measurement boundary, time period, allocation method, data source, and uncertainty statement.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2FBFB7E2",
+      "revision": 1,
+      "semantic_sha256": "2fbfb7e21a661b42d1ab0c92356e3e5984f4cf5ddd45b4fcb840eae21f91b3cf",
+      "statement": "Review regressions and publish internally auditable progress against baselines.",
+      "source": {
+        "path": "docs/engineering/04-architecture-and-design.md",
+        "line": 363
+      },
+      "heading_trail": [
+        "Architecture and design",
+        "Sustainable Software and Resource Efficiency",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Review regressions and publish internally auditable progress against baselines.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Review regressions and publish internally auditable progress against baselines.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

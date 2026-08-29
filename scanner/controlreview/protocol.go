@@ -38,7 +38,11 @@ func taskID(task Task) (string, error) {
 
 func validateTask(task Task) error {
 	if task.SchemaVersion != TaskSchema || task.Provider != "codex" && task.Provider != "claude" ||
-		!task.RequireOneSubagentPerRule || len(task.Controls) < 1 || len(task.Controls) > 8 ||
+		!task.RequireOneSubagentPerRule ||
+		(task.ReviewDepth != "standard" && task.ReviewDepth != "deep") ||
+		(task.ReviewDepth == "standard" && task.RequireBatchSkeptic) ||
+		(task.ReviewDepth == "deep" && !task.RequireBatchSkeptic) ||
+		len(task.Controls) < 1 || len(task.Controls) > 8 ||
 		!lowerHexDigest(task.InventoryDigest) || !lowerHexDigest(task.RegistrySHA256) {
 		return fmt.Errorf("invalid control-review task envelope")
 	}
@@ -52,11 +56,17 @@ func validateTask(task Task) error {
 		"deterministic_candidate": true, "ai_advisory_candidate": true, "environment_evidence_required": true,
 		"human_or_external_required": true, "mixed_evidence_required": true,
 	}
-	validAuthority := map[string]bool{"declared": true, "repository": true, "artifact": true, "environment": true, "human": true}
+	validAuthority := map[string]bool{
+		"declared": true, "repository": true, "artifact": true, "executed": true,
+		"environment": true, "external_registry": true, "structured_record": true, "human": true,
+	}
 	for index, control := range task.Controls {
 		if control.ControlID == "" || seen[control.ControlID] || strings.TrimSpace(control.Statement) == "" ||
 			len(control.Statement) > 16*1024 || !lowerHexDigest(control.ContractSHA256) ||
-			(control.ContractStatus != "generated_unreviewed" && control.ContractStatus != "reviewed") ||
+			control.ContractStatus != "reviewed" ||
+			control.Classification != "nondeterministic" || !reviewedNondeterministicRoutes[control.ClassificationRoute] ||
+			(control.ClassificationDecisionBasis != "primary_nondeterministic" && control.ClassificationDecisionBasis != "skeptically_rejected" && control.ClassificationDecisionBasis != "strength_audit_reclassified") ||
+			!lowerHexDigest(control.ClassificationRowSHA256) ||
 			control.CanonicalControlID == "" || control.CanonicalControlID > control.ControlID ||
 			!validEvaluation[control.EvaluationClass] || !validAutomation[control.AutomationClass] ||
 			(control.ApplicabilityClass != "conditional" && control.ApplicabilityClass != "scope_required") ||
@@ -187,9 +197,16 @@ func validateReview(review Review, contextFiles []ContextFile) error {
 	}
 	validApplicability := map[string]bool{"applicable": true, "not_applicable": true, "undetermined": true}
 	validConfidence := map[string]bool{"low": true, "medium": true, "high": true}
+	validPriority := map[string]bool{"critical": true, "high": true, "medium": true, "low": true, "none": true}
 	if !validAssessment[review.AssessmentCandidate] || !validApplicability[review.ApplicabilityCandidate] ||
-		!validConfidence[review.Confidence] || strings.TrimSpace(review.Reason) == "" ||
-		len(review.Reason) > 16*1024 || len(review.Advice) > 16*1024 || len(review.Evidence) > 256 ||
+		!validConfidence[review.Confidence] || !validPriority[review.Priority] ||
+		strings.TrimSpace(review.Reason) == "" || strings.TrimSpace(review.Challenge) == "" ||
+		strings.TrimSpace(review.RiskIfIgnored) == "" || strings.TrimSpace(review.Advice) == "" ||
+		len(review.Reason) > 16*1024 || len(review.Challenge) > 16*1024 ||
+		len(review.RiskIfIgnored) > 16*1024 || len(review.Advice) > 16*1024 || len(review.Evidence) > 256 ||
+		!validReviewList(review.RemediationSteps, 1, 12) ||
+		!validReviewList(review.VerificationSteps, 1, 12) ||
+		!validReviewList(review.EvidenceNeeded, 1, 12) ||
 		len(review.Limitations) < 1 || len(review.Limitations) > 256 {
 		return fmt.Errorf("invalid candidate values or field limits")
 	}
@@ -220,6 +237,20 @@ func validateReview(review Review, contextFiles []ContextFile) error {
 		}
 	}
 	return nil
+}
+
+func validReviewList(values []string, minimum, maximum int) bool {
+	if len(values) < minimum || len(values) > maximum {
+		return false
+	}
+	seen := map[string]bool{}
+	for _, value := range values {
+		if strings.TrimSpace(value) == "" || len(value) > 16*1024 || seen[value] {
+			return false
+		}
+		seen[value] = true
+	}
+	return true
 }
 
 func lowerHexDigest(value string) bool {

@@ -1,0 +1,936 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-09-privacy-and-data-protection-md-part-001-part-001",
+  "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 37,
+  "controls": [
+    {
+      "control_id": "USEQ-26C38E0D",
+      "revision": 1,
+      "semantic_sha256": "26c38e0d521f366bbb08cd1517f861c88d804d95d3efdc1ae352b93ee90d8052",
+      "statement": "Cookie, tracker, analytics, advertising, attribution, session-replay, and experimentation inventories match production behavior.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 18
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy and Data Protection",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Cookie, tracker, analytics, advertising, attribution, session-replay, and experimentation inventories match production behavior.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Cookie, tracker, analytics, advertising, attribution, session-replay, and experimentation inventories match production behavior.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-06C60675",
+      "revision": 1,
+      "semantic_sha256": "06c606756531aaf758b547bdc77cd3fa2d16ef72c876427ba7361e601ff488b0",
+      "statement": "Retention periods are explicit and enforced.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 22
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy and Data Protection",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Retention periods are explicit and enforced.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Retention periods are explicit and enforced.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-19407D75",
+      "revision": 1,
+      "semantic_sha256": "19407d75ef8fdf846cc90122c187f3dda924d680245f70841575855f0963bd9a",
+      "statement": "Data export cannot expose other users' or tenants' information.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 26
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy and Data Protection",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Data export cannot expose other users' or tenants' information.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Data export cannot expose other users' or tenants' information.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E171ADC5",
+      "revision": 1,
+      "semantic_sha256": "e171adc531a9d2ce91ce737472987822de7556c706dd84907ab920d71b36a771",
+      "statement": "Assign accountable privacy owners and data stewards for every product and processing purpose.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 38
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Governance and Engineering",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Assign accountable privacy owners and data stewards for every product and processing purpose.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Assign accountable privacy owners and data stewards for every product and processing purpose.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2B4BFFCE",
+      "revision": 1,
+      "semantic_sha256": "2b4bffce0d037e1409cef113cdfa71246724d6842981cae48d46c406e79d80ec",
+      "statement": "Maintain an inventory of personal data, sources, purposes, lawful basis or authorization, recipients, locations, retention, and deletion.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 39
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Governance and Engineering",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Maintain an inventory of personal data, sources, purposes, lawful basis or authorization, recipients, locations, retention, and deletion.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Maintain an inventory of personal data, sources, purposes, lawful basis or authorization, recipients, locations, retention, and deletion.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-178B5045",
+      "revision": 1,
+      "semantic_sha256": "178b50453ec888438011e6ea47f6d28f6fcb4059dfca3abc20f9a5b93b350aaf",
+      "statement": "Map personal-data flows across clients, services, logs, analytics, support, suppliers, backups, models, and exports.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 40
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Governance and Engineering",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Map personal-data flows across clients, services, logs, analytics, support, suppliers, backups, models, and exports.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Map personal-data flows across clients, services, logs, analytics, support, suppliers, backups, models, and exports.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C5D655EE",
+      "revision": 1,
+      "semantic_sha256": "c5d655ee6e62bbb22251a054288343deac497981a1460644206aaa1269e83313",
+      "statement": "Keep privacy records and notices consistent with deployed behavior.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 50
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Governance and Engineering",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Keep privacy records and notices consistent with deployed behavior.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Keep privacy records and notices consistent with deployed behavior.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A637D569",
+      "revision": 1,
+      "semantic_sha256": "a637d569552d6980b3f5af67dc87a2eb04bd3c3063fb558739177258cc5c1676",
+      "statement": "Monitor data flows and trackers for unauthorized change.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 51
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Governance and Engineering",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Monitor data flows and trackers for unauthorized change.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Monitor data flows and trackers for unauthorized change.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E3F0E7D9",
+      "revision": 1,
+      "semantic_sha256": "e3f0e7d9d7691c718c864a1222877eabfc899cdb60dab09cea2a2eee2e0eb173",
+      "statement": "Measure rights completion, deletion effectiveness, access minimization, unexpected collection, and risk reduction.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 54
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Governance and Engineering",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Measure rights completion, deletion effectiveness, access minimization, unexpected collection, and risk reduction.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Measure rights completion, deletion effectiveness, access minimization, unexpected collection, and risk reduction.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FF1E023B",
+      "revision": 1,
+      "semantic_sha256": "ff1e023b89813504a841158567017ddd896b78dcaf5fe6e4c6b9b4f73f89e1aa",
+      "statement": "Train role-appropriate personnel before granting personal-data access.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 55
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Governance and Engineering",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Train role-appropriate personnel before granting personal-data access.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Train role-appropriate personnel before granting personal-data access.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-58593369",
+      "revision": 1,
+      "semantic_sha256": "585933696e99b206045d501503bbe495cc494b6b6f15087e355d43a90a32d4ab",
+      "statement": "Define privacy behavior through deprecation, migration, backup, and retirement.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 56
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Governance and Engineering",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Define privacy behavior through deprecation, migration, backup, and retirement.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define privacy behavior through deprecation, migration, backup, and retirement.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-87EEAE5A",
+      "revision": 1,
+      "semantic_sha256": "87eeae5a08335aa35a93cca80e71a8782dfb87555eb506e653dc542c425e5b69",
+      "statement": "Describe what data is collected, why, from whom, how used, shared, retained, protected, and controlled.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 65
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Notices, Consent, and Preferences",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Describe what data is collected, why, from whom, how used, shared, retained, protected, and controlled.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Describe what data is collected, why, from whom, how used, shared, retained, protected, and controlled.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CFA62DF6",
+      "revision": 1,
+      "semantic_sha256": "cfa62df64f3092cf489f993ff4c8e1b03a149eca32bd54b75aca6fdcce24b19c",
+      "statement": "Distinguish required processing from optional analytics, personalization, advertising, sharing, or communication.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 68
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Notices, Consent, and Preferences",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Distinguish required processing from optional analytics, personalization, advertising, sharing, or communication.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Distinguish required processing from optional analytics, personalization, advertising, sharing, or communication.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-19FC62D9",
+      "revision": 1,
+      "semantic_sha256": "19fc62d9ca152699ba82f0a12800ed1588d05808a1edea76d01ee0388848f05c",
+      "statement": "Prevent nonessential processing before valid permission where required.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 72
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Notices, Consent, and Preferences",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Prevent nonessential processing before valid permission where required.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Prevent nonessential processing before valid permission where required.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3B78A945",
+      "revision": 1,
+      "semantic_sha256": "3b78a9451947508dcfcb156734e69e58837ab3136fef3899f23587ee27015fde",
+      "statement": "Record notice version, purpose, choice, time, context, and proof without collecting excessive evidence.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 76
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Notices, Consent, and Preferences",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Record notice version, purpose, choice, time, context, and proof without collecting excessive evidence.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Record notice version, purpose, choice, time, context, and proof without collecting excessive evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-379D10F1",
+      "revision": 1,
+      "semantic_sha256": "379d10f1ee5debfe748b627ce63e8f9744fb4c7fabe695ffe83231c0c50f6922",
+      "statement": "Avoid using inactivity as agreement.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 81
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Notices, Consent, and Preferences",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Avoid using inactivity as agreement.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Avoid using inactivity as agreement.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4DA9C46D",
+      "revision": 1,
+      "semantic_sha256": "4da9c46d78c743f63dfa55d6f75ef00cec580be3523feb2f0cc58f2dcf91c774",
+      "statement": "Handle conflicting preferences across devices, accounts, organizations, and channels explicitly.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 82
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Notices, Consent, and Preferences",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Handle conflicting preferences across devices, accounts, organizations, and channels explicitly.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Handle conflicting preferences across devices, accounts, organizations, and channels explicitly.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B2092183",
+      "revision": 1,
+      "semantic_sha256": "b209218311e071f6782a24bafda43230222635b8bc35cd37f1e5c53b07981af7",
+      "statement": "Monitor preference enforcement and investigate processing that contradicts user choice.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 83
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Notices, Consent, and Preferences",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Monitor preference enforcement and investigate processing that contradicts user choice.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Monitor preference enforcement and investigate processing that contradicts user choice.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-80938132",
+      "revision": 1,
+      "semantic_sha256": "80938132ed43565d575356c59072f8371e3b912c54c914ad06081406e8c757f6",
+      "statement": "Retire obsolete consent records according to retention and audit needs.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 84
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Notices, Consent, and Preferences",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Retire obsolete consent records according to retention and audit needs.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Retire obsolete consent records according to retention and audit needs.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0B8FCCA8",
+      "revision": 1,
+      "semantic_sha256": "0b8fcca80c7650cf5820871997db8a58ecb9037882535d72bc56b205f99c4738",
+      "statement": "Document backup deletion behavior and prevent restored backups from silently resurrecting deleted use.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 103
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Data Rights, Retention, Deletion, and Portability",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Document backup deletion behavior and prevent restored backups from silently resurrecting deleted use.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document backup deletion behavior and prevent restored backups from silently resurrecting deleted use.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B61915BC",
+      "revision": 1,
+      "semantic_sha256": "b61915bcbd818ecf179556d69738b02a95037785bf864f5933f39a5685c9e090",
+      "statement": "Record legal holds with scope, authority, owner, review, and release.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 104
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Data Rights, Retention, Deletion, and Portability",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Record legal holds with scope, authority, owner, review, and release.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Record legal holds with scope, authority, owner, review, and release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0A64E949",
+      "revision": 1,
+      "semantic_sha256": "0a64e9498cb4a6ad78dc7eb009ff348368cb7acc42fd24369c85ccb606f1c9ae",
+      "statement": "Track requests, deadlines, exceptions, decisions, and completion evidence.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 105
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Data Rights, Retention, Deletion, and Portability",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Track requests, deadlines, exceptions, decisions, and completion evidence.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Track requests, deadlines, exceptions, decisions, and completion evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2D7549DE",
+      "revision": 1,
+      "semantic_sha256": "2d7549de4deff8cd526bc12950c4b35e1d5984cff34578bcdfd48e38fa33e94d",
+      "statement": "Test rights workflows end to end using representative accounts and complex data relationships.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 107
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Data Rights, Retention, Deletion, and Portability",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Test rights workflows end to end using representative accounts and complex data relationships.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test rights workflows end to end using representative accounts and complex data relationships.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-16CE0274",
+      "revision": 1,
+      "semantic_sha256": "16ce0274f9fb8bff147db962892c6ba39490c08c8021553f159d12f763c66dcc",
+      "statement": "Measure timeliness, completeness, error, rework, and downstream propagation.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 110
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Data Rights, Retention, Deletion, and Portability",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Measure timeliness, completeness, error, rework, and downstream propagation.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Measure timeliness, completeness, error, rework, and downstream propagation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-56568A68",
+      "revision": 1,
+      "semantic_sha256": "56568a68fa288dd83388acf4ce5c4da4116b0011ff21b8eb2ba04d6ecb15d6e7",
+      "statement": "Distinguish masking, tokenization, pseudonymization, aggregation, synthetic data, and anonymization accurately.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 120
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "De-Identification, Pseudonymization, and Anonymization",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Distinguish masking, tokenization, pseudonymization, aggregation, synthetic data, and anonymization accurately.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Distinguish masking, tokenization, pseudonymization, aggregation, synthetic data, and anonymization accurately.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BAB3D94B",
+      "revision": 1,
+      "semantic_sha256": "bab3d94b4571f4144ffa92f188842c2c534e7418df808951c076e8a327424b99",
+      "statement": "Keep reidentification keys separate, access-controlled, audited, and purpose-limited.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 124
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "De-Identification, Pseudonymization, and Anonymization",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Keep reidentification keys separate, access-controlled, audited, and purpose-limited.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Keep reidentification keys separate, access-controlled, audited, and purpose-limited.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FBD875B1",
+      "revision": 1,
+      "semantic_sha256": "fbd875b119fd97a48433b7c74b79f28abb30158e5e2eefdfb082e7c972e37ebe",
+      "statement": "Label transformed data and permitted uses clearly.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 135
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "De-Identification, Pseudonymization, and Anonymization",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Label transformed data and permitted uses clearly.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Label transformed data and permitted uses clearly.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-09D0C73F",
+      "revision": 1,
+      "semantic_sha256": "09d0c73f6094a0f2af39f484e133dbb208427126d66deecb19f8581693dea53d",
+      "statement": "Delete or rotate mappings according to purpose and retention.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 137
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "De-Identification, Pseudonymization, and Anonymization",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Delete or rotate mappings according to purpose and retention.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Delete or rotate mappings according to purpose and retention.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EFA1156D",
+      "revision": 1,
+      "semantic_sha256": "efa1156dd446c5d712280dad6f6f344bd0174bf504aa63170e217a33b86d9c3a",
+      "statement": "Inventory every destination country, provider, subprocessor, recipient, support location, backup region, and remote-access path.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 146
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Cross-Border Transfers, Processors, and Data Sharing",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Inventory every destination country, provider, subprocessor, recipient, support location, backup region, and remote-access path.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Inventory every destination country, provider, subprocessor, recipient, support location, backup region, and remote-access path.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BF01DCD0",
+      "revision": 1,
+      "semantic_sha256": "bf01dcd0de6811f6ccc517573fa1ec1d1c9da00503d42bb53fbe753620b490cf",
+      "statement": "Document the purpose, data categories, frequency, security, retention, and onward-transfer rights.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 148
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Cross-Border Transfers, Processors, and Data Sharing",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Document the purpose, data categories, frequency, security, retention, and onward-transfer rights.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document the purpose, data categories, frequency, security, retention, and onward-transfer rights.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3919B6AF",
+      "revision": 1,
+      "semantic_sha256": "3919b6afd78c20c3a5ac46b260aa338027a2ea097cabf1e334c96a42cbf97e56",
+      "statement": "Restrict provider and support access through least privilege and audited workflows.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 153
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Cross-Border Transfers, Processors, and Data Sharing",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Restrict provider and support access through least privilege and audited workflows.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Restrict provider and support access through least privilege and audited workflows.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FF7405F1",
+      "revision": 1,
+      "semantic_sha256": "ff7405f125328f5d2a5730ed21ef2bc4de83b635f5dbb84e79a79c0d5bce9100",
+      "statement": "Monitor provider, subprocessor, region, terms, and data-use changes.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 154
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Cross-Border Transfers, Processors, and Data Sharing",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Monitor provider, subprocessor, region, terms, and data-use changes.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Monitor provider, subprocessor, region, terms, and data-use changes.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-234514B3",
+      "revision": 1,
+      "semantic_sha256": "234514b34297a66b28077a14d15de85767cc4464056460392223329a8bf23a50",
+      "statement": "Maintain export and return capability for provider transition.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 158
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Cross-Border Transfers, Processors, and Data Sharing",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Maintain export and return capability for provider transition.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Maintain export and return capability for provider transition.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5402DD1F",
+      "revision": 1,
+      "semantic_sha256": "5402dd1fcd0e83dfc789197aa718dfe51b65e7811980a86fe210bdc834d5e991",
+      "statement": "Define retention and verified deletion at contract end.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 159
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Cross-Border Transfers, Processors, and Data Sharing",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Define retention and verified deletion at contract end.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define retention and verified deletion at contract end.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-65334F09",
+      "revision": 1,
+      "semantic_sha256": "65334f09274c6b6d29ea9454f235570b968e6d862ebe107fa12d97bc57eb5703",
+      "statement": "Revoke credentials, integrations, network access, and keys on termination.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 160
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Cross-Border Transfers, Processors, and Data Sharing",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Revoke credentials, integrations, network access, and keys on termination.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Revoke credentials, integrations, network access, and keys on termination.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3C8EBF98",
+      "revision": 1,
+      "semantic_sha256": "3c8ebf9811ee792baebc62cb69087afd6447845bb9f1150e9a810da0a89be302",
+      "statement": "Test provider outage, breach, data recovery, and exit procedures.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 161
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Cross-Border Transfers, Processors, and Data Sharing",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Test provider outage, breach, data recovery, and exit procedures.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test provider outage, breach, data recovery, and exit procedures.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-27E1C5E3",
+      "revision": 1,
+      "semantic_sha256": "27e1c5e35fa8bbcce95d1f3d1f7e44b93050e225ccb76d5645a25f0946af0f19",
+      "statement": "Maintain evidence of transfer assessments, contracts, and supplementary controls.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 163
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Cross-Border Transfers, Processors, and Data Sharing",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Maintain evidence of transfer assessments, contracts, and supplementary controls.” is deterministic with a sealed personal-data and processing inventory, versioned privacy contract, and exact record, configuration, state-transition, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Maintain evidence of transfer assessments, contracts, and supplementary controls.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

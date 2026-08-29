@@ -8,8 +8,8 @@ import (
 )
 
 const (
-	TaskSchema   = "prc.control-review-task/v0.2"
-	OutputSchema = "prc.control-review-output/v0.1"
+	TaskSchema   = "prc.control-review-task/v0.4"
+	OutputSchema = "prc.control-review-output/v0.2"
 )
 
 type AssertionContext struct {
@@ -20,24 +20,28 @@ type AssertionContext struct {
 }
 
 type TaskControl struct {
-	ControlID              string             `json:"control_id"`
-	Statement              string             `json:"statement"`
-	ChecklistSource        model.Source       `json:"checklist_source"`
-	ContractSHA256         string             `json:"contract_sha256"`
-	ContractStatus         string             `json:"contract_status"`
-	CanonicalControlID     string             `json:"canonical_control_id"`
-	EvaluationClass        string             `json:"evaluation_class"`
-	AutomationClass        string             `json:"automation_class"`
-	ApplicabilityClass     string             `json:"applicability_class"`
-	Atomicity              string             `json:"atomicity"`
-	CompleteInventory      bool               `json:"complete_inventory_required"`
-	NegativeCondition      bool               `json:"negative_condition"`
-	ProjectThresholds      bool               `json:"project_thresholds_required"`
-	EvidenceAuthorities    []string           `json:"evidence_authorities"`
-	NotApplicableProof     string             `json:"not_applicable_proof"`
-	CurrentDisposition     string             `json:"current_disposition"`
-	CurrentCoverage        string             `json:"current_coverage"`
-	CurrentAssertionChecks []AssertionContext `json:"current_assertion_checks"`
+	ControlID                   string             `json:"control_id"`
+	Statement                   string             `json:"statement"`
+	ChecklistSource             model.Source       `json:"checklist_source"`
+	ContractSHA256              string             `json:"contract_sha256"`
+	ContractStatus              string             `json:"contract_status"`
+	Classification              string             `json:"classification"`
+	ClassificationRoute         string             `json:"classification_route"`
+	ClassificationDecisionBasis string             `json:"classification_decision_basis"`
+	ClassificationRowSHA256     string             `json:"classification_row_sha256"`
+	CanonicalControlID          string             `json:"canonical_control_id"`
+	EvaluationClass             string             `json:"evaluation_class"`
+	AutomationClass             string             `json:"automation_class"`
+	ApplicabilityClass          string             `json:"applicability_class"`
+	Atomicity                   string             `json:"atomicity"`
+	CompleteInventory           bool               `json:"complete_inventory_required"`
+	NegativeCondition           bool               `json:"negative_condition"`
+	ProjectThresholds           bool               `json:"project_thresholds_required"`
+	EvidenceAuthorities         []string           `json:"evidence_authorities"`
+	NotApplicableProof          string             `json:"not_applicable_proof"`
+	CurrentDisposition          string             `json:"current_disposition"`
+	CurrentCoverage             string             `json:"current_coverage"`
+	CurrentAssertionChecks      []AssertionContext `json:"current_assertion_checks"`
 }
 
 type ContextFile struct {
@@ -54,7 +58,9 @@ type Task struct {
 	InventoryDigest           string        `json:"inventory_digest"`
 	RegistrySHA256            string        `json:"registry_sha256"`
 	Provider                  string        `json:"provider"`
+	ReviewDepth               string        `json:"review_depth"`
 	RequireOneSubagentPerRule bool          `json:"require_one_subagent_per_rule"`
+	RequireBatchSkeptic       bool          `json:"require_batch_skeptic"`
 	Controls                  []TaskControl `json:"controls"`
 	RepositoryPaths           []string      `json:"repository_paths"`
 	ContextFiles              []ContextFile `json:"context_files"`
@@ -66,8 +72,14 @@ type Review struct {
 	AssessmentCandidate    string                  `json:"assessment_candidate"`
 	ApplicabilityCandidate string                  `json:"applicability_candidate"`
 	Confidence             string                  `json:"confidence"`
+	Priority               string                  `json:"priority"`
 	Reason                 string                  `json:"reason"`
+	Challenge              string                  `json:"challenge"`
+	RiskIfIgnored          string                  `json:"risk_if_ignored"`
 	Advice                 string                  `json:"advice"`
+	RemediationSteps       []string                `json:"remediation_steps"`
+	VerificationSteps      []string                `json:"verification_steps"`
+	EvidenceNeeded         []string                `json:"evidence_needed"`
 	Evidence               []model.FindingLocation `json:"evidence"`
 	Limitations            []string                `json:"limitations"`
 }
@@ -106,6 +118,7 @@ type Progress struct {
 	Phase                string
 	Provider             string
 	Model                string
+	ReviewDepth          string
 	StateDirectory       string
 	Workers              int
 	TotalBatches         int
@@ -133,6 +146,7 @@ type Options struct {
 	StateDirectory              string
 	SchemaPath                  string
 	AllowRemoteSourceProcessing bool
+	ReviewDepth                 string
 	BatchSize                   int
 	Workers                     int
 	Timeout                     time.Duration
@@ -145,6 +159,7 @@ type Options struct {
 type Summary struct {
 	Provider             string
 	Model                string
+	ReviewDepth          string
 	ReviewedControls     int
 	AdvisoryFailures     int
 	ReusedBatches        int

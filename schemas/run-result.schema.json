@@ -24,44 +24,106 @@
       "maxItems": 100000,
       "items": {"$ref": "#/$defs/control_result"}
     },
+    "deterministic_evidence": {
+      "type": "array",
+      "maxItems": 100000,
+      "items": {"$ref": "control-check-evidence.schema.json"}
+    },
     "terminal_state": {"$ref": "#/$defs/terminal_state"}
   },
   "$defs": {
     "control_catalog": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["schema_version", "registry_version", "registry_sha256", "source_sha256", "contract_schema_version", "contract_sha256", "control_count", "active_control_count", "contract_count", "generated_contract_count", "expert_reviewed_contract_count", "profile_terminal_state"],
+      "required": ["schema_version", "registry_version", "registry_sha256", "source_sha256", "contract_schema_version", "contract_generator_id", "contract_sha256", "classification_methodology_sha256", "classification_summary_sha256", "classification_corpus_sha256", "control_check_bindings_schema_version", "control_check_bindings_sha256", "control_check_programs_schema_version", "control_check_programs_sha256", "control_check_programs_catalog_sha256", "control_check_definition_schema_sha256", "control_check_definition_corpus_sha256", "control_count", "active_control_count", "contract_count", "generated_contract_count", "agent_reviewed_contract_count", "reviewed_deterministic_count", "reviewed_nondeterministic_count", "deterministic_binding_count", "deterministic_program_template_count", "deterministic_program_blocked_count", "profile_terminal_state"],
       "properties": {
         "schema_version": {"const": "prc.control-catalog-summary/v0.1"},
         "registry_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
         "registry_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
         "source_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-        "contract_schema_version": {"const": "prc.control-contracts/v0.1"},
+        "contract_schema_version": {"const": "prc.control-contracts/v0.2"},
+        "contract_generator_id": {"const": "prc.control-contracts@0.2"},
         "contract_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "classification_methodology_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "classification_summary_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "classification_corpus_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "control_check_bindings_schema_version": {"const": "prc.control-check-bindings/v0.1"},
+        "control_check_bindings_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "control_check_programs_schema_version": {"const": "prc.control-check-program-catalog/v0.4"},
+        "control_check_programs_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "control_check_programs_catalog_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "control_check_definition_schema_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "control_check_definition_corpus_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
         "control_count": {"type": "integer", "minimum": 1, "maximum": 100000},
         "active_control_count": {"type": "integer", "minimum": 0, "maximum": 100000},
         "contract_count": {"type": "integer", "minimum": 1, "maximum": 100000},
         "generated_contract_count": {"type": "integer", "minimum": 0, "maximum": 100000},
-        "expert_reviewed_contract_count": {"type": "integer", "minimum": 0, "maximum": 100000},
+        "agent_reviewed_contract_count": {"type": "integer", "minimum": 0, "maximum": 100000},
+        "reviewed_deterministic_count": {"type": "integer", "minimum": 1, "maximum": 100000},
+        "reviewed_nondeterministic_count": {"type": "integer", "minimum": 1, "maximum": 100000},
+        "deterministic_binding_count": {"type": "integer", "minimum": 1, "maximum": 100000},
+        "deterministic_program_template_count": {"type": "integer", "minimum": 1, "maximum": 100000},
+        "deterministic_program_blocked_count": {"type": "integer", "minimum": 0, "maximum": 100000},
+        "deterministic_program_executed_count": {"type": "integer", "minimum": 0, "maximum": 100000},
+        "deterministic_program_pass_count": {"type": "integer", "minimum": 0, "maximum": 100000},
+        "deterministic_program_fail_count": {"type": "integer", "minimum": 0, "maximum": 100000},
+        "deterministic_program_not_applicable_count": {"type": "integer", "minimum": 0, "maximum": 100000},
         "profile_terminal_state": {"$ref": "#/$defs/terminal_state"},
         "ai_review_provider": {"enum": ["codex", "claude"]},
         "ai_review_model": {"type": "string"},
-        "ai_review_state": {"enum": ["complete", "focused"]},
+        "ai_review_depth": {"enum": ["standard", "deep"]},
+        "ai_review_state": {"enum": ["complete", "focused", "partial"]},
         "ai_reviewed_count": {"type": "integer", "minimum": 0, "maximum": 100000},
         "ai_advisory_fail_count": {"type": "integer", "minimum": 0, "maximum": 100000}
       }
     },
+    "deterministic_clause_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["template_id", "collector_id", "clause_id", "clause_ordinal", "implementation_id", "implementation_contract_sha256", "required_authority", "status", "evaluated_at"],
+      "properties": {
+        "template_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "collector_id": {"type": "string", "pattern": "^prc\\.collect\\.[a-z0-9.-]+@[0-9]+\\.[0-9]+$"},
+        "clause_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "clause_ordinal": {"type": "integer", "minimum": 1, "maximum": 50},
+        "implementation_id": {"type": "string", "pattern": "^prc\\.check\\.[a-z0-9-]+@[0-9]+\\.[0-9]+$"},
+        "implementation_contract_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "required_authority": {"enum": ["repository", "artifact", "executed", "environment", "external_registry", "structured_record"]},
+        "provider_id": {"type": "string", "minLength": 1, "maxLength": 4096},
+        "program_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "evidence_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "status": {"enum": ["passed", "failed", "not_applicable", "blocked_binding", "blocked_provider_unregistered", "blocked_provider_authority", "blocked_collection", "blocked_evidence", "blocked_canceled"]},
+        "outcome": {"enum": ["pass", "fail", "blocked", "not_applicable"]},
+        "reason_code": {"type": "string", "minLength": 1, "maxLength": 128},
+        "evaluated_at": {"type": "string", "format": "date-time"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"status": {"enum": ["passed", "failed", "not_applicable", "blocked_evidence"]}}},
+          "then": {"required": ["provider_id", "program_sha256", "evidence_sha256", "outcome", "reason_code"]}
+        }
+      ]
+    },
     "control_result": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["control_id", "revision", "statement", "source", "contract_sha256", "contract_status", "canonical_control_id", "evaluation_class", "automation_class", "applicability_class", "atomicity", "complete_inventory_required", "negative_condition", "project_thresholds_required", "evidence_authorities", "not_applicable_proof", "disposition", "coverage", "authority", "assertion_ids", "executed_assertion_ids", "summary"],
+      "required": ["control_id", "revision", "statement", "source", "contract_sha256", "contract_status", "classification", "classification_route", "classification_decision_basis", "classification_row_sha256", "canonical_control_id", "evaluation_class", "automation_class", "applicability_class", "atomicity", "complete_inventory_required", "negative_condition", "project_thresholds_required", "evidence_authorities", "not_applicable_proof", "disposition", "coverage", "authority", "assertion_ids", "executed_assertion_ids", "summary"],
       "properties": {
         "control_id": {"type": "string", "pattern": "^(PRC-[0-9]{2}-[0-9]{3}|USEQ-[A-F0-9]{8})$"},
         "revision": {"type": "integer", "minimum": 1},
         "statement": {"type": "string", "minLength": 1, "maxLength": 16384},
         "source": {"$ref": "#/$defs/control_source"},
         "contract_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-        "contract_status": {"enum": ["generated_unreviewed", "reviewed", "retired"]},
+        "contract_status": {"const": "reviewed"},
+        "classification": {"enum": ["deterministic", "nondeterministic"]},
+        "classification_route": {"enum": ["local_static", "artifact_verification", "bounded_execution", "external_readonly_query", "structured_record_validation", "deterministic_composite", "contextual_judgment", "accountable_human_decision", "specialist_or_legal_judgment", "empirical_protocol_undefined", "contract_incomplete", "mixed", "unbounded_claim"]},
+        "classification_decision_basis": {"enum": ["primary_nondeterministic", "skeptically_rejected", "strength_audit_confirmed", "strength_audit_reclassified"]},
+        "classification_row_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "deterministic_binding_id": {"type": "string", "pattern": "^(PRC-[0-9]{2}-[0-9]{3}|USEQ-[A-F0-9]{8})@[1-9][0-9]*$"},
+        "deterministic_binding_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "deterministic_program_template_count": {"type": "integer", "minimum": 1, "maximum": 50},
+        "deterministic_program_status": {"enum": ["blocked_provider_unregistered", "blocked_program_incomplete", "blocked_evidence", "executed_pass", "executed_fail", "executed_not_applicable"]},
+        "deterministic_clause_results": {"type": "array", "minItems": 1, "maxItems": 50, "items": {"$ref": "#/$defs/deterministic_clause_result"}},
         "canonical_control_id": {"type": "string", "pattern": "^(PRC-[0-9]{2}-[0-9]{3}|USEQ-[A-F0-9]{8})$"},
         "evaluation_class": {"enum": ["repository", "environment", "human_external", "mixed", "unclassified"]},
         "automation_class": {"enum": ["deterministic_candidate", "ai_advisory_candidate", "environment_evidence_required", "human_or_external_required", "mixed_evidence_required"]},
@@ -70,16 +132,52 @@
         "complete_inventory_required": {"type": "boolean"},
         "negative_condition": {"type": "boolean"},
         "project_thresholds_required": {"type": "boolean"},
-        "evidence_authorities": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["declared", "repository", "artifact", "environment", "human"]}},
+        "evidence_authorities": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["declared", "repository", "artifact", "executed", "environment", "external_registry", "structured_record", "human"]}},
         "not_applicable_proof": {"type": "string", "minLength": 1, "maxLength": 1000},
-        "disposition": {"enum": ["confirmed_failure", "blocked", "partially_verified", "needs_review", "retired"]},
-        "coverage": {"enum": ["unmapped", "not_in_selected_profile", "partial_assertions", "retired"]},
-        "authority": {"enum": ["none", "deterministic_partial"]},
+        "disposition": {"enum": ["confirmed_failure", "verified_pass", "not_applicable", "blocked", "partially_verified", "needs_review", "retired"]},
+        "coverage": {"enum": ["deterministic_program_provider_unregistered", "deterministic_program_partial", "deterministic_program_complete", "nondeterministic_advisory"]},
+        "authority": {"enum": ["none", "deterministic_partial", "deterministic_exact"]},
         "assertion_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
         "executed_assertion_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
         "summary": {"type": "string", "minLength": 1},
         "ai_review": {"$ref": "#/$defs/ai_control_review"}
-      }
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"classification": {"const": "deterministic"}}},
+          "then": {
+            "required": ["deterministic_binding_id", "deterministic_binding_sha256", "deterministic_program_template_count", "deterministic_program_status"],
+            "properties": {
+              "classification_route": {"enum": ["local_static", "artifact_verification", "bounded_execution", "external_readonly_query", "structured_record_validation", "deterministic_composite"]},
+              "classification_decision_basis": {"const": "strength_audit_confirmed"},
+              "disposition": {"enum": ["confirmed_failure", "verified_pass", "not_applicable", "blocked"]},
+              "coverage": {"enum": ["deterministic_program_provider_unregistered", "deterministic_program_partial", "deterministic_program_complete"]}
+            }
+          },
+          "else": {
+            "not": {"anyOf": [{"required": ["deterministic_binding_id"]}, {"required": ["deterministic_binding_sha256"]}, {"required": ["deterministic_program_template_count"]}, {"required": ["deterministic_program_status"]}, {"required": ["deterministic_clause_results"]}]},
+            "properties": {
+              "classification_route": {"enum": ["contextual_judgment", "accountable_human_decision", "specialist_or_legal_judgment", "empirical_protocol_undefined", "contract_incomplete", "mixed", "unbounded_claim"]},
+              "classification_decision_basis": {"enum": ["primary_nondeterministic", "skeptically_rejected", "strength_audit_reclassified"]},
+              "disposition": {"const": "needs_review"},
+              "coverage": {"const": "nondeterministic_advisory"},
+              "authority": {"const": "none"}
+            }
+          }
+        },
+        {
+          "if": {"properties": {"deterministic_program_status": {"const": "executed_pass"}}, "required": ["deterministic_program_status"]},
+          "then": {"required": ["deterministic_clause_results"], "properties": {"disposition": {"const": "verified_pass"}, "coverage": {"const": "deterministic_program_complete"}, "authority": {"const": "deterministic_exact"}}}
+        },
+        {
+          "if": {"properties": {"deterministic_program_status": {"const": "executed_fail"}}, "required": ["deterministic_program_status"]},
+          "then": {"required": ["deterministic_clause_results"], "properties": {"disposition": {"const": "confirmed_failure"}, "authority": {"const": "deterministic_exact"}}}
+        },
+        {
+          "if": {"properties": {"deterministic_program_status": {"const": "executed_not_applicable"}}, "required": ["deterministic_program_status"]},
+          "then": {"required": ["deterministic_clause_results"], "properties": {"disposition": {"const": "not_applicable"}, "coverage": {"const": "deterministic_program_complete"}, "authority": {"const": "deterministic_exact"}}}
+        }
+      ]
     },
     "control_source": {
       "type": "object",
@@ -93,15 +191,22 @@
     "ai_control_review": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["provider", "assessment_candidate", "applicability_candidate", "confidence", "reason", "advice", "evidence", "limitations", "task_id"],
+      "required": ["provider", "review_depth", "assessment_candidate", "applicability_candidate", "confidence", "priority", "reason", "challenge", "risk_if_ignored", "advice", "remediation_steps", "verification_steps", "evidence_needed", "evidence", "limitations", "task_id"],
       "properties": {
         "provider": {"enum": ["codex", "claude"]},
         "model": {"type": "string"},
+        "review_depth": {"enum": ["standard", "deep"]},
         "assessment_candidate": {"enum": ["advisory_pass_candidate", "advisory_fail_candidate", "needs_evidence", "not_applicable_candidate"]},
         "applicability_candidate": {"enum": ["applicable", "not_applicable", "undetermined"]},
         "confidence": {"enum": ["low", "medium", "high"]},
+        "priority": {"enum": ["critical", "high", "medium", "low", "none"]},
         "reason": {"type": "string", "minLength": 1, "maxLength": 16384},
-        "advice": {"type": "string", "maxLength": 16384},
+        "challenge": {"type": "string", "minLength": 1, "maxLength": 16384},
+        "risk_if_ignored": {"type": "string", "minLength": 1, "maxLength": 16384},
+        "advice": {"type": "string", "minLength": 1, "maxLength": 16384},
+        "remediation_steps": {"type": "array", "minItems": 1, "maxItems": 12, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 16384}},
+        "verification_steps": {"type": "array", "minItems": 1, "maxItems": 12, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 16384}},
+        "evidence_needed": {"type": "array", "minItems": 1, "maxItems": 12, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 16384}},
         "evidence": {"type": "array", "maxItems": 256, "items": {"$ref": "#/$defs/location"}},
         "limitations": {"type": "array", "minItems": 1, "maxItems": 256, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 16384}},
         "citation_verification": {"enum": ["not_cited", "snapshot_location_validated"]},

@@ -1,0 +1,1586 @@
+{
+  "schema_version": "prc.control-classification-packet/v0.1",
+  "packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/engineering/02-product-and-requirements.md",
+  "control_count": 105,
+  "controls": [
+    {
+      "control_id": "USEQ-13EC8AE3",
+      "revision": 1,
+      "semantic_sha256": "13ec8ae3578d486e1db16b94446b5791004cfb6c433fe836f88e3fe54c360cfd",
+      "statement": "The problem, intended users, release scope, non-goals, and deferred features are documented.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 15
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product and Business Readiness",
+        "Product definition"
+      ]
+    },
+    {
+      "control_id": "USEQ-429BBD1E",
+      "revision": 1,
+      "semantic_sha256": "429bbd1ec081f9ddef7f4ca6ec080f02a1746e1adc4b02b8341aaf33db43a193",
+      "statement": "Critical user journeys are identified and ranked by user and business impact.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 16
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product and Business Readiness",
+        "Product definition"
+      ]
+    },
+    {
+      "control_id": "USEQ-9DBA28BF",
+      "revision": 1,
+      "semantic_sha256": "9dba28bf6223b4f3449911743501d4faa81021bd3795326d2ece44c01c0598d3",
+      "statement": "Critical journeys cover onboarding, normal use, error recovery, account recovery, cancellation, and data/account deletion where applicable.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 17
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product and Business Readiness",
+        "Product definition"
+      ]
+    },
+    {
+      "control_id": "USEQ-AFDBA1B7",
+      "revision": 1,
+      "semantic_sha256": "afdba1b7a4277b001791a3602e7a53a9ba6a2617f5e1deedf1cce88d2fc6c080",
+      "statement": "Behavior is specified for unavailable dependencies, partial failures, empty data, malformed data, incomplete data, stale data, and conflicting data.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 18
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product and Business Readiness",
+        "Product definition"
+      ]
+    },
+    {
+      "control_id": "USEQ-6925AA24",
+      "revision": 1,
+      "semantic_sha256": "6925aa24bc52d5efb24b5d24c032bc7f42190994078d1c696d9499c76e82892b",
+      "statement": "Pricing, entitlements, quotas, limits, billing, cancellation, refund, reversal, dispute, and undo behavior are unambiguous.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 19
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product and Business Readiness",
+        "Product definition"
+      ]
+    },
+    {
+      "control_id": "USEQ-CE594458",
+      "revision": 1,
+      "semantic_sha256": "ce59445871d23625f7fc7fc6af7301b47a9ebcc37c6989daa175f69b35dc5267",
+      "statement": "Customer-support obligations, service hours, maintenance expectations, SLOs, SLAs, and contractual commitments are documented and aligned.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 20
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product and Business Readiness",
+        "Product definition"
+      ]
+    },
+    {
+      "control_id": "USEQ-F951491B",
+      "revision": 1,
+      "semantic_sha256": "f951491b093748ae8f6fa05e899a19fc2d0093e2af912446df4c017c5b387c35",
+      "statement": "Product and marketing claims are supported by implemented behavior and evidence.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 21
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product and Business Readiness",
+        "Product definition"
+      ]
+    },
+    {
+      "control_id": "USEQ-42AA91B8",
+      "revision": 1,
+      "semantic_sha256": "42aa91b8c0503f9d7027038dd77d855e57b3957d8c23b3430e3e5267fdba6b45",
+      "statement": "Define measurable launch success, failure, stop, and rollback criteria.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 25
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product and Business Readiness",
+        "Launch objectives"
+      ]
+    },
+    {
+      "control_id": "USEQ-6E15410E",
+      "revision": 1,
+      "semantic_sha256": "6e15410ebdfb077ae1bf072802965ae7c3850d460aaa8546d52c969f9527d972",
+      "statement": "Define adoption, conversion, quality, reliability, support, safety, and abuse indicators as applicable.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 26
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product and Business Readiness",
+        "Launch objectives"
+      ]
+    },
+    {
+      "control_id": "USEQ-E84CA4EA",
+      "revision": 1,
+      "semantic_sha256": "e84ca4ea8988c17d5992adedf7dc99d2e323d553762597d6dcb2b6cec8750f05",
+      "statement": "Define who may pause, continue, expand, or roll back the launch.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 27
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product and Business Readiness",
+        "Launch objectives"
+      ]
+    },
+    {
+      "control_id": "USEQ-B636D78E",
+      "revision": 1,
+      "semantic_sha256": "b636d78e6875ae9c737b6abd9d80766e91cf00796d4cbde5dcc84ce2ff1cbf61",
+      "statement": "Establish whether launch is internal, private, regional, percentage-based, invitation-only, or public.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 28
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product and Business Readiness",
+        "Launch objectives"
+      ]
+    },
+    {
+      "control_id": "USEQ-CD424A12",
+      "revision": 1,
+      "semantic_sha256": "cd424a12febb497dd9d6d8cb66b3cc5fe941dd2fa7a47e1f3cd83353ae03ba42",
+      "statement": "Ensure product, marketing, sales, support, and operations use the same release date and scope.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 29
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product and Business Readiness",
+        "Launch objectives"
+      ]
+    },
+    {
+      "control_id": "USEQ-B319D366",
+      "revision": 1,
+      "semantic_sha256": "b319d366738bacd4e639a04a6c8616e8ecd660810ddc451e088096d88ab2a296",
+      "statement": "Ensure help content, screenshots, tours, pricing pages, documentation, and legal text match released behavior.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 30
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product and Business Readiness",
+        "Launch objectives"
+      ]
+    },
+    {
+      "control_id": "USEQ-2A991D71",
+      "revision": 1,
+      "semantic_sha256": "2a991d7116f47b6d34dc14de38350aa74b62126b68b9a707cd63b4d3b83a724f",
+      "statement": "Notify customers of breaking changes, downtime, migrations, or changed data use where required.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 31
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product and Business Readiness",
+        "Launch objectives"
+      ]
+    },
+    {
+      "control_id": "USEQ-3F2DC642",
+      "revision": 1,
+      "semantic_sha256": "3f2dc64270970dd6bebb219fa075a061e1a139193d83e691181c9e183af0a9ac",
+      "statement": "State the user or societal problem independently of a preferred solution.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 39
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Strategy, Vision, and Outcomes",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-232B216A",
+      "revision": 1,
+      "semantic_sha256": "232b216aef4afcfaa954783a0434e4b9f48ce5e8164fdc949c8608a27d2dae5c",
+      "statement": "Define target users, buyers, operators, administrators, support teams, and affected non-users.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 40
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Strategy, Vision, and Outcomes",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E1BD3483",
+      "revision": 1,
+      "semantic_sha256": "e1bd34839efa482e090c0a253f42b73f64900c44f33cf51823f7e346593d29b5",
+      "statement": "Define the intended outcome and observable evidence that the problem is reduced.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 41
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Strategy, Vision, and Outcomes",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-66F98F70",
+      "revision": 1,
+      "semantic_sha256": "66f98f700995ce99cde1d8d28db405876a05715a9def76ab02d5089c4eed920f",
+      "statement": "Define strategic non-goals and choices to prevent unbounded scope.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 42
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Strategy, Vision, and Outcomes",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4E6FBFF6",
+      "revision": 1,
+      "semantic_sha256": "4e6fbff6498d3027016be606aeb766c4202363db091d7314c2f61349bc636208",
+      "statement": "Validate that the product aligns with organizational mission, capabilities, risk appetite, and operating model.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 43
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Strategy, Vision, and Outcomes",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F06D1CFF",
+      "revision": 1,
+      "semantic_sha256": "f06d1cffa04f03b157ed88f9d20dcd83c35f87a91da2bcee4306d4a8e03294cb",
+      "statement": "Describe the value exchange, including what users provide in money, data, attention, effort, or lock-in.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 44
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Strategy, Vision, and Outcomes",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F7E05701",
+      "revision": 1,
+      "semantic_sha256": "f7e05701645a04c7cb7b6ae8b217e130e52d5b3a9b0b1e479f58e85ed373d734",
+      "statement": "Identify alternatives, substitutes, and the cost of not building the product.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 45
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Strategy, Vision, and Outcomes",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BA54C71F",
+      "revision": 1,
+      "semantic_sha256": "ba54c71fc7775746923f1f0e8b48111c55f74c2415db886bb3e102f58da3c3f0",
+      "statement": "Define quality attributes as part of the value proposition rather than downstream technical concerns.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 46
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Strategy, Vision, and Outcomes",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-FB65AC3C",
+      "revision": 1,
+      "semantic_sha256": "fb65ac3cac76563e33d4772b3ccd86d2d04c91878c4230371284274f9bb95293",
+      "statement": "Define ethical, legal, accessibility, privacy, security, reliability, and sustainability boundaries.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 47
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Strategy, Vision, and Outcomes",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-1BF8A0A2",
+      "revision": 1,
+      "semantic_sha256": "1bf8a0a2a153c8195627f66148a105bf0505ae66500f2bc1304fe94c27cd2bfe",
+      "statement": "Specify assumptions about demand, willingness, behavior, channels, support, and unit economics.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 48
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Strategy, Vision, and Outcomes",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-02161588",
+      "revision": 1,
+      "semantic_sha256": "021615881ed942332b3124a0cf82ff638f691a88dda8620e20d183d26827c231",
+      "statement": "Test the riskiest assumptions before scaling irreversible investment.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 49
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Strategy, Vision, and Outcomes",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-92DBE30F",
+      "revision": 1,
+      "semantic_sha256": "92dbe30f83a02dee2a7eceaa884f5e6ca11d8f15a02055991ba8d25651954b45",
+      "statement": "Ensure strategy can be understood and used to make prioritization trade-offs.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 50
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Strategy, Vision, and Outcomes",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0E97500F",
+      "revision": 1,
+      "semantic_sha256": "0e97500fcb516bc5ed6efe58b58dcde33170cbe70a5f6be8c46681794b184f4b",
+      "statement": "Review strategy when market evidence, regulation, technology, incidents, or user needs change.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 51
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Strategy, Vision, and Outcomes",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-48034FED",
+      "revision": 1,
+      "semantic_sha256": "48034fedeba2bd468e22fb6f73e110596ab51a4c5cb0761276a56900985542af",
+      "statement": "Do not confuse a roadmap, feature list, architecture, or revenue target with a product strategy.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 52
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Strategy, Vision, and Outcomes",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-43785162",
+      "revision": 1,
+      "semantic_sha256": "43785162418d4874ef19497c57fd66ef6e61da6d4a692da0aa95b755d25d7a0b",
+      "statement": "Use multiple evidence sources rather than relying on stakeholder opinion or a single research method.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 60
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Discovery and Problem Validation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B77E43E7",
+      "revision": 1,
+      "semantic_sha256": "b77e43e7ce1bf20eae131a44e1481e31c31b41bf96c31b4ca0c9c4dba4404150",
+      "statement": "Recruit participants representative of relevant abilities, contexts, languages, devices, roles, and risk profiles.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 61
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Discovery and Problem Validation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0ED90387",
+      "revision": 1,
+      "semantic_sha256": "0ed903879d1f2b7911313e2d3a7258c0e5c5390380c26ad0b623a423ccfe0213",
+      "statement": "Separate observed behavior from stated preference and researcher interpretation.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 62
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Discovery and Problem Validation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-1EC01EEF",
+      "revision": 1,
+      "semantic_sha256": "1ec01eefd536139154c4de071a41dd0532eb4753e26f8438d5a6ca8f863e6c68",
+      "statement": "Document research questions, sampling, methods, consent, limitations, and analysis approach.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 63
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Discovery and Problem Validation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D64D10C7",
+      "revision": 1,
+      "semantic_sha256": "d64d10c7c29b62c7f60674b8f0837834446e41f1a3b0232a622afd93d79e4b0c",
+      "statement": "Protect participant privacy, dignity, safety, compensation fairness, and withdrawal rights.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 64
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Discovery and Problem Validation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-372C9D37",
+      "revision": 1,
+      "semantic_sha256": "372c9d372e77eb26f942699827e6492632026a7fe3847928bf09f855591f65ba",
+      "statement": "Validate problem frequency, severity, current workarounds, switching costs, and consequences.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 65
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Discovery and Problem Validation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6D65C0B7",
+      "revision": 1,
+      "semantic_sha256": "6d65c0b7005846cc78305ce0b88e332a801da7771dc3a9163747a0d44a87d104",
+      "statement": "Investigate why the problem exists before optimizing the visible symptom.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 66
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Discovery and Problem Validation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-638BEA5E",
+      "revision": 1,
+      "semantic_sha256": "638bea5e3ea4d215f6cfd9c3ff89b1684d97a54687e88e50f723dfd94e87b8c0",
+      "statement": "Include edge users and people most likely to be harmed or excluded.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 67
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Discovery and Problem Validation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-FB9037E1",
+      "revision": 1,
+      "semantic_sha256": "fb9037e1a9e7c2e50ea4987145652a9a6f8c15b1fe0e697b74d26b2cf2649b47",
+      "statement": "Use prototypes and experiments appropriate to the uncertainty being reduced.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 68
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Discovery and Problem Validation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-446AFA18",
+      "revision": 1,
+      "semantic_sha256": "446afa18a6d0f56c72f320364dc2c44e78f2c40beb69ed235c416dde0c38d029",
+      "statement": "Avoid presenting speculative or unsafe prototypes as operational promises.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 69
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Discovery and Problem Validation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-AA7C1D23",
+      "revision": 1,
+      "semantic_sha256": "aa7c1d23a60eba1b0dcdeecd9f0d47d994e1009fff42eee435402b581415fd87",
+      "statement": "Triangulate qualitative findings with behavioral, operational, market, and support evidence.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 70
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Discovery and Problem Validation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-2E0A4FD3",
+      "revision": 1,
+      "semantic_sha256": "2e0a4fd355f7da5717787bfb91cbaebd474172b32e8d51d74ebc722f561697fa",
+      "statement": "Record disconfirming evidence and avoid confirmation-biased research plans.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 71
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Discovery and Problem Validation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-EE58AEEE",
+      "revision": 1,
+      "semantic_sha256": "ee58aeee78b5094b3b886fd02e6a629c9d0d460d6e7ea72ca0f91eba34690e40",
+      "statement": "Validate desirability, usability, feasibility, viability, accessibility, security, privacy, and operability together.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 72
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Discovery and Problem Validation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-630E7D69",
+      "revision": 1,
+      "semantic_sha256": "630e7d69f4c4c8954ad2b68ae5fd089fc3c5670fdde6640ecc446f017065f51b",
+      "statement": "Stop discovery activities when additional evidence no longer changes decisions materially.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 73
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Discovery and Problem Validation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-82E8E2F9",
+      "revision": 1,
+      "semantic_sha256": "82e8e2f967be8782b7ad4e46b8a8e873bdcf83b1f43f2bdc6786b765c97357e1",
+      "statement": "Translate validated findings into traceable requirements, design constraints, and measurable outcomes.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 74
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Discovery and Problem Validation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-735B6BCE",
+      "revision": 1,
+      "semantic_sha256": "735b6bce744faa44a17ecbd0d81eb0130d4147b186291c4e993f8691858d7545",
+      "statement": "Identify all requirement sources and their authority, including users, operators, law, contracts, risk, standards, and dependencies.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 82
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Requirements Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-7B2F50E9",
+      "revision": 1,
+      "semantic_sha256": "7b2f50e91bd36a8cf8f3145dc053d9c7274b529bd9acba080a09920c638389f9",
+      "statement": "Distinguish needs, goals, constraints, functional requirements, quality requirements, interface requirements, and design decisions.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 83
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Requirements Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-FD9E56C3",
+      "revision": 1,
+      "semantic_sha256": "fd9e56c301ebd288a1a2fe995826262cd4c3c5140374afefd3a6c06fa6f766b0",
+      "statement": "Write requirements that are necessary, singular, unambiguous, feasible, verifiable, consistent, and traceable.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 84
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Requirements Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-639F791F",
+      "revision": 1,
+      "semantic_sha256": "639f791f3223f920f039a0b44a7445e54b92d7a8b46b9d1d30808f703fcaa439",
+      "statement": "State the subject, required behavior or property, conditions, thresholds, units, and tolerances.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 85
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Requirements Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-60E89506",
+      "revision": 1,
+      "semantic_sha256": "60e895062d430b886181607cd38b783aa8add79316d463036aec430f916d6875",
+      "statement": "Avoid subjective terms such as fast, intuitive, secure, scalable, or robust without measurable meaning.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 86
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Requirements Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-00B1BC4F",
+      "revision": 1,
+      "semantic_sha256": "00b1bc4f45c943dabfc556795e341fd141fc6541ac1d4f9af9d55d7921c90998",
+      "statement": "Define normal, alternate, exception, degraded, recovery, and prohibited behavior.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 87
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Requirements Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3640A26A",
+      "revision": 1,
+      "semantic_sha256": "3640a26a5a65741d47c132eae6983d2c532923ec6fcb839b12657bb2d74c8cb7",
+      "statement": "Specify data, state, timing, ordering, concurrency, retention, and authorization semantics.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 88
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Requirements Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E6110D89",
+      "revision": 1,
+      "semantic_sha256": "e6110d89da519a16a25eb8e8b6eace9209c4067bbcc4fd97bfe11d3b6ddc74f3",
+      "statement": "Specify accessibility, privacy, security, reliability, support, observability, and lifecycle requirements explicitly.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 89
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Requirements Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-9C6943D9",
+      "revision": 1,
+      "semantic_sha256": "9c6943d91f9908806d308128ff5aecf64c617d1f12b4791f1076fe5c02dcf220",
+      "statement": "Resolve conflicts and record the rationale and authority for resolution.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 90
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Requirements Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-2AFFB86B",
+      "revision": 1,
+      "semantic_sha256": "2affb86b395bc7503f6d48bbe695462ee0406664f08c67508797733cf0ec5f2c",
+      "statement": "Validate requirements with representative stakeholders and intended users.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 91
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Requirements Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-15B9169F",
+      "revision": 1,
+      "semantic_sha256": "15b9169fef2c609e45f5c0b609d1a30e05b7172a9b258bc944362a8463b0edcb",
+      "statement": "Link every approved requirement to acceptance criteria and planned verification.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 92
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Requirements Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F8007542",
+      "revision": 1,
+      "semantic_sha256": "f8007542d2e81424ba76f150a404f98e30dba32b9e6e8a5be0468202d01af09a",
+      "statement": "Control requirement changes and analyze downstream impact before approval.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 93
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Requirements Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-52E6B01C",
+      "revision": 1,
+      "semantic_sha256": "52e6b01c8cb2199bff747c07c9d872bac9397f64bf9aeab7cca22260168d112d",
+      "statement": "Preserve history and effective dates; do not silently rewrite accepted requirements.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 94
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Requirements Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-CAAD1092",
+      "revision": 1,
+      "semantic_sha256": "caad1092d72040537da956dab7797d0942652252885a5766649f8832ceece4f2",
+      "statement": "Identify derived requirements and the assumptions from which they follow.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 95
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Requirements Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E6A9E01F",
+      "revision": 1,
+      "semantic_sha256": "e6a9e01ff97e63f3ebf3e22a03d80067fd4da1aac2aebb4d9d717498da0660dc",
+      "statement": "Remove requirements that no longer support an approved need rather than preserving them by inertia.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 96
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Requirements Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-72F577BC",
+      "revision": 1,
+      "semantic_sha256": "72f577bcf439133a5b3b52220e14ac820c9237f19fc4ae9f70d7efb9c7f3247e",
+      "statement": "Critical quality attributes are implied but not specified.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 100
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Requirements Engineering",
+        "Category no-go conditions"
+      ]
+    },
+    {
+      "control_id": "USEQ-E26272FA",
+      "revision": 1,
+      "semantic_sha256": "e26272fa1847523adbd78d96c0d4c92ef98dc01f3a4c3d20536761b15eabc12b",
+      "statement": "Requirements cannot be verified objectively or traced to an authorized need.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 101
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Requirements Engineering",
+        "Category no-go conditions"
+      ]
+    },
+    {
+      "control_id": "USEQ-90F20378",
+      "revision": 1,
+      "semantic_sha256": "90f20378cc531923ee5a4879ca693373f389e8affba7cc39d9a1e4fa9faa28b5",
+      "statement": "Prioritize outcomes and risks before individual feature requests.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 109
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Prioritization, Roadmaps, and Scope Control",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-92888739",
+      "revision": 1,
+      "semantic_sha256": "92888739b98b86fc1d93be6ff768ca1de1b6c632ac3fdbe6b162859fa8740528",
+      "statement": "Use explicit criteria such as user impact, strategic fit, risk reduction, urgency, learning value, cost, reversibility, and dependency value.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 110
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Prioritization, Roadmaps, and Scope Control",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D0EAD736",
+      "revision": 1,
+      "semantic_sha256": "d0ead736d7ffe62b0846324d9006eb8558c77319866f2339b8a41da6943e8c4b",
+      "statement": "Include reliability, security, privacy, accessibility, maintenance, support, and debt work in the same prioritization system.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 111
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Prioritization, Roadmaps, and Scope Control",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-1CA42AE8",
+      "revision": 1,
+      "semantic_sha256": "1ca42ae88a1da8f260b16c9fab745971fdc3237042459ee0d2d1138d3b5b0c1f",
+      "statement": "Make stakeholder influence and mandatory obligations visible rather than hiding them inside scores.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 112
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Prioritization, Roadmaps, and Scope Control",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-137336BA",
+      "revision": 1,
+      "semantic_sha256": "137336ba9d23f989f0e84d1d8c81a88112bb9e67138efbd1fc7714524ecfe3d9",
+      "statement": "Represent uncertainty and sensitivity instead of treating prioritization scores as objective truth.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 113
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Prioritization, Roadmaps, and Scope Control",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-79915E9D",
+      "revision": 1,
+      "semantic_sha256": "79915e9d752bb4260e5f3ff33d26bee9557a1e3aa1dc3804ffcc19238892304b",
+      "statement": "Identify prerequisites, sequencing constraints, migration needs, and operational readiness work.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 114
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Prioritization, Roadmaps, and Scope Control",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-60BEFCD2",
+      "revision": 1,
+      "semantic_sha256": "60befcd29da85a8b01a5b93d1de3a0785e295a9497f15fa382f88cd52db2a909",
+      "statement": "Define the smallest coherent scope that can safely produce evidence or value.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 115
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Prioritization, Roadmaps, and Scope Control",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-80609BBD",
+      "revision": 1,
+      "semantic_sha256": "80609bbd15bfe8d63e3be44a5e542215014f3c02422ecbe9736d1afc2fe5c458",
+      "statement": "Protect critical quality attributes from being traded away implicitly to meet dates.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 116
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Prioritization, Roadmaps, and Scope Control",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-DE6C27A5",
+      "revision": 1,
+      "semantic_sha256": "de6c27a5933b29404577223ccec2d123e71a2d4a005c904af8ed652c2a4243f9",
+      "statement": "Use roadmaps to communicate intent, hypotheses, sequence, and confidence—not false certainty.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 117
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Prioritization, Roadmaps, and Scope Control",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5E98FA21",
+      "revision": 1,
+      "semantic_sha256": "5e98fa218ea57ab4b74a6325ed26ef6cf2b4fedf97977ac6f3f795f44c0f3caf",
+      "statement": "Distinguish committed obligations from targets, options, and exploratory work.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 118
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Prioritization, Roadmaps, and Scope Control",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-01BD0F61",
+      "revision": 1,
+      "semantic_sha256": "01bd0f6179d72138189dc2637caf39b17ab49b4088dd46edc0328c2b9297b805",
+      "statement": "Define entry and exit criteria for roadmap stages.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 119
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Prioritization, Roadmaps, and Scope Control",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-01BCFAAE",
+      "revision": 1,
+      "semantic_sha256": "01bcfaaee5fe4ac9a44344a547252d0702f56ce12d9565c35f21edbad1846a0d",
+      "statement": "Reassess priorities when assumptions, incidents, capacity, regulation, or user evidence changes.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 120
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Prioritization, Roadmaps, and Scope Control",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3B778F2C",
+      "revision": 1,
+      "semantic_sha256": "3b778f2cccfd06f5c5ec4e280d03b84726226e8c306dcb2a3e4c6bc63cc0c729",
+      "statement": "Limit work in progress and stop starting work that cannot be completed to the required quality.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 121
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Prioritization, Roadmaps, and Scope Control",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5B61643E",
+      "revision": 1,
+      "semantic_sha256": "5b61643e89fb864aa8f58a9fd650a0158e63ce0888c630620a9ebf31f3aa61e9",
+      "statement": "Make descoping decisions explicit and analyze their impact on support, operations, safety, and future change.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 122
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Prioritization, Roadmaps, and Scope Control",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-10689ED1",
+      "revision": 1,
+      "semantic_sha256": "10689ed1ef91c55a9213fc01a2463fb0dfb21c90845ad894ed126a382981a265",
+      "statement": "Document who made material priority decisions and why.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 123
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Prioritization, Roadmaps, and Scope Control",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0A03EEA5",
+      "revision": 1,
+      "semantic_sha256": "0a03eea56f069bb7f59a2b10926e65b2ecfd1da6963716641d06d23032aa0106",
+      "statement": "Define a small set of outcome metrics linked to user value and product purpose.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 131
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Metrics, Experimentation, and Learning",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-590E9EFF",
+      "revision": 1,
+      "semantic_sha256": "590e9eff89b015883ccf3acfc0cb991bde1150ba1bb5e898348ca12ede371657",
+      "statement": "Pair outcome metrics with guardrails for quality, safety, privacy, accessibility, reliability, abuse, and cost.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 132
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Metrics, Experimentation, and Learning",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D470C55C",
+      "revision": 1,
+      "semantic_sha256": "d470c55c8f3d808b01e1ca5a45cc8909000a584841c706793d05743b1a515ee4",
+      "statement": "Define event semantics and data-quality requirements before instrumenting them.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 133
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Metrics, Experimentation, and Learning",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-8180A0E5",
+      "revision": 1,
+      "semantic_sha256": "8180a0e5f78cbd238cc5c46c1f495fc473ac17881685eaf88f056d9f81ad2240",
+      "statement": "Verify that telemetry reflects actual user behavior and not duplicate, missing, synthetic, or bot events.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 134
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Metrics, Experimentation, and Learning",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-9C795830",
+      "revision": 1,
+      "semantic_sha256": "9c795830fb7ee46a551774c6fcb399f18a520f28c552fa7b7d93a327e02e6da4",
+      "statement": "Pre-register experiment hypothesis, population, unit, allocation, duration, primary measure, guardrails, and stopping rules.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 135
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Metrics, Experimentation, and Learning",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F5E0C7E3",
+      "revision": 1,
+      "semantic_sha256": "f5e0c7e3e85dcacfa7d4277a7f81c2fa7f9974d9de08b1eb430e4911c7d8696f",
+      "statement": "Use randomization or a credible causal method when making causal claims.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 136
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Metrics, Experimentation, and Learning",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-FA653F6A",
+      "revision": 1,
+      "semantic_sha256": "fa653f6afe5ea7eb881f6e7fb8f8a28b41402f8b65414508900ebf6ab69b97d4",
+      "statement": "Prevent sample-ratio mismatch, cross-group contamination, novelty effects, peeking, and repeated-testing bias.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 137
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Metrics, Experimentation, and Learning",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C9444031",
+      "revision": 1,
+      "semantic_sha256": "c944403154eac7b236c4b75144568354f3be4e86ed7b25cfedd3e5241ea1b0c0",
+      "statement": "Segment results to detect harmed cohorts without data dredging or privacy-invasive profiling.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 138
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Metrics, Experimentation, and Learning",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B58791C5",
+      "revision": 1,
+      "semantic_sha256": "b58791c58e77b2029c08a7ffafc1cf053949edf09a8c40aee546432d6b64b171",
+      "statement": "Do not ship a statistically significant result that is practically harmful or strategically irrelevant.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 139
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Metrics, Experimentation, and Learning",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5391DDEE",
+      "revision": 1,
+      "semantic_sha256": "5391ddee49c86f57a6ed85700109d3fe8b87b4e1a2e6d04af63e979dd3446fb0",
+      "statement": "Treat inconclusive and negative results as learning rather than pressure to manipulate analysis.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 140
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Metrics, Experimentation, and Learning",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-11E13BB4",
+      "revision": 1,
+      "semantic_sha256": "11e13bb4e1485d7d182ac7624ad2f851541c8364c66af08de7ebee38eca37767",
+      "statement": "Preserve experiment configuration, code, data lineage, analysis, and decision records.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 141
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Metrics, Experimentation, and Learning",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-86D51237",
+      "revision": 1,
+      "semantic_sha256": "86d5123736c79be17cb0b149af9e086105689d1900bbdc87d6c2c52c1087e8b9",
+      "statement": "Ensure users are not exposed to materially unsafe or deceptive variants.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 142
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Metrics, Experimentation, and Learning",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-883443BC",
+      "revision": 1,
+      "semantic_sha256": "883443bc99d9bc0f6b7ade4d35df701dd71fa6ca943a6a41f1112ec53e487ff4",
+      "statement": "Define feature-flag cleanup, long-term holdout, and post-launch validation plans.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 143
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Metrics, Experimentation, and Learning",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-37C2F56F",
+      "revision": 1,
+      "semantic_sha256": "37c2f56f72ed9327e03435d7f9cfaf05f61791d42b25a91608684e89665e7f8d",
+      "statement": "Reconcile product analytics with operational, financial, support, and qualitative evidence.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 144
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Metrics, Experimentation, and Learning",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-8EA9F41B",
+      "revision": 1,
+      "semantic_sha256": "8ea9f41b563a5b73e1241942755553ba86c30be6fcadf63e36dca59fc295b54f",
+      "statement": "Review whether optimizing a metric is degrading the underlying user outcome.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 145
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Metrics, Experimentation, and Learning",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0B5ECDD2",
+      "revision": 1,
+      "semantic_sha256": "0b5ecdd278ca0dd3a4dda1948cc56290b9e92cef1364beaf177fbd18fcb9fba4",
+      "statement": "Define lifecycle states and entry, support, maintenance, deprecation, and retirement criteria.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 153
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Lifecycle, Deprecation, and Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E363C389",
+      "revision": 1,
+      "semantic_sha256": "e363c38996012b8fe22e0175af9c895db5d644cf0fdbfbd5eed021a6c2245b60",
+      "statement": "Publish support windows and compatibility commitments that the organization can sustain.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 154
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Lifecycle, Deprecation, and Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E028DE12",
+      "revision": 1,
+      "semantic_sha256": "e028de120fcdd5fafbf25bab14a27dd513e11e091e3df0ac3c53f1b6db38bc77",
+      "statement": "Track adoption, usage, critical customers, integrations, dependencies, and data before deprecation.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 155
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Lifecycle, Deprecation, and Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3ACFDDBF",
+      "revision": 1,
+      "semantic_sha256": "3acfddbf800b8d63782490ff73936dfe8f5261b8d6649c61a50eb5886775bd4d",
+      "statement": "Provide proportionate notice, migration guidance, export, tooling, and support.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 156
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Lifecycle, Deprecation, and Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-43188F99",
+      "revision": 1,
+      "semantic_sha256": "43188f99208ed0d1b55e98621780030981da8bc4b897de02c568d6f3f61efb04",
+      "statement": "Avoid breaking security, accessibility, legal, or data-access obligations during reduced support.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 157
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Lifecycle, Deprecation, and Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-33C4E64B",
+      "revision": 1,
+      "semantic_sha256": "33c4e64bb0c4984710586f690810b6e2129f39a3d99cf4964c68754e65eeb2a0",
+      "statement": "Define how defects and vulnerabilities are handled during maintenance and extended-support periods.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 158
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Lifecycle, Deprecation, and Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B5593A92",
+      "revision": 1,
+      "semantic_sha256": "b5593a922245df73383ae43ffd93055d113b7a289522225faf96d58839ac3682",
+      "statement": "Prevent new dependencies on components already marked for retirement.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 159
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Lifecycle, Deprecation, and Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B7C71F97",
+      "revision": 1,
+      "semantic_sha256": "b7c71f97d06b256d920d14b58f9d3beb31e4bae2d069afddeee41db5a52ea878",
+      "statement": "Measure migration progress and contact customers at risk of disruption.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 160
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Lifecycle, Deprecation, and Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-65B667B8",
+      "revision": 1,
+      "semantic_sha256": "65b667b8967f1e45b3c46fead9299139439d167270f00c71c3d6c9007b2d0b0e",
+      "statement": "Keep old and new versions interoperable for the documented transition where required.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 161
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Lifecycle, Deprecation, and Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BD2D6F7B",
+      "revision": 1,
+      "semantic_sha256": "bd2d6f7b3a1432772e9c70b067620214dd38dea9b9d2ef494a37307366b502b0",
+      "statement": "Define final data export, retention, deletion, legal hold, and backup behavior.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 162
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Lifecycle, Deprecation, and Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-CD275A7D",
+      "revision": 1,
+      "semantic_sha256": "cd275a7d69d938ad7f8df722e017a6fcbde00f088d2ba68ad9808bee9c11af62",
+      "statement": "Revoke credentials, domains, certificates, endpoints, jobs, queues, infrastructure, and supplier access during retirement.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 163
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Lifecycle, Deprecation, and Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-79D1353B",
+      "revision": 1,
+      "semantic_sha256": "79d1353b3d694b089e99bc78bc56719aafe0011440b1264d59ee7dae9ce0b440",
+      "statement": "Preserve required records and evidence after operational systems are removed.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 164
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Lifecycle, Deprecation, and Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0151D776",
+      "revision": 1,
+      "semantic_sha256": "0151d776181cf67c9ede9e93254211bd76671a4566ee4273a9757f595184d189",
+      "statement": "Verify that retired assets are no longer reachable, billed, monitored as active, or processing data.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 165
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Lifecycle, Deprecation, and Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-8429659A",
+      "revision": 1,
+      "semantic_sha256": "8429659ab9b7db98841096d030ed5bf6f778a0254aab9c40e1df12ca6592330c",
+      "statement": "Provide rollback or continuity options for failed migrations where practical.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 166
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Lifecycle, Deprecation, and Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-94B6F552",
+      "revision": 1,
+      "semantic_sha256": "94b6f5522026afcafd3e0a455d6b0c3689a66af81579dc0f2b6acdcb2c331f5c",
+      "statement": "Conduct a retirement review and capture lessons for future lifecycle planning.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 167
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Lifecycle, Deprecation, and Retirement",
+        "Category-specific universal rules"
+      ]
+    }
+  ]
+}

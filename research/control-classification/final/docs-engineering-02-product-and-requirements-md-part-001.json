@@ -1,0 +1,1940 @@
+{
+  "schema_version": "prc.control-classification-final/v0.1",
+  "packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/engineering/02-product-and-requirements.md",
+  "control_count": 105,
+  "controls": [
+    {
+      "control_id": "USEQ-13EC8AE3",
+      "revision": 1,
+      "semantic_sha256": "13ec8ae3578d486e1db16b94446b5791004cfb6c433fe836f88e3fe54c360cfd",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Five section names do not prove that the problem, users, scope, non-goals, and deferred features are accurately and usefully documented.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A document can contain those headings with TBD or one vague sentence in each. Presence passes while the product definition remains unusable."
+    },
+    {
+      "control_id": "USEQ-429BBD1E",
+      "revision": 1,
+      "semantic_sha256": "429bbd1ec081f9ddef7f4ca6ec080f02a1746e1adc4b02b8341aaf33db43a193",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Journey records and rank values are objective, but identifying critical journeys and weighing user against business impact require product judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every journey marked critical has explicit user-impact and business-impact ranks.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "human_accountability",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-9DBA28BF",
+      "revision": 1,
+      "semantic_sha256": "9dba28bf6223b4f3449911743501d4faa81021bd3795326d2ece44c01c0598d3",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Criticality and applicability are product judgments, and a declared journey register cannot prove that every real onboarding, recovery, cancellation, and deletion path is included.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The register can mark account recovery not applicable and list one happy-path onboarding while the product has passwords and multiple cancellation routes. Schema coverage passes although critical journeys are missing."
+    },
+    {
+      "control_id": "USEQ-AFDBA1B7",
+      "revision": 1,
+      "semantic_sha256": "afdba1b7a4277b001791a3602e7a53a9ba6a2617f5e1deedf1cce88d2fc6c080",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Behavior references for seven labels do not prove that behavior is complete, coherent, or correct for every dependency and data source.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Each field can say show error while failing to define retry, partial state, or user impact for a stale payment response. The checklist passes but behavior remains unspecified."
+    },
+    {
+      "control_id": "USEQ-6925AA24",
+      "revision": 1,
+      "semantic_sha256": "6925aa24bc52d5efb24b5d24c032bc7f42190994078d1c696d9499c76e82892b",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Presence of commercial and reversal behavior specifications is objective, but whether their language is unambiguous requires semantic and legal interpretation.",
+      "deterministic_clauses": [
+        {
+          "statement": "Each applicable pricing, entitlement, quota, limit, billing, cancellation, refund, reversal, dispute, and undo behavior has a versioned specification.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "legal_or_specialist_authority",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-CE594458",
+      "revision": 1,
+      "semantic_sha256": "ce59445871d23625f7fc7fc6af7301b47a9ebcc37c6989daa175f69b35dc5267",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Support and commitment records can be compared, but complete contractual obligation capture and substantive alignment require legal and accountable review.",
+      "deterministic_clauses": [
+        {
+          "statement": "Support obligations, hours, maintenance expectations, SLOs, SLAs, and contractual commitments share consistent versioned identifiers and values in the release record.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "human_accountability",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-F951491B",
+      "revision": 1,
+      "semantic_sha256": "f951491b093748ae8f6fa05e899a19fc2d0093e2af912446df4c017c5b387c35",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Claims, behavior references, and evidence links are observable, but deciding whether evidence substantively supports each product or marketing claim requires contextual and legal judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every published product or marketing claim links to implemented behavior and current evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "legal_or_specialist_authority",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-42AA91B8",
+      "revision": 1,
+      "semantic_sha256": "42aa91b8c0503f9d7027038dd77d855e57b3957d8c23b3430e3e5267fdba6b45",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Success, failure, stop, and rollback criteria are complete typed predicates with metrics, operators, thresholds, windows, and actions fixed before launch.",
+      "deterministic_clauses": [
+        {
+          "statement": "The launch plan defines metric, operator, threshold, window, and action for success, failure, stop, and rollback criteria.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A missing threshold, unevaluable operator, absent action, or post-launch change fails; no product judgment is needed to verify that measurable criteria were defined."
+    },
+    {
+      "control_id": "USEQ-6E15410E",
+      "revision": 1,
+      "semantic_sha256": "6e15410ebdfb077ae1bf072802965ae7c3850d460aaa8546d52c969f9527d972",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Indicator definitions are objective, but applicability and selection of meaningful adoption, safety, abuse, and other indicators require product and risk judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every indicator category declared applicable has a metric, data source, window, and threshold in the launch plan.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-E84CA4EA",
+      "revision": 1,
+      "semantic_sha256": "e84ca4ea8988c17d5992adedf7dc99d2e323d553762597d6dcb2b6cec8750f05",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "A role matrix cannot prove that the roles have legitimate organizational authority to pause, continue, expand, or roll back a launch.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "An incorrectly privileged role can be listed for every action and pass membership checks while the actual authorized release owner is absent."
+    },
+    {
+      "control_id": "USEQ-B636D78E",
+      "revision": 1,
+      "semantic_sha256": "b636d78e6875ae9c737b6abd9d80766e91cf00796d4cbde5dcc84ce2ff1cbf61",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Launch mode is a closed enum with objective regional or percentage parameters, so one declared mode is fully schema-validatable.",
+      "deterministic_clauses": [
+        {
+          "statement": "The launch plan declares internal, private, regional, percentage-based, invitation-only, or public mode and its required parameters.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "An unknown, missing, or parameter-incomplete mode fails; one valid configured mode passes."
+    },
+    {
+      "control_id": "USEQ-CD424A12",
+      "revision": 1,
+      "semantic_sha256": "cd424a12febb497dd9d6d8cb66b3cc5fe941dd2fa7a47e1f3cd83353ae03ba42",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The five named functions and canonical release record form a fixed set, and exact date and scope-digest equality is mechanically decidable.",
+      "deterministic_clauses": [
+        {
+          "statement": "Product, marketing, sales, support, and operations records reference one canonical release identifier.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All five records match the canonical release date and scope digest.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "Any function using a different date, release identifier, or scope digest fails the complete five-way comparison."
+    },
+    {
+      "control_id": "USEQ-B319D366",
+      "revision": 1,
+      "semantic_sha256": "b319d366738bacd4e639a04a6c8616e8ecd660810ddc451e088096d88ab2a296",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Artifact versions can be bound to a release, but determining that help, screenshots, pricing, documentation, and legal text semantically match behavior needs human and legal review.",
+      "deterministic_clauses": [
+        {
+          "statement": "Each named customer-facing artifact is bound to the same release behavior version and has a current review record.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "legal_or_specialist_authority",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-2A991D71",
+      "revision": 1,
+      "semantic_sha256": "2a991d7116f47b6d34dc14de38350aa74b62126b68b9a707cd63b4d3b83a724f",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Notification delivery is observable, but determining when notice is required and whether it is sufficient requires contractual, legal, and customer-impact judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every change marked notice-required has authenticated customer notification evidence for the declared audience and deadline.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-3F2DC642",
+      "revision": 1,
+      "semantic_sha256": "3f2dc64270970dd6bebb219fa075a061e1a139193d83e691181c9e183af0a9ac",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Whether a problem statement is genuinely independent of a preferred solution is a semantic product-strategy judgment, not a keyword or format check.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-232B216A",
+      "revision": 1,
+      "semantic_sha256": "232b216aef4afcfaa954783a0434e4b9f48ce5e8164fdc949c8608a27d2dae5c",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Named audience fields are objective, but proving complete coverage of target and affected people, especially non-users, is an unbounded stakeholder judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "The strategy defines target users, buyers, operators, administrators, support teams, and affected non-users.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-E1BD3483",
+      "revision": 1,
+      "semantic_sha256": "e1bd34839efa482e090c0a253f42b73f64900c44f33cf51823f7e346593d29b5",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Typed measure fields do not prove that the observable evidence is causally relevant to the intended outcome or shows that the stated problem is reduced.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A strategy for reducing checkout abandonment can measure homepage visits. All metric fields are valid, but the evidence does not show the problem was reduced."
+    },
+    {
+      "control_id": "USEQ-66F98F70",
+      "revision": 1,
+      "semantic_sha256": "66f98f700995ce99cde1d8d28db405876a05715a9def76ab02d5089c4eed920f",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Nonempty non-goal and choice fields do not prove that choices are strategic, meaningful, or sufficient to prevent unbounded scope.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The strategy can state non-goal none and choice do work, with valid dates and owners. The record passes while scope remains unbounded."
+    },
+    {
+      "control_id": "USEQ-4E6FBFF6",
+      "revision": 1,
+      "semantic_sha256": "4e6fbff6498d3027016be606aeb766c4202363db091d7314c2f61349bc636208",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Alignment with mission, capabilities, risk appetite, and operating model is an accountable strategic decision requiring organizational context.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-F06D1CFF",
+      "revision": 1,
+      "semantic_sha256": "f06d1cffa04f03b157ed88f9d20dcd83c35f87a91da2bcee4306d4a8e03294cb",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The true user value exchange and applicability of money, data, attention, effort, and lock-in require product and user interpretation, not field presence.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A product can mark lock-in not applicable while exported data is unusable elsewhere, and describe data as email only while collecting behavior. The schema passes but the exchange is misrepresented."
+    },
+    {
+      "control_id": "USEQ-F7E05701",
+      "revision": 1,
+      "semantic_sha256": "f7e05701645a04c7cb7b6ae8b217e130e52d5b3a9b0b1e479f58e85ed373d734",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Alternative records are observable, but completeness of substitutes and credible cost of not building require market and strategic judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "The strategy lists considered alternatives and substitutes and records a cost-of-not-building analysis.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-BA54C71F",
+      "revision": 1,
+      "semantic_sha256": "ba54c71fc7775746923f1f0e8b48111c55f74c2415db886bb3e102f58da3c3f0",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Quality-attribute references can be located, but whether they are integral to the value proposition rather than downstream concerns is semantic strategy judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "The value proposition explicitly maps declared material quality attributes to user or business value outcomes.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-FB65AC3C",
+      "revision": 1,
+      "semantic_sha256": "fb65ac3cac76563e33d4772b3ccd86d2d04c91878c4230371284274f9bb95293",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Ethical, legal, accessibility, privacy, security, reliability, and sustainability boundaries require multidisciplinary specialist and accountable decisions.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-1BF8A0A2",
+      "revision": 1,
+      "semantic_sha256": "1bf8a0a2a153c8195627f66148a105bf0505ae66500f2bc1304fe94c27cd2bfe",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Identifiers and expected values do not establish meaningful assumptions about demand, willingness, behavior, channels, support, or unit economics.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Every class can contain assumption unknown with an arbitrary expected value. The record passes while the decision assumptions remain unstated in useful terms."
+    },
+    {
+      "control_id": "USEQ-02161588",
+      "revision": 1,
+      "semantic_sha256": "021615881ed942332b3124a0cf82ff638f691a88dda8620e20d183d26827c231",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Experiment timing and results are objective, but selecting the riskiest assumptions and defining irreversible scaling require strategic risk judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every assumption marked highest-risk has a completed test before its linked irreversible-investment milestone.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "human_accountability",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-92DBE30F",
+      "revision": 1,
+      "semantic_sha256": "92dbe30f83a02dee2a7eceaa884f5e6ca11d8f15a02055991ba8d25651954b45",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Strategy understandability and usefulness for prioritization are user outcomes requiring an evaluation protocol, population, tasks, and thresholds not supplied here.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_threshold",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-0E97500F",
+      "revision": 1,
+      "semantic_sha256": "0e97500fcb516bc5ed6efe58b58dcde33170cbe70a5f6be8c46681794b184f4b",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Change events and review timestamps are observable, but material changes in markets, technology, regulation, or user needs require contextual and specialist classification.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every qualifying strategy-change trigger in the approved event register links to a later strategy review.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "legal_or_specialist_authority",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-48034FED",
+      "revision": 1,
+      "semantic_sha256": "48034fedeba2bd468e22fb6f73e110596ab51a4c5cb0761276a56900985542af",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Determining whether an artifact is being mistaken for product strategy requires semantic interpretation of decision intent and content.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-43785162",
+      "revision": 1,
+      "semantic_sha256": "43785162418d4874ef19497c57fd66ef6e61da6d4a692da0aa95b755d25d7a0b",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Different source and method identifiers do not prove independence, evidence quality, or that stakeholder opinion is not being duplicated.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Two interviews with the same stakeholder can be labeled different sources and methods, or one report copied twice. Cardinality passes while the conclusion still relies on one opinion."
+    },
+    {
+      "control_id": "USEQ-B77E43E7",
+      "revision": 1,
+      "semantic_sha256": "b77e43e7ce1bf20eae131a44e1481e31c31b41bf96c31b4ca0c9c4dba4404150",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Representative recruitment across abilities, contexts, languages, devices, roles, and risks requires sampling and accessibility judgment without defined quotas.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_threshold",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-0ED90387",
+      "revision": 1,
+      "semantic_sha256": "0ed903879d1f2b7911313e2d3a7258c0e5c5390380c26ad0b623a423ccfe0213",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Labels do not prove that observed behavior, stated preference, and researcher interpretation were correctly separated rather than misclassified.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A researcher's inference can be placed in the observed field and empty preference text added. All labels exist, yet provenance categories remain mixed."
+    },
+    {
+      "control_id": "USEQ-1EC01EEF",
+      "revision": 1,
+      "semantic_sha256": "1ec01eefd536139154c4de071a41dd0532eb4753e26f8438d5a6ca8f863e6c68",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Research field presence does not prove adequate sampling, methods, consent, limitations, or analysis, and valid consent may require ethical or legal authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A record can list convenience sample, method interview, and consent yes without an actual consent process. Every field passes while the study plan is invalid."
+    },
+    {
+      "control_id": "USEQ-D64D10C7",
+      "revision": 1,
+      "semantic_sha256": "d64d10c7c29b62c7f60674b8f0837834446e41f1a3b0232a622afd93d79e4b0c",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Participant privacy, dignity, safety, compensation fairness, and withdrawal rights require research-ethics, legal, and contextual judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-372C9D37",
+      "revision": 1,
+      "semantic_sha256": "372c9d372e77eb26f942699827e6492632026a7fe3847928bf09f855591f65ba",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Validating problem frequency, severity, workarounds, switching costs, and consequences needs an empirical design whose population, measures, and thresholds are undefined.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_threshold",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-6D65C0B7",
+      "revision": 1,
+      "semantic_sha256": "6d65c0b7005846cc78305ce0b88e332a801da7771dc3a9163747a0d44a87d104",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Determining why a problem exists and whether visible symptoms mask its cause is causal product-research judgment, not a deterministic fact.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-638BEA5E",
+      "revision": 1,
+      "semantic_sha256": "638bea5e3ea4d215f6cfd9c3ff89b1684d97a54687e88e50f723dfd94e87b8c0",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Selecting edge users and people most likely to be harmed or excluded requires inclusive-research and risk judgment with no bounded population definition.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-FB9037E1",
+      "revision": 1,
+      "semantic_sha256": "fb9037e1a9e7c2e50ea4987145652a9a6f8c15b1fe0e697b74d26b2cf2649b47",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Whether a prototype or experiment is appropriate to the uncertainty requires research-method and risk judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-446AFA18",
+      "revision": 1,
+      "semantic_sha256": "446afa18a6d0f56c72f320364dc2c44e78f2c40beb69ed235c416dde0c38d029",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Speculation, unsafe prototypes, and operational promises are semantic, safety, and communications judgments that require accountable review.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-AA7C1D23",
+      "revision": 1,
+      "semantic_sha256": "aa7c1d23a60eba1b0dcdeecd9f0d47d994e1009fff42eee435402b581415fd87",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Evidence-graph links do not prove that sources actually triangulate the qualitative finding, and inapplicability rationales require judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A finding about pricing can link to an unrelated support ticket and generic market report. Every edge exists while the conclusion has not been triangulated."
+    },
+    {
+      "control_id": "USEQ-2E0A4FD3",
+      "revision": 1,
+      "semantic_sha256": "2e0a4fd355f7da5717787bfb91cbaebd474172b32e8d51d74ebc722f561697fa",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Disconfirming-evidence fields are checkable, but proving absence of confirmation bias in research planning requires interpretation of human choices and omitted evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Each research conclusion records considered disconfirming evidence and its effect on the conclusion.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-EE58AEEE",
+      "revision": 1,
+      "semantic_sha256": "ee58aeee78b5094b3b886fd02e6a629c9d0d460d6e7ea72ca0f91eba34690e40",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Joint validation of desirability, usability, feasibility, viability, accessibility, security, privacy, and operability is a multidisciplinary acceptance judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-630E7D69",
+      "revision": 1,
+      "semantic_sha256": "630e7d69f4c4c8954ad2b68ae5fd089fc3c5670fdde6640ecc446f017065f51b",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Whether new evidence still changes decisions materially depends on strategy, uncertainty, cost, and an undefined materiality threshold.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-82E8E2F9",
+      "revision": 1,
+      "semantic_sha256": "82e8e2f967be8782b7ad4e46b8a8e873bdcf83b1f43f2bdc6786b765c97357e1",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Resolvable links do not prove that a requirement, constraint, or outcome faithfully translates the validated finding.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A finding that users need account recovery can link to a color requirement and homepage metric. The graph passes but the finding was not translated into the product."
+    },
+    {
+      "control_id": "USEQ-735B6BCE",
+      "revision": 1,
+      "semantic_sha256": "735b6bce744faa44a17ecbd0d81eb0130d4147b186291c4e993f8691858d7545",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Source and authority fields are observable, but proving that all sources, especially law, contracts, risk, standards, and dependencies, were discovered is unbounded and specialist-dependent.",
+      "deterministic_clauses": [
+        {
+          "statement": "The requirements-source register addresses users, operators, law, contracts, risk, standards, and dependencies with authority references.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "legal_or_specialist_authority",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-7B2F50E9",
+      "revision": 1,
+      "semantic_sha256": "7b2f50e91bd36a8cf8f3145dc053d9c7274b529bd9acba080a09920c638389f9",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "An enum label is objective, but deciding whether an artifact is truly a need, goal, constraint, requirement, or design decision depends on its meaning.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A fixed database choice can be labeled user need and pass enum validation while the categories are not actually distinguished."
+    },
+    {
+      "control_id": "USEQ-FD9E56C3",
+      "revision": 1,
+      "semantic_sha256": "fd9e56c301ebd288a1a2fe995826262cd4c3c5140374afefd3a6c06fa6f766b0",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Necessity, singularity, ambiguity, feasibility, verifiability, consistency, and traceability include semantic requirement-quality judgments beyond syntax.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-639F791F",
+      "revision": 1,
+      "semantic_sha256": "639f791f3223f920f039a0b44a7445e54b92d7a8b46b9d1d30808f703fcaa439",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Typed fields do not prove that the subject, behavior, conditions, thresholds, units, and tolerances form a coherent, measurable requirement.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A latency requirement can use users as its unit and an irrelevant tolerance while filling every field. The schema passes but the requirement is not validly stated."
+    },
+    {
+      "control_id": "USEQ-60E89506",
+      "revision": 1,
+      "semantic_sha256": "60e895062d430b886181607cd38b783aa8add79316d463036aec430f916d6875",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A vocabulary scan can find listed subjective words and missing measures, but deciding whether surrounding language gives measurable meaning requires semantic review.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every occurrence of a configured subjective requirement term links to an explicit metric, unit, threshold, and condition.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-00B1BC4F",
+      "revision": 1,
+      "semantic_sha256": "00b1bc4f45c943dabfc556795e341fd141fc6541ac1d4f9af9d55d7921c90998",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Applicability and substantive behavior for six categories depend on feature semantics; references or rationales alone do not prove complete specification.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A payment feature can mark degraded behavior not applicable and use fail for every other field. All categories are present but usable behavior is not defined."
+    },
+    {
+      "control_id": "USEQ-3640A26A",
+      "revision": 1,
+      "semantic_sha256": "3640a26a5a65741d47c132eae6983d2c532923ec6fcb839b12657bb2d74c8cb7",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Data, state, timing, ordering, concurrency, retention, and authorization semantics require meaningful domain definitions, not merely typed fields.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Every field can say default while omitting tenant boundaries and retry ordering. Presence passes although the requirement's semantics remain unspecified."
+    },
+    {
+      "control_id": "USEQ-E6110D89",
+      "revision": 1,
+      "semantic_sha256": "e6110d89da519a16a25eb8e8b6eace9209c4067bbcc4fd97bfe11d3b6ddc74f3",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Explicit domain entries are observable, but determining complete applicable accessibility, privacy, security, reliability, support, observability, and lifecycle requirements requires specialist context.",
+      "deterministic_clauses": [
+        {
+          "statement": "The requirement set contains explicit entries or applicability decisions for every named quality domain.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-9C6943D9",
+      "revision": 1,
+      "semantic_sha256": "9c6943d91f9908806d308128ff5aecf64c617d1f12b4791f1076fe5c02dcf220",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Resolving requirement conflicts and judging the authority and rationale are accountable product, legal, and technical decisions.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-2AFFB86B",
+      "revision": 1,
+      "semantic_sha256": "2affb86b395bc7503f6d48bbe695462ee0406664f08c67508797733cf0ec5f2c",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Representative stakeholder and user validation requires sampling, task, and acceptance protocols not defined by this rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_threshold",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-15B9169F",
+      "revision": 1,
+      "semantic_sha256": "15b9169fef2c609e45f5c0b609d1a30e05b7172a9b258bc944362a8463b0edcb",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Links establish graph connectivity, not that acceptance criteria and planned verification actually test the approved requirement.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A privacy requirement can link to an uptime threshold and a lint command. Both references resolve while no acceptance criterion or verification addresses privacy."
+    },
+    {
+      "control_id": "USEQ-F8007542",
+      "revision": 1,
+      "semantic_sha256": "f8007542d2e81424ba76f150a404f98e30dba32b9e6e8a5be0468202d01af09a",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Change history and downstream links are objective, but completeness and adequacy of impact analysis before approval require semantic judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every requirement change links to a preapproval downstream-impact record and authenticated approval.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-52E6B01C",
+      "revision": 1,
+      "semantic_sha256": "52e6b01c8cb2199bff747c07c9d872bac9397f64bf9aeab7cca22260168d112d",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "Content-addressed accepted revisions, effective dates, and successor links make history preservation and silent rewriting objectively verifiable.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every accepted requirement revision remains retrievable by digest with its effective date and successor links.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "Changing or deleting accepted text breaks its digest or chain; missing dates and ambiguous successors cannot pass."
+    },
+    {
+      "control_id": "USEQ-CAAD1092",
+      "revision": 1,
+      "semantic_sha256": "caad1092d72040537da956dab7797d0942652252885a5766649f8832ceece4f2",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Trace links do not prove that a derived requirement logically follows from the linked assumptions and source requirements.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A requirement to use a specific database can link to an assumption about mobile users. References resolve but the claimed derivation is invalid."
+    },
+    {
+      "control_id": "USEQ-E6A9E01F",
+      "revision": 1,
+      "semantic_sha256": "e6a9e01ff97e63f3ebf3e22a03d80067fd4da1aac2aebb4d9d717498da0660dc",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Whether a requirement still supports an approved need and is retained by inertia is an accountable semantic and prioritization judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-72F577BC",
+      "revision": 1,
+      "semantic_sha256": "72f577bcf439133a5b3b52220e14ac820c9237f19fc4ae9f70d7efb9c7f3247e",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Detecting material quality attributes that are only implied requires semantic interpretation and a context-owned criticality judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-E26272FA",
+      "revision": 1,
+      "semantic_sha256": "e26272fa1847523adbd78d96c0d4c92ef98dc01f3a4c3d20536761b15eabc12b",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Verification plans and need links are checkable, but objective verifiability and the authority of the underlying need require contextual and governance judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every requirement links to a bounded verification method and a need with a recorded authority reference.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "human_accountability",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-90F20378",
+      "revision": 1,
+      "semantic_sha256": "90f20378cc531923ee5a4879ca693373f389e8affba7cc39d9a1e4fa9faa28b5",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Whether outcomes and risks truly precede feature requests is a prioritization-intent and decision-quality judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-92888739",
+      "revision": 1,
+      "semantic_sha256": "92888739b98b86fc1d93be6ff768ca1de1b6c632ac3fdbe6b162859fa8740528",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The examples in the original statement are not a mandatory universal list; the exact promise is that an explicit, predeclared criterion set is actually used for each in-scope decision.",
+      "deterministic_clauses": [
+        {
+          "statement": "The versioned prioritization policy defines a nonempty explicit set of named decision criteria before the affected priority decisions are recorded.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every priority decision in the sealed assessment scope records its inputs under the exact criterion set from the bound prioritization-policy version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A record that names all eight examples could pass even if real priorities are assigned from an undisclosed executive score, while a valid project may use different explicit criteria. Binding each decision to its predeclared criterion set preserves both Pass and Fail directions."
+    },
+    {
+      "control_id": "USEQ-D0EAD736",
+      "revision": 1,
+      "semantic_sha256": "d0ead736d7ffe62b0846324d9006eb8558c77319866f2339b8a41da6943e8c4b",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Registry membership for known items cannot prove that all reliability, security, privacy, accessibility, maintenance, support, and debt work was identified and entered.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Feature and listed maintenance items can share one registry while a known accessibility remediation is kept outside it. The clause passes although the same system is not used for all work."
+    },
+    {
+      "control_id": "USEQ-1CA42AE8",
+      "revision": 1,
+      "semantic_sha256": "1ca42ae88a1da8f260b16c9fab745971fdc3237042459ee0d2d1138d3b5b0c1f",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Separate stakeholder-influence and mandatory-obligation fields outside the aggregate score are exact record and calculation-structure properties.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every priority item records stakeholder influence and mandatory obligations outside its aggregate score.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "Hiding either input inside the score or omitting its explicit field fails the schema and score-definition inspection."
+    },
+    {
+      "control_id": "USEQ-137336BA",
+      "revision": 1,
+      "semantic_sha256": "137336ba9d23f989f0e84d1d8c81a88112bb9e67138efbd1fc7714524ecfe3d9",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Fields named uncertainty and sensitivity analysis do not prove uncertainty is quantified honestly or that sensitivity was actually analyzed.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A result can set uncertainty low and sensitivity none with a boilerplate warning. The record passes while presenting the score as falsely objective."
+    },
+    {
+      "control_id": "USEQ-79915E9D",
+      "revision": 1,
+      "semantic_sha256": "79915e9d752bb4260e5f3ff33d26bee9557a1e3aa1dc3804ffcc19238892304b",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Roadmap fields cannot prove that all real prerequisites, sequencing constraints, migrations, and operational work were identified.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A database change can mark migrations not applicable and omit a provider prerequisite while every field is populated. The record passes but dependencies remain hidden."
+    },
+    {
+      "control_id": "USEQ-60BEFCD2",
+      "revision": 1,
+      "semantic_sha256": "60befcd29da85a8b01a5b93d1de3a0785e295a9497f15fa382f88cd52db2a909",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Smallest, coherent, safe, and value-producing scope require product, architecture, risk, and user judgment rather than a mechanical size metric.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-80609BBD",
+      "revision": 1,
+      "semantic_sha256": "80609bbd15bfe8d63e3be44a5e542215014f3c02422ecbe9736d1afc2fe5c458",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Quality-objective changes and date pressure are observable, but detecting an implicit trade-away and deciding criticality require contextual decision review.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every change to a critical quality objective links to an explicit authorized trade-off decision rather than only a schedule change.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "human_accountability",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-DE6C27A5",
+      "revision": 1,
+      "semantic_sha256": "de6c27a5933b29404577223ccec2d123e71a2d4a005c904af8ed652c2a4243f9",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Intent, hypotheses, confidence, and false certainty are semantic communication qualities that cannot be reliably decided from roadmap fields alone.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-5E98FA21",
+      "revision": 1,
+      "semantic_sha256": "5e98fa218ea57ab4b74a6325ed26ef6cf2b4fedf97977ac6f3f795f44c0f3caf",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The four roadmap states form a closed classification, so exactly one explicit state per item is mechanically decidable.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every roadmap item is labeled committed obligation, target, option, or exploratory work.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "Missing, multiple, or invented labels fail; allowed values pass without judging priority."
+    },
+    {
+      "control_id": "USEQ-01BD0F61",
+      "revision": 1,
+      "semantic_sha256": "01bd0f6179d72138189dc2637caf39b17ab49b4088dd46edc0328c2b9297b805",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Versioned entry and exit predicates for every finite roadmap stage are objective structured requirements.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every roadmap stage defines versioned entry and exit criteria.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A stage missing either predicate or containing an unevaluable criterion fails; complete machine-readable criteria pass."
+    },
+    {
+      "control_id": "USEQ-01BCFAAE",
+      "revision": 1,
+      "semantic_sha256": "01bcfaaee5fe4ac9a44344a547252d0702f56ce12d9565c35f21edbad1846a0d",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Priority-review timestamps can be matched to declared events, but deciding material changes in assumptions, capacity, regulation, or user evidence requires context.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every qualifying trigger in the approved change register links to a later priority reassessment.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "legal_or_specialist_authority",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-3B778F2C",
+      "revision": 1,
+      "semantic_sha256": "3b778f2cccfd06f5c5ec4e280d03b84726226e8c306dcb2a3e4c6bc63cc0c729",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Configured work-in-progress limits and completion forecasts are measurable, but whether work can meet required quality requires contextual delivery judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Each workflow has an enforced work-in-progress limit and blocks new starts when declared completion criteria cannot be met.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-5B61643E",
+      "revision": 1,
+      "semantic_sha256": "5b61643e89fb864aa8f58a9fd650a0158e63ce0888c630620a9ebf31f3aa61e9",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Descoping decision and impact records are objective, but materiality and sufficient analysis of support, operations, safety, and future change require judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every descoping decision marked material records impacts on support, operations, safety, and future change.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "legal_or_specialist_authority",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-10689ED1",
+      "revision": 1,
+      "semantic_sha256": "10689ed1ef91c55a9213fc01a2463fb0dfb21c90845ad894ed126a382981a265",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Materiality, legitimate decision-maker authority, and a meaningful reason are human judgments not proved by identity and nonempty-text fields.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A major decision can be marked non-material, or an unauthorized signer can enter because. The clause passes while material decisions and reasons remain undocumented."
+    },
+    {
+      "control_id": "USEQ-0A03EEA5",
+      "revision": 1,
+      "semantic_sha256": "0a03eea56f069bb7f59a2b10926e65b2ecfd1da6963716641d06d23032aa0106",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Metric count and links are checkable, but small, user value, and alignment with product purpose require product judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every outcome metric links to a declared user-value outcome and product-purpose identifier.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-590E9EFF",
+      "revision": 1,
+      "semantic_sha256": "590e9eff89b015883ccf3acfc0cb991bde1150ba1bb5e898348ca12ede371657",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Guardrail definitions are objective, but complete applicable coverage across quality, safety, privacy, accessibility, reliability, abuse, and cost requires multidisciplinary judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every outcome metric has guardrails or explicit applicability decisions for each named risk and quality domain.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "legal_or_specialist_authority",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-D470C55C",
+      "revision": 1,
+      "semantic_sha256": "d470c55c8f3d808b01e1ca5a45cc8909000a584841c706793d05743b1a515ee4",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Version and timestamp checks do not prove that event semantics and data-quality requirements are complete or correct for the instrumented event.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "An event can define semantics as click and quality as valid before deployment while omitting units, identity, and duplication rules. The clause passes but semantics are undefined."
+    },
+    {
+      "control_id": "USEQ-8180A0E5",
+      "revision": 1,
+      "semantic_sha256": "8180a0e5f78cbd238cc5c46c1f495fc473ac17881685eaf88f056d9f81ad2240",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Reconciliation tests can detect declared duplicate, missing, synthetic, and bot patterns, but full correspondence to actual human behavior is not bounded.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every telemetry stream has current source-of-truth reconciliation and approved duplicate, missing, synthetic, and bot-event detector results.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-9C795830",
+      "revision": 1,
+      "semantic_sha256": "9c795830fb7ee46a551774c6fcb399f18a520f28c552fa7b7d93a327e02e6da4",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The eight experiment fields and immutable preregistration time precede exposure, making preregistration completeness and timing objectively decidable.",
+      "deterministic_clauses": [
+        {
+          "statement": "Before exposure starts, the experiment record fixes hypothesis, population, unit, allocation, duration, primary measure, guardrails, and stopping rules.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "Missing fields or edits after allocation starts fail; sealed pre-exposure values pass without interpreting the hypothesis quality."
+    },
+    {
+      "control_id": "USEQ-F5E0C7E3",
+      "revision": 1,
+      "semantic_sha256": "f5e0c7e3e85dcacfa7d4277a7f81c2fa7f9974d9de08b1eb430e4911c7d8696f",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Whether a nonrandom method supports a causal claim requires statistical design expertise and assumptions not defined by this rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-FA653F6A",
+      "revision": 1,
+      "semantic_sha256": "fa653f6afe5ea7eb881f6e7fb8f8a28b41402f8b65414508900ebf6ab69b97d4",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Preventing contamination, novelty, peeking, repeated testing, and ratio mismatch requires experiment-specific statistical protocols and specialist interpretation.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-C9444031",
+      "revision": 1,
+      "semantic_sha256": "c944403154eac7b236c4b75144568354f3be4e86ed7b25cfedd3e5241ea1b0c0",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Harmed-cohort segmentation without data dredging or privacy-invasive profiling requires statistical, privacy, and ethical judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-B58791C5",
+      "revision": 1,
+      "semantic_sha256": "b58791c58e77b2029c08a7ffafc1cf053949edf09a8c40aee546432d6b64b171",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Practical harm and strategic relevance are accountable product and risk judgments that statistical significance cannot decide.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-5391DDEE",
+      "revision": 1,
+      "semantic_sha256": "5391ddee49c86f57a6ed85700109d3fe8b87b4e1a2e6d04af63e979dd3446fb0",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Treating negative results as learning and detecting pressure to manipulate analysis concern human intent, incentives, and research conduct.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-11E13BB4",
+      "revision": 1,
+      "semantic_sha256": "11e13bb4e1485d7d182ac7624ad2f851541c8364c66af08de7ebee38eca37767",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "Versioned configuration, code digest, lineage graph, analysis artifact, and decision record are immutable experiment artifacts whose preservation is verifiable.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every experiment preserves versioned configuration, code digest, data-lineage graph, analysis artifact, and decision record.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "Deletion, mutation, broken lineage, or an unbound record breaks referential or digest checks and cannot pass."
+    },
+    {
+      "control_id": "USEQ-86D51237",
+      "revision": 1,
+      "semantic_sha256": "86d5123736c79be17cb0b149af9e086105689d1900bbdc87d6c2c52c1087e8b9",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Material safety and deception in experimental variants require ethical, legal, safety, and user-impact judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-883443BC",
+      "revision": 1,
+      "semantic_sha256": "883443bc99d9bc0f6b7ade4d35df701dd71fa6ca943a6a41f1112ec53e487ff4",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Plan presence and explicit inapplicability do not establish adequate cleanup, holdout, and post-launch validation for each experimental flag.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A persistent experiment flag can mark cleanup not applicable and provide a one-line validation plan. All artifacts exist while lifecycle work is not actually planned."
+    },
+    {
+      "control_id": "USEQ-37C2F56F",
+      "revision": 1,
+      "semantic_sha256": "37c2f56f72ed9327e03435d7f9cfaf05f61791d42b25a91608684e89665e7f8d",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Reconciliation across analytics, operations, finance, support, and qualitative evidence requires causal and semantic interpretation, not only numeric joins.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-8EA9F41B",
+      "revision": 1,
+      "semantic_sha256": "8ea9f41b563a5b73e1241942755553ba86c30be6fcadf63e36dca59fc295b54f",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Whether optimizing a metric degrades the underlying user outcome is a causal product judgment requiring evidence and interpretation.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-0B5ECDD2",
+      "revision": 1,
+      "semantic_sha256": "0b5ecdd278ca0dd3a4dda1948cc56290b9e92cef1364beaf177fbd18fcb9fba4",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The policy requirement is to define lifecycle states and five classes of transition or service criteria, all expressible as versioned structured predicates.",
+      "deterministic_clauses": [
+        {
+          "statement": "The lifecycle policy defines states plus entry, support, maintenance, deprecation, and retirement criteria.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "Missing states or unevaluable entry, support, maintenance, deprecation, or retirement criteria fail; policy wisdom is outside the control."
+    },
+    {
+      "control_id": "USEQ-E363C389",
+      "revision": 1,
+      "semantic_sha256": "e363c38996012b8fe22e0175af9c895db5d644cf0fdbfbd5eed021a6c2245b60",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Published windows and commitments are observable, but whether the organization can sustain them requires capacity, financial, and accountable judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every supported version has published support windows and compatibility commitments with accountable owner and capacity-plan reference.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-E028DE12",
+      "revision": 1,
+      "semantic_sha256": "e028de120fcdd5fafbf25bab14a27dd513e11e091e3df0ac3c53f1b6db38bc77",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Recorded inventories cannot prove complete adoption, usage, customer, integration, dependency, and data populations before deprecation.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "All six fields can exist while an untracked critical customer or integration is omitted. The timestamp passes although deprecation inputs are incomplete."
+    },
+    {
+      "control_id": "USEQ-3ACFDDBF",
+      "revision": 1,
+      "semantic_sha256": "3acfddbf800b8d63782490ff73936dfe8f5261b8d6649c61a50eb5886775bd4d",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Proportionate notice, guidance, export, tooling, and support depend on user impact, contracts, accessibility, and migration risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-43188F99",
+      "revision": 1,
+      "semantic_sha256": "43188f99208ed0d1b55e98621780030981da8bc4b897de02c568d6f3f61efb04",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Determining security, accessibility, legal, and data-access obligations during reduced support requires current specialist and legal authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-33C4E64B",
+      "revision": 1,
+      "semantic_sha256": "33c4e64bb0c4984710586f690810b6e2129f39a3d99cf4964c68754e65eeb2a0",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control asks the policy to define handling, and intake, severity, response, fix, disclosure, and exception fields for both support periods form a complete bounded schema.",
+      "deterministic_clauses": [
+        {
+          "statement": "The lifecycle policy defines intake, severity, response, fix, disclosure, and exception handling for defects and vulnerabilities in each support period.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "An omitted process step or support period fails; actual case execution is assessed elsewhere."
+    },
+    {
+      "control_id": "USEQ-B5593A92",
+      "revision": 1,
+      "semantic_sha256": "b5593a922245df73383ae43ffd93055d113b7a289522225faf96d58839ac3682",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Repository dependency edges do not form a complete inventory of runtime, configuration, infrastructure, and external dependencies on retiring components.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "No source edge can target the component while a new environment configuration or dynamically resolved plugin depends on it. Both clauses pass but a new dependency was created."
+    },
+    {
+      "control_id": "USEQ-B7C71F97",
+      "revision": 1,
+      "semantic_sha256": "b7c71f97d06b256d920d14b58f9d3beb31e4bae2d069afddeee41db5a52ea878",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The migration population and disruption-risk rule may omit customers, while send evidence does not prove the correct at-risk customers were identified and contacted.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "All listed subjects can have progress and notices while an unlisted customer is at risk, or a risk rule wrongly marks them safe. Both clauses pass but required contact is missed."
+    },
+    {
+      "control_id": "USEQ-65B667B8",
+      "revision": 1,
+      "semantic_sha256": "65b667b8967f1e45b3c46fead9299139439d167270f00c71c3d6c9007b2d0b0e",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "One successful result per version pair does not define the promised operations, data shapes, durations, and failure cases needed to prove interoperability.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Old and new versions can pass a health check while mixed-version writes corrupt data. Every matrix cell is green but the versions are not interoperable for the transition."
+    },
+    {
+      "control_id": "USEQ-BD2D6F7B",
+      "revision": 1,
+      "semantic_sha256": "bd2d6f7b3a1432772e9c70b067620214dd38dea9b9d2ef494a37307366b502b0",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Final export, retention, deletion, legal hold, and backup behavior depend on data classification, contracts, and legal obligations, not field presence alone.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A plan can delete held records immediately and mark backup retention not applicable while filling every data-class row. The schema passes but required legal and data behavior is wrong."
+    },
+    {
+      "control_id": "USEQ-CD275A7D",
+      "revision": 1,
+      "semantic_sha256": "cd275a7d69d938ad7f8df722e017a6fcbde00f088d2ba68ad9808bee9c11af62",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "A retirement manifest cannot prove it enumerates every credential, domain, endpoint, job, queue, infrastructure asset, and supplier access path.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Every listed resource can be disabled while a forgotten DNS name and supplier token remain active outside the manifest. Both clauses pass although retirement revocation is incomplete."
+    },
+    {
+      "control_id": "USEQ-79D1353B",
+      "revision": 1,
+      "semantic_sha256": "79d1353b3d694b089e99bc78bc56719aafe0011440b1264d59ee7dae9ce0b440",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Retention artifacts and storage checks are objective, but deciding which records and evidence remain required needs legal and governance authority.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every record declared retention-required remains retrievable with integrity evidence after the operational system is removed.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-0151D776",
+      "revision": 1,
+      "semantic_sha256": "0151d776181cf67c9ede9e93254211bd76671a4566ee4273a9757f595184d189",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Queries over a declared retired-asset inventory cannot prove universal reachability, billing, monitoring, or data-processing absence for omitted paths and uninstrumented events.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "All listed assets can be unreachable and absent from queried systems while a forgotten endpoint processes data or a separate provider keeps billing. The clause passes despite an active retired asset."
+    },
+    {
+      "control_id": "USEQ-8429659A",
+      "revision": 1,
+      "semantic_sha256": "8429659ab9b7db98841096d030ed5bf6f778a0254aab9c40e1df12ca6592330c",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Declared migration rollback and continuity options can be tested, but where they are practical depends on cost, architecture, obligations, and risk.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every migration marked rollback-or-continuity-applicable has a current successful option test.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "human_accountability",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-94B6F552",
+      "revision": 1,
+      "semantic_sha256": "94b6f5522026afcafd3e0a455d6b0c3689a66af81579dc0f2b6acdcb2c331f5c",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Review and lesson records are objective, but whether the retirement review is meaningful and lessons are sufficient requires accountable human reflection.",
+      "deterministic_clauses": [
+        {
+          "statement": "The completed retirement links to an authenticated review record and documented lessons for lifecycle planning.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    }
+  ]
+}

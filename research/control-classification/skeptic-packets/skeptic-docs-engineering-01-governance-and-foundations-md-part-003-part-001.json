@@ -1,0 +1,1606 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-01-governance-and-foundations-md-part-003-part-001",
+  "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 59,
+  "controls": [
+    {
+      "control_id": "USEQ-7A6C75E2",
+      "revision": 1,
+      "semantic_sha256": "7a6c75e2adede75db0867c2724acf4121f86c1461134e81e43cc2509de0488b6",
+      "statement": "Document the current process, target process, transition states, retained exceptions, and retirement conditions.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 714
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Organizational change, adoption, and benefits realization"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Document the current process, target process, transition states, retained exceptions, and retirement conditions.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BD17C161",
+      "revision": 1,
+      "semantic_sha256": "bd17c1611cc32e206cb055c33ab9d5a882cd1ba3910a90566795773c4578daae",
+      "statement": "Distinguish technical deployment from successful adoption and verified benefit realization.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 715
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Organizational change, adoption, and benefits realization"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Distinguish technical deployment from successful adoption and verified benefit realization.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F637AD14",
+      "revision": 1,
+      "semantic_sha256": "f637ad14b0d9a68455fa7c5cf2288d1feb9d017aa24d8adc06a5b4ea14e4b00b",
+      "statement": "Define adoption outcomes, behavioral indicators, user outcomes, business outcomes, safety indicators, and failure criteria before launch.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 716
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Organizational change, adoption, and benefits realization"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define adoption outcomes, behavioral indicators, user outcomes, business outcomes, safety indicators, and failure criteria before launch.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B8EE5089",
+      "revision": 1,
+      "semantic_sha256": "b8ee50892abbd3fe5a7f4442dc8d3541b3035e4b9301034bb088765d0e07837c",
+      "statement": "Establish baseline measurements before changing the system or process.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 717
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Organizational change, adoption, and benefits realization"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Establish baseline measurements before changing the system or process.” can be decided through exact joins and comparisons across complete inventories, immutable versions, event times, configured states, and authenticated bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each to the exact record, configuration, version, event, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All approved exact states, time orderings, identity bindings, and bounded outcomes for those subjects satisfy the control contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AECB2ABF",
+      "revision": 1,
+      "semantic_sha256": "aecb2abf9b1002744e38f9b756ac0b92672ae5688f68ad6f61b7915b8ca1dcb1",
+      "statement": "Provide role-specific training, practice, support, and reference material before affected people are expected to perform new tasks.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 722
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Organizational change, adoption, and benefits realization"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Provide role-specific training, practice, support, and reference material before affected people are expected to perform new tasks.” can be decided through exact joins and comparisons across complete inventories, immutable versions, event times, configured states, and authenticated bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each to the exact record, configuration, version, event, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All approved exact states, time orderings, identity bindings, and bounded outcomes for those subjects satisfy the control contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-88FC79BA",
+      "revision": 1,
+      "semantic_sha256": "88fc79baecf9f959a2a9d514641fc1032f38430b88e01c8f2c46bb75360a205f",
+      "statement": "Define which system is authoritative at every transition stage.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 728
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Organizational change, adoption, and benefits realization"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define which system is authoritative at every transition stage.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-22C353B1",
+      "revision": 1,
+      "semantic_sha256": "22c353b15226c32c8ff892d8551f0d41c2d6cc2db0e53d6b805c5c4b8cdc1917",
+      "statement": "Provide a supported path for correcting migration, adoption, and training errors.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 729
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Organizational change, adoption, and benefits realization"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Provide a supported path for correcting migration, adoption, and training errors.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7AE11356",
+      "revision": 1,
+      "semantic_sha256": "7ae113563051e822b6408729246732c787ed99f284a5efc36230982810e0f388",
+      "statement": "Collect qualitative feedback as well as usage metrics.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 731
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Organizational change, adoption, and benefits realization"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Collect qualitative feedback as well as usage metrics.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F2A1587B",
+      "revision": 1,
+      "semantic_sha256": "f2a1587be4c527f333774163d1c4dddca36520a3dc417386a25b91e6aba05134",
+      "statement": "Maintain a visible decision path for pausing, modifying, narrowing, or reversing the change.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 733
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Organizational change, adoption, and benefits realization"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Maintain a visible decision path for pausing, modifying, narrowing, or reversing the change.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DED02C8E",
+      "revision": 1,
+      "semantic_sha256": "ded02c8e4ea1864e988fdd4aa810c2e5ad7bfd3d95871284453006965d1107ee",
+      "statement": "Update policies, contracts, job aids, controls, dashboards, reports, and audit procedures with the change.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 737
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Organizational change, adoption, and benefits realization"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Update policies, contracts, job aids, controls, dashboards, reports, and audit procedures with the change.” can be decided through exact joins and comparisons across complete inventories, immutable versions, event times, configured states, and authenticated bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each to the exact record, configuration, version, event, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All approved exact states, time orderings, identity bindings, and bounded outcomes for those subjects satisfy the control contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C4FE996D",
+      "revision": 1,
+      "semantic_sha256": "c4fe996d081cff61a3143faf687d710204c1c2fcb851f6ce64f70a7506c3b260",
+      "statement": "Remove obsolete instructions and clearly label temporary transition guidance.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 738
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Organizational change, adoption, and benefits realization"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Remove obsolete instructions and clearly label temporary transition guidance.” can be decided through exact joins and comparisons across complete inventories, immutable versions, event times, configured states, and authenticated bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each to the exact record, configuration, version, event, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All approved exact states, time orderings, identity bindings, and bounded outcomes for those subjects satisfy the control contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-13D789B8",
+      "revision": 1,
+      "semantic_sha256": "13d789b881d9b772605e902d04766f539dee98c208fb85b632abad0ba0d0f47c",
+      "statement": "Preserve access to historical records needed to understand decisions made under the old process.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 742
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Organizational change, adoption, and benefits realization"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Preserve access to historical records needed to understand decisions made under the old process.” can be decided through exact joins and comparisons across complete inventories, immutable versions, event times, configured states, and authenticated bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each to the exact record, configuration, version, event, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All approved exact states, time orderings, identity bindings, and bounded outcomes for those subjects satisfy the control contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5DEBD48E",
+      "revision": 1,
+      "semantic_sha256": "5debd48eb5ad4a865344d040f840ecf0d491731ae13d61b07b81d7527cfe51ab",
+      "statement": "Capture lessons and update future change assumptions, estimates, training, and rollout methods.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 743
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Organizational change, adoption, and benefits realization"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Capture lessons and update future change assumptions, estimates, training, and rollout methods.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F54385C8",
+      "revision": 1,
+      "semantic_sha256": "f54385c81224a323611bc8f26d92cb16c8113b12b491ea8970bea4323448bb07",
+      "statement": "Assign an accountable owner for benefits realization beyond the deployment date.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 744
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Organizational change, adoption, and benefits realization"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Assign an accountable owner for benefits realization beyond the deployment date.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6A646372",
+      "revision": 1,
+      "semantic_sha256": "6a646372409b0026ae93ad949e0f2897610d58952cbda5a98278dceb72f78613",
+      "statement": "Close the change only after adoption, outcome, support, control, and retirement criteria are met.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 745
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Organizational change, adoption, and benefits realization"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Close the change only after adoption, outcome, support, control, and retirement criteria are met.” can be decided through exact joins and comparisons across complete inventories, immutable versions, event times, configured states, and authenticated bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each to the exact record, configuration, version, event, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All approved exact states, time orderings, identity bindings, and bounded outcomes for those subjects satisfy the control contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DE0C89CA",
+      "revision": 1,
+      "semantic_sha256": "de0c89ca5a7a647559fede2186f7a90b71bdd0d9f248f9b9feee9a80da9ae3e4",
+      "statement": "Record the decision purpose, owner, legal basis, ethical rationale, affected populations, inputs, outputs, consequences, and appeal path.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 750
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Deterministic automated decisions, rules engines, scoring, and workflow logic"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record the decision purpose, owner, legal basis, ethical rationale, affected populations, inputs, outputs, consequences, and appeal path.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FA2A720B",
+      "revision": 1,
+      "semantic_sha256": "fa2a720b6fc779fc4c8ae43447e14fa9682014ebf129296c507dc0bdf828979e",
+      "statement": "Define the authoritative source and version for every rule and decision table.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 753
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Deterministic automated decisions, rules engines, scoring, and workflow logic"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define the authoritative source and version for every rule and decision table.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7EA42112",
+      "revision": 1,
+      "semantic_sha256": "7ea421121968cde90ae541fd78897378f40ce56efe96f1e6044d16993d7562d2",
+      "statement": "Record ambiguities, discretionary areas, conflicts, exceptions, and precedence among rules.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 756
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Deterministic automated decisions, rules engines, scoring, and workflow logic"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record ambiguities, discretionary areas, conflicts, exceptions, and precedence among rules.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CC7A27FE",
+      "revision": 1,
+      "semantic_sha256": "cc7a27fe8c0951fe58e985173ec1307f2e66dd3de8341f6f816df51cc4f67a51",
+      "statement": "Make rule effective dates, expiry dates, jurisdiction, product scope, and population scope explicit.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 757
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Deterministic automated decisions, rules engines, scoring, and workflow logic"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Make rule effective dates, expiry dates, jurisdiction, product scope, and population scope explicit.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5BF321CF",
+      "revision": 1,
+      "semantic_sha256": "5bf321cf9a3980d91d04c2883f2dbe461b85963c40b9dff3cbaefea3a8c1e8c2",
+      "statement": "Ensure historical decisions can be reconstructed using the rules, data, configuration, and time context in force at the time.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 758
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Deterministic automated decisions, rules engines, scoring, and workflow logic"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Ensure historical decisions can be reconstructed using the rules, data, configuration, and time context in force at the time.” can be decided through exact joins and comparisons across complete inventories, immutable versions, event times, configured states, and authenticated bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each to the exact record, configuration, version, event, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All approved exact states, time orderings, identity bindings, and bounded outcomes for those subjects satisfy the control contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CE3B9271",
+      "revision": 1,
+      "semantic_sha256": "ce3b927155b08ee535aa58ee6250db326b0af86c35c153d3a0728368f1d0fd69",
+      "statement": "Define behavior for missing, disputed, stale, inconsistent, or low-confidence input.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 760
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Deterministic automated decisions, rules engines, scoring, and workflow logic"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define behavior for missing, disputed, stale, inconsistent, or low-confidence input.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EE4F8C75",
+      "revision": 1,
+      "semantic_sha256": "ee4f8c75f06f3b0570e715f05d77f115372eb8c821e407d80f981843e267696e",
+      "statement": "Define when human review is mandatory and what competence, authority, time, and information the reviewer needs.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 772
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Deterministic automated decisions, rules engines, scoring, and workflow logic"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define when human review is mandatory and what competence, authority, time, and information the reviewer needs.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5F638352",
+      "revision": 1,
+      "semantic_sha256": "5f63835280f13417a4a9c62553eefa4dc928bb04d109198dacf8f3930f1e7e7d",
+      "statement": "Monitor override rates, appeal success, reversal, complaints, subgroup outcomes, drift, and downstream harm.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 774
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Deterministic automated decisions, rules engines, scoring, and workflow logic"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Monitor override rates, appeal success, reversal, complaints, subgroup outcomes, drift, and downstream harm.” can be decided through exact joins and comparisons across complete inventories, immutable versions, event times, configured states, and authenticated bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each to the exact record, configuration, version, event, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All approved exact states, time orderings, identity bindings, and bounded outcomes for those subjects satisfy the control contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6E4D7B2E",
+      "revision": 1,
+      "semantic_sha256": "6e4d7b2eb6c4683f774e98cd808ebbbd68e0d1dc16c5a3f8450a5fc790f41ad3",
+      "statement": "Investigate high disagreement between automated outcomes and expert review.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 775
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Deterministic automated decisions, rules engines, scoring, and workflow logic"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Investigate high disagreement between automated outcomes and expert review.” can be decided through exact joins and comparisons across complete inventories, immutable versions, event times, configured states, and authenticated bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each to the exact record, configuration, version, event, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All approved exact states, time orderings, identity bindings, and bounded outcomes for those subjects satisfy the control contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-16C7AB3F",
+      "revision": 1,
+      "semantic_sha256": "16c7ab3f745b6c4c755cc05a0336919d87dc20755a3f6f68089d03b530e13f73",
+      "statement": "Separate policy approval from technical implementation approval.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 776
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Deterministic automated decisions, rules engines, scoring, and workflow logic"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Separate policy approval from technical implementation approval.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9C43C510",
+      "revision": 1,
+      "semantic_sha256": "9c43c510800152e52eea4575760fba01cbd28a985244b61ce69ac4aec1c0cf91",
+      "statement": "Require independent review for rules that affect rights, safety, money, access, employment, education, healthcare, housing, identity, or essential services.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 777
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Deterministic automated decisions, rules engines, scoring, and workflow logic"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Require independent review for rules that affect rights, safety, money, access, employment, education, healthcare, housing, identity, or essential services.” can be decided through exact joins and comparisons across complete inventories, immutable versions, event times, configured states, and authenticated bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each to the exact record, configuration, version, event, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All approved exact states, time orderings, identity bindings, and bounded outcomes for those subjects satisfy the control contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A3E0DD69",
+      "revision": 1,
+      "semantic_sha256": "a3e0dd69672ac68dc59def0ab14335f1837c5fd11be661c7fbbb07137cb7772e",
+      "statement": "Version rules, test cases, explanatory text, data mappings, and monitoring together.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 778
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Deterministic automated decisions, rules engines, scoring, and workflow logic"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Version rules, test cases, explanatory text, data mappings, and monitoring together.” can be decided through exact joins and comparisons across complete inventories, immutable versions, event times, configured states, and authenticated bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each to the exact record, configuration, version, event, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All approved exact states, time orderings, identity bindings, and bounded outcomes for those subjects satisfy the control contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F9A87984",
+      "revision": 1,
+      "semantic_sha256": "f9a87984c6938a6be2dbbf5303432c6f7730f1b799c3d66d43d7752fc19b2c11",
+      "statement": "Use dual control for emergency rule changes with high impact.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 779
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Deterministic automated decisions, rules engines, scoring, and workflow logic"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Use dual control for emergency rule changes with high impact.” can be decided through exact joins and comparisons across complete inventories, immutable versions, event times, configured states, and authenticated bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each to the exact record, configuration, version, event, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All approved exact states, time orderings, identity bindings, and bounded outcomes for those subjects satisfy the control contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-507353D7",
+      "revision": 1,
+      "semantic_sha256": "507353d79b43198401c39a547569ae474b60bfa0b8fdfdd997c9205f47a3f26f",
+      "statement": "Simulate the population and operational effect of material rule changes before activation.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 780
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Deterministic automated decisions, rules engines, scoring, and workflow logic"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Simulate the population and operational effect of material rule changes before activation.” can be decided through exact joins and comparisons across complete inventories, immutable versions, event times, configured states, and authenticated bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each to the exact record, configuration, version, event, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All approved exact states, time orderings, identity bindings, and bounded outcomes for those subjects satisfy the control contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C059B588",
+      "revision": 1,
+      "semantic_sha256": "c059b5884bb042358d0a8fef40514b12e0642bced46ca2a387ba1293a7cef39d",
+      "statement": "Define rollback and remediation for incorrect decisions already made.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 782
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Deterministic automated decisions, rules engines, scoring, and workflow logic"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define rollback and remediation for incorrect decisions already made.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-72675725",
+      "revision": 1,
+      "semantic_sha256": "72675725c481f3b7f7349681cb9ca332f806f065ba08ba82d1d712444ac192f7",
+      "statement": "Identify every affected record and user when a rule defect is discovered.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 783
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Deterministic automated decisions, rules engines, scoring, and workflow logic"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Identify every affected record and user when a rule defect is discovered.” can be decided through exact joins and comparisons across complete inventories, immutable versions, event times, configured states, and authenticated bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each to the exact record, configuration, version, event, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All approved exact states, time orderings, identity bindings, and bounded outcomes for those subjects satisfy the control contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BAD34E15",
+      "revision": 1,
+      "semantic_sha256": "bad34e15aa9253db714f27aaed40d5d80b5f7140a2f9482c24d3d18d1a48e69a",
+      "statement": "Correct downstream systems, notifications, balances, permissions, reports, and derived decisions after remediation.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 784
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Deterministic automated decisions, rules engines, scoring, and workflow logic"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Correct downstream systems, notifications, balances, permissions, reports, and derived decisions after remediation.” can be decided through exact joins and comparisons across complete inventories, immutable versions, event times, configured states, and authenticated bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each to the exact record, configuration, version, event, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All approved exact states, time orderings, identity bindings, and bounded outcomes for those subjects satisfy the control contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E0356C82",
+      "revision": 1,
+      "semantic_sha256": "e0356c822582cf82276275d0ecc45c71691969a97aa3916906a6575aeccfb9fc",
+      "statement": "Test adversarial gaming, collusion, automation, and economic exploitation of rules.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 787
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Deterministic automated decisions, rules engines, scoring, and workflow logic"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test adversarial gaming, collusion, automation, and economic exploitation of rules.” names a closed adversarial-test evidence requirement, so execution of every approved scenario and its authenticated outcome are objectively verifiable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution evidence covers the approved gaming, collusion, automation, and economic-exploitation scenario set for the exact rule revision.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1D490309",
+      "revision": 1,
+      "semantic_sha256": "1d4903090f2125ce86de7fb01bf372d24827ff8a52c8b1abed0d8ef820f628f6",
+      "statement": "Revalidate rules when source policy, law, population, data collection, product behavior, or operational context changes.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 789
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Deterministic automated decisions, rules engines, scoring, and workflow logic"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Revalidate rules when source policy, law, population, data collection, product behavior, or operational context changes.” can be decided through exact joins and comparisons across complete inventories, immutable versions, event times, configured states, and authenticated bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each to the exact record, configuration, version, event, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All approved exact states, time orderings, identity bindings, and bounded outcomes for those subjects satisfy the control contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4892D554",
+      "revision": 1,
+      "semantic_sha256": "4892d5541915bb00880bf5f5511353959eb61841c6ff717f7773decc97dcd036",
+      "statement": "Retire rules and related data when their purpose or authority ends.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 790
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Deterministic automated decisions, rules engines, scoring, and workflow logic"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Retire rules and related data when their purpose or authority ends.” can be decided through exact joins and comparisons across complete inventories, immutable versions, event times, configured states, and authenticated bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each to the exact record, configuration, version, event, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All approved exact states, time orderings, identity bindings, and bounded outcomes for those subjects satisfy the control contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-411D10D5",
+      "revision": 1,
+      "semantic_sha256": "411d10d589ae5c1561239134197a10f50067aced3c79d996e2260b7145048fe8",
+      "statement": "Keep a complete audit trail of rule creation, approval, testing, deployment, execution, override, and retirement.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 791
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Deterministic automated decisions, rules engines, scoring, and workflow logic"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Keep a complete audit trail of rule creation, approval, testing, deployment, execution, override, and retirement.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F8B4E93A",
+      "revision": 1,
+      "semantic_sha256": "f8b4e93a70b8a8cfebea9e596e79c20fc26cceaac3f899ac73117dcc85685560",
+      "statement": "Maintain provenance records for externally sourced code, data, content, models, fonts, images, audio, video, and documentation.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 800
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Intellectual property, confidential information, and rights provenance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Maintain provenance records for externally sourced code, data, content, models, fonts, images, audio, video, and documentation.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1E23B466",
+      "revision": 1,
+      "semantic_sha256": "1e23b46640efb60c07899b364c5a32417d33bccf564de16b84079f1199383c9b",
+      "statement": "Define rules for employee side projects, prior inventions, open-source contributions, and use of employer resources.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 804
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Intellectual property, confidential information, and rights provenance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define rules for employee side projects, prior inventions, open-source contributions, and use of employer resources.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-46E6D74A",
+      "revision": 1,
+      "semantic_sha256": "46e6d74a871abd6f8b3c0b6bb1f54ec679ad8df825e724c2c8a1125e72a001aa",
+      "statement": "Define contribution terms for public and private repositories.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 805
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Intellectual property, confidential information, and rights provenance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define contribution terms for public and private repositories.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B34707EE",
+      "revision": 1,
+      "semantic_sha256": "b34707ee43fed487f0da6b9205bd9f8af02c7efbca83d3d27a0152b9b1048fa6",
+      "statement": "Track patents, defensive publications, trademarks, domain names, and other rights material to the product.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 807
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Intellectual property, confidential information, and rights provenance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Track patents, defensive publications, trademarks, domain names, and other rights material to the product.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-50A7E640",
+      "revision": 1,
+      "semantic_sha256": "50a7e640fec45b5ddeb5937e71d4fd2adf2767b0083b52546fc06c71f4b3078d",
+      "statement": "Avoid asserting patent or trademark rights without qualified review.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 808
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Intellectual property, confidential information, and rights provenance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Avoid asserting patent or trademark rights without qualified review.” can be decided through exact joins and comparisons across complete inventories, immutable versions, event times, configured states, and authenticated bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each to the exact record, configuration, version, event, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All approved exact states, time orderings, identity bindings, and bounded outcomes for those subjects satisfy the control contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-20AD6393",
+      "revision": 1,
+      "semantic_sha256": "20ad6393f78aa94c55363f1d8e556eac04cb9b169ec584ca07993a98a17e2081",
+      "statement": "Preserve evidence that clean-room boundaries and information controls were followed.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 811
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Intellectual property, confidential information, and rights provenance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Preserve evidence that clean-room boundaries and information controls were followed.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-29EE3F45",
+      "revision": 1,
+      "semantic_sha256": "29ee3f457cf98425d56b10ae257b5b9d02ea46ff8027fde76ff98334e646d140",
+      "statement": "Define rights and obligations for user-generated content, feedback, support submissions, and uploaded files.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 816
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Intellectual property, confidential information, and rights provenance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define rights and obligations for user-generated content, feedback, support submissions, and uploaded files.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2482AD39",
+      "revision": 1,
+      "semantic_sha256": "2482ad39139b424eb28f0bb2785a45fcc47f79e375b28d0442262ff529b6a6c5",
+      "statement": "Provide processes for copyright, trademark, privacy, and other rights complaints.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 818
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Intellectual property, confidential information, and rights provenance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Provide processes for copyright, trademark, privacy, and other rights complaints.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-864C229F",
+      "revision": 1,
+      "semantic_sha256": "864c229f7f3ac4fa432100beeaa02b0c344d9326a00a8642d4c97c021b646faa",
+      "statement": "Track geographic, field-of-use, time, user-count, device-count, and environment restrictions in licenses.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 820
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Intellectual property, confidential information, and rights provenance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Track geographic, field-of-use, time, user-count, device-count, and environment restrictions in licenses.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D38BB2A8",
+      "revision": 1,
+      "semantic_sha256": "d38bb2a89d573d67642c497d3dd5b2bfecff76ae4cc39e5b30dca5a7092ba807",
+      "statement": "Monitor license expiration, renewal, support, and termination dates.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 821
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Intellectual property, confidential information, and rights provenance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Monitor license expiration, renewal, support, and termination dates.” can be decided through exact joins and comparisons across complete inventories, immutable versions, event times, configured states, and authenticated bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each to the exact record, configuration, version, event, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All approved exact states, time orderings, identity bindings, and bounded outcomes for those subjects satisfy the control contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EA6F3090",
+      "revision": 1,
+      "semantic_sha256": "ea6f30900de62aea4b97f756e823e1a170491d2397d90aee3f0282d2aabfdfbd",
+      "statement": "Include intellectual-property and data-rights obligations in supplier and acquisition reviews.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 823
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Intellectual property, confidential information, and rights provenance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Include intellectual-property and data-rights obligations in supplier and acquisition reviews.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-ACCAC2B8",
+      "revision": 1,
+      "semantic_sha256": "accac2b896d556888fabb840f368ef60c9c044ff614da7048d8ce427af044702",
+      "statement": "Revoke access and recover confidential material during offboarding and supplier termination.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 827
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Intellectual property, confidential information, and rights provenance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Revoke access and recover confidential material during offboarding and supplier termination.” can be decided through exact joins and comparisons across complete inventories, immutable versions, event times, configured states, and authenticated bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each to the exact record, configuration, version, event, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All approved exact states, time orderings, identity bindings, and bounded outcomes for those subjects satisfy the control contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9A5C1988",
+      "revision": 1,
+      "semantic_sha256": "9a5c19887e249f3b4452f86a10b1671daebef27d32f6638cc65e29618e5bc041",
+      "statement": "Separate public, internal, confidential, restricted, and customer-owned materials in repositories and documentation systems.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 828
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Intellectual property, confidential information, and rights provenance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Separate public, internal, confidential, restricted, and customer-owned materials in repositories and documentation systems.” can be decided through exact joins and comparisons across complete inventories, immutable versions, event times, configured states, and authenticated bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each to the exact record, configuration, version, event, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All approved exact states, time orderings, identity bindings, and bounded outcomes for those subjects satisfy the control contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4414E1D1",
+      "revision": 1,
+      "semantic_sha256": "4414e1d10fb1790a887403f1c35b685883f1e643121f6dc138ef7879be148edb",
+      "statement": "Define rights needed for decommissioning, customer export, long-term support, security patching, and legal retention.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 830
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Intellectual property, confidential information, and rights provenance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define rights needed for decommissioning, customer export, long-term support, security patching, and legal retention.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EE05022B",
+      "revision": 1,
+      "semantic_sha256": "ee05022bde113ca61dc2e6f30ce08f5e627ef1cc063f9de791f338e3d7800a00",
+      "statement": "Maintain a response plan for infringement claims, license violations, ownership disputes, and accidental disclosure.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 831
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Intellectual property, confidential information, and rights provenance"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Maintain a response plan for infringement claims, license violations, ownership disputes, and accidental disclosure.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-89CCF5C5",
+      "revision": 1,
+      "semantic_sha256": "89ccf5c5a088a3b5d99a6787ed8be32813b0336515b19a38f9a4dc657f783dd1",
+      "statement": "Allow concerns to bypass the normal management chain when that chain has a conflict or is implicated.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 838
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Speak-up culture, independence, conflicts, and decision integrity"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Allow concerns to bypass the normal management chain when that chain has a conflict or is implicated.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-22A55748",
+      "revision": 1,
+      "semantic_sha256": "22a5574888ddd974eedbcd28700c44bc02ac2211f65ce0e542df2367b6895a47",
+      "statement": "Record conflicts of interest for reviewers, approvers, auditors, procurement participants, and risk acceptors.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 840
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Speak-up culture, independence, conflicts, and decision integrity"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record conflicts of interest for reviewers, approvers, auditors, procurement participants, and risk acceptors.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7D5BF185",
+      "revision": 1,
+      "semantic_sha256": "7d5bf1853ffff1f71192ee2eebd61c6c65f315dcfcd65af1173668da672b1fc3",
+      "statement": "Recuse or add independent review when a conflict can affect objectivity.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 841
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Speak-up culture, independence, conflicts, and decision integrity"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Recuse or add independent review when a conflict can affect objectivity.” can be decided through exact joins and comparisons across complete inventories, immutable versions, event times, configured states, and authenticated bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each to the exact record, configuration, version, event, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All approved exact states, time orderings, identity bindings, and bounded outcomes for those subjects satisfy the control contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C30D4EE0",
+      "revision": 1,
+      "semantic_sha256": "c30d4ee00392ffd1cb913890c9a577116efe435778cfd140f67de3e40d2080fb",
+      "statement": "Define stop-work and release-blocking authority for credible high-impact concerns.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 848
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Speak-up culture, independence, conflicts, and decision integrity"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define stop-work and release-blocking authority for credible high-impact concerns.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CEECAF90",
+      "revision": 1,
+      "semantic_sha256": "ceecaf90094cbe31a8447f4055c28274ffedf9ee5073659d04e9559e9cd4dbf8",
+      "statement": "Protect the ability to pause unsafe automation, deployment, data use, or customer communication.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 849
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Speak-up culture, independence, conflicts, and decision integrity"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Protect the ability to pause unsafe automation, deployment, data use, or customer communication.” can be decided through exact joins and comparisons across complete inventories, immutable versions, event times, configured states, and authenticated bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each to the exact record, configuration, version, event, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All approved exact states, time orderings, identity bindings, and bounded outcomes for those subjects satisfy the control contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-22119AF5",
+      "revision": 1,
+      "semantic_sha256": "22119af57c6b665540986db313893727e84ada1b50613e611518fe119e878798",
+      "statement": "Track patterns of ignored warnings, repeated exceptions, near misses, and suppressed defects.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 852
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Speak-up culture, independence, conflicts, and decision integrity"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Track patterns of ignored warnings, repeated exceptions, near misses, and suppressed defects.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FE265A51",
+      "revision": 1,
+      "semantic_sha256": "fe265a51ea4763d81254015d97f921090df97e2e64821e4124cdaad6a2f76ff9",
+      "statement": "Require retrospective review of emergency approvals and break-glass decisions.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 856
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Speak-up culture, independence, conflicts, and decision integrity"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Require retrospective review of emergency approvals and break-glass decisions.” can be decided through exact joins and comparisons across complete inventories, immutable versions, event times, configured states, and authenticated bounded evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope subject and bind each to the exact record, configuration, version, event, or test evidence required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All approved exact states, time orderings, identity bindings, and bounded outcomes for those subjects satisfy the control contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6BA781DF",
+      "revision": 1,
+      "semantic_sha256": "6ba781dfe4482657b564d157e62d81fe408dbcee0f00ee634ad7e0c2e9784bc2",
+      "statement": "Preserve auditability of who decided, what evidence was available, what alternatives existed, and why the decision was made.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 857
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Final Gap Closure — Governance, Acquisition, Automated Decisions, and Rights",
+        "Speak-up culture, independence, conflicts, and decision integrity"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Preserve auditability of who decided, what evidence was available, what alternatives existed, and why the decision was made.” defines a bounded record, policy, inventory, or decision field requirement that can be validated exactly against a complete authoritative scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains a complete in-scope entry with every explicit field, version, owner, date, relationship, approval, or lifecycle state named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

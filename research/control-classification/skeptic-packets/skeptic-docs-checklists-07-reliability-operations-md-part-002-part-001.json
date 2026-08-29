@@ -1,0 +1,681 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-checklists-07-reliability-operations-md-part-002-part-001",
+  "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-002",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 25,
+  "controls": [
+    {
+      "control_id": "PRC-34-016",
+      "revision": 1,
+      "semantic_sha256": "bec9d95f07c9f7b3cbdab97920c0aaebb2b3159ab1b1978081704c795e255214",
+      "statement": "Stop and rollback criteria are documented before launch.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 304
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A versioned release record can objectively show that explicit stop and rollback criteria existed before the recorded launch time.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authenticated release record contains nonempty stop criteria and rollback criteria whose effective timestamp precedes the launch timestamp.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-34-018",
+      "revision": 1,
+      "semantic_sha256": "2b0376f52601825975472c4d34d858111d80dafb568122aa6274cd496fd66c42",
+      "statement": "Rollback has been rehearsed.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 306
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A current rollback rehearsal can be proven by an authenticated execution record tied to the release artifact, configuration, and rollback procedure.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "A bounded rollback rehearsal completed and produced an authenticated result bound to the assessed artifact, configuration, and rollback procedure versions.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-34-019",
+      "revision": 1,
+      "semantic_sha256": "2e7a89ffa5f96fe659ea0230286023268ae6ccde8f6240eb94249cbd5e5cf386",
+      "statement": "Rollback is compatible with database and event changes.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 307
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Versioned migration and event-contract inventories plus fixed backward-compatibility tests can decide rollback compatibility for the release scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The release manifest enumerates every database migration and event-contract change introduced by the assessed release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "The previous application artifact passes the approved compatibility tests against every inventoried resulting database schema and event contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-34-021",
+      "revision": 1,
+      "semantic_sha256": "c05390801cda953cc4cb92d077adc072db52873221a8a099a1d83d7b59c724a9",
+      "statement": "The previous artifact and configuration remain available.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 309
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The prior deployment record identifies exact artifact and configuration versions whose current retrievability and integrity can be queried.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The previous successful deployment record identifies the exact artifact digest and configuration version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Both identified versions remain retrievable and match their recorded immutable digests.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-34-023",
+      "revision": 1,
+      "semantic_sha256": "e9b93d8b8c2c806cd3aebb4951b54f20f1d033853c492fd5bdbb541cfb6fce2b",
+      "statement": "Traffic shifting and load-balancer behavior are tested.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 311
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "An approved finite traffic-routing scenario matrix and authenticated test results can prove that both traffic shifting and load-balancer behavior were tested.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every scenario in the versioned traffic-shifting and load-balancer test matrix has a current authenticated execution result bound to the assessed configuration.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-34-024",
+      "revision": 1,
+      "semantic_sha256": "dbf7cf1fccc2520ab28531540dfa4bbcf82226e4009d764e134d24c33248d4bb",
+      "statement": "Cache and CDN invalidation are planned.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 312
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The planning claim can be decided from a release record that maps each affected cache or CDN surface to an explicit invalidation action and owner.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every affected cache and CDN surface in the release inventory has a versioned invalidation action, trigger, owner, and verification step.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-34-025",
+      "revision": 1,
+      "semantic_sha256": "409b129f2a488225dc5b7db7383440045795dd28b1cb5344f036e840c658d585",
+      "statement": "DNS changes and TTL timing are planned.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 313
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A finite DNS change set can be matched to a dated plan containing old and new values, TTL changes, propagation timing, and reversal steps.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Each DNS change in the release inventory has documented old and new values, TTL timing, propagation timing, execution order, and reversal steps.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-34-026",
+      "revision": 1,
+      "semantic_sha256": "91f2ee61779c25abb683bb6bfe6adaf3f1e2261ec078efbd4a02f5d949dc38cf",
+      "statement": "Certificate changes are planned and monitored.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 314
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Certificate changes are finite resources, so plan coverage and active expiry, handshake, and issuance monitoring can be checked from records and environment state.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every certificate change in the release inventory has a versioned execution and rollback plan.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every changed certificate endpoint has active authenticated monitoring for expiry, successful issuance or renewal, and TLS handshake state.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-34-036",
+      "revision": 1,
+      "semantic_sha256": "0f1ea5574595ceab363ce78e25e019ed6359ed69a2529c97e0a095dd31470975",
+      "statement": "Every deployment action is auditable.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 324
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A sealed deployment execution manifest and append-only audit stream can establish complete event coverage for the finite actions in one deployment.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The deployment orchestrator produces a complete execution manifest enumerating every automated and recorded manual action for the deployment identifier.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        },
+        {
+          "statement": "Every manifested action has an immutable audit event containing actor, action, target, result, and timestamp.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-35-001",
+      "revision": 1,
+      "semantic_sha256": "752d225071bc69874df27dcb0f190f47d5a5fcfc8727095207af965e2f4e79be",
+      "statement": "Verify the deployed artifact digest.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 330
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-002",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The expected release digest and the digest of the artifact running in the target environment can be compared byte for byte.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The digest reported by every deployed instance equals the immutable artifact digest in the approved release manifest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-35-002",
+      "revision": 1,
+      "semantic_sha256": "08b2f903c2fd3ab1fe8635eb186d1faa489e6e2eb8c6ed13acaf82b961470fe1",
+      "statement": "Verify the deployed configuration and feature-flag state.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 331
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A versioned desired-state manifest can be compared exactly with authenticated runtime configuration and feature-flag queries for the deployed scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved release manifest identifies the expected configuration version and every expected feature-flag value for the target environment.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Authenticated runtime queries equal the manifested configuration version and feature-flag values on every deployed target.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-35-003",
+      "revision": 1,
+      "semantic_sha256": "0fa97e8dcf7507c670a4341ea2602d8bfb1a1f2c05838cd33b96ef9196d21dc5",
+      "statement": "Verify database schema and migration completion.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 332
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Expected schema fingerprints and migration identifiers are finite release inputs that can be compared with authenticated database state and migration history.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The release manifest enumerates expected schema fingerprints and migration identifiers for every target database.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Authenticated database queries match every expected schema fingerprint and show every expected migration completed successfully exactly once.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-35-006",
+      "revision": 1,
+      "semantic_sha256": "8f75e42be0356bfc860fb48e9d4ad674de829fb7e693a76f4c3c94d10e5c6e71",
+      "statement": "Test login, logout, recovery, and privileged authentication.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 335
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Capability declarations and fixed expected outcomes allow bounded authentication tests to prove coverage of login, logout, recovery, and privileged authentication.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Each applicable login, logout, account-recovery, and privileged-authentication scenario in the versioned capability matrix has a current successful execution result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-35-007",
+      "revision": 1,
+      "semantic_sha256": "2fa6d1e9187f0747811678572191f3e936ca960c90b1c7578a654a77e270741b",
+      "statement": "Test authorization using multiple roles and tenants.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 336
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A versioned authorization matrix supplies finite role, tenant, action, and expected allow-or-deny cases whose execution can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The applicable authorization suite exercises at least two declared roles and two declared tenants across the versioned allow-and-deny matrix and every case passes.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-35-008",
+      "revision": 1,
+      "semantic_sha256": "f4f48dd7a68579a5e81106c560fd40be227c9c737bef6d0f73a167802a1c59c3",
+      "statement": "Verify public, authenticated, administrative, API, worker, and scheduled-job paths.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 337
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Declared route, service, worker, and job inventories can bound each applicable path class and link every item to a fixed verification result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The assessed capability inventory enumerates all applicable public, authenticated, administrative, API, worker, and scheduled-job paths.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Every inventoried path has a current successful verification result against its versioned expected outcome.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-35-010",
+      "revision": 1,
+      "semantic_sha256": "d4f07466e063e68e318eeffdb05c1edc4de7c864c46125011e5a5e2f2ac1b37f",
+      "statement": "Verify TLS, certificates, redirects, CORS, cache controls, and security headers.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 339
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A versioned endpoint policy can define exact TLS, certificate, redirect, CORS, cache-control, and security-header expectations for bounded network probes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved endpoint inventory defines expected TLS versions, certificate identities, redirects, CORS policy, cache controls, and security headers for each endpoint.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Authenticated bounded probes of every inventoried endpoint match every declared network and HTTP policy expectation.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-35-011",
+      "revision": 1,
+      "semantic_sha256": "3036f0c2de2ea68a56ead23e8bc48177af5f80a6bcf8d0c16df5133c10d6e663",
+      "statement": "Verify CDN and cache behavior.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 340
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A versioned cache contract supplies exact hit, miss, expiry, purge, variation, and CDN expectations that finite request sequences can verify.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every applicable scenario in the approved CDN and cache behavior contract has a current successful bounded request-sequence result for the deployed release.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-35-014",
+      "revision": 1,
+      "semantic_sha256": "f19c7ad6a36d591aca7bf62e2734452d2bee72ee528f576139bec712f34ad72c",
+      "statement": "Verify alerts and synthetic monitoring.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 343
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Complete declared monitor inventories and fixed trigger or probe tests can verify active alert routing and synthetic monitoring for the deployed targets.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every alert and synthetic monitor in the approved production-monitor inventory is enabled and targets the deployed production scope.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Each inventoried alert route and synthetic monitor has a current successful trigger or probe result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-35-015",
+      "revision": 1,
+      "semantic_sha256": "07212c5381f28dcb2777e5a32f1684fd04141ece1aa2f15a0a01efc14cad7b00",
+      "statement": "Compare canary and control outcomes.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 344
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A versioned experiment definition can identify canary, control, metrics, and windows, allowing exact computation and storage of their outcome comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The rollout record defines the canary cohort, control cohort, observation window, and comparison metric formulas.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "An authenticated comparison result exists for every declared metric using the recorded canary and control observations.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-35-016",
+      "revision": 1,
+      "semantic_sha256": "27b01941d67aabeb9f5ed1e2fdaaeb890419ba2a877f14eae153f1d905fb0704",
+      "statement": "Verify analytics and business indicators.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 345
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "An approved indicator registry can define exact analytics queries, windows, expected values, and thresholds that authenticated production data can verify.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The release plan enumerates every applicable analytics and business indicator with its query, time window, expected value or range, and comparison rule.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Authenticated observations for every declared indicator satisfy its versioned comparison rule for the post-deployment window.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-35-018",
+      "revision": 1,
+      "semantic_sha256": "248f20af5b208b13c148352e960ce751ffd5f62ea16fc189c083ea46bdace026",
+      "statement": "Confirm customer support receives expected telemetry and documentation.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 347
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A versioned support handoff manifest can enumerate expected telemetry and documents, and authenticated delivery or access records can prove receipt.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The release handoff manifest enumerates every telemetry view and document expected by customer support with exact versions and recipients.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every expected recipient has authenticated delivery or access evidence for every manifested telemetry view and document version.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-35-020",
+      "revision": 1,
+      "semantic_sha256": "890cbd2adf1714e3ac6024ae053f4e4884a046abdce25f0eda6ffa5f04198dfe",
+      "statement": "Maintain heightened monitoring for the agreed observation period.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 349
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A signed observation plan can define the heightened monitor set and exact time interval, while monitor and telemetry records prove continuous activation.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved observation plan defines the start, end, and exact additional or intensified monitors that constitute heightened monitoring for this release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Authenticated monitor configuration and telemetry records show every planned heightened monitor active throughout the entire agreed interval.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-35-021",
+      "revision": 1,
+      "semantic_sha256": "e0cacd3e27eaba9ca44d5d3e66cd0ac18bf079190331567dd5833c8236e7713a",
+      "statement": "Stop expansion when predefined thresholds are crossed.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 350
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Because the thresholds are predefined, time-aligned metric and rollout records can decide whether every crossing prevented further expansion.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved rollout record defines each expansion-stop metric, threshold, comparison operator, evaluation window, and associated rollout scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "For every recorded threshold crossing, authenticated rollout events show no later expansion and show a stop action at or before the allowed reaction deadline.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-35-023",
+      "revision": 1,
+      "semantic_sha256": "07d64e3243db85b669227bebefa086f82185eaef505e734cbb400117b82d06f5",
+      "statement": "Record the final go, hold, rollback, or incident decision.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 352
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The requirement is to record a decision, so an authenticated release record with one allowed final state, actor, time, and release binding decides it exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The release record contains exactly one final decision from go, hold, rollback, or incident with an accountable actor, timestamp, and assessed release identifier.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-35-024",
+      "revision": 1,
+      "semantic_sha256": "8315f3a63c6e96863dbc67d4ea0d003972b5ea2b280bc4aaaa463e5cb80285d6",
+      "statement": "Schedule follow-up review for deferred observations and temporary controls.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 353
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "35. Post-deployment verification"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Deferred observations and temporary controls are finite release-record items that can each be linked to a dated follow-up review with an owner.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every deferred observation and temporary control in the final release record links to a scheduled follow-up review with date, owner, scope, and release identifier.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

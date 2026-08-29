@@ -1,0 +1,1036 @@
+{
+  "schema_version": "prc.control-classification-skeptic-review/v0.1",
+  "packet_id": "skeptic-docs-engineering-10-verification-and-testing-md-part-003-part-001",
+  "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "controls": [
+    {
+      "control_id": "USEQ-4050C11D",
+      "revision": 1,
+      "semantic_sha256": "4050c11db43252a639f61d774f5c9333720dbfbc7f87a64fac1be91bfd655b3e",
+      "verdict": "confirmed_deterministic",
+      "reason": "Each defect in the authoritative ledger can be checked for the ten exact affected-scope, impact, workaround and ownership fields.",
+      "counterexample_analysis": "A defect missing customer exposure data, affected versions or owner leaves a deterministic schema or registry-join failure.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CD7C7286",
+      "revision": 1,
+      "semantic_sha256": "cd7c7286ac3bc654e7c1bf790f4a95b74fb92a182a990f1f0beb6b978a57aa65",
+      "verdict": "rejected_nondeterministic",
+      "reason": "When possible is a contextual exception, and reproduction occurrence does not prove the defect was exercised against the truly affected released artifact.",
+      "counterexample_analysis": "A team can declare exact-artifact reproduction impossible and use a convenient build even though the release image is available and behaves differently.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9B2BE606",
+      "revision": 1,
+      "semantic_sha256": "9b2be60680b446b472fa6c95972e7125ef0427e22839a689210897667c38c9ef",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Several counts and times are computable, but escaped defects, recurrence and complete customer exposure depend on discovering and linking all real failures.",
+      "counterexample_analysis": "The dashboard can report all eight measures while an unreported customer defect and a semantically recurring issue are absent from the ledger.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-28C4F691",
+      "revision": 1,
+      "semantic_sha256": "28c4f691050e2da41c488d139f60d99e4fe55133115d9dbd3f1d74c2f1a014d1",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Determining which of five assurance failures caused a defect requires causal analysis, production representativeness judgment and evidence interpretation.",
+      "counterexample_analysis": "A review can check every category and blame a missing assertion while the real cause was an unrealistic production model.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-003E4BB9",
+      "revision": 1,
+      "semantic_sha256": "003e4bb95901af8edd7c8a61e01d0e89ae348c3234fa23a59abb2748d14cab7a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Artifact edits are observable, but deciding how lessons should change seven practices and whether the changes embody the lesson is contextual.",
+      "counterexample_analysis": "All seven artifacts can receive superficial updates while the coding rule and runbook still permit the same defect mechanism.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2BC9A7C5",
+      "revision": 1,
+      "semantic_sha256": "2bc9a7c580fbee9b5936fa5834e6525cfdc292f924fb64d6e8b740b31b576cad",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Evidence presence cannot demonstrate corrective-action effectiveness without a causal protocol, observation horizon and recurrence oracle.",
+      "counterexample_analysis": "A corrective action can close after one passing test while the defect still recurs under an untested production condition.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-ECC22163",
+      "revision": 1,
+      "semantic_sha256": "ecc221639e5dfe88d21e6e74e139added76c5d61a03294d3ebcf2893f789f51e",
+      "verdict": "confirmed_deterministic",
+      "reason": "A release gate can join the authoritative critical-item registry to current, unexpired verification-evidence identities and block any missing edge.",
+      "counterexample_analysis": "A critical journey or mandatory standard with stale or absent evidence creates a deterministic no-go condition.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-06A9124D",
+      "revision": 1,
+      "semantic_sha256": "06a9124d3e2e6c30181d51adfe5c2346fd6e4c2d8ae07c6b2869656107a30833",
+      "verdict": "confirmed_deterministic",
+      "reason": "Exact artifact, configuration, schema, flag, environment and dependency identities can be bound to both test results and the release manifest.",
+      "counterexample_analysis": "Any mismatch in the six identities fails the provenance equality check and blocks the release.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4D20534E",
+      "revision": 1,
+      "semantic_sha256": "4d20534eebf7e609394f74d86968058aee11acf0bbf568577b93f06fbf862c40",
+      "verdict": "confirmed_deterministic",
+      "reason": "The required-test ledger can deterministically reject skipped, suppressed, quarantined or retry-only passes lacking an approved retry explanation.",
+      "counterexample_analysis": "A required test hidden in quarantine or passing only after an unexplained rerun cannot reach the release-approved state.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D601267F",
+      "revision": 1,
+      "semantic_sha256": "d601267fc70beb7cd493f08ed731ad6ec98cfc9e7ee538c22039253be7c8d027",
+      "verdict": "confirmed_deterministic",
+      "reason": "The evidence package can be validated for the fourteen exact strategy, scope, traceability, execution, result, limitation and approval artifact classes.",
+      "counterexample_analysis": "Omitting test data, exclusions or approvals breaks the signed package manifest and its finite completeness schema.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F55894B6",
+      "revision": 1,
+      "semantic_sha256": "f55894b627eb8c68754affeaf7f297e478c07eed3cad6135039609f44b1bb61c",
+      "verdict": "confirmed_deterministic",
+      "reason": "For every policy-tagged high-impact item, the package can require either immutable raw evidence or an independently replayable evidence recipe.",
+      "counterexample_analysis": "A high-impact resilience experiment with only a summary and no raw trace or reproducible recipe fails the exact evidence alternative.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-DC9036BC",
+      "revision": 1,
+      "semantic_sha256": "dc9036bc7d93cff9ddb56b45092a4c1c3404ba292e9abf1699aefed2e3972130",
+      "verdict": "rejected_nondeterministic",
+      "reason": "No bounded source establishes all insufficiently tested defect classes and conditions; a document can only list recognized gaps.",
+      "counterexample_analysis": "The document can contain several gap classes while omitting the very failure condition the team has not modeled.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3D261C6C",
+      "revision": 1,
+      "semantic_sha256": "3d261c6cb3584165671ecf3fa02b896f11a4fc1261470d1c5194e9d0ba927c59",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Monitoring and incident-response records do not prove they can detect and contain every risk that preproduction testing could not cover.",
+      "counterexample_analysis": "A detector and runbook can exist while an untested risk emits no signal or exceeds the containment path's authority.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2AE6772C",
+      "revision": 1,
+      "semantic_sha256": "2ae6772c1ebe3380f2e71fc88a646b0b0655fdd4837e8456b914bc03be5b2b45",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The rule requires interpreting whether the final assurance prose presents testing as proof that no defects exist; a policy or phrase list cannot decide that meaning.",
+      "counterexample_analysis": "A statement can avoid banned literal phrases yet still imply that testing proves the release defect-free, so a bounded record or token check can pass while the rule is broken.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-67C9E2FD",
+      "revision": 1,
+      "semantic_sha256": "67c9e2fd1e17a8e33aa2cc0346d7337aa6201bbf2e94835d1d2d71ec63c711f5",
+      "verdict": "confirmed_deterministic",
+      "reason": "A versioned assurance-scope record can define the nine finite qualities, harms, obligations, claims, systems and context dimensions.",
+      "counterexample_analysis": "If users, versions or operating conditions lack scope definitions, the exact nine-dimension schema fails.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0CF01C55",
+      "revision": 1,
+      "semantic_sha256": "0cf01c5539226cd4754b62dd44eff7aafc4c782b392278d927dc3b6a72613bd7",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A stakeholder list cannot prove every relying person or organization and supported decision was discovered, especially external or indirect reliance.",
+      "counterexample_analysis": "All known stakeholders can be mapped while a regulator, customer operator or downstream decision maker remains omitted.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0EB55A7C",
+      "revision": 1,
+      "semantic_sha256": "0eb55a7c16d860230c7110842d62a3e6e688616902a074a5ec7b37e3297d630a",
+      "verdict": "confirmed_deterministic",
+      "reason": "An evidence schema can require each item to use one of four distinct types: implementation, operation, outcome or absence of known failure.",
+      "counterexample_analysis": "An outcome record mislabeled as implementation evidence or an untyped item violates the exact enum and case schema.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-19F7A4D0",
+      "revision": 1,
+      "semantic_sha256": "19f7a4d0574f84cfac5e9dc74ff804c6327d72e673256b15775bdffcb21b5210",
+      "verdict": "confirmed_deterministic",
+      "reason": "A versioned independence policy can define requirements for the six finite activities: design review, verification, validation, audit, certification and risk acceptance.",
+      "counterexample_analysis": "If certification or risk acceptance lacks an independence rule, the exact activity-policy mapping fails.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-734F6033",
+      "revision": 1,
+      "semantic_sha256": "734f603338603b3b046178fefefd3326f77070c5274c6049f10bd67046099da4",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Fields can exist, but completeness of limitations, exclusions, assumptions and dependencies is open-ended and freshness can depend on undiscovered changes.",
+      "counterexample_analysis": "Every section can be populated while a material supplier assumption and its resulting stale evidence remain unrecorded.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A3008EA4",
+      "revision": 1,
+      "semantic_sha256": "a3008ea49f2eec7982f8ea73d821f4b83518cdd0569f3e351dfb1701fb422427",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Materiality, clarity, boundedness and testability are semantic qualities requiring expert interpretation rather than record-field presence.",
+      "counterexample_analysis": "A claim can have scope and test fields yet remain vague about acceptable harm and therefore not be meaningfully testable.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-6B2A8983",
+      "revision": 1,
+      "semantic_sha256": "6b2a8983c69c9551721599fbb9dd34169bbe8cdbd9136a05f2990bd1ecfadb2e",
+      "verdict": "confirmed_deterministic",
+      "reason": "Each assurance claim can be checked for exact system, release, configuration, environment, period and operational-context identities.",
+      "counterexample_analysis": "A claim missing its configuration digest or covered period fails the finite six-field scope binding.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-01943631",
+      "revision": 1,
+      "semantic_sha256": "019436313c001cc47ccce2db0fbf2ec3d05c888ef31920ad2c04a355c3932fd7",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Whether a claim is broad, decomposition is complete and subclaims are independently supportable requires argument and domain judgment.",
+      "counterexample_analysis": "A broad safety claim can be split into two syntactically separate subclaims that share the same unsupported assumption.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D6EC7E3B",
+      "revision": 1,
+      "semantic_sha256": "d6ec7e3b35b32093243267e6ecbb0355f05cb1be5536521c2886518785e9baa4",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A case can list five argument fields without proving all assumptions and dependencies or that inference rules capture the real reasoning.",
+      "counterexample_analysis": "Every section can exist while a hidden independence assumption makes the conclusion invalid.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-ACEEAD05",
+      "revision": 1,
+      "semantic_sha256": "aceead05e35b7837c07d96984ad477cab42c84e497c240ea24ace6ce619afafb",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Graph completeness can prove that each subclaim has an edge, but the rule also requires the linked evidence to be relevant, which needs contextual interpretation.",
+      "counterexample_analysis": "An unrelated artifact can be labeled supports and satisfy every referential-integrity check while leaving the subclaim substantively unsupported.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0A2301F0",
+      "revision": 1,
+      "semantic_sha256": "0a2301f05c6156865f593a280f072b39b1069803319224d0496ba5786a3b5b0b",
+      "verdict": "confirmed_deterministic",
+      "reason": "The typed assurance graph can forbid any evidence path that cycles back to the same claim, making circular support exactly detectable.",
+      "counterexample_analysis": "A claim directly or transitively used as its own evidence creates a graph cycle and cannot pass.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B9AA39F0",
+      "revision": 1,
+      "semantic_sha256": "b9aa39f09b152a9a624cd942bb06a093f40e935697992bacc7c014e6f0348eb2",
+      "verdict": "confirmed_deterministic",
+      "reason": "Claim records can use distinct, nonoverlapping types for design intent and deployed behavior with type-specific evidence authorities.",
+      "counterexample_analysis": "A deployed-behavior conclusion supported only as design intent fails the claim-type and authority schema.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-14D36863",
+      "revision": 1,
+      "semantic_sha256": "14d3686311beb3a5411882eda5a540756ba7d87b524cd6a7ad4e67a57d973f02",
+      "verdict": "confirmed_deterministic",
+      "reason": "The claim schema can distinguish expected behavior from demonstrated behavior and require result evidence only for the demonstrated type.",
+      "counterexample_analysis": "Relabeling a specification as a demonstrated observation violates the exact evidence-authority constraint.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3C79C82C",
+      "revision": 1,
+      "semantic_sha256": "3c79c82c23db50c95d5951d94a2dab8b271b0aeaffa3580662d8eba76849d370",
+      "verdict": "confirmed_deterministic",
+      "reason": "An assurance case can be content-versioned and cryptographically bound to immutable release and evidence identifiers.",
+      "counterexample_analysis": "Changing the release artifact or an evidence item invalidates the stored digests and case binding.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-993D84C7",
+      "revision": 1,
+      "semantic_sha256": "993d84c754504caf5dc181e74feef908e65da2af7440afdd70e5d492a3914423",
+      "verdict": "confirmed_deterministic",
+      "reason": "Evidence acceptance criteria can be versioned and timestamped before the earliest result that relies on them.",
+      "counterexample_analysis": "Criteria created after a test result or absent from its evidence type fail the temporal and registry checks.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F473BC2E",
+      "revision": 1,
+      "semantic_sha256": "f473bc2e05642171967c37e7255a9d64e301bd2395f6587c3de4993a854f0504",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Prefer is not a deterministic obligation, and representativeness of a nonproduction configuration requires contextual similarity and risk judgment.",
+      "counterexample_analysis": "A team can claim preference while repeatedly accepting evidence from a convenient configuration that omits a production-only dependency.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7D363841",
+      "revision": 1,
+      "semantic_sha256": "7d36384197228b3c07c11dbac1d0029b8edb639c116c7d2b583d97db6876880d",
+      "verdict": "confirmed_deterministic",
+      "reason": "Each evidence record can be checked for the ten exact provenance, execution-context, scope and result fields.",
+      "counterexample_analysis": "Missing tool version, operator, data identity or execution time creates an exact schema failure.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E6AD6762",
+      "revision": 1,
+      "semantic_sha256": "e6ad6762ae70b9e5b9f8f2cf06560b3213d7582369f5d8e46e07ab0cb14cde71",
+      "verdict": "confirmed_deterministic",
+      "reason": "A content-addressed provenance graph can require an unbroken chain through requirement, source, build, deployment, execution and observation.",
+      "counterexample_analysis": "An observation not linked to its deployed artifact or build source leaves a deterministic missing edge.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FF35E31B",
+      "revision": 1,
+      "semantic_sha256": "ff35e31b6f9691a57d95b22d0433b4a0177b308f03c1da16d7343a1fc61cebf3",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Structured records cannot prove protection against every unauthorized alteration or deletion path across evidence stores, backups and administrators.",
+      "counterexample_analysis": "Signed evidence can reveal modification yet a privileged recovery account can delete both an item and its unreplicated index.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-98FB3D02",
+      "revision": 1,
+      "semantic_sha256": "98fb3d0234ff7cbf806c04ed21fe9da055237f4dc951e4f7680078c20082ef09",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Materiality, correct calibration, substantive tool validation and completeness of known limitations require technical judgment and independent standards.",
+      "counterexample_analysis": "A record can show current calibration and validation while the procedure uses an inappropriate reference range and misses a material bias.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2BADD314",
+      "revision": 1,
+      "semantic_sha256": "2badd314f33b74bd3b0cca96e73fb59bd9fcc815c05cf799964817f5134dc264",
+      "verdict": "confirmed_deterministic",
+      "reason": "Every evidence item in the ledger can retain immutable content and disposition even when failed, inconclusive, excluded or superseded.",
+      "counterexample_analysis": "Deleting a failed result or superseding it without a disposition breaks the append-only ledger chain.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-EB04BD9A",
+      "revision": 1,
+      "semantic_sha256": "eb04bd9a7a1a7cad957a4ea275eba4a208d451031f0e74de8d4cc512f80c8961",
+      "verdict": "confirmed_deterministic",
+      "reason": "A versioned policy can assign explicit validity periods and invalidating event types to each evidence class.",
+      "counterexample_analysis": "An evidence class without expiry or stale-event rules fails the finite policy mapping.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C278CEB3",
+      "revision": 1,
+      "semantic_sha256": "c278ceb334d7efc68670f6e1c1fe94e90443ebacf105d777feb3d7d1f8bbd3c5",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Materiality and complete detection of source, dependency, configuration, data, environment, threat and usage changes are contextual and unbounded.",
+      "counterexample_analysis": "Configured events can recollect evidence while an indirect dependency update is missed or a usage change is wrongly deemed immaterial.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1BA3206E",
+      "revision": 1,
+      "semantic_sha256": "1ba3206e526fae0e8140e377b448066999abe325a588b669b6ceae17726fbe87",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Future retrievability and interpretability for the full required period depend on storage survival, formats, tools and changing retention authority.",
+      "counterexample_analysis": "Evidence can be readable today while its proprietary decoder or encryption key becomes unavailable before retention ends.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A309E8E6",
+      "revision": 1,
+      "semantic_sha256": "a309e8e6b7e959b4886014f0ceb5558943f12f5c60f0e6453dc2457d1c85d60a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Failure-consequence classification for all components, data and decisions requires complete inventory plus safety, security and business judgment.",
+      "counterexample_analysis": "Every registered item can receive a class while an omitted function or understated compromise consequence produces a false pass.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E19EECAD",
+      "revision": 1,
+      "semantic_sha256": "e19eecad86713bd56b298659b46ee04df2a5d2ff4dee1a4d931a3423995dd4f0",
+      "verdict": "confirmed_deterministic",
+      "reason": "For every registered integrity class, a policy can define the five exact rigor, independence, coverage, formality and retention requirements.",
+      "counterexample_analysis": "A class missing mathematical rigor rules or evidence retention fails the finite class-policy join.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C6D28252",
+      "revision": 1,
+      "semantic_sha256": "c6d28252d5c12d3988d2aee66019f75372284c106df93214b36a47ed694635a2",
+      "verdict": "confirmed_deterministic",
+      "reason": "A versioned policy can define exact triggering conditions for formal methods, exhaustive analysis, proof, model checking and justified bounds.",
+      "counterexample_analysis": "If model checking has no applicability condition, the five-method policy matrix is incomplete.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-07963687",
+      "revision": 1,
+      "semantic_sha256": "07963687e92d703748532db4d3e087375b4c44eef8b9fbf9a188f82dc73c526e",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Review records do not prove every relevant architecture, exposure, user or consequence change was detected and correctly recognized as affecting classification.",
+      "counterexample_analysis": "All tracked change events can trigger review while an unrecorded exposure change leaves the integrity class stale.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3ABADEBD",
+      "revision": 1,
+      "semantic_sha256": "3abadebdc869bd31b38727daeb83630266ac3406a15bd6ebb1b63a65438b6606",
+      "verdict": "confirmed_deterministic",
+      "reason": "An assurance-activity registry can assign each activity an allowed self-review or required independent-review mode under versioned policy.",
+      "counterexample_analysis": "An activity requiring independence but approved solely by its performer violates the exact activity-policy join.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7E738595",
+      "revision": 1,
+      "semantic_sha256": "7e738595bddc6cf1531fd5a6b65de4e9164388c10d8ebb0eba8309d6b0d48b4c",
+      "verdict": "confirmed_deterministic",
+      "reason": "Identity and responsibility records can deterministically prevent the sole delivery owner from being the only approver of policy-tagged material residual risk.",
+      "counterexample_analysis": "A material risk with one approver who is its sole delivery owner fails the separation-of-approval constraint.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-ADBD2C5E",
+      "revision": 1,
+      "semantic_sha256": "adbd2c5ed1cc412ff0fb5eb2a09f72dd474ac22b99a832f49a412a991d732ba3",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Access grants can be recorded, but complete evidence and source availability plus access to all relevant environments and personnel are open-ended.",
+      "counterexample_analysis": "A reviewer can have the listed permissions while a supplier artifact or key operator needed for the review remains unavailable.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-24426703",
+      "revision": 1,
+      "semantic_sha256": "24426703b1139f355195d003c3e27d6df5d4a6365658f696111940b6e30c7112",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Only the reviewer can authoritatively disclose personal conflicts, incentives, prior involvement and relationships; records cannot prove absence of undisclosed conflicts.",
+      "counterexample_analysis": "Every form can be complete while a reviewer hides a supplier financial relationship.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9F1C648A",
+      "revision": 1,
+      "semantic_sha256": "9f1c648a822ea50d3768f60ab3679d62e27afa127c8f2ac3d35f46a6677fcb64",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Whether independence is impaired and whether recusal, rotation or supplementation restores it requires accountable organizational judgment.",
+      "counterexample_analysis": "A reviewer can be supplemented on paper while retaining decisive influence despite a serious conflict.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-25DE0302",
+      "revision": 1,
+      "semantic_sha256": "25de03024f1043ba7b6753ae2f41a04dd4e44158aee196cc9b5511dba7992a39",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Reviewer competence in a system, assurance method and domain is a human qualification and performance judgment, not a schema fact.",
+      "counterexample_analysis": "Certificates and experience fields can be complete while the reviewer lacks practical competence for the specialized method.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-ED2D15CF",
+      "revision": 1,
+      "semantic_sha256": "ed2d15cfc0c7b82ea775af8897094d9bd2476e9614a32e92a2b32fa4ba24e87f",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A record cannot prove that every dissenting opinion and unresolved finding was voiced and preserved; human participants control disclosure.",
+      "counterexample_analysis": "The decision file can retain submitted dissent while a reviewer is pressured not to record a material objection.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-AFC0B80B",
+      "revision": 1,
+      "semantic_sha256": "afc0b80b6bca05517da0bce2c544af3f305f7a2282526a8c73a17f13be8d6f86",
+      "verdict": "confirmed_deterministic",
+      "reason": "Every policy-tagged material adverse conclusion can require a management identity, explicit response text, disposition and timestamp.",
+      "counterexample_analysis": "An adverse conclusion with silence or an implicit approval has no linked response and fails the ledger join.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1D117647",
+      "revision": 1,
+      "semantic_sha256": "6a4bcb7f6c8349a57d4500bb390e19dc2dc80e01c86e8dd48a0fda4b14e1b141",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Determining when advisory involvement compromises audit or certification objectivity is a professional, regulatory and conflict-of-interest judgment.",
+      "counterexample_analysis": "Separate team names can appear in records while shared incentives and prior design responsibility still compromise independence.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0C690882",
+      "revision": 1,
+      "semantic_sha256": "0c6908820077c195e8b798c8d7857ac8e69b01d798743a5e41e9b9dfbbd06ab0",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Periodicity can be scheduled, but provider quality, consistency and missed-defect patterns require outcome interpretation and an incomplete defect oracle.",
+      "counterexample_analysis": "A provider can receive strong scores from recorded reviews while repeatedly missing a defect class that has not yet been recognized.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-03CE6FB0",
+      "revision": 1,
+      "semantic_sha256": "03ce6fb07dff40a32e1f024e1f591fbdf1e04d6adfc996ebd4b2a43286dc55d8",
+      "verdict": "confirmed_deterministic",
+      "reason": "A conformance claim can be checked for exact normative requirement identity, version, profile, scope and selected options.",
+      "counterexample_analysis": "A claim missing its profile or using an unversioned standard fails the six-part normative binding.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F7D4B6BC",
+      "revision": 1,
+      "semantic_sha256": "f7d4b6bcc224d175f09ef4d18602b848010cfe8dfabbadb0c62155b667e6502d",
+      "verdict": "confirmed_deterministic",
+      "reason": "Every claimed requirement in the sealed conformance profile can be joined to evidence and an explicit disposition.",
+      "counterexample_analysis": "A claimed requirement without evidence or disposition creates a deterministic missing mapping.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FAD45C35",
+      "revision": 1,
+      "semantic_sha256": "fad45c353bb4bba41e4c99fff76f0bc94d85a3863583417d7b7e81e7c61b8f8c",
+      "verdict": "confirmed_deterministic",
+      "reason": "The conformance record can require finite sections for permitted deviations, extensions, optional features and inherited controls.",
+      "counterexample_analysis": "Omitting an enabled optional feature or recorded deviation breaks the exact four-section profile schema.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-70F1E6CA",
+      "revision": 1,
+      "semantic_sha256": "70f1e6cacca46e4be2f1d068e72e915f08b6dedc4dc1523db75e65d6e49b2da5",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Interoperability test occurrence cannot prove independent implementations work together across all operations, versions, states and platforms.",
+      "counterexample_analysis": "Two implementations can pass a handshake fixture while failing an untested migration or error-recovery interaction.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0AAEEBDE",
+      "revision": 1,
+      "semantic_sha256": "0aaeebde1e6850b313e472d64e6bf4dcb3900bffbeab1cd6149b2e74da76416c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Whether exclusions invalidate the intended conformance claim is a semantic and sometimes legal interpretation of normative requirements.",
+      "counterexample_analysis": "A record can mark an exclusion harmless while it removes a mandatory capability central to the advertised profile.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-93D22446",
+      "revision": 1,
+      "semantic_sha256": "93d22446635145e525dd26dd659b6c56a8f4c0aeeafb5487b1fb7591d8f4882a",
+      "verdict": "confirmed_deterministic",
+      "reason": "An audit or certificate record can require explicit start and end time plus the exact covered product-version set.",
+      "counterexample_analysis": "A certificate lacking a covered version or period fails the finite scope schema.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2BC823F8",
+      "revision": 1,
+      "semantic_sha256": "2bc823f861af1f5b7bd38da4a5fbf8f2a1e218c67cafe0e93436a961e8806d1c",
+      "verdict": "confirmed_deterministic",
+      "reason": "A certificate register can track expiry, surveillance, conditions, exceptions and renewal obligations as five exact state fields.",
+      "counterexample_analysis": "A certificate with an unrecorded renewal duty or expired surveillance date fails the registry rules.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1281EF2B",
+      "revision": 1,
+      "semantic_sha256": "1281ef2b945de163715d41e03b47a82df74db5e09efe04dd03d6ea95ea56bf48",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Materiality and certification impact of architecture, supplier, location, process and product changes require assessor and regulatory judgment.",
+      "counterexample_analysis": "A reassessment form can exist while a significant supplier-location change is misclassified as immaterial and outside certificate scope.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-01F30AE1",
+      "revision": 1,
+      "semantic_sha256": "01f30ae1675affc0957e3d3930de18c348dfcaed31a82b24cb074286a4fab39f",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Identifying every assurance claim dependent on five external-control categories requires a complete claim and dependency graph that its own records cannot prove.",
+      "counterexample_analysis": "All registered links can be present while an open-source transitive dependency or customer-operated control is omitted.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-229D6F8B",
+      "revision": 1,
+      "semantic_sha256": "229d6f8b907436a2be3b80a4ff8d146000bd7b72f4bff5a4d575a95bd95094b1",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Correctly drawing inherited, shared and direct control boundaries depends on contracts, architecture and responsibility interpretation, not labels alone.",
+      "counterexample_analysis": "Every control can receive one label while a shared supplier responsibility is incorrectly assigned as inherited and leaves a gap.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-6EBAC76D",
+      "revision": 1,
+      "semantic_sha256": "6ebac76dd7ca858ff9a42edfeedaaf4114318b7fb0e9281c0840ecbefb314040",
+      "verdict": "confirmed_deterministic",
+      "reason": "Supplier assurance scope fields can be exactly compared with the consumed service, region, data class, configuration and usage period records.",
+      "counterexample_analysis": "An attestation for another region or configuration fails the five-dimensional scope intersection.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7D7FB635",
+      "revision": 1,
+      "semantic_sha256": "7d7fb6355be0642515acfe60cc4ff1caa40ee7bfa0743959d3410502c9d7ea2d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Monitoring all supplier changes, incidents, expired attestations and scope reductions requires complete suppliers and external publication channels.",
+      "counterexample_analysis": "Configured feeds can be current while a subcontractor incident or private scope reduction is never received.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A892799B",
+      "revision": 1,
+      "semantic_sha256": "a892799b25dcc5be0a120c957b2b964de8a112ed1e94e69e54d14a8c327ccb2e",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A clause label cannot prove that contracts provide enforceable evidence availability and transition rights; legal scope and remedies require counsel.",
+      "counterexample_analysis": "A contract can contain both headings while exceptions make the rights unusable during termination.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-44E74665",
+      "revision": 1,
+      "semantic_sha256": "44e7466582ab77683899efd1aef56ea8c748f5f0ad358fc1fac36bdc2d874f0b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Which unavailable evidence requires compensation and whether a control adequately compensates are contextual risk and assurance judgments.",
+      "counterexample_analysis": "Every missing artifact can link to a control while the control does not address the lost assurance property.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7FBB7982",
+      "revision": 1,
+      "semantic_sha256": "7fbb798204ad8b569a2cb05f398292ea6f5309750b5b75e7e4dd8dd45f78bc88",
+      "verdict": "confirmed_deterministic",
+      "reason": "For every registered assurance claim, a policy can define production indicators explicitly typed as supporting or challenging evidence.",
+      "counterexample_analysis": "A claim with no challenge indicator or an untyped metric fails the exact claim-to-indicator mapping.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-79BEB4A9",
+      "revision": 1,
+      "semantic_sha256": "79beb4a95d3910b420423f6b80aec858871c9070a599c55e38b9f6a525d4a24c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Relevant outcomes and effective monitoring across nine quality domains require contextual applicability and complete telemetry and behavior coverage.",
+      "counterexample_analysis": "Nine dashboards can exist while an inaccessible workflow or privacy harm emits no monitored signal.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-272E383B",
+      "revision": 1,
+      "semantic_sha256": "272e383ba7bac5ffc1ede12680952d8c073f1714ebe88f37e6a4b4032ce44b7c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Determining which claims seven operational-event types affect requires causal and semantic impact judgment beyond record linking.",
+      "counterexample_analysis": "Every recorded incident can link to a claim while a complaint revealing an invalid assumption is linked to the wrong conclusion.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B354E1E9",
+      "revision": 1,
+      "semantic_sha256": "b354e1e93dd71d1274d9117c691bca3d9d845ddb9b4f62235d09726a9670972a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Recognizing that operational evidence contradicts an assumption is semantic reasoning; a workflow can only enforce reopening after that judgment is made.",
+      "counterexample_analysis": "A production metric can directly falsify an assumption yet remain unflagged, so no automatic reopen occurs.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8F326500",
+      "revision": 1,
+      "semantic_sha256": "8f326500e9f45bd7bd2d6218794cabe4d461f32bd4b13de586b4fab761d93782",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Complete configuration and deployment change detection plus correct evidence-impact analysis cannot be proved from configured change records.",
+      "counterexample_analysis": "Known changes can invalidate evidence while an out-of-band flag or deployment mutation is missed.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F2A92C95",
+      "revision": 1,
+      "semantic_sha256": "f2a92c95b7e8eae657431035d99b26938d004db06084eeccaa881b8f8d87a9d0",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Where risk warrants control testing and what continuous or scheduled cadence is adequate require risk and threshold judgment.",
+      "counterexample_analysis": "A critical control can receive a rare scheduled test after being rated low risk without sound justification.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child",
+        "undefined_threshold"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-DC2E122D",
+      "revision": 1,
+      "semantic_sha256": "dc2e122d57cfdbde9a2df5a41371db469f0f711f5d3317074644911ecce90497",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Enough telemetry to evaluate trends and reconstruct historical claim validity is an open-ended sufficiency and interpretability judgment.",
+      "counterexample_analysis": "Retention can meet a stated duration while missing event dimensions needed to test a past assurance assumption.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-83870806",
+      "revision": 1,
+      "semantic_sha256": "83870806caab92621d0fc536d50df200b06d804756aa57e1d2e00844ebe87a45",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Major changes, new threats and changed obligations require contextual or legal recognition, and complete external event detection is unbounded.",
+      "counterexample_analysis": "Recorded incidents can trigger review while a new applicable threat or obligation is missed or deemed nonmajor.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-73001BBE",
+      "revision": 1,
+      "semantic_sha256": "73001bbefabf3160f37d695a81b40940a255b8e7430c1623552b5616bd13c61d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "When an obligation ends and which retention requirements still apply require legal authority and contextual system-lifecycle interpretation.",
+      "counterexample_analysis": "A closed-service record can trigger deletion while a regulatory evidence-retention duty remains in force.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-BACE71B2",
+      "revision": 1,
+      "semantic_sha256": "bace71b2c622accccdd8564e899de7982945de64d17612ae08411b2baa8d115c",
+      "verdict": "confirmed_deterministic",
+      "reason": "Every assurance case tagged material can require a completed, versioned challenge-review record with reviewer and challenged-claim identities.",
+      "counterexample_analysis": "A material case lacking challenge review or using a review of another version fails the exact ledger join.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E4B0B27B",
+      "revision": 1,
+      "semantic_sha256": "e4b0b27b7d57d3230d98808ddefda5cd1a30e5134edfe04996769a35789af31e",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Claim precision, evidence relevance, argument validity and limitation visibility are substantive argument-quality judgments, not field-presence facts.",
+      "counterexample_analysis": "A neatly structured case can link irrelevant evidence through an invalid inference while every section appears complete.",
+      "review_status": "skeptical_agent_reviewed",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ]
+    },
+    {
+      "control_id": "USEQ-6C6059E7",
+      "revision": 1,
+      "semantic_sha256": "6c6059e7ff560cf5d96113945b3cff9758166250a0bb670ad6908c7eccbb64d5",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Open defects and exceptions can be joined to the assurance case, but whether each is meaningfully reflected in claim scope and confidence requires semantic judgment.",
+      "counterexample_analysis": "Every open item can have a case link while the claim text and conclusion ignore its actual impact.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5797F11A",
+      "revision": 1,
+      "semantic_sha256": "5797f11a595eba436c58b47e3347802a8d33b8be2ebeaff42055f7f940db4313",
+      "verdict": "confirmed_deterministic",
+      "reason": "A release gate can map criticality, evidence freshness, defeater resolution and independence policy states to mandatory no-go outcomes.",
+      "counterexample_analysis": "A critical unsupported claim, stale evidence, open defeater or policy-failing reviewer state cannot pass the exact gate table.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-498728F8",
+      "revision": 1,
+      "semantic_sha256": "498728f8ece96ee681d7a354b750741ea9fd892ad7938405f128ad90de06d803",
+      "verdict": "confirmed_deterministic",
+      "reason": "The decision ledger can record actor identity and one of five exact actions: review, challenge, approve, reject or conditional accept.",
+      "counterexample_analysis": "An approval without reviewer identity or an untyped conditional decision fails the finite event schema.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9513B3E9",
+      "revision": 1,
+      "semantic_sha256": "9513b3e9f122e1720df0a34320dd047222dae2483539c3849ed61803794e5278",
+      "verdict": "confirmed_deterministic",
+      "reason": "The exact assurance-case digest can be preserved and bound to the released artifact and production-configuration digests.",
+      "counterexample_analysis": "Changing the case, artifact or configuration breaks the three-way immutable identity binding.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-775F8E10",
+      "revision": 1,
+      "semantic_sha256": "775f8e100492539cb17fa1a737af3d3ab8408f4a88df6b8f9d771f4f8345a9fd",
+      "verdict": "confirmed_deterministic",
+      "reason": "A provisional-claim policy can define the exact required post-release observations and require them before the final transition.",
+      "counterexample_analysis": "Finalizing with a missing observation or before its bounded window closes violates the state-transition guard.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A4A4897A",
+      "revision": 1,
+      "semantic_sha256": "a4a4897ab6ba9fd899be69613d9450eb07f1e4866ecb5ee088fc0f92564b32cf",
+      "verdict": "confirmed_deterministic",
+      "reason": "Approval state can deterministically revoke when a versioned required condition, monitoring check or compensating-control state becomes failed.",
+      "counterexample_analysis": "A failed required control with approval still active violates the exact dependency-triggered revocation rule.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    }
+  ]
+}

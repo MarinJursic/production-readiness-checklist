@@ -1,0 +1,2566 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-12-operations-sre-and-support-md-part-002-part-001",
+  "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 100,
+  "controls": [
+    {
+      "control_id": "USEQ-5F686CE1",
+      "revision": 1,
+      "semantic_sha256": "5f686ce14968d6df295955479dc11ce5dda63a9fff2b9573adf79abf3b089f76",
+      "statement": "Define organizational, operational, temporal, geographic, lifecycle, and supplier boundaries for every measurement.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 363
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Measurement model, boundaries, baselines, and uncertainty"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The measurement registry is finite and each record can be checked for all six required boundary fields.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every registered measurement defines organizational, operational, temporal, geographic, lifecycle, and supplier boundaries.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3FFF3A34",
+      "revision": 1,
+      "semantic_sha256": "3fff3a34c3e9d95a318ada22bb02741c34bccba30c81bbc2b44d2780330db7de",
+      "statement": "Separate operational energy and emissions from embodied impacts associated with hardware, facilities, networks, and manufacturing.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 364
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Measurement model, boundaries, baselines, and uncertainty"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Reported impact categories can be structurally checked to keep operational energy and emissions separate from embodied impacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every impact report stores operational energy and emissions separately from hardware, facility, network, and manufacturing embodied impacts.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9E6E23B4",
+      "revision": 1,
+      "semantic_sha256": "9e6e23b43365331d0bfa178eff100390ba2d11efd6cac93162899b541ba4e1b9",
+      "statement": "Distinguish direct measurement, provider data, modeled estimates, proxies, and assumptions.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 366
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Measurement model, boundaries, baselines, and uncertainty"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Each metric value can carry one of the required provenance types in a bounded measurement record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every reported sustainability value is labeled direct measurement, provider data, modeled estimate, proxy, or assumption.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1C242EF6",
+      "revision": 1,
+      "semantic_sha256": "1c242ef68e0c2b689aa39b849b277a95d4c03039ca451413d65b580899560215",
+      "statement": "Record data sources, sampling, allocation rules, emission factors, grid factors, conversion methods, and versions.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 367
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Measurement model, boundaries, baselines, and uncertainty"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The required methodology metadata fields can be validated for every entry in the finite measurement registry.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every measurement records data sources, sampling, allocation rules, emission factors, grid factors, conversion methods, and versions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8E40F7EA",
+      "revision": 1,
+      "semantic_sha256": "8e40f7ea3bcf6db91e5299902d35c7c4cc863ea6e8f6d42006a7c2d3fa8af6ff",
+      "statement": "Use consistent methods across baselines and comparison periods or disclose and quantify method changes.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 369
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Measurement model, boundaries, baselines, and uncertainty"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Versioned method identifiers and quantified change disclosures can be compared across a finite set of reporting periods.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Each comparison uses the same method version across periods or records the method change and its quantified effect.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D9D0B323",
+      "revision": 1,
+      "semantic_sha256": "d9d0b323e0eef56ca83f4f832d43f05d6d6cdcd74c47bbb1e67247353cdb8480",
+      "statement": "Separate absolute totals, intensity metrics, avoided impact, enabled impact, and offsets; do not substitute one for another.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 370
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Measurement model, boundaries, baselines, and uncertainty"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The six impact concepts can be required as distinct typed fields without judging their values.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Absolute totals, intensity metrics, avoided impact, enabled impact, and offsets are stored and reported as separate types.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-55AD6D41",
+      "revision": 1,
+      "semantic_sha256": "55ad6d41608f977f673cc85f288ae8e4dbcaa9a582b5826fab197ceb3efb264b",
+      "statement": "Establish time-bounded, measurable targets linked to a documented baseline and product outcome.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 378
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Targets, budgets, prioritization, and decision records"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A target record can be checked for a deadline, numeric measure, baseline link, and product-outcome link.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every sustainability target has a deadline, measurable threshold, documented baseline, and linked product outcome.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1CDC439C",
+      "revision": 1,
+      "semantic_sha256": "1cdc439cfda84aae9abb4051a8cd23b91c4ec1d996ffdd21bb5739abfca5549d",
+      "statement": "Define thresholds that trigger investigation, rollback, redesign, capacity review, or retirement.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 381
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Targets, budgets, prioritization, and decision records"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A budget policy can be checked for numeric thresholds and explicit actions for every listed trigger type.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved budget policy defines thresholds for investigation, rollback, redesign, capacity review, and retirement.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-63805953",
+      "revision": 1,
+      "semantic_sha256": "638059539f2a8a1ced1a72bfea8c1710774b4a57affe9703634d1f2a9d4821ff",
+      "statement": "Test whether an optimization simply moves impact between client and server, region and region, present and future, or organization and user.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 384
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Targets, budgets, prioritization, and decision records"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A bounded optimization experiment can record before-and-after impact in each named displacement dimension.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every approved optimization has test results for client/server, region/region, present/future, and organization/user impact transfer.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-00554C4D",
+      "revision": 1,
+      "semantic_sha256": "00554c4d58b1b1cea96fdeafd459f0efaaa025176937ad24f3f5091012b7cea6",
+      "statement": "Require a compensating plan when a justified feature exceeds an approved budget.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 386
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Targets, budgets, prioritization, and decision records"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Approved budget exceptions form a finite set and can be checked for a linked compensating plan.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every approved feature exception that exceeds a budget has a linked compensating plan with owner and due date.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5AE35A89",
+      "revision": 1,
+      "semantic_sha256": "5ae35a89dce8e8a29d94c2cd7605e3ce8c39f1e04834531cc0bb0f102a0a4830",
+      "statement": "Track improvement actions to verified outcomes rather than closing them when implementation activity is complete.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 389
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Targets, budgets, prioritization, and decision records"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Action closure can be deterministically rejected unless it links to completed outcome-verification evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every closed sustainability improvement action links to a verified outcome result rather than implementation activity alone.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-63E6B914",
+      "revision": 1,
+      "semantic_sha256": "63e6b9140695e18666a1923e4aa69e93aff8865a9aead26c8187ed7e39b0f331",
+      "statement": "Measure task success, abandonment, retries, support contacts, and time spent as sustainability signals as well as UX signals.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 403
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Inclusive, efficient, and durable user experience"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The five named user-outcome indicators can be verified as configured measurements in the telemetry catalog.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Telemetry collects task success, abandonment, retries, support contacts, and task duration as named sustainability and UX signals.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8A741146",
+      "revision": 1,
+      "semantic_sha256": "8a74114647461ac466ef88e7c63b00d9541a806b229a61d6616e7aec65e71b98",
+      "statement": "Publish only content that has an identified audience, owner, purpose, review date, retention rule, and retirement path.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 408
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Content, media, typography, documents, and communications"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Published-content inventory entries can be checked for the six required lifecycle metadata fields.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every published content item has an audience, owner, purpose, review date, retention rule, and retirement path.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-816E7255",
+      "revision": 1,
+      "semantic_sha256": "816e7255099244800417c8d80af2a12c90b8b1053ee58e8e642f5d275b779f1a",
+      "statement": "Use responsive media and explicit dimensions to avoid unnecessary transfer and relayout.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 415
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Content, media, typography, documents, and communications"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "artifact_verification",
+      "primary_reason": "Media markup and built artifacts can be checked for responsive variants and explicit intrinsic dimensions.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every registered visual media element uses responsive delivery metadata and declares explicit width and height.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A60E4DA2",
+      "revision": 1,
+      "semantic_sha256": "a60e4da21d613f8b43d46e5cc27e287fc64ae557e819bac3bbabf026eb5141db",
+      "statement": "Expire obsolete feeds, previews, cached assets, derivatives, and campaign resources safely.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 420
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Content, media, typography, documents, and communications"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Resources marked obsolete form a finite inventory and their expiry plus safety-test evidence can be checked.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every resource classified as obsolete has an executed expiry or removal record.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every such expiry has a passing rollback, reference-integrity, or recovery test required by its policy.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7477455D",
+      "revision": 1,
+      "semantic_sha256": "7477455d8fd5d7340989e6311c94e6ee4307d939ffa39832de798aea72846e91",
+      "statement": "Set measurable client-side budgets for transferred bytes, requests, execution time, memory, energy-sensitive work, long tasks, and background activity.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 424
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Client, frontend, application, and code efficiency"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Numeric client budget records can be checked for all seven named resource dimensions.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved client budget defines limits for bytes, requests, execution time, memory, energy-sensitive work, long tasks, and background activity.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-49967306",
+      "revision": 1,
+      "semantic_sha256": "49967306a551df33e83f375284cd905efbf7493b50359af6bd6823cff2414408",
+      "statement": "Modularize high-cost functionality so users who do not need it do not pay its resource cost.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 428
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Client, frontend, application, and code efficiency"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A registered high-cost feature can be traced through build chunks and tested to remain unloaded for users who do not invoke it.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every registered high-cost feature maps to a separately loadable module or artifact.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        },
+        {
+          "statement": "A user path that does not invoke the feature loads none of its registered resource payload.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E0C0004A",
+      "revision": 1,
+      "semantic_sha256": "e0c0004a321d8655740673a2035658a41b98e77d9088160c4059fccecfcc9589",
+      "statement": "Treat first-party and third-party code under the same performance, privacy, security, and sustainability budgets.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 429
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Client, frontend, application, and code efficiency"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A complete approved code-component inventory can be joined to budget records without treating party ownership differently.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every first-party and third-party code component in the approved inventory is covered by performance, privacy, security, and sustainability budgets.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D0E5ADD2",
+      "revision": 1,
+      "semantic_sha256": "d0e5add240834099562f116b8478a497e2df537113c3cd07095c8322b8ec4bbd",
+      "statement": "Use caching carefully to avoid repeated transfer while preventing stale, private, or permanently orphaned data.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 432
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Client, frontend, application, and code efficiency"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A bounded cache inventory can be tested for hit reuse, freshness, privacy isolation, expiry, and orphan cleanup.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every registered cache passes repeated-transfer, stale-data, private-data isolation, expiry, and orphan-removal tests.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0555DF66",
+      "revision": 1,
+      "semantic_sha256": "0555df66938b9b3ec5f470b4758af06a21148976ff2ddfa2c4b52d46ecce985c",
+      "statement": "Choose rendering and hydration strategies based on measured end-to-end cost across server, network, and client rather than fashion.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 433
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Client, frontend, application, and code efficiency"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A rendering decision record can be checked for measured server, network, and client costs supporting the selected strategy.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every rendering or hydration strategy decision links to measurements for server work, network transfer, and client work.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7E8877C1",
+      "revision": 1,
+      "semantic_sha256": "7e8877c186b1ff9e98f1375817c67e5799d7dc783871f8ef8915420a3b5bde94",
+      "statement": "Include client resource regressions in continuous integration and production monitoring.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 435
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Client, frontend, application, and code efficiency"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "CI configuration and production monitors can be checked for client-resource regression metrics and thresholds.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "CI enforces configured client-resource regression thresholds.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Production monitoring tracks the same approved client-resource indicators.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B2C8404E",
+      "revision": 1,
+      "semantic_sha256": "b2c8404e29b21f001446cd082e92544bff1cba424776afedfa191162f77d176b",
+      "statement": "Define resource budgets and cost models for high-volume endpoints, jobs, event flows, searches, reports, and data transformations.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 440
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Backend, API, algorithm, database, and data efficiency"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "High-volume work items in an approved registry can be checked for numeric budgets and linked cost models.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every registered high-volume endpoint, job, event flow, search, report, and transformation has a resource budget and cost model.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E186F16E",
+      "revision": 1,
+      "semantic_sha256": "e186f16ee992486744f7568478208d236af09655cb6842a5be75994fe2c80aeb",
+      "statement": "Bound requests, pagination, query complexity, response size, retries, recursion, batch size, and execution duration.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 443
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Backend, API, algorithm, database, and data efficiency"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Approved ingress, query, retry, recursion, batch, and job registries can be checked for numeric limits.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every registered request and query has pagination or complexity and response-size limits.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Every registered retry, recursive path, batch, and execution has an explicit maximum.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8FC65F49",
+      "revision": 1,
+      "semantic_sha256": "8fc65f493390ab6b9cc5fb52cd5772ffc9d9d7ac9c391cf54753a79a318f761b",
+      "statement": "Optimize database access using measured plans, indexes, cardinality, locality, and workload behavior.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 445
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Backend, API, algorithm, database, and data efficiency"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Optimization records can be checked for query plans, index evidence, cardinality, locality, and measured workload behavior.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every registered database optimization links to a measured plan plus index, cardinality, locality, and workload evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-21F0724F",
+      "revision": 1,
+      "semantic_sha256": "21f0724fadd24fd4b549b2618744edbb390134945cd3ef53e10e6a47dcf04855",
+      "statement": "Deduplicate idempotent work and prevent retry storms, hot loops, poison messages, and unbounded queue growth.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 449
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Backend, API, algorithm, database, and data efficiency"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A bounded work registry can be tested for idempotency keys, retry limits, loop breakers, poison handling, and queue bounds.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every registered work type passes deduplication, retry-storm, hot-loop, poison-message, and maximum-queue-growth tests.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-951A3A18",
+      "revision": 1,
+      "semantic_sha256": "951a3a18b657fba45ad2de4db8c613e115c3961ece2123697b8544ab72c96709",
+      "statement": "Control observability volume, cardinality, sampling, and retention without losing required diagnostic, security, or audit evidence.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 450
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Backend, API, algorithm, database, and data efficiency"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Declared required evidence can be compared to telemetry volume, cardinality, sampling, and retention controls.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Telemetry policies define volume, cardinality, sampling, and retention limits.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Configured controls retain every telemetry field marked required for diagnostic, security, or audit evidence.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-365B130E",
+      "revision": 1,
+      "semantic_sha256": "365b130efe285875d71c83d6698fcc569371631b8b2ff0e6593c60b01822a21e",
+      "statement": "Test resource behavior with representative volume, skew, cache state, concurrency, failure, and recovery.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 452
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Backend, API, algorithm, database, and data efficiency"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A resource test suite can be checked for executions covering each named workload and failure dimension.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Current resource-behavior tests cover representative volume, skew, cache state, concurrency, failure, and recovery scenarios.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D517D2B1",
+      "revision": 1,
+      "semantic_sha256": "d517d2b17ed8d0a3c574cb16f6b3f145e0397bd7c2ab4acc95bce96eb5dd841d",
+      "statement": "Prevent crawlers, bots, scrapers, abusive clients, and accidental loops from causing unbounded traffic.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 464
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Network, transfer, caching, and distribution"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Ingress and automation paths can be tested against explicit traffic ceilings and loop-breaker behavior.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every registered crawler, bot, scraper, client, and loop-prone path stays within its configured maximum traffic and terminates under loop tests.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-793660E3",
+      "revision": 1,
+      "semantic_sha256": "793660e3e14ad65524c980902d97ee8d84963f99f73c0ece5f52edd0150ae3ef",
+      "statement": "Use rate limits, quotas, backpressure, and request coalescing to control waste and protect shared resources.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 465
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Network, transfer, caching, and distribution"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Configured limits and overload tests can objectively establish the required shared-resource controls.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every registered ingress or work queue has numeric rate, quota, backpressure, and coalescing policies and passes its overload test.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2205156F",
+      "revision": 1,
+      "semantic_sha256": "2205156f36b80f94c97acbf8154972ab22d3b4f406b867b99dd0a5d866180b22",
+      "statement": "Monitor cache hit ratios, transfer per successful outcome, retransmission, aborted work, and regional paths.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 466
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Network, transfer, caching, and distribution"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The monitoring system can be queried for each of the five explicitly named network indicators.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Monitoring exposes cache-hit ratio, transfer per successful outcome, retransmission, aborted work, and regional-path metrics.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5DAA5FA9",
+      "revision": 1,
+      "semantic_sha256": "5daa5fa9f71ab9e69ad9ac36b2b136be3d26029e1e45789ed1d2ce326c3cd53e",
+      "statement": "Right-size capacity using measured demand, required failure headroom, startup characteristics, and service objectives.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 472
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Hosting, infrastructure, capacity, and operational efficiency"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Capacity allocations can be compared with measured demand, declared failure headroom, startup constraints, and service objectives.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every capacity plan links its allocation to demand measurements, approved failure headroom, startup characteristics, and service objectives.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-40D1DD20",
+      "revision": 1,
+      "semantic_sha256": "40d1dd20c515f5be341de7f87ab181ca5c6379c0140ea57ccc5f061719ac3bda",
+      "statement": "Use autoscaling, scheduling, consolidation, suspension, and shutdown controls that preserve availability and recovery requirements.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 474
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Hosting, infrastructure, capacity, and operational efficiency"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Each configured capacity-reduction control can be exercised against declared availability and recovery objectives.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every registered autoscaling, scheduling, consolidation, suspension, or shutdown control passes availability and recovery objective tests.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DF29852A",
+      "revision": 1,
+      "semantic_sha256": "df29852a3223d1beafc4ca27625f9f6aa3ed3abead058cceac70fe73e2a0c4ef",
+      "statement": "Distinguish grid average, market-based claims, marginal effects, and actual renewable matching in infrastructure decisions.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 476
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Hosting, infrastructure, capacity, and operational efficiency"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Infrastructure decision records can require the four accounting concepts as separate fields.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every infrastructure sustainability decision distinguishes grid average, market-based claims, marginal effects, and actual renewable matching.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-47DBC483",
+      "revision": 1,
+      "semantic_sha256": "47dbc483dc1ed353951e31eec74250d9e93c8cff28767563623d37490727ac19",
+      "statement": "Test shutdown, scale-to-zero, wake-up, failover, and recovery behavior before relying on them for reduction.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 480
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Hosting, infrastructure, capacity, and operational efficiency"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The five named infrastructure controls can be exercised and their outcomes compared with declared objectives.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Current tests cover shutdown, scale-to-zero, wake-up, failover, and recovery behavior before any such control is relied upon.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C1FC62BA",
+      "revision": 1,
+      "semantic_sha256": "c1fc62ba4183d3ed35620c878e82c33e151401bdda36f56aac25407adb1be5c3",
+      "statement": "Include control planes, observability, build systems, development environments, and disaster-recovery infrastructure in the footprint.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 482
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Hosting, infrastructure, capacity, and operational efficiency"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The footprint model can be structurally checked for all five named supporting infrastructure classes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The footprint includes control planes, observability, build systems, development environments, and disaster-recovery infrastructure.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EE0EEBE1",
+      "revision": 1,
+      "semantic_sha256": "ee0eebe17a870351f4f6bae4bb8230890b3e801a14666df3a028ba2b3cd796ca",
+      "statement": "Negotiate access to provider sustainability data and document limitations when data is unavailable.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 483
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Hosting, infrastructure, capacity, and operational efficiency"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Supplier contract and assessment records can show requested data access and document every unavailable data field.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every material provider record contains sustainability-data access terms or a documented limitation for unavailable data.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5AA75D77",
+      "revision": 1,
+      "semantic_sha256": "5aa75d77f7309b3a2bdb645cef9e05df5ed9b111eee08c007829441982f3ca7b",
+      "statement": "Define deletion, compaction, deduplication, compression, tiering, and archive policies.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 489
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Storage, retention, backups, archives, and data lifecycle"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A data-lifecycle policy can be checked for each of the six explicitly required mechanisms.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved data-lifecycle policy defines deletion, compaction, deduplication, compression, tiering, and archive behavior.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7BC8164C",
+      "revision": 1,
+      "semantic_sha256": "7bc8164cd718833cd9a56161e5cfe29fda8c7e30998c642733930f1f0191befd",
+      "statement": "Distinguish backups from archives and avoid using repeated full backups as an unmanaged preservation strategy.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 492
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Storage, retention, backups, archives, and data lifecycle"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Backup and archive types plus management controls for full backups can be verified from policy and configuration.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every preservation job is explicitly classified as backup or archive.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every repeated full-backup job has an owner, schedule, retention policy, and recovery objective.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D6515E61",
+      "revision": 1,
+      "semantic_sha256": "d6515e6190347bc5a3320cbbed8c5edc1d497de4f815525d2dce532f3a357c55",
+      "statement": "Monitor storage growth by owner, purpose, class, age, duplication, access frequency, and deletion eligibility.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 496
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Storage, retention, backups, archives, and data lifecycle"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Storage telemetry can be queried for each explicitly listed ownership, lifecycle, and usage dimension.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Storage monitoring reports growth by owner, purpose, class, age, duplication, access frequency, and deletion eligibility.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BC43D21A",
+      "revision": 1,
+      "semantic_sha256": "bc43d21a695492dee5191edaa545cc80a931a8527ca20467531d86ea96b95fcd",
+      "statement": "Prevent compression, deduplication, or tiering from weakening encryption, access control, recovery, or integrity.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 497
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Storage, retention, backups, archives, and data lifecycle"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Each registered storage transformation can be tested against declared encryption, authorization, recovery, and integrity invariants.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Compression, deduplication, and tiering tests preserve every declared encryption, access-control, recovery, and integrity invariant.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5863DC60",
+      "revision": 1,
+      "semantic_sha256": "5863dc604a7829059fe62f54efeb2cc31ecd81f536633ecf7746378c367c0459",
+      "statement": "Include the energy and material cost of long-term preservation, migration, and media refresh in lifecycle plans.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 498
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Storage, retention, backups, archives, and data lifecycle"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Lifecycle plans can be checked for energy and material cost fields covering preservation, migration, and media refresh.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every long-term lifecycle plan includes energy and material costs for preservation, migration, and media refresh.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FD5481AF",
+      "revision": 1,
+      "semantic_sha256": "fd5481af482fc993b468e899a1e707c7632d870229bb9a1d84b4aeac4580527d",
+      "statement": "Define lifecycle boundaries for data preparation, training, fine-tuning, evaluation, inference, retrieval, monitoring, experimentation, and hardware.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 503
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "AI, machine learning, automation, and high-compute workloads"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "An AI workload boundary record can be checked for all eight named lifecycle stages and hardware.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every registered AI workload defines boundaries for data preparation, training, fine-tuning, evaluation, inference, retrieval, monitoring, experimentation, and hardware.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4F4E1909",
+      "revision": 1,
+      "semantic_sha256": "4f4e1909a8e319bcd63818bb045346081532130f2398ad51f300da104273d910",
+      "statement": "Report model size and compute only alongside task quality, usage, lifetime, hardware, region, and uncertainty needed to interpret impact.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 505
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "AI, machine learning, automation, and high-compute workloads"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Reports containing model size or compute can be checked for all seven required interpretive fields.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every report of model size or compute also reports task quality, usage, lifetime, hardware, region, and uncertainty.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FB9693DF",
+      "revision": 1,
+      "semantic_sha256": "fb9693df056837626ff07349d0b2a0a02b9930b1b257ff2145acdeb76348c656",
+      "statement": "Control repeated experiments, hyperparameter searches, evaluation duplication, speculative agents, and unattended loops.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 508
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "AI, machine learning, automation, and high-compute workloads"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Registered high-compute workflows can be checked for numeric experiment, search, agent, and loop limits plus stop controls.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every registered experiment, search, evaluation, and agent workflow has explicit work and spending limits.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Every unattended workflow passes its configured stop and loop-limit test.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6169B64D",
+      "revision": 1,
+      "semantic_sha256": "6169b64d15b16bc4b5b9487eb568d7481e85da03b37e5ed3d61488138f8c536d",
+      "statement": "Monitor resource and environmental regressions across model, prompt, data, provider, and traffic changes.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 512
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "AI, machine learning, automation, and high-compute workloads"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The monitoring catalog can be checked for resource and environmental regression series segmented by all five change sources.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Monitoring tracks resource and environmental regressions across model, prompt, data, provider, and traffic changes.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0B2665A3",
+      "revision": 1,
+      "semantic_sha256": "0b2665a362648f7fc7da2be2c0ec926efd6afc3f9e02d36b7e113604c631cac8",
+      "statement": "Provide kill switches and spending or resource limits for autonomous and agentic workloads.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 515
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "AI, machine learning, automation, and high-compute workloads"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Autonomous workload configurations can be checked and exercised for kill switches plus numeric spending and resource limits.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every registered autonomous or agentic workload passes its kill-switch test and enforces approved spending and resource ceilings.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-62B94A8E",
+      "revision": 1,
+      "semantic_sha256": "62b94a8e67cc44fd0f9dddbd4661f97a58c777a148c9726ef5a9e711d9a411bb",
+      "statement": "Maintain an inventory of material hardware and virtualized assets with owner, age, location, utilization, support state, and retirement path.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 519
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Hardware lifecycle, assets, circularity, and electronic waste"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The material asset registry is finite and can be checked for all seven required lifecycle fields.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every material physical or virtual asset records owner, age, location, utilization, support state, and retirement path.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3FE758C5",
+      "revision": 1,
+      "semantic_sha256": "3fe758c57bc505131861a9b3dac9c26727857e57f5542d274e9a2fab21dbc981",
+      "statement": "Include embodied impact, repairability, modularity, spare parts, support duration, and take-back options in procurement.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 522
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Hardware lifecycle, assets, circularity, and electronic waste"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Procurement templates and records can be checked for all seven explicitly required hardware-lifecycle considerations.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every material hardware procurement records embodied impact, repairability, modularity, spare parts, support duration, and take-back options.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D6FAF009",
+      "revision": 1,
+      "semantic_sha256": "d6faf0094be69489e2f28907f37afb76d46a6db82ad1aa4431823e3ab24e1f57",
+      "statement": "Erase data securely and verify custody during reuse, return, recycling, and disposal.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 524
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Hardware lifecycle, assets, circularity, and electronic waste"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Asset disposition can require an approved erase result and a complete custody chain before closure.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every reused, returned, recycled, or disposed storage-bearing asset has a passing approved erase result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        },
+        {
+          "statement": "Every disposition event has a custody record from release through final recipient.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-04DF1172",
+      "revision": 1,
+      "semantic_sha256": "04df11723582871c85bd1319b5311b070f775ef490576cf5cd3a8283d4d570f1",
+      "statement": "Track electronic waste by type, destination, treatment, recovery, and evidence of responsible handling.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 525
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Hardware lifecycle, assets, circularity, and electronic waste"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Electronic-waste records can be checked for the five explicitly required handling fields.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every electronic-waste event records type, destination, treatment, recovery, and responsible-handling evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CBABBF8C",
+      "revision": 1,
+      "semantic_sha256": "cbabbf8caee949b03d6f2514c26c5dcde9a08ad8c6066c98bd6683aec8d10aee",
+      "statement": "Require suppliers to disclose relevant lifecycle, materials, labor, repair, packaging, transport, and end-of-life information.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 528
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Hardware lifecycle, assets, circularity, and electronic waste"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Supplier disclosure records can be structurally checked for each explicitly named lifecycle and responsibility topic.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every material hardware supplier discloses lifecycle, materials, labor, repair, packaging, transport, and end-of-life information.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-217653AB",
+      "revision": 1,
+      "semantic_sha256": "217653abba2c9d24e3323d367f86ab89d9c1b6855b290d2e393ca5894953d9d9",
+      "statement": "Use asset identification and utilization records to support sustainability decisions and audits.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 530
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Hardware lifecycle, assets, circularity, and electronic waste"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Asset identifiers and utilization records can be validated directly in the bounded asset inventory.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every material asset has a stable asset identifier and current utilization record available to decision and audit records.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-51A9A772",
+      "revision": 1,
+      "semantic_sha256": "51a9a77212eb3a4e7f7df76dc71d3ebb9221440a3ff45626f204372d493a54d5",
+      "statement": "Assess location-specific climate, grid, water, ecosystem, disaster, and community risks rather than relying only on global averages.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 537
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Water, materials, waste, pollution, ecosystems, and location risk"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Every registered site and supplier location can be checked for the six required local risk dimensions.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Each material location assessment covers climate, grid, water, ecosystem, disaster, and community risks using location-specific data.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F7780EDB",
+      "revision": 1,
+      "semantic_sha256": "f7780edb7b81f2d6bcb0cde447c926c53239af882e6e0c91fab933833c35a992",
+      "statement": "Assess adaptation needs for heat, drought, flood, wildfire, grid instability, and other climate-related conditions.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 543
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Water, materials, waste, pollution, ecosystems, and location risk"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Risk assessments can be checked for each of the six explicitly named climate-related conditions and adaptation actions.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every material infrastructure assessment covers heat, drought, flood, wildfire, grid instability, and other approved climate conditions with adaptation actions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-106A573E",
+      "revision": 1,
+      "semantic_sha256": "106a573eb59106d0a5520c090077dd58140a35a2aaa1b01b3816c8a550f77b7a",
+      "statement": "Require suppliers to define measurement boundaries, methods, data quality, assurance, and update cadence for reported claims.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 550
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Suppliers, procurement, contracts, and shared responsibility"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Supplier-reporting requirements can be checked for all six required methodological fields.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every material supplier reporting agreement defines boundaries, methods, data quality, assurance, and update cadence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-92042528",
+      "revision": 1,
+      "semantic_sha256": "9204252887a4e63012ed44ea5acf80d6fe4583845c15afb882a9d051cf435f9d",
+      "statement": "Distinguish supplier-wide averages from the impact attributable to the purchased service.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 551
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Suppliers, procurement, contracts, and shared responsibility"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Supplier-wide and purchased-service impact can be required as separately typed values in supplier reports.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every supplier impact report distinguishes supplier-wide averages from impact attributable to the purchased service.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BEE4F085",
+      "revision": 1,
+      "semantic_sha256": "bee4f08533820affff294f89ee9cce1986b685fc5d497fedc5464b2dbd2cbf8a",
+      "statement": "Require disclosure of significant method changes and restatements.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 553
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Suppliers, procurement, contracts, and shared responsibility"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Supplier terms and reports can be checked for method-change and restatement disclosure obligations.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every material supplier agreement requires disclosure of significant method changes and restatements.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1B6F08D8",
+      "revision": 1,
+      "semantic_sha256": "1b6f08d8a91c5b0e52fd2883460f195f95580a19174f2ded6d591fe22b034d0d",
+      "statement": "Revoke access, delete data, recover assets, and close environmental obligations when suppliers are retired.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 560
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Suppliers, procurement, contracts, and shared responsibility"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Retired suppliers form a finite registry and closure can be checked for four explicit offboarding outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every retired supplier has completed access revocation and asset recovery records.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every retired supplier has completed data deletion and environmental-obligation closure evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-788DE467",
+      "revision": 1,
+      "semantic_sha256": "788de46722aef1fdc28973217cc2b6b49426f2c38790c34d7127424f62bbb524",
+      "statement": "Document compatibility windows and deprecation decisions with user impact, migration cost, and environmental consequences.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 566
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Longevity, compatibility, resilience, and low-resource operation"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Compatibility and deprecation records can be checked for the four explicitly required decision fields.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every compatibility window and deprecation decision records user impact, migration cost, and environmental consequences.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DD4E26D9",
+      "revision": 1,
+      "semantic_sha256": "dd4e26d94627db5f25b8e6ef0bc088facf53d09a631a1fb3204025c6267d9ca4",
+      "statement": "Preserve data portability and interoperable export so users can move without unnecessary recreation or loss.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 569
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Longevity, compatibility, resilience, and low-resource operation"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A bounded export suite can verify supported schemas, successful import, and field-level preservation.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every supported data class passes an interoperable export and re-import test with no undeclared loss or recreation requirement.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-61E768BD",
+      "revision": 1,
+      "semantic_sha256": "61e768bdec2d5f176da6f2063f497263512e0d95d9f7b8a1a396c33599b8b63a",
+      "statement": "Measure product lifetime, upgrade frequency, migration work, and redevelopment as sustainability indicators.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 574
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Longevity, compatibility, resilience, and low-resource operation"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The four named lifecycle indicators can be collected and queried as explicit metrics.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Monitoring reports product lifetime, upgrade frequency, migration work, and redevelopment work as sustainability indicators.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-ABB8A79B",
+      "revision": 1,
+      "semantic_sha256": "abb8a79b16985dbf20bd33e6f63f047da65f51b050acade0ed45f6d997dca3a6",
+      "statement": "Include malicious traffic, fraud, scraping, spam, cryptomining, denial of service, and compromised automation in waste-reduction controls.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 585
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Privacy, security, accessibility, and safety safeguards"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Waste-control policies can be checked for the seven explicitly named malicious or abusive workload classes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Waste-reduction controls cover malicious traffic, fraud, scraping, spam, cryptomining, denial of service, and compromised automation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9B66981F",
+      "revision": 1,
+      "semantic_sha256": "9b66981fa8845fcd5cb65f52bf487624d974f4676a6da116adac51d670e38551",
+      "statement": "Ensure low-resource or offline modes preserve authorization, integrity, privacy, and safe recovery.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 586
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Privacy, security, accessibility, and safety safeguards"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Every registered low-resource or offline mode can be exercised against declared authorization, integrity, privacy, and recovery invariants.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Each low-resource and offline mode passes authorization, integrity, privacy-isolation, and safe-recovery tests.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-346178E8",
+      "revision": 1,
+      "semantic_sha256": "346178e8032ee4396037a99636e3d5d090ce0638f630c5e280f1b839a03d6a1c",
+      "statement": "Define every public or contractual sustainability claim in testable terms.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 594
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Reporting, claims, transparency, assurance, and anti-greenwashing"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Claim records can be checked for a measurable predicate, scope, threshold, and linked verification method.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every public or contractual sustainability claim defines its scope, metric, comparison operator, threshold, and verification method.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-17FA871A",
+      "revision": 1,
+      "semantic_sha256": "17fa871a1370894614a1ad95c2d22434b628adb95e92fbcf141ec3cefc052568",
+      "statement": "Identify the assessed product version, geography, time period, functional unit, lifecycle boundary, method, data sources, and exclusions.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 595
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Reporting, claims, transparency, assurance, and anti-greenwashing"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Each assessed claim can be structurally checked for all nine required identification and methodology fields.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every assessment identifies product version, geography, time period, functional unit, lifecycle boundary, method, data sources, and exclusions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7C8C50E7",
+      "revision": 1,
+      "semantic_sha256": "7c8c50e7a43294248f6c790e0f43f84b7a74d3f80521d1f87f12c6891bfe1c6d",
+      "statement": "Keep evidence available for the life of the claim and any required retention period.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 599
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Reporting, claims, transparency, assurance, and anti-greenwashing"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Claim start, end, and policy retention dates can be compared with evidence availability in a finite claim registry.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Evidence for every claim remains available through the claim end date and the later applicable retention-policy date.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4B9F5962",
+      "revision": 1,
+      "semantic_sha256": "4b9f596225c180eb3a50918ca36323c2b684c6331c10d96dc03ed675a3ad41a3",
+      "statement": "Publish progress and setbacks using consistent historical baselines or clearly restate prior values.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 602
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Reporting, claims, transparency, assurance, and anti-greenwashing"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Historical reports can be compared for baseline version consistency or an explicit restatement of prior values.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every progress or setback report uses its prior baseline version or provides restated prior values and a restatement reason.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-278F1D86",
+      "revision": 1,
+      "semantic_sha256": "278f1d86958b2fb84d8fde14c3da261a60ad2dae378c067033fa53f5bc4d275c",
+      "statement": "Separate measured reductions from projections, commitments, avoided emissions, enabled impacts, and compensatory instruments.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 603
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Reporting, claims, transparency, assurance, and anti-greenwashing"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The six claim concepts can be represented and validated as separate typed report fields.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Measured reductions, projections, commitments, avoided emissions, enabled impacts, and compensatory instruments are reported as distinct types.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-68334A49",
+      "revision": 1,
+      "semantic_sha256": "68334a49ee0cc91e4b81f4ecfe3594ba1270d65e9084b17740ea762f455a23b6",
+      "statement": "Provide a contact and correction process for sustainability concerns and data errors.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 605
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Reporting, claims, transparency, assurance, and anti-greenwashing"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A public contact and correction workflow can be located and exercised through a bounded test submission.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "A published sustainability contact channel accepts a data-error report and routes it through a documented correction process.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1B038E56",
+      "revision": 1,
+      "semantic_sha256": "1b038e56a92f0b48dadd61645b4b475175d3f22b6a9b084aa175e3143c03940e",
+      "statement": "Monitor resource and environmental indicators alongside user outcomes, service objectives, cost, and quality.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 609
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Continuous improvement, operations, incidents, and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Monitoring can be queried for environmental indicators joined with the four named operational and user outcome groups.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Monitoring presents resource and environmental indicators alongside user outcomes, service objectives, cost, and quality.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E58D1198",
+      "revision": 1,
+      "semantic_sha256": "e58d1198d1699aee99fecdcbdddb73d5c784865789a66b33099bd9d3028550eb",
+      "statement": "Annotate deployments, model changes, campaigns, supplier changes, and traffic shifts on sustainability trends.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 610
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Continuous improvement, operations, incidents, and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Trend records can be checked for annotations tied to each explicitly named change-event class.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Sustainability trend data includes annotations for deployments, model changes, campaigns, supplier changes, and traffic shifts.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-374A20F0",
+      "revision": 1,
+      "semantic_sha256": "374a20f0274c36f80d5c85ac731a50f45669bc0337fb04053db4fec368ee1333",
+      "statement": "Create alerts or automated limits for uncontrolled jobs, agent loops, queue growth, data growth, traffic, builds, experiments, and scaling.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 613
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Continuous improvement, operations, incidents, and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Alerting and automated-limit configuration can be queried for each of the seven named uncontrolled-growth classes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Alerts or automatic limits cover uncontrolled jobs, agent loops, queues, data, traffic, builds, experiments, and scaling.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5139B668",
+      "revision": 1,
+      "semantic_sha256": "5139b6688af6918962d1ffddcb35ccd3e8c5e4c25318af73a77cb4b8042e80ca",
+      "statement": "Block release when the product exceeds an approved hard budget without an authorized, monitored, expiring exception.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 619
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Continuous improvement, operations, incidents, and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Numeric hard budgets and exception authorization, monitoring, and expiry can be enforced at the release gate.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The release gate rejects every result above an approved hard budget.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "An over-budget release proceeds only with an authorized exception that has monitoring and a future expiry.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8E27F1AD",
+      "revision": 1,
+      "semantic_sha256": "8e27f1adce6537951846e225476b65c26407142f509b8eb28a011a5f1c7696b2",
+      "statement": "Define the service, capability, users, organizations, suppliers, locations, data, and environments included in the transition.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 629
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Transition governance and accountability"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A transition-scope record can be checked for every explicitly required organizational and technical boundary.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The transition defines its service, capability, users, organizations, suppliers, locations, data, and environments.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-35A71BDE",
+      "revision": 1,
+      "semantic_sha256": "35a71bde01e3e9a221b11534374a5fa7ef20dadd41469438575404506fbbc2d1",
+      "statement": "Assign an accountable transition owner with authority across product, delivery, operations, support, security, privacy, data, and suppliers.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 630
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Transition governance and accountability"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The transition record can be checked for one accountable owner and authority across all eight named domains.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every transition has an accountable owner with documented authority across product, delivery, operations, support, security, privacy, data, and suppliers.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FDCEFCB5",
+      "revision": 1,
+      "semantic_sha256": "fdcefcb554b082345c63cf0e2bff4940329f6d04ebbd07c9c407b7167369696f",
+      "statement": "Identify the people authorized to accept operational responsibility and residual risk.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 631
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Transition governance and accountability"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "An authorization registry can identify the people permitted to accept operations and residual risk.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The transition names currently authorized operational-acceptance and residual-risk approvers.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FB298C6E",
+      "revision": 1,
+      "semantic_sha256": "fb298c6e9e99614bdb25fe779312e490db4274930d9ec2220605f840a757a4c8",
+      "statement": "Establish transition objectives, success measures, entry criteria, exit criteria, stop conditions, rollback criteria, and observation period.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 632
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Transition governance and accountability"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A transition plan can be structurally checked for all eight explicitly required objective and control fields.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every transition defines objectives, success measures, entry criteria, exit criteria, stop conditions, rollback criteria, and an observation period.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6FA91009",
+      "revision": 1,
+      "semantic_sha256": "6fa91009093256aad7ee16df7aa24079a466e255fa3b9509417584733d1aa296",
+      "statement": "Maintain an integrated transition plan covering technology, data, people, process, contracts, communications, training, support, and retirement.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 633
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Transition governance and accountability"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The integrated plan can be checked for each of the nine named workstream areas.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The transition plan covers technology, data, people, process, contracts, communications, training, support, and retirement.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0697E472",
+      "revision": 1,
+      "semantic_sha256": "0697e4720b0ca34de97c7aa93adb7f2de561cb3feebe2884477f443fd18a9ff1",
+      "statement": "Identify dependencies, sequencing constraints, freeze periods, peak events, and competing organizational changes.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 634
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Transition governance and accountability"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Transition records can be checked for all five explicit dependency and timing constraint categories.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every transition records dependencies, sequencing constraints, freeze periods, peak events, and competing organizational changes.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6159AEF8",
+      "revision": 1,
+      "semantic_sha256": "6159aef850f56435561891ec922def58e8400f898b2cd7068a0e304c79f7c5dc",
+      "statement": "Define governance for decisions during delivery–operations overlap.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 636
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Transition governance and accountability"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Overlap governance can be checked for decision roles, authorities, escalation, and time boundaries.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every transition defines decision owners, authority, escalation, and duration for delivery–operations overlap.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A4F57314",
+      "revision": 1,
+      "semantic_sha256": "a4f57314ed1f97be9eb894fb6134da8a15ab3393144b9963a5ee0b02fc05a574",
+      "statement": "Prevent schedule pressure from transferring an unaccepted or unsupported service into operation.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 637
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Transition governance and accountability"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A transfer gate can require signed operational acceptance and active support coverage regardless of schedule state.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Operational transfer is blocked without a current signed acceptance record.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Operational transfer is blocked without active support ownership and coverage.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5FFA89EF",
+      "revision": 1,
+      "semantic_sha256": "5ffa89efaeed39eb414d92e38f27ca96e17997003dc1ebaa0a5abfc05b141833",
+      "statement": "Define operational acceptance criteria while requirements and architecture are being established.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 643
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Operational acceptance criteria"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Timestamps and document links can establish that acceptance criteria existed before requirements and architecture were finalized.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Operational acceptance criteria are versioned and approved no later than the established requirements and architecture baseline.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-58BC0BE5",
+      "revision": 1,
+      "semantic_sha256": "58bc0be5367e6e90f2ac0d0f59382aff08ac4853274d948c9916e16c01d3dec7",
+      "statement": "Include service objectives, capacity, resilience, recoverability, security, privacy, accessibility, supportability, maintainability, cost, and sustainability.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 644
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Operational acceptance criteria"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Acceptance criteria can be checked for each of the ten explicitly named service-quality domains.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Operational acceptance criteria cover service objectives, capacity, resilience, recoverability, security, privacy, accessibility, supportability, maintainability, cost, and sustainability.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A015BF2C",
+      "revision": 1,
+      "semantic_sha256": "a015bf2cf9461b15b305c26c52f93dcca41623c2d33603cb25e413ac99da9439",
+      "statement": "Include observability, alerting, on-call, escalation, incident, problem, change, and continuity readiness.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 645
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Operational acceptance criteria"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Acceptance criteria can be checked for all seven explicitly required operations-readiness capabilities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Operational acceptance criteria cover observability, alerting, on-call, escalation, incident, problem, change, and continuity readiness.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B5D1F965",
+      "revision": 1,
+      "semantic_sha256": "b5d1f96535a228725bfb878856cd6f510749acf0e3213dc7dddde5825f1634f9",
+      "statement": "Include data integrity, migration, reconciliation, retention, deletion, backup, restore, and legal-hold readiness.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 646
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Operational acceptance criteria"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Acceptance criteria can be checked for all eight explicitly required data-lifecycle and recovery areas.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Operational acceptance criteria cover data integrity, migration, reconciliation, retention, deletion, backup, restore, and legal-hold readiness.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-146FDE47",
+      "revision": 1,
+      "semantic_sha256": "146fde47a267ea4ceffda795b2145fee591a65b7ba6ce1dc896b53cf373e07a2",
+      "statement": "Include supplier support, contractual obligations, licenses, quotas, service limits, and exit provisions.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 647
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Operational acceptance criteria"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Acceptance criteria can be checked for all six explicitly required supplier and contract concerns.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Operational acceptance criteria cover supplier support, contractual obligations, licenses, quotas, service limits, and exit provisions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-31DE5766",
+      "revision": 1,
+      "semantic_sha256": "31de5766b3072074c301489bf7c32580407c7ba4464813e686ece9beaca171dc",
+      "statement": "Include production access, privileged procedures, break-glass access, and separation of duties.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 648
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Operational acceptance criteria"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Acceptance criteria can be checked for the four explicitly required privileged-operation controls.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Operational acceptance criteria cover production access, privileged procedures, break-glass access, and separation of duties.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F5DC0C23",
+      "revision": 1,
+      "semantic_sha256": "f5dc0c23985683fdbef2a43c7ad0692b6ef7768857c2fc3ed7989cd4362ce9fe",
+      "statement": "Include runbooks for routine, degraded, emergency, and recovery operation.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 649
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Operational acceptance criteria"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The runbook catalog can be checked for each of the four required operating modes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Approved runbooks cover routine, degraded, emergency, and recovery operation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EB933861",
+      "revision": 1,
+      "semantic_sha256": "eb933861603b0db2203cef238f1b7cf69726fd09b0615b33e36c83ae01944a37",
+      "statement": "Include documentation, training, competence, staffing, handover, and support-channel readiness.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 650
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Operational acceptance criteria"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Acceptance evidence can be checked for all six named people and support readiness areas.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Operational acceptance criteria cover documentation, training, competence, staffing, handover, and support channels.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DEB21FB0",
+      "revision": 1,
+      "semantic_sha256": "deb21fb00be88bdc9c78be7cc2e4e2070a7fa0113891ce250124b8ddacdbdaf7",
+      "statement": "Include known defects, exceptions, technical debt, workarounds, and end-of-support commitments.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 651
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Operational acceptance criteria"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Acceptance records can be checked for all five explicitly named limitation and lifecycle commitment categories.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Operational acceptance criteria record known defects, exceptions, technical debt, workarounds, and end-of-support commitments.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FC3E6CE7",
+      "revision": 1,
+      "semantic_sha256": "fc3e6ce7bcbc47258a01069a81ab3cd34b9819bbb654060626327e8c7bd5c789",
+      "statement": "Make criteria measurable and linked to evidence.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 652
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Operational acceptance criteria"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Each criterion can be structurally required to have a measurable predicate and an evidence reference.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every operational acceptance criterion defines a measure, comparison, threshold or expected value, and linked evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DA324CE6",
+      "revision": 1,
+      "semantic_sha256": "da324ce6c71b8985224c84fade140cb00d4fef5d126537e4c18031d9baab6b6e",
+      "statement": "Define which unmet criteria block acceptance and which may receive time-bounded conditional acceptance.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 653
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Operational acceptance criteria"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Criteria can be typed as blocking or conditional, with conditional acceptance requiring an expiry and owner.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every acceptance criterion is marked blocking or conditionally acceptable; every conditional item has an owner and future expiry.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-01C02CC6",
+      "revision": 1,
+      "semantic_sha256": "01c02cc6c8affcc8112e16e6c0af634bc04ef3988d54e5bf803fc6deae4cfb94",
+      "statement": "Require the receiving organization to review and agree to the criteria before final testing.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 654
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Operational acceptance criteria"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Approval identity and timestamps can prove receiving-organization agreement preceded final testing.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authorized receiving organization approved the acceptance criteria before the final-test start timestamp.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-40F75816",
+      "revision": 1,
+      "semantic_sha256": "40f758165e95d38c803f2d723dcd961dd2554c8fb9b047aaabb1487af87f81ec",
+      "statement": "Provide clear ownership for every service, component, data set, integration, job, alert, runbook, and supplier.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 659
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Service design for operability and supportability"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The approved operational inventory is finite and every listed object type can be checked for an owner.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every registered service, component, data set, integration, job, alert, runbook, and supplier has a current owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-212321D8",
+      "revision": 1,
+      "semantic_sha256": "212321d8acea83ef2ca37cfaf0dab84d25736cdb4318e1fcbbfff75b543a491e",
+      "statement": "Expose health, version, configuration, dependencies, queueing, saturation, and user-impact indicators.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 660
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Service design for operability and supportability"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Runtime monitoring can be queried for each of the seven explicitly named operational indicator groups.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The service exposes health, version, configuration, dependency, queueing, saturation, and user-impact indicators.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6C68E857",
+      "revision": 1,
+      "semantic_sha256": "6c68e8572425c7c5cce00efd807ccbda8dac90ac6990ce69d465f8ec0c584f5e",
+      "statement": "Make routine maintenance, patching, scaling, backup, restore, failover, and certificate rotation executable and testable.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 662
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Service design for operability and supportability"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Each of the seven named operational procedures can be executed in a bounded environment and checked for current passing results.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Current executable tests cover routine maintenance, patching, scaling, backup, restore, failover, and certificate rotation.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4AEF1160",
+      "revision": 1,
+      "semantic_sha256": "4aef116018f6f980211ed42a83b6d9156b8654c38ae6fd258e810e957bfab9f0",
+      "statement": "Provide bounded and auditable administrative actions.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 663
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Service design for operability and supportability"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Administrative-action schemas and audit events can be checked for explicit bounds, authorization, and traceability.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every registered administrative action enforces input or scope bounds and emits an attributable audit event.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F2960F7A",
+      "revision": 1,
+      "semantic_sha256": "f2960f7a32b108b7af9c35d4106325d2fe8b12c1d0d59766912195fc950f000d",
+      "statement": "Prevent support and operations tools from bypassing authorization, tenant isolation, or data-governance controls.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 664
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Service design for operability and supportability"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Operations and support tools can be exercised against declared authorization, tenant-isolation, and data-governance invariants.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every registered support or operations tool passes authorization, cross-tenant isolation, and data-governance tests.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FB76AF44",
+      "revision": 1,
+      "semantic_sha256": "fb76af446aed8c900ce2364cfe2f31e1bf9be17ef88a915a8933c6e1a8819e55",
+      "statement": "Design batch, queue, scheduled, and long-running work for visibility, retry, cancellation, reconciliation, and recovery.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 666
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Service design for operability and supportability"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Registered background work can be tested for each of the five explicitly required operational capabilities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every batch, queue, scheduled, and long-running job exposes visibility and passes retry, cancellation, reconciliation, and recovery tests.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4B6D8A92",
+      "revision": 1,
+      "semantic_sha256": "4b6d8a9219d14035911e0533d169f3f048cf2ba5f374574bc058cc7cb24c1f8d",
+      "statement": "Provide clear procedures for data correction and exceptional manual processing.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 667
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Final Gap Closure — Operational Acceptance, Service Transition, and Organizational Adoption",
+        "Service design for operability and supportability"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The procedure registry can be checked for data-correction and exceptional-manual-processing workflows with required controls.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Approved procedures exist for data correction and exceptional manual processing, with owner, authorization, steps, and audit evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

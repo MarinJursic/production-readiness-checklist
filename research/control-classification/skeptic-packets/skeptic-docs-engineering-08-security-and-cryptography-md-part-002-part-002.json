@@ -1,0 +1,219 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-08-security-and-cryptography-md-part-002-part-002",
+  "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-002",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 8,
+  "controls": [
+    {
+      "control_id": "USEQ-3824B918",
+      "revision": 1,
+      "semantic_sha256": "3824b91851161a90912db4a76bbc31d4664752d866df31ddb7b683c2df74ef68",
+      "statement": "Be able to identify every asset, ciphertext, signature, certificate, token, package, device, and relying party affected by a compromised key or mechanism.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 656
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Cryptographic Agility, Obsolescence, and Long-Term Resilience Master Checklist",
+        "Expanded gap-closure controls",
+        "Compromise, incident response, and recovery"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Be able to identify every asset, ciphertext, signature, certificate, token, package, device, and relying party affected by a compromised key or mechanism.” is deterministic with a sealed cryptographic inventory, versioned policy, and exact key, certificate, parameter, manifest, or test-vector oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Be able to identify every asset, ciphertext, signature, certificate, token, package, device, and relying party affected by a compromised key or mechanism.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D6AA53D3",
+      "revision": 1,
+      "semantic_sha256": "d6aa53d3c386642be81d331518b40e1d36ad6d0c38e808d114cb8c4f4a07fc11",
+      "statement": "Test emergency rotation and recovery regularly, including loss of the primary key-management or identity service.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 662
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Cryptographic Agility, Obsolescence, and Long-Term Resilience Master Checklist",
+        "Expanded gap-closure controls",
+        "Compromise, incident response, and recovery"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Test emergency rotation and recovery regularly, including loss of the primary key-management or identity service.” is deterministic with a sealed cryptographic inventory, versioned policy, and exact key, certificate, parameter, manifest, or test-vector oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test emergency rotation and recovery regularly, including loss of the primary key-management or identity service.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E02F6368",
+      "revision": 1,
+      "semantic_sha256": "e02f6368244725142e14c724f575ba4b5b660c83a2bd675bad64264343934187",
+      "statement": "Prevent old backup restoration from reintroducing revoked keys, certificates, trust anchors, policy, or vulnerable artifacts.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 663
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Cryptographic Agility, Obsolescence, and Long-Term Resilience Master Checklist",
+        "Expanded gap-closure controls",
+        "Compromise, incident response, and recovery"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Prevent old backup restoration from reintroducing revoked keys, certificates, trust anchors, policy, or vulnerable artifacts.” is deterministic with a sealed cryptographic inventory, versioned policy, and exact key, certificate, parameter, manifest, or test-vector oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Prevent old backup restoration from reintroducing revoked keys, certificates, trust anchors, policy, or vulnerable artifacts.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-90908C45",
+      "revision": 1,
+      "semantic_sha256": "90908c45034abf2c3c8678fb0f8ee8ae6fd1b51d43121bb504a3ec6130342b60",
+      "statement": "Conduct root-cause review and update inventory, architecture, policy, tests, monitoring, and migration plans.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 664
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Cryptographic Agility, Obsolescence, and Long-Term Resilience Master Checklist",
+        "Expanded gap-closure controls",
+        "Compromise, incident response, and recovery"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Conduct root-cause review and update inventory, architecture, policy, tests, monitoring, and migration plans.” is deterministic with a sealed cryptographic inventory, versioned policy, and exact key, certificate, parameter, manifest, or test-vector oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Conduct root-cause review and update inventory, architecture, policy, tests, monitoring, and migration plans.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F2957839",
+      "revision": 1,
+      "semantic_sha256": "f2957839e0a1541a633d9c9de511f1bac7e4a614910dbf688025df92bbe803b6",
+      "statement": "Do not release a system when material cryptographic use, keys, certificates, trust anchors, algorithms, or dependent data cannot be inventoried and owned.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 668
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Cryptographic Agility, Obsolescence, and Long-Term Resilience Master Checklist",
+        "Expanded gap-closure controls",
+        "Cryptographic release blockers"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Do not release a system when material cryptographic use, keys, certificates, trust anchors, algorithms, or dependent data cannot be inventoried and owned.” is deterministic with a sealed cryptographic inventory, versioned policy, and exact key, certificate, parameter, manifest, or test-vector oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Do not release a system when material cryptographic use, keys, certificates, trust anchors, algorithms, or dependent data cannot be inventoried and owned.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-24D458E7",
+      "revision": 1,
+      "semantic_sha256": "24d458e7eea1b7ba2f6332b18a258cd756bf8d59dfbc4f7b2cca541a09173988",
+      "statement": "Do not proceed when keys are embedded in source, public artifacts, client code, logs, tickets, shared documents, or unapproved storage.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 671
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Cryptographic Agility, Obsolescence, and Long-Term Resilience Master Checklist",
+        "Expanded gap-closure controls",
+        "Cryptographic release blockers"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Do not proceed when keys are embedded in source, public artifacts, client code, logs, tickets, shared documents, or unapproved storage.” is deterministic with a sealed cryptographic inventory, versioned policy, and exact key, certificate, parameter, manifest, or test-vector oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Do not proceed when keys are embedded in source, public artifacts, client code, logs, tickets, shared documents, or unapproved storage.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1781A243",
+      "revision": 1,
+      "semantic_sha256": "1781a243fcf0cfaf413361c32741d25eeb0133d9072d42622bc9edc1b132b9c5",
+      "statement": "Do not deploy when nonce reuse, weak randomness, algorithm confusion, downgrade, incomplete certificate validation, or unauthenticated encryption is known or reasonably suspected.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 672
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Cryptographic Agility, Obsolescence, and Long-Term Resilience Master Checklist",
+        "Expanded gap-closure controls",
+        "Cryptographic release blockers"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Do not deploy when nonce reuse, weak randomness, algorithm confusion, downgrade, incomplete certificate validation, or unauthenticated encryption is known or reasonably suspected.” is deterministic with a sealed cryptographic inventory, versioned policy, and exact key, certificate, parameter, manifest, or test-vector oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Do not deploy when nonce reuse, weak randomness, algorithm confusion, downgrade, incomplete certificate validation, or unauthenticated encryption is known or reasonably suspected.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9FD289E2",
+      "revision": 1,
+      "semantic_sha256": "9fd289e23fad8fa6f54dc8efa760fe48dbdea85313c64e8dc0510917978c55aa",
+      "statement": "Do not rotate or revoke a critical key without verifying recovery, consumer adoption, dependent artifacts, and rollback implications.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 673
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Cryptographic Agility, Obsolescence, and Long-Term Resilience Master Checklist",
+        "Expanded gap-closure controls",
+        "Cryptographic release blockers"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Do not rotate or revoke a critical key without verifying recovery, consumer adoption, dependent artifacts, and rollback implications.” is deterministic with a sealed cryptographic inventory, versioned policy, and exact key, certificate, parameter, manifest, or test-vector oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Do not rotate or revoke a critical key without verifying recovery, consumer adoption, dependent artifacts, and rollback implications.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

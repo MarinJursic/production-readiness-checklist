@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/control-classification-skeptic-review.schema.json",
+  "title": "Production Readiness Skeptical Control Classification Review v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "packet_id", "primary_packet_id", "methodology_sha256", "registry_version", "registry_sha256", "controls"],
+  "properties": {
+    "schema_version": {"const": "prc.control-classification-skeptic-review/v0.1"},
+    "packet_id": {"type": "string", "pattern": "^skeptic-[a-z0-9]+(?:-[a-z0-9]+)*-part-[0-9]{3}-part-[0-9]{3}$"},
+    "primary_packet_id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*-part-[0-9]{3}$"},
+    "methodology_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "registry_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "registry_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "controls": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 100,
+      "items": {"$ref": "#/$defs/review"}
+    }
+  },
+  "$defs": {
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "control_id",
+        "revision",
+        "semantic_sha256",
+        "verdict",
+        "reason",
+        "counterexample_analysis",
+        "nondeterministic_route",
+        "nondeterministic_reason_codes",
+        "review_status"
+      ],
+      "properties": {
+        "control_id": {"type": "string", "pattern": "^(PRC-[0-9]{2}-[0-9]{3}|USEQ-[A-F0-9]{8})$"},
+        "revision": {"type": "integer", "minimum": 1},
+        "semantic_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "verdict": {"enum": ["confirmed_deterministic", "rejected_nondeterministic"]},
+        "reason": {"type": "string", "minLength": 20, "maxLength": 4000},
+        "counterexample_analysis": {"type": "string", "minLength": 20, "maxLength": 4000},
+        "nondeterministic_route": {
+          "type": ["string", "null"],
+          "enum": [
+            null,
+            "contextual_judgment",
+            "accountable_human_decision",
+            "specialist_or_legal_judgment",
+            "empirical_protocol_undefined",
+            "contract_incomplete",
+            "mixed",
+            "unbounded_claim"
+          ]
+        },
+        "nondeterministic_reason_codes": {
+          "type": "array",
+          "maxItems": 9,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "contextual_judgment",
+              "human_accountability",
+              "legal_or_specialist_authority",
+              "undefined_protocol",
+              "undefined_scope",
+              "undefined_threshold",
+              "mixed_with_nondeterministic_child",
+              "unbounded_scope",
+              "classification_not_approved"
+            ]
+          }
+        },
+        "review_status": {"const": "skeptical_agent_reviewed"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"verdict": {"const": "confirmed_deterministic"}}},
+          "then": {
+            "properties": {
+              "nondeterministic_route": {"type": "null"},
+              "nondeterministic_reason_codes": {"maxItems": 0}
+            }
+          },
+          "else": {
+            "properties": {
+              "nondeterministic_route": {"type": "string"},
+              "nondeterministic_reason_codes": {"minItems": 1}
+            }
+          }
+        }
+      ]
+    }
+  }
+}

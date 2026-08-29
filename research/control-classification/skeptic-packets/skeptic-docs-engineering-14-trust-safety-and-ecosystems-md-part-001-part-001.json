@@ -1,0 +1,1491 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-14-trust-safety-and-ecosystems-md-part-001-part-001",
+  "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 55,
+  "controls": [
+    {
+      "control_id": "USEQ-560779CA",
+      "revision": 1,
+      "semantic_sha256": "560779caa027c5b98915030c9ccc4797d453bf42b9a6780db6a3747cc8af83d3",
+      "statement": "Acceptable-use, content, conduct, and enforcement policies are defined.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 15
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "User-Generated Content, Social Features, and Marketplaces",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Acceptable-use, content, conduct, and enforcement policies are defined.” defines explicit policy, queue, moderation, safety, provenance, extension, metric, emergency, or exception fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized trust-and-safety record contains every named policy field, owner, rule, state, factor, decision attribute, metric, procedure, or evidence link and binds to the declared product and version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A7D75987",
+      "revision": 1,
+      "semantic_sha256": "a7d75987749b1391db686fa14ebfd22fa1fc673bf7c91d8ecf19c81d19b5dcd0",
+      "statement": "Users can report prohibited content, harmful conduct, impersonation, fraud, and safety threats.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 16
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "User-Generated Content, Social Features, and Marketplaces",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Users can report prohibited content, harmful conduct, impersonation, fraud, and safety threats.” requires a finite reporting, rollback, audience-control, permission, revocation, recovery, provenance-state, or responder-routing capability whose result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded capability test and verify authenticated evidence records the declared user state, action, expected transition, isolation condition, audit event, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6F4DE347",
+      "revision": 1,
+      "semantic_sha256": "6f4de347d88e24293b0c1335a098ff3243a16674212f60d9ac3a7bc2997afccb",
+      "statement": "Moderation queues have owners, severity rules, response objectives, and escalation paths.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 18
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "User-Generated Content, Social Features, and Marketplaces",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Moderation queues have owners, severity rules, response objectives, and escalation paths.” defines explicit policy, queue, moderation, safety, provenance, extension, metric, emergency, or exception fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized trust-and-safety record contains every named policy field, owner, rule, state, factor, decision attribute, metric, procedure, or evidence link and binds to the declared product and version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9EFA79C0",
+      "revision": 1,
+      "semantic_sha256": "9efa79c043b86294f2ef93550879388010a9b5653b04ccb59c20a338bbab2939",
+      "statement": "Moderator actions are authorized, attributable, reviewable, and audited.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 19
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "User-Generated Content, Social Features, and Marketplaces",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Moderator actions are authorized, attributable, reviewable, and audited.” joins bounded identity, case, workflow, configuration, cryptographic, artifact, or launch-gate authorities whose required relationships and transitions can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized moderation, permission, recovery, extension, or launch record contains every explicitly required state, review, notice, owner, and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked configuration, artifact, cryptographic result, audit stream, or bounded fixture and fail closed on a missing, invalid, unreviewed, or mismatched binding.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BC1EE838",
+      "revision": 1,
+      "semantic_sha256": "bc1ee8388f7a744e79a8b072f6eff86ab00a787bda79c6d5d25d6abbe5514f5d",
+      "statement": "Threats to life or safety have an emergency escalation process.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 30
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "User-Generated Content, Social Features, and Marketplaces",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Threats to life or safety have an emergency escalation process.” defines explicit policy, queue, moderation, safety, provenance, extension, metric, emergency, or exception fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized trust-and-safety record contains every named policy field, owner, rule, state, factor, decision attribute, metric, procedure, or evidence link and binds to the declared product and version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9B4FADDD",
+      "revision": 1,
+      "semantic_sha256": "9b4fadddf9d4edb6b11a413c076d1cda85452c3db6f3fe52591b6517339c0338",
+      "statement": "Bounce, complaint, rejection, suppression, reputation, and delivery-delay signals are monitored.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 41
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Email, SMS, Push, and Notifications",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The control “Bounce, complaint, rejection, suppression, reputation, and delivery-delay signals are monitored.” names concrete delivery, drift, quality, abuse, takeover, extension, or ecosystem signals whose configured monitoring state can be read from an authorized environment.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Read the authorized monitoring system and verify current observations and configured detection exist for every named signal with bound scope, owner, policy version, and immutable query timestamp.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9B51BA8F",
+      "revision": 1,
+      "semantic_sha256": "9b51ba8f1458e2e595dc2cf1e99baef0a0582e284dbeafa97583c3cdac8f7b96",
+      "statement": "Phone-number and email-address reassignment risk is considered.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 50
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Email, SMS, Push, and Notifications",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Phone-number and email-address reassignment risk is considered.” defines explicit policy, queue, moderation, safety, provenance, extension, metric, emergency, or exception fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized trust-and-safety record contains every named policy field, owner, rule, state, factor, decision attribute, metric, procedure, or evidence link and binds to the declared product and version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-ADF8072F",
+      "revision": 1,
+      "semantic_sha256": "adf8072f2519b69f25b810848c01974e8cc247a5ce453c57beaf36f7cd2e2703",
+      "statement": "Production cannot accidentally use test recipients, and testing cannot accidentally use production recipients.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 51
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Email, SMS, Push, and Notifications",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Production cannot accidentally use test recipients, and testing cannot accidentally use production recipients.” joins bounded identity, case, workflow, configuration, cryptographic, artifact, or launch-gate authorities whose required relationships and transitions can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized moderation, permission, recovery, extension, or launch record contains every explicitly required state, review, notice, owner, and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked configuration, artifact, cryptographic result, audit stream, or bounded fixture and fail closed on a missing, invalid, unreviewed, or mismatched binding.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BD559A2D",
+      "revision": 1,
+      "semantic_sha256": "bd559a2d164f9e39c42cecacd411977aa5157520f257e632a627b18e90560ff6",
+      "statement": "Index lag, model drift, and ranking changes are monitored.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 71
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Search, Ranking, Recommendations, and Personalization",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The control “Index lag, model drift, and ranking changes are monitored.” names concrete delivery, drift, quality, abuse, takeover, extension, or ecosystem signals whose configured monitoring state can be read from an authorized environment.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Read the authorized monitoring system and verify current observations and configured detection exist for every named signal with bound scope, owner, policy version, and immutable query timestamp.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-33AC50F2",
+      "revision": 1,
+      "semantic_sha256": "33ac50f262a9be575d69226b75281117184837765075c10914360740efcd5936",
+      "statement": "A kill switch or rollback exists for harmful ranking or recommendation changes.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 72
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Search, Ranking, Recommendations, and Personalization",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “A kill switch or rollback exists for harmful ranking or recommendation changes.” requires a finite reporting, rollback, audience-control, permission, revocation, recovery, provenance-state, or responder-routing capability whose result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded capability test and verify authenticated evidence records the declared user state, action, expected transition, isolation condition, audit event, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-76490994",
+      "revision": 1,
+      "semantic_sha256": "76490994a4890a78da6c0824de4de3c7428d019fe9d659a047bc324525c0e209",
+      "statement": "Define risk appetite, release blockers, escalation thresholds, emergency actions, and authority to slow or stop growth.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 90
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Safety-by-design governance"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define risk appetite, release blockers, escalation thresholds, emergency actions, and authority to slow or stop growth.” defines explicit policy, queue, moderation, safety, provenance, extension, metric, emergency, or exception fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized trust-and-safety record contains every named policy field, owner, rule, state, factor, decision attribute, metric, procedure, or evidence link and binds to the declared product and version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9ED88D70",
+      "revision": 1,
+      "semantic_sha256": "9ed88d7095534a88ffee87e4f4658a7891baf5d39dcba31dc947d9fd038a766a",
+      "statement": "Explain what automated systems, human reviewers, trusted flaggers, merchants, developers, or partners may review and why.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 102
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Policies, notice, and user expectations"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Explain what automated systems, human reviewers, trusted flaggers, merchants, developers, or partners may review and why.” defines explicit policy, queue, moderation, safety, provenance, extension, metric, emergency, or exception fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized trust-and-safety record contains every named policy field, owner, rule, state, factor, decision attribute, metric, procedure, or evidence link and binds to the declared product and version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-07E9A6B6",
+      "revision": 1,
+      "semantic_sha256": "07e9a6b6df2fcd946804f521f487b055838276553195247126ec5fc8a25dd5e1",
+      "statement": "Give developers and extension publishers explicit technical, privacy, permission, review, update, and enforcement requirements.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 106
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Policies, notice, and user expectations"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Give developers and extension publishers explicit technical, privacy, permission, review, update, and enforcement requirements.” defines explicit policy, queue, moderation, safety, provenance, extension, metric, emergency, or exception fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized trust-and-safety record contains every named policy field, owner, rule, state, factor, decision attribute, metric, procedure, or evidence link and binds to the declared product and version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1EEF3A16",
+      "revision": 1,
+      "semantic_sha256": "1eef3a163a19402bebec86eabca4ac2eda92685cb62f8692fbc46f6b3b3dfa4e",
+      "statement": "State consequences, enforcement ranges, appeal paths, evidence retention, and restoration possibilities.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 107
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Policies, notice, and user expectations"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “State consequences, enforcement ranges, appeal paths, evidence retention, and restoration possibilities.” defines explicit policy, queue, moderation, safety, provenance, extension, metric, emergency, or exception fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized trust-and-safety record contains every named policy field, owner, rule, state, factor, decision attribute, metric, procedure, or evidence link and binds to the declared product and version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9D270EFD",
+      "revision": 1,
+      "semantic_sha256": "9d270efd11ac9f021ca02dc97820af59e88aeabefb984c336e875c956f5a80f5",
+      "statement": "Make safety controls available before, during, and after an interaction rather than only after harm.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 117
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "User empowerment, consent, and protective controls"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Make safety controls available before, during, and after an interaction rather than only after harm.” requires a finite reporting, rollback, audience-control, permission, revocation, recovery, provenance-state, or responder-routing capability whose result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded capability test and verify authenticated evidence records the declared user state, action, expected transition, isolation condition, audit event, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B65E9725",
+      "revision": 1,
+      "semantic_sha256": "b65e9725611a1e33c9a79693757dcf5fe35d04a5edf67a409f04c8396edf65d6",
+      "statement": "Allow users to review and revoke connected applications, sessions, devices, delegates, payment mandates, and extension permissions.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 120
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "User empowerment, consent, and protective controls"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Allow users to review and revoke connected applications, sessions, devices, delegates, payment mandates, and extension permissions.” requires a finite reporting, rollback, audience-control, permission, revocation, recovery, provenance-state, or responder-routing capability whose result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded capability test and verify authenticated evidence records the declared user state, action, expected transition, isolation condition, audit event, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D6445268",
+      "revision": 1,
+      "semantic_sha256": "d6445268315abc59c49f46a4881b7fb408c4568f8a5180b5666c3b4596be8ecb",
+      "statement": "Make optional permissions and data collection revocable without forcing account deletion when the core service can continue.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 122
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "User empowerment, consent, and protective controls"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Make optional permissions and data collection revocable without forcing account deletion when the core service can continue.” requires a finite reporting, rollback, audience-control, permission, revocation, recovery, provenance-state, or responder-routing capability whose result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded capability test and verify authenticated evidence records the declared user state, action, expected transition, isolation condition, audit event, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-41AFAEC3",
+      "revision": 1,
+      "semantic_sha256": "41afaec3c2bd57d1a59f2c830aeca3333ccc53e6cdd068475688ed7b8bb69678",
+      "statement": "Allow reporting without requiring the reporter to maintain contact with the reported party.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 132
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Reporting, moderation, and case handling"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Allow reporting without requiring the reporter to maintain contact with the reported party.” requires a finite reporting, rollback, audience-control, permission, revocation, recovery, provenance-state, or responder-routing capability whose result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded capability test and verify authenticated evidence records the declared user state, action, expected transition, isolation condition, audit event, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FF6C3B4B",
+      "revision": 1,
+      "semantic_sha256": "ff6c3b4b03b0ebfd9007c9c6ccb7b58f1f9d626b8100fba6b73cca59f9f5a1e9",
+      "statement": "Define service objectives for acknowledgment, triage, emergency escalation, decision, appeal, and restoration by severity.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 136
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Reporting, moderation, and case handling"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define service objectives for acknowledgment, triage, emergency escalation, decision, appeal, and restoration by severity.” defines explicit policy, queue, moderation, safety, provenance, extension, metric, emergency, or exception fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized trust-and-safety record contains every named policy field, owner, rule, state, factor, decision attribute, metric, procedure, or evidence link and binds to the declared product and version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4A26124E",
+      "revision": 1,
+      "semantic_sha256": "4a26124edf3d18267bf976e4bb23cc08e24e74fdd36b64b4a50a151ffa889a37",
+      "statement": "Require consistent decision records including policy basis, evidence, confidence, action, duration, scope, reviewer, and escalation.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 143
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Reporting, moderation, and case handling"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Require consistent decision records including policy basis, evidence, confidence, action, duration, scope, reviewer, and escalation.” defines explicit policy, queue, moderation, safety, provenance, extension, metric, emergency, or exception fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized trust-and-safety record contains every named policy field, owner, rule, state, factor, decision attribute, metric, procedure, or evidence link and binds to the declared product and version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1E2471A3",
+      "revision": 1,
+      "semantic_sha256": "1e2471a39104d6f4e59bc4fdd334e5c149c0916d2bf315577cd6653c5e6f4319",
+      "statement": "Use quality assurance, calibration, double review, sampling, and disagreement analysis for consequential decisions.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 144
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Reporting, moderation, and case handling"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Use quality assurance, calibration, double review, sampling, and disagreement analysis for consequential decisions.” defines explicit policy, queue, moderation, safety, provenance, extension, metric, emergency, or exception fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized trust-and-safety record contains every named policy field, owner, rule, state, factor, decision attribute, metric, procedure, or evidence link and binds to the declared product and version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FC548DD3",
+      "revision": 1,
+      "semantic_sha256": "fc548dd30e80a5d76fe8a8e939da55fa790542b64247231813e84c1288f25c8d",
+      "statement": "Restore content, access, reputation, reach, funds, and associated state when an enforcement error is reversed.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 150
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Reporting, moderation, and case handling"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Restore content, access, reputation, reach, funds, and associated state when an enforcement error is reversed.” joins bounded identity, case, workflow, configuration, cryptographic, artifact, or launch-gate authorities whose required relationships and transitions can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized moderation, permission, recovery, extension, or launch record contains every explicitly required state, review, notice, owner, and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked configuration, artifact, cryptographic result, audit stream, or bounded fixture and fail closed on a missing, invalid, unreviewed, or mismatched binding.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C11B8851",
+      "revision": 1,
+      "semantic_sha256": "c11b88515fea6ae9abfd2a54d7b768fd6bfc1b131b1454ae454a0a5a28a4d039",
+      "statement": "Track false positives, false negatives, inconsistent decisions, appeal reversals, recurrence, and unresolved backlog.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 151
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Reporting, moderation, and case handling"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The control “Track false positives, false negatives, inconsistent decisions, appeal reversals, recurrence, and unresolved backlog.” names concrete delivery, drift, quality, abuse, takeover, extension, or ecosystem signals whose configured monitoring state can be read from an authorized environment.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Read the authorized monitoring system and verify current observations and configured detection exist for every named signal with bound scope, owner, policy version, and immutable query timestamp.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8CB830F6",
+      "revision": 1,
+      "semantic_sha256": "8cb830f650aea67c0534ad8bc5b083090086078567c510c0aa251da5857b4def",
+      "statement": "Define which safety, quality, provenance, age, sensitivity, and policy signals affect eligibility, ranking, and reach.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 156
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Recommendation, amplification, and virality controls"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define which safety, quality, provenance, age, sensitivity, and policy signals affect eligibility, ranking, and reach.” defines explicit policy, queue, moderation, safety, provenance, extension, metric, emergency, or exception fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized trust-and-safety record contains every named policy field, owner, rule, state, factor, decision attribute, metric, procedure, or evidence link and binds to the declared product and version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1077D020",
+      "revision": 1,
+      "semantic_sha256": "1077d020f9f36de20b0d7209497f3309650f4659977ee79899e337d17f2ff8f4",
+      "statement": "Use counter-metrics for harmful exposure, regret, complaints, blocks, hides, rapid exits, appeals, and vulnerable-user impact.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 159
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Recommendation, amplification, and virality controls"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Use counter-metrics for harmful exposure, regret, complaints, blocks, hides, rapid exits, appeals, and vulnerable-user impact.” defines explicit policy, queue, moderation, safety, provenance, extension, metric, emergency, or exception fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized trust-and-safety record contains every named policy field, owner, rule, state, factor, decision attribute, metric, procedure, or evidence link and binds to the declared product and version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2AEAE9F2",
+      "revision": 1,
+      "semantic_sha256": "2aeae9f23c8bc131ed9aed59b63c4259da3ae8531f122e273a35ad53a082a6ad",
+      "statement": "Distinguish verified control of an account or organization from endorsement, expertise, factual accuracy, or general trustworthiness.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 173
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Identity, impersonation, authenticity, and account integrity"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Distinguish verified control of an account or organization from endorsement, expertise, factual accuracy, or general trustworthiness.” defines explicit policy, queue, moderation, safety, provenance, extension, metric, emergency, or exception fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized trust-and-safety record contains every named policy field, owner, rule, state, factor, decision attribute, metric, procedure, or evidence link and binds to the declared product and version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D805F610",
+      "revision": 1,
+      "semantic_sha256": "d805f610a3f645072a0445b0fdbcd5bec578a20d19fb479b0b800e12e946e603",
+      "statement": "Use step-up verification and cooling periods for changes to identity, recovery, payout, advertising, administrative, or high-reach settings.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 178
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Identity, impersonation, authenticity, and account integrity"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Use step-up verification and cooling periods for changes to identity, recovery, payout, advertising, administrative, or high-reach settings.” joins bounded identity, case, workflow, configuration, cryptographic, artifact, or launch-gate authorities whose required relationships and transitions can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized moderation, permission, recovery, extension, or launch record contains every explicitly required state, review, notice, owner, and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked configuration, artifact, cryptographic result, audit stream, or bounded fixture and fail closed on a missing, invalid, unreviewed, or mismatched binding.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-361A211A",
+      "revision": 1,
+      "semantic_sha256": "361a211aac44366c464f5cfe17af583ae92fbe0ba22486cb6f8afc5f1c7b6b8a",
+      "statement": "Allow users to report impersonation even when they do not have an account.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 182
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Identity, impersonation, authenticity, and account integrity"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Allow users to report impersonation even when they do not have an account.” requires a finite reporting, rollback, audience-control, permission, revocation, recovery, provenance-state, or responder-routing capability whose result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded capability test and verify authenticated evidence records the declared user state, action, expected transition, isolation condition, audit event, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BD3A717B",
+      "revision": 1,
+      "semantic_sha256": "bd3a717ba513a8f2d15b4e1516eefa08c986f58bc51556ab74b43f9dd44bea2e",
+      "statement": "Define memorialization, succession, organization transfer, employee departure, and abandoned-account behavior.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 183
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Identity, impersonation, authenticity, and account integrity"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define memorialization, succession, organization transfer, employee departure, and abandoned-account behavior.” defines explicit policy, queue, moderation, safety, provenance, extension, metric, emergency, or exception fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized trust-and-safety record contains every named policy field, owner, rule, state, factor, decision attribute, metric, procedure, or evidence link and binds to the declared product and version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-649D5697",
+      "revision": 1,
+      "semantic_sha256": "649d5697e0782e7f1260e172412837bad6d2d6d0fdbcadf250ee317e204941a1",
+      "statement": "Reconcile platform records with payment, fulfillment, identity, and provider records to detect hidden losses.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 197
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Fraud, spam, bots, and coordinated abuse"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Reconcile platform records with payment, fulfillment, identity, and provider records to detect hidden losses.” joins bounded identity, case, workflow, configuration, cryptographic, artifact, or launch-gate authorities whose required relationships and transitions can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized moderation, permission, recovery, extension, or launch record contains every explicitly required state, review, notice, owner, and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked configuration, artifact, cryptographic result, audit stream, or bounded fixture and fail closed on a missing, invalid, unreviewed, or mismatched binding.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-197A27D2",
+      "revision": 1,
+      "semantic_sha256": "197a27d2ae2fc163d2ebce0630086a88d160a24669c70b6ee05a9d0dea2f8adb",
+      "statement": "Define criteria and authority for emergency feature restriction, account freeze, content preservation, distribution reduction, payment hold, or service shutdown.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 218
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Crisis, emergency, and severe-harm response"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define criteria and authority for emergency feature restriction, account freeze, content preservation, distribution reduction, payment hold, or service shutdown.” defines explicit policy, queue, moderation, safety, provenance, extension, metric, emergency, or exception fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized trust-and-safety record contains every named policy field, owner, rule, state, factor, decision attribute, metric, procedure, or evidence link and binds to the declared product and version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2C2015DC",
+      "revision": 1,
+      "semantic_sha256": "2c2015dc84c67485e21758fad1671fee60ea1f89a5d2f21b46cf8d8fc80a01ef",
+      "statement": "Provide an out-of-band response path when the normal support, identity, or platform systems are compromised.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 222
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Crisis, emergency, and severe-harm response"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Provide an out-of-band response path when the normal support, identity, or platform systems are compromised.” requires a finite reporting, rollback, audience-control, permission, revocation, recovery, provenance-state, or responder-routing capability whose result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded capability test and verify authenticated evidence records the declared user state, action, expected transition, isolation condition, audit event, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-324E1782",
+      "revision": 1,
+      "semantic_sha256": "324e1782a9d17f13afd4e851342c0181a43f2672a89eff66e374267fda8ef1a4",
+      "statement": "Define when and how affected users are notified after emergency actions.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 225
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Crisis, emergency, and severe-harm response"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define when and how affected users are notified after emergency actions.” defines explicit policy, queue, moderation, safety, provenance, extension, metric, emergency, or exception fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized trust-and-safety record contains every named policy field, owner, rule, state, factor, decision attribute, metric, procedure, or evidence link and binds to the declared product and version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0AE9EFF0",
+      "revision": 1,
+      "semantic_sha256": "0ae9eff0e8ef037f615b5b2b4fbc6e4d3c611843eae9d9426e67e7b340f08585",
+      "statement": "Conduct post-incident analysis that addresses product incentives, detection gaps, staffing, process, tooling, and governance.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 227
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Crisis, emergency, and severe-harm response"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Conduct post-incident analysis that addresses product incentives, detection gaps, staffing, process, tooling, and governance.” defines explicit policy, queue, moderation, safety, provenance, extension, metric, emergency, or exception fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized trust-and-safety record contains every named policy field, owner, rule, state, factor, decision attribute, metric, procedure, or evidence link and binds to the declared product and version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C6361B6A",
+      "revision": 1,
+      "semantic_sha256": "c6361b6aea14dbf33698c51e9c93415a72223954097c61bbc206a9f7c381735b",
+      "statement": "Define which content types and workflows require provenance, origin, edit history, capture context, signer identity, or synthetic-content disclosure.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 231
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Content provenance, synthetic media, and authenticity signals"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define which content types and workflows require provenance, origin, edit history, capture context, signer identity, or synthetic-content disclosure.” defines explicit policy, queue, moderation, safety, provenance, extension, metric, emergency, or exception fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized trust-and-safety record contains every named policy field, owner, rule, state, factor, decision attribute, metric, procedure, or evidence link and binds to the declared product and version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-12397117",
+      "revision": 1,
+      "semantic_sha256": "12397117d9ef367f945dde366069ca8a0c6da38a83641863a25d132acbeae9f5",
+      "statement": "Treat provenance as evidence about claims and history, not proof that content is true, safe, unbiased, or authorized.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 233
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Content provenance, synthetic media, and authenticity signals"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Treat provenance as evidence about claims and history, not proof that content is true, safe, unbiased, or authorized.” defines explicit policy, queue, moderation, safety, provenance, extension, metric, emergency, or exception fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized trust-and-safety record contains every named policy field, owner, rule, state, factor, decision attribute, metric, procedure, or evidence link and binds to the declared product and version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-87AC1895",
+      "revision": 1,
+      "semantic_sha256": "87ac1895bd3db5df0c2132561e674d027ace0f3a83cbe7e883051459ad87b9b1",
+      "statement": "Verify signatures, certificate chains, trust lists, timestamps, asset binding, manifest integrity, revocation, and supported algorithms.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 234
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Content provenance, synthetic media, and authenticity signals"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Verify signatures, certificate chains, trust lists, timestamps, asset binding, manifest integrity, revocation, and supported algorithms.” joins bounded identity, case, workflow, configuration, cryptographic, artifact, or launch-gate authorities whose required relationships and transitions can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized moderation, permission, recovery, extension, or launch record contains every explicitly required state, review, notice, owner, and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked configuration, artifact, cryptographic result, audit stream, or bounded fixture and fail closed on a missing, invalid, unreviewed, or mismatched binding.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-279B0168",
+      "revision": 1,
+      "semantic_sha256": "279b0168c3f1997ec482a2078ae7909ab2094bd3243d5270ed4e3b5b7390c0a9",
+      "statement": "Make provenance loss, invalidity, redaction, and unsupported claims visible rather than presenting a false trusted state.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 236
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Content provenance, synthetic media, and authenticity signals"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Make provenance loss, invalidity, redaction, and unsupported claims visible rather than presenting a false trusted state.” requires a finite reporting, rollback, audience-control, permission, revocation, recovery, provenance-state, or responder-routing capability whose result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded capability test and verify authenticated evidence records the declared user state, action, expected transition, isolation condition, audit event, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BF82CD25",
+      "revision": 1,
+      "semantic_sha256": "bf82cd257b00371004ed066c82dc62bfdf49a1dee7239bc79f9507a2ce454072",
+      "statement": "Apply a formal intake, review, publication, update, monitoring, enforcement, and retirement lifecycle to third-party extensions and integrations.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 247
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Extension, plugin, app, and integration ecosystems"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Apply a formal intake, review, publication, update, monitoring, enforcement, and retirement lifecycle to third-party extensions and integrations.” defines explicit policy, queue, moderation, safety, provenance, extension, metric, emergency, or exception fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized trust-and-safety record contains every named policy field, owner, rule, state, factor, decision attribute, metric, procedure, or evidence link and binds to the declared product and version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-632E8E55",
+      "revision": 1,
+      "semantic_sha256": "632e8e55267e742a576e8c0ce84ce3748f40902110c456a0f0a04ebbbd0e82e1",
+      "statement": "Require encrypted transport and authenticated endpoints for extension data exchange.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 257
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Extension, plugin, app, and integration ecosystems"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Require encrypted transport and authenticated endpoints for extension data exchange.” joins bounded identity, case, workflow, configuration, cryptographic, artifact, or launch-gate authorities whose required relationships and transitions can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized moderation, permission, recovery, extension, or launch record contains every explicitly required state, review, notice, owner, and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked configuration, artifact, cryptographic result, audit stream, or bounded fixture and fail closed on a missing, invalid, unreviewed, or mismatched binding.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-245DA35C",
+      "revision": 1,
+      "semantic_sha256": "245da35c79f8c6782f3972294de4ee29f0293880839268577854f30c2f64e08b",
+      "statement": "Support staged rollout, compatibility checks, rollback or disablement, revocation, and emergency blocklisting.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 262
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Extension, plugin, app, and integration ecosystems"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Support staged rollout, compatibility checks, rollback or disablement, revocation, and emergency blocklisting.” joins bounded identity, case, workflow, configuration, cryptographic, artifact, or launch-gate authorities whose required relationships and transitions can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized moderation, permission, recovery, extension, or launch record contains every explicitly required state, review, notice, owner, and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked configuration, artifact, cryptographic result, audit stream, or bounded fixture and fail closed on a missing, invalid, unreviewed, or mismatched binding.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-96481324",
+      "revision": 1,
+      "semantic_sha256": "964813249c9086a96e70b0d43a8f118240f2cf0b8e714354f7fe8d2eacebb82d",
+      "statement": "Make extension identity, publisher changes, ownership transfers, and signing-key changes reviewable and visible.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 263
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Extension, plugin, app, and integration ecosystems"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Make extension identity, publisher changes, ownership transfers, and signing-key changes reviewable and visible.” joins bounded identity, case, workflow, configuration, cryptographic, artifact, or launch-gate authorities whose required relationships and transitions can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized moderation, permission, recovery, extension, or launch record contains every explicitly required state, review, notice, owner, and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked configuration, artifact, cryptographic result, audit stream, or bounded fixture and fail closed on a missing, invalid, unreviewed, or mismatched binding.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-724B59B6",
+      "revision": 1,
+      "semantic_sha256": "724b59b61476178ea6ba7ad7c2e9a6a7944505b3db540b8ca4b82143cdecf102",
+      "statement": "Monitor abuse reports, crash rates, permission use, network destinations, update anomalies, dormant takeover, and publisher compromise.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 265
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Extension, plugin, app, and integration ecosystems"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The control “Monitor abuse reports, crash rates, permission use, network destinations, update anomalies, dormant takeover, and publisher compromise.” names concrete delivery, drift, quality, abuse, takeover, extension, or ecosystem signals whose configured monitoring state can be read from an authorized environment.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Read the authorized monitoring system and verify current observations and configured detection exist for every named signal with bound scope, owner, policy version, and immutable query timestamp.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6CD3ED9A",
+      "revision": 1,
+      "semantic_sha256": "6cd3ed9afbd9cdd218fb43618fb26739ed1e155e787f6f44d21224e28f5c6bea",
+      "statement": "Monitor dormant account or package takeover, ownership transfers, sudden behavior changes, and supply-chain compromise.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 280
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Ecosystem and marketplace governance"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The control “Monitor dormant account or package takeover, ownership transfers, sudden behavior changes, and supply-chain compromise.” names concrete delivery, drift, quality, abuse, takeover, extension, or ecosystem signals whose configured monitoring state can be read from an authorized environment.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Read the authorized monitoring system and verify current observations and configured detection exist for every named signal with bound scope, owner, policy version, and immutable query timestamp.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7ADC4406",
+      "revision": 1,
+      "semantic_sha256": "7adc4406f8d588e1304b1798a2f98f2510302ba67ba37cd3ef36e79231f698cd",
+      "statement": "Measure ecosystem health using user harm, fraud loss, quality, diversity, concentration, developer sustainability, false enforcement, and support—not gross volume alone.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 283
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Ecosystem and marketplace governance"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Measure ecosystem health using user harm, fraud loss, quality, diversity, concentration, developer sustainability, false enforcement, and support—not gross volume alone.” defines explicit policy, queue, moderation, safety, provenance, extension, metric, emergency, or exception fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized trust-and-safety record contains every named policy field, owner, rule, state, factor, decision attribute, metric, procedure, or evidence link and binds to the declared product and version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AA903343",
+      "revision": 1,
+      "semantic_sha256": "aa90334369921951db40d8833d6831ead6607a5ca40c4a70ba8cbfbd65512495",
+      "statement": "Retain model, rule, policy, reviewer, evidence, and version information needed to reconstruct consequential decisions.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 292
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Transparency, audit, and continuous improvement"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The control “Retain model, rule, policy, reviewer, evidence, and version information needed to reconstruct consequential decisions.” requires bounded consequential-decision or update artifacts whose immutable identities, source, signer, versions, and authorized evidence links can be verified exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Verify each declared artifact exists in the authorized evidence set, has immutable identity and provenance, and contains or links every required policy, reviewer, source, signer, version, and update-path binding.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2140FACB",
+      "revision": 1,
+      "semantic_sha256": "2140facb62c8936cdc56b050a1563723bd47ce7cb9b08b97e3f61d8099e689f3",
+      "statement": "Track harm prevalence and exposure, not only the number of items removed.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 293
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Transparency, audit, and continuous improvement"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Track harm prevalence and exposure, not only the number of items removed.” defines explicit policy, queue, moderation, safety, provenance, extension, metric, emergency, or exception fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized trust-and-safety record contains every named policy field, owner, rule, state, factor, decision attribute, metric, procedure, or evidence link and binds to the declared product and version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FB9F9E37",
+      "revision": 1,
+      "semantic_sha256": "fb9f9e377107b17c2e3312454b5d2ba3f9c4f497468a59f14d2520e2ccf80fc2",
+      "statement": "Measure time to detection, interruption, victim support, recovery, appeal, and recurrence prevention.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 294
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Transparency, audit, and continuous improvement"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Measure time to detection, interruption, victim support, recovery, appeal, and recurrence prevention.” defines explicit policy, queue, moderation, safety, provenance, extension, metric, emergency, or exception fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized trust-and-safety record contains every named policy field, owner, rule, state, factor, decision attribute, metric, procedure, or evidence link and binds to the declared product and version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4C29738F",
+      "revision": 1,
+      "semantic_sha256": "4c29738f7eb28107bb35936a6e89f9c045576f7cdc2242e0e08f3417c53db122",
+      "statement": "Review this checklist after major incidents, market expansion, policy changes, new content formats, new extension capabilities, or attacker adaptation.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 298
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Transparency, audit, and continuous improvement"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Review this checklist after major incidents, market expansion, policy changes, new content formats, new extension capabilities, or attacker adaptation.” defines explicit policy, queue, moderation, safety, provenance, extension, metric, emergency, or exception fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized trust-and-safety record contains every named policy field, owner, rule, state, factor, decision attribute, metric, procedure, or evidence link and binds to the declared product and version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9B250F50",
+      "revision": 1,
+      "semantic_sha256": "9b250f50ed58d4d5879a27e4561b93d82152c6449fd5f8534826456a5ffabeb4",
+      "statement": "Do not launch a high-risk interaction surface without reporting, blocking, escalation, evidence, enforcement, and appeal paths.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 302
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Trust-and-safety release blockers"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Do not launch a high-risk interaction surface without reporting, blocking, escalation, evidence, enforcement, and appeal paths.” joins bounded identity, case, workflow, configuration, cryptographic, artifact, or launch-gate authorities whose required relationships and transitions can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized moderation, permission, recovery, extension, or launch record contains every explicitly required state, review, notice, owner, and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked configuration, artifact, cryptographic result, audit stream, or bounded fixture and fail closed on a missing, invalid, unreviewed, or mismatched binding.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-69245CE0",
+      "revision": 1,
+      "semantic_sha256": "69245ce01ad4fa2667eb931ac271fc5797381721654f2a78b21768c840063a45",
+      "statement": "Do not launch when severe-harm reports cannot reach a qualified responder within the required objective.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 303
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Trust-and-safety release blockers"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Do not launch when severe-harm reports cannot reach a qualified responder within the required objective.” requires a finite reporting, rollback, audience-control, permission, revocation, recovery, provenance-state, or responder-routing capability whose result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded capability test and verify authenticated evidence records the declared user state, action, expected transition, isolation condition, audit event, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FE34F2BA",
+      "revision": 1,
+      "semantic_sha256": "fe34f2ba36916a430c1b75ceb49f6ed82b4ba6e26990968cce66086c558272c4",
+      "statement": "Do not grant broad extension permissions, remote code execution, or privileged host access without review, containment, transparency, and revocation.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 305
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Trust-and-safety release blockers"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Do not grant broad extension permissions, remote code execution, or privileged host access without review, containment, transparency, and revocation.” joins bounded identity, case, workflow, configuration, cryptographic, artifact, or launch-gate authorities whose required relationships and transitions can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized moderation, permission, recovery, extension, or launch record contains every explicitly required state, review, notice, owner, and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked configuration, artifact, cryptographic result, audit stream, or bounded fixture and fail closed on a missing, invalid, unreviewed, or mismatched binding.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3FF9D040",
+      "revision": 1,
+      "semantic_sha256": "3ff9d0404cff3bb078ac6740dcdc05e2c4064621c3b8c8156c69df9aa64c0de7",
+      "statement": "Do not distribute updates whose source, signer, version, and authorized update path cannot be verified.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 306
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Trust-and-safety release blockers"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The control “Do not distribute updates whose source, signer, version, and authorized update path cannot be verified.” requires bounded consequential-decision or update artifacts whose immutable identities, source, signer, versions, and authorized evidence links can be verified exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Verify each declared artifact exists in the authorized evidence set, has immutable identity and provenance, and contains or links every required policy, reviewer, source, signer, version, and update-path binding.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-04AA676C",
+      "revision": 1,
+      "semantic_sha256": "04aa676c558e939dba96ce82582b6f298dbfccd48e5265f852381f86bc288450",
+      "statement": "Do not make irreversible enforcement or financial decisions from one opaque automated signal without required review and recovery.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 309
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Trust-and-safety release blockers"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Do not make irreversible enforcement or financial decisions from one opaque automated signal without required review and recovery.” joins bounded identity, case, workflow, configuration, cryptographic, artifact, or launch-gate authorities whose required relationships and transitions can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized moderation, permission, recovery, extension, or launch record contains every explicitly required state, review, notice, owner, and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked configuration, artifact, cryptographic result, audit stream, or bounded fixture and fail closed on a missing, invalid, unreviewed, or mismatched binding.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9F34570B",
+      "revision": 1,
+      "semantic_sha256": "9f34570b9f238be92b98a80398f975d1952a8896629dc3302b74ce89c69496d5",
+      "statement": "Do not accept a safety exception without an explicit harm analysis, protective alternative, monitoring, owner, remediation date, and expiry.",
+      "source": {
+        "path": "docs/engineering/14-trust-safety-and-ecosystems.md",
+        "line": 311
+      },
+      "heading_trail": [
+        "Trust, safety, and ecosystems",
+        "Trust, Safety, Content Integrity, and Extension Ecosystems Master Checklist",
+        "Expanded gap-closure controls",
+        "Trust-and-safety release blockers"
+      ],
+      "primary_packet_id": "docs-engineering-14-trust-safety-and-ecosystems-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Do not accept a safety exception without an explicit harm analysis, protective alternative, monitoring, owner, remediation date, and expiry.” defines explicit policy, queue, moderation, safety, provenance, extension, metric, emergency, or exception fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized trust-and-safety record contains every named policy field, owner, rule, state, factor, decision attribute, metric, procedure, or evidence link and binds to the declared product and version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2086 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-10-verification-and-testing-md-part-003-part-001",
+  "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 83,
+  "controls": [
+    {
+      "control_id": "USEQ-4050C11D",
+      "revision": 1,
+      "semantic_sha256": "4050c11db43252a639f61d774f5c9333720dbfbc7f87a64fac1be91bfd655b3e",
+      "statement": "Record each defect with affected requirement, users, versions, environments, data, severity, detectability, workaround, and owner.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 649
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Defect management, root cause, and assurance effectiveness"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Record each defect with affected requirement, users, versions, environments, data, severity, detectability, workaround, and owner.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Record each defect with affected requirement, users, versions, environments, data, severity, detectability, workaround, and owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CD7C7286",
+      "revision": 1,
+      "semantic_sha256": "cd7c7286ac3bc654e7c1bf790f4a95b74fb92a182a990f1f0beb6b978a57aa65",
+      "statement": "Reproduce defects against the exact released or candidate artifact when possible.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 652
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Defect management, root cause, and assurance effectiveness"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Reproduce defects against the exact released or candidate artifact when possible.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Reproduce defects against the exact released or candidate artifact when possible.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9B2BE606",
+      "revision": 1,
+      "semantic_sha256": "9b2be60680b446b472fa6c95972e7125ef0427e22839a689210897667c38c9ef",
+      "statement": "Measure escaped defects, recurrence, reopen rate, detection stage, time to detect, time to repair, customer exposure, and corrective-action completion.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 658
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Defect management, root cause, and assurance effectiveness"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Measure escaped defects, recurrence, reopen rate, detection stage, time to detect, time to repair, customer exposure, and corrective-action completion.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Measure escaped defects, recurrence, reopen rate, detection stage, time to detect, time to repair, customer exposure, and corrective-action completion.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-28C4F691",
+      "revision": 1,
+      "semantic_sha256": "28c4f691050e2da41c488d139f60d99e4fe55133115d9dbd3f1d74c2f1a014d1",
+      "statement": "Review whether tests failed to exist, failed to run, failed to assert, failed to represent production, or were ignored.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 660
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Defect management, root cause, and assurance effectiveness"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Review whether tests failed to exist, failed to run, failed to assert, failed to represent production, or were ignored.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Review whether tests failed to exist, failed to run, failed to assert, failed to represent production, or were ignored.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-003E4BB9",
+      "revision": 1,
+      "semantic_sha256": "003e4bb95901af8edd7c8a61e01d0e89ae348c3234fa23a59abb2748d14cab7a",
+      "statement": "Convert lessons into requirements, design rules, coding standards, test techniques, tooling, runbooks, and training.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 661
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Defect management, root cause, and assurance effectiveness"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Convert lessons into requirements, design rules, coding standards, test techniques, tooling, runbooks, and training.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Convert lessons into requirements, design rules, coding standards, test techniques, tooling, runbooks, and training.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2BC9A7C5",
+      "revision": 1,
+      "semantic_sha256": "2bc9a7c580fbee9b5936fa5834e6525cfdc292f924fb64d6e8b740b31b576cad",
+      "statement": "Close corrective actions only after evidence demonstrates effectiveness.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 662
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Defect management, root cause, and assurance effectiveness"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Close corrective actions only after evidence demonstrates effectiveness.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Close corrective actions only after evidence demonstrates effectiveness.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-ECC22163",
+      "revision": 1,
+      "semantic_sha256": "ecc221639e5dfe88d21e6e74e139added76c5d61a03294d3ebcf2893f789f51e",
+      "statement": "Block release when a critical requirement, user journey, safety property, authorization boundary, data invariant, recovery objective, or mandatory standard lacks current verification evidence.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 667
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance release blockers and evidence package"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Block release when a critical requirement, user journey, safety property, authorization boundary, data invariant, recovery objective, or mandatory standard lacks current verification evidence.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Block release when a critical requirement, user journey, safety property, authorization boundary, data invariant, recovery objective, or mandatory standard lacks current verification evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-06A9124D",
+      "revision": 1,
+      "semantic_sha256": "06a9124d3e2e6c30181d51adfe5c2346fd6e4c2d8ae07c6b2869656107a30833",
+      "statement": "Block release when tests ran against a different artifact, configuration, schema, feature-flag state, environment, or dependency set than the intended production release.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 668
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance release blockers and evidence package"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Block release when tests ran against a different artifact, configuration, schema, feature-flag state, environment, or dependency set than the intended production release.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Block release when tests ran against a different artifact, configuration, schema, feature-flag state, environment, or dependency set than the intended production release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4D20534E",
+      "revision": 1,
+      "semantic_sha256": "4d20534eebf7e609394f74d86968058aee11acf0bbf568577b93f06fbf862c40",
+      "statement": "Block release when required tests were skipped, suppressed, quarantined, or passed only after unexplained retries.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 669
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance release blockers and evidence package"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Block release when required tests were skipped, suppressed, quarantined, or passed only after unexplained retries.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Block release when required tests were skipped, suppressed, quarantined, or passed only after unexplained retries.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D601267F",
+      "revision": 1,
+      "semantic_sha256": "d601267fc70beb7cd493f08ed731ad6ec98cfc9e7ee538c22039253be7c8d027",
+      "statement": "Retain the test strategy, scope, requirements traceability, models, data, environments, tools, versions, results, defects, exclusions, limitations, exceptions, and approvals.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 675
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance release blockers and evidence package"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Retain the test strategy, scope, requirements traceability, models, data, environments, tools, versions, results, defects, exclusions, limitations, exceptions, and approvals.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Retain the test strategy, scope, requirements traceability, models, data, environments, tools, versions, results, defects, exclusions, limitations, exceptions, and approvals.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F55894B6",
+      "revision": 1,
+      "semantic_sha256": "f55894b627eb8c68754affeaf7f297e478c07eed3cad6135039609f44b1bb61c",
+      "statement": "Retain raw or reproducible evidence for high-impact calculations, performance measurements, resilience experiments, and independent assessments.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 676
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance release blockers and evidence package"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Retain raw or reproducible evidence for high-impact calculations, performance measurements, resilience experiments, and independent assessments.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Retain raw or reproducible evidence for high-impact calculations, performance measurements, resilience experiments, and independent assessments.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DC9036BC",
+      "revision": 1,
+      "semantic_sha256": "dc9036bc7d93cff9ddb56b45092a4c1c3404ba292e9abf1699aefed2e3972130",
+      "statement": "Document which defect classes and conditions remain insufficiently tested.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 677
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance release blockers and evidence package"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Document which defect classes and conditions remain insufficiently tested.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document which defect classes and conditions remain insufficiently tested.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3D261C6C",
+      "revision": 1,
+      "semantic_sha256": "3d261c6cb3584165671ecf3fa02b896f11a4fc1261470d1c5194e9d0ba927c59",
+      "statement": "Verify that post-release monitoring and incident response can detect and contain risks that could not be fully tested.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 679
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance release blockers and evidence package"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Verify that post-release monitoring and incident response can detect and contain risks that could not be fully tested.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Verify that post-release monitoring and incident response can detect and contain risks that could not be fully tested.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2AE6772C",
+      "revision": 1,
+      "semantic_sha256": "2ae6772c1ebe3380f2e71fc88a646b0b0655fdd4837e8456b914bc03be5b2b45",
+      "statement": "Make the final assurance statement specific to the tested release and never describe testing as proof that no defects exist.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 680
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance release blockers and evidence package"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Make the final assurance statement specific to the tested release and never describe testing as proof that no defects exist.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make the final assurance statement specific to the tested release and never describe testing as proof that no defects exist.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-67C9E2FD",
+      "revision": 1,
+      "semantic_sha256": "67c9e2fd1e17a8e33aa2cc0346d7337aa6201bbf2e94835d1d2d71ec63c711f5",
+      "statement": "Define the qualities, harms, obligations, claims, systems, versions, environments, users, and operating conditions that require assurance.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 688
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance strategy and scope"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define the qualities, harms, obligations, claims, systems, versions, environments, users, and operating conditions that require assurance.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define the qualities, harms, obligations, claims, systems, versions, environments, users, and operating conditions that require assurance.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0CF01C55",
+      "revision": 1,
+      "semantic_sha256": "0cf01c5539226cd4754b62dd44eff7aafc4c782b392278d927dc3b6a72613bd7",
+      "statement": "Identify the stakeholders who rely on each assurance conclusion and the decisions it supports.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 690
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance strategy and scope"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Identify the stakeholders who rely on each assurance conclusion and the decisions it supports.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Identify the stakeholders who rely on each assurance conclusion and the decisions it supports.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0EB55A7C",
+      "revision": 1,
+      "semantic_sha256": "0eb55a7c16d860230c7110842d62a3e6e688616902a074a5ec7b37e3297d630a",
+      "statement": "Distinguish evidence of implementation, evidence of control operation, evidence of outcome, and evidence of absence of known failure.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 692
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance strategy and scope"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Distinguish evidence of implementation, evidence of control operation, evidence of outcome, and evidence of absence of known failure.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Distinguish evidence of implementation, evidence of control operation, evidence of outcome, and evidence of absence of known failure.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-19F7A4D0",
+      "revision": 1,
+      "semantic_sha256": "19f7a4d0574f84cfac5e9dc74ff804c6327d72e673256b15775bdffcb21b5210",
+      "statement": "Define independence requirements for design review, verification, validation, audit, certification, and risk acceptance.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 694
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance strategy and scope"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define independence requirements for design review, verification, validation, audit, certification, and risk acceptance.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define independence requirements for design review, verification, validation, audit, certification, and risk acceptance.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-734F6033",
+      "revision": 1,
+      "semantic_sha256": "734f603338603b3b046178fefefd3326f77070c5274c6049f10bd67046099da4",
+      "statement": "Record limitations, exclusions, assumptions, dependencies, and evidence freshness.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 697
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance strategy and scope"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Record limitations, exclusions, assumptions, dependencies, and evidence freshness.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Record limitations, exclusions, assumptions, dependencies, and evidence freshness.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A3008EA4",
+      "revision": 1,
+      "semantic_sha256": "a3008ea49f2eec7982f8ea73d821f4b83518cdd0569f3e351dfb1701fb422427",
+      "statement": "Express each material assurance conclusion as a clear, bounded, testable claim.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 702
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance-case structure"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Express each material assurance conclusion as a clear, bounded, testable claim.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Express each material assurance conclusion as a clear, bounded, testable claim.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6B2A8983",
+      "revision": 1,
+      "semantic_sha256": "6b2a8983c69c9551721599fbb9dd34169bbe8cdbd9136a05f2990bd1ecfadb2e",
+      "statement": "State the exact system, release, configuration, environment, period, and operational context covered by the claim.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 703
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance-case structure"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “State the exact system, release, configuration, environment, period, and operational context covered by the claim.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: State the exact system, release, configuration, environment, period, and operational context covered by the claim.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-01943631",
+      "revision": 1,
+      "semantic_sha256": "019436313c001cc47ccce2db0fbf2ec3d05c888ef31920ad2c04a355c3932fd7",
+      "statement": "Decompose broad claims into subclaims that can be supported independently.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 704
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance-case structure"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Decompose broad claims into subclaims that can be supported independently.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Decompose broad claims into subclaims that can be supported independently.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D6EC7E3B",
+      "revision": 1,
+      "semantic_sha256": "d6ec7e3b35b32093243267e6ecbb0355f05cb1be5536521c2886518785e9baa4",
+      "statement": "Identify assumptions, context, definitions, inference rules, and dependencies used in the argument.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 706
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance-case structure"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Identify assumptions, context, definitions, inference rules, and dependencies used in the argument.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Identify assumptions, context, definitions, inference rules, and dependencies used in the argument.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-ACEEAD05",
+      "revision": 1,
+      "semantic_sha256": "aceead05e35b7837c07d96984ad477cab42c84e497c240ea24ace6ce619afafb",
+      "statement": "Link every subclaim to relevant evidence or record it as unsupported.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 707
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance-case structure"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Link every subclaim to relevant evidence or record it as unsupported.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Link every subclaim to relevant evidence or record it as unsupported.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0A2301F0",
+      "revision": 1,
+      "semantic_sha256": "0a2301f05c6156865f593a280f072b39b1069803319224d0496ba5786a3b5b0b",
+      "statement": "Avoid circular reasoning in which a claim is used as evidence for itself.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 708
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance-case structure"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Avoid circular reasoning in which a claim is used as evidence for itself.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Avoid circular reasoning in which a claim is used as evidence for itself.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B9AA39F0",
+      "revision": 1,
+      "semantic_sha256": "b9aa39f09b152a9a624cd942bb06a093f40e935697992bacc7c014e6f0348eb2",
+      "statement": "Distinguish claims about design intent from claims about deployed behavior.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 713
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance-case structure"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Distinguish claims about design intent from claims about deployed behavior.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Distinguish claims about design intent from claims about deployed behavior.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-14D36863",
+      "revision": 1,
+      "semantic_sha256": "14d3686311beb3a5411882eda5a540756ba7d87b524cd6a7ad4e67a57d973f02",
+      "statement": "Distinguish expected behavior from demonstrated behavior.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 714
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance-case structure"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Distinguish expected behavior from demonstrated behavior.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Distinguish expected behavior from demonstrated behavior.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3C79C82C",
+      "revision": 1,
+      "semantic_sha256": "3c79c82c23db50c95d5951d94a2dab8b271b0aeaffa3580662d8eba76849d370",
+      "statement": "Version the assurance case and tie it to immutable release and evidence identifiers.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 716
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance-case structure"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Version the assurance case and tie it to immutable release and evidence identifiers.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Version the assurance case and tie it to immutable release and evidence identifiers.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-993D84C7",
+      "revision": 1,
+      "semantic_sha256": "993d84c754504caf5dc181e74feef908e65da2af7440afdd70e5d492a3914423",
+      "statement": "Define evidence acceptance criteria before relying on results.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 720
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Evidence quality and sufficiency"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define evidence acceptance criteria before relying on results.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define evidence acceptance criteria before relying on results.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F473BC2E",
+      "revision": 1,
+      "semantic_sha256": "f473bc2e05642171967c37e7255a9d64e301bd2395f6587c3de4993a854f0504",
+      "statement": "Prefer evidence produced from the exact production artifact and representative configuration.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 721
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Evidence quality and sufficiency"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Prefer evidence produced from the exact production artifact and representative configuration.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Prefer evidence produced from the exact production artifact and representative configuration.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7D363841",
+      "revision": 1,
+      "semantic_sha256": "7d36384197228b3c07c11dbac1d0029b8edb639c116c7d2b583d97db6876880d",
+      "statement": "Record evidence source, method, tool, version, operator, environment, data, time, scope, and result.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 722
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Evidence quality and sufficiency"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Record evidence source, method, tool, version, operator, environment, data, time, scope, and result.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Record evidence source, method, tool, version, operator, environment, data, time, scope, and result.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E6AD6762",
+      "revision": 1,
+      "semantic_sha256": "e6ad6762ae70b9e5b9f8f2cf06560b3213d7582369f5d8e46e07ab0cb14cde71",
+      "statement": "Establish provenance from requirement and source through build, deployment, execution, and observation.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 723
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Evidence quality and sufficiency"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Establish provenance from requirement and source through build, deployment, execution, and observation.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Establish provenance from requirement and source through build, deployment, execution, and observation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FF35E31B",
+      "revision": 1,
+      "semantic_sha256": "ff35e31b6f9691a57d95b22d0433b4a0177b308f03c1da16d7343a1fc61cebf3",
+      "statement": "Protect evidence against unauthorized alteration and deletion.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 724
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Evidence quality and sufficiency"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Protect evidence against unauthorized alteration and deletion.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Protect evidence against unauthorized alteration and deletion.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-98FB3D02",
+      "revision": 1,
+      "semantic_sha256": "98fb3d0234ff7cbf806c04ed21fe9da055237f4dc951e4f7680078c20082ef09",
+      "statement": "Verify tool calibration, validation, configuration, and known limitations where tool output is material.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 725
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Evidence quality and sufficiency"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Verify tool calibration, validation, configuration, and known limitations where tool output is material.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Verify tool calibration, validation, configuration, and known limitations where tool output is material.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2BADD314",
+      "revision": 1,
+      "semantic_sha256": "2badd314f33b74bd3b0cca96e73fb59bd9fcc815c05cf799964817f5134dc264",
+      "statement": "Preserve failed, inconclusive, excluded, and superseded evidence with its disposition.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 733
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Evidence quality and sufficiency"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Preserve failed, inconclusive, excluded, and superseded evidence with its disposition.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Preserve failed, inconclusive, excluded, and superseded evidence with its disposition.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EB04BD9A",
+      "revision": 1,
+      "semantic_sha256": "eb04bd9a7a1a7cad957a4ea275eba4a208d451031f0e74de8d4cc512f80c8961",
+      "statement": "Define evidence validity periods and events that make evidence stale.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 734
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Evidence quality and sufficiency"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define evidence validity periods and events that make evidence stale.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define evidence validity periods and events that make evidence stale.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C278CEB3",
+      "revision": 1,
+      "semantic_sha256": "c278ceb334d7efc68670f6e1c1fe94e90443ebacf105d777feb3d7d1f8bbd3c5",
+      "statement": "Recollect evidence after material changes to source, dependencies, configuration, data, environment, threat, or usage.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 735
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Evidence quality and sufficiency"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Recollect evidence after material changes to source, dependencies, configuration, data, environment, threat, or usage.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Recollect evidence after material changes to source, dependencies, configuration, data, environment, threat, or usage.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1BA3206E",
+      "revision": 1,
+      "semantic_sha256": "1ba3206e526fae0e8140e377b448066999abe325a588b669b6ceae17726fbe87",
+      "statement": "Ensure evidence remains retrievable and interpretable for the required retention period.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 736
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Evidence quality and sufficiency"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Ensure evidence remains retrievable and interpretable for the required retention period.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Ensure evidence remains retrievable and interpretable for the required retention period.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A309E8E6",
+      "revision": 1,
+      "semantic_sha256": "a309e8e6b7e959b4886014f0ceb5558943f12f5c60f0e6453dc2457d1c85d60a",
+      "statement": "Classify components, functions, data, and decisions by the consequence of failure or compromise.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 740
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance integrity levels and proportional rigor"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Classify components, functions, data, and decisions by the consequence of failure or compromise.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Classify components, functions, data, and decisions by the consequence of failure or compromise.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E19EECAD",
+      "revision": 1,
+      "semantic_sha256": "e19eecad86713bd56b298659b46ee04df2a5d2ff4dee1a4d931a3423995dd4f0",
+      "statement": "Define assurance rigor, independence, coverage, formality, and evidence retention for each class.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 741
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance integrity levels and proportional rigor"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define assurance rigor, independence, coverage, formality, and evidence retention for each class.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define assurance rigor, independence, coverage, formality, and evidence retention for each class.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C6D28252",
+      "revision": 1,
+      "semantic_sha256": "c6d28252d5c12d3988d2aee66019f75372284c106df93214b36a47ed694635a2",
+      "statement": "Define when formal methods, exhaustive analysis, proof, model checking, or mathematically justified bounds are required.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 747
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance integrity levels and proportional rigor"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define when formal methods, exhaustive analysis, proof, model checking, or mathematically justified bounds are required.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define when formal methods, exhaustive analysis, proof, model checking, or mathematically justified bounds are required.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-07963687",
+      "revision": 1,
+      "semantic_sha256": "07963687e92d703748532db4d3e087375b4c44eef8b9fbf9a188f82dc73c526e",
+      "statement": "Review integrity classification when architecture, exposure, users, or consequence changes.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 749
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance integrity levels and proportional rigor"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Review integrity classification when architecture, exposure, users, or consequence changes.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Review integrity classification when architecture, exposure, users, or consequence changes.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3ABADEBD",
+      "revision": 1,
+      "semantic_sha256": "3abadebdc869bd31b38727daeb83630266ac3406a15bd6ebb1b63a65438b6606",
+      "statement": "Define which assurance activities may be self-reviewed and which require organizational or technical independence.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 753
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Independence, competence, and conflict controls"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define which assurance activities may be self-reviewed and which require organizational or technical independence.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define which assurance activities may be self-reviewed and which require organizational or technical independence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7E738595",
+      "revision": 1,
+      "semantic_sha256": "7e738595bddc6cf1531fd5a6b65de4e9164388c10d8ebb0eba8309d6b0d48b4c",
+      "statement": "Prevent the person solely responsible for delivery outcomes from being the only approver of material residual risk.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 754
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Independence, competence, and conflict controls"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Prevent the person solely responsible for delivery outcomes from being the only approver of material residual risk.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Prevent the person solely responsible for delivery outcomes from being the only approver of material residual risk.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-ADBD2C5E",
+      "revision": 1,
+      "semantic_sha256": "adbd2c5ed1cc412ff0fb5eb2a09f72dd474ac22b99a832f49a412a991d732ba3",
+      "statement": "Ensure independent reviewers can access complete evidence, source material, environments, and relevant personnel.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 755
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Independence, competence, and conflict controls"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Ensure independent reviewers can access complete evidence, source material, environments, and relevant personnel.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Ensure independent reviewers can access complete evidence, source material, environments, and relevant personnel.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-24426703",
+      "revision": 1,
+      "semantic_sha256": "24426703b1139f355195d003c3e27d6df5d4a6365658f696111940b6e30c7112",
+      "statement": "Disclose reviewer conflicts of interest, incentives, prior involvement, and supplier relationships.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 756
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Independence, competence, and conflict controls"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Disclose reviewer conflicts of interest, incentives, prior involvement, and supplier relationships.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Disclose reviewer conflicts of interest, incentives, prior involvement, and supplier relationships.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9F1C648A",
+      "revision": 1,
+      "semantic_sha256": "9f1c648a822ea50d3768f60ab3679d62e27afa127c8f2ac3d35f46a6677fcb64",
+      "statement": "Recuse, rotate, or supplement reviewers when independence is impaired.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 757
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Independence, competence, and conflict controls"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Recuse, rotate, or supplement reviewers when independence is impaired.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Recuse, rotate, or supplement reviewers when independence is impaired.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-25DE0302",
+      "revision": 1,
+      "semantic_sha256": "25de03024f1043ba7b6753ae2f41a04dd4e44158aee196cc9b5511dba7992a39",
+      "statement": "Verify reviewer competence in the system, assurance method, and relevant domain.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 758
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Independence, competence, and conflict controls"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Verify reviewer competence in the system, assurance method, and relevant domain.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Verify reviewer competence in the system, assurance method, and relevant domain.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-ED2D15CF",
+      "revision": 1,
+      "semantic_sha256": "ed2d15cfc0c7b82ea775af8897094d9bd2476e9614a32e92a2b32fa4ba24e87f",
+      "statement": "Preserve dissenting opinions and unresolved findings in the decision record.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 760
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Independence, competence, and conflict controls"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Preserve dissenting opinions and unresolved findings in the decision record.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Preserve dissenting opinions and unresolved findings in the decision record.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AFC0B80B",
+      "revision": 1,
+      "semantic_sha256": "afc0b80b6bca05517da0bce2c544af3f305f7a2282526a8c73a17f13be8d6f86",
+      "statement": "Require management to respond explicitly to material adverse assurance conclusions.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 761
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Independence, competence, and conflict controls"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Require management to respond explicitly to material adverse assurance conclusions.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Require management to respond explicitly to material adverse assurance conclusions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1D117647",
+      "revision": 1,
+      "semantic_sha256": "6a4bcb7f6c8349a57d4500bb390e19dc2dc80e01c86e8dd48a0fda4b14e1b141",
+      "statement": "Separate advisory work from certification or audit decisions where the same party’s objectivity would be compromised.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 762
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Independence, competence, and conflict controls"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Separate advisory work from certification or audit decisions where the same party’s objectivity would be compromised.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Separate advisory work from certification or audit decisions where the same party’s objectivity would be compromised.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0C690882",
+      "revision": 1,
+      "semantic_sha256": "0c6908820077c195e8b798c8d7857ac8e69b01d798743a5e41e9b9dfbbd06ab0",
+      "statement": "Periodically evaluate assurance-provider quality, consistency, and missed-defect patterns.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 763
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Independence, competence, and conflict controls"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Periodically evaluate assurance-provider quality, consistency, and missed-defect patterns.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Periodically evaluate assurance-provider quality, consistency, and missed-defect patterns.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-03CE6FB0",
+      "revision": 1,
+      "semantic_sha256": "03ce6fb07dff40a32e1f024e1f591fbdf1e04d6adfc996ebd4b2a43286dc55d8",
+      "statement": "Identify the exact normative requirements, version, profile, scope, and options used for a conformance claim.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 767
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Conformance, certification, and claims"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Identify the exact normative requirements, version, profile, scope, and options used for a conformance claim.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Identify the exact normative requirements, version, profile, scope, and options used for a conformance claim.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F7D4B6BC",
+      "revision": 1,
+      "semantic_sha256": "f7d4b6bcc224d175f09ef4d18602b848010cfe8dfabbadb0c62155b667e6502d",
+      "statement": "Map every claimed requirement to evidence and disposition.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 770
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Conformance, certification, and claims"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Map every claimed requirement to evidence and disposition.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Map every claimed requirement to evidence and disposition.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FAD45C35",
+      "revision": 1,
+      "semantic_sha256": "fad45c353bb4bba41e4c99fff76f0bc94d85a3863583417d7b7e81e7c61b8f8c",
+      "statement": "Record permitted deviations, extensions, optional features, and inherited controls.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 771
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Conformance, certification, and claims"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Record permitted deviations, extensions, optional features, and inherited controls.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Record permitted deviations, extensions, optional features, and inherited controls.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-70F1E6CA",
+      "revision": 1,
+      "semantic_sha256": "70f1e6cacca46e4be2f1d068e72e915f08b6dedc4dc1523db75e65d6e49b2da5",
+      "statement": "Test interoperability when conformance is intended to enable independent implementations to work together.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 772
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Conformance, certification, and claims"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Test interoperability when conformance is intended to enable independent implementations to work together.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test interoperability when conformance is intended to enable independent implementations to work together.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0AAEEBDE",
+      "revision": 1,
+      "semantic_sha256": "0aaeebde1e6850b313e472d64e6bf4dcb3900bffbeab1cd6149b2e74da76416c",
+      "statement": "Verify that declared exclusions do not invalidate the intended claim.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 773
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Conformance, certification, and claims"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Verify that declared exclusions do not invalidate the intended claim.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Verify that declared exclusions do not invalidate the intended claim.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-93D22446",
+      "revision": 1,
+      "semantic_sha256": "93d22446635145e525dd26dd659b6c56a8f4c0aeeafb5487b1fb7591d8f4882a",
+      "statement": "State the time period and product versions covered by an audit or certificate.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 774
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Conformance, certification, and claims"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “State the time period and product versions covered by an audit or certificate.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: State the time period and product versions covered by an audit or certificate.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2BC823F8",
+      "revision": 1,
+      "semantic_sha256": "2bc823f861af1f5b7bd38da4a5fbf8f2a1e218c67cafe0e93436a961e8806d1c",
+      "statement": "Track certificate expiry, surveillance, conditions, exceptions, and renewal obligations.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 776
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Conformance, certification, and claims"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Track certificate expiry, surveillance, conditions, exceptions, and renewal obligations.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Track certificate expiry, surveillance, conditions, exceptions, and renewal obligations.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1281EF2B",
+      "revision": 1,
+      "semantic_sha256": "1281ef2b945de163715d41e03b47a82df74db5e09efe04dd03d6ea95ea56bf48",
+      "statement": "Reassess certification impact before material architecture, supplier, location, process, or product change.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 777
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Conformance, certification, and claims"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Reassess certification impact before material architecture, supplier, location, process, or product change.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Reassess certification impact before material architecture, supplier, location, process, or product change.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-01F30AE1",
+      "revision": 1,
+      "semantic_sha256": "01f30ae1675affc0957e3d3930de18c348dfcaed31a82b24cb074286a4fab39f",
+      "statement": "Identify every claim that depends on a supplier, shared platform, managed service, open-source component, or customer-operated control.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 783
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance across suppliers and inherited controls"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Identify every claim that depends on a supplier, shared platform, managed service, open-source component, or customer-operated control.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Identify every claim that depends on a supplier, shared platform, managed service, open-source component, or customer-operated control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-229D6F8B",
+      "revision": 1,
+      "semantic_sha256": "229d6f8b907436a2be3b80a4ff8d146000bd7b72f4bff5a4d575a95bd95094b1",
+      "statement": "Define the boundary between inherited, shared, and directly operated controls.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 784
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance across suppliers and inherited controls"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define the boundary between inherited, shared, and directly operated controls.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define the boundary between inherited, shared, and directly operated controls.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6EBAC76D",
+      "revision": 1,
+      "semantic_sha256": "6ebac76dd7ca858ff9a42edfeedaaf4114318b7fb0e9281c0840ecbefb314040",
+      "statement": "Verify that supplier assurance scope includes the service, region, data, configuration, and time period used.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 786
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance across suppliers and inherited controls"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Verify that supplier assurance scope includes the service, region, data, configuration, and time period used.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Verify that supplier assurance scope includes the service, region, data, configuration, and time period used.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7D7FB635",
+      "revision": 1,
+      "semantic_sha256": "7d7fb6355be0642515acfe60cc4ff1caa40ee7bfa0743959d3410502c9d7ea2d",
+      "statement": "Monitor supplier changes, incidents, expired attestations, and scope reductions.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 789
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance across suppliers and inherited controls"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Monitor supplier changes, incidents, expired attestations, and scope reductions.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Monitor supplier changes, incidents, expired attestations, and scope reductions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A892799B",
+      "revision": 1,
+      "semantic_sha256": "a892799b25dcc5be0a120c957b2b964de8a112ed1e94e69e54d14a8c327ccb2e",
+      "statement": "Include supplier evidence availability and transition rights in contracts.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 790
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance across suppliers and inherited controls"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Include supplier evidence availability and transition rights in contracts.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Include supplier evidence availability and transition rights in contracts.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-44E74665",
+      "revision": 1,
+      "semantic_sha256": "44e7466582ab77683899efd1aef56ea8c748f5f0ad358fc1fac36bdc2d874f0b",
+      "statement": "Maintain compensating controls for evidence that cannot be obtained.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 791
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance across suppliers and inherited controls"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Maintain compensating controls for evidence that cannot be obtained.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Maintain compensating controls for evidence that cannot be obtained.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7FBB7982",
+      "revision": 1,
+      "semantic_sha256": "7fbb798204ad8b569a2cb05f398292ea6f5309750b5b75e7e4dd8dd45f78bc88",
+      "statement": "Define production indicators that continue to support or challenge assurance claims.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 796
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Continuous and operational assurance"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define production indicators that continue to support or challenge assurance claims.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define production indicators that continue to support or challenge assurance claims.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-79BEB4A9",
+      "revision": 1,
+      "semantic_sha256": "79beb4a95d3910b420423f6b80aec858871c9070a599c55e38b9f6a525d4a24c",
+      "statement": "Monitor correctness, safety, security, privacy, accessibility, reliability, performance, data quality, and abuse outcomes relevant to the case.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 797
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Continuous and operational assurance"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Monitor correctness, safety, security, privacy, accessibility, reliability, performance, data quality, and abuse outcomes relevant to the case.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Monitor correctness, safety, security, privacy, accessibility, reliability, performance, data quality, and abuse outcomes relevant to the case.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-272E383B",
+      "revision": 1,
+      "semantic_sha256": "272e383ba7bac5ffc1ede12680952d8c073f1714ebe88f37e6a4b4032ce44b7c",
+      "statement": "Link incidents, near misses, defects, complaints, overrides, exceptions, and drift to affected claims.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 798
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Continuous and operational assurance"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Link incidents, near misses, defects, complaints, overrides, exceptions, and drift to affected claims.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Link incidents, near misses, defects, complaints, overrides, exceptions, and drift to affected claims.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B354E1E9",
+      "revision": 1,
+      "semantic_sha256": "b354e1e93dd71d1274d9117c691bca3d9d845ddb9b4f62235d09726a9670972a",
+      "statement": "Reopen assurance conclusions when operational evidence contradicts assumptions.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 799
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Continuous and operational assurance"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Reopen assurance conclusions when operational evidence contradicts assumptions.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Reopen assurance conclusions when operational evidence contradicts assumptions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8F326500",
+      "revision": 1,
+      "semantic_sha256": "8f326500e9f45bd7bd2d6218794cabe4d461f32bd4b13de586b4fab761d93782",
+      "statement": "Detect configuration and deployment changes that invalidate prior evidence.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 800
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Continuous and operational assurance"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Detect configuration and deployment changes that invalidate prior evidence.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Detect configuration and deployment changes that invalidate prior evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F2A92C95",
+      "revision": 1,
+      "semantic_sha256": "f2a92c95b7e8eae657431035d99b26938d004db06084eeccaa881b8f8d87a9d0",
+      "statement": "Maintain continuous or scheduled control testing where risk warrants it.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 801
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Continuous and operational assurance"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Maintain continuous or scheduled control testing where risk warrants it.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Maintain continuous or scheduled control testing where risk warrants it.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DC2E122D",
+      "revision": 1,
+      "semantic_sha256": "dc2e122d57cfdbde9a2df5a41371db469f0f711f5d3317074644911ecce90497",
+      "statement": "Preserve enough historical telemetry to evaluate trends and reconstruct claim validity.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 803
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Continuous and operational assurance"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Preserve enough historical telemetry to evaluate trends and reconstruct claim validity.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Preserve enough historical telemetry to evaluate trends and reconstruct claim validity.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-83870806",
+      "revision": 1,
+      "semantic_sha256": "83870806caab92621d0fc536d50df200b06d804756aa57e1d2e00844ebe87a45",
+      "statement": "Review assurance cases after incidents, major changes, new threats, or changed obligations.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 804
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Continuous and operational assurance"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Review assurance cases after incidents, major changes, new threats, or changed obligations.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Review assurance cases after incidents, major changes, new threats, or changed obligations.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-73001BBE",
+      "revision": 1,
+      "semantic_sha256": "73001bbefabf3160f37d695a81b40940a255b8e7430c1623552b5616bd13c61d",
+      "statement": "Retire claims and evidence when the corresponding system or obligation ends, subject to retention requirements.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 805
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Continuous and operational assurance"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Retire claims and evidence when the corresponding system or obligation ends, subject to retention requirements.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Retire claims and evidence when the corresponding system or obligation ends, subject to retention requirements.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BACE71B2",
+      "revision": 1,
+      "semantic_sha256": "bace71b2c622accccdd8564e899de7982945de64d17612ae08411b2baa8d115c",
+      "statement": "Conduct a structured challenge review of each material assurance case.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 809
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance review and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Conduct a structured challenge review of each material assurance case.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Conduct a structured challenge review of each material assurance case.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E4B0B27B",
+      "revision": 1,
+      "semantic_sha256": "e4b0b27b7d57d3230d98808ddefda5cd1a30e5134edfe04996769a35789af31e",
+      "statement": "Verify claims are precise, evidence is relevant, arguments are valid, and limitations are visible.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 810
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance review and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Verify claims are precise, evidence is relevant, arguments are valid, and limitations are visible.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Verify claims are precise, evidence is relevant, arguments are valid, and limitations are visible.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6C6059E7",
+      "revision": 1,
+      "semantic_sha256": "6c6059e7ff560cf5d96113945b3cff9758166250a0bb670ad6908c7eccbb64d5",
+      "statement": "Confirm that open defects and exceptions are reflected in the claims rather than hidden outside the case.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 812
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance review and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Confirm that open defects and exceptions are reflected in the claims rather than hidden outside the case.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Confirm that open defects and exceptions are reflected in the claims rather than hidden outside the case.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5797F11A",
+      "revision": 1,
+      "semantic_sha256": "5797f11a595eba436c58b47e3347802a8d33b8be2ebeaff42055f7f940db4313",
+      "statement": "Treat unsupported critical claims, stale evidence, unresolved defeaters, or inadequate independence as no-go conditions.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 813
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance review and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Treat unsupported critical claims, stale evidence, unresolved defeaters, or inadequate independence as no-go conditions.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Treat unsupported critical claims, stale evidence, unresolved defeaters, or inadequate independence as no-go conditions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-498728F8",
+      "revision": 1,
+      "semantic_sha256": "498728f8ece96ee681d7a354b750741ea9fd892ad7938405f128ad90de06d803",
+      "statement": "Record who reviewed, challenged, approved, rejected, or conditionally accepted the case.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 815
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance review and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Record who reviewed, challenged, approved, rejected, or conditionally accepted the case.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Record who reviewed, challenged, approved, rejected, or conditionally accepted the case.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9513B3E9",
+      "revision": 1,
+      "semantic_sha256": "9513b3e9f122e1720df0a34320dd047222dae2483539c3849ed61803794e5278",
+      "statement": "Preserve the exact assurance case with the released artifact and production configuration.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 816
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance review and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Preserve the exact assurance case with the released artifact and production configuration.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Preserve the exact assurance case with the released artifact and production configuration.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-775F8E10",
+      "revision": 1,
+      "semantic_sha256": "775f8e100492539cb17fa1a737af3d3ab8408f4a88df6b8f9d771f4f8345a9fd",
+      "statement": "Define post-release observations required before a provisional claim becomes final.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 817
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance review and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define post-release observations required before a provisional claim becomes final.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define post-release observations required before a provisional claim becomes final.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A4A4897A",
+      "revision": 1,
+      "semantic_sha256": "a4a4897ab6ba9fd899be69613d9450eb07f1e4866ecb5ee088fc0f92564b32cf",
+      "statement": "Revoke approval when required conditions, monitoring, or compensating controls fail.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 818
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Final Gap Closure — Assurance Cases, Independent Assurance, and Conformance Claims",
+        "Assurance review and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Revoke approval when required conditions, monitoring, or compensating controls fail.” is deterministic with a sealed assurance-case scope, versioned evidence contract, and exact defect, claim, traceability, provenance, review, certificate, supplier, or monitoring record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Revoke approval when required conditions, monitoring, or compensating controls fail.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

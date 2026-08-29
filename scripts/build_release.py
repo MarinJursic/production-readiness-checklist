@@ -101,6 +101,7 @@ TARGETS = (
 MAX_RELEASE_INPUT_FILES = 10_000
 MAX_RELEASE_INPUT_BYTES = 256 * 1024 * 1024
 MAX_NPM_SUPPORT_FILES = 512
+MAX_NPM_SUPPORT_INPUT_BYTES = 32 * 1024 * 1024
 MAX_NPM_SUPPORT_BYTES = 24 * 1024 * 1024
 MAX_SBOM_BYTES = 16 * 1024 * 1024
 
@@ -275,10 +276,12 @@ def npm_support_files() -> list[tuple[str, bytes, int]]:
     files.extend((ROOT / "docs" / "checklists").glob("*.md"))
     files.extend((ROOT / "docs" / "engineering").glob("[0-9][0-9]-*.md"))
     support = checked_support_files(
-        files, maximum_files=MAX_NPM_SUPPORT_FILES, maximum_bytes=MAX_NPM_SUPPORT_BYTES
+        files, maximum_files=MAX_NPM_SUPPORT_FILES, maximum_bytes=MAX_NPM_SUPPORT_INPUT_BYTES
     )
     compact: list[tuple[str, bytes, int]] = []
     compressed_catalogs = {
+        "catalog/control-check-bindings.json",
+        "catalog/control-check-programs.json",
         "catalog/control-contracts.json",
         "catalog/control-id-registry.json",
     }
@@ -339,6 +342,22 @@ def host_target() -> tuple[str, str]:
     return operating_system, architecture
 
 
+def validate_release_inputs() -> None:
+    """Reject a release before compilation when reviewed support is stale."""
+
+    completed = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "validate.py")],
+        cwd=ROOT,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        check=False,
+    )
+    if completed.returncode != 0:
+        detail = completed.stdout.strip() or f"exit status {completed.returncode}"
+        raise RuntimeError(f"release input validation failed: {detail}")
+
+
 def build_release(args: argparse.Namespace) -> None:
     if not is_release_version(args.version):
         raise ValueError("version must be semantic version X.Y.Z with an optional prerelease")
@@ -352,6 +371,8 @@ def build_release(args: argparse.Namespace) -> None:
     output.parent.mkdir(parents=True, exist_ok=True)
     if args.sbom.resolve() == output or output in args.sbom.resolve().parents:
         raise ValueError("SBOM input cannot be inside the output directory")
+
+    validate_release_inputs()
 
     staging = pathlib.Path(tempfile.mkdtemp(prefix=".prc-release-", dir=output.parent))
     try:

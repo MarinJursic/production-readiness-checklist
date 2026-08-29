@@ -1,0 +1,2059 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-03-user-experience-web-and-content-md-part-002-part-001",
+  "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 79,
+  "controls": [
+    {
+      "control_id": "USEQ-607CE5B2",
+      "revision": 1,
+      "semantic_sha256": "607ce5b208bd7f30fcc5112016bbfead188a477d11aa02311453b9784640f5df",
+      "statement": "Test without relying solely on pointer interaction.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 373
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Frontend Testing",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Test without relying solely on pointer interaction.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Test without relying solely on pointer interaction.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8719391E",
+      "revision": 1,
+      "semantic_sha256": "8719391e51315b9ca2e4efc4f99d29f52338e77c41a285c3125620da4f977b45",
+      "statement": "Measure flakiness and quarantine only with owner, risk, and expiry.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 376
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Frontend Testing",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Measure flakiness and quarantine only with owner, risk, and expiry.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Measure flakiness and quarantine only with owner, risk, and expiry.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DC069975",
+      "revision": 1,
+      "semantic_sha256": "dc069975431ef9694856f6d289a365ba8668a0d3365fd00034bd1adb7a956df3",
+      "statement": "Convert escaped frontend defects into durable regression tests.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 379
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Frontend Testing",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Convert escaped frontend defects into durable regression tests.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Convert escaped frontend defects into durable regression tests.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-137DBBC0",
+      "revision": 1,
+      "semantic_sha256": "137dbbc0d2c4a5dfb46d4ccf0be096101aa98fd7f1549fec82d83a81342e0dc2",
+      "statement": "Restrict cross-origin communication, frames, openers, messaging, and embedded content to validated origins and schemas.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 398
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Frontend Security and Privacy",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Restrict cross-origin communication, frames, openers, messaging, and embedded content to validated origins and schemas.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Restrict cross-origin communication, frames, openers, messaging, and embedded content to validated origins and schemas.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8E1EED4B",
+      "revision": 1,
+      "semantic_sha256": "8e1eed4bfc6f0b52c5567ce15b9af9f701e34ea810a2831da998a9e087e0cdff",
+      "statement": "Validate redirect, callback, download, and navigation destinations.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 399
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Frontend Security and Privacy",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Validate redirect, callback, download, and navigation destinations.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Validate redirect, callback, download, and navigation destinations.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9FD78746",
+      "revision": 1,
+      "semantic_sha256": "9fd7874653540e18761a380bc47470f55609242e3bdf3697d68163ad807f938c",
+      "statement": "Protect state-changing browser requests against cross-site request forgery.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 400
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Frontend Security and Privacy",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Protect state-changing browser requests against cross-site request forgery.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Protect state-changing browser requests against cross-site request forgery.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EF73B7C0",
+      "revision": 1,
+      "semantic_sha256": "ef73b7c0d5e0f43bab4aa58b0a870dd39cbd35115d5e1e69048c8ce458562e07",
+      "statement": "Define the supported browser, device, assistive-technology, crawler, rendering, locale, and network conditions for each critical journey.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 418
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Scope, ownership, and quality governance"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define the supported browser, device, assistive-technology, crawler, rendering, locale, and network conditions for each critical journey.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Define the supported browser, device, assistive-technology, crawler, rendering, locale, and network conditions for each critical journey.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E38F347D",
+      "revision": 1,
+      "semantic_sha256": "e38f347d8589be76b6375095cd5281947964bdcc848c654c8469edb7fa2c37c0",
+      "statement": "Maintain an inventory of public origins, hostnames, URL spaces, page types, templates, feeds, media libraries, generated documents, and embedded third-party surfaces.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 419
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Scope, ownership, and quality governance"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Maintain an inventory of public origins, hostnames, URL spaces, page types, templates, feeds, media libraries, generated documents, and embedded third-party surfaces.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Maintain an inventory of public origins, hostnames, URL spaces, page types, templates, feeds, media libraries, generated documents, and embedded third-party surfaces.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7BD51AB1",
+      "revision": 1,
+      "semantic_sha256": "7bd51ab163e210f88de4e3201566bcb10cbb5367170bba0ab10577cc17e4fd12",
+      "statement": "Assign accountable product, engineering, content, SEO, accessibility, privacy, security, and operations owners for the surfaces in scope.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 420
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Scope, ownership, and quality governance"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Assign accountable product, engineering, content, SEO, accessibility, privacy, security, and operations owners for the surfaces in scope.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Assign accountable product, engineering, content, SEO, accessibility, privacy, security, and operations owners for the surfaces in scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-557C8048",
+      "revision": 1,
+      "semantic_sha256": "557c8048cd82e9017a2844bc046248880164d78f09684ef6ea3e9c95074bd7ef",
+      "statement": "Define measurable goals for discoverability, task success, content accuracy, accessibility, performance, privacy, and resilience without treating ranking position as the sole success measure.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 421
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Scope, ownership, and quality governance"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define measurable goals for discoverability, task success, content accuracy, accessibility, performance, privacy, and resilience without treating ranking position as the sole success measure.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Define measurable goals for discoverability, task success, content accuracy, accessibility, performance, privacy, and resilience without treating ranking position as the sole success measure.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-116267A5",
+      "revision": 1,
+      "semantic_sha256": "116267a50e9f8753cdde3599d0cc296acae33577676c646155102401dd9ec215",
+      "statement": "Map each page type to its intended audience, search intent, user task, business purpose, indexability, canonical policy, retention policy, and owner.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 422
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Scope, ownership, and quality governance"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Map each page type to its intended audience, search intent, user task, business purpose, indexability, canonical policy, retention policy, and owner.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Map each page type to its intended audience, search intent, user task, business purpose, indexability, canonical policy, retention policy, and owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7F036200",
+      "revision": 1,
+      "semantic_sha256": "7f0362007e3648805359984848161ee678e978eee79a4abf823b33af4d27d00d",
+      "statement": "Include SEO, accessibility, semantic markup, metadata, performance, and content checks in the definition of done for every affected change.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 423
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Scope, ownership, and quality governance"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Include SEO, accessibility, semantic markup, metadata, performance, and content checks in the definition of done for every affected change.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Include SEO, accessibility, semantic markup, metadata, performance, and content checks in the definition of done for every affected change.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F06C0099",
+      "revision": 1,
+      "semantic_sha256": "f06c0099900540370b22588d61385d4d4fa250c4f57dab362c36b1c0aec7e720",
+      "statement": "Maintain a deprecation and retirement process for obsolete pages, templates, components, redirects, structured-data types, and public endpoints.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 428
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Scope, ownership, and quality governance"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Maintain a deprecation and retirement process for obsolete pages, templates, components, redirects, structured-data types, and public endpoints.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Maintain a deprecation and retirement process for obsolete pages, templates, components, redirects, structured-data types, and public endpoints.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-51900BB2",
+      "revision": 1,
+      "semantic_sha256": "51900bb26fdf5743d2347c422a45f03b26a037bff95237af5215c79fe25983c0",
+      "statement": "State the intended audience, question, task, and desired outcome before producing or materially revising content.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 436
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "People-first content and editorial quality"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “State the intended audience, question, task, and desired outcome before producing or materially revising content.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: State the intended audience, question, task, and desired outcome before producing or materially revising content.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2F5B5FE8",
+      "revision": 1,
+      "semantic_sha256": "2f5b5fe88e6ae1d7e24660d5b262efaf52f289f56a43cf5d11fb48cc336737af",
+      "statement": "Maintain an editorial style, terminology, source, citation, correction, accessibility, and archival policy.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 455
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "People-first content and editorial quality"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Maintain an editorial style, terminology, source, citation, correction, accessibility, and archival policy.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Maintain an editorial style, terminology, source, citation, correction, accessibility, and archival policy.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9FDB2D05",
+      "revision": 1,
+      "semantic_sha256": "9fdb2d057018ca3640ee194655a2e973518a63fa7fa732ac950b638b0e5dfa44",
+      "statement": "Measure content success using task completion, qualified engagement, satisfaction, support reduction, conversion quality, and harm indicators, not raw page views alone.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 456
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "People-first content and editorial quality"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Measure content success using task completion, qualified engagement, satisfaction, support reduction, conversion quality, and harm indicators, not raw page views alone.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Measure content success using task completion, qualified engagement, satisfaction, support reduction, conversion quality, and harm indicators, not raw page views alone.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-615CFF9A",
+      "revision": 1,
+      "semantic_sha256": "615cff9a8ac012533ea8c57c6ceb1289558979af69a8735c7458a057daa8460f",
+      "statement": "Define one normalization policy for host, scheme, port, path case, trailing separators, encoded characters, query ordering, and default documents.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 463
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Information architecture, URLs, and internal linking"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define one normalization policy for host, scheme, port, path case, trailing separators, encoded characters, query ordering, and default documents.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Define one normalization policy for host, scheme, port, path case, trailing separators, encoded characters, query ordering, and default documents.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FADBC6AC",
+      "revision": 1,
+      "semantic_sha256": "fadbc6ac0c99126d2d9bfb7a0be0af7f469940b5143d460dafcb699de21201e7",
+      "statement": "Use native link semantics for navigation and ensure destination URLs exist in the rendered markup.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 465
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Information architecture, URLs, and internal linking"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Use native link semantics for navigation and ensure destination URLs exist in the rendered markup.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Use native link semantics for navigation and ensure destination URLs exist in the rendered markup.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0608EB2A",
+      "revision": 1,
+      "semantic_sha256": "0608eb2abcac5fee24a1f841c0e69a9c898b8491fe5d18e9247d88499d145f0b",
+      "statement": "Prevent orphan pages by reconciling the content inventory, sitemap inventory, internal link graph, and indexed inventory.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 467
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Information architecture, URLs, and internal linking"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Prevent orphan pages by reconciling the content inventory, sitemap inventory, internal link graph, and indexed inventory.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Prevent orphan pages by reconciling the content inventory, sitemap inventory, internal link graph, and indexed inventory.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-60E4D076",
+      "revision": 1,
+      "semantic_sha256": "60e4d0761c14b06a56a38b35f7469b0ee272506abef0aad08047e12dcad6c22a",
+      "statement": "Define which parameter combinations are indexable, canonical, blocked from crawling, or excluded from generation.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 471
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Information architecture, URLs, and internal linking"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define which parameter combinations are indexable, canonical, blocked from crawling, or excluded from generation.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Define which parameter combinations are indexable, canonical, blocked from crawling, or excluded from generation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-90FEF1BF",
+      "revision": 1,
+      "semantic_sha256": "90fef1bf59b435a27c7ad1b1fa7040b7557350852c76723d95d613ec11254465",
+      "statement": "Update internal links to final destinations instead of relying indefinitely on redirect chains.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 474
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Information architecture, URLs, and internal linking"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The rule “Update internal links to final destinations instead of relying indefinitely on redirect chains.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Update internal links to final destinations instead of relying indefinitely on redirect chains.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-13B4D3B9",
+      "revision": 1,
+      "semantic_sha256": "13b4d3b978924cbb20ca71ae0777e13785ac567e9e495fc4ccae460845216dca",
+      "statement": "Check for broken links, circular redirects, mixed schemes, malformed URLs, and links to retired or unauthorized content on every release.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 475
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Information architecture, URLs, and internal linking"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Check for broken links, circular redirects, mixed schemes, malformed URLs, and links to retired or unauthorized content on every release.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Check for broken links, circular redirects, mixed schemes, malformed URLs, and links to retired or unauthorized content on every release.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8159A214",
+      "revision": 1,
+      "semantic_sha256": "8159a214e2102c2c5710bf0bddfd0dbe502fd82a09bc0f66de6c8ac6dc5a94cc",
+      "statement": "Ensure public taxonomy, tags, categories, and labels have owners, definitions, lifecycle rules, and minimum-content thresholds.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 477
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Information architecture, URLs, and internal linking"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Ensure public taxonomy, tags, categories, and labels have owners, definitions, lifecycle rules, and minimum-content thresholds.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Ensure public taxonomy, tags, categories, and labels have owners, definitions, lifecycle rules, and minimum-content thresholds.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C67E7B13",
+      "revision": 1,
+      "semantic_sha256": "c67e7b13324dd6c060bfaa7dee92157d8fd6dcc82417a3d17481f68a88f1b6aa",
+      "statement": "Use crawler-control files only to manage crawling; never rely on them to protect confidential or unauthorized resources.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 481
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Crawling, discovery, and server behavior"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Use crawler-control files only to manage crawling; never rely on them to protect confidential or unauthorized resources.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Use crawler-control files only to manage crawling; never rely on them to protect confidential or unauthorized resources.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9E5F39EC",
+      "revision": 1,
+      "semantic_sha256": "9e5f39ec3b629248f9bc2232c84343f0022354e30f5d6b2948f2c21e0dd16fd5",
+      "statement": "Validate crawler-control syntax, host scope, path matching, case behavior, encoding, and production deployment.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 482
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Crawling, discovery, and server behavior"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Validate crawler-control syntax, host scope, path matching, case behavior, encoding, and production deployment.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Validate crawler-control syntax, host scope, path matching, case behavior, encoding, and production deployment.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-21F93E8E",
+      "revision": 1,
+      "semantic_sha256": "21f93e8eafcaca212f4bb0b95f17b5c704e01a554a7890e5aa4c737a8dea6d42",
+      "statement": "Use page-level indexing directives consistently and verify that crawlers can access a page when they must observe a noindex directive.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 484
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Crawling, discovery, and server behavior"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Use page-level indexing directives consistently and verify that crawlers can access a page when they must observe a noindex directive.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Use page-level indexing directives consistently and verify that crawlers can access a page when they must observe a noindex directive.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-34BA8053",
+      "revision": 1,
+      "semantic_sha256": "34ba8053d384315a297b7e411f789eee08e335bfcf9bc80e82b60e2f75368648",
+      "statement": "Generate sitemaps from authoritative canonical inventory rather than from every routable URL.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 485
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Crawling, discovery, and server behavior"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The rule “Generate sitemaps from authoritative canonical inventory rather than from every routable URL.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Generate sitemaps from authoritative canonical inventory rather than from every routable URL.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9BC1EE8B",
+      "revision": 1,
+      "semantic_sha256": "9bc1ee8b6e0454d4e8e663dbb2ffd1e4bc9e47ab054069f89c4eb74ddebd2881",
+      "statement": "Include only permitted, canonical, successful, indexable URLs in sitemaps.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 486
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Crawling, discovery, and server behavior"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Include only permitted, canonical, successful, indexable URLs in sitemaps.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Include only permitted, canonical, successful, indexable URLs in sitemaps.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4683497B",
+      "revision": 1,
+      "semantic_sha256": "4683497b54774e3395c1aec8725b0ef866b19a3ddd8a1f4a9c9c028209a445e3",
+      "statement": "Split large sitemaps predictably, publish an index when required, and monitor submission and processing errors.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 488
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Crawling, discovery, and server behavior"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Split large sitemaps predictably, publish an index when required, and monitor submission and processing errors.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Split large sitemaps predictably, publish an index when required, and monitor submission and processing errors.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-28004D24",
+      "revision": 1,
+      "semantic_sha256": "28004d245abecd304691c7b0c457f7e4b80da9795f0571676677bca757f9d680",
+      "statement": "Return protocol-correct status codes for success, redirect, client error, removal, rate limiting, temporary failure, and permanent failure.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 490
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Crawling, discovery, and server behavior"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Return protocol-correct status codes for success, redirect, client error, removal, rate limiting, temporary failure, and permanent failure.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Return protocol-correct status codes for success, redirect, client error, removal, rate limiting, temporary failure, and permanent failure.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0F6E8B12",
+      "revision": 1,
+      "semantic_sha256": "0f6e8b12771fdecd547d14b354d1cf21c4f8da4e6ae979b2833f0068702c1f18",
+      "statement": "Ensure maintenance, overload, and dependency failures do not return apparently successful indexable pages containing error content.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 494
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Crawling, discovery, and server behavior"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Ensure maintenance, overload, and dependency failures do not return apparently successful indexable pages containing error content.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Ensure maintenance, overload, and dependency failures do not return apparently successful indexable pages containing error content.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-54FA437D",
+      "revision": 1,
+      "semantic_sha256": "54fa437db50940e23ed502fb92e72230ac1b5acdf808d83087a81abdf70edb3e",
+      "statement": "Monitor crawler traffic, response codes, latency, bytes, rendering resources, and abnormal parameter growth from server logs.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 497
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Crawling, discovery, and server behavior"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Monitor crawler traffic, response codes, latency, bytes, rendering resources, and abnormal parameter growth from server logs.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Monitor crawler traffic, response codes, latency, bytes, rendering resources, and abnormal parameter growth from server logs.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5E65D991",
+      "revision": 1,
+      "semantic_sha256": "5e65d991b0f32ad981902960508f4544668e482e85c6f4653df6a4cc525a100b",
+      "statement": "Document handling for unsupported, malicious, unidentified, or spoofed crawlers rather than trusting user-agent strings alone.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 499
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Crawling, discovery, and server behavior"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Document handling for unsupported, malicious, unidentified, or spoofed crawlers rather than trusting user-agent strings alone.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Document handling for unsupported, malicious, unidentified, or spoofed crawlers rather than trusting user-agent strings alone.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D623C1A7",
+      "revision": 1,
+      "semantic_sha256": "d623c1a74eff52f4b7475f4f0f99986cfebf346bff9db0c724687f451f0b3cdd",
+      "statement": "Do not require scrolling, clicking, consent to unrelated processing, authentication, geolocation, or other interaction merely to expose public primary content to a crawler.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 504
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Rendering and JavaScript-dependent content"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Do not require scrolling, clicking, consent to unrelated processing, authentication, geolocation, or other interaction merely to expose public primary content to a crawler.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Do not require scrolling, clicking, consent to unrelated processing, authentication, geolocation, or other interaction merely to expose public primary content to a crawler.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6B22FD39",
+      "revision": 1,
+      "semantic_sha256": "6b22fd39cf416e321c06ea9c77fa998419f1b1144fc9e94913eaefdb3e9235ad",
+      "statement": "Verify rendered output, not only server source, for every public template that depends on client execution.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 505
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Rendering and JavaScript-dependent content"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Verify rendered output, not only server source, for every public template that depends on client execution.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Verify rendered output, not only server source, for every public template that depends on client execution.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-75DA91D2",
+      "revision": 1,
+      "semantic_sha256": "75da91d2ba3d7c9bf0c3068c148bb33d7e8d844be9a8b291e2b16f606de992dc",
+      "statement": "Ensure script bundles, styles, fonts, images, and API endpoints needed for rendering are accessible under the intended crawler and browser policies.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 513
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Rendering and JavaScript-dependent content"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Ensure script bundles, styles, fonts, images, and API endpoints needed for rendering are accessible under the intended crawler and browser policies.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Ensure script bundles, styles, fonts, images, and API endpoints needed for rendering are accessible under the intended crawler and browser policies.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-34B8A477",
+      "revision": 1,
+      "semantic_sha256": "34b8a47716ebf2fd41c44dcd99a8303ed854852d13608d5eb314c54fe6ed16d7",
+      "statement": "Prevent client routing from returning a generic success shell for resources that do not exist or are unauthorized.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 516
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Rendering and JavaScript-dependent content"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Prevent client routing from returning a generic success shell for resources that do not exist or are unauthorized.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Prevent client routing from returning a generic success shell for resources that do not exist or are unauthorized.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2461DD10",
+      "revision": 1,
+      "semantic_sha256": "2461dd1074010c548df4c940e6fef74e29ecaf2c0d58f4cbb5c75cee3bfda256",
+      "statement": "Emit self-referential canonical links on canonical pages where the policy uses canonical markup.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 521
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Indexing, canonicalization, and duplicate control"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The rule “Emit self-referential canonical links on canonical pages where the policy uses canonical markup.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Emit self-referential canonical links on canonical pages where the policy uses canonical markup.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4B5311D6",
+      "revision": 1,
+      "semantic_sha256": "4b5311d6e0d44bf9192cd3ddaa69d6e4eac841d39a521e6fdd51736924ece4c8",
+      "statement": "Do not use canonical markup as a substitute for redirects when a resource has actually moved.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 523
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Indexing, canonicalization, and duplicate control"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Do not use canonical markup as a substitute for redirects when a resource has actually moved.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Do not use canonical markup as a substitute for redirects when a resource has actually moved.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CDFD96B2",
+      "revision": 1,
+      "semantic_sha256": "cdfd96b2cc621d68baa98776a6f6ad1e5ec2d1818f7fb1508f80242ec7e0b84f",
+      "statement": "Do not combine contradictory canonical, redirect, noindex, alternate-language, sitemap, and internal-link signals.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 524
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Indexing, canonicalization, and duplicate control"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Do not combine contradictory canonical, redirect, noindex, alternate-language, sitemap, and internal-link signals.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Do not combine contradictory canonical, redirect, noindex, alternate-language, sitemap, and internal-link signals.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3B04ADCB",
+      "revision": 1,
+      "semantic_sha256": "3b04adcb64e3d73e3a81ec418d53b8b7793044389a0a844cb1ad80fe8b0dfb35",
+      "statement": "Monitor duplicate-title, duplicate-description, near-duplicate-content, canonical-conflict, and discovered-not-indexed patterns by template and cause.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 531
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Indexing, canonicalization, and duplicate control"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Monitor duplicate-title, duplicate-description, near-duplicate-content, canonical-conflict, and discovered-not-indexed patterns by template and cause.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Monitor duplicate-title, duplicate-description, near-duplicate-content, canonical-conflict, and discovered-not-indexed patterns by template and cause.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B19E7322",
+      "revision": 1,
+      "semantic_sha256": "b19e7322f16e07ce3c4af226760d52bea56c5d589a80e1add49a71109fa5037a",
+      "statement": "Define social-preview titles, descriptions, images, locale, type, and canonical URL when social sharing is in scope.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 540
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Metadata, snippets, social previews, and structured data"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define social-preview titles, descriptions, images, locale, type, and canonical URL when social sharing is in scope.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Define social-preview titles, descriptions, images, locale, type, and canonical URL when social sharing is in scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-03E02192",
+      "revision": 1,
+      "semantic_sha256": "03e02192a4bbb516671bb4851620324220a8e87f8a035a7d4d20977d27577a4d",
+      "statement": "Validate structured data during development, in deployed output, and after client rendering.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 546
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Metadata, snippets, social previews, and structured data"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Validate structured data during development, in deployed output, and after client rendering.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Validate structured data during development, in deployed output, and after client rendering.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F191E6BD",
+      "revision": 1,
+      "semantic_sha256": "f191e6bdee1bd4930b603b9226058921d04e8299db35e6ebaae0bf92491db27e",
+      "statement": "Monitor enhancement reports, parsing errors, policy violations, and eligibility changes after release.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 547
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Metadata, snippets, social previews, and structured data"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The rule “Monitor enhancement reports, parsing errors, policy violations, and eligibility changes after release.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Monitor enhancement reports, parsing errors, policy violations, and eligibility changes after release.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-44B42594",
+      "revision": 1,
+      "semantic_sha256": "44b42594e45c2931f787b748b17e15f9d815cf5cb3557893ec0baa2fe04b7781",
+      "statement": "Use distinct, stable URLs for materially different language or regional versions intended for independent discovery.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 554
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "International and multilingual discovery"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Use distinct, stable URLs for materially different language or regional versions intended for independent discovery.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Use distinct, stable URLs for materially different language or regional versions intended for independent discovery.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2E93154B",
+      "revision": 1,
+      "semantic_sha256": "2e93154b7023ff5b291a87aa87fb444675cb0fea7e5f17c5d41d0c2d85efad89",
+      "statement": "Do not canonicalize translated pages to a different language when each translation is intended to be indexed.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 557
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "International and multilingual discovery"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Do not canonicalize translated pages to a different language when each translation is intended to be indexed.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Do not canonicalize translated pages to a different language when each translation is intended to be indexed.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A94D316D",
+      "revision": 1,
+      "semantic_sha256": "a94d316d1e92d85ed1f86a8a01ff43b2cac7461389d8e667a5ca688c3b387354",
+      "statement": "Avoid automatic locale redirects that prevent users or crawlers from reaching a chosen version.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 558
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "International and multilingual discovery"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Avoid automatic locale redirects that prevent users or crawlers from reaching a chosen version.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Avoid automatic locale redirects that prevent users or crawlers from reaching a chosen version.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9C2B42C3",
+      "revision": 1,
+      "semantic_sha256": "9c2b42c33f2589c34666e1efc334591781fd48bf05e2b516d7c7a4515fe01407",
+      "statement": "Test language negotiation, caching, redirects, alternate annotations, and shared URLs without allowing one locale to poison another locale's cache.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 565
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "International and multilingual discovery"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Test language negotiation, caching, redirects, alternate annotations, and shared URLs without allowing one locale to poison another locale's cache.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Test language negotiation, caching, redirects, alternate annotations, and shared URLs without allowing one locale to poison another locale's cache.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C93BC042",
+      "revision": 1,
+      "semantic_sha256": "c93bc0428a7bee6bdab5f9290a335681f1eb470edc2a1cdaa6b6c298e5e2a312",
+      "statement": "Publish video on a stable watch page with a unique title, description, thumbnail, duration, availability, and playable primary media when video discovery is intended.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 573
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Media, documents, feeds, and downloadable content"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Publish video on a stable watch page with a unique title, description, thumbnail, duration, availability, and playable primary media when video discovery is intended.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Publish video on a stable watch page with a unique title, description, thumbnail, duration, availability, and playable primary media when video discovery is intended.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EA5B740A",
+      "revision": 1,
+      "semantic_sha256": "ea5b740a5d4a0620db4bcf49eb3dd817c2e6ffc7c462e425a30993c44a239b11",
+      "statement": "Retain rights, license, attribution, consent, age, territorial, and removal metadata for published media.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 575
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Media, documents, feeds, and downloadable content"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Retain rights, license, attribution, consent, age, territorial, and removal metadata for published media.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Retain rights, license, attribution, consent, age, territorial, and removal metadata for published media.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A31027E4",
+      "revision": 1,
+      "semantic_sha256": "a31027e4794fd62f63cf70fd0cc883c7d14e06c413a239a8a0bee3bbf8b4a1c7",
+      "statement": "Create a complete old-to-new URL map before changing domains, protocols, paths, hosts, rendering models, taxonomies, or content platforms.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 584
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Site moves, redesigns, and large-scale URL changes"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Create a complete old-to-new URL map before changing domains, protocols, paths, hosts, rendering models, taxonomies, or content platforms.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Create a complete old-to-new URL map before changing domains, protocols, paths, hosts, rendering models, taxonomies, or content platforms.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9EE07195",
+      "revision": 1,
+      "semantic_sha256": "9ee07195750e55acd849a8f2cfbd8bc7b691fded41cbc2113626156ea271ec37",
+      "statement": "Benchmark traffic, crawl, index coverage, rankings, conversions, errors, performance, accessibility, and revenue before migration.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 590
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Site moves, redesigns, and large-scale URL changes"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Benchmark traffic, crawl, index coverage, rankings, conversions, errors, performance, accessibility, and revenue before migration.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Benchmark traffic, crawl, index coverage, rankings, conversions, errors, performance, accessibility, and revenue before migration.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2A898C7A",
+      "revision": 1,
+      "semantic_sha256": "2a898c7a5958943044b909aeeeb0de2214d0c452eb947cc6830431be67de8eeb",
+      "statement": "Annotate the migration in monitoring and compare old and new URL cohorts throughout the observation period.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 591
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Site moves, redesigns, and large-scale URL changes"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Annotate the migration in monitoring and compare old and new URL cohorts throughout the observation period.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Annotate the migration in monitoring and compare old and new URL cohorts throughout the observation period.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7D37957D",
+      "revision": 1,
+      "semantic_sha256": "7d37957d5c0103945d78ed03451a32ef2725e8208370d59a9fd17cd1ef07d515",
+      "statement": "Keep a tested rollback or forward-fix plan for routing, templates, metadata, redirects, DNS, certificates, and infrastructure.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 592
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Site moves, redesigns, and large-scale URL changes"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Keep a tested rollback or forward-fix plan for routing, templates, metadata, redirects, DNS, certificates, and infrastructure.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Keep a tested rollback or forward-fix plan for routing, templates, metadata, redirects, DNS, certificates, and infrastructure.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F34583CD",
+      "revision": 1,
+      "semantic_sha256": "f34583cd8e168acdd018b9869adff89e653c5218537bc02b4e6f0835a7f5ab12",
+      "statement": "Document intentional losses, consolidated content, changed user journeys, and residual external-link dependencies.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 594
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Site moves, redesigns, and large-scale URL changes"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Document intentional losses, consolidated content, changed user journeys, and residual external-link dependencies.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Document intentional losses, consolidated content, changed user journeys, and residual external-link dependencies.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4A5DD6CA",
+      "revision": 1,
+      "semantic_sha256": "4a5dd6cac4450d9b7bebb254a7ae3462276c0dcb9cf8f9a43f719205d17f0856",
+      "statement": "Measure complete user journeys and business-critical interactions in addition to generic page metrics.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 601
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Page experience, performance, and resilience"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Measure complete user journeys and business-critical interactions in addition to generic page metrics.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Measure complete user journeys and business-critical interactions in addition to generic page metrics.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B9097015",
+      "revision": 1,
+      "semantic_sha256": "b9097015a3957aa6b009489d32d9738f3cabec3bae135331386324026b6a0869",
+      "statement": "Avoid blocking rendering on nonessential third-party code, experimentation, advertising, support, or analytics.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 604
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Page experience, performance, and resilience"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Avoid blocking rendering on nonessential third-party code, experimentation, advertising, support, or analytics.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Avoid blocking rendering on nonessential third-party code, experimentation, advertising, support, or analytics.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EFD19F60",
+      "revision": 1,
+      "semantic_sha256": "efd19f608a3233a08300b96c478c7e2d925c75f0ab6bacb6bff879e994715cd4",
+      "statement": "Define freshness, validation, invalidation, stale-if-error, offline, and recovery behavior for every important cache layer.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 606
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Page experience, performance, and resilience"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define freshness, validation, invalidation, stale-if-error, offline, and recovery behavior for every important cache layer.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Define freshness, validation, invalidation, stale-if-error, offline, and recovery behavior for every important cache layer.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AAC001AD",
+      "revision": 1,
+      "semantic_sha256": "aac001adbbce499c5192a894411f8b60ffd0f585430e5207645fe8f92f663649",
+      "statement": "Detect performance regressions automatically and block releases that exceed approved budgets on critical journeys without an accepted exception.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 611
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Page experience, performance, and resilience"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Detect performance regressions automatically and block releases that exceed approved budgets on critical journeys without an accepted exception.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Detect performance regressions automatically and block releases that exceed approved budgets on critical journeys without an accepted exception.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B59E6A65",
+      "revision": 1,
+      "semantic_sha256": "b59e6a651e5d21360a9f658df7ee4801ee48fc69e26b3588230b9ab7ec706683",
+      "statement": "Use WCAG 2.2 Level AA as the default general-purpose web baseline unless a stricter applicable requirement is identified.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 616
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Accessibility governance and evaluation depth"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Use WCAG 2.2 Level AA as the default general-purpose web baseline unless a stricter applicable requirement is identified.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Use WCAG 2.2 Level AA as the default general-purpose web baseline unless a stricter applicable requirement is identified.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CF9499FF",
+      "revision": 1,
+      "semantic_sha256": "cf9499ff8b3ed979a75d2b3d3041e55a945911128ddccec0efbd566095b2518a",
+      "statement": "Create an accessibility conformance matrix mapping every applicable success criterion to representative components, templates, journeys, evidence, defects, and owners.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 617
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Accessibility governance and evaluation depth"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Create an accessibility conformance matrix mapping every applicable success criterion to representative components, templates, journeys, evidence, defects, and owners.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Create an accessibility conformance matrix mapping every applicable success criterion to representative components, templates, journeys, evidence, defects, and owners.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A2C56DCC",
+      "revision": 1,
+      "semantic_sha256": "a2c56dcc71de194a4312553a9e4b4b541eda8ef99cf2bd90ca1738a22feba4c8",
+      "statement": "Require procurement and supplier evaluations to include accessibility evidence, limitations, remediation commitments, and regression obligations.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 625
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Accessibility governance and evaluation depth"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Require procurement and supplier evaluations to include accessibility evidence, limitations, remediation commitments, and regression obligations.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Require procurement and supplier evaluations to include accessibility evidence, limitations, remediation commitments, and regression obligations.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2257CD10",
+      "revision": 1,
+      "semantic_sha256": "2257cd10ed86a97a32bdc2ba8b0f749b5980dbcc44a7aac8bb4aa6ad161d9eed",
+      "statement": "Train designers, writers, engineers, testers, product managers, procurement staff, support staff, and content authors for their accessibility responsibilities.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 630
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Accessibility governance and evaluation depth"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Train designers, writers, engineers, testers, product managers, procurement staff, support staff, and content authors for their accessibility responsibilities.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Train designers, writers, engineers, testers, product managers, procurement staff, support staff, and content authors for their accessibility responsibilities.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-21DF4CEE",
+      "revision": 1,
+      "semantic_sha256": "21df4ceebfb6f6e8d8db600a6a05c96f066495296e319f7735acb4442e9020fb",
+      "statement": "Track time to acknowledge, workaround, remediate, verify, and prevent recurrence of reported barriers.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 631
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Accessibility governance and evaluation depth"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Track time to acknowledge, workaround, remediate, verify, and prevent recurrence of reported barriers.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Track time to acknowledge, workaround, remediate, verify, and prevent recurrence of reported barriers.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-34340503",
+      "revision": 1,
+      "semantic_sha256": "343405036eee58deffe3b600a344736379a6d548ecf77ca12cfae6ea75adaf7b",
+      "statement": "Ensure pointer gestures have simple alternatives and pointer cancellation prevents accidental activation.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 638
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Advanced accessible interaction and content controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Ensure pointer gestures have simple alternatives and pointer cancellation prevents accidental activation.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Ensure pointer gestures have simple alternatives and pointer cancellation prevents accidental activation.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-71058355",
+      "revision": 1,
+      "semantic_sha256": "710583559fb6adba9e98dc73e62b7c342139cabd89f9f40a8552fd17be740000",
+      "statement": "Ensure the visible label is contained in the programmatic accessible name for controls operated by speech.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 639
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Advanced accessible interaction and content controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The rule “Ensure the visible label is contained in the programmatic accessible name for controls operated by speech.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Ensure the visible label is contained in the programmatic accessible name for controls operated by speech.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6D759A8B",
+      "revision": 1,
+      "semantic_sha256": "6d759a8b4282a1fc2fb666506096575a58b0b08ddd681bf3b356ed5833e42367",
+      "statement": "Ensure target size and spacing meet the selected accessibility target, including the WCAG 2.2 minimum-target criterion where applicable.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 640
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Advanced accessible interaction and content controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Ensure target size and spacing meet the selected accessibility target, including the WCAG 2.2 minimum-target criterion where applicable.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Ensure target size and spacing meet the selected accessibility target, including the WCAG 2.2 minimum-target criterion where applicable.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-10BB16EB",
+      "revision": 1,
+      "semantic_sha256": "10bb16ebc5ae751750fd357e5656ccfa4afa5bffde556ec680b5f16787b46bf2",
+      "statement": "Keep focused elements fully visible and not hidden by author-created content at the selected conformance level.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 641
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Advanced accessible interaction and content controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Keep focused elements fully visible and not hidden by author-created content at the selected conformance level.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Keep focused elements fully visible and not hidden by author-created content at the selected conformance level.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FC04F3AD",
+      "revision": 1,
+      "semantic_sha256": "fc04f3ad10544dcb03df24dd071c7560bc0edd94291db411e9792c1745448d95",
+      "statement": "Offer an alternative to dragging interactions and do not make fine motor precision the only way to complete a task.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 642
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Advanced accessible interaction and content controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Offer an alternative to dragging interactions and do not make fine motor precision the only way to complete a task.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Offer an alternative to dragging interactions and do not make fine motor precision the only way to complete a task.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7181C27B",
+      "revision": 1,
+      "semantic_sha256": "7181c27bcec01210823f24f648283ee93f28083ba347c5ae40ab3f690d17e3ab",
+      "statement": "Make help mechanisms appear in a consistent relative order across repeated page sets.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 643
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Advanced accessible interaction and content controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Make help mechanisms appear in a consistent relative order across repeated page sets.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Make help mechanisms appear in a consistent relative order across repeated page sets.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8FBA2834",
+      "revision": 1,
+      "semantic_sha256": "8fba2834359717f95d90522fd0171c9bf3baeef89f726bfc745889161d7f189e",
+      "statement": "Announce validation, saving, loading, completion, timeout, queue, connection, and error status without unexpectedly moving focus.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 647
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Advanced accessible interaction and content controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Announce validation, saving, loading, completion, timeout, queue, connection, and error status without unexpectedly moving focus.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Announce validation, saving, loading, completion, timeout, queue, connection, and error status without unexpectedly moving focus.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-819A5DEB",
+      "revision": 1,
+      "semantic_sha256": "819a5debebfdb862048ff2f75286e8ce0f3a1575d6baccc0dcb4464c9afb8e89",
+      "statement": "Ensure modal and nonmodal overlays have correct semantics, inert background behavior, escape paths, focus restoration, and no keyboard trap.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 649
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Advanced accessible interaction and content controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The rule “Ensure modal and nonmodal overlays have correct semantics, inert background behavior, escape paths, focus restoration, and no keyboard trap.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Ensure modal and nonmodal overlays have correct semantics, inert background behavior, escape paths, focus restoration, and no keyboard trap.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-11D31D6B",
+      "revision": 1,
+      "semantic_sha256": "11d31d6b4716f08d98bee16b84c93b3f21b7e111704bb1c914395b46b655392f",
+      "statement": "Provide visible and programmatic instructions before input rather than relying on transient hint text.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 651
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Advanced accessible interaction and content controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The rule “Provide visible and programmatic instructions before input rather than relying on transient hint text.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Provide visible and programmatic instructions before input rather than relying on transient hint text.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E237588C",
+      "revision": 1,
+      "semantic_sha256": "e237588cad39c6fcb8b60c2adaddc062c36fd54fdff92623f3870355c5c2a029",
+      "statement": "Avoid flashing that exceeds applicable thresholds and provide controls for motion triggered by interaction.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 653
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Advanced accessible interaction and content controls"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Avoid flashing that exceeds applicable thresholds and provide controls for motion triggered by interaction.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Avoid flashing that exceeds applicable thresholds and provide controls for motion triggered by interaction.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6ABAB1C2",
+      "revision": 1,
+      "semantic_sha256": "6abab1c2ea8fc1e70b21cd378563beb6069e2060414c03bfb5747522fe4b5bb9",
+      "statement": "Validate generated markup, document structure, element nesting, duplicate identifiers, labels, names, and relevant conformance requirements.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 661
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Web-platform conformance and progressive enhancement"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The rule “Validate generated markup, document structure, element nesting, duplicate identifiers, labels, names, and relevant conformance requirements.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Validate generated markup, document structure, element nesting, duplicate identifiers, labels, names, and relevant conformance requirements.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-01BF9E5D",
+      "revision": 1,
+      "semantic_sha256": "01bf9e5d0683e2f2e53706804793de8b43d062a5da29180d44174f348cd1db02",
+      "statement": "Follow HTTP method, status, redirect, conditional request, range, content negotiation, authentication, and caching semantics.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 663
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Web-platform conformance and progressive enhancement"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Follow HTTP method, status, redirect, conditional request, range, content negotiation, authentication, and caching semantics.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Follow HTTP method, status, redirect, conditional request, range, content negotiation, authentication, and caching semantics.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E5B926F7",
+      "revision": 1,
+      "semantic_sha256": "e5b926f725d04fbe3d57a345e5cb38e1747b8098e9245ea67491a85f21d039e9",
+      "statement": "Set content types and character encodings accurately and prevent content sniffing where unsafe.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 664
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Web-platform conformance and progressive enhancement"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Set content types and character encodings accurately and prevent content sniffing where unsafe.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Set content types and character encodings accurately and prevent content sniffing where unsafe.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CB46C21C",
+      "revision": 1,
+      "semantic_sha256": "cb46c21c233218eca91693d3a682b1fa872454880d9b23fb6e31ead5da90831e",
+      "statement": "Use the Vary mechanism and cache keys correctly when representation depends on request headers, identity, locale, device adaptation, or encoding.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 665
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Web-platform conformance and progressive enhancement"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Use the Vary mechanism and cache keys correctly when representation depends on request headers, identity, locale, device adaptation, or encoding.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Use the Vary mechanism and cache keys correctly when representation depends on request headers, identity, locale, device adaptation, or encoding.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-10978819",
+      "revision": 1,
+      "semantic_sha256": "1097881946ef925e4b1cdae407b560ee75533cb82fc5a06de90bad5e392dd219",
+      "statement": "Define a support policy for platform features and provide fallback for unsupported capabilities that affect critical tasks.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 668
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Web-platform conformance and progressive enhancement"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define a support policy for platform features and provide fallback for unsupported capabilities that affect critical tasks.” is deterministic when evaluated against its sealed inventory and versioned rule-specific acceptance contract; each required field, state, or result is an exact comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, the configured checker verifies the versioned acceptance contract for: Define a support policy for platform features and provide fallback for unsupported capabilities that affect critical tasks.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

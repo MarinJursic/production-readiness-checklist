@@ -9,6 +9,7 @@ import tarfile
 import tempfile
 import unittest
 import zipfile
+from unittest.mock import patch
 
 from scripts import build_release
 
@@ -183,10 +184,15 @@ class ReleaseBuilderTests(unittest.TestCase):
             "DISCLOSURE",
             "THIRD_PARTY_NOTICES.md",
             "adapters/checkov-v3.3.8.yaml",
+            "catalog/control-check-bindings.json",
+            "catalog/control-check-programs.json",
             "catalog/profiles/core-repository.yaml",
             "docs/scanner/getting-started.md",
+            "schemas/control-check-bindings.schema.json",
+            "schemas/control-check-program-catalog.schema.json",
         ):
             self.assertIn(expected, names)
+        self.assertFalse(any(name.startswith("research/control-classification/") for name in names))
 
     def test_npm_support_keeps_every_control_source_without_website_media(self) -> None:
         support = build_release.npm_support_files()
@@ -194,6 +200,8 @@ class ReleaseBuilderTests(unittest.TestCase):
         for expected in (
             "THIRD_PARTY_NOTICES.md",
             "adapters/checkov-v3.3.8.yaml",
+            "catalog/control-check-bindings.json.gz",
+            "catalog/control-check-programs.json.gz",
             "catalog/control-contracts.json.gz",
             "catalog/control-id-registry.json.gz",
             "catalog/profiles/core-repository.yaml",
@@ -202,13 +210,25 @@ class ReleaseBuilderTests(unittest.TestCase):
             "fixtures/benchmarks/core-native/suite.yaml",
             "packs/core-native.yaml",
             "schemas/control-review-output.schema.json",
+            "schemas/control-check-bindings.schema.json",
         ):
             self.assertIn(expected, names)
         self.assertFalse(any(name.startswith("docs/assets/") for name in names))
         self.assertFalse(any(name.startswith("docs/scanner/") for name in names))
         self.assertNotIn("catalog/control-contracts.json", names)
         self.assertNotIn("catalog/control-id-registry.json", names)
+        self.assertNotIn("catalog/control-check-bindings.json", names)
+        self.assertNotIn("catalog/control-check-programs.json", names)
+        self.assertFalse(any(name.startswith("research/control-classification/") for name in names))
         compact = dict((name, data) for name, data, _mode in support)
+        self.assertEqual(
+            gzip.decompress(compact["catalog/control-check-bindings.json.gz"]),
+            (build_release.ROOT / "catalog" / "control-check-bindings.json").read_bytes(),
+        )
+        self.assertEqual(
+            gzip.decompress(compact["catalog/control-check-programs.json.gz"]),
+            (build_release.ROOT / "catalog" / "control-check-programs.json").read_bytes(),
+        )
         self.assertEqual(
             gzip.decompress(compact["catalog/control-contracts.json.gz"]),
             (build_release.ROOT / "catalog" / "control-contracts.json").read_bytes(),
@@ -219,6 +239,19 @@ class ReleaseBuilderTests(unittest.TestCase):
         )
         self.assertLessEqual(len(support), build_release.MAX_NPM_SUPPORT_FILES)
         self.assertLessEqual(sum(len(data) for _name, data, _mode in support), build_release.MAX_NPM_SUPPORT_BYTES)
+
+    def test_release_input_validation_runs_main_validator_and_fails_closed(self) -> None:
+        success = build_release.subprocess.CompletedProcess(args=["validate"], returncode=0, stdout="ok\n")
+        with patch.object(build_release.subprocess, "run", return_value=success) as run:
+            build_release.validate_release_inputs()
+        command = run.call_args.args[0]
+        self.assertEqual(command[0], build_release.sys.executable)
+        self.assertEqual(pathlib.Path(command[1]), build_release.ROOT / "scripts" / "validate.py")
+
+        failure = build_release.subprocess.CompletedProcess(args=["validate"], returncode=1, stdout="stale\n")
+        with patch.object(build_release.subprocess, "run", return_value=failure):
+            with self.assertRaisesRegex(RuntimeError, "stale"):
+                build_release.validate_release_inputs()
 
     def test_current_release_manifest_schema_includes_exact_npm_packages(self) -> None:
         schema = json.loads((build_release.ROOT / "schemas" / "release-manifest-v0.3.schema.json").read_text())

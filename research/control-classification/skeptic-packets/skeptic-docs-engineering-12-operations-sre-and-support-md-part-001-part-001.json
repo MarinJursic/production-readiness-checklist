@@ -1,0 +1,2511 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-12-operations-sre-and-support-md-part-001-part-001",
+  "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 100,
+  "controls": [
+    {
+      "control_id": "USEQ-B52808A9",
+      "revision": 1,
+      "semantic_sha256": "b52808a99d079705edd0c8042fb8a7194f2acacc6a7276ea42ef1b0e28efc839",
+      "statement": "Infrastructure changes receive review, testing, and security analysis.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 15
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Infrastructure changes receive review, testing, and security analysis.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Infrastructure changes receive review, testing, and security analysis.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C18D735C",
+      "revision": 1,
+      "semantic_sha256": "c18d735c0539d7ede43addb1efda3b741d9b0e85e6e3a48c6c9810a717d3e136",
+      "statement": "Resource quotas, account limits, and provider limits are documented.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 19
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Resource quotas, account limits, and provider limits are documented.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Resource quotas, account limits, and provider limits are documented.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-92A27983",
+      "revision": 1,
+      "semantic_sha256": "92a27983a1be46502698b91d7bae32472322fb75681a7bf775cbd1ddea7fef73",
+      "statement": "Configuration drift, unauthorized resources, and shadow infrastructure are detected.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 21
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Configuration drift, unauthorized resources, and shadow infrastructure are detected.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Configuration drift, unauthorized resources, and shadow infrastructure are detected.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7D17BE10",
+      "revision": 1,
+      "semantic_sha256": "7d17be103542b51f1569c6a7653b96b0a747dae80e84c6f13eb11fc5a7ca8475",
+      "statement": "Resource deletion and recreation have tested recovery procedures.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 22
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The full rule “Resource deletion and recreation have tested recovery procedures.” is decidable by a bounded declared test with captured inputs, outputs, thresholds, and repeatable execution evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Resource deletion and recreation have tested recovery procedures.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3FBED686",
+      "revision": 1,
+      "semantic_sha256": "3fbed686b99dcc2c66e761b2728a405c8c11f7dff0f4b21ec8adcef62c06d0c0",
+      "statement": "Multi-zone and multi-region architecture match approved availability and recovery objectives.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 23
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Multi-zone and multi-region architecture match approved availability and recovery objectives.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Multi-zone and multi-region architecture match approved availability and recovery objectives.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-57F42939",
+      "revision": 1,
+      "semantic_sha256": "57f42939701c3367caf7e0a759f7e4ab4faf8dca02e13a31612d56630fafcb56",
+      "statement": "Infrastructure capacity is validated under failure.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 24
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The full rule “Infrastructure capacity is validated under failure.” is decidable by a bounded declared test with captured inputs, outputs, thresholds, and repeatable execution evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Infrastructure capacity is validated under failure.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7F1F8F9C",
+      "revision": 1,
+      "semantic_sha256": "7f1f8f9c676d77f9bddc20fdd48e344a52cb22831b7b4a19e728b3f3e64f55c8",
+      "statement": "Provider status and escalation paths are integrated into operations.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 25
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Provider status and escalation paths are integrated into operations.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Provider status and escalation paths are integrated into operations.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A0E78A59",
+      "revision": 1,
+      "semantic_sha256": "a0e78a59cd8dd50769abf7778c0b46c80f09f2e81de588316985b14625b4824f",
+      "statement": "Cost alerts and runaway-resource protections exist.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 26
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Cost alerts and runaway-resource protections exist.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Cost alerts and runaway-resource protections exist.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C02FFCDE",
+      "revision": 1,
+      "semantic_sha256": "c02ffcde77593ab42ef229c82ee29d85cd956f7c969a540018e384fa505c9c02",
+      "statement": "Infrastructure credentials and machine identities are inventoried, scoped, and rotated.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 27
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Infrastructure credentials and machine identities are inventoried, scoped, and rotated.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Infrastructure credentials and machine identities are inventoried, scoped, and rotated.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AE7EA05E",
+      "revision": 1,
+      "semantic_sha256": "ae7ea05e2c0d7c4100223d3c36d7cebfa117cf29549515bcd82070eb90b62c56",
+      "statement": "Privileged execution and host access are prohibited unless explicitly approved.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 33
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Containers and orchestration, when used"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Privileged execution and host access are prohibited unless explicitly approved.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Privileged execution and host access are prohibited unless explicitly approved.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FF113370",
+      "revision": 1,
+      "semantic_sha256": "ff1133709815576c49be87489298acc4b9a00cd3a0bf64ae61cfd61a1947fc8e",
+      "statement": "Node, cluster, and control-plane upgrades are rehearsed.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 35
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Containers and orchestration, when used"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The full rule “Node, cluster, and control-plane upgrades are rehearsed.” is decidable by a bounded declared test with captured inputs, outputs, thresholds, and repeatable execution evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Node, cluster, and control-plane upgrades are rehearsed.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4B41FF50",
+      "revision": 1,
+      "semantic_sha256": "4b41ff50fa99db0cc5197d7005067b1ee1a12b814cf147bfd0fc506536980cc5",
+      "statement": "Persistent-storage failure and restoration are tested.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 36
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Containers and orchestration, when used"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The full rule “Persistent-storage failure and restoration are tested.” is decidable by a bounded declared test with captured inputs, outputs, thresholds, and repeatable execution evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Persistent-storage failure and restoration are tested.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3D0C3C21",
+      "revision": 1,
+      "semantic_sha256": "3d0c3c216e641d31a084d46539a5784cc8fe987c7b200b5c8bd9ff44d65a2db0",
+      "statement": "Regional availability and failover match approved objectives.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 41
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Serverless or managed execution, when used"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Regional availability and failover match approved objectives.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Regional availability and failover match approved objectives.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-ACC724DF",
+      "revision": 1,
+      "semantic_sha256": "acc724dfc79fd0616969cac5b2fdef0bf9a58da83346fca33342f1da2f2d20a7",
+      "statement": "Trace context propagates across trusted service boundaries.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 51
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Observability, Logging, Metrics, Traces, and Audit",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The full rule “Trace context propagates across trusted service boundaries.” is decidable by a bounded declared test with captured inputs, outputs, thresholds, and repeatable execution evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Trace context propagates across trusted service boundaries.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1172021F",
+      "revision": 1,
+      "semantic_sha256": "1172021fa357df95f9a77634733ee21790afd11f55a6e86a7ecf6f0586cdd044",
+      "statement": "Logs are structured, searchable, and use consistent levels.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 54
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Observability, Logging, Metrics, Traces, and Audit",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Logs are structured, searchable, and use consistent levels.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Logs are structured, searchable, and use consistent levels.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E25ED114",
+      "revision": 1,
+      "semantic_sha256": "e25ed11444359bf3514e5c20ffde48c27dc35e4f6b7d3ce94cc4024904ce2a40",
+      "statement": "Authentication, authorization changes, administrative actions, sensitive reads, exports, deletions, and configuration changes are audited.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 57
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Observability, Logging, Metrics, Traces, and Audit",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Authentication, authorization changes, administrative actions, sensitive reads, exports, deletions, and configuration changes are audited.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Authentication, authorization changes, administrative actions, sensitive reads, exports, deletions, and configuration changes are audited.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B4212946",
+      "revision": 1,
+      "semantic_sha256": "b4212946779a9f0d5562bfe9a4cf072f8f16fd5e4514cdc73a89220744c7b081",
+      "statement": "Telemetry pipeline failure, backlog, cost, and quota exhaustion are monitored.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 59
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Observability, Logging, Metrics, Traces, and Audit",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The full rule “Telemetry pipeline failure, backlog, cost, and quota exhaustion are monitored.” is decidable by read-only queries over the sealed assessed environment using explicit inventory and versioned policy predicates.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Telemetry pipeline failure, backlog, cost, and quota exhaustion are monitored.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CAC36B21",
+      "revision": 1,
+      "semantic_sha256": "cac36b214ea3e172d1c95b4276cca6d6baec405aaf70b1e88d538ee3ca2dff66",
+      "statement": "Dashboards, alerts, and diagnostic queries are tested during simulated incidents.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 61
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Observability, Logging, Metrics, Traces, and Audit",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The full rule “Dashboards, alerts, and diagnostic queries are tested during simulated incidents.” is decidable by a bounded declared test with captured inputs, outputs, thresholds, and repeatable execution evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Dashboards, alerts, and diagnostic queries are tested during simulated incidents.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2D2D4869",
+      "revision": 1,
+      "semantic_sha256": "2d2d48693993106e4c8ad1e6590c2fe9c667a4f990e9692b00b98da492b7d7c1",
+      "statement": "Alerts are tied to user impact, SLO risk, data integrity, security, fraud, or impending capacity failure.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 69
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Alerting, On-Call, and Runbooks",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Alerts are tied to user impact, SLO risk, data integrity, security, fraud, or impending capacity failure.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Alerts are tied to user impact, SLO risk, data integrity, security, fraud, or impending capacity failure.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-402BD03D",
+      "revision": 1,
+      "semantic_sha256": "402bd03da24da2ca3db02f0eb056b9d258d2c947fac7e1128da6192fc83913f6",
+      "statement": "Every alert has an owner and a corresponding diagnostic or mitigation runbook.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 71
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Alerting, On-Call, and Runbooks",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Every alert has an owner and a corresponding diagnostic or mitigation runbook.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Every alert has an owner and a corresponding diagnostic or mitigation runbook.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-846BA894",
+      "revision": 1,
+      "semantic_sha256": "846ba89418c97b569d424e4dd79df81040413d09eb827937cd471ab72e9bfa1b",
+      "statement": "Alert routing and escalation are tested.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 72
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Alerting, On-Call, and Runbooks",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The full rule “Alert routing and escalation are tested.” is decidable by a bounded declared test with captured inputs, outputs, thresholds, and repeatable execution evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Alert routing and escalation are tested.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-467D6189",
+      "revision": 1,
+      "semantic_sha256": "467d61897b8b50e95499f9a4a9afbbbfa903d9a5d35e79486b1c971fd6c6fc3e",
+      "statement": "Responders have required access and tools.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 73
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Alerting, On-Call, and Runbooks",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Responders have required access and tools.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Responders have required access and tools.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-57378001",
+      "revision": 1,
+      "semantic_sha256": "5737800113164b637a55b366560c47046f625b358f6ac2be21c53814d798ebb0",
+      "statement": "Fast and slow SLO consumption are detected.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 74
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Alerting, On-Call, and Runbooks",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Fast and slow SLO consumption are detected.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Fast and slow SLO consumption are detected.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-06E3518C",
+      "revision": 1,
+      "semantic_sha256": "06e3518cb04e8ed6474e869022f082a261cf05136f9ec79dbb23290982d769a3",
+      "statement": "Failure of monitoring or paging generates an independent signal.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 76
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Alerting, On-Call, and Runbooks",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Failure of monitoring or paging generates an independent signal.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Failure of monitoring or paging generates an independent signal.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4A5C9EF3",
+      "revision": 1,
+      "semantic_sha256": "4a5c9ef39b71e68171bfb26f1b47c656701e59ef7025d7d1cc342dc7b9f73923",
+      "statement": "Runbooks include symptoms, impact, diagnosis, containment, rollback or roll-forward, recovery, verification, and escalation.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 77
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Alerting, On-Call, and Runbooks",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Runbooks include symptoms, impact, diagnosis, containment, rollback or roll-forward, recovery, verification, and escalation.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Runbooks include symptoms, impact, diagnosis, containment, rollback or roll-forward, recovery, verification, and escalation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-11AF58B5",
+      "revision": 1,
+      "semantic_sha256": "11af58b5babf5d92dcb1cc427b671982bfe83eb5d38bc499c6bf1ae85b4526f6",
+      "statement": "Required dashboards, consoles, credentials, and documentation remain accessible during incidents.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 80
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Alerting, On-Call, and Runbooks",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The full rule “Required dashboards, consoles, credentials, and documentation remain accessible during incidents.” is decidable by a bounded declared test with captured inputs, outputs, thresholds, and repeatable execution evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Required dashboards, consoles, credentials, and documentation remain accessible during incidents.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9E774722",
+      "revision": 1,
+      "semantic_sha256": "9e774722e250d5056db9ecb7b452c86d8d35d5e40191d0e73c3c67305621f96a",
+      "statement": "On-call, alerting, and runbook drills have been completed.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 83
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Alerting, On-Call, and Runbooks",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The full rule “On-call, alerting, and runbook drills have been completed.” is decidable by a bounded declared test with captured inputs, outputs, thresholds, and repeatable execution evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: On-call, alerting, and runbook drills have been completed.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-004EF7C7",
+      "revision": 1,
+      "semantic_sha256": "004ef7c7e54081585dc8f85c8468f8b81c417204d35865d2cd17ad06415806bd",
+      "statement": "Business-impact analysis identifies critical services, journeys, data, dependencies, and manual operations.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 91
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Backup, Disaster Recovery, and Business Continuity",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Business-impact analysis identifies critical services, journeys, data, dependencies, and manual operations.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Business-impact analysis identifies critical services, journeys, data, dependencies, and manual operations.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F69270D3",
+      "revision": 1,
+      "semantic_sha256": "f69270d382a73fcc5480fd8930e26bc62f361379a92c4822c752dab9b8cf3342",
+      "statement": "Recovery Point Objectives are defined for every stateful system.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 92
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Backup, Disaster Recovery, and Business Continuity",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Recovery Point Objectives are defined for every stateful system.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Recovery Point Objectives are defined for every stateful system.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-72E6B0CB",
+      "revision": 1,
+      "semantic_sha256": "72e6b0cb92fa2e388c1bbcd8b120b07c7277c94ff358a3a53dec4b799d2a4853",
+      "statement": "Recovery Time Objectives are defined for every critical journey.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 93
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Backup, Disaster Recovery, and Business Continuity",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Recovery Time Objectives are defined for every critical journey.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Recovery Time Objectives are defined for every critical journey.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0DF2FA43",
+      "revision": 1,
+      "semantic_sha256": "0df2fa432cac2cafb605f72b1dda68e7e89c1dbc34cbaf9e2688cfb6d12045a6",
+      "statement": "Backups run automatically at the required frequency and success is monitored.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 94
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Backup, Disaster Recovery, and Business Continuity",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Backups run automatically at the required frequency and success is monitored.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Backups run automatically at the required frequency and success is monitored.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8C6EF82F",
+      "revision": 1,
+      "semantic_sha256": "8c6ef82f36136b1fd474fe73a0242431acb68b2a4355564605e86623bd5fe4b1",
+      "statement": "DNS, certificates, secrets, identity, networking, external integrations, and communication systems are included in recovery planning.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 98
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Backup, Disaster Recovery, and Business Continuity",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “DNS, certificates, secrets, identity, networking, external integrations, and communication systems are included in recovery planning.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: DNS, certificates, secrets, identity, networking, external integrations, and communication systems are included in recovery planning.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7C161E16",
+      "revision": 1,
+      "semantic_sha256": "7c161e16a4b7127bf7492db582596ce2f1be129bf7472504e118f1a2b85188bb",
+      "statement": "Restored data is checked for integrity and reconciled.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 99
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Backup, Disaster Recovery, and Business Continuity",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The full rule “Restored data is checked for integrity and reconciled.” is decidable by a bounded declared test with captured inputs, outputs, thresholds, and repeatable execution evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Restored data is checked for integrity and reconciled.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D4E7515B",
+      "revision": 1,
+      "semantic_sha256": "d4e7515b4b730c73c3ac649ccffdb2c4cd937c38c2991210102eae04d2e74838",
+      "statement": "Actual tested recovery time and recovery point meet approved objectives.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 100
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Backup, Disaster Recovery, and Business Continuity",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The full rule “Actual tested recovery time and recovery point meet approved objectives.” is decidable by a bounded declared test with captured inputs, outputs, thresholds, and repeatable execution evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Actual tested recovery time and recovery point meet approved objectives.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C41BABC1",
+      "revision": 1,
+      "semantic_sha256": "c41babc1160e796cd155511ec38f78795596d8815476ddfb264265351c29e209",
+      "statement": "Failover and failback are tested.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 101
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Backup, Disaster Recovery, and Business Continuity",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The full rule “Failover and failback are tested.” is decidable by a bounded declared test with captured inputs, outputs, thresholds, and repeatable execution evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Failover and failback are tested.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0AAD5260",
+      "revision": 1,
+      "semantic_sha256": "0aad52604f0a68797a3198900560674e9c88274480d6fdce095181492175bd58",
+      "statement": "Disaster-recovery capacity can carry required load.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 102
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Backup, Disaster Recovery, and Business Continuity",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The full rule “Disaster-recovery capacity can carry required load.” is decidable by a bounded declared test with captured inputs, outputs, thresholds, and repeatable execution evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Disaster-recovery capacity can carry required load.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DFA9E714",
+      "revision": 1,
+      "semantic_sha256": "dfa9e71493fd8235fc371060222edc0c428668b9e2324c9a8722995fa11ad991",
+      "statement": "Recovery does not depend on a single person, device, credential, or unavailable provider.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 106
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Backup, Disaster Recovery, and Business Continuity",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Recovery does not depend on a single person, device, credential, or unavailable provider.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Recovery does not depend on a single person, device, credential, or unavailable provider.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AB371F8F",
+      "revision": 1,
+      "semantic_sha256": "ab371f8fb1dff28f697dee6f9cd4d304bcea74d992058931cb1d6266f2d410b8",
+      "statement": "Continuity procedures cover customer support, communications, essential manual operations, and decision authority.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 107
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Backup, Disaster Recovery, and Business Continuity",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Continuity procedures cover customer support, communications, essential manual operations, and decision authority.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Continuity procedures cover customer support, communications, essential manual operations, and decision authority.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-918009AE",
+      "revision": 1,
+      "semantic_sha256": "918009ae84fe0979a27d039b8720593085b655482f84a5a3557d08bd56c9715e",
+      "statement": "Define an error-budget policy before budget exhaustion occurs.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 122
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "SLIs, SLOs, Error Budgets, and Reliability Governance",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Define an error-budget policy before budget exhaustion occurs.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Define an error-budget policy before budget exhaustion occurs.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E1B20661",
+      "revision": 1,
+      "semantic_sha256": "e1b206612b126c85d0aef9fd459b83b36ed76d70118c7369ce523a3434c70d3b",
+      "statement": "Use fast and slow burn alerts to detect acute and chronic objective risk.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 124
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "SLIs, SLOs, Error Budgets, and Reliability Governance",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Use fast and slow burn alerts to detect acute and chronic objective risk.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Use fast and slow burn alerts to detect acute and chronic objective risk.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-77209F37",
+      "revision": 1,
+      "semantic_sha256": "77209f37d87a0d660a006967035028c4697a446fa8f94f72d663f3211c5e3b23",
+      "statement": "Define dependencies' contribution to the end-to-end objective.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 126
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "SLIs, SLOs, Error Budgets, and Reliability Governance",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Define dependencies' contribution to the end-to-end objective.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Define dependencies' contribution to the end-to-end objective.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A8A37E99",
+      "revision": 1,
+      "semantic_sha256": "a8a37e99c329b09e1dbd7e7796d9568fb96b35eaa942d1583e39723ab5acdd4a",
+      "statement": "Preserve separate integrity and safety gates that cannot be averaged into availability.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 130
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "SLIs, SLOs, Error Budgets, and Reliability Governance",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Preserve separate integrity and safety gates that cannot be averaged into availability.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Preserve separate integrity and safety gates that cannot be averaged into availability.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D72ACBC8",
+      "revision": 1,
+      "semantic_sha256": "d72acbc850148bfb08f6c76f9236c4ff6bac485526ab40ee528936e6b00c509c",
+      "statement": "Measure planned maintenance according to user and contractual semantics.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 132
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "SLIs, SLOs, Error Budgets, and Reliability Governance",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Measure planned maintenance according to user and contractual semantics.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Measure planned maintenance according to user and contractual semantics.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F2601113",
+      "revision": 1,
+      "semantic_sha256": "f26011137fd0816f097384d6271b92c516eaa6aeb542a4cdfda7ae6922290c11",
+      "statement": "Keep raw measurement and calculation reproducible.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 133
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "SLIs, SLOs, Error Budgets, and Reliability Governance",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The full rule “Keep raw measurement and calculation reproducible.” is decidable by a bounded declared test with captured inputs, outputs, thresholds, and repeatable execution evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Keep raw measurement and calculation reproducible.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6D436E9F",
+      "revision": 1,
+      "semantic_sha256": "6d436e9ffd6c7de49f6e5fab809e0a644f15c84917c81a10b934c87e541d575d",
+      "statement": "Maintain a service catalog with owner, purpose, users, dependencies, support hours, objectives, data, and lifecycle state.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 142
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Maintain a service catalog with owner, purpose, users, dependencies, support hours, objectives, data, and lifecycle state.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Maintain a service catalog with owner, purpose, users, dependencies, support hours, objectives, data, and lifecycle state.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9AD25B90",
+      "revision": 1,
+      "semantic_sha256": "9ad25b9029b8b3d2c6f31f7149dc2dd4c58da93f18ef4e777bcf796526651543",
+      "statement": "Define support channels, severity, response, escalation, entitlement, and communication expectations.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 143
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Define support channels, severity, response, escalation, entitlement, and communication expectations.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Define support channels, severity, response, escalation, entitlement, and communication expectations.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EE8096B5",
+      "revision": 1,
+      "semantic_sha256": "ee8096b5b599fda36edee98641dddc0e151a5dbeef3dea570872780bfd68cb74",
+      "statement": "Verify requester identity before disclosing or changing sensitive information.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 146
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Verify requester identity before disclosing or changing sensitive information.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Verify requester identity before disclosing or changing sensitive information.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-303A0806",
+      "revision": 1,
+      "semantic_sha256": "303a0806c11b97b34ed70af4231b9d2b6520cf5ae211199aa17e880cd5909b2a",
+      "statement": "Separate service requests, defects, incidents, security events, privacy requests, and complaints while preserving linkage.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 147
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Separate service requests, defects, incidents, security events, privacy requests, and complaints while preserving linkage.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Separate service requests, defects, incidents, security events, privacy requests, and complaints while preserving linkage.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8921C2A9",
+      "revision": 1,
+      "semantic_sha256": "8921c2a9886ebc01edcc5aafdc8148247c345f19b045d42b0c9f71f2e166a9c4",
+      "statement": "Use consistent priority based on impact and urgency.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 148
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Use consistent priority based on impact and urgency.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Use consistent priority based on impact and urgency.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7E1DF527",
+      "revision": 1,
+      "semantic_sha256": "7e1df527002cd9c152885d90223786f8d80e44b485fc6004d760b4da7d9cfe10",
+      "statement": "Capture recurring requests and friction as product and documentation improvement signals.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 151
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Capture recurring requests and friction as product and documentation improvement signals.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Capture recurring requests and friction as product and documentation improvement signals.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5CA932E3",
+      "revision": 1,
+      "semantic_sha256": "5ca932e3c02cca1746cb4a3aa0c9b7618db2f12103ece565d07851ffe7db404f",
+      "statement": "Maintain searchable knowledge articles with owner, effective version, review date, and retirement.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 152
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Maintain searchable knowledge articles with owner, effective version, review date, and retirement.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Maintain searchable knowledge articles with owner, effective version, review date, and retirement.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3847EF4D",
+      "revision": 1,
+      "semantic_sha256": "3847ef4d5279e74c72165498536cf17fc877e205b0ad0703506817c74aa16d08",
+      "statement": "Measure resolution quality, reopen rate, escalation, user effort, satisfaction, and recurrence—not closure volume alone.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 154
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Measure resolution quality, reopen rate, escalation, user effort, satisfaction, and recurrence—not closure volume alone.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Measure resolution quality, reopen rate, escalation, user effort, satisfaction, and recurrence—not closure volume alone.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-17B8BFF4",
+      "revision": 1,
+      "semantic_sha256": "17b8bff42cc968f55bf956fca83b070205935cf9a7bedbba90e8c2aab3f7501b",
+      "statement": "Provide accessible support channels and alternatives.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 155
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The full rule “Provide accessible support channels and alternatives.” is decidable by a bounded declared test with captured inputs, outputs, thresholds, and repeatable execution evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Provide accessible support channels and alternatives.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6EEB4C4C",
+      "revision": 1,
+      "semantic_sha256": "6eeb4c4c5df21f67df0a88244b55814182ba2e96e14d614f23812ebfa7ec073f",
+      "statement": "Define handoff across time zones, teams, suppliers, and incident command.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 156
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Define handoff across time zones, teams, suppliers, and incident command.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Define handoff across time zones, teams, suppliers, and incident command.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6509842E",
+      "revision": 1,
+      "semantic_sha256": "6509842edd6077290878a0335a42d572b5a14d50dd36f8d132e0817d327ebd2a",
+      "statement": "Protect support notes, attachments, recordings, and exports according to data sensitivity.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 157
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Protect support notes, attachments, recordings, and exports according to data sensitivity.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Protect support notes, attachments, recordings, and exports according to data sensitivity.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BB51346B",
+      "revision": 1,
+      "semantic_sha256": "bb51346bb0976eda27cac0f934deaf58f9771ff4d22cd231b033a2ba3e5efb30",
+      "statement": "Define service acceptance before transfer from project to operation.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 159
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Define service acceptance before transfer from project to operation.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Define service acceptance before transfer from project to operation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DFA02FCC",
+      "revision": 1,
+      "semantic_sha256": "dfa02fcce7a41cd52e756b32702674030d6a2f614a6d6b45337de560d172d8d7",
+      "statement": "Retire support obligations only through communicated lifecycle policy.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 160
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Retire support obligations only through communicated lifecycle policy.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Retire support obligations only through communicated lifecycle policy.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F8D01DA0",
+      "revision": 1,
+      "semantic_sha256": "f8d01da0df012d5d7da2a533f197f118c4be909a6702c33eaf168cdb07fbff98",
+      "statement": "Define incident criteria, severity, authority, roles, communication, and escalation before incidents occur.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 169
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Incident, Problem Management, and Postmortems",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Define incident criteria, severity, authority, roles, communication, and escalation before incidents occur.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Define incident criteria, severity, authority, roles, communication, and escalation before incidents occur.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A3F2248F",
+      "revision": 1,
+      "semantic_sha256": "a3f2248fe5c0481070884c498ffeb3ac94e1aebe69090df8a51e7e0abeeb5759",
+      "statement": "Establish incident command and one authoritative timeline.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 171
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Incident, Problem Management, and Postmortems",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Establish incident command and one authoritative timeline.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Establish incident command and one authoritative timeline.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-84C1C16C",
+      "revision": 1,
+      "semantic_sha256": "84c1c16c1594140726d2e98f10cd01fbd2bf3c7c0d8ee10bc36726f1cdcac804",
+      "statement": "Declare recovery only after user journeys, integrity, backlog, dependencies, and monitoring are verified.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 177
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Incident, Problem Management, and Postmortems",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Declare recovery only after user journeys, integrity, backlog, dependencies, and monitoring are verified.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Declare recovery only after user journeys, integrity, backlog, dependencies, and monitoring are verified.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B5D09F0D",
+      "revision": 1,
+      "semantic_sha256": "b5d09f0d244d8634700235069514dad44d73286cda5f27a63db1083e0a1d6116",
+      "statement": "Monitor for recurrence and delayed effects.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 178
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Incident, Problem Management, and Postmortems",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The full rule “Monitor for recurrence and delayed effects.” is decidable by read-only queries over the sealed assessed environment using explicit inventory and versioned policy predicates.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Monitor for recurrence and delayed effects.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2805E81B",
+      "revision": 1,
+      "semantic_sha256": "2805e81be348985cc8ff3f52d857de30dc4a066dea7d239da5b9060a7530aaf4",
+      "statement": "Measure restoration, impact, detection, recurrence, action effectiveness, and learning—not incident count alone.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 188
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Incident, Problem Management, and Postmortems",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Measure restoration, impact, detection, recurrence, action effectiveness, and learning—not incident count alone.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Measure restoration, impact, detection, recurrence, action effectiveness, and learning—not incident count alone.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-88305F87",
+      "revision": 1,
+      "semantic_sha256": "88305f87e889146b047e2d4f7818f11cbe3ce602f18333bd5089f201058b55fe",
+      "statement": "Maintain forecasts for ordinary, peak, seasonal, launch, growth, recovery, and abuse demand.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 196
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Maintain forecasts for ordinary, peak, seasonal, launch, growth, recovery, and abuse demand.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Maintain forecasts for ordinary, peak, seasonal, launch, growth, recovery, and abuse demand.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1012D643",
+      "revision": 1,
+      "semantic_sha256": "1012d6434515c21fabd20aa3fabdbaa5ca215afe1e0a9ea741ce7a55965e1bda",
+      "statement": "Track capacity limits and quotas across compute, memory, storage, network, connections, queues, databases, third parties, and control planes.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 197
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Track capacity limits and quotas across compute, memory, storage, network, connections, queues, databases, third parties, and control planes.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Track capacity limits and quotas across compute, memory, storage, network, connections, queues, databases, third parties, and control planes.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D9DC2BF5",
+      "revision": 1,
+      "semantic_sha256": "d9dc2bf5d28c7db2fa12d7691d2fc6450554a3d4d385904c8961eb5209c05766",
+      "statement": "Review forecasts against actual demand and update assumptions.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 200
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Review forecasts against actual demand and update assumptions.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Review forecasts against actual demand and update assumptions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0C1180BC",
+      "revision": 1,
+      "semantic_sha256": "0c1180bce70b0e088699ea50d6df23ae04619d3d3304cfeee85d2a1f4a996f96",
+      "statement": "Test scale-up, scale-down, rebalancing, and capacity during a failure domain loss.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 202
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The full rule “Test scale-up, scale-down, rebalancing, and capacity during a failure domain loss.” is decidable by a bounded declared test with captured inputs, outputs, thresholds, and repeatable execution evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Test scale-up, scale-down, rebalancing, and capacity during a failure domain loss.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D9D69015",
+      "revision": 1,
+      "semantic_sha256": "d9d690153f34fe1f2cdabb011dcce9d457bd7da723dff6baf23414ef6bf343b9",
+      "statement": "Prevent autoscaling from overwhelming a database or external dependency.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 203
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The full rule “Prevent autoscaling from overwhelming a database or external dependency.” is decidable by a bounded declared test with captured inputs, outputs, thresholds, and repeatable execution evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Prevent autoscaling from overwhelming a database or external dependency.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-46661625",
+      "revision": 1,
+      "semantic_sha256": "46661625a6183c5ee65e078e86a9d241ba65797e2e9fbbbfa93298809bc3c1ac",
+      "statement": "Define overload admission, queuing, backpressure, prioritization, degradation, and shedding.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 205
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Define overload admission, queuing, backpressure, prioritization, degradation, and shedding.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Define overload admission, queuing, backpressure, prioritization, degradation, and shedding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C8DBF731",
+      "revision": 1,
+      "semantic_sha256": "c8dbf73196b7b60f6bbcd196405982cbcb63b7e64e7b69ca5116818b1869b4c3",
+      "statement": "Monitor latency distributions, throughput, errors, queue age, resource use, and unit cost together.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 207
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The full rule “Monitor latency distributions, throughput, errors, queue age, resource use, and unit cost together.” is decidable by read-only queries over the sealed assessed environment using explicit inventory and versioned policy predicates.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Monitor latency distributions, throughput, errors, queue age, resource use, and unit cost together.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5E82CAD5",
+      "revision": 1,
+      "semantic_sha256": "5e82cad54790bf171a047142e7c256b36bde44e4c32ffc8a651e4959436847fc",
+      "statement": "Detect leaks and gradual degradation through endurance signals.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 208
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The full rule “Detect leaks and gradual degradation through endurance signals.” is decidable by a bounded declared test with captured inputs, outputs, thresholds, and repeatable execution evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Detect leaks and gradual degradation through endurance signals.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9197F66F",
+      "revision": 1,
+      "semantic_sha256": "9197f66f13d2f06e14eb1445bd1f0f4aabcf5c402af87c1a0845b80a358c8bdf",
+      "statement": "Plan storage, index, log, backup, and retention growth.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 209
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Plan storage, index, log, backup, and retention growth.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Plan storage, index, log, backup, and retention growth.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5FE14FFF",
+      "revision": 1,
+      "semantic_sha256": "5fe14fff84d29985582a92875871a6a4c53e31e65781c08687e203aac54365d8",
+      "statement": "Coordinate capacity with supplier limits and contract lead times.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 210
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Coordinate capacity with supplier limits and contract lead times.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Coordinate capacity with supplier limits and contract lead times.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-36E4D361",
+      "revision": 1,
+      "semantic_sha256": "36e4d3618a1a9dd5d33cb847b2ef949344af44ae8b3c77eeb2e5568cf6adbf42",
+      "statement": "Keep emergency capacity actions documented, authorized, and reversible.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 211
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Keep emergency capacity actions documented, authorized, and reversible.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Keep emergency capacity actions documented, authorized, and reversible.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A73F088E",
+      "revision": 1,
+      "semantic_sha256": "a73f088ebd08c099aefc035fc49308203a3a597a2805237c9371e09d33a5bc2a",
+      "statement": "Verify capacity after architecture, data-shape, feature, dependency, or workload change.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 212
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The full rule “Verify capacity after architecture, data-shape, feature, dependency, or workload change.” is decidable by a bounded declared test with captured inputs, outputs, thresholds, and repeatable execution evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Verify capacity after architecture, data-shape, feature, dependency, or workload change.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F46A2D61",
+      "revision": 1,
+      "semantic_sha256": "f46a2d61371722f7588ae347cf8527c198749674ab9b65a941ef002c8e023ad8",
+      "statement": "Use performance incidents to update models and tests.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 213
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Use performance incidents to update models and tests.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Use performance incidents to update models and tests.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8006F4CA",
+      "revision": 1,
+      "semantic_sha256": "8006f4ca373ce1efdfac4ec9464b8ded194f3ed8226592cfde410c5b9d239fbe",
+      "statement": "Do not reduce headroom below recovery and SLO needs solely to meet short-term cost targets.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 215
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Do not reduce headroom below recovery and SLO needs solely to meet short-term cost targets.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Do not reduce headroom below recovery and SLO needs solely to meet short-term cost targets.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E8247F73",
+      "revision": 1,
+      "semantic_sha256": "e8247f731e353bad1ad80800cbcb54927a634ef5b73e657f77c36b22f0a238f3",
+      "statement": "Separate fixed, variable, shared, support, data, network, license, supplier, and incident costs.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 225
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Separate fixed, variable, shared, support, data, network, license, supplier, and incident costs.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Separate fixed, variable, shared, support, data, network, license, supplier, and incident costs.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C6D9971F",
+      "revision": 1,
+      "semantic_sha256": "c6d9971f2fc5587047462a0df299ba2c6dff9e2817cbac4ee93db7f7d4bf400a",
+      "statement": "Forecast base, growth, launch, seasonal, failure, backup, and recovery cost.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 227
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Forecast base, growth, launch, seasonal, failure, backup, and recovery cost.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Forecast base, growth, launch, seasonal, failure, backup, and recovery cost.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AB343848",
+      "revision": 1,
+      "semantic_sha256": "ab343848464bf4cadaf047c165762a304b23921d5a798a524446cb415e40ccb3",
+      "statement": "Set budgets and anomaly alerts without allowing cost controls to terminate critical service silently.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 228
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Set budgets and anomaly alerts without allowing cost controls to terminate critical service silently.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Set budgets and anomaly alerts without allowing cost controls to terminate critical service silently.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8517773D",
+      "revision": 1,
+      "semantic_sha256": "8517773dcebbbf29da910c5d1d694059081c8339316caac852aaaf3f95265c77",
+      "statement": "Detect idle, orphaned, overprovisioned, underutilized, duplicate, and forgotten resources.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 229
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The full rule “Detect idle, orphaned, overprovisioned, underutilized, duplicate, and forgotten resources.” is decidable by read-only queries over the sealed assessed environment using explicit inventory and versioned policy predicates.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Detect idle, orphaned, overprovisioned, underutilized, duplicate, and forgotten resources.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5887E8D3",
+      "revision": 1,
+      "semantic_sha256": "5887e8d3f15b0acfffe5687c06de3405124231db4f5b04cc140233396af5fdff",
+      "statement": "Review data transfer, storage tiers, retention, logging, and high-cardinality telemetry cost.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 230
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Review data transfer, storage tiers, retention, logging, and high-cardinality telemetry cost.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Review data transfer, storage tiers, retention, logging, and high-cardinality telemetry cost.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0B270727",
+      "revision": 1,
+      "semantic_sha256": "0b27072792d6862ae5448813ef2b40a82973eb8611f2732780e1e6fab9291ad3",
+      "statement": "Account for engineering labor, complexity, support, migration, and lock-in—not provider invoice alone.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 232
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Account for engineering labor, complexity, support, migration, and lock-in—not provider invoice alone.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Account for engineering labor, complexity, support, migration, and lock-in—not provider invoice alone.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D7F14772",
+      "revision": 1,
+      "semantic_sha256": "d7f147720461d2f0f19e7245b2d496daa31a4970e8aea8fd2db239c0c5e95c6c",
+      "statement": "Review supplier pricing changes and quota interactions.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 236
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Review supplier pricing changes and quota interactions.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Review supplier pricing changes and quota interactions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4CA042C8",
+      "revision": 1,
+      "semantic_sha256": "4ca042c8a533663b62c6091c7d99331fbbf6b7548db363d0720826b4199803b8",
+      "statement": "Verify savings after implementation and watch for shifted cost elsewhere.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 239
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The full rule “Verify savings after implementation and watch for shifted cost elsewhere.” is decidable by a bounded declared test with captured inputs, outputs, thresholds, and repeatable execution evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Verify savings after implementation and watch for shifted cost elsewhere.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1E9FC44C",
+      "revision": 1,
+      "semantic_sha256": "1e9fc44cdaae9f9a4e4cf653ea54594c04c1c6a8f68163ebe116362c3cf2084c",
+      "statement": "Remove temporary launch and migration capacity after exit criteria are met.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 240
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Remove temporary launch and migration capacity after exit criteria are met.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Remove temporary launch and migration capacity after exit criteria are met.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-26C038B6",
+      "revision": 1,
+      "semantic_sha256": "26c038b6b5c244518219ed1f91eab27e85cb5d35a144593a20ff76d46fc9c8ab",
+      "statement": "Maintain cost evidence for major architecture and procurement decisions.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 241
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Maintain cost evidence for major architecture and procurement decisions.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Maintain cost evidence for major architecture and procurement decisions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-64F3DC86",
+      "revision": 1,
+      "semantic_sha256": "64f3dc8687eac3516b8fbe6edce829b8b728dcf57c8fb4101e20f539ea05c8f1",
+      "statement": "Maintain an authoritative inventory of software, services, infrastructure, devices, domains, certificates, licenses, accounts, and dependencies.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 250
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Maintain an authoritative inventory of software, services, infrastructure, devices, domains, certificates, licenses, accounts, and dependencies.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Maintain an authoritative inventory of software, services, infrastructure, devices, domains, certificates, licenses, accounts, and dependencies.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BD4C9D3B",
+      "revision": 1,
+      "semantic_sha256": "bd4c9d3b17a777d4bd4228d1b0f6d58727507b57c3b4cfb5c7c66e5ef614c985",
+      "statement": "Record owner, purpose, environment, criticality, data, exposure, version, support status, and retirement date.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 251
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Record owner, purpose, environment, criticality, data, exposure, version, support status, and retirement date.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Record owner, purpose, environment, criticality, data, exposure, version, support status, and retirement date.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E6C9769D",
+      "revision": 1,
+      "semantic_sha256": "e6c9769dbe4a499645176d255e0469b0afe9fa1ad4ad7457fc298df79fcf3ff2",
+      "statement": "Track vendor support, end-of-life, certificate, license, key, and contract dates.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 253
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Track vendor support, end-of-life, certificate, license, key, and contract dates.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Track vendor support, end-of-life, certificate, license, key, and contract dates.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E6FF7190",
+      "revision": 1,
+      "semantic_sha256": "e6ff7190fbcfbeab03c90fc46fcdf13df82528223c02dc4ddeeb8986a810f748",
+      "statement": "Apply patches within risk-based targets and verify deployed versions.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 256
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Apply patches within risk-based targets and verify deployed versions.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Apply patches within risk-based targets and verify deployed versions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-542BC36E",
+      "revision": 1,
+      "semantic_sha256": "542bc36e1f2411ddb11af4e509db95cf6fd4cdeab6791598185a5e6136470e8a",
+      "statement": "Use compensating controls only with owner, monitoring, expiry, and replacement plan.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 257
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Use compensating controls only with owner, monitoring, expiry, and replacement plan.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Use compensating controls only with owner, monitoring, expiry, and replacement plan.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-10EB8EC0",
+      "revision": 1,
+      "semantic_sha256": "10eb8ec01905b48d4ee448506c71888ff99708d359faede38c64b064a4ba0b32",
+      "statement": "Prevent unsupported assets from silently remaining production dependencies.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 258
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Prevent unsupported assets from silently remaining production dependencies.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Prevent unsupported assets from silently remaining production dependencies.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-95DCE399",
+      "revision": 1,
+      "semantic_sha256": "95dce3992e67028503dcf37a7d7c3a422f54a5c96932af67eaf2107df430a83b",
+      "statement": "Test mixed versions, rollback, recovery, and data compatibility.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 260
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The full rule “Test mixed versions, rollback, recovery, and data compatibility.” is decidable by a bounded declared test with captured inputs, outputs, thresholds, and repeatable execution evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Test mixed versions, rollback, recovery, and data compatibility.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6A7A184A",
+      "revision": 1,
+      "semantic_sha256": "6a7a184aa8c38e372974802bd3350d6eedd2e40f5aad43a339d085cc6d487191",
+      "statement": "Monitor failed, partial, or reverted patch deployments.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 262
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The full rule “Monitor failed, partial, or reverted patch deployments.” is decidable by read-only queries over the sealed assessed environment using explicit inventory and versioned policy predicates.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Monitor failed, partial, or reverted patch deployments.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E4979EC7",
+      "revision": 1,
+      "semantic_sha256": "e4979ec77f213739bc4351877d39b1cfb9caeeaec22b8b91002d6e533f626d24",
+      "statement": "Remove obsolete packages, services, accounts, ports, and capabilities.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 263
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The full rule “Remove obsolete packages, services, accounts, ports, and capabilities.” is decidable by read-only queries over the sealed assessed environment using explicit inventory and versioned policy predicates.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Remove obsolete packages, services, accounts, ports, and capabilities.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3021D362",
+      "revision": 1,
+      "semantic_sha256": "3021d362aa35e533d9586266f0c64a2eada19e4d94698a2fa0c8d6b42117478f",
+      "statement": "Include patch and asset state in incident investigation.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 267
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Include patch and asset state in incident investigation.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Include patch and asset state in incident investigation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-82716355",
+      "revision": 1,
+      "semantic_sha256": "8271635546516b31ba4f0cfb046958169c0c886ff3bb8d0271d487add85cb9ab",
+      "statement": "Retire duplicate and orphaned assets.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 268
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Retire duplicate and orphaned assets.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Retire duplicate and orphaned assets.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-04858636",
+      "revision": 1,
+      "semantic_sha256": "048586360e79cd4cae77fb6be5b03bd130dab494e5f5b239b62e6e81127dc180",
+      "statement": "Define owner, scope, dependencies, customers, users, data, contracts, and completion criteria.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 277
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Decommissioning and Secure Retirement",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Define owner, scope, dependencies, customers, users, data, contracts, and completion criteria.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Define owner, scope, dependencies, customers, users, data, contracts, and completion criteria.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A7C0D18F",
+      "revision": 1,
+      "semantic_sha256": "a7c0d18f946a78ad1f153f786952ec63bbc7453b1952741320455aa346aadb02",
+      "statement": "Confirm replacement or continuity plans before disabling essential capability.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 278
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Decommissioning and Secure Retirement",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The full rule “Confirm replacement or continuity plans before disabling essential capability.” is decidable by a fixed conjunction of versioned policy records, sealed inventory or configuration facts, and bounded evidence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Confirm replacement or continuity plans before disabling essential capability.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A8406215",
+      "revision": 1,
+      "semantic_sha256": "a8406215341895da05d3a8f8a289f90872c86a7ae615d1d9920e844e789e19e0",
+      "statement": "Inventory inbound and outbound interfaces, jobs, queues, domains, certificates, secrets, accounts, suppliers, and data copies.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 279
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Decommissioning and Secure Retirement",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The full rule “Inventory inbound and outbound interfaces, jobs, queues, domains, certificates, secrets, accounts, suppliers, and data copies.” is decidable from exact fields, links, dates, or status values in a sealed authoritative record governed by a versioned acceptance contract.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the complete versioned acceptance contract for: Inventory inbound and outbound interfaces, jobs, queues, domains, certificates, secrets, accounts, suppliers, and data copies.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}
